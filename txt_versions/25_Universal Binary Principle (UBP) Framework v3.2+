@@ -1,0 +1,131 @@
+Universal Binary Principle (UBP) Framework v3.2+
+Euan Craig, New Zealand
+September 3, 2025
+Abstract
+The Universal Binary Principle (UBP) Framework provides a deterministic, information-
+centric model that seeks to computationally simulate and analyze fundamental aspects
+of reality through the manipulation of binary state toggles within high-dimensional
+spaces. Built upon axiomatic principles, modular software architecture, and rigorous
+coherence metrics, the UBP offers a foundation for scientifically exploring both physical
+and non-classical domains with precision and extensibility [1].
+1
+1 Introduction
+The Universal Binary Principle (UBP) postulates that all observable phenomena emerge
+from discrete binary state changes, termed toggles, operating within multidimensional man-
+ifolds. The goal of the framework is to realize a fully rigorous, extensible system enabling
+new forms of computational experimentation—calculating, discovering, and validating real-
+ities not attainable with conventional methods. By encoding information in nuanced 24-bit
+OffBits and integrating persistent, content-addressable storage with advanced error correc-
+tion, UBP bridges data science, quantum modeling, and fundamental physics under a unified
+formalism [2].
+2 Core Principles of the UBP Framework
+1. OffBit: The atomic binary unit. Each OffBit contains 24 bits partitioned into identity,
+dynamic state, and relational context. Unlike conventional bits, OffBits capture poten-
+tiality and layered properties.
+2. 6D Bitfield Spatial Mapping: All OffBits reside on a dynamic 6D spatial manifold,
+supporting the representation and simulation of complex relationships beyond classical
+3D mapping. Mapping parameters adapt to hardware profiles and experiments.
+3. HexDictionary Universal Storage: Persistent, content-addressable repository indexed
+by SHA256; supports immutability and reproducibility of all computational states and
+experiment outputs. Data is compressed (gzip), with standardized metadata for rich
+querying.
+4. BitTab Encoding: Specialized 24-bit encoding translates physical or informational prop-
+erties (such as atomic number, valence, block) into binary strings for experiment and
+simulation.
+5. Multi-Realm Physics Integration: UBP supports quantum, electromagnetic, gravita-
+tional, biological, cosmological, nuclear, and plasma realms. Each realm receives unique
+resonance parameters, error correction, and toggle behaviors.
+3 Framework Modules Overview
+The UBP is modular, with each submodule building toward full functionality:
+• ubp config.py, system constants.py: Central nervous system housing all UBP, math-
+ematical, and physical constants; supports dynamic configuration across hardware.
+• state.py: Implements OffBit and MutableBitfield (6D arrays for binary states).
+• toggle ops.py: Toggle algebra (AND, XOR, resonance, entanglement, superposition,
+spin transition).
+2
+• kernels.py: Provides resonance kernel, coherence calculations, global coherence invari-
+ants.
+• energy.py: The UBP energy equation:
+E = M × C × (R × Sopt) × PGCI × Oobserver × c1
+× Ispin ×X(wijMij)
+• metrics.py: NRCI (Non-Random Coherence Index), Coherence Pressure, Fractal Dimen-
+sion, Spatial Resonance Index.
+• global coherence.py: Computes global phase-locking using weighted frequency averages.
+• enhanced nrci.py: Advanced NRCI, Golay-Leech integration, temporal weighting.
+• observer scaling.py: Models observer intent and purpose tensor interactions.
+• carfe.py: Implements Cycloid Adelic Recursive Expansive Field Equation (CARFE) for
+nonlinear dynamic system evolution.
+• dot theory.py: Encodes purpose tensor mathematics and intentionality.
+• spin transition.py: Quantum spin dynamics, Zitterbewegung modeling, quantum in-
+formation quantification.
+• p adic correction.py, glr base.py, level 7 global golay.py: Multi-realm error cor-
+rection, BCH, Hamming, Golay codes, p-adic lifting, adelic corrections.
+• prime resonance.py: Prime-based coordinate systems tuned via Riemann zeta zeros.
+• tgic.py: Triad graph constraints, Leech lattice, dodecahedral projections, enforcing geo-
+metric coherence (3/6/9 rules).
+• hardware emulation.py, hardware profiles.py: Simulate different hardware profiles
+and architectures.
+• ubp lisp.py: S-expression based ontology, executing UBP primitives via a native lan-
+guage.
+• crv database.py, enhanced crv selector.py: Dynamic resonance value management,
+CRV optimization.
+• htr engine.py: Harmonic Toggle Resonance engine for physical and abstract resonance
+behaviors.
+• ubp pattern analysis.py, ubp 256 study evolution.py, visualize crv patterns.py:
+Pattern generation/analysis, storing and visualizing cymatic-like coherence states.
+• materials research.py: Predictive modeling of materials (e.g. tensile strength in alloys)
+based on resonance and coherence.
+3
+• rgdl.py: Resonance Geometry Definition Language for dynamic geometry generation and
+emergent 3D field export.
+• optimize route.py: TSP solver leveraging resonance and NRCI optimization.
+• detect anomaly.py: NRCI-based anomaly detection in real time signals.
+• runtime.py: Virtual Machine managing high-level state, semantic execution, simulation
+orchestration.
+• Utility modules (cli.py, dsl.py, etc.): automation, command-line, and persistent state
+management.
+4 The UBP Self-Contained Formula
+The central computational pipeline of UBP is:
+U(x) = H−1 􀀀R C 􀀀 t 􀀀ER􀀀T1(x)     
+where:
+• T1(x): BitTab 24-bit encoding of input x; b1−8 identity, b9−16 dynamic state, b17−24 rela-
+tional context.
+• ER(x): Realm-specific error correction; e.g., BCH, Hamming, Golay, p-adic, and Fibonacci
+strategies selected per R.
+•  t: Evolution operator,  t(b) = exp(tLCARFE)   b, LCARFE =  C + μA +  R.
+• C: Coherence maximization (NRCI), parameter tuning for  , μ,   to maximize NRCI( , T).
+• R[f]: Rune protocol, fixed point closure via self-evaluating UBP-Lisp expressions.
+• H−1: HexDictionary retrieval of outputs and augmentation with all NRCI-coherent his-
+torical states.
+5 Design Philosophy
+UBP emphasizes:
+• Scientific rigor: All computations are based on mathematically exact models rather than
+approximations.
+• Completeness: Each module is fully functional; no placeholder or mock algorithms.
+• Persistence: Robust SHA256-indexed content-addressable storage enables transparency
+and reproducibility.
+4
+• Modularity: Logical separation of concerns among modules for independent development
+and validation.
+• Adaptability: Dynamic optimization for hardware, experiment types, and realm switch-
+ing.
+• Discovery: Uncover novel relationships and structures via binary, resonant, and coherence-
+driven analysis.
+6 Example: Materials Modeling with UBP
+The UBP framework has been demonstrated on atomic-scale modeling of resonant steel. Us-
+ing a BCC lattice simulation, the Harmonic Resonance Transfer engine calculated NRCI of
+0.9219, and the Resonant Geometry Definition Language engine produced a unique material
+”fingerprint.” The experiment highlighted the framework’s ability to link elemental prop-
+erties, atomic structure, classical mechanics, and resonance analytics within one workflow
+[2].
+7 Conclusion
+UBP v3.2+ represents a leap toward unified computation grounded in fundamental binary
+information, modular architecture, error correction, and resonance-driven modeling. Its
+fully implemented modules and scientifically rigorous design provide new tools for physical
+modeling, discovery, and experimental science.
+References
+[1] Universal Binary Principle: A Meta-Temporal Framework for a Computational Reality.
+Technical Whitepaper, Euan R A Craig, 2025.
+[2] A Computational Framework for Atomic-Scale Material Modeling: A Case Study on
+Resonant Steel using UBP, Euan R A Craig, 2025.
+5
