@@ -1,0 +1,827 @@
+UBP Table of Elements Spatial Clusters
+Euan Craig, New Zealand
+August 9, 2025
+Abstract
+This document contains a detailed qualitative and quantitative presentation of
+element clusters derived from the Universal Binary Principle (UBP) spatial model-
+ing of the periodic table. For each cluster (0–14) the document lists: (1) Traditional
+periodic-table properties; (2) Encoded OffBit layer values (per the encoding scheme:
+Reality = Z/2, Information = Mass/5, Activation = Group, Unactivated = Period);
+(3) Summary statistics for encoded layers; and (4) qualitative observations prompts
+for interpretation.
+1 Introduction
+The Universal Binary Principle (UBP) maps elemental properties into a high-dimensional
+binary-spatial representation (OffBits placed in a 6D Bitfield). The following sections pro-
+vide a cluster-by-cluster presentation of the findings from K-Means clustering performed
+in the UBP 6D coordinate space. Each cluster block below is self-contained for easy re-
+view or extraction into a larger report. This is a first run attempt of mapping the Table
+of Elements within a fully functional UBP BitField, refinement of how the elements are
+encoded can be refined.
+1
+2 Cluster 0 (11 elements)
+Elements
+Hf, Os, Hg, Bi, At, Rf, Hs, Mt, Cn, Lv, Ts
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Hf Hafnium 72 4 6 d 1.30 178.49
+Os Osmium 76 8 6 d 2.20 190.23
+Hg Mercury 80 12 6 d 2.00 200.59
+Bi Bismuth 83 15 6 p 2.02 208.98
+At Astatine 85 17 6 p 2.20 210.00
+Rf Rutherfordium 104 4 7 d 1.30 267.00
+Hs Hassium 108 8 7 d 2.20 277.00
+Mt Meitnerium 109 9 7 d 2.30 276.00
+Cn Copernicium 112 12 7 d 2.30 285.00
+Lv Livermorium 116 16 7 p 2.10 293.00
+Ts Tennessine 117 17 7 p 2.20 294.00
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+36 35 4 6
+38 38 8 6
+40 40 12 6
+41 41 15 6
+42 42 17 6
+52 53 4 7
+54 55 8 7
+54 55 9 7
+56 57 12 7
+58 58 16 7
+58 58 17 7
+2
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 11.000 000 11.000 000 11.000 000 11.000 000
+mean 48.090 909 48.363 636 11.090 909 6.545 455
+std 8.630 812 9.058 396 4.846 742 0.522 233
+min 36.000 000 35.000 000 4.000 000 6.000 000
+25% 40.500 000 40.500 000 8.000 000 6.000 000
+50% 52.000 000 53.000 000 12.000 000 7.000 000
+75% 55.000 000 56.000 000 15.500 000 7.000 000
+max 58.000 000 58.000 000 17.000 000 7.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+3 Cluster 1 (7 elements)
+Elements
+Sc, Ge, As, Zr, Ru, Te, Nd
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Sc Scandium 21 3 4 d 1.36 44.956
+Ge Germanium 32 14 4 p 2.01 72.640
+As Arsenic 33 15 4 p 2.18 74.922
+Zr Zirconium 40 4 5 d 1.33 91.224
+Ru Ruthenium 44 8 5 d 2.20 101.070
+Te Tellurium 52 16 5 p 2.10 127.600
+Nd Neodymium 60 3 6 f 1.14 144.242
+3
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+10 9 3 4
+16 14 14 4
+16 15 15 4
+20 18 4 5
+22 20 8 5
+26 25 16 5
+30 28 3 6
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 7.000 000 7.000 000 7.000 000 7.000 000
+mean 20.000 000 18.428 571 9.000 000 4.714 286
+std 6.733 003 6.553 807 5.887 841 0.755 929
+min 10.000 000 9.000 000 3.000 000 4.000 000
+25% 16.000 000 14.500 000 3.500 000 4.000 000
+50% 20.000 000 18.000 000 8.000 000 5.000 000
+75% 24.000 000 22.500 000 14.500 000 5.000 000
+max 30.000 000 28.000 000 16.000 000 6.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+4 Cluster 2 (13 elements)
+Elements
+Xe, Ce, W, Ir, Pt, Au, Pb, Po, Rn, Fr, Ac, Th, Pu
+4
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Xe Xenon 54 18 5 p 2.60 131.293
+Ce Cerium 58 3 6 f 1.12 140.116
+W Tungsten 74 6 6 d 2.36 183.840
+Ir Iridium 77 9 6 d 2.20 192.217
+Pt Platinum 78 10 6 d 2.28 195.084
+Au Gold 79 11 6 d 2.54 196.967
+Pb Lead 82 14 6 p 2.33 207.200
+Po Polonium 84 16 6 p 2.00 209.000
+Rn Radon 86 18 6 p 2.20 222.000
+Fr Francium 87 1 7 s 0.70 223.000
+Ac Actinium 89 3 7 f 1.10 227.000
+Th Thorium 90 3 7 f 1.30 232.038
+Pu Plutonium 94 3 7 f 1.28 244.000
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+27 26 18 5
+29 28 3 6
+37 36 6 6
+38 38 9 6
+39 39 10 6
+39 39 11 6
+41 41 14 6
+42 41 16 6
+43 44 18 6
+43 44 1 7
+44 45 3 7
+45 46 3 7
+47 48 3 7
+5
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 13.000 000 13.000 000 13.000 000 13.000 000
+mean 39.538 462 39.615 385 8.846 154 6.230 769
+std 5.882 394 6.576 961 6.175 842 0.599 145
+min 27.000 000 26.000 000 1.000 000 5.000 000
+25% 38.000 000 38.000 000 3.000 000 6.000 000
+50% 41.000 000 41.000 000 9.000 000 6.000 000
+75% 43.000 000 44.000 000 14.000 000 7.000 000
+max 47.000 000 48.000 000 18.000 000 7.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+6
+5 Cluster 3 (5 elements)
+Elements
+Tc, Ag, Sn, Cs, Re
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Tc Technetium 43 7 5 d 1.90 98.000
+Ag Silver 47 11 5 d 1.93 107.868
+Sn Tin 50 14 5 p 1.96 118.710
+Cs Cesium 55 1 6 s 0.79 132.905
+Re Rhenium 75 7 6 d 1.90 186.207
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+21 19 7 5
+23 21 11 5
+25 23 14 5
+27 26 1 6
+37 37 7 6
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 5.000 000 5.000 000 5.000 000 5.000 000
+mean 26.600 000 25.200 000 8.000 000 5.400 000
+std 6.228 965 7.085 196 4.898 979 0.547 723
+min 21.000 000 19.000 000 1.000 000 5.000 000
+25% 23.000 000 21.000 000 7.000 000 5.000 000
+50% 25.000 000 23.000 000 7.000 000 5.000 000
+75% 27.000 000 26.000 000 11.000 000 6.000 000
+max 37.000 000 37.000 000 14.000 000 6.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+7
+6 Cluster 4 (3 elements)
+Elements
+H, Ca, Kr
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+H Hydrogen 1 1 1 s 2.2 1.008
+Ca Calcium 20 2 4 s 1.0 40.078
+Kr Krypton 36 18 4 p 3.0 83.798
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+0 0 1 1
+10 8 2 4
+18 16 18 4
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 3.000 000 3.0 3.000 000 3.000 000
+mean 9.333 333 8.0 7.000 000 3.000 000
+std 9.018 500 8.0 9.539 392 1.732 051
+min 0.000 000 0.0 1.000 000 1.000 000
+25% 5.000 000 4.0 1.500 000 2.500 000
+50% 10.000 000 8.0 2.000 000 4.000 000
+75% 14.000 000 12.0 10.000 000 4.000 000
+max 18.000 000 16.0 18.000 000 4.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+8
+7 Cluster 5 (6 elements)
+Elements
+Cr, Mn, Ni, Cu, Rb, Sr
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Cr Chromium 24 6 4 d 1.66 51.996
+Mn Manganese 25 7 4 d 1.55 54.938
+Ni Nickel 28 10 4 d 1.91 58.693
+Cu Copper 29 11 4 d 1.90 63.546
+Rb Rubidium 37 1 5 s 0.82 85.468
+Sr Strontium 38 2 5 s 0.95 87.620
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+12 10 6 4
+12 11 7 4
+14 11 10 4
+14 12 11 4
+18 17 1 5
+19 17 2 5
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 6.000 000 6.000 000 6.000 000 6.000 000
+mean 14.833 333 13.000 000 6.166 667 4.333 333
+std 2.994 439 3.162 278 4.070 217 0.516 398
+min 12.000 000 10.000 000 1.000 000 4.000 000
+25% 12.500 000 11.000 000 3.000 000 4.000 000
+50% 14.000 000 11.500 000 6.500 000 4.000 000
+75% 17.000 000 15.750 000 9.250 000 4.750 000
+max 19.000 000 17.000 000 11.000 000 5.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+9
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+8 Cluster 6 (9 elements)
+Elements
+K, Ti, V, Fe, Co, Zn, Ga, Se, Br
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+K Potassium 19 1 4 s 0.82 39.098
+Ti Titanium 22 4 4 d 1.54 47.867
+V Vanadium 23 5 4 d 1.63 50.942
+Fe Iron 26 8 4 d 1.83 55.845
+Co Cobalt 27 9 4 d 1.88 58.933
+Zn Zinc 30 12 4 d 1.65 65.409
+Ga Gallium 31 13 4 p 1.81 69.723
+Se Selenium 34 16 4 p 2.55 78.960
+Br Bromine 35 17 4 p 2.96 79.904
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+9 7 1 4
+11 9 4 4
+11 10 5 4
+13 11 8 4
+13 11 9 4
+15 13 12 4
+15 14 13 4
+17 15 16 4
+17 16 17 4
+10
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 9.000 000 9.000 000 9.000 000 9.0
+mean 13.444 444 11.777 778 9.444 444 4.0
+std 2.788 867 2.948 634 5.502 525 0.0
+min 9.000 000 7.000 000 1.000 000 4.0
+25% 11.000 000 10.000 000 5.000 000 4.0
+50% 13.000 000 11.000 000 9.000 000 4.0
+75% 15.000 000 14.000 000 13.000 000 4.0
+max 17.000 000 16.000 000 17.000 000 4.0
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+9 Cluster 7 (11 elements)
+Elements
+Pa, U, Np, Ubn95, Bh, Ds, Rg, Fl, Mc, Og, Ubn119
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Pa Protactinium 91 3 7 f 1.500 000 231.036 000
+U Uranium 92 3 7 f 1.380 000 238.029 000
+Np Neptunium 93 3 7 f 1.360 000 237.000 000
+Ubn95 Element-95 95 11 8 d 1.360 000 227.038 419
+Bh Bohrium 107 7 7 d 2.200 000 270.000 000
+Ds Darmstadtium 110 10 7 d 2.300 000 281.000 000
+Rg Roentgenium 111 11 7 d 2.300 000 280.000 000
+Fl Flerovium 114 14 7 p 2.000 000 289.000 000
+Mc Moscovium 115 15 7 p 2.100 000 288.000 000
+Og Oganesson 118 18 7 p 2.200 000 294.000 000
+Ubn119 Element-119 119 9 8 f 2.106 814 302.847 887
+11
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+45 46 3 7
+46 47 3 7
+46 47 3 7
+47 45 11 8
+53 54 7 7
+55 56 10 7
+55 56 11 7
+57 57 14 7
+57 57 15 7
+59 58 18 7
+59 60 9 8
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 11.000 000 11.000 000 11.000 000 11.000 000
+mean 52.636 364 53.000 000 9.454 545 7.181 818
+std 5.554 687 5.567 764 5.106 146 0.404 520
+min 45.000 000 45.000 000 3.000 000 7.000 000
+25% 46.500 000 47.000 000 5.000 000 7.000 000
+50% 55.000 000 56.000 000 10.000 000 7.000 000
+75% 57.000 000 57.000 000 12.500 000 7.000 000
+max 59.000 000 60.000 000 18.000 000 8.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+10 Cluster 8 (5 elements)
+Elements
+He, N, Ne, P, Ar
+12
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+He Helium 2 18 1 s 0.00 4.003
+N Nitrogen 7 15 2 p 3.04 14.007
+Ne Neon 10 18 2 p 0.00 20.180
+P Phosphorus 15 15 3 p 2.19 30.974
+Ar Argon 18 18 3 p 0.00 39.948
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+1 0 18 1
+3 2 15 2
+5 4 18 2
+7 6 15 3
+9 8 18 3
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 5.000 000 5.000 000 5.000 000 5.000 00
+mean 5.000 000 4.000 000 16.800 000 2.200 00
+std 3.162 278 3.162 278 1.643 168 0.836 66
+min 1.000 000 0.000 000 15.000 000 1.000 00
+25% 3.000 000 2.000 000 15.000 000 2.000 00
+50% 5.000 000 4.000 000 18.000 000 2.000 00
+75% 7.000 000 6.000 000 18.000 000 3.000 00
+max 9.000 000 8.000 000 18.000 000 3.000 00
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+11 Cluster 9 (6 elements)
+Elements
+Nb, Rh, Cd, In, I, Ba
+13
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Nb Niobium 41 5 5 d 1.60 92.906
+Rh Rhodium 45 9 5 d 2.28 102.906
+Cd Cadmium 48 12 5 d 1.69 112.411
+In Indium 49 13 5 p 1.78 114.818
+I Iodine 53 17 5 p 2.66 126.904
+Ba Barium 56 2 6 s 0.89 137.327
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+20 18 5 5
+22 20 9 5
+24 22 12 5
+24 23 13 5
+26 25 17 5
+28 27 2 6
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 6.000 000 6.000 000 6.000 000 6.000 000
+mean 24.000 000 22.500 000 9.666 667 5.166 667
+std 2.828 427 3.271 085 5.501 515 0.408 248
+min 20.000 000 18.000 000 2.000 000 5.000 000
+25% 22.500 000 20.500 000 6.000 000 5.000 000
+50% 24.000 000 22.500 000 10.500 000 5.000 000
+75% 25.500 000 24.500 000 12.750 000 5.000 000
+max 28.000 000 27.000 000 17.000 000 6.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+14
+12 Cluster 10 (5 elements)
+Elements
+Ta, Tl, Ra, Db, Nh
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Ta Tantalum 73 5 6 d 1.50 180.948
+Tl Thallium 81 13 6 p 1.62 204.383
+Ra Radium 88 2 7 s 0.90 226.000
+Db Dubnium 105 5 7 d 1.50 270.000
+Nh Nihonium 113 13 7 p 1.80 284.000
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+36 36 5 6
+40 40 13 6
+44 45 2 7
+52 54 5 7
+56 56 13 7
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 5.000 000 5.000 000 5.000 00 5.000 000
+mean 45.600 000 46.200 000 7.600 00 6.600 000
+std 8.294 577 8.671 793 5.079 37 0.547 723
+min 36.000 000 36.000 000 2.000 00 6.000 000
+25% 40.000 000 40.000 000 5.000 00 6.000 000
+50% 44.000 000 45.000 000 5.000 00 7.000 000
+75% 52.000 000 54.000 000 13.000 00 7.000 000
+max 56.000 000 56.000 000 13.000 00 7.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+15
+13 Cluster 11 (8 elements)
+Elements
+Be, B, O, F, Mg, Al, S, Cl
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Be Beryllium 4 2 2 s 1.57 9.012
+B Boron 5 13 2 p 2.04 10.811
+O Oxygen 8 16 2 p 3.44 15.999
+F Fluorine 9 17 2 p 3.98 18.998
+Mg Magnesium 12 2 3 s 1.31 24.305
+Al Aluminum 13 13 3 p 1.61 26.982
+S Sulfur 16 16 3 p 2.58 32.065
+Cl Chlorine 17 17 3 p 3.16 35.453
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+2 1 2 2
+2 2 13 2
+4 3 16 2
+4 3 17 2
+6 4 2 3
+6 5 13 3
+8 6 16 3
+8 7 17 3
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 8.000 000 8.000 00 8.000 000 8.000 000
+mean 5.000 000 3.875 00 12.000 000 2.500 000
+std 2.390 457 2.031 01 6.369 571 0.534 522
+min 2.000 000 1.000 00 2.000 000 2.000 000
+25% 3.500 000 2.750 00 10.250 000 2.000 000
+50% 5.000 000 3.500 00 14.500 000 2.500 000
+75% 6.500 000 5.250 00 16.250 000 3.000 000
+max 8.000 000 7.000 00 17.000 000 3.000 000
+16
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+14 Cluster 12 (6 elements)
+Elements
+Y, Mo, Pd, Sb, La, Pr
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Y Yttrium 39 3 5 d 1.22 88.906
+Mo Molybdenum 42 6 5 d 2.16 95.940
+Pd Palladium 46 10 5 d 2.20 106.420
+Sb Antimony 51 15 5 p 2.05 121.760
+La Lanthanum 57 3 6 f 1.10 138.905
+Pr Praseodymium 59 3 6 f 1.13 140.908
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+19 17 3 5
+21 19 6 5
+23 21 10 5
+25 24 15 5
+28 27 3 6
+29 28 3 6
+17
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 6.000 000 6.000 000 6.000 000 6.000 000
+mean 24.166 667 22.666 667 6.666 667 5.333 333
+std 3.920 034 4.412 105 4.926 121 0.516 398
+min 19.000 000 17.000 000 3.000 000 5.000 000
+25% 21.500 000 19.500 000 3.000 000 5.000 000
+50% 24.000 000 22.500 000 4.500 000 5.000 000
+75% 27.250 000 26.250 000 9.000 000 5.750 000
+max 29.000 000 28.000 000 15.000 000 6.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+15 Cluster 13 (5 elements)
+Elements
+Ubn103, Ubn103, Ubn103, Ubn103, Sg
+(Note: the provided table contains multiple repeated Ubn103 entries followed by Sg; the encoded
+rows below reflect the provided list.) I left this in here for transparency.
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Ubn103 Element-103 103 8 8 g 1.9 245.130 268
+Ubn103 Element-103 103 8 8 f 1.9 249.933 375
+Ubn103 Element-103 103 8 8 g 1.9 245.130 268
+Ubn103 Element-103 103 8 8 f 1.9 249.933 375
+Ubn103 Element-103 103 8 8 g 1.9 245.130 268
+Ubn103 Element-103 103 8 8 f 1.9 249.933 375
+Ubn103 Element-103 103 8 8 g 1.9 245.130 268
+Ubn103 Element-103 103 8 8 f 1.9 249.933 375
+Sg Seaborgium 106 6 7 d 1.9 271.000 000
+18
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+51 49 8 8
+51 50 8 8
+51 49 8 8
+51 50 8 8
+51 49 8 8
+51 50 8 8
+51 49 8 8
+51 50 8 8
+53 54 6 7
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 9.000 000 9.000 000 9.000 000 9.000 000
+mean 51.222 222 50.000 000 7.777 778 7.888 889
+std 0.666 667 1.581 139 0.666 667 0.333 333
+min 51.000 000 49.000 000 6.000 000 7.000 000
+25% 51.000 000 49.000 000 8.000 000 8.000 000
+50% 51.000 000 50.000 000 8.000 000 8.000 000
+75% 51.000 000 50.000 000 8.000 000 8.000 000
+max 53.000 000 54.000 000 8.000 000 8.000 000
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+16 Cluster 14 (4 elements)
+Elements
+Li, C, Na, Si
+19
+Traditional Periodic Table Properties
+Symbol Name Z Group Period Block Electronegativity Mass
+Li Lithium 3 1 2 s 0.98 6.941
+C Carbon 6 14 2 p 2.55 12.011
+Na Sodium 11 1 3 s 0.93 22.990
+Si Silicon 14 14 3 p 1.90 28.086
+Encoded OffBit Layer Values (Based on Encoding Scheme)
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+1 1 1 2
+3 2 14 2
+5 4 1 3
+7 5 14 3
+Summary Statistics for Encoded Layers within Cluster
+Reality (Z/2) Information (Mass/5) Activation (Group) Unactivated (Period)
+count 4.000 000 4.000 000 4.000 000 4.000 00
+mean 4.000 000 3.000 000 7.500 000 2.500 00
+std 2.581 989 1.825 742 7.505 553 0.577 35
+min 1.000 000 1.000 000 1.000 000 2.000 00
+25% 2.500 000 1.750 000 1.000 000 2.000 00
+50% 4.000 000 3.000 000 7.500 000 2.500 00
+75% 5.500 000 4.250 000 14.000 000 3.000 00
+max 7.000 000 5.000 000 14.000 000 3.000 00
+Qualitative Observations
+• Do elements in this cluster tend to be from similar Groups or Periods?
+• Are they all metals, nonmetals, or metalloids?
+• Do their encoded layer values show a tight range (indicating similar original properties)?
+• Are there any ’outliers’ in terms of traditional classification or encoded values?
+20
+Appendix: Cluster-by-Cluster UBP Interpretation and Recom-
+mendations
+Preface
+The interpretation below treats each cluster as a compact set of UBP OffBit encodings (Reality
+= Z/2, Information = Mass/5, Activation = Group, Unactivated = Period) and attempts to
+read those numbers as coordinates in the UBP semantic space. For each cluster I provide:
+1. A concise UBP interpretation (what the cluster represents in the encoded space).
+2. True fits — elements that are consistent with that interpretation.
+3. Anomalies / points of interest — elements that break expectation and merit follow-
+up.
+4. Suggested follow-up tests that can confirm whether the observed grouping is chemi-
+cally meaningful or an artifact of encoding choices.
+Cluster 0 (Hf, Os, Hg, Bi, At, Rf, Hs, Mt, Cn, Lv, Ts)
+UBP interpretation: A heavy-element cluster dominated by late d-block and heavy p-block
+species. In OffBit terms this cluster sits at high Reality and Information values with moderately
+high Activation numbers (groups 4–17). It appears to capture high atomic number + high mass
+neighbourhoods (heavy, often relativistic elements).
+True fits:
+• Hf, Os, Hg, Bi, Cn, Lv: heavy elements with similar mass-scaled Information and high
+Reality.
+Anomalies / points of interest:
+• At, Ts (halogen-like p-block) appear alongside heavy transition elements — suggests
+mass/period dominance in clustering overcame group chemical identity.
+• Mt, Rf, Hs — synthetic superheavies grouped by numerical proximity rather than estab-
+lished chemistry (expected for synthetic isotopes).
+Suggested follow-ups:
+• Test whether using electronegativity or block (s/p/d/f ) as either additional encoded layers
+or as weights reduces the mixing of halogens with transition elements.
+• Calculate pairwise chemical similarity (e.g., Pauling difference + common oxidation states)
+and correlate with UBP distances to quantify chemical vs numeric grouping.
+21
+Cluster 1 (Sc, Ge, As, Zr, Ru, Te, Nd)
+UBP interpretation: A mixed cluster with medium Reality/Information values and wide
+Activation variability. It groups early transition metals, metalloids and a lanthanoid, implying
+the OffBit encoding gives similar numeric signatures to chemically distinct elements when mass
+and period align.
+True fits:
+• Sc, Zr, Ru: transition metals with moderate Reality values.
+Anomalies:
+• Ge and As (metalloids/p-block) and Nd (f-block) clustered together — likely because
+mass/period quantization collapsed distinctions.
+Suggested follow-ups:
+• Re-encode group such that group differences in the p-block and d-block produce larger
+separations (e.g., non-linear scaling of Activation).
+• Visualize cluster topology in 2D via UMAP with color by block to see if metalloids bridge
+transition/metalloid regions or are misplaced.
+Cluster 2 (Xe, Ce, W, Ir, Pt, Au, Pb, Po, Rn, Fr, Ac, Th, Pu)
+UBP interpretation: Another heavy cluster, but including noble gases (Xe, Rn), noble metals
+(Pt, Au), and early actinides — it captures inert/heavy behaviour and f-block proximity when
+encoded mass is large.
+True fits:
+• Pt, Au, W, Ir: late transition metals with clustered high Information and Reality.
+• Ce, Ac, Th, Pu: f-block elements with comparable mass scaled values.
+Anomalies:
+• Xenon and Radon: noble gases mixing with heavy metals suggests encoded mass and
+period overshadow chemical inertness.
+• Francium (Fr): alkali but placed here — again a mass/period dominated effect.
+Suggested follow-ups:
+• Introduce a binary flag layer for “noble gas / inert” (based on electronic closed shells) to
+preserve their distinctness in UBP coordinates.
+• Check whether replacing raw mass by mass density relative to block (mass minus block
+median) reduces noble gas drift.
+22
+Cluster 3 (Tc, Ag, Sn, Cs, Re)
+UBP interpretation: An intermediate cluster with medium Reality and Information; a mix-
+ture of late 4th–6th period metals and a single alkali (Cs) — indicates local numeric similarity
+(Z/2 and mass/5) with divergent Activation values.
+True fits:
+• Ag, Sn, Re, Tc: metals whose mass/half-Z fall in a similar band.
+Anomalies:
+• Cs: alkali metal included despite low Activation value — implies period/mass alignment
+created proximity.
+Suggested follow-ups:
+• Reassess distance metric: use a composite metric that penalizes Activation (group) dis-
+agreement more strongly than Reality/Information agreement.
+• Perform silhouette analysis per cluster to quantify how tightly elements are bound in
+chemical vs numeric sense.
+17 Cluster 4 (H, Ca, Kr)
+UBP interpretation: Small, widely spread cluster: hydrogen, an alkaline earth, and a noble
+gas. This suggests the encoding placed these three at low-to-moderate Reality/Information with
+distinct Activation/Period coordinates that nonetheless produce geometric proximity in the 6D
+embedding.
+True fits:
+• No clear homogeneous chemical interpretation — cluster likely an artefact of coarse quan-
+tization (small integer values).
+Anomalies:
+• H very special chemically; its placement with Ca and Kr likely exposes limits of dividing
+Z by 2 as a single Reality scale for elements at extremes.
+Suggested follow-ups:
+• Apply non-linear scaling to Z for light elements (e.g., log or piecewise mapping) to avoid
+compressing H into low numeric bins that overlap with heavier elements.
+• Consider introducing a hydrogen special case or an electron configuration derived layer
+(1s occupancy) to preserve its uniqueness.
+23
+18 Cluster 5 (Cr, Mn, Ni, Cu, Rb, Sr)
+UBP interpretation: A cluster dominated by 3d transition metals (Cr, Mn, Ni, Cu) plus two
+s-block metals (Rb, Sr) — indicates the 3d metals form a tight band in OffBit space but that
+neighbouring s-block elements can be pulled into proximity by mass encoding.
+True fits:
+• Cr, Mn, Ni, Cu: classic 3d series tightly grouped.
+Anomalies:
+• Rb and Sr: appearance suggests mass/period similarity to the 3d metals under current
+scaling.
+Suggested follow-ups:
+• Weight the Activation (group) higher for s-block vs d-block separation so s-block elements
+do not collapse into d-block clusters purely by mass.
+• Compare clustering result with one obtained using electron configuration vectors (e.g.,
+shell occupancy) as input.
+19 Cluster 6 (K, Ti, V, Fe, Co, Zn, Ga, Se, Br)
+UBP interpretation: A broad mid-period cluster spanning s, d and p block. Activation
+values in this cluster span 1 to 17 while Reality/Information remain midrange — the cluster
+seems to capture mid-Z elements that are numerically close.
+True fits:
+• Ti, V, Fe, Co, Zn: mid-Z transition metals that belong together.
+Anomalies:
+• Br, Se, Ga, K: p- and s-block elements appearing in the same cluster — again a conse-
+quence of coarse mass scaling.
+Suggested follow-ups:
+• Introduce a small penalty term to the distance metric for block mismatch (s/p/d/f) to
+tighten block coherence where chemically necessary.
+• Run clustering constrained to the d-block only to validate intrinsic d-block structure.
+24
+20 Cluster 7 (Pa, U, Np, Ubn95, Bh, Ds, Rg, Fl, Mc, Og,
+Ubn119)
+UBP interpretation: A high-Reality, high-Information cluster composed of heavy actinides
+and transactinides. The encoding reliably groups f-block and the heaviest synthetic elements
+together — a successful grouping by high mass and atomic number.
+True fits:
+• Pa, U, Np, Ac/Th family and superheavies: coherent in the high numeric band.
+Anomalies:
+• Some transactinides show Activation values scattered (groups 7–15) but remain close by
+Reality/Information — suggests numeric dominance over Activation.
+Suggested follow-ups:
+• Use this cluster as a benchmark: if chemically coherent (f-block and superheavy proxim-
+ity), your encoding captures heavy-element neighborhoods well. Validate using nuclear
+property correlations (half-life, common isotopic patterns).
+21 Cluster 8 (He, N, Ne, P, Ar)
+UBP interpretation: Light, nonmetal cluster — noble gases and small p-block elements.
+High Activation values (15–18) and low Reality/Information identify this as a light, highly
+electronegative / inert neighbourhood.
+True fits:
+• N, P: p-block nonmetals with high electronegativity and mid Information relative to
+He/Ne/Ar.
+• He, Ne, Ar: noble gases correctly near each other in Activation though mass scaling moves
+them numerically.
+Anomalies:
+• Helium’s encoded electronegativity set to 0 and its small mass may still place it close to
+N/P in the current numeric scheme — consider special rules for noble gases.
+Suggested follow-ups:
+• Encode closed-shellness as an orthogonal bit (binary) to maintain noble gas separation
+where required.
+• Correlate UBP distances in this cluster with ionization energy differences to confirm
+physical meaning.
+25
+22 Cluster 9 (Nb, Rh, Cd, In, I, Ba)
+UBP interpretation: Mid-mass cluster mixing transition metals, a p-block halogen and an
+alkaline earth. Suggests the cluster is a numeric band of mid-Reality/Information where Acti-
+vation differences were insufficient to separate chemistries.
+True fits:
+• Nb, Rh, Cd, In: mid-Z elements whose mass and Z/2 values are numerically similar.
+Anomalies:
+• Iodine and Barium co-located with transition metals — likely encoding artifact.
+Suggested follow-ups:
+• Increase resolution of Information layer (mass/5 may be too coarse for mid-Z discrimina-
+tions) — perhaps mass/2.5 or mass quantized into more levels.
+• Evaluate whether substituting isotopic stability (neutron:proton ratio) for raw mass im-
+proves grouping.
+23 Cluster 10 (Ta, Tl, Ra, Db, Nh)
+UBP interpretation: Heavy mid-to-late cluster mixing heavy transition metals with heavy
+p-block / s-block. Again, high Reality/Information values dominate.
+True fits:
+• Ta, Db: transition metals clustered by high Z/2 and high mass.
+Anomalies:
+• Tl, Ra, Nh: p- or s-block heavy elements grouped with d-block; suggests Activation was
+under-weighted.
+Suggested follow-ups:
+• Reweight Activation (group) upward for heavy elements to distinguish d-block vs p-block
+in superheavy region.
+• Test hierarchical clustering to reveal whether subclusters (d vs p heavy elements) naturally
+separate when using a stricter Activation weight.
+26
+24 Cluster 11 (Be, B, O, F, Mg, Al, S, Cl)
+UBP interpretation: A chemically coherent light-element cluster: second and third period
+light metals and nonmetals. Low Reality/Information with moderate Activation spread; this
+cluster is one of the clearer chemical successes.
+True fits:
+• B, C-neighbours, O, F, Cl: p-block nonmetals show reasonable proximity. Mg, Al, Be
+also sit nearby as light metals.
+Anomalies:
+• The cluster actually reads well; it is an example where the encoding aligns with chemical
+intuition.
+Suggested follow-ups:
+• Use this cluster as a validation set — compute correlation between UBP distance and
+experimentally measured chemical properties (electronegativity, atomic radius).
+25 Cluster 12 (Y, Mo, Pd, Sb, La, Pr)
+UBP interpretation: Mid-heavy elements with a mixture of d and f block — suggests the
+encoding groups elements that share intermediate Reality/Information but differ in Activation.
+This cluster is suggestive of transitional behaviour between d and f blocks.
+True fits:
+• Mo, Pd, Y: d-block elements with similar numeric signatures.
+• La, Pr: f-block elements with adjacent Reality/Information values.
+Anomalies:
+• Sb (p-block) sits here probably because its mass scaled value is near the d/f band.
+Suggested follow-ups:
+• Explore block-aware clustering (cluster within block partitions and compare results).
+• Consider adding an electron shell occupancy vector as encoded bits instead of raw group
+for better chemical separation.
+27
+26 Cluster 13 (Ubn103 repeated entries, Sg)
+UBP interpretation: Highly consistent band mostly composed from repeated Ubn103 entries
+with a single Seaborgium outlier. The repetition in the dataset amplifies a highly tight numeric
+signature (Reality   51, Information   49–50) Included for transparency of this document.
+True fits:
+• The repeated Ubn103 records form a near-degenerate subspace — consistent numerically
+by construction.
+Anomalies:
+• Sg (Seaborgium) differs slightly but remains close numerically; presence of many identical
+records reduces interpretability.
+Suggested follow-ups:
+• Remove duplicated entries (or consolidate them with average metadata) to avoid artifi-
+cially tightening clusters.
+• If duplicates represent different measured/estimated masses or blocks, make that explicit
+as separate metadata fields rather than identical symbol repeats.
+27 Cluster 14 (Li, C, Na, Si)
+UBP interpretation: A light, divergent cluster mixing alkali and p-block elements. Low
+Reality/Information and mixed Activation; it is another example where coarse scaling produces
+mixed chemical identity.
+True fits:
+• Li and Na: alkali pairing is chemically coherent.
+• C and Si: p-block semiconductor / nonmetal pairing is also coherent.
+Anomalies:
+• The cluster contains two chemically coherent pairs but grouped together by numeric
+proximity — suggests the cluster is actually two subclusters joined by small numeric
+gaps.
+Suggested follow-ups:
+• Apply a finer clustering resolution (larger k or hierarchical cut) to split the alkali and
+p-block subclusters.
+• Consider dynamic quantization for Activation (group) to preserve semiconductor vs alkali
+separations when Reality/Information coincide.
+28
