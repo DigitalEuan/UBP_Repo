@@ -1,0 +1,93 @@
+# @title A2 Error Correction
+# Euan Craig, New Zealand
+# 03 October 2025
+def map_offbit_to_a2_coordinate(offbit: np.ndarray) -> tuple[float, float]:
+    """
+    Maps a 24-bit OffBit (represented as a numpy array of 0s and 1s)
+    to a 2D coordinate (x, y) based on pairs of bits.
+
+    Args:
+        offbit: A numpy array of shape (24,) containing 0s and 1s.
+
+    Returns:
+        A tuple (x, y) representing the 2D coordinate.
+    """
+    if offbit.shape[0] != 24:
+        raise ValueError("Offbit must be a 24-bit array.")
+
+    # Divide the 24 bits into 12 pairs
+    bit_pairs = offbit.reshape(-1, 2) # Shape (12, 2)
+
+    # Map each pair to an integer value (0, 1, 2, or 3)
+    # value = bit[0] * 2 + bit[1]
+    pair_values = bit_pairs[:, 0] * 2 + bit_pairs[:, 1] # Shape (12,)
+
+    # Sum the values from the first 6 pairs for the x-component
+    # Scale the sum to a reasonable range. Max sum is 6 * 3 = 18.
+    # A2 lattice units are roughly 1 unit apart. Let's scale to fit within
+    # a few lattice units, e.g., -5 to +5.
+    x_sum = np.sum(pair_values[:12]) # Sum all 12 pairs for now, simpler initial mapping
+    # Let's try a simpler mapping: use the first 12 bits for X and the next 12 for Y.
+    # Group into 6 pairs for X, 6 pairs for Y.
+
+    x_pair_values = pair_values[:12] # Use all 12 pairs for X for now, as 24 bits / 2 bits/pair = 12 pairs.
+    y_pair_values = np.zeros_like(x_pair_values) # No bits left for Y with this simple mapping.
+
+    # Re-thinking the mapping: Need distinct bits for X and Y.
+    # Let's use the first 12 bits for X mapping, and the next 12 bits for Y mapping.
+    x_bit_pairs = offbit[:12].reshape(-1, 2) # First 12 bits -> 6 pairs for X
+    y_bit_pairs = offbit[12:].reshape(-1, 2) # Next 12 bits -> 6 pairs for Y
+
+    x_pair_values = x_bit_pairs[:, 0] * 2 + x_bit_pairs[:, 1] # Shape (6,)
+    y_pair_values = y_bit_pairs[:, 0] * 2 + y_bit_pairs[:, 1] # Shape (6,)
+
+    # Sum the values from the 6 pairs for the x and y components
+    # Max sum for each is 6 * 3 = 18.
+    x_sum = np.sum(x_pair_values)
+    y_sum = np.sum(y_pair_values)
+
+    # Scale the sums to a coordinate range relevant to A2 lattice.
+    # A sum of 0 could map to -N, a sum of 18 could map to +N.
+    # Range of sum is [0, 18]. Let's map this to [-5, 5].
+    # scaled_value = min_range + (max_range - min_range) * (sum_value - min_sum) / (max_sum - min_sum)
+    min_sum = 0
+    max_sum = 18
+    coord_min = -5.0
+    coord_max = 5.0
+
+    x_coord = coord_min + (coord_max - coord_min) * (x_sum - min_sum) / (max_sum - min_sum)
+    y_coord = coord_min + (coord_max - coord_min) * (y_sum - min_sum) / (max_sum - min_sum)
+
+    # The A2 lattice points are not on a simple square grid.
+    # A more accurate mapping would relate the sums to the basis vectors u1 and u2.
+    # For a simplified approach, let's treat the scaled x_coord and y_coord
+    # as components in a standard Cartesian space, and we can later find the
+    # nearest A2 lattice point to this (x_coord, y_coord).
+
+    # For now, return the scaled Cartesian-like coordinate.
+    return (x_coord, y_coord)
+
+# Example Usage (for testing the function)
+# Create a dummy 24-bit OffBit array
+dummy_offbit = np.random.randint(0, 2, 24)
+coordinate = map_offbit_to_a2_coordinate(dummy_offbit)
+print(f"Dummy OffBit: {dummy_offbit}")
+print(f"Mapped Coordinate: {coordinate}")
+
+# Test with an all-zero OffBit
+zero_offbit = np.zeros(24, dtype=int)
+zero_coord = map_offbit_to_a2_coordinate(zero_offbit)
+print(f"\nZero OffBit: {zero_offbit}")
+print(f"Mapped Coordinate: {zero_coord}") # Expected: (-5.0, -5.0)
+
+# Test with an all-one OffBit
+one_offbit = np.ones(24, dtype=int)
+one_coord = map_offbit_to_a2_coordinate(one_offbit)
+print(f"\nOne OffBit: {one_offbit}")
+print(f"Mapped Coordinate: {one_coord}") # Expected: (5.0, 5.0)
+
+# Test with a mix
+mixed_offbit = np.array([0,1,0,1,0,1,0,1,0,1,0,1, 1,0,1,0,1,0,1,0,1,0,1,0])
+mixed_coord = map_offbit_to_a2_coordinate(mixed_offbit)
+print(f"\nMixed OffBit: {mixed_offbit}")
+print(f"Mapped Coordinate: {mixed_coord}") # Expected: somewhere in the middle
