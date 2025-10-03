@@ -1,0 +1,96 @@
+"""
+A2 Error Correction Module
+-------------------------
+Author: Euan Craig, New Zealand
+Date: 03 October 2025 (Refined: 04 October 2025)
+
+This module provides a function to map a 24-bit OffBit (numpy array of 0s and 1s)
+to a 2D coordinate in the A2 lattice for error correction in UBP contexts.
+Uses vector summation for hexagonal coherence, projecting high-D bitfields to lightweight 2D
+for visualization/lightness (brightness ∝ NRCI) and GLR-style minimization.
+
+Usage:
+    import numpy as np
+    from error_correction.A2_error_correction import map_offbit_to_a2_coordinate
+
+    offbit = np.random.randint(0, 2, 24)
+    coord = map_offbit_to_a2_coordinate(offbit)
+    print(coord)
+"""
+
+import numpy as np
+
+# A2 lattice basis vectors for pair values 0-3 (hexagonal directions)
+A2_VECTORS = {
+    0: (0.0, 0.0),               # Origin/no shift
+    1: (1.0, 0.0),               # Right
+    2: (0.5, np.sqrt(3)/2),      # 60 degrees
+    3: (-0.5, np.sqrt(3)/2)      # 120 degrees
+}
+
+def map_offbit_to_a2_coordinate(offbit: np.ndarray) -> tuple[float, float]:
+    """
+    Maps a 24-bit OffBit (numpy array of 0s and 1s) to a 2D A2 lattice coordinate (x, y).
+    Pairs bits into values (0-3), sums corresponding A2 vectors for hexagonal projection.
+    Scales to [-5, 5] range for lightness/efficiency in UBP error correction (e.g., GLR bins).
+
+    Args:
+        offbit (np.ndarray): Array of shape (24,) containing 0s and 1s (int or bool dtype).
+
+    Returns:
+        tuple[float, float]: 2D coordinate (x, y) on A2 lattice.
+    """
+    if not isinstance(offbit, np.ndarray):
+        raise TypeError("Input must be a numpy ndarray.")
+    if offbit.shape != (24,):
+        raise ValueError("OffBit must be a 24-element array.")
+    if offbit.dtype not in (np.int_, np.bool_):
+        raise ValueError("OffBit must contain integers (0/1) or booleans.")
+
+    # Convert bool to int if needed
+    offbit = offbit.astype(int)
+
+    # Reshape to 12 pairs, compute values (0-3)
+    pairs = offbit.reshape(12, 2)
+    pair_values = pairs[:, 0] * 2 + pairs[:, 1]
+
+    # Sum vectors for position (emergent hex geometry)
+    x_coord = 0.0
+    y_coord = 0.0
+    for val in pair_values:
+        vx, vy = A2_VECTORS[val]
+        x_coord += vx
+        y_coord += vy
+
+    # Scale to [-5, 5] (approx max radius for 12 vectors ~12, but directional)
+    max_radius = 12.0  # Theoretical max if all aligned
+    scale = 5.0 / (max_radius / 2)  # Symmetric around origin
+    x_coord *= scale
+    y_coord *= scale
+
+    return (x_coord, y_coord)
+
+if __name__ == "__main__":
+    # Example Usage
+    dummy_offbit = np.random.randint(0, 2, 24)
+    coordinate = map_offbit_to_a2_coordinate(dummy_offbit)
+    print(f"Dummy OffBit: {dummy_offbit}")
+    print(f"Mapped Coordinate: {coordinate}")
+
+    # Test with an all-zero OffBit
+    zero_offbit = np.zeros(24, dtype=int)
+    zero_coord = map_offbit_to_a2_coordinate(zero_offbit)
+    print(f"\nZero OffBit: {zero_offbit}")
+    print(f"Mapped Coordinate: {zero_coord}")  # Expected: (0.0, 0.0)
+
+    # Test with an all-one OffBit
+    one_offbit = np.ones(24, dtype=int)
+    one_coord = map_offbit_to_a2_coordinate(one_offbit)
+    print(f"\nOne OffBit: {one_offbit}")
+    print(f"Mapped Coordinate: {one_coord}")  # Expected: lattice point, e.g., (-2.5, 4.33)
+
+    # Test with a mix
+    mixed_offbit = np.array([0,1,0,1,0,1,0,1,0,1,0,1, 1,0,1,0,1,0,1,0,1,0,1,0])
+    mixed_coord = map_offbit_to_a2_coordinate(mixed_offbit)
+    print(f"\nMixed OffBit: {mixed_offbit}")
+    print(f"Mapped Coordinate: {mixed_coord}")  # Expected: balanced lattice position
