@@ -1,0 +1,957 @@
+Advanced analysis pipeline to push the UBP prostate coherence study forward.
+
+SCRIPT:
+
+# @title Advanced analysis pipeline to push the UBP prostate coherence study forward.
+"""
+Features:
+ - Accepts binary or continuous gene data
+ - Maps to A2 lattice and alternative embeddings
+ - Computes NRCI and multiple variants (Euclidean, Mahalanobis, cosine inverse)
+ - Statistical tests: correlation, ROC (if labels), permutation tests, bootstrap CI
+ - GLR: fit continuous resonance target (optimize) and test significance by permutation
+ - Population-level Wright-Fisher toggle simulation (mutation + selection)
+ - PCA / UMAP visualization and clustering
+ - Outputs CSVs and plots
+Author: Assistant (for the UBP research continuation)
+"""
+
+import argparse
+import os
+import json
+import numpy as np
+import pandas as pd
+from math import sqrt
+from typing import Tuple, List, Dict
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import roc_auc_score, roc_curve
+from sklearn.cluster import KMeans
+from sklearn.covariance import EmpiricalCovariance
+from scipy.optimize import minimize_scalar
+from scipy.spatial.distance import mahalanobis
+from joblib import Parallel, delayed
+import matplotlib.pyplot as plt
+import seaborn as sns
+import umap
+import sys # Import sys to handle command line arguments
+
+sns.set(style="whitegrid")
+
+
+##############################
+# Utilities / Defaults
+##############################
+DEFAULT_GENES = [
+    "TP53","PTEN","RB1","NKX3-1","AR","ERG","MYC","PIK3CA","AKT1","BRCA2",
+    "CDKN1B","FOXA1","SPOP","CHD1","APC","ATM","CDK12","KMT2C","KMT2D",
+    "MED12","NCOR1","NF1","NOTCH1","ZBTB16"
+]
+
+A2_VECTORS = {
+    0: (0.0, 0.0),
+    1: (1.0, 0.0),
+    2: (0.5, np.sqrt(3)/2),
+    3: (-0.5, np.sqrt(3)/2)
+}
+
+
+##############################
+# Mapping / Embeddings
+##############################
+def map_offbit_to_a2_coordinate_vectorized(arr: np.ndarray) -> np.ndarray:
+    n, m = arr.shape
+    padded_m = 32
+    if m > padded_m:
+        arr = arr[:, :padded_m]
+    elif m < padded_m:
+        pad = np.zeros((n, padded_m - m))
+        arr = np.concatenate([arr, pad], axis=1)
+    pairs = arr.reshape(n, 16, 2)
+    pair_vals = (pairs[:,:,0] * 2 + pairs[:,:,1]).astype(int)  # 0..3
+    xs = np.vectorize(lambda v: A2_VECTORS[v][0])(pair_vals).sum(axis=1)
+    ys = np.vectorize(lambda v: A2_VECTORS[v][1])(pair_vals).sum(axis=1)
+    scale = 5.0 / (16.0 / 2)
+    coords = np.vstack([xs * scale, ys * scale]).T
+    return coords
+
+
+def map_to_pca(arr: np.ndarray, n_components=2) -> np.ndarray:
+    scaler = StandardScaler()
+    z = scaler.fit_transform(arr)
+    pca = PCA(n_components=n_components)
+    return pca.fit_transform(z)
+
+
+##############################
+# NRCI and variants
+##############################
+def nrci_euclidean(system_vals: np.ndarray, target_vals: np.ndarray) -> float:
+    """
+    NRCI variant: 1 - (sqrt(mean((S-T)^2)) / std(T))
+    If std(T) is very small, fall back to std=1.0
+    """
+    S = np.array(system_vals)
+    T = np.array(target_vals)
+    n = len(S)
+    numerator = np.sqrt(np.sum((S - T)**2) / n)
+    denom = np.std(T) if np.std(T) > 1e-8 else 1.0
+    return float(np.clip(1 - (numerator / denom), 0.0, 1.0))
+
+
+def nrci_mahalanobis(system_vals: np.ndarray, target_matrix: np.ndarray) -> float:
+    """
+    NRCI variant using Mahalanobis distance in multi-dim target distribution:
+      1 - (d_M / median(d_M_ref)) clipped to [0,1]
+    target_matrix: matrix of reference vectors (e.g., many healthy samples) to estimate covariance
+    """
+    cov = EmpiricalCovariance().fit(target_matrix)
+    mean = cov.location_
+    d = cov.mahalanobis(system_vals.reshape(1,-1))[0]
+    # compute a reference median distance for normalization
+    ref_d = np.median(cov.mahalanobis(target_matrix))
+    denom = ref_d if ref_d > 1e-8 else 1.0
+    return float(np.clip(1 - (d / denom), 0.0, 1.0))
+
+
+def nrci_cosine(system_vals: np.ndarray, target_vals: np.ndarray) -> float:
+    # cos similarity inverting to a coherence
+    S = np.array(system_vals).ravel()
+    T = np.array(target_vals).ravel()
+    if np.linalg.norm(S) == 0 or np.linalg.norm(T) == 0:
+        return 0.0
+    cos = np.dot(S, T) / (np.linalg.norm(S) * np.linalg.norm(T))
+    # map [-1,1] to [0,1]
+    return float((cos + 1.0) / 2.0)
+
+
+##############################
+# GLR: Fit continuous resonance target
+##############################
+def fit_glr_resonance(coords_abs: np.ndarray, weights: np.ndarray = None):
+    """
+    Fit a continuous target 'f' such that sum_i w_i * |coords_abs_i - f| is minimized.
+    This is simply the weighted L1 minimizer -> weighted median. We can optimize with scalar.
+    Returns fitted f and objective value.
+    """
+    xs = coords_abs.ravel()
+    if weights is None:
+        weights = np.ones_like(xs)
+    # Weighted median closed form: use scipy minimize_scalar for simplicity
+    def obj(f):
+        return np.sum(weights * np.abs(xs - f))
+    res = minimize_scalar(obj, bounds=(0.0, max(xs) + 1.0), method='bounded')
+    return float(res.x), float(res.fun)
+
+
+def glr_permutation_test(coords_abs: np.ndarray, weights: np.ndarray, n_perm=2000, random_state=0):
+    """
+    Test whether the fitted resonance (objective) is significantly low vs permuted weights.
+    Returns p-value.
+    """
+    rng = np.random.default_rng(random_state)
+    f_obs, obj_obs = fit_glr_resonance(coords_abs, weights)
+    objs = []
+    # permutation: shuffle weights among coords
+    for _ in range(n_perm):
+        w_perm = rng.permutation(weights)
+        _, obj_p = fit_glr_resonance(coords_abs, w_perm)
+        objs.append(obj_p)
+    objs = np.array(objs)
+    p = np.mean(objs <= obj_obs)
+    return f_obs, obj_obs, p, objs
+
+
+##############################
+# Statistical validation
+##############################
+def permutation_correlation_test(x, y, n_perm=2000, random_state=0):
+    rng = np.random.default_rng(random_state)
+    obs = np.corrcoef(x, y)[0,1]
+    perms = []
+    for _ in range(n_perm):
+        yp = rng.permutation(y)
+        perms.append(np.corrcoef(x, yp)[0,1])
+    perms = np.array(perms)
+    p = np.mean(np.abs(perms) >= np.abs(obs))
+    return obs, p, perms
+
+
+def bootstrap_ci(x, func=np.mean, n_boot=2000, alpha=0.05, random_state=0):
+    rng = np.random.default_rng(random_state)
+    stats = []
+    n = len(x)
+    for _ in range(n_boot):
+        sample = rng.choice(x, size=n, replace=True)
+        stats.append(func(sample))
+    stats = np.array(stats)
+    lower = np.quantile(stats, alpha/2)
+    upper = np.quantile(stats, 1 - alpha/2)
+    return lower, upper, stats
+
+
+##############################
+# Wright-Fisher population simulation
+##############################
+def wf_simulate_population(initial_offbit: np.ndarray,
+                           pop_size=1000,
+                           generations=200,
+                           mutation_rate=1e-5,
+                           selection_coeffs=None,
+                           genes=None,
+                           sample_every=1,
+                           random_state=0):
+    """
+    Simple Wright-Fisher forward simulator:
+      - initial_offbit: binary vector representing founding clone (0/1 per gene)
+      - pop_size: number of cells in population
+      - generations: number of generational steps
+      - mutation_rate: per-site mutation probability per generation
+      - selection_coeffs: per-gene selection coefficient favoring dysregulation (positive -> advantage)
+    Returns: a dict with time series of average offbit, diversity, and (optional) NRCI vs healthy.
+    Note: This is a simplified haploid model at gene-locus resolution.
+    """
+    rng = np.random.default_rng(random_state)
+    G = len(initial_offbit)
+    if selection_coeffs is None:
+        selection_coeffs = np.zeros(G)
+    # population represented as number of dysregulated alleles per gene among pop_size haploid cells
+    # initialize with either all founder genotype or small variance around it
+    pop = np.tile(initial_offbit.astype(int), (pop_size, 1))
+    # recorders
+    mean_traj = []
+    var_traj = []
+    for gen in range(generations):
+        # compute fitness for each cell as product(1 + s * allele)
+        fitness = np.prod(1 + (pop * selection_coeffs), axis=1)
+        # sample next generation parents proportional to fitness
+        probs = fitness / fitness.sum()
+        parents_idx = rng.choice(np.arange(pop_size), size=pop_size, p=probs)
+        new_pop = pop[parents_idx].copy()
+        # mutation step
+        muts = rng.random(size=new_pop.shape) < mutation_rate
+        new_pop = new_pop ^ muts.astype(int)  # flip bits where mutation occurs
+        pop = new_pop
+        mean_traj.append(pop.mean(axis=0))
+        var_traj.append(pop.var(axis=0))
+    mean_traj = np.array(mean_traj)  # generations x G
+    var_traj = np.array(var_traj)
+    return {"mean_traj": mean_traj, "var_traj": var_traj}
+
+
+##############################
+# Pipeline
+##############################
+def run_pipeline(df: pd.DataFrame,
+                 genes: List[str],
+                 outdir: str,
+                 clinical_col: str = None,
+                 demo_mode: bool = False):
+    os.makedirs(outdir, exist_ok=True)
+    # --- Select genes and coerce to numeric ---
+    missing = [g for g in genes if g not in df.columns]
+    if missing:
+        raise ValueError(f"Missing gene columns in input: {missing}")
+    X = df[genes].astype(float).values  # N x G
+    sample_ids = df.get("sample_id", pd.Series(np.arange(X.shape[0])))
+    # --- Map to A2 coordinates ---
+    coords = map_offbit_to_a2_coordinate_vectorized(X)
+    coords_abs = np.abs(coords)
+    df_out = df.copy()
+    df_out["A2_X"] = coords[:,0]
+    df_out["A2_Y"] = coords[:,1]
+    # --- Compute NRCI variants relative to healthy reference ---
+    # Determine healthy reference: if 'healthy' rows exist, use mean of those; else use zeros
+    healthy_mask = df.get("label", pd.Series()).astype(str).str.lower() == "healthy" if "label" in df.columns else None
+    if healthy_mask is not None and healthy_mask.any():
+        healthy_rows = X[healthy_mask.values]
+        healthy_coord = map_offbit_to_a2_coordinate_vectorized(healthy_rows).mean(axis=0)
+        target_matrix = healthy_rows
+    else:
+        healthy_coord = np.zeros((2,))
+        target_matrix = np.zeros_like(X)  # fallback (will make mahalanobis degenerate)
+    # NRCI on coords (2d)
+    nrci_coords = [nrci_euclidean(c/10.0, healthy_coord/10.0) for c in coords]
+    # NRCI Mahalanobis on full gene vector
+    try:
+        nrci_mahal = []
+        if target_matrix.sum() == 0:
+            # fallback: use sample covariance of whole cohort as reference
+            target_matrix = X
+        for row in X:
+            nrci_mahal.append(nrci_mahalanobis(row, target_matrix))
+    except Exception as e:
+        print("Mahalanobis NRCI failed, falling back to zeros:", e)
+        nrci_mahal = [0.0]*len(X)
+    nrci_cos = [nrci_cosine(row, np.zeros_like(row)) for row in X]  # cosine vs zero -> weak but illustrative
+    df_out["NRCI_A2"] = nrci_coords
+    df_out["NRCI_Mahal"] = nrci_mahal
+    df_out["NRCI_Cosine"] = nrci_cos
+    df_out.to_csv(os.path.join(outdir, "ubp_scores.csv"), index=False)
+    print("Saved ubp_scores.csv")
+
+    # --- Statistical tests against clinical label if provided ---
+    if clinical_col and clinical_col in df.columns:
+        y = df[clinical_col].values
+        results = {}
+        for name, score in [("A2", np.array(nrci_coords)), ("Mahal", np.array(nrci_mahal)), ("Cos", np.array(nrci_cos))]:
+            try:
+                obs_corr, p_corr, perms = permutation_correlation_test(score, y, n_perm=2000)
+                lower, upper, boots = bootstrap_ci(score - y, func=np.mean, n_boot=2000)
+                results[name] = {"corr": float(obs_corr), "p": float(p_corr), "bootstrap_mean_diff_CI": (float(lower), float(upper))}
+            except Exception as e:
+                results[name] = {"error": str(e)}
+        with open(os.path.join(outdir, "stat_tests.json"), "w") as fh:
+            json.dump(results, fh, indent=2)
+        print("Saved stat_tests.json")
+
+        # If binary label, compute ROC
+        if set(np.unique(y)).issubset({0,1}):
+            for name, score in [("A2", np.array(nrci_coords)), ("Mahal", np.array(nrci_mahal))]:
+                try:
+                    auc = roc_auc_score(y, score)
+                    print(f"ROC AUC {name}: {auc:.4f}")
+                    fpr, tpr, _ = roc_curve(y, score)
+                    plt.figure()
+                    plt.plot(fpr, tpr, label=f"{name} AUC={auc:.3f}")
+                    plt.plot([0,1],[0,1],"--", color="grey")
+                    plt.xlabel("FPR"); plt.ylabel("TPR"); plt.title(f"ROC {name}")
+                    plt.legend()
+                    plt.savefig(os.path.join(outdir, f"roc_{name}.png"))
+                    plt.close()
+                except Exception as e:
+                    print("ROC error:", e)
+
+    # --- GLR continuous fit ---
+    weights = np.array(nrci_coords)
+    coords_magnitude = coords_abs.mean(axis=1)  # per-sample combined magnitude
+    f_hat, obj_hat = fit_glr_resonance(coords_magnitude, weights)
+    f_hat_perm, obj_hat_perm, p_val, perm_objs = glr_permutation_test(coords_magnitude, weights, n_perm=1000)
+    with open(os.path.join(outdir, "glr_fit.json"), "w") as fh:
+        json.dump({"f_hat": f_hat, "obj": obj_hat, "p_perm": p_val}, fh, indent=2)
+    print("Saved glr_fit.json (note: significance via permutation)")
+
+    # --- PCA / UMAP / clustering visualizations ---
+    X_scaled = StandardScaler().fit_transform(X)
+    pca2 = PCA(n_components=2).fit_transform(X_scaled)
+    reducer = umap.UMAP(n_components=2, random_state=0)
+    umap2 = reducer.fit_transform(X_scaled)
+    kmeans = KMeans(n_clusters=3, random_state=0).fit_predict(X_scaled)
+    # Plot PCA
+    plt.figure(figsize=(7,5))
+    plt.scatter(pca2[:,0], pca2[:,1], c=kmeans, cmap="tab10", s=40)
+    plt.title("PCA (colored by kmeans)")
+    plt.xlabel("PC1"); plt.ylabel("PC2")
+    plt.savefig(os.path.join(outdir, "pca_clusters.png"))
+    plt.close()
+    # Plot UMAP
+    plt.figure(figsize=(7,5))
+    plt.scatter(umap2[:,0], umap2[:,1], c=kmeans, cmap="tab10", s=40)
+    plt.title("UMAP (colored by kmeans)")
+    plt.xlabel("UMAP1"); plt.ylabel("UMAP2")
+    plt.savefig(os.path.join(outdir, "umap_clusters.png"))
+    plt.close()
+    print("Saved PCA/UMAP cluster plots")
+
+    # --- Wright-Fisher demo simulation (if requested in demo_mode) ---
+    if demo_mode:
+        print("Running Wright-Fisher demo simulation...")
+        init = (X.mean(axis=0) > 0.5).astype(int)
+        s_coeff = np.zeros(init.shape)
+        # give small positive selection to a subset to drive dynamics in demo
+        s_coeff[:5] = 0.05
+        wf = wf_simulate_population(init, pop_size=1000, generations=200, mutation_rate=1e-4, selection_coeffs=s_coeff, genes=genes)
+        # save mean trajectory for first 3 genes
+        pd.DataFrame(wf["mean_traj"], columns=genes).to_csv(os.path.join(outdir, "wf_mean_traj.csv"), index=False)
+        print("Saved wf_mean_traj.csv from Wright-Fisher demo")
+        # plot average NRCI over time using A2 mapping of mean genotype
+        mean_coords = map_offbit_to_a2_coordinate_vectorized(wf["mean_traj"])
+        # compute NRCI vs zero
+        nrci_time = [nrci_euclidean(c/10.0, np.zeros(2)) for c in mean_coords]
+        plt.figure(figsize=(8,4))
+        plt.plot(nrci_time)
+        plt.title("Demo: NRCI over simulated generations (WF)")
+        plt.xlabel("Generation"); plt.ylabel("NRCI")
+        plt.savefig(os.path.join(outdir, "wf_nrci_time.png"))
+        plt.close()
+        print("Saved wf_nrci_time.png")
+
+    # --- Save enriched dataframe and return path ---
+    df_out.to_csv(os.path.join(outdir, "ubp_scores_with_embeddings.csv"), index=False)
+    print("Full pipeline complete. Outputs in:", outdir)
+    return outdir
+
+
+##############################
+# CLI
+##############################
+def main():
+    parser = argparse.ArgumentParser(description="UBP prostate analysis advance pipeline")
+    parser.add_argument("--input", type=str, help="Input CSV file (samples x genes)", default=None)
+    parser.add_argument("--outdir", type=str, default="results")
+    parser.add_argument("--genes-file", type=str, default=None, help="Optional file with gene list (one per line).")
+    parser.add_argument("--clinical-col", type=str, default=None, help="Column for clinical label (continuous or binary 0/1).")
+    parser.add_argument("--demo", action="store_true", help="Run demo on synthetic data")
+    # Modify parser.parse_args() to handle unknown arguments
+    args, unknown = parser.parse_known_args() # Use parse_known_args
+
+    if args.genes_file:
+        with open(args.genes_file) as fh:
+            genes = [x.strip() for x in fh.readlines() if x.strip()]
+    else:
+        genes = DEFAULT_GENES
+
+    if args.demo or args.input is None:
+        # build synthetic demo dataset
+        print("Building synthetic demo dataset (N=120)...")
+        rng = np.random.default_rng(0)
+        N = 120
+        # create 3 groups: healthy, moderate, aggressive
+        grp = np.repeat(["Healthy","Moderate","Aggressive"], N//3)
+        # base patterns
+        base_healthy = np.zeros(len(genes))
+        base_moderate = (rng.random(len(genes)) > 0.7).astype(int)
+        base_aggr = (rng.random(len(genes)) > 0.35).astype(int)
+        X = []
+        for g in grp:
+            if g == "Healthy":
+                v = base_healthy + rng.normal(0, 0.05, size=len(genes))
+            elif g == "Moderate":
+                v = base_moderate + rng.normal(0, 0.08, size=len(genes))
+            else:
+                v = base_aggr + rng.normal(0, 0.08, size=len(genes))
+            # clip to [0,1]
+            v = np.clip(v, 0.0, 1.0)
+            X.append(v)
+        df = pd.DataFrame(np.array(X), columns=genes)
+        df["sample_id"] = [f"S{str(i).zfill(3)}" for i in range(len(df))]
+        df["label"] = grp
+        # numeric clinical label for demo: healthy=0, moderate=0.5, aggressive=1
+        df["clinical_label"] = np.where(df["label"]=="Healthy", 0, np.where(df["label"]=="Moderate", 0.5, 1.0))
+        run_pipeline(df, genes, args.outdir, clinical_col="clinical_label", demo_mode=True)
+    else:
+        df = pd.read_csv(args.input)
+        run_pipeline(df, genes, args.outdir, clinical_col=args.clinical_col, demo_mode=False)
+
+
+if __name__ == "__main__":
+    main()
+
+====
+
+RESULTS:
+
+Building synthetic demo dataset (N=120)...
+Saved ubp_scores.csv
+/usr/local/lib/python3.12/dist-packages/numpy/lib/_function_base_impl.py:2922: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+/usr/local/lib/python3.12/dist-packages/numpy/lib/_function_base_impl.py:2923: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+Saved stat_tests.json
+Saved glr_fit.json (note: significance via permutation)
+/usr/local/lib/python3.12/dist-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+Saved PCA/UMAP cluster plots
+Running Wright-Fisher demo simulation...
+Saved wf_mean_traj.csv from Wright-Fisher demo
+Saved wf_nrci_time.png
+Full pipeline complete. Outputs in: results
+
+====
+
+glr_fit.json:
+
+{
+  "f_hat": 2.1037665965747214,
+  "obj": 137.15071496857195,
+  "p_perm": 0.989
+}
+
+====
+
+stat_tests.json:
+
+{
+  "A2": {
+    "corr": -0.9839730872719233,
+    "p": 0.0,
+    "bootstrap_mean_diff_CI": [
+      0.17507743453950275,
+      0.3840091510963943
+    ]
+  },
+  "Mahal": {
+    "corr": -0.4735140297134306,
+    "p": 0.0,
+    "bootstrap_mean_diff_CI": [
+      -0.5489070079405227,
+      -0.38582772422046463
+    ]
+  },
+  "Cos": {
+    "corr": NaN,
+    "p": 0.0,
+    "bootstrap_mean_diff_CI": [
+      -0.575,
+      -0.42916666666666664
+    ]
+  }
+}
+
+====
+
+ubp_scores_with_embeddings.csv:
+
+TP53,PTEN,RB1,NKX3-1,AR,ERG,MYC,PIK3CA,AKT1,BRCA2,CDKN1B,FOXA1,SPOP,CHD1,APC,ATM,CDK12,KMT2C,KMT2D,MED12,NCOR1,NF1,NOTCH1,ZBTB16,sample_id,label,clinical_label,A2_X,A2_Y,NRCI_A2,NRCI_Mahal,NRCI_Cosine
+0.09008174349330626,0.0657551882367185,0.0178690205329478,0.0,0.0,0.032823746753816795,0.0,0.019756103009100412,0.021493184741111504,0.03480213619814342,0.0,0.0,0.0,0.0,0.0869683938565067,0.0,0.016448481473010104,0.0,0.07917364394010612,0.06601804935409196,0.03166763114124576,0.0,0.0026014487129943256,0.03418430953882672,S000,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.05019807879210848,0.0,0.09110056816641617,0.0,0.0,0.04675249940570111,0.002452730691265583,0.10011962918226276,0.00942595962562328,0.0,0.0,0.0,0.0,0.031520574538411596,0.02905829062064029,0.06472794097205585,0.0,0.08445537262218367,0.0,0.07872041394222934,0.0,0.0,0.012489268577933343,0.05157265424347362,S001,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.008050478835767233,0.0,0.0,0.0,0.025134142493743284,0.04948565166429025,0.0,0.0,0.04365210763108533,0.0,0.0,0.031050892677004928,0.0,0.019318479878315295,0.0,0.005463984873890694,0.0,0.010105719752197994,0.03470859683535041,0.0,0.07104910111559581,0.03630468944738825,0.04218663311516341,0.05824319905555141,S002,Healthy,0.0,0.0,0.0,1.0,0.34831462615214004,0.0
+0.03937941108529347,0.04220393402892961,0.0037796805371442563,0.0,0.0,0.0,0.0,0.01292263954564938,0.0,0.0,0.0,0.013420853985445734,0.017933597458517223,0.06612287348834166,0.0,0.05209198796064111,0.07011324133862612,0.05750828180748461,0.0,0.061434185960171056,0.016981000412432133,0.021188567642667366,0.018561370886812943,0.019137858013538046,S003,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.015970711012619047,0.0,0.0,0.0,0.0,0.05400817062689426,0.0,0.004173767805350493,0.0,0.0,0.0,0.0,0.015034255714730292,0.0,0.0,0.0,0.025652606694015253,0.0,0.0,0.0,0.0908237970440572,0.0,0.004330963149427106,0.0,S004,Healthy,0.0,0.0,0.0,1.0,0.1346101987765811,0.0
+0.082366953317805,0.04587439917221472,0.053346743350258956,0.00238363656058398,0.045832739441229786,0.018547341754720514,0.030659453892950314,0.0,0.0,0.051442717390159154,0.0,0.0,0.0,0.0,0.03065615681682899,0.0,0.0,0.025992086548882062,0.0,0.06944899874191543,0.017572753809365693,0.0,0.0,0.0,S005,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.05434153923841817,0.0,0.0,0.08216258071213485,0.0,0.0,0.0,0.02931686407656502,0.0,0.0,0.0,0.03646747020089283,0.0403069679257511,0.0,0.008166997277064932,0.0,0.0,0.06889754763612606,0.006786536703356719,0.11551817433979442,0.0,0.02901422083621538,0.0,0.028290892341404656,S006,Healthy,0.0,0.0,0.0,1.0,0.2047318064106184,0.0
+0.0,0.0,0.0,0.15330183695244484,0.0,0.0,0.0,0.033901986356199856,0.0,0.06802231012426288,0.050119913642197894,0.0,0.0,0.0,0.0,0.0,0.06021981457665422,0.0795350393563031,0.0,0.0,0.0,0.0,0.0,0.0,S007,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0648457699900262,0.0,0.042729211742670414,0.0,0.08803336484965615,0.009960899150692851,0.0,0.12762120126855406,0.0,0.0,0.010095500098005496,0.0,0.053316227658312856,0.0,0.04023584657397489,0.042637423528714566,0.0,0.008162200286133884,0.0,0.11729040369203339,0.0,0.0,0.0,0.0,S008,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.03838945676723433,0.0,0.0,0.0,0.0,0.13779037791379756,0.05206215958473979,0.0,0.0,0.0,0.0,0.0017363894179595165,0.0,0.0,0.07111892526242232,0.022584272564754797,0.0,0.0,0.0,0.0,0.0057830913546312954,0.0,0.0,S009,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.036615085735564865,0.0,0.0,0.03199260375861892,0.037718445231977545,0.0,0.028119883864647963,0.0,0.015064608827678006,0.0,0.04164472246804177,0.0601629477058249,0.03185366178130917,0.02791699808475717,0.0,0.013031487453346991,0.0,0.0,0.0,0.002768248745677695,0.020605870256416685,0.0,0.0,S010,Healthy,0.0,0.0,0.0,1.0,0.33295707586780066,0.0
+0.06148769054696356,0.0,0.05150775989119384,0.008840623186526234,0.0,0.0,0.0,0.03375322592047197,0.017395088098523578,0.0,0.0,0.015085804675053528,0.04786928034209659,0.0,0.02091762504446116,0.0,0.0033784603004713616,0.0,0.014702107148749012,0.0,0.03220952615948446,0.0,0.01793040338246926,0.0,S011,Healthy,0.0,0.0,0.0,1.0,0.348890608784012,0.0
+0.016018059468705177,0.0,0.05945772062442311,0.0,0.0,0.011783303476981713,0.07314211425922885,0.01390631509040154,0.0,0.0,0.0,0.0,0.08452843226696986,0.031106261080289105,0.0,0.10133895476215965,0.0,0.0,0.07374113260434549,0.0,0.0,0.010939299446761565,0.04224443901878581,0.04966681022248252,S012,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.09992407351358648,0.04734307939978128,0.0,0.0,0.0,0.006168921878809129,0.0,0.0,0.04056272024708178,0.018228367191316174,0.0,0.03671237980926865,0.06836893131528354,0.0,0.0,0.047131092010993844,0.03594702829075271,0.011334942821899615,0.05812105937792287,0.0,0.0,0.0,0.0061272047768020045,S013,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0,0.0,0.0,0.018373310287280648,0.03974455339916096,0.0,0.0,0.0,0.02656256078180946,0.004452801936960998,0.07970784501691071,0.0,0.018125124959552385,0.022199569982333456,0.0,0.029176706369137176,0.0,0.10594015153646606,0.0,0.04599036302824941,0.0,0.05754415156158763,S014,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.007921145358110565,0.002667187785336731,0.05503670475123976,0.0,0.0,0.0,0.009185616154447414,0.0,0.0384910425660399,0.05076634979872344,0.0,0.0,0.06920825550029484,0.05415267500534089,0.0,0.10541442056963762,0.0,0.0,0.0,0.05389168577528852,0.0,0.09756125388717243,0.0,S015,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.04772111381906202,0.027223118710158853,0.0,0.05402664893588786,0.0,0.06787858934665945,0.0,0.0,0.037458702402004065,0.05299495067996218,0.03848977153118083,0.09997519105224933,0.05403630380250492,0.06417533162102029,0.0,0.005326188853101478,0.02814912911627614,0.0,0.01508176165866179,0.021305238306728435,0.042212195884076764,0.0,0.0,0.0,S016,Healthy,0.0,0.0,0.0,1.0,0.006094498071433918,0.0
+0.0,0.05862256136731615,0.0,0.039347219054527156,0.0,0.0,0.0,0.05733134837547526,0.05340387199162298,0.016601930392604256,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.07582138949060471,0.008037152956587221,0.07004441431314039,0.0,0.0,0.0,0.02316651696035095,S017,Healthy,0.0,0.0,0.0,1.0,0.28619360581824194,0.0
+0.02735478306696669,0.0881879534779687,0.0,0.004707707809852325,0.0,0.0,0.0,0.0,0.06777190143349068,0.00011058012866890534,0.0,0.007093891412086652,0.010878567778001719,0.0,0.057161681331479725,0.0,0.0,0.033253303281462275,0.0,0.01806268743216884,0.06464465250969026,0.02268356321284841,0.0,0.0,S018,Healthy,0.0,0.0,0.0,1.0,0.14221261954686526,0.0
+0.06161517012521316,0.01491676225326471,0.0,0.022060029735774506,0.03605244750029381,0.0,0.0,0.007145682483340979,0.0,0.0,0.06489358805909966,0.0,0.09633313545675704,0.09396721886909931,0.0,0.0,0.017134578482283967,0.0,0.0,0.0,0.03695890435557752,0.0,0.09133469058100584,0.014498700116926604,S019,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.07246298425657291,0.03131405975301762,0.018464338784378694,0.0,0.0906992806946375,0.04059107948699934,0.0,0.0,0.01864757708809609,0.0,0.0,0.0,0.014073555129531116,0.06412406168415823,0.014122591264262444,0.040300976358537535,0.0,0.0,0.006210565965225254,0.043112309230995544,0.005803033671550866,0.04020394790599365,0.0,S020,Healthy,0.0,0.0,0.0,1.0,0.10671785684238566,0.0
+0.017897745310657836,0.020743320062721157,0.0,0.008776931428382134,0.0,0.0,0.04792033400706991,0.0,0.0,0.0,0.0069100151574160665,0.075395474217357,0.0,0.02362037484792552,0.0686789688448881,0.026677526563689637,0.05342820787093958,0.0,0.03855246632369888,0.0,0.053720561874458984,0.0,0.0,0.06343657863526912,S021,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0038786209675119605,0.0,0.06659706842652802,0.0,0.0,0.017347639285118118,0.0,0.0,0.0,0.021269721291041186,0.0,0.032312135285752025,0.0,0.0,0.001815301118487302,0.0,0.03260054317632961,0.0,0.0,0.0,0.0,0.0025516972565164343,S022,Healthy,0.0,0.0,0.0,1.0,0.16481104923860967,0.0
+0.0,0.0,0.0,0.1138750262426517,0.013877018061672861,0.03814594167503005,0.010635917313431918,0.03914910830542931,0.0,0.0,0.013067542280501946,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.02378264694372199,0.07785389778358139,0.09067900856618435,0.004837587184435411,0.04466918117220672,0.04539889553553619,S023,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0015443659677406487,0.0,0.0,0.03040585433946842,0.0,0.0016147691965818411,0.062000905765453265,0.018075623701048184,0.026116085037483944,0.045337020690837254,0.086648153606559,0.00757115408615934,0.06147504307165624,0.0,0.0,0.015741048480878244,0.0,0.0,0.0,0.0,0.005274973883029832,0.0,S024,Healthy,0.0,0.0,0.0,1.0,0.12090006102422901,0.0
+0.0,0.0724984390242414,0.0,0.0,0.06819546922508979,0.02731528827321494,0.04882635486763215,0.0,0.037404160643546375,0.0,0.0,0.02981221391025332,0.0,0.03835592716219769,0.11958422677146492,0.0,0.0,0.05600730909213371,0.0,0.05805449248962862,0.0,0.016567208890398526,0.0,0.007018536143667123,S025,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.01655580095276816,0.0,0.0,0.06996220034477114,0.014660685579047778,0.0053173166476313686,0.0,0.017827124935305857,0.0,0.0,0.06522541236032166,0.0075637610923581615,0.0425150436827017,0.0,0.06883626901796526,0.017263920265975948,0.024062290962504288,0.027436466885789025,0.0,0.0,0.0,0.08152614286931807,0.06503419851602432,0.0,S026,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.051830293861792644,0.0,0.0,0.06327715462980806,0.023858928895696598,0.0,0.0,0.00718351016421697,0.024062341352939415,0.007607559465581758,0.0,0.0,0.014740015897180018,0.0,0.0,0.06260419693324085,0.0,0.0,0.0,0.02704849817257059,0.04141322299234427,0.027424341629829225,0.04588362437306144,S027,Healthy,0.0,0.0,0.0,1.0,0.05300238161315518,0.0
+0.02203533723817805,0.017125769547670613,0.023697353349400672,0.0,0.059416393129820104,0.0,0.0,0.04248918068092254,0.0925351389975741,0.0,0.0,0.0,0.0,0.0023046485889829014,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.060967729436631694,0.025452954236977576,0.0,S028,Healthy,0.0,0.0,0.0,1.0,0.20449933483494898,0.0
+0.0,0.0,0.0,0.0,0.03771928606842276,0.0,0.02340744547447568,0.02633778825832136,0.06877226558354435,0.0,0.08693010557124778,0.06344076369456152,0.028653299616775332,0.11917961146170582,0.010248929896361565,0.04107394580351091,0.0,0.05671787039759141,0.008391298486120724,0.0,0.1058469599157938,0.0,0.0004430663804258814,0.0,S029,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.026563620026521413,0.03692048018663655,0.017718626386936265,0.0,0.05039985017115426,0.0,0.0,0.030164047952548734,0.028142471018693146,0.0,0.12362178394162826,0.0,0.0,0.0,0.07103999214450318,0.0,0.0,0.0,0.0,0.0,0.0,0.035397776173371115,0.051022794283582876,S030,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.01196139858691956,0.03941036206245431,0.0,0.0,0.0,0.0,0.005093143439500077,0.0,0.03155645445722735,0.0,0.02063136776024972,0.0,0.0,0.0,0.0,0.0,0.021329772755508253,0.03732974279882344,0.007904135266546321,0.08567454442507802,0.0,0.02602982091005516,0.0,S031,Healthy,0.0,0.0,0.0,1.0,0.15521092252147917,0.0
+0.011731475183762972,0.0,0.05575616886823834,0.008801045287862864,0.05961222497865837,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00937125889443342,0.04378077477654507,0.0,4.44312500960888e-05,0.0,0.023417731711188123,0.0,0.0,0.0,0.0010851919529820666,S032,Healthy,0.0,0.0,0.0,1.0,0.10289698233222933,0.0
+0.0,0.025785212408203924,0.0,0.0019929208807332372,0.0,0.04018787899708445,0.03461569544660871,0.04307619645249039,0.11136930404565877,0.0,0.06017014179039035,0.0,0.019704364792014897,0.01826687138064678,0.013229588167923715,0.03291280892601905,0.0,0.0020466140790738364,0.02676548236709056,0.08739269500192454,0.0,0.0,0.0,0.004496421649039312,S033,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.008748854660184508,0.004610889289336711,0.059139506133939146,0.048802489639194,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.03360035708137684,0.0,0.0,0.02709693773340202,0.0,0.01082273634228378,0.0334667849178053,0.021098474738902747,0.0125081223992158,0.0,S034,Healthy,0.0,0.0,0.0,1.0,0.3704653544709616,0.0
+0.03409470515466036,0.008777497063250022,0.0,0.0,0.0,0.0,0.0,0.0,0.06677727108154419,0.0,0.03937704085513507,0.0,0.0,0.06691397575639543,0.029110292428657106,0.0,0.052070109909334486,0.0,0.0,0.03340567108419475,0.0,0.05594720278086038,0.03806318802565811,0.0,S035,Healthy,0.0,0.0,0.0,1.0,0.18180758540467268,0.0
+0.0,0.014103686661068236,0.0,0.0,0.0399892455694476,0.01583906533417277,0.0,0.008730318467681849,0.0,0.0,0.0,0.014347776855045923,0.0,0.0002715904279212833,0.0,0.0,0.0,0.0,0.0,0.0,0.03346336331835558,0.12434414256364545,0.02294116245453689,0.0,S036,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0,0.025365696778469216,0.029469238309288628,0.0,0.014957282674331232,0.0578204012502723,0.08775457925495485,0.0,0.0,0.0027207934560197888,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.037874152922906135,0.0,0.0,0.0,0.028378571066225985,S037,Healthy,0.0,0.0,0.0,1.0,0.2828534361818076,0.0
+0.0,0.0,0.037980757463683824,0.0,0.0,0.01632990862919787,0.016834345312175442,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.004182898948146191,0.04482877501821603,0.11019120617257781,0.0365889420063203,0.0,0.0,0.0,S038,Healthy,0.0,0.0,0.0,1.0,0.22445994696451688,0.0
+0.0035694217628981723,0.0,0.013601606860103725,0.0,0.020133486639081852,0.0,0.019873129536231923,0.0,0.0,0.0,0.0,0.09411691291133654,0.0,0.0694985864504188,0.0,0.0,0.05919509558550099,0.01519134225138965,0.009602717514493032,0.01329717240881087,0.0,0.0,0.0,0.009870682615715764,S039,Healthy,0.0,0.0,0.0,1.0,0.09566017788008807,0.0
+0.0,0.0,0.0,0.0,0.9972202302470776,0.9478097514893121,0.0,0.94685149525171,0.08572306725149187,1.0,1.0,0.11039743330434781,0.905645525346147,0.04079619371854571,0.9139940715837804,0.0,1.0,0.12914762137091393,0.0,0.0,0.09249894431639338,0.0,0.028969033176524894,0.0,S040,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.011730465845888693,0.04759406894774592,0.0,1.0,1.0,0.0,1.0,0.08719221358561162,0.9312058601688705,0.9530695293815323,0.061662418699805446,0.9603640762093703,0.0,1.0,0.0007025138372618429,1.0,0.028597369853518892,0.015279399150641028,0.22996003851153052,0.0,0.0,0.018335838365539835,0.09086039224168528,S041,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.0,0.03598216787011436,0.0,0.9125857073614155,1.0,0.0,0.8698813493847156,0.15404533267434453,0.8871571874181385,0.9581307562432075,0.0,1.0,0.0,0.9935227937146313,0.004599566326072784,0.9930658856986861,0.007461907255459333,0.0,0.035285175821405085,0.0,0.0,0.11050783251929655,0.0,S042,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.014389528476336724,0.0,0.0,0.03869238148657268,0.9161420032646793,1.0,0.03045539809944074,1.0,0.0,1.0,1.0,0.12693458235363722,1.0,0.03593328575432033,1.0,0.1785740767038045,0.9386706172712981,0.07388872290226314,0.04815673856508545,0.005781396919865669,0.012264983849772083,0.0390228089969851,0.07498867818636795,0.01750158893213076,S043,Moderate,0.5,3.125,2.1650635094610964,0.7311773354049179,0.0,0.0
+0.02718349716478136,0.11137122513141128,0.025417619474189503,0.04360179853704652,1.0,1.0,0.09816327433603178,1.0,0.01662523631808512,0.9021117137718869,1.0,0.0,0.9180768446787394,0.052040714197524096,0.9919538253139396,0.037776759682349476,0.9498429506097601,0.09609632059809303,0.011501774404498765,0.09501826616268946,0.05387523921454605,0.01321992308789297,0.0,0.002520606211909122,S044,Moderate,0.5,2.1875,1.6237976320958225,0.8073620624072195,0.0,0.0
+0.06624083883892964,0.05581261873231678,0.0,0.08205456421967565,0.9828873646819913,1.0,0.0,1.0,0.0,1.0,0.9761576154624281,0.0,0.9546730205127275,0.0,0.8607492247866007,0.07012797547211352,1.0,0.0,0.0,0.0,0.07580914637583006,0.05004166187054192,0.0,0.07178198241124671,S045,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.0,0.0,0.037968579734679174,0.0,0.9528619440675837,0.7990297815590878,0.05369730676896128,1.0,0.0,1.0,0.998850899299313,0.022306782189945244,1.0,0.0,1.0,0.054708332158675994,1.0,0.13087646226449384,0.05269878742037574,0.0,0.14387075361108384,0.0,0.0,0.0,S046,Moderate,0.5,2.8125,2.7063293868263703,0.7240074729272548,0.0,0.0
+0.0,0.08657754265682843,0.1038228765472468,0.037081393264312264,0.9512487149135002,0.9557103521479573,0.0,1.0,0.0,1.0,0.9973924742700596,0.013764085796154455,1.0,0.0,1.0,0.0,0.9340189044850797,0.0,0.0,0.046630567776937866,0.0590183251970905,0.024542024277919242,0.02136735693322794,0.0,S047,Moderate,0.5,3.125,2.1650635094610964,0.7311773354049179,0.0,0.0
+0.0,0.0243112005989599,0.10782455818447974,0.0,0.898515230672775,0.8773375617800138,0.0,1.0,0.0,0.9169645300754842,0.9512423324668456,0.0,1.0,0.0,0.9288048340263064,0.0,1.0,0.057363501434308004,0.044042561301375766,0.0,0.0,0.0,0.022726511462084105,0.0,S048,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.020209537838624888,0.0,0.0,0.08956056064177512,1.0,1.0,0.0,1.0,0.0727264328193689,0.7603997776108217,0.9929383430584364,0.12337795271388764,1.0,0.0,0.981376768746254,0.0,1.0,0.0,0.0,0.08953314883723858,0.0,0.0,0.0,0.21935152099897617,S049,Moderate,0.5,1.875,2.1650635094610964,0.7974768531747544,0.0,0.0
+0.0828150392606547,0.0,0.13333998003922828,0.0,1.0,0.9530695637786686,0.0,1.0,0.0,0.9374945507601481,1.0,0.0,0.8864598398601803,0.04360435170799964,0.8432094700245749,0.0,0.9707483110399576,0.0,0.0,0.053269834274796035,0.023396245289764896,0.0,0.042358845282807304,0.12154227528085328,S050,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.0,0.004900463587365447,0.1581321078026184,0.04889279112387352,1.0,0.9839877863599876,0.0,1.0,0.05229799553296252,0.9958781451811838,0.9627731420141336,0.0,1.0,0.0,0.989451658529516,0.05367803074027343,1.0,0.057520077523673344,0.18040514657642198,0.09320948233441195,0.0,0.0,0.18625205796711863,0.0,S051,Moderate,0.5,3.125,2.1650635094610964,0.7311773354049179,0.0,0.0
+0.0,0.13958872702050873,0.1372252699596475,0.0,1.0,0.8691912558335465,0.0,0.9707792695912257,0.0,0.9741343619154337,1.0,0.1754161211116332,1.0,0.024696575020382038,1.0,0.0,1.0,0.0,0.0,0.0,0.006970376153871495,0.009524025778690328,0.07364052064904542,0.09581292966531896,S052,Moderate,0.5,1.5625,2.7063293868263703,0.7790291308792039,0.0,0.0
+0.05304514666401273,0.12978074296722847,0.12708026143782475,0.025228695044410623,1.0,0.845097464663856,0.025619456378204366,0.9995926756897725,0.0,0.9654891174526561,1.0,0.0,1.0,0.0379839454990383,0.9817289527805165,0.0,1.0,0.0,0.16326095519175535,0.0,0.0,0.09766145577514271,0.06320418680093833,0.10603133565198487,S053,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.08367848590915837,0.030111674303849197,0.0,0.0,1.0,0.9986253943631727,0.0,1.0,0.13849139695771684,1.0,0.9185712298818498,0.03487734237908349,0.8298801532332063,0.13520145135864337,0.844809847217695,0.03284070105977627,1.0,0.10330573847445886,0.027517641177032686,0.0,0.0,0.0,0.029468732723755813,0.07901967872125995,S054,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.05296327058466359,0.16972932461356297,0.052884068409777364,0.0,1.0,0.974837754804427,0.02254908087635099,1.0,0.0,1.0,1.0,0.0,0.9886970419792642,0.0,1.0,0.12023403891214894,0.9858184345591213,0.0,0.0,0.16136703265498653,0.0,0.0675959813869486,0.008912944411734408,0.1536717138765588,S055,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.10490123367072285,0.0,0.0,0.11437118746175273,1.0,0.9116078404385233,0.0596186797764105,0.9359386760912481,0.0,0.8712549264451166,1.0,0.021690274087944786,1.0,0.11619799493814054,1.0,0.04676502054689112,1.0,0.0,0.0,0.0,0.0,0.0,0.084951009453975,0.1646571211119167,S056,Moderate,0.5,2.1875,2.7063293868263703,0.753937253937131,0.0,0.0
+0.0,0.013866433308678615,0.0,0.04217884979383138,1.0,1.0,0.0,1.0,0.07138613704622175,0.9589287334042798,1.0,0.0,0.9492911841764328,0.023710323072634525,0.9793928412688323,0.0,0.9979074570781625,0.12765619527187244,0.1602025853951869,0.0,0.07242196829134526,0.010602356388246519,0.02271093037218447,0.10138969705709919,S057,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.06816572226312341,0.012345633260919333,0.0,0.0,0.9948785511642149,1.0,0.040253751380726024,1.0,0.0783668103038474,0.8077538642596342,1.0,0.0,1.0,0.026931546235383887,1.0,0.0,1.0,0.0,0.08761972933636597,0.0,0.0,0.08491868429273797,0.13414189813219096,0.0,S058,Moderate,0.5,2.1875,2.7063293868263703,0.753937253937131,0.0,0.0
+0.09701679086341995,0.0,0.0,0.0,1.0,1.0,0.008287835959571287,1.0,0.01732445308983122,0.982716935723371,0.9518894901477356,0.0,0.9718661947073577,0.0,0.9117637254971634,0.0,1.0,0.02475351283491142,0.0,0.0,0.042755989885773074,0.06515749284920345,0.05440639029603876,0.0,S059,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.0,0.05645236696282601,0.041231785894165686,0.054384848104379435,1.0,0.9317170558150858,0.09780516258726461,0.8912328900629384,0.0788606233938991,0.998689989500752,0.8821876620570669,0.0,1.0,0.0,0.9031518082548539,0.0,0.9345540033166755,0.0,0.035003020178157665,0.06385378460782441,0.0,0.04188983389159086,0.0,0.0,S060,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.00987219287940548,0.11946268331136134,0.040604709213762316,0.0,1.0,0.9823049383810614,0.0,0.9328190913984008,0.0,0.9951894051770653,0.9678254108364417,0.0,0.8634262165544382,0.010238759361172346,1.0,0.1746502949881632,0.9857069592509522,0.08171392633372904,0.09561629778553804,0.0,0.006144080275006131,0.0,0.14201273686274402,0.0,S061,Moderate,0.5,2.1875,1.6237976320958225,0.8073620624072195,0.0,0.0
+0.0,0.11072983952829203,0.0,0.0,1.0,1.0,0.04539544589491833,1.0,0.06000728957581917,1.0,0.9114493670096676,0.0,1.0,0.03908960195844477,1.0,0.05379831136945906,1.0,0.0,0.0,0.0,0.14869393033089529,0.0,0.0,0.0,S062,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.0824848132167233,0.0,0.0,0.09715106774789525,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.04728293475261414,1.0,0.016414411795760104,1.0,0.0,0.9002758443563895,0.012996258827505774,0.004172063334579624,0.013092812987176593,0.12723463868041598,0.0,0.06010550089126121,0.030755816299214225,S063,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.1893249921872388,0.0,0.0,0.0,1.0,0.9344065143331295,0.13263543996130672,1.0,0.06924901207151489,1.0,0.8755057448850715,0.014571960550267367,0.8855462673009311,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.09980678856158305,0.040459683851729045,S064,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.027160757726376116,0.0,0.1895331082392158,0.0,1.0,0.9306062842957998,0.0,1.0,0.0,1.0,0.972943578041755,0.0,1.0,0.0,1.0,0.08834500779870498,0.919055883561962,0.0,0.0,0.0,0.017813173500200872,0.026835370440305057,0.0,0.0,S065,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.07792378867039373,0.061452238272254114,0.030300338011334305,0.0,1.0,1.0,0.0,0.9538483298363711,0.09829182067497669,1.0,0.9576218614055623,0.0,1.0,0.0,1.0,0.0,1.0,0.008979560427263784,0.07222805608908743,0.0,0.0,0.01082648947219334,0.020957047208147835,0.05762397084871156,S066,Moderate,0.5,1.875,2.1650635094610964,0.7974768531747544,0.0,0.0
+0.0,0.0,0.0,0.04425127317637299,1.0,0.9299393337282988,0.0,0.9417451646201394,0.0,1.0,1.0,0.0,0.886202215627951,0.0,1.0,0.17039248493862932,1.0,0.0,0.0,0.0,0.0,0.018061234416193016,0.020531193953053962,0.0,S067,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.0,0.0,0.011785949145934877,0.0,1.0,0.8832869797195428,0.13496783389364364,0.9466803054219518,0.01785512010917657,1.0,0.9724793960112934,0.0,0.961408369086572,0.12179681568271868,0.897536537995092,0.0,0.9824901202429662,0.0,0.0,0.0,0.0,0.0,0.013021905788902903,0.05653306018581314,S068,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.030965992413803576,0.0273398988185441,0.1344114364423919,0.0876242580004233,0.7669727877206038,0.9709470525097873,0.0,0.9448690828690263,0.06168590918744655,0.9839051100739399,0.965728858935872,0.10535772236332125,0.8796977646709776,0.0,1.0,0.001930776366295461,0.9069379831077564,0.0,0.06460097402956982,0.028579997858621586,0.02541531405958876,0.024595842362809806,0.010815335344883216,0.0,S069,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.03446701544071906,0.0,0.060574237267826105,1.0,0.9132656231268681,0.0,0.983692696294106,0.03307479673389068,0.9700778682498342,1.0,0.03305004899737549,0.9370742875295422,0.0,1.0,0.05826992252818616,1.0,0.0,0.01195960380337618,0.0,0.06575919402117174,0.0,0.0482274154230539,0.0,S070,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.03608263673353279,0.020497025252860693,0.0,0.0,1.0,1.0,0.0020358666468346083,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.07807622909966208,0.0,S071,Moderate,0.5,2.1875,2.7063293868263703,0.753937253937131,0.0,0.0
+0.0,0.0037647403921619556,0.0,0.0,1.0,0.9548506515476153,0.026891215703800903,0.9968191942804274,0.0,0.9945408033755216,1.0,0.10512835976883393,0.9872316568567243,0.0,0.8790966718285593,0.0,0.9059235239119714,0.0,0.0,0.0,0.11437529610644002,0.0850844596619213,0.09961362867612626,0.0,S072,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.01952010088637893,0.0,0.12398476524811586,0.0,0.9589099741967355,1.0,0.19918496901985028,0.9926618816862885,0.0,0.7994294450415302,1.0,0.024654574239408023,0.8492847343598174,0.0697085514781513,1.0,0.0,0.955373090487008,0.05841002598691478,0.018715626705158396,0.03894669136301,0.09811957860878848,0.09545519627300598,0.06084104843780033,0.04682277632691446,S073,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.0,0.06548181744032544,0.051776222275771576,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.09072635951119773,1.0,0.0,0.8888840450007397,0.0,0.04413335773159915,0.0,0.057709213468695994,0.012036393390271904,0.0,0.07473722312475965,S074,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.1081395759950241,0.0,0.04095260976166793,0.012527534332313642,1.0,0.991671402755027,0.0,1.0,0.0,0.9303498929478836,1.0,0.014389983987351692,0.9363170366444713,0.0,0.9873042007330338,0.0,1.0,0.0,0.02906565433203388,0.1224427854305047,0.01610897540511579,0.0,0.0,0.0034931580857569186,S075,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.09876818176025516,0.0,0.13111702544189915,0.8380008149183064,0.9967192901373383,0.0,1.0,0.0,0.9093545721753743,0.9727980014280779,0.0,0.8451975894171668,0.03636129150200377,0.8085899606924328,0.09410698497895945,0.9735948100077318,0.07624054234514406,0.0,0.0,0.052139851315128015,0.0,0.0,0.0,S076,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.0,0.0,0.11031516010247878,0.07701347003486549,1.0,0.9867425017678395,0.0,0.9489963683382533,0.02840591062580879,0.9873691923142389,0.9694640678431395,0.021603819172320262,0.838529861482058,0.15651841438921751,1.0,0.0,1.0,0.0,0.0,0.0,0.08734886678724824,0.0,0.0,0.0,S077,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.0,0.0,0.11517875318188728,1.0,0.9548653997936961,0.041754255365262165,0.9880954657069497,0.019475256634742356,1.0,0.9785087508968672,0.1433733986854202,0.9769444117255628,0.0,1.0,0.022017375785779638,0.8374446693034086,0.017984229992347302,0.0,0.0,0.0,0.02608643046315413,0.0,0.0,S078,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.0,0.032368851861452594,0.0,0.0,0.8261845908790245,0.9379038009662661,0.06754467533246204,1.0,0.06318491612310799,0.9859767006229229,1.0,0.10141627564317149,0.930505805824236,0.029126046085719,0.850328288317334,0.05458381296929031,0.9639165569005858,0.0,0.061826715861366184,0.0,0.0,0.12294547372152667,0.0,0.0,S079,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.9453396404789451,1.0,0.8531270642144702,1.0,0.9805316908775724,0.9746506916156861,0.928265486647428,0.9883638937866023,0.11763148179958083,1.0,0.9253967846505741,0.0,1.0,1.0,0.9794151526765018,1.0,1.0,0.0,0.8468066918169361,0.04003905625845285,1.0,0.9343414884587113,0.0,1.0,S080,Aggressive,1.0,4.375,4.330127018922193,0.5647378663379963,0.0,0.0
+1.0,1.0,1.0,1.0,0.9555347415705027,0.8384950705663579,0.9272457950722401,1.0,0.03354038673687437,0.959820435863117,0.931384003248892,0.0,0.8655733058098813,0.9902303903929353,0.8740212861282831,0.9987915208217023,0.9361615302471316,0.0,1.0,0.003861002370416102,0.9725157665273342,0.9861331333642799,0.0,1.0,S081,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,0.9574403894620331,1.0,0.9462737819350605,1.0,0.8925621825234273,1.0,1.0,0.03570250194477771,0.9527928490304984,1.0,0.15604343970719137,1.0,1.0,0.9358225338651708,1.0,1.0,0.0,1.0,0.011823349924318105,1.0,0.9897651987102487,0.0,1.0,S082,Aggressive,1.0,3.125,5.4126587736527405,0.5580582617584078,0.0,0.0
+0.9072493684652402,1.0,0.9897943772863271,0.9968330963509606,1.0,0.956330714568716,1.0,1.0,0.0641280449380631,1.0,1.0,0.10625476171565987,0.927838255232124,1.0,1.0,1.0,0.994913428566012,0.007947910895156646,0.9724042454297297,0.09922048220314814,0.9743062359519825,1.0,0.0,1.0,S083,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.9021553427656722,1.0,0.9976283132202686,0.8813119611802427,0.940764768391709,0.9636918171289466,0.8777036329172027,0.9026268985697193,0.11756506444393296,0.9176014060998758,0.9314657612833248,0.0,1.0,1.0,1.0,1.0,0.9606501000365066,0.0,0.9460676207856764,0.05266139376745138,1.0,1.0,0.16391160273135819,1.0,S084,Aggressive,1.0,3.4375,3.7888611415569184,0.6382550967878056,0.0,0.0
+1.0,1.0,0.876639211372305,1.0,0.8789997681703838,1.0,0.960559230653722,1.0,0.0849218480303929,0.9558211035412237,0.8672186805152571,0.0,1.0,0.9742957916216871,0.8814971923130659,0.9820230631472985,1.0,0.12873894907309325,0.9621531078170613,0.024649216028399798,1.0,0.8816667877220957,0.0,0.9675669297196895,S085,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,0.9591758941065179,0.8882090402782823,1.0,0.9486394112801643,0.9017683047900377,0.901968256031772,0.9821617337655734,0.11608456192425645,0.9860363216598451,1.0,0.0,0.9329071152977171,0.8993608130174353,0.978035585096019,1.0,0.9562826546109184,0.0,1.0,0.0,1.0,0.9468002188251581,0.041370121752322256,0.9693162276772516,S086,Aggressive,1.0,4.6875,4.8713928962874675,0.5219669206006764,0.0,0.0
+1.0,1.0,1.0,0.9935860481494944,0.921973493438255,0.9071106194128661,0.9522146334595307,1.0,0.0,1.0,1.0,0.0,0.9629637399888473,0.9489295638687151,1.0,0.9179701105960365,1.0,0.0,0.9810176254659436,0.07385199630810091,0.9401222414638725,0.9998903041991458,0.143377103788163,1.0,S087,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+1.0,0.9618883718542417,0.9204607960172737,1.0,0.9871913648991213,1.0,0.9452884200396738,1.0,0.0,1.0,1.0,0.03532276887036447,1.0,0.8749656292642953,0.9631438777761451,1.0,0.9816690869194202,0.025490370427559642,0.9869528187018606,0.0,0.8804752908405499,0.9086606597688278,0.13460562214197488,0.9936751490497351,S088,Aggressive,1.0,5.0,4.330127018922193,0.5322928266532574,0.0,0.0
+0.9048953091598801,0.9276747676665332,1.0,0.9242280051970122,0.949971853540038,0.9106693119850547,0.8992695823219775,1.0,0.0,0.974279446545368,0.9518840298480556,0.05699623081037996,1.0,1.0,1.0,0.9714142656922635,0.9615289223008988,0.0,0.96065774184562,0.173084632963574,0.900845070411312,1.0,0.02685803400717801,1.0,S089,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,0.968256325429101,0.9298317369843341,1.0,1.0,1.0,1.0,0.9464962299497206,0.0,1.0,1.0,0.0,0.8460634738565952,0.871697857833394,1.0,0.9877409391541736,0.8532126809348488,0.0,0.8450387785283044,0.0,0.930771231358949,0.955362736015119,0.0,1.0,S090,Aggressive,1.0,4.375,4.330127018922193,0.5647378663379963,0.0,0.0
+1.0,1.0,1.0,1.0,0.9848294094093463,1.0,0.9418186805056422,0.9339330248895579,0.0,1.0,1.0,0.17793086063055907,1.0,1.0,0.9449338643258403,1.0,1.0,0.0,1.0,0.0,0.9428689752674954,1.0,0.16054403569115824,0.8549806083406254,S091,Aggressive,1.0,2.5,5.4126587736527405,0.5784144511489988,0.0,0.0
+0.93231678318728,1.0,0.945683919463328,1.0,0.9342784267731032,1.0,0.9929458018218422,1.0,0.0,0.8715033996326048,1.0,0.0,0.9265045559091883,0.9115765721201585,0.9163971390977272,1.0,0.9261885376203006,0.0,1.0,0.0,0.9995474903680154,1.0,0.0,0.9449498690232188,S092,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+1.0,1.0,0.9496405116267351,0.8891761520836504,0.9073862349103098,0.9180363681664222,0.8275212801353862,1.0,0.00816805545898986,1.0,0.8864900549717606,0.0,0.980792038530465,1.0,0.9834971231462272,0.9004060511092169,1.0,0.056822721773228634,1.0,0.08257870406240615,1.0,1.0,0.013042031567041567,0.9748163970062479,S093,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.961615045322444,1.0,0.9438828082869012,0.926917910126962,1.0,1.0,1.0,0.932062556706185,0.0240589762409862,1.0,0.9616134826787237,0.0,0.9761636756040777,1.0,1.0,0.8927544106012703,0.8783398788309391,0.05200885676100093,0.9829517525688889,0.042605798049095915,1.0,1.0,0.0,0.9561709595289202,S094,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+1.0,1.0,0.924148851416574,0.9578272847898589,0.9531325746414918,1.0,1.0,0.9779625203157207,0.0,0.8324657996280371,0.9151117249465094,0.14823840441761355,0.862823389838644,1.0,0.9761686567324576,0.8429438601201997,1.0,0.102725511417955,0.9597401422137412,0.06938215924536827,0.9715284371132875,1.0,0.01330155998521127,0.9815191557401989,S095,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,1.0,0.9581692089167303,1.0,0.9583529977284855,1.0,0.9602504320621859,1.0,0.12805167121431352,0.9476886861570546,0.882949836113305,0.12753163707358048,1.0,0.9479508652366796,0.9800280054192338,0.9268999150821281,1.0,0.05706712066072622,1.0,0.017616274217577412,0.8359966684613169,0.9050417283778145,0.022752024573317806,0.7876040868635807,S096,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.9936595508258045,0.9179750106038543,1.0,0.9842718895649664,1.0,1.0,1.0,0.922132837439977,0.05021668972287392,1.0,0.8631644443619481,0.0,1.0,1.0,0.9763256304462,1.0,1.0,0.0,0.946536727058538,0.06842202155051012,1.0,1.0,0.05230245980191128,0.9508803750083065,S097,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+1.0,0.9261469669231491,0.9637363938847523,0.9373774271360755,0.8879055862004638,1.0,0.9157717418436779,0.9452620125970187,0.07542183389557595,1.0,0.9502860629058651,0.0,0.9916597079842551,0.8721707289919509,0.9191660633211602,0.9689778961335269,0.9873495821159364,0.0,0.988372407884725,0.11056322564758359,1.0,1.0,0.07168235189210061,1.0,S098,Aggressive,1.0,4.375,4.330127018922193,0.5647378663379963,0.0,0.0
+0.9028927780477283,0.8931130334533119,0.9983531777173398,0.9673113908389801,0.9252365522085715,1.0,1.0,0.9945530012057848,0.00686684473928278,0.9562428105587041,0.9449647273922638,0.15789224294773502,0.8994871185098005,0.9871020267763567,0.9642287881642883,0.9912086692516593,1.0,0.07950101073451162,0.9887910401954675,0.08987965637768275,0.9386762262159394,1.0,0.14236096205103788,0.9537929648553425,S099,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+1.0,1.0,0.9326017957530832,1.0,0.9748159701324812,0.9106445523353729,1.0,0.9324696752734821,0.1324603560190283,1.0,0.9831880364357231,0.003269743814927748,1.0,0.9840620620003517,1.0,0.9540150752505923,0.9600448399349406,0.042163480730830205,0.8290919746342545,0.0,1.0,1.0,0.0,1.0,S100,Aggressive,1.0,4.0625,3.7888611415569184,0.6071935909382333,0.0,0.0
+0.9720428240394874,0.851142914719188,1.0,1.0,0.923411438230512,1.0,1.0,0.9499596429770171,0.08852533844087487,1.0,1.0,0.0,0.9554693210362936,0.9342028679402953,0.9567153219970522,0.8149529311261081,1.0,0.0,1.0,0.0,1.0,0.90461186570813,0.0,0.8720243007700311,S101,Aggressive,1.0,3.125,5.4126587736527405,0.5580582617584078,0.0,0.0
+0.9526463155782937,1.0,1.0,1.0,0.9313251257835357,0.8242774228537012,0.9285579398428798,0.9591239399495853,0.11833991886403729,1.0,1.0,0.0,0.9416592357031676,1.0,0.9702359001665655,0.9730484427185919,1.0,0.0,0.977471543246539,0.0,0.947893350869258,0.8870746738519462,0.10178805497966302,0.8870042965974418,S102,Aggressive,1.0,4.0625,4.8713928962874675,0.5514781220497711,0.0,0.0
+0.9273908488636433,1.0,0.900501143741062,0.9875360198665549,0.979472395667725,0.9810599963571267,0.9887946623023466,0.8873263448920062,0.0,1.0,1.0,0.0,1.0,0.9248107845452169,0.8908833204274945,0.8386189502502446,0.910960140684751,0.03679021257566892,0.9739561655752197,0.13293072984296236,1.0,0.9716628216788097,0.0,0.982727059328527,S103,Aggressive,1.0,4.0625,4.8713928962874675,0.5514781220497711,0.0,0.0
+1.0,0.9692648123791724,0.9988398292669576,0.9411644559618288,1.0,0.9720711806391165,0.9482562727879825,0.8783887400560535,0.07729979752057499,0.9526638049485653,0.9943689406371008,0.0,0.9850785368871562,0.8413961515205421,0.9372336662197088,0.9133110847153307,1.0,0.1077492743557731,1.0,0.1989411008684214,1.0,0.892422126149847,0.0,1.0,S104,Aggressive,1.0,4.6875,4.8713928962874675,0.5219669206006764,0.0,0.0
+0.9944500385397255,1.0,0.9340055070677752,1.0,0.9719109218507531,1.0,1.0,0.953181168244993,0.04611048999603584,1.0,1.0,0.06014151020307975,1.0,1.0,1.0,1.0,1.0,0.0,0.891787431274323,0.0,1.0,0.9613110348578213,0.0,0.9807470332922779,S105,Aggressive,1.0,2.8125,4.8713928962874675,0.602252435582567,0.0,0.0
+0.9829704976692204,0.9552660023277199,1.0,1.0,1.0,1.0,1.0,0.8317546990061782,0.01577178630531062,0.947749618994877,1.0,0.005875193623491818,0.93899057335461,0.9565407532798937,0.9038810379278917,0.9561962295776278,1.0,0.09430588537254558,1.0,0.06477566495417866,1.0,0.9741098780064967,0.1162516690494372,0.8918634576312214,S106,Aggressive,1.0,2.5,5.4126587736527405,0.5784144511489988,0.0,0.0
+1.0,0.9579395787496484,0.8427643648480829,1.0,0.84018468423045,1.0,1.0,0.9837501266921053,0.0,0.8480973498101064,0.9800154399635399,0.11607346737271655,0.9582304442586562,0.9220480823810302,0.8147400032032837,1.0,1.0,0.0,1.0,0.0,0.9732785167562931,1.0,0.0,1.0,S107,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+1.0,1.0,1.0,0.8954671436346062,0.9889999268617999,0.9806023228549843,0.9464860446545995,0.9333168024940297,0.0,0.9352458493814717,1.0,0.002916499442562482,1.0,1.0,0.9523953160323,0.9568707484818924,0.986162254911287,0.0,1.0,0.1552957312302736,0.9878417019885826,1.0,0.0,0.8799562713479392,S108,Aggressive,1.0,2.1875,4.8713928962874675,0.6224048133251696,0.0,0.0
+0.9891486721180685,0.9666171322991371,1.0,1.0,0.9591628428928836,0.9452329279408663,1.0,0.9651456470265493,0.004601197985180489,0.9915456392783046,1.0,0.0,0.9343275412191188,1.0,1.0,0.917674518240593,1.0,0.0,0.9418990879913388,0.0,1.0,1.0,0.0,1.0,S109,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.9694326717912899,0.9045778098638064,1.0,0.9225984678930486,1.0,0.9068109102423009,0.9654884953589788,1.0,0.012911639558433979,0.9180994716762036,0.9904101540862961,0.027995684731496853,1.0,1.0,1.0,1.0,0.9466308324439374,0.0,1.0,0.0,0.9102920086787175,0.9964978053897647,0.0,0.9374063052041479,S110,Aggressive,1.0,2.1875,4.8713928962874675,0.6224048133251696,0.0,0.0
+0.9088361301049046,0.9670002898130278,1.0,1.0,1.0,0.9231496549480366,1.0,1.0,0.0,1.0,0.9613149016942018,0.0,1.0,1.0,0.9705345573756192,1.0,0.8536461873122958,0.023382316482040158,0.9617247734859442,0.0,0.7979368202159511,0.884063802528637,0.0,1.0,S111,Aggressive,1.0,3.4375,3.7888611415569184,0.6382550967878056,0.0,0.0
+0.9262454841979028,1.0,1.0,0.9562867474883003,0.917803313875269,1.0,1.0,0.9013853203601895,0.03843321860318304,0.9468944921381239,1.0,0.06609402101546821,0.9346449019579255,1.0,0.7590839939709642,1.0,0.8431954307780739,0.20204438766353744,1.0,0.0,1.0,0.9372443892302861,0.00953401200247088,0.9772074732023734,S112,Aggressive,1.0,4.0625,4.8713928962874675,0.5514781220497711,0.0,0.0
+1.0,0.9552364254602422,1.0,0.9408120140335431,1.0,1.0,0.9523596590381292,1.0,0.03885786887810869,0.9763581371331764,0.9588803628635352,0.0,0.9637721364766946,0.9588935397016954,0.9893846810120533,0.9830209568925475,1.0,0.11358295888798317,1.0,0.06796479882701242,1.0,0.9516969197512075,0.0,0.9817949148268256,S113,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+1.0,1.0,0.8833582770580978,0.8580683117653587,1.0,1.0,0.949875055488186,0.99382258699609,0.003999107736376282,1.0,0.9609618914805498,0.047343212131957566,1.0,1.0,1.0,1.0,0.897494250359056,0.07219237450809672,0.9610361706954977,0.0718249388209751,1.0,0.9217578537578357,0.020404018601708613,0.9491972303504135,S114,Aggressive,1.0,2.1875,3.7888611415569184,0.6906407832308855,0.0,0.0
+1.0,0.9676565876713514,1.0,0.9430618441403541,0.9705893853535414,0.9440094608044362,0.9364881458543117,0.9784197371849577,0.017136617105115836,1.0,1.0,0.0,0.8752733089566664,1.0,0.9593904551948749,1.0,0.9147914030637592,0.12113774938383375,1.0,0.0,1.0,1.0,0.0,0.8638958906363169,S115,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+1.0,1.0,0.8722216298164016,1.0,0.9813715557782084,0.9927066017783289,1.0,1.0,0.06902302459154071,0.9068346698194508,0.9931168158184281,0.0,0.9591430323850875,1.0,0.9323237328986107,1.0,1.0,0.0,0.9082226145975489,0.0,0.9877697886054686,0.8948278260678526,0.0,0.8771896709749631,S116,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+1.0,1.0,1.0,0.9859300611259268,1.0,1.0,1.0,0.9000358691239738,0.0,0.9215234542445524,0.8890697351449046,0.057155311973938305,1.0,0.8881748918485148,0.9131420348193601,1.0,0.9606636240684627,0.018320999364087945,0.9864739185426118,0.08480131514097346,1.0,0.8536120572445478,0.10850279949801443,0.9614550339528393,S117,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+0.9092774023383907,1.0,0.9216241259643753,0.8994208706518172,0.9724022881386424,1.0,0.8545669420194351,0.9166941369678213,0.0,0.9036215882690866,0.9881151271975332,0.0,1.0,1.0,1.0,1.0,0.9209221088741668,0.0,0.9516556310975338,0.0,1.0,1.0,0.0,1.0,S118,Aggressive,1.0,2.8125,3.7888611415569184,0.6663413046240216,0.0,0.0
+0.9782690130823452,0.9907289776856755,0.9288070154085467,1.0,1.0,1.0,0.8277592157808881,0.9804918911900126,0.047461924788083504,0.9666171715222791,0.9922617559312212,0.0410044954526257,0.8544486346974808,1.0,0.8485041220413405,1.0,1.0,0.0,1.0,0.039508796711308615,0.9574614331056136,0.966049712923301,0.06431140461374203,1.0,S119,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+
+====
+
+ubp_scores.csv:
+
+TP53,PTEN,RB1,NKX3-1,AR,ERG,MYC,PIK3CA,AKT1,BRCA2,CDKN1B,FOXA1,SPOP,CHD1,APC,ATM,CDK12,KMT2C,KMT2D,MED12,NCOR1,NF1,NOTCH1,ZBTB16,sample_id,label,clinical_label,A2_X,A2_Y,NRCI_A2,NRCI_Mahal,NRCI_Cosine
+0.09008174349330626,0.0657551882367185,0.0178690205329478,0.0,0.0,0.032823746753816795,0.0,0.019756103009100412,0.021493184741111504,0.03480213619814342,0.0,0.0,0.0,0.0,0.0869683938565067,0.0,0.016448481473010104,0.0,0.07917364394010612,0.06601804935409196,0.03166763114124576,0.0,0.0026014487129943256,0.03418430953882672,S000,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.05019807879210848,0.0,0.09110056816641617,0.0,0.0,0.04675249940570111,0.002452730691265583,0.10011962918226276,0.00942595962562328,0.0,0.0,0.0,0.0,0.031520574538411596,0.02905829062064029,0.06472794097205585,0.0,0.08445537262218367,0.0,0.07872041394222934,0.0,0.0,0.012489268577933343,0.05157265424347362,S001,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.008050478835767233,0.0,0.0,0.0,0.025134142493743284,0.04948565166429025,0.0,0.0,0.04365210763108533,0.0,0.0,0.031050892677004928,0.0,0.019318479878315295,0.0,0.005463984873890694,0.0,0.010105719752197994,0.03470859683535041,0.0,0.07104910111559581,0.03630468944738825,0.04218663311516341,0.05824319905555141,S002,Healthy,0.0,0.0,0.0,1.0,0.34831462615214004,0.0
+0.03937941108529347,0.04220393402892961,0.0037796805371442563,0.0,0.0,0.0,0.0,0.01292263954564938,0.0,0.0,0.0,0.013420853985445734,0.017933597458517223,0.06612287348834166,0.0,0.05209198796064111,0.07011324133862612,0.05750828180748461,0.0,0.061434185960171056,0.016981000412432133,0.021188567642667366,0.018561370886812943,0.019137858013538046,S003,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.015970711012619047,0.0,0.0,0.0,0.0,0.05400817062689426,0.0,0.004173767805350493,0.0,0.0,0.0,0.0,0.015034255714730292,0.0,0.0,0.0,0.025652606694015253,0.0,0.0,0.0,0.0908237970440572,0.0,0.004330963149427106,0.0,S004,Healthy,0.0,0.0,0.0,1.0,0.1346101987765811,0.0
+0.082366953317805,0.04587439917221472,0.053346743350258956,0.00238363656058398,0.045832739441229786,0.018547341754720514,0.030659453892950314,0.0,0.0,0.051442717390159154,0.0,0.0,0.0,0.0,0.03065615681682899,0.0,0.0,0.025992086548882062,0.0,0.06944899874191543,0.017572753809365693,0.0,0.0,0.0,S005,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.05434153923841817,0.0,0.0,0.08216258071213485,0.0,0.0,0.0,0.02931686407656502,0.0,0.0,0.0,0.03646747020089283,0.0403069679257511,0.0,0.008166997277064932,0.0,0.0,0.06889754763612606,0.006786536703356719,0.11551817433979442,0.0,0.02901422083621538,0.0,0.028290892341404656,S006,Healthy,0.0,0.0,0.0,1.0,0.2047318064106184,0.0
+0.0,0.0,0.0,0.15330183695244484,0.0,0.0,0.0,0.033901986356199856,0.0,0.06802231012426288,0.050119913642197894,0.0,0.0,0.0,0.0,0.0,0.06021981457665422,0.0795350393563031,0.0,0.0,0.0,0.0,0.0,0.0,S007,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0648457699900262,0.0,0.042729211742670414,0.0,0.08803336484965615,0.009960899150692851,0.0,0.12762120126855406,0.0,0.0,0.010095500098005496,0.0,0.053316227658312856,0.0,0.04023584657397489,0.042637423528714566,0.0,0.008162200286133884,0.0,0.11729040369203339,0.0,0.0,0.0,0.0,S008,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.03838945676723433,0.0,0.0,0.0,0.0,0.13779037791379756,0.05206215958473979,0.0,0.0,0.0,0.0,0.0017363894179595165,0.0,0.0,0.07111892526242232,0.022584272564754797,0.0,0.0,0.0,0.0,0.0057830913546312954,0.0,0.0,S009,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.036615085735564865,0.0,0.0,0.03199260375861892,0.037718445231977545,0.0,0.028119883864647963,0.0,0.015064608827678006,0.0,0.04164472246804177,0.0601629477058249,0.03185366178130917,0.02791699808475717,0.0,0.013031487453346991,0.0,0.0,0.0,0.002768248745677695,0.020605870256416685,0.0,0.0,S010,Healthy,0.0,0.0,0.0,1.0,0.33295707586780066,0.0
+0.06148769054696356,0.0,0.05150775989119384,0.008840623186526234,0.0,0.0,0.0,0.03375322592047197,0.017395088098523578,0.0,0.0,0.015085804675053528,0.04786928034209659,0.0,0.02091762504446116,0.0,0.0033784603004713616,0.0,0.014702107148749012,0.0,0.03220952615948446,0.0,0.01793040338246926,0.0,S011,Healthy,0.0,0.0,0.0,1.0,0.348890608784012,0.0
+0.016018059468705177,0.0,0.05945772062442311,0.0,0.0,0.011783303476981713,0.07314211425922885,0.01390631509040154,0.0,0.0,0.0,0.0,0.08452843226696986,0.031106261080289105,0.0,0.10133895476215965,0.0,0.0,0.07374113260434549,0.0,0.0,0.010939299446761565,0.04224443901878581,0.04966681022248252,S012,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.09992407351358648,0.04734307939978128,0.0,0.0,0.0,0.006168921878809129,0.0,0.0,0.04056272024708178,0.018228367191316174,0.0,0.03671237980926865,0.06836893131528354,0.0,0.0,0.047131092010993844,0.03594702829075271,0.011334942821899615,0.05812105937792287,0.0,0.0,0.0,0.0061272047768020045,S013,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0,0.0,0.0,0.018373310287280648,0.03974455339916096,0.0,0.0,0.0,0.02656256078180946,0.004452801936960998,0.07970784501691071,0.0,0.018125124959552385,0.022199569982333456,0.0,0.029176706369137176,0.0,0.10594015153646606,0.0,0.04599036302824941,0.0,0.05754415156158763,S014,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.007921145358110565,0.002667187785336731,0.05503670475123976,0.0,0.0,0.0,0.009185616154447414,0.0,0.0384910425660399,0.05076634979872344,0.0,0.0,0.06920825550029484,0.05415267500534089,0.0,0.10541442056963762,0.0,0.0,0.0,0.05389168577528852,0.0,0.09756125388717243,0.0,S015,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.04772111381906202,0.027223118710158853,0.0,0.05402664893588786,0.0,0.06787858934665945,0.0,0.0,0.037458702402004065,0.05299495067996218,0.03848977153118083,0.09997519105224933,0.05403630380250492,0.06417533162102029,0.0,0.005326188853101478,0.02814912911627614,0.0,0.01508176165866179,0.021305238306728435,0.042212195884076764,0.0,0.0,0.0,S016,Healthy,0.0,0.0,0.0,1.0,0.006094498071433918,0.0
+0.0,0.05862256136731615,0.0,0.039347219054527156,0.0,0.0,0.0,0.05733134837547526,0.05340387199162298,0.016601930392604256,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.07582138949060471,0.008037152956587221,0.07004441431314039,0.0,0.0,0.0,0.02316651696035095,S017,Healthy,0.0,0.0,0.0,1.0,0.28619360581824194,0.0
+0.02735478306696669,0.0881879534779687,0.0,0.004707707809852325,0.0,0.0,0.0,0.0,0.06777190143349068,0.00011058012866890534,0.0,0.007093891412086652,0.010878567778001719,0.0,0.057161681331479725,0.0,0.0,0.033253303281462275,0.0,0.01806268743216884,0.06464465250969026,0.02268356321284841,0.0,0.0,S018,Healthy,0.0,0.0,0.0,1.0,0.14221261954686526,0.0
+0.06161517012521316,0.01491676225326471,0.0,0.022060029735774506,0.03605244750029381,0.0,0.0,0.007145682483340979,0.0,0.0,0.06489358805909966,0.0,0.09633313545675704,0.09396721886909931,0.0,0.0,0.017134578482283967,0.0,0.0,0.0,0.03695890435557752,0.0,0.09133469058100584,0.014498700116926604,S019,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.07246298425657291,0.03131405975301762,0.018464338784378694,0.0,0.0906992806946375,0.04059107948699934,0.0,0.0,0.01864757708809609,0.0,0.0,0.0,0.014073555129531116,0.06412406168415823,0.014122591264262444,0.040300976358537535,0.0,0.0,0.006210565965225254,0.043112309230995544,0.005803033671550866,0.04020394790599365,0.0,S020,Healthy,0.0,0.0,0.0,1.0,0.10671785684238566,0.0
+0.017897745310657836,0.020743320062721157,0.0,0.008776931428382134,0.0,0.0,0.04792033400706991,0.0,0.0,0.0,0.0069100151574160665,0.075395474217357,0.0,0.02362037484792552,0.0686789688448881,0.026677526563689637,0.05342820787093958,0.0,0.03855246632369888,0.0,0.053720561874458984,0.0,0.0,0.06343657863526912,S021,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0038786209675119605,0.0,0.06659706842652802,0.0,0.0,0.017347639285118118,0.0,0.0,0.0,0.021269721291041186,0.0,0.032312135285752025,0.0,0.0,0.001815301118487302,0.0,0.03260054317632961,0.0,0.0,0.0,0.0,0.0025516972565164343,S022,Healthy,0.0,0.0,0.0,1.0,0.16481104923860967,0.0
+0.0,0.0,0.0,0.1138750262426517,0.013877018061672861,0.03814594167503005,0.010635917313431918,0.03914910830542931,0.0,0.0,0.013067542280501946,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.02378264694372199,0.07785389778358139,0.09067900856618435,0.004837587184435411,0.04466918117220672,0.04539889553553619,S023,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0015443659677406487,0.0,0.0,0.03040585433946842,0.0,0.0016147691965818411,0.062000905765453265,0.018075623701048184,0.026116085037483944,0.045337020690837254,0.086648153606559,0.00757115408615934,0.06147504307165624,0.0,0.0,0.015741048480878244,0.0,0.0,0.0,0.0,0.005274973883029832,0.0,S024,Healthy,0.0,0.0,0.0,1.0,0.12090006102422901,0.0
+0.0,0.0724984390242414,0.0,0.0,0.06819546922508979,0.02731528827321494,0.04882635486763215,0.0,0.037404160643546375,0.0,0.0,0.02981221391025332,0.0,0.03835592716219769,0.11958422677146492,0.0,0.0,0.05600730909213371,0.0,0.05805449248962862,0.0,0.016567208890398526,0.0,0.007018536143667123,S025,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.01655580095276816,0.0,0.0,0.06996220034477114,0.014660685579047778,0.0053173166476313686,0.0,0.017827124935305857,0.0,0.0,0.06522541236032166,0.0075637610923581615,0.0425150436827017,0.0,0.06883626901796526,0.017263920265975948,0.024062290962504288,0.027436466885789025,0.0,0.0,0.0,0.08152614286931807,0.06503419851602432,0.0,S026,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.051830293861792644,0.0,0.0,0.06327715462980806,0.023858928895696598,0.0,0.0,0.00718351016421697,0.024062341352939415,0.007607559465581758,0.0,0.0,0.014740015897180018,0.0,0.0,0.06260419693324085,0.0,0.0,0.0,0.02704849817257059,0.04141322299234427,0.027424341629829225,0.04588362437306144,S027,Healthy,0.0,0.0,0.0,1.0,0.05300238161315518,0.0
+0.02203533723817805,0.017125769547670613,0.023697353349400672,0.0,0.059416393129820104,0.0,0.0,0.04248918068092254,0.0925351389975741,0.0,0.0,0.0,0.0,0.0023046485889829014,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.060967729436631694,0.025452954236977576,0.0,S028,Healthy,0.0,0.0,0.0,1.0,0.20449933483494898,0.0
+0.0,0.0,0.0,0.0,0.03771928606842276,0.0,0.02340744547447568,0.02633778825832136,0.06877226558354435,0.0,0.08693010557124778,0.06344076369456152,0.028653299616775332,0.11917961146170582,0.010248929896361565,0.04107394580351091,0.0,0.05671787039759141,0.008391298486120724,0.0,0.1058469599157938,0.0,0.0004430663804258814,0.0,S029,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.026563620026521413,0.03692048018663655,0.017718626386936265,0.0,0.05039985017115426,0.0,0.0,0.030164047952548734,0.028142471018693146,0.0,0.12362178394162826,0.0,0.0,0.0,0.07103999214450318,0.0,0.0,0.0,0.0,0.0,0.0,0.035397776173371115,0.051022794283582876,S030,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.01196139858691956,0.03941036206245431,0.0,0.0,0.0,0.0,0.005093143439500077,0.0,0.03155645445722735,0.0,0.02063136776024972,0.0,0.0,0.0,0.0,0.0,0.021329772755508253,0.03732974279882344,0.007904135266546321,0.08567454442507802,0.0,0.02602982091005516,0.0,S031,Healthy,0.0,0.0,0.0,1.0,0.15521092252147917,0.0
+0.011731475183762972,0.0,0.05575616886823834,0.008801045287862864,0.05961222497865837,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00937125889443342,0.04378077477654507,0.0,4.44312500960888e-05,0.0,0.023417731711188123,0.0,0.0,0.0,0.0010851919529820666,S032,Healthy,0.0,0.0,0.0,1.0,0.10289698233222933,0.0
+0.0,0.025785212408203924,0.0,0.0019929208807332372,0.0,0.04018787899708445,0.03461569544660871,0.04307619645249039,0.11136930404565877,0.0,0.06017014179039035,0.0,0.019704364792014897,0.01826687138064678,0.013229588167923715,0.03291280892601905,0.0,0.0020466140790738364,0.02676548236709056,0.08739269500192454,0.0,0.0,0.0,0.004496421649039312,S033,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.008748854660184508,0.004610889289336711,0.059139506133939146,0.048802489639194,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.03360035708137684,0.0,0.0,0.02709693773340202,0.0,0.01082273634228378,0.0334667849178053,0.021098474738902747,0.0125081223992158,0.0,S034,Healthy,0.0,0.0,0.0,1.0,0.3704653544709616,0.0
+0.03409470515466036,0.008777497063250022,0.0,0.0,0.0,0.0,0.0,0.0,0.06677727108154419,0.0,0.03937704085513507,0.0,0.0,0.06691397575639543,0.029110292428657106,0.0,0.052070109909334486,0.0,0.0,0.03340567108419475,0.0,0.05594720278086038,0.03806318802565811,0.0,S035,Healthy,0.0,0.0,0.0,1.0,0.18180758540467268,0.0
+0.0,0.014103686661068236,0.0,0.0,0.0399892455694476,0.01583906533417277,0.0,0.008730318467681849,0.0,0.0,0.0,0.014347776855045923,0.0,0.0002715904279212833,0.0,0.0,0.0,0.0,0.0,0.0,0.03346336331835558,0.12434414256364545,0.02294116245453689,0.0,S036,Healthy,0.0,0.0,0.0,1.0,0.0,0.0
+0.0,0.0,0.0,0.025365696778469216,0.029469238309288628,0.0,0.014957282674331232,0.0578204012502723,0.08775457925495485,0.0,0.0,0.0027207934560197888,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.037874152922906135,0.0,0.0,0.0,0.028378571066225985,S037,Healthy,0.0,0.0,0.0,1.0,0.2828534361818076,0.0
+0.0,0.0,0.037980757463683824,0.0,0.0,0.01632990862919787,0.016834345312175442,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.004182898948146191,0.04482877501821603,0.11019120617257781,0.0365889420063203,0.0,0.0,0.0,S038,Healthy,0.0,0.0,0.0,1.0,0.22445994696451688,0.0
+0.0035694217628981723,0.0,0.013601606860103725,0.0,0.020133486639081852,0.0,0.019873129536231923,0.0,0.0,0.0,0.0,0.09411691291133654,0.0,0.0694985864504188,0.0,0.0,0.05919509558550099,0.01519134225138965,0.009602717514493032,0.01329717240881087,0.0,0.0,0.0,0.009870682615715764,S039,Healthy,0.0,0.0,0.0,1.0,0.09566017788008807,0.0
+0.0,0.0,0.0,0.0,0.9972202302470776,0.9478097514893121,0.0,0.94685149525171,0.08572306725149187,1.0,1.0,0.11039743330434781,0.905645525346147,0.04079619371854571,0.9139940715837804,0.0,1.0,0.12914762137091393,0.0,0.0,0.09249894431639338,0.0,0.028969033176524894,0.0,S040,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.011730465845888693,0.04759406894774592,0.0,1.0,1.0,0.0,1.0,0.08719221358561162,0.9312058601688705,0.9530695293815323,0.061662418699805446,0.9603640762093703,0.0,1.0,0.0007025138372618429,1.0,0.028597369853518892,0.015279399150641028,0.22996003851153052,0.0,0.0,0.018335838365539835,0.09086039224168528,S041,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.0,0.03598216787011436,0.0,0.9125857073614155,1.0,0.0,0.8698813493847156,0.15404533267434453,0.8871571874181385,0.9581307562432075,0.0,1.0,0.0,0.9935227937146313,0.004599566326072784,0.9930658856986861,0.007461907255459333,0.0,0.035285175821405085,0.0,0.0,0.11050783251929655,0.0,S042,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.014389528476336724,0.0,0.0,0.03869238148657268,0.9161420032646793,1.0,0.03045539809944074,1.0,0.0,1.0,1.0,0.12693458235363722,1.0,0.03593328575432033,1.0,0.1785740767038045,0.9386706172712981,0.07388872290226314,0.04815673856508545,0.005781396919865669,0.012264983849772083,0.0390228089969851,0.07498867818636795,0.01750158893213076,S043,Moderate,0.5,3.125,2.1650635094610964,0.7311773354049179,0.0,0.0
+0.02718349716478136,0.11137122513141128,0.025417619474189503,0.04360179853704652,1.0,1.0,0.09816327433603178,1.0,0.01662523631808512,0.9021117137718869,1.0,0.0,0.9180768446787394,0.052040714197524096,0.9919538253139396,0.037776759682349476,0.9498429506097601,0.09609632059809303,0.011501774404498765,0.09501826616268946,0.05387523921454605,0.01321992308789297,0.0,0.002520606211909122,S044,Moderate,0.5,2.1875,1.6237976320958225,0.8073620624072195,0.0,0.0
+0.06624083883892964,0.05581261873231678,0.0,0.08205456421967565,0.9828873646819913,1.0,0.0,1.0,0.0,1.0,0.9761576154624281,0.0,0.9546730205127275,0.0,0.8607492247866007,0.07012797547211352,1.0,0.0,0.0,0.0,0.07580914637583006,0.05004166187054192,0.0,0.07178198241124671,S045,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.0,0.0,0.037968579734679174,0.0,0.9528619440675837,0.7990297815590878,0.05369730676896128,1.0,0.0,1.0,0.998850899299313,0.022306782189945244,1.0,0.0,1.0,0.054708332158675994,1.0,0.13087646226449384,0.05269878742037574,0.0,0.14387075361108384,0.0,0.0,0.0,S046,Moderate,0.5,2.8125,2.7063293868263703,0.7240074729272548,0.0,0.0
+0.0,0.08657754265682843,0.1038228765472468,0.037081393264312264,0.9512487149135002,0.9557103521479573,0.0,1.0,0.0,1.0,0.9973924742700596,0.013764085796154455,1.0,0.0,1.0,0.0,0.9340189044850797,0.0,0.0,0.046630567776937866,0.0590183251970905,0.024542024277919242,0.02136735693322794,0.0,S047,Moderate,0.5,3.125,2.1650635094610964,0.7311773354049179,0.0,0.0
+0.0,0.0243112005989599,0.10782455818447974,0.0,0.898515230672775,0.8773375617800138,0.0,1.0,0.0,0.9169645300754842,0.9512423324668456,0.0,1.0,0.0,0.9288048340263064,0.0,1.0,0.057363501434308004,0.044042561301375766,0.0,0.0,0.0,0.022726511462084105,0.0,S048,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.020209537838624888,0.0,0.0,0.08956056064177512,1.0,1.0,0.0,1.0,0.0727264328193689,0.7603997776108217,0.9929383430584364,0.12337795271388764,1.0,0.0,0.981376768746254,0.0,1.0,0.0,0.0,0.08953314883723858,0.0,0.0,0.0,0.21935152099897617,S049,Moderate,0.5,1.875,2.1650635094610964,0.7974768531747544,0.0,0.0
+0.0828150392606547,0.0,0.13333998003922828,0.0,1.0,0.9530695637786686,0.0,1.0,0.0,0.9374945507601481,1.0,0.0,0.8864598398601803,0.04360435170799964,0.8432094700245749,0.0,0.9707483110399576,0.0,0.0,0.053269834274796035,0.023396245289764896,0.0,0.042358845282807304,0.12154227528085328,S050,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.0,0.004900463587365447,0.1581321078026184,0.04889279112387352,1.0,0.9839877863599876,0.0,1.0,0.05229799553296252,0.9958781451811838,0.9627731420141336,0.0,1.0,0.0,0.989451658529516,0.05367803074027343,1.0,0.057520077523673344,0.18040514657642198,0.09320948233441195,0.0,0.0,0.18625205796711863,0.0,S051,Moderate,0.5,3.125,2.1650635094610964,0.7311773354049179,0.0,0.0
+0.0,0.13958872702050873,0.1372252699596475,0.0,1.0,0.8691912558335465,0.0,0.9707792695912257,0.0,0.9741343619154337,1.0,0.1754161211116332,1.0,0.024696575020382038,1.0,0.0,1.0,0.0,0.0,0.0,0.006970376153871495,0.009524025778690328,0.07364052064904542,0.09581292966531896,S052,Moderate,0.5,1.5625,2.7063293868263703,0.7790291308792039,0.0,0.0
+0.05304514666401273,0.12978074296722847,0.12708026143782475,0.025228695044410623,1.0,0.845097464663856,0.025619456378204366,0.9995926756897725,0.0,0.9654891174526561,1.0,0.0,1.0,0.0379839454990383,0.9817289527805165,0.0,1.0,0.0,0.16326095519175535,0.0,0.0,0.09766145577514271,0.06320418680093833,0.10603133565198487,S053,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.08367848590915837,0.030111674303849197,0.0,0.0,1.0,0.9986253943631727,0.0,1.0,0.13849139695771684,1.0,0.9185712298818498,0.03487734237908349,0.8298801532332063,0.13520145135864337,0.844809847217695,0.03284070105977627,1.0,0.10330573847445886,0.027517641177032686,0.0,0.0,0.0,0.029468732723755813,0.07901967872125995,S054,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.05296327058466359,0.16972932461356297,0.052884068409777364,0.0,1.0,0.974837754804427,0.02254908087635099,1.0,0.0,1.0,1.0,0.0,0.9886970419792642,0.0,1.0,0.12023403891214894,0.9858184345591213,0.0,0.0,0.16136703265498653,0.0,0.0675959813869486,0.008912944411734408,0.1536717138765588,S055,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.10490123367072285,0.0,0.0,0.11437118746175273,1.0,0.9116078404385233,0.0596186797764105,0.9359386760912481,0.0,0.8712549264451166,1.0,0.021690274087944786,1.0,0.11619799493814054,1.0,0.04676502054689112,1.0,0.0,0.0,0.0,0.0,0.0,0.084951009453975,0.1646571211119167,S056,Moderate,0.5,2.1875,2.7063293868263703,0.753937253937131,0.0,0.0
+0.0,0.013866433308678615,0.0,0.04217884979383138,1.0,1.0,0.0,1.0,0.07138613704622175,0.9589287334042798,1.0,0.0,0.9492911841764328,0.023710323072634525,0.9793928412688323,0.0,0.9979074570781625,0.12765619527187244,0.1602025853951869,0.0,0.07242196829134526,0.010602356388246519,0.02271093037218447,0.10138969705709919,S057,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.06816572226312341,0.012345633260919333,0.0,0.0,0.9948785511642149,1.0,0.040253751380726024,1.0,0.0783668103038474,0.8077538642596342,1.0,0.0,1.0,0.026931546235383887,1.0,0.0,1.0,0.0,0.08761972933636597,0.0,0.0,0.08491868429273797,0.13414189813219096,0.0,S058,Moderate,0.5,2.1875,2.7063293868263703,0.753937253937131,0.0,0.0
+0.09701679086341995,0.0,0.0,0.0,1.0,1.0,0.008287835959571287,1.0,0.01732445308983122,0.982716935723371,0.9518894901477356,0.0,0.9718661947073577,0.0,0.9117637254971634,0.0,1.0,0.02475351283491142,0.0,0.0,0.042755989885773074,0.06515749284920345,0.05440639029603876,0.0,S059,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.0,0.05645236696282601,0.041231785894165686,0.054384848104379435,1.0,0.9317170558150858,0.09780516258726461,0.8912328900629384,0.0788606233938991,0.998689989500752,0.8821876620570669,0.0,1.0,0.0,0.9031518082548539,0.0,0.9345540033166755,0.0,0.035003020178157665,0.06385378460782441,0.0,0.04188983389159086,0.0,0.0,S060,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.00987219287940548,0.11946268331136134,0.040604709213762316,0.0,1.0,0.9823049383810614,0.0,0.9328190913984008,0.0,0.9951894051770653,0.9678254108364417,0.0,0.8634262165544382,0.010238759361172346,1.0,0.1746502949881632,0.9857069592509522,0.08171392633372904,0.09561629778553804,0.0,0.006144080275006131,0.0,0.14201273686274402,0.0,S061,Moderate,0.5,2.1875,1.6237976320958225,0.8073620624072195,0.0,0.0
+0.0,0.11072983952829203,0.0,0.0,1.0,1.0,0.04539544589491833,1.0,0.06000728957581917,1.0,0.9114493670096676,0.0,1.0,0.03908960195844477,1.0,0.05379831136945906,1.0,0.0,0.0,0.0,0.14869393033089529,0.0,0.0,0.0,S062,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.0824848132167233,0.0,0.0,0.09715106774789525,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.04728293475261414,1.0,0.016414411795760104,1.0,0.0,0.9002758443563895,0.012996258827505774,0.004172063334579624,0.013092812987176593,0.12723463868041598,0.0,0.06010550089126121,0.030755816299214225,S063,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.1893249921872388,0.0,0.0,0.0,1.0,0.9344065143331295,0.13263543996130672,1.0,0.06924901207151489,1.0,0.8755057448850715,0.014571960550267367,0.8855462673009311,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.09980678856158305,0.040459683851729045,S064,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.027160757726376116,0.0,0.1895331082392158,0.0,1.0,0.9306062842957998,0.0,1.0,0.0,1.0,0.972943578041755,0.0,1.0,0.0,1.0,0.08834500779870498,0.919055883561962,0.0,0.0,0.0,0.017813173500200872,0.026835370440305057,0.0,0.0,S065,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.07792378867039373,0.061452238272254114,0.030300338011334305,0.0,1.0,1.0,0.0,0.9538483298363711,0.09829182067497669,1.0,0.9576218614055623,0.0,1.0,0.0,1.0,0.0,1.0,0.008979560427263784,0.07222805608908743,0.0,0.0,0.01082648947219334,0.020957047208147835,0.05762397084871156,S066,Moderate,0.5,1.875,2.1650635094610964,0.7974768531747544,0.0,0.0
+0.0,0.0,0.0,0.04425127317637299,1.0,0.9299393337282988,0.0,0.9417451646201394,0.0,1.0,1.0,0.0,0.886202215627951,0.0,1.0,0.17039248493862932,1.0,0.0,0.0,0.0,0.0,0.018061234416193016,0.020531193953053962,0.0,S067,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.0,0.0,0.011785949145934877,0.0,1.0,0.8832869797195428,0.13496783389364364,0.9466803054219518,0.01785512010917657,1.0,0.9724793960112934,0.0,0.961408369086572,0.12179681568271868,0.897536537995092,0.0,0.9824901202429662,0.0,0.0,0.0,0.0,0.0,0.013021905788902903,0.05653306018581314,S068,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.030965992413803576,0.0273398988185441,0.1344114364423919,0.0876242580004233,0.7669727877206038,0.9709470525097873,0.0,0.9448690828690263,0.06168590918744655,0.9839051100739399,0.965728858935872,0.10535772236332125,0.8796977646709776,0.0,1.0,0.001930776366295461,0.9069379831077564,0.0,0.06460097402956982,0.028579997858621586,0.02541531405958876,0.024595842362809806,0.010815335344883216,0.0,S069,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.03446701544071906,0.0,0.060574237267826105,1.0,0.9132656231268681,0.0,0.983692696294106,0.03307479673389068,0.9700778682498342,1.0,0.03305004899737549,0.9370742875295422,0.0,1.0,0.05826992252818616,1.0,0.0,0.01195960380337618,0.0,0.06575919402117174,0.0,0.0482274154230539,0.0,S070,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.03608263673353279,0.020497025252860693,0.0,0.0,1.0,1.0,0.0020358666468346083,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.07807622909966208,0.0,S071,Moderate,0.5,2.1875,2.7063293868263703,0.753937253937131,0.0,0.0
+0.0,0.0037647403921619556,0.0,0.0,1.0,0.9548506515476153,0.026891215703800903,0.9968191942804274,0.0,0.9945408033755216,1.0,0.10512835976883393,0.9872316568567243,0.0,0.8790966718285593,0.0,0.9059235239119714,0.0,0.0,0.0,0.11437529610644002,0.0850844596619213,0.09961362867612626,0.0,S072,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.01952010088637893,0.0,0.12398476524811586,0.0,0.9589099741967355,1.0,0.19918496901985028,0.9926618816862885,0.0,0.7994294450415302,1.0,0.024654574239408023,0.8492847343598174,0.0697085514781513,1.0,0.0,0.955373090487008,0.05841002598691478,0.018715626705158396,0.03894669136301,0.09811957860878848,0.09545519627300598,0.06084104843780033,0.04682277632691446,S073,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.0,0.06548181744032544,0.051776222275771576,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.09072635951119773,1.0,0.0,0.8888840450007397,0.0,0.04413335773159915,0.0,0.057709213468695994,0.012036393390271904,0.0,0.07473722312475965,S074,Moderate,0.5,2.5,2.1650635094610964,0.7661464133266287,0.0,0.0
+0.1081395759950241,0.0,0.04095260976166793,0.012527534332313642,1.0,0.991671402755027,0.0,1.0,0.0,0.9303498929478836,1.0,0.014389983987351692,0.9363170366444713,0.0,0.9873042007330338,0.0,1.0,0.0,0.02906565433203388,0.1224427854305047,0.01610897540511579,0.0,0.0,0.0034931580857569186,S075,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.09876818176025516,0.0,0.13111702544189915,0.8380008149183064,0.9967192901373383,0.0,1.0,0.0,0.9093545721753743,0.9727980014280779,0.0,0.8451975894171668,0.03636129150200377,0.8085899606924328,0.09410698497895945,0.9735948100077318,0.07624054234514406,0.0,0.0,0.052139851315128015,0.0,0.0,0.0,S076,Moderate,0.5,3.125,1.0825317547305482,0.7661464133266287,0.0,0.0
+0.0,0.0,0.11031516010247878,0.07701347003486549,1.0,0.9867425017678395,0.0,0.9489963683382533,0.02840591062580879,0.9873691923142389,0.9694640678431395,0.021603819172320262,0.838529861482058,0.15651841438921751,1.0,0.0,1.0,0.0,0.0,0.0,0.08734886678724824,0.0,0.0,0.0,S077,Moderate,0.5,2.8125,1.6237976320958225,0.770360336614077,0.0,0.0
+0.0,0.0,0.0,0.11517875318188728,1.0,0.9548653997936961,0.041754255365262165,0.9880954657069497,0.019475256634742356,1.0,0.9785087508968672,0.1433733986854202,0.9769444117255628,0.0,1.0,0.022017375785779638,0.8374446693034086,0.017984229992347302,0.0,0.0,0.0,0.02608643046315413,0.0,0.0,S078,Moderate,0.5,3.4375,1.6237976320958225,0.7311773354049179,0.0,0.0
+0.0,0.032368851861452594,0.0,0.0,0.8261845908790245,0.9379038009662661,0.06754467533246204,1.0,0.06318491612310799,0.9859767006229229,1.0,0.10141627564317149,0.930505805824236,0.029126046085719,0.850328288317334,0.05458381296929031,0.9639165569005858,0.0,0.061826715861366184,0.0,0.0,0.12294547372152667,0.0,0.0,S079,Moderate,0.5,3.75,1.0825317547305482,0.7240074729272548,0.0,0.0
+0.9453396404789451,1.0,0.8531270642144702,1.0,0.9805316908775724,0.9746506916156861,0.928265486647428,0.9883638937866023,0.11763148179958083,1.0,0.9253967846505741,0.0,1.0,1.0,0.9794151526765018,1.0,1.0,0.0,0.8468066918169361,0.04003905625845285,1.0,0.9343414884587113,0.0,1.0,S080,Aggressive,1.0,4.375,4.330127018922193,0.5647378663379963,0.0,0.0
+1.0,1.0,1.0,1.0,0.9555347415705027,0.8384950705663579,0.9272457950722401,1.0,0.03354038673687437,0.959820435863117,0.931384003248892,0.0,0.8655733058098813,0.9902303903929353,0.8740212861282831,0.9987915208217023,0.9361615302471316,0.0,1.0,0.003861002370416102,0.9725157665273342,0.9861331333642799,0.0,1.0,S081,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,0.9574403894620331,1.0,0.9462737819350605,1.0,0.8925621825234273,1.0,1.0,0.03570250194477771,0.9527928490304984,1.0,0.15604343970719137,1.0,1.0,0.9358225338651708,1.0,1.0,0.0,1.0,0.011823349924318105,1.0,0.9897651987102487,0.0,1.0,S082,Aggressive,1.0,3.125,5.4126587736527405,0.5580582617584078,0.0,0.0
+0.9072493684652402,1.0,0.9897943772863271,0.9968330963509606,1.0,0.956330714568716,1.0,1.0,0.0641280449380631,1.0,1.0,0.10625476171565987,0.927838255232124,1.0,1.0,1.0,0.994913428566012,0.007947910895156646,0.9724042454297297,0.09922048220314814,0.9743062359519825,1.0,0.0,1.0,S083,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.9021553427656722,1.0,0.9976283132202686,0.8813119611802427,0.940764768391709,0.9636918171289466,0.8777036329172027,0.9026268985697193,0.11756506444393296,0.9176014060998758,0.9314657612833248,0.0,1.0,1.0,1.0,1.0,0.9606501000365066,0.0,0.9460676207856764,0.05266139376745138,1.0,1.0,0.16391160273135819,1.0,S084,Aggressive,1.0,3.4375,3.7888611415569184,0.6382550967878056,0.0,0.0
+1.0,1.0,0.876639211372305,1.0,0.8789997681703838,1.0,0.960559230653722,1.0,0.0849218480303929,0.9558211035412237,0.8672186805152571,0.0,1.0,0.9742957916216871,0.8814971923130659,0.9820230631472985,1.0,0.12873894907309325,0.9621531078170613,0.024649216028399798,1.0,0.8816667877220957,0.0,0.9675669297196895,S085,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,0.9591758941065179,0.8882090402782823,1.0,0.9486394112801643,0.9017683047900377,0.901968256031772,0.9821617337655734,0.11608456192425645,0.9860363216598451,1.0,0.0,0.9329071152977171,0.8993608130174353,0.978035585096019,1.0,0.9562826546109184,0.0,1.0,0.0,1.0,0.9468002188251581,0.041370121752322256,0.9693162276772516,S086,Aggressive,1.0,4.6875,4.8713928962874675,0.5219669206006764,0.0,0.0
+1.0,1.0,1.0,0.9935860481494944,0.921973493438255,0.9071106194128661,0.9522146334595307,1.0,0.0,1.0,1.0,0.0,0.9629637399888473,0.9489295638687151,1.0,0.9179701105960365,1.0,0.0,0.9810176254659436,0.07385199630810091,0.9401222414638725,0.9998903041991458,0.143377103788163,1.0,S087,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+1.0,0.9618883718542417,0.9204607960172737,1.0,0.9871913648991213,1.0,0.9452884200396738,1.0,0.0,1.0,1.0,0.03532276887036447,1.0,0.8749656292642953,0.9631438777761451,1.0,0.9816690869194202,0.025490370427559642,0.9869528187018606,0.0,0.8804752908405499,0.9086606597688278,0.13460562214197488,0.9936751490497351,S088,Aggressive,1.0,5.0,4.330127018922193,0.5322928266532574,0.0,0.0
+0.9048953091598801,0.9276747676665332,1.0,0.9242280051970122,0.949971853540038,0.9106693119850547,0.8992695823219775,1.0,0.0,0.974279446545368,0.9518840298480556,0.05699623081037996,1.0,1.0,1.0,0.9714142656922635,0.9615289223008988,0.0,0.96065774184562,0.173084632963574,0.900845070411312,1.0,0.02685803400717801,1.0,S089,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,0.968256325429101,0.9298317369843341,1.0,1.0,1.0,1.0,0.9464962299497206,0.0,1.0,1.0,0.0,0.8460634738565952,0.871697857833394,1.0,0.9877409391541736,0.8532126809348488,0.0,0.8450387785283044,0.0,0.930771231358949,0.955362736015119,0.0,1.0,S090,Aggressive,1.0,4.375,4.330127018922193,0.5647378663379963,0.0,0.0
+1.0,1.0,1.0,1.0,0.9848294094093463,1.0,0.9418186805056422,0.9339330248895579,0.0,1.0,1.0,0.17793086063055907,1.0,1.0,0.9449338643258403,1.0,1.0,0.0,1.0,0.0,0.9428689752674954,1.0,0.16054403569115824,0.8549806083406254,S091,Aggressive,1.0,2.5,5.4126587736527405,0.5784144511489988,0.0,0.0
+0.93231678318728,1.0,0.945683919463328,1.0,0.9342784267731032,1.0,0.9929458018218422,1.0,0.0,0.8715033996326048,1.0,0.0,0.9265045559091883,0.9115765721201585,0.9163971390977272,1.0,0.9261885376203006,0.0,1.0,0.0,0.9995474903680154,1.0,0.0,0.9449498690232188,S092,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+1.0,1.0,0.9496405116267351,0.8891761520836504,0.9073862349103098,0.9180363681664222,0.8275212801353862,1.0,0.00816805545898986,1.0,0.8864900549717606,0.0,0.980792038530465,1.0,0.9834971231462272,0.9004060511092169,1.0,0.056822721773228634,1.0,0.08257870406240615,1.0,1.0,0.013042031567041567,0.9748163970062479,S093,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.961615045322444,1.0,0.9438828082869012,0.926917910126962,1.0,1.0,1.0,0.932062556706185,0.0240589762409862,1.0,0.9616134826787237,0.0,0.9761636756040777,1.0,1.0,0.8927544106012703,0.8783398788309391,0.05200885676100093,0.9829517525688889,0.042605798049095915,1.0,1.0,0.0,0.9561709595289202,S094,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+1.0,1.0,0.924148851416574,0.9578272847898589,0.9531325746414918,1.0,1.0,0.9779625203157207,0.0,0.8324657996280371,0.9151117249465094,0.14823840441761355,0.862823389838644,1.0,0.9761686567324576,0.8429438601201997,1.0,0.102725511417955,0.9597401422137412,0.06938215924536827,0.9715284371132875,1.0,0.01330155998521127,0.9815191557401989,S095,Aggressive,1.0,3.75,4.330127018922193,0.5949537063495087,0.0,0.0
+1.0,1.0,0.9581692089167303,1.0,0.9583529977284855,1.0,0.9602504320621859,1.0,0.12805167121431352,0.9476886861570546,0.882949836113305,0.12753163707358048,1.0,0.9479508652366796,0.9800280054192338,0.9268999150821281,1.0,0.05706712066072622,1.0,0.017616274217577412,0.8359966684613169,0.9050417283778145,0.022752024573317806,0.7876040868635807,S096,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.9936595508258045,0.9179750106038543,1.0,0.9842718895649664,1.0,1.0,1.0,0.922132837439977,0.05021668972287392,1.0,0.8631644443619481,0.0,1.0,1.0,0.9763256304462,1.0,1.0,0.0,0.946536727058538,0.06842202155051012,1.0,1.0,0.05230245980191128,0.9508803750083065,S097,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+1.0,0.9261469669231491,0.9637363938847523,0.9373774271360755,0.8879055862004638,1.0,0.9157717418436779,0.9452620125970187,0.07542183389557595,1.0,0.9502860629058651,0.0,0.9916597079842551,0.8721707289919509,0.9191660633211602,0.9689778961335269,0.9873495821159364,0.0,0.988372407884725,0.11056322564758359,1.0,1.0,0.07168235189210061,1.0,S098,Aggressive,1.0,4.375,4.330127018922193,0.5647378663379963,0.0,0.0
+0.9028927780477283,0.8931130334533119,0.9983531777173398,0.9673113908389801,0.9252365522085715,1.0,1.0,0.9945530012057848,0.00686684473928278,0.9562428105587041,0.9449647273922638,0.15789224294773502,0.8994871185098005,0.9871020267763567,0.9642287881642883,0.9912086692516593,1.0,0.07950101073451162,0.9887910401954675,0.08987965637768275,0.9386762262159394,1.0,0.14236096205103788,0.9537929648553425,S099,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+1.0,1.0,0.9326017957530832,1.0,0.9748159701324812,0.9106445523353729,1.0,0.9324696752734821,0.1324603560190283,1.0,0.9831880364357231,0.003269743814927748,1.0,0.9840620620003517,1.0,0.9540150752505923,0.9600448399349406,0.042163480730830205,0.8290919746342545,0.0,1.0,1.0,0.0,1.0,S100,Aggressive,1.0,4.0625,3.7888611415569184,0.6071935909382333,0.0,0.0
+0.9720428240394874,0.851142914719188,1.0,1.0,0.923411438230512,1.0,1.0,0.9499596429770171,0.08852533844087487,1.0,1.0,0.0,0.9554693210362936,0.9342028679402953,0.9567153219970522,0.8149529311261081,1.0,0.0,1.0,0.0,1.0,0.90461186570813,0.0,0.8720243007700311,S101,Aggressive,1.0,3.125,5.4126587736527405,0.5580582617584078,0.0,0.0
+0.9526463155782937,1.0,1.0,1.0,0.9313251257835357,0.8242774228537012,0.9285579398428798,0.9591239399495853,0.11833991886403729,1.0,1.0,0.0,0.9416592357031676,1.0,0.9702359001665655,0.9730484427185919,1.0,0.0,0.977471543246539,0.0,0.947893350869258,0.8870746738519462,0.10178805497966302,0.8870042965974418,S102,Aggressive,1.0,4.0625,4.8713928962874675,0.5514781220497711,0.0,0.0
+0.9273908488636433,1.0,0.900501143741062,0.9875360198665549,0.979472395667725,0.9810599963571267,0.9887946623023466,0.8873263448920062,0.0,1.0,1.0,0.0,1.0,0.9248107845452169,0.8908833204274945,0.8386189502502446,0.910960140684751,0.03679021257566892,0.9739561655752197,0.13293072984296236,1.0,0.9716628216788097,0.0,0.982727059328527,S103,Aggressive,1.0,4.0625,4.8713928962874675,0.5514781220497711,0.0,0.0
+1.0,0.9692648123791724,0.9988398292669576,0.9411644559618288,1.0,0.9720711806391165,0.9482562727879825,0.8783887400560535,0.07729979752057499,0.9526638049485653,0.9943689406371008,0.0,0.9850785368871562,0.8413961515205421,0.9372336662197088,0.9133110847153307,1.0,0.1077492743557731,1.0,0.1989411008684214,1.0,0.892422126149847,0.0,1.0,S104,Aggressive,1.0,4.6875,4.8713928962874675,0.5219669206006764,0.0,0.0
+0.9944500385397255,1.0,0.9340055070677752,1.0,0.9719109218507531,1.0,1.0,0.953181168244993,0.04611048999603584,1.0,1.0,0.06014151020307975,1.0,1.0,1.0,1.0,1.0,0.0,0.891787431274323,0.0,1.0,0.9613110348578213,0.0,0.9807470332922779,S105,Aggressive,1.0,2.8125,4.8713928962874675,0.602252435582567,0.0,0.0
+0.9829704976692204,0.9552660023277199,1.0,1.0,1.0,1.0,1.0,0.8317546990061782,0.01577178630531062,0.947749618994877,1.0,0.005875193623491818,0.93899057335461,0.9565407532798937,0.9038810379278917,0.9561962295776278,1.0,0.09430588537254558,1.0,0.06477566495417866,1.0,0.9741098780064967,0.1162516690494372,0.8918634576312214,S106,Aggressive,1.0,2.5,5.4126587736527405,0.5784144511489988,0.0,0.0
+1.0,0.9579395787496484,0.8427643648480829,1.0,0.84018468423045,1.0,1.0,0.9837501266921053,0.0,0.8480973498101064,0.9800154399635399,0.11607346737271655,0.9582304442586562,0.9220480823810302,0.8147400032032837,1.0,1.0,0.0,1.0,0.0,0.9732785167562931,1.0,0.0,1.0,S107,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+1.0,1.0,1.0,0.8954671436346062,0.9889999268617999,0.9806023228549843,0.9464860446545995,0.9333168024940297,0.0,0.9352458493814717,1.0,0.002916499442562482,1.0,1.0,0.9523953160323,0.9568707484818924,0.986162254911287,0.0,1.0,0.1552957312302736,0.9878417019885826,1.0,0.0,0.8799562713479392,S108,Aggressive,1.0,2.1875,4.8713928962874675,0.6224048133251696,0.0,0.0
+0.9891486721180685,0.9666171322991371,1.0,1.0,0.9591628428928836,0.9452329279408663,1.0,0.9651456470265493,0.004601197985180489,0.9915456392783046,1.0,0.0,0.9343275412191188,1.0,1.0,0.917674518240593,1.0,0.0,0.9418990879913388,0.0,1.0,1.0,0.0,1.0,S109,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+0.9694326717912899,0.9045778098638064,1.0,0.9225984678930486,1.0,0.9068109102423009,0.9654884953589788,1.0,0.012911639558433979,0.9180994716762036,0.9904101540862961,0.027995684731496853,1.0,1.0,1.0,1.0,0.9466308324439374,0.0,1.0,0.0,0.9102920086787175,0.9964978053897647,0.0,0.9374063052041479,S110,Aggressive,1.0,2.1875,4.8713928962874675,0.6224048133251696,0.0,0.0
+0.9088361301049046,0.9670002898130278,1.0,1.0,1.0,0.9231496549480366,1.0,1.0,0.0,1.0,0.9613149016942018,0.0,1.0,1.0,0.9705345573756192,1.0,0.8536461873122958,0.023382316482040158,0.9617247734859442,0.0,0.7979368202159511,0.884063802528637,0.0,1.0,S111,Aggressive,1.0,3.4375,3.7888611415569184,0.6382550967878056,0.0,0.0
+0.9262454841979028,1.0,1.0,0.9562867474883003,0.917803313875269,1.0,1.0,0.9013853203601895,0.03843321860318304,0.9468944921381239,1.0,0.06609402101546821,0.9346449019579255,1.0,0.7590839939709642,1.0,0.8431954307780739,0.20204438766353744,1.0,0.0,1.0,0.9372443892302861,0.00953401200247088,0.9772074732023734,S112,Aggressive,1.0,4.0625,4.8713928962874675,0.5514781220497711,0.0,0.0
+1.0,0.9552364254602422,1.0,0.9408120140335431,1.0,1.0,0.9523596590381292,1.0,0.03885786887810869,0.9763581371331764,0.9588803628635352,0.0,0.9637721364766946,0.9588935397016954,0.9893846810120533,0.9830209568925475,1.0,0.11358295888798317,1.0,0.06796479882701242,1.0,0.9516969197512075,0.0,0.9817949148268256,S113,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+1.0,1.0,0.8833582770580978,0.8580683117653587,1.0,1.0,0.949875055488186,0.99382258699609,0.003999107736376282,1.0,0.9609618914805498,0.047343212131957566,1.0,1.0,1.0,1.0,0.897494250359056,0.07219237450809672,0.9610361706954977,0.0718249388209751,1.0,0.9217578537578357,0.020404018601708613,0.9491972303504135,S114,Aggressive,1.0,2.1875,3.7888611415569184,0.6906407832308855,0.0,0.0
+1.0,0.9676565876713514,1.0,0.9430618441403541,0.9705893853535414,0.9440094608044362,0.9364881458543117,0.9784197371849577,0.017136617105115836,1.0,1.0,0.0,0.8752733089566664,1.0,0.9593904551948749,1.0,0.9147914030637592,0.12113774938383375,1.0,0.0,1.0,1.0,0.0,0.8638958906363169,S115,Aggressive,1.0,3.4375,4.8713928962874675,0.5784144511489987,0.0,0.0
+1.0,1.0,0.8722216298164016,1.0,0.9813715557782084,0.9927066017783289,1.0,1.0,0.06902302459154071,0.9068346698194508,0.9931168158184281,0.0,0.9591430323850875,1.0,0.9323237328986107,1.0,1.0,0.0,0.9082226145975489,0.0,0.9877697886054686,0.8948278260678526,0.0,0.8771896709749631,S116,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+1.0,1.0,1.0,0.9859300611259268,1.0,1.0,1.0,0.9000358691239738,0.0,0.9215234542445524,0.8890697351449046,0.057155311973938305,1.0,0.8881748918485148,0.9131420348193601,1.0,0.9606636240684627,0.018320999364087945,0.9864739185426118,0.08480131514097346,1.0,0.8536120572445478,0.10850279949801443,0.9614550339528393,S117,Aggressive,1.0,3.125,4.330127018922193,0.6224048133251696,0.0,0.0
+0.9092774023383907,1.0,0.9216241259643753,0.8994208706518172,0.9724022881386424,1.0,0.8545669420194351,0.9166941369678213,0.0,0.9036215882690866,0.9881151271975332,0.0,1.0,1.0,1.0,1.0,0.9209221088741668,0.0,0.9516556310975338,0.0,1.0,1.0,0.0,1.0,S118,Aggressive,1.0,2.8125,3.7888611415569184,0.6663413046240216,0.0,0.0
+0.9782690130823452,0.9907289776856755,0.9288070154085467,1.0,1.0,1.0,0.8277592157808881,0.9804918911900126,0.047461924788083504,0.9666171715222791,0.9922617559312212,0.0410044954526257,0.8544486346974808,1.0,0.8485041220413405,1.0,1.0,0.0,1.0,0.039508796711308615,0.9574614331056136,0.966049712923301,0.06431140461374203,1.0,S119,Aggressive,1.0,3.75,5.4126587736527405,0.5343854866952706,0.0,0.0
+
+====
+
+wf_mean_traj.csv:
+
+TP53,PTEN,RB1,NKX3-1,AR,ERG,MYC,PIK3CA,AKT1,BRCA2,CDKN1B,FOXA1,SPOP,CHD1,APC,ATM,CDK12,KMT2C,KMT2D,MED12,NCOR1,NF1,NOTCH1,ZBTB16
+0.0,0.0,0.001,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.001,0.0,0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.002,0.0,0.0,0.0,0.001,0.0
+0.0,0.0,0.0,0.0,0.999,0.999,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.002,0.001,0.001,0.0,0.0,0.0
+0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.999,0.0,1.0,1.0,0.0,1.0,0.001,0.999,0.0,1.0,0.0,0.001,0.0,0.0,0.0,0.0,0.0
+0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.998,0.0,1.0,0.0,0.002,0.001,0.001,0.0,0.0,0.0
+0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,1.0,1.0,0.0,1.0,0.0,0.999,0.0,1.0,0.0,0.002,0.0,0.001,0.0,0.0,0.0
+0.0,0.0,0.0,0.001,1.0,1.0,0.0,1.0,0.0,1.0,0.999,0.0,1.0,0.0,0.999,0.0,1.0,0.0,0.002,0.0,0.001,0.0,0.0,0.0
+0.0,0.0,0.0,0.001,1.0,1.0,0.0,0.999,0.0,1.0,1.0,0.0,1.0,0.0,0.999,0.0,1.0,0.001,0.003,0.0,0.001,0.0,0.0,0.0
+0.001,0.0,0.0,0.0,1.0,1.0,0.0,0.998,0.002,1.0,1.0,0.0,1.0,0.0,0.999,0.0,1.0,0.0,0.006,0.0,0.001,0.0,0.0,0.0
+0.003,0.0,0.0,0.0,1.0,0.999,0.0,0.995,0.007,0.999,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.004,0.0,0.001,0.0,0.001,0.0
+0.003,0.0,0.0,0.0,1.0,0.998,0.0,0.998,0.007,0.999,1.0,0.0,1.0,0.0,1.0,0.0,1.0,0.0,0.006,0.0,0.001,0.0,0.0,0.0
+0.002,0.001,0.0,0.0,1.0,0.997,0.0,1.0,0.006,0.997,1.0,0.0,1.0,0.001,1.0,0.0,1.0,0.0,0.009,0.0,0.003,0.0,0.0,0.0
+0.004,0.0,0.0,0.0,1.0,0.997,0.0,0.999,0.008,0.999,0.999,0.001,1.0,0.0,1.0,0.0,1.0,0.0,0.008,0.0,0.006,0.0,0.0,0.0
+0.007,0.002,0.0,0.0,1.0,1.0,0.0,0.999,0.013,0.999,0.999,0.0,1.0,0.0,1.0,0.0,1.0,0.001,0.007,0.0,0.005,0.0,0.0,0.0
+0.005,0.001,0.0,0.0,1.0,1.0,0.0,1.0,0.013,1.0,0.999,0.0,1.0,0.0,1.0,0.0,1.0,0.001,0.007,0.0,0.004,0.0,0.0,0.0
+0.005,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.012,1.0,0.999,0.0,1.0,0.0,1.0,0.0,1.0,0.002,0.007,0.0,0.008,0.0,0.0,0.0
+0.007,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.014,1.0,0.999,0.0,1.0,0.0,1.0,0.0,1.0,0.002,0.005,0.0,0.007,0.0,0.0,0.0
+0.012,0.0,0.0,0.0,1.0,0.999,0.0,1.0,0.022,0.999,0.998,0.0,0.999,0.0,1.0,0.0,1.0,0.002,0.004,0.0,0.006,0.0,0.0,0.0
+0.012,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.024,0.999,0.999,0.0,0.999,0.0,1.0,0.0,1.0,0.001,0.004,0.0,0.005,0.0,0.0,0.0
+0.011,0.001,0.0,0.0,1.0,1.0,0.0,1.0,0.026,1.0,0.999,0.001,0.998,0.0,1.0,0.0,1.0,0.0,0.003,0.0,0.003,0.0,0.0,0.0
+0.01,0.001,0.0,0.0,1.0,1.0,0.0,1.0,0.026,1.0,0.999,0.003,0.999,0.0,1.0,0.001,1.0,0.0,0.004,0.0,0.004,0.0,0.0,0.0
+0.011,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.026,1.0,1.0,0.002,1.0,0.0,1.0,0.0,1.0,0.0,0.009,0.0,0.006,0.0,0.0,0.0
+0.015,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.03,1.0,1.0,0.002,1.0,0.001,1.0,0.0,1.0,0.0,0.013,0.001,0.001,0.0,0.0,0.0
+0.013,0.0,0.0,0.0,0.999,1.0,0.0,1.0,0.028,1.0,0.999,0.002,0.999,0.001,1.0,0.0,1.0,0.001,0.012,0.002,0.0,0.0,0.0,0.0
+0.014,0.0,0.001,0.0,1.0,1.0,0.0,0.999,0.028,1.0,0.998,0.001,1.0,0.001,0.999,0.0,1.0,0.001,0.01,0.002,0.0,0.001,0.0,0.0
+0.016,0.0,0.002,0.0,1.0,0.998,0.001,0.999,0.033,0.999,0.999,0.002,1.0,0.001,0.998,0.0,1.0,0.0,0.011,0.003,0.0,0.0,0.0,0.0
+0.018,0.0,0.002,0.0,1.0,0.996,0.001,1.0,0.039,0.995,0.998,0.0,1.0,0.002,0.998,0.0,1.0,0.0,0.009,0.003,0.0,0.0,0.0,0.001
+0.015,0.0,0.0,0.0,1.0,0.994,0.0,1.0,0.043,0.997,0.998,0.0,0.999,0.003,0.997,0.0,1.0,0.0,0.013,0.004,0.0,0.001,0.001,0.0
+0.018,0.0,0.0,0.0,1.0,0.994,0.0,1.0,0.044,0.996,0.997,0.0,0.999,0.003,0.995,0.0,1.0,0.0,0.022,0.003,0.0,0.001,0.0,0.0
+0.014,0.0,0.0,0.0,1.0,0.995,0.0,1.0,0.042,0.995,0.996,0.0,0.998,0.003,0.996,0.0,1.0,0.0,0.021,0.001,0.0,0.002,0.0,0.0
+0.012,0.0,0.0,0.0,1.0,0.993,0.0,1.0,0.046,0.994,0.994,0.0,0.999,0.002,0.999,0.0,1.0,0.001,0.022,0.002,0.001,0.0,0.0,0.001
+0.007,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.038,0.987,0.99,0.0,0.999,0.002,0.999,0.0,0.999,0.002,0.02,0.003,0.0,0.0,0.0,0.001
+0.007,0.001,0.0,0.0,1.0,0.999,0.0,1.0,0.032,0.98,0.99,0.0,0.997,0.003,0.999,0.0,1.0,0.004,0.022,0.004,0.0,0.0,0.0,0.0
+0.01,0.0,0.0,0.0,1.0,0.999,0.0,1.0,0.037,0.978,0.988,0.0,0.996,0.002,0.998,0.0,1.0,0.002,0.027,0.004,0.0,0.0,0.0,0.0
+0.014,0.0,0.001,0.0,1.0,1.0,0.0,1.0,0.042,0.974,0.993,0.0,0.993,0.004,0.999,0.0,1.0,0.004,0.034,0.004,0.0,0.0,0.0,0.0
+0.019,0.0,0.001,0.0,1.0,1.0,0.0,1.0,0.053,0.975,0.989,0.0,0.996,0.006,0.999,0.0,1.0,0.002,0.031,0.004,0.0,0.0,0.0,0.0
+0.016,0.0,0.001,0.0,1.0,1.0,0.0,1.0,0.04,0.971,0.99,0.0,0.994,0.007,0.999,0.001,1.0,0.003,0.037,0.003,0.0,0.001,0.0,0.0
+0.019,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.038,0.973,0.991,0.0,0.993,0.006,1.0,0.0,1.0,0.004,0.042,0.002,0.0,0.0,0.0,0.0
+0.016,0.0,0.0,0.0,1.0,0.999,0.0,1.0,0.045,0.979,0.989,0.001,0.996,0.006,1.0,0.0,1.0,0.001,0.053,0.001,0.001,0.0,0.0,0.001
+0.019,0.0,0.001,0.0,1.0,0.997,0.0,0.999,0.05,0.979,0.988,0.0,0.997,0.006,1.0,0.0,1.0,0.002,0.052,0.002,0.0,0.0,0.0,0.0
+0.016,0.0,0.002,0.0,1.0,0.997,0.0,0.999,0.046,0.981,0.98,0.0,0.997,0.008,1.0,0.0,1.0,0.002,0.056,0.002,0.0,0.0,0.0,0.001
+0.02,0.0,0.004,0.0,1.0,0.996,0.0,1.0,0.046,0.978,0.971,0.0,0.993,0.005,1.0,0.0,1.0,0.002,0.048,0.002,0.0,0.0,0.0,0.001
+0.02,0.0,0.005,0.0,1.0,0.999,0.0,0.999,0.045,0.971,0.973,0.0,0.991,0.003,1.0,0.0,0.999,0.001,0.044,0.003,0.001,0.0,0.0,0.0
+0.015,0.0,0.009,0.0,1.0,1.0,0.0,0.996,0.034,0.973,0.972,0.0,0.987,0.003,1.0,0.0,1.0,0.001,0.037,0.001,0.001,0.0,0.0,0.0
+0.011,0.0,0.007,0.0,0.999,1.0,0.0,0.995,0.032,0.977,0.973,0.0,0.985,0.003,1.0,0.0,1.0,0.001,0.036,0.0,0.001,0.0,0.0,0.0
+0.01,0.0,0.008,0.0,1.0,1.0,0.0,0.991,0.027,0.977,0.973,0.0,0.988,0.002,1.0,0.0,0.999,0.0,0.033,0.0,0.0,0.0,0.0,0.0
+0.012,0.0,0.012,0.001,1.0,1.0,0.0,0.991,0.029,0.976,0.973,0.0,0.991,0.0,1.0,0.0,1.0,0.0,0.032,0.0,0.001,0.0,0.0,0.0
+0.006,0.0,0.017,0.001,1.0,1.0,0.0,0.994,0.02,0.968,0.97,0.0,0.992,0.0,0.998,0.001,1.0,0.0,0.042,0.0,0.001,0.0,0.0,0.0
+0.01,0.0,0.018,0.0,1.0,1.0,0.0,0.989,0.023,0.979,0.968,0.0,0.994,0.0,0.998,0.004,1.0,0.0,0.046,0.0,0.004,0.001,0.0,0.0
+0.008,0.001,0.021,0.0,0.999,1.0,0.0,0.99,0.015,0.981,0.971,0.0,0.994,0.0,1.0,0.007,1.0,0.0,0.046,0.0,0.003,0.003,0.0,0.0
+0.004,0.0,0.025,0.0,1.0,1.0,0.001,0.989,0.01,0.982,0.975,0.0,0.993,0.0,1.0,0.014,1.0,0.0,0.053,0.0,0.006,0.003,0.0,0.0
+0.006,0.0,0.027,0.0,1.0,1.0,0.002,0.989,0.011,0.984,0.977,0.0,0.993,0.0,1.0,0.011,0.999,0.0,0.05,0.0,0.008,0.004,0.0,0.0
+0.001,0.0,0.029,0.0,1.0,1.0,0.001,0.986,0.006,0.983,0.976,0.0,0.997,0.0,1.0,0.02,1.0,0.0,0.06,0.0,0.016,0.003,0.0,0.001
+0.001,0.0,0.034,0.0,1.0,0.999,0.002,0.986,0.006,0.979,0.982,0.0,0.998,0.0,1.0,0.017,1.0,0.0,0.07,0.0,0.017,0.0,0.0,0.001
+0.003,0.0,0.036,0.0,1.0,0.996,0.002,0.981,0.012,0.979,0.982,0.0,0.999,0.0,1.0,0.018,0.999,0.0,0.057,0.0,0.016,0.0,0.0,0.0
+0.007,0.0,0.03,0.0,1.0,0.996,0.002,0.978,0.018,0.981,0.982,0.0,1.0,0.001,1.0,0.018,1.0,0.0,0.052,0.0,0.01,0.0,0.0,0.0
+0.013,0.0,0.033,0.001,1.0,0.994,0.004,0.976,0.025,0.979,0.985,0.001,1.0,0.002,1.0,0.018,1.0,0.0,0.052,0.0,0.012,0.0,0.0,0.001
+0.013,0.0,0.033,0.001,1.0,0.996,0.004,0.975,0.025,0.982,0.988,0.0,1.0,0.001,1.0,0.018,1.0,0.0,0.053,0.0,0.008,0.0,0.0,0.0
+0.015,0.0,0.029,0.001,1.0,0.994,0.001,0.971,0.028,0.986,0.988,0.0,1.0,0.001,1.0,0.02,1.0,0.0,0.044,0.0,0.007,0.0,0.0,0.0
+0.019,0.001,0.033,0.0,1.0,0.991,0.0,0.974,0.036,0.989,0.991,0.0,1.0,0.0,1.0,0.021,1.0,0.0,0.045,0.0,0.005,0.0,0.0,0.0
+0.02,0.002,0.041,0.0,0.999,0.991,0.001,0.969,0.041,0.987,0.999,0.0,1.0,0.0,1.0,0.022,1.0,0.0,0.049,0.001,0.003,0.0,0.0,0.0
+0.021,0.0,0.048,0.0,0.999,0.988,0.001,0.964,0.039,0.988,0.998,0.0,1.0,0.0,1.0,0.022,1.0,0.0,0.051,0.0,0.002,0.0,0.0,0.0
+0.027,0.0,0.068,0.0,0.998,0.993,0.001,0.975,0.046,0.988,0.998,0.0,1.0,0.0,1.0,0.019,1.0,0.0,0.056,0.0,0.001,0.0,0.0,0.0
+0.03,0.0,0.077,0.0,0.998,0.991,0.002,0.983,0.051,0.992,0.997,0.0,1.0,0.0,1.0,0.011,0.999,0.0,0.054,0.0,0.002,0.0,0.001,0.0
+0.018,0.001,0.085,0.0,0.994,0.991,0.001,0.981,0.035,0.99,0.997,0.0,0.999,0.0,1.0,0.014,1.0,0.0,0.059,0.0,0.001,0.0,0.001,0.0
+0.018,0.0,0.099,0.001,0.997,0.993,0.002,0.979,0.035,0.989,0.995,0.0,0.999,0.0,1.0,0.012,1.0,0.0,0.058,0.0,0.0,0.0,0.001,0.0
+0.021,0.0,0.096,0.002,0.997,0.994,0.001,0.979,0.035,0.983,0.993,0.0,0.999,0.0,1.0,0.015,1.0,0.0,0.043,0.0,0.0,0.0,0.0,0.001
+0.015,0.0,0.094,0.002,0.999,0.993,0.001,0.978,0.032,0.983,0.999,0.0,1.0,0.0,1.0,0.017,1.0,0.0,0.05,0.0,0.0,0.0,0.0,0.0
+0.016,0.0,0.092,0.004,0.998,0.995,0.0,0.968,0.033,0.98,0.999,0.0,1.0,0.0,1.0,0.017,1.0,0.0,0.056,0.0,0.0,0.0,0.0,0.0
+0.012,0.0,0.089,0.004,0.998,0.999,0.0,0.974,0.028,0.98,1.0,0.0,1.0,0.0,1.0,0.017,1.0,0.0,0.054,0.0,0.0,0.0,0.0,0.0
+0.012,0.001,0.106,0.006,0.998,0.999,0.0,0.98,0.028,0.988,1.0,0.0,1.0,0.0,1.0,0.01,1.0,0.0,0.055,0.0,0.0,0.0,0.0,0.0
+0.014,0.0,0.115,0.009,0.999,1.0,0.0,0.97,0.024,0.992,1.0,0.0,1.0,0.0,1.0,0.012,0.999,0.0,0.052,0.0,0.0,0.0,0.001,0.0
+0.014,0.0,0.117,0.008,0.999,1.0,0.0,0.963,0.022,0.994,1.0,0.001,1.0,0.0,1.0,0.018,1.0,0.0,0.048,0.0,0.0,0.001,0.004,0.0
+0.015,0.0,0.124,0.006,0.999,0.999,0.0,0.961,0.02,0.998,0.999,0.0,1.0,0.0,1.0,0.014,1.0,0.0,0.054,0.0,0.0,0.002,0.005,0.0
+0.009,0.0,0.136,0.008,0.998,0.998,0.0,0.969,0.014,0.999,0.999,0.0,1.0,0.0,1.0,0.01,1.0,0.0,0.051,0.002,0.0,0.004,0.004,0.0
+0.007,0.0,0.12,0.007,0.999,0.999,0.0,0.96,0.016,1.0,1.0,0.0,1.0,0.0,1.0,0.01,1.0,0.0,0.044,0.0,0.0,0.002,0.008,0.0
+0.008,0.0,0.122,0.01,1.0,0.999,0.0,0.956,0.017,1.0,1.0,0.0,1.0,0.001,1.0,0.007,1.0,0.0,0.035,0.0,0.0,0.002,0.011,0.0
+0.006,0.0,0.134,0.016,1.0,0.999,0.0,0.963,0.012,1.0,1.0,0.0,1.0,0.001,0.999,0.005,1.0,0.0,0.036,0.0,0.001,0.003,0.011,0.0
+0.006,0.0,0.151,0.015,0.999,0.999,0.0,0.966,0.01,1.0,1.0,0.0,1.0,0.001,0.997,0.003,1.0,0.0,0.029,0.0,0.001,0.001,0.014,0.0
+0.002,0.0,0.136,0.019,0.998,0.997,0.0,0.97,0.005,1.0,1.0,0.0,1.0,0.006,0.997,0.001,1.0,0.0,0.03,0.0,0.001,0.001,0.019,0.0
+0.006,0.0,0.123,0.023,0.999,0.997,0.0,0.98,0.011,1.0,1.0,0.0,0.999,0.007,0.998,0.0,1.0,0.0,0.032,0.0,0.001,0.001,0.022,0.0
+0.002,0.0,0.113,0.017,0.999,0.996,0.0,0.98,0.004,1.0,0.999,0.0,0.999,0.01,0.996,0.0,1.0,0.0,0.039,0.0,0.004,0.0,0.02,0.0
+0.003,0.0,0.114,0.025,0.999,0.997,0.001,0.972,0.005,1.0,0.998,0.0,0.999,0.011,0.997,0.0,1.0,0.0,0.048,0.0,0.005,0.0,0.019,0.001
+0.004,0.001,0.135,0.033,1.0,0.997,0.005,0.972,0.006,1.0,0.998,0.0,1.0,0.015,0.998,0.0,1.0,0.0,0.045,0.0,0.006,0.0,0.015,0.003
+0.005,0.001,0.126,0.025,1.0,0.999,0.005,0.976,0.008,1.0,0.998,0.001,1.0,0.009,1.0,0.0,1.0,0.0,0.041,0.0,0.006,0.0,0.017,0.003
+0.004,0.003,0.153,0.024,1.0,0.999,0.005,0.977,0.009,1.0,0.999,0.002,1.0,0.006,1.0,0.0,1.0,0.0,0.036,0.0,0.005,0.001,0.014,0.002
+0.001,0.003,0.162,0.029,1.0,1.0,0.009,0.978,0.008,0.999,1.0,0.002,1.0,0.004,1.0,0.0,1.0,0.0,0.031,0.0,0.005,0.002,0.017,0.001
+0.002,0.003,0.176,0.03,1.0,1.0,0.006,0.978,0.008,0.999,1.0,0.003,1.0,0.007,1.0,0.0,1.0,0.0,0.029,0.0,0.003,0.0,0.02,0.001
+0.002,0.002,0.192,0.035,1.0,1.0,0.008,0.972,0.008,1.0,1.0,0.004,1.0,0.01,1.0,0.0,1.0,0.0,0.03,0.0,0.003,0.002,0.025,0.0
+0.0,0.0,0.185,0.031,1.0,1.0,0.007,0.976,0.003,1.0,1.0,0.004,1.0,0.011,1.0,0.0,1.0,0.0,0.037,0.001,0.001,0.003,0.028,0.0
+0.0,0.0,0.171,0.036,1.0,1.0,0.008,0.971,0.003,1.0,1.0,0.003,1.0,0.012,1.0,0.0,1.0,0.0,0.038,0.0,0.002,0.005,0.03,0.0
+0.0,0.001,0.157,0.043,1.0,1.0,0.004,0.972,0.006,1.0,1.0,0.002,0.999,0.011,1.0,0.0,1.0,0.0,0.03,0.0,0.003,0.006,0.036,0.0
+0.0,0.001,0.165,0.04,1.0,1.0,0.005,0.978,0.008,0.999,1.0,0.004,1.0,0.011,1.0,0.0,0.999,0.0,0.032,0.0,0.003,0.01,0.03,0.0
+0.001,0.001,0.16,0.042,1.0,1.0,0.004,0.981,0.007,0.998,1.0,0.002,1.0,0.022,1.0,0.0,0.998,0.0,0.034,0.0,0.003,0.008,0.028,0.0
+0.003,0.002,0.181,0.039,1.0,1.0,0.003,0.988,0.009,0.997,1.0,0.003,1.0,0.014,1.0,0.001,0.998,0.0,0.027,0.0,0.005,0.008,0.03,0.0
+0.004,0.002,0.198,0.046,1.0,1.0,0.003,0.989,0.008,0.996,1.0,0.006,1.0,0.01,1.0,0.002,0.998,0.0,0.018,0.0,0.005,0.01,0.031,0.0
+0.001,0.002,0.219,0.048,1.0,1.0,0.001,0.984,0.007,0.999,1.0,0.005,1.0,0.013,1.0,0.001,0.998,0.0,0.012,0.0,0.003,0.008,0.029,0.0
+0.003,0.002,0.207,0.05,1.0,1.0,0.0,0.992,0.014,1.0,1.0,0.004,1.0,0.003,1.0,0.002,0.998,0.0,0.01,0.0,0.003,0.009,0.023,0.0
+0.0,0.002,0.23,0.049,1.0,0.999,0.0,0.995,0.017,1.0,1.0,0.003,1.0,0.003,1.0,0.003,0.998,0.0,0.006,0.0,0.004,0.006,0.02,0.0
+0.001,0.002,0.269,0.051,1.0,1.0,0.0,0.994,0.014,1.0,1.0,0.002,1.0,0.003,1.0,0.004,0.998,0.001,0.006,0.0,0.002,0.003,0.016,0.0
+0.0,0.002,0.264,0.052,1.0,1.0,0.0,0.995,0.013,1.0,1.0,0.003,1.0,0.003,1.0,0.003,0.998,0.002,0.002,0.0,0.004,0.002,0.014,0.0
+0.0,0.002,0.265,0.053,1.0,1.0,0.0,0.992,0.015,1.0,0.999,0.004,1.0,0.001,1.0,0.003,0.999,0.002,0.003,0.0,0.006,0.002,0.015,0.001
+0.0,0.0,0.269,0.053,1.0,1.0,0.0,0.995,0.018,1.0,0.998,0.005,1.0,0.001,1.0,0.003,1.0,0.002,0.001,0.0,0.008,0.001,0.013,0.0
+0.001,0.0,0.256,0.05,1.0,1.0,0.0,0.995,0.019,1.0,0.998,0.003,1.0,0.002,1.0,0.004,1.0,0.003,0.002,0.0,0.009,0.001,0.017,0.0
+0.001,0.0,0.268,0.057,1.0,1.0,0.0,0.996,0.02,1.0,0.997,0.004,1.0,0.0,1.0,0.009,1.0,0.002,0.001,0.001,0.005,0.001,0.014,0.0
+0.001,0.0,0.27,0.06,1.0,1.0,0.0,0.995,0.017,1.0,0.996,0.005,1.0,0.0,1.0,0.004,1.0,0.002,0.0,0.001,0.005,0.002,0.015,0.0
+0.0,0.001,0.269,0.06,0.999,1.0,0.0,0.998,0.021,1.0,0.995,0.006,1.0,0.0,1.0,0.005,0.999,0.003,0.0,0.0,0.009,0.003,0.015,0.0
+0.0,0.0,0.26,0.059,1.0,1.0,0.0,0.998,0.013,1.0,0.994,0.007,1.0,0.0,1.0,0.004,1.0,0.002,0.0,0.0,0.008,0.001,0.012,0.0
+0.0,0.0,0.239,0.055,1.0,1.0,0.0,0.998,0.005,1.0,0.994,0.003,1.0,0.0,1.0,0.003,1.0,0.002,0.0,0.0,0.004,0.001,0.011,0.0
+0.0,0.0,0.25,0.061,1.0,1.0,0.0,0.998,0.006,1.0,0.999,0.002,1.0,0.0,1.0,0.001,1.0,0.0,0.0,0.001,0.005,0.003,0.006,0.001
+0.0,0.0,0.264,0.066,1.0,1.0,0.0,0.997,0.006,1.0,0.997,0.002,1.0,0.001,1.0,0.003,0.999,0.0,0.0,0.002,0.003,0.002,0.007,0.003
+0.0,0.0,0.274,0.059,1.0,1.0,0.001,0.998,0.009,1.0,0.997,0.003,1.0,0.001,1.0,0.003,0.999,0.0,0.001,0.002,0.001,0.0,0.005,0.001
+0.0,0.0,0.267,0.06,1.0,1.0,0.0,0.999,0.016,1.0,0.998,0.006,0.999,0.002,1.0,0.003,0.998,0.0,0.005,0.001,0.001,0.0,0.004,0.002
+0.0,0.0,0.265,0.068,1.0,1.0,0.0,1.0,0.012,1.0,0.998,0.006,0.998,0.004,1.0,0.003,0.997,0.0,0.006,0.001,0.001,0.0,0.004,0.002
+0.0,0.0,0.291,0.082,1.0,1.0,0.0,1.0,0.014,1.0,0.996,0.007,0.997,0.004,1.0,0.003,0.997,0.0,0.009,0.002,0.0,0.0,0.003,0.005
+0.0,0.0,0.294,0.078,1.0,1.0,0.0,0.999,0.014,1.0,0.996,0.005,0.999,0.003,1.0,0.005,0.994,0.0,0.01,0.001,0.0,0.0,0.003,0.012
+0.0,0.0,0.295,0.077,1.0,0.999,0.0,0.999,0.015,1.0,0.996,0.004,0.998,0.004,1.0,0.008,0.997,0.0,0.005,0.0,0.0,0.0,0.001,0.013
+0.0,0.0,0.326,0.079,1.0,1.0,0.0,0.999,0.011,1.0,0.992,0.002,1.0,0.002,1.0,0.007,0.995,0.0,0.005,0.0,0.0,0.0,0.0,0.019
+0.0,0.0,0.35,0.077,1.0,1.0,0.0,0.998,0.011,1.0,0.994,0.001,1.0,0.002,1.0,0.005,0.995,0.0,0.009,0.0,0.0,0.0,0.0,0.021
+0.0,0.0,0.361,0.092,1.0,1.0,0.0,0.999,0.018,1.0,0.992,0.003,1.0,0.003,1.0,0.001,0.994,0.0,0.01,0.0,0.0,0.0,0.001,0.02
+0.0,0.0,0.385,0.095,1.0,1.0,0.0,0.998,0.018,1.0,0.991,0.004,1.0,0.003,0.999,0.001,0.995,0.0,0.01,0.0,0.0,0.0,0.001,0.026
+0.0,0.0,0.41,0.103,1.0,1.0,0.0,0.998,0.021,1.0,0.993,0.003,0.998,0.003,0.999,0.003,0.997,0.0,0.011,0.0,0.0,0.0,0.001,0.03
+0.0,0.0,0.44,0.108,1.0,0.999,0.0,0.999,0.02,1.0,0.992,0.001,0.998,0.001,1.0,0.002,0.998,0.0,0.016,0.0,0.0,0.0,0.001,0.026
+0.0,0.001,0.449,0.092,1.0,0.999,0.0,1.0,0.013,1.0,0.995,0.002,0.998,0.0,1.0,0.003,0.998,0.0,0.017,0.0,0.0,0.0,0.0,0.029
+0.0,0.002,0.438,0.108,1.0,0.999,0.0,1.0,0.008,1.0,0.997,0.004,0.997,0.0,1.0,0.003,0.998,0.0,0.013,0.0,0.0,0.0,0.0,0.03
+0.0,0.002,0.473,0.101,0.999,0.998,0.0,0.999,0.009,1.0,0.994,0.006,0.999,0.0,1.0,0.003,0.993,0.0,0.017,0.0,0.0,0.0,0.0,0.021
+0.0,0.003,0.493,0.105,0.998,0.997,0.0,1.0,0.008,1.0,0.992,0.005,0.998,0.0,1.0,0.003,0.989,0.0,0.01,0.001,0.0,0.0,0.001,0.024
+0.0,0.01,0.523,0.105,0.996,0.997,0.0,1.0,0.006,1.0,0.993,0.004,0.998,0.0,1.0,0.004,0.986,0.0,0.013,0.003,0.0,0.0,0.003,0.023
+0.0,0.013,0.529,0.098,0.995,0.996,0.0,1.0,0.005,1.0,0.992,0.003,0.997,0.0,1.0,0.001,0.984,0.0,0.018,0.002,0.0,0.001,0.004,0.019
+0.0,0.009,0.527,0.077,0.995,0.995,0.0,0.999,0.001,1.0,0.992,0.003,0.998,0.0,1.0,0.002,0.981,0.0,0.029,0.002,0.0,0.002,0.002,0.023
+0.0,0.006,0.53,0.087,0.993,0.993,0.0,0.999,0.002,1.0,0.995,0.003,1.0,0.001,1.0,0.002,0.983,0.0,0.029,0.005,0.001,0.002,0.0,0.026
+0.0,0.004,0.539,0.094,0.994,0.994,0.0,1.0,0.001,1.0,0.996,0.001,1.0,0.001,1.0,0.002,0.982,0.0,0.033,0.009,0.002,0.002,0.0,0.027
+0.0,0.005,0.548,0.094,0.991,0.992,0.0,1.0,0.001,1.0,0.994,0.002,1.0,0.002,1.0,0.004,0.982,0.0,0.042,0.005,0.002,0.001,0.0,0.035
+0.0,0.007,0.526,0.094,0.99,0.992,0.0,1.0,0.003,1.0,0.991,0.0,1.0,0.001,1.0,0.006,0.977,0.0,0.047,0.004,0.001,0.002,0.0,0.032
+0.0,0.01,0.536,0.091,0.988,0.995,0.0,0.999,0.002,0.999,0.991,0.0,1.0,0.003,1.0,0.006,0.974,0.0,0.041,0.003,0.0,0.002,0.0,0.032
+0.0,0.018,0.513,0.079,0.986,0.995,0.0,0.998,0.002,1.0,0.996,0.0,1.0,0.001,1.0,0.007,0.965,0.0,0.038,0.003,0.0,0.003,0.0,0.034
+0.0,0.02,0.529,0.085,0.99,0.994,0.0,0.994,0.001,1.0,0.997,0.0,1.0,0.001,1.0,0.006,0.966,0.0,0.042,0.001,0.0,0.003,0.0,0.034
+0.001,0.018,0.504,0.11,0.989,0.992,0.0,0.995,0.003,1.0,0.997,0.0,1.0,0.001,1.0,0.005,0.972,0.0,0.04,0.001,0.0,0.002,0.0,0.035
+0.0,0.009,0.505,0.114,0.995,0.993,0.0,0.996,0.006,1.0,0.999,0.001,1.0,0.0,1.0,0.002,0.97,0.002,0.051,0.0,0.0,0.002,0.0,0.042
+0.0,0.008,0.502,0.105,0.996,0.989,0.0,0.995,0.006,1.0,0.999,0.0,1.0,0.0,1.0,0.003,0.974,0.002,0.053,0.0,0.001,0.004,0.0,0.044
+0.0,0.013,0.488,0.117,0.998,0.989,0.001,0.993,0.008,1.0,1.0,0.0,1.0,0.0,1.0,0.002,0.975,0.001,0.054,0.0,0.001,0.002,0.0,0.049
+0.0,0.008,0.487,0.131,0.999,0.985,0.001,0.995,0.008,1.0,1.0,0.001,1.0,0.0,1.0,0.0,0.972,0.0,0.06,0.001,0.002,0.002,0.0,0.056
+0.0,0.005,0.491,0.148,1.0,0.988,0.003,0.996,0.011,1.0,1.0,0.001,1.0,0.0,1.0,0.0,0.974,0.0,0.065,0.003,0.001,0.002,0.001,0.057
+0.0,0.006,0.502,0.136,1.0,0.979,0.003,0.997,0.014,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.975,0.001,0.075,0.002,0.001,0.001,0.0,0.055
+0.0,0.006,0.513,0.142,1.0,0.974,0.0,0.999,0.015,1.0,1.0,0.001,0.999,0.0,1.0,0.0,0.98,0.001,0.074,0.002,0.001,0.001,0.002,0.056
+0.0,0.006,0.563,0.137,1.0,0.974,0.0,1.0,0.015,1.0,1.0,0.002,0.998,0.0,0.999,0.0,0.967,0.001,0.063,0.002,0.002,0.0,0.001,0.045
+0.0,0.005,0.575,0.143,1.0,0.972,0.001,1.0,0.022,1.0,1.0,0.002,1.0,0.0,1.0,0.0,0.969,0.002,0.067,0.003,0.002,0.0,0.0,0.046
+0.0,0.004,0.58,0.136,1.0,0.972,0.0,1.0,0.025,1.0,1.0,0.001,1.0,0.0,1.0,0.0,0.972,0.002,0.071,0.003,0.001,0.0,0.0,0.045
+0.0,0.007,0.571,0.15,1.0,0.977,0.0,1.0,0.024,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.972,0.003,0.075,0.004,0.0,0.0,0.0,0.047
+0.0,0.011,0.593,0.144,1.0,0.976,0.0,1.0,0.024,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.972,0.0,0.074,0.004,0.0,0.0,0.001,0.046
+0.0,0.014,0.6,0.146,1.0,0.984,0.0,1.0,0.021,0.999,1.0,0.0,1.0,0.0,1.0,0.0,0.966,0.001,0.069,0.005,0.0,0.0,0.001,0.051
+0.0,0.014,0.629,0.131,1.0,0.983,0.0,1.0,0.02,0.999,1.0,0.0,1.0,0.0,1.0,0.0,0.968,0.0,0.069,0.006,0.001,0.0,0.002,0.056
+0.0,0.016,0.635,0.116,1.0,0.982,0.0,1.0,0.018,1.0,1.0,0.0,1.0,0.0,1.0,0.001,0.969,0.0,0.079,0.005,0.002,0.0,0.0,0.048
+0.0,0.017,0.647,0.108,1.0,0.982,0.002,1.0,0.016,1.0,1.0,0.0,1.0,0.0,1.0,0.001,0.966,0.0,0.085,0.007,0.001,0.0,0.0,0.046
+0.0,0.015,0.645,0.12,1.0,0.988,0.002,1.0,0.011,1.0,1.0,0.0,1.0,0.0,1.0,0.0,0.962,0.0,0.089,0.008,0.0,0.0,0.0,0.046
+0.0,0.017,0.651,0.122,1.0,0.989,0.007,1.0,0.009,1.0,1.0,0.0,1.0,0.0,0.999,0.0,0.963,0.0,0.087,0.007,0.0,0.0,0.0,0.04
+0.0,0.014,0.662,0.117,1.0,0.992,0.006,1.0,0.007,1.0,1.0,0.0,1.0,0.0,0.998,0.001,0.965,0.0,0.088,0.006,0.0,0.0,0.0,0.043
+0.0,0.01,0.683,0.119,1.0,0.991,0.003,1.0,0.003,1.0,0.999,0.0,1.0,0.001,0.998,0.0,0.966,0.0,0.083,0.003,0.0,0.0,0.001,0.042
+0.0,0.011,0.699,0.117,1.0,0.993,0.006,1.0,0.004,1.0,1.0,0.0,1.0,0.001,0.999,0.0,0.97,0.001,0.085,0.007,0.0,0.0,0.001,0.031
+0.0,0.012,0.692,0.117,1.0,0.993,0.004,1.0,0.002,1.0,1.0,0.0,0.999,0.004,0.997,0.0,0.97,0.001,0.084,0.008,0.0,0.0,0.001,0.037
+0.0,0.012,0.696,0.114,1.0,0.994,0.002,1.0,0.002,1.0,1.0,0.0,1.0,0.002,0.997,0.0,0.974,0.0,0.085,0.009,0.0,0.0,0.0,0.043
+0.0,0.013,0.693,0.113,1.0,0.994,0.002,1.0,0.005,1.0,1.0,0.0,1.0,0.002,0.993,0.0,0.974,0.0,0.088,0.012,0.0,0.0,0.0,0.042
+0.0,0.011,0.709,0.112,1.0,0.998,0.002,1.0,0.002,1.0,1.0,0.0,1.0,0.004,0.993,0.0,0.974,0.0,0.074,0.013,0.0,0.0,0.0,0.034
+0.0,0.007,0.697,0.117,1.0,0.997,0.004,1.0,0.003,1.0,1.0,0.0,1.0,0.002,0.996,0.001,0.978,0.0,0.067,0.014,0.0,0.0,0.0,0.045
+0.0,0.015,0.723,0.116,1.0,0.998,0.005,1.0,0.002,1.0,1.0,0.001,1.0,0.001,0.995,0.0,0.981,0.0,0.062,0.011,0.0,0.0,0.0,0.047
+0.0,0.016,0.731,0.129,1.0,0.994,0.009,0.999,0.006,1.0,1.0,0.001,1.0,0.002,0.997,0.0,0.981,0.0,0.072,0.013,0.0,0.001,0.0,0.031
+0.0,0.014,0.745,0.13,1.0,0.993,0.009,0.998,0.007,1.0,1.0,0.0,1.0,0.002,0.994,0.0,0.973,0.0,0.064,0.011,0.0,0.001,0.0,0.03
+0.0,0.019,0.768,0.136,1.0,0.991,0.005,0.998,0.009,1.0,1.0,0.0,1.0,0.001,0.998,0.0,0.974,0.0,0.076,0.011,0.0,0.001,0.0,0.026
+0.0,0.026,0.786,0.114,1.0,0.992,0.004,0.997,0.008,1.0,1.0,0.0,0.999,0.001,0.996,0.0,0.97,0.0,0.069,0.009,0.001,0.002,0.0,0.023
+0.0,0.024,0.798,0.111,1.0,0.99,0.004,0.997,0.01,1.0,1.0,0.0,0.999,0.004,0.997,0.0,0.972,0.0,0.074,0.009,0.001,0.002,0.0,0.016
+0.0,0.028,0.823,0.09,1.0,0.993,0.002,0.997,0.007,0.999,1.0,0.0,0.999,0.007,0.996,0.0,0.973,0.001,0.074,0.009,0.0,0.002,0.0,0.015
+0.0,0.028,0.826,0.081,1.0,0.993,0.001,0.996,0.007,0.998,1.0,0.0,0.997,0.007,0.996,0.0,0.969,0.0,0.085,0.015,0.002,0.002,0.0,0.015
+0.0,0.034,0.814,0.088,1.0,0.997,0.003,0.997,0.003,0.997,1.0,0.0,0.997,0.01,0.995,0.0,0.969,0.0,0.064,0.014,0.002,0.0,0.0,0.014
+0.0,0.029,0.837,0.086,0.999,0.995,0.002,0.996,0.005,0.998,1.0,0.0,0.997,0.006,0.994,0.0,0.962,0.0,0.061,0.009,0.002,0.0,0.0,0.005
+0.0,0.034,0.843,0.08,0.997,0.994,0.001,0.997,0.006,0.998,1.0,0.0,0.998,0.01,0.994,0.0,0.968,0.0,0.059,0.013,0.002,0.0,0.0,0.008
+0.0,0.028,0.84,0.089,0.997,0.992,0.001,0.997,0.009,0.997,1.0,0.0,0.995,0.007,0.996,0.0,0.965,0.0,0.069,0.012,0.003,0.0,0.0,0.008
+0.0,0.023,0.858,0.082,0.998,0.989,0.0,0.996,0.012,0.997,0.999,0.0,0.996,0.006,0.997,0.0,0.964,0.0,0.072,0.007,0.004,0.0,0.001,0.008
+0.0,0.026,0.856,0.089,0.999,0.989,0.0,0.995,0.012,1.0,1.0,0.0,0.996,0.004,0.998,0.0,0.959,0.0,0.059,0.006,0.005,0.0,0.002,0.011
+0.0,0.031,0.868,0.078,1.0,0.991,0.0,0.993,0.009,1.0,1.0,0.0,0.998,0.003,0.997,0.0,0.972,0.0,0.062,0.005,0.002,0.0,0.002,0.016
+0.0,0.026,0.888,0.067,1.0,0.992,0.001,0.997,0.009,1.0,1.0,0.0,0.995,0.0,0.997,0.0,0.968,0.0,0.065,0.002,0.001,0.0,0.003,0.016
+0.0,0.025,0.884,0.072,1.0,0.996,0.002,0.996,0.005,1.0,1.0,0.0,0.994,0.0,0.996,0.0,0.968,0.001,0.073,0.002,0.001,0.0,0.002,0.016
+0.0,0.033,0.882,0.078,1.0,0.996,0.003,0.997,0.005,0.999,1.0,0.0,0.994,0.0,0.991,0.0,0.968,0.0,0.078,0.002,0.002,0.0,0.003,0.015
+0.0,0.04,0.872,0.092,1.0,0.996,0.006,0.996,0.003,1.0,1.0,0.0,0.992,0.0,0.993,0.001,0.963,0.0,0.073,0.003,0.001,0.0,0.001,0.013
+0.0,0.045,0.866,0.106,1.0,0.998,0.014,0.997,0.0,1.0,1.0,0.0,0.988,0.0,0.993,0.002,0.966,0.0,0.071,0.001,0.0,0.0,0.002,0.012
+0.001,0.057,0.859,0.113,1.0,0.998,0.015,0.998,0.0,1.0,0.999,0.001,0.986,0.0,0.993,0.003,0.962,0.0,0.071,0.0,0.0,0.0,0.002,0.012
+0.001,0.063,0.857,0.102,1.0,1.0,0.009,0.996,0.0,1.0,0.999,0.001,0.981,0.0,0.991,0.002,0.964,0.0,0.074,0.0,0.001,0.0,0.004,0.021
+0.0,0.055,0.853,0.107,1.0,1.0,0.012,0.996,0.0,1.0,1.0,0.001,0.967,0.0,0.99,0.002,0.961,0.0,0.076,0.0,0.001,0.0,0.008,0.022
+0.0,0.059,0.847,0.106,1.0,1.0,0.016,0.999,0.0,1.0,0.999,0.0,0.969,0.001,0.996,0.003,0.956,0.001,0.081,0.0,0.001,0.0,0.003,0.03
+0.0,0.064,0.842,0.122,1.0,1.0,0.02,0.998,0.002,0.999,0.997,0.0,0.965,0.002,0.993,0.003,0.96,0.002,0.047,0.0,0.002,0.0,0.004,0.018
+0.0,0.077,0.839,0.123,1.0,1.0,0.016,0.999,0.001,0.999,0.996,0.0,0.964,0.004,0.991,0.004,0.963,0.004,0.051,0.0,0.0,0.0,0.005,0.019
+0.0,0.073,0.832,0.134,1.0,1.0,0.015,1.0,0.001,0.998,0.993,0.0,0.953,0.006,0.993,0.008,0.951,0.005,0.068,0.0,0.0,0.0,0.006,0.017
+0.0,0.083,0.828,0.133,1.0,1.0,0.011,1.0,0.0,0.999,0.994,0.0,0.943,0.009,0.993,0.007,0.953,0.007,0.056,0.0,0.0,0.0,0.007,0.019
+0.0,0.095,0.836,0.131,1.0,1.0,0.01,1.0,0.0,0.999,0.994,0.0,0.938,0.011,0.995,0.008,0.948,0.014,0.058,0.0,0.0,0.0,0.014,0.018
+0.0,0.12,0.846,0.124,1.0,1.0,0.008,1.0,0.0,0.998,0.993,0.0,0.94,0.009,0.998,0.011,0.948,0.013,0.057,0.0,0.0,0.0,0.013,0.017
+0.0,0.145,0.862,0.117,1.0,1.0,0.012,1.0,0.0,0.997,0.995,0.0,0.939,0.005,0.999,0.01,0.963,0.014,0.055,0.0,0.0,0.001,0.014,0.015
+0.0,0.146,0.877,0.105,1.0,1.0,0.011,1.0,0.0,0.998,0.995,0.0,0.945,0.003,0.999,0.016,0.961,0.013,0.059,0.001,0.0,0.001,0.013,0.013
+0.0,0.155,0.876,0.102,1.0,0.999,0.009,1.0,0.0,0.999,0.992,0.001,0.934,0.004,1.0,0.017,0.956,0.012,0.052,0.002,0.0,0.001,0.012,0.016
+0.001,0.155,0.876,0.101,1.0,0.998,0.007,1.0,0.0,0.999,0.992,0.0,0.932,0.005,1.0,0.011,0.965,0.016,0.054,0.0,0.001,0.001,0.015,0.02
+0.003,0.172,0.875,0.105,1.0,0.999,0.007,1.0,0.0,1.0,0.996,0.0,0.926,0.007,1.0,0.016,0.966,0.023,0.054,0.0,0.001,0.003,0.02,0.015
+0.001,0.173,0.878,0.104,1.0,1.0,0.004,1.0,0.0,1.0,0.994,0.0,0.917,0.005,1.0,0.019,0.955,0.017,0.041,0.0,0.002,0.002,0.018,0.016
