@@ -1,12 +1,12 @@
 """
-Proper Toggle Algebra Implementation for UBP
+Toggle Algebra Implementation for UBP
 
-This module implements the toggle algebra operations based on the UBP theoretical
+This module implements the toggle algebra operations based on the UBP
 framework, including realm-specific resonances, coherence calculations, and
 physics-based interactions.
 
-Author: Manus AI
-Date: September 23, 2025
+Author: Euan Craig, New Zealand
+Date: 8 October 2025
 """
 
 import numpy as np
@@ -18,22 +18,9 @@ class ToggleAlgebra:
     """
     
     def __init__(self):
-        # Core Resonance Values (CRVs) from UBP specification
-        self.CRVs = {
-            'quantum': const.CRV_QUANTUM[1],      # 4.58e14 Hz (655 nm)
-            'electromagnetic': const.CRV_ELECTROMAGNETIC[1],  # π Hz (635 nm)
-            'gravitational': const.CRV_GRAVITATIONAL[1],      # 100 Hz (1000 nm)
-            'biological': const.CRV_BIOLOGICAL[1],            # 10 Hz (700 nm)
-            'cosmological': const.CRV_COSMOLOGICAL[1],        # 1e-11 Hz (800 nm)
-            'nuclear': const.CRV_NUCLEAR[1],      # 1e16-1e20 Hz
-            'optical': const.CRV_OPTICAL[1]       # 5e14 Hz (600 nm)
-        }
+        # Core Resonance Values (CRVs) from UBP specification (import from system_constants)
         
-        # Toggle biases from UBP specification
-        self.toggle_biases = {
-            'quantum': const.TOGGLE_BIAS_QUANTUM,      # e/12 ≈ 0.2265234857
-            'cosmological': const.TOGGLE_BIAS_COSMOLOGICAL  # π^φ ≈ 0.83203682
-        }
+        # Toggle biases from UBP specification (import from system_constants)
         
         # Coherent Synchronization Cycle period
         self.csc_period = const.CSC_BASE_PERIOD  # 1/π ≈ 0.318309886 s
