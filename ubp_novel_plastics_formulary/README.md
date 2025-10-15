@@ -6,7 +6,8 @@
 **Email:** info@digitaleuan.com  
 **Date:** October 14, 2025  
 **Framework:** Universal Binary Principle (UBP) v3.2+  
-**Repository:** https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_novel_plastics_formulary
+**Repository:** https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_novel_plastics_formulary  
+**Documentation:** https://github.com/DigitalEuan/UBP_Repo/blob/main/44_Computational_Discovery_of_High_Performance_Polymer_Materials_Using_the_Universal_Binary_Principle.pdf
 
 ---
 
