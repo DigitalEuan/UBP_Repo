@@ -1,0 +1,208 @@
+{
+  "candidate_info": {
+    "composition": {
+      "C": 86.21547256117128,
+      "H": 11.993622229885485,
+      "N": 0.3283684660474639,
+      "Si": 0.26685025698264103,
+      "F": 0.3616463859993551,
+      "Cl": 0.4797505943231656,
+      "O": 0.354289505590607
+    },
+    "properties": {
+      "tensile_strength": 461.0773628058564,
+      "hardness": 922.1547256117128,
+      "ductility": 79.96811114942743,
+      "glass_transition_temp": 80.0,
+      "melting_point": 180.0
+    },
+    "ubp_metrics": {
+      "elemental_coherence": 0.8228839171543052,
+      "structure_coherence": 0.6,
+      "overall_coherence": 0.7114419585771525,
+      "composition_balance": 0.9999999999999999,
+      "processing_compatibility": 0.8
+    },
+    "structure": "PolymerStructure.AMORPHOUS",
+    "processing": "injection_molding",
+    "confidence": 0.7114419585771524,
+    "optimization_score": 0.830385284061842,
+    "generation": 200
+  },
+  "empirical_formula": "C755H1252ClF2N2O2Si",
+  "proxy_smiles": "CC(Cl)C",
+  "structure_description": "Chlorinated polypropylene-like structure",
+  "molecular_properties": {
+    "molecular_weight": 78.542,
+    "logP": 1.6336000000000002,
+    "tpsa": 0.0,
+    "h_bond_donors": 0,
+    "h_bond_acceptors": 0,
+    "rotatable_bonds": 0,
+    "aromatic_rings": 0
+  },
+  "synthesis_recipe": {
+    "synthesis_method": "Ziegler-Natta Catalyzed Polymerization",
+    "batch_size": "100g polymer (theoretical yield)",
+    "reagents": [
+      {
+        "name": "Propylene",
+        "formula": "C3H6",
+        "mass": 85.0,
+        "role": "Primary monomer"
+      },
+      {
+        "name": "3-Chloro-1-propene (Allyl chloride)",
+        "formula": "C3H5Cl",
+        "mass": 1.199376485807914,
+        "role": "Chlorinated comonomer"
+      },
+      {
+        "name": "Vinylidene fluoride",
+        "formula": "C2H2F2",
+        "mass": 0.9041159649983878,
+        "role": "Fluorinated comonomer"
+      },
+      {
+        "name": "Maleic anhydride",
+        "formula": "C4H2O3",
+        "mass": 1.062868516771821,
+        "role": "Oxygen-containing comonomer (grafting agent)"
+      },
+      {
+        "name": "Acrylonitrile",
+        "formula": "C3H3N",
+        "mass": 0.9851053981423916,
+        "role": "Nitrogen-containing comonomer"
+      },
+      {
+        "name": "Vinyltrimethoxysilane",
+        "formula": "C5H12O3Si",
+        "mass": 0.5337005139652821,
+        "role": "Silane coupling agent"
+      },
+      {
+        "name": "Titanium tetrachloride (TiCl4)",
+        "formula": "TiCl4",
+        "mass": 0.5,
+        "role": "Ziegler-Natta catalyst component"
+      },
+      {
+        "name": "Triethylaluminum (TEA)",
+        "formula": "Al(C2H5)3",
+        "mass": 0.3,
+        "role": "Cocatalyst"
+      },
+      {
+        "name": "Hexane",
+        "formula": "C6H14",
+        "mass": 200.0,
+        "role": "Solvent (anhydrous)"
+      }
+    ],
+    "synthesis_steps": [
+      {
+        "number": 1,
+        "title": "Catalyst Preparation",
+        "description": "In a glove box under inert atmosphere (nitrogen or argon), prepare the Ziegler-Natta catalyst system by combining TiCl4 and TEA in anhydrous hexane. Stir for 30 minutes at room temperature to activate the catalyst.",
+        "conditions": "Inert atmosphere, room temperature, 30 min",
+        "equipment": "Glove box, magnetic stirrer"
+      },
+      {
+        "number": 2,
+        "title": "Reactor Setup",
+        "description": "Transfer the catalyst solution to a 1L stainless steel autoclave reactor. Purge the reactor with nitrogen three times to remove all oxygen and moisture.",
+        "conditions": "Nitrogen atmosphere, room temperature",
+        "equipment": "1L autoclave reactor with pressure gauge and temperature control"
+      },
+      {
+        "number": 3,
+        "title": "Monomer Addition and Polymerization",
+        "description": "Cool the reactor to 0\u00b0C. Add the monomer mixture (propylene and comonomers) slowly through a pressure-regulated feed line. Heat the reactor to 60-70\u00b0C and maintain pressure at 5-10 bar. Allow polymerization to proceed for 4-6 hours with continuous stirring (300 rpm).",
+        "conditions": "60-70\u00b0C, 5-10 bar, 4-6 hours, 300 rpm stirring",
+        "equipment": "Autoclave with temperature and pressure control, overhead stirrer"
+      },
+      {
+        "number": 4,
+        "title": "Quenching and Precipitation",
+        "description": "After polymerization is complete, cool the reactor to room temperature and carefully vent excess pressure. Add 500 mL of acidified methanol (1% HCl) to quench the catalyst and precipitate the polymer. Stir for 1 hour.",
+        "conditions": "Room temperature, 1 hour",
+        "equipment": "Fume hood, large beaker"
+      },
+      {
+        "number": 5,
+        "title": "Purification",
+        "description": "Filter the precipitated polymer through a Buchner funnel. Wash thoroughly with methanol (3 \u00d7 200 mL) to remove catalyst residues, then with deionized water (2 \u00d7 200 mL). Dry the polymer in a vacuum oven at 60\u00b0C for 24 hours.",
+        "conditions": "60\u00b0C, vacuum, 24 hours",
+        "equipment": "Buchner funnel, vacuum oven"
+      },
+      {
+        "number": 6,
+        "title": "Post-Processing (Optional)",
+        "description": "For improved properties, the dried polymer can be melt-blended with stabilizers and antioxidants using a twin-screw extruder at 180-200\u00b0C. Pelletize the extrudate for injection molding.",
+        "conditions": "180-200\u00b0C, twin-screw extruder",
+        "equipment": "Twin-screw extruder, pelletizer"
+      }
+    ],
+    "safety_notes": [
+      "All polymerization reactions must be conducted in a well-ventilated fume hood.",
+      "Organometallic catalysts (TiCl4, TEA) are highly reactive with moisture and oxygen. Handle only in inert atmosphere.",
+      "Monomers are flammable and may be toxic. Use appropriate PPE (gloves, safety glasses, lab coat).",
+      "High-pressure reactors require proper training and safety protocols.",
+      "Dispose of all chemical waste according to institutional guidelines."
+    ]
+  },
+  "verification_protocol": [
+    {
+      "technique": "Fourier Transform Infrared Spectroscopy (FTIR)",
+      "purpose": "Confirm functional groups and chemical structure",
+      "expected_peaks": [
+        "2950-2850 cm\u207b\u00b9: C-H stretching (alkyl)",
+        "1460-1370 cm\u207b\u00b9: C-H bending",
+        "1730 cm\u207b\u00b9: C=O stretching (if O present)",
+        "1650 cm\u207b\u00b9: C=C stretching (if unsaturation present)",
+        "750-650 cm\u207b\u00b9: C-Cl stretching (if Cl present)",
+        "1100-1000 cm\u207b\u00b9: C-F stretching (if F present)"
+      ],
+      "acceptance_criteria": "Spectrum matches expected functional groups based on composition"
+    },
+    {
+      "technique": "Nuclear Magnetic Resonance (NMR) Spectroscopy",
+      "purpose": "Determine polymer microstructure and comonomer incorporation",
+      "method": "\u00b9H NMR and \u00b9\u00b3C NMR in CDCl\u2083 or d\u2086-DMSO",
+      "expected_signals": "Signals consistent with propylene backbone and comonomer units",
+      "acceptance_criteria": "Integration ratios match expected composition within \u00b15%"
+    },
+    {
+      "technique": "Gel Permeation Chromatography (GPC)",
+      "purpose": "Determine molecular weight and polydispersity",
+      "expected_results": "Mn: 50,000-150,000 g/mol, PDI: 2.0-4.0 (typical for Ziegler-Natta)",
+      "acceptance_criteria": "Molecular weight distribution is monomodal"
+    },
+    {
+      "technique": "Differential Scanning Calorimetry (DSC)",
+      "purpose": "Measure thermal transitions (Tg, Tm)",
+      "expected_results": "Tg \u2248 80\u00b0C, Tm \u2248 180\u00b0C",
+      "acceptance_criteria": "Thermal transitions within \u00b110\u00b0C of predicted values"
+    },
+    {
+      "technique": "Tensile Testing (ASTM D638)",
+      "purpose": "Measure mechanical properties",
+      "method": "Injection-molded dog-bone specimens, tested at 23\u00b0C, 50% RH, 50 mm/min strain rate",
+      "expected_results": "Tensile Strength \u2265 461 MPa, Elongation at Break \u2248 80%",
+      "acceptance_criteria": "Tensile strength within \u00b115% of predicted value"
+    },
+    {
+      "technique": "Shore D Hardness Testing (ASTM D2240)",
+      "purpose": "Measure surface hardness",
+      "expected_results": "Shore D \u2248 92",
+      "acceptance_criteria": "Hardness within \u00b15 Shore D units of predicted value"
+    },
+    {
+      "technique": "Thermogravimetric Analysis (TGA)",
+      "purpose": "Assess thermal stability and decomposition temperature",
+      "expected_results": "Onset of decomposition > 300\u00b0C, 5% weight loss temperature > 350\u00b0C",
+      "acceptance_criteria": "Thermal stability suitable for processing at 180-200\u00b0C"
+    }
+  ]
+}

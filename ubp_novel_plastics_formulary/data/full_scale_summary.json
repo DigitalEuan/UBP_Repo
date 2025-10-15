@@ -1,0 +1,740 @@
+{
+  "PET": {
+    "category_key": "PET",
+    "category_name": "Polyethylene Terephthalate",
+    "total_candidates": 1476,
+    "best_candidate": {
+      "composition": {
+        "C": 96.67968563014428,
+        "H": 1.1911097866100337,
+        "O": 1.6462702425907496,
+        "F": 0.29201296560120193,
+        "S": 0.05256948986296282,
+        "N": 0.09169816380185594,
+        "Si": 0.046653721388913126
+      },
+      "properties": {
+        "tensile_strength": 513.3984281507214,
+        "hardness": 1026.7968563014429,
+        "ductility": 25.955548933050167,
+        "glass_transition_temp": 80.0,
+        "melting_point": 180.0
+      },
+      "ubp_metrics": {
+        "elemental_coherence": 0.9830514803735795,
+        "structure_coherence": 0.6,
+        "overall_coherence": 0.7915257401867897,
+        "composition_balance": 0.9999999999999997,
+        "processing_compatibility": 0.8
+      },
+      "structure": "PolymerStructure.AMORPHOUS",
+      "processing": "injection_molding",
+      "confidence": 0.7915257401867895,
+      "optimization_score": 0.7315055226372076,
+      "generation": 150
+    },
+    "top_3_candidates": [
+      {
+        "composition": {
+          "C": 96.67968563014428,
+          "H": 1.1911097866100337,
+          "O": 1.6462702425907496,
+          "F": 0.29201296560120193,
+          "S": 0.05256948986296282,
+          "N": 0.09169816380185594,
+          "Si": 0.046653721388913126
+        },
+        "properties": {
+          "tensile_strength": 513.3984281507214,
+          "hardness": 1026.7968563014429,
+          "ductility": 25.955548933050167,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9830514803735795,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7915257401867897,
+          "composition_balance": 0.9999999999999997,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.7915257401867895,
+        "optimization_score": 0.7315055226372076,
+        "generation": 150
+      },
+      {
+        "composition": {
+          "C": 96.50608867929273,
+          "H": 1.3674093160058136,
+          "O": 1.6149289277793817,
+          "F": 0.30977836033139106,
+          "S": 0.0507032890828,
+          "N": 0.1008793280505184,
+          "Si": 0.05021209945737052
+        },
+        "properties": {
+          "tensile_strength": 512.5304433964636,
+          "hardness": 1025.0608867929272,
+          "ductility": 26.837046580029067,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9801876306469309,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7900938153234655,
+          "composition_balance": 1.0000000000000002,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.7900938153234657,
+        "optimization_score": 0.7314704677356356,
+        "generation": 150
+      },
+      {
+        "composition": {
+          "C": 96.58387084990572,
+          "H": 1.269187228021372,
+          "O": 1.635954580511436,
+          "F": 0.32201992147466946,
+          "S": 0.049198176317386065,
+          "N": 0.09268531414780595,
+          "Si": 0.04708392962160189
+        },
+        "properties": {
+          "tensile_strength": 512.9193542495286,
+          "hardness": 1025.8387084990572,
+          "ductility": 26.34593614010686,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9817852411437574,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7908926205718787,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.7908926205718786,
+        "optimization_score": 0.7314247880255651,
+        "generation": 149
+      }
+    ],
+    "output_file": "/home/ubuntu/carousel_PET_results.json"
+  },
+  "HDPE": {
+    "category_key": "HDPE",
+    "category_name": "High-Density Polyethylene",
+    "total_candidates": 1476,
+    "best_candidate": {
+      "composition": {
+        "C": 84.00057483425276,
+        "H": 15.501458949027747,
+        "F": 0.1086018716365135,
+        "Si": 0.38936434508297585
+      },
+      "properties": {
+        "tensile_strength": 450.0028741712638,
+        "hardness": 900.0057483425276,
+        "ductility": 97.50729474513874,
+        "glass_transition_temp": 80.0,
+        "melting_point": 180.0
+      },
+      "ubp_metrics": {
+        "elemental_coherence": 0.7701269493470829,
+        "structure_coherence": 0.6,
+        "overall_coherence": 0.6850634746735415,
+        "composition_balance": 1.0,
+        "processing_compatibility": 0.9
+      },
+      "structure": "PolymerStructure.AMORPHOUS",
+      "processing": "extrusion",
+      "confidence": 0.6850634746735415,
+      "optimization_score": 0.7916938012667605,
+      "generation": 145
+    },
+    "top_3_candidates": [
+      {
+        "composition": {
+          "C": 84.00057483425276,
+          "H": 15.501458949027747,
+          "F": 0.1086018716365135,
+          "Si": 0.38936434508297585
+        },
+        "properties": {
+          "tensile_strength": 450.0028741712638,
+          "hardness": 900.0057483425276,
+          "ductility": 97.50729474513874,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.7701269493470829,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.6850634746735415,
+          "composition_balance": 1.0,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.6850634746735415,
+        "optimization_score": 0.7916938012667605,
+        "generation": 145
+      },
+      {
+        "composition": {
+          "C": 83.99752930746986,
+          "H": 15.500896927773772,
+          "F": 0.11218361247404755,
+          "Si": 0.38939015228232005
+        },
+        "properties": {
+          "tensile_strength": 449.9876465373493,
+          "hardness": 899.9752930746986,
+          "ductility": 97.50448463886886,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.770138494555933,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.6850692472779665,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.6850692472779664,
+        "optimization_score": 0.7916814347749328,
+        "generation": 141
+      },
+      {
+        "composition": {
+          "C": 83.99409637808634,
+          "H": 15.50026341527676,
+          "F": 0.11217902759610189,
+          "Si": 0.39346117904078876
+        },
+        "properties": {
+          "tensile_strength": 449.9704818904317,
+          "hardness": 899.9409637808634,
+          "ductility": 97.5013170763838,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.7701694831070455,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.6850847415535227,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.6850847415535226,
+        "optimization_score": 0.7916675036156109,
+        "generation": 93
+      }
+    ],
+    "output_file": "/home/ubuntu/carousel_HDPE_results.json"
+  },
+  "PVC": {
+    "category_key": "PVC",
+    "category_name": "Polyvinyl Chloride",
+    "total_candidates": 1476,
+    "best_candidate": {
+      "composition": {
+        "C": 93.93144349489347,
+        "H": 2.410766124179955,
+        "Cl": 2.938165743910245,
+        "S": 0.3574275457996118,
+        "F": 0.15614603076385183,
+        "N": 0.1498898863364586,
+        "O": 0.05616117411640168
+      },
+      "properties": {
+        "tensile_strength": 499.65721747446736,
+        "hardness": 999.3144349489347,
+        "ductility": 32.053830620899774,
+        "glass_transition_temp": 80.0,
+        "melting_point": 180.0
+      },
+      "ubp_metrics": {
+        "elemental_coherence": 0.9227432955909498,
+        "structure_coherence": 0.6,
+        "overall_coherence": 0.7613716477954748,
+        "composition_balance": 0.9999999999999999,
+        "processing_compatibility": 0.9
+      },
+      "structure": "PolymerStructure.AMORPHOUS",
+      "processing": "extrusion",
+      "confidence": 0.7613716477954747,
+      "optimization_score": 0.8532401032633825,
+      "generation": 150
+    },
+    "top_3_candidates": [
+      {
+        "composition": {
+          "C": 93.93144349489347,
+          "H": 2.410766124179955,
+          "Cl": 2.938165743910245,
+          "S": 0.3574275457996118,
+          "F": 0.15614603076385183,
+          "N": 0.1498898863364586,
+          "O": 0.05616117411640168
+        },
+        "properties": {
+          "tensile_strength": 499.65721747446736,
+          "hardness": 999.3144349489347,
+          "ductility": 32.053830620899774,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9227432955909498,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7613716477954748,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.7613716477954747,
+        "optimization_score": 0.8532401032633825,
+        "generation": 150
+      },
+      {
+        "composition": {
+          "C": 93.99004388353997,
+          "H": 2.369609067677059,
+          "Cl": 2.946537397173874,
+          "S": 0.34338931334707085,
+          "F": 0.15427493031554781,
+          "N": 0.14079131455587018,
+          "O": 0.05535409339061422
+        },
+        "properties": {
+          "tensile_strength": 499.9502194176998,
+          "hardness": 999.9004388353997,
+          "ductility": 31.848045338385297,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9229113764211176,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7614556882105588,
+          "composition_balance": 1.0000000000000002,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.761455688210559,
+        "optimization_score": 0.8531131155488835,
+        "generation": 150
+      },
+      {
+        "composition": {
+          "C": 93.98387352019691,
+          "H": 2.3694535049352576,
+          "Cl": 2.946343959596943,
+          "S": 0.34336677014202566,
+          "F": 0.15313921214833806,
+          "N": 0.14847257353724083,
+          "O": 0.05535045944328711
+        },
+        "properties": {
+          "tensile_strength": 499.9193676009845,
+          "hardness": 999.838735201969,
+          "ductility": 31.84726752467629,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9229078601280954,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7614539300640477,
+          "composition_balance": 1.0,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.7614539300640477,
+        "optimization_score": 0.8530852698869992,
+        "generation": 149
+      }
+    ],
+    "output_file": "/home/ubuntu/carousel_PVC_results.json"
+  },
+  "LDPE": {
+    "category_key": "LDPE",
+    "category_name": "Low-Density Polyethylene",
+    "total_candidates": 1476,
+    "best_candidate": {
+      "composition": {
+        "C": 63.960374854877905,
+        "H": 34.1871819772971,
+        "Si": 0.2129518846584196,
+        "N": 0.75557310066485,
+        "O": 0.8839181825017315
+      },
+      "properties": {
+        "tensile_strength": 349.80187427438955,
+        "hardness": 699.6037485487791,
+        "ductility": 190.9359098864855,
+        "glass_transition_temp": 80.0,
+        "melting_point": 180.0
+      },
+      "ubp_metrics": {
+        "elemental_coherence": 0.5559606773015799,
+        "structure_coherence": 0.6,
+        "overall_coherence": 0.57798033865079,
+        "composition_balance": 1.0000000000000002,
+        "processing_compatibility": 0.9
+      },
+      "structure": "PolymerStructure.AMORPHOUS",
+      "processing": "extrusion",
+      "confidence": 0.5779803386507901,
+      "optimization_score": 0.6931099323626015,
+      "generation": 147
+    },
+    "top_3_candidates": [
+      {
+        "composition": {
+          "C": 63.960374854877905,
+          "H": 34.1871819772971,
+          "Si": 0.2129518846584196,
+          "N": 0.75557310066485,
+          "O": 0.8839181825017315
+        },
+        "properties": {
+          "tensile_strength": 349.80187427438955,
+          "hardness": 699.6037485487791,
+          "ductility": 190.9359098864855,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.5559606773015799,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.57798033865079,
+          "composition_balance": 1.0000000000000002,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.5779803386507901,
+        "optimization_score": 0.6931099323626015,
+        "generation": 147
+      },
+      {
+        "composition": {
+          "C": 63.98359524842046,
+          "H": 34.13638966442144,
+          "Si": 0.23196781720907023,
+          "N": 0.778884013512628,
+          "O": 0.8691632564363979
+        },
+        "properties": {
+          "tensile_strength": 349.91797624210227,
+          "hardness": 699.8359524842045,
+          "ductility": 190.68194832210722,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.5564860570040725,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.5782430285020362,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.5782430285020361,
+        "optimization_score": 0.693088493846425,
+        "generation": 149
+      },
+      {
+        "composition": {
+          "C": 63.98281231925253,
+          "H": 34.135971957741255,
+          "Si": 0.23803638147147668,
+          "N": 0.6831095771769587,
+          "O": 0.9600697643577867
+        },
+        "properties": {
+          "tensile_strength": 349.9140615962626,
+          "hardness": 699.8281231925253,
+          "ductility": 190.67985978870627,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.5565189020028202,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.5782594510014101,
+          "composition_balance": 1.0,
+          "processing_compatibility": 0.9
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "extrusion",
+        "confidence": 0.5782594510014101,
+        "optimization_score": 0.693088230484587,
+        "generation": 148
+      }
+    ],
+    "output_file": "/home/ubuntu/carousel_LDPE_results.json"
+  },
+  "PS": {
+    "category_key": "PS",
+    "category_name": "Polystyrene",
+    "total_candidates": 1476,
+    "best_candidate": {
+      "composition": {
+        "C": 90.44281137641724,
+        "H": 7.994221662426305,
+        "Br": 1.3812466729217083,
+        "F": 0.1817202882347501
+      },
+      "properties": {
+        "tensile_strength": 482.2140568820862,
+        "hardness": 964.4281137641724,
+        "ductility": 59.97110831213153,
+        "glass_transition_temp": 80.0,
+        "melting_point": 180.0
+      },
+      "ubp_metrics": {
+        "elemental_coherence": 0.9219622752020711,
+        "structure_coherence": 0.6,
+        "overall_coherence": 0.7609811376010356,
+        "composition_balance": 0.9999999999999999,
+        "processing_compatibility": 0.8
+      },
+      "structure": "PolymerStructure.AMORPHOUS",
+      "processing": "injection_molding",
+      "confidence": 0.7609811376010355,
+      "optimization_score": 0.8593472561987991,
+      "generation": 134
+    },
+    "top_3_candidates": [
+      {
+        "composition": {
+          "C": 90.44281137641724,
+          "H": 7.994221662426305,
+          "Br": 1.3812466729217083,
+          "F": 0.1817202882347501
+        },
+        "properties": {
+          "tensile_strength": 482.2140568820862,
+          "hardness": 964.4281137641724,
+          "ductility": 59.97110831213153,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9219622752020711,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7609811376010356,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.7609811376010355,
+        "optimization_score": 0.8593472561987991,
+        "generation": 134
+      },
+      {
+        "composition": {
+          "C": 90.44110529209158,
+          "H": 7.994070861980515,
+          "Br": 1.3812206175253459,
+          "F": 0.18360322840255336
+        },
+        "properties": {
+          "tensile_strength": 482.2055264604579,
+          "hardness": 964.4110529209158,
+          "ductility": 59.970354309902575,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9219658140094809,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7609829070047405,
+          "composition_balance": 0.9999999999999999,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.7609829070047404,
+        "optimization_score": 0.8593459944928556,
+        "generation": 126
+      },
+      {
+        "composition": {
+          "C": 90.43520716326368,
+          "H": 7.993549527575644,
+          "Br": 1.3811305410372758,
+          "F": 0.19011276812339514
+        },
+        "properties": {
+          "tensile_strength": 482.1760358163184,
+          "hardness": 964.3520716326368,
+          "ductility": 59.96774763787822,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.9219745581015534,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.7609872790507767,
+          "composition_balance": 1.0,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.7609872790507767,
+        "optimization_score": 0.859341109135427,
+        "generation": 147
+      }
+    ],
+    "output_file": "/home/ubuntu/carousel_PS_results.json"
+  },
+  "Other": {
+    "category_key": "Other",
+    "category_name": "Advanced Bioplastic",
+    "total_candidates": 1476,
+    "best_candidate": {
+      "composition": {
+        "C": 73.1663143874006,
+        "H": 19.798355179516673,
+        "O": 3.7599835743772325,
+        "N": 1.971382822633339,
+        "S": 0.9915984617625613,
+        "P": 0.3123655743095973
+      },
+      "properties": {
+        "tensile_strength": 395.831571937003,
+        "hardness": 791.663143874006,
+        "ductility": 118.99177589758337,
+        "glass_transition_temp": 80.0,
+        "melting_point": 180.0
+      },
+      "ubp_metrics": {
+        "elemental_coherence": 0.7220410664726796,
+        "structure_coherence": 0.6,
+        "overall_coherence": 0.6610205332363398,
+        "composition_balance": 1.0000000000000002,
+        "processing_compatibility": 0.8
+      },
+      "structure": "PolymerStructure.AMORPHOUS",
+      "processing": "injection_molding",
+      "confidence": 0.6610205332363399,
+      "optimization_score": 0.8327285798910671,
+      "generation": 150
+    },
+    "top_3_candidates": [
+      {
+        "composition": {
+          "C": 73.1663143874006,
+          "H": 19.798355179516673,
+          "O": 3.7599835743772325,
+          "N": 1.971382822633339,
+          "S": 0.9915984617625613,
+          "P": 0.3123655743095973
+        },
+        "properties": {
+          "tensile_strength": 395.831571937003,
+          "hardness": 791.663143874006,
+          "ductility": 118.99177589758337,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.7220410664726796,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.6610205332363398,
+          "composition_balance": 1.0000000000000002,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.6610205332363399,
+        "optimization_score": 0.8327285798910671,
+        "generation": 150
+      },
+      {
+        "composition": {
+          "C": 73.0935833844806,
+          "H": 19.82998422636176,
+          "O": 3.8498548114737767,
+          "N": 1.9745322236356593,
+          "S": 0.9353518989809902,
+          "P": 0.31669345506722135
+        },
+        "properties": {
+          "tensile_strength": 395.467916922403,
+          "hardness": 790.935833844806,
+          "ductility": 119.1499211318088,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.7213139181412525,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.6606569590706262,
+          "composition_balance": 1.0000000000000002,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.6606569590706263,
+        "optimization_score": 0.83257141554973,
+        "generation": 150
+      },
+      {
+        "composition": {
+          "C": 72.86510375154803,
+          "H": 20.023030665253447,
+          "O": 3.651666583659207,
+          "N": 2.074364411252976,
+          "S": 1.0277773996944886,
+          "P": 0.3580571885918505
+        },
+        "properties": {
+          "tensile_strength": 394.32551875774016,
+          "hardness": 788.6510375154803,
+          "ductility": 120.11515332626723,
+          "glass_transition_temp": 80.0,
+          "melting_point": 180.0
+        },
+        "ubp_metrics": {
+          "elemental_coherence": 0.719627848503056,
+          "structure_coherence": 0.6,
+          "overall_coherence": 0.659813924251528,
+          "composition_balance": 1.0,
+          "processing_compatibility": 0.8
+        },
+        "structure": "PolymerStructure.AMORPHOUS",
+        "processing": "injection_molding",
+        "confidence": 0.659813924251528,
+        "optimization_score": 0.8325506130203935,
+        "generation": 150
+      }
+    ],
+    "output_file": "/home/ubuntu/carousel_Other_results.json"
+  },
+  "PP": {
+    "category_key": "PP",
+    "category_name": "Polypropylene",
+    "note": "Results from pilot run",
+    "output_file": "/home/ubuntu/carousel_pilot_results.json"
+  }
+}
