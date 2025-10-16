@@ -1,0 +1,533 @@
+"""
+# Global System Configurations
+SYSTEM_NAME = "UBP Error Correction System"
+SYSTEM_VERSION = "1.0.0"
+AUTHOR = "Euan Craig, New Zealand"
+"""
+
+import enum
+from dataclasses import dataclass, field
+from typing import List, Dict, Any, Optional
+
+# --- Enums ---
+class CoherenceRegime(enum.Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
+class GLRLevel(enum.Enum):
+    BASIC_CHECKS = "BASIC_CHECKS"
+    CLASSICAL_ECC = "CLASSICAL_ECC"
+    GEOMETRIC_2D = "GEOMETRIC_2D"
+    GEOMETRIC_3D = "GEOMETRIC_3D"
+    NRCI_FEEDBACK = "NRCI_FEEDBACK"
+    P_ADIC_CORRECTION = "P_ADIC_CORRECTION"
+    GLOBAL_GOLAY_24 = "GLOBAL_GOLAY_24"
+    TGIC_STRUCTURAL = "TGIC_STRUCTURAL"
+    ADAPTIVE_FIBONACCI = "ADAPTIVE_FIBONACCI"
+
+class FieldState(enum.Enum):
+    STABLE = "STABLE"
+    DEGRADED = "DEGRADED"
+    CRITICAL = "CRITICAL"
+    CORRUPTED = "CORRUPTED"
+
+# --- Dataclasses ---
+@dataclass
+class OffBit:
+    id: str
+    original_value: Any
+    corrupted_value: Any
+    timestamp: float
+    location: Optional[List[float]] = None # For geometric mapping
+
+@dataclass
+class ErrorCorrectionResult:
+    is_corrected: bool
+    correction_type: Optional[str] = None
+    confidence_score: float = 0.0
+    corrected_value: Optional[Any] = None
+    error_code: int = 0
+    message: str = ""
+    details: Dict[str, Any] = field(default_factory=dict)
+
+@dataclass
+class PAdicNumber:
+    p: int
+    coefficients: List[int] # e.g., [c0, c1, c2] for c0 + c1*p + c2*p^2
+    is_negative: bool = False
+
+@dataclass
+class AdelicNumber:
+    archimedean: float
+    non_archimedean: Dict[int, PAdicNumber] # {prime: p_adic_number}
+
+# --- Geometric Correction Module (Placeholders) ---
+A2_VECTORS = [
+    [0, 1], [0, -1], [1, 0], [-1, 0],
+    [1, 1], [1, -1], [-1, 1], [-1, -1]
+]
+
+FCC_VECTORS = [
+    [0, 1, 1], [0, 1, -1], [0, -1, 1], [0, -1, -1],
+    [1, 0, 1], [1, 0, -1], [-1, 0, 1], [-1, 0, -1],
+    [1, 1, 0], [1, -1, 0], [-1, 1, 0], [-1, -1, 0]
+]
+
+class GeometricMappers:
+    @staticmethod
+    def map_offbit_to_a2_coordinate(offbit: OffBit) -> List[float]:
+        # Placeholder for A2 coordinate mapping logic
+        return offbit.location or [0.0, 0.0]
+
+    @staticmethod
+    def map_offbit_to_fcc_coordinate(offbit: OffBit) -> List[float]:
+        # Placeholder for FCC coordinate mapping logic
+        return offbit.location or [0.0, 0.0, 0.0]
+
+
+class GeometricResonanceParser:
+    @staticmethod
+    def geometric_add(coord1: List[float], coord2: List[float]) -> List[float]:
+        # Placeholder for geometric addition
+        return [c1 + c2 for c1, c2 in zip(coord1, coord2)]
+
+    @staticmethod
+    def compute_resonance_score(geometry_representation: Any) -> float:
+        # Placeholder for resonance score computation
+        return 0.0
+
+class SuperformulaGeometryGenerator:
+    def __init__(self, m: float = 4, n1: float = 1, n2: float = 1, n3: float = 1):
+        self.m = m
+        self.n1 = n1
+        self.n2 = n2
+        self.n3 = n3
+
+    def generate_2d_geometry(self, offbit_characteristics: Dict[str, Any]) -> List[List[float]]:
+        # Placeholder for 2D Superformula geometry generation
+        # Dynamically calculate m, n parameters based on offbit_characteristics
+        # and SUPERFORMULA_SPRING_FACTOR from ubp_config.py
+        return [[0.0, 0.0]]
+
+    def generate_3d_geometry(self, offbit_characteristics: Dict[str, Any]) -> List[List[float]]:
+        # Placeholder for 3D Superformula geometry generation
+        # Dynamically calculate m, n parameters based on offbit_characteristics
+        # and SUPERFORMULA_SPRING_FACTOR from ubp_config.py
+        return [[0.0, 0.0, 0.0]]
+
+
+# --- NRCI Module ---
+
+@dataclass
+class NRCIConfig:
+    nrci_threshold_basic: float
+    nrci_threshold_glr_enhanced: float
+    temporal_decay_rate: float
+    feedback_gain: float
+
+class EnhancedNRCI:
+    def __init__(self, config: NRCIConfig):
+        self._config = config
+
+    def compute_basic_nrci(self, error_rate: float) -> float:
+        # Basic NRCI calculation
+        return 1.0 - error_rate # Placeholder
+
+    def compute_glr_enhanced_nrci(self, basic_nrci: float, glr_level_impact: float) -> float:
+        # GLR-enhanced NRCI calculation
+        return basic_nrci * (1.0 + glr_level_impact) # Placeholder
+
+    def apply_feedback(self, current_nrci: float, correction_success: bool) -> float:
+        # Apply feedback to NRCI
+        if correction_success:
+            return current_nrci + (self._config.feedback_gain * (1.0 - current_nrci))
+        else:
+            return current_nrci - (self._config.feedback_gain * current_nrci)
+
+
+class TemporalNRCITracker:
+    def __init__(self, config: NRCIConfig):
+        self._config = config
+        self._nrci_history: List[float] = []
+        self._timestamps: List[float] = []
+
+    def add_nrci_sample(self, nrci_value: float, timestamp: float):
+        self._nrci_history.append(nrci_value)
+        self._timestamps.append(timestamp)
+        self._prune_history()
+
+    def _prune_history(self):
+        # Keep only recent history based on a decay rate or max size
+        pass # Placeholder for actual pruning logic
+
+    def compute_temporal_nrci(self) -> float:
+        if not self._nrci_history:
+            return 1.0
+        # Placeholder for temporal NRCI calculation with decay
+        return self._nrci_history[-1]
+
+    def get_coherence_regime(self, nrci_value: float) -> CoherenceRegime:
+        if nrci_value >= self._config.nrci_threshold_glr_enhanced:
+            return CoherenceRegime.HIGH
+        elif nrci_value >= self._config.nrci_threshold_basic:
+            return CoherenceRegime.MEDIUM
+        elif nrci_value > 0:
+            return CoherenceRegime.LOW
+        else:
+            return CoherenceRegime.CRITICAL
+
+
+# --- Classical Error Correction Codes ---
+
+# Mock galois library for demonstration in the sandbox
+class MockBCH:
+    def __init__(self, n, k):
+        self.n = n
+        self.k = k
+
+    def encode(self, data):
+        # Mock encoding: simply return data padded with zeros
+        print(f"Mock BCH({self.n},{self.k}) encoding data: {data}")
+        return data + [0] * (self.n - self.k)
+
+    def decode(self, codeword):
+        # Mock decoding: assume no error and return original data
+        print(f"Mock BCH({self.n},{self.k}) decoding codeword: {codeword}")
+        return codeword[:self.k], 0 # data, number of errors
+
+class MockGalois:
+    def BCH(self, n, k):
+        return MockBCH(n, k)
+
+galois = MockGalois()
+
+
+class GaloisECCWrapper:
+    def __init__(self, n: int, k: int, ecc_type: str = "BCH"):
+        if ecc_type == "BCH":
+            self.ecc_coder = galois.BCH(n, k)
+        elif ecc_type == "Hamming":
+            # For Hamming (7,4), n=7, k=4
+            self.ecc_coder = galois.BCH(n, k) # galois.Hamming is not directly available, using BCH for mock
+        else:
+            raise ValueError(f"Unsupported ECC type: {ecc_type}")
+
+    def encode(self, data: List[int]) -> List[int]:
+        return self.ecc_coder.encode(data)
+
+    def decode(self, codeword: List[int]) -> (List[int], int):
+        return self.ecc_coder.decode(codeword)
+
+
+class GolayCode:
+    ''' Implements the extended binary Golay code G_23 (perfect code) and G_24 (extended code) '''
+    def __init__(self):
+        self._build_syndrome_table()
+
+    def _build_syndrome_table(self):
+        # This would be a complex pre-computation, mocked for now.
+        # In a real implementation, this table maps syndromes to error patterns.
+        self.syndrome_table = {}
+        print("Mock GolayCode: Building syndrome table (placeholder).")
+
+    def encode(self, data: List[int], extended: bool = False) -> List[int]:
+        # Mock encoding for Golay (23,12) or (24,12)
+        k = 12
+        if len(data) != k:
+            raise ValueError(f"Input data length must be {k} for Golay encoding.")
+
+        # For (23,12) Golay, add 11 parity bits
+        if not extended:
+            print("Mock GolayCode (23,12) encoding data.")
+            return data + [0] * 11 # Placeholder parity
+        else:
+            # For (24,12) extended Golay, add 12 parity bits
+            print("Mock GolayCode (24,12) encoding data.")
+            return data + [0] * 12 # Placeholder parity
+
+    def decode(self, codeword: List[int], extended: bool = False) -> (List[int], int):
+        # Mock decoding for Golay (23,12) or (24,12)
+        n = 23 if not extended else 24
+        k = 12
+        if len(codeword) != n:
+            raise ValueError(f"Codeword length must be {n} for Golay decoding.")
+
+        # In a real implementation, calculate syndrome and correct errors
+        print("Mock GolayCode decoding codeword.")
+        # Assume up to 3 errors can be corrected for G_23, up to 7 for G_24 but let's mock it simple.
+        num_errors = 0 # Assume no errors for mock
+        corrected_data = codeword[:k]
+        return corrected_data, num_errors
+
+
+class GolayParityCheckMatrix:
+    def _generate_parity_check_matrix(self) -> List[List[int]]:
+        # Mock generation of H for Golay (24,12)
+        # A real H matrix for G_24 would be 12x24
+        print("Mock GolayParityCheckMatrix: Generating H matrix (placeholder).")
+        # Example: a dummy 12x24 matrix of zeros
+        return [[0 for _ in range(24)] for _ in range(12)]
+
+    def compute_syndrome(self, codeword: List[int], h_matrix: List[List[int]]) -> List[int]:
+        # Mock syndrome computation: H * c^T (modulo 2)
+        syndrome = [0] * len(h_matrix)
+        if not codeword or not h_matrix or not h_matrix[0]:
+            return syndrome
+
+        for i in range(len(h_matrix)):
+            for j in range(len(codeword)):
+                syndrome[i] = (syndrome[i] + h_matrix[i][j] * codeword[j]) % 2
+        print(f"Mock GolayParityCheckMatrix: Computed syndrome {syndrome}")
+        return syndrome
+
+
+class GlobalGolayCorrection:
+    def __init__(self):
+        self.golay_coder = GolayCode()
+        self.h_matrix_generator = GolayParityCheckMatrix()
+        self.h_matrix = self.h_matrix_generator._generate_parity_check_matrix()
+
+    def correct_error(self, corrupted_codeword: List[int]) -> (List[int], int):
+        # This uses the GolayCode decode for simplicity in mock, could use syndrome table lookup here.
+        print("GlobalGolayCorrection: Correcting error using GolayCode decode.")
+        return self.golay_coder.decode(corrupted_codeword, extended=True)
+
+    def process_offbit_correction(self, offbit: OffBit) -> ErrorCorrectionResult:
+        print(f"GlobalGolayCorrection: Processing OffBit {offbit.id} for correction.")
+        # Assume corrupted_value is a list of integers (e.g., bits)
+        if not isinstance(offbit.corrupted_value, list):
+            return ErrorCorrectionResult(
+                is_corrected=False,
+                confidence_score=0.0,
+                error_code=1, # DETECTED_BUT_UNCORRECTED
+                message="Corrupted value not in expected list format for Golay."
+            )
+        try:
+            corrected_data, num_errors = self.correct_error(offbit.corrupted_value)
+            is_corrected = num_errors > 0 or True # Assume corrected if processed
+            confidence = 1.0 if is_corrected else 0.0
+
+            return ErrorCorrectionResult(
+                is_corrected=is_corrected,
+                correction_type="GlobalGolay24",
+                confidence_score=confidence,
+                corrected_value=corrected_data,
+                error_code=6, # CORRECTED_GLOBAL_GOLAY
+                message=f"Global Golay (24,12) correction applied. Errors detected: {num_errors}"
+            )
+        except Exception as e:
+            return ErrorCorrectionResult(
+                is_corrected=False,
+                confidence_score=0.0,
+                error_code=1, # DETECTED_BUT_UNCORRECTED
+                message=f"Global Golay correction failed: {str(e)}"
+            )
+
+
+# --- UBP Error Correction System ---
+
+class UBPErrorCorrectionSystem:
+    def __init__(self, config: Dict[str, Any]):
+        self._config = config
+
+        # Initialize NRCI modules
+        self.nrci_config = NRCIConfig(
+            nrci_threshold_basic=config["NRCI_THRESHOLD_BASIC"],
+            nrci_threshold_glr_enhanced=config["NRCI_THRESHOLD_GLR_ENHANCED"],
+            temporal_decay_rate=config["NRCI_TEMPORAL_DECAY_RATE"],
+            feedback_gain=config["NRCI_FEEDBACK_GAIN"]
+        )
+        self.enhanced_nrci = EnhancedNRCI(self.nrci_config)
+        self.temporal_nrci_tracker = TemporalNRCITracker(self.nrci_config)
+
+        # Initialize Classical ECC wrappers
+        self.hamming_bch_wrapper = GaloisECCWrapper(
+            n=config["HAMMING_CODE_N"],
+            k=config["HAMMING_CODE_K"],
+            ecc_type="Hamming"
+        ) # Using a single wrapper for both Hamming/BCH for simplicity given mock
+        self.golay_code = GolayCode()
+        self.global_golay_correction = GlobalGolayCorrection()
+
+        # Initialize Advanced Numeric ECC
+        self.advanced_ecc_module = AdvancedErrorCorrectionModule(
+            p_adic_p=config["P_ADIC_DEFAULT_P"],
+            p_adic_precision=config["P_ADIC_PRECISION"]
+        )
+
+        # Initialize CARFE Adelic Corrector
+        self.carfe_adelic_corrector = CARFEAdelicCorrector(self.advanced_ecc_module)
+
+        # Initialize TGIC System
+        self.tgic_system = TGICSystem({
+            "TGIC_CONSTRAINT_STRENGTH": config["TGIC_CONSTRAINT_STRENGTH"],
+            "TGIC_OPTIMIZATION_ITERATIONS": config["TGIC_OPTIMIZATION_ITERATIONS"]
+        })
+        # Ensure TGIC constraints are initialized if necessary
+        self.tgic_system._initialize_constraints()
+
+        # Initialize GLR Processors
+        self.glr_processors = {
+            GLRLevel.BASIC_CHECKS: BasicChecksProcessor(),
+            GLRLevel.CLASSICAL_ECC: ClassicalECCProcessor({
+                "HAMMING_CODE_N": config["HAMMING_CODE_N"],
+                "HAMMING_CODE_K": config["HAMMING_CODE_K"],
+                "BCH_CODE_N": config["BCH_CODE_N"],
+                "BCH_CODE_K": config["BCH_CODE_K"],
+            }),
+            GLRLevel.GEOMETRIC_2D: Geometric2DProcessor({
+                "SUPERFORMULA_DEFAULT_M": config["SUPERFORMULA_DEFAULT_M"],
+                "SUPERFORMULA_DEFAULT_N1": config["SUPERFORMULA_DEFAULT_N1"],
+                "SUPERFORMULA_DEFAULT_N2": config["SUPERFORMULA_DEFAULT_N2"],
+                "SUPERFORMULA_DEFAULT_N3": config["SUPERFORMULA_DEFAULT_N3"],
+                "GEOMETRIC_2D_TOLERANCE": config["GEOMETRIC_2D_TOLERANCE"],
+                "NRCI_THRESHOLD_BASIC": config["NRCI_THRESHOLD_BASIC"],
+            }),
+            GLRLevel.GEOMETRIC_3D: Geometric3DProcessor({
+                "SUPERFORMULA_DEFAULT_M": config["SUPERFORMULA_DEFAULT_M"],
+                "SUPERFORMULA_DEFAULT_N1": config["SUPERFORMULA_DEFAULT_N1"],
+                "SUPERFORMULA_DEFAULT_N2": config["SUPERFORMULA_DEFAULT_N2"],
+                "SUPERFORMULA_DEFAULT_N3": config["SUPERFORMULA_DEFAULT_N3"],
+                "GEOMETRIC_3D_TOLERANCE": config["GEOMETRIC_3D_TOLERANCE"],
+                "NRCI_THRESHOLD_BASIC": config["NRCI_THRESHOLD_BASIC"],
+            }),
+            GLRLevel.NRCI_FEEDBACK: NRCIFeedbackProcessor(self.enhanced_nrci, self.temporal_nrci_tracker),
+            GLRLevel.P_ADIC_CORRECTION: PAdicCorrectionProcessor(self.advanced_ecc_module, config["P_ADIC_DEFAULT_P"], config["P_ADIC_PRECISION"]),
+            GLRLevel.GLOBAL_GOLAY_24: GlobalGolay24Processor(self.global_golay_correction),
+            GLRLevel.TGIC_STRUCTURAL: TGICStructuralProcessor(self.tgic_system),
+            GLRLevel.ADAPTIVE_FIBONACCI: AdaptiveFibonacciProcessor(self.advanced_ecc_module),
+        }
+
+        # Initialize GLR Framework
+        self.glr_framework = GLRFramework(
+            config=config,
+            processors=self.glr_processors,
+            nrci_system=self.enhanced_nrci,
+            temporal_nrci_tracker=self.temporal_nrci_tracker
+        )
+
+        print(f"{self._config["SYSTEM_NAME"]} (v{self._config["SYSTEM_VERSION"]}) initialized.")
+
+    def apply_correction(self, offbit: OffBit, method_type: str) -> ErrorCorrectionResult:
+        print(f"Applying {method_type} correction for OffBit {offbit.id}")
+        # This method acts as a unified dispatcher to individual error correction techniques.
+        if method_type == "ClassicalECC_Hamming":
+            return self.glr_processors[GLRLevel.CLASSICAL_ECC].hamming_wrapper.decode(offbit.corrupted_value) # Simplified
+        elif method_type == "ClassicalECC_BCH":
+            return self.glr_processors[GLRLevel.CLASSICAL_ECC].bch_wrapper.decode(offbit.corrupted_value) # Simplified
+        elif method_type == "P-Adic":
+            return self.advanced_ecc_module.correct_corrupted_data(offbit.corrupted_value, method="P-Adic")
+        elif method_type == "Adelic":
+            # Requires field data, mocking it for now
+            mock_field_data = {self._config["P_ADIC_DEFAULT_P"]: offbit.corrupted_value}
+            return self.carfe_adelic_corrector.compute_adelic_correction(mock_field_data)
+        elif method_type == "GlobalGolay24":
+            return self.global_golay_correction.process_offbit_correction(offbit)
+        elif method_type == "TGIC":
+            return self.tgic_system.enforce_structural_rules(offbit)
+        elif method_type == "Fibonacci":
+            return self.advanced_ecc_module.correct_corrupted_data(offbit.corrupted_value, method="Fibonacci")
+        else:
+            return ErrorCorrectionResult(
+                is_corrected=False,
+                confidence_score=0.0,
+                error_code=1,
+                message=f"Unsupported correction method_type: {method_type}"
+            )
+
+    def full_error_correction(self, offbit: OffBit, geometry_dimension: int = 2) -> ErrorCorrectionResult:
+        print(f"Initiating full error correction for OffBit {offbit.id} (Geometry: {geometry_dimension}D).")
+
+        # 1. Initial geometric pre-correction (if applicable and configured)
+        pre_correction_result = ErrorCorrectionResult(is_corrected=False)
+        if geometry_dimension == 2:
+            pre_correction_result = self.glr_processors[GLRLevel.GEOMETRIC_2D].process(offbit, 1.0, self._config) # Pass initial high NRCI
+        elif geometry_dimension == 3:
+            pre_correction_result = self.glr_processors[GLRLevel.GEOMETRIC_3D].process(offbit, 1.0, self._config)
+
+        if pre_correction_result.is_corrected:
+            print(f"Initial geometric pre-correction applied: {pre_correction_result.message}")
+            offbit.corrupted_value = pre_correction_result.corrected_value
+            offbit.details["previous_correction_success"] = True
+        else:
+            offbit.details["previous_correction_success"] = False
+
+        # 2. NRCI feedback for continuous monitoring and adaptive parameter adjustment
+        # (The NRCI_FEEDBACK processor will be called within the GLR framework)
+        # Initial NRCI calculation for the framework to start with
+        initial_error_rate = 1.0 if not pre_correction_result.is_corrected else 0.5 # Simplified
+        initial_nrci = self.enhanced_nrci.compute_basic_nrci(initial_error_rate)
+        self.temporal_nrci_tracker.add_nrci_sample(initial_nrci, offbit.timestamp)
+
+        # 3. Escalation through the GLRFramework cascade
+        final_correction_result = self.glr_framework.escalate_and_process(offbit)
+
+        # Ensure the final result reflects the most up-to-date corrected value
+        if final_correction_result.is_corrected and final_correction_result.corrected_value is None:
+            final_correction_result.corrected_value = offbit.corrupted_value
+
+        print(f"Full error correction completed for OffBit {offbit.id}. Result: {final_correction_result.message}")
+        return final_correction_result
+
+    def validate_all_modules(self) -> Dict[str, bool]:
+        print("Validating all error correction modules...")
+        validation_results = {}
+        # Basic validation for each module (placeholder for comprehensive unit tests)
+        try:
+            # Test NRCI
+            test_nrci_config = NRCIConfig(0.5, 0.7, 0.1, 0.2)
+            test_enhanced_nrci = EnhancedNRCI(test_nrci_config)
+            test_nrci = test_enhanced_nrci.compute_basic_nrci(0.2)
+            validation_results["EnhancedNRCI"] = test_nrci > 0
+
+            # Test Classical ECC (Hamming)
+            test_hamming_data = [0, 1, 0, 1]
+            test_hamming_codeword = self.hamming_bch_wrapper.encode(test_hamming_data) # This needs a proper Hamming wrapper
+            validation_results["GaloisECCWrapper_Hamming_Encode"] = len(test_hamming_codeword) == self._config["HAMMING_CODE_N"]
+            # Simplified decode test
+            _, errors = self.hamming_bch_wrapper.decode(test_hamming_codeword)
+            validation_results["GaloisECCWrapper_Hamming_Decode"] = errors == 0 # Expect no errors for encoded data
+
+            # Test Golay Code
+            test_golay_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+            encoded_golay = self.golay_code.encode(test_golay_data)
+            validation_results["GolayCode_Encode"] = len(encoded_golay) == 23 # For non-extended
+
+            # Test P-Adic
+            test_padic_int = 10
+            encoded_padic = PAdicEncoder.encode(test_padic_int, self._config["P_ADIC_DEFAULT_P"], self._config["P_ADIC_PRECISION"])
+            decoded_padic = PAdicEncoder.decode(encoded_padic)
+            validation_results["PAdicEncoder"] = (decoded_padic == test_padic_int)
+            validation_results["PAdicArithmetic_DetectError"] = not PAdicArithmetic.detect_error_padic(encoded_padic)
+
+            # Test TGIC (basic init)
+            validation_results["TGICSystem_Init"] = isinstance(self.tgic_system.graph, DodecahedralGraph)
+
+            validation_results["Overall_Success"] = all(validation_results.values())
+
+        except Exception as e:
+            print(f"Module validation failed: {e}")
+            validation_results["Overall_Success"] = False
+
+        print("Module validation completed.")
+        return validation_results
+
+    def get_system_status(self) -> Dict[str, Any]:
+        print("Retrieving system status...")
+        # Provide real-time monitoring of the system's state
+        current_nrci = self.temporal_nrci_tracker.compute_temporal_nrci()
+        coherence_regime = self.temporal_nrci_tracker.get_coherence_regime(current_nrci).value
+
+        return {
+            "system_name": self._config["SYSTEM_NAME"],
+            "version": self._config["SYSTEM_VERSION"],
+            "debug_mode": self._config["DEBUG_MODE"],
+            "current_nrci": current_nrci,
+            "coherence_regime": coherence_regime,
+            "active_glr_level": "N/A", # This would be dynamic based on ongoing processing
+            "last_processed_offbit": None, # Would need to track this
+            "module_health_check": self.validate_all_modules() # Run validation on demand for status
+        }
+
