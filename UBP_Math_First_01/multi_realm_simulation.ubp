@@ -1,0 +1,72 @@
+# UBP Multi-Realm Simulation Example
+# Demonstrates realm switching and cross-realm coherence
+
+# Initialize runtime
+init-runtime hardware=desktop_8gb
+
+# Phase 1: Quantum Realm
+# Target: NRCI 0.875, Spatial 74.65%, Temporal 43.3%
+use-realm quantum
+init-bitfield pattern=quantum_bias density=0.01 seed=42
+
+# Quantum operations
+toggle spin_transition [5,5,5,0,0,0] p_s=0.2265234857
+toggle resonance [10,10,10,0,0,0] [10,10,10,0,0,1] frequency=458000000000000.0
+
+# Run quantum phase
+run-simulation steps=50 ops_per_step=8 timeline=true
+export-results quantum_phase_results.json
+
+# Phase 2: Electromagnetic Realm  
+# Target: NRCI 1.0, Spatial 74.96%, Temporal 91.0%
+use-realm electromagnetic
+
+# Electromagnetic operations (π-resonance at 635 nm)
+toggle resonance [15,15,15,0,0,0] [15,15,15,0,0,1] frequency=3.141593
+toggle and [20,20,20,0,0,0] [20,20,20,0,0,1]
+toggle or [25,25,25,0,0,0] [25,25,25,0,0,1]
+
+# Run electromagnetic phase
+run-simulation steps=50 ops_per_step=8 timeline=true
+export-results electromagnetic_phase_results.json
+
+# Phase 3: Gravitational Realm
+# Target: NRCI 0.915, Spatial 85.59%, Temporal 108.1%
+use-realm gravitational
+
+# Gravitational operations (100 Hz, 1000 nm)
+toggle entanglement [30,30,30,0,0,0] [30,30,30,0,0,1] coherence=0.95
+toggle superposition [35,35,35,0,0,0] [35,35,35,0,0,1] weights=[0.3,0.7]
+
+# Run gravitational phase
+run-simulation steps=50 ops_per_step=8 timeline=true
+export-results gravitational_phase_results.json
+
+# Phase 4: Biological Realm
+# Target: NRCI 0.911, Spatial 48.79%, Temporal 97.3%
+use-realm biological
+
+# Biological operations (10 Hz, 700 nm)
+toggle hybrid_xor_resonance [40,40,40,0,0,0] [40,40,40,0,0,1] distance=2.0
+toggle superposition [45,45,45,0,0,0] [45,45,45,0,0,1] weights=[0.4,0.6]
+
+# Run biological phase
+run-simulation steps=50 ops_per_step=8 timeline=true
+export-results biological_phase_results.json
+
+# Phase 5: Cosmological Realm
+# Target: NRCI 0.797, Spatial 62.22%, Temporal 102.2%
+use-realm cosmological
+
+# Cosmological operations (π^φ bias, 10^-11 Hz)
+toggle spin_transition [50,50,50,0,0,0] p_s=0.83203682
+toggle entanglement [55,55,55,0,0,0] [55,55,55,0,0,1] coherence=0.97
+
+# Run cosmological phase
+run-simulation steps=50 ops_per_step=8 timeline=true
+export-results cosmological_phase_results.json
+
+# Final cross-realm analysis
+get-metrics
+export-state multi_realm_final_state.json
+

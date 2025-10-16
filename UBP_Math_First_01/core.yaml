@@ -1,0 +1,286 @@
+# UBP Core Specification
+# Universal Binary Principle - Authoritative Constants and Parameters
+# Version: 1.0
+# Source: ubp_20Aug2025.txt and UBP29June25.pdf
+
+# Fundamental Mathematical Constants
+fundamental_constants:
+  pi: 3.141592653589793
+  phi: 1.618033988749895  # Golden Ratio
+  e: 2.718281828459045    # Euler's constant
+  c: 299792458            # Speed of light (m/s)
+  planck_time: 5.391e-44  # Planck time (s)
+
+# UBP System Constants
+system_constants:
+  bit_time: 1.0e-12       # Fundamental time unit (s)
+  csc_time: 0.318309886   # Coherence Sampling Cycle time (1/π s)
+  csc_frequency: 3.141593 # CSC frequency (π Hz)
+  
+# Energy Equation Parameters
+energy_equation:
+  # E = M × C × (R × S_opt) × P_GCI × O_observer × c_∞ × I_spin × Σ(w_ij M_ij)
+  
+  # Resonance Strength (R)
+  R_0: 0.95               # Base resonance strength
+  H_t: 0.05               # Tonal entropy
+  R_calculated: 0.915736  # R = R_0 × (1 - H_t / ln(4))
+  R_specific: 0.965885    # Specific R value from documentation
+  
+  # Optimal State Function (S_opt)
+  S_opt_default: 0.98     # Default structural optimality
+  S_opt_spatial_weight: 0.7
+  S_opt_bit_weight: 0.3
+  
+  # Global Coherence Invariant (P_GCI)
+  P_GCI_specific: 0.827046  # Pre-calculated value
+  delta_t: 0.318309886      # CSC time for P_GCI calculation
+  
+  # Observer Effect Factor (O_observer)
+  O_neutral: 1.0          # Neutral observation
+  O_intentional: 1.5      # Intentional observation
+  
+  # Cosmic Constant (c_∞)
+  c_infinity: 38.8328157095971  # 24 × φ × (1 + α)
+  fine_structure_alpha: 0.0072973525693
+  
+  # Spin Information Factor (I_spin)
+  I_spin_default: 1.0     # Default normalized value
+  
+  # Weighted Toggle Matrix
+  w_ij_default: 0.1       # Default interaction weight
+
+# Core Resonance Values (CRVs) by Realm
+realms:
+  quantum:
+    name: "Quantum Realm"
+    geometry: "tetrahedral"
+    main_crv: 0.2265234857    # e/12
+    frequency: 4.58e14        # Hz (655 nm)
+    wavelength: 655           # nm
+    lattice_coordination: 4
+    toggle_bias: 0.2265234857 # p_s for quantum
+    spatial_efficiency: 74.65 # %
+    temporal_efficiency: 43.3 # %
+    nrci_baseline: 0.875
+    
+  electromagnetic:
+    name: "Electromagnetic Realm"
+    geometry: "cubic"
+    main_crv: 3.141593        # π
+    frequency: 3.141593       # Hz (π-resonance)
+    wavelength: 635           # nm
+    lattice_coordination: 6
+    spatial_efficiency: 74.96 # %
+    temporal_efficiency: 91.0 # %
+    nrci_baseline: 1.0
+    
+  gravitational:
+    name: "Gravitational Realm"
+    geometry: "fcc"           # Face-centered cubic
+    main_crv: 100             # Hz
+    frequency: 100            # Hz
+    wavelength: 1000          # nm
+    lattice_coordination: 12
+    spatial_efficiency: 85.59 # %
+    temporal_efficiency: 108.1 # %
+    nrci_baseline: 0.915
+    
+  biological:
+    name: "Biological Realm"
+    geometry: "h4_120_cell"   # 4D dodecahedral
+    main_crv: 10              # Hz
+    frequency: 10             # Hz
+    wavelength: 700           # nm
+    lattice_coordination: 20
+    spatial_efficiency: 48.79 # %
+    temporal_efficiency: 97.3 # %
+    nrci_baseline: 0.911
+    
+  cosmological:
+    name: "Cosmological Realm"
+    geometry: "h3_icosahedral"
+    main_crv: 0.83203682      # π^φ
+    frequency: 1.0e-11        # Hz
+    wavelength: 800           # nm
+    lattice_coordination: 12
+    toggle_bias: 0.83203682   # p_s for cosmological
+    spatial_efficiency: 62.22 # %
+    temporal_efficiency: 102.2 # %
+    nrci_baseline: 0.797
+    
+  nuclear:
+    name: "Nuclear Realm"
+    geometry: "e8_to_g2"      # E8-to-G2 symmetry
+    main_crv: 1.2356e20       # Zitterbewegung frequency
+    frequency_range: [1.0e16, 1.0e20]  # Hz
+    zitterbewegung: 1.2356e20 # Hz
+    lattice_coordination: 8   # E8 lattice
+    
+  optical:
+    name: "Optical Realm"
+    geometry: "photonic"
+    main_crv: 5.0e14          # Hz
+    frequency: 5.0e14         # Hz (600 nm)
+    wavelength: 600           # nm
+    nrci_target: 0.999999     # High precision target
+    charge_quantization: 0.0072973525893  # φ = nh/e
+
+# Frequency Spectrum for P_GCI Calculation
+frequency_weights:
+  # Weighted mean frequencies for Global Coherence Invariant
+  3.141593: 0.2           # π-resonance
+  1.618034: 0.2           # φ-resonance  
+  4.58e14: 0.3            # Quantum luminescence
+  1.0e9: 0.05             # Neural signaling
+  1.0e15: 0.05            # Nuclear range
+  1.0e20: 0.05            # Zitterbewegung
+  58977069.609314: 0.05   # π-φ composite
+  1.66e41: 0.05           # Planck-Euler
+
+# Toggle Algebra Operations
+toggle_operations:
+  # Basic operations
+  AND: "min(b_i, b_j)"
+  XOR: "|b_i - b_j|"
+  OR: "max(b_i, b_j)"
+  
+  # Advanced operations with parameters
+  resonance:
+    formula: "b_i * exp(-k * d²)"
+    k_default: 0.0002
+    distance_formula: "d = t * f"
+    
+  entanglement:
+    formula: "b_i * b_j * C_ij"
+    coherence_threshold: 0.95
+    
+  superposition:
+    formula: "Σ(states * weights)"
+    weight_constraint: "Σ weights = 1"
+
+# Coherence and Validation Metrics
+metrics:
+  # Non-Random Coherence Index
+  nrci:
+    target: 0.999999        # Six nines fidelity
+    formula: "1 - (RMSE(S, T) / σ(T))"
+    
+  # Coherence between signals
+  coherence:
+    formula: "C_ij = (1/N) * Σ(s_i(t_k) * s_j(t_k))"
+    observability_threshold: 0.5
+    
+  # Coherence Pressure
+  coherence_pressure:
+    formula: "Ψ_p = I_toggle / τ_process"
+    spatial_formula: "Ψ_p = (1 - Σd_i/√Σd_max²) * (Σb_j/12)"
+    
+  # Fractal Dimension
+  fractal_dimension:
+    formula: "D = log(m) / log(s)"
+    scale_factor: 2         # s = 2 for half-scale sub-Glyphs
+
+# Bitfield Configuration
+bitfield:
+  dimensions: [170, 170, 170, 5, 2, 2]  # 6D operational space
+  total_cells: 2312000      # ~2.3M cells
+  offbit_size: 24           # bits
+  padded_size: 32           # bits (for processing efficiency)
+  sparsity: 0.01            # Expected active ratio
+  
+  # OffBit Layer Structure (24-bit)
+  layers:
+    reality: [0, 5]         # bits 0-5: Observable properties
+    information: [6, 11]    # bits 6-11: Data processing, constants
+    activation: [12, 17]    # bits 12-17: Dynamic states, energy
+    unactivated: [18, 23]   # bits 18-23: Potential/latent states
+
+# Hardware Scaling Parameters
+hardware_profiles:
+  desktop_8gb:
+    max_offbits: 1000000
+    matrix_format: "dok_matrix"
+    compression: false
+    
+  mobile_4gb:
+    max_offbits: 10000
+    matrix_format: "compressed_sparse"
+    compression: true
+    compression_ratio: 0.3  # Reed-Solomon 30% compression
+    
+  raspberry_pi:
+    max_offbits: 100000
+    matrix_format: "compressed_sparse"
+    compression: true
+    target_operation_time: 2.0  # seconds
+
+# Error Correction Schemes
+error_correction:
+  local:
+    type: "hamming_7_4"
+    scope: "offbit_operations"
+    
+  regional:
+    type: "bch_31_21"
+    scope: "sub_field_coordination"
+    
+  global:
+    type: "golay_23_12"
+    scope: "cross_realm_coherence"
+    correction_capacity: 3  # errors per 24-bit codeword
+
+# Geometric Constants
+geometry:
+  # Triangle-based CRV
+  triangle_height_ratio: 0.86602540378  # √3/2
+  
+  # Tetrahedral constants
+  tetrahedral_dihedral_cosine: 0.33333333333  # 1/3
+  tetrahedral_volume_ratio: 0.11785113019     # √2/12
+  
+  # Cubic constants
+  cubic_face_diagonal: 1.41421356237    # √2
+  cubic_space_diagonal: 1.73205081      # √3
+  
+  # Golden ratio relationships
+  phi_triangle_composite: 1.40995577636  # φ × (√3/2)
+  cube_tetrahedron_composite: 0.20412414523  # √3 × (√2/12)
+
+# Validation Datasets
+validation:
+  datasets:
+    - name: "OpenBCI EEG"
+      realm: "biological"
+      frequency: 10  # Hz (alpha waves)
+      target_nrci: 0.999999
+      
+    - name: "LIGO CMB"
+      realm: "cosmological"
+      frequency: 1.0e-15  # Hz
+      target_nrci: 0.999999
+      
+    - name: "NMR Spectroscopy"
+      realm: "nuclear"
+      frequency: 600e6  # Hz (600 MHz)
+      distance: 0.5     # m
+      
+    - name: "Photonic Systems"
+      realm: "optical"
+      wavelength: 600   # nm
+      target_nrci: 0.999999
+      
+    - name: "UCI EEG Eye State"
+      realm: "biological"
+      type: "temporal_series"
+      target_nrci: 0.999999
+
+# Version and Metadata
+metadata:
+  version: "1.0"
+  created: "2025-08-28"
+  source_documents:
+    - "ubp_20Aug2025.txt"
+    - "UBP29June25.pdf"
+  copyright: "Universal Binary Principle is free of copyright; specific inventions remain copyright to Euan Craig, New Zealand 2025"
+

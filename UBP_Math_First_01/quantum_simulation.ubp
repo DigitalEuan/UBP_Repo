@@ -1,0 +1,33 @@
+# UBP Quantum Realm Simulation Example
+# Demonstrates quantum-specific operations and measurements
+
+# Initialize the UBP runtime with desktop configuration
+init-runtime hardware=desktop_8gb
+
+# Set the active realm to quantum
+use-realm quantum
+
+# Initialize Bitfield with quantum bias pattern
+# This uses the quantum toggle bias p_s = e/12 ≈ 0.2265234857
+init-bitfield pattern=quantum_bias density=0.01 seed=42
+
+# Execute some quantum-specific toggle operations
+# Quantum spin transition using e/12 probability
+toggle spin_transition [10,10,10,0,0,0] p_s=0.2265234857
+
+# Resonance operation at quantum frequency (655 nm)
+toggle resonance [15,15,15,0,0,0] [15,15,15,0,0,1] frequency=458000000000000.0 time=0.000000000001
+
+# Entanglement operation with high coherence
+toggle entanglement [20,20,20,0,0,0] [20,20,20,0,0,1] coherence=0.96
+
+# Run quantum simulation
+# Target: NRCI ≥ 0.875 (quantum baseline from spec)
+run-simulation steps=100 ops_per_step=10 timeline=true
+
+# Export results for analysis
+export-results quantum_simulation_results.json
+
+# Get final metrics
+get-metrics
+

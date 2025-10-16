@@ -1,0 +1,69 @@
+# UBP Basic Tutorial
+# Introduction to Universal Binary Principle concepts and operations
+
+# Step 1: Initialize the UBP runtime
+# This creates the computational environment
+init-runtime hardware=desktop_8gb
+
+# Step 2: Choose a realm
+# Realms define the physical/mathematical context
+# Available: quantum, electromagnetic, gravitational, biological, cosmological, nuclear, optical
+use-realm quantum
+
+# Step 3: Initialize the Bitfield
+# The Bitfield is a 6D sparse array of OffBits (24-bit units)
+# Pattern options: sparse_random, quantum_bias, realm_specific
+# Density: fraction of cells to activate (0.01 = 1%)
+init-bitfield pattern=sparse_random density=0.005 seed=123
+
+# Step 4: Understand OffBits
+# Each OffBit has 4 layers (6 bits each):
+# - Reality (bits 0-5): Observable properties
+# - Information (bits 6-11): Data processing, constants
+# - Activation (bits 12-17): Dynamic states, energy
+# - Unactivated (bits 18-23): Potential states
+
+# Step 5: Basic toggle operations
+# AND: min(b_i, b_j) - both must be active
+toggle and [0,0,0,0,0,0] [0,0,0,0,0,1]
+
+# XOR: |b_i - b_j| - exclusive or, difference
+toggle xor [1,1,1,0,0,0] [1,1,1,0,0,1]
+
+# OR: max(b_i, b_j) - at least one active
+toggle or [2,2,2,0,0,0] [2,2,2,0,0,1]
+
+# Step 6: Advanced operations
+# Resonance: state transitions with frequency-based decay
+toggle resonance [5,5,5,0,0,0] [5,5,5,0,0,1] frequency=1000.0 time=0.001
+
+# Entanglement: coupling between OffBits (requires high coherence)
+toggle entanglement [10,10,10,0,0,0] [10,10,10,0,0,1] coherence=0.95
+
+# Superposition: probabilistic state combination
+toggle superposition [15,15,15,0,0,0] [15,15,15,0,0,1] weights=[0.3,0.7]
+
+# Step 7: Run a simulation
+# This executes multiple toggle operations over time
+# steps: number of time steps
+# ops_per_step: operations per time step
+# timeline: record state history
+run-simulation steps=20 ops_per_step=5 timeline=true
+
+# Step 8: Check the results
+# Get system metrics including NRCI (Non-Random Coherence Index)
+# Target: NRCI ≥ 0.999999 (six nines fidelity)
+get-metrics
+
+# Step 9: Export results for analysis
+export-results tutorial_basic_results.json
+
+# Congratulations! You've completed the basic UBP tutorial.
+# Key concepts learned:
+# - OffBits: 24-bit fundamental units with 4 ontological layers
+# - Bitfield: 6D sparse computational substrate
+# - Toggle operations: mathematical transformations between OffBits
+# - Realms: physical/mathematical contexts (quantum, electromagnetic, etc.)
+# - NRCI: coherence metric targeting 0.999999 fidelity
+# - Simulations: temporal evolution of the UBP system
+
