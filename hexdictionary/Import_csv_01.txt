@@ -1,0 +1,104 @@
+
+#### Code Cell (Import Function)
+Add this code cell immediately after the Markdown cell. It extends the `UBPDictionary` class with a new method to handle the dictionary import and includes error handling and progress feedback. You may need to change: csv_path (str), output_dir and csv_path.
+
+import pandas as pd
+import os
+import hashlib
+from tqdm import tqdm  # For progress bar
+
+# Extend UBPDictionary class with a new method for importing dictionary databases
+class UBPDictionary(UBPDictionary):  # Inherit from existing UBPDictionary
+    def import_large_dictionary(self, csv_path, batch_size=1000):
+        """
+        Import a dictionary database from a CSV file in the format: word,pos,def.
+        
+        Parameters:
+        - csv_path (str): Path to the CSV file (e.g., '/kaggle/input/dictionary-data/dictionary.csv')
+        - batch_size (int): Number of words to process per batch for memory efficiency
+        
+        Returns:
+        - str: Summary of import results (e.g., number of words added, skipped)
+        """
+        if not os.path.exists(csv_path):
+            return f"Error: CSV file not found at {csv_path}"
+        
+        try:
+            # Read CSV with specified columns
+            df = pd.read_csv(csv_path, names=['word', 'pos', 'def'], 
+                            dtype={'word': str, 'pos': str, 'def': str},
+                            na_values=[''], keep_default_na=False)
+            
+            # Initialize counters
+            added = 0
+            skipped = 0
+            errors = []
+            
+            # Process in batches for efficiency
+            total_rows = len(df)
+            print(f"Processing {total_rows} dictionary entries...")
+            
+            for start in tqdm(range(0, total_rows, batch_size), desc="Importing words"):
+                batch = df[start:start + batch_size]
+                
+                for _, row in batch.iterrows():
+                    word = str(row['word']).lower().strip()
+                    pos = str(row['pos']) if pd.notna(row['pos']) else ''
+                    definition = str(row['def']) if pd.notna(row['def']) else ''
+                    
+                    # Validate word
+                    if not word or not word.isalpha():
+                        skipped += 1
+                        errors.append(f"Skipped invalid word: {word}")
+                        continue
+                    
+                    # Generate deterministic binary toggle pattern
+                    binary = self._generate_binary_pattern(word, pos)
+                    
+                    # Add word to dictionary
+                    result = self.add_word(word, binary, definition)
+                    if "Added word" in result:
+                        added += 1
+                    else:
+                        skipped += 1
+                        errors.append(f"Failed to add {word}: {result}")
+            
+            # Summary
+            summary = (f"Import completed: {added} words added, {skipped} words skipped.\n"
+                      f"Output files saved in {self.output_dir}.\n")
+            if errors:
+                summary += f"Errors encountered: {len(errors)}. First few: {errors[:3]}"
+            
+            return summary
+        
+        except Exception as e:
+            return f"Error importing dictionary: {str(e)}"
+    
+    def _generate_binary_pattern(self, word, pos):
+        """
+        Generate a 6-bit binary toggle pattern based on word and POS.
+        Uses a deterministic hash to ensure consistency.
+        """
+        # Combine word and POS (if available) for uniqueness
+        input_str = f"{word.lower()}{pos.lower()}"
+        
+        # Use SHA-256 hash for deterministic yet varied output
+        hash_obj = hashlib.sha256(input_str.encode())
+        hash_int = int(hash_obj.hexdigest(), 16)
+        
+        # Convert to 6-bit binary (0s and 1s)
+        binary = ""
+        for i in range(6):
+            bit = (hash_int >> i) & 1  # Extract bits from hash
+            binary += str(bit)
+        
+        return binary[::-1]  # Reverse to align with UBP convention
+
+# Initialize dictionary with Kaggle output directory
+output_dir = "/kaggle/working/hexubp_files/"
+dictionary = UBPDictionary(output_dir=output_dir)
+
+# Example usage: Import a dictionary CSV
+csv_path = "/kaggle/input/dictionary-data/dictionary.csv"
+result = dictionary.import_large_dictionary(csv_path)
+print(result)
