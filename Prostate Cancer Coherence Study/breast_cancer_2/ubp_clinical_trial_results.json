@@ -1,0 +1,47 @@
+{
+  "study_design": {
+    "total_patients": 200,
+    "treatment_arm": 101,
+    "control_arm": 99,
+    "follow_up_months": 24,
+    "time_points": [
+      0,
+      3,
+      6,
+      12,
+      24
+    ]
+  },
+  "primary_endpoints": {
+    "nrci_change_control_mean": -0.051365643958487514,
+    "nrci_change_control_std": 0.07739864848323132,
+    "nrci_change_treatment_mean": 0.15874291648987493,
+    "nrci_change_treatment_std": 0.08188495400899574,
+    "nrci_difference": 0.21010856044836246,
+    "nrci_p_value": 1.895906105136679e-45,
+    "cohens_d": 2.636374216769468,
+    "t_statistic": 18.641048741883786
+  },
+  "tumor_size_endpoints": {
+    "size_change_control_mean": 0.0720849330163653,
+    "size_change_control_std": 0.13168639059026432,
+    "size_change_treatment_mean": -0.09671246128484412,
+    "size_change_treatment_std": 0.11026080300540952,
+    "size_difference": -0.16879739430120944,
+    "size_p_value": 7.662747558067961e-19
+  },
+  "survival_analysis": {
+    "pfs_events_control": 42,
+    "pfs_events_treatment": 32,
+    "pfs_logrank_p": 0.09646985015460581,
+    "hazard_ratio": 0.6801243320414669,
+    "hr_ci_lower": 0.42859557500672496,
+    "hr_ci_upper": 1.079267108690036
+  },
+  "key_statistics": {
+    "primary_endpoint_achieved": true,
+    "statistical_significance": true,
+    "effect_size_category": "Very Large",
+    "clinical_significance": "Highly significant improvement in coherence restoration"
+  }
+}
