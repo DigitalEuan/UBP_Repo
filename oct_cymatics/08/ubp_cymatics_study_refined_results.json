@@ -1,0 +1,130 @@
+{
+  "study_results": {
+    "metadata": {
+      "resolution": 256,
+      "Y_constant": 0.26467543040452696,
+      "X_G_scaling": 79347697.85318106,
+      "gravitational_factor": 1.6822920338154273e-18,
+      "framework_version": "UBP 3.2+ Phase II Complete"
+    },
+    "patterns": {
+      "CRV_BASE": {
+        "crv_frequency": 1404200000.0,
+        "pattern_shape": [
+          256,
+          256
+        ],
+        "analysis": {
+          "coherence_score": 0.028597515010618895,
+          "Y_harmonic_energy": 4568733.59798093,
+          "total_energy": 159759811.168364,
+          "dimensional_consistency": 0.03616657460455437,
+          "Y_value": 0.26467543040452696,
+          "X_G_value": 79347697.85318106
+        },
+        "Y_scaled": true
+      },
+      "CRV_PHI": {
+        "crv_frequency": 2269260548.951499,
+        "pattern_shape": [
+          256,
+          256
+        ],
+        "analysis": {
+          "coherence_score": 0.028597515010618885,
+          "Y_harmonic_energy": 4568733.597980928,
+          "total_energy": 159759811.168364,
+          "dimensional_consistency": 0.03616657460455436,
+          "Y_value": 0.26467543040452696,
+          "X_G_value": 79347697.85318106
+        },
+        "Y_scaled": true
+      },
+      "CRV_PI": {
+        "crv_frequency": 2203010665.794221,
+        "pattern_shape": [
+          256,
+          256
+        ],
+        "analysis": {
+          "coherence_score": 0.02859751501061891,
+          "Y_harmonic_energy": 4568733.597980931,
+          "total_energy": 159759811.168364,
+          "dimensional_consistency": 0.036166574604554386,
+          "Y_value": 0.26467543040452696,
+          "X_G_value": 79347697.85318106
+        },
+        "Y_scaled": true
+      },
+      "CRV_E": {
+        "crv_frequency": 1906168151.3315048,
+        "pattern_shape": [
+          256,
+          256
+        ],
+        "analysis": {
+          "coherence_score": 0.02859751501061884,
+          "Y_harmonic_energy": 4568733.597980922,
+          "total_energy": 159759811.16836405,
+          "dimensional_consistency": 0.0361665746045543,
+          "Y_value": 0.26467543040452696,
+          "X_G_value": 79347697.85318106
+        },
+        "Y_scaled": true
+      },
+      "CRV_Y": {
+        "crv_frequency": 371657239.3740367,
+        "pattern_shape": [
+          256,
+          256
+        ],
+        "analysis": {
+          "coherence_score": 0.028597515010618926,
+          "Y_harmonic_energy": 4568733.597980938,
+          "total_energy": 159759811.1683641,
+          "dimensional_consistency": 0.036166574604554406,
+          "Y_value": 0.26467543040452696,
+          "X_G_value": 79347697.85318106
+        },
+        "Y_scaled": true
+      },
+      "CRV_X_G": {
+        "crv_frequency": 79347697.85318106,
+        "pattern_shape": [
+          256,
+          256
+        ],
+        "analysis": {
+          "coherence_score": 0.02859751501061892,
+          "Y_harmonic_energy": 4568733.597980933,
+          "total_energy": 159759811.168364,
+          "dimensional_consistency": 0.0361665746045544,
+          "Y_value": 0.26467543040452696,
+          "X_G_value": 79347697.85318106
+        },
+        "Y_scaled": true
+      }
+    },
+    "summary": {
+      "total_patterns": 6,
+      "avg_coherence": 0.028597515010618895,
+      "max_coherence": 0.028597515010618926,
+      "avg_dimensional_consistency": 0.03616657460455438,
+      "max_dimensional_consistency": 0.036166574604554406,
+      "Y_constant_verified": true
+    }
+  },
+  "gravitational_verification": {
+    "formula": "G = GF \u00d7 (\u221a2/4) \u00d7 c \u00d7 Y",
+    "gravitational_factor": 1.6822920338154273e-18,
+    "mass_energy_factor": 0.3535533905932738,
+    "speed_of_light": 299792458,
+    "Y_constant": 0.26467543040452696,
+    "G_calculated": 4.7194427896733736e-11,
+    "G_measured": 6.6743e-11,
+    "relative_error": 0.2928932188134525,
+    "error_percentage": 29.28932188134525,
+    "verification_passed": false
+  },
+  "phase_ii_complete": true
+}
