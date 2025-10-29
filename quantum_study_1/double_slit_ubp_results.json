@@ -1,0 +1,121 @@
+{
+  "experiment": "Double-Slit Interference (Molecular Scattering)",
+  "data_source": "Zhou et al., 2021 - Dryad Repository",
+  "datasets": [
+    "45\u00b0",
+    "135\u00b0",
+    "X"
+  ],
+  "interference_analysis": {
+    "45\u00b0": {
+      "label": "45\u00b0",
+      "num_peaks": 9,
+      "num_troughs": 10,
+      "visibility": 0.11788435679067684,
+      "fringe_spacing": 14.8550833875,
+      "dominant_frequency": 0.01627906976744186,
+      "mean_intensity": 363.3953488372093,
+      "std_intensity": 49.414308978827755,
+      "peak_positions": [
+        25.2087653,
+        35.95056762,
+        48.1896851,
+        58.41186449,
+        76.225853,
+        103.774147,
+        124.8499046,
+        135.5846914,
+        144.0494324
+      ],
+      "trough_positions": [
+        55.15009542,
+        61.56310985,
+        67.60731219,
+        87.27059736,
+        92.72940264,
+        100.9805754,
+        106.6015496,
+        112.3926878,
+        118.4368901,
+        128.2466199
+      ]
+    },
+    "135\u00b0": {
+      "label": "135\u00b0",
+      "num_peaks": 11,
+      "num_troughs": 8,
+      "visibility": 0.14228112306916896,
+      "fringe_spacing": 11.304671327,
+      "dominant_frequency": 0.01627906976744186,
+      "mean_intensity": 188.97674418604652,
+      "std_intensity": 32.20897489548961,
+      "peak_positions": [
+        31.00271913,
+        40.36759354,
+        48.1896851,
+        58.41186449,
+        70.52877937,
+        76.225853,
+        87.27059736,
+        95.4650238,
+        115.3769335,
+        131.8103149,
+        144.0494324
+      ],
+      "trough_positions": [
+        55.15009542,
+        64.62306647,
+        73.3984504,
+        81.7867893,
+        92.72940264,
+        100.9805754,
+        106.6015496,
+        118.4368901
+      ]
+    },
+    "X": {
+      "label": "X",
+      "num_peaks": 6,
+      "num_troughs": 6,
+      "visibility": 0.44102756423719947,
+      "fringe_spacing": 21.291914879999997,
+      "dominant_frequency": 0.006061859443503607,
+      "mean_intensity": 355.75289283720923,
+      "std_intensity": 142.17924497319268,
+      "peak_positions": [
+        41.2711174,
+        48.87933761,
+        64.99024725,
+        121.1127971,
+        127.6382658,
+        147.7306918
+      ],
+      "trough_positions": [
+        70.80266232,
+        84.60920306,
+        92.69252814,
+        98.10142741,
+        106.3706755,
+        112.0737727
+      ]
+    }
+  },
+  "ubp_weight_analysis": {
+    "average_optimal_weight": 3.0,
+    "predicted_ILRV": 1.5303,
+    "predicted_magnetic": 2.5,
+    "difference_from_ILRV": 1.4697,
+    "difference_from_magnetic": 0.5,
+    "closest_prediction": "Magnetic",
+    "individual_weights": {
+      "45\u00b0": 3.0,
+      "135\u00b0": 3.0,
+      "X": 3.0
+    }
+  },
+  "layer_fluctuation": {
+    "biaxial_visibility": 0.44102756423719947,
+    "uniaxial_avg_visibility": 0.1300827399299229
+  },
+  "interpretation": "Double-slit interference analyzed with UBP framework to test light layer-fluctuation hypothesis"
+}

@@ -1,0 +1,158 @@
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+======================================================================
+MAGNETIC SYSTEMS ANALYSIS: UBP Information Layer Validation
+======================================================================
+
+Testing hypothesis: Magnetism encoded in Information/Unactivated layers
+Prediction: Same geometric invariants as quantum entanglement
+
+Target invariants:
+  W_Tetra:  1.9416
+  W_Study1: 1.5303
+
+======================================================================
+PHASE 1: 2D Ising Model Simulation
+======================================================================
+
+Critical temperature: T_c = 2.2692
+
+Temperature points:
+  ordered     : T = 1.1346 (0.50 T_c)
+  critical    : T = 2.2692 (1.00 T_c)
+  disordered  : T = 3.4038 (1.50 T_c)
+
+[ORDERED] Running simulation at T = 1.1346...
+  Equilibrating (20000 steps)...
+  Production run (50000 steps)...
+  Mean magnetization: +0.2388 ± 0.0412
+  Collected 5000 configurations
+
+[CRITICAL] Running simulation at T = 2.2692...
+  Equilibrating (20000 steps)...
+  Production run (50000 steps)...
+  Mean magnetization: +0.0498 ± 0.0277
+  Collected 5000 configurations
+
+[DISORDERED] Running simulation at T = 3.4038...
+  Equilibrating (20000 steps)...
+  Production run (50000 steps)...
+  Mean magnetization: +0.0261 ± 0.0264
+  Collected 5000 configurations
+
+======================================================================
+PHASE 2: Information Layer Analysis of Magnetic Systems
+======================================================================
+
+[ORDERED] Analyzing information layer signatures...
+  Performing geometric weight scan...
+  Shannon Entropy (spatial):  0.9799
+  Shannon Entropy (temporal): -0.0000
+  LZ Complexity (spatial):    0.0045
+  LZ Complexity (temporal):   0.0045
+  Mutual Information:         -0.0000
+  NRCI-Information:           0.2201
+  Optimal Weight:             1.0000
+  Maximum NRCI-I:             0.2201
+
+[CRITICAL] Analyzing information layer signatures...
+  Performing geometric weight scan...
+  Shannon Entropy (spatial):  0.9991
+  Shannon Entropy (temporal): 0.1863
+  LZ Complexity (spatial):    0.0045
+  LZ Complexity (temporal):   0.0045
+  Mutual Information:         0.0018
+  NRCI-Information:           0.2578
+  Optimal Weight:             2.5000
+  Maximum NRCI-I:             0.2580
+
+[DISORDERED] Analyzing information layer signatures...
+  Performing geometric weight scan...
+  Shannon Entropy (spatial):  1.0000
+  Shannon Entropy (temporal): 0.6419
+  LZ Complexity (spatial):    0.0045
+  LZ Complexity (temporal):   0.0045
+  Mutual Information:         0.0011
+  NRCI-Information:           0.3178
+  Optimal Weight:             2.5000
+  Maximum NRCI-I:             0.3179
+
+======================================================================
+PHASE 3: Comparison with Quantum Entanglement
+======================================================================
+
+Loaded quantum entanglement results from Study 1
+
+Quantum Entanglement (Study 1):
+  Optimal Weight: 1.5303
+  Max NRCI:       0.9901
+
+Magnetic Systems (Ising Model):
+Phase            Optimal Weight   Max NRCI-I    Dev from W_Study1
+----------------------------------------------------------------------
+ordered                  1.0000       0.2201               34.65%
+critical                 2.5000       0.2580               63.37%
+disordered               2.5000       0.3179               63.37%
+
+======================================================================
+Geometric Invariant Analysis
+======================================================================
+
+Candidate Invariants:
+  W_Tetra (tetrahedral):  1.9416
+  W_Study1 (entanglement): 1.5303
+
+Closest Invariant by Phase:
+  ordered     : w = 1.0000 → W_Study1 (Δ = 0.5303)
+  critical    : w = 2.5000 → W_Tetra (Δ = 0.5584)
+  disordered  : w = 2.5000 → W_Tetra (Δ = 0.5584)
+
+======================================================================
+PHASE 4: Creating Visualizations
+======================================================================
+  Saved: magnetic_systems_analysis.png
+
+======================================================================
+PHASE 5: Saving Results
+======================================================================
+  Saved: magnetic_systems_results.json
+
+======================================================================
+MAGNETIC SYSTEMS ANALYSIS COMPLETE
+======================================================================
+
+🔬 KEY FINDINGS:
+
+1. Geometric Weight Preferences:
+   ordered     : w = 1.0000 (closest to W_Study1)
+   critical    : w = 2.5000 (closest to W_Tetra)
+   disordered  : w = 2.5000 (closest to W_Tetra)
+
+2. Information Layer Signatures:
+   Ordered phase:    NRCI-I = 0.2201
+   Critical point:   NRCI-I = 0.2578
+   Disordered phase: NRCI-I = 0.3178
+
+3. Comparison with Quantum Entanglement:
+   Quantum optimal weight:  1.5303
+   Magnetic average weight: 2.0000
+   Difference:              0.4697
+
+⚠️  DIVERGENCE: Magnetic systems show different geometric structure.
+   May indicate different computational encoding.
+
+======================================================================

@@ -1,0 +1,30 @@
+{
+  "quantum": {
+    "chsh_value": -0.018901317301930953,
+    "best_weight": 1.5,
+    "max_nrci": 0.0,
+    "coherence_pressure": 0.000743538572915157,
+    "ci_lower": 1.5,
+    "ci_upper": 2.5,
+    "significance": {
+      "deviation_from_tetra": 0.44161103872546636,
+      "deviation_percent": 22.74456777992741,
+      "within_ci": true,
+      "p_value": 1.0,
+      "significant": false,
+      "bootstrap_mean": 1.5,
+      "bootstrap_std": 0.0
+    }
+  },
+  "classical": {
+    "chsh_value": 1.1044846081178306,
+    "best_weight": 1.52020202020202,
+    "max_nrci": 0.7544707744955247,
+    "coherence_pressure": 0.00041028384648327204
+  },
+  "ubp_constants": {
+    "Y_emergent": 0.26467543040452696,
+    "W_tetra_invariant": 1.9416110387254664,
+    "PGCI_target": 0.999997
+  }
+}
