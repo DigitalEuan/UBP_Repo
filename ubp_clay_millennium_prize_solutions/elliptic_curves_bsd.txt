@@ -1,0 +1,29 @@
+# Sample Elliptic Curves for BSD Conjecture Validation
+
+## Rank 0 Curves (from LMFDB)
+# Format: Label, Conductor, Rank, Torsion, Weierstrass Equation
+
+11.a1,11,0,trivial,y^2 + y = x^3 - x^2 - 7820x - 263580
+11.a2,11,0,Z/5Z,y^2 + y = x^3 - x^2 - 10x - 20
+11.a3,11,0,Z/5Z,y^2 + y = x^3 - x^2
+14.a1,14,0,Z/2Z,y^2 + xy + y = x^3 - 2731x - 55146
+14.a2,14,0,Z/2Z,y^2 + xy + y = x^3 - 171x - 874
+14.a3,14,0,Z/6Z,y^2 + xy + y = x^3 - 36x - 70
+14.a4,14,0,Z/6Z,y^2 + xy + y = x^3 - 11x + 12
+14.a5,14,0,Z/6Z,y^2 + xy + y = x^3 - x
+14.a6,14,0,Z/6Z,y^2 + xy + y = x^3 + 4x - 6
+15.a1,15,0,Z/2Z,y^2 + xy + y = x^3 + x^2 - 2160x - 39540
+
+## Rank 1 Curves (for comparison)
+# These should have L-function zeros at s=1 with order 1
+
+37.a1,37,1,trivial,y^2 + y = x^3 - x
+389.a1,389,2,trivial,y^2 + y = x^3 + x^2 - 2x
+5077.a1,5077,3,trivial,y^2 + y = x^3 - 7x + 6
+
+## Key Properties for UBP Mapping
+# - Conductor maps to Prime_Resonance frequencies
+# - Rank corresponds to toggle null patterns
+# - L-function zeros align with TGIC x-y resonance
+# - Torsion structure maps to GLR error correction patterns
+
