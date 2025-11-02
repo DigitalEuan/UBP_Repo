@@ -131,11 +131,11 @@ E_SOC = (Y_Emergent × O_observer) / (1 - NRCI)  [Coherence-Units]
 Where:
 - **Y_Emergent**: Observer-dependent Y constant
 - **O_observer**: Self-actualizing observer cost (≈3.778)
-- **NRCI**: Non-Random Coherent Information (0 to 1)
+- **NRCI**: Non-Random Coherance Index (0 to 1)
 
 **Physical Meaning:** Energy required to maintain coherent observation in a given state.
 
-### NRCI (Non-Random Coherent Information)
+### NRCI (Non-Random Coherance Index)
 
 NRCI quantifies how much a system deviates from random behavior:
 
