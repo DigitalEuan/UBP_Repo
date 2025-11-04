@@ -3,7 +3,7 @@
 **Author:** Euan R A Craig, New Zealand  
 **Email:** info@digitaleuan.com  
 **Date:** November 2025  
-**Repository:** https://github.com/DigitalEuan/UBP_Repo
+**Repository:** https://github.com/DigitalEuan/UBP_Repo/tree/main/medicine_study_1
 
 ---
 
@@ -284,7 +284,7 @@ This study was conducted by **Manus**, an autonomous AI agent, under the directi
 
 **Framework:**
 - Universal Binary Principle (UBP) 3.3
-- GitHub: https://github.com/DigitalEuan/UBP_Repo
+- GitHub: https://github.com/DigitalEuan/UBP_Repo/tree/main/medicine_study_1
 
 ---
 
