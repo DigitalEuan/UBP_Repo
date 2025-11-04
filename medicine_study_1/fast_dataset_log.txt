@@ -1,0 +1,71 @@
+================================================================================
+Fast Creation of 1000-Compound Pharmaceutical Dataset
+Using Local RDKit Computation
+================================================================================
+
+Loading ChEMBL structures...
+Loaded 5000 compounds
+
+Computing molecular descriptors...
+Processed 100 compounds...
+Processed 200 compounds...
+Processed 300 compounds...
+Processed 400 compounds...
+Processed 500 compounds...
+Processed 600 compounds...
+Processed 700 compounds...
+Processed 800 compounds...
+Processed 900 compounds...
+
+================================================================================
+DATASET SUMMARY
+================================================================================
+Total compounds: 1000
+
+Therapeutic area distribution:
+therapeutic_area
+CNS/Neurology        298
+Pain/Inflammation    276
+Anti-infective       151
+Other                142
+Immunology            79
+Metabolic             27
+Cardiovascular        27
+Name: count, dtype: int64
+
+Molecular weight:
+  Range: 154.1 - 965.7
+  Mean: 406.4
+  Median: 378.1
+
+LogP:
+  Range: -5.57 - 7.95
+  Mean: 3.12
+  Median: 3.32
+
+Complexity (Bertz CT):
+  Range: 107.0 - 3301.9
+  Mean: 934.5
+  Median: 885.2
+
+Heavy atoms:
+  Range: 9 - 64
+  Mean: 28.4
+
+Aromatic rings:
+  Range: 0 - 11
+  Mean: 2.2
+
+Lipinski Rule of 5 violations:
+num_ro5_violations
+0    679
+1    321
+Name: count, dtype: int64
+
+✓ Data saved to: /home/ubuntu/ubp_medicine_study/pharmaceutical_1000_compounds.csv
+✓ Summary saved to: /home/ubuntu/ubp_medicine_study/dataset_summary.json
+
+================================================================================
+Dataset creation complete!
+Ready for UBP analysis
+================================================================================
