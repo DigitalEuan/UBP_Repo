@@ -1,0 +1,181 @@
+Loading dataset from /home/ubuntu/ubp_medicine_study/pharmaceutical_1000_compounds.csv...
+Loaded 1000 compounds
+
+================================================================================
+Starting UBP 3.3 Analysis of 1000 Pharmaceutical Compounds
+================================================================================
+
+Processing compound 100/1000...
+Processing compound 200/1000...
+Processing compound 300/1000...
+Processing compound 400/1000...
+Processing compound 500/1000...
+Processing compound 600/1000...
+Processing compound 700/1000...
+Processing compound 800/1000...
+Processing compound 900/1000...
+Processing compound 1000/1000...
+
+Completed analysis: 1000 successful, 0 errors
+
+✓ Results saved to: /home/ubuntu/ubp_medicine_study/ubp_results/ubp_analysis_results_20251103_143920.csv
+
+================================================================================
+UBP ANALYSIS SUMMARY
+================================================================================
+
+Total compounds analyzed: 1000
+
+Therapeutic area distribution:
+therapeutic_area
+CNS/Neurology        298
+Pain/Inflammation    276
+Anti-infective       151
+Other                142
+Immunology            79
+Metabolic             27
+Cardiovascular        27
+Name: count, dtype: int64
+
+============================================================
+UBP ENERGY STATISTICS
+============================================================
+Mean: 2.370555e+08 CU
+Median: 2.262862e+08 CU
+Std Dev: 6.981943e+07 CU
+Range: 9.603547e+07 - 5.896905e+08 CU
+
+============================================================
+UBP NRCI (NON-RANDOM COHERENCE INDEX) STATISTICS
+============================================================
+Mean: 0.9999966983
+Median: 0.9999968362
+Std Dev: 0.0000008246
+Range: 0.9999944227 - 0.9999984042
+
+============================================================
+UBP CRV (COMPUTATIONAL RESONANCE VALUE) STATISTICS
+============================================================
+Mean: 20.684570
+Median: 19.067563
+Std Dev: 6.130365
+Range: 11.693896 - 52.170856
+
+============================================================
+UBP RESONANCE STATISTICS
+============================================================
+Mean: 0.314619
+Median: 0.294636
+Std Dev: 0.138880
+Range: 0.100000 - 0.824844
+
+============================================================
+UBP METRICS BY THERAPEUTIC AREA
+============================================================
+                     ubp_energy  ... ubp_therapeutic_potential
+                           mean  ...                       std
+therapeutic_area                 ...                          
+Anti-infective     1.655337e+08  ...                  0.121271
+CNS/Neurology      2.797425e+08  ...                  0.122469
+Cardiovascular     1.990270e+08  ...                  0.039990
+Immunology         3.451043e+08  ...                  0.056175
+Metabolic          3.028228e+08  ...                  0.088586
+Other              2.531239e+08  ...                  0.162135
+Pain/Inflammation  1.881879e+08  ...                  0.154316
+
+[7 rows x 12 columns]
+
+============================================================
+CORRELATIONS: UBP METRICS vs MOLECULAR PROPERTIES
+============================================================
+
+UBP Energy correlations:
+ubp_energy          1.000000
+complexity          0.964070
+ubp_crv             0.962588
+heavy_atoms         0.954581
+molecular_weight    0.950755
+aromatic_rings      0.499078
+logp                0.310021
+ubp_nrci           -0.045293
+ubp_resonance      -0.165857
+Name: ubp_energy, dtype: float64
+
+UBP NRCI correlations:
+ubp_nrci            1.000000
+aromatic_rings      0.679963
+ubp_resonance       0.463001
+logp                0.204227
+complexity          0.072302
+ubp_crv            -0.026273
+ubp_energy         -0.045293
+heavy_atoms        -0.234970
+molecular_weight   -0.251274
+Name: ubp_nrci, dtype: float64
+
+UBP CRV correlations:
+ubp_crv             1.000000
+ubp_energy          0.962588
+complexity          0.955947
+heavy_atoms         0.897214
+molecular_weight    0.880297
+aromatic_rings      0.574141
+logp                0.313965
+ubp_nrci           -0.026273
+ubp_resonance      -0.289449
+Name: ubp_crv, dtype: float64
+
+============================================================
+TOP 10 COMPOUNDS BY UBP ENERGY
+============================================================
+    chembl_id    name therapeutic_area   ubp_energy  ubp_nrci   ubp_crv
+ CHEMBL500618 Unknown    CNS/Neurology 5.896905e+08  0.999997 52.170856
+CHEMBL1076905 Unknown    CNS/Neurology 4.559145e+08  0.999996 39.824785
+CHEMBL1076906 Unknown    CNS/Neurology 4.559145e+08  0.999996 39.824785
+ CHEMBL540396 Unknown    CNS/Neurology 4.547600e+08  0.999997 38.196898
+ CHEMBL553887 Unknown       Immunology 4.452081e+08  0.999996 39.475605
+ CHEMBL558759 Unknown       Immunology 4.452081e+08  0.999996 39.475605
+   CHEMBL8532 Unknown       Immunology 4.422605e+08  0.999996 36.803821
+ CHEMBL498970 Unknown    CNS/Neurology 4.372222e+08  0.999996 37.926025
+ CHEMBL540947 Unknown    CNS/Neurology 4.355863e+08  0.999997 38.884823
+ CHEMBL156735 Unknown    CNS/Neurology 4.329503e+08  0.999997 38.905788
+
+============================================================
+TOP 10 COMPOUNDS BY UBP NRCI (COHERENCE)
+============================================================
+    chembl_id    name  therapeutic_area   ubp_energy  ubp_nrci   ubp_crv
+ CHEMBL591228 Unknown     CNS/Neurology 2.084489e+08  0.999998 21.278948
+ CHEMBL155478 Unknown    Anti-infective 1.802622e+08  0.999998 17.473943
+ CHEMBL154997 Unknown Pain/Inflammation 2.256284e+08  0.999998 17.530700
+ CHEMBL504142 Unknown Pain/Inflammation 1.821470e+08  0.999998 16.570161
+ CHEMBL501070 Unknown     CNS/Neurology 2.149991e+08  0.999998 21.981389
+ CHEMBL584146 Unknown     CNS/Neurology 2.269075e+08  0.999998 22.313037
+ CHEMBL581077 Unknown     CNS/Neurology 2.591830e+08  0.999998 23.042199
+CHEMBL1090670 Unknown     CNS/Neurology 2.338148e+08  0.999998 22.690779
+ CHEMBL538928 Unknown     CNS/Neurology 2.104312e+08  0.999998 21.996040
+ CHEMBL531135 Unknown     CNS/Neurology 2.488645e+08  0.999998 22.886773
+
+============================================================
+TOP 10 COMPOUNDS BY THERAPEUTIC POTENTIAL
+============================================================
+    chembl_id    name  therapeutic_area  ubp_therapeutic_potential  drug_likeness_score
+ CHEMBL154609 Unknown Pain/Inflammation                   0.824844                  1.0
+CHEMBL1088217 Unknown             Other                   0.759948                  1.0
+ CHEMBL444024 Unknown Pain/Inflammation                   0.731972                  1.0
+ CHEMBL505806 Unknown Pain/Inflammation                   0.723046                  1.0
+ CHEMBL595820 Unknown             Other                   0.717322                  1.0
+ CHEMBL154360 Unknown Pain/Inflammation                   0.715440                  1.0
+ CHEMBL262664 Unknown Pain/Inflammation                   0.714995                  1.0
+ CHEMBL540662 Unknown             Other                   0.698044                  1.0
+ CHEMBL539921 Unknown Pain/Inflammation                   0.688205                  1.0
+CHEMBL1205831 Unknown Pain/Inflammation                   0.686358                  1.0
+
+✓ Summary statistics saved to: /home/ubuntu/ubp_medicine_study/ubp_results/ubp_analysis_summary_20251103_143920.json
+
+================================================================================
+UBP ANALYSIS COMPLETE
+================================================================================
+
+Results directory: /home/ubuntu/ubp_medicine_study/ubp_results
+Total compounds analyzed: 1000
+Errors: 0

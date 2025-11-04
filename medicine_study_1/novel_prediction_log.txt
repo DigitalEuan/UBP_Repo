@@ -1,0 +1,76 @@
+Using results file: /home/ubuntu/ubp_medicine_study/ubp_results/ubp_analysis_results_20251103_143920.csv
+
+Loading UBP results from /home/ubuntu/ubp_medicine_study/ubp_results/ubp_analysis_results_20251103_143920.csv...
+Loaded 1000 analyzed compounds
+
+================================================================================
+IDENTIFYING OPTIMAL UBP SIGNATURES
+================================================================================
+
+High-performing compounds (top 20%): 200
+Therapeutic potential threshold: 0.4286
+
+ubp_energy:
+  Mean: 2.200582e+08
+  Std Dev: 3.515846e+07
+  Target Range: [1.848997e+08, 2.552167e+08]
+
+ubp_nrci:
+  Mean: 0.999997
+  Std Dev: 0.000000
+  Target Range: [0.999997, 0.999998]
+
+ubp_crv:
+  Mean: 17.798318
+  Std Dev: 3.120787
+  Target Range: [14.677531, 20.919105]
+
+ubp_resonance:
+  Mean: 0.530608
+  Std Dev: 0.079645
+  Target Range: [0.450963, 0.610252]
+
+Optimal signatures by therapeutic area:
+
+CNS/Neurology (37 compounds):
+  Mean UBP Energy: 2.552073e+08
+  Mean NRCI: 0.9999976969
+  Mean CRV: 22.922269
+
+Pain/Inflammation (100 compounds):
+  Mean UBP Energy: 2.037624e+08
+  Mean NRCI: 0.9999970993
+  Mean CRV: 15.894015
+
+Other (36 compounds):
+  Mean UBP Energy: 2.503078e+08
+  Mean NRCI: 0.9999971711
+  Mean CRV: 18.991843
+
+Anti-infective (26 compounds):
+  Mean UBP Energy: 1.875482e+08
+  Mean NRCI: 0.9999967957
+  Mean CRV: 15.868248
+
+================================================================================
+BUILDING PREDICTIVE MODEL
+================================================================================
+
+Traceback (most recent call last):
+  File "/home/ubuntu/ubp_medicine_study/predict_novel_compounds.py", line 370, in <module>
+    ranked_df, optimal_signatures = main()
+                                    ^^^^^^
+  File "/home/ubuntu/ubp_medicine_study/predict_novel_compounds.py", line 333, in main
+    model, scaler, feature_cols = build_predictive_model(df)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ubp_medicine_study/predict_novel_compounds.py", line 101, in build_predictive_model
+    X = df[feature_cols].values
+        ~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py", line 4119, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py", line 6212, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py", line 6264, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['hbd', 'hba', 'tpsa', 'rotatable_bonds'] not in index"

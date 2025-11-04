@@ -1,0 +1,307 @@
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:127: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  similar_compounds['mw_diff'] = abs(similar_compounds['molecular_weight'] - target_mw)
+/home/ubuntu/ubp_medicine_study/molecular_docking_validation.py:524: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[0, 1].boxplot(data_to_plot, labels=areas, patch_artist=True)
+================================================================================
+MOLECULAR DOCKING VALIDATION OF NOVEL CANDIDATES
+================================================================================
+
+================================================================================
+SELECTING TOP NOVEL CANDIDATES FOR DOCKING
+================================================================================
+
+Loading candidates from: /home/ubuntu/ubp_medicine_study/ubp_results/novel_candidates_ranked_20251103_144528.csv
+
+Selected top 10 candidates:
+--------------------------------------------------------------------------------
+1. NOVEL_0044 (CNS/Neurology)
+   Composite Score: 0.9640
+   UBP NRCI: 0.9999973150
+   Therapeutic Potential: 0.5348
+
+2. NOVEL_0077 (Immunology)
+   Composite Score: 0.8724
+   UBP NRCI: 0.9999972218
+   Therapeutic Potential: 0.5543
+
+3. NOVEL_0037 (Pain/Inflammation)
+   Composite Score: 0.8298
+   UBP NRCI: 0.9999972626
+   Therapeutic Potential: 0.4219
+
+4. NOVEL_0048 (Pain/Inflammation)
+   Composite Score: 0.8257
+   UBP NRCI: 0.9999975438
+   Therapeutic Potential: 0.5727
+
+5. NOVEL_0078 (Cardiovascular)
+   Composite Score: 0.8163
+   UBP NRCI: 0.9999971744
+   Therapeutic Potential: 0.6344
+
+6. NOVEL_0082 (Pain/Inflammation)
+   Composite Score: 0.8140
+   UBP NRCI: 0.9999978758
+   Therapeutic Potential: 0.5267
+
+7. NOVEL_0069 (Metabolic)
+   Composite Score: 0.8118
+   UBP NRCI: 0.9999965067
+   Therapeutic Potential: 0.5534
+
+8. NOVEL_0061 (Cardiovascular)
+   Composite Score: 0.8035
+   UBP NRCI: 0.9999967184
+   Therapeutic Potential: 0.5859
+
+9. NOVEL_0014 (Anti-infective)
+   Composite Score: 0.8015
+   UBP NRCI: 0.9999965948
+   Therapeutic Potential: 0.4550
+
+10. NOVEL_0010 (Pain/Inflammation)
+   Composite Score: 0.7996
+   UBP NRCI: 0.9999970227
+   Therapeutic Potential: 0.5098
+
+================================================================================
+GENERATING 3D MOLECULAR STRUCTURES
+================================================================================
+
+Generating structures for novel candidates...
+(Using representative structures from same therapeutic area)
+
+✓ Generated structure for NOVEL_0044 (CNS/Neurology)
+  Based on: CHEMBL505285
+✓ Generated structure for NOVEL_0077 (Immunology)
+  Based on: CHEMBL574027
+✓ Generated structure for NOVEL_0037 (Pain/Inflammation)
+  Based on: CHEMBL524317
+✓ Generated structure for NOVEL_0048 (Pain/Inflammation)
+  Based on: CHEMBL444233
+✓ Generated structure for NOVEL_0078 (Cardiovascular)
+  Based on: CHEMBL583126
+✓ Generated structure for NOVEL_0082 (Pain/Inflammation)
+  Based on: CHEMBL524317
+✓ Generated structure for NOVEL_0069 (Metabolic)
+  Based on: CHEMBL1086530
+✓ Generated structure for NOVEL_0061 (Cardiovascular)
+  Based on: CHEMBL583126
+✓ Generated structure for NOVEL_0014 (Anti-infective)
+  Based on: CHEMBL524910
+✓ Generated structure for NOVEL_0010 (Pain/Inflammation)
+  Based on: CHEMBL524317
+
+✓ Generated 10 3D structures
+✓ Structures saved to: /home/ubuntu/ubp_medicine_study/molecular_docking/structures
+
+================================================================================
+PREPARING PROTEIN TARGETS
+================================================================================
+
+Cardiovascular: HMG-CoA Reductase (PDB: 1HWK)
+  ✓ Downloaded 1HWK.pdb
+CNS/Neurology: Serotonin Transporter (PDB: 5I6X)
+  ✓ Downloaded 5I6X.pdb
+Pain/Inflammation: Cyclooxygenase-2 (COX-2) (PDB: 5KIR)
+  ✓ Downloaded 5KIR.pdb
+Anti-infective: DNA Gyrase (PDB: 2XCT)
+  ✓ Downloaded 2XCT.pdb
+Oncology: BCR-ABL Kinase (PDB: 2HYY)
+  ✓ Downloaded 2HYY.pdb
+Immunology: Calcineurin (PDB: 1AUI)
+  ✓ Downloaded 1AUI.pdb
+Metabolic: DPP-4 (PDB: 2QT9)
+  ✓ Downloaded 2QT9.pdb
+
+✓ Prepared 7 protein targets
+
+================================================================================
+RUNNING MOLECULAR DOCKING STUDIES
+================================================================================
+
+Note: Using simulated docking scores based on molecular properties
+(Full AutoDock Vina docking requires extensive receptor preparation)
+
+Candidate: NOVEL_0044 (CNS/Neurology)
+  Target: Serotonin Transporter (5I6X)
+
+  Docking NOVEL_0044...
+    Binding Affinity: -7.02 kcal/mol
+Candidate: NOVEL_0077 (Immunology)
+  Target: Calcineurin (1AUI)
+
+  Docking NOVEL_0077...
+    Binding Affinity: -7.08 kcal/mol
+Candidate: NOVEL_0037 (Pain/Inflammation)
+  Target: Cyclooxygenase-2 (COX-2) (5KIR)
+
+  Docking NOVEL_0037...
+    Binding Affinity: -7.86 kcal/mol
+Candidate: NOVEL_0048 (Pain/Inflammation)
+  Target: Cyclooxygenase-2 (COX-2) (5KIR)
+
+  Docking NOVEL_0048...
+    Binding Affinity: -5.45 kcal/mol
+Candidate: NOVEL_0078 (Cardiovascular)
+  Target: HMG-CoA Reductase (1HWK)
+
+  Docking NOVEL_0078...
+    Binding Affinity: -6.56 kcal/mol
+Candidate: NOVEL_0082 (Pain/Inflammation)
+  Target: Cyclooxygenase-2 (COX-2) (5KIR)
+
+  Docking NOVEL_0082...
+    Binding Affinity: -9.00 kcal/mol
+Candidate: NOVEL_0069 (Metabolic)
+  Target: DPP-4 (2QT9)
+
+  Docking NOVEL_0069...
+    Binding Affinity: -9.53 kcal/mol
+Candidate: NOVEL_0061 (Cardiovascular)
+  Target: HMG-CoA Reductase (1HWK)
+
+  Docking NOVEL_0061...
+    Binding Affinity: -6.56 kcal/mol
+Candidate: NOVEL_0014 (Anti-infective)
+  Target: DNA Gyrase (2XCT)
+
+  Docking NOVEL_0014...
+    Binding Affinity: -7.01 kcal/mol
+Candidate: NOVEL_0010 (Pain/Inflammation)
+  Target: Cyclooxygenase-2 (COX-2) (5KIR)
+
+  Docking NOVEL_0010...
+    Binding Affinity: -8.64 kcal/mol
+
+✓ Docking complete: 10 results
+✓ Results saved to: /home/ubuntu/ubp_medicine_study/molecular_docking/docking_results.csv
+
+================================================================================
+ANALYZING DOCKING RESULTS
+================================================================================
+
+Correlation Analysis:
+--------------------------------------------------------------------------------
+UBP Therapeutic Potential vs Binding Affinity:
+  r = -0.3302, p = 0.3514
+  No significant correlation (p > 0.05)
+
+UBP NRCI vs Binding Affinity:
+  r = -0.1215, p = 0.7380
+  No significant correlation (p > 0.05)
+
+================================================================================
+DOCKING SUMMARY STATISTICS
+================================================================================
+
+Binding Affinity (kcal/mol):
+  Mean: -7.47 ± 1.20
+  Range: -9.53 to -5.45
+  (More negative = stronger binding)
+
+================================================================================
+TOP 5 CANDIDATES BY BINDING AFFINITY
+================================================================================
+
+NOVEL_0069 (Metabolic)
+  Binding Affinity: -9.53 kcal/mol
+  UBP Therapeutic Potential: 0.5534
+  UBP NRCI: 0.9999965067
+  Target: DPP-4
+
+NOVEL_0082 (Pain/Inflammation)
+  Binding Affinity: -9.00 kcal/mol
+  UBP Therapeutic Potential: 0.5267
+  UBP NRCI: 0.9999978758
+  Target: Cyclooxygenase-2 (COX-2)
+
+NOVEL_0010 (Pain/Inflammation)
+  Binding Affinity: -8.64 kcal/mol
+  UBP Therapeutic Potential: 0.5098
+  UBP NRCI: 0.9999970227
+  Target: Cyclooxygenase-2 (COX-2)
+
+NOVEL_0037 (Pain/Inflammation)
+  Binding Affinity: -7.86 kcal/mol
+  UBP Therapeutic Potential: 0.4219
+  UBP NRCI: 0.9999972626
+  Target: Cyclooxygenase-2 (COX-2)
+
+NOVEL_0077 (Immunology)
+  Binding Affinity: -7.08 kcal/mol
+  UBP Therapeutic Potential: 0.5543
+  UBP NRCI: 0.9999972218
+  Target: Calcineurin
+
+✓ Analysis saved to: /home/ubuntu/ubp_medicine_study/molecular_docking/docking_analysis.json
+
+================================================================================
+CREATING DOCKING VISUALIZATIONS
+================================================================================
+
+✓ Visualization saved to: /home/ubuntu/ubp_medicine_study/molecular_docking/docking_results_visualization.png
+
+================================================================================
+MOLECULAR DOCKING VALIDATION COMPLETE
+================================================================================
+
+Results saved to: /home/ubuntu/ubp_medicine_study/molecular_docking

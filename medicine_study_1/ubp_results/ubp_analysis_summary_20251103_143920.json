@@ -1,0 +1,134 @@
+{
+  "total_compounds": 1000,
+  "therapeutic_areas": {
+    "CNS/Neurology": 298,
+    "Pain/Inflammation": 276,
+    "Anti-infective": 151,
+    "Other": 142,
+    "Immunology": 79,
+    "Metabolic": 27,
+    "Cardiovascular": 27
+  },
+  "ubp_energy": {
+    "mean": 237055509.16981834,
+    "median": 226286208.3936782,
+    "std": 69819429.7201409,
+    "min": 96035473.99639225,
+    "max": 589690537.980666
+  },
+  "ubp_nrci": {
+    "mean": 0.9999966983496563,
+    "median": 0.9999968361796499,
+    "std": 8.245503713837241e-07,
+    "min": 0.9999944227260412,
+    "max": 0.999998404227804
+  },
+  "ubp_crv": {
+    "mean": 20.684569765510997,
+    "median": 19.067563104008634,
+    "std": 6.130364995602813,
+    "min": 11.693895516483622,
+    "max": 52.17085551832053
+  },
+  "correlations": {
+    "ubp_energy": {
+      "ubp_energy": 1.0,
+      "ubp_nrci": -0.04529275591208088,
+      "ubp_crv": 0.9625878825624948,
+      "ubp_resonance": -0.16585705755097638,
+      "molecular_weight": 0.9507552696485151,
+      "logp": 0.3100211192268736,
+      "complexity": 0.9640695288385542,
+      "heavy_atoms": 0.9545813188369251,
+      "aromatic_rings": 0.49907807749160904
+    },
+    "ubp_nrci": {
+      "ubp_energy": -0.04529275591208088,
+      "ubp_nrci": 1.0,
+      "ubp_crv": -0.02627259770794107,
+      "ubp_resonance": 0.4630006116702409,
+      "molecular_weight": -0.25127421686787543,
+      "logp": 0.20422703871670816,
+      "complexity": 0.07230194336851452,
+      "heavy_atoms": -0.23497039024537167,
+      "aromatic_rings": 0.6799634308431232
+    },
+    "ubp_crv": {
+      "ubp_energy": 0.9625878825624948,
+      "ubp_nrci": -0.02627259770794107,
+      "ubp_crv": 1.0,
+      "ubp_resonance": -0.28944886047918383,
+      "molecular_weight": 0.8802968650741415,
+      "logp": 0.3139651986791421,
+      "complexity": 0.9559469297050744,
+      "heavy_atoms": 0.8972142521346517,
+      "aromatic_rings": 0.574141399930164
+    },
+    "ubp_resonance": {
+      "ubp_energy": -0.16585705755097638,
+      "ubp_nrci": 0.4630006116702409,
+      "ubp_crv": -0.28944886047918383,
+      "ubp_resonance": 1.0,
+      "molecular_weight": -0.3010278254196743,
+      "logp": 0.018192894597598305,
+      "complexity": -0.20485254313032608,
+      "heavy_atoms": -0.28647043910450254,
+      "aromatic_rings": 0.09278634253573309
+    },
+    "molecular_weight": {
+      "ubp_energy": 0.9507552696485151,
+      "ubp_nrci": -0.25127421686787543,
+      "ubp_crv": 0.8802968650741415,
+      "ubp_resonance": -0.3010278254196743,
+      "molecular_weight": 1.0,
+      "logp": 0.24376400393268535,
+      "complexity": 0.8650328100812565,
+      "heavy_atoms": 0.9786823412813304,
+      "aromatic_rings": 0.27255508893535646
+    },
+    "logp": {
+      "ubp_energy": 0.3100211192268736,
+      "ubp_nrci": 0.20422703871670816,
+      "ubp_crv": 0.3139651986791421,
+      "ubp_resonance": 0.018192894597598305,
+      "molecular_weight": 0.24376400393268535,
+      "logp": 1.0,
+      "complexity": 0.33256631276261456,
+      "heavy_atoms": 0.2802780006182229,
+      "aromatic_rings": 0.3791770425013311
+    },
+    "complexity": {
+      "ubp_energy": 0.9640695288385542,
+      "ubp_nrci": 0.07230194336851452,
+      "ubp_crv": 0.9559469297050744,
+      "ubp_resonance": -0.20485254313032608,
+      "molecular_weight": 0.8650328100812565,
+      "logp": 0.33256631276261456,
+      "complexity": 1.0,
+      "heavy_atoms": 0.8869551523061888,
+      "aromatic_rings": 0.6211148521063596
+    },
+    "heavy_atoms": {
+      "ubp_energy": 0.9545813188369251,
+      "ubp_nrci": -0.23497039024537167,
+      "ubp_crv": 0.8972142521346517,
+      "ubp_resonance": -0.28647043910450254,
+      "molecular_weight": 0.9786823412813304,
+      "logp": 0.2802780006182229,
+      "complexity": 0.8869551523061888,
+      "heavy_atoms": 1.0,
+      "aromatic_rings": 0.2965955146147691
+    },
+    "aromatic_rings": {
+      "ubp_energy": 0.49907807749160904,
+      "ubp_nrci": 0.6799634308431232,
+      "ubp_crv": 0.574141399930164,
+      "ubp_resonance": 0.09278634253573309,
+      "molecular_weight": 0.27255508893535646,
+      "logp": 0.3791770425013311,
+      "complexity": 0.6211148521063596,
+      "heavy_atoms": 0.2965955146147691,
+      "aromatic_rings": 1.0
+    }
+  }
+}

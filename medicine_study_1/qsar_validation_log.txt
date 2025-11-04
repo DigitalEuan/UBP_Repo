@@ -1,0 +1,178 @@
+/home/ubuntu/ubp_medicine_study/qsar_validation.py:334: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[1, 1].boxplot(data_to_plot, labels=['Traditional', 'UBP', 'Combined'],
+================================================================================
+QSAR VALIDATION: TRADITIONAL METHODS vs UBP METRICS
+================================================================================
+
+Loading data from: /home/ubuntu/ubp_medicine_study/ubp_results/ubp_analysis_results_20251103_143920.csv
+
+Loaded 1000 compounds
+
+================================================================================
+COMPREHENSIVE QSAR VALIDATION
+================================================================================
+
+Testing all model × feature set combinations...
+
+
+============================================================
+Feature Set: Traditional
+Features: molecular_weight, logp, complexity, heavy_atoms, aromatic_rings
+============================================================
+
+  Training Linear Regression... ✓ Test R² = 0.1910, CV R² = 0.1500
+  Training Ridge Regression... ✓ Test R² = 0.1907, CV R² = 0.1506
+  Training Lasso Regression... ✓ Test R² = 0.1704, CV R² = 0.1383
+  Training Random Forest... ✓ Test R² = 0.7399, CV R² = 0.6977
+  Training Gradient Boosting... ✓ Test R² = 0.7202, CV R² = 0.6881
+  Training SVR (RBF)... ✓ Test R² = 0.7208, CV R² = 0.7113
+
+============================================================
+Feature Set: UBP
+Features: ubp_energy, ubp_nrci, ubp_crv, ubp_resonance
+============================================================
+
+  Training Linear Regression... ✓ Test R² = 0.9873, CV R² = 0.9891
+  Training Ridge Regression... ✓ Test R² = 0.9873, CV R² = 0.9891
+  Training Lasso Regression... ✓ Test R² = 0.9761, CV R² = 0.9797
+  Training Random Forest... ✓ Test R² = 0.9883, CV R² = 0.9926
+  Training Gradient Boosting... ✓ Test R² = 0.9920, CV R² = 0.9939
+  Training SVR (RBF)... ✓ Test R² = 0.8960, CV R² = 0.9021
+
+============================================================
+Feature Set: Combined
+Features: molecular_weight, logp, complexity, heavy_atoms, aromatic_rings, ubp_energy, ubp_nrci, ubp_crv, ubp_resonance
+============================================================
+
+  Training Linear Regression... ✓ Test R² = 0.9892, CV R² = 0.9907
+  Training Ridge Regression... ✓ Test R² = 0.9893, CV R² = 0.9907
+  Training Lasso Regression... ✓ Test R² = 0.9764, CV R² = 0.9800
+  Training Random Forest... ✓ Test R² = 0.9896, CV R² = 0.9963
+  Training Gradient Boosting... ✓ Test R² = 0.9920, CV R² = 0.9975
+  Training SVR (RBF)... ✓ Test R² = 0.8890, CV R² = 0.8910
+
+============================================================
+Feature Set: UBP_Only_NRCI
+Features: ubp_nrci
+============================================================
+
+  Training Linear Regression... ✓ Test R² = 0.2504, CV R² = 0.2371
+  Training Ridge Regression... ✓ Test R² = 0.2503, CV R² = 0.2371
+  Training Lasso Regression... ✓ Test R² = 0.2376, CV R² = 0.2322
+  Training Random Forest... ✓ Test R² = 0.2903, CV R² = 0.1735
+  Training Gradient Boosting... ✓ Test R² = 0.2815, CV R² = 0.1811
+  Training SVR (RBF)... ✓ Test R² = 0.2678, CV R² = 0.2623
+
+============================================================
+Feature Set: UBP_Only_Energy
+Features: ubp_energy
+============================================================
+
+  Training Linear Regression... ✓ Test R² = 0.0635, CV R² = 0.0491
+  Training Ridge Regression... ✓ Test R² = 0.0635, CV R² = 0.0491
+  Training Lasso Regression... ✓ Test R² = 0.0570, CV R² = 0.0455
+  Training Random Forest... ✓ Test R² = 0.1284, CV R² = 0.0764
+  Training Gradient Boosting... ✓ Test R² = 0.1015, CV R² = 0.0428
+  Training SVR (RBF)... ✓ Test R² = 0.2064, CV R² = 0.2170
+
+============================================================
+Feature Set: Traditional_Minimal
+Features: molecular_weight, logp
+============================================================
+
+  Training Linear Regression... ✓ Test R² = 0.1543, CV R² = 0.1334
+  Training Ridge Regression... ✓ Test R² = 0.1542, CV R² = 0.1334
+  Training Lasso Regression... ✓ Test R² = 0.1500, CV R² = 0.1238
+  Training Random Forest... ✓ Test R² = 0.6094, CV R² = 0.5885
+  Training Gradient Boosting... ✓ Test R² = 0.5973, CV R² = 0.5534
+  Training SVR (RBF)... ✓ Test R² = 0.6050, CV R² = 0.6073
+
+✓ Detailed results saved to: /home/ubuntu/ubp_medicine_study/qsar_validation/qsar_validation_results.csv
+
+================================================================================
+QSAR VALIDATION ANALYSIS
+================================================================================
+
+TOP 10 MODELS BY TEST R²:
+--------------------------------------------------------------------------------
+       model_name feature_set  test_r2  cv_r2_mean  test_rmse
+Gradient Boosting    Combined 0.992046    0.997476   0.013167
+Gradient Boosting         UBP 0.991966    0.993928   0.013233
+    Random Forest    Combined 0.989592    0.996264   0.015061
+ Ridge Regression    Combined 0.989253    0.990684   0.015305
+Linear Regression    Combined 0.989215    0.990680   0.015332
+    Random Forest         UBP 0.988255    0.992560   0.015999
+ Ridge Regression         UBP 0.987281    0.989105   0.016649
+Linear Regression         UBP 0.987258    0.989107   0.016665
+ Lasso Regression    Combined 0.976422    0.980045   0.022669
+ Lasso Regression         UBP 0.976133    0.979672   0.022808
+
+================================================================================
+AVERAGE PERFORMANCE BY FEATURE SET:
+================================================================================
+                    test_r2                  ... cv_r2_mean test_rmse        
+                       mean     std     max  ...        std      mean     std
+feature_set                                  ...                             
+Combined             0.9709  0.0405  0.9920  ...     0.0413    0.0218  0.0138
+Traditional          0.4555  0.2976  0.7399  ...     0.3029    0.1052  0.0308
+Traditional_Minimal  0.3784  0.2471  0.6094  ...     0.2487    0.1144  0.0235
+UBP                  0.9712  0.0372  0.9920  ...     0.0358    0.0222  0.0129
+UBP_Only_Energy      0.1034  0.0576  0.2064  ...     0.0682    0.1397  0.0046
+UBP_Only_NRCI        0.2630  0.0204  0.2903  ...     0.0352    0.1267  0.0018
+
+[6 rows x 7 columns]
+
+================================================================================
+STATISTICAL COMPARISON: UBP vs TRADITIONAL
+================================================================================
+
+Traditional features:
+  Mean R²: 0.4555 ± 0.2716
+  Max R²: 0.7399
+
+UBP features:
+  Mean R²: 0.9712 ± 0.0340
+  Max R²: 0.9920
+
+Combined features:
+  Mean R²: 0.9709 ± 0.0370
+  Max R²: 0.9920
+
+T-test (UBP vs Traditional):
+  t-statistic: 4.2119
+  p-value: 0.0018
+  ✓ UBP features perform SIGNIFICANTLY BETTER than traditional
+  Effect size (Cohen's d): 2.6638
+
+================================================================================
+GENERATING VISUALIZATIONS
+================================================================================
+
+✓ Comparison plot saved to: /home/ubuntu/ubp_medicine_study/qsar_validation/qsar_validation_comparison.png
+✓ Heatmap saved to: /home/ubuntu/ubp_medicine_study/qsar_validation/qsar_performance_heatmap.png
+
+================================================================================
+GENERATING VALIDATION REPORT
+================================================================================
+
+✓ Validation report saved to: /home/ubuntu/ubp_medicine_study/qsar_validation/qsar_validation_report.json
+
+================================================================================
+QSAR VALIDATION SUMMARY
+================================================================================
+
+Best Model: Gradient Boosting (Combined features)
+  Test R²: 0.9920
+  CV R²: 0.9975 ± 0.0013
+  RMSE: 0.0132
+
+Feature Set Performance:
+  Traditional: R² = 0.4555
+  UBP:         R² = 0.9712
+  Combined:    R² = 0.9709
+
+✓ UBP metrics validated against traditional QSAR methods
+================================================================================
+
+
+All validation results saved to: /home/ubuntu/ubp_medicine_study/qsar_validation
