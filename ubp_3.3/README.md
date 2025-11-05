@@ -2,15 +2,12 @@
 
 **Author:** Euan Craig, New Zealand  
 **Date:** November 2025  
-**Status:** Production Ready - Fully Validated
 
 ---
 
 ## Overview
 
 UBP 3.3 is a computational framework for modeling reality across all scales of existence, from quantum phenomena to cosmological structures. This version introduces the Y constant family, Simplified Observer Coherence (SOC) energy, and self-actualizing observer dynamics.
-
-**Key Achievement:** Successfully unified dark matter, gravity, and time as emergent phenomena from a discrete computational substrate.
 
 ---
 
@@ -327,8 +324,8 @@ UBP Framework is research software. Contact author for licensing information.
 ## Contact
 
 **Euan Craig**  
-Email: euan@ubp.nz  
-Website: https://ubp.nz
+Email: info@digitaleuan.com  
+Website: [https://ubp.nz](https://digitaleuan.com/universal-binary-principal-ubp/)
 
 ---
 
@@ -336,5 +333,5 @@ Website: https://ubp.nz
 
 This work builds upon UBP 3.2 and incorporates insights from Paper 51 ("The Computational Origin of Physical Constants"). All calculations performed with full numerical precision (no approximations or placeholders).
 
-**Status:** Production ready, scientifically validated, 100% test pass rate.
+
 
