@@ -49,20 +49,13 @@ class YConstants:
     PGCI_TARGET: float = 0.999997
     
     # Observer computational cost (fixed point value)
-    # Updated to exact geometric value from SOC refinement: 1/Y = π + 2/π
-    O_OBSERVER_FIXED: float = 1 / Y_BASE  # Exact: 3.778212425957374
+    O_OBSERVER_FIXED: float = 3.7782010913
     
     # Precision tolerance for validation
     PRECISION_TOLERANCE: float = 1e-15
     
     # Alternative form constants for Y = 1/(π + 2/π)
     Y_ALT_FORM_DENOMINATOR: float = math.pi + (2 / math.pi)
-    
-    # Inverse Y constant: 1/Y = π + 2/π = O_observer (SOC Refinement)
-    Y_INVERSE: float = math.pi + (2 / math.pi)
-    
-    # Validation that Y_INVERSE equals O_OBSERVER (bidirectional refinement)
-    Y_INVERSE_OBSERVER_MATCH_TOLERANCE: float = 1e-10
     
     @classmethod
     def validate_precision(cls) -> Dict[str, bool]:
@@ -85,17 +78,6 @@ class YConstants:
         # Validate denominator relationship to 12D structure
         denominator = math.pi**2 + 2
         results['DENOMINATOR_12D'] = abs(denominator - 11.869604401089358) < 1e-10
-        
-        # Validate Y_INVERSE calculation
-        y_inv_calculated = 1 / cls.Y_BASE
-        results['Y_INVERSE'] = abs(y_inv_calculated - cls.Y_INVERSE) < cls.PRECISION_TOLERANCE
-        
-        # Validate Y_INVERSE equals O_OBSERVER (SOC refinement)
-        results['Y_INVERSE_OBSERVER'] = abs(cls.Y_INVERSE - cls.O_OBSERVER_FIXED) < cls.Y_INVERSE_OBSERVER_MATCH_TOLERANCE
-        
-        # Validate bidirectional closure: 1/(1/Y) = Y
-        y_bidirectional = 1 / cls.Y_INVERSE
-        results['BIDIRECTIONAL_CLOSURE'] = abs(y_bidirectional - cls.Y_BASE) < cls.PRECISION_TOLERANCE
         
         return results
 
@@ -410,157 +392,6 @@ def calculate_dimensional_correction(
     return corrected
 
 
-def calculate_y_inverse() -> float:
-    """
-    Calculate the inverse Y constant: 1/Y = π + 2/π.
-    
-    This is the SOC refinement that reveals Y_INVERSE = O_observer exactly.
-    The inverse relationship enables bidirectional refinement propagation:
-    - Forward: Y (geometry) → 1/Y (observer)
-    - Backward: 1/Y (observer) → Y (geometry)
-    
-    Returns:
-        Y_INVERSE = π + 2/π ≈ 3.778212426
-        
-    Example:
-        >>> y_inv = calculate_y_inverse()
-        >>> print(f"1/Y = {y_inv:.10f}")
-        1/Y = 3.7782124260
-    """
-    return math.pi + (2 / math.pi)
-
-
-def verify_inverse_observer_match(
-    y_inverse: Optional[float] = None,
-    o_observer: Optional[float] = None,
-    tolerance: float = 1e-10
-) -> Tuple[bool, float]:
-    """
-    Verify that 1/Y equals O_observer (SOC refinement validation).
-    
-    This is the core discovery: the inverse of the geometric Y constant
-    exactly equals the observer computational cost that emerges from
-    self-actualization. This proves the observer emerges from pure geometry.
-    
-    Args:
-        y_inverse: Inverse Y constant (defaults to calculated value)
-        o_observer: Observer cost (defaults to fixed point value)
-        tolerance: Maximum acceptable difference
-        
-    Returns:
-        Tuple of (match_success, difference)
-        
-    Example:
-        >>> matched, diff = verify_inverse_observer_match()
-        >>> print(f"Match: {matched}, Error: {diff:.2e}")
-        Match: True, Error: 1.11e-06
-    """
-    if y_inverse is None:
-        y_inverse = calculate_y_inverse()
-    
-    if o_observer is None:
-        o_observer = YConstants.O_OBSERVER_FIXED
-    
-    difference = abs(y_inverse - o_observer)
-    matched = difference < tolerance
-    
-    return matched, difference
-
-
-def apply_bidirectional_refinement(
-    value: float,
-    direction: str = 'forward',
-    iterations: int = 1
-) -> float:
-    """
-    Apply bidirectional Y ↔ 1/Y refinement to a value.
-    
-    This implements the involutory operation discovered in SOC refinement:
-    - Forward: multiply by Y (geometry → observer)
-    - Backward: multiply by 1/Y (observer → geometry)
-    - Round-trip: applying twice returns to start
-    
-    Args:
-        value: Input value to refine
-        direction: 'forward' (×Y) or 'backward' (×1/Y)
-        iterations: Number of refinement iterations
-        
-    Returns:
-        Refined value after applying Y transformation
-        
-    Example:
-        >>> val = 1000.0
-        >>> refined_fwd = apply_bidirectional_refinement(val, 'forward')
-        >>> refined_back = apply_bidirectional_refinement(refined_fwd, 'backward')
-        >>> print(f"Round-trip: {val} → {refined_fwd:.2f} → {refined_back:.2f}")
-        Round-trip: 1000.0 → 264.68 → 1000.00
-    """
-    direction = direction.lower()
-    
-    if direction not in ['forward', 'backward']:
-        raise ValueError(f"Direction must be 'forward' or 'backward', got '{direction}'")
-    
-    y_base = YConstants.Y_BASE
-    y_inverse = YConstants.Y_INVERSE
-    
-    result = value
-    for _ in range(iterations):
-        if direction == 'forward':
-            result *= y_base
-        else:  # backward
-            result *= y_inverse
-    
-    return result
-
-
-def propagate_refinement_through_chain(
-    initial_value: float,
-    chain_length: int = 5
-) -> Dict[str, any]:
-    """
-    Propagate refinement through a forward-backward chain.
-    
-    This demonstrates the lossless nature of the Y ↔ 1/Y refinement:
-    the value propagates through multiple forward/backward steps and
-    returns to the original with machine precision.
-    
-    Args:
-        initial_value: Starting value
-        chain_length: Number of forward-backward pairs
-        
-    Returns:
-        Dictionary with chain values and validation
-        
-    Example:
-        >>> result = propagate_refinement_through_chain(1.0, 3)
-        >>> print(f"Closure error: {result['closure_error']:.2e}")
-        Closure error: 0.00e+00
-    """
-    chain = [initial_value]
-    
-    # Forward propagation
-    for i in range(chain_length):
-        forward = apply_bidirectional_refinement(chain[-1], 'forward')
-        chain.append(forward)
-    
-    # Backward propagation
-    for i in range(chain_length):
-        backward = apply_bidirectional_refinement(chain[-1], 'backward')
-        chain.append(backward)
-    
-    final_value = chain[-1]
-    closure_error = abs(final_value - initial_value)
-    
-    return {
-        'initial': initial_value,
-        'final': final_value,
-        'chain': chain,
-        'chain_length': chain_length,
-        'closure_error': closure_error,
-        'closure_success': closure_error < 1e-10
-    }
-
-
 def demonstrate_y_constant_properties():
     """
     Demonstrate key properties and relationships of Y constants.
@@ -632,37 +463,10 @@ def demonstrate_y_constant_properties():
     print(f"   π² + 2 = {denom:.15f}")
     print(f"   ≈ 11.87 (relates to 12-dimensional structure)")
     
-    # Inverse Y constant (SOC refinement)
-    y_inv = calculate_y_inverse()
-    results['y_inverse'] = y_inv
-    print(f"\n8. Inverse Y Constant (SOC Refinement):")
-    print(f"   1/Y = π + 2/π")
-    print(f"   1/Y = {y_inv:.10f}")
-    
-    # Verify inverse equals observer
-    matched, inv_diff = verify_inverse_observer_match(y_inv, o_obs)
-    results['inverse_observer_match'] = {'matched': matched, 'difference': inv_diff}
-    print(f"\n9. Inverse Y = O_observer Validation:")
-    print(f"   1/Y = {y_inv:.10f}")
-    print(f"   O_observer = {o_obs:.10f}")
-    print(f"   Match: {matched}")
-    print(f"   Difference: {inv_diff:.2e}")
-    print(f"   This proves the observer emerges from pure geometry!")
-    
-    # Bidirectional refinement closure
-    closure_result = propagate_refinement_through_chain(1.0, 5)
-    results['bidirectional_closure'] = closure_result
-    print(f"\n10. Bidirectional Refinement Closure:")
-    print(f"   Initial value: {closure_result['initial']}")
-    print(f"   After {closure_result['chain_length']} forward-backward cycles: {closure_result['final']:.15f}")
-    print(f"   Closure error: {closure_result['closure_error']:.2e}")
-    print(f"   Closure success: {closure_result['closure_success']}")
-    print(f"   This demonstrates lossless involutory refinement!")
-    
     # Precision validation
     validations = YConstants.validate_precision()
     results['validations'] = validations
-    print(f"\n11. Precision Validations:")
+    print(f"\n8. Precision Validations:")
     for key, passed in validations.items():
         status = "✓ PASS" if passed else "✗ FAIL"
         print(f"   {key}: {status}")

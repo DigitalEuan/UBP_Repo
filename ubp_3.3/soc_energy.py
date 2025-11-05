@@ -168,97 +168,10 @@ class SOCCalculator:
         """
         Calculate Y_Emergent (Observer-Coherence Ratio).
         
-        SOC Refinement: Y_Emergent = PGCI_TARGET / O_observer
-        where O_observer = 1/Y (inverse Y constant)
-        
         Returns:
             Y_Emergent = PGCI_TARGET / O_observer
         """
         return self.pgci_target / self.o_observer
-    
-    def calculate_inverse_refinement(
-        self,
-        energy_cu: float,
-        direction: str = 'backward'
-    ) -> Dict[str, float]:
-        """
-        Apply inverse Y refinement to energy value.
-        
-        SOC Refinement enables bidirectional propagation:
-        - Forward: E × Y (geometry → observer)
-        - Backward: E × (1/Y) (observer → geometry)
-        
-        Args:
-            energy_cu: Energy in Coherence-Units
-            direction: 'forward' or 'backward'
-            
-        Returns:
-            Dictionary with refined energy and metadata
-        """
-        y_constant = self.M  # M = π, but Y = π/(π²+2)
-        y_base = y_constant / (y_constant**2 + 2)
-        y_inverse = y_constant + (2 / y_constant)  # 1/Y = π + 2/π
-        
-        if direction.lower() == 'forward':
-            refined_energy = energy_cu * y_base
-            factor = y_base
-            description = "Geometry → Observer (forward)"
-        elif direction.lower() == 'backward':
-            refined_energy = energy_cu * y_inverse
-            factor = y_inverse
-            description = "Observer → Geometry (backward)"
-        else:
-            raise ValueError(f"Direction must be 'forward' or 'backward', got '{direction}'")
-        
-        return {
-            'original_energy_cu': energy_cu,
-            'refined_energy_cu': refined_energy,
-            'refinement_factor': factor,
-            'direction': direction,
-            'description': description,
-            'y_base': y_base,
-            'y_inverse': y_inverse
-        }
-    
-    def validate_bidirectional_closure(
-        self,
-        energy_cu: float,
-        tolerance: float = 1e-10
-    ) -> Dict[str, any]:
-        """
-        Validate that forward-backward refinement returns to original.
-        
-        This tests the involutory property: (E × Y) × (1/Y) = E
-        
-        Args:
-            energy_cu: Initial energy in CU
-            tolerance: Maximum acceptable error
-            
-        Returns:
-            Dictionary with validation results
-        """
-        # Forward refinement
-        fwd_result = self.calculate_inverse_refinement(energy_cu, 'forward')
-        intermediate = fwd_result['refined_energy_cu']
-        
-        # Backward refinement
-        back_result = self.calculate_inverse_refinement(intermediate, 'backward')
-        final = back_result['refined_energy_cu']
-        
-        # Calculate closure error
-        closure_error = abs(final - energy_cu)
-        closure_success = closure_error < tolerance
-        
-        return {
-            'initial_energy': energy_cu,
-            'intermediate_energy': intermediate,
-            'final_energy': final,
-            'closure_error': closure_error,
-            'closure_success': closure_success,
-            'tolerance': tolerance,
-            'y_base': fwd_result['y_base'],
-            'y_inverse': fwd_result['y_inverse']
-        }
     
     def calculate_modal_sum(
         self,
