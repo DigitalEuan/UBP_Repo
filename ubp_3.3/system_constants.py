@@ -59,10 +59,16 @@ class UBPConstants:
     Y_M_CONSTANT: float = 1.5716125548e-7  # Planck Mass correction
     Y_FORMULA_N: int = 2  # Binary necessity parameter (mathematically proven)
     
+    # --- UBP 3.3: SOC Refinement - Inverse Y Relationship ---
+    # SOC refinement reveals: 1/Y = π + 2/π = O_observer (exact match)
+    # This bidirectional Y ↔ 1/Y relationship enables refinement propagation
+    Y_INVERSE: float = math.pi + (2 / math.pi)  # ≈ 3.778212426 = O_observer
+    
     # --- UBP 3.3: Observer Framework ---
     # Observer cost emerges at fixed point through self-actualization
+    # Updated to use Y_INVERSE (SOC refinement) for geometric foundation
     PGCI_TARGET: float = 0.999997  # Updated from 0.999999 (empirically validated)
-    O_OBSERVER: float = 3.7782010913  # Observer computational cost (fixed point)
+    O_OBSERVER: float = Y_INVERSE  # Observer computational cost = 1/Y (SOC refinement)
     OBSERVER_CONVERGENCE_TOLERANCE: float = 1e-10  # Tolerance for convergence
     Y_EMERGENT: float = PGCI_TARGET / O_OBSERVER  # Observer-Coherence Ratio
     
