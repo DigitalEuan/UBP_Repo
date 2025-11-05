@@ -325,7 +325,7 @@ UBP Framework is research software. Contact author for licensing information.
 
 **Euan Craig**  
 Email: info@digitaleuan.com  
-Website: [https://ubp.nz](https://digitaleuan.com/universal-binary-principal-ubp/)
+Website: https://digitaleuan.com/universal-binary-principal-ubp/
 
 ---
 
