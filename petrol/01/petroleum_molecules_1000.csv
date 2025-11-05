@@ -1,0 +1,1001 @@
+id,name,smiles,type,carbon_count,hydrogen_count,molecular_weight,category,petroleum_fraction,estimated_frequency_hz,carbon_class,complexity,saturation
+1,Methane,C,Linear alkanes,1,4.0,16.042,Alkanes,Gasoline,2496725195862.154,C1-C4,1,Saturated
+2,n-C2H6,CC,Linear alkanes,2,6.0,30.067999999999998,Alkanes,Gasoline,1823676195209.2068,C1-C4,2,Saturated
+3,n-C3H8,CCC,Linear alkanes,3,8.0,44.094,Alkanes,Gasoline,1505948953833.927,C1-C4,3,Saturated
+4,n-C4H10,CCCC,Linear alkanes,4,10.0,58.12,Alkanes,Gasoline,1311708090333.5112,C1-C4,4,Saturated
+5,n-C5H12,CCCCC,Linear alkanes,5,12.0,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,5,Saturated
+6,n-C6H14,CCCCCC,Linear alkanes,6,14.0,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,6,Saturated
+7,n-C7H16,CCCCCCC,Linear alkanes,7,16.0,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,7,Saturated
+8,n-C8H18,CCCCCCCC,Linear alkanes,8,18.0,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,8,Saturated
+9,n-C9H20,CCCCCCCCC,Linear alkanes,9,20.0,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,9,Saturated
+10,n-C10H22,CCCCCCCCCC,Linear alkanes,10,22.0,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,10,Saturated
+11,n-C11H24,CCCCCCCCCCC,Linear alkanes,11,24.0,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,11,Saturated
+12,n-C12H26,CCCCCCCCCCCC,Linear alkanes,12,26.0,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,12,Saturated
+13,n-C13H28,CCCCCCCCCCCCC,Linear alkanes,13,28.0,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,13,Saturated
+14,n-C14H30,CCCCCCCCCCCCCC,Linear alkanes,14,30.0,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,14,Saturated
+15,n-C15H32,CCCCCCCCCCCCCCC,Linear alkanes,15,32.0,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,15,Saturated
+16,n-C16H34,CCCCCCCCCCCCCCCC,Linear alkanes,16,34.0,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,16,Saturated
+17,n-C17H36,CCCCCCCCCCCCCCCCC,Linear alkanes,17,36.0,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,17,Saturated
+18,n-C18H38,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,38.0,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,18,Saturated
+19,n-C19H40,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,40.0,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,19,Saturated
+20,n-C20H42,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,42.0,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,20,Saturated
+21,n-C21H44,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,44.0,296.562,Alkanes,Heavy oil,580687194654.7695,C21-C30,21,Saturated
+22,n-C22H46,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,46.0,310.58799999999997,Alkanes,Heavy oil,567423951632.568,C21-C30,22,Saturated
+23,n-C23H48,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,48.0,324.61400000000003,Alkanes,Heavy oil,555029896519.2572,C21-C30,23,Saturated
+24,n-C24H50,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,50.0,338.64,Alkanes,Heavy oil,543414061677.22394,C21-C30,24,Saturated
+25,n-C25H52,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,52.0,352.666,Alkanes,Heavy oil,532498273476.99066,C21-C30,25,Saturated
+26,n-C26H54,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,54.0,366.692,Alkanes,Heavy oil,522214928026.6263,C21-C30,26,Saturated
+27,n-C27H56,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,56.0,380.71799999999996,Alkanes,Heavy oil,512505221974.3419,C21-C30,27,Saturated
+28,n-C28H58,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,58.0,394.74399999999997,Alkanes,Heavy oil,503317732291.2979,C21-C30,28,Saturated
+29,n-C29H60,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,60.0,408.77000000000004,Alkanes,Heavy oil,494607266493.9285,C21-C30,29,Saturated
+30,n-C30H62,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,62.0,422.796,Alkanes,Heavy oil,486333924479.06226,C21-C30,30,Saturated
+31,n-C31H64,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,64.0,436.822,Alkanes,Heavy oil,478462327432.4112,C30+,31,Saturated
+32,n-C32H66,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,66.0,450.848,Alkanes,Heavy oil,470960979748.8765,C30+,32,Saturated
+33,n-C33H68,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,68.0,464.87399999999997,Alkanes,Heavy oil,463801737672.2709,C30+,33,Saturated
+34,n-C34H70,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,70.0,478.9,Alkanes,Heavy oil,456959364182.06506,C30+,34,Saturated
+35,n-C35H72,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,35,72.0,492.92599999999993,Alkanes,Heavy oil,450411154056.51166,C30+,35,Saturated
+36,n-C36H74,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,36,74.0,506.952,Alkanes,Heavy oil,444136616400.4935,C30+,36,Saturated
+37,n-C37H76,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,37,76.0,520.9780000000001,Alkanes,Heavy oil,438117204511.31024,C30+,37,Saturated
+38,n-C38H78,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,38,78.0,535.004,Alkanes,Heavy oil,432336084960.4745,C30+,38,Saturated
+39,n-C39H80,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,39,80.0,549.03,Alkanes,Heavy oil,426777939336.178,C30+,39,Saturated
+40,n-C40H82,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,40,82.0,563.056,Alkanes,Heavy oil,421428793323.7904,C30+,40,Saturated
+41,2-Methyl-C5,CC(CCC),Branched alkanes,5,,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,7,Saturated
+42,"2,2-Dimethyl-C5",CC(C)(CCC),Branched alkanes,5,,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,10,Saturated
+43,"2,3-Dimethyl-C5",CC(C)C(CCC),Branched alkanes,5,,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,11,Saturated
+44,"2,4-Dimethyl-C5",CC(C)CC(CCC),Branched alkanes,5,,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,12,Saturated
+45,"2,2,3-Trimethyl-C5",CC(C)(C)C(CCC),Branched alkanes,5,,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,14,Saturated
+46,2-Ethyl-C5,CC(CC)(CCC),Branched alkanes,5,,72.146,Alkanes,Gasoline,1177318236610.3547,C5-C8,11,Saturated
+47,2-Methyl-C6,CC(CCCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,8,Saturated
+48,3-Methyl-C6,CCC(CCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,8,Saturated
+49,"2,2-Dimethyl-C6",CC(C)(CCCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,11,Saturated
+50,"2,3-Dimethyl-C6",CC(C)C(CCCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,12,Saturated
+51,"2,4-Dimethyl-C6",CC(C)CC(CCCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,13,Saturated
+52,"2,2,3-Trimethyl-C6",CC(C)(C)C(CCCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,15,Saturated
+53,2-Ethyl-C6,CC(CC)(CCCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,12,Saturated
+54,3-Ethyl-C6,CCC(CC)(CCC),Branched alkanes,6,,86.172,Alkanes,Gasoline,1077251019102.8378,C5-C8,12,Saturated
+55,2-Methyl-C7,CC(CCCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,9,Saturated
+56,3-Methyl-C7,CCC(CCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,9,Saturated
+57,"2,2-Dimethyl-C7",CC(C)(CCCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,12,Saturated
+58,"2,3-Dimethyl-C7",CC(C)C(CCCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,13,Saturated
+59,"2,4-Dimethyl-C7",CC(C)CC(CCCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,14,Saturated
+60,"2,2,3-Trimethyl-C7",CC(C)(C)C(CCCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,16,Saturated
+61,2-Ethyl-C7,CC(CC)(CCCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,13,Saturated
+62,3-Ethyl-C7,CCC(CC)(CCCC),Branched alkanes,7,,100.198,Alkanes,Gasoline,999011467728.4476,C5-C8,13,Saturated
+63,2-Methyl-C8,CC(CCCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,10,Saturated
+64,3-Methyl-C8,CCC(CCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,10,Saturated
+65,"2,2-Dimethyl-C8",CC(C)(CCCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,13,Saturated
+66,"2,3-Dimethyl-C8",CC(C)C(CCCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,14,Saturated
+67,"2,4-Dimethyl-C8",CC(C)CC(CCCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,15,Saturated
+68,"2,2,3-Trimethyl-C8",CC(C)(C)C(CCCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,17,Saturated
+69,2-Ethyl-C8,CC(CC)(CCCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,14,Saturated
+70,3-Ethyl-C8,CCC(CC)(CCCCC),Branched alkanes,8,,114.22399999999999,Alkanes,Gasoline,935667010900.7026,C5-C8,14,Saturated
+71,2-Methyl-C9,CC(CCCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,11,Saturated
+72,3-Methyl-C9,CCC(CCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,11,Saturated
+73,"2,2-Dimethyl-C9",CC(C)(CCCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,14,Saturated
+74,"2,3-Dimethyl-C9",CC(C)C(CCCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,15,Saturated
+75,"2,4-Dimethyl-C9",CC(C)CC(CCCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,16,Saturated
+76,"2,2,3-Trimethyl-C9",CC(C)(C)C(CCCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,18,Saturated
+77,2-Ethyl-C9,CC(CC)(CCCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,15,Saturated
+78,3-Ethyl-C9,CCC(CC)(CCCCCC),Branched alkanes,9,,128.25,Alkanes,Gasoline,883021571376.6958,C9-C12,15,Saturated
+79,2-Methyl-C10,CC(CCCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,12,Saturated
+80,3-Methyl-C10,CCC(CCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,12,Saturated
+81,"2,2-Dimethyl-C10",CC(C)(CCCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,15,Saturated
+82,"2,3-Dimethyl-C10",CC(C)C(CCCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,16,Saturated
+83,"2,4-Dimethyl-C10",CC(C)CC(CCCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,17,Saturated
+84,"2,2,3-Trimethyl-C10",CC(C)(C)C(CCCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,19,Saturated
+85,2-Ethyl-C10,CC(CC)(CCCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,16,Saturated
+86,3-Ethyl-C10,CCC(CC)(CCCCCCC),Branched alkanes,10,,142.276,Alkanes,Gasoline,838367002781.6842,C9-C12,16,Saturated
+87,2-Methyl-C11,CC(CCCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,13,Saturated
+88,3-Methyl-C11,CCC(CCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,13,Saturated
+89,"2,2-Dimethyl-C11",CC(C)(CCCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,16,Saturated
+90,"2,3-Dimethyl-C11",CC(C)C(CCCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,17,Saturated
+91,"2,4-Dimethyl-C11",CC(C)CC(CCCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,18,Saturated
+92,"2,2,3-Trimethyl-C11",CC(C)(C)C(CCCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,20,Saturated
+93,2-Ethyl-C11,CC(CC)(CCCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,17,Saturated
+94,3-Ethyl-C11,CCC(CC)(CCCCCCCC),Branched alkanes,11,,156.302,Alkanes,Gasoline,799866913217.5398,C9-C12,17,Saturated
+95,2-Methyl-C12,CC(CCCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,14,Saturated
+96,3-Methyl-C12,CCC(CCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,14,Saturated
+97,"2,2-Dimethyl-C12",CC(C)(CCCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,17,Saturated
+98,"2,3-Dimethyl-C12",CC(C)C(CCCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,18,Saturated
+99,"2,4-Dimethyl-C12",CC(C)CC(CCCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,19,Saturated
+100,"2,2,3-Trimethyl-C12",CC(C)(C)C(CCCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,21,Saturated
+101,2-Ethyl-C12,CC(CC)(CCCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,18,Saturated
+102,3-Ethyl-C12,CCC(CC)(CCCCCCCCC),Branched alkanes,12,,170.328,Alkanes,Gasoline,766226162165.0073,C9-C12,18,Saturated
+103,2-Methyl-C13,CC(CCCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,15,Saturated
+104,3-Methyl-C13,CCC(CCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,15,Saturated
+105,"2,2-Dimethyl-C13",CC(C)(CCCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,18,Saturated
+106,"2,3-Dimethyl-C13",CC(C)C(CCCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,19,Saturated
+107,"2,4-Dimethyl-C13",CC(C)CC(CCCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,20,Saturated
+108,"2,2,3-Trimethyl-C13",CC(C)(C)C(CCCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,22,Saturated
+109,2-Ethyl-C13,CC(CC)(CCCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,19,Saturated
+110,3-Ethyl-C13,CCC(CC)(CCCCCCCCCC),Branched alkanes,13,,184.35399999999998,Alkanes,Diesel,736501638657.2075,C13-C16,19,Saturated
+111,2-Methyl-C14,CC(CCCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,16,Saturated
+112,3-Methyl-C14,CCC(CCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,16,Saturated
+113,"2,2-Dimethyl-C14",CC(C)(CCCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,19,Saturated
+114,"2,3-Dimethyl-C14",CC(C)C(CCCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,20,Saturated
+115,"2,4-Dimethyl-C14",CC(C)CC(CCCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,21,Saturated
+116,"2,2,3-Trimethyl-C14",CC(C)(C)C(CCCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,23,Saturated
+117,2-Ethyl-C14,CC(CC)(CCCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,20,Saturated
+118,3-Ethyl-C14,CCC(CC)(CCCCCCCCCCC),Branched alkanes,14,,198.38,Alkanes,Diesel,709988079400.2195,C13-C16,20,Saturated
+119,2-Methyl-C15,CC(CCCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,17,Saturated
+120,3-Methyl-C15,CCC(CCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,17,Saturated
+121,"2,2-Dimethyl-C15",CC(C)(CCCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,20,Saturated
+122,"2,3-Dimethyl-C15",CC(C)C(CCCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,21,Saturated
+123,"2,4-Dimethyl-C15",CC(C)CC(CCCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,22,Saturated
+124,"2,2,3-Trimethyl-C15",CC(C)(C)C(CCCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,24,Saturated
+125,2-Ethyl-C15,CC(CC)(CCCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,21,Saturated
+126,3-Ethyl-C15,CCC(CC)(CCCCCCCCCCCC),Branched alkanes,15,,212.406,Alkanes,Diesel,686146116732.9568,C13-C16,21,Saturated
+127,2-Methyl-C16,CC(CCCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,18,Saturated
+128,3-Methyl-C16,CCC(CCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,18,Saturated
+129,"2,2-Dimethyl-C16",CC(C)(CCCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,21,Saturated
+130,"2,3-Dimethyl-C16",CC(C)C(CCCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,22,Saturated
+131,"2,4-Dimethyl-C16",CC(C)CC(CCCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,23,Saturated
+132,"2,2,3-Trimethyl-C16",CC(C)(C)C(CCCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,25,Saturated
+133,2-Ethyl-C16,CC(CC)(CCCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,22,Saturated
+134,3-Ethyl-C16,CCC(CC)(CCCCCCCCCCCCC),Branched alkanes,16,,226.432,Alkanes,Diesel,664555258312.6898,C13-C16,22,Saturated
+135,2-Methyl-C17,CC(CCCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,19,Saturated
+136,3-Methyl-C17,CCC(CCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,19,Saturated
+137,"2,2-Dimethyl-C17",CC(C)(CCCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,22,Saturated
+138,"2,3-Dimethyl-C17",CC(C)C(CCCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,23,Saturated
+139,"2,4-Dimethyl-C17",CC(C)CC(CCCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,24,Saturated
+140,"2,2,3-Trimethyl-C17",CC(C)(C)C(CCCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,26,Saturated
+141,2-Ethyl-C17,CC(CC)(CCCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,23,Saturated
+142,3-Ethyl-C17,CCC(CC)(CCCCCCCCCCCCCC),Branched alkanes,17,,240.45799999999997,Alkanes,Diesel,644882192557.4109,C17-C20,23,Saturated
+143,2-Methyl-C18,CC(CCCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,20,Saturated
+144,3-Methyl-C18,CCC(CCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,20,Saturated
+145,"2,2-Dimethyl-C18",CC(C)(CCCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,23,Saturated
+146,"2,3-Dimethyl-C18",CC(C)C(CCCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,24,Saturated
+147,"2,4-Dimethyl-C18",CC(C)CC(CCCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,25,Saturated
+148,"2,2,3-Trimethyl-C18",CC(C)(C)C(CCCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,27,Saturated
+149,2-Ethyl-C18,CC(CC)(CCCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,24,Saturated
+150,3-Ethyl-C18,CCC(CC)(CCCCCCCCCCCCCCC),Branched alkanes,18,,254.484,Alkanes,Diesel,626858845913.6626,C17-C20,24,Saturated
+151,2-Methyl-C19,CC(CCCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,21,Saturated
+152,3-Methyl-C19,CCC(CCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,21,Saturated
+153,"2,2-Dimethyl-C19",CC(C)(CCCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,24,Saturated
+154,"2,3-Dimethyl-C19",CC(C)C(CCCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,25,Saturated
+155,"2,4-Dimethyl-C19",CC(C)CC(CCCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,26,Saturated
+156,"2,2,3-Trimethyl-C19",CC(C)(C)C(CCCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,28,Saturated
+157,2-Ethyl-C19,CC(CC)(CCCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,25,Saturated
+158,3-Ethyl-C19,CCC(CC)(CCCCCCCCCCCCCCCC),Branched alkanes,19,,268.51,Alkanes,Diesel,610266833430.1029,C17-C20,25,Saturated
+159,2-Methyl-C20,CC(CCCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,22,Saturated
+160,3-Methyl-C20,CCC(CCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,22,Saturated
+161,"2,2-Dimethyl-C20",CC(C)(CCCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,25,Saturated
+162,"2,3-Dimethyl-C20",CC(C)C(CCCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,26,Saturated
+163,"2,4-Dimethyl-C20",CC(C)CC(CCCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,27,Saturated
+164,"2,2,3-Trimethyl-C20",CC(C)(C)C(CCCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,29,Saturated
+165,2-Ethyl-C20,CC(CC)(CCCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,26,Saturated
+166,3-Ethyl-C20,CCC(CC)(CCCCCCCCCCCCCCCCC),Branched alkanes,20,,282.536,Alkanes,Diesel,594926211713.4329,C17-C20,26,Saturated
+167,2-Methyl-C21,CC(CCCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,23,Saturated
+168,3-Methyl-C21,CCC(CCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,23,Saturated
+169,"2,2-Dimethyl-C21",CC(C)(CCCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,26,Saturated
+170,"2,3-Dimethyl-C21",CC(C)C(CCCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,27,Saturated
+171,"2,4-Dimethyl-C21",CC(C)CC(CCCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,28,Saturated
+172,"2,2,3-Trimethyl-C21",CC(C)(C)C(CCCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,30,Saturated
+173,2-Ethyl-C21,CC(CC)(CCCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,27,Saturated
+174,3-Ethyl-C21,CCC(CC)(CCCCCCCCCCCCCCCCCC),Branched alkanes,21,,296.562,Alkanes,Diesel,580687194654.7695,C21-C30,27,Saturated
+175,2-Methyl-C22,CC(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,24,Saturated
+176,3-Methyl-C22,CCC(CCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,24,Saturated
+177,"2,2-Dimethyl-C22",CC(C)(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,27,Saturated
+178,"2,3-Dimethyl-C22",CC(C)C(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,28,Saturated
+179,"2,4-Dimethyl-C22",CC(C)CC(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,29,Saturated
+180,"2,2,3-Trimethyl-C22",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,31,Saturated
+181,2-Ethyl-C22,CC(CC)(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,28,Saturated
+182,3-Ethyl-C22,CCC(CC)(CCCCCCCCCCCCCCCCCCC),Branched alkanes,22,,310.58799999999997,Alkanes,Diesel,567423951632.568,C21-C30,28,Saturated
+183,2-Methyl-C23,CC(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,25,Saturated
+184,3-Methyl-C23,CCC(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,25,Saturated
+185,"2,2-Dimethyl-C23",CC(C)(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,28,Saturated
+186,"2,3-Dimethyl-C23",CC(C)C(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,29,Saturated
+187,"2,4-Dimethyl-C23",CC(C)CC(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,30,Saturated
+188,"2,2,3-Trimethyl-C23",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,32,Saturated
+189,2-Ethyl-C23,CC(CC)(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,29,Saturated
+190,3-Ethyl-C23,CCC(CC)(CCCCCCCCCCCCCCCCCCCC),Branched alkanes,23,,324.61400000000003,Alkanes,Diesel,555029896519.2572,C21-C30,29,Saturated
+191,2-Methyl-C24,CC(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,26,Saturated
+192,3-Methyl-C24,CCC(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,26,Saturated
+193,"2,2-Dimethyl-C24",CC(C)(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,29,Saturated
+194,"2,3-Dimethyl-C24",CC(C)C(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,30,Saturated
+195,"2,4-Dimethyl-C24",CC(C)CC(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,31,Saturated
+196,"2,2,3-Trimethyl-C24",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,33,Saturated
+197,2-Ethyl-C24,CC(CC)(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,30,Saturated
+198,3-Ethyl-C24,CCC(CC)(CCCCCCCCCCCCCCCCCCCCC),Branched alkanes,24,,338.64,Alkanes,Diesel,543414061677.22394,C21-C30,30,Saturated
+199,2-Methyl-C25,CC(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,27,Saturated
+200,3-Methyl-C25,CCC(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,27,Saturated
+201,"2,2-Dimethyl-C25",CC(C)(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,30,Saturated
+202,"2,3-Dimethyl-C25",CC(C)C(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,31,Saturated
+203,"2,4-Dimethyl-C25",CC(C)CC(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,32,Saturated
+204,"2,2,3-Trimethyl-C25",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,34,Saturated
+205,2-Ethyl-C25,CC(CC)(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,31,Saturated
+206,3-Ethyl-C25,CCC(CC)(CCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,25,,352.666,Alkanes,Diesel,532498273476.99066,C21-C30,31,Saturated
+207,2-Methyl-C26,CC(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,28,Saturated
+208,3-Methyl-C26,CCC(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,28,Saturated
+209,"2,2-Dimethyl-C26",CC(C)(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,31,Saturated
+210,"2,3-Dimethyl-C26",CC(C)C(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,32,Saturated
+211,"2,4-Dimethyl-C26",CC(C)CC(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,33,Saturated
+212,"2,2,3-Trimethyl-C26",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,35,Saturated
+213,2-Ethyl-C26,CC(CC)(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,32,Saturated
+214,3-Ethyl-C26,CCC(CC)(CCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,26,,366.692,Alkanes,Diesel,522214928026.6263,C21-C30,32,Saturated
+215,2-Methyl-C27,CC(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,29,Saturated
+216,3-Methyl-C27,CCC(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,29,Saturated
+217,"2,2-Dimethyl-C27",CC(C)(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,32,Saturated
+218,"2,3-Dimethyl-C27",CC(C)C(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,33,Saturated
+219,"2,4-Dimethyl-C27",CC(C)CC(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,34,Saturated
+220,"2,2,3-Trimethyl-C27",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,36,Saturated
+221,2-Ethyl-C27,CC(CC)(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,33,Saturated
+222,3-Ethyl-C27,CCC(CC)(CCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,27,,380.71799999999996,Alkanes,Diesel,512505221974.3419,C21-C30,33,Saturated
+223,2-Methyl-C28,CC(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,30,Saturated
+224,3-Methyl-C28,CCC(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,30,Saturated
+225,"2,2-Dimethyl-C28",CC(C)(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,33,Saturated
+226,"2,3-Dimethyl-C28",CC(C)C(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,34,Saturated
+227,"2,4-Dimethyl-C28",CC(C)CC(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,35,Saturated
+228,"2,2,3-Trimethyl-C28",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,37,Saturated
+229,2-Ethyl-C28,CC(CC)(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,34,Saturated
+230,3-Ethyl-C28,CCC(CC)(CCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,28,,394.74399999999997,Alkanes,Diesel,503317732291.2979,C21-C30,34,Saturated
+231,2-Methyl-C29,CC(CCCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,31,Saturated
+232,3-Methyl-C29,CCC(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,31,Saturated
+233,"2,2-Dimethyl-C29",CC(C)(CCCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,34,Saturated
+234,"2,3-Dimethyl-C29",CC(C)C(CCCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,35,Saturated
+235,"2,4-Dimethyl-C29",CC(C)CC(CCCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,36,Saturated
+236,"2,2,3-Trimethyl-C29",CC(C)(C)C(CCCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,38,Saturated
+237,2-Ethyl-C29,CC(CC)(CCCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,35,Saturated
+238,3-Ethyl-C29,CCC(CC)(CCCCCCCCCCCCCCCCCCCCCCCCCC),Branched alkanes,29,,408.77000000000004,Alkanes,Diesel,494607266493.9285,C21-C30,35,Saturated
+239,Cyclo-C3H6,C1CC1,Cycloalkanes,3,6.0,42.078,Cycloalkanes,Gasoline,1541602675425.3992,C1-C4,5,Saturated
+240,1-Methyl-cyclo-C3,CC1CC1,Cycloalkanes,4,,56.104,Cycloalkanes,Gasoline,1335067079460.4524,C1-C4,6,Saturated
+241,2-Methyl-cyclo-C3,CCC1CC1,Cycloalkanes,5,,70.13,Cycloalkanes,Gasoline,1194120297678.274,C5-C8,7,Saturated
+242,3-Methyl-cyclo-C3,CCCC1CC1,Cycloalkanes,6,,84.156,Cycloalkanes,Gasoline,1090077705688.6241,C5-C8,8,Saturated
+243,4-Methyl-cyclo-C3,CCCCC1CC1,Cycloalkanes,7,,98.18199999999999,Cycloalkanes,Gasoline,1009215850240.476,C5-C8,9,Saturated
+244,Cyclo-C4H8,C1CCC1,Cycloalkanes,4,8.0,56.104,Cycloalkanes,Gasoline,1335067079460.4524,C1-C4,6,Saturated
+245,1-Methyl-cyclo-C4,CC1CCC1,Cycloalkanes,5,,70.13,Cycloalkanes,Gasoline,1194120297678.274,C5-C8,7,Saturated
+246,2-Methyl-cyclo-C4,CCC1CCC1,Cycloalkanes,6,,84.156,Cycloalkanes,Gasoline,1090077705688.6241,C5-C8,8,Saturated
+247,3-Methyl-cyclo-C4,CCCC1CCC1,Cycloalkanes,7,,98.18199999999999,Cycloalkanes,Gasoline,1009215850240.476,C5-C8,9,Saturated
+248,4-Methyl-cyclo-C4,CCCCC1CCC1,Cycloalkanes,8,,112.208,Cycloalkanes,Gasoline,944034985225.4052,C5-C8,10,Saturated
+249,Cyclo-C5H10,C1CCCC1,Cycloalkanes,5,10.0,70.13,Cycloalkanes,Gasoline,1194120297678.274,C5-C8,7,Saturated
+250,1-Methyl-cyclo-C5,CC1CCCC1,Cycloalkanes,6,,84.156,Cycloalkanes,Gasoline,1090077705688.6241,C5-C8,8,Saturated
+251,2-Methyl-cyclo-C5,CCC1CCCC1,Cycloalkanes,7,,98.18199999999999,Cycloalkanes,Gasoline,1009215850240.476,C5-C8,9,Saturated
+252,3-Methyl-cyclo-C5,CCCC1CCCC1,Cycloalkanes,8,,112.208,Cycloalkanes,Gasoline,944034985225.4052,C5-C8,10,Saturated
+253,4-Methyl-cyclo-C5,CCCCC1CCCC1,Cycloalkanes,9,,126.23400000000001,Cycloalkanes,Gasoline,890044719640.3015,C9-C12,11,Saturated
+254,Cyclo-C6H12,C1CCCCC1,Cycloalkanes,6,12.0,84.156,Cycloalkanes,Gasoline,1090077705688.6241,C5-C8,8,Saturated
+255,1-Methyl-cyclo-C6,CC1CCCCC1,Cycloalkanes,7,,98.18199999999999,Cycloalkanes,Gasoline,1009215850240.476,C5-C8,9,Saturated
+256,2-Methyl-cyclo-C6,CCC1CCCCC1,Cycloalkanes,8,,112.208,Cycloalkanes,Gasoline,944034985225.4052,C5-C8,10,Saturated
+257,3-Methyl-cyclo-C6,CCCC1CCCCC1,Cycloalkanes,9,,126.23400000000001,Cycloalkanes,Gasoline,890044719640.3015,C9-C12,11,Saturated
+258,4-Methyl-cyclo-C6,CCCCC1CCCCC1,Cycloalkanes,10,,140.26,Cycloalkanes,Gasoline,844370560040.8063,C9-C12,12,Saturated
+259,Cyclo-C7H14,C1CCCCCC1,Cycloalkanes,7,14.0,98.18199999999999,Cycloalkanes,Gasoline,1009215850240.476,C5-C8,9,Saturated
+260,1-Methyl-cyclo-C7,CC1CCCCCC1,Cycloalkanes,8,,112.208,Cycloalkanes,Gasoline,944034985225.4052,C5-C8,10,Saturated
+261,2-Methyl-cyclo-C7,CCC1CCCCCC1,Cycloalkanes,9,,126.23400000000001,Cycloalkanes,Gasoline,890044719640.3015,C9-C12,11,Saturated
+262,3-Methyl-cyclo-C7,CCCC1CCCCCC1,Cycloalkanes,10,,140.26,Cycloalkanes,Gasoline,844370560040.8063,C9-C12,12,Saturated
+263,4-Methyl-cyclo-C7,CCCCC1CCCCCC1,Cycloalkanes,11,,154.286,Cycloalkanes,Gasoline,805075740459.2579,C9-C12,13,Saturated
+264,Cyclo-C8H16,C1CCCCCCC1,Cycloalkanes,8,16.0,112.208,Cycloalkanes,Gasoline,944034985225.4052,C5-C8,10,Saturated
+265,1-Methyl-cyclo-C8,CC1CCCCCCC1,Cycloalkanes,9,,126.23400000000001,Cycloalkanes,Gasoline,890044719640.3015,C9-C12,11,Saturated
+266,2-Methyl-cyclo-C8,CCC1CCCCCCC1,Cycloalkanes,10,,140.26,Cycloalkanes,Gasoline,844370560040.8063,C9-C12,12,Saturated
+267,3-Methyl-cyclo-C8,CCCC1CCCCCCC1,Cycloalkanes,11,,154.286,Cycloalkanes,Gasoline,805075740459.2579,C9-C12,13,Saturated
+268,4-Methyl-cyclo-C8,CCCCC1CCCCCCC1,Cycloalkanes,12,,168.312,Cycloalkanes,Gasoline,770801337712.6996,C9-C12,14,Saturated
+269,Cyclo-C9H18,C1CCCCCCCC1,Cycloalkanes,9,18.0,126.23400000000001,Cycloalkanes,Diesel,890044719640.3015,C9-C12,11,Saturated
+270,1-Methyl-cyclo-C9,CC1CCCCCCCC1,Cycloalkanes,10,,140.26,Cycloalkanes,Gasoline,844370560040.8063,C9-C12,12,Saturated
+271,2-Methyl-cyclo-C9,CCC1CCCCCCCC1,Cycloalkanes,11,,154.286,Cycloalkanes,Gasoline,805075740459.2579,C9-C12,13,Saturated
+272,3-Methyl-cyclo-C9,CCCC1CCCCCCCC1,Cycloalkanes,12,,168.312,Cycloalkanes,Gasoline,770801337712.6996,C9-C12,14,Saturated
+273,4-Methyl-cyclo-C9,CCCCC1CCCCCCCC1,Cycloalkanes,13,,182.338,Cycloalkanes,Gasoline,740561970950.5564,C13-C16,15,Saturated
+274,Cyclo-C10H20,C1CCCCCCCCC1,Cycloalkanes,10,20.0,140.26,Cycloalkanes,Diesel,844370560040.8063,C9-C12,12,Saturated
+275,1-Methyl-cyclo-C10,CC1CCCCCCCCC1,Cycloalkanes,11,,154.286,Cycloalkanes,Gasoline,805075740459.2579,C9-C12,13,Saturated
+276,2-Methyl-cyclo-C10,CCC1CCCCCCCCC1,Cycloalkanes,12,,168.312,Cycloalkanes,Gasoline,770801337712.6996,C9-C12,14,Saturated
+277,3-Methyl-cyclo-C10,CCCC1CCCCCCCCC1,Cycloalkanes,13,,182.338,Cycloalkanes,Gasoline,740561970950.5564,C13-C16,15,Saturated
+278,4-Methyl-cyclo-C10,CCCCC1CCCCCCCCC1,Cycloalkanes,14,,196.36399999999998,Cycloalkanes,Gasoline,713623371385.9878,C13-C16,16,Saturated
+279,Cyclo-C11H22,C1CCCCCCCCCC1,Cycloalkanes,11,22.0,154.286,Cycloalkanes,Diesel,805075740459.2579,C9-C12,13,Saturated
+280,1-Methyl-cyclo-C11,CC1CCCCCCCCCC1,Cycloalkanes,12,,168.312,Cycloalkanes,Gasoline,770801337712.6996,C9-C12,14,Saturated
+281,2-Methyl-cyclo-C11,CCC1CCCCCCCCCC1,Cycloalkanes,13,,182.338,Cycloalkanes,Gasoline,740561970950.5564,C13-C16,15,Saturated
+282,3-Methyl-cyclo-C11,CCCC1CCCCCCCCCC1,Cycloalkanes,14,,196.36399999999998,Cycloalkanes,Gasoline,713623371385.9878,C13-C16,16,Saturated
+283,4-Methyl-cyclo-C11,CCCCC1CCCCCCCCCC1,Cycloalkanes,15,,210.39000000000001,Cycloalkanes,Gasoline,689425675309.3474,C13-C16,17,Saturated
+284,Cyclo-C12H24,C1CCCCCCCCCCC1,Cycloalkanes,12,24.0,168.312,Cycloalkanes,Diesel,770801337712.6996,C9-C12,14,Saturated
+285,1-Methyl-cyclo-C12,CC1CCCCCCCCCCC1,Cycloalkanes,13,,182.338,Cycloalkanes,Gasoline,740561970950.5564,C13-C16,15,Saturated
+286,2-Methyl-cyclo-C12,CCC1CCCCCCCCCCC1,Cycloalkanes,14,,196.36399999999998,Cycloalkanes,Gasoline,713623371385.9878,C13-C16,16,Saturated
+287,3-Methyl-cyclo-C12,CCCC1CCCCCCCCCCC1,Cycloalkanes,15,,210.39000000000001,Cycloalkanes,Gasoline,689425675309.3474,C13-C16,17,Saturated
+288,Cyclo-C13H26,C1CCCCCCCCCCCC1,Cycloalkanes,13,26.0,182.338,Cycloalkanes,Diesel,740561970950.5564,C13-C16,15,Saturated
+289,1-Methyl-cyclo-C13,CC1CCCCCCCCCCCC1,Cycloalkanes,14,,196.36399999999998,Cycloalkanes,Gasoline,713623371385.9878,C13-C16,16,Saturated
+290,2-Methyl-cyclo-C13,CCC1CCCCCCCCCCCC1,Cycloalkanes,15,,210.39000000000001,Cycloalkanes,Gasoline,689425675309.3474,C13-C16,17,Saturated
+291,Cyclo-C14H28,C1CCCCCCCCCCCCC1,Cycloalkanes,14,28.0,196.36399999999998,Cycloalkanes,Diesel,713623371385.9878,C13-C16,16,Saturated
+292,1-Methyl-cyclo-C14,CC1CCCCCCCCCCCCC1,Cycloalkanes,15,,210.39000000000001,Cycloalkanes,Gasoline,689425675309.3474,C13-C16,17,Saturated
+293,1-C2ene,C=C,Linear alkenes,2,4.0,28.052,Alkenes,Gasoline,1888069970450.8103,C1-C4,3,Unsaturated
+294,1-C3ene,C=CC,Linear alkenes,3,6.0,42.078,Alkenes,Gasoline,1541602675425.3992,C1-C4,4,Unsaturated
+295,1-C4ene,C=CCC,Linear alkenes,4,8.0,56.104,Alkenes,Gasoline,1335067079460.4524,C1-C4,5,Unsaturated
+296,2-C4ene,CC=CC,Linear alkenes,4,,56.104,Alkenes,Gasoline,1335067079460.4524,C1-C4,5,Unsaturated
+297,1-C5ene,C=CCCC,Linear alkenes,5,10.0,70.13,Alkenes,Gasoline,1194120297678.274,C5-C8,6,Unsaturated
+298,2-C5ene,CC=CCC,Linear alkenes,5,,70.13,Alkenes,Gasoline,1194120297678.274,C5-C8,6,Unsaturated
+299,2-Methyl-1-C5ene,C(C)=CCC,Branched alkenes,5,,70.13,Alkenes,Gasoline,1194120297678.274,C5-C8,8,Unsaturated
+300,1-C6ene,C=CCCCC,Linear alkenes,6,12.0,84.156,Alkenes,Gasoline,1090077705688.6241,C5-C8,7,Unsaturated
+301,2-C6ene,CC=CCCC,Linear alkenes,6,,84.156,Alkenes,Gasoline,1090077705688.6241,C5-C8,7,Unsaturated
+302,2-Methyl-1-C6ene,C(C)=CCCC,Branched alkenes,6,,84.156,Alkenes,Gasoline,1090077705688.6241,C5-C8,9,Unsaturated
+303,1-C7ene,C=CCCCCC,Linear alkenes,7,14.0,98.18199999999999,Alkenes,Gasoline,1009215850240.476,C5-C8,8,Unsaturated
+304,2-C7ene,CC=CCCCC,Linear alkenes,7,,98.18199999999999,Alkenes,Gasoline,1009215850240.476,C5-C8,8,Unsaturated
+305,2-Methyl-1-C7ene,C(C)=CCCCC,Branched alkenes,7,,98.18199999999999,Alkenes,Gasoline,1009215850240.476,C5-C8,10,Unsaturated
+306,1-C8ene,C=CCCCCCC,Linear alkenes,8,16.0,112.208,Alkenes,Gasoline,944034985225.4052,C5-C8,9,Unsaturated
+307,2-C8ene,CC=CCCCCC,Linear alkenes,8,,112.208,Alkenes,Gasoline,944034985225.4052,C5-C8,9,Unsaturated
+308,2-Methyl-1-C8ene,C(C)=CCCCCC,Branched alkenes,8,,112.208,Alkenes,Gasoline,944034985225.4052,C5-C8,11,Unsaturated
+309,1-C9ene,C=CCCCCCCC,Linear alkenes,9,18.0,126.23400000000001,Alkenes,Gasoline,890044719640.3015,C9-C12,10,Unsaturated
+310,2-C9ene,CC=CCCCCCC,Linear alkenes,9,,126.23400000000001,Alkenes,Gasoline,890044719640.3015,C9-C12,10,Unsaturated
+311,2-Methyl-1-C9ene,C(C)=CCCCCCC,Branched alkenes,9,,126.23400000000001,Alkenes,Gasoline,890044719640.3015,C9-C12,12,Unsaturated
+312,1-C10ene,C=CCCCCCCCC,Linear alkenes,10,20.0,140.26,Alkenes,Gasoline,844370560040.8063,C9-C12,11,Unsaturated
+313,2-C10ene,CC=CCCCCCCC,Linear alkenes,10,,140.26,Alkenes,Gasoline,844370560040.8063,C9-C12,11,Unsaturated
+314,2-Methyl-1-C10ene,C(C)=CCCCCCCC,Branched alkenes,10,,140.26,Alkenes,Gasoline,844370560040.8063,C9-C12,13,Unsaturated
+315,1-C11ene,C=CCCCCCCCCC,Linear alkenes,11,22.0,154.286,Alkenes,Gasoline,805075740459.2579,C9-C12,12,Unsaturated
+316,2-C11ene,CC=CCCCCCCCC,Linear alkenes,11,,154.286,Alkenes,Gasoline,805075740459.2579,C9-C12,12,Unsaturated
+317,2-Methyl-1-C11ene,C(C)=CCCCCCCCC,Branched alkenes,11,,154.286,Alkenes,Gasoline,805075740459.2579,C9-C12,14,Unsaturated
+318,1-C12ene,C=CCCCCCCCCCC,Linear alkenes,12,24.0,168.312,Alkenes,Gasoline,770801337712.6996,C9-C12,13,Unsaturated
+319,2-C12ene,CC=CCCCCCCCCC,Linear alkenes,12,,168.312,Alkenes,Gasoline,770801337712.6996,C9-C12,13,Unsaturated
+320,2-Methyl-1-C12ene,C(C)=CCCCCCCCCC,Branched alkenes,12,,168.312,Alkenes,Gasoline,770801337712.6996,C9-C12,15,Unsaturated
+321,1-C13ene,C=CCCCCCCCCCCC,Linear alkenes,13,26.0,182.338,Alkenes,Diesel,740561970950.5564,C13-C16,14,Unsaturated
+322,2-C13ene,CC=CCCCCCCCCCC,Linear alkenes,13,,182.338,Alkenes,Gasoline,740561970950.5564,C13-C16,14,Unsaturated
+323,2-Methyl-1-C13ene,C(C)=CCCCCCCCCCC,Branched alkenes,13,,182.338,Alkenes,Gasoline,740561970950.5564,C13-C16,16,Unsaturated
+324,1-C14ene,C=CCCCCCCCCCCCC,Linear alkenes,14,28.0,196.36399999999998,Alkenes,Diesel,713623371385.9878,C13-C16,15,Unsaturated
+325,2-C14ene,CC=CCCCCCCCCCCC,Linear alkenes,14,,196.36399999999998,Alkenes,Gasoline,713623371385.9878,C13-C16,15,Unsaturated
+326,2-Methyl-1-C14ene,C(C)=CCCCCCCCCCCC,Branched alkenes,14,,196.36399999999998,Alkenes,Gasoline,713623371385.9878,C13-C16,17,Unsaturated
+327,1-C15ene,C=CCCCCCCCCCCCCC,Linear alkenes,15,30.0,210.39000000000001,Alkenes,Diesel,689425675309.3474,C13-C16,16,Unsaturated
+328,2-C15ene,CC=CCCCCCCCCCCCC,Linear alkenes,15,,210.39000000000001,Alkenes,Gasoline,689425675309.3474,C13-C16,16,Unsaturated
+329,2-Methyl-1-C15ene,C(C)=CCCCCCCCCCCCC,Branched alkenes,15,,210.39000000000001,Alkenes,Gasoline,689425675309.3474,C13-C16,18,Unsaturated
+330,1-C16ene,C=CCCCCCCCCCCCCCC,Linear alkenes,16,32.0,224.416,Alkenes,Diesel,667533539730.2262,C13-C16,17,Unsaturated
+331,2-C16ene,CC=CCCCCCCCCCCCCC,Linear alkenes,16,,224.416,Alkenes,Gasoline,667533539730.2262,C13-C16,17,Unsaturated
+332,1-C17ene,C=CCCCCCCCCCCCCCCC,Linear alkenes,17,34.0,238.44199999999998,Alkenes,Diesel,647602657164.7449,C17-C20,18,Unsaturated
+333,2-C17ene,CC=CCCCCCCCCCCCCCC,Linear alkenes,17,,238.44199999999998,Alkenes,Gasoline,647602657164.7449,C17-C20,18,Unsaturated
+334,1-C18ene,C=CCCCCCCCCCCCCCCCC,Linear alkenes,18,36.0,252.46800000000002,Alkenes,Diesel,629356656816.9368,C17-C20,19,Unsaturated
+335,2-C18ene,CC=CCCCCCCCCCCCCCCC,Linear alkenes,18,,252.46800000000002,Alkenes,Gasoline,629356656816.9368,C17-C20,19,Unsaturated
+336,1-C19ene,C=CCCCCCCCCCCCCCCCCC,Linear alkenes,19,38.0,266.494,Alkenes,Diesel,612570787601.6946,C17-C20,20,Unsaturated
+337,2-C19ene,CC=CCCCCCCCCCCCCCCCC,Linear alkenes,19,,266.494,Alkenes,Gasoline,612570787601.6946,C17-C20,20,Unsaturated
+338,1-C20ene,C=CCCCCCCCCCCCCCCCCCC,Linear alkenes,20,40.0,280.52,Alkenes,Diesel,597060148839.137,C17-C20,21,Unsaturated
+339,2-C20ene,CC=CCCCCCCCCCCCCCCCCC,Linear alkenes,20,,280.52,Alkenes,Gasoline,597060148839.137,C17-C20,21,Unsaturated
+340,1-C21ene,C=CCCCCCCCCCCCCCCCCCCC,Linear alkenes,21,42.0,294.546,Alkenes,Diesel,582671042806.7759,C21-C30,22,Unsaturated
+341,2-C21ene,CC=CCCCCCCCCCCCCCCCCCC,Linear alkenes,21,,294.546,Alkenes,Gasoline,582671042806.7759,C21-C30,22,Unsaturated
+342,1-C22ene,C=CCCCCCCCCCCCCCCCCCCCC,Linear alkenes,22,44.0,308.572,Alkenes,Diesel,569274515447.5222,C21-C30,23,Unsaturated
+343,2-C22ene,CC=CCCCCCCCCCCCCCCCCCCC,Linear alkenes,22,,308.572,Alkenes,Gasoline,569274515447.5222,C21-C30,23,Unsaturated
+344,1-C23ene,C=CCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,23,46.0,322.598,Alkenes,Diesel,556761459601.1726,C21-C30,24,Unsaturated
+345,2-C23ene,CC=CCCCCCCCCCCCCCCCCCCCC,Linear alkenes,23,,322.598,Alkenes,Gasoline,556761459601.1726,C21-C30,24,Unsaturated
+346,1-C24ene,C=CCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,24,48.0,336.624,Alkenes,Diesel,545038852844.3121,C21-C30,25,Unsaturated
+347,2-C24ene,CC=CCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,24,,336.624,Alkenes,Gasoline,545038852844.3121,C21-C30,25,Unsaturated
+348,1-C25ene,C=CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,25,50.0,350.65,Alkenes,Diesel,534026831784.18097,C21-C30,26,Unsaturated
+349,2-C25ene,CC=CCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,25,,350.65,Alkenes,Gasoline,534026831784.18097,C21-C30,26,Unsaturated
+350,1-C26ene,C=CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,26,52.0,364.676,Alkenes,Diesel,523656391548.0135,C21-C30,27,Unsaturated
+351,2-C26ene,CC=CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,26,,364.676,Alkenes,Gasoline,523656391548.0135,C21-C30,27,Unsaturated
+352,1-C27ene,C=CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,27,54.0,378.702,Alkenes,Diesel,513867558475.13306,C21-C30,28,Unsaturated
+353,2-C27ene,CC=CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,27,,378.702,Alkenes,Gasoline,513867558475.13306,C21-C30,28,Unsaturated
+354,1-C28ene,C=CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,28,56.0,392.72799999999995,Alkenes,Diesel,504607925120.238,C21-C30,29,Unsaturated
+355,2-C28ene,CC=CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,28,,392.72799999999995,Alkenes,Gasoline,504607925120.238,C21-C30,29,Unsaturated
+356,1-C29ene,C=CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,29,58.0,406.754,Alkenes,Diesel,495831465618.91534,C21-C30,30,Unsaturated
+357,2-C29ene,CC=CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkenes,29,,406.754,Alkenes,Gasoline,495831465618.91534,C21-C30,30,Unsaturated
+358,Benzene,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+359,C1-Benzene,Cc1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,9,Unsaturated
+360,C2-Benzene,CCc1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,10,Unsaturated
+361,C3-Benzene,CCCc1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,11,Unsaturated
+362,C4-Benzene,CCCCc1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,12,Unsaturated
+363,C5-Benzene,CCCCCc1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,13,Unsaturated
+364,C6-Benzene,CCCCCCc1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,14,Unsaturated
+365,C7-Benzene,CCCCCCCc1ccccc1,Aromatics,13,,176.29,Aromatics,Gasoline,753158117252.3292,C13-C16,15,Unsaturated
+366,C8-Benzene,CCCCCCCCc1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Gasoline,724873710818.0087,C13-C16,16,Unsaturated
+367,C9-Benzene,CCCCCCCCCc1ccccc1,Aromatics,15,,204.342,Aromatics,Gasoline,699553896808.4861,C13-C16,17,Unsaturated
+368,o-Xylene,Cc1ccccc1C,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,10,Unsaturated
+369,m-Xylene,Cc1cccc(C)c1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,12,Unsaturated
+370,p-Xylene,Cc1ccc(C)cc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,12,Unsaturated
+371,"1,2,3-Trimethylbenzene",Cc1c(C)c(C)ccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,15,Unsaturated
+372,"1,2,4-Trimethylbenzene",Cc1ccc(C)c(C)c1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,15,Unsaturated
+373,"1,3,5-Trimethylbenzene",Cc1cc(C)cc(C)c1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,15,Unsaturated
+374,Naphthalene,c1ccc2ccccc2c1,Naphthalenes,10,,128.164,Aromatics,Diesel,883317782169.9384,C9-C12,14,Unsaturated
+375,C1-Naphthalene,Cc1ccc2ccccc2c1,Naphthalenes,11,,142.19,Aromatics,Diesel,838620496922.0559,C9-C12,15,Unsaturated
+376,C2-Naphthalene,CCc1ccc2ccccc2c1,Naphthalenes,12,,156.216,Aromatics,Diesel,800087054207.5043,C9-C12,16,Unsaturated
+377,C3-Naphthalene,CCCc1ccc2ccccc2c1,Naphthalenes,13,,170.242,Aromatics,Diesel,766419672374.1737,C13-C16,17,Unsaturated
+378,C4-Naphthalene,CCCCc1ccc2ccccc2c1,Naphthalenes,14,,184.26799999999997,Aromatics,Diesel,736673485511.7124,C13-C16,18,Unsaturated
+379,C5-Naphthalene,CCCCCc1ccc2ccccc2c1,Naphthalenes,15,,198.294,Aromatics,Diesel,710142023432.6979,C13-C16,19,Unsaturated
+380,C6-Naphthalene,CCCCCCc1ccc2ccccc2c1,Naphthalenes,16,,212.32,Aromatics,Diesel,686285064057.5352,C13-C16,20,Unsaturated
+381,C7-Naphthalene,CCCCCCCc1ccc2ccccc2c1,Naphthalenes,17,,226.346,Aromatics,Diesel,664681494969.2999,C17-C20,21,Unsaturated
+382,Anthracene,c1ccc2cc3ccccc3cc2c1,Polycyclic aromatics,14,,176.20399999999998,Aromatics,Heavy oil,753341892015.4813,C13-C16,20,Unsaturated
+383,1-Methyl-Anthracene,c1ccc2cc3ccccc3cc2c1,Polycyclic aromatics,15,,190.23000000000002,Aromatics,Heavy oil,725037544322.4131,C13-C16,20,Unsaturated
+384,2-Methyl-Anthracene,c1ccc2cc3ccccc3cc2c1,Polycyclic aromatics,16,,204.256,Aromatics,Heavy oil,699701151488.497,C13-C16,20,Unsaturated
+385,3-Methyl-Anthracene,c1ccc2cc3ccccc3cc2c1,Polycyclic aromatics,17,,218.28199999999998,Aromatics,Heavy oil,676847825240.177,C17-C20,20,Unsaturated
+386,Phenanthrene,c1ccc2c(c1)ccc3ccccc32,Polycyclic aromatics,14,,176.20399999999998,Aromatics,Heavy oil,753341892015.4813,C13-C16,22,Unsaturated
+387,1-Methyl-Phenanthrene,c1ccc2c(c1)ccc3ccccc32,Polycyclic aromatics,15,,190.23000000000002,Aromatics,Heavy oil,725037544322.4131,C13-C16,22,Unsaturated
+388,2-Methyl-Phenanthrene,c1ccc2c(c1)ccc3ccccc32,Polycyclic aromatics,16,,204.256,Aromatics,Heavy oil,699701151488.497,C13-C16,22,Unsaturated
+389,3-Methyl-Phenanthrene,c1ccc2c(c1)ccc3ccccc32,Polycyclic aromatics,17,,218.28199999999998,Aromatics,Heavy oil,676847825240.177,C17-C20,22,Unsaturated
+390,Pyrene,c1cc2ccc3cccc4ccc(c1)c2c34,Polycyclic aromatics,16,,202.24,Aromatics,Heavy oil,703179938078.7649,C13-C16,26,Unsaturated
+391,1-Methyl-Pyrene,c1cc2ccc3cccc4ccc(c1)c2c34,Polycyclic aromatics,17,,216.266,Aromatics,Heavy oil,679995245489.8652,C17-C20,26,Unsaturated
+392,2-Methyl-Pyrene,c1cc2ccc3cccc4ccc(c1)c2c34,Polycyclic aromatics,18,,230.292,Aromatics,Heavy oil,658962308262.595,C17-C20,26,Unsaturated
+393,3-Methyl-Pyrene,c1cc2ccc3cccc4ccc(c1)c2c34,Polycyclic aromatics,19,,244.31799999999998,Aromatics,Heavy oil,639767637645.6545,C17-C20,26,Unsaturated
+394,Chrysene,c1ccc2c(c1)ccc3c2ccc4ccccc43,Polycyclic aromatics,18,,228.276,Aromatics,Heavy oil,661865696772.5623,C17-C20,28,Unsaturated
+395,1-Methyl-Chrysene,c1ccc2c(c1)ccc3c2ccc4ccccc43,Polycyclic aromatics,19,,242.302,Aromatics,Heavy oil,642423620412.1786,C17-C20,28,Unsaturated
+396,2-Methyl-Chrysene,c1ccc2c(c1)ccc3c2ccc4ccccc43,Polycyclic aromatics,20,,256.328,Aromatics,Heavy oil,624599993715.0251,C17-C20,28,Unsaturated
+397,3-Methyl-Chrysene,c1ccc2c(c1)ccc3c2ccc4ccccc43,Polycyclic aromatics,21,,270.354,Aromatics,Heavy oil,608182052925.0571,C21-C30,28,Unsaturated
+398,Benzo[a]pyrene,c1cc2ccc3c4ccccc4c5cccc(c2c1)c35,Polycyclic aromatics,20,,254.31199999999998,Aromatics,Heavy oil,627070793240.3872,C17-C20,32,Unsaturated
+399,1-Methyl-Benzo[a]pyrene,c1cc2ccc3c4ccccc4c5cccc(c2c1)c35,Polycyclic aromatics,21,,268.338,Aromatics,Heavy oil,610462387321.854,C21-C30,32,Unsaturated
+400,2-Methyl-Benzo[a]pyrene,c1cc2ccc3c4ccccc4c5cccc(c2c1)c35,Polycyclic aromatics,22,,282.364,Aromatics,Heavy oil,595107381639.792,C21-C30,32,Unsaturated
+401,3-Methyl-Benzo[a]pyrene,c1cc2ccc3c4ccccc4c5cccc(c2c1)c35,Polycyclic aromatics,23,,296.39000000000004,Aromatics,Heavy oil,580855661390.2239,C21-C30,32,Unsaturated
+402,Aromatic-C18-402,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+403,Aromatic-C19-403,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+404,Aromatic-C20-404,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+405,Aromatic-C6-405,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+406,Aromatic-C7-406,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+407,Aromatic-C8-407,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+408,Aromatic-C9-408,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+409,Aromatic-C10-409,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+410,Aromatic-C11-410,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+411,Aromatic-C12-411,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+412,Aromatic-C13-412,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+413,Aromatic-C14-413,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+414,Aromatic-C15-414,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+415,Aromatic-C16-415,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+416,Aromatic-C17-416,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+417,Aromatic-C18-417,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+418,Aromatic-C19-418,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+419,Aromatic-C20-419,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+420,Aromatic-C6-420,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+421,Aromatic-C7-421,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+422,Aromatic-C8-422,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+423,Aromatic-C9-423,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+424,Aromatic-C10-424,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+425,Aromatic-C11-425,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+426,Aromatic-C12-426,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+427,Aromatic-C13-427,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+428,Aromatic-C14-428,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+429,Aromatic-C15-429,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+430,Aromatic-C16-430,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+431,Aromatic-C17-431,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+432,Aromatic-C18-432,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+433,Aromatic-C19-433,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+434,Aromatic-C20-434,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+435,Aromatic-C6-435,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+436,Aromatic-C7-436,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+437,Aromatic-C8-437,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+438,Aromatic-C9-438,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+439,Aromatic-C10-439,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+440,Aromatic-C11-440,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+441,Aromatic-C12-441,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+442,Aromatic-C13-442,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+443,Aromatic-C14-443,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+444,Aromatic-C15-444,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+445,Aromatic-C16-445,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+446,Aromatic-C17-446,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+447,Aromatic-C18-447,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+448,Aromatic-C19-448,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+449,Aromatic-C20-449,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+450,Aromatic-C6-450,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+451,Aromatic-C7-451,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+452,Aromatic-C8-452,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+453,Aromatic-C9-453,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+454,Aromatic-C10-454,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+455,Aromatic-C11-455,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+456,Aromatic-C12-456,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+457,Aromatic-C13-457,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+458,Aromatic-C14-458,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+459,Aromatic-C15-459,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+460,Aromatic-C16-460,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+461,Aromatic-C17-461,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+462,Aromatic-C18-462,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+463,Aromatic-C19-463,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+464,Aromatic-C20-464,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+465,Aromatic-C6-465,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+466,Aromatic-C7-466,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+467,Aromatic-C8-467,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+468,Aromatic-C9-468,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+469,Aromatic-C10-469,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+470,Aromatic-C11-470,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+471,Aromatic-C12-471,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+472,Aromatic-C13-472,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+473,Aromatic-C14-473,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+474,Aromatic-C15-474,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+475,Aromatic-C16-475,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+476,Aromatic-C17-476,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+477,Aromatic-C18-477,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+478,Aromatic-C19-478,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+479,Aromatic-C20-479,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+480,Aromatic-C6-480,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+481,Aromatic-C7-481,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+482,Aromatic-C8-482,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+483,Aromatic-C9-483,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+484,Aromatic-C10-484,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+485,Aromatic-C11-485,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+486,Aromatic-C12-486,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+487,Aromatic-C13-487,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+488,Aromatic-C14-488,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+489,Aromatic-C15-489,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+490,Aromatic-C16-490,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+491,Aromatic-C17-491,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+492,Aromatic-C18-492,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+493,Aromatic-C19-493,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+494,Aromatic-C20-494,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+495,Aromatic-C6-495,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+496,Aromatic-C7-496,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+497,Aromatic-C8-497,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+498,Aromatic-C9-498,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+499,Aromatic-C10-499,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+500,Aromatic-C11-500,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+501,Aromatic-C12-501,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+502,Aromatic-C13-502,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+503,Aromatic-C14-503,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+504,Aromatic-C15-504,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+505,Aromatic-C16-505,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+506,Aromatic-C17-506,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+507,Aromatic-C18-507,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+508,Aromatic-C19-508,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+509,Aromatic-C20-509,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+510,Aromatic-C6-510,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+511,Aromatic-C7-511,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+512,Aromatic-C8-512,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+513,Aromatic-C9-513,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+514,Aromatic-C10-514,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+515,Aromatic-C11-515,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+516,Aromatic-C12-516,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+517,Aromatic-C13-517,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+518,Aromatic-C14-518,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+519,Aromatic-C15-519,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+520,Aromatic-C16-520,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+521,Aromatic-C17-521,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+522,Aromatic-C18-522,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+523,Aromatic-C19-523,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+524,Aromatic-C20-524,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+525,Aromatic-C6-525,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+526,Aromatic-C7-526,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+527,Aromatic-C8-527,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+528,Aromatic-C9-528,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+529,Aromatic-C10-529,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+530,Aromatic-C11-530,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+531,Aromatic-C12-531,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+532,Aromatic-C13-532,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+533,Aromatic-C14-533,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+534,Aromatic-C15-534,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+535,Aromatic-C16-535,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+536,Aromatic-C17-536,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+537,Aromatic-C18-537,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+538,Aromatic-C19-538,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+539,Aromatic-C20-539,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+540,Aromatic-C6-540,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+541,Aromatic-C7-541,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+542,Aromatic-C8-542,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+543,Aromatic-C9-543,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+544,Aromatic-C10-544,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+545,Aromatic-C11-545,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+546,Aromatic-C12-546,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+547,Aromatic-C13-547,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+548,Aromatic-C14-548,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+549,Aromatic-C15-549,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+550,Aromatic-C16-550,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+551,Aromatic-C17-551,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+552,Aromatic-C18-552,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+553,Aromatic-C19-553,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+554,Aromatic-C20-554,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+555,Aromatic-C6-555,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+556,Aromatic-C7-556,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+557,Aromatic-C8-557,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+558,Aromatic-C9-558,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+559,Aromatic-C10-559,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+560,Aromatic-C11-560,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+561,Aromatic-C12-561,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+562,Aromatic-C13-562,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+563,Aromatic-C14-563,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+564,Aromatic-C15-564,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+565,Aromatic-C16-565,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+566,Aromatic-C17-566,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+567,Aromatic-C18-567,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+568,Aromatic-C19-568,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+569,Aromatic-C20-569,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+570,Aromatic-C6-570,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+571,Aromatic-C7-571,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+572,Aromatic-C8-572,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+573,Aromatic-C9-573,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+574,Aromatic-C10-574,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+575,Aromatic-C11-575,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+576,Aromatic-C12-576,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+577,Aromatic-C13-577,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+578,Aromatic-C14-578,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+579,Aromatic-C15-579,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+580,Aromatic-C16-580,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+581,Aromatic-C17-581,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+582,Aromatic-C18-582,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+583,Aromatic-C19-583,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+584,Aromatic-C20-584,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+585,Aromatic-C6-585,c1ccccc1,Aromatics,6,,78.108,Aromatics,Gasoline,1131493963139.3901,C5-C8,8,Unsaturated
+586,Aromatic-C7-586,c1ccccc1,Aromatics,7,,92.13399999999999,Aromatics,Gasoline,1041813634251.3234,C5-C8,8,Unsaturated
+587,Aromatic-C8-587,c1ccccc1,Aromatics,8,,106.16,Aromatics,Gasoline,970553645244.2546,C5-C8,8,Unsaturated
+588,Aromatic-C9-588,c1ccccc1,Aromatics,9,,120.186,Aromatics,Gasoline,912164275583.9397,C9-C12,8,Unsaturated
+589,Aromatic-C10-589,c1ccccc1,Aromatics,10,,134.212,Aromatics,Gasoline,863185876759.3774,C9-C12,8,Unsaturated
+590,Aromatic-C11-590,c1ccccc1,Aromatics,11,,148.238,Aromatics,Gasoline,821334804232.1232,C9-C12,8,Unsaturated
+591,Aromatic-C12-591,c1ccccc1,Aromatics,12,,162.264,Aromatics,Gasoline,785034803719.447,C9-C12,8,Unsaturated
+592,Aromatic-C13-592,c1ccccc1,Aromatics,13,,176.29,Aromatics,Diesel,753158117252.3292,C13-C16,8,Unsaturated
+593,Aromatic-C14-593,c1ccccc1,Aromatics,14,,190.31599999999997,Aromatics,Diesel,724873710818.0087,C13-C16,8,Unsaturated
+594,Aromatic-C15-594,c1ccccc1,Aromatics,15,,204.342,Aromatics,Diesel,699553896808.4861,C13-C16,8,Unsaturated
+595,Aromatic-C16-595,c1ccccc1,Aromatics,16,,218.368,Aromatics,Diesel,676714530423.143,C13-C16,8,Unsaturated
+596,Aromatic-C17-596,c1ccccc1,Aromatics,17,,232.39399999999998,Aromatics,Diesel,655975387005.7616,C17-C20,8,Unsaturated
+597,Aromatic-C18-597,c1ccccc1,Aromatics,18,,246.42000000000002,Aromatics,Diesel,637033136204.0968,C17-C20,8,Unsaturated
+598,Aromatic-C19-598,c1ccccc1,Aromatics,19,,260.446,Aromatics,Diesel,619642438113.7518,C17-C20,8,Unsaturated
+599,Aromatic-C20-599,c1ccccc1,Aromatics,20,,274.472,Aromatics,Diesel,603602425891.7164,C17-C20,8,Unsaturated
+600,"1,3-C4diene",C=CC=C,Dienes,4,,54.088,Dienes,Gasoline,1359720165751.9434,C1-C4,6,Unsaturated
+601,"1,3-C5diene",C=CC=CC,Dienes,5,,68.114,Dienes,Gasoline,1211662891905.0933,C5-C8,7,Unsaturated
+602,"1,3-C6diene",C=CC=CCC,Dienes,6,,82.14,Dienes,Gasoline,1103373758010.4407,C5-C8,8,Unsaturated
+603,"1,4-C6diene",C=CCC=CC,Dienes,6,,82.14,Dienes,Gasoline,1103373758010.4407,C5-C8,8,Unsaturated
+604,"1,3,5-C6triene",C=CC=CC=C,Trienes,6,,80.124,Trienes,Gasoline,1117168518388.0542,C5-C8,9,Unsaturated
+605,"1,3-C7diene",C=CC=CCCC,Dienes,7,,96.166,Dienes,Gasoline,1019739457221.2739,C5-C8,9,Unsaturated
+606,"1,4-C7diene",C=CCC=CCC,Dienes,7,,96.166,Dienes,Gasoline,1019739457221.2739,C5-C8,9,Unsaturated
+607,"1,3,5-C7triene",C=CC=CC=CC,Trienes,7,,94.14999999999999,Trienes,Gasoline,1030599287371.7571,C5-C8,10,Unsaturated
+608,"1,3-C8diene",C=CC=CCCCC,Dienes,8,,110.192,Dienes,Gasoline,952631564169.7043,C5-C8,10,Unsaturated
+609,"1,4-C8diene",C=CCC=CCCC,Dienes,8,,110.192,Dienes,Gasoline,952631564169.7043,C5-C8,10,Unsaturated
+610,"1,3,5-C8triene",C=CC=CC=CCC,Trienes,8,,108.176,Trienes,Gasoline,961467349719.2955,C5-C8,11,Unsaturated
+611,"1,3-C9diene",C=CC=CCCCCC,Dienes,9,,124.218,Dienes,Gasoline,897238155194.8467,C9-C12,11,Unsaturated
+612,"1,4-C9diene",C=CCC=CCCCC,Dienes,9,,124.218,Dienes,Gasoline,897238155194.8467,C9-C12,11,Unsaturated
+613,"1,3,5-C9triene",C=CC=CC=CCCC,Trienes,9,,122.202,Trienes,Gasoline,904608872653.9484,C9-C12,12,Unsaturated
+614,"1,3-C10diene",C=CC=CCCCCCC,Dienes,10,,138.244,Dienes,Gasoline,850504967129.3611,C9-C12,12,Unsaturated
+615,"1,4-C10diene",C=CCC=CCCCCC,Dienes,10,,138.244,Dienes,Gasoline,850504967129.3611,C9-C12,12,Unsaturated
+616,"1,3,5-C10triene",C=CC=CC=CCCCC,Trienes,10,,136.228,Trienes,Gasoline,856775047378.1942,C9-C12,13,Unsaturated
+617,"1,3-C11diene",C=CC=CCCCCCCC,Dienes,11,,152.26999999999998,Dienes,Gasoline,810387672787.6681,C9-C12,13,Unsaturated
+618,"1,4-C11diene",C=CCC=CCCCCCC,Dienes,11,,152.26999999999998,Dienes,Gasoline,810387672787.6681,C9-C12,13,Unsaturated
+619,"1,3,5-C11triene",C=CC=CC=CCCCCC,Trienes,11,,150.254,Trienes,Gasoline,815806157203.7097,C9-C12,14,Unsaturated
+620,"1,3-C12diene",C=CC=CCCCCCCCC,Dienes,12,,166.296,Dienes,Gasoline,775459460139.9153,C9-C12,14,Unsaturated
+621,"1,4-C12diene",C=CCC=CCCCCCCC,Dienes,12,,166.296,Dienes,Gasoline,775459460139.9153,C9-C12,14,Unsaturated
+622,"1,3,5-C12triene",C=CC=CC=CCCCCCC,Trienes,12,,164.28,Trienes,Gasoline,780203066472.4673,C9-C12,15,Unsaturated
+623,"1,3-C13diene",C=CC=CCCCCCCCCC,Dienes,13,,180.322,Dienes,Gasoline,744690206103.6765,C13-C16,15,Unsaturated
+624,"1,4-C13diene",C=CCC=CCCCCCCCC,Dienes,13,,180.322,Dienes,Gasoline,744690206103.6765,C13-C16,15,Unsaturated
+625,"1,3,5-C13triene",C=CC=CC=CCCCCCCC,Trienes,13,,178.30599999999998,Trienes,Gasoline,748888258084.8574,C13-C16,16,Unsaturated
+626,"1,3-C14diene",C=CC=CCCCCCCCCCC,Dienes,14,,194.34799999999998,Dienes,Gasoline,717315081805.2697,C13-C16,16,Unsaturated
+627,"1,4-C14diene",C=CCC=CCCCCCCCCC,Dienes,14,,194.34799999999998,Dienes,Gasoline,717315081805.2697,C13-C16,16,Unsaturated
+628,"1,3,5-C14triene",C=CC=CC=CCCCCCCCC,Trienes,14,,192.332,Trienes,Gasoline,721064685244.6521,C13-C16,17,Unsaturated
+629,"1,3-C15diene",C=CC=CCCCCCCCCCCC,Dienes,15,,208.374,Dienes,Gasoline,692752713661.8737,C13-C16,17,Unsaturated
+630,"1,4-C15diene",C=CCC=CCCCCCCCCCC,Dienes,15,,208.374,Dienes,Gasoline,692752713661.8737,C13-C16,17,Unsaturated
+631,"1,3,5-C15triene",C=CC=CC=CCCCCCCCCC,Trienes,15,,206.358,Trienes,Gasoline,696128388606.8986,C13-C16,18,Unsaturated
+632,"1,3-C16diene",C=CC=CCCCCCCCCCCCC,Dienes,16,,222.4,Dienes,Gasoline,670552225982.2751,C13-C16,18,Unsaturated
+633,"1,4-C16diene",C=CCC=CCCCCCCCCCCC,Dienes,16,,222.4,Dienes,Gasoline,670552225982.2751,C13-C16,18,Unsaturated
+634,"1,3-C17diene",C=CC=CCCCCCCCCCCCCC,Dienes,17,,236.426,Dienes,Gasoline,650357844038.6736,C17-C20,19,Unsaturated
+635,"1,4-C17diene",C=CCC=CCCCCCCCCCCCC,Dienes,17,,236.426,Dienes,Gasoline,650357844038.6736,C17-C20,19,Unsaturated
+636,"1,3-C18diene",C=CC=CCCCCCCCCCCCCCC,Dienes,18,,250.452,Dienes,Gasoline,631884566345.6451,C17-C20,20,Unsaturated
+637,"1,4-C18diene",C=CCC=CCCCCCCCCCCCCC,Dienes,18,,250.452,Dienes,Gasoline,631884566345.6451,C17-C20,20,Unsaturated
+638,"1,3-C19diene",C=CC=CCCCCCCCCCCCCCCC,Dienes,19,,264.478,Dienes,Gasoline,614901034876.9144,C17-C20,21,Unsaturated
+639,"1,4-C19diene",C=CCC=CCCCCCCCCCCCCCC,Dienes,19,,264.478,Dienes,Gasoline,614901034876.9144,C17-C20,21,Unsaturated
+640,Cyclo-C3ene,C1=CC1,Cycloalkenes,3,,40.062,Cycloalkenes,Gasoline,1579914870160.6426,C1-C4,6,Unsaturated
+641,1-Methyl-cyclo-C3ene,CC1=CC1,Cycloalkenes,4,,54.088,Cycloalkenes,Gasoline,1359720165751.9434,C1-C4,7,Unsaturated
+642,2-Methyl-cyclo-C3ene,CCC1=CC1,Cycloalkenes,5,,68.114,Cycloalkenes,Gasoline,1211662891905.0933,C5-C8,8,Unsaturated
+643,3-Methyl-cyclo-C3ene,CCCC1=CC1,Cycloalkenes,6,,82.14,Cycloalkenes,Gasoline,1103373758010.4407,C5-C8,9,Unsaturated
+644,4-Methyl-cyclo-C3ene,CCCCC1=CC1,Cycloalkenes,7,,96.166,Cycloalkenes,Gasoline,1019739457221.2739,C5-C8,10,Unsaturated
+645,Cyclo-C4ene,C1=CCC1,Cycloalkenes,4,,54.088,Cycloalkenes,Gasoline,1359720165751.9434,C1-C4,7,Unsaturated
+646,1-Methyl-cyclo-C4ene,CC1=CCC1,Cycloalkenes,5,,68.114,Cycloalkenes,Gasoline,1211662891905.0933,C5-C8,8,Unsaturated
+647,2-Methyl-cyclo-C4ene,CCC1=CCC1,Cycloalkenes,6,,82.14,Cycloalkenes,Gasoline,1103373758010.4407,C5-C8,9,Unsaturated
+648,3-Methyl-cyclo-C4ene,CCCC1=CCC1,Cycloalkenes,7,,96.166,Cycloalkenes,Gasoline,1019739457221.2739,C5-C8,10,Unsaturated
+649,4-Methyl-cyclo-C4ene,CCCCC1=CCC1,Cycloalkenes,8,,110.192,Cycloalkenes,Gasoline,952631564169.7043,C5-C8,11,Unsaturated
+650,Cyclo-C5ene,C1=CCCC1,Cycloalkenes,5,,68.114,Cycloalkenes,Gasoline,1211662891905.0933,C5-C8,8,Unsaturated
+651,1-Methyl-cyclo-C5ene,CC1=CCCC1,Cycloalkenes,6,,82.14,Cycloalkenes,Gasoline,1103373758010.4407,C5-C8,9,Unsaturated
+652,2-Methyl-cyclo-C5ene,CCC1=CCCC1,Cycloalkenes,7,,96.166,Cycloalkenes,Gasoline,1019739457221.2739,C5-C8,10,Unsaturated
+653,3-Methyl-cyclo-C5ene,CCCC1=CCCC1,Cycloalkenes,8,,110.192,Cycloalkenes,Gasoline,952631564169.7043,C5-C8,11,Unsaturated
+654,4-Methyl-cyclo-C5ene,CCCCC1=CCCC1,Cycloalkenes,9,,124.218,Cycloalkenes,Gasoline,897238155194.8467,C9-C12,12,Unsaturated
+655,Cyclo-C6ene,C1=CCCCC1,Cycloalkenes,6,,82.14,Cycloalkenes,Gasoline,1103373758010.4407,C5-C8,9,Unsaturated
+656,1-Methyl-cyclo-C6ene,CC1=CCCCC1,Cycloalkenes,7,,96.166,Cycloalkenes,Gasoline,1019739457221.2739,C5-C8,10,Unsaturated
+657,2-Methyl-cyclo-C6ene,CCC1=CCCCC1,Cycloalkenes,8,,110.192,Cycloalkenes,Gasoline,952631564169.7043,C5-C8,11,Unsaturated
+658,3-Methyl-cyclo-C6ene,CCCC1=CCCCC1,Cycloalkenes,9,,124.218,Cycloalkenes,Gasoline,897238155194.8467,C9-C12,12,Unsaturated
+659,4-Methyl-cyclo-C6ene,CCCCC1=CCCCC1,Cycloalkenes,10,,138.244,Cycloalkenes,Gasoline,850504967129.3611,C9-C12,13,Unsaturated
+660,Cyclo-C7ene,C1=CCCCCC1,Cycloalkenes,7,,96.166,Cycloalkenes,Gasoline,1019739457221.2739,C5-C8,10,Unsaturated
+661,1-Methyl-cyclo-C7ene,CC1=CCCCCC1,Cycloalkenes,8,,110.192,Cycloalkenes,Gasoline,952631564169.7043,C5-C8,11,Unsaturated
+662,2-Methyl-cyclo-C7ene,CCC1=CCCCCC1,Cycloalkenes,9,,124.218,Cycloalkenes,Gasoline,897238155194.8467,C9-C12,12,Unsaturated
+663,3-Methyl-cyclo-C7ene,CCCC1=CCCCCC1,Cycloalkenes,10,,138.244,Cycloalkenes,Gasoline,850504967129.3611,C9-C12,13,Unsaturated
+664,4-Methyl-cyclo-C7ene,CCCCC1=CCCCCC1,Cycloalkenes,11,,152.26999999999998,Cycloalkenes,Gasoline,810387672787.6681,C9-C12,14,Unsaturated
+665,Cyclo-C8ene,C1=CCCCCCC1,Cycloalkenes,8,,110.192,Cycloalkenes,Gasoline,952631564169.7043,C5-C8,11,Unsaturated
+666,1-Methyl-cyclo-C8ene,CC1=CCCCCCC1,Cycloalkenes,9,,124.218,Cycloalkenes,Gasoline,897238155194.8467,C9-C12,12,Unsaturated
+667,2-Methyl-cyclo-C8ene,CCC1=CCCCCCC1,Cycloalkenes,10,,138.244,Cycloalkenes,Gasoline,850504967129.3611,C9-C12,13,Unsaturated
+668,3-Methyl-cyclo-C8ene,CCCC1=CCCCCCC1,Cycloalkenes,11,,152.26999999999998,Cycloalkenes,Gasoline,810387672787.6681,C9-C12,14,Unsaturated
+669,4-Methyl-cyclo-C8ene,CCCCC1=CCCCCCC1,Cycloalkenes,12,,166.296,Cycloalkenes,Gasoline,775459460139.9153,C9-C12,15,Unsaturated
+670,Cyclo-C9ene,C1=CCCCCCCC1,Cycloalkenes,9,,124.218,Cycloalkenes,Gasoline,897238155194.8467,C9-C12,12,Unsaturated
+671,1-Methyl-cyclo-C9ene,CC1=CCCCCCCC1,Cycloalkenes,10,,138.244,Cycloalkenes,Gasoline,850504967129.3611,C9-C12,13,Unsaturated
+672,2-Methyl-cyclo-C9ene,CCC1=CCCCCCCC1,Cycloalkenes,11,,152.26999999999998,Cycloalkenes,Gasoline,810387672787.6681,C9-C12,14,Unsaturated
+673,3-Methyl-cyclo-C9ene,CCCC1=CCCCCCCC1,Cycloalkenes,12,,166.296,Cycloalkenes,Gasoline,775459460139.9153,C9-C12,15,Unsaturated
+674,Cyclo-C10ene,C1=CCCCCCCCC1,Cycloalkenes,10,,138.244,Cycloalkenes,Gasoline,850504967129.3611,C9-C12,13,Unsaturated
+675,1-Methyl-cyclo-C10ene,CC1=CCCCCCCCC1,Cycloalkenes,11,,152.26999999999998,Cycloalkenes,Gasoline,810387672787.6681,C9-C12,14,Unsaturated
+676,2-Methyl-cyclo-C10ene,CCC1=CCCCCCCCC1,Cycloalkenes,12,,166.296,Cycloalkenes,Gasoline,775459460139.9153,C9-C12,15,Unsaturated
+677,Cyclo-C11ene,C1=CCCCCCCCCC1,Cycloalkenes,11,,152.26999999999998,Cycloalkenes,Gasoline,810387672787.6681,C9-C12,14,Unsaturated
+678,1-Methyl-cyclo-C11ene,CC1=CCCCCCCCCC1,Cycloalkenes,12,,166.296,Cycloalkenes,Gasoline,775459460139.9153,C9-C12,15,Unsaturated
+679,Thiophene,c1ccsc1,Thiophenes,4,,82.116,Sulfur compounds,Diesel,1103534987463.776,C1-C4,7,Unsaturated
+680,C1-Thiophene,c1ccsc1,Thiophenes,5,,96.142,Sulfur compounds,Diesel,1019866728444.1211,C5-C8,7,Unsaturated
+681,C2-Thiophene,c1ccsc1,Thiophenes,6,,110.168,Sulfur compounds,Diesel,952735323485.0051,C5-C8,7,Unsaturated
+682,C3-Thiophene,c1ccsc1,Thiophenes,7,,124.19399999999999,Sulfur compounds,Diesel,897324844871.8795,C5-C8,7,Unsaturated
+683,C4-Thiophene,c1ccsc1,Thiophenes,8,,138.22,Sulfur compounds,Diesel,850578803163.2822,C5-C8,7,Unsaturated
+684,C5-Thiophene,c1ccsc1,Thiophenes,9,,152.246,Sulfur compounds,Diesel,810451544868.7478,C9-C12,7,Unsaturated
+685,Benzothiophene,c1ccc2sccc2c1,Thiophenes,8,,134.188,Sulfur compounds,Diesel,863263065236.8192,C5-C8,13,Unsaturated
+686,C1-Benzothiophene,c1ccc2sccc2c1,Thiophenes,9,,148.214,Sulfur compounds,Diesel,821401300100.8785,C9-C12,13,Unsaturated
+687,C2-Benzothiophene,c1ccc2sccc2c1,Thiophenes,10,,162.24,Sulfur compounds,Diesel,785092866276.6595,C9-C12,13,Unsaturated
+688,C3-Benzothiophene,c1ccc2sccc2c1,Thiophenes,11,,176.266,Sulfur compounds,Diesel,753209389702.9595,C9-C12,13,Unsaturated
+689,C4-Benzothiophene,c1ccc2sccc2c1,Thiophenes,12,,190.292,Sulfur compounds,Diesel,724919420623.3585,C9-C12,13,Unsaturated
+690,C5-Benzothiophene,c1ccc2sccc2c1,Thiophenes,13,,204.31799999999998,Sulfur compounds,Diesel,699594981785.1356,C13-C16,13,Unsaturated
+691,Dibenzothiophene,c1ccc2c(c1)sc3ccccc32,Thiophenes,12,,186.26000000000002,Sulfur compounds,Diesel,732723635278.1754,C9-C12,21,Unsaturated
+692,C1-Dibenzothiophene,c1ccc2c(c1)sc3ccccc32,Thiophenes,13,,200.286,Sulfur compounds,Diesel,706601741428.6383,C13-C16,21,Unsaturated
+693,C2-Dibenzothiophene,c1ccc2c(c1)sc3ccccc32,Thiophenes,14,,214.31199999999998,Sulfur compounds,Diesel,683088156275.1224,C13-C16,21,Unsaturated
+694,C3-Dibenzothiophene,c1ccc2c(c1)sc3ccccc32,Thiophenes,15,,228.33800000000002,Sulfur compounds,Diesel,661775833370.162,C13-C16,21,Unsaturated
+695,C4-Dibenzothiophene,c1ccc2c(c1)sc3ccccc32,Thiophenes,16,,242.364,Sulfur compounds,Diesel,642341444816.6448,C13-C16,21,Unsaturated
+696,C5-Dibenzothiophene,c1ccc2c(c1)sc3ccccc32,Thiophenes,17,,256.39,Sulfur compounds,Diesel,624524469043.5934,C17-C20,21,Unsaturated
+697,Petroleum-C11-697,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+698,Petroleum-C12-698,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+699,Petroleum-C13-699,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+700,Petroleum-C14-700,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+701,Petroleum-C15-701,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+702,Petroleum-C16-702,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+703,Petroleum-C17-703,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+704,Petroleum-C18-704,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+705,Petroleum-C19-705,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+706,Petroleum-C20-706,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+707,Petroleum-C21-707,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+708,Petroleum-C22-708,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+709,Petroleum-C23-709,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+710,Petroleum-C24-710,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+711,Petroleum-C25-711,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+712,Petroleum-C26-712,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+713,Petroleum-C27-713,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+714,Petroleum-C28-714,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+715,Petroleum-C29-715,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+716,Petroleum-C30-716,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+717,Petroleum-C31-717,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+718,Petroleum-C32-718,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+719,Petroleum-C33-719,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+720,Petroleum-C34-720,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+721,Petroleum-C5-721,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+722,Petroleum-C6-722,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+723,Petroleum-C7-723,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+724,Petroleum-C8-724,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+725,Petroleum-C9-725,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+726,Petroleum-C10-726,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+727,Petroleum-C11-727,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+728,Petroleum-C12-728,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+729,Petroleum-C13-729,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+730,Petroleum-C14-730,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+731,Petroleum-C15-731,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+732,Petroleum-C16-732,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+733,Petroleum-C17-733,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+734,Petroleum-C18-734,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+735,Petroleum-C19-735,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+736,Petroleum-C20-736,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+737,Petroleum-C21-737,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+738,Petroleum-C22-738,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+739,Petroleum-C23-739,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+740,Petroleum-C24-740,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+741,Petroleum-C25-741,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+742,Petroleum-C26-742,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+743,Petroleum-C27-743,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+744,Petroleum-C28-744,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+745,Petroleum-C29-745,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+746,Petroleum-C30-746,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+747,Petroleum-C31-747,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+748,Petroleum-C32-748,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+749,Petroleum-C33-749,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+750,Petroleum-C34-750,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+751,Petroleum-C5-751,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+752,Petroleum-C6-752,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+753,Petroleum-C7-753,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+754,Petroleum-C8-754,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+755,Petroleum-C9-755,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+756,Petroleum-C10-756,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+757,Petroleum-C11-757,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+758,Petroleum-C12-758,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+759,Petroleum-C13-759,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+760,Petroleum-C14-760,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+761,Petroleum-C15-761,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+762,Petroleum-C16-762,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+763,Petroleum-C17-763,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+764,Petroleum-C18-764,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+765,Petroleum-C19-765,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+766,Petroleum-C20-766,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+767,Petroleum-C21-767,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+768,Petroleum-C22-768,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+769,Petroleum-C23-769,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+770,Petroleum-C24-770,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+771,Petroleum-C25-771,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+772,Petroleum-C26-772,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+773,Petroleum-C27-773,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+774,Petroleum-C28-774,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+775,Petroleum-C29-775,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+776,Petroleum-C30-776,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+777,Petroleum-C31-777,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+778,Petroleum-C32-778,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+779,Petroleum-C33-779,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+780,Petroleum-C34-780,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+781,Petroleum-C5-781,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+782,Petroleum-C6-782,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+783,Petroleum-C7-783,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+784,Petroleum-C8-784,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+785,Petroleum-C9-785,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+786,Petroleum-C10-786,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+787,Petroleum-C11-787,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+788,Petroleum-C12-788,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+789,Petroleum-C13-789,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+790,Petroleum-C14-790,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+791,Petroleum-C15-791,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+792,Petroleum-C16-792,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+793,Petroleum-C17-793,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+794,Petroleum-C18-794,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+795,Petroleum-C19-795,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+796,Petroleum-C20-796,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+797,Petroleum-C21-797,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+798,Petroleum-C22-798,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+799,Petroleum-C23-799,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+800,Petroleum-C24-800,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+801,Petroleum-C25-801,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+802,Petroleum-C26-802,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+803,Petroleum-C27-803,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+804,Petroleum-C28-804,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+805,Petroleum-C29-805,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+806,Petroleum-C30-806,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+807,Petroleum-C31-807,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+808,Petroleum-C32-808,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+809,Petroleum-C33-809,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+810,Petroleum-C34-810,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+811,Petroleum-C5-811,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+812,Petroleum-C6-812,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+813,Petroleum-C7-813,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+814,Petroleum-C8-814,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+815,Petroleum-C9-815,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+816,Petroleum-C10-816,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+817,Petroleum-C11-817,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+818,Petroleum-C12-818,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+819,Petroleum-C13-819,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+820,Petroleum-C14-820,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+821,Petroleum-C15-821,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+822,Petroleum-C16-822,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+823,Petroleum-C17-823,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+824,Petroleum-C18-824,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+825,Petroleum-C19-825,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+826,Petroleum-C20-826,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+827,Petroleum-C21-827,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+828,Petroleum-C22-828,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+829,Petroleum-C23-829,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+830,Petroleum-C24-830,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+831,Petroleum-C25-831,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+832,Petroleum-C26-832,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+833,Petroleum-C27-833,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+834,Petroleum-C28-834,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+835,Petroleum-C29-835,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+836,Petroleum-C30-836,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+837,Petroleum-C31-837,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+838,Petroleum-C32-838,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+839,Petroleum-C33-839,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+840,Petroleum-C34-840,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+841,Petroleum-C5-841,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+842,Petroleum-C6-842,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+843,Petroleum-C7-843,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+844,Petroleum-C8-844,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+845,Petroleum-C9-845,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+846,Petroleum-C10-846,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+847,Petroleum-C11-847,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+848,Petroleum-C12-848,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+849,Petroleum-C13-849,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+850,Petroleum-C14-850,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+851,Petroleum-C15-851,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+852,Petroleum-C16-852,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+853,Petroleum-C17-853,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+854,Petroleum-C18-854,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+855,Petroleum-C19-855,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+856,Petroleum-C20-856,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+857,Petroleum-C21-857,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+858,Petroleum-C22-858,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+859,Petroleum-C23-859,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+860,Petroleum-C24-860,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+861,Petroleum-C25-861,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+862,Petroleum-C26-862,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+863,Petroleum-C27-863,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+864,Petroleum-C28-864,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+865,Petroleum-C29-865,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+866,Petroleum-C30-866,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+867,Petroleum-C31-867,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+868,Petroleum-C32-868,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+869,Petroleum-C33-869,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+870,Petroleum-C34-870,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+871,Petroleum-C5-871,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+872,Petroleum-C6-872,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+873,Petroleum-C7-873,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+874,Petroleum-C8-874,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+875,Petroleum-C9-875,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+876,Petroleum-C10-876,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+877,Petroleum-C11-877,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+878,Petroleum-C12-878,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+879,Petroleum-C13-879,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+880,Petroleum-C14-880,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+881,Petroleum-C15-881,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+882,Petroleum-C16-882,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+883,Petroleum-C17-883,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+884,Petroleum-C18-884,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+885,Petroleum-C19-885,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+886,Petroleum-C20-886,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+887,Petroleum-C21-887,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+888,Petroleum-C22-888,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+889,Petroleum-C23-889,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+890,Petroleum-C24-890,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+891,Petroleum-C25-891,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+892,Petroleum-C26-892,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+893,Petroleum-C27-893,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+894,Petroleum-C28-894,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+895,Petroleum-C29-895,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+896,Petroleum-C30-896,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+897,Petroleum-C31-897,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+898,Petroleum-C32-898,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+899,Petroleum-C33-899,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+900,Petroleum-C34-900,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+901,Petroleum-C5-901,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+902,Petroleum-C6-902,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+903,Petroleum-C7-903,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+904,Petroleum-C8-904,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+905,Petroleum-C9-905,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+906,Petroleum-C10-906,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+907,Petroleum-C11-907,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+908,Petroleum-C12-908,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+909,Petroleum-C13-909,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+910,Petroleum-C14-910,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+911,Petroleum-C15-911,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+912,Petroleum-C16-912,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+913,Petroleum-C17-913,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+914,Petroleum-C18-914,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+915,Petroleum-C19-915,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+916,Petroleum-C20-916,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+917,Petroleum-C21-917,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+918,Petroleum-C22-918,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+919,Petroleum-C23-919,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+920,Petroleum-C24-920,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+921,Petroleum-C25-921,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+922,Petroleum-C26-922,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+923,Petroleum-C27-923,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+924,Petroleum-C28-924,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+925,Petroleum-C29-925,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+926,Petroleum-C30-926,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+927,Petroleum-C31-927,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+928,Petroleum-C32-928,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+929,Petroleum-C33-929,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+930,Petroleum-C34-930,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+931,Petroleum-C5-931,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+932,Petroleum-C6-932,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+933,Petroleum-C7-933,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+934,Petroleum-C8-934,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+935,Petroleum-C9-935,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+936,Petroleum-C10-936,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+937,Petroleum-C11-937,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+938,Petroleum-C12-938,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+939,Petroleum-C13-939,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+940,Petroleum-C14-940,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+941,Petroleum-C15-941,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+942,Petroleum-C16-942,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+943,Petroleum-C17-943,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+944,Petroleum-C18-944,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+945,Petroleum-C19-945,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+946,Petroleum-C20-946,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+947,Petroleum-C21-947,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+948,Petroleum-C22-948,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+949,Petroleum-C23-949,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+950,Petroleum-C24-950,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+951,Petroleum-C25-951,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+952,Petroleum-C26-952,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+953,Petroleum-C27-953,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+954,Petroleum-C28-954,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+955,Petroleum-C29-955,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+956,Petroleum-C30-956,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+957,Petroleum-C31-957,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+958,Petroleum-C32-958,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+959,Petroleum-C33-959,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+960,Petroleum-C34-960,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+961,Petroleum-C5-961,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+962,Petroleum-C6-962,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+963,Petroleum-C7-963,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+964,Petroleum-C8-964,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+965,Petroleum-C9-965,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+966,Petroleum-C10-966,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+967,Petroleum-C11-967,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+968,Petroleum-C12-968,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+969,Petroleum-C13-969,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+970,Petroleum-C14-970,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated
+971,Petroleum-C15-971,CCCCCCCCCCCCCCC,Linear alkanes,15,,212.406,Alkanes,Mixed,686146116732.9568,C13-C16,15,Saturated
+972,Petroleum-C16-972,CCCCCCCCCCCCCCCC,Linear alkanes,16,,226.432,Alkanes,Mixed,664555258312.6898,C13-C16,16,Saturated
+973,Petroleum-C17-973,CCCCCCCCCCCCCCCCC,Linear alkanes,17,,240.45799999999997,Alkanes,Mixed,644882192557.4109,C17-C20,17,Saturated
+974,Petroleum-C18-974,CCCCCCCCCCCCCCCCCC,Linear alkanes,18,,254.484,Alkanes,Mixed,626858845913.6626,C17-C20,18,Saturated
+975,Petroleum-C19-975,CCCCCCCCCCCCCCCCCCC,Linear alkanes,19,,268.51,Alkanes,Mixed,610266833430.1029,C17-C20,19,Saturated
+976,Petroleum-C20-976,CCCCCCCCCCCCCCCCCCCC,Linear alkanes,20,,282.536,Alkanes,Mixed,594926211713.4329,C17-C20,20,Saturated
+977,Petroleum-C21-977,CCCCCCCCCCCCCCCCCCCCC,Linear alkanes,21,,296.562,Alkanes,Mixed,580687194654.7695,C21-C30,21,Saturated
+978,Petroleum-C22-978,CCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,22,,310.58799999999997,Alkanes,Mixed,567423951632.568,C21-C30,22,Saturated
+979,Petroleum-C23-979,CCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,23,,324.61400000000003,Alkanes,Mixed,555029896519.2572,C21-C30,23,Saturated
+980,Petroleum-C24-980,CCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,24,,338.64,Alkanes,Mixed,543414061677.22394,C21-C30,24,Saturated
+981,Petroleum-C25-981,CCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,25,,352.666,Alkanes,Mixed,532498273476.99066,C21-C30,25,Saturated
+982,Petroleum-C26-982,CCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,26,,366.692,Alkanes,Mixed,522214928026.6263,C21-C30,26,Saturated
+983,Petroleum-C27-983,CCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,27,,380.71799999999996,Alkanes,Mixed,512505221974.3419,C21-C30,27,Saturated
+984,Petroleum-C28-984,CCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,28,,394.74399999999997,Alkanes,Mixed,503317732291.2979,C21-C30,28,Saturated
+985,Petroleum-C29-985,CCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,29,,408.77000000000004,Alkanes,Mixed,494607266493.9285,C21-C30,29,Saturated
+986,Petroleum-C30-986,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,30,,422.796,Alkanes,Mixed,486333924479.06226,C21-C30,30,Saturated
+987,Petroleum-C31-987,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,31,,436.822,Alkanes,Mixed,478462327432.4112,C30+,31,Saturated
+988,Petroleum-C32-988,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,32,,450.848,Alkanes,Mixed,470960979748.8765,C30+,32,Saturated
+989,Petroleum-C33-989,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,33,,464.87399999999997,Alkanes,Mixed,463801737672.2709,C30+,33,Saturated
+990,Petroleum-C34-990,CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC,Linear alkanes,34,,478.9,Alkanes,Mixed,456959364182.06506,C30+,34,Saturated
+991,Petroleum-C5-991,CCCCC,Linear alkanes,5,,72.146,Alkanes,Mixed,1177318236610.3547,C5-C8,5,Saturated
+992,Petroleum-C6-992,CCCCCC,Linear alkanes,6,,86.172,Alkanes,Mixed,1077251019102.8378,C5-C8,6,Saturated
+993,Petroleum-C7-993,CCCCCCC,Linear alkanes,7,,100.198,Alkanes,Mixed,999011467728.4476,C5-C8,7,Saturated
+994,Petroleum-C8-994,CCCCCCCC,Linear alkanes,8,,114.22399999999999,Alkanes,Mixed,935667010900.7026,C5-C8,8,Saturated
+995,Petroleum-C9-995,CCCCCCCCC,Linear alkanes,9,,128.25,Alkanes,Mixed,883021571376.6958,C9-C12,9,Saturated
+996,Petroleum-C10-996,CCCCCCCCCC,Linear alkanes,10,,142.276,Alkanes,Mixed,838367002781.6842,C9-C12,10,Saturated
+997,Petroleum-C11-997,CCCCCCCCCCC,Linear alkanes,11,,156.302,Alkanes,Mixed,799866913217.5398,C9-C12,11,Saturated
+998,Petroleum-C12-998,CCCCCCCCCCCC,Linear alkanes,12,,170.328,Alkanes,Mixed,766226162165.0073,C9-C12,12,Saturated
+999,Petroleum-C13-999,CCCCCCCCCCCCC,Linear alkanes,13,,184.35399999999998,Alkanes,Mixed,736501638657.2075,C13-C16,13,Saturated
+1000,Petroleum-C14-1000,CCCCCCCCCCCCCC,Linear alkanes,14,,198.38,Alkanes,Mixed,709988079400.2195,C13-C16,14,Saturated

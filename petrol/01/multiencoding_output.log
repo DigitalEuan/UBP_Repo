@@ -1,0 +1,137 @@
+/home/ubuntu/petroleum_study/ubp_petroleum_multiencoding.py:318: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=list(self.strategies.keys()))
+/home/ubuntu/petroleum_study/ubp_petroleum_multiencoding.py:326: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=list(self.strategies.keys()))
+/home/ubuntu/petroleum_study/ubp_petroleum_multiencoding.py:334: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot(data, labels=list(self.strategies.keys()))
+================================================================================
+UBP 3.3 PETROLEUM ANALYSIS - MULTI-ENCODING COMPARISON
+Author: Euan R A Craig
+================================================================================
+
+Loading petroleum molecules...
+Loaded 1000 molecules
+Initializing Multi-Encoding UBP Analyzer...
+Converging observer...
+  O_observer: 3.7782010914
+  Y_BASE: 0.264675430404527
+  Y_M: 1.571612554800000e-07
+
+Analyzing 200 molecules with 4 encoding strategies...
+================================================================================
+
+Strategy: standard
+  Progress: 900/200
+  Progress: 550/200
+  Progress: 175/200
+  Progress: 500/200
+  Progress: 975/200
+  Progress: 300/200
+  Progress: 925/200
+  Progress: 600/200
+  Progress: 850/200
+  Progress: 650/200
+  Progress: 750/200
+  Progress: 200/200
+
+Strategy: inverted
+  Progress: 900/200
+  Progress: 550/200
+  Progress: 175/200
+  Progress: 500/200
+  Progress: 975/200
+  Progress: 300/200
+  Progress: 925/200
+  Progress: 600/200
+  Progress: 850/200
+  Progress: 650/200
+  Progress: 750/200
+  Progress: 200/200
+
+Strategy: complexity_focused
+  Progress: 900/200
+  Progress: 550/200
+  Progress: 175/200
+  Progress: 500/200
+  Progress: 975/200
+  Progress: 300/200
+  Progress: 925/200
+  Progress: 600/200
+  Progress: 850/200
+  Progress: 650/200
+  Progress: 750/200
+  Progress: 200/200
+
+Strategy: balanced
+  Progress: 900/200
+  Progress: 550/200
+  Progress: 175/200
+  Progress: 500/200
+  Progress: 975/200
+  Progress: 300/200
+  Progress: 925/200
+  Progress: 600/200
+  Progress: 850/200
+  Progress: 650/200
+  Progress: 750/200
+  Progress: 200/200
+
+✓ Analysis complete
+
+Saving results...
+  ✓ Saved: ubp_results_standard.csv
+  ✓ Saved: ubp_results_inverted.csv
+  ✓ Saved: ubp_results_complexity_focused.csv
+  ✓ Saved: ubp_results_balanced.csv
+
+================================================================================
+ENCODING STRATEGY COMPARISON
+================================================================================
+
+STANDARD:
+  Mean NRCI: 0.000084
+  NRCI Std Dev: 0.000321
+  Mean GLR Efficiency: 0.3650
+  Mean GLR Errors Corrected: 1.04
+  Mean Coherence Factor: 0.000099
+  NRCI Improvement: 0.035667
+
+INVERTED:
+  Mean NRCI: 0.000084
+  NRCI Std Dev: 0.000321
+  Mean GLR Efficiency: 0.3900
+  Mean GLR Errors Corrected: 1.15
+  Mean Coherence Factor: 0.000099
+  NRCI Improvement: 0.038583
+
+COMPLEXITY_FOCUSED:
+  Mean NRCI: 0.000084
+  NRCI Std Dev: 0.000321
+  Mean GLR Efficiency: 0.4100
+  Mean GLR Errors Corrected: 1.15
+  Mean Coherence Factor: 0.000099
+  NRCI Improvement: 0.039667
+
+BALANCED:
+  Mean NRCI: 0.000084
+  NRCI Std Dev: 0.000321
+  Mean GLR Efficiency: 0.6050
+  Mean GLR Errors Corrected: 1.59
+  Mean Coherence Factor: 0.000099
+  NRCI Improvement: 0.056333
+
+  ✓ Saved: encoding_strategy_comparison.json
+
+Generating comparison visualizations...
+  ✓ Saved: ubp_encoding_strategy_comparison.png
+
+================================================================================
+CONCLUSION
+================================================================================
+
+Best Encoding Strategy: STANDARD
+  Mean Coherence: 0.000099
+  Mean NRCI: 0.000084
+  GLR Efficiency: 0.3650
+
+✓ MULTI-ENCODING ANALYSIS COMPLETE

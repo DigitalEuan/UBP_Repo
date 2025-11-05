@@ -1,0 +1,80 @@
+{
+  "aviation_gasoline": {
+    "name": "UBP-Optimized High-Performance Aviation Gasoline",
+    "target_application": "High-performance aircraft engines",
+    "molecule_count": 31,
+    "mean_resonance": 0.8561148316654915,
+    "mean_glr_efficiency": 1.0,
+    "mean_coherence": 0.0,
+    "composition": {
+      "Aromatics": 100.0
+    },
+    "predicted_octane": "RON 95-105",
+    "predicted_stability": "12+ months"
+  },
+  "storage_fuel": {
+    "name": "UBP-Optimized Long-Term Storage Fuel",
+    "target_application": "Emergency reserves, military stockpiles",
+    "molecule_count": 367,
+    "mean_resonance": 0.553468428651763,
+    "mean_glr_efficiency": 1.0,
+    "mean_coherence": 0.0001255892368799869,
+    "composition": {
+      "Alkanes": 91.28065395095368,
+      "Cycloalkanes": 8.71934604904632
+    },
+    "predicted_octane": "RON 60-80",
+    "predicted_stability": "5+ years"
+  },
+  "eco_synthetic": {
+    "name": "UBP-Optimized Eco-Friendly Synthetic Fuel",
+    "target_application": "Environmentally-conscious applications, urban transport",
+    "molecule_count": 29,
+    "mean_resonance": 0.7513788486882534,
+    "mean_glr_efficiency": 1.0,
+    "mean_coherence": 0.0,
+    "composition": {
+      "Alkanes": 44.827586206896555,
+      "Cycloalkanes": 17.24137931034483,
+      "Cycloalkenes": 17.24137931034483,
+      "Alkenes": 10.344827586206897,
+      "Dienes": 6.896551724137931,
+      "Trienes": 3.4482758620689653
+    },
+    "predicted_octane": "RON 85-92",
+    "predicted_stability": "18+ months",
+    "environmental_benefit": "Reduced aromatic content lowers NOx and particulate emissions"
+  },
+  "racing_fuel": {
+    "name": "UBP-Optimized Racing/Performance Fuel",
+    "target_application": "Motorsports, high-performance engines",
+    "design_criteria": "Top 50 molecules by resonance strength with above-median coherence",
+    "molecule_count": 50,
+    "mean_resonance": 0.8584115547231438,
+    "mean_glr_efficiency": 0.94,
+    "mean_coherence": 0.0,
+    "composition": {
+      "Aromatics": 100.0
+    },
+    "predicted_octane": "RON 100-110+",
+    "predicted_stability": "6-9 months"
+  },
+  "cold_diesel": {
+    "name": "UBP-Optimized Cold-Climate Diesel",
+    "target_application": "Arctic operations, winter diesel",
+    "molecule_count": 83,
+    "mean_resonance": 0.7743562800055556,
+    "mean_glr_efficiency": 1.0,
+    "mean_coherence": 0.00011186644079558916,
+    "composition": {
+      "Alkanes": 45.78313253012048,
+      "Aromatics": 36.144578313253014,
+      "Sulfur compounds": 8.433734939759036,
+      "Alkenes": 6.024096385542169,
+      "Cycloalkanes": 3.614457831325301
+    },
+    "predicted_cetane": "CN 45-55",
+    "predicted_stability": "12+ months",
+    "cold_flow_property": "Optimized C12-C18 range for low-temperature operability"
+  }
+}

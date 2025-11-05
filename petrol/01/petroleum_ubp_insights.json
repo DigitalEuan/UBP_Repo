@@ -1,0 +1,68 @@
+{
+  "total_molecules": 1000,
+  "successful_analyses": 1000,
+  "success_rate": 1.0,
+  "global_statistics": {
+    "NRCI": {
+      "mean": 8.016172400731659e-05,
+      "std": 0.0003140612062409304,
+      "min": 0.0,
+      "max": 0.0024786948567809,
+      "median": 0.0
+    },
+    "SOC_Energy_CU": {
+      "mean": 131.15029325637767,
+      "std": 123.23517379105334,
+      "min": 0.4927054263070448,
+      "max": 680.0189532748766
+    },
+    "GLR_Efficiency": {
+      "mean": 0.573,
+      "std": 0.4948898017901722
+    },
+    "GLR_Errors_Corrected": {
+      "mean": 1.537,
+      "std": 1.381499019015048
+    },
+    "Coherence_Factor": {
+      "mean": 9.383848804441081e-05,
+      "std": 0.0003642431061990218,
+      "max": 0.0025914499463397
+    },
+    "Resonance_Strength": {
+      "mean": 0.6036253055305925,
+      "max": 0.9121597697289986
+    }
+  },
+  "by_fraction": {
+    "Gasoline": {
+      "count": 356,
+      "mean_nrci": 0.00013392373007322473,
+      "mean_coherence": 0.00015486982841297418,
+      "mean_glr_efficiency": 0.5449438202247191,
+      "mean_resonance": 0.7366455609125903
+    },
+    "Diesel": {
+      "count": 300,
+      "mean_nrci": 3.740510517692934e-05,
+      "mean_coherence": 4.472963272541599e-05,
+      "mean_glr_efficiency": 0.49666666666666665,
+      "mean_resonance": 0.5929661617379786
+    },
+    "Heavy oil": {
+      "count": 40,
+      "mean_nrci": 6.2836699008805e-05,
+      "mean_coherence": 7.604540346629e-05,
+      "mean_glr_efficiency": 0.65,
+      "mean_resonance": 0.45875451940156714
+    },
+    "Mixed": {
+      "count": 304,
+      "mean_nrci": 6.167722561782104e-05,
+      "mean_coherence": 7.317145780630131e-05,
+      "mean_glr_efficiency": 0.6710526315789473,
+      "mean_resonance": 0.47743242285609905
+    }
+  },
+  "by_category": {
+    

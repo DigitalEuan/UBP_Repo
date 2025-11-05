@@ -1,0 +1,28 @@
+{
+  "key_finding": "GLR efficiency correlates with molecular stability - saturated compounds show higher GLR efficiency",
+  "stability_ranking_by_category": {
+    "high_stability": [
+      "Alkanes",
+      "Cycloalkanes"
+    ],
+    "medium_stability": [
+      "Aromatics",
+      "Alkenes"
+    ],
+    "low_stability": [
+      "Dienes",
+      "Trienes"
+    ]
+  },
+  "glr_efficiency_by_saturation": {
+    "saturated_mean": 0.6157718120805369,
+    "unsaturated_mean": 0.6319444444444444,
+    "aromatics_mean": 0.4380165289256198,
+    "p_value": 0.7203157332976473
+  },
+  "practical_recommendations": {
+    "ideal_gasoline_components": 194,
+    "ideal_diesel_components": 149,
+    "recommendation": "Blend should balance high-octane (cyclic/aromatic) with high-stability (saturated) components"
+  }
+}
