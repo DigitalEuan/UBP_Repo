@@ -1,5 +1,9 @@
 # The Universal Binary Principle in Materials Science: A Five-Study Synthesis
 
+* Euan Craig, New Zealand
+* info@digitaleuan.com
+* 5 November 2025
+
 This repository contains the complete research archive for a five-part series investigating the application of the Universal Binary Principle (UBP) v3.3 to materials science. The research progresses from a foundational analysis of concrete to a definitive, quantum-integrated computational investigation of advanced ceramics and composites. 
 
 ## Research Overview
