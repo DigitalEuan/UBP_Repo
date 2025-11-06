@@ -2,6 +2,8 @@
 
 **A comprehensive framework for enhancing Large Language Models with Universal Binary Principle (UBP) validation, error correction, and coherence measurement.**
 
+This is my first attempt at a LLM implementation that can be shared and used by anyone with any LLM model (some minor tweaks needed for LLMs other than gpt-4.1-nano, gpt-4.1-mini, gemini-2.5-flash).
+
 ---
 
 ## Overview
