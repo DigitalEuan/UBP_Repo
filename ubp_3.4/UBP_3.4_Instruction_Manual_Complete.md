@@ -869,3 +869,56 @@ python3.11 run_all_tests.py
 **End of UBP 3.4 Instruction Manual**
 
 For the latest updates, visit: https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.4
+---
+
+## 11. UBP Geometric Codex (NEW in 3.4)
+
+The UBP Geometric Codex is a powerful new addition to UBP 3.4 that enables pure geometric computation. It allows users to operate the UBP system using geometric patterns (GeoBit Signatures) in place of numerical values.
+
+### Key Features
+
+- **Pure Geometric Operations:** Perform UBP calculations directly on patterns.
+- **GeoBit Signature Library:** A comprehensive library of 84 geometric patterns for key UBP values.
+- **Dual-Mode System:** 
+    - **Harmonic Mode:** Operates on harmonic octaves (99.996% closure).
+    - **Value Mode:** Operates on numerical values (100% backwards compatible).
+- **Spectral Value Extraction:** Decodes values from patterns with 97% confidence.
+
+### Core Modules
+
+- **ubp_pattern_library.py:** The comprehensive library of 84 GeoBit signatures.
+- **geometric_codex.py:** The core engine for pattern generation and value extraction.
+- **geometric_operations_v2.py:** The octave-aware, dual-mode geometric operations module.
+- **spectral_extraction.py:** The full-spectrum analysis engine for value decoding.
+
+### Quick Start Example
+
+```python
+from ubp_3.4.geometric_codex import GeometricCodex
+from ubp_3.4.geometric_operations_v2 import GeometricOperator
+
+# 1. Initialize the Codex and Operator
+codex = GeometricCodex()
+operator = GeometricOperator(codex)
+
+# 2. Get a geometric pattern (GeoBit Signature)
+pattern_pi = codex.generate_pattern("pi")
+
+# 3. Perform a geometric operation (Harmonic Mode)
+# Apply Y-refinement in harmonic space (moves up/down octaves)
+refined_pattern_harmonic = operator.apply_y_refinement(pattern_pi, direction=\'forward\', mode=\'harmonic\')
+
+# 4. Perform a geometric operation (Value Mode)
+# Apply Y-refinement in value space (multiplies by Y)
+refined_pattern_value = operator.apply_y_refinement(pattern_pi, direction=\'forward\', mode=\'value\')
+
+# 5. Decode the value from the new patterns
+value_harmonic = codex.get_value_from_pattern(refined_pattern_harmonic)
+value_value = codex.get_value_from_pattern(refined_pattern_value)
+
+print(f"Original value (pi): {codex.get_value_from_pattern(pattern_pi):.6f}")
+print(f"Harmonic refined value: {value_harmonic:.6f}") # Approx. 2x original
+print(f"Value refined value: {value_value:.6f}")      # Approx. Y * original
+```
+
+This demonstrates the power of the dual-mode system, allowing for both pure geometric exploration and numerically precise, backwards-compatible operations.
