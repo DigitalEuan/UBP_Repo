@@ -1,0 +1,1366 @@
+{
+  "Y_constant": {
+    "name": "Y_constant",
+    "value": 0.26467543040452696,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Base Y constant - gravitational correction factor",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_inverse",
+      "pi",
+      "observer_cost"
+    ],
+    "octave_class": -1.9177038179940806,
+    "confidence": 1.0,
+    "metadata": {
+      "formula": "\u03c0/(\u03c0\u00b2 + 2)",
+      "role": "geometric_foundation"
+    }
+  },
+  "Y_inverse": {
+    "name": "Y_inverse",
+    "value": 3.7782124259573746,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Inverse Y constant - observer computational cost",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_constant",
+      "observer_cost"
+    ],
+    "octave_class": 1.9177038179940806,
+    "confidence": 1.0,
+    "metadata": {
+      "formula": "\u03c0 + 2/\u03c0",
+      "role": "observer_cost"
+    }
+  },
+  "Y_m_planck": {
+    "name": "Y_m_planck",
+    "value": 1.5716125548e-07,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "planck_scale",
+    "description": "Planck mass correction constant",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "planck_mass",
+      "planck_energy"
+    ],
+    "octave_class": -22.60125106631162,
+    "confidence": 1.0,
+    "metadata": {
+      "role": "planck_mass_derivation"
+    }
+  },
+  "pi": {
+    "name": "pi",
+    "value": 3.141592653589793,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Pi - circular geometry constant",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_constant",
+      "tau"
+    ],
+    "octave_class": 1.6514961294723187,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "tau": {
+    "name": "tau",
+    "value": 6.283185307179586,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Tau - full circle constant (2\u03c0)",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "pi"
+    ],
+    "octave_class": 2.651496129472319,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "e": {
+    "name": "e",
+    "value": 2.718281828459045,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Euler's number - natural growth constant",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "golden_ratio"
+    ],
+    "octave_class": 1.4426950408889634,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "golden_ratio": {
+    "name": "golden_ratio",
+    "value": 1.618033988749895,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Golden ratio \u03c6 - divine proportion",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "fibonacci"
+    ],
+    "octave_class": 0.6942419136306174,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "fine_structure": {
+    "name": "fine_structure",
+    "value": 0.0072973525692838015,
+    "unit": "dimensionless",
+    "category": "constant",
+    "subcategory": "fundamental",
+    "description": "Fine structure constant \u03b1 - electromagnetic coupling",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "electromagnetic_main_crv"
+    ],
+    "octave_class": -7.09841112586318,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "quantum_main_crv": {
+    "name": "quantum_main_crv",
+    "value": 44439000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "quantum",
+    "description": "Quantum realm main CRV frequency",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "quantum_sub_crv_1",
+      "quantum_sub_crv_2",
+      "quantum_sub_crv_3",
+      "quantum_sub_crv_4",
+      "quantum_sub_crv_5"
+    ],
+    "octave_class": 45.33689158601265,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "quantum",
+      "coordination": 12
+    }
+  },
+  "quantum_sub_crv_1": {
+    "name": "quantum_sub_crv_1",
+    "value": 11110000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "quantum",
+    "description": "Quantum realm sub-CRV 1",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "quantum_main_crv"
+    ],
+    "octave_class": 43.336924050262716,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "quantum_sub_crv_2": {
+    "name": "quantum_sub_crv_2",
+    "value": 22219000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "quantum",
+    "description": "Quantum realm sub-CRV 2",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "quantum_main_crv"
+    ],
+    "octave_class": 44.336859121032035,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "quantum_sub_crv_3": {
+    "name": "quantum_sub_crv_3",
+    "value": 44439000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "quantum",
+    "description": "Quantum realm sub-CRV 3",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "quantum_main_crv"
+    ],
+    "octave_class": 45.33689158601265,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "quantum_sub_crv_4": {
+    "name": "quantum_sub_crv_4",
+    "value": 88878000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "quantum",
+    "description": "Quantum realm sub-CRV 4",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "quantum_main_crv"
+    ],
+    "octave_class": 46.33689158601265,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "quantum_sub_crv_5": {
+    "name": "quantum_sub_crv_5",
+    "value": 177760000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "quantum",
+    "description": "Quantum realm sub-CRV 5",
+    "pattern_type": "SPIRAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "quantum_main_crv"
+    ],
+    "octave_class": 47.336924050262716,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "electromagnetic_main_crv": {
+    "name": "electromagnetic_main_crv",
+    "value": 1404200000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "electromagnetic",
+    "description": "Electromagnetic realm main CRV frequency",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "electromagnetic_sub_crv_1",
+      "electromagnetic_sub_crv_2",
+      "electromagnetic_sub_crv_3",
+      "electromagnetic_sub_crv_4",
+      "electromagnetic_sub_crv_5"
+    ],
+    "octave_class": 30.387101287106596,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "electromagnetic",
+      "coordination": 12
+    }
+  },
+  "electromagnetic_sub_crv_1": {
+    "name": "electromagnetic_sub_crv_1",
+    "value": 351050000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "electromagnetic",
+    "description": "Electromagnetic realm sub-CRV 1",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "electromagnetic_main_crv"
+    ],
+    "octave_class": 28.387101287106596,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "electromagnetic_sub_crv_2": {
+    "name": "electromagnetic_sub_crv_2",
+    "value": 702100000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "electromagnetic",
+    "description": "Electromagnetic realm sub-CRV 2",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "electromagnetic_main_crv"
+    ],
+    "octave_class": 29.387101287106596,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "electromagnetic_sub_crv_3": {
+    "name": "electromagnetic_sub_crv_3",
+    "value": 1404200000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "electromagnetic",
+    "description": "Electromagnetic realm sub-CRV 3",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "electromagnetic_main_crv"
+    ],
+    "octave_class": 30.387101287106596,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "electromagnetic_sub_crv_4": {
+    "name": "electromagnetic_sub_crv_4",
+    "value": 2808400000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "electromagnetic",
+    "description": "Electromagnetic realm sub-CRV 4",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "electromagnetic_main_crv"
+    ],
+    "octave_class": 31.387101287106596,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "electromagnetic_sub_crv_5": {
+    "name": "electromagnetic_sub_crv_5",
+    "value": 5616800000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "electromagnetic",
+    "description": "Electromagnetic realm sub-CRV 5",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [
+      "electromagnetic_main_crv"
+    ],
+    "octave_class": 32.387101287106596,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "gravitational_main_crv": {
+    "name": "gravitational_main_crv",
+    "value": 160.19,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "gravitational",
+    "description": "Gravitational realm main CRV frequency",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "gravitational_sub_crv_1",
+      "gravitational_sub_crv_2",
+      "gravitational_sub_crv_3",
+      "gravitational_sub_crv_4",
+      "gravitational_sub_crv_5"
+    ],
+    "octave_class": 7.323640278840281,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "gravitational",
+      "coordination": 12
+    }
+  },
+  "gravitational_sub_crv_1": {
+    "name": "gravitational_sub_crv_1",
+    "value": 40.048,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "gravitational",
+    "description": "Gravitational realm sub-CRV 1",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "gravitational_main_crv"
+    ],
+    "octave_class": 5.323658291026245,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "gravitational_sub_crv_2": {
+    "name": "gravitational_sub_crv_2",
+    "value": 80.095,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "gravitational",
+    "description": "Gravitational realm sub-CRV 2",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "gravitational_main_crv"
+    ],
+    "octave_class": 6.323640278840281,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "gravitational_sub_crv_3": {
+    "name": "gravitational_sub_crv_3",
+    "value": 160.19,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "gravitational",
+    "description": "Gravitational realm sub-CRV 3",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "gravitational_main_crv"
+    ],
+    "octave_class": 7.323640278840281,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "gravitational_sub_crv_4": {
+    "name": "gravitational_sub_crv_4",
+    "value": 320.38,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "gravitational",
+    "description": "Gravitational realm sub-CRV 4",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "gravitational_main_crv"
+    ],
+    "octave_class": 8.32364027884028,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "gravitational_sub_crv_5": {
+    "name": "gravitational_sub_crv_5",
+    "value": 640.76,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "gravitational",
+    "description": "Gravitational realm sub-CRV 5",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "gravitational_main_crv"
+    ],
+    "octave_class": 9.32364027884028,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "plasma_main_crv": {
+    "name": "plasma_main_crv",
+    "value": 1756000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "plasma",
+    "description": "Plasma realm main CRV frequency",
+    "pattern_type": "HYBRID",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "plasma_sub_crv_1",
+      "plasma_sub_crv_2",
+      "plasma_sub_crv_3",
+      "plasma_sub_crv_4",
+      "plasma_sub_crv_5"
+    ],
+    "octave_class": 20.743861414197447,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "plasma",
+      "coordination": 12
+    }
+  },
+  "plasma_sub_crv_1": {
+    "name": "plasma_sub_crv_1",
+    "value": 439000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "plasma",
+    "description": "Plasma realm sub-CRV 1",
+    "pattern_type": "HYBRID",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "plasma_main_crv"
+    ],
+    "octave_class": 18.743861414197447,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "plasma_sub_crv_2": {
+    "name": "plasma_sub_crv_2",
+    "value": 878000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "plasma",
+    "description": "Plasma realm sub-CRV 2",
+    "pattern_type": "HYBRID",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "plasma_main_crv"
+    ],
+    "octave_class": 19.743861414197447,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "plasma_sub_crv_3": {
+    "name": "plasma_sub_crv_3",
+    "value": 1756000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "plasma",
+    "description": "Plasma realm sub-CRV 3",
+    "pattern_type": "HYBRID",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "plasma_main_crv"
+    ],
+    "octave_class": 20.743861414197447,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "plasma_sub_crv_4": {
+    "name": "plasma_sub_crv_4",
+    "value": 3512000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "plasma",
+    "description": "Plasma realm sub-CRV 4",
+    "pattern_type": "HYBRID",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "plasma_main_crv"
+    ],
+    "octave_class": 21.743861414197447,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "plasma_sub_crv_5": {
+    "name": "plasma_sub_crv_5",
+    "value": 7024000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "plasma",
+    "description": "Plasma realm sub-CRV 5",
+    "pattern_type": "HYBRID",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "plasma_main_crv"
+    ],
+    "octave_class": 22.743861414197447,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "nuclear_main_crv": {
+    "name": "nuclear_main_crv",
+    "value": 5.6569e+20,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "nuclear",
+    "description": "Nuclear realm main CRV frequency",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "nuclear_sub_crv_1",
+      "nuclear_sub_crv_2",
+      "nuclear_sub_crv_3",
+      "nuclear_sub_crv_4",
+      "nuclear_sub_crv_5"
+    ],
+    "octave_class": 68.93857356567445,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "nuclear",
+      "coordination": 12
+    }
+  },
+  "nuclear_sub_crv_1": {
+    "name": "nuclear_sub_crv_1",
+    "value": 1.4142e+20,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "nuclear",
+    "description": "Nuclear realm sub-CRV 1",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "nuclear_main_crv"
+    ],
+    "octave_class": 66.93854806216912,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "nuclear_sub_crv_2": {
+    "name": "nuclear_sub_crv_2",
+    "value": 2.8284e+20,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "nuclear",
+    "description": "Nuclear realm sub-CRV 2",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "nuclear_main_crv"
+    ],
+    "octave_class": 67.93854806216912,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "nuclear_sub_crv_3": {
+    "name": "nuclear_sub_crv_3",
+    "value": 5.6569e+20,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "nuclear",
+    "description": "Nuclear realm sub-CRV 3",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "nuclear_main_crv"
+    ],
+    "octave_class": 68.93857356567445,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "nuclear_sub_crv_4": {
+    "name": "nuclear_sub_crv_4",
+    "value": 1.1314e+21,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "nuclear",
+    "description": "Nuclear realm sub-CRV 4",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "nuclear_main_crv"
+    ],
+    "octave_class": 69.93859906872893,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "nuclear_sub_crv_5": {
+    "name": "nuclear_sub_crv_5",
+    "value": 2.2628e+21,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "nuclear",
+    "description": "Nuclear realm sub-CRV 5",
+    "pattern_type": "FRACTAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [
+      "nuclear_main_crv"
+    ],
+    "octave_class": 70.93859906872893,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "optical_main_crv": {
+    "name": "optical_main_crv",
+    "value": 670560000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "optical",
+    "description": "Optical realm main CRV frequency",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [
+      "optical_sub_crv_1",
+      "optical_sub_crv_2",
+      "optical_sub_crv_3",
+      "optical_sub_crv_4",
+      "optical_sub_crv_5"
+    ],
+    "octave_class": 49.25235975500424,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "optical",
+      "coordination": 12
+    }
+  },
+  "optical_sub_crv_1": {
+    "name": "optical_sub_crv_1",
+    "value": 167640000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "optical",
+    "description": "Optical realm sub-CRV 1",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [
+      "optical_main_crv"
+    ],
+    "octave_class": 47.25235975500424,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "optical_sub_crv_2": {
+    "name": "optical_sub_crv_2",
+    "value": 335280000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "optical",
+    "description": "Optical realm sub-CRV 2",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [
+      "optical_main_crv"
+    ],
+    "octave_class": 48.25235975500424,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "optical_sub_crv_3": {
+    "name": "optical_sub_crv_3",
+    "value": 670560000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "optical",
+    "description": "Optical realm sub-CRV 3",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [
+      "optical_main_crv"
+    ],
+    "octave_class": 49.25235975500424,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "optical_sub_crv_4": {
+    "name": "optical_sub_crv_4",
+    "value": 1341100000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "optical",
+    "description": "Optical realm sub-CRV 4",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [
+      "optical_main_crv"
+    ],
+    "octave_class": 50.25233824006452,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "optical_sub_crv_5": {
+    "name": "optical_sub_crv_5",
+    "value": 2682200000000000.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "optical",
+    "description": "Optical realm sub-CRV 5",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [
+      "optical_main_crv"
+    ],
+    "octave_class": 51.25233824006452,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "biologic_main_crv": {
+    "name": "biologic_main_crv",
+    "value": 100.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "biologic",
+    "description": "Biologic realm main CRV frequency",
+    "pattern_type": "GRID",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "biologic_sub_crv_1",
+      "biologic_sub_crv_2",
+      "biologic_sub_crv_3",
+      "biologic_sub_crv_4",
+      "biologic_sub_crv_5"
+    ],
+    "octave_class": 6.643856189774724,
+    "confidence": 1.0,
+    "metadata": {
+      "realm": "biologic",
+      "coordination": 12
+    }
+  },
+  "biologic_sub_crv_1": {
+    "name": "biologic_sub_crv_1",
+    "value": 25.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "biologic",
+    "description": "Biologic realm sub-CRV 1",
+    "pattern_type": "GRID",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "biologic_main_crv"
+    ],
+    "octave_class": 4.643856189774724,
+    "confidence": 0.95,
+    "metadata": null
+  },
+  "biologic_sub_crv_2": {
+    "name": "biologic_sub_crv_2",
+    "value": 50.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "biologic",
+    "description": "Biologic realm sub-CRV 2",
+    "pattern_type": "GRID",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "biologic_main_crv"
+    ],
+    "octave_class": 5.643856189774724,
+    "confidence": 0.8999999999999999,
+    "metadata": null
+  },
+  "biologic_sub_crv_3": {
+    "name": "biologic_sub_crv_3",
+    "value": 100.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "biologic",
+    "description": "Biologic realm sub-CRV 3",
+    "pattern_type": "GRID",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "biologic_main_crv"
+    ],
+    "octave_class": 6.643856189774724,
+    "confidence": 0.85,
+    "metadata": null
+  },
+  "biologic_sub_crv_4": {
+    "name": "biologic_sub_crv_4",
+    "value": 200.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "biologic",
+    "description": "Biologic realm sub-CRV 4",
+    "pattern_type": "GRID",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "biologic_main_crv"
+    ],
+    "octave_class": 7.643856189774724,
+    "confidence": 0.7999999999999999,
+    "metadata": null
+  },
+  "biologic_sub_crv_5": {
+    "name": "biologic_sub_crv_5",
+    "value": 400.0,
+    "unit": "Hz",
+    "category": "realm",
+    "subcategory": "biologic",
+    "description": "Biologic realm sub-CRV 5",
+    "pattern_type": "GRID",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [
+      "biologic_main_crv"
+    ],
+    "octave_class": 8.643856189774725,
+    "confidence": 0.75,
+    "metadata": null
+  },
+  "planck_energy": {
+    "name": "planck_energy",
+    "value": 1956000000.0,
+    "unit": "CU",
+    "category": "energy",
+    "subcategory": "scale",
+    "description": "Planck energy scale - quantum gravity threshold",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 30.865259224276407,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "gev_scale": {
+    "name": "gev_scale",
+    "value": 1000000000.0,
+    "unit": "CU",
+    "category": "energy",
+    "subcategory": "scale",
+    "description": "GeV energy scale - particle physics",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [],
+    "octave_class": 29.897352853986263,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "mev_scale": {
+    "name": "mev_scale",
+    "value": 1000000.0,
+    "unit": "CU",
+    "category": "energy",
+    "subcategory": "scale",
+    "description": "MeV energy scale - nuclear physics",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [],
+    "octave_class": 19.931568569324174,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "kev_scale": {
+    "name": "kev_scale",
+    "value": 1000.0,
+    "unit": "CU",
+    "category": "energy",
+    "subcategory": "scale",
+    "description": "keV energy scale - atomic physics",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [],
+    "octave_class": 9.965784284662087,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "ev_scale": {
+    "name": "ev_scale",
+    "value": 1.0,
+    "unit": "CU",
+    "category": "energy",
+    "subcategory": "scale",
+    "description": "eV energy scale - molecular physics",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [],
+    "octave_class": 0.0,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "thermal_energy_300k": {
+    "name": "thermal_energy_300k",
+    "value": 0.0259,
+    "unit": "CU",
+    "category": "energy",
+    "subcategory": "scale",
+    "description": "Thermal energy at room temperature",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_3",
+    "harmonic_relationships": [],
+    "octave_class": -5.270904091862896,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "planck_frequency": {
+    "name": "planck_frequency",
+    "value": 1.855e+43,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Planck frequency - fundamental time scale",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 143.73432726700267,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "lyman_alpha": {
+    "name": "lyman_alpha",
+    "value": 2466000000000000.0,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Lyman alpha transition - hydrogen spectroscopy",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [],
+    "octave_class": 51.131094223051186,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "hydrogen_line_21cm": {
+    "name": "hydrogen_line_21cm",
+    "value": 1420000000.0,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Hydrogen 21cm line - radio astronomy",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_2",
+    "harmonic_relationships": [],
+    "octave_class": 30.403243783716217,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "schumann_resonance": {
+    "name": "schumann_resonance",
+    "value": 7.83,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Earth-ionosphere cavity resonance",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [],
+    "octave_class": 2.969012307516316,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "earth_rotation": {
+    "name": "earth_rotation",
+    "value": 1.16e-05,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Earth rotation frequency (1 day)",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": -16.395515669083963,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "solar_oscillation": {
+    "name": "solar_oscillation",
+    "value": 0.003,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Solar 5-minute oscillation",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_5",
+    "harmonic_relationships": [],
+    "octave_class": -8.380821783940931,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "human_heartbeat": {
+    "name": "human_heartbeat",
+    "value": 1.2,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Average human heartbeat frequency",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_4",
+    "harmonic_relationships": [],
+    "octave_class": 0.2630344058337938,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "brain_alpha": {
+    "name": "brain_alpha",
+    "value": 10.0,
+    "unit": "Hz",
+    "category": "frequency",
+    "subcategory": "common",
+    "description": "Brain alpha wave frequency",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [],
+    "octave_class": 3.321928094887362,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "Y_squared": {
+    "name": "Y_squared",
+    "value": 0.0700530834598216,
+    "unit": "dimensionless",
+    "category": "derived",
+    "subcategory": "geometric",
+    "description": "Y\u00b2 - second order geometric correction",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_constant"
+    ],
+    "octave_class": -3.835407635988161,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "Y_cubed": {
+    "name": "Y_cubed",
+    "value": 0.01854133001589253,
+    "unit": "dimensionless",
+    "category": "derived",
+    "subcategory": "geometric",
+    "description": "Y\u00b3 - third order geometric correction",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_constant",
+      "Y_squared"
+    ],
+    "octave_class": -5.753111453982242,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "sqrt_Y": {
+    "name": "sqrt_Y",
+    "value": 0.5144661606019652,
+    "unit": "dimensionless",
+    "category": "derived",
+    "subcategory": "geometric",
+    "description": "\u221aY - half-order geometric correction",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_constant"
+    ],
+    "octave_class": -0.9588519089970402,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "pi_squared": {
+    "name": "pi_squared",
+    "value": 9.869604401089358,
+    "unit": "dimensionless",
+    "category": "derived",
+    "subcategory": "geometric",
+    "description": "\u03c0\u00b2 - second harmonic of pi",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "pi"
+    ],
+    "octave_class": 3.3029922589446374,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "pi_plus_2": {
+    "name": "pi_plus_2",
+    "value": 11.869604401089358,
+    "unit": "dimensionless",
+    "category": "derived",
+    "subcategory": "geometric",
+    "description": "\u03c0\u00b2 + 2 - 12D Bitfield denominator",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [
+      "Y_constant",
+      "pi"
+    ],
+    "octave_class": 3.5691999474663993,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "schumann_octave_-3": {
+    "name": "schumann_octave_-3",
+    "value": 0.97875,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave -3",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": -0.030987692483684017,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "schumann_octave_-2": {
+    "name": "schumann_octave_-2",
+    "value": 1.9575,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave -2",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": 0.969012307516316,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "schumann_octave_-1": {
+    "name": "schumann_octave_-1",
+    "value": 3.915,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave -1",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": 1.969012307516316,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "schumann_octave_+0": {
+    "name": "schumann_octave_+0",
+    "value": 7.83,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave +0",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": 2.969012307516316,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "schumann_octave_+1": {
+    "name": "schumann_octave_+1",
+    "value": 15.66,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave +1",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": 3.969012307516316,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "schumann_octave_+2": {
+    "name": "schumann_octave_+2",
+    "value": 31.32,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave +2",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": 4.969012307516316,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "schumann_octave_+3": {
+    "name": "schumann_octave_+3",
+    "value": 62.64,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "schumann_series",
+    "description": "Schumann resonance octave +3",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_8",
+    "harmonic_relationships": [
+      "schumann_resonance"
+    ],
+    "octave_class": 5.969012307516316,
+    "confidence": 0.9,
+    "metadata": null
+  },
+  "natural_tuning_octave_-2": {
+    "name": "natural_tuning_octave_-2",
+    "value": 108.0,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "natural_tuning",
+    "description": "Natural tuning (432 Hz) octave -2",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 6.754887502163468,
+    "confidence": 0.8,
+    "metadata": null
+  },
+  "natural_tuning_octave_-1": {
+    "name": "natural_tuning_octave_-1",
+    "value": 216.0,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "natural_tuning",
+    "description": "Natural tuning (432 Hz) octave -1",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 7.754887502163468,
+    "confidence": 0.8,
+    "metadata": null
+  },
+  "natural_tuning_octave_+0": {
+    "name": "natural_tuning_octave_+0",
+    "value": 432.0,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "natural_tuning",
+    "description": "Natural tuning (432 Hz) octave +0",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 8.754887502163468,
+    "confidence": 0.8,
+    "metadata": null
+  },
+  "natural_tuning_octave_+1": {
+    "name": "natural_tuning_octave_+1",
+    "value": 864.0,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "natural_tuning",
+    "description": "Natural tuning (432 Hz) octave +1",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 9.754887502163468,
+    "confidence": 0.8,
+    "metadata": null
+  },
+  "natural_tuning_octave_+2": {
+    "name": "natural_tuning_octave_+2",
+    "value": 1728.0,
+    "unit": "Hz",
+    "category": "harmonic",
+    "subcategory": "natural_tuning",
+    "description": "Natural tuning (432 Hz) octave +2",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 10.754887502163468,
+    "confidence": 0.8,
+    "metadata": null
+  },
+  "pgci_target": {
+    "name": "pgci_target",
+    "value": 0.999997,
+    "unit": "dimensionless",
+    "category": "special",
+    "subcategory": "ubp_metric",
+    "description": "PGCI target for stable reality manifestation",
+    "pattern_type": "CONCENTRIC",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": -4.328091614771844e-06,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "nrci_threshold": {
+    "name": "nrci_threshold",
+    "value": 0.95,
+    "unit": "dimensionless",
+    "category": "special",
+    "subcategory": "ubp_metric",
+    "description": "NRCI threshold for coherent states",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_6",
+    "harmonic_relationships": [],
+    "octave_class": -0.07400058144377693,
+    "confidence": 1.0,
+    "metadata": null
+  },
+  "observer_cost_typical": {
+    "name": "observer_cost_typical",
+    "value": 3.778212,
+    "unit": "dimensionless",
+    "category": "special",
+    "subcategory": "ubp_metric",
+    "description": "Typical observer computational cost",
+    "pattern_type": "RADIAL",
+    "symmetry": "RADIAL_12",
+    "harmonic_relationships": [],
+    "octave_class": 1.9177036553439812,
+    "confidence": 1.0,
+    "metadata": null
+  }
+}

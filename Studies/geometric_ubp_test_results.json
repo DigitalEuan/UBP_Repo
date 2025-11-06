@@ -1,0 +1,394 @@
+{
+  "total_tests": 29,
+  "passed": 16,
+  "failed": 13,
+  "pass_rate": 55.172413793103445,
+  "total_time": 21.58099865913391,
+  "results": [
+    {
+      "name": "Generate pattern for Y_constant",
+      "passed": true,
+      "message": "Pattern generated successfully",
+      "metrics": {
+        "mean": 0.792840838526764,
+        "std": 0.29942689871334327,
+        "max": 1.5620101654217329,
+        "min": 0.31097273012909576
+      },
+      "execution_time": 0.0023818016052246094
+    },
+    {
+      "name": "Generate pattern for Y_inverse",
+      "passed": true,
+      "message": "Pattern generated successfully",
+      "metrics": {
+        "mean": 0.26120195745287833,
+        "std": 0.36763930373290543,
+        "max": 1.524487501088154,
+        "min": -0.378837055712625
+      },
+      "execution_time": 0.0019159317016601562
+    },
+    {
+      "name": "Generate pattern for quantum_main_crv",
+      "passed": true,
+      "message": "Pattern generated successfully",
+      "metrics": {
+        "mean": -0.07949100871328862,
+        "std": 0.5692591275887678,
+        "max": 1.0171091449912226,
+        "min": -1.0466680529212269
+      },
+      "execution_time": 0.001604318618774414
+    },
+    {
+      "name": "Generate pattern for electromagnetic_main_crv",
+      "passed": true,
+      "message": "Pattern generated successfully",
+      "metrics": {
+        "mean": -0.008859141375723613,
+        "std": 0.6094050704303444,
+        "max": 1.464130258779532,
+        "min": -1.5452003096359759
+      },
+      "execution_time": 0.0016939640045166016
+    },
+    {
+      "name": "Generate pattern for gravitational_main_crv",
+      "passed": true,
+      "message": "Pattern generated successfully",
+      "metrics": {
+        "mean": 0.007370985735511058,
+        "std": 0.7072692601293195,
+        "max": 1.0882962511015704,
+        "min": -1.07629124086473
+      },
+      "execution_time": 0.001455545425415039
+    },
+    {
+      "name": "Y refinement forward - Y_constant",
+      "passed": true,
+      "message": "Value ratio: 1.0000",
+      "metrics": {
+        "pure_value": 0.26467543040452696,
+        "hybrid_value": 0.26467543040452696,
+        "value_ratio": 1.0,
+        "pure_confidence": 0.9696627838069818,
+        "hybrid_confidence": 0.49999128029562456,
+        "pattern_similarity": 0.49380948920938417,
+        "pure_quality": 0.6725514362603329,
+        "hybrid_quality": 0.8175078759260077,
+        "pure_closure": 0.9734751148998592,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.9287893772125244
+    },
+    {
+      "name": "Y refinement backward - Y_constant",
+      "passed": false,
+      "message": "Value mismatch: 0.0701",
+      "metrics": {
+        "pure_value": 0.26467543040452696,
+        "hybrid_value": 3.7782124259573746,
+        "value_ratio": 0.07005308345982159,
+        "pure_confidence": 0.8071087669755651,
+        "hybrid_confidence": 0.49888379544647404,
+        "pattern_similarity": 0.4991481450238592,
+        "pure_quality": 0.632717136635894,
+        "hybrid_quality": 0.7868158709050898,
+        "pure_closure": 0.9734751148998323,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.909841775894165
+    },
+    {
+      "name": "Y refinement forward - Y_inverse",
+      "passed": false,
+      "message": "Value mismatch: 14.2749",
+      "metrics": {
+        "pure_value": 3.7782124259573746,
+        "hybrid_value": 0.26467543040452696,
+        "value_ratio": 14.274889135658709,
+        "pure_confidence": 0.963484288081245,
+        "hybrid_confidence": 0.49999128029562456,
+        "pattern_similarity": 0.5130080534210398,
+        "pure_quality": 0.9023843863771848,
+        "hybrid_quality": 0.8175078759260077,
+        "pure_closure": 0.9804643630934852,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.923814296722412
+    },
+    {
+      "name": "Y refinement backward - Y_inverse",
+      "passed": false,
+      "message": "Value mismatch: 0.0701",
+      "metrics": {
+        "pure_value": 0.26467543040452696,
+        "hybrid_value": 3.7782124259573746,
+        "value_ratio": 0.07005308345982159,
+        "pure_confidence": 0.8797003655012247,
+        "hybrid_confidence": 0.49888379544647404,
+        "pattern_similarity": 0.4654257710744157,
+        "pure_quality": 0.8676259419318411,
+        "hybrid_quality": 0.7868158709050898,
+        "pure_closure": 0.9804643630934801,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.9169301986694336
+    },
+    {
+      "name": "Y refinement forward - quantum_main_crv",
+      "passed": false,
+      "message": "Value mismatch: 22702426564495.5312",
+      "metrics": {
+        "pure_value": 177760000000000.0,
+        "hybrid_value": 7.83,
+        "value_ratio": 22702426564495.53,
+        "pure_confidence": 0.9752985788926718,
+        "hybrid_confidence": 0.9350337032086556,
+        "pattern_similarity": 0.5691475753582607,
+        "pure_quality": 0.8375437843308369,
+        "hybrid_quality": 0.828515846235127,
+        "pure_closure": 0.9815252029991002,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.889897108078003
+    },
+    {
+      "name": "Y refinement backward - quantum_main_crv",
+      "passed": false,
+      "message": "Value mismatch: 0.0663",
+      "metrics": {
+        "pure_value": 11110000000000.0,
+        "hybrid_value": 167640000000000.0,
+        "value_ratio": 0.0662729658792651,
+        "pure_confidence": 0.9212130491056383,
+        "hybrid_confidence": 0.8041727626100253,
+        "pattern_similarity": 0.4797262587254049,
+        "pure_quality": 0.8028192789057128,
+        "hybrid_quality": 0.8009590997654079,
+        "pure_closure": 0.9815252029990976,
+        "hybrid_closure": 0.9999999999999998
+      },
+      "execution_time": 1.8387227058410645
+    },
+    {
+      "name": "Y refinement forward - electromagnetic_main_crv",
+      "passed": true,
+      "message": "Value ratio: 1.9777",
+      "metrics": {
+        "pure_value": 2808400000.0,
+        "hybrid_value": 1420000000.0,
+        "value_ratio": 1.9777464788732395,
+        "pure_confidence": 0.9785713064310543,
+        "hybrid_confidence": 0.9583835504580974,
+        "pattern_similarity": 0.732262640532616,
+        "pure_quality": 0.6956322824363717,
+        "hybrid_quality": 0.6848112964177228,
+        "pure_closure": 0.9905545395166819,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.8414685726165771
+    },
+    {
+      "name": "Y refinement backward - electromagnetic_main_crv",
+      "passed": false,
+      "message": "Value mismatch: 4.0450",
+      "metrics": {
+        "pure_value": 1420000000.0,
+        "hybrid_value": 351050000.0,
+        "value_ratio": 4.0450078336419315,
+        "pure_confidence": 0.9510920598757219,
+        "hybrid_confidence": 0.9436289200964174,
+        "pattern_similarity": 0.7435449969515746,
+        "pure_quality": 0.670595109005882,
+        "hybrid_quality": 0.6565500816016336,
+        "pure_closure": 0.990554539516681,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.8591878414154053
+    },
+    {
+      "name": "Y refinement forward - gravitational_main_crv",
+      "passed": false,
+      "message": "Value mismatch: 0.0000",
+      "metrics": {
+        "pure_value": 160.19,
+        "hybrid_value": 2.2628e+21,
+        "value_ratio": 7.079282305108715e-20,
+        "pure_confidence": 0.9869575967650728,
+        "hybrid_confidence": 0.9318299140125716,
+        "pattern_similarity": 0.49572786959257054,
+        "pure_quality": 0.5838014218593592,
+        "hybrid_quality": 0.7861345668612372,
+        "pure_closure": 0.9911106489692657,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.8486688137054443
+    },
+    {
+      "name": "Y refinement backward - gravitational_main_crv",
+      "passed": false,
+      "message": "Value mismatch: 20.4585",
+      "metrics": {
+        "pure_value": 160.19,
+        "hybrid_value": 7.83,
+        "value_ratio": 20.458492975734355,
+        "pure_confidence": 0.9655915318290162,
+        "hybrid_confidence": 0.9726036925670284,
+        "pattern_similarity": 0.5094595915113787,
+        "pure_quality": 0.5805036970311539,
+        "hybrid_quality": 0.8408780772568919,
+        "pure_closure": 0.9911106489692714,
+        "hybrid_closure": 1.0
+      },
+      "execution_time": 1.884042501449585
+    },
+    {
+      "name": "Compose patterns - add",
+      "passed": false,
+      "message": "Low similarity: 0.4656",
+      "metrics": {
+        "similarity": 0.4656323492347744,
+        "pure_quality": 0.7323782968030315,
+        "hybrid_quality": 0.8160357281689148
+      },
+      "execution_time": 0.756558895111084
+    },
+    {
+      "name": "Compose patterns - multiply",
+      "passed": false,
+      "message": "Low similarity: 0.4773",
+      "metrics": {
+        "similarity": 0.47731068487483197,
+        "pure_quality": 0.9413081557792945,
+        "hybrid_quality": 0.6894197346733415
+      },
+      "execution_time": 0.7609655857086182
+    },
+    {
+      "name": "SOC energy - Y_constant",
+      "passed": false,
+      "message": "Large energy difference: 0.0000",
+      "metrics": {
+        "pure_energy": 42.1652599250369,
+        "hybrid_energy": 41788988170.15567,
+        "ratio": 1.009004088669224e-09
+      },
+      "execution_time": 0.3857104778289795
+    },
+    {
+      "name": "SOC energy - Y_inverse",
+      "passed": false,
+      "message": "Large energy difference: 0.0000",
+      "metrics": {
+        "pure_energy": 22.045778755904816,
+        "hybrid_energy": 41788988170.15567,
+        "ratio": 5.27549953258959e-10
+      },
+      "execution_time": 0.3861429691314697
+    },
+    {
+      "name": "SOC energy - quantum_main_crv",
+      "passed": false,
+      "message": "Large energy difference: 0.0000",
+      "metrics": {
+        "pure_energy": 12.89473598870156,
+        "hybrid_energy": 11077671470.374302,
+        "ratio": 1.1640294644219e-09
+      },
+      "execution_time": 0.40608668327331543
+    },
+    {
+      "name": "Closure quality - Y_constant",
+      "passed": true,
+      "message": "Closure similarity: 0.9986",
+      "metrics": {
+        "closure_similarity": 0.9986454533871675,
+        "forward_closure": 0.9734751148998592,
+        "backward_closure": 0.971808459573241
+      },
+      "execution_time": 0.010729074478149414
+    },
+    {
+      "name": "Closure quality - Y_inverse",
+      "passed": true,
+      "message": "Closure similarity: 0.9991",
+      "metrics": {
+        "closure_similarity": 0.9990943967488138,
+        "forward_closure": 0.9804643630934852,
+        "backward_closure": 0.9791090937426931
+      },
+      "execution_time": 0.010536670684814453
+    },
+    {
+      "name": "Closure quality - quantum_main_crv",
+      "passed": true,
+      "message": "Closure similarity: 0.9992",
+      "metrics": {
+        "closure_similarity": 0.9992191959648884,
+        "forward_closure": 0.9815252029991002,
+        "backward_closure": 0.9801724076254719
+      },
+      "execution_time": 0.010456562042236328
+    },
+    {
+      "name": "NRCI extraction - Y_constant",
+      "passed": true,
+      "message": "NRCI: 0.957190",
+      "metrics": {
+        "nrci": 0.9571899806774422
+      },
+      "execution_time": 0.0006229877471923828
+    },
+    {
+      "name": "NRCI extraction - Y_inverse",
+      "passed": true,
+      "message": "NRCI: 0.916661",
+      "metrics": {
+        "nrci": 0.9166610105009984
+      },
+      "execution_time": 0.0006279945373535156
+    },
+    {
+      "name": "NRCI extraction - quantum_main_crv",
+      "passed": true,
+      "message": "NRCI: 0.860739",
+      "metrics": {
+        "nrci": 0.8607388045406907
+      },
+      "execution_time": 0.0006148815155029297
+    },
+    {
+      "name": "Observer cost - Y_constant",
+      "passed": true,
+      "message": "Observer cost: 6.820035",
+      "metrics": {
+        "observer_cost": 6.820034612163053,
+        "base_cost": 3.7782124259573746
+      },
+      "execution_time": 0.0005171298980712891
+    },
+    {
+      "name": "Observer cost - Y_inverse",
+      "passed": true,
+      "message": "Observer cost: 6.941607",
+      "metrics": {
+        "observer_cost": 6.941607400551595,
+        "base_cost": 3.7782124259573746
+      },
+      "execution_time": 0.0005080699920654297
+    },
+    {
+      "name": "Observer cost - quantum_main_crv",
+      "passed": true,
+      "message": "Observer cost: 6.784673",
+      "metrics": {
+        "observer_cost": 6.784673392100082,
+        "base_cost": 3.7782124259573746
+      },
+      "execution_time": 0.0005059242248535156
+    }
+  ]
+}
