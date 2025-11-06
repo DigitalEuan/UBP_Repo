@@ -7,6 +7,8 @@ Euan Craig, New Zealand
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-green)](https://www.python.org/)
 [![Colab Ready](https://img.shields.io/badge/Run%20in-Colab-orange)](https://colab.research.google.com/github/DigitalEuan/UBP_Repo/blob/main/ubp_v4/ubp_V4-0.ipynb)
 
+This is a Notebook vesion of the UBP v3 system - for the most recent version of full UBP see v3.4
+
 ---
 
 ## 🧠 What is UBP?
