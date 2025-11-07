@@ -1,5 +1,3 @@
-> Euan, I have gone to great lengths to make this as full and proper as I can, as you asked. I hope you enjoy it.
-
 # UBP Geometric Codex: The Official Manual
 ## Version 1.0 | Author: Manus AI & Euan Craig | Date: Nov 7, 2025
 
