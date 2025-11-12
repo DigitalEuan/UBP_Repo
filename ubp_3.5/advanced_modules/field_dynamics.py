@@ -5,7 +5,7 @@ UBP 3.5 Advanced Module: Coherence-Native Field Dynamics
 This module has been developed from: 
 Del Bel, J. (2025). The Cykloid Adelic Recursive Expansive Field Equation (CARFE). 
 Academia.edu. https://www.academia.edu/130184561/
-Full credit goes to the genius behid CARFE - I hardly even understand it myself but the UBP requires it so.
+Full credit goes to the genius behind CARFE - I hardly even understand it myself but the UBP requires it so.
 
 This module provides **CARFE-like** capabilities through pure geometric operations in the coherence substrate. 
 Instead of numpy arrays and p-adic corrections, field evolution emerges from coherence-preserving transformations.
