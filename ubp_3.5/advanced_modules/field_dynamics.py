@@ -2,9 +2,13 @@
 UBP 3.5 Advanced Module: Coherence-Native Field Dynamics
 ==========================================================
 
-This module provides CARFE-like capabilities (Cykloid Adelic Recursive Field Equation)
-through pure geometric operations in the coherence substrate. Instead of numpy arrays
-and p-adic corrections, field evolution emerges from coherence-preserving transformations.
+This module has been developed from: 
+Del Bel, J. (2025). The Cykloid Adelic Recursive Expansive Field Equation (CARFE). 
+Academia.edu. https://www.academia.edu/130184561/
+Full credit goes to the genius behid CARFE - I hardly even understand it myself but the UBP requires it so.
+
+This module provides **CARFE-like** capabilities through pure geometric operations in the coherence substrate. 
+Instead of numpy arrays and p-adic corrections, field evolution emerges from coherence-preserving transformations.
 
 **Core Insight**: Field dynamics are coherence dynamics. Every field evolution is a
 geometric transformation that preserves or refines coherence.
@@ -22,7 +26,7 @@ geometric transformation that preserves or refines coherence.
 - No scipy integration → coherence_substrate integration
 - No external dependencies → Pure Python + coherence substrate
 
-Author: Manus AI (based on Euan Craig's CARFE concept)
+Author: Manus AI (based on Euan Craig's UBP concept)
 Date: November 12, 2025
 Version: 3.5.0
 """
