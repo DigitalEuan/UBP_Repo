@@ -2,7 +2,7 @@
 
 ## Coherence-Native Computational System
 
-**Author**: Euan Craig, New Zealand (Co-authored and Refined by Manus AI)
+**Author**: Euan Craig, New Zealand (This implementation Co-authored and Refined by Manus AI)
 **Date**: November 12, 2025
 
 ---
