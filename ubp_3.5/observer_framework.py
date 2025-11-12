@@ -22,7 +22,7 @@ Key Concepts:
 import math
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
-from coherence_substrate import CoherenceState, integrate, root, solve, Y_CONSTANT, Y_INVERSE
+from coherence_substrate import CoherenceState, integrate, root, solve, Y as Y_CONSTANT, Y_INVERSE
 
 # --- Data Structures (Coherence-Native) ---
 
@@ -72,14 +72,14 @@ class CoherenceNativeObserver:
         # The fixed point O_observer is the geometric constant 1/Y.
         # We model this as the 'root' of the self-referential equation.
         # The log_nrci_error is set to a minimal value, as this is a foundational constant.
-        self.FIXED_POINT_O_OBSERVER = root(
-            value=Y_INVERSE.value,
+        self.FIXED_POINT_O_OBSERVER = CoherenceState(
+            Y_INVERSE,
             log_nrci_error=-15.0, # Near machine precision
             net_refinements=0
         )
         
         # The corresponding Y_Emergent is the geometric constant Y.
-        self.FIXED_POINT_Y_EMERGENT = Y_CONSTANT
+        self.FIXED_POINT_Y_EMERGENT = CoherenceState(Y_CONSTANT, log_nrci_error=-15.0, net_refinements=0)
         
     def get_fixed_point_observer_state(self) -> ObserverResult:
         """

@@ -139,6 +139,69 @@ class CoherenceState:
         error = abs(expected_value - self.value) / abs(self.value) if self.value != 0 else 0
         return error, error < 1e-12
     
+    def __add__(self, other: 'CoherenceState') -> 'CoherenceState':
+        """Add two coherence states."""
+        if isinstance(other, (int, float)):
+            other = CoherenceState(float(other))
+        new_value = self.value + other.value
+        # Error accumulates (log-space addition)
+        combined_error = max(self.log_nrci_error, other.log_nrci_error) + math.log(2) * 1e-10
+        return CoherenceState(new_value, combined_error, 0)
+    
+    def __radd__(self, other) -> 'CoherenceState':
+        """Right addition."""
+        return self.__add__(other)
+    
+    def __sub__(self, other: 'CoherenceState') -> 'CoherenceState':
+        """Subtract two coherence states."""
+        if isinstance(other, (int, float)):
+            other = CoherenceState(float(other))
+        new_value = self.value - other.value
+        combined_error = max(self.log_nrci_error, other.log_nrci_error) + math.log(2) * 1e-10
+        return CoherenceState(new_value, combined_error, 0)
+    
+    def __rsub__(self, other) -> 'CoherenceState':
+        """Right subtraction."""
+        if isinstance(other, (int, float)):
+            other = CoherenceState(float(other))
+        return other.__sub__(self)
+    
+    def __mul__(self, other: 'CoherenceState') -> 'CoherenceState':
+        """Multiply two coherence states."""
+        if isinstance(other, (int, float)):
+            other = CoherenceState(float(other))
+        new_value = self.value * other.value
+        combined_error = self.log_nrci_error + other.log_nrci_error + math.log(1 + abs(new_value)) * 1e-12
+        return CoherenceState(new_value, combined_error, 0)
+    
+    def __rmul__(self, other) -> 'CoherenceState':
+        """Right multiplication."""
+        return self.__mul__(other)
+    
+    def __truediv__(self, other: 'CoherenceState') -> 'CoherenceState':
+        """Divide two coherence states."""
+        if isinstance(other, (int, float)):
+            other = CoherenceState(float(other))
+        if abs(other.value) < 1e-100:
+            raise ValueError("Division by near-zero value")
+        new_value = self.value / other.value
+        combined_error = self.log_nrci_error + other.log_nrci_error + math.log(1 + abs(new_value)) * 1e-12
+        return CoherenceState(new_value, combined_error, 0)
+    
+    def __rtruediv__(self, other) -> 'CoherenceState':
+        """Right division."""
+        if isinstance(other, (int, float)):
+            other = CoherenceState(float(other))
+        return other.__truediv__(self)
+    
+    def __neg__(self) -> 'CoherenceState':
+        """Negate coherence state."""
+        return CoherenceState(-self.value, self.log_nrci_error, self.net_refinements)
+    
+    def __abs__(self) -> 'CoherenceState':
+        """Absolute value of coherence state."""
+        return CoherenceState(abs(self.value), self.log_nrci_error, self.net_refinements)
+    
     def __repr__(self):
         return f"CoherenceState(value={self.value:.6e}, nrci={self.nrci:.10f}, net_ref={self.net_refinements})"
 
