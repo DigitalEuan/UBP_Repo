@@ -6,98 +6,42 @@
 
 ---
 
-## Overview
+## 📖 Overview
 
-This study applies the Universal Binary Principle (UBP) 3.4 framework to analyze and optimize fertilizer formulations based on **chemical coherence**. By quantifying the intrinsic organization and quality of fertilizer chemistry, we demonstrate a clear path to superior nutrient efficiency.
+This study applies the **Universal Binary Principle (UBP) 3.4 framework** to analyze and optimize fertilizer formulations based on *chemical coherence*. By quantifying the intrinsic organization and quality of fertilizer chemistry, we demonstrate a clear path to superior nutrient efficiency.
 
-**Key Achievement:** Designed three optimized formulations with NRCI values up to **0.9926**, representing a **4.44% improvement** over baseline products.
-
----
-
-## Project Structure
-
-```
-ubp_fertilizer_chemical_study/
-├── README.md                          # This file
-├── scripts/
-│   ├── ubp_chemical_framework.py      # Core UBP 3.4 framework
-│   ├── analyze_ballance_products.py   # Baseline product analysis
-│   ├── design_optimized_formulations.py # Optimized formulation design
-│   └── generate_paper_figures.py      # Visualization generation
-├── outputs/
-│   ├── ballance_products.json         # Baseline analysis results
-│   └── optimized_formulations.json    # Optimized formulation specs
-├── docs/
-│   ├── UBP_Fertilizer_Study.md        # Complete research paper
-│   ├── figure1_ballance_nrci.png      # Baseline NRCI comparison
-│   ├── figure2_optimized_vs_ballance.png # Optimization results
-│   └── figure3_coherence_levers.png   # Key optimization parameters
-└── tests/
-    └── (test scripts if needed)
-```
+**Key Achievement:**  
+Designed three optimized formulations with NRCI values up to **0.9926**, representing a **4.44% improvement** over baseline products.
 
 ---
 
-## Quick Start
+## 📊 Key Results
 
-### 1. Run Baseline Analysis
+### Baseline Products (Current Industry Examples)
 
-```bash
-cd /home/ubuntu/ubp_fertilizer_chemical_study
-python3 scripts/analyze_ballance_products.py
-```
-
-This analyzes current Ballance products and generates `outputs/ballance_products.json`.
-
-### 2. Design Optimized Formulations
-
-```bash
-python3 scripts/design_optimized_formulations.py
-```
-
-This creates three optimized formulations and generates `outputs/optimized_formulations.json`.
-
-### 3. Generate Figures
-
-```bash
-python3 scripts/generate_paper_figures.py
-```
-
-This creates publication-quality plots in the `docs/` directory.
-
-### 4. Read the Paper
-
-Open `docs/UBP_Fertilizer_Study.md` to read the complete research paper with all findings and recommendations.
-
----
-
-## Key Results
-
-### Baseline Products (Current Ballance)
-
-| Product | System NRCI | % of PGCI Target |
-| :--- | :--- | :--- |
-| Superphosphate | 0.950426 | 95.04% |
-| DAP | 0.972075 | 97.21% |
-| Urea | 0.986215 | 98.62% |
+| Product        | System NRCI | % of PGCI Target |
+|----------------|-------------|------------------|
+| Superphosphate | 0.950426    | 95.04%           |
+| DAP            | 0.972075    | 97.21%           |
+| Urea           | 0.986215    | 98.62%           |
 
 ### Optimized Formulations
 
-| Formulation | System NRCI | Improvement vs. Super | Cost ($/tonne) |
-| :--- | :--- | :--- | :--- |
-| **UBP CoherencePro™** | **0.992586** | **+4.44%** | $850 |
-| **UBP SyncroBlend™** | **0.987076** | **+3.86%** | $650 |
-| **UBP PureBalance™** | **0.991981** | **+4.37%** | $950 |
+| Formulation            | System NRCI | Improvement vs. Super | Cost ($/tonne) |
+|------------------------|-------------|-----------------------|----------------|
+| **UBP CoherencePro™**  | **0.992586** | **+4.44%**            | $850           |
+| **UBP SyncroBlend™**   | **0.987076** | **+3.86%**            | $650           |
+| **UBP PureBalance™**   | **0.991981** | **+4.37%**            | $950           |
 
 ---
 
-## Methodology
+## ⚙️ Methodology
 
 The UBP Chemical Coherence Framework quantifies fertilizer quality through three key parameters:
 
-1.  **Molecular Coherence (0-1):** Crystalline structure perfection and bond stability
-2.  **Chemical Purity (0-1):** Absence of contaminants and fillers
-3.  **Release Synchrony (0-1):** Temporal coherence of nutrient release
+1. **Molecular Coherence (0–1):** Crystalline structure perfection and bond stability  
+2. **Chemical Purity (0–1):** Absence of contaminants and fillers  
+3. **Release Synchrony (0–1):** Temporal coherence of nutrient release  
 
 **System NRCI** = Weighted geometric mean of component NRCIs
 
@@ -105,34 +49,29 @@ This approach provides a robust, quantifiable measure of fertilizer quality that
 
 ---
 
-## Dependencies
+## 📦 Dependencies
 
-*   Python 3.11+
-*   UBP 3.4 framework (located at `https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.4`)
-*   matplotlib (for visualization)
-*   numpy (for calculations)
-*   json (standard library)
+- Python **3.11+**
+- [UBP 3.4 framework](https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.4)
+- `matplotlib` (for visualization)
+- `numpy` (for calculations)
+- `json` (standard library)
 
----
+Install dependencies with:
 
-## Next Steps
+```bash
+pip install -r requirements.txt
 
-1.  **Field Trials:** Validate predicted improvements through controlled field experiments
-2.  **Manufacturing:** Develop processes to achieve the high purity and crystalline quality required
-3.  **Product Development:** Commercialize the optimized formulations
-4.  **Continuous Improvement:** Use UBP framework for ongoing product optimization
-
----
-
-## Contact
+## 📬 Contact
 
 For questions about this study or the UBP framework, please contact:
 
-*   **Euan Craig** - UBP Framework Developer
-*   **Ballance Agri-Nutrients** - Field trial coordination
+- **Euan Craig** — UBP Framework Developer  
+- **Example Agri-Nutrients** — Field trial coordination  
 
 ---
 
-## License
+## 📄 License
 
-This study is provided for research and commercial evaluation purposes. The UBP 3.4 framework is available at https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.4
+This study is provided for research and commercial evaluation purposes.  
+The UBP 3.4 framework is available at: [UBP 3.4 Repository](https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.4)
