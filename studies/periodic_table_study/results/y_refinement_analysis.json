@@ -1,0 +1,885 @@
+{
+  "AtomicMass": [
+    {
+      "element": "Hydrogen",
+      "Z": 1.0,
+      "original": 1.007,
+      "forward": 0.2665281584173586,
+      "backward": 1.007,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Helium",
+      "Z": 2.0,
+      "original": 4.002,
+      "forward": 1.059231072478917,
+      "backward": 4.002000000000001,
+      "closure_error": 2.2193363810597832e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Lithium",
+      "Z": 3.0,
+      "original": 6.941,
+      "forward": 1.8371121624378215,
+      "backward": 6.941,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Beryllium",
+      "Z": 4.0,
+      "original": 9.012,
+      "forward": 2.3852549788055972,
+      "backward": 9.012000000000002,
+      "closure_error": 1.9711016859745344e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Boron",
+      "Z": 5.0,
+      "original": 10.811,
+      "forward": 2.861406078103341,
+      "backward": 10.811,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Carbon",
+      "Z": 6.0,
+      "original": 12.011,
+      "forward": 3.179016594588773,
+      "backward": 12.011000000000001,
+      "closure_error": 1.4789416696363756e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Nitrogen",
+      "Z": 7.0,
+      "original": 14.007,
+      "forward": 3.707308753676209,
+      "backward": 14.007,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Oxygen",
+      "Z": 8.0,
+      "original": 15.999,
+      "forward": 4.234542211042027,
+      "backward": 15.999,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Fluorine",
+      "Z": 9.0,
+      "original": 18.998,
+      "forward": 5.028303826825203,
+      "backward": 18.998,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Neon",
+      "Z": 10.0,
+      "original": 20.18,
+      "forward": 5.341150185563354,
+      "backward": 20.18,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sodium",
+      "Z": 11.0,
+      "original": 22.99,
+      "forward": 6.0848881450000745,
+      "backward": 22.990000000000002,
+      "closure_error": 1.5453300038279692e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Magnesium",
+      "Z": 12.0,
+      "original": 24.305,
+      "forward": 6.432936335982028,
+      "backward": 24.305000000000003,
+      "closure_error": 1.4617213243367625e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Aluminum",
+      "Z": 13.0,
+      "original": 26.982,
+      "forward": 7.141472463174946,
+      "backward": 26.982,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Silicon",
+      "Z": 14.0,
+      "original": 28.086,
+      "forward": 7.4336741383415434,
+      "backward": 28.086,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Phosphorus",
+      "Z": 15.0,
+      "original": 30.974,
+      "forward": 8.198056781349818,
+      "backward": 30.974,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sulfur",
+      "Z": 16.0,
+      "original": 32.065,
+      "forward": 8.486817675921156,
+      "backward": 32.065,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Chlorine",
+      "Z": 17.0,
+      "original": 35.453,
+      "forward": 9.383538034131695,
+      "backward": 35.453,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Argon",
+      "Z": 18.0,
+      "original": 39.948,
+      "forward": 10.573254093800044,
+      "backward": 39.94800000000001,
+      "closure_error": 1.7786691092422654e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Potassium",
+      "Z": 19.0,
+      "original": 39.098,
+      "forward": 10.348279977956194,
+      "backward": 39.098,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Calcium",
+      "Z": 20.0,
+      "original": 40.078,
+      "forward": 10.607661899752632,
+      "backward": 40.078,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    }
+  ],
+  "AtomicRadius": [
+    {
+      "element": "Hydrogen",
+      "Z": 1.0,
+      "original": 0.79,
+      "forward": 0.2090935900195763,
+      "backward": 0.7900000000000001,
+      "closure_error": 1.4053456007913372e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Helium",
+      "Z": 2.0,
+      "original": 0.49,
+      "forward": 0.12969096089821822,
+      "backward": 0.49000000000000005,
+      "closure_error": 1.1328806373726087e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Lithium",
+      "Z": 3.0,
+      "original": 2.1,
+      "forward": 0.5558184038495066,
+      "backward": 2.1,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Beryllium",
+      "Z": 4.0,
+      "original": 1.4,
+      "forward": 0.37054560256633773,
+      "backward": 1.4000000000000001,
+      "closure_error": 1.5860328923216522e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Boron",
+      "Z": 5.0,
+      "original": 1.2,
+      "forward": 0.3176105164854323,
+      "backward": 1.2,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Carbon",
+      "Z": 6.0,
+      "original": 0.91,
+      "forward": 0.24085464166811954,
+      "backward": 0.9100000000000001,
+      "closure_error": 1.2200253017858862e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Nitrogen",
+      "Z": 7.0,
+      "original": 0.75,
+      "forward": 0.19850657280339523,
+      "backward": 0.7500000000000001,
+      "closure_error": 1.4802973661668753e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Oxygen",
+      "Z": 8.0,
+      "original": 0.65,
+      "forward": 0.17203902976294252,
+      "backward": 0.65,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Fluorine",
+      "Z": 9.0,
+      "original": 0.57,
+      "forward": 0.15086499533058034,
+      "backward": 0.57,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Neon",
+      "Z": 10.0,
+      "original": 0.51,
+      "forward": 0.13498446950630874,
+      "backward": 0.51,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sodium",
+      "Z": 11.0,
+      "original": 2.2,
+      "forward": 0.5822859468899594,
+      "backward": 2.2000000000000006,
+      "closure_error": 2.0185873175002846e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Magnesium",
+      "Z": 12.0,
+      "original": 1.7,
+      "forward": 0.4499482316876958,
+      "backward": 1.7000000000000002,
+      "closure_error": 1.3061447348531254e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Aluminum",
+      "Z": 13.0,
+      "original": 1.8,
+      "forward": 0.47641577472814856,
+      "backward": 1.8000000000000003,
+      "closure_error": 1.2335811384723962e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Silicon",
+      "Z": 14.0,
+      "original": 1.5,
+      "forward": 0.39701314560679046,
+      "backward": 1.5000000000000002,
+      "closure_error": 1.4802973661668753e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Phosphorus",
+      "Z": 15.0,
+      "original": 1.2,
+      "forward": 0.3176105164854323,
+      "backward": 1.2,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sulfur",
+      "Z": 16.0,
+      "original": 1.1,
+      "forward": 0.2911429734449797,
+      "backward": 1.1000000000000003,
+      "closure_error": 2.0185873175002846e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Chlorine",
+      "Z": 17.0,
+      "original": 0.97,
+      "forward": 0.2567351674923911,
+      "backward": 0.97,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Argon",
+      "Z": 18.0,
+      "original": 0.88,
+      "forward": 0.23291437875598373,
+      "backward": 0.8800000000000001,
+      "closure_error": 1.261617073437678e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Potassium",
+      "Z": 19.0,
+      "original": 2.8,
+      "forward": 0.7410912051326755,
+      "backward": 2.8000000000000003,
+      "closure_error": 1.5860328923216522e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Calcium",
+      "Z": 20.0,
+      "original": 2.2,
+      "forward": 0.5822859468899594,
+      "backward": 2.2000000000000006,
+      "closure_error": 2.0185873175002846e-16,
+      "satisfies_closure": true
+    }
+  ],
+  "Electronegativity": [
+    {
+      "element": "Hydrogen",
+      "Z": 1.0,
+      "original": 2.2,
+      "forward": 0.5822859468899594,
+      "backward": 2.2000000000000006,
+      "closure_error": 2.0185873175002846e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Lithium",
+      "Z": 3.0,
+      "original": 0.98,
+      "forward": 0.25938192179643643,
+      "backward": 0.9800000000000001,
+      "closure_error": 1.1328806373726087e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Beryllium",
+      "Z": 4.0,
+      "original": 1.57,
+      "forward": 0.41554042573510735,
+      "backward": 1.5700000000000003,
+      "closure_error": 1.4142968466562503e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Boron",
+      "Z": 5.0,
+      "original": 2.04,
+      "forward": 0.539937878025235,
+      "backward": 2.04,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Carbon",
+      "Z": 6.0,
+      "original": 2.55,
+      "forward": 0.6749223475315437,
+      "backward": 2.55,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Nitrogen",
+      "Z": 7.0,
+      "original": 3.04,
+      "forward": 0.804613308429762,
+      "backward": 3.0400000000000005,
+      "closure_error": 1.4608197692436271e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Oxygen",
+      "Z": 8.0,
+      "original": 3.44,
+      "forward": 0.9104834805915727,
+      "backward": 3.44,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Fluorine",
+      "Z": 9.0,
+      "original": 3.98,
+      "forward": 1.0534082130100173,
+      "backward": 3.9800000000000004,
+      "closure_error": 1.1158020347991522e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sodium",
+      "Z": 11.0,
+      "original": 0.93,
+      "forward": 0.2461481502762101,
+      "backward": 0.9300000000000002,
+      "closure_error": 1.1937881985216736e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Magnesium",
+      "Z": 12.0,
+      "original": 1.31,
+      "forward": 0.3467248138299303,
+      "backward": 1.31,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Aluminum",
+      "Z": 13.0,
+      "original": 1.61,
+      "forward": 0.4261274429512884,
+      "backward": 1.61,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Silicon",
+      "Z": 14.0,
+      "original": 1.9,
+      "forward": 0.5028833177686012,
+      "backward": 1.9,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Phosphorus",
+      "Z": 15.0,
+      "original": 2.19,
+      "forward": 0.579639192585914,
+      "backward": 2.19,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sulfur",
+      "Z": 16.0,
+      "original": 2.58,
+      "forward": 0.6828626104436796,
+      "backward": 2.58,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Chlorine",
+      "Z": 17.0,
+      "original": 3.16,
+      "forward": 0.8363743600783052,
+      "backward": 3.1600000000000006,
+      "closure_error": 1.4053456007913372e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Potassium",
+      "Z": 19.0,
+      "original": 0.82,
+      "forward": 0.2170338529317121,
+      "backward": 0.8200000000000001,
+      "closure_error": 1.3539305178355567e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Calcium",
+      "Z": 20.0,
+      "original": 1.0,
+      "forward": 0.26467543040452696,
+      "backward": 1.0,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    }
+  ],
+  "FirstIonization": [
+    {
+      "element": "Hydrogen",
+      "Z": 1.0,
+      "original": 13.5984,
+      "forward": 3.5991623728129194,
+      "backward": 13.598400000000002,
+      "closure_error": 1.3062984170198335e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Helium",
+      "Z": 2.0,
+      "original": 24.5874,
+      "forward": 6.507680677528266,
+      "backward": 24.587400000000002,
+      "closure_error": 1.444932639807585e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Lithium",
+      "Z": 3.0,
+      "original": 5.3917,
+      "forward": 1.427050518112088,
+      "backward": 5.3917,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Beryllium",
+      "Z": 4.0,
+      "original": 9.3227,
+      "forward": 2.4674896350322832,
+      "backward": 9.3227,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Boron",
+      "Z": 5.0,
+      "original": 8.298,
+      "forward": 2.1962767214967647,
+      "backward": 8.298,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Carbon",
+      "Z": 6.0,
+      "original": 11.2603,
+      "forward": 2.980324748984095,
+      "backward": 11.2603,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Nitrogen",
+      "Z": 7.0,
+      "original": 14.5341,
+      "forward": 3.8468191730424355,
+      "backward": 14.534100000000002,
+      "closure_error": 1.2221994064993708e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Oxygen",
+      "Z": 8.0,
+      "original": 13.6181,
+      "forward": 3.6043764787918886,
+      "backward": 13.618100000000002,
+      "closure_error": 1.3044087203062473e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Fluorine",
+      "Z": 9.0,
+      "original": 17.4228,
+      "forward": 4.611387088851992,
+      "backward": 17.4228,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Neon",
+      "Z": 10.0,
+      "original": 21.5645,
+      "forward": 5.707593318958422,
+      "backward": 21.564500000000002,
+      "closure_error": 1.647482519325976e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sodium",
+      "Z": 11.0,
+      "original": 5.1391,
+      "forward": 1.3601935043919045,
+      "backward": 5.1391,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Magnesium",
+      "Z": 12.0,
+      "original": 7.6462,
+      "forward": 2.023761275959094,
+      "backward": 7.646200000000001,
+      "closure_error": 1.1615945433027193e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Aluminum",
+      "Z": 13.0,
+      "original": 5.9858,
+      "forward": 1.5842941913154176,
+      "backward": 5.985800000000001,
+      "closure_error": 1.48380904757948e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Silicon",
+      "Z": 14.0,
+      "original": 8.1517,
+      "forward": 2.1575547060285825,
+      "backward": 8.1517,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Phosphorus",
+      "Z": 15.0,
+      "original": 10.4867,
+      "forward": 2.775571836023153,
+      "backward": 10.486700000000003,
+      "closure_error": 1.6939140429308078e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sulfur",
+      "Z": 16.0,
+      "original": 10.36,
+      "forward": 2.742037458990899,
+      "backward": 10.36,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Chlorine",
+      "Z": 17.0,
+      "original": 12.9676,
+      "forward": 3.4322051113137437,
+      "backward": 12.967600000000001,
+      "closure_error": 1.3698424067678296e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Argon",
+      "Z": 18.0,
+      "original": 15.7596,
+      "forward": 4.1711789130031836,
+      "backward": 15.759600000000002,
+      "closure_error": 1.1271585823245833e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Potassium",
+      "Z": 19.0,
+      "original": 4.3407,
+      "forward": 1.1488766407569302,
+      "backward": 4.3407,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Calcium",
+      "Z": 20.0,
+      "original": 6.1132,
+      "forward": 1.6180138411489542,
+      "backward": 6.1132,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    }
+  ],
+  "Density": [
+    {
+      "element": "Hydrogen",
+      "Z": 1.0,
+      "original": 8.99e-05,
+      "forward": 2.3794321193366974e-05,
+      "backward": 8.99e-05,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Helium",
+      "Z": 2.0,
+      "original": 0.000179,
+      "forward": 4.737690204241032e-05,
+      "backward": 0.000179,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Lithium",
+      "Z": 3.0,
+      "original": 0.534,
+      "forward": 0.14133667983601741,
+      "backward": 0.5340000000000001,
+      "closure_error": 2.0790693345040384e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Beryllium",
+      "Z": 4.0,
+      "original": 1.85,
+      "forward": 0.48964954624837487,
+      "backward": 1.85,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Boron",
+      "Z": 5.0,
+      "original": 2.34,
+      "forward": 0.6193405071465931,
+      "backward": 2.34,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Carbon",
+      "Z": 6.0,
+      "original": 2.27,
+      "forward": 0.6008132270182762,
+      "backward": 2.2700000000000005,
+      "closure_error": 1.956340131498073e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Nitrogen",
+      "Z": 7.0,
+      "original": 0.00125,
+      "forward": 0.0003308442880056587,
+      "backward": 0.0012500000000000002,
+      "closure_error": 1.734723475976807e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Oxygen",
+      "Z": 8.0,
+      "original": 0.00143,
+      "forward": 0.0003784858654784736,
+      "backward": 0.0014300000000000003,
+      "closure_error": 1.5163666748049013e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Fluorine",
+      "Z": 9.0,
+      "original": 0.0017,
+      "forward": 0.0004499482316876958,
+      "backward": 0.0017000000000000001,
+      "closure_error": 1.2755319676300052e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Neon",
+      "Z": 10.0,
+      "original": 0.0009,
+      "forward": 0.00023820788736407425,
+      "backward": 0.0009,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sodium",
+      "Z": 11.0,
+      "original": 0.971,
+      "forward": 0.25699984292279565,
+      "backward": 0.971,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Magnesium",
+      "Z": 12.0,
+      "original": 1.74,
+      "forward": 0.4605352489038769,
+      "backward": 1.7400000000000002,
+      "closure_error": 1.2761184191093753e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Aluminum",
+      "Z": 13.0,
+      "original": 2.7,
+      "forward": 0.7146236620922228,
+      "backward": 2.7,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Silicon",
+      "Z": 14.0,
+      "original": 2.33,
+      "forward": 0.6166937528425478,
+      "backward": 2.33,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Phosphorus",
+      "Z": 15.0,
+      "original": 1.82,
+      "forward": 0.4817092833362391,
+      "backward": 1.8200000000000003,
+      "closure_error": 1.2200253017858862e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Sulfur",
+      "Z": 16.0,
+      "original": 2.07,
+      "forward": 0.5478781409373708,
+      "backward": 2.07,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Chlorine",
+      "Z": 17.0,
+      "original": 0.00321,
+      "forward": 0.0008496081315985316,
+      "backward": 0.0032100000000000006,
+      "closure_error": 1.3510307445302234e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Argon",
+      "Z": 18.0,
+      "original": 0.00178,
+      "forward": 0.00047112226612005794,
+      "backward": 0.00178,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Potassium",
+      "Z": 19.0,
+      "original": 0.862,
+      "forward": 0.22815022100870225,
+      "backward": 0.8620000000000001,
+      "closure_error": 1.287961745504822e-16,
+      "satisfies_closure": true
+    },
+    {
+      "element": "Calcium",
+      "Z": 20.0,
+      "original": 1.54,
+      "forward": 0.4076001628229715,
+      "backward": 1.54,
+      "closure_error": 0.0,
+      "satisfies_closure": true
+    }
+  ]
+}

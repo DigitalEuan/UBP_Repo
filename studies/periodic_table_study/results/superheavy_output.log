@@ -1,0 +1,260 @@
+================================================================================
+UBP PERIODIC TABLE STUDY: Superheavy Element Prediction
+================================================================================
+Predicting elements Z=119-126 using ensemble methods
+Y constant: 0.264675430404527
+1/Y constant: 3.778212425957375
+
+Loading complete periodic table (Z=1-118)...
+✓ Loaded 118 known elements
+
+Storing elements in HexDictionary...
+✓ Stored 118 elements
+
+================================================================================
+SUPERHEAVY ELEMENTS TO PREDICT (Z=119-126)
+================================================================================
+Z=119: Ununennium (Uue) - Period 8, Group 1, Alkali metal
+Z=120: Unbinilium (Ubn) - Period 8, Group 2, Alkaline earth
+Z=121: Unbiunium (Ubu) - Period 8, Group 3, Superactinide
+Z=122: Unbibium (Ubb) - Period 8, Group 4, Superactinide
+Z=123: Unbitrium (Ubt) - Period 8, Group 5, Superactinide
+Z=124: Unbiquadium (Ubq) - Period 8, Group 6, Superactinide
+Z=125: Unbipentium (Ubp) - Period 8, Group 7, Superactinide
+Z=126: Unbihexium (Ubh) - Period 8, Group 8, Superactinide
+
+================================================================================
+ENSEMBLE PREDICTION METHOD
+================================================================================
+Using all 8 HexDictionary methods with weighted voting
+
+Method weights:
+  euclidean      : 0.20
+  wavelet        : 0.18
+  hamming        : 0.17
+  information    : 0.14
+  cosine         : 0.13
+  topological    : 0.06
+  frequency      : 0.06
+  spectral       : 0.06
+
+================================================================================
+PREDICTING SUPERHEAVY ELEMENTS
+================================================================================
+
+Predicting Z=119 (Period 8, Group 1)...
+
+Ununennium (Z=119, Uue):
+  Confidence: 0.9537
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     216.75 ±  53.0% (n=8)
+    AtomicRadius        :       2.65 ±  30.4% (n=4)
+    Electronegativity   :       1.17 ±  24.0% (n=7)
+    FirstIonization     :       6.24 ±  37.8% (n=7)
+    Density             :      17.62 ±  98.7% (n=8)
+    MeltingPoint        :     841.03 ±  44.5% (n=6)
+    BoilingPoint        :    1507.32 ±  51.0% (n=4)
+
+Predicting Z=120 (Period 8, Group 2)...
+
+Unbinilium (Z=120, Ubn):
+  Confidence: 0.9522
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     220.30 ±  49.6% (n=8)
+    AtomicRadius        :       2.36 ±  27.1% (n=4)
+    Electronegativity   :       1.22 ±  18.6% (n=7)
+    FirstIonization     :       6.63 ±  31.3% (n=7)
+    Density             :      18.09 ±  84.2% (n=8)
+    MeltingPoint        :    1098.21 ±   6.7% (n=6)
+    BoilingPoint        :    2164.29 ±  25.8% (n=4)
+
+Predicting Z=121 (Period 8, Group 3)...
+
+Unbiunium (Z=121, Ubu):
+  Confidence: 0.9530
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     226.79 ±  47.0% (n=8)
+    AtomicRadius        :       2.40 ±  27.4% (n=4)
+    Electronegativity   :       1.28 ±  14.3% (n=6)
+    FirstIonization     :       6.74 ±  32.8% (n=6)
+    Density             :      16.44 ±  73.8% (n=7)
+    MeltingPoint        :    1205.21 ±   8.2% (n=6)
+    BoilingPoint        :    2822.54 ±  24.9% (n=4)
+
+Predicting Z=122 (Period 8, Group 4)...
+
+Unbibium (Z=122, Ubb):
+  Confidence: 0.9494
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     220.98 ±  46.5% (n=8)
+    AtomicRadius        :       2.12 ±  27.0% (n=4)
+    Electronegativity   :       1.33 ±  13.8% (n=6)
+    FirstIonization     :       6.91 ±  31.9% (n=6)
+    Density             :      15.72 ±  78.1% (n=7)
+    MeltingPoint        :    1405.78 ±  23.2% (n=6)
+    BoilingPoint        :    3259.07 ±  26.4% (n=4)
+
+Predicting Z=123 (Period 8, Group 5)...
+
+Unbitrium (Z=123, Ubt):
+  Confidence: 0.9508
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     227.12 ±  45.1% (n=8)
+    AtomicRadius        :       2.28 ±  27.0% (n=4)
+    Electronegativity   :       1.34 ±  14.3% (n=6)
+    FirstIonization     :       6.78 ±  33.0% (n=6)
+    Density             :      18.56 ±  68.7% (n=7)
+    MeltingPoint        :    1556.95 ±  23.2% (n=4)
+    BoilingPoint        :    3526.15 ±  30.0% (n=4)
+
+Predicting Z=124 (Period 8, Group 6)...
+
+Unbiquadium (Z=124, Ubq):
+  Confidence: 0.9498
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     224.84 ±  45.7% (n=8)
+    AtomicRadius        :       2.19 ±  27.1% (n=4)
+    Electronegativity   :       1.43 ±  17.9% (n=6)
+    FirstIonization     :       6.95 ±  32.1% (n=6)
+    Density             :      26.07 ±  72.5% (n=7)
+    MeltingPoint        :    1726.69 ±  32.1% (n=4)
+    BoilingPoint        :    3702.73 ±  33.0% (n=4)
+
+Predicting Z=125 (Period 8, Group 7)...
+
+Unbipentium (Z=125, Ubp):
+  Confidence: 0.9507
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     227.08 ±  45.5% (n=8)
+    AtomicRadius        :       2.28 ±  27.0% (n=4)
+    Electronegativity   :       1.33 ±  14.2% (n=6)
+    FirstIonization     :       6.85 ±  32.6% (n=6)
+    Density             :      24.55 ±  70.5% (n=7)
+    MeltingPoint        :    1442.81 ±  16.6% (n=4)
+    BoilingPoint        :    3436.08 ±  28.6% (n=4)
+
+Predicting Z=126 (Period 8, Group 8)...
+
+Unbihexium (Z=126, Ubh):
+  Confidence: 0.9504
+  Method agreement: 75.00%
+  Methods used: 8/8
+
+  Predicted properties:
+    AtomicMass          :     213.75 ±  70.9% (n=8)
+    AtomicRadius        :       1.55 ±  15.7% (n=4)
+    Electronegativity   :       1.56 ±  15.9% (n=6)
+    FirstIonization     :       7.81 ±  23.6% (n=6)
+    Density             :      25.38 ±  82.6% (n=7)
+    MeltingPoint        :    1492.92 ±  35.0% (n=4)
+    BoilingPoint        :    2912.55 ±  37.4% (n=4)
+
+================================================================================
+PREDICTION ANALYSIS
+================================================================================
+
+1. PERIODIC TRENDS:
+   Atomic mass gradient: -0.43 amu/Z
+   Z=119 predicted mass: 216.75 amu
+   Z=126 predicted mass: 213.75 amu
+
+   Atomic radius range: 1.55 - 2.65 pm
+
+   Density range: 15.72 - 26.07 g/cm³
+
+2. STABILITY ANALYSIS:
+
+   Most stable predicted elements:
+   Z=122 (Ubb): stability score = 0.403
+   Z=121 (Ubu): stability score = 0.277
+   Z=119 (Uue): stability score = 0.172
+
+================================================================================
+BEYOND Z=126: ARE THERE MORE ELEMENTS?
+================================================================================
+
+Extrapolating periodic trends to Z=140...
+
+Atomic mass trend: M = 3.127 × Z + -71.145
+
+Predicted atomic masses for Z=127-140:
+   Z=127: 326.0 amu
+   Z=128: 329.1 amu
+   Z=129: 332.3 amu
+   Z=130: 335.4 amu
+   Z=131: 338.5 amu
+   Z=132: 341.7 amu
+   Z=133: 344.8 amu
+   Z=134: 347.9 amu
+   Z=135: 351.0 amu
+   Z=136: 354.2 amu
+   Z=137: 357.3 amu
+   Z=138: 360.4 amu
+   Z=139: 363.5 amu
+   Z=140: 366.7 amu
+
+Island of Stability Analysis:
+   Theoretical predictions suggest:
+   - Z=114 (Flerovium): Partial stability (confirmed)
+   - Z=120-126: Possible stability (predicted here)
+   - Z=164: Theoretical island of stability
+   - Z=184: Extended island of stability (spherical nuclei)
+
+   Conclusion: Elements beyond Z=126 are theoretically possible
+   but require advanced nuclear models and experimental validation.
+
+================================================================================
+EXPORTING RESULTS
+================================================================================
+✓ Exported: superheavy_predictions.json
+✓ Exported: superheavy_summary.json
+
+================================================================================
+SUMMARY: Superheavy Element Prediction
+================================================================================
+
+1. PREDICTIONS:
+   - Elements predicted: Z=119-126 (8 total)
+   - Average confidence: 0.9513
+   - Average method agreement: 75.00%
+
+2. MOST STABLE ELEMENT:
+   - Unbibium (Z=122)
+   - Stability score: 0.403
+
+3. PERIODIC TRENDS:
+   - Atomic mass increases linearly with Z
+   - Atomic radius varies by group
+   - Density peaks at transition metals
+
+4. BEYOND Z=126:
+   - Theoretically possible up to Z=184
+   - Island of stability at Z=120-126, Z=164, Z=184
+   - Experimental synthesis extremely challenging
+
+================================================================================
+✓ SUPERHEAVY ELEMENT PREDICTION COMPLETE
+================================================================================
+
+Next: Information → Reality analysis

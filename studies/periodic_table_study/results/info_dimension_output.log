@@ -1,0 +1,179 @@
+================================================================================
+UBP PERIODIC TABLE STUDY: Information Dimension Analysis
+================================================================================
+Y constant: 0.264675430404527
+1/Y constant: 3.778212425957375
+NRCI target: 0.999997
+O_observer: 3.778212425957375
+
+Loading complete periodic table...
+✓ Loaded 118 elements
+
+Storing elements in HexDictionary...
+✓ Stored 118 elements with hex addresses
+
+================================================================================
+METHOD 1: Information Entropy Analysis
+================================================================================
+Hypothesis: Chemical complexity correlates with information entropy
+
+Top 10 highest entropy elements:
+Element         Z     Entropy    Group   Period 
+-------------------------------------------------------
+Lithium         3     1.000000   1       2      
+Magnesium       12    1.000000   2       3      
+Copper          29    1.000000   11      4      
+Cerium          58    1.000000   0       6      
+Erbium          68    1.000000   0       6      
+Flerovium       114   1.000000   14      7      
+Silicon         14    0.999956   14      3      
+Argon           18    0.999956   18      3      
+Iron            26    0.999956   8       4      
+Nickel          28    0.999956   10      4      
+
+Top 10 lowest entropy elements:
+Element         Z     Entropy    Group   Period 
+-------------------------------------------------------
+Aluminum        13    0.991353   13      3      
+Titanium        22    0.990071   4       4      
+Krypton         36    0.990071   18      4      
+Neodymium       60    0.990071   0       6      
+Radon           86    0.990071   18      6      
+Seaborgium      106   0.990071   6       7      
+Vanadium        23    0.988699   5       4      
+Mendelevium     101   0.987238   0       7      
+Tennessine      117   0.985688   17      7      
+Boron           5     0.972305   13      2      
+
+================================================================================
+METHOD 2: Coherence Gradient Analysis
+================================================================================
+Hypothesis: Sharp coherence gradients mark chemical discontinuities
+
+Top 15 sharpest coherence gradients (chemical discontinuities):
+Transition                Z1→Z2      Similarity   Gradient    
+-----------------------------------------------------------------
+Helium → Lithium          2→3        0.711336     0.288664    
+Neon → Sodium             10→11      0.822685     0.177315    
+Argon → Potassium         18→19      0.963422     0.036578    
+Lithium → Beryllium       3→4        0.979293     0.020707    
+Hydrogen → Helium         1→2        0.982790     0.017210    
+Fluorine → Neon           9→10       0.985404     0.014596    
+Beryllium → Boron         4→5        0.988703     0.011297    
+Carbon → Nitrogen         6→7        0.989471     0.010529    
+Meitnerium → Darmstadtium  109→110    0.991580     0.008420    
+Krypton → Rubidium        36→37      0.992729     0.007271    
+Boron → Carbon            5→6        0.994349     0.005651    
+Nitrogen → Oxygen         7→8        0.995157     0.004843    
+Sodium → Magnesium        11→12      0.995659     0.004341    
+Magnesium → Aluminum      12→13      0.995869     0.004131    
+Chlorine → Argon          17→18      0.996190     0.003810    
+
+================================================================================
+METHOD 3: Y-Refinement Pattern Detection
+================================================================================
+Hypothesis: Fundamental properties satisfy Y-refinement closure
+
+Y-Refinement Closure Test Results:
+
+AtomicMass:
+  Satisfies closure: 20/20 (100.0%)
+  Mean closure error: 5.23e-17
+
+AtomicRadius:
+  Satisfies closure: 20/20 (100.0%)
+  Mean closure error: 9.87e-17
+
+Electronegativity:
+  Satisfies closure: 17/17 (100.0%)
+  Mean closure error: 6.53e-17
+
+FirstIonization:
+  Satisfies closure: 20/20 (100.0%)
+  Mean closure error: 6.88e-17
+
+Density:
+  Satisfies closure: 20/20 (100.0%)
+  Mean closure error: 6.85e-17
+
+================================================================================
+METHOD 4: OffBit State Mapping (24-bit)
+================================================================================
+Hypothesis: 24-bit states encode atomic structure
+
+Sample OffBit state mappings:
+Element      Z     24-bit State               Hex     
+-------------------------------------------------------
+Hydrogen     1     000110100001000100000001   1a1101  
+Helium       2     000110110010000100000010   1b2102  
+Carbon       6     000010101110001000000110   0ae206  
+Oxygen       8     000111010000001000001000   1d0208  
+Iron         26    100110001000010000011010   98841a  
+Gold         79    001101101011011001001111   36b64f  
+Uranium      92    101110100000011101011100   ba075c  
+
+================================================================================
+METHOD 5: Information Distance Metric
+================================================================================
+Hypothesis: Information distance correlates with chemical dissimilarity
+
+Information distances within chemical families:
+
+Noble Gases (Group 18):
+  Helium ↔ Neon: distance = 0.476562
+  Neon ↔ Argon: distance = 0.472656
+  Argon ↔ Krypton: distance = 0.492188
+
+Alkali Metals (Group 1):
+  Lithium ↔ Sodium: distance = 0.527344
+  Sodium ↔ Potassium: distance = 0.535156
+  Potassium ↔ Rubidium: distance = 0.460938
+
+Cross-Family Comparison:
+  Helium (noble gas) ↔ Lithium (alkali): distance = 0.531250
+
+================================================================================
+Exporting Results
+================================================================================
+✓ Exported: entropy_analysis.json
+✓ Exported: coherence_gradients.json
+✓ Exported: y_refinement_analysis.json
+✓ Exported: offbit_states.json
+✓ Exported: hex_addresses.json
+
+================================================================================
+SUMMARY: Information Dimension Analysis
+================================================================================
+
+1. INFORMATION ENTROPY:
+   - Highest entropy: Lithium (H = 1.000000)
+   - Lowest entropy: Boron (H = 0.972305)
+   - Entropy range: 0.972305 to 1.000000
+
+2. COHERENCE GRADIENTS:
+   - Sharpest gradient: Helium → Lithium
+   - Gradient value: 0.288664
+   - Total gradients analyzed: 117
+
+3. Y-REFINEMENT CLOSURE:
+   - AtomicMass: 20/20 satisfy closure (100.0%)
+   - AtomicRadius: 20/20 satisfy closure (100.0%)
+   - Electronegativity: 17/17 satisfy closure (100.0%)
+   - FirstIonization: 20/20 satisfy closure (100.0%)
+   - Density: 20/20 satisfy closure (100.0%)
+
+4. OFFBIT STATES:
+   - Total elements mapped: 118
+   - 24-bit state space utilized
+   - Encoding: Z (8 bits) + Period (4 bits) + Group (5 bits) + Config (7 bits)
+
+5. INFORMATION DISTANCE:
+   - Noble gas family: Low intra-family distance
+   - Alkali metal family: Low intra-family distance
+   - Cross-family: High inter-family distance
+
+================================================================================
+✓ INFORMATION DIMENSION ANALYSIS COMPLETE
+================================================================================
+
+Next: Superheavy element prediction using ensemble methods

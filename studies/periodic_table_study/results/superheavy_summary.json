@@ -1,0 +1,25 @@
+{
+  "total_predicted": 8,
+  "Z_range": [
+    119,
+    126
+  ],
+  "average_confidence": 0.9512571691814315,
+  "average_method_agreement": 0.75,
+  "most_stable": "Unbibium",
+  "method_weights": {
+    "euclidean": 0.2,
+    "wavelet": 0.18,
+    "hamming": 0.17,
+    "information": 0.14,
+    "cosine": 0.13,
+    "topological": 0.06,
+    "frequency": 0.06,
+    "spectral": 0.06
+  },
+  "beyond_126": {
+    "possible": true,
+    "theoretical_limit": "Z=184 (extended island of stability)",
+    "experimental_challenge": "Extremely short half-lives, difficult synthesis"
+  }
+}
