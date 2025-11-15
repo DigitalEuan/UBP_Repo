@@ -1,0 +1,81 @@
+{
+  "summary": {
+    "type_match_rate": 0.4,
+    "dissident_detection_rate": 0.8,
+    "average_deficit": 0.0014999999999999458,
+    "average_confidence": 0.74,
+    "cross_realm_consistency": 0.008697893598862208
+  },
+  "results": [
+    {
+      "realm": "quantum",
+      "scenario": "Anomalous tunneling - metastable trap",
+      "dissident_score": 0.8199999999999892,
+      "dissident_type": "beneficial",
+      "expected_type": "harmful",
+      "type_match": false,
+      "delta_deficit": 0.0014999999999999458,
+      "laplacian_eigenvalue": 2.7755575615628914e-17,
+      "pca_variance_ratio": 0.0,
+      "memory_persistence": 0.4000000000000087,
+      "temporal_stability": 1.0,
+      "confidence": 0.74
+    },
+    {
+      "realm": "biological",
+      "scenario": "Chronic Lyme persistence",
+      "dissident_score": 0.7999999999999912,
+      "dissident_type": "beneficial",
+      "expected_type": "harmful",
+      "type_match": false,
+      "delta_deficit": 0.0013999999999999568,
+      "laplacian_eigenvalue": 2.7755575615628914e-17,
+      "pca_variance_ratio": 1.756809075786694e-17,
+      "memory_persistence": 0.4166666666666742,
+      "temporal_stability": 1.0,
+      "confidence": 0.74
+    },
+    {
+      "realm": "cosmological",
+      "scenario": "Dark matter - flat rotation curve",
+      "dissident_score": 0.8199999999999892,
+      "dissident_type": "beneficial",
+      "expected_type": "neutral",
+      "type_match": false,
+      "delta_deficit": 0.0014999999999999458,
+      "laplacian_eigenvalue": 1.3877787807814457e-17,
+      "pca_variance_ratio": 0.0,
+      "memory_persistence": 0.4000000000000087,
+      "temporal_stability": 1.0,
+      "confidence": 0.74
+    },
+    {
+      "realm": "electromagnetic",
+      "scenario": "Unexpected mode locking",
+      "dissident_score": 0.8064102564102685,
+      "dissident_type": "beneficial",
+      "expected_type": "beneficial",
+      "type_match": true,
+      "delta_deficit": 0.0015999999999999348,
+      "laplacian_eigenvalue": 5.293955920339377e-23,
+      "pca_variance_ratio": 5.655882847468978e-16,
+      "memory_persistence": 0.3846153846153778,
+      "temporal_stability": 1.0,
+      "confidence": 0.74
+    },
+    {
+      "realm": "control",
+      "scenario": "Healthy system (no dissidence)",
+      "dissident_score": 0.44999999999999996,
+      "dissident_type": "neutral",
+      "expected_type": "neutral",
+      "type_match": true,
+      "delta_deficit": 0.0,
+      "laplacian_eigenvalue": 2.7755575615628914e-17,
+      "pca_variance_ratio": 0.0,
+      "memory_persistence": 1.0,
+      "temporal_stability": 1.0,
+      "confidence": 0.74
+    }
+  ]
+}

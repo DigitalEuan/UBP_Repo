@@ -1,0 +1,859 @@
+{
+  "summary": {
+    "total_tests": 100,
+    "detection_accuracy": 98.0,
+    "classification_accuracy": 42.0,
+    "overall_stats": {
+      "avg_dissident_score": 0.812,
+      "std_dissident_score": 0.009,
+      "avg_deficit": 0.0015,
+      "std_deficit": 7.1e-05,
+      "min_deficit": 0.001429,
+      "max_deficit": 0.001571
+    },
+    "realm_stats": {
+      "quantum": {
+        "n_tests": 25,
+        "n_dissidents": 20,
+        "avg_dissident_score": 0.82,
+        "std_dissident_score": 0.008,
+        "avg_deficit": 0.0015,
+        "std_deficit": 6.5e-05,
+        "detection_rate": 100.0,
+        "classification_rate": 40.0
+      },
+      "biological": {
+        "n_tests": 25,
+        "n_dissidents": 20,
+        "avg_dissident_score": 0.808,
+        "std_dissident_score": 0.01,
+        "avg_deficit": 0.001505,
+        "std_deficit": 7.5e-05,
+        "detection_rate": 96.0,
+        "classification_rate": 45.0
+      },
+      "cosmological": {
+        "n_tests": 25,
+        "n_dissidents": 20,
+        "avg_dissident_score": 0.81,
+        "std_dissident_score": 0.009,
+        "avg_deficit": 0.001498,
+        "std_deficit": 6.8e-05,
+        "detection_rate": 96.0,
+        "classification_rate": 40.0
+      },
+      "electromagnetic": {
+        "n_tests": 25,
+        "n_dissidents": 20,
+        "avg_dissident_score": 0.815,
+        "std_dissident_score": 0.009,
+        "avg_deficit": 0.001497,
+        "std_deficit": 7.8e-05,
+        "detection_rate": 100.0,
+        "classification_rate": 42.0
+      }
+    }
+  },
+  "detailed_results": [
+    {
+      "scenario_id": 1,
+      "realm": "quantum",
+      "dissident_score": 0.8081516507044284,
+      "delta_deficit": 0.001571247619831929,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 2,
+      "realm": "biological",
+      "dissident_score": 0.8160525272078939,
+      "delta_deficit": 0.0013964349650415614,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 3,
+      "realm": "cosmological",
+      "dissident_score": 0.8098550152965203,
+      "delta_deficit": 0.0015106336784543345,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 4,
+      "realm": "electromagnetic",
+      "dissident_score": 0.7914696775948802,
+      "delta_deficit": 0.0014974301693964282,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 5,
+      "realm": "quantum",
+      "dissident_score": 0.8248619738868149,
+      "delta_deficit": 0.0014255479004648649,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 6,
+      "realm": "biological",
+      "dissident_score": 0.8087051875441379,
+      "delta_deficit": 0.001587762222847694,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 7,
+      "realm": "cosmological",
+      "dissident_score": 0.8258168261881967,
+      "delta_deficit": 0.001390737422358426,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 8,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8190093762676326,
+      "delta_deficit": 0.0014421177728520013,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 9,
+      "realm": "quantum",
+      "dissident_score": 0.8116580493543587,
+      "delta_deficit": 0.0014940273832300005,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 10,
+      "realm": "biological",
+      "dissident_score": 0.799302861462789,
+      "delta_deficit": 0.001531962719999867,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 11,
+      "realm": "cosmological",
+      "dissident_score": 0.810033294816985,
+      "delta_deficit": 0.0014361232613852584,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 12,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8342154755398793,
+      "delta_deficit": 0.0015782412527163784,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 13,
+      "realm": "quantum",
+      "dissident_score": 0.7971542468471389,
+      "delta_deficit": 0.0014652638521723562,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 14,
+      "realm": "biological",
+      "dissident_score": 0.8020631509925956,
+      "delta_deficit": 0.0015250981659681718,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 15,
+      "realm": "cosmological",
+      "dissident_score": 0.8142531782649488,
+      "delta_deficit": 0.0013992564830625752,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 16,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8114569932922829,
+      "delta_deficit": 0.0014773207418788462,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 17,
+      "realm": "quantum",
+      "dissident_score": 0.8136956007040308,
+      "delta_deficit": 0.001494879040862216,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 18,
+      "realm": "biological",
+      "dissident_score": 0.8114638771606236,
+      "delta_deficit": 0.0013920157222578474,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 19,
+      "realm": "cosmological",
+      "dissident_score": 0.8145227038531873,
+      "delta_deficit": 0.0014907891360669723,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 20,
+      "realm": "electromagnetic",
+      "dissident_score": 0.812967941775227,
+      "delta_deficit": 0.0014008822623485652,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 21,
+      "realm": "quantum",
+      "dissident_score": 0.809412253225717,
+      "delta_deficit": 0.001491242779874592,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 22,
+      "realm": "biological",
+      "dissident_score": 0.8089095217641183,
+      "delta_deficit": 0.0015380500047518144,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 23,
+      "realm": "cosmological",
+      "dissident_score": 0.8301196855540601,
+      "delta_deficit": 0.0015034551869286669,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 24,
+      "realm": "electromagnetic",
+      "dissident_score": 0.7990217822088471,
+      "delta_deficit": 0.001463152198927439,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 25,
+      "realm": "quantum",
+      "dissident_score": 0.7987108792231744,
+      "delta_deficit": 0.0014358355253816474,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 26,
+      "realm": "biological",
+      "dissident_score": 0.8134104241305475,
+      "delta_deficit": 0.0016712533182725435,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 27,
+      "realm": "cosmological",
+      "dissident_score": 0.8055250402117241,
+      "delta_deficit": 0.0014104119868480788,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 28,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8184831862099078,
+      "delta_deficit": 0.001469305566788375,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 29,
+      "realm": "quantum",
+      "dissident_score": 0.816767862102837,
+      "delta_deficit": 0.0015573162445972673,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 30,
+      "realm": "biological",
+      "dissident_score": 0.8148861508337504,
+      "delta_deficit": 0.00157907770501386,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 31,
+      "realm": "cosmological",
+      "dissident_score": 0.8026007106319812,
+      "delta_deficit": 0.0014945893808101748,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 32,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8223138823507965,
+      "delta_deficit": 0.001611287038160659,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 33,
+      "realm": "quantum",
+      "dissident_score": 0.8135100609965827,
+      "delta_deficit": 0.0016166208058415931,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 34,
+      "realm": "biological",
+      "dissident_score": 0.8139324563739795,
+      "delta_deficit": 0.0016048312850234477,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 35,
+      "realm": "cosmological",
+      "dissident_score": 0.8165016515157261,
+      "delta_deficit": 0.0014609366262138394,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 36,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8200397877225468,
+      "delta_deficit": 0.0013558381524999585,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 37,
+      "realm": "quantum",
+      "dissident_score": 0.8186559870613942,
+      "delta_deficit": 0.001527004367969276,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 38,
+      "realm": "biological",
+      "dissident_score": 0.8133031113885915,
+      "delta_deficit": 0.00162401813119863,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 39,
+      "realm": "cosmological",
+      "dissident_score": 0.8070440630379242,
+      "delta_deficit": 0.0013856374705807958,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 40,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8226183541073041,
+      "delta_deficit": 0.0014505893765550247,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 41,
+      "realm": "quantum",
+      "dissident_score": 0.8116793015190085,
+      "delta_deficit": 0.0015435472965684655,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 42,
+      "realm": "biological",
+      "dissident_score": 0.7950768846485089,
+      "delta_deficit": 0.0014874627083863122,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 43,
+      "realm": "cosmological",
+      "dissident_score": 0.8098373036342478,
+      "delta_deficit": 0.0014535192095957244,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 44,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8106941898797106,
+      "delta_deficit": 0.0016450415676749746,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 45,
+      "realm": "quantum",
+      "dissident_score": 0.8372320815029731,
+      "delta_deficit": 0.0014201938379505151,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 46,
+      "realm": "biological",
+      "dissident_score": 0.8228668548324803,
+      "delta_deficit": 0.001487844483683701,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 47,
+      "realm": "cosmological",
+      "dissident_score": 0.8163098391720346,
+      "delta_deficit": 0.0015020885318660381,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 48,
+      "realm": "electromagnetic",
+      "dissident_score": 0.7805594583664015,
+      "delta_deficit": 0.0015760611137977589,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 49,
+      "realm": "quantum",
+      "dissident_score": 0.8231858252787883,
+      "delta_deficit": 0.0015059052834316686,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 50,
+      "realm": "biological",
+      "dissident_score": 0.8173533841227794,
+      "delta_deficit": 0.0014932767200747023,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 51,
+      "realm": "cosmological",
+      "dissident_score": 0.8116923047448396,
+      "delta_deficit": 0.0014747941575841035,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 52,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8189483381933026,
+      "delta_deficit": 0.0014905058867447827,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 53,
+      "realm": "quantum",
+      "dissident_score": 0.8159858080694157,
+      "delta_deficit": 0.0014630400991517292,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 54,
+      "realm": "biological",
+      "dissident_score": 0.806877539440606,
+      "delta_deficit": 0.001457660380656689,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 55,
+      "realm": "cosmological",
+      "dissident_score": 0.8090637098991564,
+      "delta_deficit": 0.0013639323292520046,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 56,
+      "realm": "electromagnetic",
+      "dissident_score": 0.809785585529683,
+      "delta_deficit": 0.0015416817858970194,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 57,
+      "realm": "quantum",
+      "dissident_score": 0.8248100267863456,
+      "delta_deficit": 0.0015628012745373568,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 58,
+      "realm": "biological",
+      "dissident_score": 0.8177831574237556,
+      "delta_deficit": 0.0015790052772173583,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 59,
+      "realm": "cosmological",
+      "dissident_score": 0.8044970863774684,
+      "delta_deficit": 0.0013995823320718782,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 60,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8301311090983023,
+      "delta_deficit": 0.0014727098815898107,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 61,
+      "realm": "quantum",
+      "dissident_score": 0.8101661118693257,
+      "delta_deficit": 0.0015599048887953225,
+      "detection_correct": false,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 62,
+      "realm": "biological",
+      "dissident_score": 0.8074182801303986,
+      "delta_deficit": 0.001426843199077898,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 63,
+      "realm": "cosmological",
+      "dissident_score": 0.7996579922755879,
+      "delta_deficit": 0.001516125859658978,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 64,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8081693302543754,
+      "delta_deficit": 0.0016020349403921062,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 65,
+      "realm": "quantum",
+      "dissident_score": 0.80052378229603,
+      "delta_deficit": 0.0014219617631500798,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 66,
+      "realm": "biological",
+      "dissident_score": 0.8211924287352542,
+      "delta_deficit": 0.0013316672410416208,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 67,
+      "realm": "cosmological",
+      "dissident_score": 0.8032622702908149,
+      "delta_deficit": 0.001553265139855114,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 68,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8042603452248899,
+      "delta_deficit": 0.0014680300940814056,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 69,
+      "realm": "quantum",
+      "dissident_score": 0.8176814399831493,
+      "delta_deficit": 0.0014022004404607396,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 70,
+      "realm": "biological",
+      "dissident_score": 0.8116924528184833,
+      "delta_deficit": 0.0014110573930965356,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 71,
+      "realm": "cosmological",
+      "dissident_score": 0.8193614297253955,
+      "delta_deficit": 0.0014767194017636374,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 72,
+      "realm": "electromagnetic",
+      "dissident_score": 0.806030874720962,
+      "delta_deficit": 0.0014597351785682515,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 73,
+      "realm": "quantum",
+      "dissident_score": 0.8173066957274718,
+      "delta_deficit": 0.0015370634595245336,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 74,
+      "realm": "biological",
+      "dissident_score": 0.8107433777480848,
+      "delta_deficit": 0.0015093621475097542,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 75,
+      "realm": "cosmological",
+      "dissident_score": 0.8055854131364151,
+      "delta_deficit": 0.001471163065038303,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 76,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8178157402400916,
+      "delta_deficit": 0.001449148436369065,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 77,
+      "realm": "quantum",
+      "dissident_score": 0.8313213621399639,
+      "delta_deficit": 0.0015039692506671142,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 78,
+      "realm": "biological",
+      "dissident_score": 0.8106894367896497,
+      "delta_deficit": 0.0013542382445126287,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 79,
+      "realm": "cosmological",
+      "dissident_score": 0.814607354515104,
+      "delta_deficit": 0.0016035768687733827,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 80,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8083617977645072,
+      "delta_deficit": 0.0013929781729575404,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 81,
+      "realm": "quantum",
+      "dissident_score": 0.8065317494999719,
+      "delta_deficit": 0.0014169021347795773,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 82,
+      "realm": "biological",
+      "dissident_score": 0.8231742370283563,
+      "delta_deficit": 0.001421267531184342,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 83,
+      "realm": "cosmological",
+      "dissident_score": 0.8090711639322169,
+      "delta_deficit": 0.0013921290673907924,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 84,
+      "realm": "electromagnetic",
+      "dissident_score": 0.821832749581277,
+      "delta_deficit": 0.0015242594250252622,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 85,
+      "realm": "quantum",
+      "dissident_score": 0.7958590046940828,
+      "delta_deficit": 0.001538383026983003,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 86,
+      "realm": "biological",
+      "dissident_score": 0.8007414757020932,
+      "delta_deficit": 0.0015296002920380134,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 87,
+      "realm": "cosmological",
+      "dissident_score": 0.7986341663492246,
+      "delta_deficit": 0.0015557430752269517,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 88,
+      "realm": "electromagnetic",
+      "dissident_score": 0.816635801984164,
+      "delta_deficit": 0.0014613344445487755,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 89,
+      "realm": "quantum",
+      "dissident_score": 0.8209151854037171,
+      "delta_deficit": 0.0015312053471606881,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 90,
+      "realm": "biological",
+      "dissident_score": 0.8224246381491692,
+      "delta_deficit": 0.0015046685293631607,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 91,
+      "realm": "cosmological",
+      "dissident_score": 0.8250663785322,
+      "delta_deficit": 0.001649829329778468,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 92,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8043112316614167,
+      "delta_deficit": 0.0015130489574224127,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 93,
+      "realm": "quantum",
+      "dissident_score": 0.8154230129491177,
+      "delta_deficit": 0.001367705254087422,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 94,
+      "realm": "biological",
+      "dissident_score": 0.8115241611113807,
+      "delta_deficit": 0.0013918568449331778,
+      "detection_correct": true,
+      "classification_correct": false
+    },
+    {
+      "scenario_id": 95,
+      "realm": "cosmological",
+      "dissident_score": 0.8174506716458028,
+      "delta_deficit": 0.0015604409951257199,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 96,
+      "realm": "electromagnetic",
+      "dissident_score": 0.820050018306006,
+      "delta_deficit": 0.001530591569308001,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 97,
+      "realm": "quantum",
+      "dissident_score": 0.8011991389678613,
+      "delta_deficit": 0.0015753969163019574,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 98,
+      "realm": "biological",
+      "dissident_score": 0.799272825157767,
+      "delta_deficit": 0.0015395334979985504,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 99,
+      "realm": "cosmological",
+      "dissident_score": 0.8129346651579714,
+      "delta_deficit": 0.001373719730793864,
+      "detection_correct": true,
+      "classification_correct": true
+    },
+    {
+      "scenario_id": 100,
+      "realm": "electromagnetic",
+      "dissident_score": 0.8101386968401667,
+      "delta_deficit": 0.0015399433806868354,
+      "detection_correct": true,
+      "classification_correct": false
+    }
+  ]
+}

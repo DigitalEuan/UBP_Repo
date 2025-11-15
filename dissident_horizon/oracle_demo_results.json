@@ -1,0 +1,68 @@
+{
+  "oracle_config": {
+    "delta_deficit_threshold": 0.0015
+  },
+  "analysis_history": [
+    {
+      "signature": {
+        "laplacian_eigenvalue": 8.326672684688674e-17,
+        "spectral_gap": 0.0,
+        "pca_variance_ratio": 1.1211545417471769e-31,
+        "coherence_gradient": 5.000000000032756e-06,
+        "memory_persistence": 0.4000533404453911,
+        "temporal_stability": 0.9979494088964976,
+        "delta_deficit": 0.001499666666666677,
+        "net_refinements": 0,
+        "is_dissident": true,
+        "dissident_score": 0.819983776355368,
+        "dissident_type": "beneficial"
+      },
+      "recommendations": [
+        "\u26a0\ufe0f Dissident state detected (score: 0.820)",
+        "\ud83d\udfe2 Beneficial dissident - harvest for resilience patterns",
+        "   - High temporal stability (0.998)",
+        "   - Extract design principles for innovation",
+        "   - Very low Laplacian eigenvalue (0.0000)",
+        "   - System easily relaxes into this attractor",
+        "   - Low PCA variance ratio (0.000)",
+        "   - Distorted projection from optimal state",
+        "   - \u03b4-deficit matches threshold (0.001500)",
+        "   - Classic dissident signature in 0.15% gap"
+      ],
+      "interventions": [
+        {
+          "name": "Beneficial Pattern Extraction",
+          "description": "Extract and catalog resilience patterns",
+          "parameters": {
+            "stability_score": 0.9979494088964976,
+            "extraction_method": "HexDictionary encoding"
+          },
+          "expected_effect": "Harvest for innovation, preserve beneficial traits"
+        }
+      ],
+      "expected_coherence_gain": 0.09979494088964977,
+      "confidence": 0.74
+    },
+    {
+      "signature": {
+        "laplacian_eigenvalue": 1.3877787807814457e-17,
+        "spectral_gap": 0.0,
+        "pca_variance_ratio": 2.366582715663036e-31,
+        "coherence_gradient": 0.0,
+        "memory_persistence": 1.0,
+        "temporal_stability": 1.0,
+        "delta_deficit": 0.0,
+        "net_refinements": 0,
+        "is_dissident": false,
+        "dissident_score": 0.44999999999999996,
+        "dissident_type": "neutral"
+      },
+      "recommendations": [
+        "\u2713 No significant dissident characteristics (score: 0.450)"
+      ],
+      "interventions": [],
+      "expected_coherence_gain": 0.0,
+      "confidence": 0.74
+    }
+  ]
+}
