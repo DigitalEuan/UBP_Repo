@@ -1,0 +1,225 @@
+[
+  {
+    "blood_type": "O-",
+    "success": true,
+    "toggle_sequence": [],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "O+",
+    "success": true,
+    "toggle_sequence": [
+      "RhD"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "RhD",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "A-",
+    "success": true,
+    "toggle_sequence": [
+      "A"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "A",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "A+",
+    "success": true,
+    "toggle_sequence": [
+      "A",
+      "RhD"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "A",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "RhD",
+        "operation": "toggle",
+        "delta": 2.9999999896501706e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000103
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "B-",
+    "success": true,
+    "toggle_sequence": [
+      "B"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "B",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "B+",
+    "success": true,
+    "toggle_sequence": [
+      "B",
+      "RhD"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "B",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "RhD",
+        "operation": "toggle",
+        "delta": 2.9999999896501706e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000103
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "AB-",
+    "success": true,
+    "toggle_sequence": [
+      "A",
+      "B"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "A",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "B",
+        "operation": "toggle",
+        "delta": 2.9999999896501706e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000103
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  },
+  {
+    "blood_type": "AB+",
+    "success": true,
+    "toggle_sequence": [
+      "A",
+      "B",
+      "RhD"
+    ],
+    "final_delta": 9.000022949123831e-12,
+    "final_nrci": 0.999999999991,
+    "history": [
+      {
+        "stage": "A",
+        "operation": "toggle",
+        "delta": 2.9999999947571965e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000052
+      },
+      {
+        "stage": "B",
+        "operation": "toggle",
+        "delta": 2.9999999896501706e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000103
+      },
+      {
+        "stage": "RhD",
+        "operation": "toggle",
+        "delta": 2.9999999844321223e-06,
+        "glr_absorbed": false,
+        "nrci": 0.9999970000000156
+      },
+      {
+        "stage": "Observer",
+        "operation": "bind",
+        "cost": 3.7782124259573746,
+        "nrci": 0.999999999991
+      }
+    ]
+  }
+]
