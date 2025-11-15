@@ -1,0 +1,1028 @@
+{
+  "metadata": {
+    "blood_types": [
+      "O-",
+      "O+",
+      "A-",
+      "A+",
+      "B-",
+      "B+",
+      "AB-",
+      "AB+"
+    ],
+    "substances": [
+      "malaria_plasmodium",
+      "norovirus",
+      "helicobacter_pylori",
+      "anti_a_antibody",
+      "anti_b_antibody",
+      "anti_d_antibody",
+      "peanut_lectin",
+      "wheat_germ_lectin"
+    ],
+    "num_blood_types": 8,
+    "num_substances": 8
+  },
+  "affinities": {
+    "O-": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.675,
+        "frequency_resonance": 0.3125,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.5590169943749475,
+        "frequency_difference_ghz": 2.2,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.47256410256410264,
+        "frequency_resonance": 0.2564102564102564,
+        "structural_compatibility": 0.5,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.35805743701971643,
+        "frequency_difference_ghz": 2.9000000000000004,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.6100000000000001,
+        "frequency_resonance": 0.4,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.5656854249492381,
+        "frequency_difference_ghz": 1.5,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.44,
+        "frequency_resonance": 0.625,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.6000000000000001,
+        "is_resonant": false
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.47171428571428564,
+        "frequency_resonance": 0.7142857142857141,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.40000000000000036,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.5133333333333333,
+        "frequency_resonance": 0.8333333333333333,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.20000000000000018,
+        "is_resonant": true
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.6305263157894736,
+        "frequency_resonance": 0.5263157894736841,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.6069769786668839,
+        "frequency_difference_ghz": 0.9000000000000004,
+        "is_resonant": false
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.5918181818181818,
+        "frequency_resonance": 0.45454545454545453,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.5640760748177662,
+        "frequency_difference_ghz": 1.2000000000000002,
+        "is_resonant": false
+      }
+    },
+    "O+": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.6833333333333333,
+        "frequency_resonance": 0.3333333333333333,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.5773502691896257,
+        "frequency_difference_ghz": 2.0,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.4781081081081081,
+        "frequency_resonance": 0.27027027027027023,
+        "structural_compatibility": 0.5,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.36760731104690386,
+        "frequency_difference_ghz": 2.7,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.6239130434782609,
+        "frequency_resonance": 0.4347826086956522,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.5897678246195885,
+        "frequency_difference_ghz": 1.2999999999999998,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.47571428571428576,
+        "frequency_resonance": 0.7142857142857143,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.3999999999999999,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.5193333333333333,
+        "frequency_resonance": 0.8333333333333333,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.20000000000000018,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.9800000000000001,
+        "frequency_resonance": 1.0,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 1.0,
+        "frequency_difference_ghz": 0.0,
+        "is_resonant": true
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.6552941176470588,
+        "frequency_resonance": 0.588235294117647,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.6416889479197478,
+        "frequency_difference_ghz": 0.7000000000000002,
+        "is_resonant": false
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.61,
+        "frequency_resonance": 0.5,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.5916079783099616,
+        "frequency_difference_ghz": 1.0,
+        "is_resonant": false
+      }
+    },
+    "A-": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.692857142857143,
+        "frequency_resonance": 0.35714285714285715,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.5976143046671968,
+        "frequency_difference_ghz": 1.7999999999999998,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.6842857142857144,
+        "frequency_resonance": 0.2857142857142857,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.5345224838248488,
+        "frequency_difference_ghz": 2.5,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.6404761904761905,
+        "frequency_resonance": 0.4761904761904763,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6172133998483678,
+        "frequency_difference_ghz": 1.0999999999999996,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.9233333333333333,
+        "frequency_resonance": 0.8333333333333335,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.9128709291752769,
+        "frequency_difference_ghz": 0.19999999999999973,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.5860000000000001,
+        "frequency_resonance": 1.0,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.0,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.5133333333333333,
+        "frequency_resonance": 0.8333333333333333,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.20000000000000018,
+        "is_resonant": true
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.6866666666666666,
+        "frequency_resonance": 0.6666666666666666,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.6831300510639732,
+        "frequency_difference_ghz": 0.5,
+        "is_resonant": false
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.6322222222222222,
+        "frequency_resonance": 0.5555555555555556,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6236095644623235,
+        "frequency_difference_ghz": 0.7999999999999998,
+        "is_resonant": false
+      }
+    },
+    "A+": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.7038461538461539,
+        "frequency_resonance": 0.3846153846153846,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.6201736729460422,
+        "frequency_difference_ghz": 1.6,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.6912121212121213,
+        "frequency_resonance": 0.303030303030303,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.5504818825631803,
+        "frequency_difference_ghz": 2.3000000000000003,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.6605263157894737,
+        "frequency_resonance": 0.5263157894736842,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6488856845230502,
+        "frequency_difference_ghz": 0.8999999999999999,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.99,
+        "frequency_resonance": 1.0,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 1.0,
+        "frequency_difference_ghz": 0.0,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.5193333333333334,
+        "frequency_resonance": 0.8333333333333335,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.19999999999999973,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.8657142857142858,
+        "frequency_resonance": 0.7142857142857143,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.8451542547285166,
+        "frequency_difference_ghz": 0.3999999999999999,
+        "is_resonant": true
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.7276923076923076,
+        "frequency_resonance": 0.769230769230769,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.7337993857053428,
+        "frequency_difference_ghz": 0.30000000000000027,
+        "is_resonant": true
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.66,
+        "frequency_resonance": 0.625,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6614378277661477,
+        "frequency_difference_ghz": 0.6000000000000001,
+        "is_resonant": false
+      }
+    },
+    "B-": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.6879310344827587,
+        "frequency_resonance": 0.3448275862068966,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.5872202195147035,
+        "frequency_difference_ghz": 1.9,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.6811111111111112,
+        "frequency_resonance": 0.2777777777777778,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.5270462766947299,
+        "frequency_difference_ghz": 2.6,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.631818181818182,
+        "frequency_resonance": 0.4545454545454546,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6030226891555273,
+        "frequency_difference_ghz": 1.1999999999999997,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.49769230769230777,
+        "frequency_resonance": 0.7692307692307694,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.2999999999999998,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.9496363636363637,
+        "frequency_resonance": 0.9090909090909091,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.9534625892455924,
+        "frequency_difference_ghz": 0.10000000000000009,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.5436363636363637,
+        "frequency_resonance": 0.9090909090909091,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.10000000000000009,
+        "is_resonant": true
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.67,
+        "frequency_resonance": 0.625,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.6614378277661477,
+        "frequency_difference_ghz": 0.6000000000000001,
+        "is_resonant": false
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.6205263157894736,
+        "frequency_resonance": 0.5263157894736842,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6069769786668839,
+        "frequency_difference_ghz": 0.8999999999999999,
+        "is_resonant": false
+      }
+    },
+    "B+": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.6981481481481482,
+        "frequency_resonance": 0.37037037037037035,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.6085806194501846,
+        "frequency_difference_ghz": 1.7000000000000002,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.6876470588235295,
+        "frequency_resonance": 0.2941176470588235,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.5423261445466404,
+        "frequency_difference_ghz": 2.4000000000000004,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.65,
+        "frequency_resonance": 0.5,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6324555320336759,
+        "frequency_difference_ghz": 1.0,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.5536363636363637,
+        "frequency_resonance": 0.9090909090909091,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.10000000000000009,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.9496363636363638,
+        "frequency_resonance": 0.9090909090909094,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.9534625892455925,
+        "frequency_difference_ghz": 0.09999999999999964,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.8876923076923079,
+        "frequency_resonance": 0.7692307692307694,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.8770580193070293,
+        "frequency_difference_ghz": 0.2999999999999998,
+        "is_resonant": true
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.7057142857142856,
+        "frequency_resonance": 0.7142857142857141,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.7071067811865475,
+        "frequency_difference_ghz": 0.40000000000000036,
+        "is_resonant": true
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.6452941176470588,
+        "frequency_resonance": 0.588235294117647,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6416889479197478,
+        "frequency_difference_ghz": 0.7000000000000002,
+        "is_resonant": false
+      }
+    },
+    "AB-": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.7166666666666667,
+        "frequency_resonance": 0.4166666666666667,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.6454972243679028,
+        "frequency_difference_ghz": 1.4,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.6990322580645162,
+        "frequency_resonance": 0.3225806451612903,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.5679618342470648,
+        "frequency_difference_ghz": 2.1,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.6852941176470589,
+        "frequency_resonance": 0.5882352941176472,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.6859943405700354,
+        "frequency_difference_ghz": 0.6999999999999997,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.9233333333333333,
+        "frequency_resonance": 0.8333333333333333,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.9128709291752768,
+        "frequency_difference_ghz": 0.20000000000000018,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.8717142857142858,
+        "frequency_resonance": 0.7142857142857143,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.8451542547285166,
+        "frequency_difference_ghz": 0.3999999999999999,
+        "is_resonant": true
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.43000000000000005,
+        "frequency_resonance": 0.625,
+        "structural_compatibility": 0.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.0,
+        "frequency_difference_ghz": 0.6000000000000001,
+        "is_resonant": false
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.7836363636363636,
+        "frequency_resonance": 0.9090909090909091,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.7977240352174656,
+        "frequency_difference_ghz": 0.10000000000000009,
+        "is_resonant": true
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.6957142857142857,
+        "frequency_resonance": 0.7142857142857143,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.7071067811865476,
+        "frequency_difference_ghz": 0.3999999999999999,
+        "is_resonant": true
+      }
+    },
+    "AB+": {
+      "malaria_plasmodium": {
+        "affinity_score": 0.7318181818181818,
+        "frequency_resonance": 0.45454545454545453,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.75,
+        "coherence_prediction": 0.674199862463242,
+        "frequency_difference_ghz": 1.2000000000000002,
+        "is_resonant": false
+      },
+      "norovirus": {
+        "affinity_score": 0.7079310344827586,
+        "frequency_resonance": 0.3448275862068965,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.85,
+        "coherence_prediction": 0.5872202195147035,
+        "frequency_difference_ghz": 1.9000000000000004,
+        "is_resonant": false
+      },
+      "helicobacter_pylori": {
+        "affinity_score": 0.7166666666666667,
+        "frequency_resonance": 0.6666666666666666,
+        "structural_compatibility": 0.8,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.7302967433402214,
+        "frequency_difference_ghz": 0.5,
+        "is_resonant": false
+      },
+      "anti_a_antibody": {
+        "affinity_score": 0.8757142857142857,
+        "frequency_resonance": 0.7142857142857143,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.95,
+        "coherence_prediction": 0.8451542547285166,
+        "frequency_difference_ghz": 0.3999999999999999,
+        "is_resonant": true
+      },
+      "anti_b_antibody": {
+        "affinity_score": 0.8360000000000002,
+        "frequency_resonance": 0.6250000000000001,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.93,
+        "coherence_prediction": 0.7905694150420949,
+        "frequency_difference_ghz": 0.5999999999999996,
+        "is_resonant": false
+      },
+      "anti_d_antibody": {
+        "affinity_score": 0.8022222222222223,
+        "frequency_resonance": 0.5555555555555556,
+        "structural_compatibility": 1.0,
+        "binding_strength": 0.9,
+        "coherence_prediction": 0.7453559924999299,
+        "frequency_difference_ghz": 0.7999999999999998,
+        "is_resonant": false
+      },
+      "peanut_lectin": {
+        "affinity_score": 0.7836363636363638,
+        "frequency_resonance": 0.9090909090909094,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.7,
+        "coherence_prediction": 0.7977240352174658,
+        "frequency_difference_ghz": 0.09999999999999964,
+        "is_resonant": true
+      },
+      "wheat_germ_lectin": {
+        "affinity_score": 0.7433333333333333,
+        "frequency_resonance": 0.8333333333333333,
+        "structural_compatibility": 0.7,
+        "binding_strength": 0.65,
+        "coherence_prediction": 0.7637626158259733,
+        "frequency_difference_ghz": 0.20000000000000018,
+        "is_resonant": true
+      }
+    }
+  },
+  "affinity_matrix": {
+    "O-": {
+      "malaria_plasmodium": 0.675,
+      "norovirus": 0.47256410256410264,
+      "helicobacter_pylori": 0.6100000000000001,
+      "anti_a_antibody": 0.44,
+      "anti_b_antibody": 0.47171428571428564,
+      "anti_d_antibody": 0.5133333333333333,
+      "peanut_lectin": 0.6305263157894736,
+      "wheat_germ_lectin": 0.5918181818181818
+    },
+    "O+": {
+      "malaria_plasmodium": 0.6833333333333333,
+      "norovirus": 0.4781081081081081,
+      "helicobacter_pylori": 0.6239130434782609,
+      "anti_a_antibody": 0.47571428571428576,
+      "anti_b_antibody": 0.5193333333333333,
+      "anti_d_antibody": 0.9800000000000001,
+      "peanut_lectin": 0.6552941176470588,
+      "wheat_germ_lectin": 0.61
+    },
+    "A-": {
+      "malaria_plasmodium": 0.692857142857143,
+      "norovirus": 0.6842857142857144,
+      "helicobacter_pylori": 0.6404761904761905,
+      "anti_a_antibody": 0.9233333333333333,
+      "anti_b_antibody": 0.5860000000000001,
+      "anti_d_antibody": 0.5133333333333333,
+      "peanut_lectin": 0.6866666666666666,
+      "wheat_germ_lectin": 0.6322222222222222
+    },
+    "A+": {
+      "malaria_plasmodium": 0.7038461538461539,
+      "norovirus": 0.6912121212121213,
+      "helicobacter_pylori": 0.6605263157894737,
+      "anti_a_antibody": 0.99,
+      "anti_b_antibody": 0.5193333333333334,
+      "anti_d_antibody": 0.8657142857142858,
+      "peanut_lectin": 0.7276923076923076,
+      "wheat_germ_lectin": 0.66
+    },
+    "B-": {
+      "malaria_plasmodium": 0.6879310344827587,
+      "norovirus": 0.6811111111111112,
+      "helicobacter_pylori": 0.631818181818182,
+      "anti_a_antibody": 0.49769230769230777,
+      "anti_b_antibody": 0.9496363636363637,
+      "anti_d_antibody": 0.5436363636363637,
+      "peanut_lectin": 0.67,
+      "wheat_germ_lectin": 0.6205263157894736
+    },
+    "B+": {
+      "malaria_plasmodium": 0.6981481481481482,
+      "norovirus": 0.6876470588235295,
+      "helicobacter_pylori": 0.65,
+      "anti_a_antibody": 0.5536363636363637,
+      "anti_b_antibody": 0.9496363636363638,
+      "anti_d_antibody": 0.8876923076923079,
+      "peanut_lectin": 0.7057142857142856,
+      "wheat_germ_lectin": 0.6452941176470588
+    },
+    "AB-": {
+      "malaria_plasmodium": 0.7166666666666667,
+      "norovirus": 0.6990322580645162,
+      "helicobacter_pylori": 0.6852941176470589,
+      "anti_a_antibody": 0.9233333333333333,
+      "anti_b_antibody": 0.8717142857142858,
+      "anti_d_antibody": 0.43000000000000005,
+      "peanut_lectin": 0.7836363636363636,
+      "wheat_germ_lectin": 0.6957142857142857
+    },
+    "AB+": {
+      "malaria_plasmodium": 0.7318181818181818,
+      "norovirus": 0.7079310344827586,
+      "helicobacter_pylori": 0.7166666666666667,
+      "anti_a_antibody": 0.8757142857142857,
+      "anti_b_antibody": 0.8360000000000002,
+      "anti_d_antibody": 0.8022222222222223,
+      "peanut_lectin": 0.7836363636363638,
+      "wheat_germ_lectin": 0.7433333333333333
+    }
+  },
+  "patterns": {
+    "high_affinity_pairs": [
+      {
+        "blood_type": "A+",
+        "substance": "anti_a_antibody",
+        "score": 0.99
+      },
+      {
+        "blood_type": "O+",
+        "substance": "anti_d_antibody",
+        "score": 0.9800000000000001
+      },
+      {
+        "blood_type": "B+",
+        "substance": "anti_b_antibody",
+        "score": 0.9496363636363638
+      },
+      {
+        "blood_type": "B-",
+        "substance": "anti_b_antibody",
+        "score": 0.9496363636363637
+      },
+      {
+        "blood_type": "A-",
+        "substance": "anti_a_antibody",
+        "score": 0.9233333333333333
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "anti_a_antibody",
+        "score": 0.9233333333333333
+      },
+      {
+        "blood_type": "B+",
+        "substance": "anti_d_antibody",
+        "score": 0.8876923076923079
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "anti_a_antibody",
+        "score": 0.8757142857142857
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "anti_b_antibody",
+        "score": 0.8717142857142858
+      },
+      {
+        "blood_type": "A+",
+        "substance": "anti_d_antibody",
+        "score": 0.8657142857142858
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "anti_b_antibody",
+        "score": 0.8360000000000002
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "anti_d_antibody",
+        "score": 0.8022222222222223
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "peanut_lectin",
+        "score": 0.7836363636363638
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "peanut_lectin",
+        "score": 0.7836363636363636
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "wheat_germ_lectin",
+        "score": 0.7433333333333333
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "malaria_plasmodium",
+        "score": 0.7318181818181818
+      },
+      {
+        "blood_type": "A+",
+        "substance": "peanut_lectin",
+        "score": 0.7276923076923076
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "malaria_plasmodium",
+        "score": 0.7166666666666667
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "helicobacter_pylori",
+        "score": 0.7166666666666667
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "norovirus",
+        "score": 0.7079310344827586
+      },
+      {
+        "blood_type": "B+",
+        "substance": "peanut_lectin",
+        "score": 0.7057142857142856
+      },
+      {
+        "blood_type": "A+",
+        "substance": "malaria_plasmodium",
+        "score": 0.7038461538461539
+      }
+    ],
+    "low_affinity_pairs": [],
+    "resonant_pairs": [
+      {
+        "blood_type": "O-",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.40000000000000036
+      },
+      {
+        "blood_type": "O-",
+        "substance": "anti_d_antibody",
+        "freq_diff": 0.20000000000000018
+      },
+      {
+        "blood_type": "O+",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.3999999999999999
+      },
+      {
+        "blood_type": "O+",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.20000000000000018
+      },
+      {
+        "blood_type": "O+",
+        "substance": "anti_d_antibody",
+        "freq_diff": 0.0
+      },
+      {
+        "blood_type": "A-",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.19999999999999973
+      },
+      {
+        "blood_type": "A-",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.0
+      },
+      {
+        "blood_type": "A-",
+        "substance": "anti_d_antibody",
+        "freq_diff": 0.20000000000000018
+      },
+      {
+        "blood_type": "A+",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.0
+      },
+      {
+        "blood_type": "A+",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.19999999999999973
+      },
+      {
+        "blood_type": "A+",
+        "substance": "anti_d_antibody",
+        "freq_diff": 0.3999999999999999
+      },
+      {
+        "blood_type": "A+",
+        "substance": "peanut_lectin",
+        "freq_diff": 0.30000000000000027
+      },
+      {
+        "blood_type": "B-",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.2999999999999998
+      },
+      {
+        "blood_type": "B-",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.10000000000000009
+      },
+      {
+        "blood_type": "B-",
+        "substance": "anti_d_antibody",
+        "freq_diff": 0.10000000000000009
+      },
+      {
+        "blood_type": "B+",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.10000000000000009
+      },
+      {
+        "blood_type": "B+",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.09999999999999964
+      },
+      {
+        "blood_type": "B+",
+        "substance": "anti_d_antibody",
+        "freq_diff": 0.2999999999999998
+      },
+      {
+        "blood_type": "B+",
+        "substance": "peanut_lectin",
+        "freq_diff": 0.40000000000000036
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.20000000000000018
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "anti_b_antibody",
+        "freq_diff": 0.3999999999999999
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "peanut_lectin",
+        "freq_diff": 0.10000000000000009
+      },
+      {
+        "blood_type": "AB-",
+        "substance": "wheat_germ_lectin",
+        "freq_diff": 0.3999999999999999
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "anti_a_antibody",
+        "freq_diff": 0.3999999999999999
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "peanut_lectin",
+        "freq_diff": 0.09999999999999964
+      },
+      {
+        "blood_type": "AB+",
+        "substance": "wheat_germ_lectin",
+        "freq_diff": 0.20000000000000018
+      }
+    ]
+  },
+  "validation": {
+    "validations": [
+      {
+        "fact": "O- should have anti-A antibodies",
+        "prediction": 0.44,
+        "expected": "high",
+        "validated": false
+      },
+      {
+        "fact": "O- should have anti-B antibodies",
+        "prediction": 0.47171428571428564,
+        "expected": "high",
+        "validated": false
+      },
+      {
+        "fact": "O+ should have anti-A antibodies",
+        "prediction": 0.47571428571428576,
+        "expected": "high",
+        "validated": false
+      },
+      {
+        "fact": "O+ should have anti-B antibodies",
+        "prediction": 0.5193333333333333,
+        "expected": "high",
+        "validated": true
+      },
+      {
+        "fact": "A- should NOT have anti-A antibodies",
+        "prediction": 0.9233333333333333,
+        "expected": "low",
+        "validated": false
+      },
+      {
+        "fact": "A- should have anti-B antibodies",
+        "prediction": 0.5860000000000001,
+        "expected": "high",
+        "validated": true
+      },
+      {
+        "fact": "A+ should NOT have anti-A antibodies",
+        "prediction": 0.99,
+        "expected": "low",
+        "validated": false
+      },
+      {
+        "fact": "A+ should have anti-B antibodies",
+        "prediction": 0.5193333333333334,
+        "expected": "high",
+        "validated": true
+      },
+      {
+        "fact": "AB- should NOT have anti-A antibodies",
+        "prediction": 0.9233333333333333,
+        "expected": "low",
+        "validated": false
+      },
+      {
+        "fact": "AB- should NOT have anti-B antibodies",
+        "prediction": 0.8717142857142858,
+        "expected": "low",
+        "validated": false
+      },
+      {
+        "fact": "AB+ should NOT have anti-A antibodies",
+        "prediction": 0.8757142857142857,
+        "expected": "low",
+        "validated": false
+      },
+      {
+        "fact": "AB+ should NOT have anti-B antibodies",
+        "prediction": 0.8360000000000002,
+        "expected": "low",
+        "validated": false
+      }
+    ],
+    "validation_rate": 0.25,
+    "total_tests": 12,
+    "passed_tests": 3
+  }
+}

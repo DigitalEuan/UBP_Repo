@@ -1,0 +1,851 @@
+{
+  "metadata": {
+    "analysis_type": "bitfield_resonance",
+    "ubp_version": "3.5"
+  },
+  "hamming_cube": {
+    "vertices": {
+      "O-": {
+        "bitfield": 8,
+        "binary": "00001000",
+        "hamming_weight": 1,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "O+": {
+        "bitfield": 4,
+        "binary": "00000100",
+        "hamming_weight": 1,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      "A-": {
+        "bitfield": 1,
+        "binary": "00000001",
+        "hamming_weight": 1,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "A+": {
+        "bitfield": 5,
+        "binary": "00000101",
+        "hamming_weight": 2,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      "B-": {
+        "bitfield": 2,
+        "binary": "00000010",
+        "hamming_weight": 1,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      "B+": {
+        "bitfield": 6,
+        "binary": "00000110",
+        "hamming_weight": 2,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      },
+      "AB-": {
+        "bitfield": 3,
+        "binary": "00000011",
+        "hamming_weight": 2,
+        "coordinates": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "AB+": {
+        "bitfield": 23,
+        "binary": "00010111",
+        "hamming_weight": 4,
+        "coordinates": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    "edges": [
+      {
+        "pair": [
+          "A-",
+          "AB-"
+        ],
+        "hamming_distance": 1,
+        "differing_bit": 1
+      },
+      {
+        "pair": [
+          "A+",
+          "O+"
+        ],
+        "hamming_distance": 1,
+        "differing_bit": 0
+      },
+      {
+        "pair": [
+          "A+",
+          "A-"
+        ],
+        "hamming_distance": 1,
+        "differing_bit": 2
+      },
+      {
+        "pair": [
+          "B+",
+          "O+"
+        ],
+        "hamming_distance": 1,
+        "differing_bit": 1
+      },
+      {
+        "pair": [
+          "B+",
+          "B-"
+        ],
+        "hamming_distance": 1,
+        "differing_bit": 2
+      },
+      {
+        "pair": [
+          "AB-",
+          "B-"
+        ],
+        "hamming_distance": 1,
+        "differing_bit": 0
+      }
+    ],
+    "hamming_distances": {
+      "O-": {
+        "O-": 0,
+        "O+": 2,
+        "A-": 2,
+        "A+": 3,
+        "B-": 2,
+        "B+": 3,
+        "AB-": 3,
+        "AB+": 5
+      },
+      "O+": {
+        "O-": 2,
+        "O+": 0,
+        "A-": 2,
+        "A+": 1,
+        "B-": 2,
+        "B+": 1,
+        "AB-": 3,
+        "AB+": 3
+      },
+      "A-": {
+        "O-": 2,
+        "O+": 2,
+        "A-": 0,
+        "A+": 1,
+        "B-": 2,
+        "B+": 3,
+        "AB-": 1,
+        "AB+": 3
+      },
+      "A+": {
+        "O-": 3,
+        "O+": 1,
+        "A-": 1,
+        "A+": 0,
+        "B-": 3,
+        "B+": 2,
+        "AB-": 2,
+        "AB+": 2
+      },
+      "B-": {
+        "O-": 2,
+        "O+": 2,
+        "A-": 2,
+        "A+": 3,
+        "B-": 0,
+        "B+": 1,
+        "AB-": 1,
+        "AB+": 3
+      },
+      "B+": {
+        "O-": 3,
+        "O+": 1,
+        "A-": 3,
+        "A+": 2,
+        "B-": 1,
+        "B+": 0,
+        "AB-": 2,
+        "AB+": 2
+      },
+      "AB-": {
+        "O-": 3,
+        "O+": 3,
+        "A-": 1,
+        "A+": 2,
+        "B-": 1,
+        "B+": 2,
+        "AB-": 0,
+        "AB+": 2
+      },
+      "AB+": {
+        "O-": 5,
+        "O+": 3,
+        "A-": 3,
+        "A+": 2,
+        "B-": 3,
+        "B+": 2,
+        "AB-": 2,
+        "AB+": 0
+      }
+    },
+    "cube_dimension": 8,
+    "occupied_vertices": 8,
+    "total_possible_vertices": 256
+  },
+  "coherence_field": {
+    "coherence_points": {
+      "O-": {
+        "value": 0.03137254901960784,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "O+": {
+        "value": 0.01568627450980392,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "A-": {
+        "value": 0.00392156862745098,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "A+": {
+        "value": 0.0196078431372549,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "B-": {
+        "value": 0.00784313725490196,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "B+": {
+        "value": 0.023529411764705882,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "AB-": {
+        "value": 0.011764705882352941,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      },
+      "AB+": {
+        "value": 0.09019607843137255,
+        "nrci": 0.999997,
+        "log_nrci_error": -12.716898269304416
+      }
+    },
+    "field_statistics": {
+      "mean_value": 0.025490196078431372,
+      "std_value": 0.025790091054835103,
+      "min_value": 0.00392156862745098,
+      "max_value": 0.09019607843137255,
+      "mean_nrci": 0.9999970000000002,
+      "min_nrci": 0.999997,
+      "max_nrci": 0.999997
+    },
+    "y_refinement_patterns": {
+      "O-": {
+        "original": 0.03137254901960784,
+        "forward": 0.008303542914651825,
+        "backward": 0.1185321545398392,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "O+": {
+        "original": 0.01568627450980392,
+        "forward": 0.004151771457325913,
+        "backward": 0.0592660772699196,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "A-": {
+        "original": 0.00392156862745098,
+        "forward": 0.0010379428643314782,
+        "backward": 0.0148165193174799,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "A+": {
+        "original": 0.0196078431372549,
+        "forward": 0.0051897143216573915,
+        "backward": 0.0740825965873995,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "B-": {
+        "original": 0.00784313725490196,
+        "forward": 0.0020758857286629563,
+        "backward": 0.0296330386349598,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "B+": {
+        "original": 0.023529411764705882,
+        "forward": 0.006227657185988869,
+        "backward": 0.0888991159048794,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "AB-": {
+        "original": 0.011764705882352941,
+        "forward": 0.0031138285929944347,
+        "backward": 0.0444495579524397,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      },
+      "AB+": {
+        "original": 0.09019607843137255,
+        "forward": 0.023872685879624,
+        "backward": 0.34077994430203773,
+        "forward_nrci": 0.9999970000000005,
+        "backward_nrci": 0.9999970000000005
+      }
+    }
+  },
+  "substance_correlation": {
+    "correlations": {
+      "lectins": {
+        "correlation": -0.3254897978814519,
+        "strength": "weak",
+        "direction": "negative"
+      },
+      "wheat_germ_agglutinin": {
+        "correlation": 0.18278513239395994,
+        "strength": "weak",
+        "direction": "positive"
+      },
+      "peanut_agglutinin": {
+        "correlation": 0.25347737201496007,
+        "strength": "weak",
+        "direction": "positive"
+      },
+      "anti_a_antibody": {
+        "correlation": -0.22381269615441526,
+        "strength": "weak",
+        "direction": "negative"
+      },
+      "anti_b_antibody": {
+        "correlation": -0.297732485710002,
+        "strength": "weak",
+        "direction": "negative"
+      },
+      "malaria_resistance": {
+        "correlation": -0.19194010951612314,
+        "strength": "weak",
+        "direction": "negative"
+      },
+      "cholera_susceptibility": {
+        "correlation": -0.16941786151371527,
+        "strength": "weak",
+        "direction": "negative"
+      },
+      "von_willebrand_factor": {
+        "correlation": 0.1919401095161233,
+        "strength": "weak",
+        "direction": "positive"
+      },
+      "norovirus_binding": {
+        "correlation": -0.30501812791042016,
+        "strength": "weak",
+        "direction": "negative"
+      },
+      "helicobacter_pylori": {
+        "correlation": -0.18353601663985822,
+        "strength": "weak",
+        "direction": "negative"
+      }
+    },
+    "bit_position_analysis": {
+      "lectins": {
+        "bit_0": {
+          "mean_with_bit": 0.525,
+          "mean_without_bit": 0.75,
+          "difference": -0.22499999999999998,
+          "significant": true
+        },
+        "bit_1": {
+          "mean_with_bit": 0.55,
+          "mean_without_bit": 0.725,
+          "difference": -0.17499999999999993,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.6375000000000001,
+          "mean_without_bit": 0.6375000000000001,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.85,
+          "mean_without_bit": 0.6071428571428571,
+          "difference": 0.24285714285714288,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.45,
+          "mean_without_bit": 0.6642857142857144,
+          "difference": -0.21428571428571436,
+          "significant": true
+        }
+      },
+      "wheat_germ_agglutinin": {
+        "bit_0": {
+          "mean_with_bit": 0.7250000000000001,
+          "mean_without_bit": 0.375,
+          "difference": 0.3500000000000001,
+          "significant": true
+        },
+        "bit_1": {
+          "mean_with_bit": 0.5249999999999999,
+          "mean_without_bit": 0.575,
+          "difference": -0.050000000000000044,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.55,
+          "mean_without_bit": 0.55,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.4,
+          "mean_without_bit": 0.5714285714285714,
+          "difference": -0.17142857142857137,
+          "significant": false
+        },
+        "bit_4": {
+          "mean_with_bit": 0.7,
+          "mean_without_bit": 0.5285714285714286,
+          "difference": 0.17142857142857137,
+          "significant": false
+        }
+      },
+      "peanut_agglutinin": {
+        "bit_0": {
+          "mean_with_bit": 0.625,
+          "mean_without_bit": 0.675,
+          "difference": -0.050000000000000044,
+          "significant": false
+        },
+        "bit_1": {
+          "mean_with_bit": 0.775,
+          "mean_without_bit": 0.525,
+          "difference": 0.25,
+          "significant": true
+        },
+        "bit_2": {
+          "mean_with_bit": 0.65,
+          "mean_without_bit": 0.65,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.55,
+          "mean_without_bit": 0.6642857142857144,
+          "difference": -0.11428571428571432,
+          "significant": false
+        },
+        "bit_4": {
+          "mean_with_bit": 0.75,
+          "mean_without_bit": 0.6357142857142858,
+          "difference": 0.11428571428571421,
+          "significant": false
+        }
+      },
+      "anti_a_antibody": {
+        "bit_0": {
+          "mean_with_bit": 0.0,
+          "mean_without_bit": 0.9249999999999999,
+          "difference": -0.9249999999999999,
+          "significant": true
+        },
+        "bit_1": {
+          "mean_with_bit": 0.45,
+          "mean_without_bit": 0.475,
+          "difference": -0.024999999999999967,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.4625,
+          "mean_without_bit": 0.4625,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.95,
+          "mean_without_bit": 0.39285714285714285,
+          "difference": 0.5571428571428572,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.0,
+          "mean_without_bit": 0.5285714285714286,
+          "difference": -0.5285714285714286,
+          "significant": true
+        }
+      },
+      "anti_b_antibody": {
+        "bit_0": {
+          "mean_with_bit": 0.45,
+          "mean_without_bit": 0.475,
+          "difference": -0.024999999999999967,
+          "significant": false
+        },
+        "bit_1": {
+          "mean_with_bit": 0.0,
+          "mean_without_bit": 0.9249999999999999,
+          "difference": -0.9249999999999999,
+          "significant": true
+        },
+        "bit_2": {
+          "mean_with_bit": 0.4625,
+          "mean_without_bit": 0.4625,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.95,
+          "mean_without_bit": 0.39285714285714285,
+          "difference": 0.5571428571428572,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.0,
+          "mean_without_bit": 0.5285714285714286,
+          "difference": -0.5285714285714286,
+          "significant": true
+        }
+      },
+      "malaria_resistance": {
+        "bit_0": {
+          "mean_with_bit": 0.42500000000000004,
+          "mean_without_bit": 0.6,
+          "difference": -0.17499999999999993,
+          "significant": false
+        },
+        "bit_1": {
+          "mean_with_bit": 0.44999999999999996,
+          "mean_without_bit": 0.575,
+          "difference": -0.125,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.5125,
+          "mean_without_bit": 0.5125,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.7,
+          "mean_without_bit": 0.48571428571428565,
+          "difference": 0.2142857142857143,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.4,
+          "mean_without_bit": 0.5285714285714286,
+          "difference": -0.12857142857142856,
+          "significant": false
+        }
+      },
+      "cholera_susceptibility": {
+        "bit_0": {
+          "mean_with_bit": 0.475,
+          "mean_without_bit": 0.675,
+          "difference": -0.20000000000000007,
+          "significant": true
+        },
+        "bit_1": {
+          "mean_with_bit": 0.5,
+          "mean_without_bit": 0.65,
+          "difference": -0.15000000000000002,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.5750000000000001,
+          "mean_without_bit": 0.5750000000000001,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.8,
+          "mean_without_bit": 0.5428571428571429,
+          "difference": 0.2571428571428571,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.45,
+          "mean_without_bit": 0.5928571428571429,
+          "difference": -0.14285714285714285,
+          "significant": false
+        }
+      },
+      "von_willebrand_factor": {
+        "bit_0": {
+          "mean_with_bit": 1.025,
+          "mean_without_bit": 0.8500000000000001,
+          "difference": 0.17499999999999982,
+          "significant": false
+        },
+        "bit_1": {
+          "mean_with_bit": 1.0,
+          "mean_without_bit": 0.875,
+          "difference": 0.125,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.9375,
+          "mean_without_bit": 0.9375,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.75,
+          "mean_without_bit": 0.9642857142857143,
+          "difference": -0.2142857142857143,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 1.05,
+          "mean_without_bit": 0.9214285714285715,
+          "difference": 0.12857142857142856,
+          "significant": false
+        }
+      },
+      "norovirus_binding": {
+        "bit_0": {
+          "mean_with_bit": 0.5,
+          "mean_without_bit": 0.7,
+          "difference": -0.19999999999999996,
+          "significant": false
+        },
+        "bit_1": {
+          "mean_with_bit": 0.475,
+          "mean_without_bit": 0.725,
+          "difference": -0.25,
+          "significant": true
+        },
+        "bit_2": {
+          "mean_with_bit": 0.6,
+          "mean_without_bit": 0.6,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.85,
+          "mean_without_bit": 0.5642857142857142,
+          "difference": 0.2857142857142858,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.4,
+          "mean_without_bit": 0.6285714285714287,
+          "difference": -0.22857142857142865,
+          "significant": true
+        }
+      },
+      "helicobacter_pylori": {
+        "bit_0": {
+          "mean_with_bit": 0.44999999999999996,
+          "mean_without_bit": 0.6,
+          "difference": -0.15000000000000002,
+          "significant": false
+        },
+        "bit_1": {
+          "mean_with_bit": 0.42500000000000004,
+          "mean_without_bit": 0.625,
+          "difference": -0.19999999999999996,
+          "significant": false
+        },
+        "bit_2": {
+          "mean_with_bit": 0.525,
+          "mean_without_bit": 0.525,
+          "difference": 0.0,
+          "significant": false
+        },
+        "bit_3": {
+          "mean_with_bit": 0.75,
+          "mean_without_bit": 0.4928571428571429,
+          "difference": 0.2571428571428571,
+          "significant": true
+        },
+        "bit_4": {
+          "mean_with_bit": 0.4,
+          "mean_without_bit": 0.5428571428571429,
+          "difference": -0.1428571428571429,
+          "significant": false
+        }
+      }
+    },
+    "pattern_discoveries": []
+  },
+  "y_resonance": {
+    "y_alignment": {
+      "O-": {
+        "normalized_bitfield": 0.03137254901960784,
+        "y_distance": 0.23330288138491911,
+        "y_inv_distance": 3.746839876937767,
+        "y_resonance": 0.8108308308475407,
+        "y_inv_resonance": 0.2106664698884071,
+        "combined_resonance": 0.5107486503679739
+      },
+      "O+": {
+        "normalized_bitfield": 0.01568627450980392,
+        "y_distance": 0.24898915589472304,
+        "y_inv_distance": 3.7625261514475707,
+        "y_resonance": 0.8006474638153621,
+        "y_inv_resonance": 0.20997260029659887,
+        "combined_resonance": 0.5053100320559805
+      },
+      "A-": {
+        "normalized_bitfield": 0.00392156862745098,
+        "y_distance": 0.260753861777076,
+        "y_inv_distance": 3.7742908573299236,
+        "y_resonance": 0.7931762339323439,
+        "y_inv_resonance": 0.20945519028542417,
+        "combined_resonance": 0.501315712108884
+      },
+      "A+": {
+        "normalized_bitfield": 0.0196078431372549,
+        "y_distance": 0.24506758726727207,
+        "y_inv_distance": 3.7586045828201198,
+        "y_resonance": 0.8031692497873494,
+        "y_inv_resonance": 0.21014563883081966,
+        "combined_resonance": 0.5066574443090845
+      },
+      "B-": {
+        "normalized_bitfield": 0.00784313725490196,
+        "y_distance": 0.25683229314962497,
+        "y_inv_distance": 3.7703692887024727,
+        "y_resonance": 0.7956511027370227,
+        "y_inv_resonance": 0.20962737672495735,
+        "combined_resonance": 0.50263923973099
+      },
+      "B+": {
+        "normalized_bitfield": 0.023529411764705882,
+        "y_distance": 0.24114601863982107,
+        "y_inv_distance": 3.754683014192669,
+        "y_resonance": 0.8057069716066975,
+        "y_inv_resonance": 0.21031896280257018,
+        "combined_resonance": 0.5080129672046338
+      },
+      "AB-": {
+        "normalized_bitfield": 0.011764705882352941,
+        "y_distance": 0.252910724522174,
+        "y_inv_distance": 3.7664477200750217,
+        "y_resonance": 0.7981414640547296,
+        "y_inv_resonance": 0.2097998464953814,
+        "combined_resonance": 0.5039706552750555
+      },
+      "AB+": {
+        "normalized_bitfield": 0.09019607843137255,
+        "y_distance": 0.1744793519731544,
+        "y_inv_distance": 3.688016347526002,
+        "y_resonance": 0.8514411073468215,
+        "y_inv_resonance": 0.21330983637199305,
+        "combined_resonance": 0.5323754718594073
+      }
+    },
+    "resonance_scores": {
+      "O-": 0.5107486503679739,
+      "O+": 0.5053100320559805,
+      "A-": 0.501315712108884,
+      "A+": 0.5066574443090845,
+      "B-": 0.50263923973099,
+      "B+": 0.5080129672046338,
+      "AB-": 0.5039706552750555,
+      "AB+": 0.5323754718594073
+    },
+    "optimal_bitfields": [
+      {
+        "blood_type": "AB+",
+        "resonance": 0.5323754718594073,
+        "bitfield": 23,
+        "binary": "00010111"
+      },
+      {
+        "blood_type": "O-",
+        "resonance": 0.5107486503679739,
+        "bitfield": 8,
+        "binary": "00001000"
+      },
+      {
+        "blood_type": "B+",
+        "resonance": 0.5080129672046338,
+        "bitfield": 6,
+        "binary": "00000110"
+      }
+    ]
+  }
+}

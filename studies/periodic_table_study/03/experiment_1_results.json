@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "field_size": 1000,
+    "evolution_steps": 100,
+    "seed": 42
+  },
+  "initial_state": {
+    "mean_nrci": 0.501994000176258,
+    "energy": 326.76879178325004
+  },
+  "evolved_state": {
+    "mean_nrci": 0.0,
+    "energy": Infinity
+  },
+  "attractors": {
+    "count": 2,
+    "profiles": [
+      {
+        "attractor_id": 0,
+        "size": 491,
+        "mean_value": -1944087609.7128882,
+        "mean_nrci": 0.9999999999909999,
+        "delta_deficit": 9.000133971426294e-12
+      },
+      {
+        "attractor_id": 1,
+        "size": 509,
+        "mean_value": -893207241.7411617,
+        "mean_nrci": 0.9999999999909999,
+        "delta_deficit": 9.000133971426294e-12
+      }
+    ]
+  },
+  "blood_type_mapping": {
+    "mapping_possible": false,
+    "reason": "Expected 8 attractors, found 2"
+  },
+  "hypothesis_validated": false
+}

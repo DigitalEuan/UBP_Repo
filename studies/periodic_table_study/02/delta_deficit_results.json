@@ -1,0 +1,679 @@
+{
+  "metadata": {
+    "blood_types": [
+      "O-",
+      "O+",
+      "A-",
+      "A+",
+      "B-",
+      "B+",
+      "AB-",
+      "AB+"
+    ],
+    "num_types": 8,
+    "delta_biological_baseline": 0.4058,
+    "time_flow_biological": 0.594,
+    "dissolution_freq_range_ghz": [
+      100.0,
+      500.0
+    ]
+  },
+  "blood_type_analysis": {
+    "O-": {
+      "coherence": {
+        "mean_nrci": 0.9990617528031978,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009382471968022443,
+        "deviation_from_biological_baseline": 0.40486175280319775,
+        "ratio_to_biological_baseline": 0.002312092648600898,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009391283313265,
+        "is_trapped": false,
+        "time_flow": 0.9990617528031978,
+        "time_flow_percent": 99.90617528031977
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005624385000543698,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.624385000543698e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 2.3,
+        "distance_to_dissolution_min_ghz": 97.7,
+        "distance_to_dissolution_max_ghz": 497.7,
+        "predicted_dissolution_freq_ghz": -172.54241185001527,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0012,
+        "oscillation_freq": 2300000000.0,
+        "binding_rate": 8.333333333333334e-09,
+        "dissociation_rate": 8.3e-09
+      }
+    },
+    "O+": {
+      "coherence": {
+        "mean_nrci": 0.9990615069241205,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009384930758794541,
+        "deviation_from_biological_baseline": 0.40486150692412054,
+        "ratio_to_biological_baseline": 0.002312698560570365,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009393746725053,
+        "is_trapped": false,
+        "time_flow": 0.9990615069241205,
+        "time_flow_percent": 99.90615069241206
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005621923900348676,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.621923900348675e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 2.5,
+        "distance_to_dissolution_min_ghz": 97.5,
+        "distance_to_dissolution_max_ghz": 497.5,
+        "predicted_dissolution_freq_ghz": -172.54224633060957,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0015,
+        "oscillation_freq": 2500000000.0,
+        "binding_rate": 8.333333333333334e-09,
+        "dissociation_rate": 8.3e-09
+      }
+    },
+    "A-": {
+      "coherence": {
+        "mean_nrci": 0.9990632475949165,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009367524050835074,
+        "deviation_from_biological_baseline": 0.4048632475949165,
+        "ratio_to_biological_baseline": 0.0023084090810337786,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009376307329276,
+        "is_trapped": false,
+        "time_flow": 0.9990632475949165,
+        "time_flow_percent": 99.90632475949165
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005639346944550598,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.639346944550598e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 2.7,
+        "distance_to_dissolution_min_ghz": 97.3,
+        "distance_to_dissolution_max_ghz": 497.3,
+        "predicted_dissolution_freq_ghz": -172.5434181049589,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0018,
+        "oscillation_freq": 2700000000.0,
+        "binding_rate": 4.761904761904762e-09,
+        "dissociation_rate": 4.8e-09
+      }
+    },
+    "A+": {
+      "coherence": {
+        "mean_nrci": 0.9990629325411111,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.000937067458888885,
+        "deviation_from_biological_baseline": 0.4048629325411111,
+        "ratio_to_biological_baseline": 0.002309185458080052,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009379463779178,
+        "is_trapped": false,
+        "time_flow": 0.9990629325411111,
+        "time_flow_percent": 99.9062932541111
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005636193451958293,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.636193451958293e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 2.9,
+        "distance_to_dissolution_min_ghz": 97.1,
+        "distance_to_dissolution_max_ghz": 497.1,
+        "predicted_dissolution_freq_ghz": -172.54320601892366,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0021,
+        "oscillation_freq": 2900000000.0,
+        "binding_rate": 4.761904761904762e-09,
+        "dissociation_rate": 4.8e-09
+      }
+    },
+    "B-": {
+      "coherence": {
+        "mean_nrci": 0.9990629682193739,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009370317806260964,
+        "deviation_from_biological_baseline": 0.4048629682193739,
+        "ratio_to_biological_baseline": 0.002309097537274757,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009379106326963,
+        "is_trapped": false,
+        "time_flow": 0.9990629682193739,
+        "time_flow_percent": 99.90629682193739
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005636550569222776,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.636550569222776e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 2.6,
+        "distance_to_dissolution_min_ghz": 97.4,
+        "distance_to_dissolution_max_ghz": 497.4,
+        "predicted_dissolution_freq_ghz": -172.5432300366031,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0017,
+        "oscillation_freq": 2600000000.0,
+        "binding_rate": 5.263157894736842e-09,
+        "dissociation_rate": 5.3e-09
+      }
+    },
+    "B+": {
+      "coherence": {
+        "mean_nrci": 0.9990626618690432,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009373381309567552,
+        "deviation_from_biological_baseline": 0.40486266186904324,
+        "ratio_to_biological_baseline": 0.0023098524666258138,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.000938217558049,
+        "is_trapped": false,
+        "time_flow": 0.9990626618690432,
+        "time_flow_percent": 99.90626618690432
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005633484192153729,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.633484192153729e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 2.8,
+        "distance_to_dissolution_min_ghz": 97.2,
+        "distance_to_dissolution_max_ghz": 497.2,
+        "predicted_dissolution_freq_ghz": -172.5430238095208,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.002,
+        "oscillation_freq": 2800000000.0,
+        "binding_rate": 5.263157894736842e-09,
+        "dissociation_rate": 5.3e-09
+      }
+    },
+    "AB-": {
+      "coherence": {
+        "mean_nrci": 0.9990634078758629,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009365921241371034,
+        "deviation_from_biological_baseline": 0.4048634078758629,
+        "ratio_to_biological_baseline": 0.002308014105808535,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009374701512974,
+        "is_trapped": false,
+        "time_flow": 0.9990634078758629,
+        "time_flow_percent": 99.90634078758629
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005640951256729361,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.640951256729361e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 3.1,
+        "distance_to_dissolution_min_ghz": 96.9,
+        "distance_to_dissolution_max_ghz": 496.9,
+        "predicted_dissolution_freq_ghz": -172.54352600192718,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0024,
+        "oscillation_freq": 3100000000.0,
+        "binding_rate": 4e-09,
+        "dissociation_rate": 4e-09
+      }
+    },
+    "AB+": {
+      "coherence": {
+        "mean_nrci": 0.9990631212964006,
+        "field_size": 17
+      },
+      "delta_deficit": {
+        "value": 0.0009368787035993753,
+        "deviation_from_biological_baseline": 0.4048631212964006,
+        "ratio_to_biological_baseline": 0.002308720314439072,
+        "classification": "Cosmological/Quantum"
+      },
+      "temporal_trap": {
+        "gamma": 1.0009377572684133,
+        "is_trapped": false,
+        "time_flow": 0.9990631212964006,
+        "time_flow_percent": 99.90631212964006
+      },
+      "escape_dynamics": {
+        "escape_energy": 0.0005638082775098314,
+        "target_delta": 0.0015,
+        "energy_per_pulse_needed": 5.638082775098314e-06
+      },
+      "frequencies": {
+        "membrane_oscillation_ghz": 3.3,
+        "distance_to_dissolution_min_ghz": 96.7,
+        "distance_to_dissolution_max_ghz": 496.7,
+        "predicted_dissolution_freq_ghz": -172.5433330840798,
+        "is_near_dissolution": false
+      },
+      "temporal_properties": {
+        "turnover_rate": 0.0027,
+        "oscillation_freq": 3300000000.0,
+        "binding_rate": 4e-09,
+        "dissociation_rate": 4e-09
+      }
+    }
+  },
+  "delta_correlations": {
+    "O--O+": {
+      "delta_difference": 2.45879077209743e-07,
+      "delta_similarity": 0.9999975412152735,
+      "gamma_difference": 2.463411787889669e-07,
+      "gamma_similarity": 0.9999997536588819,
+      "escape_energy_difference": 2.4611001950226776e-07,
+      "escape_similarity": 0.9999997538900411,
+      "overall_similarity": 0.9999990162547322
+    },
+    "O--A-": {
+      "delta_difference": 1.4947917187368986e-06,
+      "delta_similarity": 0.9999850523062496,
+      "gamma_difference": 1.497598398847444e-06,
+      "gamma_similarity": 0.9999985024038439,
+      "escape_energy_difference": 1.4961944006900178e-06,
+      "escape_similarity": 0.999998503807838,
+      "overall_similarity": 0.9999940195059772
+    },
+    "O--A+": {
+      "delta_difference": 1.1797379133593466e-06,
+      "delta_similarity": 0.999988202760043,
+      "gamma_difference": 1.1819534087020855e-06,
+      "gamma_similarity": 0.9999988180479883,
+      "escape_energy_difference": 1.1808451414594594e-06,
+      "escape_similarity": 0.999998819156253,
+      "overall_similarity": 0.9999952799880948
+    },
+    "O--B-": {
+      "delta_difference": 1.2154161761479543e-06,
+      "delta_similarity": 0.9999878459859604,
+      "gamma_difference": 1.2176986301515313e-06,
+      "gamma_similarity": 0.9999987823028527,
+      "escape_energy_difference": 1.2165568679077532e-06,
+      "escape_similarity": 0.9999987834446121,
+      "overall_similarity": 0.9999951372444751
+    },
+    "O--B+": {
+      "delta_difference": 9.090658454891098e-07,
+      "delta_similarity": 0.9999909094241844,
+      "gamma_difference": 9.107732774626953e-07,
+      "gamma_similarity": 0.9999990892275521,
+      "escape_energy_difference": 9.099191610030619e-07,
+      "escape_similarity": 0.9999990900816671,
+      "overall_similarity": 0.9999963629111347
+    },
+    "O--AB-": {
+      "delta_difference": 1.6550726651409775e-06,
+      "delta_similarity": 0.9999834495472706,
+      "gamma_difference": 1.6581800290627058e-06,
+      "gamma_similarity": 0.9999983418227205,
+      "escape_energy_difference": 1.6566256185662287e-06,
+      "escape_similarity": 0.9999983433771259,
+      "overall_similarity": 0.999993378249039
+    },
+    "O--AB+": {
+      "delta_difference": 1.3684932028690255e-06,
+      "delta_similarity": 0.9999863152552461,
+      "gamma_difference": 1.3710629132024366e-06,
+      "gamma_similarity": 0.9999986289389666,
+      "escape_energy_difference": 1.369777455461534e-06,
+      "escape_similarity": 0.9999986302244208,
+      "overall_similarity": 0.9999945248062111
+    },
+    "O+-A-": {
+      "delta_difference": 1.7406707959466416e-06,
+      "delta_similarity": 0.9999825935950287,
+      "gamma_difference": 1.7439395776364108e-06,
+      "gamma_similarity": 0.9999982560634637,
+      "escape_energy_difference": 1.7423044201922856e-06,
+      "escape_similarity": 0.9999982576986153,
+      "overall_similarity": 0.9999930357857026
+    },
+    "O+-A+": {
+      "delta_difference": 1.4256169905690896e-06,
+      "delta_similarity": 0.9999857440333297,
+      "gamma_difference": 1.4282945874910524e-06,
+      "gamma_similarity": 0.9999985717074525,
+      "escape_energy_difference": 1.4269551609617272e-06,
+      "escape_similarity": 0.9999985730468752,
+      "overall_similarity": 0.9999942962625527
+    },
+    "O+-B-": {
+      "delta_difference": 1.4612952533576973e-06,
+      "delta_similarity": 0.9999853872610017,
+      "gamma_difference": 1.4640398089404982e-06,
+      "gamma_similarity": 0.9999985359623345,
+      "escape_energy_difference": 1.462666887410021e-06,
+      "escape_similarity": 0.999998537335252,
+      "overall_similarity": 0.9999941535195295
+    },
+    "O+-B+": {
+      "delta_difference": 1.1549449226988528e-06,
+      "delta_similarity": 0.9999884506841612,
+      "gamma_difference": 1.1571144562516622e-06,
+      "gamma_similarity": 0.9999988428868827,
+      "escape_energy_difference": 1.1560291805053297e-06,
+      "escape_similarity": 0.9999988439721558,
+      "overall_similarity": 0.9999953791810666
+    },
+    "O+-AB-": {
+      "delta_difference": 1.9009517423507205e-06,
+      "delta_similarity": 0.9999809908439313,
+      "gamma_difference": 1.9045212078516727e-06,
+      "gamma_similarity": 0.9999980954824194,
+      "escape_energy_difference": 1.9027356380684965e-06,
+      "escape_similarity": 0.9999980972679823,
+      "overall_similarity": 0.9999923945314443
+    },
+    "O+-AB+": {
+      "delta_difference": 1.6143722800787685e-06,
+      "delta_similarity": 0.9999838565378147,
+      "gamma_difference": 1.6174040919914034e-06,
+      "gamma_similarity": 0.999998382598524,
+      "escape_energy_difference": 1.6158874749638017e-06,
+      "escape_similarity": 0.9999983841151362,
+      "overall_similarity": 0.9999935410838251
+    },
+    "A--A+": {
+      "delta_difference": 3.15053805377552e-07,
+      "delta_similarity": 0.9999968494718721,
+      "gamma_difference": 3.156449901453584e-07,
+      "gamma_similarity": 0.9999996843551094,
+      "escape_energy_difference": 3.153492592305584e-07,
+      "escape_similarity": 0.9999996846508403,
+      "overall_similarity": 0.9999987394926073
+    },
+    "A--B-": {
+      "delta_difference": 2.7937554258894437e-07,
+      "delta_similarity": 0.9999972062523792,
+      "gamma_difference": 2.798997686959126e-07,
+      "gamma_similarity": 0.9999997201003097,
+      "escape_energy_difference": 2.796375327822646e-07,
+      "escape_similarity": 0.9999997203625455,
+      "overall_similarity": 0.9999988822384115
+    },
+    "A--B+": {
+      "delta_difference": 5.857258732477888e-07,
+      "delta_similarity": 0.9999941427755747,
+      "gamma_difference": 5.868251213847486e-07,
+      "gamma_similarity": 0.999999413175223,
+      "escape_energy_difference": 5.862752396869559e-07,
+      "escape_similarity": 0.999999413725104,
+      "overall_similarity": 0.999997656558634
+    },
+    "A--AB-": {
+      "delta_difference": 1.6028094640407886e-07,
+      "delta_similarity": 0.9999983971931049,
+      "gamma_difference": 1.6058163021526184e-07,
+      "gamma_similarity": 0.9999998394183955,
+      "escape_energy_difference": 1.6043121787621094e-07,
+      "escape_similarity": 0.9999998395688079,
+      "overall_similarity": 0.9999993587267694
+    },
+    "A--AB+": {
+      "delta_difference": 1.262985158678731e-07,
+      "delta_similarity": 0.9999987370164365,
+      "gamma_difference": 1.2653548564500738e-07,
+      "gamma_similarity": 0.9999998734645303,
+      "escape_energy_difference": 1.2641694522848388e-07,
+      "escape_similarity": 0.9999998735830709,
+      "overall_similarity": 0.9999994946880125
+    },
+    "A+-B-": {
+      "delta_difference": 3.567826278860764e-08,
+      "delta_similarity": 0.9999996432174995,
+      "gamma_difference": 3.574522144944581e-08,
+      "gamma_similarity": 0.9999999642547799,
+      "escape_energy_difference": 3.571172644829378e-08,
+      "escape_similarity": 0.9999999642882748,
+      "overall_similarity": 0.9999998572535181
+    },
+    "A+-B+": {
+      "delta_difference": 2.706720678702368e-07,
+      "delta_similarity": 0.9999972932866477,
+      "gamma_difference": 2.711801312393902e-07,
+      "gamma_similarity": 0.9999997288199423,
+      "escape_energy_difference": 2.709259804563975e-07,
+      "escape_similarity": 0.9999997290740928,
+      "overall_similarity": 0.9999989170602276
+    },
+    "A+-AB-": {
+      "delta_difference": 4.7533475178163087e-07,
+      "delta_similarity": 0.9999952466750764,
+      "gamma_difference": 4.7622662036062025e-07,
+      "gamma_similarity": 0.9999995237736065,
+      "escape_energy_difference": 4.757804771067693e-07,
+      "escape_similarity": 0.9999995242197494,
+      "overall_similarity": 0.9999980982228108
+    },
+    "A+-AB+": {
+      "delta_difference": 1.887552895096789e-07,
+      "delta_similarity": 0.9999981124506677,
+      "gamma_difference": 1.8910950450035102e-07,
+      "gamma_similarity": 0.9999998108905312,
+      "escape_energy_difference": 1.889323140020745e-07,
+      "escape_similarity": 0.9999998110677217,
+      "overall_similarity": 0.9999992448029736
+    },
+    "B--B+": {
+      "delta_difference": 3.0635033065884443e-07,
+      "delta_similarity": 0.9999969365060785,
+      "gamma_difference": 3.0692535268883603e-07,
+      "gamma_similarity": 0.9999996930747416,
+      "escape_energy_difference": 3.0663770690469126e-07,
+      "escape_similarity": 0.999999693362387,
+      "overall_similarity": 0.9999987743144024
+    },
+    "B--AB-": {
+      "delta_difference": 4.3965648899302323e-07,
+      "delta_similarity": 0.9999956034544397,
+      "gamma_difference": 4.4048139891117444e-07,
+      "gamma_similarity": 0.9999995595187952,
+      "escape_energy_difference": 4.4006875065847554e-07,
+      "escape_similarity": 0.9999995599314431,
+      "overall_similarity": 0.999998240968226
+    },
+    "B--AB+": {
+      "delta_difference": 1.5307702672107126e-07,
+      "delta_similarity": 0.999998469232076,
+      "gamma_difference": 1.5336428305090521e-07,
+      "gamma_similarity": 0.9999998466357405,
+      "escape_energy_difference": 1.5322058755378072e-07,
+      "escape_similarity": 0.9999998467794359,
+      "overall_similarity": 0.9999993875490841
+    },
+    "B+-AB-": {
+      "delta_difference": 7.460068196518677e-07,
+      "delta_similarity": 0.9999925399874556,
+      "gamma_difference": 7.474067516000105e-07,
+      "gamma_similarity": 0.9999992525938071,
+      "escape_energy_difference": 7.467064575631668e-07,
+      "escape_similarity": 0.9999992532941,
+      "overall_similarity": 0.9999970152917875
+    },
+    "B+-AB+": {
+      "delta_difference": 4.594273573799157e-07,
+      "delta_similarity": 0.9999954057475334,
+      "gamma_difference": 4.6028963573974124e-07,
+      "gamma_similarity": 0.9999995397105761,
+      "escape_energy_difference": 4.59858294458472e-07,
+      "escape_similarity": 0.9999995401419169,
+      "overall_similarity": 0.9999981618666755
+    },
+    "AB--AB+": {
+      "delta_difference": 2.8657946227195197e-07,
+      "delta_similarity": 0.99999713421359,
+      "gamma_difference": 2.871171158602692e-07,
+      "gamma_similarity": 0.9999997128829666,
+      "escape_energy_difference": 2.868481631046948e-07,
+      "escape_similarity": 0.9999997131519193,
+      "overall_similarity": 0.9999988534161587
+    }
+  },
+  "temporal_trap_clusters": {
+    "gamma_groups": {
+      "weak_trap": [
+        "O-",
+        "O+",
+        "A-",
+        "A+",
+        "B-",
+        "B+",
+        "AB-",
+        "AB+"
+      ],
+      "moderate_trap": [],
+      "strong_trap": [],
+      "deep_trap": []
+    },
+    "delta_groups": {
+      "Cosmological/Quantum": [
+        "O-",
+        "O+",
+        "A-",
+        "A+",
+        "B-",
+        "B+",
+        "AB-",
+        "AB+"
+      ]
+    }
+  },
+  "dissolution_analysis": {
+    "frequency_spectrum": [
+      {
+        "blood_type": "O-",
+        "membrane_osc_ghz": 2.3,
+        "predicted_dissolution_ghz": -172.54241185001527,
+        "distance_to_min_ghz": 97.7
+      },
+      {
+        "blood_type": "O+",
+        "membrane_osc_ghz": 2.5,
+        "predicted_dissolution_ghz": -172.54224633060957,
+        "distance_to_min_ghz": 97.5
+      },
+      {
+        "blood_type": "B-",
+        "membrane_osc_ghz": 2.6,
+        "predicted_dissolution_ghz": -172.5432300366031,
+        "distance_to_min_ghz": 97.4
+      },
+      {
+        "blood_type": "A-",
+        "membrane_osc_ghz": 2.7,
+        "predicted_dissolution_ghz": -172.5434181049589,
+        "distance_to_min_ghz": 97.3
+      },
+      {
+        "blood_type": "B+",
+        "membrane_osc_ghz": 2.8,
+        "predicted_dissolution_ghz": -172.5430238095208,
+        "distance_to_min_ghz": 97.2
+      },
+      {
+        "blood_type": "A+",
+        "membrane_osc_ghz": 2.9,
+        "predicted_dissolution_ghz": -172.54320601892366,
+        "distance_to_min_ghz": 97.1
+      },
+      {
+        "blood_type": "AB-",
+        "membrane_osc_ghz": 3.1,
+        "predicted_dissolution_ghz": -172.54352600192718,
+        "distance_to_min_ghz": 96.9
+      },
+      {
+        "blood_type": "AB+",
+        "membrane_osc_ghz": 3.3,
+        "predicted_dissolution_ghz": -172.5433330840798,
+        "distance_to_min_ghz": 96.7
+      }
+    ],
+    "frequency_gaps": [
+      {
+        "between": "O--O+",
+        "gap_ghz": 0.20000000000000018
+      },
+      {
+        "between": "O+-B-",
+        "gap_ghz": 0.10000000000000009
+      },
+      {
+        "between": "B--A-",
+        "gap_ghz": 0.10000000000000009
+      },
+      {
+        "between": "A--B+",
+        "gap_ghz": 0.09999999999999964
+      },
+      {
+        "between": "B+-A+",
+        "gap_ghz": 0.10000000000000009
+      },
+      {
+        "between": "A+-AB-",
+        "gap_ghz": 0.20000000000000018
+      },
+      {
+        "between": "AB--AB+",
+        "gap_ghz": 0.19999999999999973
+      }
+    ],
+    "mean_membrane_freq_ghz": 2.7750000000000004,
+    "min_membrane_freq_ghz": 2.3,
+    "max_membrane_freq_ghz": 3.3
+  }
+}

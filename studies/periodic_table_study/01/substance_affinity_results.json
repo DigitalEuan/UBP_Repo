@@ -1,0 +1,408 @@
+{
+  "metadata": {
+    "analysis_type": "substance_affinity",
+    "ubp_version": "3.5",
+    "research_question": "Why do blood types have different substance affinities?"
+  },
+  "coherence_matching": {
+    "coherence_affinity_correlation": {
+      "correlation": -0.18945414217688494,
+      "p_value_estimate": 0.8105458578231151,
+      "interpretation": "Weak correlation",
+      "strength": "weak"
+    },
+    "predictions": {},
+    "validation": {}
+  },
+  "substance_resonance": {
+    "substance_resonance_profiles": {
+      "lectins": {
+        "affinity_pattern": [
+          0.85,
+          0.6,
+          0.65,
+          0.45
+        ],
+        "mean_affinity": 0.6375000000000001,
+        "std_affinity": 0.14306903927824494,
+        "selectivity": 0.22442202239724693,
+        "pattern_preservation_under_y": 1.0,
+        "interpretation": "Non-selective"
+      },
+      "wheat_germ_agglutinin": {
+        "affinity_pattern": [
+          0.4,
+          0.75,
+          0.35,
+          0.7
+        ],
+        "mean_affinity": 0.55,
+        "std_affinity": 0.17677669529663687,
+        "selectivity": 0.3214121732666125,
+        "pattern_preservation_under_y": 0.9999999999999999,
+        "interpretation": "Moderately selective"
+      },
+      "peanut_agglutinin": {
+        "affinity_pattern": [
+          0.55,
+          0.5,
+          0.8,
+          0.75
+        ],
+        "mean_affinity": 0.65,
+        "std_affinity": 0.12747548783981963,
+        "selectivity": 0.19611613513818404,
+        "pattern_preservation_under_y": 1.0,
+        "interpretation": "Non-selective"
+      },
+      "anti_a_antibody": {
+        "affinity_pattern": [
+          0.95,
+          0.0,
+          0.9,
+          0.0
+        ],
+        "mean_affinity": 0.4625,
+        "std_affinity": 0.4628377145393405,
+        "selectivity": 1.000730193598574,
+        "pattern_preservation_under_y": 1.0,
+        "interpretation": "Highly selective"
+      },
+      "anti_b_antibody": {
+        "affinity_pattern": [
+          0.95,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "mean_affinity": 0.4625,
+        "std_affinity": 0.4628377145393404,
+        "selectivity": 1.0007301935985737,
+        "pattern_preservation_under_y": 1.0,
+        "interpretation": "Highly selective"
+      },
+      "malaria_resistance": {
+        "affinity_pattern": [
+          0.7,
+          0.45,
+          0.5,
+          0.4
+        ],
+        "mean_affinity": 0.5125,
+        "std_affinity": 0.11388041973930371,
+        "selectivity": 0.22220569705229995,
+        "pattern_preservation_under_y": 0.9999999999999998,
+        "interpretation": "Non-selective"
+      },
+      "cholera_susceptibility": {
+        "affinity_pattern": [
+          0.8,
+          0.5,
+          0.55,
+          0.45
+        ],
+        "mean_affinity": 0.5750000000000001,
+        "std_affinity": 0.13462912017836262,
+        "selectivity": 0.23413760031019584,
+        "pattern_preservation_under_y": 0.9999999999999999,
+        "interpretation": "Non-selective"
+      },
+      "von_willebrand_factor": {
+        "affinity_pattern": [
+          0.75,
+          1.0,
+          0.95,
+          1.05
+        ],
+        "mean_affinity": 0.9375,
+        "std_affinity": 0.11388041973930374,
+        "selectivity": 0.12147244772192399,
+        "pattern_preservation_under_y": 1.0,
+        "interpretation": "Non-selective"
+      },
+      "norovirus_binding": {
+        "affinity_pattern": [
+          0.85,
+          0.6,
+          0.55,
+          0.4
+        ],
+        "mean_affinity": 0.6,
+        "std_affinity": 0.1620185174601965,
+        "selectivity": 0.2700308624336608,
+        "pattern_preservation_under_y": 1.0,
+        "interpretation": "Non-selective"
+      },
+      "helicobacter_pylori": {
+        "affinity_pattern": [
+          0.75,
+          0.5,
+          0.45,
+          0.4
+        ],
+        "mean_affinity": 0.525,
+        "std_affinity": 0.1346291201783626,
+        "selectivity": 0.2564364193873573,
+        "pattern_preservation_under_y": 0.9999999999999999,
+        "interpretation": "Non-selective"
+      }
+    },
+    "geometric_clusters": [],
+    "novel_insights": [
+      {
+        "substance": "anti_a_antibody",
+        "insight": "anti_a_antibody shows high selectivity (1.00) with strong Y-refinement preservation (1.00)",
+        "implication": "Geometric origin of selectivity - pattern is Y-stable"
+      },
+      {
+        "substance": "anti_b_antibody",
+        "insight": "anti_b_antibody shows high selectivity (1.00) with strong Y-refinement preservation (1.00)",
+        "implication": "Geometric origin of selectivity - pattern is Y-stable"
+      }
+    ]
+  },
+  "y_alignment": {
+    "y_aligned_affinities": [
+      {
+        "substance": "peanut_agglutinin",
+        "blood_group": "B",
+        "affinity": 0.8,
+        "y_multiple": 3,
+        "error": 0.022569940765899688
+      },
+      {
+        "substance": "cholera_susceptibility",
+        "blood_group": "O",
+        "affinity": 0.8,
+        "y_multiple": 3,
+        "error": 0.022569940765899688
+      },
+      {
+        "substance": "von_willebrand_factor",
+        "blood_group": "AB",
+        "affinity": 1.05,
+        "y_multiple": 4,
+        "error": 0.03287695274475677
+      }
+    ],
+    "y_inverse_aligned_affinities": [],
+    "geometric_ratios": {}
+  },
+  "coherence_substrate_mapping": {
+    "coherence_mapping": {
+      "lectins": {
+        "affinity_values": [
+          0.85,
+          0.6,
+          0.65,
+          0.45
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.14306903927824494,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "wheat_germ_agglutinin": {
+        "affinity_values": [
+          0.4,
+          0.75,
+          0.35,
+          0.7
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.17677669529663687,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "peanut_agglutinin": {
+        "affinity_values": [
+          0.55,
+          0.5,
+          0.8,
+          0.75
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.12747548783981963,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "anti_a_antibody": {
+        "affinity_values": [
+          0.95,
+          0.0,
+          0.9,
+          0.0
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.4628377145393405,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "anti_b_antibody": {
+        "affinity_values": [
+          0.95,
+          0.9,
+          0.0,
+          0.0
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.4628377145393404,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "malaria_resistance": {
+        "affinity_values": [
+          0.7,
+          0.45,
+          0.5,
+          0.4
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.11388041973930371,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "cholera_susceptibility": {
+        "affinity_values": [
+          0.8,
+          0.5,
+          0.55,
+          0.45
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.13462912017836262,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "von_willebrand_factor": {
+        "affinity_values": [
+          0.75,
+          1.0,
+          0.95,
+          1.05
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.11388041973930374,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "norovirus_binding": {
+        "affinity_values": [
+          0.85,
+          0.6,
+          0.55,
+          0.4
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.1620185174601965,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      },
+      "helicobacter_pylori": {
+        "affinity_values": [
+          0.75,
+          0.5,
+          0.45,
+          0.4
+        ],
+        "mean_nrci": 0.999997,
+        "coherence_spread": 0.1346291201783626,
+        "nrci_values": [
+          0.999997,
+          0.999997,
+          0.999997,
+          0.999997
+        ]
+      }
+    },
+    "nrci_patterns": {
+      "lectins": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "wheat_germ_agglutinin": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "peanut_agglutinin": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "anti_a_antibody": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "anti_b_antibody": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "malaria_resistance": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "cholera_susceptibility": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "von_willebrand_factor": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "norovirus_binding": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      },
+      "helicobacter_pylori": {
+        "mean_nrci": 0.999997,
+        "nrci_std": 0.0,
+        "uniformity": 1.0
+      }
+    },
+    "emergent_clusters": []
+  }
+}
