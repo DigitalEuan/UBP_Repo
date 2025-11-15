@@ -1,0 +1,65 @@
+{
+  "valid_combinations": [
+    [],
+    [
+      "A"
+    ],
+    [
+      "B"
+    ],
+    [
+      "RhD"
+    ],
+    [
+      "A",
+      "B"
+    ],
+    [
+      "A",
+      "RhD"
+    ],
+    [
+      "B",
+      "RhD"
+    ],
+    [
+      "A",
+      "B",
+      "RhD"
+    ]
+  ],
+  "invalid_combinations": [
+    [
+      "X"
+    ],
+    [
+      "A",
+      "X"
+    ],
+    [
+      "A",
+      "B",
+      "X"
+    ],
+    [
+      "A",
+      "B",
+      "RhD",
+      "X"
+    ],
+    [
+      "X",
+      "Y"
+    ],
+    [
+      "A",
+      "X",
+      "Y"
+    ]
+  ],
+  "analysis": {
+    "valid_space_size": 8,
+    "closure_property": "2^n for n toggles",
+    "forbidden_toggle_effect": "pulls combination out of valid space"
+  }
+}

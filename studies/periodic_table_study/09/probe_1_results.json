@@ -1,0 +1,392 @@
+{
+  "blood_types": {
+    "O-": [],
+    "O+": [
+      "RhD"
+    ],
+    "A-": [
+      "A"
+    ],
+    "A+": [
+      "A",
+      "RhD"
+    ],
+    "B-": [
+      "B"
+    ],
+    "B+": [
+      "B",
+      "RhD"
+    ],
+    "AB-": [
+      "A",
+      "B"
+    ],
+    "AB+": [
+      "A",
+      "B",
+      "RhD"
+    ]
+  },
+  "jaccard_matrix": {
+    "O-": {
+      "O-": 0.0,
+      "O+": 1.0,
+      "A-": 1.0,
+      "A+": 1.0,
+      "B-": 1.0,
+      "B+": 1.0,
+      "AB-": 1.0,
+      "AB+": 1.0
+    },
+    "O+": {
+      "O-": 1.0,
+      "O+": 0.0,
+      "A-": 1.0,
+      "A+": 0.5,
+      "B-": 1.0,
+      "B+": 0.5,
+      "AB-": 1.0,
+      "AB+": 0.6666666666666667
+    },
+    "A-": {
+      "O-": 1.0,
+      "O+": 1.0,
+      "A-": 0.0,
+      "A+": 0.5,
+      "B-": 1.0,
+      "B+": 1.0,
+      "AB-": 0.5,
+      "AB+": 0.6666666666666667
+    },
+    "A+": {
+      "O-": 1.0,
+      "O+": 0.5,
+      "A-": 0.5,
+      "A+": 0.0,
+      "B-": 1.0,
+      "B+": 0.6666666666666667,
+      "AB-": 0.6666666666666667,
+      "AB+": 0.33333333333333337
+    },
+    "B-": {
+      "O-": 1.0,
+      "O+": 1.0,
+      "A-": 1.0,
+      "A+": 1.0,
+      "B-": 0.0,
+      "B+": 0.5,
+      "AB-": 0.5,
+      "AB+": 0.6666666666666667
+    },
+    "B+": {
+      "O-": 1.0,
+      "O+": 0.5,
+      "A-": 1.0,
+      "A+": 0.6666666666666667,
+      "B-": 0.5,
+      "B+": 0.0,
+      "AB-": 0.6666666666666667,
+      "AB+": 0.33333333333333337
+    },
+    "AB-": {
+      "O-": 1.0,
+      "O+": 1.0,
+      "A-": 0.5,
+      "A+": 0.6666666666666667,
+      "B-": 0.5,
+      "B+": 0.6666666666666667,
+      "AB-": 0.0,
+      "AB+": 0.33333333333333337
+    },
+    "AB+": {
+      "O-": 1.0,
+      "O+": 0.6666666666666667,
+      "A-": 0.6666666666666667,
+      "A+": 0.33333333333333337,
+      "B-": 0.6666666666666667,
+      "B+": 0.33333333333333337,
+      "AB-": 0.33333333333333337,
+      "AB+": 0.0
+    }
+  },
+  "pairs": [
+    {
+      "pair": "A+\u2194AB+",
+      "distance": 0.33333333333333337,
+      "shared": [
+        "A",
+        "RhD"
+      ],
+      "different": [
+        "B"
+      ]
+    },
+    {
+      "pair": "B+\u2194AB+",
+      "distance": 0.33333333333333337,
+      "shared": [
+        "B",
+        "RhD"
+      ],
+      "different": [
+        "A"
+      ]
+    },
+    {
+      "pair": "AB-\u2194AB+",
+      "distance": 0.33333333333333337,
+      "shared": [
+        "A",
+        "B"
+      ],
+      "different": [
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O+\u2194A+",
+      "distance": 0.5,
+      "shared": [
+        "RhD"
+      ],
+      "different": [
+        "A"
+      ]
+    },
+    {
+      "pair": "O+\u2194B+",
+      "distance": 0.5,
+      "shared": [
+        "RhD"
+      ],
+      "different": [
+        "B"
+      ]
+    },
+    {
+      "pair": "A-\u2194A+",
+      "distance": 0.5,
+      "shared": [
+        "A"
+      ],
+      "different": [
+        "RhD"
+      ]
+    },
+    {
+      "pair": "A-\u2194AB-",
+      "distance": 0.5,
+      "shared": [
+        "A"
+      ],
+      "different": [
+        "B"
+      ]
+    },
+    {
+      "pair": "B-\u2194B+",
+      "distance": 0.5,
+      "shared": [
+        "B"
+      ],
+      "different": [
+        "RhD"
+      ]
+    },
+    {
+      "pair": "B-\u2194AB-",
+      "distance": 0.5,
+      "shared": [
+        "B"
+      ],
+      "different": [
+        "A"
+      ]
+    },
+    {
+      "pair": "O+\u2194AB+",
+      "distance": 0.6666666666666667,
+      "shared": [
+        "RhD"
+      ],
+      "different": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "pair": "A-\u2194AB+",
+      "distance": 0.6666666666666667,
+      "shared": [
+        "A"
+      ],
+      "different": [
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "A+\u2194B+",
+      "distance": 0.6666666666666667,
+      "shared": [
+        "RhD"
+      ],
+      "different": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "pair": "A+\u2194AB-",
+      "distance": 0.6666666666666667,
+      "shared": [
+        "A"
+      ],
+      "different": [
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "B-\u2194AB+",
+      "distance": 0.6666666666666667,
+      "shared": [
+        "B"
+      ],
+      "different": [
+        "A",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "B+\u2194AB-",
+      "distance": 0.6666666666666667,
+      "shared": [
+        "B"
+      ],
+      "different": [
+        "A",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O-\u2194O+",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O-\u2194A-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A"
+      ]
+    },
+    {
+      "pair": "O-\u2194A+",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O-\u2194B-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "B"
+      ]
+    },
+    {
+      "pair": "O-\u2194B+",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O-\u2194AB-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "pair": "O-\u2194AB+",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O+\u2194A-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O+\u2194B-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "O+\u2194AB-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "A-\u2194B-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "pair": "A-\u2194B+",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "B",
+        "RhD"
+      ]
+    },
+    {
+      "pair": "A+\u2194B-",
+      "distance": 1.0,
+      "shared": [],
+      "different": [
+        "A",
+        "B",
+        "RhD"
+      ]
+    }
+  ]
+}

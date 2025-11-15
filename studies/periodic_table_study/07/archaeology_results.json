@@ -1,0 +1,94 @@
+[
+  {
+    "blood_type": "O-",
+    "ground_truth": [],
+    "reconstructed": {
+      "hamming": [],
+      "spectral": [],
+      "coherence": []
+    },
+    "matches": {
+      "hamming": true,
+      "spectral": true,
+      "coherence": true
+    }
+  },
+  {
+    "blood_type": "A+",
+    "ground_truth": [
+      "A",
+      "RhD"
+    ],
+    "reconstructed": {
+      "hamming": [
+        "A",
+        "B"
+      ],
+      "spectral": [
+        "A",
+        "B"
+      ],
+      "coherence": [
+        "A",
+        "B"
+      ]
+    },
+    "matches": {
+      "hamming": false,
+      "spectral": false,
+      "coherence": false
+    }
+  },
+  {
+    "blood_type": "AB+",
+    "ground_truth": [
+      "A",
+      "B",
+      "RhD"
+    ],
+    "reconstructed": {
+      "hamming": [
+        "A",
+        "B",
+        "RhD"
+      ],
+      "spectral": [
+        "A",
+        "B",
+        "RhD"
+      ],
+      "coherence": [
+        "A",
+        "B",
+        "RhD"
+      ]
+    },
+    "matches": {
+      "hamming": true,
+      "spectral": true,
+      "coherence": true
+    }
+  },
+  {
+    "blood_type": "B-",
+    "ground_truth": [
+      "B"
+    ],
+    "reconstructed": {
+      "hamming": [
+        "A"
+      ],
+      "spectral": [
+        "A"
+      ],
+      "coherence": [
+        "A"
+      ]
+    },
+    "matches": {
+      "hamming": false,
+      "spectral": false,
+      "coherence": false
+    }
+  }
+]

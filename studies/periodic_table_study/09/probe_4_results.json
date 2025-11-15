@@ -1,0 +1,49 @@
+{
+  "hexdictionary_version": "1.0.0",
+  "method": "Jaccard distance on toggle sets",
+  "blood_type_tests": [
+    {
+      "pair": "O-\u2194AB+",
+      "distance": 1.0,
+      "similarity": 0.0
+    },
+    {
+      "pair": "AB-\u2194AB+",
+      "distance": 0.33333333333333337,
+      "similarity": 0.6666666666666666
+    },
+    {
+      "pair": "A+\u2194B+",
+      "distance": 0.6666666666666667,
+      "similarity": 0.33333333333333326
+    },
+    {
+      "pair": "A-\u2194B-",
+      "distance": 1.0,
+      "similarity": 0.0
+    }
+  ],
+  "element_tests": [
+    {
+      "pair": "He\u2194Ne",
+      "distance": 0.6666666666666667,
+      "similarity": 0.33333333333333326
+    },
+    {
+      "pair": "Ne\u2194Ar",
+      "distance": 0.4,
+      "similarity": 0.6
+    },
+    {
+      "pair": "C\u2194N",
+      "distance": 0.5,
+      "similarity": 0.5
+    },
+    {
+      "pair": "Fe\u2194Co",
+      "distance": 0.25,
+      "similarity": 0.75
+    }
+  ],
+  "validation": "Jaccard distance is the pure, universal information metric"
+}
