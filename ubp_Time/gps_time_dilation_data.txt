@@ -1,0 +1,44 @@
+GPS Time Dilation - Real-World Data
+===================================
+
+Source: Ohio State University Astronomy Department
+URL: https://www.astronomy.ohio-state.edu/pogge.1/Ast162/Unit5/gps.html
+
+GPS Satellite Parameters:
+- Orbital altitude: ~20,000 km above Earth surface
+- Orbital speed: ~14,000 km/hour
+- Orbital period: ~12 hours
+
+Time Dilation Effects (per day):
+
+1. Special Relativity (velocity effect):
+   - Satellites moving relative to ground observers
+   - Effect: Clocks run SLOWER by ~7 microseconds/day
+   - Cause: Time dilation due to relative motion
+
+2. General Relativity (gravitational effect):
+   - Satellites in weaker gravitational field than Earth surface
+   - Effect: Clocks run FASTER by ~45 microseconds/day
+   - Cause: Gravitational time dilation
+
+3. Combined Net Effect:
+   - Net effect: +38 microseconds/day (45 - 7 = 38)
+   - Clocks on satellites tick FASTER than ground clocks
+   - This equals 38,000 nanoseconds per day
+   - Required accuracy: 20-30 nanoseconds for GPS precision
+
+Critical Points:
+- Without relativistic corrections, GPS would accumulate ~10 km error per day
+- Both special and general relativity effects are essential
+- GPS system pre-corrects satellite clocks to account for these effects
+- This is direct experimental validation of Einstein's theories
+
+Numerical Values for UBP Validation:
+=====================================
+
+Time dilation per day: 38 × 10^-6 seconds = 3.8 × 10^-5 seconds
+Time dilation rate: 38 μs / 86400 s = 4.398 × 10^-10 (fractional change)
+
+For 1 second of satellite time:
+- Accumulated dilation: 4.398 × 10^-10 seconds
+- This is the "real-world" time dilation we can test against UBP predictions
