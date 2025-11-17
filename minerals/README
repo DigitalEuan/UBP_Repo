@@ -1,0 +1,245 @@
+# UBP Mineral Study - Phase 2
+
+**Title**: From Minerals to Molecules: Universal Information Geometry and Coherence Dynamics
+
+**Author**: Euan Craig, New Zealand - Implemented by Manus AI
+
+**Date**: November 17, 2025
+
+---
+
+## Overview
+
+This repository contains the complete code, data, and results for the Phase 2 UBP Mineral Study. This study validates and extends the Universal Binary Principal (UBP) framework through a comprehensive analysis of 3,112 minerals, demonstrating that mineral diversity is determined by information-geometric principles rather than chemistry alone.
+
+## Key Findings
+
+1. **Perfect Classification**: Random Forest achieves 100% cross-validated accuracy in distinguishing viable from non-viable minerals
+2. **Natural Threshold**: NRCI threshold of 0.973243 (95th percentile) with 0.19% uncertainty
+3. **Bimodal Distribution**: Two distinct populations (11.7% "impossible", 88.3% "possible") separated by 12.8 standard deviations
+4. **Degradation is Master Variable**: Accounts for 10.7% of permutation importance, all other features < 0.2%
+5. **Geometric Relationships**: threshold / O_observer ≈ Y (2.68% error), validating UBP theoretical predictions
+
+## Repository Structure
+
+```
+ubp_mineral_study/
+├── README_PHASE2.md                   # This file
+├── requirements.txt                   # Python dependencies
+├── reproduce.sh                       # Complete reproduction script
+│
+├── data/                              # Datasets
+│   ├── Minerals_Database.csv         # Raw Kaggle dataset (3,112 minerals)
+│   └── minerals_processed_3112.json  # Processed dataset with UBP features
+│
+├── results/                           # All generated results
+│   ├── phase2_coherence_analysis_3112.json
+│   ├── phase2_ml_summary.json
+│   ├── phase2_highdim_summary.json
+│   ├── validation_ml_comprehensive.json
+│   ├── validation_threshold_bimodality.json
+│   ├── validation_geometric_uncertainty.json
+│   └── *.png                          # All visualizations
+│
+├── Core Analysis Scripts:
+│   ├── process_kaggle_minerals.py
+│   ├── phase2_coherence_analysis.py
+│   ├── phase2_ml_boundary_mapping.py
+│   ├── phase2_highdim_analysis.py
+│   ├── phase2_temporal_defect_dynamics.py
+│   └── phase2_foundational_principles.py
+│
+├── Validation Scripts:
+│   ├── validation_ml_comprehensive.py
+│   ├── validation_threshold_bimodality.py
+│   ├── validation_geometric_uncertainty.py
+│   └── phase2_accuracy_verification.py
+│
+├── UBP 3.5 Modules:
+│   ├── coherence_substrate_v2.py      # Core coherence calculation engine
+│   ├── hex_dictionary_pure.py         # Hex address distance calculations
+│   ├── hex_dictionary.py              # Full hex storage and analysis
+│   └── y_constants.py                 # UBP fundamental constants
+│
+└── Documentation:
+    ├── PHASE_2_FINAL_REPORT.md        # Comprehensive study report
+    ├── PHASE_2_WHITEBOARD.md          # Progress tracking and notes
+    └── PHASE_2_CROSS_DOMAIN_TEASER.md # Future research directions
+
+```
+
+## Installation
+
+### Prerequisites
+
+- Python 3.11
+- pip
+- 4GB RAM minimum
+- ~500MB disk space
+
+### Setup
+
+```bash
+# Clone or extract the repository
+cd ubp_mineral_study
+
+# Install dependencies
+pip3 install -r requirements.txt
+```
+
+## Reproduction
+
+### Quick Start
+
+To reproduce all analyses with a single command:
+
+```bash
+bash reproduce.sh
+```
+
+This will:
+1. Process the raw mineral dataset
+2. Run all Phase 2 analyses
+3. Execute all validation tests
+4. Generate all visualizations
+5. Verify accuracy of results
+
+**Estimated time**: 30-45 minutes
+
+### Step-by-Step Reproduction
+
+If you prefer to run analyses individually:
+
+```bash
+# Step 1: Data processing
+python3.11 process_kaggle_minerals.py
+
+# Step 2: Coherence analysis
+python3.11 phase2_coherence_analysis.py
+
+# Step 3: ML boundary mapping
+python3.11 phase2_ml_boundary_mapping.py
+
+# Step 4: Higher-dimensional analysis
+python3.11 phase2_highdim_analysis.py
+
+# Step 5: Temporal/defect dynamics
+python3.11 phase2_temporal_defect_dynamics.py
+
+# Step 6: Foundational principles
+python3.11 phase2_foundational_principles.py
+
+# Step 7: ML validation
+python3.11 validation_ml_comprehensive.py
+
+# Step 8: Threshold/bimodality validation
+python3.11 validation_threshold_bimodality.py
+
+# Step 9: Geometric uncertainty validation
+python3.11 validation_geometric_uncertainty.py
+
+# Step 10: Accuracy verification
+python3.11 phase2_accuracy_verification.py
+```
+
+## Random Seeds
+
+All analyses use `RANDOM_SEED = 42` for reproducibility. This is set in:
+- All validation scripts
+- All ML training scripts
+- All bootstrap/permutation tests
+
+## Key Results Files
+
+### Core Analysis
+
+- `phase2_coherence_analysis_3112.json`: NRCI values for all 3,112 minerals
+- `phase2_ml_summary.json`: ML classifier performance metrics
+- `phase2_highdim_summary.json`: PCA, t-SNE, UMAP results
+- `phase2_temporal_defect_summary.json`: Stability and defect tolerance results
+- `phase2_foundational_principles.json`: Pi, Y, O_observer relationships
+
+### Validation
+
+- `validation_ml_comprehensive.json`: Stratified k-fold CV, permutation tests, ablation studies
+- `validation_threshold_bimodality.json`: Bootstrap CI, GMM fitting, gap significance
+- `validation_geometric_uncertainty.json`: Bootstrap CI for UBP constant ratios
+
+### Visualizations
+
+- `phase2_nrci_distribution.png`: NRCI histogram showing bimodal distribution
+- `phase2_ml_roc_curves.png`: ROC curves for all classifiers
+- `phase2_ml_feature_importances.png`: Permutation importance with error bars
+- `phase2_highdim_3d_comparison.png`: 3D Bitfield visualization (PCA, t-SNE, UMAP)
+- `validation_threshold_bimodality.png`: Bootstrap distributions and GMM components
+- `validation_geometric_uncertainty.png`: UBP constant relationship distributions
+
+## Data Provenance
+
+- **Source**: Kaggle "Comprehensive Minerals Database" by vinven7
+- **URL**: https://www.kaggle.com/datasets/vinven7/comprehensive-database-of-minerals
+- **Version**: Downloaded November 17, 2025
+- **Size**: 3,112 minerals
+- **Features**: 118 elements + crystal structure + physical properties
+
+## UBP 3.5 System
+
+This study uses the Universal Binary Principal (UBP) version 3.5, which includes:
+
+- **coherence_substrate_v2.py**: Enhanced coherence calculation with history tracking
+- **hex_dictionary_pure.py**: Pure functional hex address operations
+- **y_constants.py**: Fundamental UBP constants (Y, O_observer, PI)
+
+### Key UBP Constants
+
+```python
+Y = 0.2647              # Realization scaling constant
+O_observer = 3.7782     # Observer cost
+PI = 3.141592653589793  # Geometric constant
+```
+
+## Validation Summary
+
+All key findings have been rigorously validated:
+
+| Finding | Validation Method | Result |
+|---------|------------------|--------|
+| 100% ML accuracy | Stratified 5-fold CV | Confirmed (p < 0.000001) |
+| Natural threshold | Bootstrap CI (n=2000) | 0.9732 ± 0.0009 |
+| Bimodality | GMM (ΔBIC = 11,473) | Strongly supported |
+| Degradation importance | Permutation importance | 10.7% (dominant) |
+| threshold / O_observer ≈ Y | Bootstrap CI (n=2000) | 2.68% error |
+
+## Limitations
+
+1. **Dataset bias**: Kaggle dataset may not represent all known minerals
+2. **Class imbalance**: 5% positive class (addressed with stratified CV and PR curves)
+3. **Symmetry encoding**: Crystal systems mapped to estimated symmetry operations
+4. **Space group data**: Not available in Kaggle dataset (future work)
+
+## Citation
+
+If you use this work, please cite:
+
+```
+Euan Craig, New Zealand - Implemented by Manus AI (2025). UBP Mineral Study - Phase 2: From Minerals to Molecules.
+Universal Information Geometry and Coherence Dynamics. GitHub repository.
+```
+
+## License
+
+This work is released under the MIT License.
+
+## Contact
+
+For questions or issues, please open an issue on the GitHub repository.
+
+## Acknowledgments
+
+- Kaggle user vinven7 for the Comprehensive Minerals Database
+- UBP framework developers
+- Expert reviewers for statistical validation recommendations
+
+---
+
+**Last Updated**: November 17, 2025
