@@ -1,0 +1,128 @@
+{
+  "model_version": "2.0",
+  "precision_mode": "PrecisionMode.FLOAT",
+  "thresholds": {
+    "natural_mineral": 0.99,
+    "perfect_crystal": 0.999999
+  },
+  "results": [
+    {
+      "formula": "NaCl",
+      "space_group": 225,
+      "crystal_system": "cubic",
+      "Z": 11,
+      "final_nrci": 0.9999989976984089,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "3afd10fb66e32d254e7cb441ce384074ef9065c7e5130315cab958292a4ef722"
+    },
+    {
+      "formula": "SiO2",
+      "space_group": 154,
+      "crystal_system": "hexagonal",
+      "Z": 14,
+      "final_nrci": 0.9999899727677113,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "9b1ef42a89eb54a56fba7bc743983b9bf5ff84adb1b1b062faaf77fa4db81776"
+    },
+    {
+      "formula": "CaCO3",
+      "space_group": 167,
+      "crystal_system": "trigonal",
+      "Z": 20,
+      "final_nrci": 0.9998996496010124,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "b951e1be944f357b5457d24cca4c39463866a1edef8748b04f62d60b10810f92"
+    },
+    {
+      "formula": "Fe2O3",
+      "space_group": 167,
+      "crystal_system": "trigonal",
+      "Z": 26,
+      "final_nrci": 0.9998995761997621,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "eecb3b0f04f394a5bbc7321cfb3b64ac0b08188e9605027b64bc437a19225921"
+    },
+    {
+      "formula": "ZnS",
+      "space_group": 216,
+      "crystal_system": "cubic",
+      "Z": 30,
+      "final_nrci": 0.9999989952883374,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "c5abd734e2a4475ada481f3effde7cb0f1a5068516887ab5af586560dec662fe"
+    },
+    {
+      "formula": "CuFeS2",
+      "space_group": 122,
+      "crystal_system": "tetragonal",
+      "Z": 29,
+      "final_nrci": 0.9997990811664074,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "464fb00f5959ce9301343a216408f6d1fe33104f129e6d2e9532e4cac92fc654"
+    },
+    {
+      "formula": "UO2",
+      "space_group": 225,
+      "crystal_system": "cubic",
+      "Z": 92,
+      "final_nrci": 0.9999989884731793,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "beb2e7192b17ce5aeaa8c3c4f76a449980bfd8671178cc586706ff23656b8cb2"
+    },
+    {
+      "formula": "CaSO4\u00b72H2O",
+      "space_group": 15,
+      "crystal_system": "monoclinic",
+      "Z": 20,
+      "final_nrci": 0.9989964960098574,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "hex_address": "a01c836efc6ce9b0ec38f72fd47fe9eafe4f86ed464de532eef4521dcf5f209d"
+    }
+  ],
+  "statistics": {
+    "total_minerals": 8,
+    "natural_pass_count": 8,
+    "natural_pass_rate": 1.0,
+    "perfect_pass_count": 0,
+    "perfect_pass_rate": 0.0,
+    "nrci_min": 0.9989964960098574,
+    "nrci_max": 0.9999989976984089,
+    "nrci_mean": 0.9998227196505846,
+    "by_crystal_system": {
+      "cubic": {
+        "count": 3,
+        "natural_pass": 3,
+        "perfect_pass": 0
+      },
+      "hexagonal": {
+        "count": 1,
+        "natural_pass": 1,
+        "perfect_pass": 0
+      },
+      "trigonal": {
+        "count": 2,
+        "natural_pass": 2,
+        "perfect_pass": 0
+      },
+      "tetragonal": {
+        "count": 1,
+        "natural_pass": 1,
+        "perfect_pass": 0
+      },
+      "monoclinic": {
+        "count": 1,
+        "natural_pass": 1,
+        "perfect_pass": 0
+      }
+    },
+    "hex_dict_size": 24
+  }
+}

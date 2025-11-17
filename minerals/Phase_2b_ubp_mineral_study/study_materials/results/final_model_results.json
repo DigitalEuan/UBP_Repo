@@ -1,0 +1,51 @@
+{
+  "N_geometric": 1500000.0,
+  "stages": [
+    {
+      "stage": "Geometric Feasibility",
+      "N_states": 1500000.0,
+      "constraint": "Crystal structure bounds (Tschauner & Ballaran)",
+      "reduction_factor": 1.0
+    },
+    {
+      "stage": "Coherence Filter",
+      "N_states": 1500.0,
+      "constraint": "NRCI >= 0.999999",
+      "reduction_factor": 0.001
+    },
+    {
+      "stage": "TGIC Constraint",
+      "N_states": 450.0,
+      "constraint": "3-6-9 Triad Graph pattern",
+      "reduction_factor": 0.3
+    },
+    {
+      "stage": "Observer Cost",
+      "N_states": 119.10394368203713,
+      "constraint": "O_observer = 3.7782",
+      "reduction_factor": 0.26467543040452696
+    },
+    {
+      "stage": "Y Scaling",
+      "N_states": 449.99999999999994,
+      "constraint": "Y = 0.26467543",
+      "reduction_factor": 3.778212425957374
+    },
+    {
+      "stage": "Element Availability",
+      "N_states": 269.99999999999994,
+      "constraint": "Available elements in Earth crust",
+      "reduction_factor": 0.6
+    },
+    {
+      "stage": "Geological Processes",
+      "N_states": 215.99999999999997,
+      "constraint": "Active geological processes on Earth",
+      "reduction_factor": 0.8
+    }
+  ],
+  "N_final_prediction": 215.99999999999997,
+  "observed_Earth_minerals": 5000,
+  "predicted_undiscovered": 1500,
+  "model_accuracy": 0.043199999999999995
+}
