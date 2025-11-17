@@ -1,0 +1,75 @@
+/usr/local/lib/python3.11/dist-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+/usr/local/lib/python3.11/dist-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+================================================================================
+PHASE 2 MODULE 4: HIGHER-DIMENSIONAL ANALYSIS
+================================================================================
+Methods: PCA, t-SNE, UMAP
+Dimensions: 2D and 3D embeddings
+================================================================================
+
+[1/7] Loading Phase 2 coherence analysis results...
+   Loaded 3112 minerals
+   Feature space: 8D
+
+[2/7] Analyzing 8D topology...
+   Computing pairwise distances...
+   Mean distance: 3.3429
+   Median distance: 3.1466
+   Std distance: 2.1977
+
+   Intra-class distances (PASS):
+      Mean: 1.1180
+      Median: 0.9286
+   Intra-class distances (FAIL):
+      Mean: 3.3504
+      Median: 3.1644
+   Inter-class distances:
+      Mean: 3.3294
+      Median: 3.0250
+
+   Separability metric: 1.4902
+      (>1 = classes well-separated, <1 = overlapping)
+
+[3/7] Running PCA (for comparison with Phase 1)...
+   Explained variance ratio:
+      PC1: 0.3748 (37.48%)
+      PC2: 0.3031 (30.31%)
+      PC3: 0.1301 (13.01%)
+   Cumulative: 0.8080 (80.80%)
+
+[4/7] Running t-SNE...
+   Computing 2D t-SNE...
+      Completed in 9.88s
+   Computing 3D t-SNE...
+      Completed in 26.76s
+
+[5/7] Running UMAP...
+   Computing 2D UMAP...
+      Completed in 20.66s
+   Computing 3D UMAP...
+      Completed in 11.74s
+
+[6/7] Creating visualizations...
+   ✓ Saved 2D comparison
+   ✓ Saved 3D comparison
+
+   Analyzing distance preservation...
+   Distance preservation (Spearman correlation):
+      PCA:   0.9820
+      t-SNE: 0.5722
+      UMAP:  0.6375
+
+[7/7] Saving results...
+   ✓ Saved summary to results/phase2_highdim_summary.json
+
+================================================================================
+HIGHER-DIMENSIONAL ANALYSIS COMPLETE!
+================================================================================
+
+Key Findings:
+   1. PCA preserves distances best: 0.9820
+   2. UMAP preserves local structure: 0.6375
+   3. t-SNE emphasizes clusters: 0.5722
+   4. First 3 PCs explain 80.80% variance

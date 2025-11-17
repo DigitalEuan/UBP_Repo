@@ -1,0 +1,82 @@
+{
+  "symmetry_compression": {
+    "principle": "High symmetry = High information compression = High coherence",
+    "pass_rate_by_symmetry": {
+      "2": {
+        "count": 4,
+        "passed": 0,
+        "rate": 0.0
+      },
+      "8": {
+        "count": 13,
+        "passed": 0,
+        "rate": 0.0
+      },
+      "4": {
+        "count": 14,
+        "passed": 0,
+        "rate": 0.0
+      },
+      "12": {
+        "count": 10,
+        "passed": 10,
+        "rate": 100.0
+      },
+      "16": {
+        "count": 3,
+        "passed": 1,
+        "rate": 33.33333333333333
+      },
+      "24": {
+        "count": 5,
+        "passed": 4,
+        "rate": 80.0
+      },
+      "48": {
+        "count": 5,
+        "passed": 5,
+        "rate": 100.0
+      }
+    }
+  },
+  "bottleneck_barrier": {
+    "principle": "Z=80-92 is information complexity peak where coherence becomes fragile",
+    "bottleneck_pass_rate": 18.181818181818183,
+    "bottleneck_minerals_passed": [
+      "Freieslebenite",
+      "Vanadinite"
+    ],
+    "bottleneck_minerals_failed": [
+      "Anglesite",
+      "Bayldonite",
+      "Cinnabar",
+      "Crocoite",
+      "Nadorite",
+      "Osarizawaite",
+      "Sartorite",
+      "Thomasclarkite-Y",
+      "Wulfenite"
+    ]
+  },
+  "information_complexity": {
+    "principle": "I_cmplx = Z / symmetry_order must be below critical threshold",
+    "max_passed_complexity": 4.333333333333333,
+    "min_failed_complexity": 3.25,
+    "critical_threshold": null
+  },
+  "finite_minerals_explanation": {
+    "reasons": [
+      "Symmetry is quantized (7 systems, discrete operations)",
+      "Coherence requires high symmetry (eliminates most parameter space)",
+      "Information complexity has hard limit",
+      "Bottleneck zones create forbidden regions"
+    ]
+  },
+  "y_and_observer": {
+    "Y": 0.2647,
+    "O_observer": 3.7782,
+    "avg_refinements_passed": 5.7,
+    "avg_refinements_failed": 3.4705882352941178,
+    "interpretation": "Y scales geometric possibility to realized minerals"
+  }
+}

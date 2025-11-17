@@ -1,0 +1,96 @@
+================================================================================
+STATISTICAL VALIDATION: THRESHOLD AND BIMODALITY
+================================================================================
+Bootstrap CI, GMM fitting, gap significance, sensitivity analysis
+================================================================================
+
+[1/6] Loading data...
+   Loaded 3112 NRCI values
+   Range: [-0.082998, 0.999000]
+   Mean: 0.849955
+   Median: 0.950243
+
+[2/6] Bootstrap Confidence Interval for 95th Percentile...
+   Running 2000 bootstrap samples...
+      Bootstrap sample 400/2000...
+      Bootstrap sample 800/2000...
+      Bootstrap sample 1200/2000...
+      Bootstrap sample 1600/2000...
+      Bootstrap sample 2000/2000...
+
+   Bootstrap Results:
+      Original 95th percentile: 0.973243
+      Bootstrap median:  0.973226
+      95% CI: [0.972426, 0.974243]
+      CI width: 0.001817
+      Relative uncertainty: 0.1867%
+
+[3/6] Bimodality Testing with Gaussian Mixture Model...
+   Fitting 1-component GMM...
+      BIC: 539.99
+      AIC: 527.90
+
+   Fitting 2-component GMM...
+      BIC: -10933.04
+      AIC: -10963.25
+
+   Model Comparison:
+      ΔBIC (1-comp vs 2-comp): 11473.03
+      ΔAIC (1-comp vs 2-comp): 11491.16
+      ✓ 2-component model is BETTER (lower BIC)
+      Interpretation: Data exhibits bimodality
+
+   2-Component GMM Parameters:
+      Component 1 (low NRCI):
+         Mean: 0.135869
+         Std:  0.101775
+         Weight: 0.1170 (11.70%)
+      Component 2 (high NRCI):
+         Mean: 0.944543
+         Std:  0.024512
+         Weight: 0.8830 (88.30%)
+
+   Separation (in std units): 12.8070
+
+[4/6] Gap Significance Testing...
+   Testing gap at 0.248 ± 0.030
+
+   Sample counts:
+      Below gap (<0.233): 308 (9.90%)
+      In gap [0.233, 0.263]: 56 (1.80%)
+      Above gap (>0.263): 2748 (88.30%)
+
+   Kernel density estimates:
+      Density at gap center (0.248): 0.421151
+      Density below gap (0.183): 0.410789
+      Density above gap (0.313): 0.119038
+      Relative density drop at gap: -58.98%
+
+   Bootstrap CI for gap density...
+      Gap density 95% CI: [0.370210, 0.474909]
+
+[5/6] Sensitivity Analysis...
+   Testing threshold stability under feature perturbation
+
+   Noise Level | Mean Threshold | Std | Relative Change
+   ------------------------------------------------------------
+         0.001 |       0.973320 | 0.000137 |         0.0079%
+         0.005 |       0.974873 | 0.000333 |         0.1675%
+         0.010 |       0.978963 | 0.000540 |         0.5877%
+         0.020 |       0.990422 | 0.000878 |         1.7651%
+         0.050 |       1.000000 | 0.000000 |         2.7493%
+
+[6/6] Creating visualizations...
+   ✓ Saved validation_threshold_bimodality.png
+
+   Saving results...
+   ✓ Saved validation_threshold_bimodality.json
+
+================================================================================
+VALIDATION COMPLETE!
+================================================================================
+
+Key Findings:
+   Threshold 95% CI: [0.972426, 0.974243]
+   Bimodal: True
+   Gap density drop: -58.98%

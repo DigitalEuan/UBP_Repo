@@ -1,0 +1,125 @@
+================================================================================
+PROFESSIONAL ML VALIDATION SUITE
+================================================================================
+Implementing all recommended statistical tests and robustness checks
+================================================================================
+
+[1/8] Loading data...
+   Loaded 3112 minerals
+   Features: 8
+   Samples: 3112
+   Positive class: 155 (4.98%)
+   Negative class: 2957 (95.02%)
+
+[2/8] Stratified K-Fold Cross-Validation...
+   This is the GOLD STANDARD for model evaluation
+
+   Evaluating Random Forest...
+      Accuracy:  1.0000
+      Precision: 1.0000
+      Recall:    1.0000
+      F1:        1.0000
+      ROC AUC:   1.0000
+      PR AUC:    1.0000
+      Confusion Matrix: TN=2957, FP=0, FN=0, TP=155
+
+   Evaluating SVM (RBF)...
+      Accuracy:  0.9888
+      Precision: 1.0000
+      Recall:    0.7742
+      F1:        0.8727
+      ROC AUC:   0.9992
+      PR AUC:    0.9887
+      Confusion Matrix: TN=2957, FP=0, FN=35, TP=120
+
+   Evaluating Neural Network...
+      Accuracy:  0.9888
+      Precision: 0.9839
+      Recall:    0.7871
+      F1:        0.8746
+      ROC AUC:   0.9935
+      PR AUC:    0.9643
+      Confusion Matrix: TN=2955, FP=2, FN=33, TP=122
+
+[3/8] Permutation Test for Statistical Significance...
+   Testing if performance is better than random chance
+   Observed accuracy: 1.0000
+   Running 1000 permutations...
+      Permutation 200/1000...
+      Permutation 400/1000...
+      Permutation 600/1000...
+      Permutation 800/1000...
+      Permutation 1000/1000...
+
+   Permutation test results:
+      Observed accuracy: 1.0000
+      Mean permuted accuracy: 0.9462
+      Std permuted accuracy: 0.0029
+      p-value: 0.000000
+      Interpretation: SIGNIFICANT
+
+[4/8] Permutation Feature Importance...
+   Computing importance by measuring performance drop when features are shuffled
+   Computing permutation importance (50 repeats)...
+
+   Permutation Feature Importances:
+      Feature                | Mean      | Std
+      --------------------------------------------------
+      degradation            | 0.106870 | 0.004484
+      final_coherence        | 0.001541 | 0.000315
+      refinements            | 0.001541 | 0.000315
+      Z_max                  | 0.000096 | 0.000381
+      density                | 0.000000 | 0.000000
+      molar_mass             | 0.000000 | 0.000000
+      element_count          | 0.000000 | 0.000000
+      symmetry_operations    | 0.000000 | 0.000000
+
+[5/8] Ablation Study...
+   Testing impact of removing 'degradation' feature
+   Evaluating FULL model (all features)...
+      ROC AUC: 1.0000
+      PR AUC:  1.0000
+
+   Evaluating ABLATED model (without 'degradation')...
+      ROC AUC: 0.9999
+      PR AUC:  0.9989
+
+   Performance drop without 'degradation':
+      ΔROC AUC: 0.0001 (0.01% relative drop)
+      ΔPR AUC:  0.0011 (0.11% relative drop)
+
+[6/8] Data Leakage Audit...
+   Checking for potential leakage in feature engineering
+
+   Correlation between features and target (NRCI >= threshold):
+      Feature                | Correlation
+      ---------------------------------------------
+      Z_max                  | -0.2723
+      symmetry_operations    | -0.0458
+      element_count          | -0.2082
+      molar_mass             | -0.1317
+      density                | -0.2337
+      refinements            | -0.0524
+      degradation            | -0.3049
+      final_coherence        | +0.0826
+
+   Degradation vs NRCI correlation:
+      Correlation: +0.0114
+      ✓ Degradation appears to be independently computed.
+
+[7/8] Creating visualizations...
+   ✓ Saved validation_ml_comprehensive.png
+
+[8/8] Saving results...
+   ✓ Saved validation_ml_comprehensive.json
+
+================================================================================
+VALIDATION COMPLETE!
+================================================================================
+
+Key Findings:
+   Random Forest CV Accuracy: 1.0000
+   Random Forest CV ROC AUC:  1.0000
+   Random Forest CV PR AUC:   1.0000
+   Permutation test p-value:  0.000000
+   Ablation ΔROC AUC:         0.0001

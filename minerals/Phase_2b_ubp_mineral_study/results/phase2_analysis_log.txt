@@ -1,0 +1,89 @@
+================================================================================
+PHASE 2: UBP COHERENCE ANALYSIS - 3,112 MINERALS
+================================================================================
+Model: v3.1 Aggressive
+Base degradation: 0.001 per Z
+TGIC multiplier: 0.01
+NRCI threshold: 0.9995
+================================================================================
+
+[1/4] Loading processed mineral dataset...
+   Loaded 3112 minerals
+
+[2/4] Running coherence analysis...
+   Progress: 500/3112 (16.1%) - 120553.7 minerals/sec - ETA: 0s
+   Progress: 1000/3112 (32.1%) - 132685.0 minerals/sec - ETA: 0s
+   Progress: 1500/3112 (48.2%) - 155030.7 minerals/sec - ETA: 0s
+   Progress: 2000/3112 (64.3%) - 167290.4 minerals/sec - ETA: 0s
+   Progress: 2500/3112 (80.3%) - 175470.4 minerals/sec - ETA: 0s
+   Progress: 3000/3112 (96.4%) - 182421.9 minerals/sec - ETA: 0s
+   ✓ Completed in 0.02s (183724.0 minerals/sec)
+
+[3/4] Calculating statistics...
+
+   OVERALL RESULTS:
+   ================
+   Total minerals: 3112
+   Passed: 0 (0.00%)
+   Failed: 3112 (100.00%)
+
+   BY CRYSTAL SYSTEM:
+   ==================
+   cubic          :    0/  26 passed ( 0.00%)
+   hexagonal      :    0/ 116 passed ( 0.00%)
+   monoclinic     :    0/  84 passed ( 0.00%)
+   orthorhombic   :    0/ 284 passed ( 0.00%)
+   tetragonal     :    0/ 169 passed ( 0.00%)
+   triclinic      :    0/2380 passed ( 0.00%)
+   trigonal       :    0/  53 passed ( 0.00%)
+
+   BY SYMMETRY OPERATIONS:
+   =======================
+    1 operations:    0/2380 passed ( 0.00%)
+    2 operations:    0/  84 passed ( 0.00%)
+    4 operations:    0/ 284 passed ( 0.00%)
+    6 operations:    0/  53 passed ( 0.00%)
+    8 operations:    0/ 169 passed ( 0.00%)
+   12 operations:    0/ 116 passed ( 0.00%)
+   48 operations:    0/  26 passed ( 0.00%)
+
+   BY Z RANGE:
+   ===========
+   Z= 1-30:    0/1545 passed ( 0.00%)
+   Z=30-50:    0/ 578 passed ( 0.00%)
+   Z=50-80:    0/ 593 passed ( 0.00%)
+   Z=80-92:    0/ 265 passed ( 0.00%)
+
+   TOP 10 HIGHEST NRCI (BEST):
+   ===========================
+    1. Hydrogen                       NRCI=0.999000 Z= 1 sym= 1 ✗
+    2. Helium                         NRCI=0.998000 Z= 2 sym= 1 ✗
+    3. Nitrogen                       NRCI=0.993000 Z= 7 sym= 1 ✗
+    4. Ice Ih deuterated              NRCI=0.992000 Z= 8 sym= 1 ✗
+    5. Oxygen                         NRCI=0.992000 Z= 8 sym= 1 ✗
+    6. Fluorine                       NRCI=0.991000 Z= 9 sym= 1 ✗
+    7. Neon                           NRCI=0.990000 Z=10 sym= 1 ✗
+    8. Carpathite                     NRCI=0.987646 Z= 6 sym= 4 ✗
+    9. Fichtelite                     NRCI=0.987646 Z= 6 sym= 4 ✗
+   10. Simonellite                    NRCI=0.987213 Z= 6 sym= 1 ✗
+
+   TOP 10 LOWEST NRCI (WORST):
+   ===========================
+    1. Osarizawaite                   NRCI=-0.026541 Z=82 sym=12 ✗
+    2. Bunsenite                      NRCI=-0.027998 Z=28 sym=48 ✗
+    3. Cuprite                        NRCI=-0.028998 Z=29 sym=48 ✗
+    4. Zincochromite                  NRCI=-0.029998 Z=30 sym=48 ✗
+    5. Arsenolite                     NRCI=-0.032998 Z=33 sym=48 ✗
+    6. Andersonite                    NRCI=-0.034018 Z=92 sym=12 ✗
+    7. Andradite                      NRCI=-0.038998 Z=39 sym=48 ✗
+    8. Majorite                       NRCI=-0.038998 Z=39 sym=48 ✗
+    9. Tausonite                      NRCI=-0.056998 Z=57 sym=48 ✗
+   10. Gananite                       NRCI=-0.082998 Z=83 sym=48 ✗
+
+[4/4] Saving results...
+   ✓ Saved to results/phase2_coherence_analysis_3112.json
+   ✓ Saved summary to results/phase2_summary.json
+
+================================================================================
+PHASE 2 COHERENCE ANALYSIS COMPLETE!
+================================================================================

@@ -1,0 +1,83 @@
+================================================================================
+PHASE 2 MODULE 3: ML BOUNDARY MAPPING
+================================================================================
+Natural threshold: 0.973243 (95th percentile)
+Classifiers: SVM (linear, RBF, poly), Random Forest, Neural Network
+================================================================================
+
+[1/6] Loading Phase 2 coherence analysis results...
+   Loaded 3112 minerals
+   Feature space: 8D
+   Class distribution:
+      Pass (1): 155 (4.98%)
+      Fail (0): 2957 (95.02%)
+
+   Train set: 2489 samples
+   Test set: 623 samples
+
+[2/6] Training Support Vector Machines...
+
+   Training SVM with linear kernel...
+      Accuracy: 0.9872
+      ROC AUC: 0.9989
+      Training time: 0.05s
+
+   Training SVM with rbf kernel...
+      Best params: {'C': 100, 'gamma': 'scale'}
+      Accuracy: 0.9968
+      ROC AUC: 0.9997
+      Training time: 4.51s
+
+   Training SVM with poly kernel...
+      Best params: {'C': 10, 'degree': 3}
+      Accuracy: 0.9888
+      ROC AUC: 0.9990
+      Training time: 0.59s
+
+[3/6] Training Random Forest...
+   Best params: {'max_depth': 10, 'min_samples_split': 2, 'n_estimators': 100}
+   Accuracy: 1.0000
+   ROC AUC: 1.0000
+   Training time: 15.84s
+
+   Feature Importances:
+
+[4/6] Training Neural Network (MLP)...
+   Best params: {'activation': 'tanh', 'alpha': 0.0001, 'hidden_layer_sizes': (50, 50)}
+   Accuracy: 0.9968
+   ROC AUC: 0.9999
+   Training time: 28.67s
+
+   Feature Importances (Random Forest):
+      degradation         : 0.3859
+      Z_max               : 0.2900
+      molar_mass          : 0.0634
+      element_count       : 0.0593
+      symmetry_operations : 0.0592
+      density             : 0.0520
+      refinements         : 0.0502
+      final_coherence     : 0.0400
+
+[5/6] Creating visualizations...
+   ✓ Saved ROC curves
+   ✓ Saved accuracy comparison
+   ✓ Saved feature importances
+   ✓ Saved confusion matrices
+
+[6/6] Saving results...
+   ✓ Saved summary to results/phase2_ml_summary.json
+
+================================================================================
+ML BOUNDARY MAPPING COMPLETE!
+================================================================================
+
+Best Classifier:
+   random_forest
+   Accuracy: 1.0000
+   ROC AUC: 1.0000
+
+Key Findings:
+   1. Most important feature: degradation
+   2. Least important feature: final_coherence
+   3. Best classifier: random_forest
+   4. All models achieved >90% accuracy: True

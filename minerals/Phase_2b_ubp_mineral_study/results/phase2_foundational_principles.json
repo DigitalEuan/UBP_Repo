@@ -1,0 +1,167 @@
+{
+  "pi_emergence": {
+    "Y": 0.26467543040452696,
+    "O_observer": 3.778212425957374,
+    "12_over_pi": 3.819718634205488,
+    "difference": 0.04150620824811391,
+    "relative_error_percent": 1.0985673532529474
+  },
+  "threshold_origin": {
+    "percentile_analysis": [
+      {
+        "percentile": 90,
+        "threshold": 0.9692427546734581,
+        "pass_count": 315,
+        "pass_rate": 10.12210796915167
+      },
+      {
+        "percentile": 91,
+        "threshold": 0.9694716322335972,
+        "pass_count": 281,
+        "pass_rate": 9.029562982005142
+      },
+      {
+        "percentile": 92,
+        "threshold": 0.9702432424089656,
+        "pass_count": 249,
+        "pass_rate": 8.001285347043702
+      },
+      {
+        "percentile": 93,
+        "threshold": 0.9714258677140344,
+        "pass_count": 219,
+        "pass_rate": 7.0372750642673525
+      },
+      {
+        "percentile": 94,
+        "threshold": 0.9724258677140344,
+        "pass_count": 199,
+        "pass_rate": 6.394601542416452
+      },
+      {
+        "percentile": 95,
+        "threshold": 0.9732427546734581,
+        "pass_count": 157,
+        "pass_rate": 5.044987146529563
+      },
+      {
+        "percentile": 96,
+        "threshold": 0.9744258677140344,
+        "pass_count": 132,
+        "pass_rate": 4.241645244215938
+      },
+      {
+        "percentile": 97,
+        "threshold": 0.9753817909260154,
+        "pass_count": 94,
+        "pass_rate": 3.020565552699229
+      },
+      {
+        "percentile": 98,
+        "threshold": 0.9782427546734581,
+        "pass_count": 67,
+        "pass_rate": 2.152956298200514
+      },
+      {
+        "percentile": 99,
+        "threshold": 0.9812427546734581,
+        "pass_count": 43,
+        "pass_rate": 1.3817480719794344
+      }
+    ],
+    "threshold": 0.973243,
+    "one_minus_threshold": 0.02675700000000003,
+    "threshold_over_pi": 0.309792868559171,
+    "threshold_over_Y": 3.6771187960760328,
+    "threshold_over_O_observer": 0.257593509913193
+  },
+  "pca_derivation": {
+    "explained_variance": [
+      0.3747779322890908,
+      0.30310551090118354,
+      0.13009120482874809,
+      0.07930303040985942,
+      0.06498949085083233,
+      0.04538319987195237,
+      0.0021796229168308877,
+      0.00017000793150257038
+    ],
+    "pc1_loadings": {
+      "Z_max": 0.4137302111566985,
+      "symmetry_operations": -0.37147319421007696,
+      "element_count": 0.2567086048838471,
+      "molar_mass": 0.30959889609602265,
+      "density": 0.2944808190067549,
+      "refinements": -0.3575552850250266,
+      "degradation": 0.45667859850459314,
+      "final_coherence": 0.3255213005779695
+    },
+    "pc2_loadings": {
+      "Z_max": 0.3579286450277143,
+      "symmetry_operations": 0.4694898818972138,
+      "element_count": 0.10659709847399762,
+      "molar_mass": 0.17373957625404016,
+      "density": 0.32838693713065353,
+      "refinements": 0.4698587700117017,
+      "degradation": 0.3312857563542171,
+      "final_coherence": -0.4142009868489086
+    },
+    "pc3_loadings": {
+      "Z_max": -0.32021830325528916,
+      "symmetry_operations": 0.06925029172202404,
+      "element_count": 0.7247260267374471,
+      "molar_mass": 0.5248222776538516,
+      "density": -0.21870357946452917,
+      "refinements": 0.07774008665301413,
+      "degradation": -0.1927818748504992,
+      "final_coherence": -0.030964017665767073
+    }
+  },
+  "bitfield_uniqueness": {
+    "projections": [
+      {
+        "name": "PCA",
+        "separability": 1.6360134655148286,
+        "pass_mean_dist": 0.7811004757483154,
+        "fail_mean_dist": 2.8965094171958277,
+        "inter_mean_dist": 3.0083096528835824
+      },
+      {
+        "name": "Random_1",
+        "separability": 1.6081422422624907,
+        "pass_mean_dist": 0.7806640804794923,
+        "fail_mean_dist": 2.1984895389127495,
+        "inter_mean_dist": 2.3954513907669273
+      },
+      {
+        "name": "Random_2",
+        "separability": 1.6035196034790082,
+        "pass_mean_dist": 0.8055105013188614,
+        "fail_mean_dist": 2.622877352157134,
+        "inter_mean_dist": 2.7487435656890384
+      },
+      {
+        "name": "Random_3",
+        "separability": 1.0987540070230322,
+        "pass_mean_dist": 0.6390117061735934,
+        "fail_mean_dist": 1.5326263393294728,
+        "inter_mean_dist": 1.1930480021500798
+      },
+      {
+        "name": "Random_4",
+        "separability": 1.3050926768124995,
+        "pass_mean_dist": 0.6557933023609223,
+        "fail_mean_dist": 2.2029177357767558,
+        "inter_mean_dist": 1.8654414204982708
+      },
+      {
+        "name": "Random_5",
+        "separability": 1.2491640327430007,
+        "pass_mean_dist": 0.6159486394159064,
+        "fail_mean_dist": 1.8263520051569786,
+        "inter_mean_dist": 1.5254170611727476
+      }
+    ],
+    "pca_is_optimal": true
+  }
+}

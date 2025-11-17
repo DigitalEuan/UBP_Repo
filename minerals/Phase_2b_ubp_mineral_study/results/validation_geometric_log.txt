@@ -1,0 +1,77 @@
+================================================================================
+GEOMETRIC UNCERTAINTY QUANTIFICATION
+================================================================================
+Bootstrap CI for UBP constant relationships
+================================================================================
+
+[1/4] Loading data...
+   Loaded 3112 minerals
+
+[2/4] Bootstrap CI for threshold / O_observer...
+   Testing if threshold / O_observer ≈ Y = 0.2647
+      Bootstrap sample 400/2000...
+      Bootstrap sample 800/2000...
+      Bootstrap sample 1200/2000...
+      Bootstrap sample 1600/2000...
+      Bootstrap sample 2000/2000...
+
+   Results:
+      Original threshold: 0.973243
+      Original ratio (threshold / O_observer): 0.257594
+      Y constant: 0.264700
+      Difference: -0.007106 (2.68%)
+      Bootstrap ratio 95% CI: [0.257378, 0.257859]
+      p-value (ratio ≥ Y): 0.0000
+      CI contains Y: False
+
+[3/4] Bootstrap CI for 12 / π...
+   Testing if 12 / π ≈ O_observer = 3.7782
+   Min symmetry (passed): 1
+   Max symmetry (failed): 48
+      Bootstrap sample 400/2000...
+      Bootstrap sample 800/2000...
+      Bootstrap sample 1200/2000...
+      Bootstrap sample 1600/2000...
+      Bootstrap sample 2000/2000...
+
+   Results:
+      Symmetry threshold: 1
+      Original ratio (symmetry / π): 0.318310
+      O_observer constant: 3.778200
+      Difference: -3.459890 (91.58%)
+      Bootstrap ratio 95% CI: [0.318310, 0.318310]
+      CI contains O_observer: False
+
+[4/4] Correlation Analysis...
+
+   Correlation Matrix:
+   Z_max           symmetry_operations degradation     refinements     nrci           
+   Z_max                   1.0000        -0.0684         0.9836        -0.0592        -0.0491
+   symmetry_operations        -0.0684         1.0000        -0.1397         0.9799        -0.7295
+   degradation             0.9836        -0.1397         1.0000        -0.1264         0.0114
+   refinements            -0.0592         0.9799        -0.1264         1.0000        -0.6838
+   nrci                   -0.0491        -0.7295         0.0114        -0.6838         1.0000
+
+   Key Correlations:
+      Z_max ↔ degradation: 0.9836
+      symmetry ↔ refinements: 0.9799
+      degradation ↔ NRCI: 0.0114
+
+   Creating visualizations...
+   ✓ Saved validation_geometric_uncertainty.png
+
+   Saving results...
+   ✓ Saved validation_geometric_uncertainty.json
+
+================================================================================
+VALIDATION COMPLETE!
+================================================================================
+
+Key Findings:
+   threshold / O_observer = 0.257594
+   Difference from Y: 2.68%
+   CI contains Y: False
+
+   symmetry / π = 0.318310
+   Difference from O_observer: 91.58%
+   CI contains O_observer: False

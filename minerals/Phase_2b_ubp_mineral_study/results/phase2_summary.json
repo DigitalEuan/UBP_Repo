@@ -1,0 +1,107 @@
+{
+  "total_minerals": 3112,
+  "passed": 0,
+  "failed": 3112,
+  "pass_rate": 0.0,
+  "by_crystal_system": {
+    "cubic": {
+      "total": 26,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "hexagonal": {
+      "total": 116,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "monoclinic": {
+      "total": 84,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "orthorhombic": {
+      "total": 284,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "tetragonal": {
+      "total": 169,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "triclinic": {
+      "total": 2380,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "trigonal": {
+      "total": 53,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "by_symmetry": {
+    "1": {
+      "total": 2380,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "2": {
+      "total": 84,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "4": {
+      "total": 284,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "6": {
+      "total": 53,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "8": {
+      "total": 169,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "12": {
+      "total": 116,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "48": {
+      "total": 26,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "by_z_range": {
+    "1-30": {
+      "total": 1545,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "30-50": {
+      "total": 578,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "50-80": {
+      "total": 593,
+      "passed": 0,
+      "pass_rate": 0.0
+    },
+    "80-92": {
+      "total": 265,
+      "passed": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "calibration": {
+    "base_degradation_per_z": 0.001,
+    "tgic_multiplier": 0.01,
+    "nrci_threshold": 0.9995
+  }
+}

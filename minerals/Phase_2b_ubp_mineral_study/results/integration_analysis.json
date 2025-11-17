@@ -1,0 +1,57 @@
+{
+  "correlations": {
+    "distance_vs_nrci": {
+      "pearson": -0.06043850719699417,
+      "spearman": 0.2107853432703337,
+      "p_value_pearson": 0.6641899593729667,
+      "p_value_spearman": 0.12602846245383942
+    },
+    "symmetry_vs_pc1": {
+      "pearson": -0.7593640706805129,
+      "p_value": 2.8203162053340092e-11
+    },
+    "z_vs_pc2": {
+      "pearson": 0.5048514681719546,
+      "p_value": 9.899449349486607e-05
+    }
+  },
+  "boundaries": {
+    "spherical": {
+      "threshold_distance": 2.191706924547772,
+      "accuracy": 0.6666666666666666
+    },
+    "planar": {
+      "threshold_pc1": -0.897022533207421,
+      "accuracy": 0.8888888888888888
+    },
+    "combined": {
+      "accuracy": 0.7777777777777778
+    },
+    "best_model": "Planar"
+  },
+  "pi_relationships": {
+    "theoretical_boundary": 3.819718634205488,
+    "O_observer": 3.7782,
+    "threshold_dist_over_pi": 0.6976419817010272,
+    "threshold_pc1_over_pi": 0.28553114044954975
+  },
+  "pathway": {
+    "information": [
+      "Z",
+      "Symmetry",
+      "I_cmplx",
+      "Refinements",
+      "Degradation"
+    ],
+    "geometry": [
+      "PC1 (complexity)",
+      "PC2 (Z/degradation)",
+      "PC3 (ratio)"
+    ],
+    "reality": [
+      "NRCI threshold",
+      "Pass/Fail",
+      "Mineral existence"
+    ]
+  }
+}

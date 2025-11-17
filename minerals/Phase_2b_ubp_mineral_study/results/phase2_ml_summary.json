@@ -1,0 +1,50 @@
+{
+  "threshold": 0.973243,
+  "classifiers": {
+    "svm_linear": {
+      "accuracy": 0.9871589085072231,
+      "roc_auc": 0.9989102005231036,
+      "training_time": 0.0461735725402832
+    },
+    "svm_rbf": {
+      "accuracy": 0.9967897271268058,
+      "roc_auc": 0.9997275501307759,
+      "training_time": 4.514664888381958
+    },
+    "svm_poly": {
+      "accuracy": 0.9887640449438202,
+      "roc_auc": 0.9990191804707933,
+      "training_time": 0.5924246311187744
+    },
+    "random_forest": {
+      "accuracy": 1.0,
+      "roc_auc": 1.0,
+      "training_time": 15.83768343925476
+    },
+    "neural_network": {
+      "accuracy": 0.9967897271268058,
+      "roc_auc": 0.9998910200523105,
+      "training_time": 28.665603637695312
+    }
+  },
+  "feature_columns": [
+    "Z_max",
+    "symmetry_operations",
+    "element_count",
+    "molar_mass",
+    "density",
+    "refinements",
+    "degradation",
+    "final_coherence"
+  ],
+  "feature_importances": {
+    "Z_max": 0.29000056449708334,
+    "symmetry_operations": 0.05924034410386221,
+    "element_count": 0.05929829913396187,
+    "molar_mass": 0.063426036918661,
+    "density": 0.05197444069042211,
+    "refinements": 0.05019872944720591,
+    "degradation": 0.3859037883468343,
+    "final_coherence": 0.039957796861969354
+  }
+}

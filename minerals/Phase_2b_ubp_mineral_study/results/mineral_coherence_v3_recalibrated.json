@@ -1,0 +1,2192 @@
+{
+  "model_version": "3.0_recalibrated",
+  "precision_mode": "PrecisionMode.FLOAT",
+  "calibration_parameters": {
+    "BASE_DEGRADATION": 0.001,
+    "Z_PENALTY_SCALE": 0.01,
+    "TGIC_FACTOR": 0.3,
+    "BOTTLENECK_AMPLIFICATION": 2.0
+  },
+  "thresholds": {
+    "natural_mineral": 0.99,
+    "perfect_crystal": 0.999999
+  },
+  "results": [
+    {
+      "name": "Abelsonite",
+      "formula": "NiC31H34N4",
+      "space_group": 2,
+      "crystal_system": "triclinic",
+      "Z": 28,
+      "base_nrci": 0.998,
+      "final_nrci": 0.9978946691849087,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05132543157122643,
+      "z_penalty": 0.023325431571226428,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 2,
+      "computation_depth": 5,
+      "hex_address": "7b7075893aa348876e69d9585105dc8d4daa8d9630fa99d48fb233d716fbc0e7",
+      "history_summary": {
+        "total_operations": 5,
+        "nrci_min": 0.9978946691846289,
+        "nrci_max": 0.9980000000007976,
+        "nrci_final": 0.9978946691849087,
+        "total_refinements": 2,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "triclinic",
+        "Z": 28,
+        "symmetry_order": 2,
+        "phase": "observer_cost",
+        "total_degradation": 0.05132543157122643,
+        "z_penalty": 0.023325431571226428,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Adamite",
+      "formula": "Zn2(OH)(AsO4)",
+      "space_group": 58,
+      "crystal_system": "orthorhombic",
+      "Z": 33,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994704203119249,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.057475552930265364,
+      "z_penalty": 0.02447555293026536,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "6f1278655e0dec9dc895367aa5c2e820f1f358a7c679b9093e47848542358695",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994704203118545,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994704203119249,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 33,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.057475552930265364,
+        "z_penalty": 0.02447555293026536,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Afwillite",
+      "formula": "Ca3(SiO3OH)2 \u00b7 2 H2O",
+      "space_group": 9,
+      "crystal_system": "monoclinic",
+      "Z": 20,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989581790190605,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04097012591487793,
+      "z_penalty": 0.020970125914877933,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "70c1dd97b7363dfc291ff9ff66cb99e7069c589a412651776a5e8a1bea029ac4",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.998958179018922,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989581790190605,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 20,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.04097012591487793,
+        "z_penalty": 0.020970125914877933,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Anglesite",
+      "formula": "PbSO4",
+      "space_group": 62,
+      "crystal_system": "orthorhombic",
+      "Z": 82,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994088192554322,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "0cb237481baacb411b9dd2c0247f477c7364ff6334b6ab6dfbcda0de9aaf42be",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994088192553536,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994088192554322,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 82,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Aragonite",
+      "formula": "CaCO3",
+      "space_group": 62,
+      "crystal_system": "trigonal",
+      "Z": 20,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998958179019337,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04097012591487793,
+      "z_penalty": 0.020970125914877933,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "8f789e5bd40b66ebf7c14b44442bc328fe96ed8497894056855c74ea0a2811a2",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.99989581790192,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998958179019337,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 20,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.04097012591487793,
+        "z_penalty": 0.020970125914877933,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Atacamite",
+      "formula": "Cu2Cl(OH)3",
+      "space_group": 62,
+      "crystal_system": "orthorhombic",
+      "Z": 29,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994730112671959,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05257107080990532,
+      "z_penalty": 0.023571070809905316,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "8c44341684f3f032b50e535f85c720342ad6f461229b9dfbffc46fcdaba3a6fb",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994730112671258,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994730112671959,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 29,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.05257107080990532,
+        "z_penalty": 0.023571070809905316,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Azurite",
+      "formula": "Cu3(CO3)2(OH)2",
+      "space_group": 14,
+      "crystal_system": "orthorhombic",
+      "Z": 29,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994730112671959,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05257107080990532,
+      "z_penalty": 0.023571070809905316,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "8c44341684f3f032b50e535f85c720342ad6f461229b9dfbffc46fcdaba3a6fb",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994730112671258,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994730112671959,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 29,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.05257107080990532,
+        "z_penalty": 0.023571070809905316,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Baryte",
+      "formula": "BaSO4",
+      "space_group": 62,
+      "crystal_system": "monoclinic",
+      "Z": 56,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989121780771675,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.08417746183514604,
+      "z_penalty": 0.028177461835146047,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "b8a562bce533cdb5889be74cbead894a9742d4b3085100ae6f7807facb1d4e4e",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989121780770229,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989121780771675,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 56,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.08417746183514604,
+        "z_penalty": 0.028177461835146047,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Bavsiite",
+      "formula": "Ba2V2O2[Si4O12]",
+      "space_group": 87,
+      "crystal_system": "orthorhombic",
+      "Z": 56,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994560890386561,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.08417746183514604,
+      "z_penalty": 0.028177461835146047,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "dea80de3a4f155daacfb5e9acfb58a06b27d285e68b3bffa9c73ef33bce4a49e",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994560890385839,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994560890386561,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 56,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.08417746183514604,
+        "z_penalty": 0.028177461835146047,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Bayldonite",
+      "formula": "PbCu3(AsO4)2(OH)2",
+      "space_group": 15,
+      "crystal_system": "tetragonal",
+      "Z": 82,
+      "base_nrci": 0.9998,
+      "final_nrci": 0.9997635277022043,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "f355e68027e23bb68f80b65f714bdb7ac94ce6bcb60599a82278bcb543925e8f",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9997635277021729,
+        "nrci_max": 0.9998000000001596,
+        "nrci_final": 0.9997635277022043,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "tetragonal",
+        "Z": 82,
+        "symmetry_order": 16,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Benitoite",
+      "formula": "BaTiSi3O9",
+      "space_group": 188,
+      "crystal_system": "monoclinic",
+      "Z": 56,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989121780771675,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.08417746183514604,
+      "z_penalty": 0.028177461835146047,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "b8a562bce533cdb5889be74cbead894a9742d4b3085100ae6f7807facb1d4e4e",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989121780770229,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989121780771675,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 56,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.08417746183514604,
+        "z_penalty": 0.028177461835146047,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Beryl",
+      "formula": "Al2Be3Si6O18",
+      "space_group": 192,
+      "crystal_system": "hexagonal",
+      "Z": 16,
+      "base_nrci": 0.99999,
+      "final_nrci": 0.9999896395754784,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.03540812105567846,
+      "z_penalty": 0.019408121055678466,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 6,
+      "computation_depth": 9,
+      "hex_address": "8d5d7ed2cdb867045d17c0baa4a0d73e92dbdc3eafd5cfc68a4bc761010ab2b1",
+      "history_summary": {
+        "total_operations": 9,
+        "nrci_min": 0.999989639575477,
+        "nrci_max": 0.9999900000000094,
+        "nrci_final": 0.9999896395754784,
+        "total_refinements": 6,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "hexagonal",
+        "Z": 16,
+        "symmetry_order": 24,
+        "phase": "observer_cost",
+        "total_degradation": 0.03540812105567846,
+        "z_penalty": 0.019408121055678466,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Bornite",
+      "formula": "Cu5FeS4",
+      "space_group": 61,
+      "crystal_system": "monoclinic",
+      "Z": 29,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989460225342516,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05257107080990532,
+      "z_penalty": 0.023571070809905316,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "89c59d26567188ca51f11f2ff1085c10baa8ad08154c930b7faa07f8a216cc0f",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989460225341115,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989460225342516,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 29,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.05257107080990532,
+        "z_penalty": 0.023571070809905316,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Botallackite",
+      "formula": "Cu2Cl(OH)3",
+      "space_group": 11,
+      "crystal_system": "orthorhombic",
+      "Z": 29,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994730112671959,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05257107080990532,
+      "z_penalty": 0.023571070809905316,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "8c44341684f3f032b50e535f85c720342ad6f461229b9dfbffc46fcdaba3a6fb",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994730112671258,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994730112671959,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 29,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.05257107080990532,
+        "z_penalty": 0.023571070809905316,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Belongs to the Rutile mineral group",
+      "formula": "SnO2",
+      "space_group": 136,
+      "crystal_system": "monoclinic",
+      "Z": 50,
+      "base_nrci": 0.999,
+      "final_nrci": 0.998919542934534,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07738416103799703,
+      "z_penalty": 0.027384161037997023,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "9d77880071223b38f8e521fe841f5fcee01defc5b3b764ab1fed8730c7e152ae",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989195429343903,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.998919542934534,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 50,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.07738416103799703,
+        "z_penalty": 0.027384161037997023,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Celestine",
+      "formula": "SrSO4",
+      "space_group": 62,
+      "crystal_system": "tetragonal",
+      "Z": 38,
+      "base_nrci": 0.9998,
+      "final_nrci": 0.9997868959660574,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.0634631031180847,
+      "z_penalty": 0.0254631031180847,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "f16241b6c1c02a5b92bf7fd1db005c4a90958eb8de804c9be53c5acf6a300811",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9997868959660291,
+        "nrci_max": 0.9998000000001596,
+        "nrci_final": 0.9997868959660574,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "tetragonal",
+        "Z": 38,
+        "symmetry_order": 16,
+        "phase": "observer_cost",
+        "total_degradation": 0.0634631031180847,
+        "z_penalty": 0.0254631031180847,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Cinnabar",
+      "formula": "HgS",
+      "space_group": 152,
+      "crystal_system": "triclinic",
+      "Z": 80,
+      "base_nrci": 0.998,
+      "final_nrci": 0.9977659381936943,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.11067418644271718,
+      "z_penalty": 0.030674186442717168,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 2,
+      "computation_depth": 5,
+      "hex_address": "582b0444ae438ed5e62897364ee2d9b7169c186cbd5c6d157c3fdc827177b1c9",
+      "history_summary": {
+        "total_operations": 5,
+        "nrci_min": 0.9977659381933973,
+        "nrci_max": 0.9980000000007976,
+        "nrci_final": 0.9977659381936943,
+        "total_refinements": 2,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "triclinic",
+        "Z": 80,
+        "symmetry_order": 2,
+        "phase": "observer_cost",
+        "total_degradation": 0.11067418644271718,
+        "z_penalty": 0.030674186442717168,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Clinoclase",
+      "formula": "Cu3(AsO4)(OH)3",
+      "space_group": 14,
+      "crystal_system": "trigonal",
+      "Z": 33,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998940840623991,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.057475552930265364,
+      "z_penalty": 0.02447555293026536,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "35515360a39b0520ee342d72fcba69e69bdcdc1cd732903e33430adad1575af4",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.999894084062385,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998940840623991,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 33,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.057475552930265364,
+        "z_penalty": 0.02447555293026536,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Crocoite",
+      "formula": "PbCrO4",
+      "space_group": 14,
+      "crystal_system": "monoclinic",
+      "Z": 82,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9988176385107072,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "3fde6914878b861a8c5d7a4fad71d771a210faab530f42bcc1126a965aa068e9",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9988176385105499,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9988176385107072,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 82,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Dioptase",
+      "formula": "CuSiO3 \u00b7 H2O",
+      "space_group": 148,
+      "crystal_system": "trigonal",
+      "Z": 29,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998946022534532,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05257107080990532,
+      "z_penalty": 0.023571070809905316,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "ace0730df7d7b0ba54f748d37ab3e76c6dc1f850cdbc56334cf92f6a7f0dfda2",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998946022534392,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998946022534532,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 29,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.05257107080990532,
+        "z_penalty": 0.023571070809905316,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "View along the c\u00a0axis.",
+      "formula": "LiAlSiO4",
+      "space_group": 180,
+      "crystal_system": "trigonal",
+      "Z": 16,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998963957547696,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.03540812105567846,
+      "z_penalty": 0.019408121055678466,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "467cc8ed6229587990514f0a576c2218bfb3383b091019ad22cd3fff9153e7eb",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998963957547559,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998963957547696,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 16,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.03540812105567846,
+        "z_penalty": 0.019408121055678466,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Freieslebenite",
+      "formula": "AgPbSbS3",
+      "space_group": 14,
+      "crystal_system": "hexagonal",
+      "Z": 82,
+      "base_nrci": 0.99999,
+      "final_nrci": 0.9999881763851118,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 6,
+      "computation_depth": 9,
+      "hex_address": "62e3687fdc879058118585023b89922efa82433f48117fbf01e812b49f7b5a0a",
+      "history_summary": {
+        "total_operations": 9,
+        "nrci_min": 0.9999881763851103,
+        "nrci_max": 0.9999900000000094,
+        "nrci_final": 0.9999881763851118,
+        "total_refinements": 6,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "hexagonal",
+        "Z": 82,
+        "symmetry_order": 24,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Gilmarite",
+      "formula": "Cu3(AsO4)(OH)3",
+      "space_group": 1,
+      "crystal_system": "monoclinic",
+      "Z": 33,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989408406237089,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.057475552930265364,
+      "z_penalty": 0.02447555293026536,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "910412619a0f3393e18a40d5dd1b938eedcab384f49eb2478758209fa948c0d7",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.998940840623568,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989408406237089,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 33,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.057475552930265364,
+        "z_penalty": 0.02447555293026536,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Known only since 1996",
+      "formula": "CaMg(VO4,AsO4)(OH)",
+      "space_group": 19,
+      "crystal_system": "triclinic",
+      "Z": 33,
+      "base_nrci": 0.998,
+      "final_nrci": 0.9978816812471362,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.057475552930265364,
+      "z_penalty": 0.02447555293026536,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 2,
+      "computation_depth": 5,
+      "hex_address": "293929fe26876dc468a7211a0d5f3f8d2ab3032fe6ee0d696f19b94810452bf5",
+      "history_summary": {
+        "total_operations": 5,
+        "nrci_min": 0.9978816812468546,
+        "nrci_max": 0.9980000000007976,
+        "nrci_final": 0.9978816812471362,
+        "total_refinements": 2,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "triclinic",
+        "Z": 33,
+        "symmetry_order": 2,
+        "phase": "observer_cost",
+        "total_degradation": 0.057475552930265364,
+        "z_penalty": 0.02447555293026536,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Hercynite",
+      "formula": "FeAl2O4",
+      "space_group": 227,
+      "crystal_system": "orthorhombic",
+      "Z": 26,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.999474991331759,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "a3176fe4fe8f05ab86e4b5c99c90701957864055c3a6fff1273e758279307891",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994749913316892,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.999474991331759,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 26,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Hibbingite",
+      "formula": "Fe2Cl(OH)3",
+      "space_group": 62,
+      "crystal_system": "cubic",
+      "Z": 26,
+      "base_nrci": 0.999999,
+      "final_nrci": 0.9999989499826639,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 7,
+      "computation_depth": 10,
+      "hex_address": "343b33f734af9654d298d1a36144ffe76a5346d03fe4033af20c70327afb12f8",
+      "history_summary": {
+        "total_operations": 10,
+        "nrci_min": 0.9999989499826638,
+        "nrci_max": 0.9999990000000011,
+        "nrci_final": 0.9999989499826639,
+        "total_refinements": 7,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "cubic",
+        "Z": 26,
+        "symmetry_order": 48,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Ilmenite",
+      "formula": "FeTiO3",
+      "space_group": 148,
+      "crystal_system": "orthorhombic",
+      "Z": 26,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.999474991331759,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "a3176fe4fe8f05ab86e4b5c99c90701957864055c3a6fff1273e758279307891",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994749913316892,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.999474991331759,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 26,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Jarosite",
+      "formula": "KFe3(OH)6(SO4)2",
+      "space_group": 166,
+      "crystal_system": "trigonal",
+      "Z": 26,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998949982663657,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "2a80c544e27097eb6cc9cb6c63072a7ec8e91b64cbe04665107d68c14a0c4c6e",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998949982663518,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998949982663657,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 26,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Kapellasite",
+      "formula": "Cu3Zn(OH)6Cl2",
+      "space_group": 164,
+      "crystal_system": "trigonal",
+      "Z": 30,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998944717629645,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05380838167163508,
+      "z_penalty": 0.023808381671635088,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "f59d2f9646ae1e10758d4422a7b8e98169c2ef65afaa6823cd6e62e56ed3611b",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998944717629505,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998944717629645,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 30,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.05380838167163508,
+        "z_penalty": 0.023808381671635088,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Keyite",
+      "formula": "Cu3(Zn,Cd)4Cd2(AsO4)6\u00b7 2 H2O",
+      "space_group": 15,
+      "crystal_system": "trigonal",
+      "Z": 48,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998922009773471,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07509840707635523,
+      "z_penalty": 0.02709840707635524,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "dd8cbe25d34e3b3113fcdc666939575fd4fe184ea26b80a92146eb0f8d5cb408",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998922009773328,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998922009773471,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 48,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.07509840707635523,
+        "z_penalty": 0.02709840707635524,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Lavendulan",
+      "formula": "NaCaCu5(AsO4)4Cl\u00a0\u00b7 5 H2O",
+      "space_group": 14,
+      "crystal_system": "monoclinic",
+      "Z": 33,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989408406237089,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.057475552930265364,
+      "z_penalty": 0.02447555293026536,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "910412619a0f3393e18a40d5dd1b938eedcab384f49eb2478758209fa948c0d7",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.998940840623568,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989408406237089,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 33,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.057475552930265364,
+        "z_penalty": 0.02447555293026536,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Mellite",
+      "formula": "Al2C6(COO)6\u00a0\u00b7 16 H2O",
+      "space_group": 142,
+      "crystal_system": "monoclinic",
+      "Z": 13,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989685612782451,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.030954645502230756,
+      "z_penalty": 0.017954645502230755,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "8bcd42af648bbe13ba1a12ab2de59ecb2d2a583fc9b15dad5a3b9e83a820b322",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.998968561278108,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989685612782451,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 13,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.030954645502230756,
+        "z_penalty": 0.017954645502230755,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Nadorite",
+      "formula": "PbSbO2Cl",
+      "space_group": 63,
+      "crystal_system": "tetragonal",
+      "Z": 82,
+      "base_nrci": 0.9998,
+      "final_nrci": 0.9997635277022043,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "f355e68027e23bb68f80b65f714bdb7ac94ce6bcb60599a82278bcb543925e8f",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9997635277021729,
+        "nrci_max": 0.9998000000001596,
+        "nrci_final": 0.9997635277022043,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "tetragonal",
+        "Z": 82,
+        "symmetry_order": 16,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Osarizawaite",
+      "formula": "PbCuAl2(SO4)2(OH)6",
+      "space_group": 166,
+      "crystal_system": "orthorhombic",
+      "Z": 82,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994088192554322,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "0cb237481baacb411b9dd2c0247f477c7364ff6334b6ab6dfbcda0de9aaf42be",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994088192553536,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994088192554322,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 82,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Pascoite",
+      "formula": "Ca3V10O28\u00a0\u00b7 17 H2O",
+      "space_group": 12,
+      "crystal_system": "trigonal",
+      "Z": 23,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998954026052462,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.044948459511504044,
+      "z_penalty": 0.021948459511504047,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "1c996486d9abb276e81e670f159834e3aea8d5cb5c0adb5a0ffaa88162af1120",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998954026052324,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998954026052462,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 23,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.044948459511504044,
+        "z_penalty": 0.021948459511504047,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Pentlandite is the most important nickel ore",
+      "formula": "(Fe,Ni)9S8",
+      "space_group": 225,
+      "crystal_system": "monoclinic",
+      "Z": 28,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989473345925943,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05132543157122643,
+      "z_penalty": 0.023325431571226428,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "ead2a8179e91e6983ec7d099222856e443805c6efcc7bcc4e870dc6812375777",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989473345924543,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989473345925943,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 28,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.05132543157122643,
+        "z_penalty": 0.023325431571226428,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Portlandite",
+      "formula": "Ca(OH)2",
+      "space_group": 164,
+      "crystal_system": "cubic",
+      "Z": 20,
+      "base_nrci": 0.999999,
+      "final_nrci": 0.9999989581790196,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04097012591487793,
+      "z_penalty": 0.020970125914877933,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 7,
+      "computation_depth": 10,
+      "hex_address": "f738feb0b5f1808dd0f1162b206ebd3a18d1cf9b664856c8921abb5fb2b7bb27",
+      "history_summary": {
+        "total_operations": 10,
+        "nrci_min": 0.9999989581790194,
+        "nrci_max": 0.9999990000000011,
+        "nrci_final": 0.9999989581790196,
+        "total_refinements": 7,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "cubic",
+        "Z": 20,
+        "symmetry_order": 48,
+        "phase": "observer_cost",
+        "total_degradation": 0.04097012591487793,
+        "z_penalty": 0.020970125914877933,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Rodalquilarite",
+      "formula": "Fe2(TeO2OH)3(TeO3)Cl",
+      "space_group": 2,
+      "crystal_system": "trigonal",
+      "Z": 52,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998917082589592,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07965870603007,
+      "z_penalty": 0.02765870603006999,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "f83a96f5c712ec0a3430958699716c8f75d0de961e03225ef3fd5830bf6b2ddb",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998917082589448,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998917082589592,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 52,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.07965870603007,
+        "z_penalty": 0.02765870603006999,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Samsonite",
+      "formula": "Ag4MnSb2S6",
+      "space_group": 14,
+      "crystal_system": "triclinic",
+      "Z": 51,
+      "base_nrci": 0.998,
+      "final_nrci": 0.9978366240109171,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07852277942907028,
+      "z_penalty": 0.02752277942907028,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 2,
+      "computation_depth": 5,
+      "hex_address": "62f4aab669a6fbb75eae484c049eec30e6d7f8c97377482de260cd5ee4fdd4ce",
+      "history_summary": {
+        "total_operations": 5,
+        "nrci_min": 0.9978366240106296,
+        "nrci_max": 0.9980000000007976,
+        "nrci_final": 0.9978366240109171,
+        "total_refinements": 2,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "triclinic",
+        "Z": 51,
+        "symmetry_order": 2,
+        "phase": "observer_cost",
+        "total_degradation": 0.07852277942907028,
+        "z_penalty": 0.02752277942907028,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Sartorite",
+      "formula": "PbAs2S4",
+      "space_group": 14,
+      "crystal_system": "monoclinic",
+      "Z": 82,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9988176385107072,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "3fde6914878b861a8c5d7a4fad71d771a210faab530f42bcc1126a965aa068e9",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9988176385105499,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9988176385107072,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 82,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Schoenfliesite",
+      "formula": "MgSn(OH)6",
+      "space_group": 201,
+      "crystal_system": "monoclinic",
+      "Z": 50,
+      "base_nrci": 0.999,
+      "final_nrci": 0.998919542934534,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07738416103799703,
+      "z_penalty": 0.027384161037997023,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "9d77880071223b38f8e521fe841f5fcee01defc5b3b764ab1fed8730c7e152ae",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989195429343903,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.998919542934534,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 50,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.07738416103799703,
+        "z_penalty": 0.027384161037997023,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Spangolite is pyroelectric",
+      "formula": "Cu6Al(SO4)(OH)12Cl\u00a0\u00b7 3 H2O",
+      "space_group": 159,
+      "crystal_system": "cubic",
+      "Z": 29,
+      "base_nrci": 0.999999,
+      "final_nrci": 0.9999989460225348,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.05257107080990532,
+      "z_penalty": 0.023571070809905316,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 7,
+      "computation_depth": 10,
+      "hex_address": "09a276ff84fd2bef6c07807b502a3d1dbb501712ffbe3099d86ca34f67b8fefa",
+      "history_summary": {
+        "total_operations": 10,
+        "nrci_min": 0.9999989460225347,
+        "nrci_max": 0.9999990000000011,
+        "nrci_final": 0.9999989460225348,
+        "total_refinements": 7,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "cubic",
+        "Z": 29,
+        "symmetry_order": 48,
+        "phase": "observer_cost",
+        "total_degradation": 0.05257107080990532,
+        "z_penalty": 0.023571070809905316,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Spessartine",
+      "formula": "Mn3Al2[SiO4]3",
+      "space_group": 230,
+      "crystal_system": "trigonal",
+      "Z": 25,
+      "base_nrci": 0.9999,
+      "final_nrci": 0.9998951320105499,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.047532130774077405,
+      "z_penalty": 0.022532130774077404,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 5,
+      "computation_depth": 8,
+      "hex_address": "3ce18a4a1fde0bcd3886944b9c989006fd718d6e74c590392f289cf35afb90be",
+      "history_summary": {
+        "total_operations": 8,
+        "nrci_min": 0.9998951320105359,
+        "nrci_max": 0.9999000000000797,
+        "nrci_final": 0.9998951320105499,
+        "total_refinements": 5,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "trigonal",
+        "Z": 25,
+        "symmetry_order": 12,
+        "phase": "observer_cost",
+        "total_degradation": 0.047532130774077405,
+        "z_penalty": 0.022532130774077404,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Synonym: Antimonite",
+      "formula": "Sb2S3",
+      "space_group": 62,
+      "crystal_system": "cubic",
+      "Z": 51,
+      "base_nrci": 0.999999,
+      "final_nrci": 0.9999989183120062,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07852277942907028,
+      "z_penalty": 0.02752277942907028,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 7,
+      "computation_depth": 10,
+      "hex_address": "53e8840a329b25566d4534e7ae60cc934a22c1591dbd27976b879ce4edb56133",
+      "history_summary": {
+        "total_operations": 10,
+        "nrci_min": 0.999998918312006,
+        "nrci_max": 0.9999990000000011,
+        "nrci_final": 0.9999989183120062,
+        "total_refinements": 7,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "cubic",
+        "Z": 51,
+        "symmetry_order": 48,
+        "phase": "observer_cost",
+        "total_degradation": 0.07852277942907028,
+        "z_penalty": 0.02752277942907028,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Strengite",
+      "formula": "FePO4\u00a0\u00b7 2 H2O",
+      "space_group": 61,
+      "crystal_system": "orthorhombic",
+      "Z": 26,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.999474991331759,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "a3176fe4fe8f05ab86e4b5c99c90701957864055c3a6fff1273e758279307891",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994749913316892,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.999474991331759,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 26,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Suzukiite",
+      "formula": "BaVSi2O7",
+      "space_group": 63,
+      "crystal_system": "orthorhombic",
+      "Z": 56,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994560890386561,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.08417746183514604,
+      "z_penalty": 0.028177461835146047,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "dea80de3a4f155daacfb5e9acfb58a06b27d285e68b3bffa9c73ef33bce4a49e",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994560890385839,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994560890386561,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 56,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.08417746183514604,
+        "z_penalty": 0.028177461835146047,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Tetrahedrite",
+      "formula": "Cu12[S|(SbS3)4]",
+      "space_group": 217,
+      "crystal_system": "orthorhombic",
+      "Z": 51,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.9994591560028732,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07852277942907028,
+      "z_penalty": 0.02752277942907028,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "cd6e9957ad92df30efebd9c8ca986f6a74707f3639d9a2d1cf68917e303d5c9f",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994591560028012,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.9994591560028732,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 51,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.07852277942907028,
+        "z_penalty": 0.02752277942907028,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Thaumasite",
+      "formula": "Ca3Si(OH)6(CO3)(SO4)",
+      "space_group": 173,
+      "crystal_system": "cubic",
+      "Z": 20,
+      "base_nrci": 0.999999,
+      "final_nrci": 0.9999989581790196,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04097012591487793,
+      "z_penalty": 0.020970125914877933,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 7,
+      "computation_depth": 10,
+      "hex_address": "f738feb0b5f1808dd0f1162b206ebd3a18d1cf9b664856c8921abb5fb2b7bb27",
+      "history_summary": {
+        "total_operations": 10,
+        "nrci_min": 0.9999989581790194,
+        "nrci_max": 0.9999990000000011,
+        "nrci_final": 0.9999989581790196,
+        "total_refinements": 7,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "cubic",
+        "Z": 20,
+        "symmetry_order": 48,
+        "phase": "observer_cost",
+        "total_degradation": 0.04097012591487793,
+        "z_penalty": 0.020970125914877933,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Thomasclarkite-Y",
+      "formula": "Na(Y,REE)(HCO3)(OH)3\u00a0\u00b7 4 H2O (REE = Rare Earth Element, frequently Ce)",
+      "space_group": 3,
+      "crystal_system": "hexagonal",
+      "Z": 88,
+      "base_nrci": 0.99999,
+      "final_nrci": 0.9999873297112648,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.23667469103468078,
+      "z_penalty": 0.031341357701347446,
+      "bottleneck_penalty": 0.11733333333333335,
+      "net_refinements": 6,
+      "computation_depth": 9,
+      "hex_address": "ed31c64c8c3eb7fce5385f95975fdff9bab714f43ba1724678f1014e49d92c42",
+      "history_summary": {
+        "total_operations": 9,
+        "nrci_min": 0.9999873297112631,
+        "nrci_max": 0.9999900000000094,
+        "nrci_final": 0.9999873297112648,
+        "total_refinements": 6,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "hexagonal",
+        "Z": 88,
+        "symmetry_order": 24,
+        "phase": "observer_cost",
+        "total_degradation": 0.23667469103468078,
+        "z_penalty": 0.031341357701347446,
+        "bottleneck_penalty": 0.11733333333333335,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Troilite",
+      "formula": "FeS",
+      "space_group": 190,
+      "crystal_system": "monoclinic",
+      "Z": 26,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9989499826633782,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "fc63f0750ed335af2a8d4d77201555b2b059e5b437a46828ed47c1cdd7ed5f8b",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9989499826632386,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9989499826633782,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 26,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Vanadinite",
+      "formula": "Pb5(VO4)3Cl",
+      "space_group": 176,
+      "crystal_system": "hexagonal",
+      "Z": 82,
+      "base_nrci": 0.99999,
+      "final_nrci": 0.9999881763851118,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 6,
+      "computation_depth": 9,
+      "hex_address": "62e3687fdc879058118585023b89922efa82433f48117fbf01e812b49f7b5a0a",
+      "history_summary": {
+        "total_operations": 9,
+        "nrci_min": 0.9999881763851103,
+        "nrci_max": 0.9999900000000094,
+        "nrci_final": 0.9999881763851118,
+        "total_refinements": 6,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "hexagonal",
+        "Z": 82,
+        "symmetry_order": 24,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Valentinite",
+      "formula": "Sb2O3",
+      "space_group": 56,
+      "crystal_system": "hexagonal",
+      "Z": 51,
+      "base_nrci": 0.99999,
+      "final_nrci": 0.9999891831200604,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.07852277942907028,
+      "z_penalty": 0.02752277942907028,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 6,
+      "computation_depth": 9,
+      "hex_address": "ce75b61c30feb0d154bb0db3d09ee68540f9ecbdc9d4d0e00886eefb0b7ec046",
+      "history_summary": {
+        "total_operations": 9,
+        "nrci_min": 0.9999891831200589,
+        "nrci_max": 0.9999900000000094,
+        "nrci_final": 0.9999891831200604,
+        "total_refinements": 6,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "hexagonal",
+        "Z": 51,
+        "symmetry_order": 24,
+        "phase": "observer_cost",
+        "total_degradation": 0.07852277942907028,
+        "z_penalty": 0.02752277942907028,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Vermiculite",
+      "formula": "Mg0,7(Mg,Fe,Al)6(Si,Al)8O20(OH)4 \u00b7 8 H2O",
+      "space_group": 15,
+      "crystal_system": "orthorhombic",
+      "Z": 26,
+      "base_nrci": 0.9995,
+      "final_nrci": 0.999474991331759,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.04880667576615037,
+      "z_penalty": 0.022806675766150374,
+      "bottleneck_penalty": 0.0,
+      "net_refinements": 4,
+      "computation_depth": 7,
+      "hex_address": "a3176fe4fe8f05ab86e4b5c99c90701957864055c3a6fff1273e758279307891",
+      "history_summary": {
+        "total_operations": 7,
+        "nrci_min": 0.9994749913316892,
+        "nrci_max": 0.9995000000003323,
+        "nrci_final": 0.999474991331759,
+        "total_refinements": 4,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "orthorhombic",
+        "Z": 26,
+        "symmetry_order": 8,
+        "phase": "observer_cost",
+        "total_degradation": 0.04880667576615037,
+        "z_penalty": 0.022806675766150374,
+        "bottleneck_penalty": 0.0,
+        "O_observer": 3.778212425957374
+      }
+    },
+    {
+      "name": "Wulfenite",
+      "formula": "PbMoO4",
+      "space_group": 88,
+      "crystal_system": "monoclinic",
+      "Z": 82,
+      "base_nrci": 0.999,
+      "final_nrci": 0.9988176385107072,
+      "passes_natural": true,
+      "passes_perfect": false,
+      "total_degradation": 0.16751370139751645,
+      "z_penalty": 0.030847034730849772,
+      "bottleneck_penalty": 0.054666666666666676,
+      "net_refinements": 3,
+      "computation_depth": 6,
+      "hex_address": "3fde6914878b861a8c5d7a4fad71d771a210faab530f42bcc1126a965aa068e9",
+      "history_summary": {
+        "total_operations": 6,
+        "nrci_min": 0.9988176385105499,
+        "nrci_max": 0.9990000000005317,
+        "nrci_final": 0.9988176385107072,
+        "total_refinements": 3,
+        "operation_types": [
+          "refine_forward",
+          "degrade",
+          "refine_backward"
+        ]
+      },
+      "metadata": {
+        "crystal_system": "monoclinic",
+        "Z": 82,
+        "symmetry_order": 4,
+        "phase": "observer_cost",
+        "total_degradation": 0.16751370139751645,
+        "z_penalty": 0.030847034730849772,
+        "bottleneck_penalty": 0.054666666666666676,
+        "O_observer": 3.778212425957374
+      }
+    }
+  ],
+  "statistics": {
+    "total_minerals": 54,
+    "natural_pass_count": 54,
+    "natural_pass_rate": 1.0,
+    "perfect_pass_count": 0,
+    "perfect_pass_rate": 0.0,
+    "nrci_min": 0.9977659381936943,
+    "nrci_max": 0.9999989581790196,
+    "nrci_mean": 0.9993948411969531,
+    "by_crystal_system": {
+      "triclinic": {
+        "count": 4,
+        "natural_pass": 4,
+        "perfect_pass": 0
+      },
+      "orthorhombic": {
+        "count": 13,
+        "natural_pass": 13,
+        "perfect_pass": 0
+      },
+      "monoclinic": {
+        "count": 14,
+        "natural_pass": 14,
+        "perfect_pass": 0
+      },
+      "trigonal": {
+        "count": 10,
+        "natural_pass": 10,
+        "perfect_pass": 0
+      },
+      "tetragonal": {
+        "count": 3,
+        "natural_pass": 3,
+        "perfect_pass": 0
+      },
+      "hexagonal": {
+        "count": 5,
+        "natural_pass": 5,
+        "perfect_pass": 0
+      },
+      "cubic": {
+        "count": 5,
+        "natural_pass": 5,
+        "perfect_pass": 0
+      }
+    },
+    "by_z_range": {
+      "Z<30": {
+        "count": 24,
+        "pass": 24
+      },
+      "Z=30-50": {
+        "count": 10,
+        "pass": 10
+      },
+      "Z=50-80": {
+        "count": 9,
+        "pass": 9
+      },
+      "Z=80-92": {
+        "count": 11,
+        "pass": 11
+      },
+      "Z>92": {
+        "count": 0,
+        "pass": 0
+      }
+    },
+    "hex_dict_size": 0
+  }
+}

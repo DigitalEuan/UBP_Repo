@@ -1,0 +1,49 @@
+{
+  "representatives": {
+    "best_pass": {
+      "name": "Portlandite",
+      "formula": "Ca(OH)2",
+      "final_nrci": 0.9999984478228152,
+      "net_refinements": 7,
+      "total_degradation": 0.4396585818843193,
+      "ratio": 15.92144515864768
+    },
+    "worst_pass": {
+      "name": "Celestine",
+      "formula": "SrSO4",
+      "final_nrci": 0.9995778653840139,
+      "net_refinements": 5,
+      "total_degradation": 0.7470068927781108,
+      "ratio": 6.693378666701524
+    },
+    "best_fail": {
+      "name": "Thomasclarkite-Y",
+      "formula": "Na(Y,REE)(HCO3)(OH)3\u00a0\u00b7 4 H2O (REE = Rare Earth Element, frequently Ce)",
+      "final_nrci": 0.9992922397754683,
+      "net_refinements": 6,
+      "total_degradation": 4.259520278491591,
+      "ratio": 1.4086093286835482
+    },
+    "worst_fail": {
+      "name": "Crocoite",
+      "formula": "PbCrO4",
+      "final_nrci": 0.98241222240827,
+      "net_refinements": 3,
+      "total_degradation": 2.867204206447807,
+      "ratio": 1.0463154292441257
+    }
+  },
+  "critical_ratios": {
+    "min_passed": 2.2890242527616937,
+    "max_failed": 7.748014954368872,
+    "threshold": null
+  },
+  "average_refinements": {
+    "passed": 5.7,
+    "failed": 3.4705882352941178
+  },
+  "average_ratios": {
+    "passed": 9.276440919716702,
+    "failed": 3.7988518728571647
+  }
+}

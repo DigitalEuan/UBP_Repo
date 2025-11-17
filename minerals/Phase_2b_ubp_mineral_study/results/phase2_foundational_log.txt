@@ -1,0 +1,166 @@
+================================================================================
+PHASE 2 MODULE 7: FOUNDATIONAL PRINCIPLES INVESTIGATION
+================================================================================
+Investigations:
+  1. Pi emergence in symmetry-coherence relationship
+  2. Natural threshold origin (why 0.973243?)
+  3. PCA loading derivation from first principles
+  4. Bitfield uniqueness vs alternative projections
+================================================================================
+
+[1/6] Loading Phase 2 results...
+   Loaded 3112 minerals
+
+[2/6] Investigating Pi emergence...
+   UBP Constants:
+      Y = π/(π²+2) = 0.264675430404527
+      O_observer = 1/Y = 3.778212425957374
+      π = 3.141592653589793
+
+   12 / π = 3.819718634205488
+   O_observer = 3.778212425957374
+   Difference: 0.041506208248114
+   Relative error: 1.0986%
+
+   Symmetry vs NRCI:
+      Symmetry | Mean NRCI | Std NRCI | Count
+             1 |  0.943740 | 0.024468 |  2380
+             2 |  0.947780 | 0.025544 |    84
+             4 |  0.950312 | 0.023634 |   284
+             6 |  0.213363 | 0.028063 |    53
+             8 |  0.214428 | 0.026529 |   169
+            12 |  0.022454 | 0.023648 |   116
+            48 | -0.026729 | 0.015146 |    26
+
+   Rotational symmetry and Pi:
+      n-fold | Rotation angle | Angle/π
+           1 |       6.283185 |  2.0000
+           2 |       3.141593 |  1.0000
+           3 |       2.094395 |  0.6667
+           4 |       1.570796 |  0.5000
+           6 |       1.047198 |  0.3333
+          12 |       0.523599 |  0.1667
+
+[3/6] Investigating threshold origin...
+   90th percentile: threshold=0.969243, pass=315 (10.12%)
+   91th percentile: threshold=0.969472, pass=281 (9.03%)
+   92th percentile: threshold=0.970243, pass=249 (8.00%)
+   93th percentile: threshold=0.971426, pass=219 (7.04%)
+   94th percentile: threshold=0.972426, pass=199 (6.39%)
+   95th percentile: threshold=0.973243, pass=157 (5.04%)
+   96th percentile: threshold=0.974426, pass=132 (4.24%)
+   97th percentile: threshold=0.975382, pass=94 (3.02%)
+   98th percentile: threshold=0.978243, pass=67 (2.15%)
+   99th percentile: threshold=0.981243, pass=43 (1.38%)
+
+   Expected pass count (Earth rate 0.33%): 10.3 minerals
+   Actual pass count (95th percentile): 157 minerals (5.04%)
+   Ratio: 15.3x higher
+
+   Mathematical properties of threshold 0.973243:
+      1 - threshold = 0.026757
+      threshold / π = 0.309793
+      threshold * π = 3.057533
+      threshold² = 0.947202
+      √threshold = 0.986531
+
+   Relationship to UBP constants:
+      threshold / Y = 3.677119
+      threshold * Y = 0.257594
+      threshold / O_observer = 0.257594
+      threshold * O_observer = 3.677119
+
+   Exponential decay interpretation:
+      threshold = e^(-k) where k = 0.027121
+      k / π = 0.008633
+
+[4/6] Investigating PCA derivation...
+   PCA Explained Variance:
+      PC1: 0.374778 (37.48%)
+      PC2: 0.303106 (30.31%)
+      PC3: 0.130091 (13.01%)
+      PC4: 0.079303 (7.93%)
+      PC5: 0.064989 (6.50%)
+      PC6: 0.045383 (4.54%)
+      PC7: 0.002180 (0.22%)
+      PC8: 0.000170 (0.02%)
+
+   PCA Loadings (PC1, PC2, PC3):
+      Feature          | PC1      | PC2      | PC3
+      Z_max            |   0.4137 |   0.3579 |  -0.3202
+      symmetry_operations |  -0.3715 |   0.4695 |   0.0693
+      element_count    |   0.2567 |   0.1066 |   0.7247
+      molar_mass       |   0.3096 |   0.1737 |   0.5248
+      density          |   0.2945 |   0.3284 |  -0.2187
+      refinements      |  -0.3576 |   0.4699 |   0.0777
+      degradation      |   0.4567 |   0.3313 |  -0.1928
+      final_coherence  |   0.3255 |  -0.4142 |  -0.0310
+
+   PC1 Loading Analysis:
+      Positive loadings (increase complexity):
+         Z_max: 0.4137
+         element_count: 0.2567
+         molar_mass: 0.3096
+         density: 0.2945
+         degradation: 0.4567
+         final_coherence: 0.3255
+      Negative loadings (decrease complexity):
+         symmetry_operations: -0.3715
+         refinements: -0.3576
+
+   Feature Correlations:
+      Z_max <-> density: 0.5531
+      Z_max <-> degradation: 0.9836
+      symmetry_operations <-> refinements: 0.9799
+      symmetry_operations <-> final_coherence: -0.7386
+      density <-> degradation: 0.5541
+      refinements <-> final_coherence: -0.6919
+
+[5/6] Investigating Bitfield uniqueness...
+   PCA Projection:
+      Separability: 1.6360
+      PASS mean distance: 0.7811
+      FAIL mean distance: 2.8965
+      Inter-class distance: 3.0083
+
+   Testing random projections...
+      Random 1: Separability = 1.6081
+      Random 2: Separability = 1.6035
+      Random 3: Separability = 1.0988
+      Random 4: Separability = 1.3051
+      Random 5: Separability = 1.2492
+
+   Comparison:
+      PCA separability: 1.6360
+      Random mean separability: 1.3729
+      PCA is better: True
+
+[6/6] Creating visualizations...
+   (Visualizations will be created based on findings)
+
+   Saving results...
+Traceback (most recent call last):
+  File "/home/ubuntu/ubp_mineral_study/phase2_foundational_principles.py", line 419, in <module>
+    main()
+  File "/home/ubuntu/ubp_mineral_study/phase2_foundational_principles.py", line 405, in main
+    save_results(pi_results, threshold_results, pca_results, bitfield_results)
+  File "/home/ubuntu/ubp_mineral_study/phase2_foundational_principles.py", line 377, in save_results
+    json.dump(summary, f, indent=2)
+  File "/usr/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
