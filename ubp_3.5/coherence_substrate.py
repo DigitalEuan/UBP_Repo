@@ -3,6 +3,7 @@
 UBP Coherence Substrate v1.0 - First Principles Implementation
 ===============================================================
 
+A version 2 is now available.
 This is NOT a numerical library. This is a **trust substrate** where all operations
 emerge from information geometry.
 
