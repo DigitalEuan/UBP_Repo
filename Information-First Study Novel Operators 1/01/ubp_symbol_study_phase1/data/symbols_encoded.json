@@ -1,0 +1,6512 @@
+[
+  {
+    "symbol": "+",
+    "unicode": "U+002B",
+    "name": "plus",
+    "category": "arithmetic",
+    "unicode_seed": 3.8595795212505754e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.9459101490553132
+    ],
+    "bitfield_magnitude": 5.098383593749008,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.5492110947721103,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "arithmetic",
+        "vector",
+        "matrix",
+        "set_union",
+        "complex",
+        "modular"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2212",
+    "unicode": "U+2212",
+    "name": "minus",
+    "category": "arithmetic",
+    "unicode_seed": 0.007828663391708726,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.791759469228055
+    ],
+    "bitfield_magnitude": 4.62788839065734,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.317858527024524,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "arithmetic",
+        "vector",
+        "matrix",
+        "set_difference",
+        "complex"
+      ]
+    }
+  },
+  {
+    "symbol": "\u00d7",
+    "unicode": "U+00D7",
+    "name": "times",
+    "category": "arithmetic",
+    "unicode_seed": 0.00019297897606252877,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.791759469228055
+    ],
+    "bitfield_magnitude": 4.734696500978809,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.3674447399774357,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "arithmetic",
+        "vector_cross",
+        "matrix",
+        "cartesian_product",
+        "complex"
+      ]
+    }
+  },
+  {
+    "symbol": "\u00f7",
+    "unicode": "U+00F7",
+    "name": "divide",
+    "category": "arithmetic",
+    "unicode_seed": 0.00022170142831369585,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.5619379521169066,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7810798267726102,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "arithmetic",
+        "field_division"
+      ]
+    }
+  },
+  {
+    "symbol": "\u221a",
+    "unicode": "U+221A",
+    "name": "square_root",
+    "category": "arithmetic",
+    "unicode_seed": 0.007835844004771518,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      1.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.0160628750662495,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0119493595355107,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "real",
+        "complex",
+        "matrix"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2211",
+    "unicode": "U+2211",
+    "name": "summation",
+    "category": "arithmetic",
+    "unicode_seed": 0.007827765815075877,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.5619379521169066,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7848828589659913,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "series",
+        "finite_sum"
+      ]
+    }
+  },
+  {
+    "symbol": "\u220f",
+    "unicode": "U+220F",
+    "name": "product",
+    "category": "arithmetic",
+    "unicode_seed": 0.00782597066181018,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.5619379521169066,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7848819613893583,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "series",
+        "finite_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2308",
+    "unicode": "U+2308",
+    "name": "ceiling",
+    "category": "arithmetic",
+    "unicode_seed": 0.008049467243389572,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.8215077578905223,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.414778612566956,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "ceiling_function"
+      ]
+    }
+  },
+  {
+    "symbol": "\u230a",
+    "unicode": "U+230A",
+    "name": "floor",
+    "category": "arithmetic",
+    "unicode_seed": 0.008051262396655271,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.8215077578905223,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4147795101435887,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "floor_function"
+      ]
+    }
+  },
+  {
+    "symbol": "!",
+    "unicode": "U+0021",
+    "name": "factorial",
+    "category": "arithmetic",
+    "unicode_seed": 2.9620028884016047e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.172996276253451,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0865129481411673,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "factorial",
+        "logical_not"
+      ]
+    }
+  },
+  {
+    "symbol": "mod",
+    "unicode": "U+006D",
+    "name": "modulo",
+    "category": "arithmetic",
+    "unicode_seed": 9.783585298053785e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8682637093675334,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "modulo"
+      ]
+    }
+  },
+  {
+    "symbol": "gcd",
+    "unicode": "U+0067",
+    "name": "greatest_common_divisor",
+    "category": "arithmetic",
+    "unicode_seed": 9.245039318344403e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1190616821857806,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "gcd"
+      ]
+    }
+  },
+  {
+    "symbol": "lcm",
+    "unicode": "U+006C",
+    "name": "least_common_multiple",
+    "category": "arithmetic",
+    "unicode_seed": 9.693827634768887e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1190639261273625,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "lcm"
+      ]
+    }
+  },
+  {
+    "symbol": "max",
+    "unicode": "U+006D",
+    "name": "maximum",
+    "category": "arithmetic",
+    "unicode_seed": 9.783585298053785e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1190643749156792,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "maximum"
+      ]
+    }
+  },
+  {
+    "symbol": "min",
+    "unicode": "U+006D",
+    "name": "minimum",
+    "category": "arithmetic",
+    "unicode_seed": 9.783585298053785e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1190643749156792,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "minimum"
+      ]
+    }
+  },
+  {
+    "symbol": "abs",
+    "unicode": "U+0061",
+    "name": "absolute_value",
+    "category": "arithmetic",
+    "unicode_seed": 8.706493338635019e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.662498863020324,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8312929639768551,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "absolute_value",
+        "cardinality"
+      ]
+    }
+  },
+  {
+    "symbol": "sgn",
+    "unicode": "U+0073",
+    "name": "sign",
+    "category": "arithmetic",
+    "unicode_seed": 0.00010322131277763167,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6554145638962818,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "sign_function"
+      ]
+    }
+  },
+  {
+    "symbol": "^",
+    "unicode": "U+005E",
+    "name": "power",
+    "category": "arithmetic",
+    "unicode_seed": 8.437220348780328e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.627515307551684,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.313799839877586,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "exponentiation",
+        "bitwise_xor"
+      ]
+    }
+  },
+  {
+    "symbol": "\u00b2",
+    "unicode": "U+00B2",
+    "name": "squared",
+    "category": "arithmetic",
+    "unicode_seed": 0.00015976864064711684,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.118362056429279,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0592609125349632,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "square"
+      ]
+    }
+  },
+  {
+    "symbol": "\u00b3",
+    "unicode": "U+00B3",
+    "name": "cubed",
+    "category": "arithmetic",
+    "unicode_seed": 0.0001606662172799658,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.467762978027864,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.2339618221225717,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "cube"
+      ]
+    }
+  },
+  {
+    "symbol": "\u221b",
+    "unicode": "U+221B",
+    "name": "cube_root",
+    "category": "arithmetic",
+    "unicode_seed": 0.007836741581404367,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.467762978027864,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.237799859804634,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "cube_root"
+      ]
+    }
+  },
+  {
+    "symbol": "\u221c",
+    "unicode": "U+221C",
+    "name": "fourth_root",
+    "category": "arithmetic",
+    "unicode_seed": 0.007837639158037216,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721336110200617,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "fourth_root"
+      ]
+    }
+  },
+  {
+    "symbol": "\u00b1",
+    "unicode": "U+00B1",
+    "name": "plus_minus",
+    "category": "arithmetic",
+    "unicode_seed": 0.0001588710640142679,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.0682076073214413,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.5341832391927277,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "plus_minus",
+        "error_margin"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2213",
+    "unicode": "U+2213",
+    "name": "minus_plus",
+    "category": "arithmetic",
+    "unicode_seed": 0.007829560968341575,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.8215077578905223,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.414668659429432,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "minus_plus"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c5",
+    "unicode": "U+22C5",
+    "name": "dot",
+    "category": "arithmetic",
+    "unicode_seed": 0.007989329608988691,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.340924338357628,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1744568339833084,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "partial",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "multiplication",
+        "dot_product",
+        "composition"
+      ]
+    }
+  },
+  {
+    "symbol": "=",
+    "unicode": "U+003D",
+    "name": "equals",
+    "category": "algebra",
+    "unicode_seed": 5.475217460378723e-05,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.912103522574151,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.4560791373743776,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "equality",
+        "assignment",
+        "definition"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2260",
+    "unicode": "U+2260",
+    "name": "not_equal",
+    "category": "algebra",
+    "unicode_seed": 0.007898674369070945,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.686246475361321,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.3470725748651957,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "inequality"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2261",
+    "unicode": "U+2261",
+    "name": "equivalent",
+    "category": "algebra",
+    "unicode_seed": 0.007899571945703794,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.3862943611198906,
+      1.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.984337880937208,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.496118726441456,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "congruence",
+        "identical",
+        "logical_equivalence"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2248",
+    "unicode": "U+2248",
+    "name": "approximately",
+    "category": "algebra",
+    "unicode_seed": 0.00787713252988257,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.172996276253451,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0904367043916667,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "approximation",
+        "asymptotic"
+      ]
+    }
+  },
+  {
+    "symbol": "\u221d",
+    "unicode": "U+221D",
+    "name": "proportional",
+    "category": "algebra",
+    "unicode_seed": 0.007838536734670064,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.733146409884348,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "proportionality"
+      ]
+    }
+  },
+  {
+    "symbol": "<",
+    "unicode": "U+003C",
+    "name": "less_than",
+    "category": "algebra",
+    "unicode_seed": 5.3854597970938265e-05,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1190423842881745,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "ordering"
+      ]
+    }
+  },
+  {
+    "symbol": ">",
+    "unicode": "U+003E",
+    "name": "greater_than",
+    "category": "algebra",
+    "unicode_seed": 5.564975123663621e-05,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.119043281864807,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "ordering"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2264",
+    "unicode": "U+2264",
+    "name": "less_equal",
+    "category": "algebra",
+    "unicode_seed": 0.00790226467560234,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.12296658932699,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "ordering"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2265",
+    "unicode": "U+2265",
+    "name": "greater_equal",
+    "category": "algebra",
+    "unicode_seed": 0.00790316225223519,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1229670381153065,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "ordering"
+      ]
+    }
+  },
+  {
+    "symbol": "\u226a",
+    "unicode": "U+226A",
+    "name": "much_less",
+    "category": "algebra",
+    "unicode_seed": 0.007907650135399435,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379203467425452,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "much_less"
+      ]
+    }
+  },
+  {
+    "symbol": "\u226b",
+    "unicode": "U+226B",
+    "name": "much_greater",
+    "category": "algebra",
+    "unicode_seed": 0.007908547712032284,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379207955308615,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "much_greater"
+      ]
+    }
+  },
+  {
+    "symbol": "\u223c",
+    "unicode": "U+223C",
+    "name": "similar",
+    "category": "algebra",
+    "unicode_seed": 0.007866361610288383,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.3862943611198906,
+      1.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.984337880937208,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.496102121273748,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "similarity",
+        "equivalence",
+        "distribution"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2243",
+    "unicode": "U+2243",
+    "name": "asymptotically_equal",
+    "category": "algebra",
+    "unicode_seed": 0.007872644646718325,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.518174180089249,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.2630234123679838,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "asymptotic_equality",
+        "isomorphism"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2245",
+    "unicode": "U+2245",
+    "name": "congruent",
+    "category": "algebra",
+    "unicode_seed": 0.007874439799984024,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.838790956594959,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.4233326981974717,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "congruence",
+        "isomorphism"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2225",
+    "unicode": "U+2225",
+    "name": "parallel",
+    "category": "algebra",
+    "unicode_seed": 0.007845717347732857,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.838790956594959,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.423318336971346,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "parallel",
+        "norm"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22a5",
+    "unicode": "U+22A5",
+    "name": "perpendicular",
+    "category": "algebra",
+    "unicode_seed": 0.007960607156737524,
+    "bitfield": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      1.3862943611198906,
+      1.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.984337880937208,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.496149244046973,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "perpendicular",
+        "orthogonal",
+        "bottom"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2299",
+    "unicode": "U+2299",
+    "name": "hadamard_product",
+    "category": "algebra",
+    "unicode_seed": 0.007949836237143336,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.518174180089249,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.2630620081631965,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "hadamard_product",
+        "circled_dot"
+      ]
+    }
+  },
+  {
+    "symbol": "\u229b",
+    "unicode": "U+229B",
+    "name": "circled_asterisk",
+    "category": "algebra",
+    "unicode_seed": 0.007951631390409034,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.518174180089249,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.263062905739829,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "convolution",
+        "circled_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c6",
+    "unicode": "U+22C6",
+    "name": "star",
+    "category": "algebra",
+    "unicode_seed": 0.00799022718562154,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.340924338357628,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.174457282771625,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "partial",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "hodge_star",
+        "convolution",
+        "binary_operation"
+      ]
+    }
+  },
+  {
+    "symbol": "det",
+    "unicode": "U+0064",
+    "name": "determinant",
+    "category": "algebra",
+    "unicode_seed": 8.97576632848971e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6554078320715355,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "matrix_determinant"
+      ]
+    }
+  },
+  {
+    "symbol": "tr",
+    "unicode": "U+0074",
+    "name": "trace",
+    "category": "algebra",
+    "unicode_seed": 0.00010411888941048064,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6554150126845983,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "matrix_trace"
+      ]
+    }
+  },
+  {
+    "symbol": "rank",
+    "unicode": "U+0072",
+    "name": "rank",
+    "category": "algebra",
+    "unicode_seed": 0.00010232373614478271,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6554141151079653,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "matrix_rank"
+      ]
+    }
+  },
+  {
+    "symbol": "dim",
+    "unicode": "U+0064",
+    "name": "dimension",
+    "category": "algebra",
+    "unicode_seed": 8.97576632848971e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6554078320715355,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "vector_space_dimension"
+      ]
+    }
+  },
+  {
+    "symbol": "ker",
+    "unicode": "U+006B",
+    "name": "kernel",
+    "category": "algebra",
+    "unicode_seed": 9.60406997148399e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6554109735897504,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "linear_map_kernel"
+      ]
+    }
+  },
+  {
+    "symbol": "im",
+    "unicode": "U+0069",
+    "name": "image",
+    "category": "algebra",
+    "unicode_seed": 9.424554644914196e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.523336191967091,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7617152187567702,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "linear_map_image",
+        "imaginary_part"
+      ]
+    }
+  },
+  {
+    "symbol": "Re",
+    "unicode": "U+0052",
+    "name": "real_part",
+    "category": "algebra",
+    "unicode_seed": 7.360128389361562e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.65539975388184,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "real_part"
+      ]
+    }
+  },
+  {
+    "symbol": "Im",
+    "unicode": "U+0049",
+    "name": "imaginary_part",
+    "category": "algebra",
+    "unicode_seed": 6.552309419797489e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.655395714786992,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "imaginary_part"
+      ]
+    }
+  },
+  {
+    "symbol": "arg",
+    "unicode": "U+0061",
+    "name": "argument",
+    "category": "algebra",
+    "unicode_seed": 8.706493338635019e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.2270571611958108,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6135721130645986,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "complex_argument",
+        "function_argument"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c9",
+    "unicode": "U+22C9",
+    "name": "left_semidirect_product",
+    "category": "algebra",
+    "unicode_seed": 0.007992919915520088,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8722112513988032,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "semidirect_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22ca",
+    "unicode": "U+22CA",
+    "name": "right_semidirect_product",
+    "category": "algebra",
+    "unicode_seed": 0.007993817492152937,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8722117001871197,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "semidirect_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22b2",
+    "unicode": "U+22B2",
+    "name": "normal_subgroup",
+    "category": "algebra",
+    "unicode_seed": 0.007972275652964562,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8722009292675255,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "normal_subgroup"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22b3",
+    "unicode": "U+22B3",
+    "name": "contains_as_normal",
+    "category": "algebra",
+    "unicode_seed": 0.00797317322959741,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.872201378055842,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "normal_subgroup"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2227",
+    "unicode": "U+2227",
+    "name": "and",
+    "category": "logic",
+    "unicode_seed": 0.007847512500998554,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.437048791114515,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.222448151807757,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "logical_and",
+        "meet"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2228",
+    "unicode": "U+2228",
+    "name": "or",
+    "category": "logic",
+    "unicode_seed": 0.007848410077631403,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.437048791114515,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.2224486005960733,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "logical_or",
+        "join"
+      ]
+    }
+  },
+  {
+    "symbol": "\u00ac",
+    "unicode": "U+00AC",
+    "name": "not",
+    "category": "logic",
+    "unicode_seed": 0.00015438318085002302,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.9607325048191253,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9804434439999876,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "logical_not",
+        "complement"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2192",
+    "unicode": "U+2192",
+    "name": "implies",
+    "category": "logic",
+    "unicode_seed": 0.007713773582704057,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.104098452930389,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0559061132565466,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "implication",
+        "function_arrow",
+        "limit"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2194",
+    "unicode": "U+2194",
+    "name": "iff",
+    "category": "logic",
+    "unicode_seed": 0.0077155687359697555,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.838790956594959,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.4232532626654644,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "biconditional",
+        "equivalence"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2295",
+    "unicode": "U+2295",
+    "name": "xor",
+    "category": "logic",
+    "unicode_seed": 0.007946245930611941,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.984337880937208,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.49614206343391,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "exclusive_or",
+        "direct_sum",
+        "tensor_sum"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22a4",
+    "unicode": "U+22A4",
+    "name": "true",
+    "category": "logic",
+    "unicode_seed": 0.007959709580104675,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721946462310954,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "truth_value"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22a5",
+    "unicode": "U+22A5",
+    "name": "false",
+    "category": "logic",
+    "unicode_seed": 0.007960607156737524,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.926053733919744,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9670071705382408,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "truth_value",
+        "orthogonal"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2200",
+    "unicode": "U+2200",
+    "name": "for_all",
+    "category": "logic",
+    "unicode_seed": 0.007812507012317444,
+    "bitfield": [
+      1.0,
+      3.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.995110264790748,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.001461385901533,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "quantifier",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "universal_quantifier"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2203",
+    "unicode": "U+2203",
+    "name": "exists",
+    "category": "logic",
+    "unicode_seed": 0.007815199742215992,
+    "bitfield": [
+      1.0,
+      3.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.995110264790748,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0014627322664817,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "quantifier",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "existential_quantifier"
+      ]
+    }
+  },
+  {
+    "symbol": "\u21d2",
+    "unicode": "U+21D2",
+    "name": "double_implies",
+    "category": "logic",
+    "unicode_seed": 0.007771218487206391,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721004006846464,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "strong_implication"
+      ]
+    }
+  },
+  {
+    "symbol": "\u21d4",
+    "unicode": "U+21D4",
+    "name": "double_iff",
+    "category": "logic",
+    "unicode_seed": 0.007773013640472089,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.686246475361321,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.3470097445008964,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "strong_equivalence"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22a2",
+    "unicode": "U+22A2",
+    "name": "proves",
+    "category": "logic",
+    "unicode_seed": 0.007957914426838977,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721937486544626,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "syntactic_consequence"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22a8",
+    "unicode": "U+22A8",
+    "name": "models",
+    "category": "logic",
+    "unicode_seed": 0.007963299886636072,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721964413843613,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "semantic_consequence"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22bb",
+    "unicode": "U+22BB",
+    "name": "exclusive_or",
+    "category": "logic",
+    "unicode_seed": 0.007980353842660201,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.686246475361321,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.3471134146019903,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "xor"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22bc",
+    "unicode": "U+22BC",
+    "name": "nand",
+    "category": "logic",
+    "unicode_seed": 0.00798125141929305,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1230060826988355,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "nand"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22bd",
+    "unicode": "U+22BD",
+    "name": "nor",
+    "category": "logic",
+    "unicode_seed": 0.0079821489959259,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.123006531487152,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "nor"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c0",
+    "unicode": "U+22C0",
+    "name": "big_and",
+    "category": "logic",
+    "unicode_seed": 0.007984841725824447,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7332195623799254,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "conjunction"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c1",
+    "unicode": "U+22C1",
+    "name": "big_or",
+    "category": "logic",
+    "unicode_seed": 0.007985739302457296,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7332200111682416,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "disjunction"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22ce",
+    "unicode": "U+22CE",
+    "name": "curly_vee",
+    "category": "logic",
+    "unicode_seed": 0.007997407798684332,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.354412248264558,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.181204828031621,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "logical_or_variant"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22cf",
+    "unicode": "U+22CF",
+    "name": "curly_wedge",
+    "category": "logic",
+    "unicode_seed": 0.00799830537531718,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.354412248264558,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1812052768199375,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "logical_and_variant"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2208",
+    "unicode": "U+2208",
+    "name": "element_of",
+    "category": "set_theory",
+    "unicode_seed": 0.007819687625380236,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721246352537333,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "membership"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2209",
+    "unicode": "U+2209",
+    "name": "not_element_of",
+    "category": "set_theory",
+    "unicode_seed": 0.007820585202013085,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721250840420498,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "membership"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2286",
+    "unicode": "U+2286",
+    "name": "subset_equal",
+    "category": "set_theory",
+    "unicode_seed": 0.007932782281119207,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.937932912815405,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "subset"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2282",
+    "unicode": "U+2282",
+    "name": "proper_subset",
+    "category": "set_theory",
+    "unicode_seed": 0.00792919197458781,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379311176621392,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "proper_subset"
+      ]
+    }
+  },
+  {
+    "symbol": "\u222a",
+    "unicode": "U+222A",
+    "name": "union",
+    "category": "set_theory",
+    "unicode_seed": 0.0078502052308971,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1229405596046376,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "set_union"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2229",
+    "unicode": "U+2229",
+    "name": "intersection",
+    "category": "set_theory",
+    "unicode_seed": 0.007849307654264252,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.122940110816321,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "set_intersection"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2205",
+    "unicode": "U+2205",
+    "name": "empty_set",
+    "category": "set_theory",
+    "unicode_seed": 0.00781699489548169,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.872123288888784,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "empty_set"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2201",
+    "unicode": "U+2201",
+    "name": "complement",
+    "category": "set_theory",
+    "unicode_seed": 0.007813404588950293,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9378732239693206,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "set_complement"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2118",
+    "unicode": "U+2118",
+    "name": "power_set",
+    "category": "set_theory",
+    "unicode_seed": 0.007604269233496483,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.523336191967091,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7654702306002938,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "power_set",
+        "weierstrass_p"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2287",
+    "unicode": "U+2287",
+    "name": "superset_equal",
+    "category": "set_theory",
+    "unicode_seed": 0.007933679857752056,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379333616037213,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "superset"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2283",
+    "unicode": "U+2283",
+    "name": "proper_superset",
+    "category": "set_theory",
+    "unicode_seed": 0.007930089551220659,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379315664504557,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "proper_superset"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2216",
+    "unicode": "U+2216",
+    "name": "set_difference",
+    "category": "set_theory",
+    "unicode_seed": 0.007832253698240121,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721309182901633,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "set_difference"
+      ]
+    }
+  },
+  {
+    "symbol": "\u25b3",
+    "unicode": "U+25B3",
+    "name": "symmetric_difference",
+    "category": "set_theory",
+    "unicode_seed": 0.00866251208362542,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.838790956594959,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.4237267343392923,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "symmetric_difference",
+        "triangle"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c3",
+    "unicode": "U+22C3",
+    "name": "big_union",
+    "category": "set_theory",
+    "unicode_seed": 0.007987534455722993,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7332209087448747,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "indexed_union"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c2",
+    "unicode": "U+22C2",
+    "name": "big_intersection",
+    "category": "set_theory",
+    "unicode_seed": 0.007986636879090145,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7332204599565582,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "indexed_intersection"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2115",
+    "unicode": "U+2115",
+    "name": "naturals",
+    "category": "set_theory",
+    "unicode_seed": 0.007601576503597936,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8720155796928422,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "natural_numbers"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2124",
+    "unicode": "U+2124",
+    "name": "integers",
+    "category": "set_theory",
+    "unicode_seed": 0.00761504015309067,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8720223115175885,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "integers"
+      ]
+    }
+  },
+  {
+    "symbol": "\u211a",
+    "unicode": "U+211A",
+    "name": "rationals",
+    "category": "set_theory",
+    "unicode_seed": 0.0076060643867621805,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8720178236344243,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "rational_numbers"
+      ]
+    }
+  },
+  {
+    "symbol": "\u211d",
+    "unicode": "U+211D",
+    "name": "reals",
+    "category": "set_theory",
+    "unicode_seed": 0.007608757116660728,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8720191699993736,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "real_numbers"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2102",
+    "unicode": "U+2102",
+    "name": "complex",
+    "category": "set_theory",
+    "unicode_seed": 0.0075845225475738055,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.87200705271483,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "complex_numbers"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2135",
+    "unicode": "U+2135",
+    "name": "aleph",
+    "category": "set_theory",
+    "unicode_seed": 0.007630298955849103,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8720299409189678,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "cardinality"
+      ]
+    }
+  },
+  {
+    "symbol": "\u228f",
+    "unicode": "U+228F",
+    "name": "square_image_of",
+    "category": "set_theory",
+    "unicode_seed": 0.007940860470814846,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379369519102527,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "square_subset"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2290",
+    "unicode": "U+2290",
+    "name": "square_original_of",
+    "category": "set_theory",
+    "unicode_seed": 0.007941758047447695,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379374006985692,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "square_superset"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2293",
+    "unicode": "U+2293",
+    "name": "square_cap",
+    "category": "set_theory",
+    "unicode_seed": 0.007944450777346243,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.122987682377862,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "meet"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2294",
+    "unicode": "U+2294",
+    "name": "square_cup",
+    "category": "set_theory",
+    "unicode_seed": 0.007945348353979092,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1229881311661782,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "join"
+      ]
+    }
+  },
+  {
+    "symbol": "\u228e",
+    "unicode": "U+228E",
+    "name": "multiset_union",
+    "category": "set_theory",
+    "unicode_seed": 0.007939962894181998,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.238030913978378,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1229854384362796,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "disjoint_union"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2a04",
+    "unicode": "U+2A04",
+    "name": "big_union_plus",
+    "category": "set_theory",
+    "unicode_seed": 0.009654334262923532,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7340543086484748,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "big_union"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2a05",
+    "unicode": "U+2A05",
+    "name": "big_square_cap",
+    "category": "set_theory",
+    "unicode_seed": 0.009655231839556381,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7340547574367913,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "big_meet"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2a06",
+    "unicode": "U+2A06",
+    "name": "big_square_cup",
+    "category": "set_theory",
+    "unicode_seed": 0.00965612941618923,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7340552062251078,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "big_join"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2202",
+    "unicode": "U+2202",
+    "name": "partial_derivative",
+    "category": "calculus",
+    "unicode_seed": 0.007814302165583141,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      0.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.326778442745498,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1672963724555405,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "partial_derivative",
+        "boundary"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2207",
+    "unicode": "U+2207",
+    "name": "nabla",
+    "category": "calculus",
+    "unicode_seed": 0.007818790048747387,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.6094379124341003,
+      1.0,
+      0.0,
+      1.6094379124341003
+    ],
+    "bitfield_magnitude": 2.860171461286975,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4339951256678611,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 4,
+      "dependency_depth": 1,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "gradient",
+        "divergence",
+        "curl",
+        "del_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "\u222b",
+    "unicode": "U+222B",
+    "name": "integral",
+    "category": "calculus",
+    "unicode_seed": 0.00785110280752995,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      1.0,
+      0.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 2.61603213117607,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.3119416169918001,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "definite_integral",
+        "indefinite_integral",
+        "line_integral"
+      ]
+    }
+  },
+  {
+    "symbol": "\u222e",
+    "unicode": "U+222E",
+    "name": "contour_integral",
+    "category": "calculus",
+    "unicode_seed": 0.007853795537428496,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      0.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 1.9902025092528657,
+    "initial_nrci": 0.999997,
+    "initial_value": 0.9990281523951471,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "contour_integral"
+      ]
+    }
+  },
+  {
+    "symbol": "d",
+    "unicode": "U+0064",
+    "name": "differential",
+    "category": "calculus",
+    "unicode_seed": 8.97576632848971e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      0.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.900671977598495,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.45038086763089,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "differential",
+        "exterior_derivative"
+      ]
+    }
+  },
+  {
+    "symbol": "\u0394",
+    "unicode": "U+0394",
+    "name": "delta",
+    "category": "calculus",
+    "unicode_seed": 0.0008221801956896575,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.6094379124341003,
+      2.0,
+      1.0,
+      1.6094379124341003
+    ],
+    "bitfield_magnitude": 3.490068880116905,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7454455301562974,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 4,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "difference",
+        "laplacian",
+        "discriminant",
+        "change"
+      ]
+    }
+  },
+  {
+    "symbol": "\u221e",
+    "unicode": "U+221E",
+    "name": "infinity",
+    "category": "calculus",
+    "unicode_seed": 0.007839434311302913,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      0.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.3784460809113357,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6931427576113194,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "infinity",
+        "cardinality"
+      ]
+    }
+  },
+  {
+    "symbol": "sin",
+    "unicode": "U+0073",
+    "name": "sine",
+    "category": "calculus",
+    "unicode_seed": 0.00010322131277763167,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7292787521734019,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "trigonometric"
+      ]
+    }
+  },
+  {
+    "symbol": "cos",
+    "unicode": "U+0063",
+    "name": "cosine",
+    "category": "calculus",
+    "unicode_seed": 8.886008665204814e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.729271571560339,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "trigonometric"
+      ]
+    }
+  },
+  {
+    "symbol": "tan",
+    "unicode": "U+0074",
+    "name": "tangent",
+    "category": "calculus",
+    "unicode_seed": 0.00010411888941048064,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4967906829054285,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "trigonometric"
+      ]
+    }
+  },
+  {
+    "symbol": "exp",
+    "unicode": "U+0065",
+    "name": "exponential",
+    "category": "calculus",
+    "unicode_seed": 9.065523991774608e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9340118492948042,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "exponential"
+      ]
+    }
+  },
+  {
+    "symbol": "log",
+    "unicode": "U+006C",
+    "name": "logarithm",
+    "category": "calculus",
+    "unicode_seed": 9.693827634768887e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.662498863020324,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8312979006483359,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "natural_log",
+        "common_log"
+      ]
+    }
+  },
+  {
+    "symbol": "ln",
+    "unicode": "U+006C",
+    "name": "natural_logarithm",
+    "category": "calculus",
+    "unicode_seed": 9.693827634768887e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9340149908130193,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "natural_logarithm"
+      ]
+    }
+  },
+  {
+    "symbol": "lim",
+    "unicode": "U+006C",
+    "name": "limit",
+    "category": "calculus",
+    "unicode_seed": 9.693827634768887e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      0.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.326778442745498,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.163437690510923,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "low",
+      "overloading_contexts": [
+        "limit",
+        "limit_inferior"
+      ]
+    }
+  },
+  {
+    "symbol": "sup",
+    "unicode": "U+0073",
+    "name": "supremum",
+    "category": "calculus",
+    "unicode_seed": 0.00010322131277763167,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1137061832053012,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "supremum"
+      ]
+    }
+  },
+  {
+    "symbol": "inf",
+    "unicode": "U+0069",
+    "name": "infimum",
+    "category": "calculus",
+    "unicode_seed": 9.424554644914196e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.113701695322137,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "infimum"
+      ]
+    }
+  },
+  {
+    "symbol": "\u0393",
+    "unicode": "U+0393",
+    "name": "gamma_function",
+    "category": "calculus",
+    "unicode_seed": 0.0008212826190568085,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.0682076073214413,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.534514444970249,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "gamma_function",
+        "christoffel_symbol"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03b6",
+    "unicode": "U+03B6",
+    "name": "riemann_zeta",
+    "category": "calculus",
+    "unicode_seed": 0.0008526978012065225,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.8215077578905223,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4111802278458645,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "riemann_zeta"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2119",
+    "unicode": "U+2119",
+    "name": "probability",
+    "category": "probability",
+    "unicode_seed": 0.007605166810129332,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.532567456480708,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.2700863116454186,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "probability_measure",
+        "projective_space"
+      ]
+    }
+  },
+  {
+    "symbol": "\ud835\udd3c",
+    "unicode": "U+1D53C",
+    "name": "expectation",
+    "category": "probability",
+    "unicode_seed": 0.1078204954443498,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1675648202710873,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "expected_value"
+      ]
+    }
+  },
+  {
+    "symbol": "~",
+    "unicode": "U+007E",
+    "name": "distributed_as",
+    "category": "probability",
+    "unicode_seed": 0.00011309465573897035,
+    "bitfield": [
+      2.0,
+      2.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      1.0,
+      1.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 3.720702099247615,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8604075969516771,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "distribution",
+        "equivalence",
+        "asymptotic"
+      ]
+    }
+  },
+  {
+    "symbol": "|",
+    "unicode": "U+007C",
+    "name": "bar",
+    "category": "probability",
+    "unicode_seed": 0.00011129950247327241,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      1.791759469228055,
+      2.0,
+      1.0,
+      1.791759469228055
+    ],
+    "bitfield_magnitude": 4.0522591219141955,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0261852107083342,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 5,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "conditional",
+        "absolute_value",
+        "divides",
+        "cardinality",
+        "restriction"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03c3",
+    "unicode": "U+03C3",
+    "name": "sigma",
+    "category": "probability",
+    "unicode_seed": 0.0008643662974335591,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.6094379124341003,
+      2.0,
+      1.0,
+      1.6094379124341003
+    ],
+    "bitfield_magnitude": 3.490068880116905,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7454666232071694,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 4,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "standard_deviation",
+        "pauli_matrix",
+        "stress_tensor",
+        "sigma_algebra"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03bc",
+    "unicode": "U+03BC",
+    "name": "mu",
+    "category": "probability",
+    "unicode_seed": 0.0008580832610036163,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      2.0,
+      1.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 3.292965853352508,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6469119683067557,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "mean",
+        "measure",
+        "mobius_function"
+      ]
+    }
+  },
+  {
+    "symbol": "Var",
+    "unicode": "U+0056",
+    "name": "variance",
+    "category": "probability",
+    "unicode_seed": 7.719159042501151e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.113693168344125,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "variance"
+      ]
+    }
+  },
+  {
+    "symbol": "Cov",
+    "unicode": "U+0043",
+    "name": "covariance",
+    "category": "probability",
+    "unicode_seed": 6.013763440088106e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7292572103342134,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "covariance"
+      ]
+    }
+  },
+  {
+    "symbol": "Corr",
+    "unicode": "U+0043",
+    "name": "correlation",
+    "category": "probability",
+    "unicode_seed": 6.013763440088106e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7292572103342134,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "correlation"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2297",
+    "unicode": "U+2297",
+    "name": "tensor_product",
+    "category": "quantum",
+    "unicode_seed": 0.007948041083877639,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.926053733919744,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9670008875018108,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "tensor_product",
+        "kronecker_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u27e8",
+    "unicode": "U+27E8",
+    "name": "bra",
+    "category": "quantum",
+    "unicode_seed": 0.009169642881185089,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.0514069064493095,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.030288274665247,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "bra_vector",
+        "inner_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u27e9",
+    "unicode": "U+27E9",
+    "name": "ket",
+    "category": "quantum",
+    "unicode_seed": 0.009170540457817938,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.0514069064493095,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.030288723453564,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "ket_vector",
+        "inner_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03c1",
+    "unicode": "U+03C1",
+    "name": "density_matrix",
+    "category": "quantum",
+    "unicode_seed": 0.0008625711441678612,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      3.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.104098452930389,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0524805120372784,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "density_matrix",
+        "correlation",
+        "resistivity"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2020",
+    "unicode": "U+2020",
+    "name": "hermitian_conjugate",
+    "category": "quantum",
+    "unicode_seed": 0.007381670228549938,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9376573567891204,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "hermitian_conjugate"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22a0",
+    "unicode": "U+22A0",
+    "name": "box_times",
+    "category": "quantum",
+    "unicode_seed": 0.00795611927357328,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8721928510778298,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "tensor_product"
+      ]
+    }
+  },
+  {
+    "symbol": "\u229e",
+    "unicode": "U+229E",
+    "name": "box_plus",
+    "category": "quantum",
+    "unicode_seed": 0.007954324120307582,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.354412248264558,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1811832861924327,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "direct_sum"
+      ]
+    }
+  },
+  {
+    "symbol": "\u229f",
+    "unicode": "U+229F",
+    "name": "box_minus",
+    "category": "quantum",
+    "unicode_seed": 0.007955221696940431,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379441325233155,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "quantum_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "H",
+    "unicode": "U+0048",
+    "name": "entropy",
+    "category": "information",
+    "unicode_seed": 6.462551756512591e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      1.0,
+      1.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 2.8006470879683523,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4003558567429586,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "shannon_entropy",
+        "hamiltonian",
+        "hilbert_space"
+      ]
+    }
+  },
+  {
+    "symbol": "I",
+    "unicode": "U+0049",
+    "name": "mutual_information",
+    "category": "information",
+    "unicode_seed": 6.552309419797489e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      1.3862943611198906,
+      1.0,
+      1.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 3.8527424143518356,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9264039687230168,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "mutual_information",
+        "identity_matrix",
+        "indicator"
+      ]
+    }
+  },
+  {
+    "symbol": "S",
+    "unicode": "U+0053",
+    "name": "von_neumann_entropy",
+    "category": "information",
+    "unicode_seed": 7.44988605264646e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.532567456480708,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.2663209776706172,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "von_neumann_entropy",
+        "action"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2218",
+    "unicode": "U+2218",
+    "name": "composition",
+    "category": "miscellaneous",
+    "unicode_seed": 0.007834048851505819,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.2241714112173065,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.116002730034406,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "function_composition",
+        "hadamard_product",
+        "ring_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2220",
+    "unicode": "U+2220",
+    "name": "angle",
+    "category": "miscellaneous",
+    "unicode_seed": 0.007841229464568611,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6592835679721774,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "angle"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03c0",
+    "unicode": "U+03C0",
+    "name": "pi",
+    "category": "miscellaneous",
+    "unicode_seed": 0.0008616735675350122,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.926053733919744,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9634577037436396,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "pi_constant",
+        "prime_counting"
+      ]
+    }
+  },
+  {
+    "symbol": "e",
+    "unicode": "U+0065",
+    "name": "eulers_number",
+    "category": "miscellaneous",
+    "unicode_seed": 9.065523991774608e-05,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.868260119061002,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "eulers_number"
+      ]
+    }
+  },
+  {
+    "symbol": "i",
+    "unicode": "U+0069",
+    "name": "imaginary_unit",
+    "category": "miscellaneous",
+    "unicode_seed": 9.424554644914196e-05,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      3.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.926053733919744,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9630739897330967,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "imaginary_unit",
+        "index"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03c6",
+    "unicode": "U+03C6",
+    "name": "golden_ratio",
+    "category": "miscellaneous",
+    "unicode_seed": 0.0008670590273321061,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      3.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.104098452930389,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0524827559788603,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "golden_ratio",
+        "euler_totient",
+        "angle"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03b3",
+    "unicode": "U+03B3",
+    "name": "euler_mascheroni",
+    "category": "miscellaneous",
+    "unicode_seed": 0.0008500050713079756,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.3862943611198906,
+      3.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.104098452930389,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.052474229000848,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 3,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "euler_mascheroni",
+        "gamma_function",
+        "lorentz_factor"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2a00",
+    "unicode": "U+2A00",
+    "name": "big_circled_dot",
+    "category": "miscellaneous",
+    "unicode_seed": 0.009650743956392137,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7340525134952092,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "big_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2a01",
+    "unicode": "U+2A01",
+    "name": "big_circled_plus",
+    "category": "miscellaneous",
+    "unicode_seed": 0.009651641533024986,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7340529622835255,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "big_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2a02",
+    "unicode": "U+2A02",
+    "name": "big_circled_times",
+    "category": "miscellaneous",
+    "unicode_seed": 0.009652539109657835,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.734053411071842,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "big_operator"
+      ]
+    }
+  },
+  {
+    "symbol": "sinh",
+    "unicode": "U+0073",
+    "name": "hyperbolic_sine",
+    "category": "calculus",
+    "unicode_seed": 0.00010322131277763167,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9340181323312342,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "hyperbolic"
+      ]
+    }
+  },
+  {
+    "symbol": "cosh",
+    "unicode": "U+0063",
+    "name": "hyperbolic_cosine",
+    "category": "calculus",
+    "unicode_seed": 8.886008665204814e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9340109517181714,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "hyperbolic"
+      ]
+    }
+  },
+  {
+    "symbol": "tanh",
+    "unicode": "U+0074",
+    "name": "hyperbolic_tangent",
+    "category": "calculus",
+    "unicode_seed": 0.00010411888941048064,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9340185811195507,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "hyperbolic"
+      ]
+    }
+  },
+  {
+    "symbol": "arcsin",
+    "unicode": "U+0061",
+    "name": "arcsine",
+    "category": "calculus",
+    "unicode_seed": 8.706493338635019e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4967821559274164,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "inverse_trig"
+      ]
+    }
+  },
+  {
+    "symbol": "arccos",
+    "unicode": "U+0061",
+    "name": "arccosine",
+    "category": "calculus",
+    "unicode_seed": 8.706493338635019e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4967821559274164,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "inverse_trig"
+      ]
+    }
+  },
+  {
+    "symbol": "arctan",
+    "unicode": "U+0061",
+    "name": "arctangent",
+    "category": "calculus",
+    "unicode_seed": 8.706493338635019e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4967821559274164,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "inverse_trig"
+      ]
+    }
+  },
+  {
+    "symbol": "sec",
+    "unicode": "U+0073",
+    "name": "secant",
+    "category": "calculus",
+    "unicode_seed": 0.00010322131277763167,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.496790234117112,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "trigonometric"
+      ]
+    }
+  },
+  {
+    "symbol": "csc",
+    "unicode": "U+0063",
+    "name": "cosecant",
+    "category": "calculus",
+    "unicode_seed": 8.886008665204814e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4967830535040492,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "trigonometric"
+      ]
+    }
+  },
+  {
+    "symbol": "cot",
+    "unicode": "U+0063",
+    "name": "cotangent",
+    "category": "calculus",
+    "unicode_seed": 8.886008665204814e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.9934772469214463,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4967830535040492,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "trigonometric"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2295",
+    "unicode": "U+2295",
+    "name": "direct_sum",
+    "category": "algebra",
+    "unicode_seed": 0.007946245930611941,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.673716306254115,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.3408312760923637,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "direct_sum",
+        "xor",
+        "tensor_sum"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2296",
+    "unicode": "U+2296",
+    "name": "circled_minus",
+    "category": "algebra",
+    "unicode_seed": 0.00794714350724479,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379400934284678,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "circled_minus"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2298",
+    "unicode": "U+2298",
+    "name": "circled_slash",
+    "category": "algebra",
+    "unicode_seed": 0.007948938660510487,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379409910051006,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "circled_division"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c0",
+    "unicode": "U+22C0",
+    "name": "exterior_product",
+    "category": "algebra",
+    "unicode_seed": 0.007984841725824447,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.662498863020324,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8352418523730742,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "exterior_product",
+        "conjunction"
+      ]
+    }
+  },
+  {
+    "symbol": "\u22c1",
+    "unicode": "U+22C1",
+    "name": "join_operator",
+    "category": "algebra",
+    "unicode_seed": 0.007985739302457296,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      2.0,
+      1.0986122886681098,
+      1.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.662498863020324,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8352423011613905,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "join",
+        "disjunction"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2214",
+    "unicode": "U+2214",
+    "name": "dot_plus",
+    "category": "algebra",
+    "unicode_seed": 0.007830458544974423,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.354412248264558,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1811213534047664,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "dot_plus"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2238",
+    "unicode": "U+2238",
+    "name": "dot_minus",
+    "category": "algebra",
+    "unicode_seed": 0.007862771303756986,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.937897907326724,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "dot_minus"
+      ]
+    }
+  },
+  {
+    "symbol": "\u227a",
+    "unicode": "U+227A",
+    "name": "precedes",
+    "category": "algebra",
+    "unicode_seed": 0.007922011361525018,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379275273556078,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "order_relation"
+      ]
+    }
+  },
+  {
+    "symbol": "\u227b",
+    "unicode": "U+227B",
+    "name": "succeeds",
+    "category": "algebra",
+    "unicode_seed": 0.007922908938157868,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379279761439243,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "order_relation"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2aaf",
+    "unicode": "U+2AAF",
+    "name": "precedes_equal",
+    "category": "algebra",
+    "unicode_seed": 0.009807819867140707,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9388704316084158,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "order_relation"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2ab0",
+    "unicode": "U+2AB0",
+    "name": "succeeds_equal",
+    "category": "algebra",
+    "unicode_seed": 0.009808717443773556,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9388708803967323,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "order_relation"
+      ]
+    }
+  },
+  {
+    "symbol": "\u227c",
+    "unicode": "U+227C",
+    "name": "curly_precedes",
+    "category": "algebra",
+    "unicode_seed": 0.007923806514790717,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.9379284249322408,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "order_relation"
+      ]
+    }
+  },
+  {
+    "symbol": "\u227d",
+    "unicode": "U+227D",
+    "name": "curly_succeeds",
+    "category": "algebra",
+    "unicode_seed": 0.007924704091423566,
+    "bitfield": [
+      2.0,
+      2.0,
+      1.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.867933043349691,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.937928873720557,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "relation",
+      "invertibility": "partial",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "order_relation"
+      ]
+    }
+  },
+  {
+    "symbol": "D",
+    "unicode": "U+0044",
+    "name": "kl_divergence",
+    "category": "information",
+    "unicode_seed": 6.103521103373003e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.0682076073214413,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.5341343212662375,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "kl_divergence",
+        "derivative"
+      ]
+    }
+  },
+  {
+    "symbol": "KL",
+    "unicode": "U+004B",
+    "name": "kullback_leibler",
+    "category": "information",
+    "unicode_seed": 6.731824746367283e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.8215077578905223,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.410787538068993,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "kl_divergence"
+      ]
+    }
+  },
+  {
+    "symbol": "JS",
+    "unicode": "U+004A",
+    "name": "jensen_shannon",
+    "category": "information",
+    "unicode_seed": 6.642067083082386e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      2.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.458454283034026,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7292603518524285,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "js_divergence"
+      ]
+    }
+  },
+  {
+    "symbol": "Pr",
+    "unicode": "U+0050",
+    "name": "probability_function",
+    "category": "probability",
+    "unicode_seed": 7.180613062791769e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1136904756142263,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "probability"
+      ]
+    }
+  },
+  {
+    "symbol": "Med",
+    "unicode": "U+004D",
+    "name": "median",
+    "category": "probability",
+    "unicode_seed": 6.911340072937078e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1136891292492772,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "median"
+      ]
+    }
+  },
+  {
+    "symbol": "Mode",
+    "unicode": "U+004D",
+    "name": "mode",
+    "category": "probability",
+    "unicode_seed": 6.911340072937078e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1136891292492772,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "mode"
+      ]
+    }
+  },
+  {
+    "symbol": "SE",
+    "unicode": "U+0053",
+    "name": "standard_error",
+    "category": "probability",
+    "unicode_seed": 7.44988605264646e-05,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.227309145097825,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.1136918219791756,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "standard_error"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03c7\u00b2",
+    "unicode": "U+03C7",
+    "name": "chi_squared",
+    "category": "probability",
+    "unicode_seed": 0.000867956603964955,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      1.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.8215077578905223,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.4111878572472436,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "chi_squared"
+      ]
+    }
+  },
+  {
+    "symbol": "F",
+    "unicode": "U+0046",
+    "name": "f_statistic",
+    "category": "probability",
+    "unicode_seed": 6.283036429942798e-05,
+    "bitfield": [
+      2.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.0682076073214413,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.5341352188428703,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "f_test",
+        "force"
+      ]
+    }
+  },
+  {
+    "symbol": "t",
+    "unicode": "U+0074",
+    "name": "t_statistic",
+    "category": "probability",
+    "unicode_seed": 0.00010411888941048064,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.532567456480708,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.2663357876850594,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "t_test",
+        "time"
+      ]
+    }
+  },
+  {
+    "symbol": "z",
+    "unicode": "U+007A",
+    "name": "z_score",
+    "category": "probability",
+    "unicode_seed": 0.00010950434920757447,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      1.0,
+      1.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 2.532567456480708,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.2663384804149578,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 1,
+      "closure_degree": "medium",
+      "overloading_contexts": [
+        "z_score",
+        "complex_variable"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2295",
+    "unicode": "U+2295",
+    "name": "quantum_xor",
+    "category": "quantum",
+    "unicode_seed": 0.007946245930611941,
+    "bitfield": [
+      2.0,
+      1.0,
+      2.0,
+      2.0,
+      1.3862943611198906,
+      2.0,
+      2.0,
+      1.3862943611198906
+    ],
+    "bitfield_magnitude": 4.984337880937208,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.49614206343391,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "yes",
+      "meaning_count": 3,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "quantum_xor",
+        "direct_sum",
+        "xor"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03c8",
+    "unicode": "U+03C8",
+    "name": "wave_function",
+    "category": "quantum",
+    "unicode_seed": 0.000868854180597804,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8686492185313421,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "wave_function"
+      ]
+    }
+  },
+  {
+    "symbol": "\u03a8",
+    "unicode": "U+03A8",
+    "name": "state_vector",
+    "category": "quantum",
+    "unicode_seed": 0.000840131728346637,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8686348573052165,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "state_vector"
+      ]
+    }
+  },
+  {
+    "symbol": "\u210f",
+    "unicode": "U+210F",
+    "name": "reduced_planck",
+    "category": "quantum",
+    "unicode_seed": 0.007596191043800842,
+    "bitfield": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      3.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.7364295828820864,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.8720128869629435,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operand",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 3,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "reduced_planck"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2234",
+    "unicode": "U+2234",
+    "name": "therefore",
+    "category": "miscellaneous",
+    "unicode_seed": 0.00785918099722559,
+    "bitfield": [
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.638352900549205,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.3231060407732151,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "therefore"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2235",
+    "unicode": "U+2235",
+    "name": "because",
+    "category": "miscellaneous",
+    "unicode_seed": 0.00786007857385844,
+    "bitfield": [
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.638352900549205,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.3231064895615317,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "because"
+      ]
+    }
+  },
+  {
+    "symbol": "\u220e",
+    "unicode": "U+220E",
+    "name": "qed",
+    "category": "miscellaneous",
+    "unicode_seed": 0.00782507308517733,
+    "bitfield": [
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      1.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 2.638352900549205,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.3230889868171911,
+    "properties": {
+      "arity": "nullary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 1,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "qed"
+      ]
+    }
+  },
+  {
+    "symbol": "\u25a1",
+    "unicode": "U+25A1",
+    "name": "box",
+    "category": "miscellaneous",
+    "unicode_seed": 0.008646355704234138,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.523336191967091,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7659912738356627,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "modal_necessity",
+        "end_proof"
+      ]
+    }
+  },
+  {
+    "symbol": "\u25c7",
+    "unicode": "U+25C7",
+    "name": "diamond",
+    "category": "miscellaneous",
+    "unicode_seed": 0.0086804636162824,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 3.523336191967091,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.7660083277916867,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "modal_possibility",
+        "operator"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2605",
+    "unicode": "U+2605",
+    "name": "star_operator",
+    "category": "miscellaneous",
+    "unicode_seed": 0.008736113367519035,
+    "bitfield": [
+      2.0,
+      1.0,
+      1.0,
+      2.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 4.354412248264558,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.1815741808160385,
+    "properties": {
+      "arity": "binary",
+      "formal_role": "operator",
+      "invertibility": "partial",
+      "commutativity": "yes",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "convolution"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2020",
+    "unicode": "U+2020",
+    "name": "dagger",
+    "category": "miscellaneous",
+    "unicode_seed": 0.007381670228549938,
+    "bitfield": [
+      1.0,
+      1.0,
+      2.0,
+      0.0,
+      1.0986122886681098,
+      2.0,
+      2.0,
+      1.0986122886681098
+    ],
+    "bitfield_magnitude": 4.0514069064493095,
+    "initial_nrci": 0.999997,
+    "initial_value": 2.0293942883389295,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "full",
+      "commutativity": "no",
+      "meaning_count": 2,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "adjoint",
+        "footnote"
+      ]
+    }
+  },
+  {
+    "symbol": "\u2021",
+    "unicode": "U+2021",
+    "name": "double_dagger",
+    "category": "miscellaneous",
+    "unicode_seed": 0.007382567805182787,
+    "bitfield": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.6931471805599453,
+      2.0,
+      2.0,
+      0.6931471805599453
+    ],
+    "bitfield_magnitude": 3.310725906479786,
+    "initial_nrci": 0.999997,
+    "initial_value": 1.6590542371424843,
+    "properties": {
+      "arity": "unary",
+      "formal_role": "operator",
+      "invertibility": "none",
+      "commutativity": "no",
+      "meaning_count": 1,
+      "dependency_depth": 2,
+      "closure_degree": "high",
+      "overloading_contexts": [
+        "footnote"
+      ]
+    }
+  }
+]
