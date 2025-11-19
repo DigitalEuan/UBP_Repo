@@ -1,2 +1,21 @@
+# Python
 __pycache__/
-persistent_state/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# UBP specific
+_backup_*/
+hex_storage/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

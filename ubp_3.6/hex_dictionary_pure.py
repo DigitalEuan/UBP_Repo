@@ -1,8 +1,8 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.5 - Pure HexDictionary
+Universal Binary Principle (UBP) Framework v3.6 - Pure HexDictionary
 Author: Euan Craig, New Zealand
-Date: November 15, 2025
+Date: November 19, 2025
 ================================================================================
 
 The Pure HexDictionary: Information-First Metric for the OffBit Layer

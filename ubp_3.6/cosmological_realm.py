@@ -1,6 +1,6 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.5 - Cosmological Realm
+Universal Binary Principle (UBP) Framework v3.6 - Cosmological Realm
 Author: Euan Craig, New Zealand
 Date: November 12, 2025
 ================================================================================

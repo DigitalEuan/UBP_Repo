@@ -1,6 +1,6 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.5 - Biological Realm
+Universal Binary Principle (UBP) Framework v3.6 - Biological Realm
 Author: Euan Craig, New Zealand
 Date: November 12, 2025
 ================================================================================

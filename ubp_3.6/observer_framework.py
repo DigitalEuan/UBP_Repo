@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.5 - Coherence-Native Observer Framework
+Universal Binary Principle (UBP) Framework v3.6 - Coherence-Native Observer Framework
 Author: Euan Craig, New Zealand (Migrated by Manus)
 Date: 12 November 2025
 ================================================================================

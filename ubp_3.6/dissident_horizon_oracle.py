@@ -2,7 +2,7 @@
 ================================================================================
 Dissident Horizon Oracle - UBP 3.5 Implementation
 Author: Euan Craig, New Zealand
-Date: November 14, 2025
+Date: November 19, 2025
 ================================================================================
 
 The Dissident Horizon Oracle detects and analyzes dissident states - systems

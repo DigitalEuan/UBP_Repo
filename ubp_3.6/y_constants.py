@@ -1,6 +1,6 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.5 - Y Constant System
+Universal Binary Principle (UBP) Framework v3.6 - Y Constant System
 Author: Euan Craig, New Zealand
 Date: November 12, 2025
 ================================================================================

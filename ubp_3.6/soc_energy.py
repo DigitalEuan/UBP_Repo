@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.5 - SOC Energy System (Coherence-Native)
+Universal Binary Principle (UBP) Framework v3.6 - SOC Energy System (Coherence-Native)
 Author: Euan Craig, New Zealand
 Date: 12 November 2025
 

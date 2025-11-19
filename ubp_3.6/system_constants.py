@@ -1,6 +1,6 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.5 - System Constants
+Universal Binary Principle (UBP) Framework v3.6 - System Constants
 Author: Euan Craig, New Zealand
 Date: November 12, 2025
 ================================================================================

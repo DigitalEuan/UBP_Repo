@@ -2,7 +2,7 @@
 ================================================================================
 HexDictionary v2.0 - Complete Production Module for UBP 3.5
 Author: Euan Craig, New Zealand
-Date: November 14, 2025
+Date: November 19, 2025
 ================================================================================
 
 Content-addressable storage with 8 advanced analysis methods.

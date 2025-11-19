@@ -1,6 +1,6 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.5 - Toggle Operations
+Universal Binary Principle (UBP) Framework v3.6 - Toggle Operations
 Author: Euan Craig, New Zealand
 Date: November 12, 2025
 ================================================================================
