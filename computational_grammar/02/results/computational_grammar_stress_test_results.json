@@ -1,0 +1,31 @@
+{
+  "extreme_compositions": {
+    "failures": [],
+    "total_tested": 6
+  },
+  "boundary_conditions": {
+    "invalid_count": 0,
+    "sensitivity_ranking": [
+      "d6",
+      "d5",
+      "d8"
+    ]
+  },
+  "pathological_operators": {
+    "issues_found": [],
+    "total_tested": 4
+  },
+  "closure_violations": {
+    "violations": [
+      "SIN",
+      "EXP"
+    ],
+    "total_tested": 3
+  },
+  "y_scaling_precision": {
+    "max_error": 0.00010212305898749108,
+    "mean_error": 7.618861713380998e-05,
+    "claim_verified": false,
+    "optimal_base": 0.99999
+  }
+}

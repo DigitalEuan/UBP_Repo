@@ -1,0 +1,12 @@
+CORRECTED Y-SCALING FORMULA
+==================================================
+
+NRCI(ω) = 1.0000109885 - 0.0000114940 × HW(ω)
+
+Where:
+  HW(ω) = Hamming weight of operator ω
+  Y = Golden Ratio = 1.6180339887
+  Slope = 0.0000114940
+
+Model fit: R² = 0.27765883
+Max error: 6.00e-05

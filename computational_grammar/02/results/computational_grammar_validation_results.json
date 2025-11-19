@@ -1,0 +1,209 @@
+{
+  "coherence_prediction": {
+    "r_squared": 0.8812191842211838,
+    "mean_error": 2.2000000000188534e-06,
+    "max_error": 8.50000000007789e-06,
+    "predictions": [
+      {
+        "operator": "Y_REFINE",
+        "predicted": 0.9999790000000001,
+        "expected": 0.9999805,
+        "error": 1.4999999999876223e-06,
+        "error_pct": 0.00015000292505580083
+      },
+      {
+        "operator": "Y_INVERSE",
+        "predicted": 0.9999790000000001,
+        "expected": 0.9999805,
+        "error": 1.4999999999876223e-06,
+        "error_pct": 0.00015000292505580083
+      },
+      {
+        "operator": "NOT",
+        "predicted": 0.9999790000000001,
+        "expected": 0.999979,
+        "error": 1.1102230246251565e-16,
+        "error_pct": 1.1102463397982923e-14
+      },
+      {
+        "operator": "AND",
+        "predicted": 0.999969,
+        "expected": 0.999969,
+        "error": 0.0,
+        "error_pct": 0.0
+      },
+      {
+        "operator": "OR",
+        "predicted": 0.999969,
+        "expected": 0.999969,
+        "error": 0.0,
+        "error_pct": 0.0
+      },
+      {
+        "operator": "XOR",
+        "predicted": 0.999969,
+        "expected": 0.9999675,
+        "error": 1.4999999999876223e-06,
+        "error_pct": 0.00015000487515720484
+      },
+      {
+        "operator": "ADD",
+        "predicted": 0.999969,
+        "expected": 0.999966,
+        "error": 2.9999999999752447e-06,
+        "error_pct": 0.00030001020034433614
+      },
+      {
+        "operator": "SUB",
+        "predicted": 0.999969,
+        "expected": 0.999966,
+        "error": 2.9999999999752447e-06,
+        "error_pct": 0.00030001020034433614
+      },
+      {
+        "operator": "MUL",
+        "predicted": 0.999959,
+        "expected": 0.9999505,
+        "error": 8.50000000007789e-06,
+        "error_pct": 0.000850042077090605
+      },
+      {
+        "operator": "DIV",
+        "predicted": 0.999959,
+        "expected": 0.999956,
+        "error": 3.000000000086267e-06,
+        "error_pct": 0.0003000132005894526
+      }
+    ]
+  },
+  "operator_closure": {
+    "involutions": [
+      {
+        "ops": [
+          "NOT",
+          "NOT"
+        ],
+        "is_involution": true
+      },
+      {
+        "ops": [
+          "Y_REFINE",
+          "Y_INVERSE"
+        ],
+        "is_involution": true
+      }
+    ],
+    "compositions": [
+      {
+        "operators": [
+          "ADD",
+          "MUL"
+        ],
+        "predicted": 0.9999165,
+        "expected": 0.9999165,
+        "error": 0.0
+      },
+      {
+        "operators": [
+          "ADD",
+          "ADD",
+          "ADD"
+        ],
+        "predicted": 0.9998980000000001,
+        "expected": 0.999898,
+        "error": 1.1102230246251565e-16
+      },
+      {
+        "operators": [
+          "NOT",
+          "AND",
+          "OR"
+        ],
+        "predicted": 0.999917,
+        "expected": 0.999917,
+        "error": 0.0
+      }
+    ]
+  },
+  "performance": {
+    "benchmarks": [
+      {
+        "operation": "addition",
+        "python_time": 0.0020031780004501343,
+        "ubp_time": 0.10928180799965048,
+        "overhead_pct": 5355.421733619965
+      },
+      {
+        "operation": "multiplication",
+        "python_time": 0.003734504003659822,
+        "ubp_time": 0.06059106499742484,
+        "overhead_pct": 1522.4661946551794
+      },
+      {
+        "operation": "y_refinement",
+        "ubp_time": 0.08462100299948361,
+        "overhead_pct": 0
+      }
+    ],
+    "average_overhead_pct": 3438.9439641375725
+  },
+  "novel_operators": {
+    "HARMONIZE": {
+      "d6": 0.08,
+      "nrci_predicted": 0.9999382,
+      "description": "Geometric mean with Y-scaling"
+    },
+    "RESONATE": {
+      "d6": 0.09,
+      "nrci_predicted": 0.9999271,
+      "description": "Phase alignment operator"
+    },
+    "COHERE": {
+      "d6": 0.07,
+      "nrci_predicted": 0.9999582,
+      "description": "Coherence maximization"
+    },
+    "STABILIZE": {
+      "d6": 0.1,
+      "nrci_predicted": 0.999948,
+      "description": "Geometric restoration"
+    },
+    "BIFURCATE": {
+      "d6": 0.08,
+      "nrci_predicted": 0.9999582,
+      "description": "Binary branching"
+    }
+  },
+  "integration": {
+    "integration_points": [
+      {
+        "name": "Operator-aware CoherenceState",
+        "feasibility": "High",
+        "benefit": "Medium"
+      },
+      {
+        "name": "Primitive-only mode",
+        "feasibility": "High",
+        "benefit": "High"
+      },
+      {
+        "name": "OffBit encoding",
+        "feasibility": "Medium",
+        "benefit": "Medium"
+      },
+      {
+        "name": "Novel operator methods",
+        "feasibility": "High",
+        "benefit": "High"
+      }
+    ],
+    "count": 4
+  },
+  "summary": {
+    "tests_passed": 4,
+    "tests_total": 5,
+    "pass_rate": 0.8,
+    "version_recommendation": "3.6",
+    "rationale": "Computational Grammar provides significant improvements"
+  }
+}

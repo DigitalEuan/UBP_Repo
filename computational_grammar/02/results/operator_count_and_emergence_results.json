@@ -1,0 +1,225 @@
+{
+  "operator_count_estimation": {
+    "estimates": {
+      "Combinatorial (constrained)": 5616.0,
+      "OffBit saturation": 3360.200301476389,
+      "Domain-based": 1750
+    },
+    "average": 3575.4001004921297,
+    "best_offbit_estimate": {
+      "P_max": 100,
+      "N0": 1121.6624166117529,
+      "N_95": 3360.200301476389
+    }
+  },
+  "emergence_framework": {
+    "Layer 1": {
+      "name": "Geometric Primitives",
+      "description": "Hardcoded primitives (\u2297Y, \u2297Y\u207b\u00b9, \u00ac, \u2227, \u2228, \u2295, +, \u2212, \u00d7, \u00f7)",
+      "count": 10,
+      "implementation": "Define in coherence_substrate.py as CoherenceOperator class"
+    },
+    "Layer 2": {
+      "name": "Composition Engine",
+      "description": "Generate derived operators via composition",
+      "count": "\u221e (on-demand)",
+      "implementation": "Implement compose() method with coherence tracking"
+    },
+    "Layer 3": {
+      "name": "OffBit Registry",
+      "description": "Cache OffBit patterns for known operators",
+      "count": "~100-150 families",
+      "implementation": "Dictionary mapping OffBit \u2192 operator semantics"
+    },
+    "Layer 4": {
+      "name": "Operator Algebra",
+      "description": "Algebraic laws (associativity, commutativity, etc.)",
+      "count": "~20 laws",
+      "implementation": "Simplification rules for operator expressions"
+    },
+    "Layer 5": {
+      "name": "Domain Extensions",
+      "description": "Domain-specific operators (quantum, ML, etc.)",
+      "count": "~500-1000",
+      "implementation": "Plugin system for domain modules"
+    }
+  },
+  "qft_operators": [
+    {
+      "symbol": "a\u2020",
+      "name": "Creation operator",
+      "d6": 0.15,
+      "nrci": 0.9999575,
+      "description": "Bosonic creation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "a",
+      "name": "Annihilation operator",
+      "d6": 0.15,
+      "nrci": 0.9999575,
+      "description": "Bosonic annihilation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "b\u2020",
+      "name": "Fermionic creation",
+      "d6": 0.15,
+      "nrci": 0.9999575,
+      "description": "Fermionic creation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "b",
+      "name": "Fermionic annihilation",
+      "d6": 0.15,
+      "nrci": 0.9999575,
+      "description": "Fermionic annihilation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "[a,a\u2020]",
+      "name": "Commutator",
+      "d6": 0.2,
+      "nrci": 0.9999475,
+      "description": "Canonical commutation relation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "{b,b\u2020}",
+      "name": "Anticommutator",
+      "d6": 0.2,
+      "nrci": 0.9999475,
+      "description": "Canonical anticommutation relation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "\u03c6(x)",
+      "name": "Scalar field",
+      "d6": 0.3,
+      "nrci": 0.9999275000000001,
+      "description": "Klein-Gordon field",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "\u03c8(x)",
+      "name": "Spinor field",
+      "d6": 0.35,
+      "nrci": 0.9999175,
+      "description": "Dirac field",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "A_\u03bc(x)",
+      "name": "Vector field",
+      "d6": 0.35,
+      "nrci": 0.9999175,
+      "description": "Gauge field",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "\u2202_\u03bc",
+      "name": "Partial derivative",
+      "d6": 0.25,
+      "nrci": 0.9999375,
+      "description": "4-derivative",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "D_\u03bc",
+      "name": "Covariant derivative",
+      "d6": 0.4,
+      "nrci": 0.9999075000000001,
+      "description": "Gauge covariant derivative",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "F_\u03bc\u03bd",
+      "name": "Field strength",
+      "d6": 0.45,
+      "nrci": 0.9998975,
+      "description": "Electromagnetic field strength",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "\u2112_int",
+      "name": "Interaction Lagrangian",
+      "d6": 0.5,
+      "nrci": 0.9998875,
+      "description": "Interaction term",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "S-matrix",
+      "name": "Scattering matrix",
+      "d6": 0.55,
+      "nrci": 0.9998775,
+      "description": "S-matrix operator",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "T",
+      "name": "Time-ordering",
+      "d6": 0.4,
+      "nrci": 0.9999075000000001,
+      "description": "Time-ordered product",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "N",
+      "name": "Normal-ordering",
+      "d6": 0.35,
+      "nrci": 0.9999175,
+      "description": "Normal-ordered product",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "P",
+      "name": "Parity",
+      "d6": 0.12,
+      "nrci": 0.9999635,
+      "description": "Parity transformation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "C",
+      "name": "Charge conjugation",
+      "d6": 0.12,
+      "nrci": 0.9999635,
+      "description": "Charge conjugation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "T",
+      "name": "Time reversal",
+      "d6": 0.12,
+      "nrci": 0.9999635,
+      "description": "Time reversal",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "U(1)",
+      "name": "U(1) gauge",
+      "d6": 0.25,
+      "nrci": 0.9999375,
+      "description": "U(1) gauge transformation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "SU(2)",
+      "name": "SU(2) gauge",
+      "d6": 0.3,
+      "nrci": 0.9999275000000001,
+      "description": "SU(2) gauge transformation",
+      "category": "QuantumFieldTheory"
+    },
+    {
+      "symbol": "SU(3)",
+      "name": "SU(3) gauge",
+      "d6": 0.35,
+      "nrci": 0.9999175,
+      "description": "SU(3) gauge transformation (QCD)",
+      "category": "QuantumFieldTheory"
+    }
+  ]
+}

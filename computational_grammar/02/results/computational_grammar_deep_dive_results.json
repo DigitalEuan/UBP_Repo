@@ -1,0 +1,556 @@
+{
+  "2n_closure": {
+    "composition_counts": {
+      "1": 10,
+      "2": 100,
+      "3": 1000,
+      "4": 10000
+    },
+    "unique_signatures": {
+      "1": 3,
+      "2": 5,
+      "3": 7,
+      "4": 9
+    },
+    "growth_base": 9.99999999999999
+  },
+  "offbit_geometry": {
+    "offbit_data": [
+      {
+        "operator": "Y_REFINE",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "hex": "0x6f15",
+        "hamming_weight": 9,
+        "layer_weights": {
+          "R": 0,
+          "I": 2,
+          "A": 4,
+          "U": 3
+        },
+        "nrci": 0.9999805
+      },
+      {
+        "operator": "Y_INVERSE",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "hex": "0x6f15",
+        "hamming_weight": 9,
+        "layer_weights": {
+          "R": 0,
+          "I": 2,
+          "A": 4,
+          "U": 3
+        },
+        "nrci": 0.9999805
+      },
+      {
+        "operator": "NOT",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "hex": "0x6f15",
+        "hamming_weight": 9,
+        "layer_weights": {
+          "R": 0,
+          "I": 2,
+          "A": 4,
+          "U": 3
+        },
+        "nrci": 0.999979
+      },
+      {
+        "operator": "AND",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "hex": "0x17319",
+        "hamming_weight": 9,
+        "layer_weights": {
+          "R": 0,
+          "I": 4,
+          "A": 2,
+          "U": 3
+        },
+        "nrci": 0.999969
+      },
+      {
+        "operator": "OR",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "hex": "0x17319",
+        "hamming_weight": 9,
+        "layer_weights": {
+          "R": 0,
+          "I": 4,
+          "A": 2,
+          "U": 3
+        },
+        "nrci": 0.999969
+      },
+      {
+        "operator": "XOR",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "hex": "0x17719",
+        "hamming_weight": 10,
+        "layer_weights": {
+          "R": 0,
+          "I": 4,
+          "A": 3,
+          "U": 3
+        },
+        "nrci": 0.9999675
+      },
+      {
+        "operator": "ADD",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "hex": "0x17f19",
+        "hamming_weight": 11,
+        "layer_weights": {
+          "R": 0,
+          "I": 4,
+          "A": 4,
+          "U": 3
+        },
+        "nrci": 0.999966
+      },
+      {
+        "operator": "SUB",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "hex": "0x16f19",
+        "hamming_weight": 10,
+        "layer_weights": {
+          "R": 0,
+          "I": 3,
+          "A": 4,
+          "U": 3
+        },
+        "nrci": 0.999966
+      },
+      {
+        "operator": "MUL",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "hex": "0x1771e",
+        "hamming_weight": 11,
+        "layer_weights": {
+          "R": 0,
+          "I": 4,
+          "A": 3,
+          "U": 4
+        },
+        "nrci": 0.9999505
+      },
+      {
+        "operator": "DIV",
+        "bits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "hex": "0x1651e",
+        "hamming_weight": 9,
+        "layer_weights": {
+          "R": 0,
+          "I": 3,
+          "A": 2,
+          "U": 4
+        },
+        "nrci": 0.999956
+      }
+    ],
+    "hw_nrci_correlation": -0.5808911399489791,
+    "y_scaling_errors": {
+      "max": 0.00011448373876254969,
+      "mean": 8.793126291999354e-05
+    }
+  },
+  "operator_families": {
+    "structural_families": {
+      "unary_non-commutative_invertible": 3,
+      "binary_commutative_non-invertible": 4,
+      "binary_commutative_invertible": 1,
+      "binary_non-commutative_invertible": 1,
+      "binary_non-commutative_non-invertible": 1
+    },
+    "d6_groups": {
+      "0.05": [
+        "Y_REFINE",
+        "Y_INVERSE",
+        "NOT"
+      ],
+      "0.1": [
+        "AND",
+        "OR",
+        "XOR",
+        "ADD",
+        "SUB"
+      ],
+      "0.15": [
+        "MUL",
+        "DIV"
+      ]
+    }
+  },
+  "quantum_extensions": {
+    "quantum_operators": {
+      "HADAMARD": {
+        "description": "Superposition creation",
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1,
+        "symbol": "H",
+        "nrci_predicted": 0.999973
+      },
+      "CNOT": {
+        "description": "Controlled-NOT (entanglement)",
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1,
+        "symbol": "CNOT",
+        "nrci_predicted": 0.999965
+      },
+      "PHASE": {
+        "description": "Phase rotation",
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.15,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15,
+        "symbol": "P(\u03b8)",
+        "nrci_predicted": 0.999965
+      },
+      "MEASURE": {
+        "description": "Quantum measurement",
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.2,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 0.5,
+        "d8_overloading": 0.2,
+        "symbol": "M",
+        "nrci_predicted": 0.999951
+      }
+    },
+    "mean_nrci": 0.9999635,
+    "classical_mean_nrci": 0.9999683999999999
+  },
+  "novel_discovery": {
+    "count": 34,
+    "top_10": [
+      {
+        "d5": 0.05,
+        "d6": 0.05,
+        "d8": 0.05,
+        "nrci": 0.9999830000000001
+      },
+      {
+        "d5": 0.05,
+        "d6": 0.05,
+        "d8": 0.08,
+        "nrci": 0.9999821
+      },
+      {
+        "d5": 0.05,
+        "d6": 0.05,
+        "d8": 0.1,
+        "nrci": 0.9999815000000001
+      },
+      {
+        "d5": 0.08,
+        "d6": 0.05,
+        "d8": 0.05,
+        "nrci": 0.9999815000000001
+      },
+      {
+        "d5": 0.08,
+        "d6": 0.05,
+        "d8": 0.08,
+        "nrci": 0.9999806
+      },
+      {
+        "d5": 0.1,
+        "d6": 0.05,
+        "d8": 0.05,
+        "nrci": 0.9999805
+      },
+      {
+        "d5": 0.08,
+        "d6": 0.05,
+        "d8": 0.1,
+        "nrci": 0.99998
+      },
+      {
+        "d5": 0.1,
+        "d6": 0.05,
+        "d8": 0.08,
+        "nrci": 0.9999796000000001
+      },
+      {
+        "d5": 0.05,
+        "d6": 0.07,
+        "d8": 0.05,
+        "nrci": 0.9999790000000001
+      },
+      {
+        "d5": 0.05,
+        "d6": 0.07,
+        "d8": 0.08,
+        "nrci": 0.9999781
+      }
+    ]
+  }
+}

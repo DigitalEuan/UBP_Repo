@@ -1,0 +1,2123 @@
+{
+  "quantum_gates": [
+    {
+      "symbol": "I",
+      "name": "Identity",
+      "category": "Quantum/Pauli",
+      "description": "Identity gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.9999790000000001,
+      "is_primitive": true,
+      "family": "Pauli"
+    },
+    {
+      "symbol": "X",
+      "name": "Pauli-X",
+      "category": "Quantum/Pauli",
+      "description": "Bit flip / NOT gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999973,
+      "is_primitive": true,
+      "family": "Pauli"
+    },
+    {
+      "symbol": "Y",
+      "name": "Pauli-Y",
+      "category": "Quantum/Pauli",
+      "description": "Bit and phase flip",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999973,
+      "is_primitive": true,
+      "family": "Pauli"
+    },
+    {
+      "symbol": "Z",
+      "name": "Pauli-Z",
+      "category": "Quantum/Pauli",
+      "description": "Phase flip",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999973,
+      "is_primitive": true,
+      "family": "Pauli"
+    },
+    {
+      "symbol": "H",
+      "name": "Hadamard",
+      "category": "Quantum/Hadamard",
+      "description": "Creates superposition",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "Hadamard"
+    },
+    {
+      "symbol": "S",
+      "name": "Phase",
+      "category": "Quantum/Phase",
+      "description": "\u03c0/2 phase gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999969,
+      "is_primitive": true,
+      "family": "Phase"
+    },
+    {
+      "symbol": "T",
+      "name": "\u03c0/8",
+      "category": "Quantum/Phase",
+      "description": "\u03c0/4 phase gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999969,
+      "is_primitive": true,
+      "family": "Phase"
+    },
+    {
+      "symbol": "S\u2020",
+      "name": "S-dagger",
+      "category": "Quantum/Phase",
+      "description": "Inverse S gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999969,
+      "is_primitive": true,
+      "family": "Phase"
+    },
+    {
+      "symbol": "T\u2020",
+      "name": "T-dagger",
+      "category": "Quantum/Phase",
+      "description": "Inverse T gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999969,
+      "is_primitive": true,
+      "family": "Phase"
+    },
+    {
+      "symbol": "Rx(\u03b8)",
+      "name": "X-Rotation",
+      "category": "Quantum/Rotation",
+      "description": "Rotation around X-axis",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Rotation"
+    },
+    {
+      "symbol": "Ry(\u03b8)",
+      "name": "Y-Rotation",
+      "category": "Quantum/Rotation",
+      "description": "Rotation around Y-axis",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Rotation"
+    },
+    {
+      "symbol": "Rz(\u03b8)",
+      "name": "Z-Rotation",
+      "category": "Quantum/Rotation",
+      "description": "Rotation around Z-axis",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Rotation"
+    },
+    {
+      "symbol": "U1(\u03bb)",
+      "name": "Phase rotation",
+      "category": "Quantum/Rotation",
+      "description": "Single-parameter phase",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Rotation"
+    },
+    {
+      "symbol": "U2(\u03c6,\u03bb)",
+      "name": "Two-parameter",
+      "category": "Quantum/Rotation",
+      "description": "Two-parameter rotation",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Rotation"
+    },
+    {
+      "symbol": "U3(\u03b8,\u03c6,\u03bb)",
+      "name": "Universal",
+      "category": "Quantum/Rotation",
+      "description": "Universal single-qubit gate",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999949,
+      "is_primitive": false,
+      "family": "Rotation"
+    },
+    {
+      "symbol": "\u221aX",
+      "name": "Sqrt-X",
+      "category": "Quantum/Root",
+      "description": "Square root of X",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Root"
+    },
+    {
+      "symbol": "\u221aY",
+      "name": "Sqrt-Y",
+      "category": "Quantum/Root",
+      "description": "Square root of Y",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Root"
+    },
+    {
+      "symbol": "\u221aZ",
+      "name": "Sqrt-Z",
+      "category": "Quantum/Root",
+      "description": "Square root of Z",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Root"
+    },
+    {
+      "symbol": "CNOT",
+      "name": "Controlled-NOT",
+      "category": "Quantum/Controlled",
+      "description": "Controlled X gate",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "CY",
+      "name": "Controlled-Y",
+      "category": "Quantum/Controlled",
+      "description": "Controlled Y gate",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "CZ",
+      "name": "Controlled-Z",
+      "category": "Quantum/Controlled",
+      "description": "Controlled Z gate",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "CH",
+      "name": "Controlled-H",
+      "category": "Quantum/Controlled",
+      "description": "Controlled Hadamard",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "CS",
+      "name": "Controlled-S",
+      "category": "Quantum/Controlled",
+      "description": "Controlled phase",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "CT",
+      "name": "Controlled-T",
+      "category": "Quantum/Controlled",
+      "description": "Controlled \u03c0/8",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "SWAP",
+      "name": "SWAP",
+      "category": "Quantum/SWAP",
+      "description": "Swap two qubits",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "SWAP"
+    },
+    {
+      "symbol": "\u221aSWAP",
+      "name": "Sqrt-SWAP",
+      "category": "Quantum/SWAP",
+      "description": "Square root of SWAP",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999949,
+      "is_primitive": false,
+      "family": "SWAP"
+    },
+    {
+      "symbol": "iSWAP",
+      "name": "iSWAP",
+      "category": "Quantum/SWAP",
+      "description": "Imaginary SWAP",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "SWAP"
+    },
+    {
+      "symbol": "CRx(\u03b8)",
+      "name": "Controlled Rx",
+      "category": "Quantum/Controlled-Rotation",
+      "description": "Controlled X-rotation",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999949,
+      "is_primitive": false,
+      "family": "Controlled-Rotation"
+    },
+    {
+      "symbol": "CRy(\u03b8)",
+      "name": "Controlled Ry",
+      "category": "Quantum/Controlled-Rotation",
+      "description": "Controlled Y-rotation",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999949,
+      "is_primitive": false,
+      "family": "Controlled-Rotation"
+    },
+    {
+      "symbol": "CRz(\u03b8)",
+      "name": "Controlled Rz",
+      "category": "Quantum/Controlled-Rotation",
+      "description": "Controlled Z-rotation",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999949,
+      "is_primitive": false,
+      "family": "Controlled-Rotation"
+    },
+    {
+      "symbol": "XX(\u03b8)",
+      "name": "XX-interaction",
+      "category": "Quantum/Entangling",
+      "description": "XX Ising interaction",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Entangling"
+    },
+    {
+      "symbol": "YY(\u03b8)",
+      "name": "YY-interaction",
+      "category": "Quantum/Entangling",
+      "description": "YY Ising interaction",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Entangling"
+    },
+    {
+      "symbol": "ZZ(\u03b8)",
+      "name": "ZZ-interaction",
+      "category": "Quantum/Entangling",
+      "description": "ZZ Ising interaction",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Entangling"
+    },
+    {
+      "symbol": "Toffoli",
+      "name": "CCNOT",
+      "category": "Quantum/Universal",
+      "description": "Controlled-controlled-NOT",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Universal"
+    },
+    {
+      "symbol": "Fredkin",
+      "name": "CSWAP",
+      "category": "Quantum/Universal",
+      "description": "Controlled-SWAP",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959,
+      "is_primitive": true,
+      "family": "Universal"
+    },
+    {
+      "symbol": "CCZ",
+      "name": "CC-Phase",
+      "category": "Quantum/Controlled",
+      "description": "Controlled-controlled-Z",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.18,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999953,
+      "is_primitive": false,
+      "family": "Controlled"
+    },
+    {
+      "symbol": "QFT",
+      "name": "Quantum Fourier Transform",
+      "category": "Quantum/Algorithm",
+      "description": "QFT on n qubits",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.5,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999889,
+      "is_primitive": false,
+      "family": "Algorithm"
+    },
+    {
+      "symbol": "QFT\u2020",
+      "name": "Inverse QFT",
+      "category": "Quantum/Algorithm",
+      "description": "Inverse QFT",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.5,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999889,
+      "is_primitive": false,
+      "family": "Algorithm"
+    },
+    {
+      "symbol": "Grover",
+      "name": "Grover operator",
+      "category": "Quantum/Algorithm",
+      "description": "Grover diffusion operator",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.45,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999899,
+      "is_primitive": false,
+      "family": "Algorithm"
+    },
+    {
+      "symbol": "Oracle",
+      "name": "Oracle",
+      "category": "Quantum/Algorithm",
+      "description": "Black-box oracle",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.4,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999909,
+      "is_primitive": false,
+      "family": "Algorithm"
+    },
+    {
+      "symbol": "M",
+      "name": "Measurement",
+      "category": "Quantum/Measurement",
+      "description": "Computational basis measurement",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999969,
+      "is_primitive": true,
+      "family": "Measurement"
+    },
+    {
+      "symbol": "Mx",
+      "name": "X-basis measurement",
+      "category": "Quantum/Measurement",
+      "description": "X-basis measurement",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "Measurement"
+    },
+    {
+      "symbol": "My",
+      "name": "Y-basis measurement",
+      "category": "Quantum/Measurement",
+      "description": "Y-basis measurement",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965,
+      "is_primitive": true,
+      "family": "Measurement"
+    },
+    {
+      "symbol": "|0\u27e9",
+      "name": "Zero state",
+      "category": "Quantum/Preparation",
+      "description": "Prepare |0\u27e9 state",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.9999790000000001,
+      "is_primitive": true,
+      "family": "Preparation"
+    },
+    {
+      "symbol": "|1\u27e9",
+      "name": "One state",
+      "category": "Quantum/Preparation",
+      "description": "Prepare |1\u27e9 state",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.9999790000000001,
+      "is_primitive": true,
+      "family": "Preparation"
+    },
+    {
+      "symbol": "|+\u27e9",
+      "name": "Plus state",
+      "category": "Quantum/Preparation",
+      "description": "Prepare |+\u27e9 state",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999973,
+      "is_primitive": true,
+      "family": "Preparation"
+    },
+    {
+      "symbol": "|-\u27e9",
+      "name": "Minus state",
+      "category": "Quantum/Preparation",
+      "description": "Prepare |-\u27e9 state",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999973,
+      "is_primitive": true,
+      "family": "Preparation"
+    }
+  ],
+  "composition_depths": [
+    {
+      "symbol": "\u2227",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "\u2295",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "+",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "\u00d7",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "^",
+      "d6": 0.1,
+      "estimated_depth": 1.0
+    },
+    {
+      "symbol": "\u221a",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "\u221b",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "\u221c",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "mod",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "exp",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "ln",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "log",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "log\u2082",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "sin",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "cos",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "tan",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "cot",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "sec",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "csc",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "arcsin",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "arccos",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "arctan",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "sinh",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "cosh",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "tanh",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "=",
+      "d6": 0.1,
+      "estimated_depth": 1.0
+    },
+    {
+      "symbol": "\u2248",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u2261",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "\u25b3",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u2118",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "H",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "M",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "Y",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "S",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "d/dx",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "\u222b",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "\u2202/\u2202x",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "\u2207",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "\u2207\u00b7",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "\u2207\u00d7",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "\u2207\u00b2",
+      "d6": 0.5,
+      "estimated_depth": 5.0
+    },
+    {
+      "symbol": "lim",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "\u00b7",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "\u2297",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "det",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "tr",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u2020",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u2016\u00b7\u2016",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "E[X]",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "Var[X]",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "\u03c3",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "Cov[X,Y]",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "\u03c1",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "&",
+      "d6": 0.1,
+      "estimated_depth": 1.0
+    },
+    {
+      "symbol": "|",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": ">>",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "!",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "C(n,k)",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "P(n,k)",
+      "d6": 0.35,
+      "estimated_depth": 3.4999999999999996
+    },
+    {
+      "symbol": "\u0393",
+      "d6": 0.5,
+      "estimated_depth": 5.0
+    },
+    {
+      "symbol": "\u03b6",
+      "d6": 0.6,
+      "estimated_depth": 5.999999999999999
+    },
+    {
+      "symbol": "erf",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "J_n",
+      "d6": 0.55,
+      "estimated_depth": 5.5
+    },
+    {
+      "symbol": "\u2200",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "\u2203",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "\u2192",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "\u2194",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "++",
+      "d6": 0.15,
+      "estimated_depth": 1.4999999999999998
+    },
+    {
+      "symbol": "gcd",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "lcm",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "\u03a3",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u03a0",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "arg",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "//",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "**",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "lambda",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "yield",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "await",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "->",
+      "d6": 0.1,
+      "estimated_depth": 1.0
+    },
+    {
+      "symbol": "::",
+      "d6": 0.1,
+      "estimated_depth": 1.0
+    },
+    {
+      "symbol": ".*",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "->*",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "sizeof",
+      "d6": 0.1,
+      "estimated_depth": 1.0
+    },
+    {
+      "symbol": "*",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u233f",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u2340",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u2339",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": ">>=",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "<$>",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "<*>",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "<|>",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "F",
+      "d6": 0.3,
+      "estimated_depth": 2.9999999999999996
+    },
+    {
+      "symbol": "\u03b7",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "\u22a3",
+      "d6": 0.4,
+      "estimated_depth": 4.0
+    },
+    {
+      "symbol": "\u2245",
+      "d6": 0.25,
+      "estimated_depth": 2.5
+    },
+    {
+      "symbol": "\u2112_X",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "\u2207_X",
+      "d6": 0.45,
+      "estimated_depth": 4.5
+    },
+    {
+      "symbol": "R",
+      "d6": 0.2,
+      "estimated_depth": 2.0
+    },
+    {
+      "symbol": "Ric",
+      "d6": 0.55,
+      "estimated_depth": 5.5
+    },
+    {
+      "symbol": "R_scalar",
+      "d6": 0.5,
+      "estimated_depth": 5.0
+    }
+  ],
+  "stable_patterns": [
+    {
+      "d1": 0.0,
+      "d6": 0.05,
+      "offbit": "000000000110011100010101",
+      "nrci": 0.9999775000000001,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.1,
+      "offbit": "000000000110011100011001",
+      "nrci": 0.9999675,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.15,
+      "offbit": "000000000110011100011101",
+      "nrci": 0.9999575,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.2,
+      "offbit": "000000000110011100010001",
+      "nrci": 0.9999475,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.25,
+      "offbit": "000000000110011100010101",
+      "nrci": 0.9999375,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.25,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.3,
+      "offbit": "000000000110011100011001",
+      "nrci": 0.9999275000000001,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.3,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.35,
+      "offbit": "000000000110011100011101",
+      "nrci": 0.9999175,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.35,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.4,
+      "offbit": "000000000110011100010001",
+      "nrci": 0.9999075000000001,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.4,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.45,
+      "offbit": "000000000110011100010101",
+      "nrci": 0.9998975,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.45,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.0,
+      "d6": 0.5,
+      "offbit": "000000000110011100011001",
+      "nrci": 0.9998875,
+      "d_variables": {
+        "d1_arity": 0.0,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.5,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.05,
+      "offbit": "000000000110011100010101",
+      "nrci": 0.9999775000000001,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.1,
+      "offbit": "000000000110011100011001",
+      "nrci": 0.9999675,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.15,
+      "offbit": "000000000110011100011101",
+      "nrci": 0.9999575,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.2,
+      "offbit": "000000000110011100010001",
+      "nrci": 0.9999475,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.25,
+      "offbit": "000000000110011100010101",
+      "nrci": 0.9999375,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.25,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.3,
+      "offbit": "000000000110011100011001",
+      "nrci": 0.9999275000000001,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.3,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.35,
+      "offbit": "000000000110011100011101",
+      "nrci": 0.9999175,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.35,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.4,
+      "offbit": "000000000110011100010001",
+      "nrci": 0.9999075000000001,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.4,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.45,
+      "offbit": "000000000110011100010101",
+      "nrci": 0.9998975,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.45,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.25,
+      "d6": 0.5,
+      "offbit": "000000000110011100011001",
+      "nrci": 0.9998875,
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.5,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.05,
+      "offbit": "000000010110011100010101",
+      "nrci": 0.9999775000000001,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.1,
+      "offbit": "000000010110011100011001",
+      "nrci": 0.9999675,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.15,
+      "offbit": "000000010110011100011101",
+      "nrci": 0.9999575,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.2,
+      "offbit": "000000010110011100010001",
+      "nrci": 0.9999475,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.25,
+      "offbit": "000000010110011100010101",
+      "nrci": 0.9999375,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.25,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.3,
+      "offbit": "000000010110011100011001",
+      "nrci": 0.9999275000000001,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.3,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.35,
+      "offbit": "000000010110011100011101",
+      "nrci": 0.9999175,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.35,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.4,
+      "offbit": "000000010110011100010001",
+      "nrci": 0.9999075000000001,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.4,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.45,
+      "offbit": "000000010110011100010101",
+      "nrci": 0.9998975,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.45,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.5,
+      "d6": 0.5,
+      "offbit": "000000010110011100011001",
+      "nrci": 0.9998875,
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.5,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.05,
+      "offbit": "000000100110011100010101",
+      "nrci": 0.9999775000000001,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.05,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.1,
+      "offbit": "000000100110011100011001",
+      "nrci": 0.9999675,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.1,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.15,
+      "offbit": "000000100110011100011101",
+      "nrci": 0.9999575,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.2,
+      "offbit": "000000100110011100010001",
+      "nrci": 0.9999475,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.25,
+      "offbit": "000000100110011100010101",
+      "nrci": 0.9999375,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.25,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.3,
+      "offbit": "000000100110011100011001",
+      "nrci": 0.9999275000000001,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.3,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.35,
+      "offbit": "000000100110011100011101",
+      "nrci": 0.9999175,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.35,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.4,
+      "offbit": "000000100110011100010001",
+      "nrci": 0.9999075000000001,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.4,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.45,
+      "offbit": "000000100110011100010101",
+      "nrci": 0.9998975,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.45,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    },
+    {
+      "d1": 0.75,
+      "d6": 0.5,
+      "offbit": "000000100110011100011001",
+      "nrci": 0.9998875,
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.5,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.5,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.15
+      }
+    }
+  ],
+  "novel_operators": [
+    {
+      "symbol": "BLEND",
+      "name": "Weighted Blend",
+      "description": "Blend(a, b, \u03b1) = \u03b1\u00b7a + (1-\u03b1)\u00b7b",
+      "d_variables": {
+        "d1_arity": 0.75,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.2,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999949
+    },
+    {
+      "symbol": "SYM",
+      "name": "Symmetrize",
+      "description": "Sym(f)(a,b) = [f(a,b) + f(b,a)] / 2",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.0,
+        "d4_commutativity": 1.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.15,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999959
+    },
+    {
+      "symbol": "COH",
+      "name": "Coherence Measure",
+      "description": "Coh(\u03c9) = NRCI(\u03c9)",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.12,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999965
+    },
+    {
+      "symbol": "\u2297Y^n",
+      "name": "Y-Power Scaling",
+      "description": "Scale by Y^n where Y = golden ratio",
+      "d_variables": {
+        "d1_arity": 0.5,
+        "d2_role": 0.5,
+        "d3_invertibility": 1.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.08,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999973
+    },
+    {
+      "symbol": "FIX",
+      "name": "Fixed Point",
+      "description": "Fix(f) = x such that f(x) = x",
+      "d_variables": {
+        "d1_arity": 0.25,
+        "d2_role": 0.5,
+        "d3_invertibility": 0.0,
+        "d4_commutativity": 0.0,
+        "d5_meaning_count": 0.1,
+        "d6_dependency_depth": 0.35,
+        "d7_closure": 1.0,
+        "d8_overloading": 0.1
+      },
+      "predicted_nrci": 0.999919
+    }
+  ]
+}
