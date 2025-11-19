@@ -1,21 +1,7 @@
-"""
-================================================================================
-Universal Binary Principle (UBP) Framework v3.6 - Toggle Operations
-Author: Euan Craig, New Zealand
-Date: November 12, 2025
-================================================================================
-
-Toggle operations as coherence transformations.
-
-**Paradigm Shift in 3.5**:
-Toggle operations aren't bit manipulations - they're coherence transformations.
-Every toggle operation maintains and transforms the coherence state.
-
-**Zero Dependencies**: Only Python stdlib + coherence_substrate + state
-"""
+"""\n================================================================================\nUniversal Binary Principle (UBP) Framework v3.6 - Toggle Operations\nAuthor: Euan Craig, New Zealand\nDate: November 20, 2025 (Updated with Resonance History Tracking)\n================================================================================\n\nToggle operations as coherence transformations with continuous resonance tracking.\n\n**Paradigm Shift in 3.5**:\nToggle operations aren't bit manipulations - they're coherence transformations.\nEvery toggle operation maintains and transforms the coherence state.\n\n**Enhancement in 3.6**:\nResonance history tracking enables continuous coherence analysis. Toggle sequences\nare now analyzed as temporal processes, not just snapshots. Full integration with\nCoherence Field ELITE's resonance detector for pattern detection and optimization.\n\n**Zero Dependencies**: Only Python stdlib + coherence_substrate + state\n**Optional Integration**: coherence_field.py for advanced resonance analysis\n"""
 
 import math
-from typing import List, Union, Tuple
+from typing import List, Union, Tuple, Dict, Any
 from state import OffBit
 from coherence_substrate import CoherenceState, Y
 
@@ -132,25 +118,31 @@ def resonance_kernel(distance: float, k: float = 0.0002) -> float:
 
 
 def resonance_toggle(b_i: OffBit, frequency: float, time: float, 
-                    k: float = 0.0002) -> OffBit:
+                    k: float = 0.0002, max_history: int = 100) -> OffBit:
     """
     Perform resonance toggle operation (frequency-based coherence decay).
     
+    Tracks resonance history for continuous coherence analysis with
+    Coherence Field ELITE's resonance detector.
+    
     Axiom: b_i × exp(-k × (t × f)²)
     Coherence: Decays with distance from resonance
+    History: Tracks (time, frequency, resonance_factor) for pattern detection
     
     Args:
         b_i: OffBit
         frequency: Resonance frequency (Hz)
         time: Time parameter (s)
         k: Decay constant
+        max_history: Maximum history entries to keep (default 100)
         
     Returns:
-        Result OffBit with resonance-modulated coherence
+        Result OffBit with resonance-modulated coherence and updated history
         
     Example:
         >>> b = OffBit(0x123456)
         >>> result = resonance_toggle(b, frequency=1e9, time=1e-9)
+        >>> print(f"History length: {result.resonance_history_length}")
     """
     distance = time * frequency
     resonance_factor = resonance_kernel(distance, k)
@@ -163,7 +155,15 @@ def resonance_toggle(b_i: OffBit, frequency: float, time: float,
     degradation = 1.0 - resonance_factor
     result_coherence = b_i.coherence.degrade_by(degradation)
     
-    return OffBit(result_value, result_coherence)
+    # Track resonance history (immutable tuple append)
+    new_entry = (time, frequency, resonance_factor)
+    new_history = b_i.resonance_history + (new_entry,)
+    
+    # Maintain max_history limit (keep most recent entries)
+    if len(new_history) > max_history:
+        new_history = new_history[-max_history:]
+    
+    return OffBit(result_value, result_coherence, new_history)
 
 
 # ============================================================================
@@ -387,3 +387,262 @@ if __name__ == "__main__":
     print("UBP 3.5: Toggle Operations are Coherence Transformations")
     print("Zero external dependencies - Pure coherence geometry")
     print("=" * 80)
+
+
+# ============================================================================
+# COHERENCE FIELD ELITE INTEGRATION
+# ============================================================================
+
+def resonance_history_to_states(offbit: OffBit) -> List[CoherenceState]:
+    """
+    Convert OffBit resonance history to CoherenceState sequence.
+    
+    This enables Coherence Field ELITE's resonance detector to analyze
+    the temporal evolution of coherence in toggle sequences.
+    
+    Args:
+        offbit: OffBit with resonance history
+        
+    Returns:
+        List of CoherenceState objects representing coherence evolution
+        
+    Example:
+        >>> b = OffBit(0x123456)
+        >>> for t in range(50):
+        ...     b = resonance_toggle(b, frequency=1e9, time=t*1e-9)
+        >>> states = resonance_history_to_states(b)
+        >>> print(f"Generated {len(states)} coherence states")
+    """
+    if not offbit.resonance_history:
+        return []
+    
+    states = []
+    for time, frequency, resonance_factor in offbit.resonance_history:
+        # Value encodes the time-frequency relationship
+        # This creates a sequence that resonance detector can analyze
+        value = time * frequency
+        
+        # Coherence degradation from resonance factor
+        # resonance_factor = 1.0 means perfect resonance (no degradation)
+        # resonance_factor = 0.0 means complete decoherence
+        degradation = 1.0 - resonance_factor
+        
+        # Convert degradation to log_nrci_error
+        # Higher degradation = higher error = lower NRCI
+        from coherence_substrate import NRCI_TARGET
+        nrci = NRCI_TARGET * (1.0 - degradation)
+        log_error = math.log(1.0 - nrci) if nrci < 1.0 else -1e10
+        
+        state = CoherenceState(value, log_nrci_error=log_error)
+        states.append(state)
+    
+    return states
+
+
+def analyze_resonance_history(offbit: OffBit) -> Dict[str, Any]:
+    """
+    Analyze resonance history using Coherence Field ELITE (if available).
+    
+    Provides comprehensive resonance analysis including:
+    - Pattern detection (p/q resonances)
+    - Confidence scoring
+    - Lock duration prediction
+    - Coherence evolution statistics
+    
+    Args:
+        offbit: OffBit with resonance history
+        
+    Returns:
+        Dictionary with resonance analysis results
+        
+    Example:
+        >>> b = OffBit(0x123456)
+        >>> for t in range(100):
+        ...     b = resonance_toggle(b, frequency=1e9, time=t*1e-9)
+        >>> analysis = analyze_resonance_history(b)
+        >>> if analysis.get('resonance'):
+        ...     print(f"Detected {analysis['resonance'].p}/{analysis['resonance'].q} resonance")
+    """
+    if not offbit.resonance_history:
+        return {
+            'error': 'No resonance history',
+            'history_length': 0
+        }
+    
+    # Get basic statistics (always available)
+    stats = offbit.get_resonance_statistics()
+    
+    # Try to import Coherence Field ELITE for advanced analysis
+    try:
+        import coherence_field as cf
+        
+        # Convert history to CoherenceState sequence
+        state_history = resonance_history_to_states(offbit)
+        
+        # Detect resonance patterns
+        detector = cf.ResonanceDetector()
+        resonance = detector.detect_resonance(state_history)
+        
+        # Build comprehensive analysis
+        result = {
+            'resonance': resonance,
+            'history_length': stats['history_length'],
+            'time_range': stats['time_range'],
+            'frequency_range': stats['frequency_range'],
+            'avg_resonance_factor': stats['avg_resonance_factor'],
+            'min_resonance_factor': stats['min_resonance_factor'],
+            'max_resonance_factor': stats['max_resonance_factor'],
+            'coherence_evolution': state_history,
+            'coherence_field_available': True
+        }
+        
+        # Add resonance details if detected
+        if resonance:
+            result['resonance_detected'] = True
+            result['resonance_p'] = resonance.p
+            result['resonance_q'] = resonance.q
+            result['resonance_confidence'] = resonance.confidence
+            result['resonance_frequency'] = resonance.frequency
+            result['resonance_error'] = resonance.error
+            
+            # Predict lock duration if possible
+            if hasattr(resonance, 'lock_duration') and resonance.lock_duration:
+                result['lock_duration'] = resonance.lock_duration
+        else:
+            result['resonance_detected'] = False
+        
+        return result
+        
+    except ImportError:
+        # Coherence Field ELITE not available - return basic stats
+        return {
+            'history_length': stats['history_length'],
+            'time_range': stats['time_range'],
+            'frequency_range': stats['frequency_range'],
+            'avg_resonance_factor': stats['avg_resonance_factor'],
+            'min_resonance_factor': stats['min_resonance_factor'],
+            'max_resonance_factor': stats['max_resonance_factor'],
+            'coherence_field_available': False,
+            'note': 'Install coherence_field.py for advanced resonance analysis'
+        }
+
+
+def optimize_resonance_parameters(offbit: OffBit, 
+                                 target_frequency: float,
+                                 time_steps: int = 100) -> Dict[str, Any]:
+    """
+    Optimize resonance parameters (k) for maximum coherence at target frequency.
+    
+    Uses Coherence Field ELITE's parameter optimization if available.
+    
+    Args:
+        offbit: Initial OffBit
+        target_frequency: Target resonance frequency (Hz)
+        time_steps: Number of time steps to simulate
+        
+    Returns:
+        Dictionary with optimization results
+        
+    Example:
+        >>> b = OffBit(0x123456)
+        >>> result = optimize_resonance_parameters(b, target_frequency=1e9)
+        >>> print(f"Optimal k: {result['optimal_k']}")
+    """
+    # Test different k values
+    k_values = [0.0001, 0.0002, 0.0005, 0.001, 0.002, 0.005]
+    results = []
+    
+    for k in k_values:
+        # Simulate resonance toggle sequence
+        b = offbit
+        for t in range(time_steps):
+            b = resonance_toggle(b, frequency=target_frequency, 
+                               time=t * 1e-9, k=k)
+        
+        # Analyze final coherence
+        stats = b.get_resonance_statistics()
+        
+        results.append({
+            'k': k,
+            'final_nrci': b.nrci,
+            'avg_resonance_factor': stats['avg_resonance_factor'],
+            'min_resonance_factor': stats['min_resonance_factor']
+        })
+    
+    # Find optimal k (highest final NRCI)
+    optimal = max(results, key=lambda r: r['final_nrci'])
+    
+    return {
+        'optimal_k': optimal['k'],
+        'optimal_nrci': optimal['final_nrci'],
+        'optimal_avg_resonance': optimal['avg_resonance_factor'],
+        'all_results': results,
+        'target_frequency': target_frequency,
+        'time_steps': time_steps
+    }
+
+
+# ============================================================================
+# RESONANCE VISUALIZATION (Text-Based)
+# ============================================================================
+
+def visualize_resonance_history(offbit: OffBit, width: int = 60) -> str:
+    """
+    Create text-based visualization of resonance history.
+    
+    Args:
+        offbit: OffBit with resonance history
+        width: Width of visualization (characters)
+        
+    Returns:
+        String containing ASCII visualization
+        
+    Example:
+        >>> b = OffBit(0x123456)
+        >>> for t in range(50):
+        ...     b = resonance_toggle(b, frequency=1e9, time=t*1e-9)
+        >>> print(visualize_resonance_history(b))
+    """
+    if not offbit.resonance_history:
+        return "No resonance history to visualize"
+    
+    # Extract resonance factors
+    factors = [rf for _, _, rf in offbit.resonance_history]
+    
+    # Create visualization
+    lines = []
+    lines.append("=" * width)
+    lines.append("RESONANCE HISTORY VISUALIZATION")
+    lines.append("=" * width)
+    lines.append(f"History length: {len(factors)}")
+    lines.append(f"Resonance factor range: [{min(factors):.6f}, {max(factors):.6f}]")
+    lines.append(f"Average resonance factor: {sum(factors)/len(factors):.6f}")
+    lines.append("")
+    
+    # Plot resonance factors
+    lines.append("Resonance Factor Over Time:")
+    lines.append("1.0 |" + "-" * (width - 5))
+    
+    # Normalize and plot
+    min_factor = min(factors)
+    max_factor = max(factors)
+    range_factor = max_factor - min_factor if max_factor > min_factor else 1.0
+    
+    # Sample points if history is longer than width
+    if len(factors) > width - 5:
+        step = len(factors) / (width - 5)
+        sampled = [factors[int(i * step)] for i in range(width - 5)]
+    else:
+        sampled = factors
+    
+    # Create bar chart
+    for i, factor in enumerate(sampled):
+        normalized = (factor - min_factor) / range_factor
+        bar_length = int(normalized * (width - 10))
+        bar = "█" * bar_length
+        lines.append(f"    |{bar}")
+    
+    lines.append("0.0 |" + "-" * (width - 5))
+    lines.append("=" * width)
+    
+    return "\n".join(lines)

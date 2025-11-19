@@ -1,18 +1,4 @@
-"""
-================================================================================
-Universal Binary Principle (UBP) Framework v3.6 - State Management
-Author: Euan Craig, New Zealand
-Date: November 12, 2025
-================================================================================
-
-UBP State management with coherence-native OffBits.
-
-**Paradigm Shift in 3.5**:
-OffBits now carry their own coherence state. Every bit operation maintains
-coherence tracking, making state management inherently coherence-aware.
-
-**Zero Dependencies**: Only Python stdlib + coherence_substrate
-"""
+"""\n================================================================================\nUniversal Binary Principle (UBP) Framework v3.6 - State Management\nAuthor: Euan Craig, New Zealand\nDate: November 20, 2025 (Updated with Resonance History Tracking)\n================================================================================\n\nUBP State management with coherence-native OffBits and resonance history.\n\n**Paradigm Shift in 3.5**:\nOffBits now carry their own coherence state. Every bit operation maintains\ncoherence tracking, making state management inherently coherence-aware.\n\n**Enhancement in 3.6**:\nOffBits now track resonance history - a temporal record of (time, frequency,\nresonance_factor) tuples. This enables continuous coherence analysis and\nintegration with Coherence Field ELITE's resonance detector for pattern\ndetection, optimization, and prediction.\n\n**Zero Dependencies**: Only Python stdlib + coherence_substrate\n"""
 
 import math
 from typing import Dict, List, Tuple, Optional, Any
@@ -27,13 +13,18 @@ from coherence_substrate import CoherenceState, NRCI_TARGET
 @dataclass(frozen=True)
 class OffBit:
     """
-    Immutable 24-bit UBP OffBit with intrinsic coherence.
+    Immutable 24-bit UBP OffBit with intrinsic coherence and resonance history.
     
-    In 3.5, OffBits aren't just bit patterns - they're coherence states
-    that happen to have a 24-bit representation.
+    In 3.6, OffBits aren't just bit patterns - they're coherence states
+    that happen to have a 24-bit representation, with full temporal tracking
+    of resonance evolution for continuous coherence analysis.
+    
+    Resonance history enables integration with Coherence Field ELITE's
+    resonance detector for pattern detection and optimization.
     """
     value: int  # 24-bit value (0 to 0xFFFFFF)
     coherence: CoherenceState = None
+    resonance_history: Tuple[Tuple[float, float, float], ...] = ()  # (time, frequency, resonance_factor)
     
     def __post_init__(self):
         # Ensure value is within 24-bit range
@@ -72,18 +63,59 @@ class OffBit:
         """Get NRCI of this OffBit."""
         return self.coherence.nrci
     
+    @property
+    def has_resonance_history(self) -> bool:
+        """Check if this OffBit has resonance history."""
+        return len(self.resonance_history) > 0
+    
+    @property
+    def resonance_history_length(self) -> int:
+        """Get length of resonance history."""
+        return len(self.resonance_history)
+    
+    def get_resonance_statistics(self) -> Dict[str, Any]:
+        """
+        Get basic statistics from resonance history.
+        
+        Returns:
+            Dictionary with resonance statistics
+        """
+        if not self.resonance_history:
+            return {
+                'history_length': 0,
+                'time_range': (0, 0),
+                'frequency_range': (0, 0),
+                'avg_resonance_factor': 0,
+                'min_resonance_factor': 0,
+                'max_resonance_factor': 0
+            }
+        
+        times = [t for t, _, _ in self.resonance_history]
+        frequencies = [f for _, f, _ in self.resonance_history]
+        factors = [rf for _, _, rf in self.resonance_history]
+        
+        return {
+            'history_length': len(self.resonance_history),
+            'time_range': (min(times), max(times)),
+            'frequency_range': (min(frequencies), max(frequencies)),
+            'avg_resonance_factor': sum(factors) / len(factors),
+            'min_resonance_factor': min(factors),
+            'max_resonance_factor': max(factors)
+        }
+    
     def toggle(self) -> 'OffBit':
         """
         Create a new OffBit with toggled state.
         
         Toggling is a coherence transformation - it applies Y-refinement.
+        Preserves resonance history.
         
         Returns:
             New OffBit with inverted bits and refined coherence
         """
         new_value = self.value ^ 0xFFFFFF
         new_coherence = self.coherence.refine_forward()
-        return OffBit(new_value, new_coherence)
+        return OffBit(new_value, new_coherence, self.resonance_history)
     
     def toggle_bit(self, position: int) -> 'OffBit':
         """
@@ -101,7 +133,7 @@ class OffBit:
         new_value = self.value ^ (1 << position)
         # Small toggle = small coherence change
         new_coherence = self.coherence.degrade_by(1e-8)
-        return OffBit(new_value, new_coherence)
+        return OffBit(new_value, new_coherence, self.resonance_history)
     
     def get_bit(self, position: int) -> int:
         """
@@ -140,7 +172,7 @@ class OffBit:
             new_value = self.value & ~(1 << position)
         
         new_coherence = self.coherence.degrade_by(1e-8)
-        return OffBit(new_value, new_coherence)
+        return OffBit(new_value, new_coherence, self.resonance_history)
     
     def extract_data(self) -> int:
         """
