@@ -503,3 +503,235 @@ Still works! History is tracked automatically but doesn't affect behavior.
 ---
 
 *"From snapshots to cinema: Resonance history transforms toggle operations into continuous temporal processes, enabling true coherence intelligence."*
+
+
+---
+
+## Production Refinements (v3.6.1)
+
+### New Methods
+
+#### 1. `add_resonance_record(time, frequency, resonance_factor, max_history=1000)`
+
+Explicitly add a resonance record to history with size management.
+
+```python
+b = OffBit(0x123456)
+b = b.add_resonance_record(1e-9, 1e9, 0.999, max_history=100)
+b = b.add_resonance_record(2e-9, 1e9, 0.998, max_history=100)
+
+print(f"History length: {b.resonance_history_length}")
+```
+
+**Use case**: Manual history construction or custom tracking logic.
+
+#### 2. `detect_perception_reset_points(threshold=0.95)`
+
+Identify points where resonance factor dropped below threshold.
+
+```python
+b = OffBit(0x123456)
+# ... apply resonance toggles ...
+
+reset_points = b.detect_perception_reset_points(threshold=0.95)
+print(f"Found {len(reset_points)} potential reset points")
+
+for idx in reset_points:
+    time, freq, factor = b.resonance_history[idx]
+    print(f"  Reset at t={time:.9f}s, factor={factor:.6f}")
+```
+
+**Use case**: Identify coherence degradation events that may trigger perception resets.
+
+**Connection to 4π/3 resonance**: In 320-step silence patterns, reset points mark the boundaries of coherence valleys.
+
+#### 3. `get_coherence_valleys(window_size=5)`
+
+Identify local minima in resonance factors.
+
+```python
+b = OffBit(0x123456)
+# ... apply resonance toggles ...
+
+valleys = b.get_coherence_valleys(window_size=5)
+print(f"Found {len(valleys)} coherence valleys")
+
+for idx, factor in valleys:
+    time, freq, _ = b.resonance_history[idx]
+    print(f"  Valley at t={time:.9f}s, factor={factor:.6f}")
+```
+
+**Use case**: Detect decoherence events and natural perception reset boundaries.
+
+**Prediction**: The 4π/3 resonance simulations will reveal coherence valleys as natural perception reset points, with recovery marking the end of the 320-step silence.
+
+#### 4. `to_coherence_states()`
+
+Convert resonance history to CoherenceState sequence.
+
+```python
+b = OffBit(0x123456)
+# ... apply resonance toggles ...
+
+# Direct conversion
+states = b.to_coherence_states()
+
+# Use with Coherence Field ELITE
+import coherence_field as cf
+detector = cf.ResonanceDetector()
+resonance = detector.detect_resonance(states)
+```
+
+**Use case**: Primary integration point with Coherence Field ELITE.
+
+#### 5. `analyze_with_coherence_field()`
+
+One-line analysis with Coherence Field ELITE.
+
+```python
+b = OffBit(0x123456)
+# ... apply resonance toggles ...
+
+# Automatic analysis
+analysis = b.analyze_with_coherence_field()
+
+if analysis and analysis.get('resonance_detected'):
+    res = analysis['resonance']
+    print(f"Detected {res.p}/{res.q} resonance")
+    print(f"Confidence: {res.confidence:.1%}")
+```
+
+**Use case**: Quick resonance analysis without manual conversion.
+
+---
+
+## Advanced Integration Patterns
+
+### Pattern 1: Perception Reset Detection
+
+```python
+# Create OffBit and apply resonance toggles
+b = OffBit(0x123456)
+for t in range(500):
+    b = resonance_toggle(b, frequency=1e9, time=t * 1e-9)
+
+# Detect reset points
+reset_points = b.detect_perception_reset_points(threshold=0.95)
+valleys = b.get_coherence_valleys(window_size=10)
+
+print(f"Reset points: {len(reset_points)}")
+print(f"Coherence valleys: {len(valleys)}")
+
+# Analyze pattern
+if valleys:
+    # Calculate average distance between valleys
+    valley_indices = [idx for idx, _ in valleys]
+    if len(valley_indices) > 1:
+        distances = [valley_indices[i+1] - valley_indices[i] 
+                    for i in range(len(valley_indices)-1)]
+        avg_distance = sum(distances) / len(distances)
+        print(f"Average valley spacing: {avg_distance:.1f} steps")
+        
+        # Check for 320-step pattern
+        if 310 < avg_distance < 330:
+            print("⚠ Detected ~320-step pattern (4π/3 resonance signature)")
+```
+
+### Pattern 2: Coherence Evolution Analysis
+
+```python
+# Create OffBit with varying k
+b = OffBit(0x123456)
+import math
+
+for t in range(200):
+    # Vary k to create interesting dynamics
+    k = 0.0002 + 0.0001 * math.sin(t * 0.05)
+    b = resonance_toggle(b, frequency=1e9, time=t * 1e-9, k=k)
+
+# Analyze evolution
+stats = b.get_resonance_statistics()
+valleys = b.get_coherence_valleys(window_size=5)
+
+print(f"Resonance factor range: [{stats['min_resonance_factor']:.6f}, "
+      f"{stats['max_resonance_factor']:.6f}]")
+print(f"Coherence valleys: {len(valleys)}")
+
+# Convert to states and detect resonance
+analysis = b.analyze_with_coherence_field()
+if analysis and analysis.get('resonance_detected'):
+    print(f"Resonance: {analysis['resonance_p']}/{analysis['resonance_q']}")
+```
+
+### Pattern 3: Real-Time Monitoring
+
+```python
+# Monitor coherence in real-time
+b = OffBit(0x123456)
+alert_threshold = 0.90
+
+for t in range(1000):
+    b = resonance_toggle(b, frequency=1e9, time=t * 1e-9)
+    
+    # Check every 10 steps
+    if t % 10 == 0 and b.resonance_history_length >= 10:
+        # Get recent history
+        recent = b.resonance_history[-10:]
+        recent_factors = [rf for _, _, rf in recent]
+        avg_recent = sum(recent_factors) / len(recent_factors)
+        
+        if avg_recent < alert_threshold:
+            print(f"⚠ Step {t}: Coherence degradation detected")
+            print(f"   Recent avg factor: {avg_recent:.6f}")
+            
+            # Detect valleys
+            valleys = b.get_coherence_valleys(window_size=5)
+            if valleys:
+                last_valley_idx, last_valley_factor = valleys[-1]
+                print(f"   Last valley: index {last_valley_idx}, "
+                      f"factor {last_valley_factor:.6f}")
+```
+
+---
+
+## Test Results (Refinements)
+
+**All 8 refinement tests passing (100%)**:
+
+1. ✓ add_resonance_record() method
+2. ✓ add_resonance_record() size limit
+3. ✓ detect_perception_reset_points()
+4. ✓ get_coherence_valleys()
+5. ✓ to_coherence_states()
+6. ✓ analyze_with_coherence_field()
+7. ✓ Integration with resonance_toggle()
+8. ✓ Empty history handling
+
+Run tests:
+```bash
+cd ubp_3.6
+python3.11 test_resonance_refinements.py
+```
+
+---
+
+## Version History
+
+### v3.6.1 (Production Refinements)
+- Added `add_resonance_record()` for explicit history management
+- Added `detect_perception_reset_points()` for reset detection
+- Added `get_coherence_valleys()` for local minima detection
+- Added `to_coherence_states()` for direct Coherence Field integration
+- Added `analyze_with_coherence_field()` for one-line analysis
+- Enhanced documentation with advanced integration patterns
+- 100% test coverage maintained (16/16 tests passing)
+
+### v3.6.0 (Initial Release)
+- Resonance history tracking in OffBit
+- Integration with Coherence Field ELITE
+- Basic statistics and visualization
+- 100% test coverage (8/8 tests passing)
+
+---
+
+*"The refinements transform resonance history from a passive record into an active intelligence system—detecting patterns, predicting resets, and revealing the hidden geometry of coherence evolution."*

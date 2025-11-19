@@ -103,6 +103,220 @@ class OffBit:
             'max_resonance_factor': max(factors)
         }
     
+    def add_resonance_record(self, time: float, frequency: float, 
+                           resonance_factor: float, 
+                           max_history: int = 1000) -> 'OffBit':
+        """
+        Add a resonance record to history with size management.
+        
+        Creates a new OffBit with the resonance record appended to history.
+        Automatically maintains history size limit by keeping most recent entries.
+        
+        Args:
+            time: Time parameter
+            frequency: Resonance frequency
+            resonance_factor: Resonance factor (0 to 1)
+            max_history: Maximum history entries to keep (default 1000)
+            
+        Returns:
+            New OffBit with updated resonance history
+            
+        Example:
+            >>> b = OffBit(0x123456)
+            >>> b = b.add_resonance_record(1e-9, 1e9, 0.999)
+            >>> print(b.resonance_history_length)  # 1
+        """
+        # Create new entry
+        new_entry = (time, frequency, resonance_factor)
+        
+        # Append to history
+        new_history = self.resonance_history + (new_entry,)
+        
+        # Maintain size limit (keep most recent)
+        if len(new_history) > max_history:
+            new_history = new_history[-max_history:]
+        
+        # Return new OffBit with updated history
+        return OffBit(self.value, self.coherence, new_history)
+    
+    def detect_perception_reset_points(self, threshold: float = 0.95) -> List[int]:
+        """
+        Identify points where resonance factor dropped below threshold.
+        
+        These points represent potential perception resets - moments where
+        coherence degraded significantly and may have triggered a reset.
+        In the 4π/3 resonance simulations, these correspond to coherence
+        valleys that mark natural perception reset boundaries.
+        
+        Args:
+            threshold: Resonance factor threshold (default 0.95)
+                      Points below this are considered reset candidates
+            
+        Returns:
+            List of indices in resonance_history where factor < threshold
+            
+        Example:
+            >>> b = OffBit(0x123456)
+            >>> # ... apply resonance toggles ...
+            >>> reset_points = b.detect_perception_reset_points(threshold=0.95)
+            >>> print(f"Found {len(reset_points)} potential reset points")
+            >>> for idx in reset_points:
+            ...     time, freq, factor = b.resonance_history[idx]
+            ...     print(f"  Reset at t={time:.9f}s, factor={factor:.6f}")
+        """
+        if not self.resonance_history:
+            return []
+        
+        reset_points = []
+        for i, (time, frequency, resonance_factor) in enumerate(self.resonance_history):
+            if resonance_factor < threshold:
+                reset_points.append(i)
+        
+        return reset_points
+    
+    def get_coherence_valleys(self, window_size: int = 5) -> List[Tuple[int, float]]:
+        """
+        Identify coherence valleys in resonance history.
+        
+        A valley is a local minimum in resonance factors - a point where
+        coherence dipped below surrounding values. These often correspond
+        to perception reset points or decoherence events.
+        
+        Args:
+            window_size: Size of window for local minimum detection (default 5)
+            
+        Returns:
+            List of (index, resonance_factor) tuples for valley points
+            
+        Example:
+            >>> b = OffBit(0x123456)
+            >>> # ... apply resonance toggles ...
+            >>> valleys = b.get_coherence_valleys(window_size=5)
+            >>> print(f"Found {len(valleys)} coherence valleys")
+            >>> for idx, factor in valleys:
+            ...     time, freq, _ = b.resonance_history[idx]
+            ...     print(f"  Valley at t={time:.9f}s, factor={factor:.6f}")
+        """
+        if len(self.resonance_history) < window_size:
+            return []
+        
+        factors = [rf for _, _, rf in self.resonance_history]
+        valleys = []
+        
+        half_window = window_size // 2
+        
+        for i in range(half_window, len(factors) - half_window):
+            # Check if this is a local minimum
+            current = factors[i]
+            window = factors[i - half_window:i + half_window + 1]
+            
+            if current == min(window):
+                valleys.append((i, current))
+        
+        return valleys
+    
+    def to_coherence_states(self) -> List[CoherenceState]:
+        """
+        Convert resonance history to CoherenceState sequence.
+        
+        This is the primary integration point with Coherence Field ELITE.
+        Each history entry is converted to a CoherenceState that encodes
+        the time-frequency relationship and resonance factor.
+        
+        Returns:
+            List of CoherenceState objects representing coherence evolution
+            
+        Example:
+            >>> b = OffBit(0x123456)
+            >>> # ... apply resonance toggles ...
+            >>> states = b.to_coherence_states()
+            >>> # Now use with Coherence Field ELITE
+            >>> import coherence_field as cf
+            >>> detector = cf.ResonanceDetector()
+            >>> resonance = detector.detect_resonance(states)
+        """
+        if not self.resonance_history:
+            return []
+        
+        states = []
+        for time, frequency, resonance_factor in self.resonance_history:
+            # Encode time-frequency relationship as state value
+            value = time * frequency
+            
+            # Map resonance_factor to NRCI degradation
+            # resonance_factor = 1.0 means perfect resonance (no degradation)
+            # resonance_factor = 0.0 means complete decoherence
+            degradation = 1.0 - resonance_factor
+            
+            # Convert to log_nrci_error
+            nrci = NRCI_TARGET * (1.0 - degradation)
+            log_error = math.log(1.0 - nrci) if nrci < 1.0 else -1e10
+            
+            state = CoherenceState(value, log_nrci_error=log_error)
+            states.append(state)
+        
+        return states
+    
+    def analyze_with_coherence_field(self) -> Optional[Dict[str, Any]]:
+        """
+        Analyze resonance history using Coherence Field ELITE.
+        
+        This is a convenience method that automatically converts history
+        to CoherenceState sequence and runs resonance detection.
+        
+        Returns:
+            Dictionary with analysis results, or None if Coherence Field unavailable
+            
+        Example:
+            >>> b = OffBit(0x123456)
+            >>> # ... apply resonance toggles ...
+            >>> analysis = b.analyze_with_coherence_field()
+            >>> if analysis and analysis.get('resonance'):
+            ...     res = analysis['resonance']
+            ...     print(f"Detected {res.p}/{res.q} resonance")
+        """
+        if not self.resonance_history:
+            return {'error': 'No resonance history'}
+        
+        try:
+            import coherence_field as cf
+            
+            # Convert to states
+            states = self.to_coherence_states()
+            
+            # Detect resonance
+            detector = cf.ResonanceDetector()
+            resonance = detector.detect_resonance(states)
+            
+            # Get statistics
+            stats = self.get_resonance_statistics()
+            
+            # Build result
+            result = {
+                'resonance': resonance,
+                'history_length': stats['history_length'],
+                'time_range': stats['time_range'],
+                'frequency_range': stats['frequency_range'],
+                'avg_resonance_factor': stats['avg_resonance_factor'],
+                'min_resonance_factor': stats['min_resonance_factor'],
+                'max_resonance_factor': stats['max_resonance_factor'],
+                'coherence_states': states
+            }
+            
+            # Add resonance details if detected
+            if resonance:
+                result['resonance_detected'] = True
+                result['resonance_p'] = resonance.p
+                result['resonance_q'] = resonance.q
+                result['resonance_confidence'] = resonance.confidence
+            else:
+                result['resonance_detected'] = False
+            
+            return result
+            
+        except ImportError:
+            return None
+    
     def toggle(self) -> 'OffBit':
         """
         Create a new OffBit with toggled state.
