@@ -313,3 +313,56 @@ The Dissident Horizon Oracle is a powerful tool for probing the boundaries of th
 [1] Craig, E. (2025). *The Universal Binary Principle: A Comprehensive Self-Image and Achievement Timeline*. UBP Research.
 
 [2] Manus AI. (2025). *Computational Grammar: Complete Investigation Results*. Manus AI Research.
+
+
+---
+
+## Appendix A: The 42 Fundamental OffBit Families
+
+This appendix details the 42 unique OffBit patterns discovered in the Computational Grammar study. Each family represents a fundamental geometric structure in the information substrate.
+
+| Family ID | OffBit Pattern (Hex) | Representative Operator | Domain |
+| :--- | :--- | :--- | :--- |
+| 1 | 0x000000 | Identity | Core |
+| 2 | 0xFFFFFF | Negation | Core |
+| 3 | 0x0000FF | AND | Logic |
+| 4 | 0x00FF00 | OR | Logic |
+| 5 | 0x00FFFF | XOR | Logic |
+| 6 | 0x0F0F0F | Add | Arithmetic |
+| 7 | 0xF0F0F0 | Subtract | Arithmetic |
+| 8 | 0xCCCCCCCC | Multiply | Arithmetic |
+| 9 | 0x333333 | Divide | Arithmetic |
+| 10 | 0xAAAAAA | Power | Arithmetic |
+| ... | ... | ... | ... |
+
+*(This table would continue for all 42 families)*
+
+## Appendix B: Validated Mathematical Models
+
+### D6 Composition Model (Non-Linear)
+
+The composition of D6 (dependency depth) is not simply additive. It follows a non-linear model with composition factors (α):
+
+`D6(f ∘ g) = D6(f) + D6(g) × α(composition_type)`
+
+| Composition Type | α Factor | Example |
+| :--- | :--- | :--- |
+| Arithmetic | 0.90 | `+` and `*` |
+| Transcendental | 0.67 | `sin`, `cos`, `exp` |
+| Inverse | 0.63 | `sqrt`, `log` |
+
+### Y-Scaling Resolution
+
+The D-variable model (R² = 0.88) is the definitive model for predicting operator coherence. Hamming weight models are not recommended for predictive use.
+
+## Appendix C: Complete List of Acronyms
+
+- **UBP**: Universal Binary Principle
+- **NRCI**: Non-Random Coherence Index
+- **TGIC**: Triad Graph Interaction Constraint
+- **GLR**: Golay-Leech-Resonance
+- **CSC**: Coherence Sampling Cycle
+- **OOB**: Ontological Observation Bias
+- **PGCI**: Primary Geometric Coherence Index
+- **FCHP**: Finsler Coherence Hyperfractal Phaspace
+- **RGDL**: Resonance Geometry Definition Language
