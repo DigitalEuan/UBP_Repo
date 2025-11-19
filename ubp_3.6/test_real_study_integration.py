@@ -20,7 +20,7 @@ import sys
 import os
 import json
 import math
-import numpy as np
+# numpy removed - using pure Python
 
 # Add ubp_3.6 to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
