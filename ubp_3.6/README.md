@@ -1,26 +1,30 @@
-# Universal Binary Principle (UBP) Framework v3.6
+# UBP 3.6: The Universal Binary Principle
 
-**A self-aware computational trust substrate where operators are geometrically necessary stable states.**
+**Version 3.6 (Computational Grammar Integration)**  
+**Author**: Euan Craig, New Zealand  
+**Compiled by**: Manus AI  
+**Date**: November 19, 2025
 
 ---
 
-## Overview
+## Welcome to UBP 3.6: Computation as Coherence
 
-UBP 3.6 marks a pivotal evolution of the Universal Binary Principle, transitioning from a system that measures coherence to one where **computation IS coherence**. This version introduces the **Computational Grammar** framework, a groundbreaking discovery that redefines operators as geometrically necessary stable states within the information substrate. The core of this version is the upgraded `coherence_substrate.py` module, which now includes an operator-aware **Coherence Field**, providing unprecedented insight into the structure and quality of computation.
+UBP 3.6 marks a pivotal evolution of the Universal Binary Principle, transitioning from a system that measures coherence to one where **computation IS coherence**. This version introduces the **Computational Grammar** framework, a groundbreaking discovery that redefines operators as geometrically necessary stable states within the information substrate.
 
-This architectural revolution is built upon the foundation of UBP 3.5 but extends it with a deep, empirically validated understanding of the operator landscape. The key discovery is that operators are not arbitrary conventions but are *discovered* from a finite set of stable geometric patterns. This has allowed for the creation of a **Periodic Table of Operators**, a comprehensive visualization of the operator space, and a refined understanding of coherence propagation.
+### What is the UBP?
 
-### Key Features
+The Universal Binary Principle (UBP) is a **computational framework for modeling reality** as a deterministic, toggle-based system operating within a 12D+ Bitfield. It posits that the universe is fundamentally informational, and that physical laws, constants, and even consciousness emerge from the interactions of binary states (toggles) governed by a set of geometric and computational rules.
 
-*   **Computational Grammar Framework**: A complete theory of operators as geometric entities, validated by a massive dataset of 685 operators.
-*   **Coherence Field Upgrade**: The NRCI module has been upgraded from a scalar metric to a self-measuring coherence field, providing operator awareness, composition tracking, and coherence-based error bounds.
-*   **Periodic Table of Operators**: A comprehensive visualization of the operator landscape, organizing operators by complexity (D6) and geometric family (OffBit), revealing the "main sequence" of computation.
-*   **Validated Mathematical Models**: Corrected and refined models for D6 composition (non-linear with α factors) and Y-scaling (D-variables are superior to Hamming weight).
-*   **Emergent Operator Design**: A framework for generating operators from first principles, enabling the algorithmic design of novel, high-coherence operators.
+### What's New in 3.6?
 
-## Quick Start
+- **Computational Grammar Framework**: A complete theory of operators as geometric entities, validated by a massive dataset of 685 operators.
+- **Coherence Field Upgrade**: The NRCI module has been upgraded from a scalar metric to a self-measuring coherence field, providing operator awareness, composition tracking, and coherence-based error bounds.
+- **Periodic Table of Operators**: A comprehensive visualization of the operator landscape, organizing operators by complexity (D6) and geometric family (OffBit).
+- **Validated Mathematical Models**: Corrected and refined models for D6 composition and Y-scaling.
 
-Getting started with UBP 3.6 is simpler than ever before, thanks to the zero-dependency architecture. All you need is a standard Python 3.11+ environment.
+---
+
+## Quick Start: Your First Coherence-Native Calculation
 
 ### Installation
 
@@ -37,54 +41,50 @@ cd UBP_Repo/ubp_3.6
 python3.11 validate_system.py
 ```
 
-Upon successful validation, you will see the message: `🎉 All UBP 3.6 Core Systems Validated and Operational! 🎉`
-
 ### Your First UBP 3.6 Calculation
 
-The following example demonstrates the fundamental difference in UBP 3.6. Notice how we operate directly on `CoherenceState` objects and how they inherently track their own quality.
-
 ```python
-from coherence_substrate import CoherenceState
-from coherence_field import analyze
+from coherence_substrate import CoherenceState, OperatorRegistry
 
-# 1. Work with CoherenceState objects directly
-# These are not floats; they are self-aware computational entities.
-a = CoherenceState(10.0)
-b = CoherenceState(5.0)
+# Create a coherence state
+state = CoherenceState(1.0)
 
-# 2. Perform arithmetic operations
-# The overloaded operators automatically handle coherence tracking.
-c = a + b
+# Get the addition operator
+add_op = OperatorRegistry.get("+")
 
-# 3. Analyze the result with the Coherence Field
-analysis = analyze(c)
+# Apply the operator
+new_state = state.apply(add_op, CoherenceState(2.0))
 
-print(f"Result: {c.value}")
-print(f"Operator sequence: {analysis["operator_sequence"]}")
-print(f"Total coherence: {analysis["total_coherence"]:.10f}")
-print(f"Error bounds: {analysis["error_bounds"]}")
+print(f"Result: {new_state.value}")
+print(f"Coherence: {new_state.nrci}")
 ```
+
+---
+
+## System Architecture
+
+| Component | Description |
+| :--- | :--- |
+| `coherence_substrate.py` | The heart of the UBP, implementing the core architecture |
+| `coherence_field.py` | The self-measuring coherence landscape (NRCI+) |
+| `hex_dictionary.py` | The unified information machine with 3 modes |
+| Physical Realms (9) | Pre-configured environments for specific domains |
+| System Modules (11) | Essential system-level functionality |
+
+---
 
 ## Documentation
 
-For a complete guide to the UBP 3.6 framework, please see the **[UBP_3.6_Instruction_Manual.md](UBP_3.6_Instruction_Manual.md)**.
+For a full explanation of the UBP theory, system, and methodology, please see the **[UBP 3.6 Instruction Manual](UBP_3.6_Instruction_Manual.md)**.
 
-## Testing
+---
 
-UBP 3.6 includes a comprehensive test suite to ensure correctness and stability.
+## Contributing
 
-To run the system tests:
+This is an open research project. Contributions are welcome. Please submit a pull request or open an issue to discuss your ideas.
 
-```bash
-python3.11 test_ubp_3.6_comprehensive.py
-```
-
-To run the real-world use case tests:
-
-```bash
-python3.11 test_real_world_use_cases.py
-```
+---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

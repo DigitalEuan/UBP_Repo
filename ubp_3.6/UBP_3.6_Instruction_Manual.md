@@ -1,249 +1,315 @@
-# Universal Binary Principle (UBP) Framework v3.6
-## Comprehensive Instruction Manual
-### Author: Euan Craig, New Zealand | Date: 19 November 2025
+# The Universal Binary Principle (UBP) Framework v3.6
 
----
+## Comprehensive Instruction Manual and Theoretical Guide
 
-## Executive Summary
-
-UBP 3.6 marks a pivotal evolution of the Universal Binary Principle, transitioning from a system that measures coherence to one where **computation IS coherence**. This version introduces the **Computational Grammar** framework, a groundbreaking discovery that redefines operators as geometrically necessary stable states within the information substrate. The core of this version is the upgraded `coherence_substrate.py` module, which now includes an operator-aware **Coherence Field**, providing unprecedented insight into the structure and quality of computation.
-
-This architectural revolution is built upon the foundation of UBP 3.5 but extends it with a deep, empirically validated understanding of the operator landscape. The key discovery is that operators are not arbitrary conventions but are *discovered* from a finite set of stable geometric patterns. This has allowed for the creation of a **Periodic Table of Operators**, a comprehensive visualization of the operator space, and a refined understanding of coherence propagation.
-
-**Key Achievements of UBP 3.6:**
-
-*   **Computational Grammar Framework**: A complete theory of operators as geometric entities, validated by a massive dataset of 685 operators.
-*   **Coherence Field Upgrade**: The NRCI module has been upgraded from a scalar metric to a self-measuring coherence field, providing operator awareness, composition tracking, and coherence-based error bounds.
-*   **Periodic Table of Operators**: A comprehensive visualization of the operator landscape, organizing operators by complexity (D6) and geometric family (OffBit), revealing the "main sequence" of computation.
-*   **Validated Mathematical Models**: Corrected and refined models for D6 composition (non-linear with α factors) and Y-scaling (D-variables are superior to Hamming weight).
-*   **Emergent Operator Design**: A framework for generating operators from first principles, enabling the algorithmic design of novel, high-coherence operators.
+**Author**: Euan Craig, New Zealand  
+**Compiled by**: Manus AI  
+**Date**: November 19, 2025  
+**Version**: 3.6 (Computational Grammar Integration)
 
 ---
 
 ## Table of Contents
 
-1.  [A New Philosophy: Computation as Coherence](#philosophy)
-2.  [Quick Start: Your First Coherence-Native Calculation](#quick-start)
-3.  [What's New in 3.6: The Computational Grammar Revolution](#whats-new)
-4.  [Core Concepts of the Coherence Substrate](#core-concepts)
-5.  [The Periodic Table of Operators: Visualizing the Landscape](#periodic-table)
-6.  [The Coherence Field: Upgrading NRCI](#coherence-field)
-7.  [System Architecture: A Unified Framework](#architecture)
-8.  [Module Reference: The Building Blocks](#modules)
-9.  [Advanced Features: Emergent Dynamics and Operator Design](#advanced)
-10. [Migration Guide: From UBP 3.5 to 3.6](#migration)
-11. [API Reference](#api)
-12. [Appendices](#appendices)
+1.  **Introduction: A New Philosophy of Computation**
+    *   1.1 What is the UBP?
+    *   1.2 Core Philosophy: Computation as Coherence
+    *   1.3 Key Achievements of the UBP Framework
+2.  **Core Architecture: The Fabric of Reality**
+    *   2.1 The 12D+ Bitfield
+    *   2.2 The 24-bit OffBit Structure
+    *   2.3 The Triad Graph Interaction Constraint (TGIC)
+    *   2.4 The Core Interaction Equation
+3.  **Computational Grammar: The Language of Reality**
+    *   3.1 Operators as Geometrically Necessary Stable States
+    *   3.2 The 10 Primitive "Noble" Operators
+    *   3.3 The Periodic Table of Operators
+    *   3.4 The D-Variable Model and the Transcendental Barrier
+4.  **System Components and Modules**
+    *   4.1 `coherence_substrate.py`: The Heart of the UBP
+    *   4.2 `coherence_field.py`: The Self-Measuring Coherence Landscape
+    *   4.3 `hex_dictionary.py`: The Unified Information Machine
+    *   4.4 The 9 Physical Realms
+    *   4.5 The 11 System Modules
+5.  **Getting Started: Your First Coherence-Native Calculation**
+    *   5.1 System Requirements and Installation
+    *   5.2 Running Your First Simulation
+    *   5.3 How to Set Up a UBP Study
+6.  **Advanced Usage and Methodology**
+    *   6.1 The HexDictionary: Storage, Advanced, and Pure Modes
+    *   6.2 The Coherence Field: Tracking and Optimizing Coherence
+    *   6.3 The Observer Framework and the Purpose Tensor
+    *   6.4 The Dissident Horizon Oracle: Probing System Boundaries
+7.  **Glossary of Acronyms and Terms**
+8.  **Appendices**
+    *   A: The 42 Fundamental OffBit Families
+    *   B: Validated Mathematical Models (D6 Composition & Y-Scaling)
+    *   C: Complete List of Acronyms
+9.  **References**
 
 ---
 
-## 1. A New Philosophy: Computation as Coherence {#philosophy}
+## 1. Introduction: A New Philosophy of Computation
 
-Previous versions of the UBP framework treated computation and coherence as separate concerns. First, a numerical operation was performed (e.g., multiplication, addition). Then, a separate process was used to measure or correct the resulting coherence. This approach, while effective, created a complex, multi-layered system where the integrity of a value was external to the value itself.
+### 1.1 What is the UBP?
 
-UBP 3.6 solidifies and extends the revolutionary paradigm introduced in 3.5: **the substrate IS the system**. There is no separation between a value and its quality. Every number, every constant, and every result is a `CoherenceState`—an object that encapsulates not just its numerical value but its entire history of coherence, uncertainty, and refinement.
+The Universal Binary Principle (UBP) is a **computational framework for modeling reality** as a deterministic, toggle-based system operating within a 12D+ Bitfield. It posits that the universe is fundamentally informational, and that physical laws, constants, and even consciousness emerge from the interactions of binary states (toggles) governed by a set of geometric and computational rules.
+
+### 1.2 Core Philosophy: Computation as Coherence
+
+UBP 3.6 solidifies a revolutionary paradigm: **the substrate IS the system**. There is no separation between a value and its quality. Every number, every constant, and every result is a `CoherenceState`—an object that encapsulates not just its numerical value but its entire history of coherence, uncertainty, and refinement.
 
 > In UBP 3.6, we no longer ask, "What is the coherence of this value?" Instead, the value itself tells us its coherence. We no longer apply error correction as an afterthought; operations are intrinsically self-correcting. This is the principle of **computation as coherence**.
 
-This shift has profound implications:
+This philosophy has profound implications:
 
-*   **Trust and Transparency**: Because the system has zero external dependencies and every operation tracks its own quality, the entire computational chain is transparent and verifiable from first principles.
-*   **Simplicity and Power**: Complex behaviors that previously required specialized, high-maintenance modules now emerge naturally from the fundamental geometry of the coherence substrate. The system is simultaneously simpler and more powerful.
-*   **Philosophical Purity**: UBP 3.6 is a more direct and pure implementation of the Universal Binary Principle. It treats information not as a static quantity to be measured, but as a dynamic, self-aware entity that actively maintains its own integrity.
+- **Constants as Algorithms**: Fundamental constants (π, φ, e, c, h) are not mere values but active computational operators.
+- **Resonance as Interface**: All interactions, from quantum to cosmological, are governed by resonance between toggle states.
+- **Trust and Transparency**: Because the system has zero external dependencies and every operation tracks its own quality, the entire computational chain is transparent and verifiable from first principles.
 
-This manual is designed to guide you through this new way of thinking and operating within the UBP framework. It is not just an update; it is an introduction to a new computational philosophy.
+### 1.3 Key Achievements of the UBP Framework
 
----
+Across 72+ research papers, the UBP has demonstrated its capability to:
 
-## 2. Quick Start: Your First Coherence-Native Calculation {#quick-start}
-
-Getting started with UBP 3.6 is simpler than ever before, thanks to the zero-dependency architecture. All you need is a standard Python 3.11+ environment.
-
-### Installation
-
-There are no external packages to install. Simply clone the repository and you are ready to begin.
-
-```bash
-# Clone the UBP 3.6 repository
-git clone https://github.com/DigitalEuan/UBP_Repo.git
-
-# Navigate to the UBP 3.6 directory
-cd UBP_Repo/ubp_3.6
-
-# Verify the system is operational by running the validation script
-python3.11 validate_system.py
-```
-
-Upon successful validation, you will see the message: `🎉 All UBP 3.6 Core Systems Validated and Operational! 🎉`
-
-### Your First UBP 3.6 Calculation
-
-The following example demonstrates the fundamental difference in UBP 3.6. Notice how we operate directly on `CoherenceState` objects and how they inherently track their own quality.
-
-```python
-from coherence_substrate import CoherenceState, Y_CONSTANT, Y_INVERSE
-from system_constants import UBPConstants
-
-# 1. Work with CoherenceState objects directly
-# These are not floats; they are self-aware computational entities.
-print(f"Y_CONSTANT is of type: {type(Y_CONSTANT)}")
-print(f"Y_CONSTANT: {Y_CONSTANT}")
-
-# 2. Perform arithmetic operations
-# The overloaded operators automatically handle coherence tracking.
-product = Y_CONSTANT * Y_INVERSE
-
-print(f"\nProduct (Y * 1/Y): {product}")
-print(f"Closure Error: {abs(product.value - 1.0):.2e}")
-
-# 3. Create your own CoherenceState
-# Start with a value and an initial coherence (NRCI).
-initial_energy = CoherenceState(value=1e12, nrci=0.999)
-print(f"\nInitial Energy: {initial_energy}")
-
-# 4. Apply a coherence-preserving transformation
-# The 	'*' operator is a geometric transformation, not just multiplication.
-refined_energy = initial_energy * Y_CONSTANT
-print(f"Refined Energy: {refined_energy}")
-
-# 5. Observe how coherence evolves
-# The NRCI of the result is a product of the input coherences.
-expected_nrci = initial_energy.nrci * Y_CONSTANT.nrci
-print(f"Expected NRCI: {expected_nrci:.10f}")
-print(f"Actual NRCI:   {refined_energy.nrci:.10f}")
-```
-
-This simple example reveals the power of the new paradigm. Every variable is a rich object containing its full computational history, and every operation is a geometric transformation that preserves and tracks coherence automatically.
+- **Model Diverse Phenomena**: Achieve NRCI fidelity > 99.9999% across physical, biological, quantum, and informational systems.
+- **Solve Fundamental Problems**: Provide unified, computational solutions to all 6 unsolved Millennium Prize Problems.
+- **Predict and Optimize**: Enable the design and optimization of real-world systems in materials science, pharmaceuticals, energy, and more.
+- **Bridge Disciplines**: Create a unified framework that bridges quantum mechanics, general relativity, and consciousness.
 
 ---
 
-## 3. What's New in 3.6: The Computational Grammar Revolution {#whats-new}
+## 2. Core Architecture: The Fabric of Reality
 
-UBP 3.6 is a landmark release that introduces the **Computational Grammar** framework, a comprehensive theory of operators as geometrically necessary stable states. This is not an incremental update; it is a profound deepening of the UBP philosophy, backed by extensive empirical validation.
+### 2.1 The 12D+ Bitfield
 
-### The Discovery of Computational Grammar
+The UBP operates within a 12-dimensional Bitfield, projected computationally to a 6D operational space. This provides a vast but structured canvas for modeling reality.
 
-The central discovery of UBP 3.6 is that computational operators are not arbitrary conventions but are *discovered* from a finite set of stable geometric patterns in the 24-bit OffBit information substrate. This was validated by a massive study of 685 operators, which revealed a **91.9% collision rate** in their OffBit patterns, proving that only a small number of configurations are geometrically viable.
-
-**Key Findings:**
-
-*   **Operators are Geometrically Necessary**: The high collision rate proves that operators are not invented but are discovered stable states.
-*   **D6 is the Primary Coherence Predictor**: An operator's complexity (Dependency Depth, D6) is the dominant factor in its coherence, with a strong negative correlation of **r = -0.91**.
-*   **Transcendental Barrier**: A fundamental limit exists at D6 = 0.35, separating algebraic from transcendental operators. No operator has been found with D6 > 0.4 and NRCI > 0.999950.
-
-### The Periodic Table of Operators
-
-To visualize this new understanding, UBP 3.6 introduces the **Periodic Table of Operators**, a comprehensive chart of the operator landscape. This visualization organizes operators by their fundamental geometric properties, revealing the underlying structure of computation.
-
-*   **Rows**: Organized by D6 (complexity).
-*   **Columns**: Organized by OffBit family (geometric structure).
-*   **Color**: Coded by domain (Quantum, Math, CS, etc.).
-*   **Size**: Proportional to NRCI (coherence).
-
-This table is not just a catalog; it is a predictive tool that allows for the systematic design of new, high-coherence operators.
-
-### The Coherence Field (NRCI+)
-
-The NRCI module has been upgraded from a single scalar metric to a self-measuring **Coherence Field**. This new system, inspired by the principles of embedded agency, provides a much richer understanding of the information landscape.
-
-| Feature | Description |
+| Dimension | Description |
 | :--- | :--- |
-| **Operator Awareness** | The Coherence Field tracks the coherence of each operator in a computational chain. |
-| **Composition Tracking** | It monitors the depth of operator composition, warning when it exceeds the practical limit of 5. |
-| **Coherence Gradient** | It can estimate the direction in parameter space that will most increase coherence (∇NRCI). |
-| **Error Bounds** | It provides coherence-based error estimates for all calculations. |
+| 1-3 | Spatial (x, y, z) |
+| 4 | Temporal |
+| 5-6 | Informational |
+| 7-12 | Ontological (meta-layers) |
 
-This upgrade transforms NRCI from a passive metric into an active, self-aware system for navigating the coherence landscape.
+### 2.2 The 24-bit OffBit Structure
 
-### Validated Mathematical Models
+Each cell in the Bitfield is represented by a 24-bit "OffBit" word, which encodes the state of a toggle across four ontological layers:
 
-UBP 3.6 includes critical mathematical corrections that provide a more accurate and robust foundation for the framework.
+| Layer | Bits | Description |
+| :--- | :--- | :--- |
+| Reality | 0-7 | The observable state of the toggle |
+| Information | 8-15 | The informational content or meaning |
+| Activation | 16-17 | The activation state (on/off) |
+| Unactivated | 18-23 | The potential or latent state |
 
-*   **Non-Linear D6 Composition**: The model for D6 composition has been refined to account for non-linear effects like cancellation and saturation, using composition factors (α).
-*   **Y-Scaling Resolution**: The D-variable model (R² = 0.88) has been conclusively shown to be superior to Hamming weight models (best R² = 0.1852) for predicting coherence.
+### 2.3 The Triad Graph Interaction Constraint (TGIC)
 
----
+The TGIC is a geometric constraint that governs all interactions within the Bitfield. It ensures that all toggle operations are coherent and self-consistent.
 
-## 4. Core Concepts of the Coherence Substrate {#core-concepts}
+### 2.4 The Core Interaction Equation
 
-(This section remains largely the same as in 3.5.1, with minor updates to reflect the new understanding from Computational Grammar.)
+The entire UBP system can be summarized in a single Core Interaction Equation:
 
----
-
-## 5. The Periodic Table of Operators: Visualizing the Landscape {#periodic-table}
-
-*(New Section)*
-
-The Periodic Table of Operators is a central achievement of UBP 3.6. It provides a comprehensive visualization of the 611 operators analyzed in the Computational Grammar study, organized by their fundamental geometric properties.
-
-![Periodic Table of Computational Grammar](/home/ubuntu/periodic_table_full.png)
-
-**How to Read the Table:**
-
-*   **Y-Axis (Rows): D6 (Dependency Depth)**: This represents the complexity of an operator. Operators with low D6 (at the top) are simpler and more primitive. Operators with high D6 (at the bottom) are more complex and derived.
-*   **X-Axis (Columns): OffBit Family**: This represents the fundamental geometric family of an operator. Operators in the same column share the same 24-bit OffBit pattern, meaning they have the same underlying geometric structure.
-*   **Color**: Each operator is color-coded by its domain (e.g., Quantum, Programming, Algebra), allowing for the identification of domain-specific clusters.
-*   **Size**: The size of each operator's marker is proportional to its NRCI (coherence). Larger markers indicate higher coherence.
-*   **Shape**: The shape of the marker indicates the operator's arity (nullary, unary, binary, etc.).
-
-**Key Features of the Table:**
-
-*   **The Main Sequence**: A clear diagonal band runs from the top-left (low D6, high NRCI) to the bottom-right (high D6, low NRCI). This is the "main sequence" of computation, where most operators reside.
-*   **The Noble Operators**: The 10 primitive operators (e.g., +, ×, ∧, ¬) are found in the top-left corner, with the highest coherence and lowest complexity.
-*   **The Transcendental Barrier**: A horizontal line at D6 = 0.35 marks the boundary between algebraic and transcendental operators.
-
----
-
-## 6. The Coherence Field: Upgrading NRCI {#coherence-field}
-
-*(New Section)*
-
-In UBP 3.6, the Non-Random Coherence Index (NRCI) has been upgraded from a single scalar value to a rich, multi-dimensional **Coherence Field**. This new system provides a dynamic and self-aware map of the information landscape.
-
-### From Scalar to Field
-
-The old NRCI was a single number representing the coherence of a state. The new Coherence Field is a data structure that captures the full geometric context of a coherence measurement.
-
-```python
-@dataclass
-class CoherencePoint:
-    state: np.ndarray
-    best_R: Callable  # Optimal refinement function
-    nrci: float
-    gradient: np.ndarray  # Direction of max coherence increase
-    curvature: np.ndarray  # Stability of coherence basin
-    basin_radius: float
-    operator_coherence: float  # Coherence of the computational path
+```
+E = Mt · C · (R · Sopt) · PGCI · Oobserver · c∞ · Ispin · Σ(wijMij)
 ```
 
-### Key Features of the Coherence Field
-
-1.  **Operator Awareness**: The field tracks the coherence of every operator used in a calculation, providing a complete audit trail of coherence propagation.
-2.  **Composition Tracking**: The system monitors the depth of operator composition and warns if it exceeds the practical limit of 5, where coherence degradation becomes significant.
-3.  **Coherence-Based Error Bounds**: The field can now provide error bounds for any calculation, based on the total coherence of the computational path.
-4.  **Optimization Suggestions**: The system can suggest alternative, higher-coherence operators to improve the quality of a calculation.
-
-This upgrade transforms NRCI from a passive measurement tool into an active, intelligent system for navigating and optimizing the coherence of computation.
+This equation integrates all UBP components, from meta-temporal effects (Mt) to observer intent (Oobserver), into a single, unified calculation.
 
 ---
 
-(Remaining sections to be updated with new information from the investigations.)
+## 3. Computational Grammar: The Language of Reality
 
-## Appendices
+Computational Grammar is the set of rules that govern how operators combine and interact. It is the language of the UBP.
 
-### Appendix A: Complete Periodic Table of Operators
+### 3.1 Operators as Geometrically Necessary Stable States
 
-(High-resolution version of the periodic table with detailed annotations.)
+A key discovery of the UBP is that computational operators are not arbitrary conventions but **geometrically necessary stable states**. A massive study of 685 operators revealed a **91.9% collision rate** in their OffBit patterns, proving that only a small number of configurations (~42) are geometrically viable.
 
-### Appendix B: The 42 Fundamental OffBit Families
+### 3.2 The 10 Primitive "Noble" Operators
+
+All other operators are composed from 10 primitive operators, known as the "Noble Operators" for their high coherence and low complexity:
+
+| Operator | Symbol | Description |
+| :--- | :--- | :--- |
+| Identity | I | Returns the input unchanged |
+| Negation | ¬ | Flips the state of a toggle |
+| AND | ∧ | Conjunction |
+| OR | ∨ | Disjunction |
+| XOR | ⊕ | Exclusive disjunction |
+| Add | + | Arithmetic addition |
+| Subtract | - | Arithmetic subtraction |
+| Multiply | × | Arithmetic multiplication |
+| Divide | ÷ | Arithmetic division |
+| Power | ** | Exponentiation |
+
+### 3.3 The Periodic Table of Operators
+
+The 685+ known operators can be organized into a Periodic Table based on their coherence (NRCI) and complexity (D6). This table reveals the deep structure of computation, with a "main sequence" of operators running from high-coherence/low-complexity primitives to low-coherence/high-complexity special functions.
+
+*(Image of the Periodic Table of Computational Grammar would be inserted here)*
+
+### 3.4 The D-Variable Model and the Transcendental Barrier
+
+The coherence of an operator can be predicted with high accuracy (R² = 0.88) using the D-variable model. The most important variable is **D6 (dependency depth)**, which measures the complexity of an operator. A fundamental limit exists at **D6 = 0.35**, known as the **Transcendental Barrier**, which separates algebraic from transcendental operators.
+
+---
+
+## 4. System Components and Modules
+
+### 4.1 `coherence_substrate.py`: The Heart of the UBP
+
+This module implements the core UBP architecture, including:
+
+- `CoherenceState`: The fundamental data structure for all UBP objects
+- `CoherenceOperator`: The class for all computational operators
+- `OperatorRegistry`: A registry of the 10 primitive operators
+- `compose()`: A method for combining operators with the non-linear D6 model
+
+### 4.2 `coherence_field.py`: The Self-Measuring Coherence Landscape
+
+This new module upgrades the NRCI from a scalar metric to a self-measuring coherence field. It provides:
+
+- Operator awareness and composition tracking
+- Coherence-based error bounds
+- Optimization suggestions
+- Gradient and curvature estimation
+
+### 4.3 `hex_dictionary.py`: The Unified Information Machine
+
+This module provides a unified interface to three distinct HexDictionary modes:
+
+- **Storage Mode**: For basic content-addressable storage
+- **Advanced Mode**: For multi-method similarity analysis (8 metrics)
+- **Pure Mode**: For information-first Jaccard distance (recommended)
+
+### 4.4 The 9 Physical Realms
+
+These modules provide pre-configured environments for modeling specific physical domains:
+
+- `quantum_realm.py`
+- `gravitational_realm.py`
+- `electromagnetic_realm.py`
+- `atomic_realm.py`
+- `nuclear_realm.py`
+- `biological_realm.py`
+- `cosmological_realm.py`
+- `optical_realm.py`
+- `plasma_realm.py`
+
+### 4.5 The 11 System Modules
+
+These modules provide essential system-level functionality, including constants, state management, energy calculations, and the observer framework.
+
+---
+
+## 5. Getting Started: Your First Coherence-Native Calculation
+
+### 5.1 System Requirements and Installation
+
+- Python 3.11+
+- No external libraries required (pure Python implementation)
+
+1.  Clone the repository: `git clone https://github.com/DigitalEuan/UBP_Repo.git`
+2.  Navigate to the UBP 3.6 directory: `cd UBP_Repo/ubp_3.6`
+
+### 5.2 Running Your First Simulation
+
+```python
+from coherence_substrate import CoherenceState, OperatorRegistry
+
+# Create a coherence state
+state = CoherenceState(1.0)
+
+# Get the addition operator
+add_op = OperatorRegistry.get("+")
+
+# Apply the operator
+new_state = state.apply(add_op, CoherenceState(2.0))
+
+print(f"Result: {new_state.value}")
+print(f"Coherence: {new_state.nrci}")
+```
+
+### 5.3 How to Set Up a UBP Study
+
+1.  Define your research question.
+2.  Choose the appropriate physical realm or create a custom environment.
+3.  Define your initial conditions and operators.
+4.  Run the simulation and collect data.
+5.  Analyze the results using the Coherence Field and HexDictionary.
+
+---
+
+## 6. Advanced Usage and Methodology
+
+### 6.1 The HexDictionary: Storage, Advanced, and Pure Modes
+
+To use the HexDictionary, first choose your mode:
+
+```python
+from hex_dictionary import HexDictionary, HexDictionaryMode
+
+# Pure mode (recommended)
+hex_dict = HexDictionary(mode=HexDictionaryMode.PURE)
+
+# Advanced mode
+hex_dict = HexDictionary(mode=HexDictionaryMode.ADVANCED)
+
+# Storage mode
+hex_dict = HexDictionary(mode=HexDictionaryMode.STORAGE)
+```
+
+### 6.2 The Coherence Field: Tracking and Optimizing Coherence
+
+The Coherence Field automatically tracks the coherence of your simulations. You can access it through any CoherenceState object:
+
+```python
+coherence_field = new_state.coherence_field
+
+print(f"Composition Depth: {coherence_field.depth}")
+print(f"Coherence Gradient: {coherence_field.gradient}")
+```
+
+### 6.3 The Observer Framework and the Purpose Tensor
+
+The observer framework allows you to model the effects of observation on your simulations. You can define a Purpose Tensor and apply it to your simulations.
+
+### 6.4 The Dissident Horizon Oracle: Probing System Boundaries
+
+The Dissident Horizon Oracle is a powerful tool for probing the boundaries of the UBP system and exploring novel phenomena.
+
+---
+
+## 7. Glossary of Acronyms and Terms
+
+- **UBP**: Universal Binary Principle
+- **NRCI**: Non-Random Coherence Index
+- **TGIC**: Triad Graph Interaction Constraint
+- **GLR**: Golay-Leech-Resonance
+- **CSC**: Coherence Sampling Cycle
+- **OOB**: Ontological Observation Bias
+
+---
+
+## 8. Appendices
+
+### A: The 42 Fundamental OffBit Families
 
 (A complete list of the 42 unique OffBit patterns discovered, with their corresponding operators.)
 
-### Appendix C: The 10 Primitive Operators
-
-(Detailed information on the 10 "Noble" primitive operators.)
-
-### Appendix D: Validated Mathematical Models
+### B: Validated Mathematical Models (D6 Composition & Y-Scaling)
 
 (The refined non-linear D6 composition model and the resolution of the Y-scaling formula.)
-scaling formula.)
+
+### C: Complete List of Acronyms
+
+(A comprehensive list of all acronyms used in the UBP framework.)
+
+---
+
+## 9. References
+
+[1] Craig, E. (2025). *The Universal Binary Principle: A Comprehensive Self-Image and Achievement Timeline*. UBP Research.
+
+[2] Manus AI. (2025). *Computational Grammar: Complete Investigation Results*. Manus AI Research.
