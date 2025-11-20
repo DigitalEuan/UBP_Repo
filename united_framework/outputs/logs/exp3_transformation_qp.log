@@ -1,0 +1,40 @@
+======================================================================
+COHERENCE ANALYSIS REPORT
+======================================================================
+Total states recorded: 3
+Minimum NRCI: 0.999997000000
+Mean NRCI: 0.999997999997
+Coherence degradation rate: 1.67e-10 log-error/step
+Closure verified: True (max net refinements: 0)
+
+Operator Usage:
+  ⊗Y: 5 times
+  ×: 2 times
+  +: 2 times
+  ÷: 1 times
+  ⊗Y⁻¹: 1 times
+======================================================================
+
+Detailed History:
+----------------------------------------------------------------------
+Step 0: quark_initial
+  Value: 2.133483e-01
+  NRCI: 0.999997000000
+  Net refinements: 0
+  Composition depth: 4
+  Operators: ⊗Y → × → ⊗Y → +
+
+Step 1: quark_after_emission
+  Value: 1.318565e-01
+  NRCI: 0.999999999991
+  Net refinements: 0
+  Composition depth: 5
+  Operators: ⊗Y → × → ⊗Y → + → ÷
+
+Step 2: photon_emitted
+  Value: 1.318565e-01
+  NRCI: 0.999997000000
+  Net refinements: 0
+  Composition depth: 2
+  Operators: ⊗Y → ⊗Y⁻¹
+

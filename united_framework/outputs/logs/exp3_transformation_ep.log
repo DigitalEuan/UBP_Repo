@@ -1,0 +1,53 @@
+======================================================================
+COHERENCE ANALYSIS REPORT
+======================================================================
+Total states recorded: 5
+Minimum NRCI: 0.999997000000
+Mean NRCI: 0.999998199996
+Coherence degradation rate: -3.82e+00 log-error/step
+Closure verified: False (max net refinements: 1)
+
+Operator Usage:
+  ⊗Y: 9 times
+  ×: 6 times
+  ⊗Y⁻¹: 5 times
+  +: 3 times
+======================================================================
+
+Detailed History:
+----------------------------------------------------------------------
+Step 0: electron
+  Value: 1.133483e-01
+  NRCI: 0.999999999991
+  Net refinements: 1
+  Composition depth: 3
+  Operators: ⊗Y → × → ⊗Y
+
+Step 1: decoupling
+  Value: 4.282538e-01
+  NRCI: 0.999999999991
+  Net refinements: 0
+  Composition depth: 4
+  Operators: ⊗Y → × → ⊗Y → ⊗Y⁻¹
+
+Step 2: transition
+  Value: 7.929293e-01
+  NRCI: 0.999997000000
+  Net refinements: 0
+  Composition depth: 6
+  Operators: × → ⊗Y → ⊗Y⁻¹ → × → +
+
+Step 3: forming_photon
+  Value: 2.995855e+00
+  NRCI: 0.999997000000
+  Net refinements: -1
+  Composition depth: 7
+  Operators: ⊗Y → ⊗Y⁻¹ → × → + → ⊗Y⁻¹
+
+Step 4: photon
+  Value: 1.026468e+00
+  NRCI: 0.999997000000
+  Net refinements: 1
+  Composition depth: 3
+  Operators: ⊗Y⁻¹ → + → ⊗Y
+

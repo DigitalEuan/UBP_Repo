@@ -1,0 +1,13 @@
+# Requirements for United Framework Experiments
+# UBP 3.6 Computational Validation
+
+# Core UBP substrate has ZERO dependencies beyond Python standard library
+# The following are ONLY required for visualization and plotting
+
+matplotlib>=3.5.0  # For generating publication-quality figures
+
+# Optional: For enhanced visualization
+# numpy>=1.21.0  # Not required - pure Python implementation used
+
+# Note: All experiments can run without matplotlib
+# Data will be saved as CSV files if matplotlib is not available
