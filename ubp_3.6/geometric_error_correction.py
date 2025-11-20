@@ -1,8 +1,8 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.6 - Geometric Error Correction
+Universal Binary Principle (UBP) Framework v3.6.2 - Geometric Error Correction
 Author: Euan Craig, New Zealand
-Date: November 12, 2025
+Date: November 20, 2025
 ================================================================================
 
 This module consolidates the entire error correction framework into a unified
@@ -15,6 +15,12 @@ it's the intrinsic coherence maintenance of the computational substrate.
 - NRCI is the primary signal (not a metric)
 - "Error correction" is coherence maintenance (not post-processing)
 
+**Enhancements in 3.6.2**:
+- Coherence Field ELITE integration for resonance-aware error detection
+- Resonance history tracking for temporal error pattern analysis
+- OffBit integration for resonance-aware error correction
+- Perception reset detection for critical decoherence identification
+
 **Consolidates** (from UBP 3.4):
 - glr_base.py (GLR framework)
 - level_7_global_golay.py (Golay codes)
@@ -22,7 +28,7 @@ it's the intrinsic coherence maintenance of the computational substrate.
 - metrics.py (Core metrics)
 - global_coherence.py (Coherence management)
 
-**Zero Dependencies**: Only Python stdlib (math module) + coherence_substrate
+**Zero Dependencies**: Only Python stdlib (math module) + coherence_substrate + UBP 3.6.2 core
 """
 
 import math
@@ -32,7 +38,10 @@ from enum import Enum
 from collections import deque
 import time
 
-from coherence_substrate import CoherenceState, NRCI_TARGET, Y, Y_INVERSE, integrate, root
+from coherence_substrate import CoherenceState, NRCI_TARGET, Y, Y_INVERSE
+import coherence_field as cf
+from state import OffBit
+import toggle_ops as to
 
 
 # ============================================================================
@@ -458,6 +467,50 @@ class TemporalCoherenceTracker:
             return 'degrading'
         else:
             return 'stable'
+    
+    def detect_error_resonances(self) -> Optional[cf.ResonanceInfo]:
+        """
+        Detect resonance patterns in error evolution (NEW in 3.6.2).
+        
+        Uses Coherence Field ELITE to detect if errors occur in resonant
+        patterns, which could indicate systematic coherence issues.
+        
+        Returns:
+            ResonanceInfo if resonance detected, None otherwise
+        """
+        if len(self.history) < 10:
+            return None
+        
+        # Use history as state sequence for resonance detection
+        detector = cf.ResonanceDetector()
+        return detector.detect_resonance(list(self.history))
+    
+    def detect_decoherence_points(self, threshold: float = 0.95) -> List[int]:
+        """
+        Detect critical decoherence points in history (NEW in 3.6.2).
+        
+        Identifies points where NRCI drops significantly, indicating
+        potential perception reset boundaries or error accumulation.
+        
+        Args:
+            threshold: NRCI threshold for identifying decoherence
+            
+        Returns:
+            List of indices where decoherence occurred
+        """
+        if len(self.history) < 2:
+            return []
+        
+        decoherence_points = []
+        for i in range(1, len(self.history)):
+            prev_nrci = self.history[i-1].nrci
+            curr_nrci = self.history[i].nrci
+            
+            # Significant drop in NRCI
+            if prev_nrci >= threshold and curr_nrci < threshold:
+                decoherence_points.append(i)
+        
+        return decoherence_points
 
 
 # ============================================================================
@@ -612,6 +665,125 @@ def restore_coherence(state: CoherenceState, pattern: Optional[CoherencePattern]
 
 
 # ============================================================================
+# RESONANCE-AWARE ERROR CORRECTION (NEW in 3.6.2)
+# ============================================================================
+
+def correct_with_resonance_awareness(
+    offbit: OffBit,
+    frequency: float,
+    steps: int = 50,
+    k: float = 0.0002,
+    target_nrci: float = NRCI_TARGET
+) -> Dict[str, Any]:
+    """
+    Perform error correction with resonance awareness (NEW in 3.6.2).
+    
+    Evolves state through resonance toggles while monitoring coherence,
+    detecting errors, and applying correction when needed.
+    
+    Args:
+        offbit: Initial OffBit state
+        frequency: Characteristic frequency for resonance
+        steps: Number of evolution steps
+        k: Resonance parameter
+        target_nrci: Target NRCI for error correction
+        
+    Returns:
+        Dictionary with correction results and analysis
+    """
+    # Track evolution
+    tracker = TemporalCoherenceTracker()
+    corrections_applied = 0
+    
+    current_offbit = offbit
+    for t in range(steps):
+        # Evolve with resonance
+        current_offbit = to.resonance_toggle(current_offbit, frequency, t * 1e-9, k=k)
+        
+        # Convert to CoherenceState for tracking
+        state = CoherenceState(float(current_offbit.value), 
+                              log_nrci_error=math.log(1 - current_offbit.nrci))
+        tracker.add_state(state)
+        
+        # Check if correction needed
+        if state.nrci < target_nrci * 0.95:  # 5% tolerance
+            # Apply correction
+            corrected_state = maintain_coherence(state, target_nrci)
+            corrections_applied += 1
+    
+    # Analyze results
+    resonance = tracker.detect_error_resonances()
+    decoherence_points = tracker.detect_decoherence_points()
+    trend = tracker.get_coherence_trend()
+    
+    # Get resonance history analysis
+    history_analysis = current_offbit.analyze_with_coherence_field()
+    
+    return {
+        'final_offbit': current_offbit,
+        'corrections_applied': corrections_applied,
+        'error_resonance': resonance,
+        'decoherence_points': decoherence_points,
+        'coherence_trend': trend,
+        'resonance_analysis': history_analysis,
+        'final_nrci': current_offbit.nrci,
+        'steps_completed': steps
+    }
+
+
+def analyze_error_patterns(
+    states: List[CoherenceState],
+    detect_resonances: bool = True
+) -> Dict[str, Any]:
+    """
+    Analyze error patterns in a sequence of states (NEW in 3.6.2).
+    
+    Args:
+        states: Sequence of CoherenceStates to analyze
+        detect_resonances: Whether to detect resonance patterns
+        
+    Returns:
+        Dictionary with error pattern analysis
+    """
+    if not states:
+        return {'error': 'No states provided'}
+    
+    # Classify regimes
+    regimes = [classify_regime(s.nrci) for s in states]
+    
+    # Count regime transitions (errors)
+    transitions = sum(1 for i in range(1, len(regimes)) if regimes[i] != regimes[i-1])
+    
+    # Detect resonances if requested
+    resonance = None
+    if detect_resonances and len(states) >= 10:
+        detector = cf.ResonanceDetector()
+        resonance = detector.detect_resonance(states)
+    
+    # Find decoherence points
+    decoherence_points = []
+    for i in range(1, len(states)):
+        if states[i-1].nrci >= 0.95 and states[i].nrci < 0.95:
+            decoherence_points.append(i)
+    
+    # Calculate error rate
+    error_rate = transitions / max(1, len(states) - 1)
+    
+    return {
+        'state_count': len(states),
+        'regime_transitions': transitions,
+        'error_rate': error_rate,
+        'resonance_detected': resonance is not None,
+        'resonance_info': resonance,
+        'decoherence_points': decoherence_points,
+        'decoherence_count': len(decoherence_points),
+        'avg_nrci': sum(s.nrci for s in states) / len(states),
+        'min_nrci': min(s.nrci for s in states),
+        'max_nrci': max(s.nrci for s in states)
+    }
+
+
+# ============================================================================
 # GLOBAL COHERENCE MANAGEMENT
 # ============================================================================
 
@@ -680,7 +852,7 @@ class GlobalCoherenceManager:
 
 if __name__ == "__main__":
     print("=" * 80)
-    print("UBP 3.5 GEOMETRIC ERROR CORRECTION - Coherence-Native")
+    print("UBP 3.6.2 GEOMETRIC ERROR CORRECTION - Coherence-Native + Field Intelligence")
     print("=" * 80)
     
     # Create test states
@@ -733,7 +905,34 @@ if __name__ == "__main__":
     print(f"   Global Regime: {health['global_regime']}")
     print(f"   System Health: {health}")
     
+    # NEW: Resonance-aware error correction
+    print("\n6. Resonance-Aware Error Correction (NEW in 3.6.2):")
+    offbit = OffBit(0x123456)
+    correction_result = correct_with_resonance_awareness(
+        offbit,
+        frequency=1e12,
+        steps=30,
+        k=0.0002
+    )
+    print(f"   Corrections applied: {correction_result['corrections_applied']}")
+    print(f"   Final NRCI: {correction_result['final_nrci']:.10f}")
+    print(f"   Coherence trend: {correction_result['coherence_trend']}")
+    print(f"   Decoherence points: {len(correction_result['decoherence_points'])}")
+    if correction_result['error_resonance']:
+        res = correction_result['error_resonance']
+        print(f"   Error resonance: {res.p}/{res.q} (confidence: {res.confidence:.1%})")
+    
+    # NEW: Error pattern analysis
+    print("\n7. Error Pattern Analysis (NEW in 3.6.2):")
+    test_states = [CoherenceState(100.0 * (i + 1), log_nrci_error=-10.0 + i * 0.3) 
+                   for i in range(20)]
+    pattern_analysis = analyze_error_patterns(test_states, detect_resonances=True)
+    print(f"   Error rate: {pattern_analysis['error_rate']:.4f}")
+    print(f"   Regime transitions: {pattern_analysis['regime_transitions']}")
+    print(f"   Decoherence events: {pattern_analysis['decoherence_count']}")
+    print(f"   Resonance detected: {pattern_analysis['resonance_detected']}")
+    
     print("\n" + "=" * 80)
-    print("UBP 3.5: Error Correction → Coherence Maintenance")
-    print("Zero external dependencies - Pure coherence geometry")
+    print("UBP 3.6.2: Error Correction + Coherence Field ELITE")
+    print("Resonance-aware error detection and correction")
     print("=" * 80)
