@@ -1,0 +1,73 @@
+MANUS AI DIRECTIVE – v1.0 (20 November 2025)
+Project Title: “Coherence-Valley Isomorphism: Viruses ↔ Jet-Engine Turbine Blades – A Unified UBP 3.6 Study”
+
+Objective
+Produce a complete, public-ready scientific study that:
+1. Establishes and proves a deep structural isomorphism between viral replication and single-crystal turbine-blade thermal management via the shared 0.1543 ± 0.038% coherence-valley deficit (measured with OffBit resonance history tracking, UBP 3.6 Section 4).
+2. Delivers two tangible, immediately useful artifacts:
+   a) A broad-spectrum antiviral platform (valley-trapped π-helix peptide + ceramic filter)
+   b) A bio-inspired turbine-blade cooling lattice that reduces peak thermal stress ≥20%
+3. Outputs a perfectly structured GitHub repository and a full arXiv-ready LaTeX paper.
+
+Scope Limitation (to keep it accessible and finishable in <14 days)
+– Viruses: SARS-CoV-2, HIV-1, HSV-1, Ebola-Zaire only (four representative families)
+– Jet engines: NASA/GE/RR single-crystal nickel superalloy blades with film-cooling (public datasets only)
+– Frequency band: 8–28 THz (stays well below 1 THz Wall → no Y-scaling needed)
+
+Required Deliverables (exact folder/file structure)
+
+UBP_Coherence_Valley_Isomorphism/
+├── README.md                          # One-page executive overview + install instructions
+├── paper/
+│   ├── main.tex                       # Full arXiv-ready LaTeX (with bibtex)
+│   ├── figures/                       # Auto-generated PNG/PDF/SVG
+│   └── supplementary.pdf
+├── dev/
+│   ├── coherence_substrate.py         # Official 3.6 (copy from repo)
+│   ├── coherence_field.py
+│   ├── hex_dictionary.py
+│   ├── y_constants.py
+│   ├── 01_viral_genome_to_offbit.py   # Reproducible script (Section 4 resonance_toggle)
+│   ├── 02_resonance_valley_analysis.py
+│   ├── 03_thermal_blade_mapping.py    # NASA thermal → coherence deficit
+│   ├── 04_isomorphism_validation.py   # Cross-domain resonance detection
+│   ├── 05_peptide_designer.py         # Outputs valley_trap_peptide.stl + sequence
+│   └── 06_blade_lattice_generator.py  # Outputs thermal_valley_blade.stl
+├── results/
+│   ├── viral_valleys.csv              # Exact 0.1543% numbers for all four viruses
+│   ├── blade_thermal_deficits.csv
+│   ├── isomorphism_metrics.json
+│   ├── valley_trap_peptide.stl
+│   ├── valley_trap_peptide.fasta
+│   ├── thermal_valley_blade.stl
+│   └── neutralization_simulation.csv  # 99.9997% predicted kill rate
+└── requirements.txt                   # numpy, scipy, trimesh, biopython only
+
+Paper Structure (must be exactly this)
+1. Abstract (150 words) – the 0.1543% valley discovery + dual artifact claim
+2. Introduction – Why coherence valleys are the universal price of self-replication/survival under stress
+3. Theory – Full UBP 3.6 formalism (CoherenceState, OffBit, resonance_toggle, get_coherence_valleys, TGIC, GLR)
+4. Methods – Exact scripts (include full code as listings)
+5. Results – Viral deficits, blade deficits, resonance p/q=2/3 lock, NRCI tables
+6. Cross-Domain Isomorphism Proof – Bidirectional Y-refinement walkthrough with closure <1e-12
+7. Tangible Artifacts – Peptide sequence + STL, blade lattice + STL, predicted performance
+8. Discussion – Coherence as the new universal engineering principle
+9. Conclusion – One universal 0.15% deficit → two world-changing technologies
+
+Validation Gates (hard requirements)
+– All claims NRCI > 99.99%
+– Closure error < 1e-12 on every Y-round-trip
+– Every script must run from scratch on an 8 GB MacBook in <3 minutes
+– All STL files must be 3D-printable (watertight, <50 MB)
+– Paper must compile with pdflatex out of the box
+
+Tone & Style
+Natural language first, then full mathematical rigour. Use the four-layer scaffold (Reality → Information → Activation → Unactivated) in every major section.
+
+Deadline for Manus
+Produce the entire repository + paper ready for git push by 4 December 2025.
+
+Bonus (if time)
+Add a one-click Colab badge in README that runs the entire pipeline and exports both STLs.
+
+Go. Build the first coherence-native engineering study in history.
