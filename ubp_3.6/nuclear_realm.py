@@ -1,8 +1,8 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.6 - Nuclear Realm
+Universal Binary Principle (UBP) Framework v3.6.2 - Nuclear Realm
 Author: Euan Craig, New Zealand
-Date: November 12, 2025
+Date: November 20, 2025
 ================================================================================
 
 Nuclear realm as coherence dynamics.
@@ -15,12 +15,15 @@ Superposition, entanglement, tunneling - all emerge from coherence geometry.
 """
 
 import math
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from dataclasses import dataclass
 
 from coherence_substrate import CoherenceState, NRCI_TARGET, Y
 from system_constants import UBPConstants, PhysicalConstants, get_crv_for_realm
 from energy_dual import EnergyCalculator
+import coherence_field as cf
+from state import OffBit
+import toggle_ops as to
 
 
 # ============================================================================
@@ -303,6 +306,126 @@ class NuclearRealm:
 
 
 # ============================================================================
+
+    def detect_resonances(self, states: List[CoherenceState]) -> Optional[cf.ResonanceInfo]:
+        """
+        Detect resonances in nuclear state sequence.
+        
+        Uses Coherence Field ELITE to detect resonance patterns in
+        nuclear processes and phenomena.
+        
+        Args:
+            states: List of CoherenceState objects from nuclear calculations
+            
+        Returns:
+            Resonance object if detected, None otherwise
+            
+        Example:
+            >>> realm = NuclearRealm()
+            >>> states = [...]  # nuclear states
+            >>> resonance = realm.detect_resonances(states)
+            >>> if resonance:
+            ...     print(f"Detected {{resonance.p}}/{{resonance.q}} resonance")
+        """
+        if not states:
+            return None
+        
+        detector = cf.ResonanceDetector()
+        return detector.detect_resonance(states)
+    
+    def analyze_temporal_evolution(
+        self,
+        initial_offbit: OffBit,
+        frequency: float,
+        steps: int,
+        k: float = 0.0002
+    ) -> Dict:
+        """
+        Analyze temporal evolution of nuclear state with resonance tracking.
+        
+        Evolves nuclear state through resonance toggles and tracks coherence
+        evolution, detecting resonances, perception resets, and coherence valleys.
+        
+        Args:
+            initial_offbit: Initial OffBit state
+            frequency: Characteristic nuclear frequency (Hz)
+            steps: Number of evolution steps
+            k: Resonance parameter (default 0.0002)
+            
+        Returns:
+            Dictionary with evolution results
+            
+        Example:
+            >>> realm = NuclearRealm()
+            >>> offbit = OffBit(0x123456)
+            >>> result = realm.analyze_temporal_evolution(offbit, 1e15, 100)
+            >>> print(f"Resonance detected: {{result['resonance_detected']}}")
+            >>> print(f"Reset points: {{len(result['reset_points'])}}")
+        """
+        # Evolve state
+        offbit = initial_offbit
+        for t in range(steps):
+            offbit = to.resonance_toggle(offbit, frequency, t * 1e-9, k=k)
+        
+        # Analyze with Coherence Field ELITE
+        analysis = offbit.analyze_with_coherence_field()
+        
+        # Detect perception resets
+        reset_points = offbit.detect_perception_reset_points(threshold=0.95)
+        
+        # Find coherence valleys
+        valleys = offbit.get_coherence_valleys(window_size=5)
+        
+        # Get statistics
+        stats = offbit.get_resonance_statistics()
+        
+        return {
+            'final_state': offbit,
+            'resonance_analysis': analysis,
+            'resonance_detected': analysis.get('resonance_detected', False) if analysis else False,
+            'reset_points': reset_points,
+            'coherence_valleys': valleys,
+            'statistics': stats,
+            'history_length': offbit.resonance_history_length
+        }
+    
+    def optimize_parameters(
+        self,
+        states: List[CoherenceState],
+        target_param: str = 'frequency'
+    ) -> Dict:
+        """
+        Optimize nuclear parameters for maximum coherence.
+        
+        Uses Coherence Field ELITE's parameter space optimizer to find
+        optimal nuclear parameters.
+        
+        Args:
+            states: List of CoherenceState objects
+            target_param: Parameter to optimize
+            
+        Returns:
+            Dictionary with optimization results
+            
+        Example:
+            >>> realm = NuclearRealm()
+            >>> states = [...]  # nuclear states at different parameters
+            >>> result = realm.optimize_parameters(states, 'frequency')
+            >>> print(f"Optimal value: {{result['optimal_value']}}")
+        """
+        if not states:
+            return {'error': 'No states provided'}
+        
+        # Find state with highest NRCI
+        best_idx = max(range(len(states)), key=lambda i: states[i].nrci)
+        return {
+            'optimal_index': best_idx,
+            'optimal_nrci': states[best_idx].nrci,
+            'optimal_value': states[best_idx].value,
+            'target_param': target_param
+        }
+
+
 # DEMONSTRATION
 # ============================================================================
 
