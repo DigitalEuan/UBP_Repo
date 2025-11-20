@@ -1,0 +1,69 @@
+{
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "elapsed_time": 0.0003879070281982422,
+    "all_pass": true
+  },
+  "results": {
+    "quantum": {
+      "realm": "quantum",
+      "status": "PASS",
+      "tunneling_probability": 0.0001046802453758191,
+      "entanglement_degree": 1.0
+    },
+    "atomic": {
+      "realm": "atomic",
+      "status": "PASS",
+      "lyman_wavelength_nm": 121.50227341098497,
+      "vibration_frequency_hz": 1388000000000.0
+    },
+    "electromagnetic": {
+      "realm": "electromagnetic",
+      "status": "PASS",
+      "tunneling_transmission": 1.2569663744794786e-20,
+      "entanglement_degree": 1.0
+    },
+    "optical": {
+      "realm": "optical",
+      "status": "PASS",
+      "tunneling_transmission": 9.84547330268419e-200,
+      "entanglement_degree": 1.0
+    },
+    "nuclear": {
+      "realm": "nuclear",
+      "status": "PASS",
+      "tunneling_transmission": 1.1275245744947471e-203,
+      "entanglement_degree": 1.0
+    },
+    "gravitational": {
+      "realm": "gravitational",
+      "status": "PASS",
+      "ligo_energy_cu": 62218600.71128497,
+      "ligo_nrci": 0.9999999999,
+      "resonance_ratio": 2.0068781062789256
+    },
+    "biological": {
+      "realm": "biological",
+      "status": "PASS",
+      "tunneling_transmission": 0.1011500689141458,
+      "entanglement_degree": 1.0
+    },
+    "plasma": {
+      "realm": "plasma",
+      "status": "PASS",
+      "tunneling_transmission": 0.0,
+      "entanglement_degree": 1.0
+    },
+    "cosmological": {
+      "realm": "cosmological",
+      "status": "PASS",
+      "cmb_energy_cu": 28478.400968214155,
+      "cmb_nrci": 0.9999999999,
+      "hubble_parameter": 120.66294294438539,
+      "hubble_age_gyr": 3.574124019874656e-13
+    }
+  },
+  "failures": []
+}

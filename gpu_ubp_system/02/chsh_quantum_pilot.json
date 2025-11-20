@@ -1,0 +1,28 @@
+{
+  "num_trials": 1,
+  "measurements_per_trial": 100,
+  "propagation_steps": 5,
+  "mean_S": 2.0,
+  "std_S": 0.0,
+  "min_S": 2.0,
+  "max_S": 2.0,
+  "violation_rate": 0.0,
+  "all_results": [
+    {
+      "S": 2.0,
+      "E_ab": 1.0,
+      "E_ab_prime": 1.0,
+      "E_a_prime_b": 1.0,
+      "E_a_prime_b_prime": 1.0,
+      "classical_bound": 2.0,
+      "quantum_bound": 2.8284271247461903,
+      "violates_classical": false,
+      "violates_quantum": false,
+      "mean_nrci": 0.9999970000000041,
+      "mean_entanglement": 1.0,
+      "num_measurements": 100,
+      "propagation_steps": 5,
+      "elapsed_time": 0.014217138290405273
+    }
+  ]
+}

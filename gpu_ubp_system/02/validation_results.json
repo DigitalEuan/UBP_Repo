@@ -1,0 +1,48 @@
+{
+  "fidelity_conversion": {
+    "test": "fidelity_conversion",
+    "num_samples": 1000,
+    "mean_error": 0.0,
+    "std_error": 0.0,
+    "max_error": 0.0,
+    "threshold": 1e-06,
+    "passed": true
+  },
+  "statistical_equivalence": {
+    "test": "statistical_equivalence",
+    "num_cycles": 1000,
+    "mean_nrci": 0.11099995731094074,
+    "std_nrci": 0.31413201699123605,
+    "min_nrci": 0.0,
+    "max_nrci": 1.0,
+    "expected_mean": 0.999997,
+    "mean_diff": 0.8889970426890593,
+    "passed": false
+  },
+  "temporal_coherence": {
+    "test": "temporal_coherence",
+    "num_cycles": 500,
+    "min_nrci": 0.0,
+    "max_nrci": 1.0,
+    "final_nrci": 0.0,
+    "moving_avg_std": 0.39608536565359403,
+    "catastrophic_decay": true,
+    "passed": false
+  },
+  "resonance_kernel": {
+    "test": "resonance_kernel",
+    "num_samples": 100,
+    "mean_error": 0.0,
+    "max_error": 0.0,
+    "threshold": 1e-10,
+    "passed": true
+  },
+  "performance_benchmark": {
+    "test": "performance_benchmark",
+    "num_cycles": 10000,
+    "elapsed_time": 0.06712102890014648,
+    "csc_per_second": 148984.6053295255,
+    "threshold": 1000,
+    "passed": true
+  }
+}
