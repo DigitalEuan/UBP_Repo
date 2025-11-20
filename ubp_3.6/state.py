@@ -1,4 +1,25 @@
-"""\n================================================================================\nUniversal Binary Principle (UBP) Framework v3.6 - State Management\nAuthor: Euan Craig, New Zealand\nDate: November 20, 2025 (Updated with Resonance History Tracking)\n================================================================================\n\nUBP State management with coherence-native OffBits and resonance history.\n\n**Paradigm Shift in 3.5**:\nOffBits now carry their own coherence state. Every bit operation maintains\ncoherence tracking, making state management inherently coherence-aware.\n\n**Enhancement in 3.6**:\nOffBits now track resonance history - a temporal record of (time, frequency,\nresonance_factor) tuples. This enables continuous coherence analysis and\nintegration with Coherence Field ELITE's resonance detector for pattern\ndetection, optimization, and prediction.\n\n**Zero Dependencies**: Only Python stdlib + coherence_substrate\n"""
+"""
+================================================================================
+Universal Binary Principle (UBP) Framework v3.6 - State Management
+Author: Euan Craig, New Zealand
+Date: November 20, 2025 (Updated with Resonance History Tracking)
+================================================================================
+UBP State management with coherence-native OffBits and resonance history.
+**Paradigm Shift in 3.5**:
+OffBits now carry their own coherence state. 
+Every bit operation maintains coherence tracking, 
+making state management inherently coherence-aware.
+
+**Enhancement in 3.6**:
+OffBits now track resonance history 
+- a temporal record of (time, frequency, resonance_factor) tuples. 
+This enables continuous coherence analysis and integration with Coherence Field ELITE's 
+resonance detector for pattern detection, optimization, and prediction.
+
+**Zero Dependencies**: Only Python stdlib + coherence_substrate
+
+================================================================================
+"""
 
 import math
 from typing import Dict, List, Tuple, Optional, Any
