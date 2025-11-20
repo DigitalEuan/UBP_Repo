@@ -1,6 +1,6 @@
 # UBP 3.6: The Universal Binary Principle
 
-**Version 3.6.2 (Computational Grammar Integration)**  
+**Version 3.6.2**  
 **Author**: Euan Craig, New Zealand  
 **Date**: November 20, 2025
 
