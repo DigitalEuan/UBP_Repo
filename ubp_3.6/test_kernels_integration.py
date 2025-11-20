@@ -48,12 +48,14 @@ def test_kernels_with_offbit():
     interaction = k.resonance_interaction(float(offbit.value), frequency, time)
     print(f"✓ Resonance interaction: {interaction:.6e}")
     
-    # Test CARFE recursion with OffBit values
+    # Test resonance with OffBit values
     offbit1 = OffBit(0x100)
     offbit2 = OffBit(0x200)
     
-    next_value = k.carfe_recursion(float(offbit2.value), float(offbit1.value), 1.0)
-    print(f"✓ CARFE recursion: {next_value:.2f}")
+    # Calculate resonance between two OffBit values
+    distance = abs(float(offbit2.value) - float(offbit1.value))
+    resonance = k.resonance_kernel(distance * 1e-6)  # Scale for reasonable d
+    print(f"✓ Resonance between OffBits: {resonance:.6f}")
     
     return True
 

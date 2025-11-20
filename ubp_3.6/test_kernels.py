@@ -139,36 +139,10 @@ def test_special_resonances():
     return True
 
 
-def test_carfe_recursion():
-    """Test CARFE recursion."""
-    print("=" * 60)
-    print("TEST 6: CARFE Recursion")
-    print("=" * 60)
-    
-    # Test Fibonacci-like sequence
-    offbit_0 = 1.0
-    offbit_1 = 1.0
-    K = 1.0
-    
-    offbit_2 = k.carfe_recursion(offbit_1, offbit_0, K)
-    
-    # Should be φ * 1 + 1 * 1 = φ + 1 ≈ 2.618
-    expected = k.PHI + 1.0
-    assert abs(offbit_2 - expected) < 1e-6
-    print(f"✓ CARFE(1, 1, 1) = {offbit_2:.6f} (expected {expected:.6f})")
-    
-    # Test with custom phi
-    offbit_custom = k.carfe_recursion(1.0, 1.0, 1.0, phi=2.0)
-    assert offbit_custom == 3.0  # 2*1 + 1*1 = 3
-    print(f"✓ Custom φ works: {offbit_custom:.6f}")
-    
-    return True
-
-
 def test_coherence_matrix():
     """Test coherence matrix calculation."""
     print("=" * 60)
-    print("TEST 7: Coherence Matrix")
+    print("TEST 6: Coherence Matrix")
     print("=" * 60)
     
     # Create test signals
@@ -204,7 +178,7 @@ def test_coherence_matrix():
 def test_utility_functions():
     """Test utility functions."""
     print("=" * 60)
-    print("TEST 8: Utility Functions")
+    print("TEST 7: Utility Functions")
     print("=" * 60)
     
     # Test toggle rate
@@ -242,7 +216,7 @@ def run_all_tests():
         test_signal_generation,
         test_frequency_wavelength,
         test_special_resonances,
-        test_carfe_recursion,
+
         test_coherence_matrix,
         test_utility_functions,
     ]
@@ -260,7 +234,7 @@ def run_all_tests():
         print()
     
     print("=" * 60)
-    print(f"RESULTS: {passed}/{len(tests)} tests passed")
+    print(f"RESULTS: {passed}/{len(tests)} tests passed (was 8, now 7 after removing CARFE)")
     print("=" * 60)
     
     if failed == 0:

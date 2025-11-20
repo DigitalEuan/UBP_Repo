@@ -371,38 +371,6 @@ def euclidean_geometry_pi_resonance() -> float:
 
 
 # ============================================================================
-# CARFE RECURSION
-# ============================================================================
-
-def carfe_recursion(offbit_n: float, offbit_n_minus_1: float, 
-                   K_n: float, phi: Optional[float] = None) -> float:
-    """
-    Calculate CARFE (Cykloid Adelic Recursive Expansive Field Equation) recursion.
-    
-    Axiom: OffBit_{n+1} = φ * OffBit_n + K_n * OffBit_{n-1}
-    
-    This implements the recursive field expansion using the golden ratio.
-    
-    Args:
-        offbit_n: Current OffBit state
-        offbit_n_minus_1: Previous OffBit state
-        K_n: Coupling constant
-        phi: Golden ratio (default: from UBPConstants)
-        
-    Returns:
-        Next OffBit state
-        
-    Example:
-        >>> carfe_recursion(1.0, 0.0, 1.0)  # Start of sequence
-        1.618...
-    """
-    if phi is None:
-        phi = PHI
-    
-    return phi * offbit_n + K_n * offbit_n_minus_1
-
-
-# ============================================================================
 # UTILITY FUNCTIONS
 # ============================================================================
 
@@ -501,18 +469,6 @@ if __name__ == "__main__":
     print(f"   π-φ resonance: {pi_phi_resonance_frequency():.2f} Hz")
     print(f"   Planck-Euler resonance: {planck_euler_resonance_frequency():.6e} Hz")
     print(f"   Euclidean π-resonance: {euclidean_geometry_pi_resonance():.1f} Hz")
-    
-    # Test CARFE recursion
-    print("\n6. CARFE Recursion:")
-    offbit_0 = 1.0
-    offbit_1 = 1.0
-    K = 1.0
-    print(f"   OffBit_0 = {offbit_0:.6f}")
-    print(f"   OffBit_1 = {offbit_1:.6f}")
-    for i in range(2, 7):
-        offbit_next = carfe_recursion(offbit_1, offbit_0, K)
-        print(f"   OffBit_{i} = {offbit_next:.6f}")
-        offbit_0, offbit_1 = offbit_1, offbit_next
     
     print("\n" + "=" * 80)
     print("UBP 3.6.2: Pure Python Mathematical Kernels")

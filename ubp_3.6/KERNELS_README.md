@@ -132,25 +132,7 @@ euclidean = k.euclidean_geometry_pi_resonance()
 
 These are **fundamental resonances** that emerge from the interaction of mathematical constants with physical reality.
 
-### 7. CARFE Recursion
-
-Cykloid Adelic Recursive Expansive Field Equation:
-
-```python
-# Generate CARFE sequence
-offbit_0 = 1.0
-offbit_1 = 1.0
-K = 1.0
-
-offbit_2 = k.carfe_recursion(offbit_1, offbit_0, K)
-# Returns: 2.618034 (φ + 1)
-```
-
-**Axiom**: `OffBit_{n+1} = φ * OffBit_n + K_n * OffBit_{n-1}`
-
-This implements recursive field expansion using the golden ratio.
-
-### 8. Utility Functions
+### 7. Utility Functions
 
 Additional mathematical utilities:
 
@@ -203,12 +185,6 @@ interaction = k.resonance_interaction(
     time=1e-9
 )
 
-# CARFE recursion
-next_value = k.carfe_recursion(
-    float(offbit.value),
-    float(offbit.value >> 1),
-    K_n=1.0
-)
 ```
 
 ### With Toggle Operations
@@ -232,13 +208,12 @@ coherence = k.normalized_coherence(original_signal, toggled_signal)
 
 ## Test Results
 
-**Unit Tests**: 8/8 passing (100%)
+**Unit Tests**: 7/7 passing (100%)
 - Resonance kernel ✓
 - Coherence calculations ✓
 - Signal generation ✓
 - Frequency conversions ✓
 - Special resonances ✓
-- CARFE recursion ✓
 - Coherence matrix ✓
 - Utility functions ✓
 
@@ -255,6 +230,12 @@ python3.11 test_kernels.py
 python3.11 test_kernels_integration.py
 ```
 
+## Note on CARFE
+
+**CARFE (Cykloid Adelic Recursive Expansive Field Equation)** has been superseded by `field_dynamics.py` in UBP 3.6.2. The CARFE recursion function was removed from kernels.py as it's now handled by the more advanced field dynamics module.
+
+If you need CARFE-like functionality, use `field_dynamics.py` instead.
+
 ## Performance
 
 All operations are **highly efficient**:
@@ -263,7 +244,7 @@ All operations are **highly efficient**:
 - Coherence calculation: < 10μs per pair
 - Signal generation: < 1ms for 1000 samples
 - Frequency conversion: < 1μs
-- CARFE recursion: < 1μs
+
 
 Pure Python with no performance penalty.
 
