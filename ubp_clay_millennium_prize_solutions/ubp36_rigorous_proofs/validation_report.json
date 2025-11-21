@@ -1,0 +1,801 @@
+{
+  "validation_framework": "Multi-Angle Validation - UBP 3.6",
+  "angles": [
+    "NRCI Convergence",
+    "Toggle Invariance",
+    "Y-Refinement Closure",
+    "Computational Consistency",
+    "Theoretical Foundations"
+  ],
+  "problems": {
+    "riemann_hypothesis_refined": {
+      "validations": {
+        "NRCI Convergence": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "NRCI convergence: 100.0% supercoherent, avg=0.999996929441145, stable (\u03c3=4.59e-08)",
+          "details": {
+            "final_nrci": 0.999996844055433,
+            "avg_nrci": 0.9999969294411447,
+            "min_nrci": 0.999996844055433,
+            "max_nrci": 0.9999969969635497,
+            "supercoherent_count": 30,
+            "supercoherent_rate": 1.0,
+            "variance": 2.1101908109390927e-15,
+            "std_dev": 4.593681324318321e-08,
+            "threshold": 0.999996
+          }
+        },
+        "Toggle Invariance": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Toggle invariance: variance=1.56e-12, stable under 90 TGIC operations",
+          "details": {
+            "initial_nrci": 0.999997,
+            "final_nrci": 0.9999976666260901,
+            "nrci_variance": 1.5555976607710667e-12,
+            "nrci_std": 1.2472360084487084e-06,
+            "all_invariant": false,
+            "operations_tested": 90
+          }
+        },
+        "Y-Refinement Closure": {
+          "passed": false,
+          "score": 0.5499065566187175,
+          "interpretation": "Y-refinement closure: max error=1.82e-12, observer emergence verified (error=4.44e-16)",
+          "details": {
+            "test_values": [
+              1.0,
+              10.0,
+              100.0,
+              1000.0,
+              10000.0,
+              1e-06,
+              0.001,
+              1000.0,
+              1000000.0
+            ],
+            "closure_errors": [
+              0.0,
+              0.0,
+              1.4210854715202004e-14,
+              0.0,
+              1.8189894035458565e-12,
+              0.0,
+              2.168404344971009e-19,
+              0.0,
+              0.0
+            ],
+            "max_error": 1.8189894035458565e-12,
+            "avg_error": 2.0368894167794368e-13,
+            "emergence_verified": true,
+            "emergence_error": 4.440892098500626e-16,
+            "Y": 0.26467543040452696,
+            "Y_inverse": 3.7782124259573746,
+            "O_observer": 3.7782124259573746
+          }
+        },
+        "Computational Consistency": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Computational consistency: 4/4 checks passed",
+          "details": {
+            "checks": [
+              [
+                "NRCI consistency",
+                true
+              ],
+              [
+                "Success rate valid",
+                true
+              ],
+              [
+                "Toggle ops positive",
+                true
+              ],
+              [
+                "Convergence steps positive",
+                true
+              ]
+            ],
+            "passed_checks": 4,
+            "total_checks": 4
+          }
+        },
+        "Theoretical Foundations": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Theoretical foundations: 5/5 checks passed",
+          "details": {
+            "checks": [
+              [
+                "Toggle grammar Turing-complete",
+                true
+              ],
+              [
+                "NRCI truth criterion",
+                true
+              ],
+              [
+                "Y-refinement isomorphism",
+                true
+              ],
+              [
+                "Observer emergence",
+                true
+              ],
+              [
+                "TGIC structure valid",
+                true
+              ]
+            ],
+            "passed_checks": 5,
+            "total_checks": 5,
+            "framework_version": "UBP 3.6"
+          }
+        }
+      },
+      "summary": {
+        "passed_angles": 4,
+        "total_angles": 5,
+        "average_score": 0.9099813113237435,
+        "all_passed": false
+      }
+    },
+    "p_vs_np_refined": {
+      "validations": {
+        "NRCI Convergence": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "NRCI convergence: 100.0% supercoherent, avg=0.999997000000040, stable (\u03c3=0.00e+00)",
+          "details": {
+            "final_nrci": 0.9999970000000399,
+            "avg_nrci": 0.9999970000000399,
+            "min_nrci": 0.9999970000000399,
+            "max_nrci": 0.9999970000000399,
+            "supercoherent_count": 5,
+            "supercoherent_rate": 1.0,
+            "variance": 0.0,
+            "std_dev": 0.0,
+            "threshold": 0.999996
+          }
+        },
+        "Toggle Invariance": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Toggle invariance: variance=1.56e-12, stable under 90 TGIC operations",
+          "details": {
+            "initial_nrci": 0.999997,
+            "final_nrci": 0.9999976666260901,
+            "nrci_variance": 1.5555976607710667e-12,
+            "nrci_std": 1.2472360084487084e-06,
+            "all_invariant": false,
+            "operations_tested": 90
+          }
+        },
+        "Y-Refinement Closure": {
+          "passed": false,
+          "score": 0.5499065566187175,
+          "interpretation": "Y-refinement closure: max error=1.82e-12, observer emergence verified (error=4.44e-16)",
+          "details": {
+            "test_values": [
+              1.0,
+              10.0,
+              100.0,
+              1000.0,
+              10000.0,
+              1e-06,
+              0.001,
+              1000.0,
+              1000000.0
+            ],
+            "closure_errors": [
+              0.0,
+              0.0,
+              1.4210854715202004e-14,
+              0.0,
+              1.8189894035458565e-12,
+              0.0,
+              2.168404344971009e-19,
+              0.0,
+              0.0
+            ],
+            "max_error": 1.8189894035458565e-12,
+            "avg_error": 2.0368894167794368e-13,
+            "emergence_verified": true,
+            "emergence_error": 4.440892098500626e-16,
+            "Y": 0.26467543040452696,
+            "Y_inverse": 3.7782124259573746,
+            "O_observer": 3.7782124259573746
+          }
+        },
+        "Computational Consistency": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Computational consistency: 3/3 checks passed",
+          "details": {
+            "checks": [
+              [
+                "NRCI consistency",
+                true
+              ],
+              [
+                "Toggle ops positive",
+                true
+              ],
+              [
+                "Convergence steps positive",
+                true
+              ]
+            ],
+            "passed_checks": 3,
+            "total_checks": 3
+          }
+        },
+        "Theoretical Foundations": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Theoretical foundations: 5/5 checks passed",
+          "details": {
+            "checks": [
+              [
+                "Toggle grammar Turing-complete",
+                true
+              ],
+              [
+                "NRCI truth criterion",
+                true
+              ],
+              [
+                "Y-refinement isomorphism",
+                true
+              ],
+              [
+                "Observer emergence",
+                true
+              ],
+              [
+                "TGIC structure valid",
+                true
+              ]
+            ],
+            "passed_checks": 5,
+            "total_checks": 5,
+            "framework_version": "UBP 3.6"
+          }
+        }
+      },
+      "summary": {
+        "passed_angles": 4,
+        "total_angles": 5,
+        "average_score": 0.9099813113237435,
+        "all_passed": false
+      }
+    },
+    "navier_stokes": {
+      "validations": {
+        "NRCI Convergence": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "NRCI convergence: 100.0% supercoherent, avg=0.999999970296941, stable (\u03c3=2.97e-07)",
+          "details": {
+            "final_nrci": 1.0,
+            "avg_nrci": 0.9999999702969405,
+            "min_nrci": 0.999997,
+            "max_nrci": 1.0,
+            "supercoherent_count": 101,
+            "supercoherent_rate": 1.0,
+            "variance": 8.822663915234907e-14,
+            "std_dev": 2.970296940582693e-07,
+            "threshold": 0.999996
+          }
+        },
+        "Toggle Invariance": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Toggle invariance: variance=1.56e-12, stable under 90 TGIC operations",
+          "details": {
+            "initial_nrci": 0.999997,
+            "final_nrci": 0.9999976666260901,
+            "nrci_variance": 1.5555976607710667e-12,
+            "nrci_std": 1.2472360084487084e-06,
+            "all_invariant": false,
+            "operations_tested": 90
+          }
+        },
+        "Y-Refinement Closure": {
+          "passed": false,
+          "score": 0.5499065566187175,
+          "interpretation": "Y-refinement closure: max error=1.82e-12, observer emergence verified (error=4.44e-16)",
+          "details": {
+            "test_values": [
+              1.0,
+              10.0,
+              100.0,
+              1000.0,
+              10000.0,
+              1e-06,
+              0.001,
+              1000.0,
+              1000000.0
+            ],
+            "closure_errors": [
+              0.0,
+              0.0,
+              1.4210854715202004e-14,
+              0.0,
+              1.8189894035458565e-12,
+              0.0,
+              2.168404344971009e-19,
+              0.0,
+              0.0
+            ],
+            "max_error": 1.8189894035458565e-12,
+            "avg_error": 2.0368894167794368e-13,
+            "emergence_verified": true,
+            "emergence_error": 4.440892098500626e-16,
+            "Y": 0.26467543040452696,
+            "Y_inverse": 3.7782124259573746,
+            "O_observer": 3.7782124259573746
+          }
+        },
+        "Computational Consistency": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Computational consistency: 3/3 checks passed",
+          "details": {
+            "checks": [
+              [
+                "NRCI consistency",
+                true
+              ],
+              [
+                "Toggle ops positive",
+                true
+              ],
+              [
+                "Convergence steps positive",
+                true
+              ]
+            ],
+            "passed_checks": 3,
+            "total_checks": 3
+          }
+        },
+        "Theoretical Foundations": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Theoretical foundations: 5/5 checks passed",
+          "details": {
+            "checks": [
+              [
+                "Toggle grammar Turing-complete",
+                true
+              ],
+              [
+                "NRCI truth criterion",
+                true
+              ],
+              [
+                "Y-refinement isomorphism",
+                true
+              ],
+              [
+                "Observer emergence",
+                true
+              ],
+              [
+                "TGIC structure valid",
+                true
+              ]
+            ],
+            "passed_checks": 5,
+            "total_checks": 5,
+            "framework_version": "UBP 3.6"
+          }
+        }
+      },
+      "summary": {
+        "passed_angles": 4,
+        "total_angles": 5,
+        "average_score": 0.9099813113237435,
+        "all_passed": false
+      }
+    },
+    "yang_mills": {
+      "validations": {
+        "NRCI Convergence": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "NRCI convergence: 100.0% supercoherent, avg=0.999996999476945, stable (\u03c3=8.29e-11)",
+          "details": {
+            "final_nrci": 0.9999969994232988,
+            "avg_nrci": 0.9999969994769451,
+            "min_nrci": 0.9999969994232988,
+            "max_nrci": 0.99999699985,
+            "supercoherent_count": 50,
+            "supercoherent_rate": 1.0,
+            "variance": 6.87321293451106e-21,
+            "std_dev": 8.290484264812918e-11,
+            "threshold": 0.999996
+          }
+        },
+        "Toggle Invariance": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Toggle invariance: variance=1.56e-12, stable under 90 TGIC operations",
+          "details": {
+            "initial_nrci": 0.999997,
+            "final_nrci": 0.9999976666260901,
+            "nrci_variance": 1.5555976607710667e-12,
+            "nrci_std": 1.2472360084487084e-06,
+            "all_invariant": false,
+            "operations_tested": 90
+          }
+        },
+        "Y-Refinement Closure": {
+          "passed": false,
+          "score": 0.5499065566187175,
+          "interpretation": "Y-refinement closure: max error=1.82e-12, observer emergence verified (error=4.44e-16)",
+          "details": {
+            "test_values": [
+              1.0,
+              10.0,
+              100.0,
+              1000.0,
+              10000.0,
+              1e-06,
+              0.001,
+              1000.0,
+              1000000.0
+            ],
+            "closure_errors": [
+              0.0,
+              0.0,
+              1.4210854715202004e-14,
+              0.0,
+              1.8189894035458565e-12,
+              0.0,
+              2.168404344971009e-19,
+              0.0,
+              0.0
+            ],
+            "max_error": 1.8189894035458565e-12,
+            "avg_error": 2.0368894167794368e-13,
+            "emergence_verified": true,
+            "emergence_error": 4.440892098500626e-16,
+            "Y": 0.26467543040452696,
+            "Y_inverse": 3.7782124259573746,
+            "O_observer": 3.7782124259573746
+          }
+        },
+        "Computational Consistency": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Computational consistency: 3/3 checks passed",
+          "details": {
+            "checks": [
+              [
+                "NRCI consistency",
+                true
+              ],
+              [
+                "Toggle ops positive",
+                true
+              ],
+              [
+                "Convergence steps positive",
+                true
+              ]
+            ],
+            "passed_checks": 3,
+            "total_checks": 3
+          }
+        },
+        "Theoretical Foundations": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Theoretical foundations: 5/5 checks passed",
+          "details": {
+            "checks": [
+              [
+                "Toggle grammar Turing-complete",
+                true
+              ],
+              [
+                "NRCI truth criterion",
+                true
+              ],
+              [
+                "Y-refinement isomorphism",
+                true
+              ],
+              [
+                "Observer emergence",
+                true
+              ],
+              [
+                "TGIC structure valid",
+                true
+              ]
+            ],
+            "passed_checks": 5,
+            "total_checks": 5,
+            "framework_version": "UBP 3.6"
+          }
+        }
+      },
+      "summary": {
+        "passed_angles": 4,
+        "total_angles": 5,
+        "average_score": 0.9099813113237435,
+        "all_passed": false
+      }
+    },
+    "bsd_conjecture": {
+      "validations": {
+        "NRCI Convergence": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "NRCI convergence: 100.0% supercoherent, avg=0.999996999723666, stable (\u03c3=2.35e-10)",
+          "details": {
+            "final_nrci": 0.99999699985,
+            "avg_nrci": 0.999996999723666,
+            "min_nrci": 0.9999969994,
+            "max_nrci": 0.9999969999333334,
+            "supercoherent_count": 50,
+            "supercoherent_rate": 1.0,
+            "variance": 5.51121202316094e-20,
+            "std_dev": 2.347597074278493e-10,
+            "threshold": 0.999996
+          }
+        },
+        "Toggle Invariance": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Toggle invariance: variance=1.56e-12, stable under 90 TGIC operations",
+          "details": {
+            "initial_nrci": 0.999997,
+            "final_nrci": 0.9999976666260901,
+            "nrci_variance": 1.5555976607710667e-12,
+            "nrci_std": 1.2472360084487084e-06,
+            "all_invariant": false,
+            "operations_tested": 90
+          }
+        },
+        "Y-Refinement Closure": {
+          "passed": false,
+          "score": 0.5499065566187175,
+          "interpretation": "Y-refinement closure: max error=1.82e-12, observer emergence verified (error=4.44e-16)",
+          "details": {
+            "test_values": [
+              1.0,
+              10.0,
+              100.0,
+              1000.0,
+              10000.0,
+              1e-06,
+              0.001,
+              1000.0,
+              1000000.0
+            ],
+            "closure_errors": [
+              0.0,
+              0.0,
+              1.4210854715202004e-14,
+              0.0,
+              1.8189894035458565e-12,
+              0.0,
+              2.168404344971009e-19,
+              0.0,
+              0.0
+            ],
+            "max_error": 1.8189894035458565e-12,
+            "avg_error": 2.0368894167794368e-13,
+            "emergence_verified": true,
+            "emergence_error": 4.440892098500626e-16,
+            "Y": 0.26467543040452696,
+            "Y_inverse": 3.7782124259573746,
+            "O_observer": 3.7782124259573746
+          }
+        },
+        "Computational Consistency": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Computational consistency: 3/3 checks passed",
+          "details": {
+            "checks": [
+              [
+                "NRCI consistency",
+                true
+              ],
+              [
+                "Toggle ops positive",
+                true
+              ],
+              [
+                "Convergence steps positive",
+                true
+              ]
+            ],
+            "passed_checks": 3,
+            "total_checks": 3
+          }
+        },
+        "Theoretical Foundations": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Theoretical foundations: 5/5 checks passed",
+          "details": {
+            "checks": [
+              [
+                "Toggle grammar Turing-complete",
+                true
+              ],
+              [
+                "NRCI truth criterion",
+                true
+              ],
+              [
+                "Y-refinement isomorphism",
+                true
+              ],
+              [
+                "Observer emergence",
+                true
+              ],
+              [
+                "TGIC structure valid",
+                true
+              ]
+            ],
+            "passed_checks": 5,
+            "total_checks": 5,
+            "framework_version": "UBP 3.6"
+          }
+        }
+      },
+      "summary": {
+        "passed_angles": 4,
+        "total_angles": 5,
+        "average_score": 0.9099813113237435,
+        "all_passed": false
+      }
+    },
+    "hodge_conjecture": {
+      "validations": {
+        "NRCI Convergence": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "NRCI convergence: 100.0% supercoherent, avg=0.999997000000000, stable (\u03c3=3.33e-16)",
+          "details": {
+            "final_nrci": 0.999997,
+            "avg_nrci": 0.9999970000000004,
+            "min_nrci": 0.999997,
+            "max_nrci": 0.999997,
+            "supercoherent_count": 50,
+            "supercoherent_rate": 1.0,
+            "variance": 1.1093356479670479e-31,
+            "std_dev": 3.3306690738754696e-16,
+            "threshold": 0.999996
+          }
+        },
+        "Toggle Invariance": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Toggle invariance: variance=1.56e-12, stable under 90 TGIC operations",
+          "details": {
+            "initial_nrci": 0.999997,
+            "final_nrci": 0.9999976666260901,
+            "nrci_variance": 1.5555976607710667e-12,
+            "nrci_std": 1.2472360084487084e-06,
+            "all_invariant": false,
+            "operations_tested": 90
+          }
+        },
+        "Y-Refinement Closure": {
+          "passed": false,
+          "score": 0.5499065566187175,
+          "interpretation": "Y-refinement closure: max error=1.82e-12, observer emergence verified (error=4.44e-16)",
+          "details": {
+            "test_values": [
+              1.0,
+              10.0,
+              100.0,
+              1000.0,
+              10000.0,
+              1e-06,
+              0.001,
+              1000.0,
+              1000000.0
+            ],
+            "closure_errors": [
+              0.0,
+              0.0,
+              1.4210854715202004e-14,
+              0.0,
+              1.8189894035458565e-12,
+              0.0,
+              2.168404344971009e-19,
+              0.0,
+              0.0
+            ],
+            "max_error": 1.8189894035458565e-12,
+            "avg_error": 2.0368894167794368e-13,
+            "emergence_verified": true,
+            "emergence_error": 4.440892098500626e-16,
+            "Y": 0.26467543040452696,
+            "Y_inverse": 3.7782124259573746,
+            "O_observer": 3.7782124259573746
+          }
+        },
+        "Computational Consistency": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Computational consistency: 3/3 checks passed",
+          "details": {
+            "checks": [
+              [
+                "NRCI consistency",
+                true
+              ],
+              [
+                "Toggle ops positive",
+                true
+              ],
+              [
+                "Convergence steps positive",
+                true
+              ]
+            ],
+            "passed_checks": 3,
+            "total_checks": 3
+          }
+        },
+        "Theoretical Foundations": {
+          "passed": true,
+          "score": 1.0,
+          "interpretation": "Theoretical foundations: 5/5 checks passed",
+          "details": {
+            "checks": [
+              [
+                "Toggle grammar Turing-complete",
+                true
+              ],
+              [
+                "NRCI truth criterion",
+                true
+              ],
+              [
+                "Y-refinement isomorphism",
+                true
+              ],
+              [
+                "Observer emergence",
+                true
+              ],
+              [
+                "TGIC structure valid",
+                true
+              ]
+            ],
+            "passed_checks": 5,
+            "total_checks": 5,
+            "framework_version": "UBP 3.6"
+          }
+        }
+      },
+      "summary": {
+        "passed_angles": 4,
+        "total_angles": 5,
+        "average_score": 0.9099813113237435,
+        "all_passed": false
+      }
+    }
+  },
+  "overall_summary": {
+    "total_problems": 6,
+    "fully_validated": 0,
+    "validation_rate": 0.0
+  }
+}

@@ -1,0 +1,90 @@
+
+MILLENNIUM PRIZE PROOF CERTIFICATE
+===================================
+
+Problem: p_vs_np
+Status: failed
+Date: 2025-11-22
+
+PROOF SUMMARY
+-------------
+Final NRCI: 0.999997000000001
+Convergence Steps: 50
+Toggle Operations: 500
+Invariance Verified: False
+
+NRCI CONVERGENCE HISTORY
+------------------------
+Step   0: NRCI = 0.999997000000001
+Step   1: NRCI = 0.999997000000001
+Step   2: NRCI = 0.999997000000001
+Step   3: NRCI = 0.999997000000001
+Step   4: NRCI = 0.999997000000001
+Step   5: NRCI = 0.999997000000001
+Step   6: NRCI = 0.999997000000001
+Step   7: NRCI = 0.999997000000001
+Step   8: NRCI = 0.999997000000001
+Step   9: NRCI = 0.999997000000001
+Step  10: NRCI = 0.999997000000001
+Step  11: NRCI = 0.999997000000001
+Step  12: NRCI = 0.999997000000001
+Step  13: NRCI = 0.999997000000001
+Step  14: NRCI = 0.999997000000001
+Step  15: NRCI = 0.999997000000001
+Step  16: NRCI = 0.999997000000001
+Step  17: NRCI = 0.999997000000001
+Step  18: NRCI = 0.999997000000001
+Step  19: NRCI = 0.999997000000001
+Step  20: NRCI = 0.999997000000001
+Step  21: NRCI = 0.999997000000001
+Step  22: NRCI = 0.999997000000001
+Step  23: NRCI = 0.999997000000001
+Step  24: NRCI = 0.999997000000001
+Step  25: NRCI = 0.999997000000001
+Step  26: NRCI = 0.999997000000001
+Step  27: NRCI = 0.999997000000001
+Step  28: NRCI = 0.999997000000001
+Step  29: NRCI = 0.999997000000001
+Step  30: NRCI = 0.999997000000001
+Step  31: NRCI = 0.999997000000001
+Step  32: NRCI = 0.999997000000001
+Step  33: NRCI = 0.999997000000001
+Step  34: NRCI = 0.999997000000001
+Step  35: NRCI = 0.999997000000001
+Step  36: NRCI = 0.999997000000001
+Step  37: NRCI = 0.999997000000001
+Step  38: NRCI = 0.999997000000001
+Step  39: NRCI = 0.999997000000001
+Step  40: NRCI = 0.999997000000001
+Step  41: NRCI = 0.999997000000001
+Step  42: NRCI = 0.999997000000001
+Step  43: NRCI = 0.999997000000001
+Step  44: NRCI = 0.999997000000001
+Step  45: NRCI = 0.999997000000001
+Step  46: NRCI = 0.999997000000001
+Step  47: NRCI = 0.999997000000001
+Step  48: NRCI = 0.999997000000001
+Step  49: NRCI = 0.999997000000001
+
+COMPUTATIONAL EVIDENCE
+----------------------
+{
+  "instances_tested": 50,
+  "avg_complexity_ratio": 0.0175824175824176,
+  "exponential_separation": false,
+  "avg_nrci": 0.9999970000000006,
+  "interpretation": "Complexity ratio > 100 demonstrates P \u2260 NP"
+}
+
+VERIFICATION
+------------
+This certificate can be independently verified by:
+1. Rerunning the proof with the same initial conditions
+2. Checking NRCI convergence to 0.999997
+3. Verifying invariance under all TGIC operations
+4. Confirming Y-refinement closure (error < 1e-12)
+
+SIGNATURE
+---------
+UBP 3.6 Proof Engine
+Millennium Prize Proof System v1.0.0

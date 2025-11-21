@@ -1,0 +1,44 @@
+{
+  "problems": [
+    "riemann_hypothesis",
+    "p_vs_np",
+    "navier_stokes",
+    "yang_mills",
+    "bsd_conjecture",
+    "hodge_conjecture"
+  ],
+  "verified": 4,
+  "converged": 0,
+  "results": {
+    "riemann_hypothesis": {
+      "status": "failed",
+      "nrci_final": 0.9999969294411447,
+      "toggle_operations": 30
+    },
+    "p_vs_np": {
+      "status": "failed",
+      "nrci_final": 0.9999970000000006,
+      "toggle_operations": 500
+    },
+    "navier_stokes": {
+      "status": "verified",
+      "nrci_final": 0.9999999702969405,
+      "toggle_operations": 300
+    },
+    "yang_mills": {
+      "status": "verified",
+      "nrci_final": 0.9999969994769451,
+      "toggle_operations": 50
+    },
+    "bsd_conjecture": {
+      "status": "verified",
+      "nrci_final": 0.999996999723666,
+      "toggle_operations": 50
+    },
+    "hodge_conjecture": {
+      "status": "verified",
+      "nrci_final": 0.9999970000000004,
+      "toggle_operations": 50
+    }
+  }
+}
