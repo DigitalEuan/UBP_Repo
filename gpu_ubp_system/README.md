@@ -93,44 +93,44 @@ The GPU UBP system employs a master-worker architecture that preserves the preci
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                CPU AUTHORITY (64-bit Python)                 │
+│                CPU AUTHORITY (64-bit Python)                │
 │  ┌────────────────────────────────────────────────────────┐ │
 │  │  UBP 3.6 Core                                          │ │
-│  │  - coherence_substrate.py (CoherenceState, Operators) │ │
-│  │  - kernels.py (Resonance kernel, coherence calc)      │ │
-│  │  - tgic.py (Dodecahedral graph, 20 nodes)             │ │
-│  │  - geometric_error_correction.py (6 regimes)          │ │
-│  │  - quantum_realm.py (QuantumState, entanglement)      │ │
-│  │  - atomic_realm.py (Spectroscopy, transitions)        │ │
-│  │  - [7 additional realm modules]                       │ │
+│  │  - coherence_substrate.py (CoherenceState, Operators)  │ │
+│  │  - kernels.py (Resonance kernel, coherence calc)       │ │
+│  │  - tgic.py (Dodecahedral graph, 20 nodes)              │ │
+│  │  - geometric_error_correction.py (6 regimes)           │ │
+│  │  - quantum_realm.py (QuantumState, entanglement)       │ │
+│  │  - atomic_realm.py (Spectroscopy, transitions)         │ │
+│  │  - [7 additional realm modules]                        │ │
 │  └────────────────────────────────────────────────────────┘ │
-│                           ↓↑                                 │
+│                           ↓↑                                │
 │  ┌────────────────────────────────────────────────────────┐ │
-│  │  GPU Bridge (gpu_bridge.py)                           │ │
-│  │  - CoherenceState → f32 (validated < 1e-6 error)      │ │
-│  │  - TGIC graph → adjacency arrays                      │ │
-│  │  - Batch updates per CSC                              │ │
+│  │  GPU Bridge (gpu_bridge.py)                            │ │
+│  │  - CoherenceState → f32 (validated < 1e-6 error)       │ │
+│  │  - TGIC graph → adjacency arrays                       │ │
+│  │  - Batch updates per CSC                               │ │
 │  └────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────┘
                              ↓↑
 ┌─────────────────────────────────────────────────────────────┐
-│              GPU WORKER (32-bit Taichi + Metal)              │
+│              GPU WORKER (32-bit Taichi + Metal)             │
 │  ┌────────────────────────────────────────────────────────┐ │
 │  │  Taichi Fields                                         │ │
-│  │  - ti.field(f32) for NRCI (read-only)                 │ │
-│  │  - ti.Vector.field(3, f32) for positions              │ │
-│  │  - ti.field(i32) for connections                      │ │
+│  │  - ti.field(f32) for NRCI (read-only)                  │ │
+│  │  - ti.Vector.field(3, f32) for positions               │ │
+│  │  - ti.field(i32) for connections                       │ │
 │  └────────────────────────────────────────────────────────┘ │
 │  ┌────────────────────────────────────────────────────────┐ │
-│  │  Taichi Kernels (@ti.kernel)                          │ │
-│  │  - compute_colors(): NRCI → RGB mapping               │ │
-│  │  - No arithmetic on UBP states (visualization only)   │ │
+│  │  Taichi Kernels (@ti.kernel)                           │ │
+│  │  - compute_colors(): NRCI → RGB mapping                │ │
+│  │  - No arithmetic on UBP states (visualization only)    │ │
 │  └────────────────────────────────────────────────────────┘ │
 │  ┌────────────────────────────────────────────────────────┐ │
-│  │  Visualization (gpu_renderer.py)                      │ │
-│  │  - Particle rendering (nodes)                         │ │
-│  │  - Edge rendering (connections)                       │ │
-│  │  - Interactive camera (rotate, zoom)                  │ │
+│  │  Visualization (gpu_renderer.py)                       │ │
+│  │  - Particle rendering (nodes)                          │ │
+│  │  - Edge rendering (connections)                        │ │
+│  │  - Interactive camera (rotate, zoom)                   │ │
 │  └────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -161,22 +161,11 @@ gpu_ubp_3.6/
 │   ├── gpu_bridge.py              # CPU-GPU state serialization
 │   ├── gpu_renderer.py            # Taichi GPU visualization
 │   ├── gpu_ubp_sim.py             # Main simulation engine
-│   ├── gpu_validation.py          # Validation framework
-│   ├── study_chsh_quantum.py      # Quantum realm CHSH study
-│   ├── study_atomic_balmer.py     # Atomic realm Balmer study
-│   ├── test_all_realms_complete.py # Multi-realm validation
-│   ├── run_all_realm_studies.py   # Study runner
-│   ├── ubp_core/                  # Symlink to UBP 3.6 core
-│   ├── venv/                      # Virtual environment
-│   ├── WHITEBOARD_FINAL.md        # Development notes
-│   ├── REALM_STUDIES.md           # Study specifications
-│   ├── MODULE_AUDIT.md            # Module completeness audit
-│   ├── chsh_quantum_paper.tex     # LaTeX paper for CHSH study
-│   ├── chsh_results.json          # CHSH study results
-│   ├── study_atomic_balmer_results.json # Balmer study results
-│   ├── multi_realm_validation_complete.json # Validation results
-│   └── README.md                  # This file
-└── README.md                      # Main repository documentation
+│   ├── ubp_core/                  # Complete UBP 3.6
+│   │   └── [all UBP 3.6 modules]
+│   ├── dev_validation/            # All the development and validation files
+│   │   └── [scripts, results, documentation]
+└── README.md                      # This file
 ```
 
 ---
