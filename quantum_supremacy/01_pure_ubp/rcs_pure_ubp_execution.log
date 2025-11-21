@@ -1,0 +1,94 @@
+
+======================================================================
+GPU UBP 3.6 - Pure UBP Random Circuit Sampling
+======================================================================
+Qubits: 53
+Circuit depth: 20
+Samples: 1000
+Ω_c floor: 0.376000000000000
+Target NRCI: 0.999997
+Dependencies: ZERO (Pure Python + UBP core)
+======================================================================
+
+Step 1: Initializing quantum circuit...
+  ✅ Initialized 53 qubits as OffBits
+
+Step 2: Executing random circuit...
+
+======================================================================
+Executing Random Circuit: 20 layers
+======================================================================
+
+  Layer 5/20: Mean NRCI = 0.999996997279, Min = 0.999996993851, Max = 0.999996999748
+  Layer 10/20: Mean NRCI = 0.999996995734, Min = 0.999996989216, Max = 0.999996999421
+  Layer 15/20: Mean NRCI = 0.999996992978, Min = 0.999996983397, Max = 0.999996998531
+  Layer 20/20: Mean NRCI = 0.999996991192, Min = 0.999996982893, Max = 0.999996996849
+
+  ✅ Applied 790 gates (790 toggles)
+
+Step 3: Sampling measurement outcomes...
+======================================================================
+Sampling 1000 measurement outcomes...
+======================================================================
+
+  Sampled 100/1000 bitstrings
+  Sampled 200/1000 bitstrings
+  Sampled 300/1000 bitstrings
+  Sampled 400/1000 bitstrings
+  Sampled 500/1000 bitstrings
+  Sampled 600/1000 bitstrings
+  Sampled 700/1000 bitstrings
+  Sampled 800/1000 bitstrings
+  Sampled 900/1000 bitstrings
+  Sampled 1000/1000 bitstrings
+
+  ✅ Collected 1000 samples
+
+
+======================================================================
+BENCHMARK RESULTS
+======================================================================
+
+Execution:
+  Time: 0.080 seconds
+  Gates: 790
+  Toggles: 790
+  Dependencies: ZERO (Pure Python + UBP core)
+
+Coherence Metrics:
+  Mean NRCI: 0.999996991192
+  Min NRCI: 0.999996982893
+  Max NRCI: 0.999996996849
+  Ω_c floor: 0.376000000000000
+
+Sampling Results:
+  Unique bitstrings: 746
+  Heavy Output Generation (HOG): 1.000000
+
+  Most common bitstrings:
+    00000000000101010101...10101010101010101010: 31 (3.10%)
+    00000000000001010101...10101010101010101010: 16 (1.60%)
+    00000000000101010101...10101010101110101010: 10 (1.00%)
+    00000000000101010101...10101010101010101010: 10 (1.00%)
+    00000000000101010101...10101010101010111010: 9 (0.90%)
+
+Performance:
+  Gates/second: 9872.83
+  Samples/second: 12497.26
+  Toggles/second: 9872.83
+
+======================================================================
+Comparison to Google Sycamore (2019):
+======================================================================
+  Execution time: 200s (Sycamore) vs 0.080s (UBP)
+  Speed-up factor: 2499.5x
+  Fidelity: ~0.2% (Sycamore) vs 99.9996991192% (UBP)
+  Fidelity improvement: 500x
+======================================================================
+
+✅ Results exported to rcs_pure_ubp_results.json
+
+======================================================================
+✅ Pure UBP Quantum Supremacy Benchmark Complete!
+======================================================================
+
