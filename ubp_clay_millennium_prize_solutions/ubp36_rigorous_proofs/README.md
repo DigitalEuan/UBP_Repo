@@ -1,5 +1,19 @@
 # Millennium Prize Solutions - UBP 3.6 Rigorous Proofs
 
+This repository contains an error I missed on the solve_p_vs_np_refined (Lines 248-252), I have hard-coded the exponential difficulty:
+
+# Search complexity: O(2^n) toggle operations
+search_ops = 2 ** n  # <--- YOU HARDCODED THE ANSWER HERE
+search_toggle_counts.append(search_ops)
+
+# Verification complexity: O(n^2) toggle operations
+verify_ops = n * n
+
+Apologies I missed that, a new repository with this corrected information will be available shortly (23 November 2025).
+
+This repository will remain as the evidence trail.
+
+
 This directory contains a rigorous and reproducible implementation of the Clay Millennium Prize Problem solutions using the Universal Binary Principle (UBP) framework, version 3.6. This work addresses the feedback that previous computational validations were not formal mathematical proofs by demonstrating toggle invariance and NRCI convergence from multiple independent angles.
 
 ## Project Overview
