@@ -39,6 +39,13 @@ This project demonstrates that three canonical classical mechanical systems can 
 8. [Future Directions](#future-directions)
 9. [Citation](#citation)
 
+
+I added some Goole NotebookLM visualizations: 
+Classic_Mechanics_UBP_1.png
+Classic_Mechanics_UBP_2.png
+UBP_Classical_Bridge_Five_Nines_Fidelity.pdf
+These are based off the study and documents in this 'bridge' repository but are possibly not as accurate or deep as the documents but I hope they will assit in translating the UBP to a classical framework.
+
 ---
 
 ## Quick Start
