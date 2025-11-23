@@ -19,7 +19,7 @@ import json
 import time
 from typing import List, Tuple, Dict, Any
 
-sys.path.insert(0, '/home/ubuntu/UBP_Repo/ubp_3.6')
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'ubp_3.6'))
 
 from coherence_substrate import CoherenceState, Y, Y_INVERSE, O_OBSERVER, NRCI_TARGET
 from state import OffBit
@@ -132,20 +132,24 @@ class RefinedMillenniumSolver:
     
     def solve_p_vs_np_refined(self, problem_sizes: List[int] = None) -> ProofResult:
         """
-        REFINED: P vs NP with corrected complexity metric.
+        CORRECTED: P vs NP with MEASURED complexity (not hardcoded).
         
-        Key Insight: Measure toggle operation count growth rate.
-        Search grows exponentially, verification grows polynomially.
+        Key Fix: We now MEASURE actual toggle counts from real SAT search
+        and verification operations instead of assuming exponential growth.
         """
         print("\n" + "=" * 70)
-        print("P vs NP - REFINED")
+        print("P vs NP - CORRECTED (MEASURED COMPLEXITY)")
         print("=" * 70)
         
         if problem_sizes is None:
-            problem_sizes = [10, 15, 20, 25, 30]
+            problem_sizes = [5, 8, 10, 12, 15]
         
         print(f"Testing problem sizes: {problem_sizes}")
-        print("Measuring toggle operation count growth...")
+        print("MEASURING actual toggle operation counts...")
+        print("(Not hardcoding exponential assumption)")
+        print()
+        
+        from p_vs_np_prover_corrected import generate_sat_instance, search_sat_solution, verify_sat_solution
         
         search_toggle_counts = []
         verify_toggle_counts = []
@@ -153,26 +157,27 @@ class RefinedMillenniumSolver:
         total_toggle_ops = 0
         
         for n in problem_sizes:
-            # Search complexity: O(2^n) toggle operations
-            search_ops = 2 ** n
+            print(f"Testing n={n} variables...")
+            
+            # Generate SAT instance
+            clauses = generate_sat_instance(n)
+            
+            # SEARCH: Measure actual toggle count
+            found, search_ops, solution = search_sat_solution(clauses, n, max_attempts=min(1000, 2**n))
             search_toggle_counts.append(search_ops)
+            total_toggle_ops += search_ops
             
-            # Verification complexity: O(n^2) toggle operations
-            verify_ops = n * n
+            # VERIFY: Measure actual toggle count
+            is_valid, verify_ops = verify_sat_solution(clauses, solution)
             verify_toggle_counts.append(verify_ops)
+            total_toggle_ops += verify_ops
             
-            # Simulate with limited toggle ops
+            # Encode for NRCI
             offbit = self.engine.encode_mathematical_object(n, 'sat_variable')
-            
-            # Apply toggle operations (limited to avoid timeout)
-            for _ in range(min(100, search_ops)):
-                offbit = toggle_xor(offbit, offbit)
-                total_toggle_ops += 1
-            
             nrci_values.append(offbit.nrci)
             
-            ratio = search_ops / verify_ops
-            print(f"  n={n}: search={search_ops}, verify={verify_ops}, ratio={ratio:.2f}")
+            ratio = search_ops / max(verify_ops, 1)
+            print(f"  Search: {search_ops} toggles, Verify: {verify_ops} toggles, Ratio: {ratio:.2f}x")
         
         # Calculate growth rates
         search_growth = search_toggle_counts[-1] / search_toggle_counts[0]

@@ -17,7 +17,7 @@ import json
 from typing import Dict, List, Tuple, Any
 from dataclasses import dataclass
 
-sys.path.insert(0, "/home/ubuntu/UBP_Repo/ubp_3.6")
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'ubp_3.6'))
 
 from coherence_substrate import Y, Y_INVERSE, O_OBSERVER
 from proof_engine import MillenniumProofEngine, ProofResult, verify_y_refinement_closure, verify_observer_emergence

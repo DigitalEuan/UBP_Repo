@@ -22,7 +22,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 
 # Add UBP 3.6 to path
-sys.path.insert(0, '/home/ubuntu/UBP_Repo/ubp_3.6')
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'ubp_3.6'))
 
 from coherence_substrate import CoherenceState, Y, Y_INVERSE, O_OBSERVER, NRCI_TARGET
 from state import OffBit
