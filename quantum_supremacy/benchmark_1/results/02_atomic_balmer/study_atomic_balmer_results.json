@@ -1,0 +1,66 @@
+{
+  "study": "hydrogen_balmer_series",
+  "realm": "atomic",
+  "summary": {
+    "total_lines": 4,
+    "passed": 4,
+    "mean_error_percent": 0.02338540183321493,
+    "max_error_percent": 0.03164974108376657,
+    "all_pass": true,
+    "elapsed_time": 0.0002071857452392578
+  },
+  "results": [
+    {
+      "line_name": "H-alpha",
+      "n_initial": 3,
+      "n_final": 2,
+      "experimental_nm": 656.3,
+      "ubp_wavelength_nm": 656.112276419319,
+      "ubp_energy_ev": 1.8896796004158656,
+      "ubp_frequency_hz": 456922494479289.0,
+      "ubp_nrci": 0.9999999999,
+      "error_nm": -0.18772358068099493,
+      "error_percent": -0.02860331870805957,
+      "within_tolerance": true
+    },
+    {
+      "line_name": "H-beta",
+      "n_initial": 4,
+      "n_final": 2,
+      "experimental_nm": 486.1,
+      "ubp_wavelength_nm": 486.0090936439399,
+      "ubp_energy_ev": 2.5510674605614194,
+      "ubp_frequency_hz": 616845367547040.2,
+      "ubp_nrci": 0.9999999999,
+      "error_nm": -0.0909063560601453,
+      "error_percent": -0.018701163558968382,
+      "within_tolerance": true
+    },
+    {
+      "line_name": "H-gamma",
+      "n_initial": 5,
+      "n_final": 2,
+      "experimental_nm": 434.0,
+      "ubp_wavelength_nm": 433.93669075351784,
+      "ubp_energy_ev": 2.8571955558287883,
+      "ubp_frequency_hz": 690866811652684.9,
+      "ubp_nrci": 0.9999999999,
+      "error_nm": -0.06330924648216296,
+      "error_percent": -0.014587383982065199,
+      "within_tolerance": true
+    },
+    {
+      "line_name": "H-delta",
+      "n_initial": 6,
+      "n_final": 2,
+      "experimental_nm": 410.2,
+      "ubp_wavelength_nm": 410.0701727620744,
+      "ubp_energy_ev": 3.023487360665385,
+      "ubp_frequency_hz": 731075991166862.4,
+      "ubp_nrci": 0.9999999999,
+      "error_nm": -0.12982723792561046,
+      "error_percent": -0.03164974108376657,
+      "within_tolerance": true
+    }
+  ]
+}

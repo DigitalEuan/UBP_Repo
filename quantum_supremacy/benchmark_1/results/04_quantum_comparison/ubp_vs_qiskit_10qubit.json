@@ -1,0 +1,29 @@
+{
+  "date": "2025-11-24T14:05:43.437074",
+  "num_qubits": 10,
+  "num_operations": 10000,
+  "qiskit": {
+    "framework": "Qiskit",
+    "num_qubits": 10,
+    "num_shots": 10000,
+    "transpile_time": 0.10977363586425781,
+    "execute_time": 0.018071651458740234,
+    "total_time": 0.12784528732299805,
+    "ghz_fidelity": 0.0326,
+    "throughput_shots_per_sec": 78219.54339807021,
+    "coherence_tracking": false,
+    "nrci": null
+  },
+  "ubp": {
+    "framework": "UBP",
+    "num_qubits": 10,
+    "num_measurements": 10000,
+    "total_time": 0.10249638557434082,
+    "mean_nrci": 0.9999970000000004,
+    "mean_entanglement": 1.0,
+    "throughput_measurements_per_sec": 97564.41599344966,
+    "coherence_tracking": true,
+    "nrci": 0.9999970000000004
+  },
+  "speedup_ratio": 1.2473150795183077
+}

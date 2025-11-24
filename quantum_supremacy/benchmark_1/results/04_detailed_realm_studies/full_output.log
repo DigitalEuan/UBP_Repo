@@ -1,0 +1,75 @@
+======================================================================
+MULTI-REALM SCIENTIFIC STUDIES
+======================================================================
+Running all 9 real-world validation studies...
+
+======================================================================
+REALM: QUANTUM
+STUDY: CHSH Entanglement Test
+======================================================================
+
+STDERR: python: can't open file '/home/ubuntu/UBP_Repo/gpu_ubp_system/03/study_chsh_quantum.py': [Errno 2] No such file or directory
+
+❌ FAIL - Elapsed: 0.01s
+
+======================================================================
+REALM: ATOMIC
+STUDY: Hydrogen Balmer Series
+======================================================================
+
+STDERR: python: can't open file '/home/ubuntu/UBP_Repo/gpu_ubp_system/03/study_atomic_balmer.py': [Errno 2] No such file or directory
+
+❌ FAIL - Elapsed: 0.03s
+
+======================================================================
+REALM: ELECTROMAGNETIC
+STUDY: Microwave Cavity Resonance
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+REALM: OPTICAL
+STUDY: Double-Slit Interference
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+REALM: NUCLEAR
+STUDY: U-238 Alpha Decay
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+REALM: GRAVITATIONAL
+STUDY: Binary Pulsar Decay
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+REALM: BIOLOGICAL
+STUDY: Enzyme Proton Tunneling
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+REALM: PLASMA
+STUDY: Tokamak Plasma Frequency
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+REALM: COSMOLOGICAL
+STUDY: CMB Power Spectrum
+======================================================================
+⏭️  SKIPPED - Study not yet implemented
+
+======================================================================
+MULTI-REALM STUDY SUMMARY
+======================================================================
+Total studies: 9
+✅ Passed: 0
+❌ Failed: 2
+⏭️  Skipped: 7
+⏱️  Total time: 0.04 seconds
+======================================================================
+✅ Results exported to multi_realm_study_results.json

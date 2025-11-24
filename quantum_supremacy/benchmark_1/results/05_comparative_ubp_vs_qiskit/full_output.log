@@ -1,0 +1,26 @@
+======================================================================
+UBP vs QISKIT: CHSH QUANTUM ENTANGLEMENT COMPARISON
+======================================================================
+Date: 2025-11-24T13:29:58.087110
+
+======================================================================
+SCALE: 1000 measurements per correlation
+======================================================================
+
+======================================================================
+UBP CHSH TEST
+======================================================================
+Measurements: 1000
+Traceback (most recent call last):
+  File "/home/ubuntu/UBP_Repo/bulk/gpu_ubp_study_rigorous/benchmarks/compare_ubp_qiskit_chsh.py", line 278, in <module>
+    main()
+  File "/home/ubuntu/UBP_Repo/bulk/gpu_ubp_study_rigorous/benchmarks/compare_ubp_qiskit_chsh.py", line 233, in main
+    ubp_result = run_ubp_chsh(num_measurements=num_meas)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/UBP_Repo/bulk/gpu_ubp_study_rigorous/benchmarks/compare_ubp_qiskit_chsh.py", line 93, in run_ubp_chsh
+    E_ab, nrci_ab = measure_correlation(angle_a, angle_b)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/UBP_Repo/bulk/gpu_ubp_study_rigorous/benchmarks/compare_ubp_qiskit_chsh.py", line 78, in measure_correlation
+    graph.propagate()
+    ^^^^^^^^^^^^^^^
+AttributeError: 'DodecahedralGraph' object has no attribute 'propagate'

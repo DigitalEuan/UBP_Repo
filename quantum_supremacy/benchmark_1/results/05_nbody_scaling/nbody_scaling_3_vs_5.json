@@ -1,0 +1,43 @@
+{
+  "date": "2025-11-24T14:08:22.820445",
+  "description": "N-body scaling study: 3-body vs 5-body gravitational dynamics",
+  "3_body": {
+    "n_bodies": 3,
+    "body_names": [
+      "Sun",
+      "Earth",
+      "Moon"
+    ],
+    "duration_years": 1.0,
+    "num_steps": 10000,
+    "total_time": 0.2119007110595703,
+    "steps_per_second": 47191.91337299837,
+    "energy_error": 7.160155044588214e-12,
+    "interactions_per_step": 3,
+    "total_interactions": 30000,
+    "time_per_interaction_ns": 7063.357035319011
+  },
+  "5_body": {
+    "n_bodies": 5,
+    "body_names": [
+      "Sun",
+      "Jupiter",
+      "Saturn",
+      "Earth",
+      "Rogue"
+    ],
+    "duration_years": 1.0,
+    "num_steps": 10000,
+    "total_time": 0.12567830085754395,
+    "steps_per_second": 79568.2304086445,
+    "energy_error": 5.1324249092072214e-11,
+    "interactions_per_step": 10,
+    "total_interactions": 100000,
+    "time_per_interaction_ns": 1256.7830085754395
+  },
+  "scaling": {
+    "complexity_ratio": 3.3333333333333335,
+    "time_ratio": 0.593099948693484,
+    "scaling_efficiency": "sub-quadratic"
+  }
+}

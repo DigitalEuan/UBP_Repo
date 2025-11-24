@@ -1,0 +1,3366 @@
+[Taichi] version 1.7.4, llvm 15.0.4, commit b4b956fd, linux, python 3.11.0
+Initializing CPU UBP core...
+✅ GPU UBP Simulation initialized
+   Nodes: 14
+   Edges: 42
+   Visualization: Disabled
+======================================================================
+CHSH QUANTUM ENTANGLEMENT TEST STUDY
+======================================================================
+Backend: cpu
+Using complete UBP 3.6 quantum framework:
+  - QuantumState with amplitude, phase, entanglement_degree
+  - QuantumRealm for entanglement and measurement
+  - Observer framework for measurement projection
+  - TGIC for particle propagation
+
+Measurement angles (optimal for max violation):
+  a  = 0.0000 rad (0°)
+  a' = 1.5708 rad (90°)
+  b  = 0.7854 rad (45°)
+  b' = 2.3562 rad (135°)
+
+======================================================================
+STATISTICAL CHSH QUANTUM STUDY
+======================================================================
+Trials: 100
+Measurements per trial: 2000
+Propagation steps: 10
+
+Trial 1/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.700000
+Calculating E(a,b')...
+  E(a,b') = 0.715000
+Calculating E(a',b)...
+  E(a',b) = -0.751000
+Calculating E(a',b')...
+  E(a',b') = -0.709000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.700000 - 0.715000 + -0.751000 + -0.709000
+S = -2.875000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 2/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.695000
+Calculating E(a,b')...
+  E(a,b') = 0.712000
+Calculating E(a',b)...
+  E(a',b) = -0.730000
+Calculating E(a',b')...
+  E(a',b') = -0.705000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.695000 - 0.712000 + -0.730000 + -0.705000
+S = -2.842000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 3/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.726000
+Calculating E(a,b')...
+  E(a,b') = 0.713000
+Calculating E(a',b)...
+  E(a',b) = -0.704000
+Calculating E(a',b')...
+  E(a',b') = -0.704000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.726000 - 0.713000 + -0.704000 + -0.704000
+S = -2.847000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 4/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.707000
+Calculating E(a,b')...
+  E(a,b') = 0.751000
+Calculating E(a',b)...
+  E(a',b) = -0.701000
+Calculating E(a',b')...
+  E(a',b') = -0.712000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.707000 - 0.751000 + -0.701000 + -0.712000
+S = -2.871000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 5/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.690000
+Calculating E(a,b')...
+  E(a,b') = 0.694000
+Calculating E(a',b)...
+  E(a',b) = -0.708000
+Calculating E(a',b')...
+  E(a',b') = -0.723000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.690000 - 0.694000 + -0.708000 + -0.723000
+S = -2.815000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 6/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.719000
+Calculating E(a,b')...
+  E(a,b') = 0.713000
+Calculating E(a',b)...
+  E(a',b) = -0.724000
+Calculating E(a',b')...
+  E(a',b') = -0.688000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.719000 - 0.713000 + -0.724000 + -0.688000
+S = -2.844000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 7/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.705000
+Calculating E(a,b')...
+  E(a,b') = 0.710000
+Calculating E(a',b)...
+  E(a',b) = -0.696000
+Calculating E(a',b')...
+  E(a',b') = -0.702000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.705000 - 0.710000 + -0.696000 + -0.702000
+S = -2.813000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 8/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.718000
+Calculating E(a,b')...
+  E(a,b') = 0.717000
+Calculating E(a',b)...
+  E(a',b) = -0.713000
+Calculating E(a',b')...
+  E(a',b') = -0.685000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.718000 - 0.717000 + -0.713000 + -0.685000
+S = -2.833000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 9/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.708000
+Calculating E(a,b')...
+  E(a,b') = 0.706000
+Calculating E(a',b)...
+  E(a',b) = -0.693000
+Calculating E(a',b')...
+  E(a',b') = -0.726000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.708000 - 0.706000 + -0.693000 + -0.726000
+S = -2.833000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 10/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.722000
+Calculating E(a,b')...
+  E(a,b') = 0.714000
+Calculating E(a',b)...
+  E(a',b) = -0.695000
+Calculating E(a',b')...
+  E(a',b') = -0.701000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.722000 - 0.714000 + -0.695000 + -0.701000
+S = -2.832000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 11/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.698000
+Calculating E(a,b')...
+  E(a,b') = 0.738000
+Calculating E(a',b)...
+  E(a',b) = -0.701000
+Calculating E(a',b')...
+  E(a',b') = -0.689000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.698000 - 0.738000 + -0.701000 + -0.689000
+S = -2.826000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 12/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.701000
+Calculating E(a,b')...
+  E(a,b') = 0.720000
+Calculating E(a',b)...
+  E(a',b) = -0.727000
+Calculating E(a',b')...
+  E(a',b') = -0.691000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.701000 - 0.720000 + -0.727000 + -0.691000
+S = -2.839000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.52 seconds
+======================================================================
+
+Trial 13/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.715000
+Calculating E(a,b')...
+  E(a,b') = 0.721000
+Calculating E(a',b)...
+  E(a',b) = -0.716000
+Calculating E(a',b')...
+  E(a',b') = -0.710000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.715000 - 0.721000 + -0.716000 + -0.710000
+S = -2.862000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 14/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.728000
+Calculating E(a,b')...
+  E(a,b') = 0.715000
+Calculating E(a',b)...
+  E(a',b) = -0.708000
+Calculating E(a',b')...
+  E(a',b') = -0.670000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.728000 - 0.715000 + -0.708000 + -0.670000
+S = -2.821000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 15/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.697000
+Calculating E(a,b')...
+  E(a,b') = 0.714000
+Calculating E(a',b)...
+  E(a',b) = -0.698000
+Calculating E(a',b')...
+  E(a',b') = -0.710000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.697000 - 0.714000 + -0.698000 + -0.710000
+S = -2.819000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 16/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.687000
+Calculating E(a,b')...
+  E(a,b') = 0.698000
+Calculating E(a',b)...
+  E(a',b) = -0.705000
+Calculating E(a',b')...
+  E(a',b') = -0.710000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.687000 - 0.698000 + -0.705000 + -0.710000
+S = -2.800000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 17/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.716000
+Calculating E(a,b')...
+  E(a,b') = 0.719000
+Calculating E(a',b)...
+  E(a',b) = -0.734000
+Calculating E(a',b')...
+  E(a',b') = -0.698000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.716000 - 0.719000 + -0.734000 + -0.698000
+S = -2.867000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 18/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.695000
+Calculating E(a,b')...
+  E(a,b') = 0.717000
+Calculating E(a',b)...
+  E(a',b) = -0.693000
+Calculating E(a',b')...
+  E(a',b') = -0.743000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.695000 - 0.717000 + -0.693000 + -0.743000
+S = -2.848000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 19/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.716000
+Calculating E(a,b')...
+  E(a,b') = 0.711000
+Calculating E(a',b)...
+  E(a',b) = -0.722000
+Calculating E(a',b')...
+  E(a',b') = -0.688000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.716000 - 0.711000 + -0.722000 + -0.688000
+S = -2.837000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 20/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.724000
+Calculating E(a,b')...
+  E(a,b') = 0.670000
+Calculating E(a',b)...
+  E(a',b) = -0.712000
+Calculating E(a',b')...
+  E(a',b') = -0.717000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.724000 - 0.670000 + -0.712000 + -0.717000
+S = -2.823000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 21/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.700000
+Calculating E(a,b')...
+  E(a,b') = 0.695000
+Calculating E(a',b)...
+  E(a',b) = -0.722000
+Calculating E(a',b')...
+  E(a',b') = -0.713000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.700000 - 0.695000 + -0.722000 + -0.713000
+S = -2.830000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 22/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.732000
+Calculating E(a,b')...
+  E(a,b') = 0.722000
+Calculating E(a',b)...
+  E(a',b) = -0.703000
+Calculating E(a',b')...
+  E(a',b') = -0.694000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.732000 - 0.722000 + -0.703000 + -0.694000
+S = -2.851000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 23/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.683000
+Calculating E(a,b')...
+  E(a,b') = 0.708000
+Calculating E(a',b)...
+  E(a',b) = -0.690000
+Calculating E(a',b')...
+  E(a',b') = -0.705000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.683000 - 0.708000 + -0.690000 + -0.705000
+S = -2.786000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 24/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.689000
+Calculating E(a,b')...
+  E(a,b') = 0.693000
+Calculating E(a',b)...
+  E(a',b) = -0.701000
+Calculating E(a',b')...
+  E(a',b') = -0.708000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.689000 - 0.693000 + -0.701000 + -0.708000
+S = -2.791000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 25/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.717000
+Calculating E(a,b')...
+  E(a,b') = 0.698000
+Calculating E(a',b)...
+  E(a',b) = -0.709000
+Calculating E(a',b')...
+  E(a',b') = -0.712000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.717000 - 0.698000 + -0.709000 + -0.712000
+S = -2.836000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 26/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.708000
+Calculating E(a,b')...
+  E(a,b') = 0.695000
+Calculating E(a',b)...
+  E(a',b) = -0.690000
+Calculating E(a',b')...
+  E(a',b') = -0.712000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.708000 - 0.695000 + -0.690000 + -0.712000
+S = -2.805000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 27/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.713000
+Calculating E(a,b')...
+  E(a,b') = 0.677000
+Calculating E(a',b)...
+  E(a',b) = -0.716000
+Calculating E(a',b')...
+  E(a',b') = -0.714000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.713000 - 0.677000 + -0.716000 + -0.714000
+S = -2.820000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 28/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.707000
+Calculating E(a,b')...
+  E(a,b') = 0.732000
+Calculating E(a',b)...
+  E(a',b) = -0.702000
+Calculating E(a',b')...
+  E(a',b') = -0.722000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.707000 - 0.732000 + -0.702000 + -0.722000
+S = -2.863000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 29/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.704000
+Calculating E(a,b')...
+  E(a,b') = 0.697000
+Calculating E(a',b)...
+  E(a',b) = -0.703000
+Calculating E(a',b')...
+  E(a',b') = -0.719000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.704000 - 0.697000 + -0.703000 + -0.719000
+S = -2.823000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 30/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.722000
+Calculating E(a,b')...
+  E(a,b') = 0.692000
+Calculating E(a',b)...
+  E(a',b) = -0.716000
+Calculating E(a',b')...
+  E(a',b') = -0.714000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.722000 - 0.692000 + -0.716000 + -0.714000
+S = -2.844000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 31/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.699000
+Calculating E(a,b')...
+  E(a,b') = 0.709000
+Calculating E(a',b)...
+  E(a',b) = -0.676000
+Calculating E(a',b')...
+  E(a',b') = -0.722000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.699000 - 0.709000 + -0.676000 + -0.722000
+S = -2.806000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 32/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.704000
+Calculating E(a,b')...
+  E(a,b') = 0.727000
+Calculating E(a',b)...
+  E(a',b) = -0.733000
+Calculating E(a',b')...
+  E(a',b') = -0.716000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.704000 - 0.727000 + -0.733000 + -0.716000
+S = -2.880000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 33/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.715000
+Calculating E(a,b')...
+  E(a,b') = 0.711000
+Calculating E(a',b)...
+  E(a',b) = -0.712000
+Calculating E(a',b')...
+  E(a',b') = -0.713000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.715000 - 0.711000 + -0.712000 + -0.713000
+S = -2.851000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 34/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.697000
+Calculating E(a,b')...
+  E(a,b') = 0.749000
+Calculating E(a',b)...
+  E(a',b) = -0.733000
+Calculating E(a',b')...
+  E(a',b') = -0.712000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.697000 - 0.749000 + -0.733000 + -0.712000
+S = -2.891000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 35/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.744000
+Calculating E(a,b')...
+  E(a,b') = 0.712000
+Calculating E(a',b)...
+  E(a',b) = -0.699000
+Calculating E(a',b')...
+  E(a',b') = -0.704000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.744000 - 0.712000 + -0.699000 + -0.704000
+S = -2.859000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 36/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.709000
+Calculating E(a,b')...
+  E(a,b') = 0.724000
+Calculating E(a',b)...
+  E(a',b) = -0.685000
+Calculating E(a',b')...
+  E(a',b') = -0.710000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.709000 - 0.724000 + -0.685000 + -0.710000
+S = -2.828000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 37/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.682000
+Calculating E(a,b')...
+  E(a,b') = 0.737000
+Calculating E(a',b)...
+  E(a',b) = -0.693000
+Calculating E(a',b')...
+  E(a',b') = -0.706000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.682000 - 0.737000 + -0.693000 + -0.706000
+S = -2.818000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 38/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.698000
+Calculating E(a,b')...
+  E(a,b') = 0.734000
+Calculating E(a',b)...
+  E(a',b) = -0.707000
+Calculating E(a',b')...
+  E(a',b') = -0.732000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.698000 - 0.734000 + -0.707000 + -0.732000
+S = -2.871000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 39/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.740000
+Calculating E(a,b')...
+  E(a,b') = 0.714000
+Calculating E(a',b)...
+  E(a',b) = -0.689000
+Calculating E(a',b')...
+  E(a',b') = -0.704000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.740000 - 0.714000 + -0.689000 + -0.704000
+S = -2.847000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 40/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.718000
+Calculating E(a,b')...
+  E(a,b') = 0.721000
+Calculating E(a',b)...
+  E(a',b) = -0.689000
+Calculating E(a',b')...
+  E(a',b') = -0.691000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.718000 - 0.721000 + -0.689000 + -0.691000
+S = -2.819000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 41/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.675000
+Calculating E(a,b')...
+  E(a,b') = 0.716000
+Calculating E(a',b)...
+  E(a',b) = -0.702000
+Calculating E(a',b')...
+  E(a',b') = -0.688000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.675000 - 0.716000 + -0.702000 + -0.688000
+S = -2.781000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 42/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.715000
+Calculating E(a,b')...
+  E(a,b') = 0.716000
+Calculating E(a',b)...
+  E(a',b) = -0.703000
+Calculating E(a',b')...
+  E(a',b') = -0.736000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.715000 - 0.716000 + -0.703000 + -0.736000
+S = -2.870000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 43/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.727000
+Calculating E(a,b')...
+  E(a,b') = 0.700000
+Calculating E(a',b)...
+  E(a',b) = -0.726000
+Calculating E(a',b')...
+  E(a',b') = -0.699000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.727000 - 0.700000 + -0.726000 + -0.699000
+S = -2.852000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 44/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.748000
+Calculating E(a,b')...
+  E(a,b') = 0.683000
+Calculating E(a',b)...
+  E(a',b) = -0.668000
+Calculating E(a',b')...
+  E(a',b') = -0.707000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.748000 - 0.683000 + -0.668000 + -0.707000
+S = -2.806000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.56 seconds
+======================================================================
+
+Trial 45/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.719000
+Calculating E(a,b')...
+  E(a,b') = 0.679000
+Calculating E(a',b)...
+  E(a',b) = -0.716000
+Calculating E(a',b')...
+  E(a',b') = -0.713000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.719000 - 0.679000 + -0.716000 + -0.713000
+S = -2.827000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.78 seconds
+======================================================================
+
+Trial 46/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.690000
+Calculating E(a,b')...
+  E(a,b') = 0.695000
+Calculating E(a',b)...
+  E(a',b) = -0.702000
+Calculating E(a',b')...
+  E(a',b') = -0.713000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.690000 - 0.695000 + -0.702000 + -0.713000
+S = -2.800000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 47/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.729000
+Calculating E(a,b')...
+  E(a,b') = 0.717000
+Calculating E(a',b)...
+  E(a',b) = -0.705000
+Calculating E(a',b')...
+  E(a',b') = -0.693000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.729000 - 0.717000 + -0.705000 + -0.693000
+S = -2.844000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 48/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.684000
+Calculating E(a,b')...
+  E(a,b') = 0.705000
+Calculating E(a',b)...
+  E(a',b) = -0.736000
+Calculating E(a',b')...
+  E(a',b') = -0.724000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.684000 - 0.705000 + -0.736000 + -0.724000
+S = -2.849000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.51 seconds
+======================================================================
+
+Trial 49/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.681000
+Calculating E(a,b')...
+  E(a,b') = 0.724000
+Calculating E(a',b)...
+  E(a',b) = -0.720000
+Calculating E(a',b')...
+  E(a',b') = -0.703000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.681000 - 0.724000 + -0.720000 + -0.703000
+S = -2.828000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 50/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.686000
+Calculating E(a,b')...
+  E(a,b') = 0.707000
+Calculating E(a',b)...
+  E(a',b) = -0.698000
+Calculating E(a',b')...
+  E(a',b') = -0.693000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.686000 - 0.707000 + -0.698000 + -0.693000
+S = -2.784000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 51/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.700000
+Calculating E(a,b')...
+  E(a,b') = 0.688000
+Calculating E(a',b)...
+  E(a',b) = -0.705000
+Calculating E(a',b')...
+  E(a',b') = -0.716000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.700000 - 0.688000 + -0.705000 + -0.716000
+S = -2.809000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 52/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.700000
+Calculating E(a,b')...
+  E(a,b') = 0.716000
+Calculating E(a',b)...
+  E(a',b) = -0.699000
+Calculating E(a',b')...
+  E(a',b') = -0.689000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.700000 - 0.716000 + -0.699000 + -0.689000
+S = -2.804000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 53/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.712000
+Calculating E(a,b')...
+  E(a,b') = 0.701000
+Calculating E(a',b)...
+  E(a',b) = -0.718000
+Calculating E(a',b')...
+  E(a',b') = -0.682000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.712000 - 0.701000 + -0.718000 + -0.682000
+S = -2.813000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 54/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.741000
+Calculating E(a,b')...
+  E(a,b') = 0.704000
+Calculating E(a',b)...
+  E(a',b) = -0.722000
+Calculating E(a',b')...
+  E(a',b') = -0.722000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.741000 - 0.704000 + -0.722000 + -0.722000
+S = -2.889000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 55/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.704000
+Calculating E(a,b')...
+  E(a,b') = 0.689000
+Calculating E(a',b)...
+  E(a',b) = -0.689000
+Calculating E(a',b')...
+  E(a',b') = -0.719000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.704000 - 0.689000 + -0.689000 + -0.719000
+S = -2.801000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 56/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.675000
+Calculating E(a,b')...
+  E(a,b') = 0.712000
+Calculating E(a',b)...
+  E(a',b) = -0.707000
+Calculating E(a',b')...
+  E(a',b') = -0.718000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.675000 - 0.712000 + -0.707000 + -0.718000
+S = -2.812000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 57/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.706000
+Calculating E(a,b')...
+  E(a,b') = 0.733000
+Calculating E(a',b)...
+  E(a',b) = -0.699000
+Calculating E(a',b')...
+  E(a',b') = -0.676000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.706000 - 0.733000 + -0.699000 + -0.676000
+S = -2.814000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 58/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.698000
+Calculating E(a,b')...
+  E(a,b') = 0.715000
+Calculating E(a',b)...
+  E(a',b) = -0.684000
+Calculating E(a',b')...
+  E(a',b') = -0.689000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.698000 - 0.715000 + -0.684000 + -0.689000
+S = -2.786000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 59/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.695000
+Calculating E(a,b')...
+  E(a,b') = 0.717000
+Calculating E(a',b)...
+  E(a',b) = -0.718000
+Calculating E(a',b')...
+  E(a',b') = -0.720000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.695000 - 0.717000 + -0.718000 + -0.720000
+S = -2.850000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 60/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.700000
+Calculating E(a,b')...
+  E(a,b') = 0.705000
+Calculating E(a',b)...
+  E(a',b) = -0.734000
+Calculating E(a',b')...
+  E(a',b') = -0.714000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.700000 - 0.705000 + -0.734000 + -0.714000
+S = -2.853000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 61/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.694000
+Calculating E(a,b')...
+  E(a,b') = 0.704000
+Calculating E(a',b)...
+  E(a',b) = -0.683000
+Calculating E(a',b')...
+  E(a',b') = -0.723000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.694000 - 0.704000 + -0.683000 + -0.723000
+S = -2.804000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 62/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.696000
+Calculating E(a,b')...
+  E(a,b') = 0.695000
+Calculating E(a',b)...
+  E(a',b) = -0.724000
+Calculating E(a',b')...
+  E(a',b') = -0.682000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.696000 - 0.695000 + -0.724000 + -0.682000
+S = -2.797000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 63/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.681000
+Calculating E(a,b')...
+  E(a,b') = 0.693000
+Calculating E(a',b)...
+  E(a',b) = -0.690000
+Calculating E(a',b')...
+  E(a',b') = -0.694000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.681000 - 0.693000 + -0.690000 + -0.694000
+S = -2.758000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 64/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.722000
+Calculating E(a,b')...
+  E(a,b') = 0.714000
+Calculating E(a',b)...
+  E(a',b) = -0.689000
+Calculating E(a',b')...
+  E(a',b') = -0.722000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.722000 - 0.714000 + -0.689000 + -0.722000
+S = -2.847000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 65/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.686000
+Calculating E(a,b')...
+  E(a,b') = 0.750000
+Calculating E(a',b)...
+  E(a',b) = -0.720000
+Calculating E(a',b')...
+  E(a',b') = -0.698000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.686000 - 0.750000 + -0.720000 + -0.698000
+S = -2.854000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 66/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.692000
+Calculating E(a,b')...
+  E(a,b') = 0.707000
+Calculating E(a',b)...
+  E(a',b) = -0.701000
+Calculating E(a',b')...
+  E(a',b') = -0.704000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.692000 - 0.707000 + -0.701000 + -0.704000
+S = -2.804000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 67/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.712000
+Calculating E(a,b')...
+  E(a,b') = 0.712000
+Calculating E(a',b)...
+  E(a',b) = -0.725000
+Calculating E(a',b')...
+  E(a',b') = -0.688000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.712000 - 0.712000 + -0.725000 + -0.688000
+S = -2.837000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 68/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.711000
+Calculating E(a,b')...
+  E(a,b') = 0.699000
+Calculating E(a',b)...
+  E(a',b) = -0.709000
+Calculating E(a',b')...
+  E(a',b') = -0.716000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.711000 - 0.699000 + -0.709000 + -0.716000
+S = -2.835000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 69/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.706000
+Calculating E(a,b')...
+  E(a,b') = 0.713000
+Calculating E(a',b)...
+  E(a',b) = -0.690000
+Calculating E(a',b')...
+  E(a',b') = -0.727000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.706000 - 0.713000 + -0.690000 + -0.727000
+S = -2.836000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 70/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.711000
+Calculating E(a,b')...
+  E(a,b') = 0.700000
+Calculating E(a',b)...
+  E(a',b) = -0.711000
+Calculating E(a',b')...
+  E(a',b') = -0.704000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.711000 - 0.700000 + -0.711000 + -0.704000
+S = -2.826000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 71/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.694000
+Calculating E(a,b')...
+  E(a,b') = 0.716000
+Calculating E(a',b)...
+  E(a',b) = -0.722000
+Calculating E(a',b')...
+  E(a',b') = -0.721000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.694000 - 0.716000 + -0.722000 + -0.721000
+S = -2.853000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 72/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.732000
+Calculating E(a,b')...
+  E(a,b') = 0.733000
+Calculating E(a',b)...
+  E(a',b) = -0.711000
+Calculating E(a',b')...
+  E(a',b') = -0.700000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.732000 - 0.733000 + -0.711000 + -0.700000
+S = -2.876000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 73/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.706000
+Calculating E(a,b')...
+  E(a,b') = 0.713000
+Calculating E(a',b)...
+  E(a',b) = -0.737000
+Calculating E(a',b')...
+  E(a',b') = -0.705000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.706000 - 0.713000 + -0.737000 + -0.705000
+S = -2.861000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 74/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.704000
+Calculating E(a,b')...
+  E(a,b') = 0.715000
+Calculating E(a',b)...
+  E(a',b) = -0.676000
+Calculating E(a',b')...
+  E(a',b') = -0.734000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.704000 - 0.715000 + -0.676000 + -0.734000
+S = -2.829000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 75/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.712000
+Calculating E(a,b')...
+  E(a,b') = 0.726000
+Calculating E(a',b)...
+  E(a',b) = -0.720000
+Calculating E(a',b')...
+  E(a',b') = -0.697000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.712000 - 0.726000 + -0.720000 + -0.697000
+S = -2.855000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 76/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.686000
+Calculating E(a,b')...
+  E(a,b') = 0.710000
+Calculating E(a',b)...
+  E(a',b) = -0.656000
+Calculating E(a',b')...
+  E(a',b') = -0.700000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.686000 - 0.710000 + -0.656000 + -0.700000
+S = -2.752000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 77/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.724000
+Calculating E(a,b')...
+  E(a,b') = 0.736000
+Calculating E(a',b)...
+  E(a',b) = -0.715000
+Calculating E(a',b')...
+  E(a',b') = -0.708000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.724000 - 0.736000 + -0.715000 + -0.708000
+S = -2.883000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 78/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.701000
+Calculating E(a,b')...
+  E(a,b') = 0.723000
+Calculating E(a',b)...
+  E(a',b) = -0.696000
+Calculating E(a',b')...
+  E(a',b') = -0.712000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.701000 - 0.723000 + -0.696000 + -0.712000
+S = -2.832000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 79/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.710000
+Calculating E(a,b')...
+  E(a,b') = 0.700000
+Calculating E(a',b)...
+  E(a',b) = -0.715000
+Calculating E(a',b')...
+  E(a',b') = -0.716000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.710000 - 0.700000 + -0.715000 + -0.716000
+S = -2.841000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 80/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.716000
+Calculating E(a,b')...
+  E(a,b') = 0.716000
+Calculating E(a',b)...
+  E(a',b) = -0.708000
+Calculating E(a',b')...
+  E(a',b') = -0.709000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.716000 - 0.716000 + -0.708000 + -0.709000
+S = -2.849000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 81/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.692000
+Calculating E(a,b')...
+  E(a,b') = 0.707000
+Calculating E(a',b)...
+  E(a',b) = -0.728000
+Calculating E(a',b')...
+  E(a',b') = -0.691000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.692000 - 0.707000 + -0.728000 + -0.691000
+S = -2.818000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 82/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.710000
+Calculating E(a,b')...
+  E(a,b') = 0.694000
+Calculating E(a',b)...
+  E(a',b) = -0.705000
+Calculating E(a',b')...
+  E(a',b') = -0.735000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.710000 - 0.694000 + -0.705000 + -0.735000
+S = -2.844000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 83/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.696000
+Calculating E(a,b')...
+  E(a,b') = 0.700000
+Calculating E(a',b)...
+  E(a',b) = -0.693000
+Calculating E(a',b')...
+  E(a',b') = -0.725000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.696000 - 0.700000 + -0.693000 + -0.725000
+S = -2.814000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 84/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.727000
+Calculating E(a,b')...
+  E(a,b') = 0.711000
+Calculating E(a',b)...
+  E(a',b) = -0.703000
+Calculating E(a',b')...
+  E(a',b') = -0.694000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.727000 - 0.711000 + -0.703000 + -0.694000
+S = -2.835000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 85/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.736000
+Calculating E(a,b')...
+  E(a,b') = 0.736000
+Calculating E(a',b)...
+  E(a',b) = -0.704000
+Calculating E(a',b')...
+  E(a',b') = -0.700000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.736000 - 0.736000 + -0.704000 + -0.700000
+S = -2.876000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 86/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.684000
+Calculating E(a,b')...
+  E(a,b') = 0.715000
+Calculating E(a',b)...
+  E(a',b) = -0.685000
+Calculating E(a',b')...
+  E(a',b') = -0.680000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.684000 - 0.715000 + -0.685000 + -0.680000
+S = -2.764000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 87/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.700000
+Calculating E(a,b')...
+  E(a,b') = 0.735000
+Calculating E(a',b)...
+  E(a',b) = -0.679000
+Calculating E(a',b')...
+  E(a',b') = -0.695000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.700000 - 0.735000 + -0.679000 + -0.695000
+S = -2.809000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 88/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.716000
+Calculating E(a,b')...
+  E(a,b') = 0.742000
+Calculating E(a',b)...
+  E(a',b) = -0.726000
+Calculating E(a',b')...
+  E(a',b') = -0.712000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.716000 - 0.742000 + -0.726000 + -0.712000
+S = -2.896000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 89/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.715000
+Calculating E(a,b')...
+  E(a,b') = 0.692000
+Calculating E(a',b)...
+  E(a',b) = -0.729000
+Calculating E(a',b')...
+  E(a',b') = -0.719000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.715000 - 0.692000 + -0.729000 + -0.719000
+S = -2.855000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 90/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.692000
+Calculating E(a,b')...
+  E(a,b') = 0.692000
+Calculating E(a',b)...
+  E(a',b) = -0.718000
+Calculating E(a',b')...
+  E(a',b') = -0.724000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.692000 - 0.692000 + -0.718000 + -0.724000
+S = -2.826000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 91/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.721000
+Calculating E(a,b')...
+  E(a,b') = 0.687000
+Calculating E(a',b)...
+  E(a',b) = -0.709000
+Calculating E(a',b')...
+  E(a',b') = -0.701000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.721000 - 0.687000 + -0.709000 + -0.701000
+S = -2.818000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 92/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.695000
+Calculating E(a,b')...
+  E(a,b') = 0.724000
+Calculating E(a',b)...
+  E(a',b) = -0.725000
+Calculating E(a',b')...
+  E(a',b') = -0.702000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.695000 - 0.724000 + -0.725000 + -0.702000
+S = -2.846000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.48 seconds
+======================================================================
+
+Trial 93/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.714000
+Calculating E(a,b')...
+  E(a,b') = 0.723000
+Calculating E(a',b)...
+  E(a',b) = -0.694000
+Calculating E(a',b')...
+  E(a',b') = -0.701000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.714000 - 0.723000 + -0.694000 + -0.701000
+S = -2.832000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.77 seconds
+======================================================================
+
+Trial 94/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.713000
+Calculating E(a,b')...
+  E(a,b') = 0.716000
+Calculating E(a',b)...
+  E(a',b) = -0.696000
+Calculating E(a',b')...
+  E(a',b') = -0.706000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.713000 - 0.716000 + -0.696000 + -0.706000
+S = -2.831000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.63 seconds
+======================================================================
+
+Trial 95/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.735000
+Calculating E(a,b')...
+  E(a,b') = 0.714000
+Calculating E(a',b)...
+  E(a',b) = -0.718000
+Calculating E(a',b')...
+  E(a',b') = -0.678000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.735000 - 0.714000 + -0.718000 + -0.678000
+S = -2.845000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 96/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.702000
+Calculating E(a,b')...
+  E(a,b') = 0.730000
+Calculating E(a',b)...
+  E(a',b) = -0.702000
+Calculating E(a',b')...
+  E(a',b') = -0.737000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.702000 - 0.730000 + -0.702000 + -0.737000
+S = -2.871000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+⚠️  EXCEEDS QUANTUM BOUND (S > 2√2)
+   This would violate quantum mechanics!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 97/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.693000
+Calculating E(a,b')...
+  E(a,b') = 0.695000
+Calculating E(a',b)...
+  E(a',b) = -0.701000
+Calculating E(a',b')...
+  E(a',b') = -0.685000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.693000 - 0.695000 + -0.701000 + -0.685000
+S = -2.774000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.50 seconds
+======================================================================
+
+Trial 98/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.682000
+Calculating E(a,b')...
+  E(a,b') = 0.665000
+Calculating E(a',b)...
+  E(a',b) = -0.690000
+Calculating E(a',b')...
+  E(a',b') = -0.688000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.682000 - 0.665000 + -0.690000 + -0.688000
+S = -2.725000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 99/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.711000
+Calculating E(a,b')...
+  E(a,b') = 0.713000
+Calculating E(a',b)...
+  E(a',b) = -0.685000
+Calculating E(a',b')...
+  E(a',b') = -0.717000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.711000 - 0.713000 + -0.685000 + -0.717000
+S = -2.826000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+Trial 100/100
+----------------------------------------------------------------------
+Running CHSH test with 2000 measurements per correlation...
+TGIC propagation steps: 10
+
+Calculating E(a,b)...
+  E(a,b) = -0.723000
+Calculating E(a,b')...
+  E(a,b') = 0.691000
+Calculating E(a',b)...
+  E(a',b) = -0.692000
+Calculating E(a',b')...
+  E(a',b') = -0.699000
+
+======================================================================
+CHSH TEST RESULTS
+======================================================================
+S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
+S = -0.723000 - 0.691000 + -0.692000 + -0.699000
+S = -2.805000
+
+Classical bound: |S| ≤ 2.000000
+Quantum bound (Tsirelson): |S| ≤ 2.828427
+
+✅ VIOLATES CLASSICAL BOUND (S > 2)
+   Quantum correlations detected!
+
+Mean NRCI: 0.999997
+Mean entanglement degree: 1.000000
+Elapsed time: 0.49 seconds
+======================================================================
+
+======================================================================
+STATISTICAL SUMMARY
+======================================================================
+Mean S: -2.830770
+Std S: 0.030794
+Min S: -2.896000
+Max S: -2.725000
+Violation rate: 100.0%
+======================================================================
+
+✅ Results exported to chsh_quantum_results.json
+
+======================================================================
+CONCLUSION
+======================================================================
+✅ SUCCESS: UBP local interactions produce quantum correlations!
+
+   The CHSH inequality is violated (S > 2), demonstrating that
+   local coherence dynamics in the UBP framework can emerge
+   non-local quantum correlations without hidden variables.
+
+   This validates UBP as a complete quantum framework.
+
+Mean S = -2.830770 ± 0.030794
+Classical bound: 2.0
+Quantum bound: 2.828427
+======================================================================

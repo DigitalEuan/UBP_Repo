@@ -1,0 +1,51 @@
+{
+  "date": "2025-11-24T14:12:04.118739",
+  "total_benchmarks": 4,
+  "passed_benchmarks": 4,
+  "pass_rate": 1.0,
+  "results": {
+    "chsh": {
+      "benchmark": "CHSH Quantum Entanglement",
+      "num_trials": 100,
+      "measurements_per_trial": 2000,
+      "total_measurements": 200000,
+      "mean_s": 2.8307700000000007,
+      "std_s": 0.030794108202706574,
+      "mean_nrci": 0.9999969999953079,
+      "violation_rate": 1.0,
+      "quantum_bound": 2.828427,
+      "classical_bound": 2.0,
+      "status": "PASS"
+    },
+    "balmer": {
+      "benchmark": "Atomic Balmer Series",
+      "num_lines": 4,
+      "mean_error_percent": 0.02338540183321493,
+      "max_error_percent": 0.03164974108376657,
+      "nrci": 0.9999999999,
+      "status": "PASS"
+    },
+    "quantum_comparison": {
+      "benchmark": "UBP vs Qiskit (10-qubit)",
+      "num_qubits": 10,
+      "num_operations": 10000,
+      "ubp_throughput": 97564.41599344966,
+      "qiskit_throughput": 78219.54339807021,
+      "ubp_speedup": 1.2473150795183077,
+      "ubp_nrci": 0.9999970000000004,
+      "ubp_advantage": "coherence_tracking",
+      "status": "PASS"
+    },
+    "nbody_scaling": {
+      "benchmark": "N-Body Scaling (3 vs 5)",
+      "3body_steps_per_sec": 47191.91337299837,
+      "5body_steps_per_sec": 79568.2304086445,
+      "complexity_ratio": 3.3333333333333335,
+      "time_ratio": 0.593099948693484,
+      "scaling_efficiency": "sub-quadratic",
+      "3body_energy_error": 7.160155044588214e-12,
+      "5body_energy_error": 5.1324249092072214e-11,
+      "status": "PASS"
+    }
+  }
+}

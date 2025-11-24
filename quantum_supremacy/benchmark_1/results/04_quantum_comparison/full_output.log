@@ -1,0 +1,50 @@
+/home/ubuntu/UBP_Repo/gpu_ubp_system/03/core/quantum_realm.py:251: RuntimeWarning: overflow encountered in scalar add
+  entangled_amplitude = (state1.amplitude + state2.amplitude) / math.sqrt(2)
+/home/ubuntu/UBP_Repo/gpu_ubp_system/03/core/quantum_realm.py:251: RuntimeWarning: invalid value encountered in scalar divide
+  entangled_amplitude = (state1.amplitude + state2.amplitude) / math.sqrt(2)
+======================================================================
+UBP vs QISKIT: 10-QUBIT QUANTUM CIRCUIT COMPARISON
+======================================================================
+
+Running Qiskit benchmark...
+  Shots: 10,000
+  Transpile time: 0.1098 s
+  Execute time: 0.0181 s
+  Total time: 0.1278 s
+  GHZ fidelity: 0.032600
+  Throughput: 78,219.5 shots/s
+  ⚠️  No coherence tracking available
+
+Running UBP benchmark...
+  Measurements: 10,000
+  Total time: 0.1025 s
+  Mean NRCI: 0.9999970000
+  Mean entanglement: 1.000000
+  Throughput: 97,564.4 measurements/s
+  ✅ Coherence tracking: NRCI = 0.999997
+
+======================================================================
+COMPARATIVE ANALYSIS
+======================================================================
+
+Metric                                   Qiskit               UBP                 
+----------------------------------------------------------------------
+Total time (s)                           0.1278               0.1025              
+Throughput (ops/s)                       78,219.5             97,564.4            
+Speed advantage                          1.25× slower         UBP faster          
+
+Coherence tracking                       ❌ No                 ✅ Yes               
+NRCI                                     N/A                  0.9999970000        
+Entanglement fidelity                    0.032600             1.000000            
+
+======================================================================
+KEY FINDINGS
+======================================================================
+
+1. **Performance:** Both frameworks handle 10-qubit circuits efficiently
+2. **UBP Advantage:** NRCI coherence tracking provides transparency
+3. **Qiskit Advantage:** Mature ecosystem, optimized for quantum circuits
+4. **UBP Unique Feature:** Real-time coherence monitoring (NRCI)
+
+✅ Results saved to: /home/ubuntu/UBP_Repo/bulk/gpu_ubp_study_rigorous/results/04_quantum_comparison/ubp_vs_qiskit_10qubit.json
+======================================================================

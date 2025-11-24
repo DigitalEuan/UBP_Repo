@@ -1,0 +1,100 @@
+======================================================================
+UBP CHSH SCALING STUDY
+======================================================================
+Date: 2025-11-24T13:32:02.050956
+Testing 5 different scales
+
+======================================================================
+Scale: 10 trials × 100 measurements = 1,000 total
+======================================================================
+
+  Mean S: -2.914000
+  Mean NRCI: 0.9999970000
+  Total elapsed: 0.91 seconds
+  Mean time per trial: 0.0257 seconds
+  Throughput: 4,381.0 measurements/second
+
+======================================================================
+Scale: 10 trials × 500 measurements = 5,000 total
+======================================================================
+
+  Mean S: -2.820800
+  Mean NRCI: 0.9999970000
+  Total elapsed: 1.86 seconds
+  Mean time per trial: 0.1238 seconds
+  Throughput: 10,746.8 measurements/second
+
+======================================================================
+Scale: 10 trials × 1,000 measurements = 10,000 total
+======================================================================
+
+  Mean S: -2.830600
+  Mean NRCI: 0.9999970000
+  Total elapsed: 3.16 seconds
+  Mean time per trial: 0.2503 seconds
+  Throughput: 12,661.9 measurements/second
+
+======================================================================
+Scale: 10 trials × 2,000 measurements = 20,000 total
+======================================================================
+
+  Mean S: -2.840700
+  Mean NRCI: 0.9999970000
+  Total elapsed: 5.76 seconds
+  Mean time per trial: 0.5092 seconds
+  Throughput: 13,878.8 measurements/second
+
+======================================================================
+Scale: 5 trials × 10,000 measurements = 50,000 total
+======================================================================
+
+  Mean S: -2.836880
+  Mean NRCI: 0.9999970000
+  Total elapsed: 13.30 seconds
+  Mean time per trial: 2.5162 seconds
+  Throughput: 15,034.3 measurements/second
+
+======================================================================
+SCALING ANALYSIS
+======================================================================
+
+| Scale | Total Meas | Time (s) | Meas/sec | Time/Trial (s) |
+|-------|------------|----------|----------|----------------|
+| 10×100 | 4,000 | 0.91 | 4,381 | 0.0257 |
+| 10×500 | 20,000 | 1.86 | 10,747 | 0.1238 |
+| 10×1,000 | 40,000 | 3.16 | 12,662 | 0.2503 |
+| 10×2,000 | 80,000 | 5.76 | 13,879 | 0.5092 |
+| 5×10,000 | 200,000 | 13.30 | 15,034 | 2.5162 |
+
+======================================================================
+SCALING FACTOR ANALYSIS
+======================================================================
+
+Scale 1 → 2:
+  Size increase: 5.00×
+  Time increase: 2.04×
+  Throughput ratio: 2.45× (improving)
+  Scaling behavior: sub-linear (good!)
+
+Scale 2 → 3:
+  Size increase: 2.00×
+  Time increase: 1.70×
+  Throughput ratio: 1.18× (improving)
+  Scaling behavior: sub-linear (good!)
+
+Scale 3 → 4:
+  Size increase: 2.00×
+  Time increase: 1.82×
+  Throughput ratio: 1.10× (improving)
+  Scaling behavior: sub-linear (good!)
+
+Scale 4 → 5:
+  Size increase: 2.50×
+  Time increase: 2.31×
+  Throughput ratio: 1.08× (improving)
+  Scaling behavior: sub-linear (good!)
+
+======================================================================
+✅ Scaling study complete!
+Results saved to: /home/ubuntu/UBP_Repo/bulk/gpu_ubp_study_rigorous/results/06_scaling_study
+======================================================================

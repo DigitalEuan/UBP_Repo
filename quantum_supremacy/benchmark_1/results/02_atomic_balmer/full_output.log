@@ -1,0 +1,47 @@
+======================================================================
+ATOMIC REALM STUDY: HYDROGEN BALMER SERIES
+======================================================================
+Validating UBP atomic realm against experimental spectroscopy
+
+Calculating H-alpha (3→2)...
+  Experimental: 656.3 nm
+  UBP: 656.1 nm
+  Error: -0.029% (-0.2 nm)
+  NRCI: 1.000000
+  ✅ PASS
+
+Calculating H-beta (4→2)...
+  Experimental: 486.1 nm
+  UBP: 486.0 nm
+  Error: -0.019% (-0.1 nm)
+  NRCI: 1.000000
+  ✅ PASS
+
+Calculating H-gamma (5→2)...
+  Experimental: 434.0 nm
+  UBP: 433.9 nm
+  Error: -0.015% (-0.1 nm)
+  NRCI: 1.000000
+  ✅ PASS
+
+Calculating H-delta (6→2)...
+  Experimental: 410.2 nm
+  UBP: 410.1 nm
+  Error: -0.032% (-0.1 nm)
+  NRCI: 1.000000
+  ✅ PASS
+
+======================================================================
+BALMER SERIES STUDY RESULTS
+======================================================================
+Lines calculated: 4
+Passed (<1% error): 4/4
+Mean absolute error: 0.023%
+Max absolute error: 0.032%
+Elapsed time: 0.000 seconds
+======================================================================
+
+✅ SUCCESS: UBP atomic realm accurately reproduces Balmer series!
+   All wavelengths match experimental data within 1% tolerance.
+
+✅ Results exported to study_atomic_balmer_results.json
