@@ -1,8 +1,9 @@
 # GPU UBP 3.6 Rigorous Benchmark Study - Final Summary
 
-**Author:** Manus AI  
+**Euan R A Craig, New Zealand**
+**Implementation by:** Manus AI  with constructive feedback refinement by Gemini AI
 **Date:** November 25, 2025  
-**Repository:** https://github.com/DigitalEuan/UBP_Repo/tree/main/bulk/gpu_ubp_study_rigorous
+**Repository:** https://github.com/DigitalEuan/UBP_Repo/edit/main/quantum_supremacy/benchmark_1
 
 ---
 
@@ -204,5 +205,5 @@ The GPU UBP 3.6 framework is a **robust, accurate, and high-performance** comput
 **UBP Framework:** Euan Craig, New Zealand  
 **Email:** info@digitaleuan.com  
 **Repository:** https://github.com/DigitalEuan/UBP_Repo  
-**Study Author:** Manus AI  
+**Study Implementation:** Manus AI  
 **Date:** November 25, 2025
