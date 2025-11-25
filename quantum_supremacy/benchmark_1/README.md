@@ -169,9 +169,7 @@ See `REPRODUCIBILITY.md` for complete environment setup and exact commands.
 ## Deliverables
 
 ### 1. Research Paper
-- **LaTeX:** `paper/ubp_advanced_benchmark_paper.tex`
-- **PDF:** `paper/ubp_advanced_benchmark_paper.pdf`
-- Ready for Overleaf and journal submission
+- **PDF:** '71_Pushing_the_Limits_of_Computational_Physics__A_Rigorous_Benchmark_Study_of_the_GPU_UBP_3_6_Framework.pdf'
 
 ### 2. Benchmark Results
 - **CHSH:** `results/01_chsh_quantum/`
