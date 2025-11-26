@@ -1,12 +1,12 @@
 # The Universal Binary Principle (UBP) Validation Study
 
-**A Rigorous Computational Validation of UBP's Mathematical Foundations and Predictive Dynamics**
+A Rigorous Computational Validation of UBP's Mathematical Foundations and Predictive Dynamics**
 
 This repository contains the computational scripts and notebooks that rigorously validate the Universal Binary Principle (UBP) framework, demonstrating that its specialized terminology (NRCI, Observer, TGIC, GLR) is mathematically **isomorphic** to well-established concepts in Information Theory, Measurement Theory, and Computational Physics.
 
 The goal is to prove that UBP is not exotic mathematics but orthodox theory expressed in a novel, coherence-native computational language.
 
-## 🚀 Get Started: Dynamic Flow Simulation
+## Get Started: Dynamic Flow Simulation
 
 The core predictive power of the UBP is demonstrated in the latest notebook, which models directional transport (advection) and flow resistance.
 
@@ -14,12 +14,11 @@ The core predictive power of the UBP is demonstrated in the latest notebook, whi
 | :--- | :--- | :--- |
 | **Part 6: Anisotropic Flow Test (Weather Realm)** | Demonstrates UBP's capacity to model directional flow (wind bias field) and local resistance (point obstruction), validating its utility as a predictive computational physics framework. | **LIVE** |
 
-**[Launch the Simulation on Google Colab](https://colab.research.google.com/drive/1618aclLyllZJAugInXa3pq-dnVzCz2ho?usp=sharing)**
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1618aclLyllZJAugInXa3pq-dnVzCz2ho?usp=sharing)
+[Launch the Simulation on Google Colab](https://colab.research.google.com/drive/1618aclLyllZJAugInXa3pq-dnVzCz2ho?usp=sharing)**
 
 ---
 
-## 🔬 Validation Highlights: Isomorphism with Established Physics
+## Validation Highlights: Isomorphism with Established Physics
 
 The validation study is broken down into computational parts, each proving an isomorphism between a key UBP concept and its equivalent in established scientific literature.
 
@@ -32,7 +31,7 @@ The validation study is broken down into computational parts, each proving an is
 | **5. Core Computation** | ↔ **CODATA Constants & Predictive Consistency** | `05_real_ubp_computation.py` |
 | **6. Coherence Dynamics** | ↔ **Advection and Flow Resistance (Hydrodynamics)** | **`UBP_Weather_1.ipynb`** |
 
-## 📦 Repository Structure
+## Repository Structure
 
 | File/Folder | Description |
 | :--- | :--- |
@@ -46,7 +45,7 @@ The validation study is broken down into computational parts, each proving an is
 | `Demystifying_the_Universal_Binary_Principle...pdf` | The official technical paper summarizing these validation findings. |
 | `UBP_3.6_Instruction_Manual.md` | Complete documentation for the UBP 3.6 framework. |
 
-## ✅ Reproducibility
+## Reproducibility
 
 All scripts are written in Python and rely only on standard libraries (with a minimal use of `numpy` for some array handling in the validation scripts). The core UBP modules (`ubp_core/`) are dependency-free.
 
