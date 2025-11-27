@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - HexDictionary for UBP
+Universal Binary Principle (UBP) Framework v3.7 - HexDictionary for UBP
 Author: Euan R A Craig, New Zealand
 Date: 31 October 2025
 ==================================
@@ -80,7 +80,7 @@ from typing import Any, Dict, Optional, Union
 
 import sys
 sys.path.insert(0, '/home/ubuntu/ubp_3.3')
-from system_constants import UBPConstants
+from core.system_constants import UBPConstants
 
 # Define the default directory for PERSISTENT storage for this version of HexDictionary
 DEFAULT_HEX_DICT_STORAGE_DIR = "./persistent_state/hex_dictionary_storage/"

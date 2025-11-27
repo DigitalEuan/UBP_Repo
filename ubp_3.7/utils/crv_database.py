@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - CRV Database with Sub-CRVs
+Universal Binary Principle (UBP) Framework v3.7 - CRV Database with Sub-CRVs
 Author: Euan Craig, New Zealand
 Date: 31 October 2025 (Updated for UBP 3.4)
 Previous: 31 October 2025 (UBP 3.4)
@@ -21,7 +21,7 @@ from typing import List, Dict, Optional, Tuple
 import logging
 
 # Import the centralized UBPConfig
-from ubp_config import get_config, UBPConfig, RealmConfig
+from utils.ubp_config import get_config, UBPConfig, RealmConfig
 
 @dataclass
 class SubCRV:
@@ -236,7 +236,7 @@ class EnhancedCRVDatabase:
             Dimensionally corrected CRV frequency
         """
         try:
-            from y_constants import get_y_correction_for_realm
+            from core.y_constants import get_y_correction_for_realm
             y_correction = get_y_correction_for_realm(realm)
             return crv_frequency * y_correction
         except ImportError:

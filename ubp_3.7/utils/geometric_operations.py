@@ -1,6 +1,6 @@
 """
 ==================================
-Universal Binary Principle (UBP) Framework v3.4 - Geometric Operations
+Universal Binary Principle (UBP) Framework v3.7 - Geometric Operations
 Author: Euan Craig, New Zealand
 Date: November 7, 2025
 ==================================
@@ -21,16 +21,16 @@ from typing import Dict, Tuple, Optional, Union
 from scipy.fft import fft2, ifft2, fftshift, ifftshift
 
 # UBP 3.4 imports
-from y_constants import (
+from core.y_constants import (
     calculate_y_constant,
     calculate_y_inverse,
     apply_bidirectional_refinement
 )
-from system_constants import UBPConstants
-from soc_energy import SOCCalculator
+from core.system_constants import UBPConstants
+from core.soc_energy import SOCCalculator
 
 # Geometric codex import
-from geometric_codex import GeometricCodex, GeometricSignature, PatternType
+from utils.geometric_codex import GeometricCodex, GeometricSignature, PatternType
 
 
 # ============================================================================

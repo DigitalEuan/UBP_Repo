@@ -239,7 +239,7 @@ class ValidationSuite:
     def test_coherence(self) -> Tuple[bool, str, Dict]:
         """Test coherence preservation."""
         try:
-            from coherence_substrate import CoherenceState
+            from core.coherence_substrate import CoherenceState
             
             # Test log-error tracking
             c1 = CoherenceState(1.0)
@@ -297,7 +297,7 @@ class ValidationSuite:
         """Test physics simulation engine."""
         try:
             from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-            from coherence_substrate import CoherenceState
+            from core.coherence_substrate import CoherenceState
             
             oscillator = HarmonicOscillator(k=1.0, m=1.0)
             simulator = PhysicsSimulator(dimension=1, integration_method='rk4')
@@ -386,7 +386,7 @@ class ValidationSuite:
         """Test coherence-simulation integration."""
         try:
             from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-            from coherence_substrate import CoherenceState
+            from core.coherence_substrate import CoherenceState
             
             oscillator = HarmonicOscillator(k=1.0, m=1.0)
             simulator = PhysicsSimulator(dimension=1, integration_method='rk4')
@@ -428,7 +428,7 @@ class ValidationSuite:
         """Test energy conservation in simulations."""
         try:
             from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-            from coherence_substrate import CoherenceState
+            from core.coherence_substrate import CoherenceState
             
             oscillator = HarmonicOscillator(k=1.0, m=1.0)
             simulator = PhysicsSimulator(dimension=1, integration_method='rk4')
@@ -462,7 +462,7 @@ class ValidationSuite:
         """Test agreement with analytical solutions."""
         try:
             from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-            from coherence_substrate import CoherenceState
+            from core.coherence_substrate import CoherenceState
             
             oscillator = HarmonicOscillator(k=1.0, m=1.0)
             simulator = PhysicsSimulator(dimension=1, integration_method='rk4')
@@ -553,7 +553,7 @@ class ValidationSuite:
         """Benchmark simulation performance."""
         try:
             from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-            from coherence_substrate import CoherenceState
+            from core.coherence_substrate import CoherenceState
             
             oscillator = HarmonicOscillator(k=1.0, m=1.0)
             simulator = PhysicsSimulator(dimension=1, integration_method='rk4')

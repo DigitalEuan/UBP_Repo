@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - Base GLR Framework for UBP
+Universal Binary Principle (UBP) Framework v3.7 - Base GLR Framework for UBP
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ==================================

@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - UBP State Management Module
+Universal Binary Principle (UBP) Framework v3.7 - UBP State Management Module
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ======================================
@@ -16,7 +16,7 @@ import time
 import math
 
 # Import UBPConfig and get_config for constant loading
-from ubp_config import get_config, UBPConfig
+from utils.ubp_config import get_config, UBPConfig
 
 
 _config: UBPConfig = get_config() # Initialize configuration

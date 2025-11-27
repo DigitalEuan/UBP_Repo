@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - Nuclear Realm Module
+Universal Binary Principle (UBP) Framework v3.7 - Nuclear Realm Module
 Author: Euan Craig, New Zealand
 Date: 31 October 2025 (Updated for UBP 3.4)
 Previous: 31 October 2025 (UBP 3.4)
@@ -27,12 +27,12 @@ from scipy.special import factorial, gamma
 from scipy.linalg import expm
 
 # Corrected imports for the flat module structure
-from system_constants import UBPConstants
-from state import MutableBitfield, OffBit
+from core.system_constants import UBPConstants
+from core.state import MutableBitfield, OffBit
 
 # UBP 3.4 imports
 try:
-    from y_constants import get_y_correction_for_realm
+    from core.y_constants import get_y_correction_for_realm
     from soc_energy import SOCCalculator
     from observer_framework import get_default_realm_observer_costs
     UBP_33_AVAILABLE = True

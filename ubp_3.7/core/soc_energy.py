@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - SOC Energy System
+Universal Binary Principle (UBP) Framework v3.7 - SOC Energy System
 Author: Euan Craig, New Zealand
 Date: 31 October 2025
 ================================================================================

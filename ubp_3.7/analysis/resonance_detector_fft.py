@@ -29,7 +29,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'core'))
 
 try:
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
 except ImportError:
     # Fallback if running standalone
     class CoherenceState:

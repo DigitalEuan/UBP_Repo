@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - Dual-Mode Energy System
+Universal Binary Principle (UBP) Framework v3.7 - Dual-Mode Energy System
 Author: Euan Craig, New Zealand
 Date: 31 October 2025
 ================================================================================
@@ -28,21 +28,21 @@ from typing import List, Optional, Dict, Any, Union
 import warnings
 
 # UBP 3.4 modules
-from y_constants import (
+from core.y_constants import (
     calculate_y_constant,
     calculate_y_emergent,
     YConstants
 )
-from soc_energy import (
+from core.soc_energy import (
     SOCCalculator,
     calculate_soc_energy,
     SOCEnergyResult
 )
-from observer_framework import (
+from core.observer_framework import (
     SelfActualizingObserver,
     calculate_realm_specific_observer_cost
 )
-from system_constants import UBPConstants
+from core.system_constants import UBPConstants
 
 # UBP 3.2 modules (for legacy mode)
 try:

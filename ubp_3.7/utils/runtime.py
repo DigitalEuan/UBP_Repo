@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - UBP Virtual Machine Runtime
+Universal Binary Principle (UBP) Framework v3.7 - UBP Virtual Machine Runtime
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ==================================
@@ -24,14 +24,14 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # if ubp_semantics.__init__.py is currently problematic.
 # The eventual goal is to import from ubp_semantics directly.
 
-from state import OffBit, MutableBitfield, UBPState
-from energy import energy, resonance_strength, structural_optimality, observer_effect_factor, cosmic_constant, spin_information_factor, quantum_spin_entropy, cosmological_spin_entropy, weighted_toggle_matrix_sum, calculate_energy_for_realm
+from core.state import OffBit, MutableBitfield, UBPState
+from core.energy_dual import energy, resonance_strength, structural_optimality, observer_effect_factor, cosmic_constant, spin_information_factor, quantum_spin_entropy, cosmological_spin_entropy, weighted_toggle_matrix_sum, calculate_energy_for_realm
 from metrics import nrci, coherence_pressure_spatial, fractal_dimension, calculate_system_coherence_score
 from toggle_ops import toggle_and, toggle_xor, toggle_or, resonance_toggle, entanglement_toggle, superposition_toggle, hybrid_xor_resonance, spin_transition, apply_tgic_constraint
 
 # Import the centralized UBPConfig
-from ubp_config import get_config, UBPConfig, RealmConfig
-from global_coherence import GlobalCoherenceIndex
+from utils.ubp_config import get_config, UBPConfig, RealmConfig
+from utils.global_coherence import GlobalCoherenceIndex
 from hex_dictionary import HexDictionary # Import HexDictionary for persistent storage
 
 

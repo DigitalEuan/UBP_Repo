@@ -152,7 +152,7 @@ def test_leech_edge_cases():
 def test_vector_offbit_edge_cases():
     """Test VectorOffBit with edge cases."""
     from vector_offbit import VectorOffBit
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
     
     print("\n" + "="*70)
     print("EDGE CASE TEST: VECTOROFFBIT")
@@ -276,7 +276,7 @@ def test_fft_edge_cases():
 def test_simulation_edge_cases():
     """Test physics simulator with edge cases."""
     from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
     
     print("\n" + "="*70)
     print("EDGE CASE TEST: PHYSICS SIMULATOR")

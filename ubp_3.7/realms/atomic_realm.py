@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - Atomic/Chemical Realm
+Universal Binary Principle (UBP) Framework v3.7 - Atomic/Chemical Realm
 Author: Euan Craig, New Zealand
 Date: 31 October 2025
 ================================================================================
@@ -29,11 +29,11 @@ from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
 
 # UBP 3.4 modules
-from system_constants import UBPConstants
-from y_constants import get_y_correction_for_realm
-from soc_energy import SOCCalculator, SOCEnergyResult
-from observer_framework import get_default_realm_observer_costs
-from wall_of_reality import WallOfReality
+from core.system_constants import UBPConstants
+from core.y_constants import get_y_correction_for_realm
+from core.soc_energy import SOCCalculator, SOCEnergyResult
+from core.observer_framework import get_default_realm_observer_costs
+from core.wall_of_reality import WallOfReality
 
 
 @dataclass

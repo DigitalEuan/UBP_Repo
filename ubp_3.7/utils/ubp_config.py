@@ -2,7 +2,7 @@
 # @title UBP Config
 
 """
-Universal Binary Principle (UBP) Framework v3.2+ - UBP Config
+Universal Binary Principle (UBP) Framework v3.7 - UBP Config
 Author: Euan Craig, New Zealand
 Date: 23 October 2025
 ================================================
@@ -16,7 +16,7 @@ import json
 # Import system constants to populate ConstantConfig
 # The necessary classes (UBPConstants, HardwareProfileManager, HardwareProfile)
 # are expected to be defined in previous cells that have been executed.
-# from system_constants import UBPConstants as RawUBPConstants
+# from core.system_constants import UBPConstants as RawUBPConstants
 # Import HardwareProfileManager for auto-detection
 # from hardware_profiles import HardwareProfileManager, HardwareProfile # Import HardwareProfile for type hinting
 
@@ -26,7 +26,7 @@ import json
 # from SvzGQg_fbcBI import HardwareProfileManager, HardwareProfile # Removed
 
 # Import UBPConstants from system_constants
-from system_constants import UBPConstants as RawUBPConstants
+from core.system_constants import UBPConstants as RawUBPConstants
 
 # Import HardwareProfile for type hints (or use string annotation)
 try:

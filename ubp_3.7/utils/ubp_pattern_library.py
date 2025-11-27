@@ -29,7 +29,7 @@ from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, asdict
 import math
 
-from geometric_codex import GeometricCodex, GeometricSignature, PatternType, PatternSymmetry
+from utils.geometric_codex import GeometricCodex, GeometricSignature, PatternType, PatternSymmetry
 
 
 @dataclass

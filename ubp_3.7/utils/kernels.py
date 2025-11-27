@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - UBP Mathematical Kernels
+Universal Binary Principle (UBP) Framework v3.7 - UBP Mathematical Kernels
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ==================================
@@ -16,8 +16,8 @@ import math
 import numpy as np
 from typing import List, Union, Tuple, Optional # Added Optional
 # Import ubp_config and get_config for constant loading
-from ubp_config import get_config, UBPConfig
-from global_coherence import GlobalCoherenceIndex # For P_GCI
+from utils.ubp_config import get_config, UBPConfig
+from utils.global_coherence import GlobalCoherenceIndex # For P_GCI
 
 
 # Initialize configuration and global coherence system at module load time

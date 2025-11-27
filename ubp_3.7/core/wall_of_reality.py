@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - Wall of Reality
+Universal Binary Principle (UBP) Framework v3.7 - Wall of Reality
 Author: Euan Craig, New Zealand
 Date: 31 October 2025
 ================================================================================

@@ -90,7 +90,7 @@ def test_workflow_2_coherence_tracking():
     print("WORKFLOW 2: COHERENCE TRACKING")
     print("="*70)
     
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
     from y_constants_simple import Y, Y_INVERSE
     
     # Step 1: Create initial coherence state
@@ -133,7 +133,7 @@ def test_workflow_3_signal_analysis():
     print("="*70)
     
     from resonance_detector_fft import ResonanceDetectorFFT
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
     
     # Step 1: Create detector
     detector = ResonanceDetectorFFT(sample_rate=1000.0, window='hann')
@@ -182,7 +182,7 @@ def test_workflow_4_physics_simulation():
     print("="*70)
     
     from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
     
     # Step 1: Create oscillator
     oscillator = HarmonicOscillator(k=1.0, m=1.0)
@@ -251,7 +251,7 @@ def test_workflow_5_full_integration():
     from golay_code import GolayG24
     from vector_offbit import VectorOffBit
     from leech_lattice import LeechLattice, golay_to_leech
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
     from resonance_detector_fft import ResonanceDetectorFFT
     from simulation import PhysicsSimulator, HarmonicOscillator, SimulationState
     

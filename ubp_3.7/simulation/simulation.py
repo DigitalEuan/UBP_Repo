@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'core'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'realms'))
 
 try:
-    from coherence_substrate import CoherenceState
+    from core.coherence_substrate import CoherenceState
 except ImportError:
     class CoherenceState:
         def __init__(self, value: float):

@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - UBP Validation and Coherence Metrics
+Universal Binary Principle (UBP) Framework v3.7 - UBP Validation and Coherence Metrics
 Author: Euan Craig, New Zealand
 Date: 31 October 2025 (Updated for UBP 3.4)
 Previous: 31 October 2025 (UBP 3.4)

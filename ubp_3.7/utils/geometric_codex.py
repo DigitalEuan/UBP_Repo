@@ -1,6 +1,6 @@
 """
 ==================================
-Universal Binary Principle (UBP) Framework v3.4 - Geometric Codex
+Universal Binary Principle (UBP) Framework v3.7 - Geometric Codex
 Author: Euan Craig, New Zealand
 Date: November 7, 2025
 ==================================
@@ -28,13 +28,13 @@ import json
 from pathlib import Path
 
 # UBP 3.4 imports
-from y_constants import (
+from core.y_constants import (
     calculate_y_constant,
     calculate_y_inverse,
     apply_bidirectional_refinement
 )
-from system_constants import UBPConstants
-from ubp_config import get_config
+from core.system_constants import UBPConstants
+from utils.ubp_config import get_config
 
 
 # ============================================================================

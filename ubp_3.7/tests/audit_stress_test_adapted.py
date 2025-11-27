@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'core'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'error_correction'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'analysis'))
 
-import coherence_substrate as cs
+from core import coherence_substrate as cs
 
 
 # ============================================================================

@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - UBP Toggle Algebra Operations
+Universal Binary Principle (UBP) Framework v3.7 - UBP Toggle Algebra Operations
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ================================================
@@ -13,9 +13,9 @@ Implements the fundamental toggle operations that govern OffBit interactions:
 
 import math
 from typing import List, Union
-from state import OffBit # Changed from relative import
-from kernels import resonance_kernel # Changed from relative import
-from ubp_config import get_config # Import get_config to access centralized constants
+from core.state import OffBit # Changed from relative import
+from utils.kernels import resonance_kernel # Changed from relative import
+from utils.ubp_config import get_config # Import get_config to access centralized constants
 
 _config = get_config() # Initialize configuration
 

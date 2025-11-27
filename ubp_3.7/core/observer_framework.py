@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - Observer Framework
+Universal Binary Principle (UBP) Framework v3.7 - Observer Framework
 Author: Euan Craig, New Zealand
 Date: 31 October 2025
 ================================================================================

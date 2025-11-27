@@ -1,6 +1,6 @@
 # UBP 3.4 - SOC Refinement Compatible
 """
-Universal Binary Principle (UBP) Framework v3.2+ - Enhanced Optical Realm Module
+Universal Binary Principle (UBP) Framework v3.7 - Enhanced Optical Realm Module
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ==================================
@@ -24,8 +24,8 @@ from scipy.constants import c, h, hbar, e, epsilon_0, mu_0
 import json
 
 # Corrected imports:
-from system_constants import UBPConstants # UBPConstants is in system_constants.py
-from state import MutableBitfield, OffBit # Bitfield is now MutableBitfield and is in state.py
+from core.system_constants import UBPConstants # UBPConstants is in system_constants.py
+from core.state import MutableBitfield, OffBit # Bitfield is now MutableBitfield and is in state.py
 
 
 @dataclass

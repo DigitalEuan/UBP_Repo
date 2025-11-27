@@ -1,5 +1,5 @@
 """
-Universal Binary Principle (UBP) Framework v3.4 - Enhanced Non-Random Coherence Index (NRCI) for UBP
+Universal Binary Principle (UBP) Framework v3.7 - Enhanced Non-Random Coherence Index (NRCI) for UBP
 Author: Euan Craig, New Zealand
 Date: 31 October 2025 (Updated for UBP 3.4)
 Previous: 31 October 2025 (UBP 3.4)

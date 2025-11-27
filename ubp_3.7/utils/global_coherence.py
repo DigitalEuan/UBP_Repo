@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - Global Coherence Index (P_GCI) for UBP
+Universal Binary Principle (UBP) Framework v3.7 - Global Coherence Index (P_GCI) for UBP
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ==================================
@@ -19,7 +19,7 @@ import math
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass
 from enum import Enum
-from ubp_config import get_config, UBPConfig # Import ubp_config to get PHI constant
+from utils.ubp_config import get_config, UBPConfig # Import ubp_config to get PHI constant
 
 # Initialize configuration
 _config: UBPConfig = get_config()

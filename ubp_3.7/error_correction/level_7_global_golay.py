@@ -1,6 +1,6 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.2+ - GLR Level 7: Global Golay Correction with Syndrome Calculation
+Universal Binary Principle (UBP) Framework v3.7 - GLR Level 7: Global Golay Correction with Syndrome Calculation
 Author: Euan Craig, New Zealand
 Date: 03 September 2025
 ==================================
@@ -27,7 +27,7 @@ import numpy as np
 import time
 from typing import Dict, List, Tuple, Optional, Any
 from dataclasses import dataclass
-from glr_base import GLRProcessor, GLRLevel, GLRResult, LatticeStructure, LatticeType
+from error_correction.glr_base import GLRProcessor, GLRLevel, GLRResult, LatticeStructure, LatticeType
 
 
 @dataclass
