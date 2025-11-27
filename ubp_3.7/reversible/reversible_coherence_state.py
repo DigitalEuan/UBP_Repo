@@ -11,8 +11,8 @@ Author: UBP 3.7 Development Team
 Date: November 28, 2025
 """
 
-from reversible_rational import ReversibleRational
-from reversible_y_constants import ReversibleYConstants, refine_forward, refine_backward
+from reversible.reversible_rational import ReversibleRational
+from reversible.reversible_y_constants import ReversibleYConstants, refine_forward, refine_backward
 from typing import List, Tuple, Optional
 import math
 

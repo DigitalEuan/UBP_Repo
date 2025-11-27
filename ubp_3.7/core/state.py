@@ -52,6 +52,10 @@ class OffBit:
         """Count of active (1) bits."""
         return bin(self.value).count('1')
     
+    def hamming_weight(self) -> int:
+        """Calculate the Hamming weight (number of 1 bits)."""
+        return bin(self.value).count('1')
+    
     @property
     def is_active(self) -> bool:
         """Check if OffBit has any active bits."""

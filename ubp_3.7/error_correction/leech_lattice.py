@@ -56,6 +56,10 @@ class LeechLatticePoint:
         """Scalar multiplication."""
         return LeechLatticePoint(scalar * self.coordinates)
     
+    def __len__(self) -> int:
+        """Return the dimension of the lattice point (always 24)."""
+        return len(self.coordinates)
+    
     def __repr__(self):
         return f"LeechLatticePoint(norm²={self.norm_squared}, coords={self.coordinates[:4]}...)"
 

@@ -139,6 +139,23 @@ class CoherenceState:
         error = abs(expected_value - self.value) / abs(self.value) if self.value != 0 else 0
         return error, error < 1e-12
     
+    def apply_y_refinement(self, direction: str) -> 'CoherenceState':
+        """
+        Apply Y-refinement in the specified direction.
+        
+        Args:
+            direction: 'forward' or 'backward'
+            
+        Returns:
+            self (for method chaining)
+        """
+        if direction.lower() == 'forward':
+            return self.refine_forward()
+        elif direction.lower() == 'backward':
+            return self.refine_backward()
+        else:
+            raise ValueError(f"Direction must be 'forward' or 'backward', got '{direction}'")
+    
     def __repr__(self):
         return f"CoherenceState(value={self.value:.6e}, nrci={self.nrci:.10f}, net_ref={self.net_refinements})"
 
