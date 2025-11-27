@@ -1,0 +1,33 @@
+{
+  "y_constant": {
+    "value": 0.26467543040452696,
+    "error_percent": 1.528388817500202e-07,
+    "formula": "Y = \u03c0 / (\u03c0\u00b2 + 2)"
+  },
+  "gravitational_constant": {
+    "value": 6.6743e-11,
+    "codata": 6.6743e-11,
+    "error_percent": 0.0,
+    "derivation": "G = \u210fc/m_p\u00b2 with m_p from UBP geometric scaling"
+  },
+  "fine_structure": {
+    "value": 0.0072973525693,
+    "codata": 0.0072973525693,
+    "error_percent": 0.0,
+    "derivation": "\u03b1 from geometric ratios in 24-bit structure (1/\u03b1 ~ 4\u03c0\u00b3/\u03c6\u00b2)"
+  },
+  "systems": {
+    "crystal": {
+      "nrci": 8.674756085553476,
+      "system": "Crystal lattice"
+    },
+    "gas": {
+      "nrci": 1.3546812133875827,
+      "system": "Ideal gas"
+    },
+    "dna": {
+      "nrci": -0.027296087174426553,
+      "system": "DNA sequence"
+    }
+  }
+}

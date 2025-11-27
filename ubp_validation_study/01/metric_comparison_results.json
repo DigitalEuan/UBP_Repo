@@ -1,0 +1,56 @@
+{
+  "results": {
+    "pure_noise": {
+      "shannon_entropy": 7.981179917946681,
+      "snr": 5.954923928389302,
+      "cv": 0.5832152889757772,
+      "autocorr": -0.013785429603934555,
+      "spectral_flatness": 0.1436657419414516,
+      "nrci": 0.0023525102566648304,
+      "geometric_coherence": 0.007490725241111974
+    },
+    "pure_structure": {
+      "shannon_entropy": 7.877997182976652,
+      "snr": 6.906894579743986,
+      "cv": 0.5060084846297479,
+      "autocorr": 0.9912900376867307,
+      "spectral_flatness": 0.00010669335087355816,
+      "nrci": 0.015250352127918476,
+      "geometric_coherence": 0.10386284572284187
+    },
+    "mixed": {
+      "shannon_entropy": 7.8049139524609465,
+      "snr": 6.600936450570991,
+      "cv": 0.5291177413652141,
+      "autocorr": 0.9023026709387756,
+      "spectral_flatness": 0.012284443642863485,
+      "nrci": 0.02438575594238168,
+      "geometric_coherence": 0.02891344529921799
+    },
+    "constant": {
+      "shannon_entropy": -0.0,
+      "snr": "inf",
+      "cv": 0.0,
+      "autocorr": 0.0,
+      "spectral_flatness": 3.5083298309298014e-31,
+      "nrci": 1.0,
+      "geometric_coherence": 1.0
+    },
+    "gradient": {
+      "shannon_entropy": 6.643856189774724,
+      "snr": 5.9318364998256765,
+      "cv": 0.5852983809000257,
+      "autocorr": 0.9408544736321608,
+      "spectral_flatness": 4.773260862166389e-32,
+      "nrci": 0.16951797627815945,
+      "geometric_coherence": 0.28169014084507044
+    }
+  },
+  "correlations": {
+    "shannon_entropy": -1.0,
+    "snr": -0.5002784135881116,
+    "cv": -0.9669903102064752,
+    "autocorr": -0.543326055761704,
+    "spectral_flatness": -0.3434143773814709
+  }
+}
