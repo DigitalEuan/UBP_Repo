@@ -1,4 +1,4 @@
-# UBP 3.4
+# UBP 3.7
 """
 Universal Binary Principle (UBP) Framework v3.7 - Base GLR Framework for UBP
 Author: Euan Craig, New Zealand

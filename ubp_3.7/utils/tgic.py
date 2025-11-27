@@ -1,4 +1,4 @@
-# UBP 3.4
+# UBP 3.7
 """
 Universal Binary Principle (UBP) Framework v3.7 - TGIC: Triad Graph Interaction Constraint for UBP
 Author: Euan Craig, New Zealand

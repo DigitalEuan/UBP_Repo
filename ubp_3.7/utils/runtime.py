@@ -1,4 +1,12 @@
-# UBP 3.4
+# UBP 3.7
+"""
+**DEPRECATION NOTICE:** This module is not currently integrated into UBP 3.7.
+It has import dependencies that don't match the current energy_dual.py API.
+Kept for reference only. Not imported by any active modules.
+"""
+
+# DEPRECATED - NOT USED IN UBP 3.7
+
 """
 Universal Binary Principle (UBP) Framework v3.7 - UBP Virtual Machine Runtime
 Author: Euan Craig, New Zealand

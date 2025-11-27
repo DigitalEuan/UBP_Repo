@@ -1,4 +1,4 @@
-# UBP 3.4
+# UBP 3.7
 """
 Universal Binary Principle (UBP) Framework v3.7 - UBP Mathematical Kernels
 Author: Euan Craig, New Zealand
