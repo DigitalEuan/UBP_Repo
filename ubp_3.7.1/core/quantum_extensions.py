@@ -1,5 +1,5 @@
 """
-UBP Quantum Extensions v3.6.1 - High-Level Quantum Computing API
+UBP Quantum Extensions v3.7.1 - High-Level Quantum Computing API
 ================================================================
 
 This module extends the UBP CoherenceState with high-level quantum computing
