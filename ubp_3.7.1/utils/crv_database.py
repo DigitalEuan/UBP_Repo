@@ -23,6 +23,16 @@ import logging
 # Import the centralized UBPConfig
 from utils.ubp_config import get_config, UBPConfig, RealmConfig
 
+# Y constant correction (with fallback)
+try:
+    from core.y_constants import get_y_correction_for_realm
+    _HAS_Y_CORRECTION = True
+except ImportError:
+    _HAS_Y_CORRECTION = False
+    def get_y_correction_for_realm(realm: str) -> float:
+        """Fallback: return identity correction"""
+        return 1.0
+
 @dataclass
 class SubCRV:
     """Sub-CRV with performance metrics and harmonic relationship."""
@@ -39,7 +49,7 @@ class CRVProfile:
     realm: str
     main_crv: float
     wavelength: float  # nm
-    platonic_solid: str # Changed from 'geometry' to 'platonic_solid'
+    lattice_type: str  # Lattice/geometry type (e.g., 'simple_cubic', 'fcc', 'diamond')
     coordination_number: int
     sub_crvs: List[SubCRV]
     nrci_baseline: float
@@ -55,7 +65,8 @@ class EnhancedCRVDatabase:
     """
     
     # Constant for scaling compute time in fitness evaluation
-    COMPUTE_TIME_SCALING_FACTOR = 50000
+    # This balances NRCI score vs computational cost in fitness calculations
+    COMPUTE_TIME_SCALING_FACTOR = 50000  # Can be overridden via config if needed
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
@@ -70,7 +81,7 @@ class EnhancedCRVDatabase:
         profiles = {}
         for realm_name, realm_cfg in self.config.realms.items():
             self.logger.debug(f"DEBUG(CRV_DB): Initializing profile for realm '{realm_name}' with RealmConfig: {realm_cfg}")
-            self.logger.debug(f"DEBUG(CRV_DB): RealmConfig '{realm_name}' has platonic_solid attribute: {hasattr(realm_cfg, 'platonic_solid')}")
+            self.logger.debug(f"DEBUG(CRV_DB): RealmConfig '{realm_name}' has lattice_type attribute: {hasattr(realm_cfg, 'platonic_solid')}")
             # Convert the list of sub_crvs (floats) from UBPConfig to SubCRV objects
             # This is a simplification; a full SubCRV definition from research might be more complex
             # For now, create placeholder SubCRV objects based on frequencies from ubp_config
@@ -102,7 +113,7 @@ class EnhancedCRVDatabase:
                 realm=realm_cfg.name,
                 main_crv=realm_cfg.main_crv,
                 wavelength=realm_cfg.wavelength,
-                platonic_solid=realm_cfg.platonic_solid, # Changed to platonic_solid
+                lattice_type=realm_cfg.platonic_solid,  # Using platonic_solid from config as lattice_type
                 coordination_number=realm_cfg.coordination_number,
                 sub_crvs=sub_crv_objects,
                 nrci_baseline=realm_cfg.nrci_baseline,
@@ -235,15 +246,14 @@ class EnhancedCRVDatabase:
         Returns:
             Dimensionally corrected CRV frequency
         """
-        try:
-            from core.y_constants import get_y_correction_for_realm
-            y_correction = get_y_correction_for_realm(realm)
-            return crv_frequency * y_correction
-        except ImportError:
+        if not _HAS_Y_CORRECTION:
             self.logger.warning("Y constants module not available, returning uncorrected CRV")
             return crv_frequency
+        
+        y_correction = get_y_correction_for_realm(realm)
+        return crv_frequency * y_correction
     
-    def get_crv_with_y_correction(self, realm: str) -> Optional[float]:
+    def get_crv_with_y_correction(self, realm: str) -> float:
         """
         Get main CRV for realm with Y constant correction applied.
         
@@ -253,10 +263,16 @@ class EnhancedCRVDatabase:
             realm: Realm name
             
         Returns:
-            Y-corrected CRV frequency or None if realm unknown
+            Y-corrected CRV frequency
+            
+        Raises:
+            ValueError: If realm is unknown
         """
         profile = self.get_crv_profile(realm)
         if not profile:
-            return None
+            available_realms = list(self.crv_profiles.keys())
+            raise ValueError(
+                f"Unknown realm '{realm}'. Available realms: {available_realms}"
+            )
         
         return self.apply_y_correction(profile.main_crv, realm)
