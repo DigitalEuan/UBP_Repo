@@ -1,7 +1,7 @@
 """
-Universal Binary Principle (UBP) Framework v3.7 - Observer Framework
+Universal Binary Principle (UBP) Framework v3.7.1 - Observer Framework
 Author: Euan Craig, New Zealand
-Date: 31 October 2025
+Date: 28 November 2025
 ================================================================================
 
 This module implements the Self-Actualizing Observer framework, which reveals
