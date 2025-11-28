@@ -1,8 +1,11 @@
 """
-Universal Binary Principle (UBP) Framework v3.7 - Y Constant System
+Universal Binary Principle (UBP) Framework v3.7.1 - Y Constant System
 Author: Euan Craig, New Zealand
 Date: 31 October 2025
 ================================================================================
+
+This module is redundant - the y.py is all that is required for ubp_3.7.1.
+This script remains as a monolithic transparency aid for understanding the system.
 
 This module implements the Y constant family discovered in the October 2025 paper
 "The Computational Origin of Physical Constants: Deriving Fundamental Constants
