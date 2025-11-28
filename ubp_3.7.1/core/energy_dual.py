@@ -1,7 +1,7 @@
 """
-Universal Binary Principle (UBP) Framework v3.7 - Dual-Mode Energy System
-Author: Euan Craig, New Zealand
-Date: 31 October 2025
+Universal Binary Principle (UBP) Framework v3.7.1 - Dual-Mode Energy System
+Author: Euan R A Craig, New Zealand
+Date: 28 November 2025
 ================================================================================
 
 This module implements dual-mode energy calculations:
