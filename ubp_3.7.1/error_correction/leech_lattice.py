@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UBP 3.7 - Leech Lattice Λ24 Implementation
+UBP 3.7.1 - Leech Lattice Λ24 Implementation
 ==========================================
 
 REAL IMPLEMENTATION of the Leech lattice in 24 dimensions.
@@ -13,9 +13,9 @@ with no vectors of norm 2. It has remarkable properties:
 
 This is NOT a simulation - all operations are exact lattice operations.
 
-Author: UBP 3.7 Development
+Author: Euan R A Craig
 Date: November 28, 2025
-Version: 3.7.0
+Version: 3.7.1
 """
 
 import numpy as np
