@@ -1,11 +1,11 @@
 """
-Reversible Rational Arithmetic for UBP 3.7
+Reversible Rational Arithmetic for UBP 3.7.1
 ==========================================
 
 This module implements TRUE information-theoretic reversibility using exact
 rational number arithmetic. Every operation is bijective and provably reversible.
 
-Author: UBP 3.7 Development Team
+Author: Euan R A Craig, New Zealand
 Date: November 28, 2025
 """
 
