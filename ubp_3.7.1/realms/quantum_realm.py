@@ -96,6 +96,11 @@ class QuantumRealm:
         self.wall = WallOfReality()
         self.y_correction = get_y_correction_for_realm(self.REALM_NAME)
         
+        # Realm-specific parameters from config
+        # CRV from ubp_config: 4.4439e+13 Hz (highest NRCI peak)
+        self.crv = 4.4439e13  # Hz - quantum realm characteristic frequency
+        self.nrci_baseline = 0.999997  # Target NRCI for quantum realm
+        
         # Get realm-specific observer cost
         realm_costs = get_default_realm_observer_costs(UBPConstants.O_OBSERVER)
         self.observer_cost = realm_costs[self.REALM_NAME]
