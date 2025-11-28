@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UBP 3.7 - Golay(24,12) Error Correcting Code (CORRECTED)
+UBP 3.7.1 - Golay(24,12) Error Correcting Code
 =========================================================
 
 REAL, CORRECT implementation of the extended binary Golay code G24.
@@ -14,7 +14,7 @@ The Golay(24,12) code is a perfect error-correcting code that:
 This implementation uses the CORRECT generator matrix based on the
 extended Golay code construction from G23.
 
-Author: UBP 3.7 Development (Fixed)
+Author: Euan R A Craig, New Zealand
 Date: November 28, 2025
 Version: 3.7.1
 """
@@ -27,7 +27,7 @@ class GolayG24:
     """
     Binary Golay(24,12) error correcting code.
     
-    This is the CORRECT implementation using the proper extended Golay construction.
+    This implementation uses the extended Golay construction.
     """
     
     def __init__(self):
