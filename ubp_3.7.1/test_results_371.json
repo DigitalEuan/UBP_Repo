@@ -1,7 +1,7 @@
 {
   "test_suite": "UBP 3.7.1 Comprehensive",
-  "total_tests": 31,
-  "passed": 31,
+  "total_tests": 33,
+  "passed": 33,
   "failed": 0,
   "tests": [
     {
@@ -103,6 +103,16 @@
       "name": "SOC energy from state calculates correctly",
       "passed": true,
       "details": "Energy from state: 1.799995e-05 CU"
+    },
+    {
+      "name": "energy_dual.py delegates to calculate_soc_energy_from_state",
+      "passed": true,
+      "details": "energy_dual M=6, expected 6"
+    },
+    {
+      "name": "energy_dual.py produces same result as direct SOC call",
+      "passed": true,
+      "details": "Dual: 1.799995e-05, Direct: 1.799995e-05"
     },
     {
       "name": "toggle_and works",

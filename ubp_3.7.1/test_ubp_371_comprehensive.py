@@ -210,6 +210,18 @@ test("SOC energy from state calculates correctly",
      result_from_state.energy_cu > 0,
      f"Energy from state: {result_from_state.energy_cu:.6e} CU")
 
+# Test energy_dual.py integration (Grok's feedback)
+from core.energy_dual import DualModeEnergyCalculator
+dual_calc = DualModeEnergyCalculator()
+result_dual = dual_calc.calculate(mode='soc', state=test_state)
+test("energy_dual.py delegates to calculate_soc_energy_from_state",
+     result_dual.M == 6,
+     f"energy_dual M={result_dual.M}, expected 6")
+
+test("energy_dual.py produces same result as direct SOC call",
+     abs(result_dual.energy_cu - result_from_state.energy_cu) < 1e-10,
+     f"Dual: {result_dual.energy_cu:.6e}, Direct: {result_from_state.energy_cu:.6e}")
+
 # ============================================================================
 # TEST 5: Toggle Operations
 # ============================================================================

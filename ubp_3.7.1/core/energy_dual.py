@@ -104,9 +104,21 @@ class DualModeEnergyCalculator:
         Args:
             mode: Calculation mode ('soc', 'legacy', or 'auto')
             **kwargs: Mode-specific parameters
+                For SOC mode (RECOMMENDED):
+                    state: OffBit or CoherenceState (automatic bit counting)
+                For SOC mode (LEGACY):
+                    modal_sum: Pre-calculated modal sum
+                    M: Manual bit count (deprecated)
             
         Returns:
             Energy value (float for legacy, SOCEnergyResult for SOC)
+        
+        Example:
+            >>> from core.state import OffBit
+            >>> calc = DualModeEnergyCalculator()
+            >>> state = OffBit(1000)
+            >>> result = calc.calculate(mode='soc', state=state)  # RECOMMENDED
+            >>> print(f"M={result.M}, E={result.energy_cu:.6e} CU")
         """
         mode = mode or self.default_mode
         
@@ -128,6 +140,7 @@ class DualModeEnergyCalculator:
     
     def _calculate_soc(
         self,
+        state: Optional[Any] = None,
         modal_sum: Optional[float] = None,
         weights: Optional[List[float]] = None,
         modes: Optional[List[float]] = None,
@@ -135,23 +148,46 @@ class DualModeEnergyCalculator:
         C: Optional[float] = None,
         Y_emergent: Optional[float] = None,
         o_observer: Optional[float] = None,
+        current_nrci: Optional[float] = None,
         **kwargs
     ) -> SOCEnergyResult:
         """
         Calculate energy using SOC equation.
         
+        PREFERRED: Pass `state` (OffBit or CoherenceState) for automatic bit counting.
+        LEGACY: Pass `modal_sum` or `M` manually (deprecated).
+        
         Args:
-            modal_sum: Pre-calculated resonant modal sum
+            state: OffBit or CoherenceState object (RECOMMENDED - counts bits automatically)
+            modal_sum: Pre-calculated resonant modal sum (legacy)
             weights: Interaction weights (if modal_sum not provided)
             modes: Modal values (if modal_sum not provided)
-            M: Meta-Temporal Primitive (optional override)
+            M: Meta-Temporal Primitive (optional override - deprecated, use state instead)
             C: Celeritas (optional override)
             Y_emergent: Observer-Coherence Ratio (optional override)
             o_observer: Observer cost (for Y_emergent calculation)
+            current_nrci: Current NRCI (optional)
             
         Returns:
             SOCEnergyResult with energy in CU
         """
+        # PREFERRED PATH: Use real bit count from state
+        if state is not None:
+            # Delegate to the TRUE SOC calculation with automatic bit counting
+            return self.soc_calc.calculate_soc_energy_from_state(
+                state=state,
+                modal_sum=modal_sum if modal_sum is not None else 1.0,
+                current_nrci=current_nrci
+            )
+        
+        # LEGACY PATH: Manual M or modal_sum (deprecated)
+        if M is not None or modal_sum is not None:
+            warnings.warn(
+                "Using manual M or modal_sum is deprecated. "
+                "Pass 'state' parameter for automatic bit counting.",
+                DeprecationWarning,
+                stacklevel=2
+            )
         # Calculate modal sum if not provided
         if modal_sum is None:
             if weights is not None and modes is not None:
@@ -322,22 +358,29 @@ def energy_auto(
     Args:
         mode: Calculation mode ('soc', 'legacy', or 'auto')
         **kwargs: Mode-specific parameters
+            For SOC mode (RECOMMENDED):
+                state: OffBit or CoherenceState (automatic bit counting)
+            For SOC mode (LEGACY):
+                modal_sum: Pre-calculated modal sum
+                M: Manual bit count (deprecated)
         
     Returns:
         Energy value (type depends on mode)
         
     Examples:
-        # SOC mode
+        # SOC mode with state (RECOMMENDED)
+        >>> from core.state import OffBit
+        >>> state = OffBit(1000)
+        >>> result = energy_auto(mode='soc', state=state)
+        >>> print(f"M={result.M}, E={result.energy_cu:.6e} CU")
+        
+        # SOC mode with manual modal_sum (DEPRECATED)
         >>> result = energy_auto(mode='soc', modal_sum=1.0)
         >>> print(f"E = {result.energy_cu:.6e} CU")
         
         # Legacy mode
         >>> E = energy_auto(mode='legacy', M=1000, w_sum=0.1)
         >>> print(f"E = {E:.6e} J")
-        
-        # Auto mode (detects from parameters)
-        >>> result = energy_auto(modal_sum=1.0)  # Uses SOC
-        >>> E = energy_auto(M=1000, w_sum=0.1)  # Uses legacy
     """
     calc = DualModeEnergyCalculator()
     return calc.calculate(mode=mode, **kwargs)
