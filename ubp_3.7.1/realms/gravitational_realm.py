@@ -1,7 +1,7 @@
 """
-Universal Binary Principle (UBP) Framework v3.7 - Gravitational Realm
-Author: Euan Craig, New Zealand
-Date: 31 October 2025
+Universal Binary Principle (UBP) Framework v3.7.1 - Gravitational Realm
+Author: Euan R A Craig, New Zealand
+Date: 28 November 2025
 ================================================================================
 
 This module implements gravitational realm calculations using UBP 3.4 framework.
