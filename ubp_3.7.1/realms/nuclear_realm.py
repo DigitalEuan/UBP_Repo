@@ -1,8 +1,7 @@
 """Nuclear Realm Module
-Universal Binary Principle (UBP) Framework v3.7 - Nuclear Realm Module
-Author: Euan Craig, New Zealand
-Date: 31 October 2025 (Updated for UBP 3.7.1)
-Previous: 31 October 2025 (UBP 3.4)
+Universal Binary Principle (UBP) Framework v3.7.1 - Nuclear Realm Module
+Author: Euan R A Craig, New Zealand
+Date: 28 November 2025
 ================================================================================
 
 This module implements the complete Nuclear Realm with E8-to-G2 symmetry lattice,
@@ -10,6 +9,8 @@ Zitterbewegung modeling, CARFE integration, and NMR validation capabilities.
 
 The Nuclear realm operates at frequencies from 10^16 to 10^20 Hz, with special
 focus on Zitterbewegung frequency (1.2356×10^20 Hz) and NMR validation at 600 MHz.
+
+CARFE: Reference: Del Bel, J. (2025). The Cykloid Adelic Recursive Expansive Field Equation (CARFE). Academia.edu. https://www.academia.edu/130184561/
 
 UBP 3.7.1 Updates:
 - SOC energy equation integration
