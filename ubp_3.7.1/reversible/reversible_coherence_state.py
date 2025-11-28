@@ -11,8 +11,42 @@ Author: UBP 3.7 Development Team
 Date: November 28, 2025
 """
 
-from reversible.reversible_rational import ReversibleRational
-from reversible.reversible_y_constants import ReversibleYConstants, refine_forward, refine_backward
+try:
+    from reversible.reversible_rational import ReversibleRational
+    from reversible.reversible_y_constants import ReversibleYConstants, refine_forward, refine_backward
+except (ImportError, ModuleNotFoundError) as e:
+    # Fallback if reversible modules not available
+    import warnings
+    warnings.warn(f"Reversible modules not available ({e}). Using standard Python fractions.")
+    from fractions import Fraction
+    
+    # Wrap Fraction to match ReversibleRational API
+    class ReversibleRational(Fraction):
+        def to_float(self):
+            return float(self)
+        
+        @classmethod
+        def from_fraction(cls, frac):
+            """Convert Fraction to ReversibleRational"""
+            return cls(frac.numerator, frac.denominator)
+    
+    # Define minimal fallback for Y constants
+    class ReversibleYConstants:
+        def __init__(self, **kwargs):  # Accept any kwargs for compatibility
+            import math
+            self.Y = math.pi / (math.pi**2 + 2)
+            self.Y_INVERSE = math.pi + 2/math.pi
+    
+    def refine_forward(value, y_constants): 
+        result = float(value) * (math.pi / (math.pi**2 + 2))
+        frac = Fraction.from_float(result).limit_denominator(10**15)
+        return ReversibleRational.from_fraction(frac)
+    
+    def refine_backward(value, y_constants): 
+        result = float(value) * (math.pi + 2/math.pi)
+        frac = Fraction.from_float(result).limit_denominator(10**15)
+        return ReversibleRational.from_fraction(frac)
+
 from typing import List, Tuple, Optional
 import math
 
