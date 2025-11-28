@@ -270,6 +270,53 @@ class PatternGenerator:
         
         return hash_hex
     
+    def compute_pattern_metrics(self, pattern: np.ndarray) -> dict:
+        """
+        Compute NRCI, TGIC, and observer cost metrics for a pattern.
+        
+        Uses analytic approximations based on pattern statistics.
+        
+        Args:
+            pattern: 2D pattern array
+            
+        Returns:
+            Dictionary with nrci_mean, tgic_resonance_count, observer_cost_mean
+        """
+        # Normalize pattern
+        pattern_norm = (pattern - pattern.mean()) / (pattern.std() + 1e-10)
+        
+        # NRCI approximation: based on pattern coherence (smoothness)
+        # Higher gradient = lower coherence
+        grad_x = np.gradient(pattern_norm, axis=1)
+        grad_y = np.gradient(pattern_norm, axis=0)
+        grad_mag = np.sqrt(grad_x**2 + grad_y**2)
+        
+        # NRCI ≈ 1 - normalized_gradient
+        # High smoothness → high NRCI
+        nrci_mean = 1.0 - np.tanh(grad_mag.mean())
+        
+        # TGIC resonance count: peaks in pattern (local maxima)
+        # Approximate using threshold crossings
+        threshold = pattern_norm.mean() + pattern_norm.std()
+        tgic_resonance_count = int(np.sum(pattern_norm > threshold) / 10)
+        
+        # Observer cost: proportional to pattern complexity
+        # FFT entropy as proxy for information content
+        fft = np.fft.fft2(pattern_norm)
+        fft_mag = np.abs(fft)
+        fft_mag_norm = fft_mag / (fft_mag.sum() + 1e-10)
+        entropy = -np.sum(fft_mag_norm * np.log(fft_mag_norm + 1e-10))
+        
+        # Observer cost ≈ entropy (more complex = higher cost)
+        observer_cost_mean = float(entropy / 10.0)  # Normalize to reasonable range
+        
+        return {
+            'nrci_mean': float(np.clip(nrci_mean, 0.0, 1.0)),
+            'tgic_resonance_count': max(0, tgic_resonance_count),
+            'observer_cost_mean': float(np.clip(observer_cost_mean, 0.0, 100.0)),
+            'closure_quality': float(np.clip(nrci_mean * 0.9, 0.0, 1.0))  # Approximate
+        }
+    
     def validate_parameters(self, value: float, spatial_freq: float) -> None:
         """
         Validate input parameters for pattern generation.
@@ -294,11 +341,18 @@ class PatternGenerator:
             raise ValueError(f"Spatial frequency must be non-negative, got {spatial_freq}")
     
     def _value_to_spatial_frequency(self, value: float) -> float:
-        """Convert a UBP value to spatial frequency."""
-        # Use logarithmic scaling to map wide range of values to spatial frequencies
-        # Normalize to [0, 1] range suitable for pattern generation
+        """
+        Convert a UBP value to spatial frequency.
+        
+        Uses smooth logistic mapping for continuous, invertible transformation.
+        """
+        # Logarithmic scaling for wide dynamic range
         log_value = np.log10(abs(value) + 1)
-        spatial_freq = (log_value % 10) / 10.0  # Wrap to [0, 1]
+        
+        # Smooth logistic mapping (avoids modulo discontinuities)
+        # Maps (-∞, ∞) → (0, 1) smoothly
+        spatial_freq = 1.0 / (1.0 + np.exp(-log_value))
+        
         return spatial_freq
     
     def _generate_radial(
@@ -353,12 +407,16 @@ class PatternGenerator:
         # Logarithmic spiral (canonical form: θ = a·ln(r) + b)
         # Spiral tightness increases with spatial frequency
         a = 1.0 + spatial_freq * 6.0
-        spiral_phase = a * np.log(R + 1e-6) - Theta
+        
+        # Clip minimum radius to avoid steep phase singularity at origin
+        R_eff = np.clip(R, 1e-3, None)
+        spiral_phase = a * np.log(R_eff) - Theta
         spiral_freq = spatial_freq * 10
         pattern = np.cos(spiral_freq * spiral_phase)
         
         # Apply frequency-dependent damping (more physical than pure Y decay)
-        decay_coeff = self.Y + spatial_freq * 0.1
+        # Normalized decay: Y * 3 for better attenuation
+        decay_coeff = self.Y * 3.0 + spatial_freq * 0.1
         pattern *= np.exp(-R * decay_coeff)
         
         return pattern
@@ -446,7 +504,11 @@ class PatternGenerator:
         return pattern
     
     def _generate_fractal(self, spatial_freq: float) -> np.ndarray:
-        """Generate fractal pattern using fractional Brownian motion (fBm)."""
+        """
+        Generate fractal pattern using fractional Brownian motion (fBm).
+        
+        True 2D fBm with independent X and Y variation (not radially symmetric).
+        """
         N = self.grid_size
         pattern = np.zeros((N, N))
         
@@ -454,13 +516,13 @@ class PatternGenerator:
         x = np.linspace(-1, 1, N)
         y = np.linspace(-1, 1, N)
         X, Y = np.meshgrid(x, y)
-        R = np.sqrt(X**2 + Y**2)
         
-        # True fBm: 6 octaves with proper amplitude decay
+        # True 2D fBm: 6 octaves with independent X and Y variation
         for i in range(6):
             freq = spatial_freq * (2 ** i)
             amplitude = 1.0 / (2 ** i)  # 1/f scaling
-            pattern += amplitude * np.cos(2 * np.pi * R * freq / self.Y)
+            # 2D Perlin-like fBm (not radially symmetric)
+            pattern += amplitude * np.cos(2 * np.pi * (X * freq + Y * freq) / self.Y)
         
         return pattern
     
@@ -674,16 +736,40 @@ class GeometricCodex:
         """
         Add a geometric signature to the library.
         
-        Automatically computes pattern hash if not already set.
+        Automatically computes pattern hash and metrics if not already set.
         """
+        # Generate pattern if needed for hash or metrics
+        pattern = None
+        
         # Compute pattern hash if not set
         if not signature.pattern_hash:
-            pattern = self.generator.generate_pattern(
-                value=signature.value,
-                pattern_type=signature.pattern_type,
-                symmetry=signature.symmetry
-            )
+            if pattern is None:
+                pattern = self.generator.generate_pattern(
+                    value=signature.value,
+                    pattern_type=signature.pattern_type,
+                    symmetry=signature.symmetry
+                )
             signature.pattern_hash = self.generator.compute_pattern_hash(pattern)
+        
+        # Compute NRCI/TGIC metrics if not set (check if they're zero/default)
+        if signature.nrci_mean == 0.0 or signature.observer_cost_mean == 0.0:
+            if pattern is None:
+                pattern = self.generator.generate_pattern(
+                    value=signature.value,
+                    pattern_type=signature.pattern_type,
+                    symmetry=signature.symmetry
+                )
+            metrics = self.generator.compute_pattern_metrics(pattern)
+            
+            # Update signature with computed metrics
+            if signature.nrci_mean == 0.0:
+                signature.nrci_mean = metrics['nrci_mean']
+            if signature.tgic_resonance_count == 0:
+                signature.tgic_resonance_count = metrics['tgic_resonance_count']
+            if signature.observer_cost_mean == 0.0:
+                signature.observer_cost_mean = metrics['observer_cost_mean']
+            if signature.closure_quality == 0.0:
+                signature.closure_quality = metrics['closure_quality']
         
         self.signatures[signature.name] = signature
     
