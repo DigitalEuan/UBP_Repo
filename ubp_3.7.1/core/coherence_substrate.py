@@ -16,8 +16,8 @@ emerge from information geometry.
 NRCI is maintained *during* computation, not measured after.
 
 Author: Euan R A Craig, New Zealand
-Date: November 11, 2025
-Version: 1.0.0
+Date: November 28, 2025
+Version: 1.0.0 for ubp Version: 3.7.1
 """
 
 import math
