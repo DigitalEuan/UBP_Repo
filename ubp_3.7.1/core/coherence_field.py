@@ -1,5 +1,5 @@
 """
-UBP Coherence Field v3.6 - Self-Measuring Coherence Landscape
+UBP Coherence Field Version: 3.7.1 - Self-Measuring Coherence Landscape
 ==============================================================
 
 Upgrade the NRCI module from a scalar metric to a self-measuring coherence field.
