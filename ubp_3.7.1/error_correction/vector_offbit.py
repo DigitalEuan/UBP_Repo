@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UBP 3.7 - 24-Dimensional Vector OffBit Implementation
+UBP 3.7.1 - 24-Dimensional Vector OffBit Implementation
 =====================================================
 
 REAL IMPLEMENTATION of 24-dimensional vector structure for UBP.
@@ -11,9 +11,9 @@ We provide BOTH representations:
 1. Scalar OffBit (24-bit integer) - for bit operations
 2. VectorOffBit (24-D numpy array) - for vector operations
 
-Author: UBP 3.7 Development
+Author: Euan R A Craig, New Zealand
 Date: November 28, 2025
-Version: 3.7.0
+Version: 3.7.1
 """
 
 import numpy as np
