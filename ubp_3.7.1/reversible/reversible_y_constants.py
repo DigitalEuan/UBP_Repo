@@ -1,5 +1,5 @@
 """
-Reversible Y-Constants for UBP 3.7
+Reversible Y-Constants for UBP 3.7.1
 ===================================
 
 This module implements Y and Y_INVERSE as exact rational numbers,
@@ -11,7 +11,7 @@ Y × Y_INVERSE = 1 (EXACTLY, not approximately)
 
 This is mathematically provable and verifiable.
 
-Author: UBP 3.7 Development Team
+Author: Euan R A Craig, New Zealadn
 Date: November 28, 2025
 """
 
