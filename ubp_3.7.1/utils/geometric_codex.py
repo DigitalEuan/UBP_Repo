@@ -198,6 +198,9 @@ class PatternGenerator:
         # Normalize value to spatial frequency
         spatial_freq = self._value_to_spatial_frequency(value)
         
+        # Validate parameters
+        self.validate_parameters(value, spatial_freq)
+        
         # Generate base pattern based on type
         if pattern_type == PatternType.RADIAL:
             pattern = self._generate_radial(spatial_freq, symmetry)
@@ -218,6 +221,77 @@ class PatternGenerator:
         pattern = self._apply_y_modulation(pattern)
         
         return pattern
+    
+    def compute_pattern_hash(self, pattern: np.ndarray) -> str:
+        """
+        Compute deterministic hash of pattern for identification.
+        
+        Uses FFT descriptor + quantized statistics for robust hashing.
+        
+        Args:
+            pattern: 2D pattern array
+            
+        Returns:
+            Hexadecimal hash string
+        """
+        import hashlib
+        
+        # Normalize pattern
+        pattern_norm = (pattern - pattern.mean()) / (pattern.std() + 1e-10)
+        
+        # Compute FFT and take magnitude spectrum
+        fft = np.fft.fft2(pattern_norm)
+        fft_mag = np.abs(np.fft.fftshift(fft))
+        
+        # Quantize to reduce noise sensitivity
+        fft_quantized = (fft_mag * 100).astype(np.int32)
+        
+        # Compute statistics
+        stats = np.array([
+            pattern.mean(),
+            pattern.std(),
+            pattern.min(),
+            pattern.max(),
+            np.median(pattern),
+            fft_mag.sum()
+        ])
+        # Replace NaN/inf with zeros before quantization
+        stats = np.nan_to_num(stats, nan=0.0, posinf=1e10, neginf=-1e10)
+        stats_quantized = (stats * 1000).astype(np.int32)
+        
+        # Combine into hash
+        hash_input = np.concatenate([
+            fft_quantized.flatten()[:100],  # First 100 FFT coefficients
+            stats_quantized
+        ])
+        
+        hash_bytes = hash_input.tobytes()
+        hash_hex = hashlib.sha256(hash_bytes).hexdigest()[:16]
+        
+        return hash_hex
+    
+    def validate_parameters(self, value: float, spatial_freq: float) -> None:
+        """
+        Validate input parameters for pattern generation.
+        
+        Args:
+            value: UBP value
+            spatial_freq: Spatial frequency
+            
+        Raises:
+            ValueError: If parameters are invalid
+        """
+        if not np.isfinite(value):
+            raise ValueError(f"Value must be finite, got {value}")
+        
+        if value <= 0:
+            raise ValueError(f"Value must be positive, got {value}")
+        
+        if not np.isfinite(spatial_freq):
+            raise ValueError(f"Spatial frequency must be finite, got {spatial_freq}")
+        
+        if spatial_freq < 0:
+            raise ValueError(f"Spatial frequency must be non-negative, got {spatial_freq}")
     
     def _value_to_spatial_frequency(self, value: float) -> float:
         """Convert a UBP value to spatial frequency."""
@@ -276,12 +350,16 @@ class PatternGenerator:
         R = np.sqrt(X**2 + Y**2)
         Theta = np.arctan2(Y, X)
         
-        # Logarithmic spiral
+        # Logarithmic spiral (canonical form: θ = a·ln(r) + b)
+        # Spiral tightness increases with spatial frequency
+        a = 1.0 + spatial_freq * 6.0
+        spiral_phase = a * np.log(R + 1e-6) - Theta
         spiral_freq = spatial_freq * 10
-        pattern = np.cos(spiral_freq * (Theta + np.log(R + 0.1)))
+        pattern = np.cos(spiral_freq * spiral_phase)
         
-        # Apply Y-resonant decay
-        pattern *= np.exp(-R * self.Y)
+        # Apply frequency-dependent damping (more physical than pure Y decay)
+        decay_coeff = self.Y + spatial_freq * 0.1
+        pattern *= np.exp(-R * decay_coeff)
         
         return pattern
     
@@ -294,8 +372,10 @@ class PatternGenerator:
         
         R = np.sqrt(X**2 + Y**2)
         
-        # Concentric rings at Y-resonant distances
-        pattern = np.sin(2 * np.pi * R / self.Y * spatial_freq * 10)
+        # Concentric rings with physically meaningful spacing
+        # Wave number k = spatial_freq * (1/Y) * 2π
+        k = spatial_freq * (1.0 / self.Y) * 2 * np.pi
+        pattern = np.sin(k * R)
         
         return pattern
     
@@ -330,28 +410,57 @@ class PatternGenerator:
         X, Y = np.meshgrid(x, y)
         
         freq = spatial_freq * 10 / self.Y
-        pattern_x = np.cos(2 * np.pi * X * freq)
-        pattern_y = np.cos(2 * np.pi * Y * freq)
         
-        pattern = pattern_x * pattern_y
+        # Symmetry-aware grid patterns
+        if symmetry in [PatternSymmetry.RADIAL_4, PatternSymmetry.RADIAL_8]:
+            # Square lattice (standard axes)
+            pattern_x = np.cos(2 * np.pi * X * freq)
+            pattern_y = np.cos(2 * np.pi * Y * freq)
+            pattern = pattern_x * pattern_y
+        
+        elif symmetry in [PatternSymmetry.RADIAL_3, PatternSymmetry.RADIAL_6]:
+            # Hexagonal lattice (60° rotation basis)
+            angle1 = 0
+            angle2 = np.pi / 3  # 60 degrees
+            U1 = X * np.cos(angle1) + Y * np.sin(angle1)
+            U2 = X * np.cos(angle2) + Y * np.sin(angle2)
+            pattern1 = np.cos(2 * np.pi * U1 * freq)
+            pattern2 = np.cos(2 * np.pi * U2 * freq)
+            pattern = pattern1 * pattern2
+        
+        elif symmetry in [PatternSymmetry.RADIAL_5, PatternSymmetry.RADIAL_12]:
+            # Quasi-crystalline (pentagonal symmetry)
+            pattern = np.zeros_like(X)
+            for i in range(5):
+                angle = 2 * np.pi * i / 5
+                U = X * np.cos(angle) + Y * np.sin(angle)
+                pattern += np.cos(2 * np.pi * U * freq)
+            pattern /= 5
+        
+        else:
+            # Default: square lattice
+            pattern_x = np.cos(2 * np.pi * X * freq)
+            pattern_y = np.cos(2 * np.pi * Y * freq)
+            pattern = pattern_x * pattern_y
         
         return pattern
     
     def _generate_fractal(self, spatial_freq: float) -> np.ndarray:
-        """Generate fractal pattern."""
+        """Generate fractal pattern using fractional Brownian motion (fBm)."""
         N = self.grid_size
         pattern = np.zeros((N, N))
         
-        # Multi-scale radial waves (fractal-like)
+        # Fractional Brownian motion: sum octaves with 1/f amplitude scaling
         x = np.linspace(-1, 1, N)
         y = np.linspace(-1, 1, N)
         X, Y = np.meshgrid(x, y)
         R = np.sqrt(X**2 + Y**2)
         
-        # Sum multiple scales
-        for scale in [1, 2, 4, 8]:
-            freq = spatial_freq * scale
-            pattern += np.cos(2 * np.pi * R * freq / self.Y) / scale
+        # True fBm: 6 octaves with proper amplitude decay
+        for i in range(6):
+            freq = spatial_freq * (2 ** i)
+            amplitude = 1.0 / (2 ** i)  # 1/f scaling
+            pattern += amplitude * np.cos(2 * np.pi * R * freq / self.Y)
         
         return pattern
     
@@ -562,7 +671,20 @@ class GeometricCodex:
             ))
     
     def add_signature(self, signature: GeometricSignature):
-        """Add a geometric signature to the library."""
+        """
+        Add a geometric signature to the library.
+        
+        Automatically computes pattern hash if not already set.
+        """
+        # Compute pattern hash if not set
+        if not signature.pattern_hash:
+            pattern = self.generator.generate_pattern(
+                value=signature.value,
+                pattern_type=signature.pattern_type,
+                symmetry=signature.symmetry
+            )
+            signature.pattern_hash = self.generator.compute_pattern_hash(pattern)
+        
         self.signatures[signature.name] = signature
     
     def get_signature(self, name: str) -> Optional[GeometricSignature]:
