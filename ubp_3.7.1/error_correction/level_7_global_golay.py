@@ -1,8 +1,8 @@
 # UBP 3.7
 """
-Universal Binary Principle (UBP) Framework v3.7 - GLR Level 7: Global Golay Correction with Syndrome Calculation
-Author: Euan Craig, New Zealand
-Date: 03 September 2025
+Universal Binary Principle (UBP) Framework v3.7.1 - GLR Level 7: Global Golay Correction with Syndrome Calculation
+Author: Euan R A Craig, New Zealand
+Date: 28 November 2025
 ==================================
 
 Implements the complete Golay(24,12) error correction system with
