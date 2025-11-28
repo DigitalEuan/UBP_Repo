@@ -1,7 +1,7 @@
 {
   "test_suite": "UBP 3.7.1 Comprehensive",
-  "total_tests": 29,
-  "passed": 29,
+  "total_tests": 31,
+  "passed": 31,
   "failed": 0,
   "tests": [
     {
@@ -93,6 +93,16 @@
       "name": "Energy increases as NRCI decreases",
       "passed": true,
       "details": "E(0.999997) = 3.00e-03, E(0.99) = 1.00e+01"
+    },
+    {
+      "name": "SOC energy from state counts active bits",
+      "passed": true,
+      "details": "M from OffBit(1000) = 6, expected 6"
+    },
+    {
+      "name": "SOC energy from state calculates correctly",
+      "passed": true,
+      "details": "Energy from state: 1.799995e-05 CU"
     },
     {
       "name": "toggle_and works",

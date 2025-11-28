@@ -13,7 +13,7 @@ SOC Equation:
 
 Where:
 - E: Emergent energy in Coherence-Units (CU), NOT Joules
-- M = π: Meta-Temporal Primitive (dimensionless geometric toggle count)
+- M: Active OffBit count (cardinality of the observer's state)
 - C = 299,792,458: Celeritas (master clock rate, toggles/sec)
 - Y_Emergent = PGCI_TARGET / O_observer: Observer-Coherence Ratio
 - Σ(w_ij M_ij): Resonant Modal Sum (weighted OffBit interactions)
@@ -118,8 +118,8 @@ class SOCCalculator:
     reveals physical constants as emergent properties of geometric resonance.
     """
     
-    # Meta-Temporal Primitive (M = π)
-    M_META_TEMPORAL = math.pi
+    # DEPRECATED: M should be actual OffBit count, not π
+    # M_META_TEMPORAL = math.pi  # This was wrong - M is cardinality, not a constant
     
     # Celeritas (C = speed of light in m/s)
     C_CELERITAS = 299792458.0
@@ -146,13 +146,13 @@ class SOCCalculator:
         Initialize SOC Calculator.
         
         Args:
-            M: Meta-Temporal Primitive (defaults to π)
+            M: Number of active OffBits (cardinality). If None, must be provided per calculation.
             C: Celeritas (defaults to speed of light)
             pgci_target: PGCI target (defaults to 0.999997)
             o_observer: Observer cost (defaults to fixed point value)
             calibration_factor: CU to Joules calibration
         """
-        self.M = M if M is not None else self.M_META_TEMPORAL
+        self.M = M  # No default - M should be actual OffBit count
         self.C = C if C is not None else self.C_CELERITAS
         self.pgci_target = pgci_target if pgci_target is not None else self.PGCI_TARGET
         self.o_observer = o_observer if o_observer is not None else self.O_OBSERVER_DEFAULT
@@ -389,6 +389,76 @@ class SOCCalculator:
         """
         modal_sum = self.calculate_modal_sum(weights, modes)
         return self.calculate_soc_energy(modal_sum, **kwargs)
+    
+    def calculate_soc_energy_from_state(
+        self,
+        state,
+        modal_sum: float = 1.0,
+        current_nrci: Optional[float] = None
+    ) -> SOCEnergyResult:
+        """
+        Calculate SOC energy from an OffBit or CoherenceState object.
+        
+        This is the CORRECT way to calculate energy in UBP:
+        M is automatically determined by counting active bits in the state.
+        
+        Args:
+            state: OffBit or CoherenceState object
+            modal_sum: Resonant modal sum (defaults to 1.0)
+            current_nrci: Current NRCI (defaults to state.nrci if available)
+            
+        Returns:
+            SOCEnergyResult with energy calculated from actual bit count
+            
+        Example:
+            >>> from core.state import OffBit
+            >>> from core.soc_energy import SOCCalculator
+            >>> 
+            >>> # Create an OffBit with value 1000 (has 6 active bits: 1111101000)
+            >>> state = OffBit(1000)
+            >>> 
+            >>> # Calculate energy from actual bit count
+            >>> calc = SOCCalculator()
+            >>> result = calc.calculate_soc_energy_from_state(state)
+            >>> print(f"Active bits: {result.M}")
+            >>> print(f"Energy: {result.energy_cu:.6e} CU")
+        """
+        # Import here to avoid circular dependency
+        try:
+            from core.state import OffBit
+            from core.coherence_substrate import CoherenceState
+        except ImportError:
+            # Fallback for different import paths
+            try:
+                from state import OffBit
+                from coherence_substrate import CoherenceState
+            except ImportError:
+                raise ImportError("Cannot import OffBit or CoherenceState")
+        
+        # Determine M by counting active bits
+        if isinstance(state, OffBit):
+            # Count 1-bits in the OffBit value
+            M_active = bin(state.value).count('1')
+            # OffBit doesn't have nrci attribute, use provided or default
+            nrci = current_nrci if current_nrci is not None else self.pgci_target
+        elif hasattr(state, 'value') and hasattr(state, 'nrci'):
+            # CoherenceState or similar
+            if isinstance(state.value, (int, float)):
+                # If value is numeric, count bits
+                M_active = bin(int(state.value)).count('1')
+            else:
+                # If value is an OffBit, get its bit count
+                M_active = bin(state.value.value).count('1')
+            nrci = current_nrci if current_nrci is not None else state.nrci
+        else:
+            raise TypeError(f"state must be OffBit or CoherenceState, got {type(state)}")
+        
+        # Calculate energy using actual bit count
+        return self.calculate_soc_energy(
+            modal_sum=modal_sum,
+            M=M_active,
+            current_nrci=nrci
+        )
 
 
 def calculate_soc_energy(

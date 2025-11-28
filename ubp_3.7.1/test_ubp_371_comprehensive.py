@@ -199,6 +199,17 @@ test("Energy increases as NRCI decreases",
      result2.energy_cu > result1.energy_cu,
      f"E(0.999997) = {result1.energy_cu:.2e}, E(0.99) = {result2.energy_cu:.2e}")
 
+# Test calculate_soc_energy_from_state (Grok's recommendation)
+test_state = OffBit(1000)  # Binary: 1111101000 (6 active bits)
+result_from_state = calc.calculate_soc_energy_from_state(test_state)
+test("SOC energy from state counts active bits",
+     result_from_state.M == 6,  # 1000 in binary has 6 ones
+     f"M from OffBit(1000) = {result_from_state.M}, expected 6")
+
+test("SOC energy from state calculates correctly",
+     result_from_state.energy_cu > 0,
+     f"Energy from state: {result_from_state.energy_cu:.6e} CU")
+
 # ============================================================================
 # TEST 5: Toggle Operations
 # ============================================================================
