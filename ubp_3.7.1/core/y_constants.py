@@ -1,7 +1,7 @@
 """
 Universal Binary Principle (UBP) Framework v3.7.1 - Y Constant System
-Author: Euan Craig, New Zealand
-Date: 31 October 2025
+Author: Euan R A Craig, New Zealand
+Date: 28 November 2025
 ================================================================================
 
 This module is redundant - the y.py is all that is required for ubp_3.7.1.
