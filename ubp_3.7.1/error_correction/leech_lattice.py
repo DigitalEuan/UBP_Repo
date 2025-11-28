@@ -36,8 +36,26 @@ class LeechLatticePoint:
         """Validate that coordinates are proper lattice points."""
         if self.coordinates.shape != (24,):
             raise ValueError(f"Leech lattice points must be 24-dimensional, got {self.coordinates.shape}")
+        
         # Leech lattice points have integer or half-integer coordinates
-        # with sum ≡ 0 (mod 2)
+        # Check: all coordinates are integer or half-integer
+        doubled = self.coordinates * 2
+        if not np.allclose(doubled, np.round(doubled)):
+            raise ValueError("Coordinates must be integer or half-integer")
+        
+        # Check: sum of coordinates must be even
+        coord_sum = np.sum(self.coordinates)
+        if not np.isclose(coord_sum, round(coord_sum)):
+            raise ValueError("Sum of coordinates must be integer")
+        if int(round(coord_sum)) % 2 != 0:
+            raise ValueError("Sum of coordinates must be even")
+        
+        # Check: no norm²=2 vectors in Leech lattice (minimum norm is 0 or 4)
+        norm_sq = self.norm_squared
+        if norm_sq == 2:
+            raise ValueError("No norm²=2 vectors exist in the Leech lattice (minimum nonzero norm is 4)")
+        if norm_sq != 0 and norm_sq < 4:
+            raise ValueError(f"Invalid norm²={norm_sq}. Leech lattice has minimum nonzero norm²=4")
     
     @property
     def norm_squared(self) -> int:
