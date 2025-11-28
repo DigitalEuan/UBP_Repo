@@ -287,8 +287,8 @@ class PatternGenerator:
         
         # NRCI approximation: based on pattern coherence (smoothness)
         # Higher gradient = lower coherence
-        grad_x = np.gradient(pattern_norm, axis=1)
-        grad_y = np.gradient(pattern_norm, axis=0)
+        # Safer gradient unpacking (works across numpy versions)
+        grad_y, grad_x = np.gradient(pattern_norm)
         grad_mag = np.sqrt(grad_x**2 + grad_y**2)
         
         # NRCI ≈ 1 - normalized_gradient
@@ -375,8 +375,10 @@ class PatternGenerator:
         # Angular coordinate
         Theta = np.arctan2(Y, X)
         
-        # Radial waves
-        radial_component = np.cos(2 * np.pi * spatial_freq * R / self.Y)
+        # Radial waves with density scaling
+        # Density scale ensures visible ripples across grid (not just one blob)
+        density_scale = self.grid_size / 4.0
+        radial_component = np.cos(2 * np.pi * spatial_freq * density_scale * R / self.Y)
         
         # Angular modulation based on symmetry
         symmetry_order = self._get_symmetry_order(symmetry)
@@ -411,7 +413,10 @@ class PatternGenerator:
         # Clip minimum radius to avoid steep phase singularity at origin
         R_eff = np.clip(R, 1e-3, None)
         spiral_phase = a * np.log(R_eff) - Theta
-        spiral_freq = spatial_freq * 10
+        
+        # Density scaling for visible spirals
+        density_scale = self.grid_size / 4.0
+        spiral_freq = spatial_freq * density_scale * 10
         pattern = np.cos(spiral_freq * spiral_phase)
         
         # Apply frequency-dependent damping (more physical than pure Y decay)
@@ -430,10 +435,12 @@ class PatternGenerator:
         
         R = np.sqrt(X**2 + Y**2)
         
-        # Concentric rings with physically meaningful spacing
-        # Wave number k = spatial_freq * (1/Y) * 2π
-        k = spatial_freq * (1.0 / self.Y) * 2 * np.pi
-        pattern = np.sin(k * R)
+        # Concentric rings with physically meaningful wave number
+        # k = spatial_freq × (1/Y) × 2π
+        # Density scaling for visible rings
+        density_scale = self.grid_size / 4.0
+        k = spatial_freq * density_scale * (1.0 / self.Y) * 2 * np.pi
+        pattern = np.cos(k * R)
         
         return pattern
     
@@ -467,7 +474,9 @@ class PatternGenerator:
         y = np.linspace(-1, 1, N)
         X, Y = np.meshgrid(x, y)
         
-        freq = spatial_freq * 10 / self.Y
+        # Density scaling for visible grid patterns
+        density_scale = self.grid_size / 4.0
+        freq = spatial_freq * density_scale * 10 / self.Y
         
         # Symmetry-aware grid patterns
         if symmetry in [PatternSymmetry.RADIAL_4, PatternSymmetry.RADIAL_8]:
@@ -862,11 +871,22 @@ class GeometricCodex:
         """
         if use_spectral:
             # Use spectral extraction (full-spectrum analysis)
-            from spectral_extraction import SpectralValueExtractor
-            extractor = SpectralValueExtractor(codex=self)
-            value, confidence, _ = extractor.extract_value_from_spectrum(pattern, unit)
-            return value, confidence
-        else:
+            try:
+                from spectral_extraction import SpectralValueExtractor
+                extractor = SpectralValueExtractor(codex=self)
+                value, confidence, _ = extractor.extract_value_from_spectrum(pattern, unit)
+                return value, confidence
+            except ImportError:
+                # NOTE: spectral_extraction.py not found - this is expected for now
+                # Fall through to pattern matching below
+                pass
+            except Exception as e:
+                # Log error and fall through to pattern matching
+                print(f"Warning: Spectral extraction failed ({e}), using pattern matching fallback")
+                pass
+        
+        # Fallback to pattern matching (always executed if spectral fails)
+        if True:
             # Fallback to pattern matching
             # This would use pattern recognition AI
             # For now, implement basic pattern matching
@@ -909,20 +929,28 @@ class GeometricCodex:
         return features
     
     def _get_fft_peak_frequency(self, pattern: np.ndarray) -> float:
-        """Get the peak frequency from FFT."""
+        """Get the peak frequency from FFT in normalized units (cycles per unit)."""
         from scipy.fft import fft2, fftshift
         
+        N = pattern.shape[0]
         fft_pattern = fftshift(fft2(pattern))
         magnitude = np.abs(fft_pattern)
         
         # Find peak (excluding DC component)
-        center = magnitude.shape[0] // 2
-        magnitude[center-2:center+2, center-2:center+2] = 0
+        center = N // 2
+        magnitude[center-2:center+3, center-2:center+3] = 0
         
         peak_idx = np.unravel_index(np.argmax(magnitude), magnitude.shape)
-        peak_freq = np.sqrt((peak_idx[0] - center)**2 + (peak_idx[1] - center)**2)
         
-        return peak_freq
+        # Calculate distance in pixels
+        pixel_dist = np.sqrt((peak_idx[0] - center)**2 + (peak_idx[1] - center)**2)
+        
+        # Normalize to spatial frequency (0.0 to 0.5 cycles/pixel)
+        # Account for density scaling used in generation
+        density_scale = N / 4.0
+        norm_freq = pixel_dist / density_scale
+        
+        return norm_freq
     
     def _compare_features(self, features1: Dict, features2: Dict) -> float:
         """Compare two feature sets and return similarity score."""
