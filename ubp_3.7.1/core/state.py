@@ -1,8 +1,8 @@
 # UBP 3.4
 """
-Universal Binary Principle (UBP) Framework v3.7 - UBP State Management Module
+Universal Binary Principle (UBP) Framework v3.7.1 - UBP State Management Module
 Author: Euan Craig, New Zealand
-Date: 03 September 2025
+Date: 28 November 2025
 ======================================
 
 Defines core state classes for the Universal Binary Principle system,
