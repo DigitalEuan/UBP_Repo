@@ -1,8 +1,8 @@
 """
 ==================================
-Universal Binary Principle (UBP) Framework v3.7 - Geometric Codex
-Author: Euan Craig, New Zealand
-Date: November 7, 2025
+Universal Binary Principle (UBP) Framework v3.7.1 - Geometric Codex
+Author: Euan R A Craig, New Zealand
+Date: 28 November 2025
 ==================================
 
 The UBP Geometric Codex provides a comprehensive geometric pattern language
