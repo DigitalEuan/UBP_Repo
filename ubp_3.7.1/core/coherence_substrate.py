@@ -193,6 +193,48 @@ class CoherenceState:
         else:
             raise ValueError(f"Direction must be 'forward' or 'backward', got '{direction}'")
     
+    # ========================================================================
+    # QUANTUM EXTENSIONS: High-level quantum computing API
+    # ========================================================================
+    
+    def apply(self, operator: Any, **kwargs) -> 'CoherenceState':
+        """
+        Apply a quantum operator to this coherence state.
+        
+        Args:
+            operator: Operator to apply (e.g., QuantumCircuitOperator)
+            **kwargs: Additional arguments for the operator
+        
+        Returns:
+            New coherence state after operator application
+        """
+        from core.quantum_extensions import apply_operator
+        return apply_operator(self, operator, **kwargs)
+    
+    def sample_bitstrings(self, n_samples: int = 1000, bits: int = 53) -> List[str]:
+        """
+        Sample bitstrings from the quantum state.
+        
+        Args:
+            n_samples: Number of samples to generate
+            bits: Number of bits per sample
+        
+        Returns:
+            List of bitstrings
+        """
+        from core.quantum_extensions import sample_bitstrings
+        return sample_bitstrings(self, n_samples, bits)
+    
+    def export_stl(self, filename: str) -> None:
+        """
+        Export the quantum state to STL format for 3D visualization.
+        
+        Args:
+            filename: Output STL filename
+        """
+        from core.quantum_extensions import export_stl
+        return export_stl(self, filename)
+    
     def __repr__(self):
         return f"CoherenceState(value={self.value:.6e}, nrci={self.nrci:.10f}, net_ref={self.net_refinements})"
 

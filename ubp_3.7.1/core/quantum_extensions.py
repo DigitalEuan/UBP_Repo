@@ -48,7 +48,7 @@ class QuantumCircuitOperator:
         self.toggle_count = 0
     
     def apply(self, state: CoherenceState, depth: int = 20, width: int = 53, 
-              seed: Optional[int] = None, taichi_acceleration: bool = False) -> Tuple[CoherenceState, List[OffBit]]:
+              seed: Optional[int] = None, taichi_acceleration: bool = False) -> Tuple[CoherenceState, List[CoherenceState]]:
         """
         Apply random circuit sampling to a coherence state.
         
@@ -65,16 +65,17 @@ class QuantumCircuitOperator:
         if seed is not None:
             random.seed(seed)
         
-        # Initialize qubits as OffBits
+        # Initialize qubits as CoherenceStates wrapping OffBits
         # The input state's value encodes the initial quantum configuration
-        qubits: List[OffBit] = []
+        qubits: List[CoherenceState] = []
         for i in range(width):
             # Start in |0⟩ state: minimal excitation
             # Use state.value to seed the initial configuration
             initial_value = int(abs(state.value) + i) % 0xFFFFFF
             if initial_value == 0:
                 initial_value = 1
-            qubit = OffBit(initial_value)
+            # Wrap OffBit in CoherenceState to track coherence
+            qubit = CoherenceState(initial_value)
             qubits.append(qubit)
         
         # Execute random circuit
@@ -90,15 +91,20 @@ class QuantumCircuitOperator:
                     frequency = 1e12 * (1.0 + theta / math.pi)
                     time_param = phi / (2 * math.pi) * 1e-12
                     
-                    # Apply resonance toggle
-                    qubits[i] = to.resonance_toggle(qubits[i], frequency, time_param, k=0.0002)
+                    # Apply resonance toggle to the underlying OffBit
+                    offbit = OffBit(int(qubits[i].value))
+                    toggled = to.resonance_toggle(offbit, frequency, time_param, k=0.0002)
+                    qubits[i] = CoherenceState(toggled.value)
                     self.gate_count += 1
                     self.toggle_count += 1
             else:
                 # Two-qubit layer
                 for i in range(0, width - 1, 2):
-                    # Apply entanglement toggle
-                    qubits[i + 1] = to.entanglement_toggle(qubits[i], qubits[i + 1], coherence_threshold=0.95)
+                    # Apply entanglement toggle to the underlying OffBits
+                    offbit_i = OffBit(int(qubits[i].value))
+                    offbit_i1 = OffBit(int(qubits[i + 1].value))
+                    toggled = to.entanglement_toggle(offbit_i, offbit_i1, coherence=0.95)
+                    qubits[i + 1] = CoherenceState(toggled.value)
                     self.gate_count += 1
                     self.toggle_count += 1
             
@@ -106,10 +112,8 @@ class QuantumCircuitOperator:
             for i in range(width):
                 if qubits[i].nrci < self.omega_c:
                     # Boost coherence to Ω_c floor
-                    from core.coherence_substrate import CoherenceState as CS
-                    boosted_coherence = CS(qubits[i].value, 
-                                          log_nrci_error=math.log(1 - self.omega_c))
-                    qubits[i] = OffBit(qubits[i].value, boosted_coherence)
+                    qubits[i] = CoherenceState(qubits[i].value, 
+                                              log_nrci_error=math.log(1 - self.omega_c))
         
         # Compute final coherence state
         mean_nrci = sum(q.nrci for q in qubits) / width
@@ -176,8 +180,9 @@ def sample_bitstrings(self, n_samples: int = 1000, bits: int = 53) -> List[str]:
     for _ in range(n_samples):
         bitstring = ''
         for qubit in qubits:
-            # Measure qubit
-            active_bits = qubit.active_bits
+            # Measure qubit (qubit is a CoherenceState)
+            # Count active bits in the underlying value
+            active_bits = bin(int(qubit.value)).count('1')
             total_bits = 24
             
             # Probability of measuring |1⟩
@@ -252,10 +257,9 @@ def export_stl(self, filename: str) -> None:
     print(f"✅ Exported quantum state to {filename}")
 
 
-# Monkey-patch CoherenceState with new methods
-CoherenceState.apply = apply_operator
-CoherenceState.sample_bitstrings = sample_bitstrings
-CoherenceState.export_stl = export_stl
+# NOTE: These functions are now properly integrated into CoherenceState
+# in coherence_substrate.py. No monkey-patching needed.
+# The methods are imported lazily to avoid circular dependencies.
 
 
 # ============================================================================
