@@ -153,7 +153,8 @@ class GLRFramework(ABC):
         # Apply new states
         for coords, new_value in new_states.items():
             site = self.sites[coords]
-            site.state = OffBit(new_value, site.coherence)
+            site.state = OffBit(new_value)
+            # Note: Coherence is tracked separately in site.coherence
     
     def get_total_hamming_weight(self) -> int:
         """

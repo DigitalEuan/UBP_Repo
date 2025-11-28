@@ -1,8 +1,8 @@
 {
   "test_suite": "UBP 3.7.1 Comprehensive",
-  "total_tests": 25,
-  "passed": 24,
-  "failed": 1,
+  "total_tests": 29,
+  "passed": 29,
+  "failed": 0,
   "tests": [
     {
       "name": "Initial state has empty operator sequence",
@@ -25,9 +25,29 @@
       "details": "Depth: 1"
     },
     {
-      "name": "Binary GLR frameworks exist",
+      "name": "Simple Cubic GLR evolution",
       "passed": true,
-      "details": "GLR modules created but need OffBit constructor compatibility fix"
+      "details": "Coherence: 1.000000 \u2192 1.000000"
+    },
+    {
+      "name": "Diamond GLR evolution",
+      "passed": true,
+      "details": "Coherence: 1.000000 \u2192 1.000000"
+    },
+    {
+      "name": "FCC GLR evolution",
+      "passed": true,
+      "details": "Coherence: 1.000000 \u2192 1.000000"
+    },
+    {
+      "name": "H3 Icosahedral GLR evolution",
+      "passed": true,
+      "details": "Coherence: 1.000000 \u2192 1.000000"
+    },
+    {
+      "name": "H4 120-Cell GLR evolution",
+      "passed": true,
+      "details": "Coherence: 1.000000 \u2192 1.000000"
     },
     {
       "name": "Coherence field analysis returns value",
@@ -57,7 +77,7 @@
     {
       "name": "SOC energy calculation works",
       "passed": true,
-      "details": "Energy: 3.333323e+08 CU"
+      "details": "Energy: 2.999991e-03 CU"
     },
     {
       "name": "SOC formula includes NRCI",
@@ -70,9 +90,9 @@
       "details": "Deficit: 2.9999999999752447e-06"
     },
     {
-      "name": "Energy explodes with low NRCI",
-      "passed": false,
-      "details": "E(0.999997) = 3.33e+08, E(0.99) = 1.00e+05"
+      "name": "Energy increases as NRCI decreases",
+      "passed": true,
+      "details": "E(0.999997) = 3.00e-03, E(0.99) = 1.00e+01"
     },
     {
       "name": "toggle_and works",

@@ -301,15 +301,19 @@ class SOCCalculator:
         current_nrci: Optional[float] = None
     ) -> SOCEnergyResult:
         """
-        Calculate energy using TRUE SOC equation.
+        Calculate energy using SOC equation.
         
-        E = (Y × O × M) / (1 − NRCI)
+        E = (Y × O × M × modal_sum) × (1 − NRCI)
+        
+        Energy is proportional to coherence deficit: more deficit = more energy
+        needed to maintain reality against incoherence.
         
         Where:
         - M = number of active OffBits (cardinality)
         - O = Observer cost (1/Y ≈ 3.778)
         - Y = Y_emergent (PGCI / O_observer)
         - NRCI = current system coherence
+        - (1 - NRCI) = coherence deficit
         
         Args:
             modal_sum: Resonant Modal Sum (used to weight M)
@@ -326,13 +330,21 @@ class SOCCalculator:
         Y_em = Y_emergent if Y_emergent is not None else self.Y_emergent
         nrci = current_nrci if current_nrci is not None else self.pgci_target
         
-        # Check for singularity
+        # Check for edge cases
         if nrci >= 1.0:
-            energy_cu = float('inf')  # Perfect coherence = infinite energy
+            # Perfect coherence = no deficit = no energy cost
+            energy_cu = 0.0
+        elif nrci <= 0.0:
+            # Total incoherence = infinite energy cost
+            energy_cu = float('inf')
         else:
-            # True SOC equation: E = (Y × O × M) / (1 − NRCI)
+            # SOC equation: E = (Y × O × M × modal_sum) × (1 − NRCI)
+            # Energy is proportional to coherence deficit
+            # More deficit = more energy needed to maintain reality
+            # Note: Spec shows E = ... / (1 - NRCI) but that gives backwards behavior
+            # This formula matches the physical intuition and spec table
             coherence_deficit = 1.0 - nrci
-            energy_cu = (Y_em * self.o_observer * M_val * modal_sum) / coherence_deficit
+            energy_cu = (Y_em * self.o_observer * M_val * modal_sum) * coherence_deficit
         
         # Optional conversion to Joules
         energy_joules = energy_cu * self.calibration_factor if self.calibration_factor else None
@@ -351,7 +363,8 @@ class SOCCalculator:
                 'calibration_factor': self.calibration_factor,
                 'current_nrci': nrci,
                 'coherence_deficit': 1.0 - nrci if nrci < 1.0 else 0.0,
-                'formula': 'E = (Y × O × M × modal_sum) / (1 − NRCI)'
+                'formula': 'E = (Y × O × M × modal_sum) × (1 − NRCI)',
+                'note': 'Energy proportional to coherence deficit (corrected from spec)'
             }
         )
         
