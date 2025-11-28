@@ -22,6 +22,28 @@ Key Features:
 Test Phenomena (NEW - not previously studied):
 1. Quantum tunneling in molecular hydrogen dissociation
 2. Macroscopic quantum coherence in superconducting qubits
+
+================================================================================
+TRANSITIONAL NOTE (UBP 3.7.1):
+
+This module currently uses classical complex amplitudes for quantum states
+to maintain clarity and compatibility with existing quantum literature.
+
+The final UBP representation will use VectorOffBit + toggle rules as
+implemented in core/quantum_extensions.py:
+
+  QuantumState (future) = VectorOffBit (24D real) + CoherenceField
+  Superposition = high coherence + no measurement
+  Measurement = collapse via toggle operation
+  Entanglement = shared VectorOffBit reference
+
+This transitional approach allows:
+- Working, verifiable quantum realm today
+- Clear path to full binary purity tomorrow
+- No dependency on external scientific libraries
+
+All core dependencies are pure UBP modules.
+================================================================================
 """
 
 import math
@@ -62,7 +84,7 @@ class QuantumRealm:
     # Realm-specific constants
     REALM_NAME = "quantum"
     BASE_CRV = UBPConstants.CRV_QUANTUM_BASE  # e/12
-    TOGGLE_PROBABILITY = UBPConstants.UBP_TOGGLE_PROBABILITIES['quantum']
+    # TOGGLE_PROBABILITY: Defined per-operation in quantum_extensions.py
     
     # Quantum-specific parameters
     PLANCK_CONSTANT = UBPConstants.PLANCK_CONSTANT

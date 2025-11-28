@@ -1,4 +1,4 @@
-# UBP 3.4 - SOC Refinement Compatible
+# UBP 3.4 - SO"""Optical Realm Module
 """
 Universal Binary Principle (UBP) Framework v3.7 - Enhanced Optical Realm Module
 Author: Euan Craig, New Zealand
@@ -12,20 +12,62 @@ comprehensive optical validation capabilities.
 The Optical realm operates at 5×10^14 Hz (600 nm), targeting NRCI > 0.999999
 through precise photonic modeling and Weyl Geometric Electromagnetism integration.
 
+================================================================================
+TRANSITIONAL NOTE (UBP 3.7.1):
+
+This module is being migrated from SciPy-based continuous mathematics to
+pure UBP binary primitives. Current status:
+
+- Physical constants: Migrated to core/system_constants.py ✓
+- SciPy functions: Temporarily disabled, pure Python alternatives needed
+- Photonic lattice: Will be converted to OffBit-based binary lattice
+- Complex fields: Will be replaced with VectorOffBit representations
+
+The optical realm will ultimately use:
+  - Binary lattice sites (OffBit)
+  - Toggle rules for light propagation (3-6-9 or Fibonacci)
+  - Coherence from coherence_field.analyze()
+  - No external scientific libraries
+
+This file is under active development for full UBP compliance.
+================================================================================
+
 """
 
 import numpy as np
 from typing import Dict, Any, List, Tuple, Optional, Union
 from dataclasses import dataclass
 import math
-from scipy.special import factorial, spherical_jn, spherical_yn
-from scipy.optimize import minimize_scalar
-from scipy.constants import c, h, hbar, e, epsilon_0, mu_0
 import json
 
-# Corrected imports:
-from core.system_constants import UBPConstants # UBPConstants is in system_constants.py
-from core.state import MutableBitfield, OffBit # Bitfield is now MutableBitfield and is in state.py
+# UBP core imports
+from core.system_constants import UBPConstants
+from core.state import MutableBitfield, OffBit
+
+# SciPy imports disabled during migration to pure UBP
+# TODO: Replace with pure Python implementations
+if False:  # Keep for reference during migration
+    from scipy.special import factorial, spherical_jn, spherical_yn
+    from scipy.optimize import minimize_scalar
+    from scipy.constants import c, h, hbar, e, epsilon_0, mu_0
+
+# Use UBP constants instead of scipy.constants
+c = UBPConstants.SPEED_OF_LIGHT
+h = UBPConstants.PLANCK_CONSTANT
+hbar = UBPConstants.PLANCK_REDUCED
+e = UBPConstants.ELEMENTARY_CHARGE
+epsilon_0 = UBPConstants.VACUUM_PERMITTIVITY
+mu_0 = UBPConstants.VACUUM_PERMEABILITY
+
+# Pure Python implementations of needed math functions
+def factorial(n: int) -> int:
+    """Pure Python factorial."""
+    if n <= 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
 
 
 @dataclass

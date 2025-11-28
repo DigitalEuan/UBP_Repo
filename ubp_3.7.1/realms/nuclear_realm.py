@@ -1,7 +1,7 @@
-"""
+"""Nuclear Realm Module
 Universal Binary Principle (UBP) Framework v3.7 - Nuclear Realm Module
 Author: Euan Craig, New Zealand
-Date: 31 October 2025 (Updated for UBP 3.4)
+Date: 31 October 2025 (Updated for UBP 3.7.1)
 Previous: 31 October 2025 (UBP 3.4)
 ================================================================================
 
@@ -11,11 +11,32 @@ Zitterbewegung modeling, CARFE integration, and NMR validation capabilities.
 The Nuclear realm operates at frequencies from 10^16 to 10^20 Hz, with special
 focus on Zitterbewegung frequency (1.2356×10^20 Hz) and NMR validation at 600 MHz.
 
-UBP 3.4 Updates:
+UBP 3.7.1 Updates:
 - SOC energy equation integration
 - Y constant dimensional corrections
 - Updated NRCI targets (0.999997)
 - New test phenomena for verification
+- Removed SciPy dependencies (migration to pure UBP)
+
+================================================================================
+TRANSITIONAL NOTE (UBP 3.7.1):
+
+This module is being migrated from SciPy-based continuous mathematics to
+pure UBP binary primitives. Current status:
+
+- SciPy imports: Removed (factorial, gamma, expm were unused) ✓
+- E8/G2 lattice: Will be converted to OffBit-based representation
+- Random noise: Will be replaced with deterministic bit operations
+- Float-based root systems: Will use Golay/Leech lattice projections
+
+The nuclear realm will ultimately use:
+  - E8 lattice = 240 OffBits (from Leech lattice)
+  - G2 lattice = 12 OffBits (Golay code folding)
+  - No floats, only binary toggle rules
+  - No external scientific libraries
+
+This file is under active development for full UBP compliance.
+================================================================================
 
 """
 
@@ -23,10 +44,14 @@ import numpy as np
 from typing import Dict, Any, List, Tuple, Optional, Union
 from dataclasses import dataclass
 import math
-from scipy.special import factorial, gamma
-from scipy.linalg import expm
 
-# Corrected imports for the flat module structure
+# SciPy imports removed - were unused in this module
+# Future: Replace E8/G2 with pure OffBit lattice operations
+if False:  # Keep for reference during migration
+    from scipy.special import factorial, gamma
+    from scipy.linalg import expm
+
+# UBP core imports
 from core.system_constants import UBPConstants
 from core.state import MutableBitfield, OffBit
 
