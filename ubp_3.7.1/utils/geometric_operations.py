@@ -27,7 +27,7 @@ from core.y_constants import (
     apply_bidirectional_refinement
 )
 from core.system_constants import UBPConstants
-from core.soc_energy import SOCCalculator
+# SOCCalculator imported inside HybridGeometricOperations.__init__ to avoid dependency issues
 
 # Geometric codex import
 from utils.geometric_codex import GeometricCodex, GeometricSignature, PatternType
@@ -111,82 +111,90 @@ class PureGeometricOperations:
     
     def _geometric_multiply(self, pattern: np.ndarray, factor: float) -> np.ndarray:
         """
-        Multiply a pattern by a scalar in geometric space.
+        Multiply a pattern by a scalar using Geometric Homothety (Spatial Scaling).
         
-        For Y-constant operations, this must respect:
-        - Y = π/(π² + 2) - harmonic relationship
-        - 1/Y = π + 2/π - observer cost
-        - Connection to 12D Bitfield (π² + 2 ≈ 11.87)
+        Physics:
+        - Factor > 1 (e.g., 1/Y): Increases frequency → Zoom Out (more cycles)
+        - Factor < 1 (e.g., Y): Decreases frequency → Zoom In (fewer cycles)
+        
+        For Y-constant operations:
+        - Y = π/(π² + 2) ≈ 0.2647 - harmonic compression
+        - 1/Y = π + 2/π ≈ 3.778 - harmonic expansion
         
         Implementation:
-        1. Transform to frequency domain
-        2. Apply harmonic scaling based on factor's relationship to π
-        3. Preserve circular symmetry (π-based)
-        4. Transform back to spatial domain
+        Uses spatial resampling (zoom) to change actual frequency,
+        not just amplitude. This is the mathematically correct way to
+        represent f_new = f_old × factor in geometric space.
         """
-        # FFT to frequency domain
-        fft_pattern = fftshift(fft2(pattern))
+        from scipy.ndimage import zoom
+        
         N = pattern.shape[0]
         
-        # Create radial frequency coordinate (respects circular symmetry)
-        center = N // 2
-        y_coords, x_coords = np.ogrid[:N, :N]
-        y_coords = y_coords - center
-        x_coords = x_coords - center
+        # Identity operation
+        if abs(factor - 1.0) < 1e-10:
+            return pattern
         
-        # Radial distance from center (circular geometry)
-        r = np.sqrt(x_coords**2 + y_coords**2)
-        r_max = np.sqrt(2) * center
-        r_norm = r / r_max  # Normalized [0, 1]
+        # Spatial scaling: To multiply frequency by F, scale space by 1/F
+        # Higher frequency = more cycles in same space = shrink wavelength
+        scale = 1.0 / factor
         
-        # Angular coordinate (preserves rotational symmetry)
-        theta = np.arctan2(y_coords, x_coords)
+        # Apply zoom (order=1 for speed, order=3 for quality)
+        # This changes the actual spatial frequency
+        zoomed = zoom(pattern, scale, order=1)
         
-        # Determine if this is Y or 1/Y operation
-        # Y ≈ 0.2647, 1/Y ≈ 3.778
-        is_y_forward = (factor < 1.0)  # Multiply by Y
-        is_y_backward = (factor > 1.0)  # Multiply by 1/Y
+        # Handle output sizing (crop or pad back to N×N)
+        curr_h, curr_w = zoomed.shape
+        center_h, center_w = curr_h // 2, curr_w // 2
+        half_N = N // 2
         
-        if is_y_forward:
-            # Forward: Geometry → Observer
-            # Y = π/(π² + 2) - compress harmonics
-            # This should increase spatial frequency (compress patterns)
+        result = np.zeros((N, N))
+        
+        if scale > 1.0:
+            # Zoomed IN (Lower Frequency, factor < 1, e.g., Y)
+            # Crop the center
+            start_h = center_h - half_N
+            start_w = center_w - half_N
+            end_h = start_h + N
+            end_w = start_w + N
             
-            # Harmonic compression factor based on π relationship
-            # Y relates 1st harmonic (π) to 2nd harmonic (π²)
-            harmonic_factor = np.pi / (np.pi**2 + 2)
+            # Safe slice extraction
+            src_h_start = max(0, start_h)
+            src_h_end = min(curr_h, end_h)
+            src_w_start = max(0, start_w)
+            src_w_end = min(curr_w, end_w)
             
-            # Apply radial compression (higher frequencies)
-            # Preserve low frequencies, compress high frequencies
-            radial_scale = 1.0 + (1.0 / harmonic_factor - 1.0) * r_norm**2
+            dst_h_start = max(0, -start_h)
+            dst_h_end = dst_h_start + (src_h_end - src_h_start)
+            dst_w_start = max(0, -start_w)
+            dst_w_end = dst_w_start + (src_w_end - src_w_start)
             
-            # Apply harmonic modulation
-            # This respects the π-based circular geometry
-            phase_shift = -2 * np.pi * factor * r_norm
-            
+            result[dst_h_start:dst_h_end, dst_w_start:dst_w_end] = \
+                zoomed[src_h_start:src_h_end, src_w_start:src_w_end]
+        
         else:
-            # Backward: Observer → Geometry  
-            # 1/Y = π + 2/π - expand harmonics
-            # This should decrease spatial frequency (expand patterns)
+            # Zoomed OUT (Higher Frequency, factor > 1, e.g., 1/Y)
+            # Pad the center
+            start_h = half_N - center_h
+            start_w = half_N - center_w
+            end_h = start_h + curr_h
+            end_w = start_w + curr_w
             
-            # Harmonic expansion factor
-            harmonic_factor = np.pi + 2/np.pi
-            
-            # Apply radial expansion (lower frequencies)
-            radial_scale = 1.0 / (1.0 + (harmonic_factor - 1.0) * r_norm**2)
-            
-            # Apply harmonic modulation
-            phase_shift = 2 * np.pi * (1.0/factor) * r_norm
+            # Ensure we don't exceed bounds
+            if end_h <= N and end_w <= N:
+                result[start_h:end_h, start_w:end_w] = zoomed
+            else:
+                # Partial copy if zoomed is larger than result
+                copy_h = min(curr_h, N - start_h)
+                copy_w = min(curr_w, N - start_w)
+                result[start_h:start_h+copy_h, start_w:start_w+copy_w] = \
+                    zoomed[:copy_h, :copy_w]
         
-        # Apply transformation in frequency domain
-        # Radial scaling + phase modulation
-        scaled_fft = fft_pattern * radial_scale * np.exp(1j * phase_shift)
-        
-        # Transform back to spatial domain
-        result = np.real(ifft2(ifftshift(scaled_fft)))
-        
-        # Normalize to preserve energy
-        result = result * (np.std(pattern) / (np.std(result) + 1e-10))
+        # Normalize to preserve energy (standard deviation)
+        # This ensures the signal strength is maintained
+        std_original = np.std(pattern)
+        std_result = np.std(result)
+        if std_result > 1e-10:
+            result = result * (std_original / std_result)
         
         return result
     
@@ -219,7 +227,9 @@ class PureGeometricOperations:
             raise ValueError(f"Unknown operation: {operation}")
         
         # Normalize
-        result = result / np.max(np.abs(result)) if np.max(np.abs(result)) > 0 else result
+        # Soft clipping with tanh (preserves relative amplitudes, prevents overflow)
+        # This is better than hard normalization which amplifies noise
+        result = np.tanh(result)
         
         return result
     
@@ -327,7 +337,15 @@ class HybridGeometricOperations:
     def __init__(self, grid_size: int = 256):
         self.grid_size = grid_size
         self.codex = GeometricCodex(grid_size)
-        self.soc_calc = SOCCalculator()
+        
+        # Safe import of SOCCalculator
+        try:
+            from core.soc_energy import SOCCalculator
+            self.soc_calc = SOCCalculator()
+        except ImportError:
+            self.soc_calc = None
+            print("Warning: SOCCalculator not found. Hybrid energy operations will fail.")
+        
         self.Y = calculate_y_constant()
         self.Y_inv = calculate_y_inverse()
     
