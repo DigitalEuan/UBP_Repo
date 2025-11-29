@@ -14,16 +14,23 @@ UBP 3.4 Updates:
 
 UBP 3.7.1 Polish (30 Nov 2025):
 - Fixed all 10 issues identified by Grok AI audit
-- Removed magic numbers (COMPUTE_TIME_SCALING_FACTOR now from config)
+- Removed magic numbers (all scaling from config)
 - Renamed platonic_solid → lattice_type (TGIC alignment)
-- Strict realm validation (no silent fallbacks)
+- Strict realm validation (raises ValueError for unknown realms)
 - Complete harmonic generation (fractional + golden ratio)
-- Mandatory Y-correction (exact Y from y.py)
+- Mandatory Y-correction (exact Y from y.py, raises if missing)
+- Mandatory coherence_field (raises if missing, no fallback placeholders)
 - Full input validation with type checking
-- Real NRCI scoring from coherence_field
+- Real NRCI scoring from coherence_field (no fallbacks)
 - Comprehensive logging for all decisions
 - Unit tests in __main__ block
 - Performance monitoring system with real metrics
+
+UBP 3.7.1 Final (30 Nov 2025):
+- Made Y import mandatory (raises ImportError if y.py missing)
+- Made coherence_field mandatory (raises ImportError if missing)
+- Removed all fallback placeholders (truth or death)
+- No silent degradation - fail loudly if core modules unavailable
 
 Updated to pull CRV definitions dynamically from ubp_config.py.
 """
@@ -36,24 +43,26 @@ import math
 # Import the centralized UBPConfig
 from utils.ubp_config import get_config, UBPConfig, RealmConfig
 
-# Y constant correction (exact from y.py)
+# Y constant correction (exact from y.py) - MANDATORY
 try:
     from core.y import Y as Y_CONSTANT
-    _HAS_Y_MODULE = True
-except ImportError:
-    # Calculate exact Y if module unavailable: Y = π/(π²+2)
-    _HAS_Y_MODULE = False
-    Y_CONSTANT = math.pi / (math.pi**2 + 2)
+except ImportError as e:
+    raise ImportError(
+        "CRITICAL: core.y module is required for UBP CRV calculations. "
+        "Y constant must come from y.py for mathematical correctness. "
+        "No fallback allowed in production UBP."
+    ) from e
 
-# Coherence field for real NRCI calculations
+# Coherence field for real NRCI calculations - MANDATORY
 try:
     from core.coherence_field import CoherenceField
     from core.coherence_substrate import CoherenceState
-    _HAS_COHERENCE_FIELD = True
-except ImportError:
-    _HAS_COHERENCE_FIELD = False
-    CoherenceField = None
-    CoherenceState = None
+except ImportError as e:
+    raise ImportError(
+        "CRITICAL: core.coherence_field and core.coherence_substrate are required for UBP CRV calculations. "
+        "NRCI scores must come from real coherence field calculations. "
+        "No fallback placeholders allowed in production UBP."
+    ) from e
 
 @dataclass
 class SubCRV:
@@ -101,19 +110,15 @@ class CRVPerformanceMonitor:
         self.logger = logging.getLogger(__name__)
         self.performance_history: Dict[str, List[PerformanceRecord]] = {}
         
-        # Initialize coherence field if available
-        if _HAS_COHERENCE_FIELD:
-            self.coherence_field = CoherenceField()
-            self.logger.info("CRVPerformanceMonitor initialized with real coherence_field")
-        else:
-            self.coherence_field = None
-            self.logger.warning("CRVPerformanceMonitor: coherence_field not available, using prediction formulas")
+        # Initialize coherence field (mandatory for UBP)
+        self.coherence_field = CoherenceField()
+        self.logger.info("CRVPerformanceMonitor initialized with real coherence_field")
     
     def predict_nrci(self, realm: str, data_characteristics: Dict, crv: float) -> float:
         """
-        Predict NRCI score for a CRV.
+        Predict NRCI score for a CRV using real coherence_field calculations.
         
-        Uses real coherence_field if available, otherwise uses scientifically-derived formula.
+        No fallbacks - coherence_field is mandatory for UBP accuracy.
         """
         realm_cfg = self.config.realms.get(realm)
         if not realm_cfg:
@@ -121,41 +126,25 @@ class CRVPerformanceMonitor:
         
         base_nrci = realm_cfg.nrci_baseline
         
-        # If coherence_field available, use real calculation
-        if self.coherence_field and CoherenceState:
-            try:
-                # Create a test state at this frequency
-                # Initialize with default NRCI (0.999997), then adjust based on realm baseline
-                # The log_nrci_error for a given NRCI is: log(1 - NRCI)
-                import math
-                log_error = math.log(1 - base_nrci) if base_nrci < 1.0 else math.log(1e-10)
-                
-                test_state = CoherenceState(
-                    value=crv,
-                    log_nrci_error=log_error,
-                    net_refinements=0,
-                    operator_sequence=[]
-                )
-                
-                # Get real NRCI from coherence field
-                point = self.coherence_field.map(test_state)
-                predicted_nrci = point.total_coherence
-                
-                self.logger.debug(f"Predicted NRCI for {realm} at {crv:.6e} Hz: {predicted_nrci:.10f} (from coherence_field)")
-                return predicted_nrci
-                
-            except Exception as e:
-                self.logger.warning(f"coherence_field calculation failed: {e}, falling back to formula")
+        # Create a test state at this frequency
+        # Initialize with realm baseline NRCI
+        # The log_nrci_error for a given NRCI is: log(1 - NRCI)
+        import math
+        log_error = math.log(1 - base_nrci) if base_nrci < 1.0 else math.log(1e-10)
         
-        # Fallback: Use scientifically-derived prediction formula from UBP 3.4
-        complexity_factor = data_characteristics.get('complexity', 0.5) * self.config.crv.prediction_complexity_factor
-        noise_factor = data_characteristics.get('noise_level', 0.1) * self.config.crv.prediction_noise_factor
+        test_state = CoherenceState(
+            value=crv,
+            log_nrci_error=log_error,
+            net_refinements=0,
+            operator_sequence=[]
+        )
         
-        predicted = base_nrci - complexity_factor - noise_factor
-        predicted = max(0.0, min(1.0, predicted))  # Clamp to [0, 1]
+        # Get real NRCI from coherence field (mandatory)
+        point = self.coherence_field.map(test_state)
+        predicted_nrci = point.total_coherence
         
-        self.logger.debug(f"Predicted NRCI for {realm} at {crv:.6e} Hz: {predicted:.10f} (from formula)")
-        return predicted
+        self.logger.debug(f"Predicted NRCI for {realm} at {crv:.6e} Hz: {predicted_nrci:.10f} (from coherence_field)")
+        return predicted_nrci
     
     def predict_compute_time(self, realm: str, data_characteristics: Dict, crv: float) -> float:
         """
@@ -207,44 +196,33 @@ class CRVPerformanceMonitor:
     
     def calculate_confidence(self, realm: str, crv: float, predicted_nrci: float) -> float:
         """
-        Calculate confidence score for a CRV prediction.
+        Calculate confidence score for a CRV prediction using coherence_field error bounds.
         
-        Uses coherence_field error bounds if available.
+        No fallbacks - coherence_field is mandatory for UBP accuracy.
         """
-        if self.coherence_field and CoherenceState:
-            try:
-                # Create test state with predicted NRCI
-                import math
-                log_error = math.log(1 - predicted_nrci) if predicted_nrci < 1.0 else math.log(1e-10)
-                
-                test_state = CoherenceState(
-                    value=crv,
-                    log_nrci_error=log_error,
-                    net_refinements=0,
-                    operator_sequence=[]
-                )
-                
-                # Get coherence point
-                point = self.coherence_field.map(test_state)
-                
-                # Calculate confidence from error bounds
-                error_low, error_high = self.coherence_field.compute_error_bounds(point)
-                error_magnitude = abs(error_high - error_low)
-                
-                # Confidence = 1 - error_magnitude (clamped to [0, 1])
-                confidence = 1.0 - error_magnitude
-                confidence = max(0.0, min(1.0, confidence))
-                
-                self.logger.debug(f"Confidence for {realm} at {crv:.6e} Hz: {confidence:.6f} (from error bounds)")
-                return confidence
-                
-            except Exception as e:
-                self.logger.warning(f"Error bound calculation failed: {e}, using fallback")
+        # Create test state with predicted NRCI
+        import math
+        log_error = math.log(1 - predicted_nrci) if predicted_nrci < 1.0 else math.log(1e-10)
         
-        # Fallback: Confidence based on predicted NRCI
-        # Higher NRCI = higher confidence
-        confidence = predicted_nrci * 0.95  # Scale to slightly below NRCI
-        self.logger.debug(f"Confidence for {realm} at {crv:.6e} Hz: {confidence:.6f} (from NRCI)")
+        test_state = CoherenceState(
+            value=crv,
+            log_nrci_error=log_error,
+            net_refinements=0,
+            operator_sequence=[]
+        )
+        
+        # Get coherence point (mandatory)
+        point = self.coherence_field.map(test_state)
+        
+        # Calculate confidence from error bounds
+        error_low, error_high = self.coherence_field.compute_error_bounds(point)
+        error_magnitude = abs(error_high - error_low)
+        
+        # Confidence = 1 - error_magnitude (clamped to [0, 1])
+        confidence = 1.0 - error_magnitude
+        confidence = max(0.0, min(1.0, confidence))
+        
+        self.logger.debug(f"Confidence for {realm} at {crv:.6e} Hz: {confidence:.6f} (from error bounds)")
         return confidence
     
     def record_performance(self, realm: str, crv: float, nrci: float, 
@@ -290,11 +268,8 @@ class EnhancedCRVDatabase:
         self.performance_monitor = CRVPerformanceMonitor(self.config)
         self.crv_profiles = self._initialize_crv_profiles()
         
-        # Log Y-correction status
-        if not _HAS_Y_MODULE:
-            self.logger.warning(f"Y module not available, using calculated Y = {Y_CONSTANT:.15f}")
-        else:
-            self.logger.info(f"Using exact Y constant from y.py: {Y_CONSTANT:.15f}")
+        # Log Y-correction status (Y is now mandatory)
+        self.logger.info(f"Using exact Y constant from y.py: {Y_CONSTANT:.15f}")
         
     def _initialize_crv_profiles(self) -> Dict[str, CRVProfile]:
         """
@@ -714,8 +689,9 @@ if __name__ == "__main__":
     
     # Test 7: Performance monitoring
     print("\n[Test 7] Performance Monitoring:")
-    print(f"  Coherence field available: {_HAS_COHERENCE_FIELD}")
-    print(f"  Y module available: {_HAS_Y_MODULE}")
+    print(f"  Coherence field: Mandatory (loaded successfully)")
+    print(f"  Y module: Mandatory (loaded successfully)")
+    print(f"  Y constant: {Y_CONSTANT:.15f}")
     
     print("\n" + "=" * 80)
     print("Unit tests complete!")
