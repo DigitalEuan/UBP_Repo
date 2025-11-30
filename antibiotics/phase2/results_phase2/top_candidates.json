@@ -1,0 +1,561 @@
+{
+  "study": "UBP 3.7.1 Antibiotic Discovery - Phase 2",
+  "date": "30 November 2025",
+  "top_20_novel_candidates": [
+    {
+      "offbit_hex": "0x4F0D72",
+      "offbit_value": 5180786,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 4,
+          "functional_groups": 3,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.49292397689167067,
+        "clustering_score": 0.4464615179514526,
+        "symmetry_score": 0.6666666666666666,
+        "active_positions": [
+          1,
+          4,
+          5,
+          6,
+          8,
+          10,
+          11,
+          16,
+          17,
+          18,
+          19,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Ciprofloxacin",
+      "hamming_distance": 3,
+      "predicted_mic": 0.1339982756897713,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Quinolone-like",
+      "discovery_score": 0.7462782598152005,
+      "rank": 1
+    },
+    {
+      "offbit_hex": "0x2CDA4B",
+      "offbit_value": 2939467,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 4,
+          "functional_groups": 5,
+          "binding_features": 3
+        },
+        "weighted_region_score": 0.5070760231083293,
+        "clustering_score": 0.5578716276023374,
+        "symmetry_score": 0.3333333333333333,
+        "active_positions": [
+          0,
+          1,
+          3,
+          6,
+          9,
+          11,
+          12,
+          14,
+          15,
+          18,
+          19,
+          21
+        ]
+      },
+      "binding_site_affinity": 0.8,
+      "closest_known": "Tetracycline",
+      "hamming_distance": 3,
+      "predicted_mic": 0.14586024278860438,
+      "selectivity_index": 900.0,
+      "scaffold_prediction": "Polycyclic-like",
+      "discovery_score": 0.6855877797003962,
+      "rank": 2
+    },
+    {
+      "offbit_hex": "0x3D5A1C",
+      "offbit_value": 4020764,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 3,
+          "functional_groups": 4,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.5183916372473271,
+        "clustering_score": 0.46828445613613606,
+        "symmetry_score": 0.8333333333333334,
+        "active_positions": [
+          2,
+          3,
+          4,
+          9,
+          11,
+          12,
+          14,
+          16,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Streptomycin",
+      "hamming_distance": 4,
+      "predicted_mic": 0.14785459202386952,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Aminoglycoside-like",
+      "discovery_score": 0.6763401706445215,
+      "rank": 3
+    },
+    {
+      "offbit_hex": "0x83C5E9",
+      "offbit_value": 8635881,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 5,
+          "functional_groups": 4,
+          "binding_features": 3
+        },
+        "weighted_region_score": 0.4816083627526731,
+        "clustering_score": 0.3900066049996445,
+        "symmetry_score": 0.6666666666666666,
+        "active_positions": [
+          0,
+          3,
+          5,
+          6,
+          7,
+          8,
+          10,
+          14,
+          15,
+          16,
+          17,
+          23
+        ]
+      },
+      "binding_site_affinity": 0.8,
+      "closest_known": "Rifampicin",
+      "hamming_distance": 3,
+      "predicted_mic": 0.14927183308884504,
+      "selectivity_index": 900.0,
+      "scaffold_prediction": "Rifamycin-like",
+      "discovery_score": 0.6699187511181768,
+      "rank": 4
+    },
+    {
+      "offbit_hex": "0x3D2792",
+      "offbit_value": 4007826,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 3,
+          "functional_groups": 4,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.5183916372473271,
+        "clustering_score": 0.5165378966095331,
+        "symmetry_score": 0.5,
+        "active_positions": [
+          1,
+          4,
+          7,
+          8,
+          9,
+          10,
+          13,
+          16,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Chloramphenicol",
+      "hamming_distance": 4,
+      "predicted_mic": 0.1521964411613081,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Phenylpropanoid-like",
+      "discovery_score": 0.6570455868545129,
+      "rank": 5
+    },
+    {
+      "offbit_hex": "0x6E4B1C",
+      "offbit_value": 7228188,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 3,
+          "functional_groups": 4,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.5183916372473271,
+        "clustering_score": 0.4929704984046235,
+        "symmetry_score": 0.5,
+        "active_positions": [
+          2,
+          3,
+          4,
+          8,
+          9,
+          11,
+          14,
+          17,
+          18,
+          19,
+          21,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Streptomycin",
+      "hamming_distance": 2,
+      "predicted_mic": 0.15362599570264568,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Aminoglycoside-like",
+      "discovery_score": 0.6509315011605021,
+      "rank": 6
+    },
+    {
+      "offbit_hex": "0x8B4F25",
+      "offbit_value": 9129765,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 3,
+          "functional_groups": 5,
+          "binding_features": 4
+        },
+        "weighted_region_score": 0.5254676603556563,
+        "clustering_score": 0.5010373488634551,
+        "symmetry_score": 0.3333333333333333,
+        "active_positions": [
+          0,
+          2,
+          5,
+          8,
+          9,
+          10,
+          11,
+          14,
+          16,
+          17,
+          19,
+          23
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Vancomycin",
+      "hamming_distance": 2,
+      "predicted_mic": 0.15668811376630673,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Glycopeptide-like",
+      "discovery_score": 0.6382105036323655,
+      "rank": 7
+    },
+    {
+      "offbit_hex": "0x8B4CAB",
+      "offbit_value": 9129131,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 5,
+          "functional_groups": 3,
+          "binding_features": 4
+        },
+        "weighted_region_score": 0.4745323396443437,
+        "clustering_score": 0.5263285085770296,
+        "symmetry_score": 0.3333333333333333,
+        "active_positions": [
+          0,
+          1,
+          3,
+          5,
+          7,
+          10,
+          11,
+          14,
+          16,
+          17,
+          19,
+          23
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Vancomycin",
+      "hamming_distance": 4,
+      "predicted_mic": 0.1570089961280304,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Glycopeptide-like",
+      "discovery_score": 0.6369061803213916,
+      "rank": 8
+    },
+    {
+      "offbit_hex": "0x4F253C",
+      "offbit_value": 5186876,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 4,
+          "functional_groups": 3,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.49292397689167067,
+        "clustering_score": 0.5165378966095331,
+        "symmetry_score": 0.5,
+        "active_positions": [
+          2,
+          3,
+          4,
+          5,
+          8,
+          10,
+          13,
+          16,
+          17,
+          18,
+          19,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Ciprofloxacin",
+      "hamming_distance": 5,
+      "predicted_mic": 0.16095288745016736,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Quinolone-like",
+      "discovery_score": 0.6212998199921143,
+      "rank": 9
+    },
+    {
+      "offbit_hex": "0x4B8D3A",
+      "offbit_value": 4951354,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 4,
+          "functional_groups": 4,
+          "binding_features": 4
+        },
+        "weighted_region_score": 0.5,
+        "clustering_score": 0.5010373488634551,
+        "symmetry_score": 0.5,
+        "active_positions": [
+          1,
+          3,
+          4,
+          5,
+          8,
+          10,
+          11,
+          15,
+          16,
+          17,
+          19,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Ciprofloxacin",
+      "hamming_distance": 1,
+      "predicted_mic": 0.16171515895327096,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Quinolone-like",
+      "discovery_score": 0.6183712191687354,
+      "rank": 10
+    },
+    {
+      "offbit_hex": "0x659A4B",
+      "offbit_value": 6658635,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 4,
+          "functional_groups": 4,
+          "binding_features": 4
+        },
+        "weighted_region_score": 0.5,
+        "clustering_score": 0.5397228267843803,
+        "symmetry_score": 0.3333333333333333,
+        "active_positions": [
+          0,
+          1,
+          3,
+          6,
+          9,
+          11,
+          12,
+          15,
+          16,
+          18,
+          21,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Tetracycline",
+      "hamming_distance": 1,
+      "predicted_mic": 0.1632650654103324,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Polycyclic-like",
+      "discovery_score": 0.6125009030478813,
+      "rank": 11
+    },
+    {
+      "offbit_hex": "0xE9C6E0",
+      "offbit_value": 15320800,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 3,
+          "functional_groups": 4,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.5183916372473271,
+        "clustering_score": 0.5052748486081823,
+        "symmetry_score": 0.3333333333333333,
+        "active_positions": [
+          5,
+          6,
+          7,
+          9,
+          10,
+          14,
+          15,
+          16,
+          19,
+          21,
+          22,
+          23
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Rifampicin",
+      "hamming_distance": 5,
+      "predicted_mic": 0.16490651792054511,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Rifamycin-like",
+      "discovery_score": 0.6064041692286644,
+      "rank": 12
+    },
+    {
+      "offbit_hex": "0x4F0D3A",
+      "offbit_value": 5180730,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 4,
+          "functional_groups": 3,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.49292397689167067,
+        "clustering_score": 0.4464615179514526,
+        "symmetry_score": 0.5,
+        "active_positions": [
+          1,
+          3,
+          4,
+          5,
+          8,
+          10,
+          11,
+          16,
+          17,
+          18,
+          19,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Ciprofloxacin",
+      "hamming_distance": 1,
+      "predicted_mic": 0.16580450583374862,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Quinolone-like",
+      "discovery_score": 0.6031199182262846,
+      "rank": 13
+    },
+    {
+      "offbit_hex": "0x5D124F",
+      "offbit_value": 6099535,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 5,
+          "functional_groups": 2,
+          "binding_features": 5
+        },
+        "weighted_region_score": 0.4674563165360144,
+        "clustering_score": 0.4891252930760574,
+        "symmetry_score": 0.3333333333333333,
+        "active_positions": [
+          0,
+          1,
+          2,
+          3,
+          6,
+          9,
+          12,
+          16,
+          18,
+          19,
+          20,
+          22
+        ]
+      },
+      "binding_site_affinity": 1.0,
+      "closest_known": "Tetracycline",
+      "hamming_distance": 5,
+      "predicted_mic": 0.16825134506223746,
+      "selectivity_index": 1100.0,
+      "scaffold_prediction": "Polycyclic-like",
+      "discovery_score": 0.5943488889376144,
+      "rank": 14
+    },
+    {
+      "offbit_hex": "0xA1C3E9",
+      "offbit_value": 10601449,
+      "nrci": 0.999997,
+      "pattern_structure": {
+        "region_counts": {
+          "core_scaffold": 5,
+          "functional_groups": 4,
+          "binding_features": 3
+        },
+        "weighted_region_score": 0.4816083627526731,
+        "clustering_score": 0.39923136555369504,
+        "symmetry_score": 0.6666666666666666,
+        "active_positions": [
+          0,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          14,
+          15,
+          16,
+          21,
+          23
+        ]
+      },
+      "binding_site_affinity": 0.8,
+      "closest_known": "Rifampicin",
+      "hamming_distance": 1,
+      "predicted_mic": 0.1834660169320987,
+      "selectivity_index": 900.0,
+      "scaffold_prediction": "Rifamycin-like",
+      "discovery_score": 0.5450600698275926,
+      "rank": 15
+    }
+  ]
+}
