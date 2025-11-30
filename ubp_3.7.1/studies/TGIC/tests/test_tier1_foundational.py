@@ -183,7 +183,8 @@ def test_1_4_three_axis_constraint():
     # Find a three-axis constraint
     three_axis_constraint = None
     for constraint in system.constraints:
-        if 'three_axis' in constraint.constraint_type.lower():
+        # constraint is a TGICConstraint object with constraint_type as a string attribute
+        if hasattr(constraint, 'constraint_type') and 'three_axis' in constraint.constraint_type.lower():
             three_axis_constraint = constraint
             break
     
@@ -349,6 +350,8 @@ if __name__ == '__main__':
                 return int(obj)
             elif isinstance(obj, (np.float64, np.float32)):
                 return float(obj)
+            elif isinstance(obj, (np.bool_, bool)):
+                return bool(obj)
             return obj
         
         results_serializable = {k: {kk: convert(vv) for kk, vv in v.items()} for k, v in results.items()}

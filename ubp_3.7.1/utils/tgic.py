@@ -123,12 +123,18 @@ class DodecahedralGraph:
                 for k in [-1, 1]:
                     vertices.append([i, j, k])
         
-        # 12 vertices on rectangular faces
+        # 12 vertices on rectangular faces (golden rectangles)
         # These form 3 mutually perpendicular golden rectangles
+        # Each rectangle has 4 vertices at (0, ±1/φ, ±φ) and permutations
         for i in [-1, 1]:
-            vertices.append([0, i/phi, i*phi])      # XY plane rectangle
-            vertices.append([i/phi, i*phi, 0])      # YZ plane rectangle  
-            vertices.append([i*phi, 0, i/phi])      # XZ plane rectangle
+            for j in [-1, 1]:
+                vertices.append([0, i/phi, j*phi])      # 4 vertices in YZ plane
+        for i in [-1, 1]:
+            for j in [-1, 1]:
+                vertices.append([i/phi, j*phi, 0])      # 4 vertices in XY plane
+        for i in [-1, 1]:
+            for j in [-1, 1]:
+                vertices.append([i*phi, 0, j/phi])      # 4 vertices in XZ plane
         
         # Create nodes
         for i, vertex in enumerate(vertices):
@@ -151,7 +157,9 @@ class DodecahedralGraph:
         NOTE: Using exact distance matching instead of threshold (Nov 2025 fix).
         """
         phi = (1 + math.sqrt(5)) / 2
-        expected_edge_length = 2 / phi  # ≈ 1.236
+        # For proper dodecahedron with this vertex construction,
+        # edge length is 2/φ ≈ 1.236 (connects 30 edges in 3-regular graph)
+        expected_edge_length = 2 / phi
         edge_tolerance = 0.01  # Tight tolerance for exact matching
         
         for i in range(len(self.nodes)):
