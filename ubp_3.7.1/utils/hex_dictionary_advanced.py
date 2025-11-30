@@ -1,8 +1,8 @@
 """
 ================================================================================
-Advanced HexDictionary Analyzer - Beyond Hamming Distance
+Advanced HexDictionary Analyzer - Beyond Hamming Distance UBP 3.7.1
 Author: Euan Craig, New Zealand
-Date: November 19, 2025
+Date: 30November 2025
 ================================================================================
 
 This module extends the UBP 3.5 HexDictionary with advanced analytical methods
