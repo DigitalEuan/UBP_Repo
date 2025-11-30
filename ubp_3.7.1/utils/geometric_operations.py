@@ -18,7 +18,8 @@ This demonstrates that geometry can fully replace text/numbers for UBP operation
 import numpy as np
 from dataclasses import dataclass
 from typing import Dict, Tuple, Optional, Union
-from scipy.fft import fft2, ifft2, fftshift, ifftshift
+# Use numpy.fft instead of scipy.fft (UBP 3.7 is pure Python/NumPy)
+from numpy.fft import fft2, ifft2, fftshift, ifftshift
 
 # UBP 3.4 imports
 from core.y_constants import (
@@ -650,8 +651,40 @@ class GeometricUBP:
 # CONVENIENCE FUNCTIONS
 # ============================================================================
 
+# Global singleton GeometricUBP instance
+_DEFAULT_GEOMETRIC_UBP: Optional[GeometricUBP] = None
+
+def get_geometric_ubp(grid_size: int = 256) -> GeometricUBP:
+    """
+    Get or create the global GeometricUBP instance (singleton pattern).
+    
+    This prevents rebuilding the entire codex + SOC calculator on every call.
+    The instance is cached and reused for the same grid_size.
+    
+    Args:
+        grid_size: Size of the pattern grid (default: 256)
+        
+    Returns:
+        Global GeometricUBP instance
+    """
+    global _DEFAULT_GEOMETRIC_UBP
+    if _DEFAULT_GEOMETRIC_UBP is None or _DEFAULT_GEOMETRIC_UBP.grid_size != grid_size:
+        print(f"Initializing UBP Geometric Operations ({grid_size}x{grid_size})...")
+        from utils.geometric_codex import get_codex
+        codex = get_codex(grid_size)  # Use cached codex singleton
+        _DEFAULT_GEOMETRIC_UBP = GeometricUBP(grid_size)
+        _DEFAULT_GEOMETRIC_UBP.codex = codex
+        _DEFAULT_GEOMETRIC_UBP.hybrid.codex = codex
+    return _DEFAULT_GEOMETRIC_UBP
+
+
 def create_geometric_ubp(grid_size: int = 256) -> GeometricUBP:
-    """Create a geometric UBP interface."""
+    """
+    DEPRECATED: Use get_geometric_ubp() instead for better performance.
+    
+    This function creates a new instance every time, which is slow.
+    Use get_geometric_ubp() to get the cached singleton instance.
+    """
     return GeometricUBP(grid_size)
 
 
@@ -660,7 +693,7 @@ def pattern_y_refinement(
     direction: str = 'forward',
     mode: str = 'pure_geometric'
 ) -> np.ndarray:
-    """Quick function to apply Y refinement to a pattern."""
-    ubp = create_geometric_ubp(pattern.shape[0])
+    """Quick function to apply Y refinement to a pattern (uses cached singleton)."""
+    ubp = get_geometric_ubp(pattern.shape[0])
     result = ubp.apply_y_refinement(pattern, direction, mode)
     return result.output_pattern
