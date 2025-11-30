@@ -1,8 +1,8 @@
 # UBP 3.7
 """
-Universal Binary Principle (UBP) Framework v3.7 - TGIC: Triad Graph Interaction Constraint for UBP
+Universal Binary Principle (UBP) Framework v3.7.1 - TGIC: Triad Graph Interaction Constraint for UBP
 Author: Euan Craig, New Zealand
-Date: 03 September 2025
+Date: 30 November 2025
 ================================================
 
 Implements the geometric constraint system that enforces the fundamental

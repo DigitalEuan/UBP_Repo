@@ -1,8 +1,9 @@
-# Universal Binary Protocol (UBP) 3.7.1
+# Universal Binary Principle (UBP) 3.7.1
+**Author:** Euan Craig, New Zealand 
 
-**The Mathematically Perfect Information Processing System**
+**The binary Information Processing System**
 
-UBP 3.7.1 is a production-ready implementation of the Universal Binary Protocol - a revolutionary information processing framework that achieves true information-theoretic reversibility through geometric encoding and coherence-based computation.
+UBP 3.7.1 is a computational implementation of the Universal Binary Principle - an information processing framework that aims to achieve true information-theoretic reversibility through geometric encoding and coherence-based computation.
 
 ---
 
@@ -25,22 +26,22 @@ UBP 3.7.1 is a production-ready implementation of the Universal Binary Protocol 
 
 ## Overview
 
-UBP 3.7.1 represents a paradigm shift in information processing, combining:
+UBP 3.7.1 is a shift in information processing, combining:
 
-- **True Reversibility**: Information-theoretic reversibility through rational arithmetic
+- **Reversibility**: Information-theoretic reversibility through rational arithmetic
 - **Geometric Encoding**: Leech lattice (Λ₂₄) and Golay code (G₂₄) integration
-- **Coherence-Based Computation**: Self-Organizing Coherence (SOC) energy framework
+- **Coherence-Based Computation**: Self-Organizing Coherence energy framework
 - **Multi-Realm Processing**: Unified handling across 9 physical realms (quantum to cosmological)
 - **Error Correction**: Built-in Golay(24,12) error correction with 3-error correction capability
 
-**Status**: ✅ **Production Ready** (98.7% test pass rate, 74/75 tests)
+**Status**: The most current version - still developing, any feedback welcomed.
 
 ---
 
-## Key Features
+## Features
 
-### Mathematical Perfection
-- ✅ **Exact Reversibility**: Proven through 1000+ forward-backward cycles with zero error
+### Mathematical Aims
+- ✅ **Reversibility**: Proven through 1000+ forward-backward cycles with zero error
 - ✅ **Scale Invariance**: Works from 1 to 1,000,000 and fractional values
 - ✅ **Y-Refinement**: Universal scaling constant Y = π/(π²+2) ≈ 0.264675430404527
 - ✅ **Rational Arithmetic**: Superior to floating-point for information preservation
@@ -49,9 +50,9 @@ UBP 3.7.1 represents a paradigm shift in information processing, combining:
 - ✅ **9 Physical Realms**: Quantum, Atomic, EM, Optical, Nuclear, Gravitational, Biological, Plasma, Cosmological
 - ✅ **Real Data Validation**: Tested with NIST, Planck, LIGO, WMAP data
 - ✅ **Energy Conservation**: Drift < 1×10⁻¹⁰ over 100 seconds
-- ✅ **21 Orders of Magnitude**: Energy scales from 10⁻³⁴ J to 10⁻¹³ J
+- ✅ **all Orders of Magnitude**: Energy scales from 10⁻³⁴ J to 10⁻¹³ J
 
-### Computational Excellence
+### Computational Aims
 - ✅ **High Performance**: 135,879 Golay encodings/sec, 19,151 simulation steps/sec
 - ✅ **Optimized Algorithms**: Singleton patterns, caching, pure NumPy implementations
 - ✅ **Negligible Errors**: Analytical agreement error < 4×10⁻¹⁴
@@ -94,6 +95,7 @@ UBP 3.7.1
 ### Prerequisites
 
 - Python 3.11+
+- the UBP requires no python dependencies (usually) otherwise the standard:
 - NumPy 1.23+
 - Standard library only (no external dependencies beyond NumPy)
 
@@ -392,7 +394,7 @@ run_all_tests()
 
 ## Testing
 
-UBP 3.7.1 includes comprehensive test suites with **98.7% pass rate** (74/75 tests).
+UBP 3.7.1 includes comprehensive test suites with **98.7% pass rate** (74/75 tests). I think an old module that isn't used anymore fails to import.
 
 ### Run All Tests
 
@@ -521,6 +523,4 @@ UBP 3.7.1 builds on decades of research in:
 
 ---
 
-**UBP 3.7.1 - Where Mathematics Meets Reality** 🌌
-
-*"The universe is made of math. And it works. Perfectly."*
+**UBP 3.7.1 - Where Mathematics Meets Reality**
