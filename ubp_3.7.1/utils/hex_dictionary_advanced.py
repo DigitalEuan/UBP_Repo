@@ -1,13 +1,12 @@
 """
 ================================================================================
-Advanced HexDictionary Analyzer - Beyond Hamming Distance
+UBP 3.7.1 Advanced HexDictionary Analyzer - Beyond Hamming Distance
 Author: Euan Craig, New Zealand
-Date: November 19, 2025
+Date: 30 November 2025
 ================================================================================
 
 This module extends the UBP 3.5 HexDictionary with advanced analytical methods
-that go far beyond simple Hamming distance, addressing the limitations identified
-in the Nutrition study.
+that go far beyond simple Hamming distance.
 
 **Advanced Methods Implemented**:
 1. **Spectral Similarity**: Eigenvalue-based pattern matching
@@ -26,8 +25,8 @@ import json
 from typing import Dict, List, Tuple, Any, Optional
 from dataclasses import dataclass
 
-# Add UBP 3.5 to path
-sys.path.insert(0, '/home/ubuntu/UBP_Repo/ubp_3.5')
+# Add UBP 3.7.1 to path
+sys.path.insert(0, 'https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.7.1')
 
 from coherence_substrate import CoherenceState, Y, Y_INVERSE, NRCI_TARGET
 from hex_dictionary import HexDictionary
