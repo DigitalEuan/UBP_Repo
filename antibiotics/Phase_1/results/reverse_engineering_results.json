@@ -1,0 +1,308 @@
+{
+  "study_date": "2025-11-22",
+  "known_antibiotics": [
+    {
+      "name": "Penicillin",
+      "offbit_hex": "0x1A4F3C",
+      "offbit_value": 1724220,
+      "nrci": 0.999997,
+      "active_bits": 12,
+      "coherence_value": 1724220.0,
+      "mechanism": "Cell wall synthesis inhibitor",
+      "spectrum": "Gram-positive",
+      "molecular_weight": 334.39,
+      "discovery_year": 1928
+    },
+    {
+      "name": "Tetracycline",
+      "offbit_hex": "0x6C9E2A",
+      "offbit_value": 7118378,
+      "nrci": 0.999997,
+      "active_bits": 12,
+      "coherence_value": 7118378.0,
+      "mechanism": "Protein synthesis inhibitor (30S ribosome)",
+      "spectrum": "Broad spectrum",
+      "molecular_weight": 444.43,
+      "discovery_year": 1948
+    },
+    {
+      "name": "Ciprofloxacin",
+      "offbit_hex": "0xA3D5B1",
+      "offbit_value": 10737073,
+      "nrci": 0.999997,
+      "active_bits": 13,
+      "coherence_value": 10737073.0,
+      "mechanism": "DNA gyrase inhibitor",
+      "spectrum": "Broad spectrum",
+      "molecular_weight": 331.34,
+      "discovery_year": 1987
+    },
+    {
+      "name": "Vancomycin",
+      "offbit_hex": "0xE8F142",
+      "offbit_value": 15266114,
+      "nrci": 0.999997,
+      "active_bits": 11,
+      "coherence_value": 15266114.0,
+      "mechanism": "Cell wall synthesis inhibitor",
+      "spectrum": "Gram-positive (MRSA)",
+      "molecular_weight": 1449.27,
+      "discovery_year": 1958
+    },
+    {
+      "name": "Streptomycin",
+      "offbit_hex": "0x4B7D91",
+      "offbit_value": 4947345,
+      "nrci": 0.999997,
+      "active_bits": 13,
+      "coherence_value": 4947345.0,
+      "mechanism": "Protein synthesis inhibitor (30S ribosome)",
+      "spectrum": "Tuberculosis",
+      "molecular_weight": 581.57,
+      "discovery_year": 1943
+    },
+    {
+      "name": "Erythromycin",
+      "offbit_hex": "0x9C2F68",
+      "offbit_value": 10235752,
+      "nrci": 0.999997,
+      "active_bits": 12,
+      "coherence_value": 10235752.0,
+      "mechanism": "Protein synthesis inhibitor (50S ribosome)",
+      "spectrum": "Gram-positive",
+      "molecular_weight": 733.93,
+      "discovery_year": 1952
+    },
+    {
+      "name": "Chloramphenicol",
+      "offbit_hex": "0x5E8A3D",
+      "offbit_value": 6195773,
+      "nrci": 0.999997,
+      "active_bits": 13,
+      "coherence_value": 6195773.0,
+      "mechanism": "Protein synthesis inhibitor (50S ribosome)",
+      "spectrum": "Broad spectrum",
+      "molecular_weight": 323.13,
+      "discovery_year": 1947
+    },
+    {
+      "name": "Linezolid",
+      "offbit_hex": "0xA77F3C",
+      "offbit_value": 10977084,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "coherence_value": 10977084.0,
+      "mechanism": "Protein synthesis inhibitor (50S ribosome)",
+      "spectrum": "Gram-positive (MRSA, VRE)",
+      "molecular_weight": 337.35,
+      "discovery_year": 2000
+    }
+  ],
+  "novel_candidates": [
+    {
+      "rank": 1,
+      "offbit_hex": "0x6C1A01",
+      "offbit_value": 7084545,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 2,
+      "offbit_hex": "0xF9AF8E",
+      "offbit_value": 16363406,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 3,
+      "offbit_hex": "0x81C216",
+      "offbit_value": 8503830,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 4,
+      "offbit_hex": "0x8F2024",
+      "offbit_value": 9379876,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 5,
+      "offbit_hex": "0x933EFE",
+      "offbit_value": 9649918,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 6,
+      "offbit_hex": "0x8B8C20",
+      "offbit_value": 9145376,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 7,
+      "offbit_hex": "0x833418",
+      "offbit_value": 8598552,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 8,
+      "offbit_hex": "0x8FBCFA",
+      "offbit_value": 9420026,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 9,
+      "offbit_hex": "0xA30438",
+      "offbit_value": 10683448,
+      "similarity": 1.0,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4196078431372549
+    },
+    {
+      "rank": 10,
+      "offbit_hex": "0xA6003A",
+      "offbit_value": 10879034,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 11,
+      "offbit_hex": "0xE2FE76",
+      "offbit_value": 14876278,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 12,
+      "offbit_hex": "0x79B7E3",
+      "offbit_value": 7976931,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.41568627450980394
+    },
+    {
+      "rank": 13,
+      "offbit_hex": "0xFAE78E",
+      "offbit_value": 16443278,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 14,
+      "offbit_hex": "0xC8015C",
+      "offbit_value": 13107548,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 15,
+      "offbit_hex": "0x0F7B7B",
+      "offbit_value": 1014651,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 16,
+      "offbit_hex": "0x807314",
+      "offbit_value": 8418068,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 17,
+      "offbit_hex": "0x8041EA",
+      "offbit_value": 8405482,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.41568627450980394
+    },
+    {
+      "rank": 18,
+      "offbit_hex": "0xC03056",
+      "offbit_value": 12595286,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 8,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.41568627450980394
+    },
+    {
+      "rank": 19,
+      "offbit_hex": "0x577FC3",
+      "offbit_value": 5734339,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    },
+    {
+      "rank": 20,
+      "offbit_hex": "0x7BBB0F",
+      "offbit_value": 8108815,
+      "similarity": 0.9992156862745099,
+      "nrci": 0.999997,
+      "active_bits": 16,
+      "bit_balance": 0.3333333333333333,
+      "symmetry": 0.4235294117647059
+    }
+  ],
+  "search_parameters": {
+    "reference_antibiotic": "Linezolid",
+    "search_space_size": 100000,
+    "top_n": 20
+  }
+}

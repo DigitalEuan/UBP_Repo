@@ -1,0 +1,22 @@
+# UBP Antibiotic Discovery Study - Python Dependencies
+# Python 3.11+ required
+
+# Core dependencies (already available in GPU UBP 3.6)
+# These are included via the ubp_core symlink and do not need separate installation
+
+# No additional dependencies required beyond standard Python 3.11 library
+# The study uses only:
+# - sys (standard library)
+# - json (standard library)
+# - time (standard library)
+# - math (standard library)
+# - random (standard library)
+# - re (standard library)
+# - typing (standard library)
+# - collections (standard library)
+
+# Note: The GPU UBP 3.6 core modules are accessed via symlink:
+# /home/ubuntu/ubp_antibiotics_study/ubp_core -> /home/ubuntu/UBP_Repo/gpu_ubp_system/03/core
+
+# If you need to run this study standalone (outside the UBP_Repo), you will need:
+# - The full GPU UBP 3.6 system from: https://github.com/DigitalEuan/UBP_Repo
