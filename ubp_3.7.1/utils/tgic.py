@@ -87,6 +87,11 @@ class TGICConstraint:
     tolerance: float = 1e-6
     weight: float = 1.0
     active: bool = True
+    
+    @property
+    def evaluation_function(self):
+        """Alias for constraint_function for API compatibility."""
+        return self.constraint_function
 
 
 class DodecahedralGraph:

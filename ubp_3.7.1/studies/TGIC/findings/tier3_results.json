@@ -29,45 +29,45 @@
     }
   },
   "3.4 - Constraint System": {
-    "passed": false,
+    "passed": "True",
     "data": {
-      "all_constraints_valid": false,
+      "all_constraints_valid": true,
       "deterministic": "True",
       "constraint_details": [
         {
           "id": "three_axis_structure",
-          "valid": false,
+          "valid": true,
           "has_type": "three_axis_geometric",
           "weight_positive": true,
           "nodes_valid": true,
-          "has_eval": false
+          "has_eval": true
         },
         {
           "id": "six_face_interactions",
-          "valid": false,
+          "valid": true,
           "has_type": "topological",
           "weight_positive": true,
           "nodes_valid": true,
-          "has_eval": false
+          "has_eval": true
         },
         {
           "id": "nine_interaction_neighborhood",
-          "valid": false,
+          "valid": true,
           "has_type": "connectivity",
           "weight_positive": true,
           "nodes_valid": true,
-          "has_eval": false
+          "has_eval": true
         }
       ]
     }
   },
   "3.5 - UBP Consistency": {
-    "passed": "False",
+    "passed": true,
     "data": {
       "y_available": true,
-      "topological": "False",
+      "hybrid_constraints_ok": "True",
       "uses_golden_ratio": true,
-      "consistent": "False"
+      "consistent": true
     }
   }
 }
