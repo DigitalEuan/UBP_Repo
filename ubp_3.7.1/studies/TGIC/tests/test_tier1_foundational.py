@@ -182,7 +182,7 @@ def test_1_4_three_axis_constraint():
     
     # Find a three-axis constraint
     three_axis_constraint = None
-    for constraint in system.constraints:
+    for constraint in system.constraints.values():  # Iterate over values, not keys
         # constraint is a TGICConstraint object with constraint_type as a string attribute
         if hasattr(constraint, 'constraint_type') and 'three_axis' in constraint.constraint_type.lower():
             three_axis_constraint = constraint
@@ -342,9 +342,13 @@ if __name__ == '__main__':
     import json
     output_path = os.path.join(os.path.dirname(__file__), '../findings/tier1_results.json')
     with open(output_path, 'w') as f:
-        # Convert numpy types to native Python types
+        # Convert numpy types to native Python types recursively
         def convert(obj):
-            if isinstance(obj, np.ndarray):
+            if isinstance(obj, dict):
+                return {k: convert(v) for k, v in obj.items()}
+            elif isinstance(obj, (list, tuple)):
+                return [convert(item) for item in obj]
+            elif isinstance(obj, np.ndarray):
                 return obj.tolist()
             elif isinstance(obj, (np.int64, np.int32)):
                 return int(obj)
@@ -354,7 +358,7 @@ if __name__ == '__main__':
                 return bool(obj)
             return obj
         
-        results_serializable = {k: {kk: convert(vv) for kk, vv in v.items()} for k, v in results.items()}
+        results_serializable = convert(results)
         json.dump(results_serializable, f, indent=2)
     
     print(f"\nResults saved to: {output_path}")

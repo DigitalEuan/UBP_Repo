@@ -38,18 +38,21 @@
     "name": "Interaction Type Classification"
   },
   "1.4": {
-    "passed": false,
+    "passed": true,
     "data": {
-      "error": "No three-axis constraint found"
+      "dot_12": 0.0,
+      "dot_13": 0.0,
+      "dot_23": 0.0,
+      "is_orthogonal": true
     },
     "name": "Three-Axis Constraint Orthogonality"
   },
   "1.5": {
     "passed": true,
     "data": {
-      "has_proxy": false,
-      "has_disclaimer": false,
-      "has_not_true_leech": false,
+      "has_proxy": true,
+      "has_disclaimer": true,
+      "has_not_true_leech": true,
       "recommendation": "Add disclaimer comment if missing"
     },
     "name": "Leech Projection Disclaimer"

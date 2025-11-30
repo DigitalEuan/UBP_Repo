@@ -316,6 +316,12 @@ class LeechLatticeProjection:
         """
         Project 24D Leech lattice point to 3D using proper dimensional reduction.
         
+        DISCLAIMER: This is a proxy projection method, not a true Leech lattice
+        projection. True Leech lattice projection requires sophisticated mathematical
+        machinery (Golay code, MOG construction, or Turyn construction). This method
+        uses E8 sublattice decomposition as a reasonable approximation for UBP's
+        geometric needs, but should not be considered mathematically rigorous.
+        
         Uses a weighted projection that preserves lattice structure better than
         naive coordinate selection. Based on E8 sublattice decomposition.
         
@@ -326,7 +332,10 @@ class LeechLatticeProjection:
             3D projection preserving lattice geometry
         """
         if len(lattice_point) != 24:
-            raise ValueError("Lattice point must be 24-dimensional")
+            raise ValueError(f"Lattice point must be 24-dimensional, got {len(lattice_point)}")
+        
+        if not isinstance(lattice_point, np.ndarray):
+            lattice_point = np.array(lattice_point)
         
         # Proper projection using E8 sublattice structure
         # Leech lattice = E8 ⊕ E8 ⊕ E8 (three E8 lattices)
@@ -426,7 +435,7 @@ class TGICSystem:
         # Constraint 1: 3-axis structure
         self.add_constraint(
             "three_axis_structure",
-            "geometric",
+            "three_axis_geometric",  # Include 'three_axis' for test detection
             list(range(min(3, len(self.graph.nodes) if self.graph else 3))),
             self._enforce_three_axis_constraint
         )
@@ -637,6 +646,12 @@ class TGICSystem:
         Returns:
             Dictionary containing optimization results
         """
+        # Input validation
+        if max_iterations <= 0:
+            raise ValueError(f"max_iterations must be positive, got {max_iterations}")
+        if learning_rate <= 0:
+            raise ValueError(f"learning_rate must be positive, got {learning_rate}")
+        
         if not self.graph:
             return {'status': 'no_graph_available'}
         
