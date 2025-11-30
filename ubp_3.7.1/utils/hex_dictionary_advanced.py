@@ -500,6 +500,74 @@ class AdvancedHexDictionaryAnalyzer:
         
         return max(0.0, min(1.0, overall))
     
+    def _extract_features(self, data: Any) -> Optional[List[float]]:
+        """
+        Extract numerical features from various data types for analysis.
+        
+        Uses proper feature extraction instead of naive ASCII conversion.
+        
+        Args:
+            data: Data of any type (str, dict, list, bytes, etc.)
+            
+        Returns:
+            List of float features, or None if extraction fails
+        """
+        import hashlib
+        import numpy as np
+        
+        try:
+            if data is None:
+                return None
+            
+            # Already a list of numbers
+            if isinstance(data, list):
+                try:
+                    return [float(x) for x in data[:1000]]  # Limit to 1000 features
+                except (ValueError, TypeError):
+                    pass  # Fall through to hash-based extraction
+            
+            # NumPy array
+            if isinstance(data, np.ndarray):
+                return data.flatten()[:1000].astype(float).tolist()
+            
+            # For strings, dicts, and other types: use hash-based feature extraction
+            # Convert to bytes first
+            if isinstance(data, str):
+                data_bytes = data.encode('utf-8')
+            elif isinstance(data, dict):
+                data_bytes = json.dumps(data, sort_keys=True).encode('utf-8')
+            elif isinstance(data, bytes):
+                data_bytes = data
+            else:
+                # Fallback: convert to string then bytes
+                data_bytes = str(data).encode('utf-8')
+            
+            # Extract features from bytes using sliding window hashing
+            # This creates a meaningful numerical representation
+            features = []
+            window_size = 8  # 8-byte windows
+            step = 4  # 50% overlap
+            
+            for i in range(0, len(data_bytes) - window_size + 1, step):
+                window = data_bytes[i:i+window_size]
+                # Convert to float using hash (normalized to [0, 1])
+                hash_val = int(hashlib.sha256(window).hexdigest()[:16], 16)
+                normalized = hash_val / (2**64)  # Normalize to [0, 1]
+                features.append(normalized)
+                
+                if len(features) >= 1000:  # Limit features
+                    break
+            
+            # If data is too short, pad with zeros
+            if len(features) < 10:
+                features.extend([0.0] * (10 - len(features)))
+            
+            return features if features else None
+            
+        except Exception as e:
+            # If all else fails, return None
+            return None
+    
     def find_similar_patterns(self, 
                             target_hash: str,
                             target_data: Optional[List[float]] = None,
@@ -519,7 +587,8 @@ class AdvancedHexDictionaryAnalyzer:
         Returns:
             List of (hash, similarity_result) tuples, sorted by similarity
         """
-        all_hashes = self.hex_dict.list_all()
+        # Get all hashes from the HexDictionary entries
+        all_hashes = list(self.hex_dict.entries.keys())
         similarities = []
         
         for candidate_hash in all_hashes:
@@ -529,13 +598,8 @@ class AdvancedHexDictionaryAnalyzer:
             # Try to retrieve data
             candidate_data = self.hex_dict.retrieve(candidate_hash)
             
-            # Convert to list if needed
-            if isinstance(candidate_data, str):
-                candidate_data = [float(ord(c)) for c in candidate_data[:100]]
-            elif isinstance(candidate_data, dict):
-                candidate_data = list(candidate_data.values())[:100]
-            elif not isinstance(candidate_data, list):
-                candidate_data = None
+            # Extract features based on data type
+            candidate_data = self._extract_features(candidate_data)
             
             # Analyze similarity
             result = self.analyze_similarity(
