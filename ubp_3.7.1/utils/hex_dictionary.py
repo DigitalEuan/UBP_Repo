@@ -80,8 +80,29 @@ import gzip
 from typing import Any, Dict, Optional, Union
 
 import sys
-sys.path.insert(0, '/home/ubuntu/ubp_3.3')
-from core.system_constants import UBPConstants
+# Add UBP 3.7.1 to path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+ubp_root = os.path.join(current_dir, '..')  # Go up to ubp_3.7.1 root
+sys.path.insert(0, ubp_root)
+
+# Import UBPConstants from config (3.7.1 uses ubp_config, not system_constants)
+try:
+    from utils.ubp_config import get_config
+    _config = get_config()
+    # Create a compatibility wrapper for UBPConstants
+    class UBPConstants:
+        PI = _config.constants.PI
+        PHI = _config.constants.PHI
+        E = _config.constants.E
+        SPEED_OF_LIGHT = _config.constants.SPEED_OF_LIGHT
+except ImportError:
+    # Fallback for standalone usage
+    import math
+    class UBPConstants:
+        PI = math.pi
+        PHI = (1 + math.sqrt(5)) / 2
+        E = math.e
+        SPEED_OF_LIGHT = 299792458.0
 
 # Define the default directory for PERSISTENT storage for this version of HexDictionary
 DEFAULT_HEX_DICT_STORAGE_DIR = "./persistent_state/hex_dictionary_storage/"

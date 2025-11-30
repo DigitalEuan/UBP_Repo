@@ -26,11 +26,19 @@ import json
 from typing import Dict, List, Tuple, Any, Optional
 from dataclasses import dataclass
 
-# Add UBP 3.5 to path
-sys.path.insert(0, '/home/ubuntu/UBP_Repo/ubp_3.5')
+# Add UBP 3.7.1 to path (for imports)
+# Note: Cannot use GitHub URLs - sys.path requires local filesystem paths
+current_dir = os.path.dirname(os.path.abspath(__file__))
+ubp_root = os.path.join(current_dir, '..')  # Go up to ubp_3.7.1 root
+sys.path.insert(0, ubp_root)
 
-from coherence_substrate import CoherenceState, Y, Y_INVERSE, NRCI_TARGET
-from hex_dictionary import HexDictionary
+# Import from UBP 3.7.1 core and utils
+from core.coherence_substrate import CoherenceState
+from core.y import Y, Y_INVERSE
+from utils.hex_dictionary import HexDictionary
+
+# NRCI_TARGET constant (from coherence_substrate)
+NRCI_TARGET = 0.99
 
 
 # ============================================================================
