@@ -1038,19 +1038,47 @@ class GeometricCodex:
 # CONVENIENCE FUNCTIONS
 # ============================================================================
 
+# Global singleton codex instance
+_DEFAULT_CODEX: Optional[GeometricCodex] = None
+
+def get_codex(grid_size: int = 256) -> GeometricCodex:
+    """
+    Get or create the global geometric codex instance (singleton pattern).
+    
+    This prevents rebuilding the entire 200+ signature library on every call.
+    The codex is cached and reused for the same grid_size.
+    
+    Args:
+        grid_size: Size of the pattern grid (default: 256)
+        
+    Returns:
+        Global GeometricCodex instance
+    """
+    global _DEFAULT_CODEX
+    if _DEFAULT_CODEX is None or _DEFAULT_CODEX.grid_size != grid_size:
+        print(f"Initializing UBP Geometric Codex ({grid_size}x{grid_size})...")
+        _DEFAULT_CODEX = GeometricCodex(grid_size)
+    return _DEFAULT_CODEX
+
+
 def create_codex(grid_size: int = 256) -> GeometricCodex:
-    """Create and initialize a geometric codex."""
+    """
+    DEPRECATED: Use get_codex() instead for better performance.
+    
+    This function creates a new codex instance every time, which is slow.
+    Use get_codex() to get the cached singleton instance.
+    """
     return GeometricCodex(grid_size)
 
 
 def value_to_pattern(value: float, unit: str = "Hz", grid_size: int = 256) -> np.ndarray:
-    """Quick function to convert a value to a pattern."""
-    codex = create_codex(grid_size)
+    """Quick function to convert a value to a pattern (uses cached singleton)."""
+    codex = get_codex(grid_size)
     pattern, _ = codex.value_to_geometry(value, unit)
     return pattern
 
 
 def pattern_to_value(pattern: np.ndarray, unit: str = "Hz") -> Tuple[float, float]:
-    """Quick function to convert a pattern to a value."""
-    codex = create_codex(pattern.shape[0])
+    """Quick function to convert a pattern to a value (uses cached singleton)."""
+    codex = get_codex(pattern.shape[0])
     return codex.geometry_to_value(pattern, unit)

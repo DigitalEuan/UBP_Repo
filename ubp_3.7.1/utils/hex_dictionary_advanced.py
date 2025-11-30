@@ -1,8 +1,8 @@
 """
 ================================================================================
-Advanced HexDictionary Analyzer - Beyond Hamming Distance
+Advanced HexDictionary Analyzer - Beyond Hamming Distance UBP 3.7.1
 Author: Euan Craig, New Zealand
-Date: November 19, 2025
+Date: 30November 2025
 ================================================================================
 
 This module extends the UBP 3.5 HexDictionary with advanced analytical methods
@@ -26,11 +26,19 @@ import json
 from typing import Dict, List, Tuple, Any, Optional
 from dataclasses import dataclass
 
-# Add UBP 3.5 to path
-sys.path.insert(0, '/home/ubuntu/UBP_Repo/ubp_3.5')
+# Add UBP 3.7.1 to path (for imports)
+# Note: Cannot use GitHub URLs - sys.path requires local filesystem paths
+current_dir = os.path.dirname(os.path.abspath(__file__))
+ubp_root = os.path.join(current_dir, '..')  # Go up to ubp_3.7.1 root
+sys.path.insert(0, ubp_root)
 
-from coherence_substrate import CoherenceState, Y, Y_INVERSE, NRCI_TARGET
-from hex_dictionary import HexDictionary
+# Import from UBP 3.7.1 core and utils
+from core.coherence_substrate import CoherenceState
+from core.y import Y, Y_INVERSE
+from utils.hex_dictionary import HexDictionary
+
+# NRCI_TARGET constant (from coherence_substrate)
+NRCI_TARGET = 0.99
 
 
 # ============================================================================
@@ -500,6 +508,74 @@ class AdvancedHexDictionaryAnalyzer:
         
         return max(0.0, min(1.0, overall))
     
+    def _extract_features(self, data: Any) -> Optional[List[float]]:
+        """
+        Extract numerical features from various data types for analysis.
+        
+        Uses proper feature extraction instead of naive ASCII conversion.
+        
+        Args:
+            data: Data of any type (str, dict, list, bytes, etc.)
+            
+        Returns:
+            List of float features, or None if extraction fails
+        """
+        import hashlib
+        import numpy as np
+        
+        try:
+            if data is None:
+                return None
+            
+            # Already a list of numbers
+            if isinstance(data, list):
+                try:
+                    return [float(x) for x in data[:1000]]  # Limit to 1000 features
+                except (ValueError, TypeError):
+                    pass  # Fall through to hash-based extraction
+            
+            # NumPy array
+            if isinstance(data, np.ndarray):
+                return data.flatten()[:1000].astype(float).tolist()
+            
+            # For strings, dicts, and other types: use hash-based feature extraction
+            # Convert to bytes first
+            if isinstance(data, str):
+                data_bytes = data.encode('utf-8')
+            elif isinstance(data, dict):
+                data_bytes = json.dumps(data, sort_keys=True).encode('utf-8')
+            elif isinstance(data, bytes):
+                data_bytes = data
+            else:
+                # Fallback: convert to string then bytes
+                data_bytes = str(data).encode('utf-8')
+            
+            # Extract features from bytes using sliding window hashing
+            # This creates a meaningful numerical representation
+            features = []
+            window_size = 8  # 8-byte windows
+            step = 4  # 50% overlap
+            
+            for i in range(0, len(data_bytes) - window_size + 1, step):
+                window = data_bytes[i:i+window_size]
+                # Convert to float using hash (normalized to [0, 1])
+                hash_val = int(hashlib.sha256(window).hexdigest()[:16], 16)
+                normalized = hash_val / (2**64)  # Normalize to [0, 1]
+                features.append(normalized)
+                
+                if len(features) >= 1000:  # Limit features
+                    break
+            
+            # If data is too short, pad with zeros
+            if len(features) < 10:
+                features.extend([0.0] * (10 - len(features)))
+            
+            return features if features else None
+            
+        except Exception as e:
+            # If all else fails, return None
+            return None
+    
     def find_similar_patterns(self, 
                             target_hash: str,
                             target_data: Optional[List[float]] = None,
@@ -519,7 +595,8 @@ class AdvancedHexDictionaryAnalyzer:
         Returns:
             List of (hash, similarity_result) tuples, sorted by similarity
         """
-        all_hashes = self.hex_dict.list_all()
+        # Get all hashes from the HexDictionary entries
+        all_hashes = list(self.hex_dict.entries.keys())
         similarities = []
         
         for candidate_hash in all_hashes:
@@ -529,13 +606,8 @@ class AdvancedHexDictionaryAnalyzer:
             # Try to retrieve data
             candidate_data = self.hex_dict.retrieve(candidate_hash)
             
-            # Convert to list if needed
-            if isinstance(candidate_data, str):
-                candidate_data = [float(ord(c)) for c in candidate_data[:100]]
-            elif isinstance(candidate_data, dict):
-                candidate_data = list(candidate_data.values())[:100]
-            elif not isinstance(candidate_data, list):
-                candidate_data = None
+            # Extract features based on data type
+            candidate_data = self._extract_features(candidate_data)
             
             # Analyze similarity
             result = self.analyze_similarity(

@@ -1,7 +1,7 @@
 """
-Universal Binary Principle (UBP) Framework v3.7 - HexDictionary for UBP
+Universal Binary Principle (UBP) Framework v3.7.1 - HexDictionary for UBP
 Author: Euan R A Craig, New Zealand
-Date: 31 October 2025
+Date: 30 November 2025
 ==================================
 
 Detailed Explanation of HexDictionary
@@ -39,7 +39,7 @@ Key Principles:
     *   **Metadata Structure (Example):**
         ```json
         {
-            "ubp_version": "3.1.1",
+            "ubp_version": "3.7.1",
             "timestamp": "2025-09-03T10:30:00.123456",
             "data_type": "ubp_simulation_result",
             "unique_id": "sim_1678912345",
@@ -69,6 +69,7 @@ Usage in the UBP System:
 -   **Self-Optimization:** The framework can query the HexDictionary for historical performance data, optimal parameters for specific realms, or successful error correction outcomes to adapt and self-optimize.
 -   **Ontological Computation (UBP-Lisp):** The `BitBase` module, which is a wrapper around `HexDictionary`, provides the native content-addressable storage for UBP-Lisp. This allows Lisp functions to store and retrieve computational artifacts by their content hash.
 -   **Validation and Reproducibility:** By storing immutable, hashed data, the system can verify the integrity of past results and ensure reproducibility of experiments.
+-   **For advanced analysis usage see HexDictionary hex_dictionary_advanced.py and hex_dictionary_pure.py.
 """
 import hashlib
 import json
@@ -79,8 +80,29 @@ import gzip
 from typing import Any, Dict, Optional, Union
 
 import sys
-sys.path.insert(0, '/home/ubuntu/ubp_3.3')
-from core.system_constants import UBPConstants
+# Add UBP 3.7.1 to path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+ubp_root = os.path.join(current_dir, '..')  # Go up to ubp_3.7.1 root
+sys.path.insert(0, ubp_root)
+
+# Import UBPConstants from config (3.7.1 uses ubp_config, not system_constants)
+try:
+    from utils.ubp_config import get_config
+    _config = get_config()
+    # Create a compatibility wrapper for UBPConstants
+    class UBPConstants:
+        PI = _config.constants.PI
+        PHI = _config.constants.PHI
+        E = _config.constants.E
+        SPEED_OF_LIGHT = _config.constants.SPEED_OF_LIGHT
+except ImportError:
+    # Fallback for standalone usage
+    import math
+    class UBPConstants:
+        PI = math.pi
+        PHI = (1 + math.sqrt(5)) / 2
+        E = math.e
+        SPEED_OF_LIGHT = 299792458.0
 
 # Define the default directory for PERSISTENT storage for this version of HexDictionary
 DEFAULT_HEX_DICT_STORAGE_DIR = "./persistent_state/hex_dictionary_storage/"
@@ -128,7 +150,8 @@ class HexDictionary:
 
     def _serialize_data(self, data: Any, data_type: str) -> bytes:
         """
-        Serializes data into bytes based on the specified data_type and then compresses it.
+        Serializes data into raw bytes based on the specified data_type.
+        Does NOT compress - compression is done separately for proper content-addressing.
         Supports common Python types and numpy arrays.
         """
         serialized_bytes: bytes
@@ -154,7 +177,7 @@ class HexDictionary:
         else:
             serialized_bytes = pickle.dumps(data)
         
-        return gzip.compress(serialized_bytes)
+        return serialized_bytes  # Return RAW bytes (no compression)
 
     def _deserialize_data(self, data_bytes: bytes, data_type: str) -> Any:
         """
@@ -196,16 +219,20 @@ class HexDictionary:
         # Debug print to trace data types being stored
         # print(f"DEBUG(HexDict): Storing data (type={type(data)}, data_type_str='{data_type}')")
 
-        serialized_data = self._serialize_data(data, data_type)
-        data_hash = hashlib.sha256(serialized_data).hexdigest()
+        # Serialize to raw bytes (no compression yet)
+        raw_bytes = self._serialize_data(data, data_type)
+        
+        # Hash the RAW bytes (like IPFS/Git) for true content-addressability
+        data_hash = hashlib.sha256(raw_bytes).hexdigest()
         
         file_path = os.path.join(self.storage_dir, f"{data_hash}.bin")
         
         # Check if the data already exists based on hash (content-addressable)
         if data_hash not in self.entries:
-            # If not, write the compressed data to file
+            # Compress AFTER hashing, then write to file
+            compressed_data = gzip.compress(raw_bytes)
             with open(file_path, 'wb') as f:
-                f.write(serialized_data)
+                f.write(compressed_data)
             
             self.entries[data_hash] = {
                 'path': file_path,

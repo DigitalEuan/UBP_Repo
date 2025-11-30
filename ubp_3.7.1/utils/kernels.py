@@ -1,8 +1,8 @@
 # UBP 3.7
 """
-Universal Binary Principle (UBP) Framework v3.7 - UBP Mathematical Kernels
+Universal Binary Principle (UBP) Framework v3.7.1 - UBP Mathematical Kernels
 Author: Euan Craig, New Zealand
-Date: 03 September 2025
+Date: 30 November 2025
 ==================================
 
 Core mathematical functions implementing the fundamental UBP formulas:
@@ -17,12 +17,13 @@ import numpy as np
 from typing import List, Union, Tuple, Optional # Added Optional
 # Import ubp_config and get_config for constant loading
 from utils.ubp_config import get_config, UBPConfig
-from utils.global_coherence import GlobalCoherenceIndex # For P_GCI
+from utils.global_coherence import GlobalCoherenceIndex, create_global_coherence_system # For P_GCI
 
 
 # Initialize configuration and global coherence system at module load time
 _config: UBPConfig = get_config()
-_global_coherence_system: GlobalCoherenceIndex = GlobalCoherenceIndex() # For P_GCI consistent with global_coherence.py
+# Use create_global_coherence_system() to get properly initialized instance with registered frequencies
+_global_coherence_system = create_global_coherence_system()
 
 def resonance_kernel(d: float, k: float = 0.0002) -> float:
     """
@@ -317,10 +318,16 @@ def planck_euler_resonance_frequency() -> float:
     """
     Calculate the Planck-Euler resonance frequency.
     
-    Links Planck scale physics with Euler's number.
+    SPECULATIVE RESONANCE - UNDER THEORETICAL REVIEW
+    Currently exploratory - no rigorous derivation yet.
+    
+    This formula links Planck scale physics with Euler's number,
+    but is not derived from first principles. It represents a
+    mathematical exploration of potential resonances at the
+    Planck scale.
     
     Returns:
-        Planck-Euler resonance frequency
+        Planck-Euler resonance frequency (~1.3 × 10³⁸ Hz)
     """
     C = _config.constants.SPEED_OF_LIGHT
     PLANCK_TIME = _config.constants.PLANCK_TIME_SECONDS # From config
