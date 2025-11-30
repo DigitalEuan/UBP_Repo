@@ -1,7 +1,7 @@
 """
-Universal Binary Principle (UBP) Framework v3.7 - HexDictionary for UBP
+Universal Binary Principle (UBP) Framework v3.7.1 - HexDictionary for UBP
 Author: Euan R A Craig, New Zealand
-Date: 31 October 2025
+Date: 30 November 2025
 ==================================
 
 Detailed Explanation of HexDictionary
@@ -39,7 +39,7 @@ Key Principles:
     *   **Metadata Structure (Example):**
         ```json
         {
-            "ubp_version": "3.1.1",
+            "ubp_version": "3.7.1",
             "timestamp": "2025-09-03T10:30:00.123456",
             "data_type": "ubp_simulation_result",
             "unique_id": "sim_1678912345",
@@ -69,6 +69,7 @@ Usage in the UBP System:
 -   **Self-Optimization:** The framework can query the HexDictionary for historical performance data, optimal parameters for specific realms, or successful error correction outcomes to adapt and self-optimize.
 -   **Ontological Computation (UBP-Lisp):** The `BitBase` module, which is a wrapper around `HexDictionary`, provides the native content-addressable storage for UBP-Lisp. This allows Lisp functions to store and retrieve computational artifacts by their content hash.
 -   **Validation and Reproducibility:** By storing immutable, hashed data, the system can verify the integrity of past results and ensure reproducibility of experiments.
+-   **For advanced analysis usage see HexDictionary hex_dictionary_advanced.py and hex_dictionary_pure.py.
 """
 import hashlib
 import json
