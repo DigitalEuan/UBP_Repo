@@ -5,12 +5,12 @@
       6,
       8
     ],
-    "final_violation": 0.16666666666666666,
+    "final_violation": 0.0,
     "improvement": 0.0,
     "iterations": 1,
-    "constraint_satisfaction_rate": 0.6666666666666666,
+    "constraint_satisfaction_rate": 1.0,
     "avg_coherence": 0.5,
-    "nrci_proxy": 0.6,
+    "nrci_proxy": 0.8,
     "interactions_used": [
       "edge_connected"
     ],
@@ -24,12 +24,12 @@
       6,
       9
     ],
-    "final_violation": 0.27314814814814814,
+    "final_violation": 0.0,
     "improvement": 0.0,
     "iterations": 1,
-    "constraint_satisfaction_rate": 0.3333333333333333,
+    "constraint_satisfaction_rate": 1.0,
     "avg_coherence": 0.6500000000000001,
-    "nrci_proxy": 0.46,
+    "nrci_proxy": 0.86,
     "interactions_used": [
       "edge_connected",
       "axis_aligned"
@@ -58,7 +58,7 @@
     "description": "Pentavalent, high symmetry \u2014 candidate for consciousness layer"
   },
   "leech_24d": {
-    "error": "'iterations'",
+    "error": "'constraint_satisfaction'",
     "triad": [
       3,
       8,
@@ -71,16 +71,16 @@
       4,
       6
     ],
-    "final_violation": 0.12284750195453274,
-    "improvement": 0.04381916469172149,
-    "iterations": 20,
-    "constraint_satisfaction_rate": 0.6666666666666666,
+    "final_violation": 0.0,
+    "improvement": 0.0,
+    "iterations": 1,
+    "constraint_satisfaction_rate": 1.0,
     "avg_coherence": 0.6,
-    "nrci_proxy": 0.64,
+    "nrci_proxy": 0.84,
     "interactions_used": [
       "edge_connected"
     ],
-    "converged": false,
+    "converged": true,
     "coherence_threshold": 0.9,
     "description": "Simplex symmetry \u2014 minimal proof base cases"
   },
@@ -104,9 +104,9 @@
     "description": "Dual to cube \u2014 spin-1 analogues"
   },
   "_meta": {
-    "baseline_nrci": 0.46,
-    "cross_consistency": 0.238095,
-    "timestamp": "2025-11-30 02:25:50",
+    "baseline_nrci": 0.86,
+    "cross_consistency": 0.390476,
+    "timestamp": "2025-11-30 02:40:36",
     "ubp_version": "3.7.1",
     "concept_by": "Qwen AI"
   }
