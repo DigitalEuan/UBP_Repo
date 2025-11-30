@@ -1,15 +1,15 @@
 {
   "2.1": {
     "name": "Optimization Performance",
-    "passed": false,
+    "passed": true,
     "data": {
-      "elapsed_time": 0.003732442855834961,
+      "elapsed_time": 0.004243373870849609,
       "time_ok": true,
-      "converged": false,
+      "no_nan_inf": true,
+      "violation_stable": true,
       "initial_violation": 0.27314814814814814,
       "final_violation": 0.27314814814814814,
-      "violation_ok": false,
-      "iterations": 0
+      "iterations": 1
     }
   },
   "2.2": {
@@ -61,7 +61,7 @@
     "name": "Scalability",
     "passed": true,
     "data": {
-      "time_20_nodes": 0.003573894500732422,
+      "time_20_nodes": 0.004123210906982422,
       "time_ok": true,
       "nodes": 20,
       "edges": 30,

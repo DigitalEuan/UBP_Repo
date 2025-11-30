@@ -1,0 +1,73 @@
+{
+  "3.1 - 3-6-9 Pattern": {
+    "passed": true,
+    "data": {
+      "three_axis_ok": true,
+      "six_face_ok": true,
+      "nine_interaction_ok": true,
+      "pattern_complete": true
+    }
+  },
+  "3.2 - Dodecahedral Properties": {
+    "passed": "True",
+    "data": {
+      "num_vertices": 20,
+      "num_edges": 30,
+      "is_3_regular": true,
+      "mean_edge_length": 1.2360679774997896,
+      "edge_length_ok": "True",
+      "golden_ratio_ok": "True"
+    }
+  },
+  "3.3 - Leech Projection": {
+    "passed": true,
+    "data": {
+      "projection_works": true,
+      "output_dimension": 3,
+      "invalid_rejected": true,
+      "has_disclaimer": true
+    }
+  },
+  "3.4 - Constraint System": {
+    "passed": false,
+    "data": {
+      "all_constraints_valid": false,
+      "deterministic": "True",
+      "constraint_details": [
+        {
+          "id": "three_axis_structure",
+          "valid": false,
+          "has_type": "three_axis_geometric",
+          "weight_positive": true,
+          "nodes_valid": true,
+          "has_eval": false
+        },
+        {
+          "id": "six_face_interactions",
+          "valid": false,
+          "has_type": "topological",
+          "weight_positive": true,
+          "nodes_valid": true,
+          "has_eval": false
+        },
+        {
+          "id": "nine_interaction_neighborhood",
+          "valid": false,
+          "has_type": "connectivity",
+          "weight_positive": true,
+          "nodes_valid": true,
+          "has_eval": false
+        }
+      ]
+    }
+  },
+  "3.5 - UBP Consistency": {
+    "passed": "False",
+    "data": {
+      "y_available": true,
+      "topological": "False",
+      "uses_golden_ratio": true,
+      "consistent": "False"
+    }
+  }
+}
