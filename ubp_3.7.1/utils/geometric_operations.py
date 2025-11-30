@@ -1,8 +1,8 @@
 """
 ==================================
-Universal Binary Principle (UBP) Framework v3.7 - Geometric Operations
+Universal Binary Principle (UBP) Framework v3.7.1 - Geometric Operations
 Author: Euan Craig, New Zealand
-Date: November 7, 2025
+Date: 30 November 2025
 ==================================
 
 This module implements native geometric UBP operations, enabling the UBP system
