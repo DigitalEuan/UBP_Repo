@@ -1,0 +1,96 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/UBP_Repo/ubp_3.7.1/studies/TGIC/tests/test_tier1_foundational.py", line 313, in run_all_tier1_tests
+    passed, data = test_func()
+                   ^^^^^^^^^^^
+  File "/home/ubuntu/UBP_Repo/ubp_3.7.1/studies/TGIC/tests/test_tier1_foundational.py", line 186, in test_1_4_three_axis_constraint
+    if 'three_axis' in constraint.constraint_type.lower():
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'constraint_type'
+
+======================================================================
+TGIC TIER 1: FOUNDATIONAL CORRECTNESS TESTS
+======================================================================
+Based on Qwen AI's Tier 1 Checklist
+======================================================================
+
+======================================================================
+TEST 1.1: Dodecahedral Graph Properties
+======================================================================
+Number of nodes: 14 (expected: 20)
+Number of edges: 42 (expected: 30)
+Average degree: 6.00 (expected: 3.0)
+Is 3-regular: False
+Degree distribution: {6: 14}
+
+❌ FAIL
+
+======================================================================
+TEST 1.2: Edge Distance Consistency
+======================================================================
+Expected edge length: 1.236068
+Mean distance: 1.781734
+Std deviation: 0.345109
+Min distance: 1.236068
+Max distance: 2.000000
+
+Edges within 0.01 tolerance: 12/42 (28.6%)
+
+❌ FAIL
+
+======================================================================
+TEST 1.3: Interaction Type Classification
+======================================================================
+Interaction type distribution:
+  axis_aligned: 12 edges
+  edge_connected: 30 edges
+
+Total edges classified: 42/42
+Has space diagonals: False (should be False for dodecahedron)
+
+✅ PASS
+
+======================================================================
+TEST 1.4: Three-Axis Constraint Orthogonality
+======================================================================
+
+❌ ERROR in test 1.4: 'str' object has no attribute 'constraint_type'
+
+======================================================================
+TEST 1.5: Leech Projection Disclaimer
+======================================================================
+Contains 'proxy': False
+Contains 'disclaimer': False
+Contains 'not true leech' phrase: False
+
+✓ _generate_leech_basis method found
+Found 6 comment/docstring lines in method
+
+✅ PASS (documentation check)
+
+======================================================================
+TIER 1 TEST SUMMARY
+======================================================================
+1.1 - Dodecahedral Graph Properties: ❌ FAIL
+1.2 - Edge Distance Consistency: ❌ FAIL
+1.3 - Interaction Type Classification: ✅ PASS
+1.4 - Three-Axis Constraint Orthogonality: ❌ FAIL
+1.5 - Leech Projection Disclaimer: ✅ PASS
+
+Total: 2/5 tests passed (40.0%)
+Traceback (most recent call last):
+  File "/home/ubuntu/UBP_Repo/ubp_3.7.1/studies/TGIC/tests/test_tier1_foundational.py", line 355, in <module>
+    json.dump(results_serializable, f, indent=2)
+  File "/usr/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

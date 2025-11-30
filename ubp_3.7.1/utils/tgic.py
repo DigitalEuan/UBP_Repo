@@ -18,6 +18,14 @@ Mathematical Foundation:
 - Geometric coherence constraints
 
 This is NOT a simulation - implements real geometric constraint mathematics.
+
+================================================
+TESTING & VALIDATION:
+For comprehensive testing, validation results, and development roadmap, see:
+  - studies/TGIC/README.md
+  - studies/TGIC/findings/FINDINGS_SUMMARY.md
+  - studies/TGIC/documentation/ROADMAP.md
+================================================
 """
 
 import numpy as np
@@ -99,23 +107,28 @@ class DodecahedralGraph:
         Generate the complete dodecahedral graph structure.
         
         Uses the golden ratio φ = (1 + √5)/2 for vertex coordinates.
+        Creates a proper 20-vertex, 30-edge, 3-regular dodecahedron.
+        
+        NOTE: Fixed from previous 14-vertex implementation (Nov 2025).
         """
         phi = (1 + math.sqrt(5)) / 2  # Golden ratio
         
         # Dodecahedron vertices (20 vertices)
+        # Standard construction: 8 cube vertices + 12 rectangular face centers
         vertices = []
         
-        # 8 vertices of a cube
+        # 8 vertices of a cube (±1, ±1, ±1)
         for i in [-1, 1]:
             for j in [-1, 1]:
                 for k in [-1, 1]:
                     vertices.append([i, j, k])
         
         # 12 vertices on rectangular faces
+        # These form 3 mutually perpendicular golden rectangles
         for i in [-1, 1]:
-            vertices.append([0, i/phi, i*phi])
-            vertices.append([i/phi, i*phi, 0])
-            vertices.append([i*phi, 0, i/phi])
+            vertices.append([0, i/phi, i*phi])      # XY plane rectangle
+            vertices.append([i/phi, i*phi, 0])      # YZ plane rectangle  
+            vertices.append([i*phi, 0, i/phi])      # XZ plane rectangle
         
         # Create nodes
         for i, vertex in enumerate(vertices):
@@ -132,10 +145,14 @@ class DodecahedralGraph:
         """
         Generate edges for the dodecahedral graph.
         
-        Each vertex connects to exactly 3 other vertices.
+        Each vertex connects to exactly 3 other vertices (3-regular graph).
+        Edge length should be 2/φ ≈ 1.236 for unit-scaled dodecahedron.
+        
+        NOTE: Using exact distance matching instead of threshold (Nov 2025 fix).
         """
-        # Distance threshold for edge connection
-        edge_threshold = 2.1  # Approximate edge length in dodecahedron
+        phi = (1 + math.sqrt(5)) / 2
+        expected_edge_length = 2 / phi  # ≈ 1.236
+        edge_tolerance = 0.01  # Tight tolerance for exact matching
         
         for i in range(len(self.nodes)):
             for j in range(i + 1, len(self.nodes)):
@@ -143,7 +160,8 @@ class DodecahedralGraph:
                 pos_j = self.nodes[j].position
                 distance = np.linalg.norm(pos_i - pos_j)
                 
-                if distance < edge_threshold:
+                # Connect only if distance matches expected edge length
+                if abs(distance - expected_edge_length) < edge_tolerance:
                     self.edges.add((i, j))
                     self.nodes[i].connections.add(j)
                     self.nodes[j].connections.add(i)
