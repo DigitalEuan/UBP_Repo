@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-UBP 3.7 - Comprehensive Validation Suite
+UBP 3.7.1 - Comprehensive Validation Suite
 ========================================
 
-REAL VALIDATION of all UBP 3.7 components.
+REAL VALIDATION of all UBP 3.7.1 components.
 
 This addresses the audit criticism about "limited physical validation."
 
@@ -14,9 +14,9 @@ This module provides:
 - Performance benchmarks
 - Regression tests
 
-Author: UBP 3.7 Development
-Date: November 28, 2025
-Version: 3.7.0
+Author: Euan R A Craig, New Zealand
+Date: 30 November 025
+Version: 3.7.1
 """
 
 import numpy as np

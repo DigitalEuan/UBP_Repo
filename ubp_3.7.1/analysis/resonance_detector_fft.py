@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UBP 3.7 - FFT-Based Resonance Detector
+UBP 3.7.1 - FFT-Based Resonance Detector
 ======================================
 
 REAL IMPLEMENTATION of spectral resonance detection using FFT.
@@ -14,9 +14,9 @@ This module provides:
 - Phase analysis
 - Power spectral density estimation
 
-Author: UBP 3.7 Development
-Date: November 28, 2025
-Version: 3.7.0
+Author: Euan R A Craig, New Zealand
+Date: 30 November 2025
+Version: 3.7.1
 """
 
 import numpy as np

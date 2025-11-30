@@ -12,7 +12,8 @@ Real Data:
 
 No fake data - only real text and measured error profiles.
 
-Author: UBP 3.7 Development Team
+Version: UBP 3.7.1
+Author: Euan R A Craig, New Zealand
 Date: November 28, 2025
 """
 

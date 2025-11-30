@@ -1,8 +1,8 @@
 """
 ==================================
-UBP Spectral Value Extraction
-Author: Euan Craig, New Zealand
-Date: November 7, 2025
+UBP 3.7.1 Spectral Value Extraction
+Author: Euan R A Craig, New Zealand
+Date: 30 November 2025
 ==================================
 
 This module implements spectral value extraction from geometric patterns.

@@ -16,7 +16,8 @@ Real Data Sources:
 - Solar physics (Corona temperature: 2 MK)
 - Planck/WMAP (Hubble constant: 67.4 km/s/Mpc)
 
-Author: UBP 3.7 Development Team
+Version: UBP 3.7.1
+Author: Euan R A Craig, New Zealand
 Date: November 28, 2025
 """
 
