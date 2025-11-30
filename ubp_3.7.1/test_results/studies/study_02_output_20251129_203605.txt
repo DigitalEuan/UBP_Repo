@@ -1,0 +1,104 @@
+✓ Error correction modules imported
+======================================================================
+STUDY 2: ERROR CORRECTION WITH REALISTIC NOISE
+Using real text and measured noise profiles
+======================================================================
+
+======================================================================
+STUDY 2: ERROR CORRECTION WITH REALISTIC NOISE
+======================================================================
+
+## TEST 1: Golay(24,12) Error Correction
+----------------------------------------------------------------------
+Message: [0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0]
+Source: First 12 bits of Shakespeare Sonnet 18
+
+ideal:
+  Error rate: 0.000
+  Errors introduced: 0
+  Correction: ✓ Success
+
+excellent_fiber:
+  Error rate: 0.001
+  Errors introduced: 0
+  Correction: ✓ Success
+
+good_fiber:
+  Error rate: 0.010
+  Errors introduced: 1
+  Correction: ✓ Success
+
+moderate_fiber:
+  Error rate: 0.050
+  Errors introduced: 4
+  Correction: ✗ Failed
+
+noisy_channel:
+  Error rate: 0.100
+  Errors introduced: 5
+  Correction: ✗ Failed
+
+very_noisy:
+  Error rate: 0.150
+  Errors introduced: 5
+  Correction: ✗ Failed
+
+
+## TEST 2: Leech Lattice Quantization
+----------------------------------------------------------------------
+
+Vector from 'S' (seed=83):
+  Input norm: 4.369396
+  Output norm: 6.480741
+  Quantization error: 3.723795
+  Status: ✓ Success
+
+Vector from 'h' (seed=104):
+  Input norm: 4.306253
+  Output norm: 5.291503
+  Quantization error: 3.621077
+  Status: ✓ Success
+
+Vector from 'a' (seed=97):
+  Input norm: 4.684619
+  Output norm: 8.485281
+  Quantization error: 6.795079
+  Status: ✓ Success
+
+Vector from 'l' (seed=108):
+  Input norm: 4.610087
+  Output norm: 6.164414
+  Quantization error: 4.744220
+  Status: ✓ Success
+
+Vector from 'l' (seed=108):
+  Input norm: 4.610087
+  Output norm: 6.164414
+  Quantization error: 4.744220
+  Status: ✓ Success
+
+
+## TEST 3: 24-D VectorOffBit Operations
+----------------------------------------------------------------------
+Created VectorOffBit from first 24 bits of text
+  Hamming weight: 10
+  Norm: 3.162278
+  Hamming distance to next 24 bits: 9
+  Dot product: 5.000000
+  ✓ VectorOffBit operations successful
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Golay Correction:
+  Success rate: 3/6 (50.0%)
+
+Leech Lattice:
+  Success rate: 5/5 (100.0%)
+  Mean quantization error: 4.725678
+  Max quantization error: 6.795079
+
+✓ No issues found!
+
+✓ Report saved to: /home/ubuntu/UBP_Repo/ubp_3.7/studies/study_02_results.txt

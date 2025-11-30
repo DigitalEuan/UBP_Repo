@@ -1,0 +1,115 @@
+✓ Core modules imported
+======================================================================
+STUDY 1: MULTI-REALM ENERGY CASCADE
+Using REAL physics data from published sources
+======================================================================
+
+======================================================================
+MULTI-REALM ENERGY CASCADE - REAL PHYSICS DATA
+======================================================================
+
+QUANTUM REALM
+----------------------------------------------------------------------
+Source: NIST Atomic Spectra Database
+Energy: 1.634034e-18 J
+✓ Processing successful
+  Refined (forward): 4.324886e-19 CU
+  Refined (backward): 1.634034e-18 CU
+  Closure error: 0.00e+00
+  NRCI estimate: 0.299342
+
+ATOMIC REALM
+----------------------------------------------------------------------
+Source: NIST Fundamental Constants
+Energy: 9.411708e-25 J
+✓ Processing successful
+  Refined (forward): 2.491048e-25 CU
+  Refined (backward): 9.411708e-25 CU
+  Closure error: 1.95e-16
+  NRCI estimate: 0.381542
+
+ELECTROMAGNETIC REALM
+----------------------------------------------------------------------
+Source: Planck Mission 2018
+Energy: 3.762931e-23 J
+✓ Processing successful
+  Refined (forward): 9.959554e-24 CU
+  Refined (backward): 3.762931e-23 CU
+  Closure error: 1.56e-16
+  NRCI estimate: 0.361408
+
+OPTICAL REALM
+----------------------------------------------------------------------
+Source: Solar Observations
+Energy: 3.957063e-19 J
+✓ Processing successful
+  Refined (forward): 1.047337e-19 CU
+  Refined (backward): 3.957063e-19 CU
+  Closure error: 0.00e+00
+  NRCI estimate: 0.307919
+
+NUCLEAR REALM
+----------------------------------------------------------------------
+Source: Nuclear Data Tables
+Energy: 3.564162e-13 J
+✓ Processing successful
+  Refined (forward): 9.433461e-14 CU
+  Refined (backward): 3.564162e-13 CU
+  Closure error: 0.00e+00
+  NRCI estimate: 0.220390
+
+GRAVITATIONAL REALM
+----------------------------------------------------------------------
+Source: LIGO Open Science Center
+Energy: 1.656518e-31 J
+✓ Processing successful
+  Refined (forward): 4.384395e-32 CU
+  Refined (backward): 1.656518e-31 CU
+  Closure error: 0.00e+00
+  NRCI estimate: 0.459692
+
+BIOLOGICAL REALM
+----------------------------------------------------------------------
+Source: EEG Clinical Studies
+Energy: 6.626070e-33 J
+✓ Processing successful
+  Refined (forward): 1.753758e-33 CU
+  Refined (backward): 6.626070e-33 CU
+  Closure error: 0.00e+00
+  NRCI estimate: 0.474589
+
+PLASMA REALM
+----------------------------------------------------------------------
+Source: Solar Physics Observations
+Energy: 2.761298e-17 J
+✓ Processing successful
+  Refined (forward): 7.308477e-18 CU
+  Refined (backward): 2.761298e-17 CU
+  Closure error: 0.00e+00
+  NRCI estimate: 0.281922
+
+COSMOLOGICAL REALM
+----------------------------------------------------------------------
+Source: Planck/WMAP Missions
+Energy: 6.626070e-34 J
+✓ Processing successful
+  Refined (forward): 1.753758e-34 CU
+  Refined (backward): 6.626070e-34 CU
+  Closure error: 1.29e-16
+  NRCI estimate: 0.484993
+
+======================================================================
+CASCADE ANALYSIS
+======================================================================
+
+Processed: 9 realms
+Successful: 9
+Failed: 0
+
+Energy range: 6.63e-34 to 3.56e-13 J
+Closure error: mean=5.34e-17, max=1.95e-16
+NRCI range: 0.220390 to 0.484993
+
+✓ No issues found!
+
+✓ Report saved to: /home/ubuntu/UBP_Repo/ubp_3.7/studies/study_01_results.txt

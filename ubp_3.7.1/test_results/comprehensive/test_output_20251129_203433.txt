@@ -1,0 +1,77 @@
+/home/ubuntu/UBP_Repo/ubp_3.7.1/core/energy_dual.py:57: UserWarning: Legacy mode dependencies not available. SOC mode only.
+  warnings.warn("Legacy mode dependencies not available. SOC mode only.")
+UBPConfig: Applied DEVELOPMENT environment settings.
+================================================================================
+UBP 3.7.1 COMPREHENSIVE TEST SUITE
+================================================================================
+
+[1] CoherenceState Operator Tracking
+----------------------------------------
+✓ PASS: Initial state has empty operator sequence
+✓ PASS: Y-refinement adds operator to sequence
+✓ PASS: Operator coherence tracked
+✓ PASS: Composition depth tracked
+
+[2] Binary GLR Frameworks
+----------------------------------------
+✓ PASS: Simple Cubic GLR evolution
+✓ PASS: Diamond GLR evolution
+✓ PASS: FCC GLR evolution
+✓ PASS: H3 Icosahedral GLR evolution
+✓ PASS: H4 120-Cell GLR evolution
+
+[3] Coherence Field System
+----------------------------------------
+✓ PASS: Coherence field analysis returns value
+✓ PASS: Coherence field tracks operator sequence
+✓ PASS: Coherence field computes total coherence
+✓ PASS: Sequence optimization detects cancellations
+✓ PASS: State comparison works
+
+[4] SOC Energy Formula
+----------------------------------------
+✓ PASS: SOC energy calculation works
+✓ PASS: SOC formula includes NRCI
+✓ PASS: SOC formula has coherence deficit
+✓ PASS: Energy increases as NRCI decreases
+✓ PASS: SOC energy from state counts active bits
+✓ PASS: SOC energy from state calculates correctly
+✓ PASS: energy_dual.py delegates to calculate_soc_energy_from_state
+✓ PASS: energy_dual.py produces same result as direct SOC call
+
+[5] Toggle Operations
+----------------------------------------
+✓ PASS: toggle_and works
+✓ PASS: toggle_difference works
+✓ PASS: toggle_xor (binary) works
+✓ PASS: toggle_or works
+
+[6] Quantum Extensions
+----------------------------------------
+✅ UBP Quantum Extensions v3.7.1 loaded successfully
+   - CoherenceState.apply() method added
+   - CoherenceState.sample_bitstrings() method added
+   - CoherenceState.export_stl() method added
+   - OperatorRegistry.get('random_circuit_sampling') registered
+   - All methods use real UBP primitives underneath
+✓ PASS: Quantum extensions module loads
+✓ PASS: CoherenceState has apply method
+✓ PASS: CoherenceState has sample_bitstrings method
+✓ PASS: CoherenceState has export_stl method
+
+[7] Y-Refinement Perfection
+----------------------------------------
+✓ PASS: Y-refinement preserves NRCI
+✓ PASS: Double Y-refinement preserves NRCI
+✓ PASS: Y-refinement is invertible
+
+================================================================================
+TEST SUMMARY
+================================================================================
+Total tests: 33
+Passed: 33
+Failed: 0
+Success rate: 100.0%
+
+✓ Test results exported to: /home/ubuntu/UBP_Repo/ubp_3.7.1/test_results_371.json
+================================================================================
