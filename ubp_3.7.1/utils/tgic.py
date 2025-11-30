@@ -146,7 +146,8 @@ class DodecahedralGraph:
             self.nodes[i] = TGICNode(
                 node_id=i,
                 position=np.array(vertex, dtype=np.float64),  # Explicit float64 for gradient descent
-                weight=1.0
+                weight=1.0,
+                coherence_level=0.65  # Initialize with coherence for cross-geometry comparison
             )
         
         # Generate edges based on dodecahedral connectivity

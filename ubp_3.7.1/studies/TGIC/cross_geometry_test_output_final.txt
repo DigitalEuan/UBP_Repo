@@ -1,0 +1,176 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/UBP_Repo/ubp_3.7.1/studies/TGIC/cross_geometry_validator.py", line 94, in run_cross_geometry_test
+    print(f"   Iterations: {opt['iterations']}")
+                            ~~~^^^^^^^^^^^^^^
+KeyError: 'iterations'
+======================================================================
+🚀 TGIC CROSS-GEOMETRY VALIDATION
+======================================================================
+Based on concept by Qwen AI
+Testing geometric relativity of truth in UBP 3.7.1
+======================================================================
+
+======================================================================
+🧪 Testing CUBIC
+======================================================================
+Triad: (3, 6, 8)
+Description: Orthogonal, minimal nonlinearity — ideal for base-logic layer
+Coherence threshold: 0.93
+
+→ Creating cubic system...
+→ Generating cubic graph...
+   Nodes: 8, Edges: 12
+→ Initializing geometry-specific constraints...
+   Constraints initialized: 3
+→ Optimizing node positions...
+   Iterations: 1
+   Converged: True
+   Final violation: 1.666667e-01
+   Improvement: 0.000000e+00
+→ Analyzing interaction patterns...
+
+✅ Results:
+   NRCI proxy: 0.600000
+   Constraint satisfaction: 0.667
+   Average coherence: 0.500
+
+======================================================================
+🧪 Testing DODECAHEDRAL
+======================================================================
+Triad: (3, 6, 9)
+Description: UBP default — balanced 3/6/9 resonance
+Coherence threshold: 0.95
+
+→ Creating dodecahedral system...
+→ Generating dodecahedral graph...
+   Nodes: 20, Edges: 30
+→ Initializing geometry-specific constraints...
+   Constraints initialized: 3
+→ Optimizing node positions...
+   Iterations: 1
+   Converged: True
+   Final violation: 2.731481e-01
+   Improvement: 0.000000e+00
+→ Analyzing interaction patterns...
+
+✅ Results:
+   NRCI proxy: 0.200000
+   Constraint satisfaction: 0.333
+   Average coherence: 0.000
+   📌 Baseline set: 0.200000
+
+======================================================================
+🧪 Testing ICOSAHEDRAL
+======================================================================
+Triad: (5, 12, 30)
+Description: Pentavalent, high symmetry — candidate for consciousness layer
+Coherence threshold: 0.97
+
+→ Creating icosahedral system...
+→ Generating icosahedral graph...
+   Nodes: 12, Edges: 30
+→ Initializing geometry-specific constraints...
+   Constraints initialized: 3
+→ Optimizing node positions...
+   Iterations: 20
+   Converged: False
+   Final violation: 7.756364e-02
+   Improvement: 3.354747e-02
+→ Analyzing interaction patterns...
+
+✅ Results:
+   NRCI proxy: 0.680000
+   Constraint satisfaction: 0.667
+   Average coherence: 0.700
+
+======================================================================
+🧪 Testing LEECH_24D
+======================================================================
+Triad: (3, 8, 24)
+Description: 24D optimal packing — cosmological & deep-coherence layer
+Coherence threshold: 0.98
+
+→ Creating leech_24d system...
+→ Initializing geometry-specific constraints...
+   Constraints initialized: 1
+→ Optimizing node positions...
+
+❌ FAILED: 'iterations'
+
+======================================================================
+🧪 Testing TETRAHEDRAL
+======================================================================
+Triad: (3, 4, 6)
+Description: Simplex symmetry — minimal proof base cases
+Coherence threshold: 0.9
+
+→ Creating tetrahedral system...
+→ Generating tetrahedral graph...
+   Nodes: 4, Edges: 6
+→ Initializing geometry-specific constraints...
+   Constraints initialized: 3
+→ Optimizing node positions...
+   Iterations: 20
+   Converged: False
+   Final violation: 1.228475e-01
+   Improvement: 4.381916e-02
+→ Analyzing interaction patterns...
+
+✅ Results:
+   NRCI proxy: 0.640000
+   Constraint satisfaction: 0.667
+   Average coherence: 0.600
+
+======================================================================
+🧪 Testing OCTAHEDRAL
+======================================================================
+Triad: (4, 6, 8)
+Description: Dual to cube — spin-1 analogues
+Coherence threshold: 0.94
+
+→ Creating octahedral system...
+→ Generating octahedral graph...
+   Nodes: 6, Edges: 12
+→ Initializing geometry-specific constraints...
+   Constraints initialized: 3
+→ Optimizing node positions...
+   Iterations: 1
+   Converged: True
+   Final violation: 3.101045e-07
+   Improvement: -3.101045e-07
+→ Analyzing interaction patterns...
+
+✅ Results:
+   NRCI proxy: 0.820000
+   Constraint satisfaction: 1.000
+   Average coherence: 0.550
+
+======================================================================
+🔍 CROSS-GEOMETRY CONSISTENCY CHECK
+=======================================================================
+cubic           | NRCI: 0.600000 | Δ from baseline: +0.400000
+dodecahedral    | NRCI: 0.200000 | Δ from baseline: +0.000000
+icosahedral     | NRCI: 0.680000 | Δ from baseline: +0.480000
+tetrahedral     | NRCI: 0.640000 | Δ from baseline: +0.440000
+octahedral      | NRCI: 0.820000 | Δ from baseline: +0.620000
+
+Consistency score (vs dodecahedral): 0.238095
+
+📄 Full report saved to: /home/ubuntu/UBP_Repo/ubp_3.7.1/studies/TGIC/cross_geometry_report.json
+
+======================================================================
+📊 SUMMARY
+======================================================================
+🔴 cubic           | 0.600000 | (3, 6, 8)
+🔴 dodecahedral    | 0.200000 | (3, 6, 9)
+🔴 icosahedral     | 0.680000 | (5, 12, 30)
+❌ leech_24d       | ERROR: 'iterations'...
+🔴 tetrahedral     | 0.640000 | (3, 4, 6)
+🔴 octahedral      | 0.820000 | (4, 6, 8)
+
+======================================================================
+🎯 RECOMMENDATIONS
+======================================================================
+⚠️  Dodecahedral NRCI below 0.95 - review constraint implementation
+
+======================================================================

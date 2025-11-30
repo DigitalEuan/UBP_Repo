@@ -1,0 +1,113 @@
+{
+  "cubic": {
+    "triad": [
+      3,
+      6,
+      8
+    ],
+    "final_violation": 0.16666666666666666,
+    "improvement": 0.0,
+    "iterations": 1,
+    "constraint_satisfaction_rate": 0.6666666666666666,
+    "avg_coherence": 0.5,
+    "nrci_proxy": 0.6,
+    "interactions_used": [
+      "edge_connected"
+    ],
+    "converged": true,
+    "coherence_threshold": 0.93,
+    "description": "Orthogonal, minimal nonlinearity \u2014 ideal for base-logic layer"
+  },
+  "dodecahedral": {
+    "triad": [
+      3,
+      6,
+      9
+    ],
+    "final_violation": 0.27314814814814814,
+    "improvement": 0.0,
+    "iterations": 1,
+    "constraint_satisfaction_rate": 0.3333333333333333,
+    "avg_coherence": 0.6500000000000001,
+    "nrci_proxy": 0.46,
+    "interactions_used": [
+      "edge_connected",
+      "axis_aligned"
+    ],
+    "converged": true,
+    "coherence_threshold": 0.95,
+    "description": "UBP default \u2014 balanced 3/6/9 resonance"
+  },
+  "icosahedral": {
+    "triad": [
+      5,
+      12,
+      30
+    ],
+    "final_violation": 0.07756364290888139,
+    "improvement": 0.03354746819140575,
+    "iterations": 20,
+    "constraint_satisfaction_rate": 0.6666666666666666,
+    "avg_coherence": 0.7000000000000001,
+    "nrci_proxy": 0.68,
+    "interactions_used": [
+      "edge_connected"
+    ],
+    "converged": false,
+    "coherence_threshold": 0.97,
+    "description": "Pentavalent, high symmetry \u2014 candidate for consciousness layer"
+  },
+  "leech_24d": {
+    "error": "'iterations'",
+    "triad": [
+      3,
+      8,
+      24
+    ]
+  },
+  "tetrahedral": {
+    "triad": [
+      3,
+      4,
+      6
+    ],
+    "final_violation": 0.12284750195453274,
+    "improvement": 0.04381916469172149,
+    "iterations": 20,
+    "constraint_satisfaction_rate": 0.6666666666666666,
+    "avg_coherence": 0.6,
+    "nrci_proxy": 0.64,
+    "interactions_used": [
+      "edge_connected"
+    ],
+    "converged": false,
+    "coherence_threshold": 0.9,
+    "description": "Simplex symmetry \u2014 minimal proof base cases"
+  },
+  "octahedral": {
+    "triad": [
+      4,
+      6,
+      8
+    ],
+    "final_violation": 3.101045252058319e-07,
+    "improvement": -3.101045252058319e-07,
+    "iterations": 1,
+    "constraint_satisfaction_rate": 1.0,
+    "avg_coherence": 0.5499999999999999,
+    "nrci_proxy": 0.82,
+    "interactions_used": [
+      "edge_connected"
+    ],
+    "converged": true,
+    "coherence_threshold": 0.94,
+    "description": "Dual to cube \u2014 spin-1 analogues"
+  },
+  "_meta": {
+    "baseline_nrci": 0.46,
+    "cross_consistency": 0.238095,
+    "timestamp": "2025-11-30 02:25:50",
+    "ubp_version": "3.7.1",
+    "concept_by": "Qwen AI"
+  }
+}
