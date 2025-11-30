@@ -121,7 +121,7 @@ class DodecahedralGraph:
         for i, vertex in enumerate(vertices):
             self.nodes[i] = TGICNode(
                 node_id=i,
-                position=np.array(vertex),
+                position=np.array(vertex, dtype=np.float64),  # Explicit float64 for gradient descent
                 weight=1.0
             )
         
