@@ -128,7 +128,8 @@ class HexDictionary:
 
     def _serialize_data(self, data: Any, data_type: str) -> bytes:
         """
-        Serializes data into bytes based on the specified data_type and then compresses it.
+        Serializes data into raw bytes based on the specified data_type.
+        Does NOT compress - compression is done separately for proper content-addressing.
         Supports common Python types and numpy arrays.
         """
         serialized_bytes: bytes
@@ -154,7 +155,7 @@ class HexDictionary:
         else:
             serialized_bytes = pickle.dumps(data)
         
-        return gzip.compress(serialized_bytes)
+        return serialized_bytes  # Return RAW bytes (no compression)
 
     def _deserialize_data(self, data_bytes: bytes, data_type: str) -> Any:
         """
@@ -196,16 +197,20 @@ class HexDictionary:
         # Debug print to trace data types being stored
         # print(f"DEBUG(HexDict): Storing data (type={type(data)}, data_type_str='{data_type}')")
 
-        serialized_data = self._serialize_data(data, data_type)
-        data_hash = hashlib.sha256(serialized_data).hexdigest()
+        # Serialize to raw bytes (no compression yet)
+        raw_bytes = self._serialize_data(data, data_type)
+        
+        # Hash the RAW bytes (like IPFS/Git) for true content-addressability
+        data_hash = hashlib.sha256(raw_bytes).hexdigest()
         
         file_path = os.path.join(self.storage_dir, f"{data_hash}.bin")
         
         # Check if the data already exists based on hash (content-addressable)
         if data_hash not in self.entries:
-            # If not, write the compressed data to file
+            # Compress AFTER hashing, then write to file
+            compressed_data = gzip.compress(raw_bytes)
             with open(file_path, 'wb') as f:
-                f.write(serialized_data)
+                f.write(compressed_data)
             
             self.entries[data_hash] = {
                 'path': file_path,
