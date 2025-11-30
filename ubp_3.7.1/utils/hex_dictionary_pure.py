@@ -1,8 +1,8 @@
 """
 ================================================================================
-Universal Binary Principle (UBP) Framework v3.6 - Pure HexDictionary
+Universal Binary Principle (UBP) Framework v3.7.1 - Pure HexDictionary
 Author: Euan Craig, New Zealand
-Date: November 19, 2025
+Date: 30 November 2025
 ================================================================================
 
 The Pure HexDictionary: Information-First Metric for the OffBit Layer
@@ -391,5 +391,5 @@ if __name__ == "__main__":
         print("   ✗ FAILED")
     
     print("\n" + "="*80)
-    print("All validations passed. Module ready for UBP 3.5 integration.")
+    print("All validations passed. Module ready for UBP 3.7.1 integration.")
     print("="*80)
