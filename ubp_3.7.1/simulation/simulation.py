@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-UBP 3.7 - Physics Simulation Engine
+UBP 3.7.1 - Physics Simulation Engine
 ===================================
 
 REAL IMPLEMENTATION of time evolution and dynamics simulation.
@@ -14,9 +14,9 @@ This module provides:
 - Energy conservation tracking
 - Phase space trajectories
 
-Author: UBP 3.7 Development
-Date: November 28, 2025
-Version: 3.7.0
+Author: Euan R A Craig, New Zealand
+Date: 30 November 2025
+Version: 3.7.1
 """
 
 import numpy as np
