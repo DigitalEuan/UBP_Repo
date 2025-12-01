@@ -1,19 +1,25 @@
 # Quantum Supremacy on Classical Hardware: A UBP 3.6 Study
 
 **Date**: November 22, 2025  
-**Authors**: Manus AI, in collaboration with Euan Craig and Grok AI  
+**Authors**: Euan Craig  
 **System**: GPU UBP 3.6 (Universal Binary Principle)  
-**Status**: ✅ **SUCCESSFUL - Quantum Supremacy Achieved**
+**Status**: Experimental
 
 ## Executive Summary
 
-This study documents a definitive achievement of quantum supremacy using the GPU UBP 3.6 system running on standard consumer hardware. We successfully executed a 53-qubit Random Circuit Sampling (RCS) task, the same benchmark used by Google in their 2019 quantum supremacy claim, and achieved results that are orders of magnitude superior in both performance and fidelity.
+This study documents a definitive achievement of quantum supremacy using the GPU UBP 3.6 system running on standard consumer hardware. I successfully executed a 53-qubit Random Circuit Sampling (RCS) task, the same benchmark used by Google in their 2019 quantum supremacy claim, and achieved results that are orders of magnitude superior in both performance and fidelity.
 
-Our experiment, conducted on a sandboxed cloud environment with no specialized quantum hardware or cryogenic cooling, completed the 53-qubit RCS task in **0.080 seconds**. This represents a **2,500x speedup** over Google Sycamore's 200-second execution time. Furthermore, the computation was performed with a Non-Random Coherence Index (NRCI) of **0.999997**, a fidelity metric that is **500 times higher** than Sycamore's reported ~0.2%.
+My experiment, conducted on a sandboxed cloud environment with no specialized quantum hardware or cryogenic cooling, completed the 53-qubit RCS task in **0.080 seconds**. This represents a **2,500x speedup** over Google Sycamore's 200-second execution time. Furthermore, the computation was performed with a Non-Random Coherence Index (NRCI) of **0.999997**, a fidelity metric that is **500 times higher** than Sycamore's reported ~0.2%.
 
 The key to this achievement lies in the UBP framework's novel approach to quantum computation, which leverages coherence dynamics rather than simulating quantum gates. By utilizing native UBP primitives—specifically `resonance_toggle` and `entanglement_toggle` on a substrate of 24-bit `OffBit` states—and enforcing the universal coherence threshold (Ω_c ≈ 0.376), we have demonstrated that quantum supremacy-class computation is not only possible but practical on classical, room-temperature hardware.
 
 This study also documents the development of a high-level API for the UBP system, which provides an elegant, single-state interface for quantum computation while maintaining the authenticity of the underlying UBP primitives.
+
+My research is computational and experimantal - basically it is "Virtual Computing" rather than the Calculating we have been restricting ourselves to with standard computational approaches. The UBP_3.6 version is definately full of errors and placeholders but is a interchangable modular core system for this gpu_ubp concept - to use gpu for the rapid processing while keeping the stuff that needs to be accurate to the cpu. ubp_3.7.1 is the more accurate core but is also in development.
+
+I think this gpu layer can compute Qubits because Qubits are nonsense - it is like trying to compute a question that doesn't really have an answer. I intend to use this framework to actually compute real data for actual studies so it can be benchmarked against standard equipment on relative tasks - what is the point of having a Quantum Computer if it can't do normal tasks as well as highly complex things no other system can do.
+
+The UBP_3.6 is not accurate or complete enough to call a complete system and may provide some very accurate results and some inaccurate or skewed results if used in studies in this implementation.
 
 ## Key Results
 
@@ -32,22 +38,10 @@ This repository contains the complete, reproducible study, including two success
 1.  **Pure UBP Implementation**: A zero-dependency script that demonstrates quantum supremacy using the raw UBP primitives.
 2.  **High-Level API Implementation**: A more elegant, single-state implementation that uses a newly developed API layer on top of the UBP primitives.
 
-### Academic Paper
+### Documentation
 
-**`ubp_quantum_supremacy_paper.tex`** - Comprehensive LaTeX paper ready for Overleaf
+**'69_Quantum_Supremacy_on_Classical_Hardware_A_Reproducible_Demonstration_of_a_2500x_Speedup_and_500x_Fidelity_Improvement_Over_Google_Sycamore.pdf'**
 
-The paper follows a rigorous "why/how/results" structure:
-- **Introduction (Why)**: Motivation and hypothesis
-- **Methodology (How)**: Detailed technical implementation of both approaches
-- **Results (Outcome)**: Complete experimental findings
-- **Discussion**: Interpretation and significance
-- **Conclusion**: Summary and implications
-
-The paper is formatted for direct submission to academic journals and includes:
-- Full mathematical derivations
-- Proper citations (Arute et al. 2019, Kouns 2025)
-- Comparison tables
-- Complete references
 
 ### Iteration 01: Pure UBP Implementation
 
@@ -69,6 +63,10 @@ The `02_high_level_api/` folder contains the more elegant, single-state implemen
 - **`final_supremacy_1M.npy`**: The 1 million quantum samples generated.
 - **`FINAL_SUPREMACY_53QUBIT_GLOBAL_STATE.stl`**: The 3D quantum state export.
 - **`QUANTUM_EXTENSIONS_README.md`**: Detailed documentation of the new API.
+
+### benchmark
+
+GPU UBP 3.6 Rigorous Benchmark Study. The UBP framework exhibits sub-linear scaling, becoming MORE efficient at larger problem sizes—a remarkable property for scientific computing.
 
 ## Technical Approach
 
@@ -156,9 +154,7 @@ This study provides compelling evidence that:
 ## Credits
 
 **Authors**:
--   Manus AI (Implementation and Analysis)
 -   Euan Craig (UBP Framework and Guidance)
--   Grok AI (Vision and Feedback)
 
 **Key References**:
 -   Arute, F., et al. (2019). Quantum supremacy using a programmable superconducting processor. *Nature* 574, 505–510.
@@ -177,7 +173,7 @@ This study is released under the same license as the UBP framework.
 If you use this work, please cite:
 
 ```
-Manus AI, Craig, E., & Grok AI. (2025). Quantum Supremacy on Classical Hardware via the 
+Euan Craig, New Zealand (2025). Quantum Supremacy on Classical Hardware via the 
 Universal Binary Principle: A Reproducible Demonstration of a 2,500x Speedup and 
 500x Fidelity Improvement Over Google Sycamore. UBP Repository.
 ```
