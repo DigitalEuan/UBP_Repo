@@ -3,12 +3,12 @@
     "name": "Optimization Performance",
     "passed": true,
     "data": {
-      "elapsed_time": 0.004243373870849609,
+      "elapsed_time": 0.0029289722442626953,
       "time_ok": true,
       "no_nan_inf": true,
       "violation_stable": true,
-      "initial_violation": 0.27314814814814814,
-      "final_violation": 0.27314814814814814,
+      "initial_violation": 0.0,
+      "final_violation": 0.0,
       "iterations": 1
     }
   },
@@ -20,11 +20,11 @@
       "consistent": true,
       "position_ok": true,
       "results": [
-        0.27314814814814814,
-        0.27314814814814814,
-        0.27314814814814814
+        0.0,
+        0.0,
+        0.0
       ],
-      "mean_violation": 0.27314814814814814,
+      "mean_violation": 0.0,
       "std_violation": 0.0,
       "relative_std": 0.0
     }
@@ -61,7 +61,7 @@
     "name": "Scalability",
     "passed": true,
     "data": {
-      "time_20_nodes": 0.004123210906982422,
+      "time_20_nodes": 0.00471186637878418,
       "time_ok": true,
       "nodes": 20,
       "edges": 30,
@@ -72,8 +72,8 @@
     "name": "Memory Efficiency",
     "passed": true,
     "data": {
-      "current_mb": 0.01953887939453125,
-      "peak_mb": 0.020782470703125,
+      "current_mb": 0.01927947998046875,
+      "peak_mb": 0.0202484130859375,
       "memory_ok": true
     }
   }

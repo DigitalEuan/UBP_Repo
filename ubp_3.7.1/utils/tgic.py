@@ -258,6 +258,417 @@ class DodecahedralGraph:
         }
 
 
+class CubicGraph:
+    """
+    Implements the cubic graph structure for TGIC.
+
+    A cube has 8 vertices and 12 edges, forming the basic 3-axis aligned structure.
+    """
+
+    def __init__(self):
+        self.nodes = {}
+        self.edges = set()
+        self._generate_cubic_structure()
+
+    def _generate_cubic_structure(self):
+        """
+        Generate the 8 vertices of a standard cube at (±1, ±1, ±1).
+        """
+        vertices = []
+        for x in [-1, 1]:
+            for y in [-1, 1]:
+                for z in [-1, 1]:
+                    vertices.append([x, y, z])
+
+        for i, vertex in enumerate(vertices):
+            self.nodes[i] = TGICNode(
+                node_id=i,
+                position=np.array(vertex, dtype=np.float64),
+                weight=1.0,
+                coherence_level=0.85 # Initialize with coherence
+            )
+        self._generate_cubic_edges()
+
+    def _generate_cubic_edges(self):
+        """
+        Generate the 12 axis-aligned edges for the cubic graph.
+        Each vertex connects to exactly 3 other vertices.
+        """
+        # Edge length for a cube with vertices at (±1, ±1, ±1) is 2.0
+        edge_length_squared = 4.0 # (2)^2
+        epsilon = 1e-6
+
+        for i in range(len(self.nodes)):
+            for j in range(i + 1, len(self.nodes)):
+                pos_i = self.nodes[i].position
+                pos_j = self.nodes[j].position
+                distance_sq = np.sum((pos_i - pos_j)**2)
+
+                # Check for axis-aligned connection (distance 2)
+                if abs(distance_sq - edge_length_squared) < epsilon:
+                    self.edges.add((i, j))
+                    self.nodes[i].connections.add(j)
+                    self.nodes[j].connections.add(i)
+
+                    # For a cube, all direct edges are axis-aligned if they connect (±1,±1,±1)
+                    # We can use the helper function to confirm
+                    if self._is_axis_aligned(pos_i, pos_j):
+                        interaction_type = InteractionType.AXIS_ALIGNED
+                    elif self._is_face_diagonal(pos_i, pos_j):
+                        interaction_type = InteractionType.FACE_DIAGONAL
+                    else:
+                        interaction_type = InteractionType.EDGE_CONNECTED # Fallback, though should be axis_aligned for direct connections
+
+                    self.nodes[i].interaction_types[j] = interaction_type
+                    self.nodes[j].interaction_types[i] = interaction_type
+
+    def _is_axis_aligned(self, pos1: np.ndarray, pos2: np.ndarray) -> bool:
+        """Check if two positions are axis-aligned (only one coordinate differs by 2)"""
+        diff = np.abs(pos1 - pos2)
+        # For cube vertices like (1,1,1) and (-1,1,1), diff would be [2,0,0]
+        # So exactly one element should be 2.0 and others 0.0
+        return np.isclose(np.sum(diff > 1e-6), 1.0) and np.isclose(np.max(diff), 2.0)
+
+    def _is_face_diagonal(self, pos1: np.ndarray, pos2: np.ndarray) -> bool:
+        """Check if two positions form a face diagonal (two coordinates differ by 2)"""
+        diff = np.abs(pos1 - pos2)
+        # For cube vertices like (1,1,1) and (1,-1,-1), diff would be [0,2,2]
+        # So exactly two elements should be 2.0 and one 0.0
+        return np.isclose(np.sum(diff > 1e-6), 2.0) and np.isclose(np.max(diff), 2.0)
+
+    def get_node_neighbors(self, node_id: int) -> List[int]:
+        """Get all neighbors of a given node"""
+        if node_id in self.nodes:
+            return list(self.nodes[node_id].connections)
+        return []
+
+    def get_interaction_type(self, node1: int, node2: int) -> Optional[InteractionType]:
+        """Get interaction type between two nodes"""
+        if node1 in self.nodes and node2 in self.nodes[node1].interaction_types:
+            return self.nodes[node1].interaction_types[node2]
+        return None
+
+    def compute_graph_properties(self) -> Dict[str, Any]:
+        """
+        Compute properties of the cubic graph
+        """
+        num_nodes = len(self.nodes)
+        num_edges = len(self.edges)
+
+        # Compute degree distribution
+        degrees = [len(node.connections) for node in self.nodes.values()]
+        avg_degree = np.mean(degrees)
+
+        # Compute clustering coefficient
+        # For a cube, there are no triangles, so clustering coefficient should be 0
+        clustering_coeffs = []
+        for node_id, node in self.nodes.items():
+            neighbors = list(node.connections)
+            if len(neighbors) < 2:
+                clustering_coeffs.append(0.0)
+                continue
+
+            # Count triangles
+            triangles = 0
+            possible_triangles = len(neighbors) * (len(neighbors) - 1) // 2
+
+            for i in range(len(neighbors)):
+                for j in range(i + 1, len(neighbors)):
+                    # Check if the two neighbors are connected to each other
+                    if neighbors[j] in self.nodes[neighbors[i]].connections:
+                        triangles += 1
+
+            clustering = triangles / possible_triangles if possible_triangles > 0 else 0.0
+            clustering_coeffs.append(clustering)
+
+        avg_clustering = np.mean(clustering_coeffs)
+
+        return {
+            'num_nodes': num_nodes,
+            'num_edges': num_edges,
+            'avg_degree': avg_degree,
+            'avg_clustering': avg_clustering,
+            'degree_distribution': degrees,
+            'is_regular': len(set(degrees)) == 1,
+            'max_degree': max(degrees),
+            'min_degree': min(degrees)
+        }
+
+class TetrahedralGraph:
+    """
+    Implements the tetrahedral graph structure for TGIC.
+    A tetrahedron has 4 vertices and 6 edges.
+    """
+    def __init__(self):
+        self.nodes = {}
+        self.edges = set()
+        self._generate_tetrahedral_structure()
+
+    def _generate_tetrahedral_structure(self):
+        # Vertices of a regular tetrahedron
+        # Using an easier-to-visualize set of coordinates
+        vertices = [
+            [1, 1, 1],   # Node 0
+            [1, -1, -1], # Node 1
+            [-1, 1, -1], # Node 2
+            [-1, -1, 1]  # Node 3
+        ]
+        for i, vertex in enumerate(vertices):
+            self.nodes[i] = TGICNode(
+                node_id=i,
+                position=np.array(vertex, dtype=np.float64),
+                weight=1.0,
+                coherence_level=0.70
+            )
+        self._generate_tetrahedral_edges()
+
+    def _generate_tetrahedral_edges(self):
+        # All vertices in a regular tetrahedron are connected to each other.
+        # The distance squared between any two vertices in this setup is 8.0 (e.g., (1 - (-1))^2 + (1 - (-1))^2 + (1 - (-1))^2 = 4 + 4 + 0 = 8)
+        edge_length_sq = 8.0
+        epsilon = 1e-6
+
+        for i in range(len(self.nodes)):
+            for j in range(i + 1, len(self.nodes)):
+                pos_i = self.nodes[i].position
+                pos_j = self.nodes[j].position
+                distance_sq = np.sum((pos_i - pos_j)**2)
+
+                if abs(distance_sq - edge_length_sq) < epsilon:
+                    self.edges.add((i, j))
+                    self.nodes[i].connections.add(j)
+                    self.nodes[j].connections.add(i)
+                    # For a tetrahedron, all edges are 'EDGE_CONNECTED'
+                    self.nodes[i].interaction_types[j] = InteractionType.EDGE_CONNECTED
+                    self.nodes[j].interaction_types[i] = InteractionType.EDGE_CONNECTED
+
+    def get_node_neighbors(self, node_id: int) -> List[int]:
+        if node_id in self.nodes:
+            return list(self.nodes[node_id].connections)
+        return []
+
+    def get_interaction_type(self, node1: int, node2: int) -> Optional[InteractionType]:
+        if node1 in self.nodes and node2 in self.nodes[node1].interaction_types:
+            return self.nodes[node1].interaction_types[node2]
+        return None
+
+    def compute_graph_properties(self) -> Dict[str, Any]:
+        num_nodes = len(self.nodes)
+        num_edges = len(self.edges)
+        degrees = [len(node.connections) for node in self.nodes.values()]
+        avg_degree = np.mean(degrees)
+
+        clustering_coeffs = []
+        for node_id, node in self.nodes.items():
+            neighbors = list(node.connections)
+            if len(neighbors) < 2:
+                clustering_coeffs.append(0.0)
+                continue
+            triangles = 0
+            possible_triangles = len(neighbors) * (len(neighbors) - 1) // 2
+            for i in range(len(neighbors)):
+                for j in range(i + 1, len(neighbors)):
+                    if neighbors[j] in self.nodes[neighbors[i]].connections:
+                        triangles += 1
+            clustering = triangles / possible_triangles if possible_triangles > 0 else 0.0
+            clustering_coeffs.append(clustering)
+        avg_clustering = np.mean(clustering_coeffs)
+
+        return {
+            'num_nodes': num_nodes,
+            'num_edges': num_edges,
+            'avg_degree': avg_degree,
+            'avg_clustering': avg_clustering,
+            'degree_distribution': degrees,
+            'is_regular': len(set(degrees)) == 1,
+            'max_degree': max(degrees),
+            'min_degree': min(degrees)
+        }
+
+class OctahedralGraph:
+    """
+    Implements the octahedral graph structure for TGIC.
+    An octahedron has 6 vertices and 12 edges.
+    """
+    def __init__(self):
+        self.nodes = {}
+        self.edges = set()
+        self._generate_octahedral_structure()
+
+    def _generate_octahedral_structure(self):
+        # Vertices of a regular octahedron: points on each axis.
+        vertices = [
+            [1, 0, 0],  # Node 0
+            [-1, 0, 0], # Node 1
+            [0, 1, 0],  # Node 2
+            [0, -1, 0], # Node 3
+            [0, 0, 1],  # Node 4
+            [0, 0, -1]  # Node 5
+        ]
+        for i, vertex in enumerate(vertices):
+            self.nodes[i] = TGICNode(
+                node_id=i,
+                position=np.array(vertex, dtype=np.float64),
+                weight=1.0,
+                coherence_level=0.75
+            )
+        self._generate_octahedral_edges()
+
+    def _generate_octahedral_edges(self):
+        # For these vertices, neighbors are at a distance of sqrt(2).
+        # Each vertex is connected to 4 others.
+        edge_length_sq = 2.0  # (sqrt(2))^2
+        epsilon = 1e-6
+
+        for i in range(len(self.nodes)):
+            for j in range(i + 1, len(self.nodes)):
+                pos_i = self.nodes[i].position
+                pos_j = self.nodes[j].position
+                distance_sq = np.sum((pos_i - pos_j)**2)
+
+                if abs(distance_sq - edge_length_sq) < epsilon:
+                    self.edges.add((i, j))
+                    self.nodes[i].connections.add(j)
+                    self.nodes[j].connections.add(i)
+                    # Octahedron edges are generally 'EDGE_CONNECTED'
+                    self.nodes[i].interaction_types[j] = InteractionType.EDGE_CONNECTED
+                    self.nodes[j].interaction_types[i] = InteractionType.EDGE_CONNECTED
+
+    def get_node_neighbors(self, node_id: int) -> List[int]:
+        if node_id in self.nodes:
+            return list(self.nodes[node_id].connections)
+        return []
+
+    def get_interaction_type(self, node1: int, node2: int) -> Optional[InteractionType]:
+        if node1 in self.nodes and node2 in self.nodes[node1].interaction_types:
+            return self.nodes[node1].interaction_types[node2]
+        return None
+
+    def compute_graph_properties(self) -> Dict[str, Any]:
+        num_nodes = len(self.nodes)
+        num_edges = len(self.edges)
+        degrees = [len(node.connections) for node in self.nodes.values()]
+        avg_degree = np.mean(degrees)
+
+        clustering_coeffs = []
+        for node_id, node in self.nodes.items():
+            neighbors = list(node.connections)
+            if len(neighbors) < 2:
+                clustering_coeffs.append(0.0)
+                continue
+            triangles = 0
+            possible_triangles = len(neighbors) * (len(neighbors) - 1) // 2
+            for i in range(len(neighbors)):
+                for j in range(i + 1, len(neighbors)):
+                    if neighbors[j] in self.nodes[neighbors[i]].connections:
+                        triangles += 1
+            clustering = triangles / possible_triangles if possible_triangles > 0 else 0.0
+            clustering_coeffs.append(clustering)
+        avg_clustering = np.mean(clustering_coeffs)
+
+        return {
+            'num_nodes': num_nodes,
+            'num_edges': num_edges,
+            'avg_degree': avg_degree,
+            'avg_clustering': avg_clustering,
+            'degree_distribution': degrees,
+            'is_regular': len(set(degrees)) == 1,
+            'max_degree': max(degrees),
+            'min_degree': min(degrees)
+        }
+
+class IcosahedralGraph:
+    """
+    Implements the icosahedral graph structure for TGIC.
+    An icosahedron has 12 vertices and 30 edges.
+    """
+    def __init__(self):
+        self.nodes = {}
+        self.edges = set()
+        self._generate_icosahedral_structure()
+
+    def _generate_icosahedral_structure(self):
+        phi = (1 + math.sqrt(5)) / 2
+
+        # Vertices of a regular icosahedron
+        # Standard construction: 12 vertices from (0, ±1, ±phi) and its cyclic permutations
+        vertices = [
+            [0, 1, phi], [0, 1, -phi], [0, -1, phi], [0, -1, -phi],
+            [1, phi, 0], [1, -phi, 0], [-1, phi, 0], [-1, -phi, 0],
+            [phi, 0, 1], [phi, 0, -1], [-phi, 0, 1], [-phi, 0, -1]
+        ]
+        for i, vertex in enumerate(vertices):
+            self.nodes[i] = TGICNode(
+                node_id=i,
+                position=np.array(vertex, dtype=np.float64),
+                weight=1.0,
+                coherence_level=0.60
+            )
+        self._generate_icosahedral_edges()
+
+    def _generate_icosahedral_edges(self):
+        # All vertices are distance 2 from 5 neighbors (for this vertex set)
+        edge_length_sq = 4.0 # (2)^2
+        epsilon = 1e-6
+
+        for i in range(len(self.nodes)):
+            for j in range(i + 1, len(self.nodes)):
+                pos_i = self.nodes[i].position
+                pos_j = self.nodes[j].position
+                distance_sq = np.sum((pos_i - pos_j)**2)
+
+                if abs(distance_sq - edge_length_sq) < epsilon:
+                    self.edges.add((i, j))
+                    self.nodes[i].connections.add(j)
+                    self.nodes[j].connections.add(i)
+                    # Icosahedron edges are generally 'EDGE_CONNECTED'
+                    self.nodes[i].interaction_types[j] = InteractionType.EDGE_CONNECTED
+                    self.nodes[j].interaction_types[i] = InteractionType.EDGE_CONNECTED
+
+    def get_node_neighbors(self, node_id: int) -> List[int]:
+        if node_id in self.nodes:
+            return list(self.nodes[node_id].connections)
+        return []
+
+    def get_interaction_type(self, node1: int, node2: int) -> Optional[InteractionType]:
+        if node1 in self.nodes and node2 in self.nodes[node1].interaction_types:
+            return self.nodes[node1].interaction_types[node2]
+        return None
+
+    def compute_graph_properties(self) -> Dict[str, Any]:
+        num_nodes = len(self.nodes)
+        num_edges = len(self.edges)
+        degrees = [len(node.connections) for node in self.nodes.values()]
+        avg_degree = np.mean(degrees)
+
+        clustering_coeffs = []
+        for node_id, node in self.nodes.items():
+            neighbors = list(node.connections)
+            if len(neighbors) < 2:
+                clustering_coeffs.append(0.0)
+                continue
+            triangles = 0
+            possible_triangles = len(neighbors) * (len(neighbors) - 1) // 2
+            for i in range(len(neighbors)):
+                for j in range(i + 1, len(neighbors)):
+                    if neighbors[j] in self.nodes[neighbors[i]].connections:
+                        triangles += 1
+            clustering = triangles / possible_triangles if possible_triangles > 0 else 0.0
+            clustering_coeffs.append(clustering)
+        avg_clustering = np.mean(clustering_coeffs)
+
+        return {
+            'num_nodes': num_nodes,
+            'num_edges': num_edges,
+            'avg_degree': avg_degree,
+            'avg_clustering': avg_clustering,
+            'degree_distribution': degrees,
+            'is_regular': len(set(degrees)) == 1,
+            'max_degree': max(degrees),
+            'min_degree': min(degrees)
+        }
+
+
 class LeechLatticeProjection:
     """
     Implements 24D Leech lattice projection for TGIC constraints.
@@ -439,38 +850,17 @@ class TGICSystem:
             self.leech_projection = LeechLatticeProjection()
         elif self.geometry == TGICGeometry.CUBIC:
             # Import from cross-geometry module
-            try:
-                from studies.TGIC.geometry_graphs import CubicGraph
-                self.graph = CubicGraph()
-                self.leech_projection = None
-            except ImportError:
-                # Fallback to dodecahedral if cross-geometry not available
-                self.graph = DodecahedralGraph()
-                self.leech_projection = None
+            self.graph = CubicGraph()
+            self.leech_projection = None
         elif self.geometry == TGICGeometry.TETRAHEDRAL:
-            try:
-                from studies.TGIC.geometry_graphs import TetrahedralGraph
-                self.graph = TetrahedralGraph()
-                self.leech_projection = None
-            except ImportError:
-                self.graph = DodecahedralGraph()
-                self.leech_projection = None
+            self.graph = TetrahedralGraph()
+            self.leech_projection = None
         elif self.geometry == TGICGeometry.OCTAHEDRAL:
-            try:
-                from studies.TGIC.geometry_graphs import OctahedralGraph
-                self.graph = OctahedralGraph()
-                self.leech_projection = None
-            except ImportError:
-                self.graph = DodecahedralGraph()
-                self.leech_projection = None
+            self.graph = OctahedralGraph()
+            self.leech_projection = None
         elif self.geometry == TGICGeometry.ICOSAHEDRAL:
-            try:
-                from studies.TGIC.geometry_graphs import IcosahedralGraph
-                self.graph = IcosahedralGraph()
-                self.leech_projection = None
-            except ImportError:
-                self.graph = DodecahedralGraph()
-                self.leech_projection = None
+            self.graph = IcosahedralGraph()
+            self.leech_projection = None
         else:
             # Default to dodecahedral
             self.graph = DodecahedralGraph()
