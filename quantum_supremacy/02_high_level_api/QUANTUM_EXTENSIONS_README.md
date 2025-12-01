@@ -1,8 +1,8 @@
 # UBP Quantum Extensions v3.6.1
 
-**Author**: Manus AI, in collaboration with Euan Craig  
+**Author**: Euan Craig  
 **Date**: November 21, 2025  
-**Status**: ✅ **Production Ready**
+**Status**: ✅ **Experimental**
 
 ## Overview
 
