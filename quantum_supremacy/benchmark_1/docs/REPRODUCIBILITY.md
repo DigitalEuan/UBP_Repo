@@ -1,7 +1,7 @@
 # Reproducibility Guide: UBP Benchmark Study
 
 **Date:** November 25, 2025  
-**Author:** Manus AI
+**Author:** E Craig
 
 This document provides complete instructions to reproduce the results of the GPU UBP 3.6 benchmark study.
 
