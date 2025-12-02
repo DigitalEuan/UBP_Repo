@@ -15,9 +15,35 @@ import math
 from typing import List, Union
 from core.state import OffBit # Changed from relative import
 from utils.kernels import resonance_kernel # Changed from relative import
+from error_correction.golay_code import GolayG24
 from utils.ubp_config import get_config # Import get_config to access centralized constants
 
 _config = get_config() # Initialize configuration
+
+# Initialize Golay Encoder (Singleton for the module)
+_GOLAY_ENCODER = GolayG24()
+
+def get_golay_distance(offbit: OffBit) -> int:
+    """
+    Calculates the Hamming distance from the OffBit to the nearest Golay codeword.
+    
+    This is the Hamming weight of the error vector returned by the Golay decoder.
+    
+    Args:
+        offbit: The OffBit state to check.
+        
+    Returns:
+        The Hamming distance to the nearest codeword (0-3 for correctable errors).
+    """
+    bits = np.array(offbit.bits, dtype=int)
+    corrected_bits = _GOLAY_ENCODER.correct_errors(bits)
+    
+    # The error vector is the XOR of the original and the corrected codeword
+    error_vector = (bits + corrected_bits) % 2
+    
+    # The distance is the Hamming weight of the error vector
+    distance = np.sum(error_vector)
+    return int(distance)
 
 
 def toggle_and(b_i: Union[int, OffBit], b_j: Union[int, OffBit]) -> Union[int, OffBit]:
@@ -241,6 +267,41 @@ def superposition_toggle(states: List[Union[int, OffBit]],
         return OffBit(result)
     else:
         return result
+
+
+def toggle_golay_preserving(b_i: Union[int, OffBit], b_j: Union[int, OffBit]) -> Union[int, OffBit]:
+    """
+    Perform a Golay-aware toggle operation.
+    
+    Axiom: Golay_Correct(b_i ^ b_j)
+    Purpose: Ensures the result of the toggle operation is mapped to the nearest
+             valid Golay(24,12) codeword, preserving the geometric coherence.
+    
+    Args:
+        b_i: First OffBit or integer value
+        b_j: Second OffBit or integer value
+        
+    Returns:
+        Result of the Golay-preserving XOR operation, corrected to the nearest codeword.
+    """
+    # 1. Perform the base XOR operation
+    xor_result = toggle_xor(b_i, b_j)
+    
+    # 2. Convert to bits and apply Golay correction
+    if isinstance(xor_result, OffBit):
+        bits = np.array(xor_result.bits, dtype=int)
+        corrected_bits = _GOLAY_ENCODER.correct_errors(bits)
+        
+        # Convert corrected bits back to OffBit value
+        # Note: bits are LSB first, so we reverse the array for int conversion
+        corrected_value = int("".join(map(str, corrected_bits[::-1])), 2)
+        
+        return OffBit(corrected_value)
+    else:
+        # If input was int, return int (cannot apply Golay correction directly to a single int)
+        # For simplicity in this function, we assume OffBit input for the correction step
+        # and return the raw XOR result for int input.
+        return xor_result
 
 
 def hybrid_xor_resonance(b_i: Union[int, OffBit], b_j: Union[int, OffBit], 
