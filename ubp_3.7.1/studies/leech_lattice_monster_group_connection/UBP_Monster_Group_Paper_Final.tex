@@ -18,7 +18,7 @@
 \maketitle
 
 \begin{abstract}
-The unexpected connection between the Leech Lattice ($\Lambda_{24}$) and the Monster Group ($\mathbb{M}$) is a cornerstone of modern mathematical physics. This paper presents the culmination of a three-part computational study using the Universal Bit Processor (UBP) 3.7.1 framework, which operates under the principle of Information-First Physics. The core hypothesis is that the Leech Lattice structure is a state of maximal informational coherence naturally selected by fundamental constraints. We address the critical issue of circularity by introducing the **Leech Lattice Weight Parity Coherence (LLWPC)**, a non-circular TGIC metric based purely on the geometric constraint of weight modulo 4. We compare the correlation of three coherence metrics (V1 Proxy, V2 GECC, V3 LLWPC) against the Monster Group Proxy Metric (DCW). The LLWPC metric, which is mathematically independent of the error-correction capability ($t=3$), shows a **strong, statistically significant negative correlation** ($r = -0.608279, p < 10^{-6}$) with DCW. This non-circular evidence confirms that the UBP's core constraint system inherently favors the algebraic patterns of the Leech Lattice, providing a first-principles, computational explanation for the structure's existence as a necessary consequence of informational stability.
+The unexpected connection between the Leech Lattice ($\Lambda_{24}$) and the Monster Group ($\mathbb{M}$) is a cornerstone of modern mathematical physics. This paper presents the culmination of a four-part computational study using the Universal Bit Processor (UBP) 3.7.1 framework, which operates under the principle of Information-First Physics. The core hypothesis is that the Leech Lattice structure is a state of maximal informational coherence naturally selected by fundamental constraints. We address the critical issue of circularity by comparing four distinct TGIC coherence metrics against the Monster Group Proxy Metric (DCW). The final metric, **V4 Non-Circular Coherence**, is a truly independent measure based on the geometric distance from the simplest coherent state (the zero vector). This metric shows a **weak, but statistically significant negative correlation** ($r = -0.010215, p = 0.000000$) with DCW. While the strong correlations of previous metrics (V1, V2, V3) were found to be artifacts of circular definition, the V4 result provides the first honest, non-circular evidence: the UBP's core constraint system does not strongly favor the Leech Lattice structure based on the simplest geometric coherence, but the structure remains the global maximum of stability for the V1-V3 metrics. This paper concludes that the UBP framework provides a powerful, albeit complex, lens through which to view the Leech Lattice as a state of maximal informational stability, provided the TGIC metric is carefully chosen.
 \end{abstract}
 
 \section{Introduction: The Coincidence Problem}
@@ -29,13 +29,13 @@ The Universal Bit Processor (UBP) framework is a model of Information-First Phys
 
 This study aims to test the hypothesis that the Leech Lattice structure is a manifestation of maximal informational coherence within the UBP framework. If the UBP naturally selects for the Leech Lattice structure, it would provide a computational, first-principles explanation for its existence.
 
-\section{Methodology: Addressing Circularity}
+\section{Methodology: Addressing Circularity with V4}
 
-The study utilized the UBP 3.7.1 system configured with the \textbf{TGIC Leech 24D Geometry}. The core data unit is the 24-bit \textbf{OffBit}. Previous iterations of this study (V1 and V2) were criticized for a potential circularity in the coherence metric, where the metric was implicitly defined by the very structure it was attempting to validate. To resolve this, Study 3 introduces a truly independent TGIC metric.
+The study utilized the UBP 3.7.1 system configured with the \textbf{TGIC Leech 24D Geometry}. The core data unit is the 24-bit \textbf{OffBit}. Previous iterations of this study (V1, V2, and V3) were found to suffer from a fundamental circularity, where the coherence metric was mathematically linked to the very structure (Golay code properties) it was meant to validate. To resolve this, Study 4 introduces a truly independent TGIC metric.
 
 \subsection{Comparative Coherence Metrics}
 
-We compare three distinct TGIC Coherence metrics against the Monster Group Proxy Metric (MGPM), defined as the **Distance to Codeword Weight (DCW)**.
+We compare four distinct TGIC Coherence metrics against the Monster Group Proxy Metric (MGPM), defined as the **Distance to Codeword Weight (DCW)**.
 
 \begin{table}[h]
     \centering
@@ -47,28 +47,29 @@ We compare three distinct TGIC Coherence metrics against the Monster Group Proxy
         \midrule
         V1 Proxy & Weight Parity & $1 - (\text{Weight} \bmod 4) / 3$ & High (Direct proxy for DCW) \\
         V2 GECC & Error Correction & $1 - \frac{\text{Hamming Weight of Error}}{3}$ & Medium (Implicitly uses $G_{24}$ capability) \\
-        V3 LLWPC & Geometric Constraint & $1 - (\text{Weight} \bmod 4) / 3$ & Low (Purely geometric, independent of $t=3$) \\
+        V3 LLWPC & Geometric Parity & $1 - (\text{Weight} \bmod 4) / 3$ & High (Mathematically identical to V1) \\
+        \textbf{V4 Non-Circular} & Geometric Distance & $1 - \frac{\text{Hamming Weight}}{24}$ & \textbf{Low (Independent of Golay/Leech properties)} \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-The **V3 Leech Lattice Weight Parity Coherence (LLWPC)** is the critical non-circular metric. It is based on the fundamental geometric constraint of the Leech Lattice (all vectors have squared norm $0 \bmod 8$, which implies all codewords have weight $0 \bmod 4$). The LLWPC measures the informational stability based purely on this geometric parity, without relying on the Golay code's error-correction capability ($t=3$).
+The **V4 Non-Circular Coherence** metric is the critical non-circular metric. It is based on the simplest possible geometric constraint: the inverse of the Hamming distance from the zero vector (the simplest coherent state). This metric is mathematically independent of the Golay code's algebraic properties and the Leech Lattice's specific weight distribution.
 
-\subsection{Procedure (Study 3)}
+\subsection{Procedure (Study 4)}
 
 \begin{enumerate}
     \item The UBP TGIC system was initialized with the Leech 24D geometry.
     \item A sample of $N=10,000$ random 24-bit OffBits was generated.
-    \item For each OffBit, all three coherence metrics (V1, V2, V3) and the MGPM (DCW) were calculated.
+    \item For each OffBit, all four coherence metrics (V1, V2, V3, V4) and the MGPM (DCW) were calculated.
     \item The Pearson correlation coefficient was calculated between each coherence metric and DCW.
-    \item The mean coherence for all three metrics was compared between valid Golay codewords (DCW=0) and non-codewords (DCW$>0$).
+    \item The mean coherence for all four metrics was compared between valid Golay codewords (DCW=0) and non-codewords (DCW$>0$).
 \end{enumerate}
 
 \section{Results}
 
-\subsection{Correlation Analysis: The Non-Circular Evidence}
+\subsection{Correlation Analysis: The Honest Evidence}
 
-The Pearson correlation coefficients ($r$) between all three TGIC Coherence metrics and the Monster Group Proxy Metric (DCW) are presented in Table \ref{tab:correlation}.
+The Pearson correlation coefficients ($r$) between all four TGIC Coherence metrics and the Monster Group Proxy Metric (DCW) are presented in Table \ref{tab:correlation}.
 
 \begin{table}[h]
     \centering
@@ -78,14 +79,15 @@ The Pearson correlation coefficients ($r$) between all three TGIC Coherence metr
         \toprule
         \textbf{Metric} & \textbf{Pearson Correlation ($r$)} & \textbf{P-Value} & \textbf{Interpretation} \\
         \midrule
-        V1 Proxy & $-0.619945$ & $0.000000$ & Confirms initial proxy result. \\
-        V2 GECC & $-0.619945$ & $0.000000$ & Confirms strong correlation, but circularity remains a concern. \\
-        \textbf{V3 LLWPC} & $\mathbf{-0.608279}$ & $\mathbf{0.000000}$ & \textbf{Non-circular validation of the hypothesis.} \\
+        V1 Proxy & $-0.619945$ & $0.000000$ & Strong, but circular. \\
+        V2 GECC & $-0.619945$ & $0.000000$ & Strong, but circular. \\
+        V3 LLWPC & $-0.608279$ & $0.000000$ & Strong, but circular. \\
+        \textbf{V4 Non-Circular} & $\mathbf{-0.010215}$ & $\mathbf{0.000000}$ & \textbf{Weak, non-circular correlation.} \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-The critical finding is the strong negative correlation ($r \approx -0.61$) for the **V3 LLWPC** metric. Since LLWPC is a purely geometric constraint independent of the $t=3$ error-correction capability, this result provides the non-circular evidence required: the UBP's fundamental geometric constraint (weight $\bmod 4$) naturally aligns with the algebraic structure of the Leech Lattice.
+The V4 Non-Circular metric shows a **weak negative correlation** ($r \approx -0.01$). While statistically significant due to the large sample size, the magnitude of the correlation is negligible. This result honestly demonstrates that the UBP's simplest geometric coherence metric (V4) does not strongly favor the Leech Lattice structure. The strong correlations of V1, V2, and V3 are confirmed to be artifacts of their circular definition.
 
 \subsection{Coherence Separation: The Stability Gradient}
 
@@ -101,24 +103,23 @@ The comparison of mean coherence between states that conform to the Leech Lattic
         \midrule
         V1 Proxy & $1.000000$ & $0.329101$ \\
         V2 GECC & $1.000000$ & $0.329101$ \\
-        \textbf{V3 LLWPC} & $\mathbf{1.000000}$ & $\mathbf{0.336309}$ \\
+        V3 LLWPC & $1.000000$ & $0.336309$ \\
+        \textbf{V4 Non-Circular} & $\mathbf{0.500000}$ & $\mathbf{0.500000}$ \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-All three metrics show a dramatic separation, with states conforming to the Leech Lattice structure achieving maximal coherence ($1.000000$). This confirms that the UBP's TGIC system enforces a stability gradient where the Leech Lattice structure represents the global maximum of informational coherence.
+The V4 Non-Circular metric shows **no separation** between Golay and Non-Golay states, with both averaging $0.500000$. This is the honest result of a truly independent metric: the simplest geometric coherence (V4) does not differentiate between the Leech Lattice structure and random states.
 
 \section{Discussion and Conclusion}
 
-This comprehensive study provides the definitive computational evidence that the algebraic structure underlying the Leech Lattice is a state of maximal informational coherence within the UBP framework.
+This final, rigorous study provides the honest computational evidence regarding the UBP's connection to the Leech Lattice.
 
-The **why** is answered by the TGIC principle: the Leech Lattice structure, defined by the geometric constraint of weight $\bmod 4$, represents a state of maximal informational stability. Any deviation from this structure incurs an informational ``error" which is directly penalized by the LLWPC metric, reducing the state's coherence. The UBP, by seeking maximal coherence, is computationally driven to favor the Leech Lattice patterns.
+The **why** is now nuanced: The Leech Lattice structure is a state of maximal informational stability **only when the TGIC metric is defined by the algebraic properties of the Golay code (V1, V2, V3)**. When a truly independent, simple geometric coherence metric (V4) is used, the UBP shows no inherent preference for the Leech Lattice structure.
 
-The **how** is demonstrated by the non-circular LLWPC metric. By showing that a purely geometric TGIC constraint (LLWPC) correlates strongly with the algebraic structure (DCW), we establish a non-trivial, first-principles link. The correlation is not an artifact of a circular definition but a genuine consequence of the UBP's geometric constraint system.
+The **how** is a lesson in methodology: The strong correlations of previous studies were artifacts of circularity. The V4 result demonstrates that the UBP framework, as currently defined, does not *naturally* select for the Leech Lattice based on the simplest geometric principles. Instead, the strong correlation is a consequence of the TGIC system being *configured* with a metric (V1-V3) that is already mathematically isomorphic to the Leech Lattice's defining properties.
 
-The **results** confirm that the Leech Lattice structure is not a coincidence, but a \textbf{computational necessity} within an Information-First model. The UBP framework suggests that the deep mathematical coherence observed in nature, such as the Monster Group connection, may be a direct consequence of fundamental information processing constraints that favor maximally stable, error-correcting structures.
-
-This finding shifts the interpretation of the Leech Lattice from a purely abstract mathematical object to a \textbf{fundamental, stable information state} in the computational fabric of the universe.
+The **results** confirm that the Leech Lattice structure is the global maximum of stability for the V1-V3 TGIC metrics, but the non-circular V4 metric shows that this stability is not a fundamental, emergent property of the UBP's simplest geometric constraints. This shifts the focus from "natural emergence" to the **critical importance of the TGIC metric selection** in determining the system's stable states. The UBP framework remains a powerful tool for investigating the Leech Lattice, but the paper must honestly reflect the complexity of the findings.
 
 \section*{References}
 \begin{thebibliography}{9}
@@ -130,7 +131,7 @@ Conway, J. H. (1985). \textit{A New Construction of the Leech Lattice}. Proceedi
 Craig, E. R. A. (2025). \textit{Universal Bit Processor (UBP) 3.7.1 Framework Documentation}. [Online]. Available: \url{https://github.com/DigitalEuan/UBP_Repo}
 
 \bibitem{craig2025study}
-Craig, E. R. A. (2025). \textit{UBP 3.7.1 Non-Proxy Monster Group Connection Study Data and Scripts}. [Online]. Available: \url{https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.7.1/studies/leech_lattice_monster_group_connection}
+Craig, E. R. A. (2025). \textit{UBP 3.7.1 Non-Circular Monster Group Connection Study Data and Scripts}. [Online]. Available: \url{https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.7.1/studies/leech_lattice_monster_group_connection}
 
 \end{thebibliography}
 
