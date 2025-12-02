@@ -10,7 +10,7 @@ The central hypothesis is that states with higher TGIC Coherence (Information-Fi
 
 | Metric | Value | P-Value | Interpretation |
 | :--- | :--- | :--- | :--- |
-| **Pearson Correlation (Coherence vs. DCW)** | **-0.619945** | 0.000000 | Negative correlation supports the hypothesis. |
+| **Pearson Correlation (Coherence vs. DCW)** | **-0.608279** | 0.000000 | Negative correlation supports the hypothesis. |
 
 ## 3. Coherence Comparison: Golay vs. Non-Golay States
 This compares the average TGIC Coherence for OffBits that are valid Golay codewords (DCW=0) versus those that are not.
@@ -18,17 +18,17 @@ This compares the average TGIC Coherence for OffBits that are valid Golay codewo
 | State Type | Average TGIC Coherence |
 | :--- | :--- |
 | **Valid Golay Codewords (MGPM=0)** | **1.000000** |
-| **Non-Golay Codewords (MGPM>0)** | **0.329101** |
+| **Non-Golay Codewords (MGPM>0)** | **0.336309** |
 
 ## 4. TGIC Coherence Distribution
 |       |   tgic_coherence |
 |:------|-----------------:|
 | count |     10000        |
-| mean  |         0.498033 |
-| std   |         0.374891 |
+| mean  |         0.501833 |
+| std   |         0.37299  |
 | min   |         0        |
 | 25%   |         0        |
-| 50%   |         0.333333 |
+| 50%   |         0.666667 |
 | 75%   |         1        |
 | max   |         1        |
 
@@ -39,11 +39,11 @@ This shows how frequently OffBits are close to the Golay structure.
 | :--- | :--- | :--- |
 |   distance_to_codeword_weight |   Count |   Percentage |
 |------------------------------:|--------:|-------------:|
-|                             0 |    2518 |        25.18 |
-|                             1 |    4944 |        49.44 |
-|                             2 |    2489 |        24.89 |
-|                             3 |      41 |         0.41 |
-|                             4 |       8 |         0.08 |
+|                             0 |    2494 |        24.94 |
+|                             1 |    4988 |        49.88 |
+|                             2 |    2446 |        24.46 |
+|                             3 |      59 |         0.59 |
+|                             4 |      13 |         0.13 |
 
 ## 6. Scientific Conclusion and Next Steps
 The correlation result and the coherence comparison will provide the first computational evidence for or against the UBP's ability to naturally generate the underlying structure of the Monster Group.
