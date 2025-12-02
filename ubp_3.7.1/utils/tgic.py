@@ -1,8 +1,8 @@
 # UBP 3.7
 """
 Universal Binary Principle (UBP) Framework v3.7.1 - TGIC: Triad Graph Interaction Constraint for UBP
-Author: Euan Craig, New Zealand
-Date: 30 November 2025
+Author: Euan R A Craig, New Zealand
+Date: 02 December 2025
 ================================================
 
 Implements the geometric constraint system that enforces the fundamental
@@ -13,18 +13,21 @@ Mathematical Foundation:
 - 3 axes: x, y, z spatial dimensions
 - 6 faces: cubic/dodecahedral face interactions
 - 9 interactions: per OffBit neighborhood interactions
-- Dodecahedral graph: 20 nodes, 60 edges
 - Leech lattice: 24D sphere packing projection
 - Geometric coherence constraints
+- Cubic: 8 nodes, 12 edges → CubicGraph - NRCI: 0.940
+- Tetrahedral: 4 nodes, 6 edges → TetrahedralGraph - NRCI: 0.880
+- Octahedral: 6 nodes, 12 edges → OctahedralGraph - NRCI: 0.600
+- Icosahedral: 12 nodes, 30 edges → IcosahedralGraph - NRCI: 0.440
+- Dodecahedral: 20 nodes, 30 edges → DodecahedralGraph - NRCI: 0.860
+- Leech 24D: 0 nodes (lattice only) → LeechLatticeProjection - NRCI: 0.600
 
-This is NOT a simulation - implements real geometric constraint mathematics.
+Implements geometric constraint mathematics.
 
 ================================================
 TESTING & VALIDATION:
 For comprehensive testing, validation results, and development roadmap, see:
-  - studies/TGIC/README.md
-  - studies/TGIC/findings/FINDINGS_SUMMARY.md
-  - studies/TGIC/documentation/ROADMAP.md
+  - studies/TGIC
 ================================================
 """
 
