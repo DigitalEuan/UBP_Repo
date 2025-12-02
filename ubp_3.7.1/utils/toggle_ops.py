@@ -12,6 +12,7 @@ Implements the fundamental toggle operations that govern OffBit interactions:
 """
 
 import math
+import numpy as np # Added numpy import
 from typing import List, Union
 from core.state import OffBit # Changed from relative import
 from utils.kernels import resonance_kernel # Changed from relative import
@@ -182,8 +183,8 @@ def resonance_toggle(b_i: Union[int, OffBit], frequency: float, time: float,
     resonance_factor = resonance_kernel(d, k)
     result = int(val_i * resonance_factor)
     
-    # Ensure result stays within valid range
-    result = max(0, min(result, 0xFFFFFF))  # 24-bit limit
+    # Ensure result stays within valid range (24-bit limit)
+    result = result & 0xFFFFFF
     
     if isinstance(b_i, OffBit):
         return OffBit(result)
@@ -217,8 +218,8 @@ def entanglement_toggle(b_i: Union[int, OffBit], b_j: Union[int, OffBit],
         # Weak entanglement - use reduced coupling
         result = int(val_i * val_j * coherence * 0.1)
     
-    # Ensure result stays within valid range
-    result = max(0, min(result, 0xFFFFFF))  # 24-bit limit
+    # Ensure result stays within valid range (24-bit limit)
+    result = result & 0xFFFFFF
     
     if isinstance(b_i, OffBit):
         return OffBit(result)
@@ -261,7 +262,7 @@ def superposition_toggle(states: List[Union[int, OffBit]],
         result += val * weight
     
     result = int(result)
-    result = max(0, min(result, 0xFFFFFF))  # 24-bit limit
+    result = result & 0xFFFFFF # 24-bit limit
     
     if isinstance(states[0], OffBit):
         return OffBit(result)
@@ -269,7 +270,7 @@ def superposition_toggle(states: List[Union[int, OffBit]],
         return result
 
 
-def toggle_golay_preserving(b_i: Union[int, OffBit], b_j: Union[int, OffBit]) -> Union[int, OffBit]:
+def toggle_golay_preserving(b_i: OffBit, b_j: OffBit) -> OffBit:
     """
     Perform a Golay-aware toggle operation.
     
@@ -288,20 +289,14 @@ def toggle_golay_preserving(b_i: Union[int, OffBit], b_j: Union[int, OffBit]) ->
     xor_result = toggle_xor(b_i, b_j)
     
     # 2. Convert to bits and apply Golay correction
-    if isinstance(xor_result, OffBit):
-        bits = np.array(xor_result.bits, dtype=int)
-        corrected_bits = _GOLAY_ENCODER.correct_errors(bits)
-        
-        # Convert corrected bits back to OffBit value
-        # Note: bits are LSB first, so we reverse the array for int conversion
-        corrected_value = int("".join(map(str, corrected_bits[::-1])), 2)
-        
-        return OffBit(corrected_value)
-    else:
-        # If input was int, return int (cannot apply Golay correction directly to a single int)
-        # For simplicity in this function, we assume OffBit input for the correction step
-        # and return the raw XOR result for int input.
-        return xor_result
+    bits = np.array(xor_result.bits, dtype=int)
+    corrected_bits = _GOLAY_ENCODER.correct_errors(bits)
+    
+    # Convert corrected bits back to OffBit value
+    # Note: bits are LSB first, so we reverse the array for int conversion
+    corrected_value = int("".join(map(str, corrected_bits[::-1])), 2)
+    
+    return OffBit(corrected_value)
 
 
 def hybrid_xor_resonance(b_i: Union[int, OffBit], b_j: Union[int, OffBit], 
@@ -329,8 +324,8 @@ def hybrid_xor_resonance(b_i: Union[int, OffBit], b_j: Union[int, OffBit],
     resonance_factor = resonance_kernel(d, k)
     result = int(val * resonance_factor)
     
-    # Ensure result stays within valid range
-    result = max(0, min(result, 0xFFFFFF))  # 24-bit limit
+    # Ensure result stays within valid range (24-bit limit)
+    result = result & 0xFFFFFF
     
     if isinstance(b_i, OffBit):
         return OffBit(result)
@@ -360,8 +355,8 @@ def spin_transition(b_i: Union[int, OffBit], p_s: float) -> Union[int, OffBit]:
     transition_factor = math.log(1.0 / p_s)
     result = int(val_i * transition_factor)
     
-    # Ensure result stays within valid range
-    result = max(0, min(result, 0xFFFFFF))  # 24-bit limit
+    # Ensure result stays within valid range (24-bit limit)
+    result = result & 0xFFFFFF
     
     if isinstance(b_i, OffBit):
         return OffBit(result)
