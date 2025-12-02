@@ -267,7 +267,7 @@ class HexDictionary:
         """
         entry_info = self.entries.get(data_hash)
         if not entry_info:
-            return None
+            return None, None
 
         file_path = entry_info['path']
         data_type = entry_info['type']
@@ -276,7 +276,7 @@ class HexDictionary:
             print(f"Error: Data file for hash '{data_hash}' not found on disk at {file_path}. Removing entry.")
             del self.entries[data_hash]
             self._save_metadata()
-            return None
+            return None, None
 
         with open(file_path, 'rb') as f:
             serialized_data = f.read()
@@ -284,10 +284,10 @@ class HexDictionary:
         try:
             data = self._deserialize_data(serialized_data, data_type)
             # print(f"DEBUG(HexDict): Retrieved data (type={type(data)}, data_type_str='{data_type}') for hash '{data_hash[:8]}...'") # Debug print
-            return data, entry_info.get('meta', {})
+            return data, entry_info.get("meta", {})
         except Exception as e:
             print(f"Error deserializing/decompressing data for hash '{data_hash}': {e}")
-            return None
+            return None, None
 
     def get_metadata(self, data_hash: str) -> Optional[Dict[str, Any]]:
         """

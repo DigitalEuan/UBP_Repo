@@ -19,10 +19,10 @@ from error_correction.golay_code import GolayG24
 from error_correction.leech_lattice import LeechLatticePoint
 
 # Import UBPConfig and get_config for constant loading
-from utils.ubp_config import get_config, UBPConfig
+# NOTE: Imports are moved inside functions to break circular dependency with utils/
+# from utils.ubp_config import get_config, UBPConfig
 
-
-_config: UBPConfig = get_config() # Initialize configuration
+# _config: UBPConfig = get_config() # Initialize configuration
 
 
 @dataclass(frozen=True)
@@ -458,6 +458,9 @@ class UBPState:
             UBP energy value
         """
         # Get energy parameters directly from config
+        from utils.ubp_config import get_config
+        _config = get_config()
+        
         M = self.bitfield.active_count
         C = _config.constants.SPEED_OF_LIGHT
         
@@ -483,6 +486,9 @@ class UBPState:
         Args:
             delta_t: Time step for evolution
         """
+        from utils.ubp_config import get_config
+        _config = get_config()
+        
         # Get toggle probability for the current realm from config
         toggle_prob = _config.constants.UBP_TOGGLE_PROBABILITIES.get(self.realm, 0.5)
         
