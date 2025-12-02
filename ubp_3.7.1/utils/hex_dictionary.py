@@ -106,7 +106,11 @@ except ImportError:
 
 # Define the default directory for PERSISTENT storage for this version of HexDictionary
 DEFAULT_HEX_DICT_STORAGE_DIR = "./persistent_state/hex_dictionary_storage/"
-DEFAULT_HEX_DICT_METADATA_FILE = os.path.join(DEFAULT_HEX_DICT_STORAGE_DIR, "hex_dict_metadata.json")
+
+def _get_metadata_file_path(storage_dir: str) -> str:
+    return os.path.join(storage_dir, "hex_dict_metadata.json")
+
+DEFAULT_HEX_DICT_METADATA_FILE = _get_metadata_file_path(DEFAULT_HEX_DICT_STORAGE_DIR)
 
 class HexDictionary:
     """
@@ -115,9 +119,9 @@ class HexDictionary:
     Supports various data types for serialization.
     This version is specifically configured for persistent storage and uses gzip compression.
     """
-    def __init__(self, storage_dir: str = DEFAULT_HEX_DICT_STORAGE_DIR, metadata_file: str = DEFAULT_HEX_DICT_METADATA_FILE):
-        self.storage_dir = storage_dir
-        self.metadata_file = metadata_file
+    def __init__(self, storage_dir: str = DEFAULT_HEX_DICT_STORAGE_DIR, metadata_file: Optional[str] = None):
+        self.storage_dir = os.path.abspath(storage_dir)
+        self.metadata_file = metadata_file or _get_metadata_file_path(self.storage_dir)
         self.entries: Dict[str, Dict[str, Any]] = {}  # Stores {'hash': {'path': 'file', 'type': 'type', 'meta': {}}}
         self._ensure_storage_dir()
         self._load_metadata()
@@ -280,7 +284,7 @@ class HexDictionary:
         try:
             data = self._deserialize_data(serialized_data, data_type)
             # print(f"DEBUG(HexDict): Retrieved data (type={type(data)}, data_type_str='{data_type}') for hash '{data_hash[:8]}...'") # Debug print
-            return data
+            return data, entry_info.get('meta', {})
         except Exception as e:
             print(f"Error deserializing/decompressing data for hash '{data_hash}': {e}")
             return None

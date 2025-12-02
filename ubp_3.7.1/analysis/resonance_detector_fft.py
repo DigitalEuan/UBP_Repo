@@ -294,8 +294,12 @@ class ResonanceDetectorFFT:
         if len(states) < 4:
             return None
         
-        # Extract values
-        signal = np.array([s.value for s in states])
+        # Check if input is a list of objects with 'value' or a numpy array of floats
+        if isinstance(states[0], (float, np.float64)):
+            signal = np.array(states)
+        else:
+            # Assume it's a list of objects with a 'value' attribute (e.g., CoherenceState)
+            signal = np.array([s.value for s in states])
         
         # Perform spectral analysis
         analysis = self.analyze_spectrum(signal)
