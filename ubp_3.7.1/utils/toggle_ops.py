@@ -1,8 +1,8 @@
 # UBP 3.7
 """
-Universal Binary Principle (UBP) Framework v3.7 - UBP Toggle Algebra Operations
+Universal Binary Principle (UBP) Framework v3.7.1 - UBP Toggle Algebra Operations
 Author: Euan Craig, New Zealand
-Date: 03 September 2025
+Date: 02 December 2025
 ================================================
 
 Implements the fundamental toggle operations that govern OffBit interactions:
