@@ -180,6 +180,15 @@ class OffBit:
         # construction as the base and ensure the point is a valid vector in R^24.
         # The full Leech lattice properties are handled by the LeechLatticeProjection module.
         
+        # Automatic Mapping: If the OffBit is a Golay codeword, it is a Leech vector.
+        # If not, it is automatically mapped to the nearest Leech vector (Construction A).
+        if not self.is_golay_codeword:
+            # Use Golay correction to find the nearest codeword (Construction A)
+            from error_correction.golay_code import GolayG24
+            golay_encoder = GolayG24()
+            corrected_bits = golay_encoder.correct_errors(np.array(bits, dtype=int))
+            leech_coords = np.array([2 * b - 1 for b in corrected_bits], dtype=np.float64)
+        
         object.__setattr__(self, '_leech_point', leech_coords)
         return self._leech_point
     
@@ -195,6 +204,28 @@ class OffBit:
         parity = weight % 4
         return parity
     
+    def correct_with_aecn(self, realm_id: str = "DEFAULT") -> Tuple['OffBit', str]:
+        """
+        Process the OffBit through the Automatic Error Correction Network (AECN)
+        for a specific realm, or the best realm if not specified.
+        
+        Args:
+            realm_id: The realm to use for correction. If "BEST", the AECN
+                      will select the realm that yields the highest coherence.
+        
+        Returns:
+            Tuple of (Corrected OffBit, Realm ID Used)
+        """
+        from error_correction.aecn import AECN
+        
+        # NOTE: AECN is initialized once per call for simplicity, but should be
+        # a singleton in a full UBP runtime environment.
+        aecn = AECN(realms=[realm_id] if realm_id != "BEST" else ["DEFAULT", "QUANTUM", "GRAVITY"])
+        
+        result = aecn.process_offbit(self)
+        
+        return result.corrected_offbit, result.realm_id
+        
     def correct_with_golay(self) -> 'OffBit':
         """
         Attempt to correct bit errors using Golay code error correction.
@@ -202,9 +233,8 @@ class OffBit:
         Returns:
             Corrected OffBit (or self if no correction is attempted/needed)
         """
-        # This requires the full Golay decoder, which is in error_correction/golay_code.py
-        # For now, we return self. The HTR engine handles the full correction logic.
-        return self
+        # This is now a legacy method, deferring to AECN for full logic.
+        return self.correct_with_aecn(realm_id="DEFAULT")[0]
     
     def __str__(self) -> str:
         return f"OffBit(0x{self.value:06X})"

@@ -30,15 +30,16 @@ class GolayG24:
     This implementation uses the extended Golay construction.
     """
     
-    def __init__(self):
-        """Initialize the Golay code with the correct generator matrix."""
+    def __init__(self, realm_id: str = "DEFAULT"):
+        """Initialize the Golay code with the correct generator matrix, potentially realm-specific."""
         self.n = 24  # Code length
         self.k = 12  # Message length
         self.d = 8   # Minimum distance
         self.t = 3   # Error correction capability
+        self.realm_id = realm_id
         
         # Build the CORRECT generator matrix
-        self.G = self._build_correct_generator_matrix()
+        self.G = self._build_correct_generator_matrix(realm_id)
         
         # Build the parity-check matrix
         self.H = self._build_parity_check_matrix()
@@ -46,9 +47,15 @@ class GolayG24:
         # Build syndrome lookup table for fast decoding
         self.syndrome_table = self._build_syndrome_table()
     
-    def _build_correct_generator_matrix(self) -> np.ndarray:
+    def _build_correct_generator_matrix(self, realm_id: str) -> np.ndarray:
         """
         Build the CORRECT generator matrix for Golay(24,12).
+        
+        Supports realm-specific mappings by potentially using a different, but
+        mathematically equivalent, generator matrix for different realms.
+        
+        Args:
+            realm_id: Identifier for the realm (e.g., "QUANTUM", "GRAVITY", "DEFAULT")
         
         Uses the extended Golay code construction.
         The generator matrix is constructed from the Golay(23,12) code
@@ -82,6 +89,14 @@ class GolayG24:
         
         # Concatenate [I | P]
         G = np.hstack([I, P])
+        
+        # Realm-Specific Mapping Placeholder:
+        # For now, all realms use the standard G matrix. Future development
+        # will introduce realm-specific permutations or equivalent matrices.
+        if realm_id == "QUANTUM":
+            # Example: Apply a specific permutation for the Quantum Realm
+            # G = G[:, quantum_permutation_indices]
+            pass
         
         return G
     

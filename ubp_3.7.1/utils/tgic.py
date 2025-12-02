@@ -849,12 +849,13 @@ class TGICSystem:
             self.graph = DodecahedralGraph()
             self.leech_projection = None
         elif self.geometry == TGICGeometry.LEECH_24D:
+            from error_correction.leech_lattice import LeechLatticeProjection
             self.graph = None
             self.leech_projection = LeechLatticeProjection()
         elif self.geometry == TGICGeometry.CUBIC:
-            # Import from cross-geometry module
             self.graph = CubicGraph()
             self.leech_projection = None
+        # Add other geometries as needed
         elif self.geometry == TGICGeometry.TETRAHEDRAL:
             self.graph = TetrahedralGraph()
             self.leech_projection = None
