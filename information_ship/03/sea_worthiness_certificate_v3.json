@@ -1,0 +1,59 @@
+{
+  "version": "3.0.0",
+  "date": "2025-12-07T13:02:09.736624",
+  "status": "SEAWORTHY",
+  "critical_fixes_applied": [
+    "Shell convention (norm\u00b2 = 4,6,8)",
+    "Explicit NRCI accumulation",
+    "Geometric \u03b4 derivation",
+    "Dimensional enforcement",
+    "Comprehensive unit tests",
+    "Unified entry-point class"
+  ],
+  "test_results": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "results": [
+      {
+        "test": "test_y_refinement_roundtrip",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_nrci_monotonicity",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_shell_density_mapping",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_mass_ratio_stability",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_shell_convention",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_dimensional_correctness",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_closure_loop",
+        "status": "\u2713 PASSED"
+      },
+      {
+        "test": "test_nrci_accumulation",
+        "status": "\u2713 PASSED"
+      }
+    ]
+  },
+  "metrics": {
+    "bidirectional_closure_error": 4.440892098500626e-16,
+    "delta_geometric": 0.1541175805237982,
+    "delta_fitted": 0.121,
+    "tests_passed": 8,
+    "tests_total": 8
+  }
+}

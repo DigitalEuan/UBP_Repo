@@ -1,0 +1,59 @@
+{
+  "trial_name": "Moonshine Resonance",
+  "description": "Monster corrections + Golay self-healing",
+  "mass_predictions": {
+    "muon": {
+      "predicted": 4.019511287343423,
+      "experimental": 206.76828298382551,
+      "error_percent": 98.05603101726301,
+      "corrections": {
+        "basic": 3.7782124259573746,
+        "moonshine": 1.0369415723559856,
+        "conway": 1.0242819496460451,
+        "triple": 1.0
+      }
+    },
+    "tau": {
+      "predicted": 16.600594747586648,
+      "experimental": 3477.2275532519457,
+      "error_percent": 99.52259107310762,
+      "corrections": {
+        "basic": 14.274889135658709,
+        "moonshine": 1.0684794276181206,
+        "conway": 1.050944727406532,
+        "triple": 1.0339315515157896
+      }
+    }
+  },
+  "error_correction": [
+    {
+      "num_errors": 1,
+      "success": true,
+      "errors_corrected": 1,
+      "recovery_error": 0.00013566567887667025,
+      "nrci_after_healing": 0.9999981804080209
+    },
+    {
+      "num_errors": 2,
+      "success": true,
+      "errors_corrected": 2,
+      "recovery_error": 0.00013566567887667025,
+      "nrci_after_healing": 0.9999988963616765
+    },
+    {
+      "num_errors": 3,
+      "success": true,
+      "errors_corrected": 3,
+      "recovery_error": 0.23429656875335775,
+      "nrci_after_healing": 0.9999993306095195
+    }
+  ],
+  "combined_test": {
+    "particle": "muon",
+    "predicted_ratio": 4.019511287343423,
+    "after_corruption": 0.019291819291819293,
+    "after_healing": 0.019291819291819293,
+    "healing_success": true,
+    "final_nrci": 0.9999988963616765
+  }
+}
