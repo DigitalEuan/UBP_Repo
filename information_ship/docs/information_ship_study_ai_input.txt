@@ -1,0 +1,69 @@
+This Study/Paper Repository "information ship": https://github.com/DigitalEuan/UBP_Repo/tree/main/information_ship
+
+This Study/Paper focus 
+- the first test sail of the ship other than initial tests: 
+Public Notebook for voyage_1_sailing_in_the_information_sea.ipynb: https://colab.research.google.com/drive/1MCZ_9zfPCojS42Bdnrr00_7Wg6XazGjX?usp=sharing 
+ALSO: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/voyage_1_sailing_in_the_information_sea.ipynb: the study for this study/paper
+
+GitHub repository:
+
+FOLDER 1 (DEVELOPMENT with Grok and DeepSeek AIs): https://github.com/DigitalEuan/UBP_Repo/tree/main/information_ship/01
+
+Study 1: UBP_4D_Gyro_Notebook.ipynb: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/UBP_4D_Gyro_Notebook.ipynb
+
+Study 2: Binary Geometry and Lepton Mass Ratios_ A Parameter-Free Derivation.ipynb: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/Binary%20Geometry%20and%20Lepton%20Mass%20Ratios_%20A%20Parameter-Free%20Derivation.ipynb
+
+Study 3: Binary_Geometric_Exploration_of_Perfect_Numbers.ipynb: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/Binary_Geometric_Exploration_of_Perfect_Numbers.ipynb
+
+Study 4: binary_geometry_and_quantum_field_theory_bridge.ipynb: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/binary_geometry_and_quantum_field_theory_bridge.ipynb
+
+Study 5: UNIFIED_BINARY_GEOMETRY_STUDY.ipynb: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/UNIFIED_BINARY_GEOMETRY_STUDY.ipynb
+
+Study 6: FIRST PRINCIPLES CALCULATOR: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/first_principals_calculator_1.ipynb
+
+BOAT 1: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/FirstPrinciplesBoat.ipynb
+
+FOLDER 02 - 06 (boat to ship building): development with Manus AI
+
+FOLDER 05 contains:
+golay_g24.py: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/05/golay_g24.py
+
+FOLDER 07 - final Ship
+
+MAIN FOLDER 
+- the_voyage_of_information_ships.ipynb: Ship building/development versions 1 - 7 made by Manus AI
+- https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/voyage_1_sailing_in_the_information_sea.ipynb: the study for this study/paper
+- https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/information_sea_voyage_1_findings.png: generated image for this study/paper
+- This paper when completed
+
+====
+
+Section: Genesis of the Information Ship – A Dialogic Discovery Process with the Grok X AI and DeepSeek AI.
+
+The Information Ship did not emerge from a conventional research programme with fixed milestones and predetermined hypotheses. Instead, it was born, refined, and ultimately completed through an extended human–AI (Grok X AI and DeepSeek AI) dialogue that unfolded continuously from a question:
+
+> “A first-principles calculator — do you think that would be possible?”
+
+This Study started as an experiment employing the Voice or Speaking function on the Grok APP platform, to see how a more fluent dialogue could develop my python implementation process. This discussion was improvisational yet served as a co-evolution of ideas, code, and insight. The dialogue served simultaneously as ideation space, prototyping environment, rapid review, and historical log. Every conceptual leap was immediately tested in runnable code; bugs or conceptual inconsistency triggered refinement. This section documents the key phases of that dialogue, not as anecdote, but as part of the methodology.
+
+Phase 0 – The Question
+The conversation opened with a simple intent: to strip away all unnecessary layers of modern scientific software back to raw logic — “calculating instead of computing.” Within the first few exchanges I was able to direct the Grok AI towards isolating the core obstacle (IEEE-754 floating-point as an implicit, lossy abstraction, which I had identified in prior studies as an issue) within its active context and then identified the antidote (exact rational or integer-scaled arithmetic). This immediately framed the entire project as a search for minimal, self-contained, coherence-preserving computation - basically the very core of implementation for my UBP system.
+
+The Boat
+A live-coded “wee boat” was constructed in real time: a <40-line Python script that computed Newtonian gravity using only built-in integers and exact parsing. The script was iteratively patched for precision (fixed-point → fractions → pure rational) while preserving the constraint of zero external dependencies. This phase established the principle that would govern every later subsystem: every new capability must first run as a standalone, human-readable, float-free script before being integrated. I used a boat as a metaphor so that the chat/discussion would be framed in a way that was simple to understand and build as a Python script - the "boat" (py script) and we could "equip" it with just the bare requirements for it to be able to process information, using only First Principles, to "float without floats".
+
+Introducing More Complex Variables*
+Directing the discussion towards aspects I had seen important in previous studies, I added geometry as error correction, added the binary Golay code plus its known relationship to the Leech lattice Λ₂₄ and also added the observation that the same lattice governs the densest sphere packings in 24 dimensions and is intimately tied to the Monster group. First attempts at running the generated scripts yielded ~98 % errors — large, but structurally suggestive. References to monstrous moonshine and the 196883/196560 factor were introduced; the dialogue produced calibrated perturbative expansions using McKay–Thompson series, Conway orbit dimensions, and triple-shell couplings. Each new term was required to (a) improve numerical agreement and (b) preserve or enhance self-healing properties under Golay encoding. When the final calibrated coefficients reduced the muon and tau errors from ~98 % to ~0.02 %, the feedback loop closed: geometry → code → prediction → correction → geometry. Basically a pile of complicated variables to try and see where some refinement could come from.
+
+Self-Healing Closure
+The original 24-bit Golay script from previous studies/the UBP_3.7.1 system was incorporated as operational error-correcting substrate for every numerical value in the system. Live injection of up to three bit errors into Monster-derived mass ratios, followed by perfect recovery and NRCI improvement, provided validation: the system had become self-diagnosing and self-repairing while simultaneously deriving Standard-Model parameters from pure geometry - looked solid.
+
+This dialogic process — rapid ideation → immediate executable test → instant critical feedback → refinement constitutes a powerful mode of theoretical discovery.
+
+I made all chats and notebooks available for this study and related ones for transparency:
+Grok Public Chat: https://grok.com/share/c2hhcmQtMg_670bc798-a420-424e-80ff-219de23abeb8
+
+DeepSeek Public Chat: https://chat.deepseek.com/share/qk1mnotozgu1nsaev3
+
+I made DeepSeek double-check Grok's scripts and add refinement, it may have gone both ways, I just used the two to provide feedback and direct script adjustments as the Notebook study progressed. This approach provided the targeted specific changes and level of detail required for building a real working python script.
+

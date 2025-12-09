@@ -1,0 +1,23 @@
+Study 7: FIRST PRINCIPLES CALCULATOR: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/first_principals_calculator_1.ipynb
+
+Euan Craig, New Zealand
+
+## Summary:
+
+### Q&A
+The implemented 'First Principles Calculator' system now consists of a modular design with distinct functions for calculation and visualization, addressing previously identified missing components while adhering to the 'base' principles of deriving properties from fundamental mathematical and physical constructs.
+1.  **Modular Components**: The system was successfully refactored into `calculate_atomic_orbital(Z, n, l, m, grid)` for computing probability density and energy eigenvalue, and `plot_atomic_orbital(density_data, Z, n, l, m, extent)` for visualization. This separation enhances code organization and reusability.
+2.  **Robust Input Validation**: The `calculate_atomic_orbital` function now includes comprehensive input validation for the quantum numbers Z, n, l, and m, ensuring that only physically valid parameters are processed and raising `ValueError` for invalid inputs.
+3.  **Energy Eigenvalue Calculation**: The `calculate_atomic_orbital` function explicitly computes and returns the energy eigenvalue using the Rydberg formula ($E = -Rydberg \cdot (Z^2) / (n^2)$), providing a direct output of a key physical property.
+4.  **Adherence to 'Base' Principles**: The underlying mathematical functions for Laguerre and Associated Legendre polynomials continue to be implemented from first principles, relying on simple arithmetic operations and loops rather than external libraries for these core components, as intended by the original 'First Principles Atom' concept.
+
+### Data Analysis Key Findings
+*   The helper function `calculate_associated_legendre_polynomial` was successfully extracted and corrected to ensure consistent numeric returns, resolving an initial `TypeError` during its integration.
+*   The `calculate_atomic_orbital` function was created and effectively encapsulates the probability density and energy eigenvalue calculations, including robust input validation for quantum numbers (`Z`, `n`, `l`, `m`, `grid`).
+*   For a valid atomic state (e.g., Z=1, n=2, l=1, m=0), the calculated energy eigenvalue was $-3.4014$ eV.
+*   The error handling in `calculate_atomic_orbital` correctly identified and raised `ValueError` exceptions for various invalid quantum number combinations, such as `l >= n`, `abs(m) > l`, or `Z <= 0`.
+*   Batch processing of multiple atomic states (including hydrogenic orbitals and the original radium examples) was successfully demonstrated, with each state's energy calculated and orbital plotted, confirming the system's modularity and reliability.
+
+### Insights or Next Steps
+*   The successful modularization and robust input validation significantly improve the maintainability and reliability of the 'First Principles Calculator', making it easier to extend or integrate into larger physics simulations.
+*   Further development could involve extending the `calculate_atomic_orbital` function to support relativistic corrections or more complex potentials beyond hydrogenic atoms, leveraging its current modular design.

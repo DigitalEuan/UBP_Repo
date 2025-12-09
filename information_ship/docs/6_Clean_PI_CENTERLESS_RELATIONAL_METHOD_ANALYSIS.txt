@@ -1,0 +1,57 @@
+Study 6: Clean_PI_CENTERLESS_RELATIONAL_METHOD.ipynb: 
+Public CoLab notebook: https://colab.research.google.com/drive/1O-9WfsNMbMkaf703yuDcCc-1-JfepXvI?usp=sharing
+GitHub repository: https://github.com/DigitalEuan/UBP_Repo/blob/main/information_ship/01/Clean_PI_CENTERLESS_RELATIONAL_METHOD.ipynb
+
+Euan Craig, New Zealand
+
+## Analysis and Summary
+
+This notebook demonstrates a first-principles derivation and numerically stable implementation of Archimedes' method for approximating π.
+
+### 1. First Principles Mathematical Library (`first_principles_math`)
+
+The initial module (`TVtQacZDMYC6`) establishes a foundational mathematical library built entirely from basic arithmetic operations, loops, and conditionals. It explicitly avoids external libraries (such as `math` or `numpy`) to adhere to a "first principles" approach. Key functions implemented include:
+
+*   `factorial(n)`: Calculates the factorial of a non-negative integer.
+*   `abs_value(x)`: Returns the absolute value of a number.
+*   `sqrt_newton(x)`: Calculates the square root using the Newton-Raphson method, demonstrating an iterative numerical approach.
+*   `sin_taylor(x)`: Computes the sine of an angle using its Taylor series expansion around 0.
+*   `cos_taylor(x)`: Computes the cosine of an angle using its Taylor series expansion around 0.
+
+Each function was validated against known values within the notebook, confirming their accuracy up to machine precision for reasonable inputs. This library forms the bedrock for the subsequent π calculation, ensuring all computations are derived from fundamental mathematical concepts.
+
+### 2. Numerically Stable Archimedes Method (`pi_archimedes_correct_stable`)
+
+The core of this project is the `archimedes_via_half_angle` function (`i52iLX00WCCC`), which implements Archimedes' method to approximate π. The crucial innovation here is the use of a "half-angle tracking" strategy to overcome the severe numerical instability often encountered in traditional Archimedes implementations, especially after many iterations.
+
+**Traditional Problem:** The standard method of calculating the side lengths of inscribed/circumscribed polygons often involves subtracting nearly equal numbers (e.g., `1 - cos(small_angle)`), leading to catastrophic cancellation and rapid loss of precision in floating-point arithmetic.
+
+**Solution (Half-Angle Tracking):** Instead of directly tracking polygon side lengths, this implementation tracks `sin(θ/2)`, where `θ` is the angle subtended by one side of the polygon at the center of the circle. The doubling formula used is:
+
+`sin(θ_new/2) = sin(θ_old/2) / sqrt(2 * (1 + cos(θ_old/2)))`
+
+where `cos(θ_old/2)` is derived from `sqrt(1 - sin²(θ_old/2))`. This approach keeps all intermediate values within a stable range ([0, 1]), preventing catastrophic cancellation and maintaining precision across many iterations.
+
+**Validation:** The module includes `test_numerical_stability()` and `convergence_rate_analysis()` functions which demonstrate:
+
+*   **Stability:** The method maintains high accuracy (within machine precision) even after 40+ doublings, unlike unstable methods which fail much earlier.
+*   **Quadratic Convergence:** The error reduction ratio between successive iterations consistently hovers around 0.25 (i.e., the error is quartered with each doubling of polygon sides), which is characteristic of quadratic convergence.
+
+### 3. Comprehensive Numerical Stability Testing Suite (`o86o-pkLXD5n`)
+
+This final module rigorously tests the `archimedes_via_half_angle` implementation under extreme conditions and provides detailed analysis and visualization. It performs:
+
+*   **Extreme Iteration Test:** Shows that the method remains stable and accurate even up to 100 iterations. It achieves machine precision (error < 1e-14) around 30 iterations.
+*   **Detailed Convergence Rate Analysis:** Confirms the quadratic convergence (error ratio ~0.25) across various iteration ranges, indicating efficient error reduction.
+*   **Machine Precision Limit Analysis:** Illustrates that the algorithm continues to converge until it hits the fundamental limits of 64-bit floating-point arithmetic (around 15-16 decimal digits of accuracy), after which the error cannot be further reduced due to floating-point representation constraints.
+*   **Comprehensive Visualization:** A multi-panel plot (`content/comprehensive_stability.png`) visually summarizes the findings:
+    *   **Convergence to π:** Rapidly converges to the true value of π.
+    *   **Error Decay:** Shows an exponential decay of error on a log scale, reaching machine precision.
+    *   **Convergence Rate:** Consistently shows an error ratio of 0.25, validating quadratic convergence.
+    *   **Error vs Polygon Resolution:** Demonstrates the logarithmic relationship between error and the exponentially increasing number of polygon sides.
+    *   **Precision Gain per Iteration:** Displays a linear increase in digits of accuracy per iteration until machine limits are reached.
+    *   **Summary Statistics:** Provides a concise overview of the final results and status.
+
+### Conclusion
+
+This notebook successfully implements Archimedes' method for π derivation using only first principles, demonstrating how careful numerical formulation (half-angle tracking) can overcome inherent floating-point precision issues. The rigorous testing and visualization confirm the method's robustness, quadratic convergence, and ability to achieve the maximum possible accuracy within standard floating-point arithmetic. The project serves as an excellent example of building complex mathematical functions from fundamental components and understanding their numerical properties.
