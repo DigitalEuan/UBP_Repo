@@ -1,0 +1,369 @@
+#!/usr/bin/env python3
+"""
+Unified Study Script: OffBit Engine with 24-bit Analysis
+=========================================================
+
+This script combines the minimal UBP OffBit engine with analysis code
+to test the forward/backward closure of the information system.
+
+Key Features:
+- OffBit: Forward encoding (reality → information)
+- Signature: Observable representation
+- CoherenceState: Backward reconstruction (information → reality)
+- Closure testing with 24-bit seeds
+
+Fixes Applied:
+- Bit-width upgraded from 20 to 24 bits
+- Metric system uses closure_distance (removed nrci dependency)
+
+Author: K-Dense Coding Agent
+Date: December 11, 2025
+"""
+
+from fractions import Fraction
+from decimal import Decimal, getcontext
+from dataclasses import dataclass
+import math
+import typing
+
+# ===================================================================
+# DECIMAL PRECISION SETUP
+# ===================================================================
+
+getcontext().prec = 60  # High precision for π-derived constants
+
+PI_D = Decimal(str(math.pi))
+Y_D = PI_D / (PI_D ** 2 + Decimal(2))  # Y = π / (π^2 + 2)
+Y_INV_D = PI_D + Decimal(2) / PI_D     # Algebraic inverse form
+ONE = Fraction(1, 1)
+
+# ===================================================================
+# UTILITY FUNCTIONS
+# ===================================================================
+
+def bits_to_int(bits: typing.Iterable[int]) -> int:
+    """Convert bit sequence to integer."""
+    out = 0
+    for b in bits:
+        out = (out << 1) | (1 if b else 0)
+    return out
+
+def int_to_bits(x: int, width: int) -> typing.List[int]:
+    """Convert integer to bit list of specified width."""
+    return [(x >> i) & 1 for i in reversed(range(width))]
+
+def hamming(a: int, b: int) -> int:
+    """Compute Hamming distance between two integers."""
+    return bin(a ^ b).count("1")
+
+# ===================================================================
+# OFFBIT PRIMITIVE (FORWARD ENCODING)
+# ===================================================================
+
+@dataclass
+class OffBit:
+    """
+    OffBit: The fundamental information primitive.
+
+    Represents a fixed-width binary state that can be rotated,
+    analyzed for parity, and transformed into observable signatures.
+    """
+    width: int
+    bits: int  # Stored as integer for efficient operations
+
+    @classmethod
+    def from_int(cls, width: int, value: int):
+        """Create OffBit from integer value with specified width."""
+        mask = (1 << width) - 1
+        return cls(width=width, bits=value & mask)
+
+    @classmethod
+    def from_bits_list(cls, bits_list: typing.List[int]):
+        """Create OffBit from list of bits."""
+        return cls(width=len(bits_list), bits=bits_to_int(bits_list))
+
+    def rotate_left(self, r: int) -> 'OffBit':
+        """Perform cyclic left rotation by r positions."""
+        r = r % self.width
+        left = ((self.bits << r) & ((1 << self.width) - 1))
+        right = (self.bits >> (self.width - r))
+        return OffBit(self.width, left | right)
+
+    def parity_blocks(self, block_size: int) -> typing.List[int]:
+        """Return parity (count of ones mod 2) per block."""
+        blocks = []
+        for i in range(0, self.width, block_size):
+            mask = ((1 << block_size) - 1) << max(0, self.width - i - block_size)
+            chunk = (self.bits & mask) >> max(0, self.width - i - block_size)
+            blocks.append(bin(chunk).count("1") % 2)
+        return blocks
+
+    def block_counts(self, block_size: int) -> typing.List[int]:
+        """Return counts of ones per block."""
+        counts = []
+        for i in range(0, self.width, block_size):
+            mask = ((1 << block_size) - 1) << max(0, self.width - i - block_size)
+            chunk = (self.bits & mask) >> max(0, self.width - i - block_size)
+            counts.append(bin(chunk).count("1"))
+        return counts
+
+    def __repr__(self):
+        return f"OffBit(width={self.width}, bits=0b{self.bits:0{self.width}b})"
+
+# ===================================================================
+# SIGNATURE (OBSERVABLE REPRESENTATION)
+# ===================================================================
+
+@dataclass
+class Signature:
+    """
+    Signature: What an observer sees.
+
+    Contains deterministic features extracted from OffBit:
+    - block_counts: Number of 1s per block
+    - rotated_hash: Rotated hash value (24-bit)
+    - parity_vector: Parity bits per block
+    """
+    block_counts: typing.Tuple[int, ...]
+    rotated_hash: int  # 24-bit integer (upgraded from 20-bit)
+    parity_vector: typing.Tuple[int, ...]
+
+    def as_tuple(self):
+        """Return signature as tuple for hashing/comparison."""
+        return (self.block_counts, self.rotated_hash, self.parity_vector)
+
+# ===================================================================
+# FORWARD MAPPING: OffBit → Signature
+# ===================================================================
+
+def observe_offbit(ob: OffBit, block_size: int = 6, rotate_by: int = 5) -> Signature:
+    """
+    Observe an OffBit and generate its signature.
+
+    Fixed: hash_width changed from 20 to 24 bits to accommodate 24-bit seeds.
+
+    Args:
+        ob: OffBit to observe
+        block_size: Size of blocks for parity/count analysis
+        rotate_by: Rotation amount for hash generation
+
+    Returns:
+        Signature representing observable features
+    """
+    bc = tuple(ob.block_counts(block_size))
+
+    # **FIX APPLIED**: Changed hash_width from 20 to 24
+    hash_width = 24
+
+    # Extract the lowest 24 bits from ob.bits
+    extracted_bits = ob.bits & ((1 << hash_width) - 1)
+
+    # Perform cyclic left rotation on these 24 bits
+    r = rotate_by % hash_width
+    rhash = ((extracted_bits << r) | (extracted_bits >> (hash_width - r))) & ((1 << hash_width) - 1)
+
+    # Parity vector based on full rotated OffBit
+    r_obj = ob.rotate_left(rotate_by)
+    pv = tuple(r_obj.parity_blocks(block_size))
+
+    return Signature(block_counts=bc, rotated_hash=rhash, parity_vector=pv)
+
+# ===================================================================
+# COHERENCE STATE (EXACT SUBSTRATE)
+# ===================================================================
+
+@dataclass
+class CoherenceState:
+    """
+    CoherenceState: Exact rational representation of information state.
+
+    Attributes:
+        value: Exact rational value
+        log_nrci_error: Log error estimate (Decimal)
+        provenance: History of transformations
+    """
+    value: Fraction
+    log_nrci_error: Decimal
+    provenance: str
+
+    def refine_backward_by_Y(self, steps: int = 1) -> 'CoherenceState':
+        """Apply Y inverse transformation (information → reality)."""
+        val_dec = Decimal(self.value.numerator) / Decimal(self.value.denominator)
+        val_new_dec = val_dec * (Y_INV_D ** Decimal(steps))
+        val_frac = Fraction(int(val_new_dec * (10 ** 12)), 10 ** 12)
+        new_log = self.log_nrci_error - Decimal(0.5) * Decimal(steps)
+        return CoherenceState(value=val_frac, log_nrci_error=new_log,
+                            provenance=f"{self.provenance}|Y^{{-{steps}}}")
+
+    def degrade(self, delta: Decimal) -> 'CoherenceState':
+        """Degrade coherence by specified delta."""
+        return CoherenceState(self.value, self.log_nrci_error + delta,
+                            self.provenance + "|degraded")
+
+# ===================================================================
+# BACKWARD MAPPING: Signature → CoherenceState
+# ===================================================================
+
+def reconstruct_from_signature(sig: Signature, known_rotate_by: int) -> CoherenceState:
+    """
+    Reconstruct information from signature via inverse rotation.
+
+    Fixed: hash_width changed from 20 to 24 bits to match observe_offbit.
+
+    Args:
+        sig: Signature to reconstruct from
+        known_rotate_by: Rotation amount used during observation
+
+    Returns:
+        CoherenceState with reconstructed value
+    """
+    # **FIX APPLIED**: Changed hash_width from 20 to 24
+    hash_width = 24
+    r = known_rotate_by % hash_width
+
+    # Cyclic right rotation (inverse of left rotation)
+    unrotated_hash = ((sig.rotated_hash >> r) | (sig.rotated_hash << (hash_width - r))) & ((1 << hash_width) - 1)
+
+    mass = Fraction(unrotated_hash, 1)
+    log_err = Decimal('-3.0')  # Conservative error estimate
+
+    return CoherenceState(value=mass, log_nrci_error=log_err,
+                         provenance="24bit_rotated_direct_recovery")
+
+# ===================================================================
+# CLOSURE METRIC (REPLACES NRCI)
+# ===================================================================
+
+def closure_distance(original: OffBit, reconstructed_mass: CoherenceState) -> int:
+    """
+    Closure distance metric: measures reconstruction fidelity.
+
+    **FIX APPLIED**: This function replaces the missing nrci module.
+
+    Compares the original OffBit's 24-bit value with the reconstructed
+    mass value (also 24-bit). Lower values indicate better closure.
+
+    Args:
+        original: Original OffBit
+        reconstructed_mass: Reconstructed CoherenceState
+
+    Returns:
+        Absolute difference (0 = perfect closure)
+    """
+    folded_orig = original.bits & ((1 << 24) - 1)
+    return abs(folded_orig - (reconstructed_mass.value.numerator & ((1 << 24) - 1)))
+
+# ===================================================================
+# USER ANALYSIS FUNCTIONS
+# ===================================================================
+
+def observable_to_seed(freq: float) -> int:
+    """
+    Convert observable frequency to 24-bit seed.
+
+    Uses logarithmic scaling to map frequencies to seed space.
+
+    Args:
+        freq: Frequency in Hz
+
+    Returns:
+        24-bit integer seed
+    """
+    return int(abs(math.log10(freq + 1e-50)) * 1e6) % (1 << 24)
+
+def seed_to_observable(seed: int) -> OffBit:
+    """
+    Convert seed to OffBit representation.
+
+    Args:
+        seed: 24-bit integer seed
+
+    Returns:
+        OffBit with 24-bit width
+    """
+    return OffBit.from_int(width=24, value=seed)
+
+# ===================================================================
+# MAIN ANALYSIS LOOP
+# ===================================================================
+
+def main():
+    """
+    Main analysis: Test closure over a range of observables.
+
+    This demonstrates the full forward/backward cycle:
+    1. Observable (frequency) → seed → OffBit
+    2. OffBit → Signature (observation)
+    3. Signature → CoherenceState (reconstruction)
+    4. Measure closure distance
+    """
+    print("=" * 80)
+    print("OFFBIT ENGINE: 24-BIT CLOSURE ANALYSIS")
+    print("=" * 80)
+    print()
+
+    # Test observables (frequencies in Hz)
+    observables = [
+        1.0,           # 1 Hz
+        10.0,          # Alpha waves
+        100.0,         # Low frequency
+        1000.0,        # 1 kHz
+        10000.0,       # 10 kHz
+        100000.0,      # 100 kHz
+        1e6,           # 1 MHz
+        1e9,           # 1 GHz
+        1e12,          # 1 THz
+        4.56e14,       # H-alpha line
+    ]
+
+    print(f"{'Observable (Hz)':<18} {'Seed':<10} {'Recovered':<10} {'Closure':<10} {'Status'}")
+    print("-" * 80)
+
+    closure_distances = []
+    perfect_count = 0
+
+    for freq in observables:
+        # Convert observable to seed
+        seed = observable_to_seed(freq)
+
+        # Convert seed to OffBit
+        original = seed_to_observable(seed)
+
+        # Observe (forward)
+        sig = observe_offbit(original, block_size=6, rotate_by=5)
+
+        # Reconstruct (backward)
+        reconstructed = reconstruct_from_signature(sig, known_rotate_by=5)
+        recovered_seed = int(reconstructed.value)
+
+        # **FIX APPLIED**: Using closure_distance instead of nrci
+        distance = closure_distance(original, reconstructed)
+
+        # Status
+        status = "✓ PERFECT" if distance == 0 else "~ CLOSE" if distance < 100 else "✗ DRIFT"
+        if distance == 0:
+            perfect_count += 1
+
+        closure_distances.append(distance)
+
+        print(f"{freq:<18.2e} {seed:<10} {recovered_seed:<10} {distance:<10} {status}")
+
+    print("-" * 80)
+    print(f"\nResults Summary:")
+    print(f"  Perfect closures: {perfect_count}/{len(observables)}")
+    print(f"  Mean distance: {sum(closure_distances)/len(closure_distances):.2f}")
+    print(f"  Max distance: {max(closure_distances)}")
+    print(f"  Min distance: {min(closure_distances)}")
+
+    if perfect_count == len(observables):
+        print("\n✓ ALL OBSERVABLES ACHIEVED PERFECT CLOSURE")
+        print("  The 24-bit system maintains complete information fidelity.")
+    else:
+        print(f"\n~ {perfect_count}/{len(observables)} achieved perfect closure")
+        print("  Some information drift detected - consider refining parameters.")
+
+    print()
+    print("=" * 80)
+
+if __name__ == "__main__":
+    main()

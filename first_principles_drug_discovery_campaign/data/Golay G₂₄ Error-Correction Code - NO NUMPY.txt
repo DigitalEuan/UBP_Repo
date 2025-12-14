@@ -1,0 +1,375 @@
+# @title 1) Golay G₂₄ Error-Correction Code - NO NUMPY
+"""
+Golay G₂₄ Error-Correction Code
+The Universal Binary Principle (UBP) — First-Principles Implementation
+Author: Euan R A Craig, New Zealand
+Date: 11 December 2025
+Complete implementation of the binary Golay [24,12,8] perfect code
+The Golay code is connected to the Leech lattice
+- Leech lattice Λ₂₄, optimal in 24 dimensions, can be constructed using Golay G₂₄
+- Both have deep connections to the Monster group
+- Perfect error correction, corrects up to 3 errors
+- Golay G₂₄ and Leech lattice Λ₂₄ are a match for the UBP 24bit implementation
+
+"""
+
+# numpy removed - using pure python helper functions for matrix operations
+from typing import Tuple, List, Optional
+import random
+# Import the pure Python matrix helper functions defined in the previous cell
+# These functions are assumed to be available in the execution environment.
+
+# GOLAY G₂₄ GENERATOR AND PARITY-CHECK MATRICES
+
+# Generator matrix G in standard form [I₁₂ | A]
+# where A is the 12×12 matrix derived from the Golay construction
+
+# The 12×12 matrix A for Golay G₂₄ (using hexacode construction)
+A_MATRIX = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1],
+    [1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1],
+    [1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1],
+    [1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1],
+    [1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+    [1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1],
+    [1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1]
+]
+
+# Generator matrix G = [I₁₂ | A]
+I_12 = identity_matrix(12)
+G_MATRIX = hstack_matrices(I_12, A_MATRIX)
+
+# Parity-check matrix H = [A^T | I₁₂]
+H_MATRIX = hstack_matrices(get_matrix_transpose(A_MATRIX), I_12)
+
+# Verify G × H^T = 0 (mod 2)
+assert are_matrices_equal_binary(matrix_multiply_binary(G_MATRIX, get_matrix_transpose(H_MATRIX)), [[0]*12]*12), "G \u00d7 H^T must be zero"
+
+print("Golay G₂₄ matrices initialized:")
+print(f"  Generator matrix G: ({len(G_MATRIX)}, {len(G_MATRIX[0])})")
+print(f"  Parity-check matrix H: ({len(H_MATRIX)}, {len(H_MATRIX[0])})")
+print(f"  Verification: G \u00d7 H^T = 0 (mod 2) \u2713")
+
+# SYNDROME TABLE
+
+def build_syndrome_table() -> dict:
+    """
+    Build syndrome lookup table.
+
+    Returns:
+        Dictionary {syndrome_tuple: error_pattern_list}
+    """
+    syndrome_table = {}
+
+    # Error patterns with weight \u2264 3
+    n = 24
+
+    # Weight 0 (no errors)
+    e = [0] * n
+    # For H_MATRIX (12x24) @ e (24x1 column vector) -> result (12x1)
+    syndrome_matrix = matrix_multiply_binary(H_MATRIX, [[bit] for bit in e])
+    syndrome = tuple([row[0] for row in syndrome_matrix]) # Extract 1D syndrome from 12x1 matrix
+    syndrome_table[syndrome] = list(e)
+
+    # Weight 1 (single-bit errors)
+    for i in range(n):
+        e = [0] * n
+        e[i] = 1
+        syndrome_matrix = matrix_multiply_binary(H_MATRIX, [[bit] for bit in e])
+        syndrome = tuple([row[0] for row in syndrome_matrix])
+        syndrome_table[syndrome] = list(e)
+
+    # Weight 2 (two-bit errors)
+    for i in range(n):
+        for j in range(i+1, n):
+            e = [0] * n
+            e[i] = 1
+            e[j] = 1
+            syndrome_matrix = matrix_multiply_binary(H_MATRIX, [[bit] for bit in e])
+            syndrome = tuple([row[0] for row in syndrome_matrix])
+            if syndrome not in syndrome_table:
+                syndrome_table[syndrome] = list(e)
+
+    # Weight 3 (three-bit errors)
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                e = [0] * n
+                e[i] = 1
+                e[j] = 1
+                e[k] = 1
+                syndrome_matrix = matrix_multiply_binary(H_MATRIX, [[bit] for bit in e])
+                syndrome = tuple([row[0] for row in syndrome_matrix])
+                if syndrome not in syndrome_table:
+                    syndrome_table[syndrome] = list(e)
+
+    return syndrome_table
+
+print("\nBuilding syndrome table...")
+SYNDROME_TABLE = build_syndrome_table()
+print(f"  Syndrome table size: {len(SYNDROME_TABLE)} entries")
+print(f"  Coverage: up to 3-error patterns")
+
+# ENCODING AND DECODING FUNCTIONS
+
+def encode(message: List[int]) -> List[int]:
+    """
+    Encode a 12-bit message into a 24-bit Golay codeword
+
+    Args:
+        message: 12-bit binary list
+
+    Returns:
+        24-bit codeword list
+    """
+    assert len(message) == 12, "Message must be 12 bits"
+    # For message (1x12 row vector) @ G_MATRIX (12x24) -> result (1x24)
+    codeword = matrix_multiply_binary([message], G_MATRIX)[0] # Extract 1D codeword from 1x24 matrix
+    return codeword
+
+def decode(received: List[int]) -> Tuple[List[int], int, bool]:
+    """
+    Decode a received 24-bit word, correcting up to 3 errors
+
+    Args:
+        received: 24-bit received word (possibly with errors)
+
+    Returns:
+        (decoded_message, num_errors_corrected, success)
+    """
+    assert len(received) == 24, "Received word must be 24 bits"
+
+    # Compute syndrome
+    # For H_MATRIX (12x24) @ received (24x1 column vector) -> result (12x1)
+    syndrome_matrix = matrix_multiply_binary(H_MATRIX, [[bit] for bit in received])
+    syndrome_tuple = tuple([row[0] for row in syndrome_matrix]) # Extract 1D syndrome from 12x1 matrix
+
+    # Look up error pattern
+    if syndrome_tuple in SYNDROME_TABLE:
+        error_pattern = SYNDROME_TABLE[syndrome_tuple]
+        corrected = [(r + e) % 2 for r, e in zip(received, error_pattern)]
+        num_errors = sum(error_pattern)
+
+        # Extract message (first 12 bits in standard form)
+        decoded_message = corrected[:12]
+
+        return decoded_message, num_errors, True
+    else:
+        # More than 3 errors - cannot correct
+        # Return received word as-is (best effort)
+        decoded_message = received[:12]
+        return decoded_message, -1, False
+
+def inject_errors(codeword: List[int], num_errors: int) -> List[int]:
+    """
+    Inject random errors into a codeword for testing.
+
+    Args:
+        codeword: 24-bit codeword
+        num_errors: Number of random bit flips
+
+    Returns:
+        Corrupted codeword
+    """
+    assert len(codeword) == 24, "Codeword must be 24 bits"
+    assert 0 <= num_errors <= 24, "Invalid number of errors"
+
+    corrupted = list(codeword) # Create a copy
+    error_positions = random.sample(range(24), num_errors)
+
+    for pos in error_positions:
+        corrupted[pos] = 1 - corrupted[pos]
+
+    return corrupted
+
+# COHERENCE STATE INTEGRATION
+
+def float_to_bits(value: float, num_bits: int = 12) -> List[int]:
+    """
+    Convert a float to a binary representation
+
+    Uses a simple quantization scheme:
+    - Map value to [0, 2^num_bits - 1]
+    - Convert to binary
+
+    Args:
+        value: Float value to encode
+        num_bits: Number of bits (default: 12 for Golay)
+
+    Returns:
+        Binary list
+    """
+    # Normalize to [0, 1]
+    normalized = (value - int(value))  # Fractional part
+    if normalized < 0:
+        normalized += 1.0
+
+    # Quantize to integer
+    max_val = (1 << num_bits) - 1
+    quantized = int(normalized * max_val)
+
+    # Convert to binary
+    bits = [int(b) for b in format(quantized, f'0{num_bits}b')]
+
+    return bits
+
+def bits_to_float(bits: List[int]) -> float:
+    """
+    Convert binary representation back to float
+
+    Args:
+        bits: Binary list
+
+    Returns:
+        Float value (fractional part only)
+    """
+    num_bits = len(bits)
+    max_val = (1 << num_bits) - 1
+
+    # Convert binary to integer
+    quantized = int(''.join(str(b) for b in bits), 2)
+
+    # Denormalize
+    value = quantized / max_val
+
+    return value
+
+# HIGH-LEVEL API
+
+class GolayCodeword:
+    """Represents a Golay G₂₄ codeword."""
+
+    def __init__(self, bits: List[int]) -> None:
+        assert len(bits) == 24, "Golay codeword must be 24 bits"
+        self.bits = bits
+
+    def __repr__(self) -> str:
+        bit_str = ''.join(str(b) for b in self.bits)
+        return f"GolayCodeword({bit_str[:12]}|{bit_str[12:]})"
+
+    def hamming_weight(self) -> int:
+        """Return the Hamming weight (number of 1s)."""
+        return sum(self.bits)
+
+    def hamming_distance(self, other: 'GolayCodeword') -> int:
+        """Compute Hamming distance to another codeword."""
+        return sum(1 for b1, b2 in zip(self.bits, other.bits) if b1 != b2)
+
+def encode_value(value: float) -> GolayCodeword:
+    """
+    Encode a float value into a Golay codeword.
+
+    Args:
+        value: Float value to encode
+
+    Returns:
+        GolayCodeword
+    """
+    message_bits = float_to_bits(value, num_bits=12)
+    codeword_bits = encode(message_bits)
+    return GolayCodeword(codeword_bits)
+
+def decode_value(codeword: GolayCodeword) -> Tuple[float, int, bool]:
+    """
+    Decode a Golay codeword back to a float value.
+
+    Args:
+        codeword: GolayCodeword to decode
+
+    Returns:
+        (decoded_value, num_errors_corrected, success)
+    """
+    message_bits, num_errors, success = decode(codeword.bits)
+    value = bits_to_float(message_bits)
+    return value, num_errors, success
+
+# TESTING
+
+if __name__ == "__main__":
+    print("\n" + "="*60)
+    print("GOLAY G₂₄ ERROR-CORRECTION TESTS")
+    print("="*60)
+
+    # Test 1: Basic encoding/decoding
+    print("\nTest 1: Basic encoding/decoding")
+    test_value = 0.123456789
+    print(f"  Original value: {test_value:.9f}")
+
+    encoded = encode_value(test_value)
+    print(f"  Encoded: {encoded}")
+    print(f"  Hamming weight: {encoded.hamming_weight()}")
+
+    decoded_value, num_errors, success = decode_value(encoded)
+    print(f"  Decoded value: {decoded_value:.9f}")
+    print(f"  Errors corrected: {num_errors}")
+    print(f"  Success: {success}")
+    print(f"  Roundtrip error: {abs(decoded_value - test_value):.2e}")
+
+    # Test 2: 1-error correction
+    print("\nTest 2: 1-error correction")
+    corrupted_1 = GolayCodeword(inject_errors(encoded.bits, 1))
+    print(f"  Corrupted (1 error): {corrupted_1}")
+    print(f"  Hamming distance: {encoded.hamming_distance(corrupted_1)}")
+
+    decoded_value, num_errors, success = decode_value(corrupted_1)
+    print(f"  Decoded value: {decoded_value:.9f}")
+    print(f"  Errors corrected: {num_errors}")
+    print(f"  Success: {success} \u2713")
+
+    # Test 3: 2-error correction
+    print("\nTest 3: 2-error correction")
+    corrupted_2 = GolayCodeword(inject_errors(encoded.bits, 2))
+    print(f"  Corrupted (2 errors): {corrupted_2}")
+    print(f"  Hamming distance: {encoded.hamming_distance(corrupted_2)}")
+
+    decoded_value, num_errors, success = decode_value(corrupted_2)
+    print(f"  Decoded value: {decoded_value:.9f}")
+    print(f"  Errors corrected: {num_errors}")
+    print(f"  Success: {success} \u2713")
+
+    # Test 3: 3-error correction
+    print("\nTest 4: 3-error correction")
+    corrupted_3 = GolayCodeword(inject_errors(encoded.bits, 3))
+    print(f"  Corrupted (3 errors): {corrupted_3}")
+    print(f"  Hamming distance: {encoded.hamming_distance(corrupted_3)}")
+
+    decoded_value, num_errors, success = decode_value(corrupted_3)
+    print(f"  Decoded value: {decoded_value:.9f}")
+    print(f"  Errors corrected: {num_errors}")
+    print(f"  Success: {success} \u2713")
+
+    # Test 5: 4-error detection (should fail to correct)
+    print("\nTest 5: 4-error detection (beyond correction capability)")
+    corrupted_4 = GolayCodeword(inject_errors(encoded.bits, 4))
+    print(f"  Corrupted (4 errors): {corrupted_4}")
+    print(f"  Hamming distance: {encoded.hamming_distance(corrupted_4)}")
+
+    decoded_value, num_errors, success = decode_value(corrupted_4)
+    print(f"  Decoded value: {decoded_value:.9f}")
+    print(f"  Errors corrected: {num_errors}")
+    print(f"  Success: {success} (expected: False)")
+
+    # Test 6: Statistical test
+    print("\nTest 6: Statistical error correction (100 trials)")
+    successes = {1: 0, 2: 0, 3: 0, 4: 0}
+    trials = 100
+
+    for _ in range(trials):
+        for num_err in [1, 2, 3, 4]:
+            corrupted = GolayCodeword(inject_errors(encoded.bits, num_err))
+            _, _, success = decode_value(corrupted)
+            if success:
+                successes[num_err] += 1
+
+    for num_err in [1, 2, 3, 4]:
+        rate = successes[num_err] / trials * 100
+        print(f"  {num_err}-error correction: {successes[num_err]}/{trials} ({rate:.1f}%)")
+
+    print("\n" + "="*60)
+    print("Golay G₂₄ error-correction module ready! \u2713")
+    print("="*60)

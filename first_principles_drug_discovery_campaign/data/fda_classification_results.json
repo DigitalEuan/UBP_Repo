@@ -1,0 +1,1668 @@
+{
+  "metadata": {
+    "analysis_date": "2025-12-11T09:23:41.084722",
+    "total_candidates_classified": 50,
+    "classification_criteria": {
+      "class_i": {
+        "docking_distance": 2,
+        "syndrome_weight": 3,
+        "name": "Class I - Breakthrough Therapy Designation",
+        "description": "High complementarity and high structural stability"
+      },
+      "class_ii": {
+        "docking_distance": 3,
+        "syndrome_weight": 4,
+        "name": "Class II - Priority Review",
+        "description": "Good complementarity and structural stability"
+      },
+      "class_iii": {
+        "name": "Class III - Standard Review",
+        "description": "Standard candidates meeting basic safety criteria"
+      }
+    },
+    "source_analysis": "/app/sandbox/session_20251211_141515_ba86f641fd8f/workflow/analysis_results.json",
+    "target_info": {
+      "target_chembl_id": null,
+      "toxicity_mask": null
+    }
+  },
+  "classifications": {
+    "Class I": [],
+    "Class II": [
+      {
+        "chembl_id": "CHEMBL610759",
+        "smiles": "CN1C/C(=C\\c2ccccc2Cl)C(=O)[C@]2(C1)[C@H](c1ccccc1Cl)[C@@H]1CSCN1[C@@]21C(=O)Nc2ccc([N+](=O)[O-])cc21",
+        "seed": 8388606,
+        "seed_hex": "0x7FFFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 2,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777167,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 1
+      },
+      {
+        "chembl_id": "CHEMBL1208835",
+        "smiles": "C[C@@H](Oc1cc(-n2cnc3cc(-c4ccnc(N)c4)ccc32)sc1C(N)=O)c1ccccc1C(F)(F)F",
+        "seed": 8388606,
+        "seed_hex": "0x7FFFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 2,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777167,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 2
+      },
+      {
+        "chembl_id": "CHEMBL3309646",
+        "smiles": "COc1ccc(OC)c(C2C3=C(COC3=O)Nc3c2c2cccnc2c2ncccc32)c1",
+        "seed": 8388606,
+        "seed_hex": "0x7FFFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 2,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777167,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 3
+      },
+      {
+        "chembl_id": "CHEMBL532261",
+        "smiles": "COc1ccc2c(=NN=Cc3ccc(OC)c4ccccc34)cc(C)[nH]c2c1",
+        "seed": 8384510,
+        "seed_hex": "0x7FEFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 3,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 16646095,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 4
+      },
+      {
+        "chembl_id": "CHEMBL3311094",
+        "smiles": "COc1cc(/C=C/c2nnc(NC(=O)c3cccc(F)c3)s2)c(Br)c(OC)c1OC",
+        "seed": 8387582,
+        "seed_hex": "0x7FFBFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 3,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            5,
+            5
+          ],
+          "rotated_hash": 16744399,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 5
+      },
+      {
+        "chembl_id": "CHEMBL12724",
+        "smiles": "COc1ccc(OC)c(/C=N/N=C(\\N)NO)c1.Cc1ccc(S(=O)(=O)O)cc1",
+        "seed": 8126462,
+        "seed_hex": "0x7BFFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 3,
+        "signature": {
+          "block_counts": [
+            4,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 8388559,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 6
+      },
+      {
+        "chembl_id": "CHEMBL9309",
+        "smiles": "COc1ccc(N)c(C(=O)c2cc(OC)c(OC)c(OC)c2)c1",
+        "seed": 8388574,
+        "seed_hex": "0x7FFFDE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 3,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            4
+          ],
+          "rotated_hash": 16776143,
+          "parity_vector": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class II",
+        "rank": 7
+      }
+    ],
+    "Class III": [
+      {
+        "chembl_id": "CHEMBL444434",
+        "smiles": "CC(=O)O[C@H]1c2c(ccc3ccc(=O)oc23)OC(C)(C)[C@H]1OC(C)=O",
+        "seed": 3670014,
+        "seed_hex": "0x37FFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            3,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777158,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 8
+      },
+      {
+        "chembl_id": "CHEMBL6427",
+        "smiles": "Brc1ccc2[nH]c3c(c2c1)CCNC3",
+        "seed": 8380398,
+        "seed_hex": "0x7FDFEE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            4
+          ],
+          "rotated_hash": 16514511,
+          "parity_vector": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 9
+      },
+      {
+        "chembl_id": "CHEMBL6580",
+        "smiles": "CN1C(=O)C2(OCCO2)c2ccccc21",
+        "seed": 6029310,
+        "seed_hex": "0x5BFFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            3,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 8388555,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 10
+      },
+      {
+        "chembl_id": "CHEMBL9903",
+        "smiles": "C[C@@H]1CC[C@H]2[C@@H](C)C(=O)O[C@@H]3O[C@@]4(C)CC[C@@H]1C32OO4",
+        "seed": 8355582,
+        "seed_hex": "0x7F7EFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 15720399,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 11
+      },
+      {
+        "chembl_id": "CHEMBL9957",
+        "smiles": "c1cncc(O[C@H]2CCNC2)c1",
+        "seed": 8122366,
+        "seed_hex": "0x7BEFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            4,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 8257487,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 12
+      },
+      {
+        "chembl_id": "CHEMBL10260",
+        "smiles": "c1cncc(O[C@@H]2CCNC2)c1",
+        "seed": 8122366,
+        "seed_hex": "0x7BEFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            4,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 8257487,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 13
+      },
+      {
+        "chembl_id": "CHEMBL77",
+        "smiles": "C[C@@H]1CC[C@H]2[C@@H](C)C(=O)O[C@@H]3O[C@]4(C)CC[C@@H]1C32OO4",
+        "seed": 8355582,
+        "seed_hex": "0x7F7EFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 15720399,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 14
+      },
+      {
+        "chembl_id": "CHEMBL1077021",
+        "smiles": "C[C@H]1CC[C@H]2[C@@H](C=C[C@@H]3COC(=O)[C@@]32C)C1",
+        "seed": 4193790,
+        "seed_hex": "0x3FFDFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            4,
+            6,
+            5,
+            5
+          ],
+          "rotated_hash": 16760775,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 15
+      },
+      {
+        "chembl_id": "CHEMBL8103",
+        "smiles": "COc1ccc(C(NC(=O)c2ccccc2)c2ccc(C(C)C)cc(=O)c2O)cc1",
+        "seed": 8257526,
+        "seed_hex": "0x7DFFF6",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            4
+          ],
+          "rotated_hash": 12582607,
+          "parity_vector": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 16
+      },
+      {
+        "chembl_id": "CHEMBL9011",
+        "smiles": "COc1ccc(C(=O)c2cc(OC)c(OC)c(OC)c2)c(N)c1",
+        "seed": 8388446,
+        "seed_hex": "0x7FFF5E",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            5,
+            4
+          ],
+          "rotated_hash": 16772047,
+          "parity_vector": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 17
+      },
+      {
+        "chembl_id": "CHEMBL8831",
+        "smiles": "C=C1C(=O)OC2CC3(C)CCCC(C)C3=CC12",
+        "seed": 4063230,
+        "seed_hex": "0x3DFFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            4,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 12582855,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 18
+      },
+      {
+        "chembl_id": "CHEMBL9157",
+        "smiles": "COc1ccc(C2=C(C)C(=O)NC2)cc1OC",
+        "seed": 5767166,
+        "seed_hex": "0x57FFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            3,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777162,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 19
+      },
+      {
+        "chembl_id": "CHEMBL9926",
+        "smiles": "COc1cc(C(=O)/C(C)=C/c2ccc3c(c2)OCCO3)cc(OC)c1OC",
+        "seed": 8383486,
+        "seed_hex": "0x7FEBFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 16613327,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 20
+      },
+      {
+        "chembl_id": "CHEMBL10323",
+        "smiles": "C=Cc1cncc(O[C@@H]2CCNC2)c1",
+        "seed": 8355326,
+        "seed_hex": "0x7F7DFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 15712207,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 21
+      },
+      {
+        "chembl_id": "CHEMBL3310174",
+        "smiles": "COc1cc(-n2nnc3c(sc4ccccc43)c2=O)cc(OC)c1OC",
+        "seed": 8256510,
+        "seed_hex": "0x7DFBFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 12550095,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 22
+      },
+      {
+        "chembl_id": "CHEMBL12316",
+        "smiles": "CC1(C)CCC(C)(C)c2cc(C3(C)OC3c3ccc(C(=O)O)cc3)ccc21",
+        "seed": 8384254,
+        "seed_hex": "0x7FEEFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 16637903,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 23
+      },
+      {
+        "chembl_id": "CHEMBL524",
+        "smiles": "COc1ccc(OC)c(C(O)C(C)N)c1",
+        "seed": 8388474,
+        "seed_hex": "0x7FFF7A",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            5,
+            4
+          ],
+          "rotated_hash": 16772943,
+          "parity_vector": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 24
+      },
+      {
+        "chembl_id": "CHEMBL12976",
+        "smiles": "CC1(C)CCSc2ccc(/N=N/c3ccc(C(=O)O)cc3)cc21",
+        "seed": 7733246,
+        "seed_hex": "0x75FFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 4,
+        "signature": {
+          "block_counts": [
+            4,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 12582862,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 25
+      },
+      {
+        "chembl_id": "CHEMBL558744",
+        "smiles": "Cc1cc(C=C2C(=O)NC(=S)NC2=O)c(C)n1-c1cc(C(=O)O)cc(C(=O)O)c1",
+        "seed": 8383982,
+        "seed_hex": "0x7FEDEE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            4
+          ],
+          "rotated_hash": 16629199,
+          "parity_vector": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 26
+      },
+      {
+        "chembl_id": "CHEMBL1170659",
+        "smiles": "Cc1ccc2c(c1)[nH]c1ccc(C(F)(F)F)cc12",
+        "seed": 8257524,
+        "seed_hex": "0x7DFFF4",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            3
+          ],
+          "rotated_hash": 12582543,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 27
+      },
+      {
+        "chembl_id": "CHEMBL6586",
+        "smiles": "COc1cccc2[nH]c3c(c12)CCNC3",
+        "seed": 7077882,
+        "seed_hex": "0x6BFFFA",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            3,
+            6,
+            6,
+            4
+          ],
+          "rotated_hash": 8388429,
+          "parity_vector": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 28
+      },
+      {
+        "chembl_id": "CHEMBL6239",
+        "smiles": "CC(=O)c1ccc(-n2ncc(=O)[nH]c2=O)cc1Cl",
+        "seed": 8387570,
+        "seed_hex": "0x7FFBF2",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            5,
+            3
+          ],
+          "rotated_hash": 16744015,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 29
+      },
+      {
+        "chembl_id": "CHEMBL6310",
+        "smiles": "COc1ccc2c3c([nH]c2c1)CNCC3",
+        "seed": 8384366,
+        "seed_hex": "0x7FEF6E",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            4
+          ],
+          "rotated_hash": 16641487,
+          "parity_vector": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 30
+      },
+      {
+        "chembl_id": "CHEMBL3309948",
+        "smiles": "CN(C)c1ccc(/C=C2\\CNC/C(=C\\c3ccc(N(C)C)cc3[N+](=O)[O-])C2=O)c([N+](=O)[O-])c1",
+        "seed": 8354558,
+        "seed_hex": "0x7F7AFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            4,
+            5
+          ],
+          "rotated_hash": 15687631,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 31
+      },
+      {
+        "chembl_id": "CHEMBL7338",
+        "smiles": "COc1ccc2[nH]c(C(=O)c3cc4cc(OC)ccc4[nH]3)cc2c1",
+        "seed": 8257514,
+        "seed_hex": "0x7DFFEA",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            3
+          ],
+          "rotated_hash": 12582223,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 32
+      },
+      {
+        "chembl_id": "CHEMBL9652",
+        "smiles": "COc1ccc(OC)c(C(=O)/C(C)=C/c2ccc(N(C)C)cc2)c1",
+        "seed": 7864282,
+        "seed_hex": "0x77FFDA",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            4,
+            6,
+            6,
+            3
+          ],
+          "rotated_hash": 16776014,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 33
+      },
+      {
+        "chembl_id": "CHEMBL12238",
+        "smiles": "COc1ccc(-c2[nH]c(C)c(-c3ccc(F)cc3)c2-c2ccc(OC)cc2)cc1",
+        "seed": 3923966,
+        "seed_hex": "0x3BDFFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            3,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 8126407,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 34
+      },
+      {
+        "chembl_id": "CHEMBL12436",
+        "smiles": "CC(C)c1cccc(/N=N/c2ccc(C(=O)O)cc2)c1",
+        "seed": 8257524,
+        "seed_hex": "0x7DFFF4",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            3
+          ],
+          "rotated_hash": 12582543,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 35
+      },
+      {
+        "chembl_id": "CHEMBL12723",
+        "smiles": "COc1ccc(OC)c2c1C1CC(N=C(N)N)C2O1.O=[N+]([O-])O",
+        "seed": 6028286,
+        "seed_hex": "0x5BFBFE",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            3,
+            6,
+            5,
+            5
+          ],
+          "rotated_hash": 8355787,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 36
+      },
+      {
+        "chembl_id": "CHEMBL12952",
+        "smiles": "COc1ccc2cc(C(C)C(=O)O)ccc2c1",
+        "seed": 7733118,
+        "seed_hex": "0x75FF7E",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            4,
+            5,
+            5,
+            5
+          ],
+          "rotated_hash": 12578766,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 37
+      },
+      {
+        "chembl_id": "CHEMBL12816",
+        "smiles": "O=C(O)c1ccc2c(c1)Nc1ccccc1O2",
+        "seed": 8384498,
+        "seed_hex": "0x7FEFF2",
+        "syndrome_weight": 3,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            3
+          ],
+          "rotated_hash": 16645711,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 38
+      },
+      {
+        "chembl_id": "CHEMBL503474",
+        "smiles": "O=C1CCCCCC1S(=O)(=O)c1cc(C(F)(F)F)cc(C(F)(F)F)c1",
+        "seed": 8335358,
+        "seed_hex": "0x7F2FFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            3,
+            6,
+            5
+          ],
+          "rotated_hash": 15073231,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 39
+      },
+      {
+        "chembl_id": "CHEMBL6320",
+        "smiles": "Cc1ccc([S+]([O-])c2cncc3sc(C(N)=O)cc23)cc1",
+        "seed": 8256382,
+        "seed_hex": "0x7DFB7E",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            4,
+            5
+          ],
+          "rotated_hash": 12545999,
+          "parity_vector": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 40
+      },
+      {
+        "chembl_id": "CHEMBL6849",
+        "smiles": "NS(=O)(=O)c1cc(C(=O)NN2Cc3ccccc3C2C(=O)O)ccc1Cl",
+        "seed": 8388442,
+        "seed_hex": "0x7FFF5A",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            5,
+            3
+          ],
+          "rotated_hash": 16771919,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 41
+      },
+      {
+        "chembl_id": "CHEMBL3311078",
+        "smiles": "CC(Oc1ccccc1)c1nn2c(-c3ccco3)nnc2s1",
+        "seed": 7860220,
+        "seed_hex": "0x77EFFC",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            4,
+            5,
+            6,
+            4
+          ],
+          "rotated_hash": 16646030,
+          "parity_vector": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 42
+      },
+      {
+        "chembl_id": "CHEMBL4303145",
+        "smiles": "Oc1ccc(OC2CCCCO2)cc1",
+        "seed": 7303166,
+        "seed_hex": "0x6F6FFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            4,
+            4,
+            6,
+            5
+          ],
+          "rotated_hash": 15597517,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 43
+      },
+      {
+        "chembl_id": "CHEMBL8443",
+        "smiles": "COc1cc2c[n+](C)c3c4cc5c(cc4ccc3c2cc1OC)OCO5.[Cl-]",
+        "seed": 5767150,
+        "seed_hex": "0x57FFEE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            3,
+            6,
+            6,
+            4
+          ],
+          "rotated_hash": 16776650,
+          "parity_vector": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 44
+      },
+      {
+        "chembl_id": "CHEMBL9170",
+        "smiles": "CC1=C(c2ccc(-n3ccnc3C)cc2)CNC1=O",
+        "seed": 7864058,
+        "seed_hex": "0x77FEFA",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            4,
+            6,
+            5,
+            4
+          ],
+          "rotated_hash": 16768846,
+          "parity_vector": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 45
+      },
+      {
+        "chembl_id": "CHEMBL10351",
+        "smiles": "c1cncc(OC2CNC2)c1",
+        "seed": 4173822,
+        "seed_hex": "0x3FAFFE",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            4,
+            4,
+            6,
+            5
+          ],
+          "rotated_hash": 16121799,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 46
+      },
+      {
+        "chembl_id": "CHEMBL12749",
+        "smiles": "CC1(C)CCC(C)(C)c2cc(/N=[N+](\\[O-])c3ccc(C(=O)O)cc3)ccc21",
+        "seed": 8388206,
+        "seed_hex": "0x7FFE6E",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            6,
+            4,
+            4
+          ],
+          "rotated_hash": 16764367,
+          "parity_vector": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 47
+      },
+      {
+        "chembl_id": "CHEMBL13038",
+        "smiles": "CC(C)c1ccc(/N=N/c2ccc(C(=O)O)cc2)c(C(C)C)c1",
+        "seed": 8257270,
+        "seed_hex": "0x7DFEF6",
+        "syndrome_weight": 4,
+        "syndrome_correctable": false,
+        "is_toxic": false,
+        "docking_distance": 5,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            4
+          ],
+          "rotated_hash": 12574415,
+          "parity_vector": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 48
+      },
+      {
+        "chembl_id": "CHEMBL8182",
+        "smiles": "CC1(C(=O)O)C2CCC(O2)C1C(=O)O",
+        "seed": 8252862,
+        "seed_hex": "0x7DEDBE",
+        "syndrome_weight": 2,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 6,
+        "signature": {
+          "block_counts": [
+            5,
+            4,
+            4,
+            5
+          ],
+          "rotated_hash": 12433359,
+          "parity_vector": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 49
+      },
+      {
+        "chembl_id": "CHEMBL9942",
+        "smiles": "CC(C)N(C)/N=N/c1ccc(C(=O)O)cc1",
+        "seed": 8257396,
+        "seed_hex": "0x7DFF74",
+        "syndrome_weight": 2,
+        "syndrome_correctable": true,
+        "is_toxic": false,
+        "docking_distance": 6,
+        "signature": {
+          "block_counts": [
+            5,
+            5,
+            5,
+            3
+          ],
+          "rotated_hash": 12578447,
+          "parity_vector": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        "fda_classification": "Class III",
+        "rank": 50
+      }
+    ]
+  },
+  "top_5_submission_packages": [
+    {
+      "submission_id": "UBP-CHEMBL610759-20251211",
+      "rank": 1,
+      "candidate_identification": {
+        "chembl_id": "CHEMBL610759",
+        "hex_seed": "0x7FFFFE",
+        "decimal_seed": 8388606,
+        "smiles": "CN1C/C(=C\\c2ccccc2Cl)C(=O)[C@]2(C1)[C@H](c1ccccc1Cl)[C@@H]1CSCN1[C@@]21C(=O)Nc2ccc([N+](=O)[O-])cc21"
+      },
+      "mechanism_of_action": {
+        "primary_mechanism": "Informational Complementarity via Hamming Resonance",
+        "theoretical_basis": "Universal Binary Proteomics (UBP) First Principles",
+        "description": "Candidate demonstrates complementary information-theoretic patterns with target protein structure, suggesting potential for selective molecular recognition."
+      },
+      "efficacy_profile": {
+        "docking_distance": 2,
+        "docking_interpretation": "Hamming distance from target (lower = better complementarity)",
+        "syndrome_weight": 4,
+        "syndrome_interpretation": "Error-correction weight (lower = higher structural stability)",
+        "syndrome_correctable": false
+      },
+      "safety_profile": {
+        "toxicity_status": "PASS - Non-toxic",
+        "screening_method": "Bit-Mask Toxicity Screen",
+        "toxicity_mask": "0x800001",
+        "toxicity_details": "Candidate passed informational toxicity filters based on structural bit patterns"
+      },
+      "chemical_structure": {
+        "smiles": "CN1C/C(=C\\c2ccccc2Cl)C(=O)[C@]2(C1)[C@H](c1ccccc1Cl)[C@@H]1CSCN1[C@@]21C(=O)Nc2ccc([N+](=O)[O-])cc21",
+        "molecular_signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777167,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "regulatory_classification": {
+        "fda_class": "Class II",
+        "classification_basis": "Docking Distance \u2264 2, Syndrome Weight \u2264 4"
+      },
+      "metadata": {
+        "analysis_date": "2025-12-11T09:23:41.084684",
+        "methodology": "UBP First Principles Analysis",
+        "data_source": "ChEMBL Database",
+        "analysis_version": "1.0"
+      }
+    },
+    {
+      "submission_id": "UBP-CHEMBL1208835-20251211",
+      "rank": 2,
+      "candidate_identification": {
+        "chembl_id": "CHEMBL1208835",
+        "hex_seed": "0x7FFFFE",
+        "decimal_seed": 8388606,
+        "smiles": "C[C@@H](Oc1cc(-n2cnc3cc(-c4ccnc(N)c4)ccc32)sc1C(N)=O)c1ccccc1C(F)(F)F"
+      },
+      "mechanism_of_action": {
+        "primary_mechanism": "Informational Complementarity via Hamming Resonance",
+        "theoretical_basis": "Universal Binary Proteomics (UBP) First Principles",
+        "description": "Candidate demonstrates complementary information-theoretic patterns with target protein structure, suggesting potential for selective molecular recognition."
+      },
+      "efficacy_profile": {
+        "docking_distance": 2,
+        "docking_interpretation": "Hamming distance from target (lower = better complementarity)",
+        "syndrome_weight": 4,
+        "syndrome_interpretation": "Error-correction weight (lower = higher structural stability)",
+        "syndrome_correctable": false
+      },
+      "safety_profile": {
+        "toxicity_status": "PASS - Non-toxic",
+        "screening_method": "Bit-Mask Toxicity Screen",
+        "toxicity_mask": "0x800001",
+        "toxicity_details": "Candidate passed informational toxicity filters based on structural bit patterns"
+      },
+      "chemical_structure": {
+        "smiles": "C[C@@H](Oc1cc(-n2cnc3cc(-c4ccnc(N)c4)ccc32)sc1C(N)=O)c1ccccc1C(F)(F)F",
+        "molecular_signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777167,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "regulatory_classification": {
+        "fda_class": "Class II",
+        "classification_basis": "Docking Distance \u2264 2, Syndrome Weight \u2264 4"
+      },
+      "metadata": {
+        "analysis_date": "2025-12-11T09:23:41.084699",
+        "methodology": "UBP First Principles Analysis",
+        "data_source": "ChEMBL Database",
+        "analysis_version": "1.0"
+      }
+    },
+    {
+      "submission_id": "UBP-CHEMBL3309646-20251211",
+      "rank": 3,
+      "candidate_identification": {
+        "chembl_id": "CHEMBL3309646",
+        "hex_seed": "0x7FFFFE",
+        "decimal_seed": 8388606,
+        "smiles": "COc1ccc(OC)c(C2C3=C(COC3=O)Nc3c2c2cccnc2c2ncccc32)c1"
+      },
+      "mechanism_of_action": {
+        "primary_mechanism": "Informational Complementarity via Hamming Resonance",
+        "theoretical_basis": "Universal Binary Proteomics (UBP) First Principles",
+        "description": "Candidate demonstrates complementary information-theoretic patterns with target protein structure, suggesting potential for selective molecular recognition."
+      },
+      "efficacy_profile": {
+        "docking_distance": 2,
+        "docking_interpretation": "Hamming distance from target (lower = better complementarity)",
+        "syndrome_weight": 4,
+        "syndrome_interpretation": "Error-correction weight (lower = higher structural stability)",
+        "syndrome_correctable": false
+      },
+      "safety_profile": {
+        "toxicity_status": "PASS - Non-toxic",
+        "screening_method": "Bit-Mask Toxicity Screen",
+        "toxicity_mask": "0x800001",
+        "toxicity_details": "Candidate passed informational toxicity filters based on structural bit patterns"
+      },
+      "chemical_structure": {
+        "smiles": "COc1ccc(OC)c(C2C3=C(COC3=O)Nc3c2c2cccnc2c2ncccc32)c1",
+        "molecular_signature": {
+          "block_counts": [
+            5,
+            6,
+            6,
+            5
+          ],
+          "rotated_hash": 16777167,
+          "parity_vector": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "regulatory_classification": {
+        "fda_class": "Class II",
+        "classification_basis": "Docking Distance \u2264 2, Syndrome Weight \u2264 4"
+      },
+      "metadata": {
+        "analysis_date": "2025-12-11T09:23:41.084707",
+        "methodology": "UBP First Principles Analysis",
+        "data_source": "ChEMBL Database",
+        "analysis_version": "1.0"
+      }
+    },
+    {
+      "submission_id": "UBP-CHEMBL532261-20251211",
+      "rank": 4,
+      "candidate_identification": {
+        "chembl_id": "CHEMBL532261",
+        "hex_seed": "0x7FEFFE",
+        "decimal_seed": 8384510,
+        "smiles": "COc1ccc2c(=NN=Cc3ccc(OC)c4ccccc34)cc(C)[nH]c2c1"
+      },
+      "mechanism_of_action": {
+        "primary_mechanism": "Informational Complementarity via Hamming Resonance",
+        "theoretical_basis": "Universal Binary Proteomics (UBP) First Principles",
+        "description": "Candidate demonstrates complementary information-theoretic patterns with target protein structure, suggesting potential for selective molecular recognition."
+      },
+      "efficacy_profile": {
+        "docking_distance": 3,
+        "docking_interpretation": "Hamming distance from target (lower = better complementarity)",
+        "syndrome_weight": 3,
+        "syndrome_interpretation": "Error-correction weight (lower = higher structural stability)",
+        "syndrome_correctable": true
+      },
+      "safety_profile": {
+        "toxicity_status": "PASS - Non-toxic",
+        "screening_method": "Bit-Mask Toxicity Screen",
+        "toxicity_mask": "0x800001",
+        "toxicity_details": "Candidate passed informational toxicity filters based on structural bit patterns"
+      },
+      "chemical_structure": {
+        "smiles": "COc1ccc2c(=NN=Cc3ccc(OC)c4ccccc34)cc(C)[nH]c2c1",
+        "molecular_signature": {
+          "block_counts": [
+            5,
+            5,
+            6,
+            5
+          ],
+          "rotated_hash": 16646095,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      },
+      "regulatory_classification": {
+        "fda_class": "Class II",
+        "classification_basis": "Docking Distance \u2264 3, Syndrome Weight \u2264 3"
+      },
+      "metadata": {
+        "analysis_date": "2025-12-11T09:23:41.084713",
+        "methodology": "UBP First Principles Analysis",
+        "data_source": "ChEMBL Database",
+        "analysis_version": "1.0"
+      }
+    },
+    {
+      "submission_id": "UBP-CHEMBL3311094-20251211",
+      "rank": 5,
+      "candidate_identification": {
+        "chembl_id": "CHEMBL3311094",
+        "hex_seed": "0x7FFBFE",
+        "decimal_seed": 8387582,
+        "smiles": "COc1cc(/C=C/c2nnc(NC(=O)c3cccc(F)c3)s2)c(Br)c(OC)c1OC"
+      },
+      "mechanism_of_action": {
+        "primary_mechanism": "Informational Complementarity via Hamming Resonance",
+        "theoretical_basis": "Universal Binary Proteomics (UBP) First Principles",
+        "description": "Candidate demonstrates complementary information-theoretic patterns with target protein structure, suggesting potential for selective molecular recognition."
+      },
+      "efficacy_profile": {
+        "docking_distance": 3,
+        "docking_interpretation": "Hamming distance from target (lower = better complementarity)",
+        "syndrome_weight": 3,
+        "syndrome_interpretation": "Error-correction weight (lower = higher structural stability)",
+        "syndrome_correctable": true
+      },
+      "safety_profile": {
+        "toxicity_status": "PASS - Non-toxic",
+        "screening_method": "Bit-Mask Toxicity Screen",
+        "toxicity_mask": "0x800001",
+        "toxicity_details": "Candidate passed informational toxicity filters based on structural bit patterns"
+      },
+      "chemical_structure": {
+        "smiles": "COc1cc(/C=C/c2nnc(NC(=O)c3cccc(F)c3)s2)c(Br)c(OC)c1OC",
+        "molecular_signature": {
+          "block_counts": [
+            5,
+            6,
+            5,
+            5
+          ],
+          "rotated_hash": 16744399,
+          "parity_vector": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      },
+      "regulatory_classification": {
+        "fda_class": "Class II",
+        "classification_basis": "Docking Distance \u2264 3, Syndrome Weight \u2264 3"
+      },
+      "metadata": {
+        "analysis_date": "2025-12-11T09:23:41.084719",
+        "methodology": "UBP First Principles Analysis",
+        "data_source": "ChEMBL Database",
+        "analysis_version": "1.0"
+      }
+    }
+  ]
+}

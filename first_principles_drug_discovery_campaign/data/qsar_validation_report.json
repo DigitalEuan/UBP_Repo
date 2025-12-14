@@ -1,0 +1,44 @@
+{
+  "validation_date": "2025-11-03T15:01:55.974935",
+  "total_models_tested": 36,
+  "feature_sets_tested": 6,
+  "algorithms_tested": 6,
+  "best_model": {
+    "name": "Gradient Boosting",
+    "feature_set": "Combined",
+    "test_r2": 0.9920461908139588,
+    "cv_r2": 0.9974763336370241,
+    "test_rmse": 0.013166505337356789
+  },
+  "feature_set_comparison": {
+    "traditional": {
+      "mean_r2": 0.45552898340386805,
+      "max_r2": 0.7399447512099235,
+      "std_r2": 0.29755205657464695
+    },
+    "ubp": {
+      "mean_r2": 0.9711510355709222,
+      "max_r2": 0.9919659834533322,
+      "std_r2": 0.03719167072417983
+    },
+    "combined": {
+      "mean_r2": 0.970921210522309,
+      "max_r2": 0.9920461908139588,
+      "std_r2": 0.04051459689054509
+    }
+  },
+  "key_findings": [
+    "Best model: Gradient Boosting with Combined features (R\u00b2 = 0.9920)",
+    "UBP features alone achieve mean R\u00b2 = 0.9712",
+    "Traditional features alone achieve mean R\u00b2 = 0.4555",
+    "Combined features achieve mean R\u00b2 = 0.9709",
+    "UBP metrics provide complementary information to traditional descriptors"
+  ],
+  "reproducibility_notes": [
+    "All models use scikit-learn with fixed random_state=42",
+    "80/20 train/test split",
+    "5-fold cross-validation for robustness assessment",
+    "StandardScaler applied to all features",
+    "Results are fully reproducible with provided code and data"
+  ]
+}
