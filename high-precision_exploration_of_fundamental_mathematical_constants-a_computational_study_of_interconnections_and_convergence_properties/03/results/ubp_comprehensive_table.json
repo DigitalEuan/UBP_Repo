@@ -1,0 +1,96 @@
+[
+  {
+    "particle": "Muon",
+    "category": "Lepton",
+    "error_percent": 0.00202006208159894,
+    "formula": "(1/Y)^4 + \u230a1/Y\u230b",
+    "success": true
+  },
+  {
+    "particle": "Tau",
+    "category": "Lepton",
+    "error_percent": 220.7145087092162,
+    "formula": "[(1/Y)^4 + \u230a1/Y\u230b] \u00d7 Y \u00d7 (1/Y)^4",
+    "success": false
+  },
+  {
+    "particle": "Strange/Down",
+    "category": "Quark Ratio",
+    "error_percent": 0.8307532465107811,
+    "N": 2,
+    "delta": 1.4142135623730951,
+    "success": true
+  },
+  {
+    "particle": "Charm/Strange",
+    "category": "Quark Ratio",
+    "error_percent": 3.6415191268149156,
+    "N": 2,
+    "delta": 0.91903911,
+    "success": true
+  },
+  {
+    "particle": "Bottom/Charm",
+    "category": "Quark Ratio",
+    "error_percent": 0.5118121695433688,
+    "N": 1,
+    "delta": 0.8652559794322651,
+    "success": true
+  },
+  {
+    "particle": "Proton",
+    "category": "Baryon",
+    "error_percent": 0.11984487668065653,
+    "formula": "9 \u00d7 (1/Y)^4",
+    "success": true
+  },
+  {
+    "particle": "Neutron",
+    "category": "Baryon",
+    "error_percent": 0.11170780054774924,
+    "formula": "9 \u00d7 (1/Y)^4 \u00d7 1.00146",
+    "success": true
+  },
+  {
+    "particle": "Lambda",
+    "category": "Hyperon",
+    "error_percent": 0.042784161066505774,
+    "success": true
+  },
+  {
+    "particle": "Sigma",
+    "category": "Hyperon",
+    "error_percent": 0.06789087995577264,
+    "success": true
+  },
+  {
+    "particle": "Xi",
+    "category": "Hyperon",
+    "error_percent": 0.21700683067233695,
+    "success": true
+  },
+  {
+    "particle": "Omega",
+    "category": "Hyperon",
+    "error_percent": 0.25873667393539246,
+    "success": true
+  },
+  {
+    "particle": "alpha_em",
+    "category": "Coupling",
+    "error_percent": null,
+    "success": false
+  },
+  {
+    "particle": "alpha_s",
+    "category": "Coupling",
+    "error_percent": null,
+    "success": false
+  },
+  {
+    "particle": "weinberg",
+    "category": "Coupling",
+    "error_percent": null,
+    "success": false
+  }
+]

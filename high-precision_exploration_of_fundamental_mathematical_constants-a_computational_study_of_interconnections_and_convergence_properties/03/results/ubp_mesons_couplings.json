@@ -1,0 +1,81 @@
+{
+  "light_mesons": {
+    "pion": {
+      "predicted_mass": 1.4479969369058783,
+      "experimental_mass": 139.57039,
+      "error_percent": 98.96253285750232
+    },
+    "kaon": {
+      "predicted_mass": 8.768527640663454,
+      "experimental_mass": 493.677,
+      "error_percent": 98.22383306480482
+    },
+    "rho": {
+      "predicted_mass": 2.8959938738117565,
+      "experimental_mass": 775.26,
+      "error_percent": 99.62644869156001
+    },
+    "phi": {
+      "predicted_mass": 13.4106893327794,
+      "experimental_mass": 1019.461,
+      "error_percent": 98.68453140112477
+    }
+  },
+  "heavy_mesons": {
+    "D": {
+      "predicted_mass": 20.29958989362388,
+      "experimental_mass": 1869.65,
+      "error_percent": 98.91425721960667
+    },
+    "B": {
+      "predicted_mass": 221.2060448103765,
+      "experimental_mass": 5279.34,
+      "error_percent": 95.80996782153873
+    }
+  },
+  "hyperons": {
+    "lambda": {
+      "predicted_mass": 1115.2056643882884,
+      "experimental_mass": 1115.683,
+      "error_percent": 0.042784161066505774
+    },
+    "sigma": {
+      "predicted_mass": 1190.1774737589299,
+      "experimental_mass": 1189.37,
+      "error_percent": 0.06789087995577264
+    },
+    "xi": {
+      "predicted_mass": 1312.0066639862216,
+      "experimental_mass": 1314.86,
+      "error_percent": 0.21700683067233695
+    },
+    "omega": {
+      "predicted_mass": 1668.1227584967676,
+      "experimental_mass": 1672.45,
+      "error_percent": 0.25873667393539246
+    }
+  },
+  "fine_structure": {
+    "alpha_em": {
+      "experimental": 0.0072973525692838015,
+      "ubp_prediction": 0.0037233063824859405,
+      "error_percent": 48.97729899802054,
+      "formula": "1/[(1/Y) \u00d7 \u03c0 \u00d7 \u221a2 \u00d7 16]"
+    }
+  },
+  "strong_coupling": {
+    "alpha_s": {
+      "experimental": 0.1179,
+      "ubp_prediction": 0.11830991739082355,
+      "error_percent": 0.3476822653295588,
+      "color_factor": 3
+    }
+  },
+  "weak_coupling": {
+    "weinberg_angle": {
+      "experimental": 0.23122,
+      "ubp_prediction": 0.23106165074315202,
+      "error_percent": 0.06848423875442841
+    }
+  }
+}
