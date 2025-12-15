@@ -1,0 +1,73 @@
+{
+  "leptons": {
+    "muon": {
+      "predicted_ratio": 206.77245983534706,
+      "pdg_ratio": 206.76828298766566,
+      "error_percent": 0.00202006208159894,
+      "formula": "(1/Y)^4 + \u230a1/Y\u230b"
+    },
+    "tau": {
+      "predicted_ratio": 11151.975594960772,
+      "pdg_ratio": 3477.228280018971,
+      "error_percent": 220.7145087092162,
+      "formula": "[(1/Y)^4 + \u230a1/Y\u230b] \u00d7 Y \u00d7 (1/Y)^4"
+    }
+  },
+  "quarks": {
+    "strange_down": {
+      "predicted_ratio": 20.187741817020896,
+      "pdg_ratio": 20.021413276231264,
+      "error_percent": 0.8307532465107811,
+      "delta": 1.4142135623730951,
+      "N": 2
+    },
+    "charm_strange": {
+      "predicted_ratio": 13.11918140658445,
+      "pdg_ratio": 13.614973262032086,
+      "error_percent": 3.6415191268149156,
+      "delta": 0.91903911,
+      "N": 2
+    },
+    "bottom_charm": {
+      "predicted_ratio": 3.2691208931249025,
+      "pdg_ratio": 3.285938727415554,
+      "error_percent": 0.5118121695433688,
+      "delta": 0.8652559794322651,
+      "N": 1
+    }
+  },
+  "baryons": {
+    "proton": {
+      "predicted_ratio": 1833.9521385181235,
+      "pdg_ratio": 1836.1526734252586,
+      "error_percent": 0.11984487668065653,
+      "formula": "9 \u00d7 (1/Y)^4"
+    },
+    "neutron": {
+      "predicted_ratio": 1836.6297086403601,
+      "pdg_ratio": 1838.683661717896,
+      "error_percent": 0.11170780054774924,
+      "formula": "9 \u00d7 (1/Y)^4 \u00d7 1.00146"
+    }
+  },
+  "neutrinos": {
+    "nu_e": {
+      "predicted_ratio": 2.408291339366493e-05,
+      "pdg_limit": 4.3052926038302046e-06,
+      "N_exponent": -8,
+      "formula": "(1/Y)^-8"
+    },
+    "nu_mu": {
+      "predicted_ratio": 1.1818532010225763e-07,
+      "pdg_limit": 0.00033268170120506123,
+      "N_exponent": -12,
+      "formula": "(1/Y)^-12"
+    },
+    "nu_tau": {
+      "predicted_ratio": 5.799867175267656e-10,
+      "pdg_limit": 0.030332743345167345,
+      "N_exponent": -16,
+      "formula": "(1/Y)^-16"
+    }
+  }
+}

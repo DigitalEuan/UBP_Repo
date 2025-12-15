@@ -1,0 +1,253 @@
+{
+  "ckm_matrix": {
+    "pdg_values": {
+      "V_ud": 0.97435,
+      "V_us": 0.225,
+      "V_ub": 0.00382,
+      "V_cd": 0.22486,
+      "V_cs": 0.97349,
+      "V_cb": 0.04221,
+      "V_td": 0.00849,
+      "V_ts": 0.04053,
+      "V_tb": 0.9991
+    },
+    "cabibbo_angle_deg": 13.002878162913943,
+    "test_results": [
+      {
+        "expression": "cos(\u03c0/14)",
+        "target": "V_ud",
+        "value": 0.9749279121818236,
+        "target_value": 0.97435,
+        "error_percent": 0.059312586013609794,
+        "status": "\u2705\u2705\u2705"
+      },
+      {
+        "expression": "cos(\u03c0/13)",
+        "target": "V_ud",
+        "value": 0.970941817426052,
+        "target_value": 0.97435,
+        "error_percent": 0.3497903806586928,
+        "status": "\u2705\u2705"
+      },
+      {
+        "expression": "\u221a(1-Y\u00b2)",
+        "target": "V_ud",
+        "value": 0.9643375532147332,
+        "target_value": 0.97435,
+        "error_percent": 1.0276026874600281,
+        "status": "\u2705"
+      },
+      {
+        "expression": "sin(\u03c0/14)",
+        "target": "V_us",
+        "value": 0.2225209339563144,
+        "target_value": 0.225,
+        "error_percent": 1.1018071305269315,
+        "status": "\u2705"
+      },
+      {
+        "expression": "2/9",
+        "target": "V_us",
+        "value": 0.2222222222222222,
+        "target_value": 0.225,
+        "error_percent": 1.2345679012345678,
+        "status": "\u2705"
+      },
+      {
+        "expression": "1 - Y\u00b2/10",
+        "target": "V_ud",
+        "value": 0.9929946916540179,
+        "target_value": 0.97435,
+        "error_percent": 1.9135517682575913,
+        "status": "\u2705"
+      },
+      {
+        "expression": "1 - Y/4",
+        "target": "V_ud",
+        "value": 0.9338311423988682,
+        "target_value": 0.97435,
+        "error_percent": 4.158552635206213,
+        "status": "\u2705"
+      },
+      {
+        "expression": "sin(\u03c0/13)",
+        "target": "V_us",
+        "value": 0.23931566428755777,
+        "target_value": 0.225,
+        "error_percent": 6.362517461136785,
+        "status": "\u274c"
+      },
+      {
+        "expression": "1/4",
+        "target": "V_us",
+        "value": 0.25,
+        "target_value": 0.225,
+        "error_percent": 11.11111111111111,
+        "status": "\u274c"
+      },
+      {
+        "expression": "sin(Y)",
+        "target": "V_us",
+        "value": 0.26159601467694793,
+        "target_value": 0.225,
+        "error_percent": 16.264895411976852,
+        "status": "\u274c"
+      },
+      {
+        "expression": "Y",
+        "target": "V_us",
+        "value": 0.26467543040452696,
+        "target_value": 0.225,
+        "error_percent": 17.633524624234198,
+        "status": "\u274c"
+      },
+      {
+        "expression": "Y^0.8",
+        "target": "V_us",
+        "value": 0.3452795860920692,
+        "target_value": 0.225,
+        "error_percent": 53.457593818697426,
+        "status": "\u274c"
+      },
+      {
+        "expression": "Y/e",
+        "target": "V_us",
+        "value": 0.09736864942902834,
+        "target_value": 0.225,
+        "error_percent": 56.72504469820962,
+        "status": "\u274c"
+      },
+      {
+        "expression": "Y/\u03c0",
+        "target": "V_us",
+        "value": 0.08424880612771078,
+        "target_value": 0.225,
+        "error_percent": 62.55608616546188,
+        "status": "\u274c"
+      },
+      {
+        "expression": "Y\u00b2",
+        "target": "V_us",
+        "value": 0.07005308345982159,
+        "target_value": 0.225,
+        "error_percent": 68.86529624007929,
+        "status": "\u274c"
+      },
+      {
+        "expression": "\u221aY",
+        "target": "V_us",
+        "value": 0.5144661606019652,
+        "target_value": 0.225,
+        "error_percent": 128.65162693420672,
+        "status": "\u274c"
+      }
+    ],
+    "strong_matches": [
+      {
+        "expression": "cos(\u03c0/14)",
+        "target": "V_ud",
+        "value": 0.9749279121818236,
+        "target_value": 0.97435,
+        "error_percent": 0.059312586013609794,
+        "status": "\u2705\u2705\u2705"
+      },
+      {
+        "expression": "cos(\u03c0/13)",
+        "target": "V_ud",
+        "value": 0.970941817426052,
+        "target_value": 0.97435,
+        "error_percent": 0.3497903806586928,
+        "status": "\u2705\u2705"
+      }
+    ]
+  },
+  "fine_structure_constant": {
+    "alpha": 0.0072973525627871355,
+    "alpha_inverse": 137.035999206,
+    "test_results": [
+      {
+        "expression": "137",
+        "value": 137.0,
+        "target": 137.035999206,
+        "error_percent": 0.026269889816240205,
+        "status": "\u2705\u2705\u2705"
+      },
+      {
+        "expression": "\u03c0^4 + \u03c0\u00b2 + 1",
+        "value": 108.27869543509179,
+        "target": 137.035999206,
+        "error_percent": 20.985218437148514,
+        "status": "\u274c"
+      },
+      {
+        "expression": "\u03c0^4",
+        "value": 97.40909103400244,
+        "target": 137.035999206,
+        "error_percent": 28.91715199042569,
+        "status": "\u274c"
+      },
+      {
+        "expression": "(\u03c0+e)^3",
+        "value": 201.21712556825952,
+        "target": 137.035999206,
+        "error_percent": 46.835230694219945,
+        "status": "\u274c"
+      },
+      {
+        "expression": "e^4 + \u03c0",
+        "value": 57.73974268673403,
+        "target": 137.035999206,
+        "error_percent": 57.86527407302916,
+        "status": "\u274c"
+      },
+      {
+        "expression": "5\u03c0\u00b2 + e\u00b2",
+        "value": 56.737078104377446,
+        "target": 137.035999206,
+        "error_percent": 58.59695376899674,
+        "status": "\u274c"
+      },
+      {
+        "expression": "4\u03c0\u00b2 + 1",
+        "value": 40.47841760435743,
+        "target": 137.035999206,
+        "error_percent": 70.46147155572744,
+        "status": "\u274c"
+      },
+      {
+        "expression": "4\u03c0\u00b2",
+        "value": 39.47841760435743,
+        "target": 137.035999206,
+        "error_percent": 71.19120681200614,
+        "status": "\u274c"
+      },
+      {
+        "expression": "4\u03c0\u00b2 - 1",
+        "value": 38.47841760435743,
+        "target": 137.035999206,
+        "error_percent": 71.92094206828486,
+        "status": "\u274c"
+      },
+      {
+        "expression": "(1/Y)^3 * 10",
+        "value": 539.3356351150966,
+        "target": 137.035999206,
+        "error_percent": 293.5722279109578,
+        "status": "\u274c"
+      }
+    ],
+    "strong_matches": [
+      {
+        "expression": "137",
+        "value": 137.0,
+        "target": 137.035999206,
+        "error_percent": 0.026269889816240205,
+        "status": "\u2705\u2705\u2705"
+      }
+    ]
+  },
+  "conclusions": {
+    "ckm_has_geometric_basis": true,
+    "alpha_has_geometric_basis": true
+  }
+}
