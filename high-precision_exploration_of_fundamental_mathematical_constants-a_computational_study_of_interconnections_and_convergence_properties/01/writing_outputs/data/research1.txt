@@ -1,0 +1,58 @@
+Researching: High-precision arithmetic computation mathematical constants pi e phi algorithms
+
+================================================================================
+Query 1: High-precision arithmetic computation mathematical constants pi e phi algorithms
+Timestamp: 2025-12-13 04:36:00
+Model: perplexity/sonar-pro-search
+================================================================================
+## High-Precision Arithmetic Computation of Mathematical Constants: Recent Advances
+
+Recent research has demonstrated significant progress in algorithms for computing mathematical constants (π, e, φ) to arbitrary precision, with advances spanning quantum computing approaches, specialized numerical methods, and novel algebraic formulas.
+
+### Quantum Computing Approaches
+
+High-dimensional quantum phase estimation (QPE) algorithms have emerged as a promising frontier for constant computation. [1] A 2024 study implemented single and multi-global quantum phase estimation algorithms in high-dimensional quantum computing to approximate π with enhanced precision. The research revealed that π can be calculated using fewer quantum resources in high dimensions while achieving equal or higher precision compared to classical and qubit-based approaches. The multi-global HDM-QPE algorithm demonstrated consistent approximation of π to 6 digits using 9 dimensions, compared to 4 digits with the standard HD-QPE algorithm at the same dimension level.
+
+### BBP-Type Formulas and Digit Extraction
+
+The Bailey-Borwein-Plouffe (BBP) framework continues to generate novel computational formulas. [3] A 2025 paper established a BBP-type formula for π² expressed in the golden ratio base (φ), discovered empirically in 2004. The formula is: \(\frac{\pi^{2}}{50}=\sum_{k=0}^{\infty}\frac{1}{\phi^{5k}}\left(\frac{\phi^{-2}}{(5k+1)^{2}}-\frac{\phi^{-1}}{(5k+2)^{2}}-\frac{\phi^{-2}}{(5k+3)^{2}}+\frac{\phi^{-5}}{(5k+4)^{2}}+\frac{2\phi^{-5}}{(5k+5)^{2}}\right)\) [3]
+
+This represents a significant extension of BBP research to higher-weight constants in non-integer algebraic bases. The same work also established a Machin-like formula for ζ(3) using hierarchical series involving the golden ratio, demonstrating rapid convergence properties suitable for high-precision computation.
+
+### Arbitrary-Precision Arithmetic Infrastructure
+
+[2] The Arpra library (2021) provides an open-source C implementation for arbitrary-precision range analysis using mixed Interval Arithmetic (IA) and Affine Arithmetic (AA) methods. This infrastructure enables computation of mathematical constants while maintaining rigorous error bounds. The library's mixed trimmed IA/AA approach minimizes error terms by leveraging information from both methods, proving particularly useful for determining tight bounds on computed values.
+
+### Gamma Function and Special Functions
+
+[8] Johansson (2021) provided a comprehensive treatment of arbitrary-precision computation of the gamma function Γ(z) with rigorous error bounds. The analysis covers multiple algorithmic approaches: global methods (Stirling series, Lanczos, Spouge formulas), local methods (Taylor series, Chebyshev interpolants), hypergeometric methods, and integration methods. For p-bit accuracy, the Stirling series requires approximately 0.323p terms in the worst case, while Spouge's formula requires 0.377p terms uniformly. The work demonstrates that the Stirling series remains the fastest general method for computing the gamma function up to approximately 10⁶ digits.
+
+### High-Performance Implementation
+
+[7] Recent work (2025) on branch-free algorithms for extended-precision floating-point arithmetic achieved significant performance improvements. The algorithms achieve up to 11.7× the peak performance of QD (quad-double) libraries and 34.4× over CAMPARY (Certified Arithmetic), demonstrating substantial advances in computational efficiency for multiprecision operations.
+
+### Computational Records and Practical Applications
+
+[4] The Chudnovsky algorithm remains one of the most efficient methods for computing π to trillions of digits. This rapidly converging algorithm, based on complex mathematical series, has been employed in recent computational efforts to calculate 120 trillion digits of π using high-performance computing systems combined with advanced numerical algorithms and sophisticated memory management strategies.
+
+## Research Gaps and Future Directions
+
+While significant progress has been made, several open questions remain. The extension of BBP-type formulas to higher-weight constants in algebraic bases remains largely unexplored. The computational complexity analysis comparing hierarchical series formulas (such as those for ζ(3)) with hypergeometric series requires further investigation. Additionally, the potential for quantum computing approaches to achieve practical advantages over classical methods for constant computation at extreme precision levels remains an active research frontier.
+
+---
+
+**Key References:**
+
+[1] Estimating pi using high-dimensional single and multi-global quantum phase estimation algorithms (2024)
+
+[3] Cloitre, B. On a BBP-type formula for π² in the golden ratio base. arXiv:2508.03743 (2025)
+
+[2] Arpra: An Arbitrary Precision Range Analysis Library. Frontiers in Neuroinformatics (2021)
+
+[8] Johansson, F. Arbitrary-Precision Computation of the Gamma Function. arXiv:2109.08392 (2021)
+
+[7] High-Performance Branch-Free Algorithms for Extended-Precision Floating-Point Arithmetic (2025)
+
+[4] The 2025 Breakthrough in Computing Pi. Maths Society (2025)
+
+Usage: {'prompt_tokens': 276, 'completion_tokens': 1074, 'total_tokens': 1350, 'cost': 0.034938, 'is_byok': False, 'prompt_tokens_details': {'cached_tokens': 0, 'audio_tokens': 0, 'video_tokens': 0}, 'cost_details': {'upstream_inference_cost': None, 'upstream_inference_prompt_cost': 0.000828, 'upstream_inference_completions_cost': 0.01611}, 'completion_tokens_details': {'reasoning_tokens': 0, 'image_tokens': 0}}
