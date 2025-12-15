@@ -1,0 +1,84 @@
+{
+  "project": "UBP System Analysis - Phase 2: Dynamic Field Corrections & Extensions",
+  "version": "2.0",
+  "objectives": {
+    "primary": "Find geometric expressions for delta_tau and delta_W using fundamental constants",
+    "secondary": [
+      "Investigate CKM matrix geometric relationships",
+      "Investigate fine structure constant alpha geometric basis"
+    ]
+  },
+  "methodology": {
+    "precision": "mpmath 200 digits",
+    "approach": "systematic search + optimization",
+    "constants_available": ["pi", "e", "Y", "phi", "integers"]
+  },
+  "steps": [
+    {
+      "id": 1,
+      "name": "Baseline Validation",
+      "duration_estimate": "30 min",
+      "outputs": ["results/ubp_v4_validation.json"],
+      "success_criteria": "Reproduce delta_tau ≈ 0.2589 and delta_W ≈ 1.8021"
+    },
+    {
+      "id": 2,
+      "name": "Delta Tau Investigation",
+      "duration_estimate": "2-3 hours",
+      "outputs": ["results/delta_tau_search.json", "workflow/02_search_delta_tau.py"],
+      "success_criteria": "Find expression with <0.01% error"
+    },
+    {
+      "id": 3,
+      "name": "Delta W Investigation",
+      "duration_estimate": "2-3 hours",
+      "outputs": ["results/delta_w_search.json", "workflow/03_search_delta_w.py"],
+      "success_criteria": "Find expression with <0.1% error"
+    },
+    {
+      "id": 4,
+      "name": "CKM Matrix Investigation",
+      "duration_estimate": "1-2 hours",
+      "outputs": ["results/ckm_analysis.json", "workflow/04_investigate_ckm.py"],
+      "success_criteria": "Document relationship or lack thereof"
+    },
+    {
+      "id": 5,
+      "name": "Fine Structure Constant Investigation",
+      "duration_estimate": "1 hour",
+      "outputs": ["results/alpha_analysis.json", "workflow/05_investigate_alpha.py"],
+      "success_criteria": "Document findings"
+    },
+    {
+      "id": 6,
+      "name": "Publication-Ready Outputs",
+      "duration_estimate": "1-2 hours",
+      "outputs": [
+        "results/final_spectrum.csv",
+        "figures/mass_spectrum.png",
+        "figures/geometric_law_schematic.png",
+        "figures/error_analysis.png"
+      ],
+      "success_criteria": "All outputs ready for paper"
+    },
+    {
+      "id": 7,
+      "name": "Documentation & Synthesis",
+      "duration_estimate": "30 min",
+      "outputs": ["README.md", "manifest.json"],
+      "success_criteria": "Complete reproducible documentation"
+    }
+  ],
+  "target_values": {
+    "delta_tau": 0.2589,
+    "delta_W": 1.8021,
+    "Y": 0.264675,
+    "alpha": 0.0072973525693
+  },
+  "test_plan": [
+    "Validate v4.0 baseline reproduces notebook results",
+    "Test each proposed expression at 200-digit precision",
+    "Compare errors across all candidate expressions",
+    "Verify reproducibility with fixed random seeds"
+  ]
+}
