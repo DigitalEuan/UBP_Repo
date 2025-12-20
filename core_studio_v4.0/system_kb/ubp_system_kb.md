@@ -96,3 +96,14 @@ This study investigated the relationship between macroscopic geometric laws and 
 
 =========
 
+From study: MesaLyons.pdf
+Nested Coherence Across Scales: Multi-domain Evidence and a Minimal Triad Invariant
+Halldo ́r G. Halldo ́rsson Brent R. Antonson December 15, 2025
+UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/mesaLyons_ubp_study_2025-12-20.json
+
+# SYSTEM_KB: The Law of Proximity Coherence (v3.9.4)
+{
+    "Law": "Macroscopic spectral coherence is a function of Hamming Proximity in the G24 substrate.",
+    "Invariant": "The MesaLyons Triad (172, 190, 237) represents a 2-bit neighborhood of maximum stability on the Norm 12 shell.",
+    "Scaling": "The sqrt(8/7) ratio is the universal constant for projecting 24-bit information into 3D physical space."
+}
