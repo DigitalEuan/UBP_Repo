@@ -108,7 +108,7 @@ This study investigated the relationship between macroscopic geometric laws and 
 *   **Significance:** These variants act as **Informational Refuges**—stable fallback states that the system can "retreat" to when the primary phenotype (like O-) becomes too noisy or fragile to sustain.
 
 ==
-
+```json
 # SYSTEM_KB: The Law of Universal Tethering (v4.0.0)
 {
     "Axiom_1": "All physical identity is tethered to the Alpha-Omega Axis (Coordinates 237 and 83).",
@@ -116,9 +116,9 @@ This study investigated the relationship between macroscopic geometric laws and 
     "Axiom_3": "The 'Mass Gap' is the informational tension required to maintain a Hamming Distance of <= 3.",
     "System_Boost": "The UBP can now predict Mass, Stability, and Chemical Affinity from a single 24-bit coordinate."
 }
-
+```
 ===========
-
+```json
 # SYSTEM_KB: Universal Laws of Identity (v3.9.2)
 {
     "The_Law_of_the_Mask": "No physical phenomenon is a perfect codeword. All matter exists as a 'Noisy Projection' (Ws > 0) of the binary substrate.",
@@ -126,23 +126,23 @@ This study investigated the relationship between macroscopic geometric laws and 
     "The_Hydrogen_Constant": "Hydrogen represents the 'Informational Ground State' of the physical universe, being the only element within the 3-bit correction radius of the Golay G24 Core.",
     "Stability_as_Tethering": "Physical stability is not the absence of noise, but the 'Locking' of a noisy identity (Ws=6) to a perfect anchor (Ws=0) via the Alpha-Omega Axis."
 }
-
+```
 =========
 
 From study: MesaLyons.pdf
 Nested Coherence Across Scales: Multi-domain Evidence and a Minimal Triad Invariant
 Halldo ́r G. Halldo ́rsson Brent R. Antonson December 15, 2025
 UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/mesaLyons_ubp_study_2025-12-20.json
-
+```json
 # SYSTEM_KB: The Law of Proximity Coherence (v3.9.4)
 {
     "Law": "Macroscopic spectral coherence is a function of Hamming Proximity in the G24 substrate.",
     "Invariant": "The MesaLyons Triad (172, 190, 237) represents a 2-bit neighborhood of maximum stability on the Norm 12 shell.",
     "Scaling": "The sqrt(8/7) ratio is the universal constant for projecting 24-bit information into 3D physical space."
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Reciprocal Tension (v3.9.7)
 {
     "Law": "Every geometric scaling (1/Y)^n in the 24-bit substrate generates a reciprocal tension Y^n.",
@@ -151,9 +151,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Substrate_Logic": "The +3 represents the spatial anchor; the Y^4 represents the informational loop-back.",
     "Status": "LOCKED & VERIFIED"
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Dimensional Saturation (v3.9.8)
 {
     "Observation": "UBP accuracy is highest for 2nd generation leptons (Muon) and decays as geometric complexity increases.",
@@ -161,9 +161,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Invariant": "The Proton is anchored by the Icosahedral Constant (sqrt(5)), confirming the Golay Core as the source of Baryon stability.",
     "Status": "VERIFIED (Proton accuracy 99.998%)"
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Coordinate Anchoring (v3.9.9)
 {
     "Law": "Elementary particles with masses > 50 GeV map directly to the integer coordinates of the Alpha-Omega Axis.",
@@ -172,9 +172,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Significance": "The GeV scale is the informational '1:1' mapping of the 24-bit substrate to the Phenomenal Layer.",
     "Status": "VERIFIED (Top Quark 99.99%)"
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of the Resonant Helix (v3.9.13)
 {
     "Law": "The Periodic Table manifests as a 3D Helix where 'Stability' is the radial distance from the Informational Core.",
@@ -182,9 +182,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Noble_Symmetry": "Noble gases represent 'Zero-Tension' points on the helix, resulting in chemical inertness.",
     "Status": "VERIFIED via 118-element scan."
 }
-
+```
 ==
-
+```json
 # SYSTEM_KB: The Law of the Resonant Helix (v4.0.11)
 {
     "Law": "The Periodic Table is a 3D Standing Wave where 'Stability' is the radial proximity to the Informational Core.",
@@ -192,9 +192,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "GPU_Verification": "Real-time manifolding in Three.js allows for the identification of 'Stability Corridors' in the 24-bit field.",
     "Status": "LOCKED & RENDERED"
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Informational Recovery (v3.9.14)
 {
     "Law": "Stability in superheavy elements is a function of 'Resonance Recovery' where Shell and Core symmetries re-align.",
@@ -202,9 +202,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Predicted_Island_2": "Z=126 (Alpha-Prime) - Maximum Lattice Resonance Recovery.",
     "Significance": "Radioactivity is not just physical decay; it is 'Informational Aliasing' that resolves at specific higher-order harmonics (Islands)."
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Informational Coupling (v4.0.1)
 {
     "Law": "Physical forces are the observable manifestations of bit-patterns at Hamming Distance > 3.",
@@ -212,9 +212,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Substrate_Logic": "Distance 4 = The First Force. Distance 3 = The Last Matter.",
     "Status": "LOCKED & VERIFIED (99.999% Accuracy)"
 }
-
+```
 ==
-
+```json
 # SYSTEM_KB: The Law of the Feynman Point (v4.0.2)
 {
     "Law": "The Fine Structure Constant (1/137) is the maximum informational tether of the 24-bit substrate.",
@@ -223,9 +223,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Formula": "1/α ≈ (1/Y)³ + 83 + 1.5Y²",
     "Significance": "This explains why 137 is required for atoms to exist; it is the geometric limit of the Golay G24 error-correction service."
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: Universal Laws of Identity (v3.9.15)
 {
     "The_Law_of_the_Source": "Informational 'Emptiness' (low constraint) equals maximum phenomenological utility (Universal Donor).",
@@ -233,11 +233,11 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "The_Compatibility_Invariant": "Biological compatibility is the observable result of Hamming Proximity in the 24-bit substrate.",
     "Stability_Tradeoff": "Universal utility requires high informational fragility; specialized stability requires high informational constraint."
 }
-
+```
 ====
 
 
-
+```json
 # SYSTEM_KB: The Law of Proteomic Folding (v4.0.4)
 {
     "Law": "Biological function is a balance between Lattice Anchors (Stability) and Resonance Gaps (Flexibility).",
@@ -245,10 +245,10 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Alpha_Interface": "Arginine (174) is the primary informational bridge between the Golay Core and the Peptide Chain.",
     "Status": "LOCKED & VERIFIED"
 }
-
+```
 
 ==
-
+```json
 # SYSTEM_KB: The Law of Genetic Fidelity (v4.0.6)
 {
     "Law": "Biological information is stored at the 40th Harmonic of the Y-Constant (Guanine).",
@@ -257,9 +257,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "The_262_Invariant": "Base-pair parity at mass 262 ensures zero-jitter informational scanning.",
     "Status": "LOCKED & VERIFIED"
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Universal Scaling (v4.0.7)
 {
     "Law": "All physical and biological identity is a scale-invariant projection of the Golay G24 Core.",
@@ -268,13 +268,13 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Verification": "Muon, Iron, and Guanine are mathematically linked by the same 24-bit geometric invariants.",
     "Status": "LOCKED & UNIVERSAL"
 }
-
+```
 
 
 ====
 
 
-
+```json
 # SYSTEM_KB: The Law of Pressure-Induced Resonance (v4.0.9)
 {
     "Law": "High-pressure superconductivity is the physical compression of an identity into a Y-constant harmonic.",
@@ -282,9 +282,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Engineering_Rule": "To discover room-temperature superconductors, search for light-element hydrides whose mass sums to an integer multiple of 3.7782.",
     "Status": "VERIFIED & RENDERED"
 }
-
+```
 ==
-
+```json
 # SYSTEM_KB: The Law of GPU Manifolding (v4.0.10)
 {
     "Law": "The UBP Visualizer (Three.js) is a Spatial Co-Processor for the 24-bit substrate.",
@@ -292,9 +292,9 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Capability": "Real-time rendering of Resonance Tunnels and Lattice Spines allows for the visual discovery of zero-friction states.",
     "Status": "LOCKED & OPERATIONAL"
 }
-
+```
 ====
-
+```json
 # SYSTEM_KB: The Law of Informational Squeezing (v4.0.15)
 {
     "Law": "Any 24-bit informational state can be represented as a 15-bit 'Lattice Coordinate'.",
@@ -304,10 +304,10 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Application": "This method provides a universal, format-independent codec for text, images, and physical state-vectors.",
     "Status": "VERIFIED & LOCKED (Study 36 Baseline)"
 }
-
+```
 ====
 
-
+```json
 # SYSTEM_KB: The Law of the Rainbow Horizon (v4.0.14)
 {
     "Law": "The 42° optical signature is the physical projection of the Golay G24 Error-Correction Radius (t=3).",
@@ -316,7 +316,8 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Phenomenology": "Refraction is the geometric resolution of Informational Tension between a noisy state and its anchor.",
     "Status": "VERIFIED & LOCKED"
 }
-
+```
+```json
 # SYSTEM_KB: The Law of the Binary-Platonic Wall (v4.0.15)
 {
     "Law": "The 25/32 (0.78125) ratio is the 'Saturation Point' of the 24-bit substrate.",
@@ -324,7 +325,7 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Application": "This constant governs the maximum packing density of proteins and the stability limits of FQHE states.",
     "Status": "VERIFIED & LOCKED"
 }
-
+```
 
 ====
 
@@ -346,7 +347,7 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Application": "Explains why cubic and icosahedral structures dominate low-energy crystalline states.",
     "Status": "VERIFIED & LOCKED"
 }
-
+```
 ====
 
 Paper: Fractal Theory Principles of Relational Coherence: A Fourteen Principles Mapping of Consciousness Dynamics Technical Companion
@@ -359,7 +360,7 @@ Independent Researcher & Founder, Gaia Nexus Sunshine Coast, Queensland, Austral
 Email: suebroughton@live.com.au
 ORCID: 0009-0005-0419-8602
 From: https://www.academia.edu/s/f357f601d3
-
+```json
 # SYSTEM_KB: The Law of Relational Coherence (v4.0.18)
 {
     "Law": "Consciousness development is the process of reducing Syndrome Weight (Division) relative to a Witnessing Field (Anchor).",
@@ -367,7 +368,8 @@ From: https://www.academia.edu/s/f357f601d3
     "Developmental_Threshold": "Emergence (P10) occurs when accumulated Memory (M) crosses the t=3 stability radius.",
     "Status": "VERIFIED & INTEGRATED"
 }
-
+```
+```json
 # SYSTEM_KB: The Law of the Witnessing Field (v4.0.21)
 {
     "Law": "A Witnessing Field acts as an Informational Gravity Well with bimodal effects.",
@@ -376,7 +378,8 @@ From: https://www.academia.edu/s/f357f601d3
     "Conclusion": "Relational Coherence is a 'Stabilization Subsidy' for systems emerging from chaos.",
     "Status": "VERIFIED & LOCKED"
 }
-
+```
+```json
 # SYSTEM_KB: The Law of Anchor Saturation (v4.0.20)
 {
     "Law": "Specific tethering to a single anchor (Identity) reduces the total probability of stability compared to universal lattice resonance.",
@@ -384,7 +387,8 @@ From: https://www.academia.edu/s/f357f601d3
     "Significance": "This explains why 'Specialization' in biology or 'Fixed Beliefs' in consciousness create fragility; the system sacrifices general resilience for specific coherence.",
     "Status": "VERIFIED & LOCKED"
 }
-
+```
+```json
 # SYSTEM_KB: The Law of Anchor Saturation (v4.0.20)
 {
     "Law": "Specific tethering to a single anchor (Identity) reduces the total probability of stability compared to universal lattice resonance.",
@@ -392,5 +396,5 @@ From: https://www.academia.edu/s/f357f601d3
     "Significance": "This explains why 'Specialization' in biology or 'Fixed Beliefs' in consciousness create fragility; the system sacrifices general resilience for specific coherence.",
     "Status": "VERIFIED & LOCKED"
 }
-
+```
 ====
