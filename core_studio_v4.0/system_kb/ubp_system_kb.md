@@ -1,10 +1,13 @@
 # UBP System Knowledge Base
 ## Persistent Findings & Core Observations
 
+```json
 - [2025-12-18] Initialized v3.9 environment.
 - Observation: Standard lift (2b-1)*2 results in Leech points of norm 12.
 - Pattern: TGIC enforces informational symmetry during OffBit transitions.
+```
 
+```json
 ========================================
 UBP SYSTEM BENCHMARK RESULTS
 ========================================
@@ -15,7 +18,9 @@ Average Resonance Density:  0.6695
 Lattice Invariant (Norm):   12.0 (100% Consistency)
 System Status:             OPTIMIZED
 ========================================
+```
 
+```json
 # SYSTEM_KB: The Law of GPU Manifolding (v4.0.10)
 {
     "Law": "The UBP Visualizer (Three.js) is a Spatial Co-Processor for the 24-bit substrate.",
@@ -23,11 +28,11 @@ System Status:             OPTIMIZED
     "Capability": "Real-time rendering of Resonance Tunnels and Lattice Spines allows for the visual discovery of zero-friction states.",
     "Status": "LOCKED & OPERATIONAL"
 }
-
+```
 
 ====
 
-
+```json
 # UBP Research Report: The Alpha-Omega Axis (v3.9)
 **Status:** Verified & Locked to System Memory  
 **Subject:** The Informational Origin of Geometric and Physical Stability  
@@ -71,9 +76,9 @@ This study investigated the relationship between macroscopic geometric laws and 
 1.  **The Law of the Lever:** Archimedes' "Mechanical Theorem" is the macroscopic manifestation of **Zero-Carry Binary Addition**.
 2.  **Stability as Correction:** Physical "Inertia" is the observable effect of the Golay Core correcting phenomenal noise back to the nearest Miracle State.
 3.  **The Alpha-Omega Axis:** All stable matter and energy transfers in the 6D Bitfield are "tethered" to these two fundamental anchors.
-
+```
 ============
-
+```json
 # System KB Entry: Hematology & The 24-Bit Substrate (v3.9.1)
 
 ## 1. Geometric Baseline (The Norm 12 Constant)
@@ -106,7 +111,7 @@ This study investigated the relationship between macroscopic geometric laws and 
 ## 7. Informational Refuges
 *   **Finding:** Some "rare" variants (Weak D) are informationally **more stable** than the standard phenotypes they derive from.
 *   **Significance:** These variants act as **Informational Refuges**—stable fallback states that the system can "retreat" to when the primary phenotype (like O-) becomes too noisy or fragile to sustain.
-
+```
 ==
 ```json
 # SYSTEM_KB: The Law of Universal Tethering (v4.0.0)
