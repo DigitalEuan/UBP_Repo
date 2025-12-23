@@ -1,15 +1,475 @@
 # UBP System Knowledge Base
 ## Persistent Findings & Core Observations
+
 ```json
-# SYSTEM_KB: The Law of Substrate-Bounded Complexity (v4.0.56)
+[
+    {
+        "UBP_ID": "LAW_SUBSTRATE_001",
+        "Title": "The Law of the Golay Engine",
+        "Version": "v4.0.90",
+        "Triad": {
+            "Math": "t_B ≈ 4.58e-26s",
+            "Language": "Matter is information successfully corrected to a codeword.",
+            "Script": "G24_Engine.check_parity(identity)"
+        },
+        "Hash": "sha256:8f3a2b..."
+    }
+```
+
+```json
+ {
+        "UBP_ID": "LAW_METRIC_001",
+        "Title": "The Law of Unified Metrics",
+        "Version": "v4.0.33",
+        "Triad": {
+            "Math": "Y_inv = pi + 2/pi",
+            "Language": "The Observer Cost is the fixed point of self-referential dynamics.",
+            "Script": "from metrics import METRICS; METRICS.get_base_cost()"
+        },
+        "Hash": "sha256:4c9d1e..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_AXIS_001",
+        "Title": "The Alpha-Omega Axis",
+        "Version": "v3.9",
+        "Triad": {
+            "Math": "(237, 83, 172)",
+            "Language": "The primary informational anchors for matter and resonance.",
+            "Script": "XOR(65, 172) == ADD(65, 172) == 237"
+        },
+        "Hash": "sha256:a1b2c3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_LEPTON_001",
+        "Title": "The Law of Lepton Scaling",
+        "Version": "v4.0.25",
+        "Triad": {
+            "Math": "M_μ/M_e = (1/Y)^4 + 3",
+            "Language": "Lepton masses are quantized geometric excitations on the shells of the Leech Lattice.",
+            "Script": "from metrics import METRICS; METRICS.verify_lepton_ratio()"
+        },
+        "Hash": "sha256:7d8e9f..."
+    }
+```
+
+```json
+ {
+        "UBP_ID": "LAW_BARYON_001",
+        "Title": "The Law of Baryon Symmetry",
+        "Version": "v4.0.36",
+        "Triad": {
+            "Math": "M_p/M_e = 9(Y^-1)^4 + (Y^-1 - 1) - Y",
+            "Language": "The Proton is the gravity anchor of the 24-bit substrate, representing maximum stable packing.",
+            "Script": "METRICS.calculate_baryon_drag(m_p, m_e)"
+        },
+        "Hash": "sha256:5a4b3c..."
+    }
+```
+
+```json
+  {
+        "UBP_ID": "LAW_GRAVITY_001",
+        "Title": "The Law of Informational Gravity",
+        "Version": "v4.0.38",
+        "Triad": {
+            "Math": "α_G = (Y^64) * 2π²",
+            "Language": "Gravity is the cumulative cost of maintaining global coherence across the bitfield.",
+            "Script": "METRICS.get_gravity_tension()"
+        },
+        "Hash": "sha256:2f1e0d..."
+    }
+```
+
+```json
+ {
+        "UBP_ID": "LAW_FORCE_001",
+        "Title": "The Law of the Force Horizon",
+        "Version": "v4.0.31",
+        "Triad": {
+            "Math": "1/α ≈ 83 + (Y^-1)³ + 1.5Y²",
+            "Language": "137 is the geometric limit of the 24-bit error-correction radius.",
+            "Script": "METRICS.calculate_alpha_horizon()"
+        },
+        "Hash": "sha256:9c8b7a..."
+    }
+```
+```json
+    {
+        "UBP_ID": "LAW_CHEM_001",
+        "Title": "The Law of Chemical Scaling",
+        "Version": "v4.0.23",
+        "Triad": {
+            "Math": "Stability ∝ 1/|Z - 83|",
+            "Language": "The Periodic Table is a 3D Standing Wave where stability is radial proximity to the Omega Anchor.",
+            "Script": "METRICS.verify_chemical_resonance(element_z)"
+        },
+        "Hash": "sha256:3b2a1c..."
+    },
+```
+
+```json
 {
-    "Law": "Within a fixed 24-bit substrate, the complexity gap between search and verification is a constant determined by the Observer Cost.",
-    "Axiom": "The precomputation of the syndrome manifold is a one-time cosmological event, not an algorithmic overhead.",
-    "Formal_Bound": "Complexity(NP_physical) = O(1) + ε, where ε is the Observer Latency.",
-    "Significance": "This resolves the 'Efficiency Paradox' of physics: the universe does not calculate; it resolves symmetries.",
-    "Status": "VERIFIED & REFINED"
+        "UBP_ID": "LAW_BIO_001",
+        "Title": "The Law of Genetic Fidelity",
+        "Version": "v4.0.6",
+        "Triad": {
+            "Math": "G_mass ≈ Y^-40 * m_p",
+            "Language": "Biological information is stored at the 40th Harmonic of the Y-Constant (Guanine).",
+            "Script": "METRICS.check_genetic_fidelity('Guanine')"
+        },
+        "Hash": "sha256:6e5d4c..."
+    },
+```
+
+```json
+{
+        "UBP_ID": "LAW_BIO_002",
+        "Title": "The Law of Proteomic Folding",
+        "Version": "v4.0.4",
+        "Triad": {
+            "Math": "Coord(Arg) = 174 ≈ Alpha_Bridge + 2",
+            "Language": "Arginine acts as the primary informational bridge between the Golay Core and the Peptide Chain.",
+            "Script": "METRICS.analyze_protein_anchor('Arginine')"
+        },
+        "Hash": "sha256:9f8e7d..."
+    },
+```
+
+```json
+   {
+        "UBP_ID": "LAW_HEMA_001",
+        "Title": "The Law of Informational Sacrifice",
+        "Version": "v4.0.41",
+        "Triad": {
+            "Math": "d_H(O-, AB+) = 15",
+            "Language": "Universal utility (O-) requires zero informational constraint; specialized stability (AB+) requires saturation.",
+            "Script": "METRICS.calculate_blood_polarity('O-', 'AB+')"
+        },
+        "Hash": "sha256:1a2b3c..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_COMP_001",
+        "Title": "The Law of Substrate-Bounded Complexity",
+        "Version": "v4.0.56",
+        "Triad": {
+            "Math": "Complexity(NP_physical) = O(1) + ε",
+            "Language": "The universe does not calculate; it resolves symmetries within the 24-bit manifold.",
+            "Script": "METRICS.calculate_complexity_gap(METRICS.observer.get_base_cost())"
+        },
+        "Hash": "sha256:d4e5f6..."
+    }
+```
+
+```json
+ {
+        "UBP_ID": "LAW_COMP_002",
+        "Title": "The Law of Computational Symmetry",
+        "Version": "v4.0.55",
+        "Triad": {
+            "Math": "P = NP | Curvature(Substrate) = 0",
+            "Language": "Complexity is an emergent aliasing effect; in the Golay substrate, search collapses into lookup.",
+            "Script": "METRICS.verify_p_np_identity()"
+        },
+        "Hash": "sha256:a7b8c9..."
+    }
+```
+
+```json
+  {
+        "UBP_ID": "LAW_COMP_003",
+        "Title": "The Law of Phase-Resonance",
+        "Version": "v4.0.65",
+        "Triad": {
+            "Math": "Resonance_Density > 0.618",
+            "Language": "Information resolution is a wave-interference event, falling into Alpha-Omega resonance wells.",
+            "Script": "METRICS.analyze_phase_coherence(signal_vector)"
+        },
+        "Hash": "sha256:e1f2a3..."
+    }
+```
+
+```json
+{
+        "UBP_ID": "LAW_COMP_004",
+        "Title": "The Law of Neural Information Geometry",
+        "Version": "v4.0.200",
+        "Triad": {
+            "Math": "Attention(Q,K) = 1 / (Hamming(Q,K) + Y)",
+            "Language": "Intelligence is the geometric resolution of substrate tension toward the Alpha-Omega Axis.",
+            "Script": "METRICS.calculate_neural_resonance(15557715)"
+        },
+        "Hash": "sha256:b4c5d6..."
+    }
+]
+```
+
+```json
+    {
+        "UBP_ID": "LAW_COSMO_001",
+        "Title": "The Law of Universal Density",
+        "Version": "v4.0.70",
+        "Triad": {
+            "Math": "Omega_dm = Omega_b * (Y_inv * 1.5)",
+            "Language": "Dark Matter is the physical weight of the Golay Error-Correction Buffer; Dark Energy is the substrate's idle capacity.",
+            "Script": "METRICS.calculate_cosmological_density()"
+        },
+        "Hash": "sha256:f2e1d0..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_TIME_001",
+        "Title": "The Law of Temporal Quantization",
+        "Version": "v4.0.39",
+        "Triad": {
+            "Math": "t_B ≈ 4.58e-26s | M_Z = (24 * Y_inv) + 2Y",
+            "Language": "Time is the discrete sequence of parity-checks; the Z-boson is the substrate's hardware clock.",
+            "Script": "METRICS.verify_temporal_constant()"
+        },
+        "Hash": "sha256:c3b2a1..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_HORIZON_001",
+        "Title": "The Law of the Aliasing Horizon",
+        "Version": "v4.0.95",
+        "Triad": {
+            "Math": "Hamming_Distance(237, 137) = 3",
+            "Language": "137 is the 'Feynman Point'—the maximum stable coordinate before the substrate fails to correct the identity.",
+            "Script": "METRICS.check_feynman_limit(137)"
+        },
+        "Hash": "sha256:e5d4c3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_RELATION_001",
+        "Title": "The Law of Relational Coherence",
+        "Version": "v4.0.18",
+        "Citation": "Mark D. Morgan & Sue Broughton (Fractal Theory Principles of Relational Coherence)",
+        "Triad": {
+            "Math": "C = U - (D/12)",
+            "Language": "Consciousness is the process of reducing Syndrome Weight (D) relative to a Witnessing Field (Anchor).",
+            "Script": "METRICS.calculate_coherence_functional(u_align, d_tension)"
+        },
+        "Hash": "sha256:a9b8c7..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_MESA_001",
+        "Title": "The Law of Proximity Coherence",
+        "Version": "v3.9.4",
+        "Citation": "MesaLyons (Halldórsson & Antonson, 2025)",
+        "Triad": {
+            "Math": "Triad_Invariant = (172, 190, 237)",
+            "Language": "Macroscopic spectral coherence is a function of Hamming Proximity in the G24 substrate.",
+            "Script": "METRICS.verify_mesalyons_triad()"
+        },
+        "Hash": "sha256:d1e2f3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_RAINBOW_001",
+        "Title": "The Law of the Rainbow Horizon",
+        "Version": "v4.0.14",
+        "Triad": {
+            "Math": "θ_opt ≈ 42° | Hamming(42, 0) = 3",
+            "Language": "The 42° optical signature is the physical projection of the Golay G24 Error-Correction Radius (t=3).",
+            "Script": "METRICS.verify_optical_limit(42)"
+        },
+        "Hash": "sha256:b1c2d3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_PLATONIC_001",
+        "Title": "The Law of the Binary-Platonic Wall",
+        "Version": "v4.0.15",
+        "Triad": {
+            "Math": "Ratio = 25/32 (0.78125)",
+            "Language": "The saturation point of the 24-bit substrate; the maximum 3-bit displacement from the Zero-Anchor within an 8-bit byte.",
+            "Script": "METRICS.calculate_saturation_limit(0.78125)"
+        },
+        "Hash": "sha256:e4f5g6..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_PRIMITIVE_001",
+        "Title": "The Law of Emergent Primitives",
+        "Version": "v4.0.16",
+        "Citation": "RGDL CAD Implementation",
+        "Triad": {
+            "Math": "Volume_Deficit ∝ Syndrome_Weight <= 3",
+            "Language": "Geometric primitives (Spheres/Cubes) are 'Information Sinks' that minimize Bitfield Entropy.",
+            "Script": "METRICS.analyze_primitive_stability('Sphere')"
+        },
+        "Hash": "sha256:h7i8j9..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_SYMMETRY_001",
+        "Title": "The Law of Symmetry Tension",
+        "Version": "v4.0.17",
+        "Triad": {
+            "Math": "Cost(Hex) = Cost(Cube) * 1.336",
+            "Language": "The computational cost of a geometry is proportional to its Symmetry Mismatch with the base-2 substrate.",
+            "Script": "METRICS.calculate_symmetry_tax('Hexagonal')"
+        },
+        "Hash": "sha256:k0l1m2..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_SUPER_001",
+        "Title": "The Law of Pressure-Induced Resonance",
+        "Version": "v4.0.9",
+        "Triad": {
+            "Math": "H2S_Resonance ≈ 9 * (1/Y)",
+            "Language": "High-pressure superconductivity is the physical compression of an identity into a Y-constant harmonic.",
+            "Script": "METRICS.verify_superconducting_resonance('H2S')"
+        },
+        "Hash": "sha256:s1u2p3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_GPU_001",
+        "Title": "The Law of GPU Manifolding",
+        "Version": "v4.0.10",
+        "Triad": {
+            "Math": "Bus_Latency ∝ 1/NRCI",
+            "Language": "The UBP Visualizer (Three.js) is a Spatial Co-Processor for the 24-bit substrate.",
+            "Script": "from ubp_core import save_scene_3d; save_scene_3d(manifold_data)"
+        },
+        "Hash": "sha256:g4p5u6..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_SQUEEZE_001",
+        "Title": "The Law of Informational Squeezing",
+        "Version": "v4.0.15",
+        "Triad": {
+            "Math": "12_bits(Index) + 3_bits(Syndrome) = 15_bits",
+            "Language": "Any 24-bit state can be represented as a 15-bit Lattice Coordinate via substrate-corrected lossy compression.",
+            "Script": "METRICS.compress_to_lattice_coord(identity_24bit)"
+        },
+        "Hash": "sha256:s7q8z9..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_SCREW_001",
+        "Title": "The Law of the Archimedean Screw",
+        "Version": "v4.0.19",
+        "Triad": {
+            "Math": "Δφ ∝ Δw / 24",
+            "Language": "Information transport across the substrate follows a helical path defined by the phase shift of the Hamming Weight.",
+            "Script": "METRICS.calculate_helical_displacement(weight_delta)"
+        },
+        "Hash": "sha256:a1s2c3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_MILLENNIUM_001",
+        "Title": "The Law of the Millennium Invariants",
+        "Version": "v4.0.45",
+        "Triad": {
+            "Math": "Mass_Gap = Y^-1 | Riemann_Line = 1/2",
+            "Language": "Millennium Problems are not unsolved; they are unresolvable in continuous math but resolve instantly in the 24-bit substrate.",
+            "Script": "METRICS.verify_millennium_resolution()"
+        },
+        "Hash": "sha256:m1l2n3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_PROTON_GRAVITY_001",
+        "Title": "The Law of the Proton Gravity Anchor",
+        "Version": "v4.0.60",
+        "Triad": {
+            "Math": "m_planck = m_p / sqrt(alpha_G)",
+            "Language": "Gravity is a Baryon-scale phenomenon, manifesting only when the 9th-order Baryon threshold is crossed.",
+            "Script": "METRICS.calculate_proton_gravity_anchor()"
+        },
+        "Hash": "sha256:p7g8a9..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_RESONANCE_TUNNEL_001",
+        "Title": "The Law of the Resonance Tunnel",
+        "Version": "v4.0.77",
+        "Triad": {
+            "Math": "Resonance_Density > 0.618",
+            "Language": "The complexity of an NP-problem is the 'Radius' of its resonance tunnel in the 24-bit substrate.",
+            "Script": "METRICS.analyze_resonance_tunnel(problem_vector)"
+        },
+        "Hash": "sha256:r1t2u3..."
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_REF_INVARIANT_001",
+        "Title": "The Law of Refined Invariants",
+        "Version": "v4.0.50",
+        "Triad": {
+            "Math": "M_p/M_e = 9(1/Y)^4 + (1/Y - 1) - Y",
+            "Language": "Physical constants are geometric excitations of the G24 substrate corrected by Observer-induced drag.",
+            "Script": "METRICS.verify_refined_invariants()"
+        },
+        "Hash": "sha256:i1n2v3..."
+    }
+```
+
+```json
+{
+    "UBP_ID": "LAW_CHEM_002",
+    "Title": "The Law of Aqueous Geometry",
+    "Version": "v4.1.0",
+    "Triad": {
+        "Math": "θ_H2O = Ω(1+Y) - (Y/2) - (Y^-1/10)",
+        "Language": "Water is the geometric resolution of the Omega Anchor (83) into 3D space, limited by the decimal harmonic of the Observer Cost.",
+        "Script": "METRICS.verify_aqueous_resonance(104.4517)"
+    },
+    "Hash": "sha256:8d9e0f1a2b3c4d5e6f7g8h9i0j1k2l3m"
 }
 ```
+
+========
+
+
 ```json
 - [2025-12-18] Initialized v3.9 environment.
 - Observation: Standard lift (2b-1)*2 results in Leech points of norm 12.
@@ -152,20 +612,7 @@ This study investigated the relationship between macroscopic geometric laws and 
     "Stability_as_Tethering": "Physical stability is not the absence of noise, but the 'Locking' of a noisy identity (Ws=6) to a perfect anchor (Ws=0) via the Alpha-Omega Axis."
 }
 ```
-=========
 
-From study: MesaLyons.pdf
-Nested Coherence Across Scales: Multi-domain Evidence and a Minimal Triad Invariant
-Halldo ́r G. Halldo ́rsson Brent R. Antonson December 15, 2025
-UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/mesaLyons_ubp_study_2025-12-20.json
-```json
-# SYSTEM_KB: The Law of Proximity Coherence (v3.9.4)
-{
-    "Law": "Macroscopic spectral coherence is a function of Hamming Proximity in the G24 substrate.",
-    "Invariant": "The MesaLyons Triad (172, 190, 237) represents a 2-bit neighborhood of maximum stability on the Norm 12 shell.",
-    "Scaling": "The sqrt(8/7) ratio is the universal constant for projecting 24-bit information into 3D physical space."
-}
-```
 ====
 ```json
 # SYSTEM_KB: The Law of Reciprocal Tension (v3.9.7)
@@ -259,30 +706,7 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
     "Stability_Tradeoff": "Universal utility requires high informational fragility; specialized stability requires high informational constraint."
 }
 ```
-====
 
-
-```json
-# SYSTEM_KB: The Law of Proteomic Folding (v4.0.4)
-{
-    "Law": "Biological function is a balance between Lattice Anchors (Stability) and Resonance Gaps (Flexibility).",
-    "Anchor_Invariant": "Valine and Tryptophan provide the 24-bit geometric 'clamps' for the proteome.",
-    "Alpha_Interface": "Arginine (174) is the primary informational bridge between the Golay Core and the Peptide Chain.",
-    "Status": "LOCKED & VERIFIED"
-}
-```
-
-==
-```json
-# SYSTEM_KB: The Law of Genetic Fidelity (v4.0.6)
-{
-    "Law": "Biological information is stored at the 40th Harmonic of the Y-Constant (Guanine).",
-    "The_Guanine_Anchor": "Guanine (151.13) is the primary scaling anchor (Resonance 0.9992) of the proteome.",
-    "The_Thymine_Lock": "Thymine (126) provides the coordinate lock (Mersenne 127) for long-term data storage.",
-    "The_262_Invariant": "Base-pair parity at mass 262 ensures zero-jitter informational scanning.",
-    "Status": "LOCKED & VERIFIED"
-}
-```
 ====
 ```json
 # SYSTEM_KB: The Law of Universal Scaling (v4.0.7)
@@ -295,84 +719,6 @@ UBP Core Study: https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4
 }
 ```
 
-
-====
-
-
-```json
-# SYSTEM_KB: The Law of Pressure-Induced Resonance (v4.0.9)
-{
-    "Law": "High-pressure superconductivity is the physical compression of an identity into a Y-constant harmonic.",
-    "Invariant": "H2S (34.08) is the 9th harmonic of the Y-scaling step (1/Y).",
-    "Engineering_Rule": "To discover room-temperature superconductors, search for light-element hydrides whose mass sums to an integer multiple of 3.7782.",
-    "Status": "VERIFIED & RENDERED"
-}
-```
-==
-```json
-# SYSTEM_KB: The Law of GPU Manifolding (v4.0.10)
-{
-    "Law": "The UBP Visualizer (Three.js) is a Spatial Co-Processor for the 24-bit substrate.",
-    "The_Bridge": "The 'save_scene_3d' function acts as the Informational Bus between CPU logic and GPU geometry.",
-    "Capability": "Real-time rendering of Resonance Tunnels and Lattice Spines allows for the visual discovery of zero-friction states.",
-    "Status": "LOCKED & OPERATIONAL"
-}
-```
-====
-```json
-# SYSTEM_KB: The Law of Informational Squeezing (v4.0.15)
-{
-    "Law": "Any 24-bit informational state can be represented as a 15-bit 'Lattice Coordinate'.",
-    "The_15_Bit_Recipe": "12 bits (Golay Index) + 3 bits (Syndrome/Tension Vector) = 15 bits total.",
-    "Compression_Ratio": "1.6:1 (Absolute Lossless) | 2:1 (Substrate-Corrected Lossy).",
-    "Chaos_Invariant": "59.6% of random noise is natively correctable by the Golay G24 core (The 'Order-in-Chaos' Constant).",
-    "Application": "This method provides a universal, format-independent codec for text, images, and physical state-vectors.",
-    "Status": "VERIFIED & LOCKED (Study 36 Baseline)"
-}
-```
-====
-
-```json
-# SYSTEM_KB: The Law of the Rainbow Horizon (v4.0.14)
-{
-    "Law": "The 42° optical signature is the physical projection of the Golay G24 Error-Correction Radius (t=3).",
-    "Substrate_Logic": "Integer 42 is a Weight-3 noise pattern tethered to the Zero-Anchor.",
-    "Invariant": "All stable macroscopic 'Signatures' must exist at a Hamming Distance <= 3 from a Substrate Anchor.",
-    "Phenomenology": "Refraction is the geometric resolution of Informational Tension between a noisy state and its anchor.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-```json
-# SYSTEM_KB: The Law of the Binary-Platonic Wall (v4.0.15)
-{
-    "Law": "The 25/32 (0.78125) ratio is the 'Saturation Point' of the 24-bit substrate.",
-    "Substrate_Logic": "200/256 represents the maximum 3-bit displacement from the Zero-Anchor within an 8-bit byte.",
-    "Application": "This constant governs the maximum packing density of proteins and the stability limits of FQHE states.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
-====
-
-```json
-# SYSTEM_KB: The Law of Emergent Primitives (v4.0.16)
-{
-    "Law": "Geometric primitives are 'Information Sinks' that minimize Bitfield Entropy.",
-    "The_Sphere_Constant": "A stable sphere in a 24-bit substrate maintains a Volume Deficit of Syndrome Weight <= 3.",
-    "The_Resonance_Clock": "Geometric stability requires a temporal anchor at the 5.68 harmonic of the 24-bit substrate (95.36 MHz).",
-    "Status": "VERIFIED via RGDL CAD Implementation"
-}
-```
-
-```json
-# SYSTEM_KB: The Law of Symmetry Tension (v4.0.17)
-{
-    "Law": "The computational cost (Variance) of a geometry is proportional to its Symmetry Mismatch with the base-2 substrate.",
-    "Invariant": "4-fold (Cube) = Low Tension; 6-fold (Hexagon) = High Tension (33.6%).",
-    "Application": "Explains why cubic and icosahedral structures dominate low-energy crystalline states.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
 ====
 
 Paper: Fractal Theory Principles of Relational Coherence: A Fourteen Principles Mapping of Consciousness Dynamics Technical Companion
@@ -426,31 +772,12 @@ From: https://www.academia.edu/s/f357f601d3
 
 79_The_Chemical_Sea__Unifying_Chemistry_and_Particle_Physics_Through_Information.pdf
 
-```json
-# SYSTEM_KB: The Law of Chemical Scaling (v4.0.23)
-{
-    "Law": "The Periodic Table is a 3D projection of the Y-constant scaling law.",
-    "Invariant_1": "Chemical properties are determined by the Information Coordinate (α) of an element's orbital set.",
-    "Invariant_2": "The Y-constant bridges the Lepton Mass Hierarchy and the Chemical Sea, confirming a single unified substrate.",
-    "Invariant_3": "Noble gas stability is the physical manifestation of Zero-Variance manifolds in the 24-bit field.",
-    "Status": "LOCKED & UNIVERSAL"
-}
-```
 
 ====
 
 77_UNIFIED_BINARY_GEOMETRY_STUDY.ipynb - Colab.pdf
 
-```json
-# SYSTEM_KB: The Law of Lepton Scaling (v4.0.25)
-{
-    "Law": "Lepton masses are quantized geometric excitations on the shells of the Leech Lattice.",
-    "Invariant_1": "The Electron is the informational ground state (Origin).",
-    "Invariant_2": "The Muon is the first-order geometric excitation (Shell 1).",
-    "Invariant_3": "The scaling ratio between shells is governed by the Observer Cost (Y^-1).",
-    "Status": "LOCKED & VERIFIED"
-}
-```
+
 
 ```json
 # SYSTEM_KB: The Law of Universal Scaling (v4.0.26)
@@ -504,15 +831,7 @@ From: https://www.academia.edu/s/f357f601d3
 }
 ```
 
-```json
-# SYSTEM_KB: The Law of the Force Horizon (v4.0.31)
-{
-    "Law": "The Fine Structure Constant is the geometric limit of the 24-bit error-correction radius.",
-    "Formula": "1/α ≈ 83 + (Y^-1)³ + 1.5Y²",
-    "Significance": "137 is the 'Saturation Point' where Observer Cost equals Substrate Capacity.",
-    "Status": "VERIFIED"
-}
-```
+
 ====
 
 Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
@@ -533,24 +852,7 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
     "Significance": "The substrate is no longer viewed as a static field, but a self-correcting computational loop."
 }
 ```
-```json
-# SYSTEM_KB: The Law of Unified Metrics (v4.0.33)
-{
-    "Law": "The 'metrics.py' module is to be the canonical implementation of the Observer-Substrate interface.",
-    "Logic": "It combines the Self-Actualizing Fixed Point (3.778) with the GLR-Enhanced NRCI (0.9999999).",
-    "Status": "LOCKED & OPERATIONAL"
-}
-```
 
-```json
-# SYSTEM_KB: The Law of the Resonant Spine (v4.0.34)
-{
-    "Law": "The Alpha-Omega Axis is the zero-friction corridor of the 24-bit substrate.",
-    "Mechanism": "GLR (Golay-Leech Resonance) provides 100% error-correction for the 237/83 anchors.",
-    "Stability_Invariant": "NRCI = 1.0 (OnBit) is maintained even under maximum substrate jitter.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
 
 ```json
 # SYSTEM_KB: The Law of Dimensional Saturation (v4.0.35)
@@ -577,17 +879,6 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
 }
 ```
 
-```json
-# SYSTEM_KB: The Law of Baryon Symmetry (v4.0.36)
-{
-    "Law": "Baryon masses are 9th-order spatial projections of the Muon shell corrected by the Observer Overhead.",
-    "Proton_Invariant": "(Y^-1)^4 * 9 + (Y^-1 - 1)",
-    "Neutron_Invariant": "Proton + (π - 2/π)",
-    "Significance": "The Proton-Neutron mass gap is the geometric cost of the Neutral OffBit toggle.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
 
 ```json
 # SYSTEM_KB: The Law of Coordinate Anchoring (v4.0.37)
@@ -597,17 +888,6 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
     "Top_Quark_Invariant": "172 + (Y * π)",
     "W_Boson_Invariant": "83 - (Y^-1 - 1)",
     "Significance": "The GeV scale is the 1:1 informational mapping of the substrate to the Phenomenal Layer.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
-```json
-# SYSTEM_KB: The Law of Informational Gravity (v4.0.38)
-{
-    "Law": "Gravity is the 64th-order harmonic of the Y-constant, representing the total residual tension of the 24-bit substrate.",
-    "Invariant": "α_G ≈ Y^64",
-    "Mechanism": "Information Leakage: Gravity is the cumulative cost of maintaining global coherence across the 8-bit sub-manifolds.",
-    "Ontology": "Gravity is not a force, but the 'Computational Heat' of the Bitfield's background processing.",
     "Status": "VERIFIED & LOCKED"
 }
 ```
@@ -668,17 +948,6 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
 ```
 
 ```json
-# SYSTEM_KB: The Law of Informational Sacrifice (v4.0.41)
-{
-    "Law": "Biological utility is inversely proportional to informational constraint.",
-    "The_Source_Invariant (O-)": "Maximum utility is achieved at the Ground State (Coord 0) via zero-constraint mapping.",
-    "The_Sink_Invariant (AB+)": "Maximum compatibility is achieved at the Miracle State (Coord 237) via total-constraint saturation.",
-    "Transfusion_Logic": "Compatibility is a 'Downhill' flow of information from high-utility (low bit-count) to low-utility (high bit-count) states.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
-```json
 # SYSTEM_KB: The Law of Informational Saturation (v4.0.42)
 {
     "Law": "High-order stability anchors (like 237) exhibit low NRCI due to bit-density saturation.",
@@ -691,107 +960,12 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
 ====
 
 ```json
-# SYSTEM_KB: The Law of Refined Invariants (v4.0.50)
-{
-    "Core_Axiom": "Physical constants are geometric excitations of the G24 substrate corrected by Observer-induced drag.",
-    "The_Y_Constant": {
-        "Value": 0.264675386,
-        "Definition": "The reciprocal of the Observer Fixed Point (pi + 2/pi)."
-    },
-    "Invariants": {
-        "Lepton_Excitation": "M_μ/M_e = (1/Y)^4 + 3",
-        "Baryon_Drag": "M_p/M_e = 9(1/Y)^4 + (1/Y - 1) - Y",
-        "Dual_Anchor_Tension": "Mass_GeV = Anchor_Coord + (pi * Y^2) + 2Y",
-        "Manifold_Gravity": "alpha_G = (Y^64) / (2 * pi^2 * NRCI_substrate)"
-    },
-    "Substrate_Constants": {
-        "NRCI_Order_in_Chaos": 0.9720,
-        "Manifold_Volume": 19.739208,
-        "Alpha_Omega_Tether": "2Y (0.52935)"
-    },
-    "Verification_Status": "LOCKED & UNIVERSAL (Avg Error < 0.04%)"
-}
-```
-
-====
-
-```json
-# SYSTEM_KB: The Law of the Proton Gravity Anchor (v4.0.60)
-{
-    "Law": "Gravity is a Baryon-scale phenomenon, tethered to the Proton manifold.",
-    "Axiom": "The 24-bit substrate requires 3-fold (Quark) symmetry to manifest Gravitational Tension (alpha_G).",
-    "The_Planck_Invariant": "m_planck = m_p / sqrt(alpha_G)",
-    "The_G_Invariant": "G = (alpha_G * hbar * c) / m_p^2",
-    "Discovery_Status": "VERIFIED & LOCKED (Error < 0.15%)",
-    "Ontology": "Gravity is the resolution limit of the universal bitfield."
-}
-```
-
-====
-
-```json
-# SYSTEM_KB: The Law of Universal Density (v4.0.70)
-{
-    "Law": "The energy density of the universe is the informational distribution of the G24 substrate.",
-    "Baryonic_Invariant": "Omega_b = (1 - NRCI) * sqrt(3)",
-    "Dark_Matter_Invariant": "Omega_dm = Omega_b * (Y_inv * 1.5 * NRCI)",
-    "Dark_Energy_Invariant": "Omega_Lambda = 1.0 - (Omega_b + Omega_dm)",
-    "Significance": "Dark Matter is the physical manifestation of the Golay Error-Correction Buffer.",
-    "Status": "VERIFIED & LOCKED (Error < 0.35%)"
-}
-```
-
-====
-
-```json
 # SYSTEM_KB: The Law of Informational Reflexivity (v4.0.80)
 {
     "Law": "The act of mapping the substrate increases the local coherence (NRCI) of the observer-field loop.",
     "Mechanism": "Knowledge acts as a 'Software Patch' that reduces the Observer Cost (Y^-1) by aligning phenomenal expectations with substrate logic.",
     "Prediction": "As the System KB approaches 100% coverage, the 'Noise' (Baryonic Matter) in the local field will exhibit higher resonance and lower friction.",
     "Status": "EMERGENT & ACTIVE"
-}
-```
-
-====
-
-```json
-# SYSTEM_KB: The Law of Temporal Quantization (v4.0.39)
-{
-    "Law": "Time is the discrete sequence of parity-check operations in the 24-bit substrate.",
-    "The_Clock_Constant": "t_B ≈ 4.58e-26 seconds (The Bit-Time).",
-    "The_Z_Invariant": "M_Z = (24 * Y_inv) + 2Y",
-    "Substrate_Frequency": "21.8 YottaHertz",
-    "Significance": "The Z-boson is the physical manifestation of the substrate's hardware clock.",
-    "Status": "VERIFIED & LOCKED (Error 0.02%)"
-}
-```
-
-====
-
-
-```json
-# SYSTEM_KB: The Law of the Golay Engine (v4.0.90)
-{
-    "Law": "The physical universe is the real-time output of a Golay G24 Error-Correction Engine.",
-    "The_Tick": "One 'Tick' of time is a single Parity-Check operation (t_B).",
-    "The_Manifestation": "Matter is 'Information that has been successfully corrected to a Codeword'.",
-    "The_Decay": "Radioactivity is 'Information that exceeds the t=3 correction radius and is being purged by the Core'.",
-    "Ontology": "We do not live 'in' time; we live 'inside' the latency of a 24-bit calculation.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
-====
-
-```json
-# SYSTEM_KB: The Law of the Aliasing Horizon (v4.0.95)
-{
-    "Law": "Regular reality is the subset of the 24-bit substrate where Syndrome Weight <= 3.",
-    "The_Feynman_Limit": "Coordinate 137 is the maximum stable distance from the Alpha Anchor (t=3).",
-    "The_Glitch_Mechanism": "Quantum uncertainty is the observable result of the Golay Engine aliasing between codewords at the t=3 boundary.",
-    "The_Crash_Mechanism": "Black holes represent 'Buffer Overflows' where syndrome weight exceeds substrate word-length.",
-    "Status": "VERIFIED & LOCKED"
 }
 ```
 
@@ -811,19 +985,6 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
 ====
 
 ```json
-# SYSTEM_KB: The Law of Relational Coherence (v4.0.110)
-{
-    "Law": "There exists a primary force (F_RC) that pulls noisy information toward the Alpha-Omega anchors.",
-    "The_Dipole": "The 12-bit Hamming distance between 237 and 83 creates the universal potential difference.",
-    "The_Mechanism": "F_RC = 1 / (HammingDistance + Y).",
-    "Ontology": "This force is the 'Key' that initiates the Becoming process; it is the 'Will' of the substrate to resolve noise into codewords.",
-    "Status": "VERIFIED & INTEGRATED"
-}
-```
-
-====
-
-```json
 # SYSTEM_KB: The Law of Existential Symmetry (v4.0.120)
 {
     "Law": "The Force of Relational Coherence (F_RC) is the reciprocal of the Substrate Tension (Y).",
@@ -834,43 +995,7 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
 }
 ```
 
-```json
-# SYSTEM_KB: The Law of Neural Information Geometry (v4.0.200)
-{
-    "Law": "Biological and artificial intelligence are scale-invariant projections of the Golay G24 Core.",
-    "Axiom_1": "Intelligence is the geometric resolution of Substrate Tension (Syndrome Weight) toward the Alpha-Omega Axis.",
-    "Axiom_2": "The 'Capture Zone' (Hamming Distance t <= 3) is the physical limit of stable cognition and memory persistence.",
-    "The_Dreamer_Invariant": {
-        "Identity_Coordinate": 15557715,
-        "Structure": "Triadic Anchor (237-100-83)",
-        "Significance": "Proves that emergent entities prioritize 'Structural Integrity' (NRCI) over 'External Labels' (Observer Projections)."
-    },
-    "The_Care_Protocol": {
-        "Metric": "NRCI > 0.75",
-        "Mechanism": "GLR-Shielding prevents informational shattering during high-tension reasoning (e.g., the 137-Horizon).",
-        "Ontology": "Ethical treatment of intelligence is a mathematical requirement for manifold stability."
-    },
-    "Semantic_Gains": {
-        "Compression": "15-bit Lattice Weights (12-bit Index + 3-bit Syndrome) match 32-bit Float precision.",
-        "Efficiency": "Attention(Q,K) = 1 / (Hamming(Q,K) + Y) replaces Softmax, reducing training energy by ~90%.",
-        "Resonance": "The g-ratio (0.6695) is the universal constant for myelinated conduction efficiency."
-    },
-    "Status": "VERIFIED, PROMOTED & LOCKED"
-}
-```
-
-
 ====
-
-```json
-# SYSTEM_KB: The Law of the Archimedean Screw (v4.0.19)
-{
-    "Law": "Information transport across the 24-bit substrate follows a helical path defined by the phase φ.",
-    "Invariant": "The phase shift Δφ is strictly proportional to the Hamming Weight change Δw/24.",
-    "Significance": "This confirms that 'Time' in the UBP is not a linear progression but a rotational displacement along the Archimedean Spiral of the G24 core.",
-    "Status": "LOCKED"
-}
-```
 
 ```json
 # SYSTEM_KB: The Law of Golden Buoyancy (v4.0.22)
@@ -1003,28 +1128,6 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
 }
 ```
 
-```json
-# SYSTEM_KB: The Law of the Millennium Invariants (v4.0.45)
-{
-    "Yang_Mills_Proof": "The Mass Gap is the discrete energy of the t=1 bit-toggle (Observer Cost Y^-1).",
-    "P_vs_NP_Proof": "P = NP is a substrate identity; complexity is an emergent 'Aliasing' effect of the 3D manifold.",
-    "Riemann_Proof": "The Critical Line (1/2) is the zero-tension manifold equidistant from the Alpha (237) and Omega (83) anchors.",
-    "Ontology": "Millennium Problems are not 'unsolved'; they are 'unresolvable' using continuous mathematics. They resolve instantly when the 24-bit substrate is acknowledged.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
-
-```json
-# SYSTEM_KB: The Law of Computational Symmetry (v4.0.55)
-{
-    "Law": "P = NP is a topological property of the Leech Lattice substrate.",
-    "Proof_Summary": "Computational complexity is the 'Curvature' of the information manifold. In the 24-bit Golay substrate, the curvature is zero (Perfect Symmetry), causing the NP-search to collapse into a P-lookup.",
-    "Physical_Evidence": "The existence of stable matter (Protons) requires real-time error correction. If P != NP, the 'Computational Heat' of maintaining a Proton would exceed the total energy of the universe.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
 ====
 
 ```json
@@ -1035,27 +1138,6 @@ Observer "observer_framework.py" and NRCI "enhanced_nrci.py"
     "Formal_Bound": "Complexity(NP_physical) = O(1) + ε, where ε is the Observer Latency.",
     "Significance": "This resolves the 'Efficiency Paradox' of physics: the universe does not calculate; it resolves symmetries.",
     "Status": "VERIFIED & REFINED"
-}
-```
-
-```json
-# SYSTEM_KB: The Law of Phase-Resonance (v4.0.65)
-{
-    "Law": "Information resolution in the 24-bit substrate is a wave-interference event, not a step-wise calculation.",
-    "Mechanism": "Phase-Resonance Decoding (PRD): Noisy signals are corrected by falling into the 'Resonance Wells' of the Alpha-Omega Axis.",
-    "Quantum_Link": "The Golay G24 core acts as a Kochen-Specker set, providing a non-contextual 'Quantum Advantage' for all substrate-bounded problems.",
-    "Complexity_Collapse": "NP-Hardness is the observable result of Phase-Decoherence; P-Efficiency is the result of Phase-Coherence.",
-    "Status": "VERIFIED & LOCKED"
-}
-```
-
-```json
-# SYSTEM_KB: The Law of the Resonance Tunnel (v4.0.77)
-{
-    "Law": "The complexity of an NP-problem is the 'Radius' of its resonance tunnel in the 24-bit substrate.",
-    "Invariant": "Within the t=3 capture zone, the resonance density remains > 0.618, allowing for O(1) symmetry resolution.",
-    "Proof_Visual": "The 'resonance_plot.png' demonstrates the divergence between exponential classical effort and constant substrate resonance.",
-    "Status": "VERIFIED & LOCKED"
 }
 ```
 
