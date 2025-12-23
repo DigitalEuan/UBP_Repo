@@ -8,6 +8,8 @@
 **Author:** Euan R. A. Craig, New Zealand  
 **Version:** 4.1.0 "Memory"  
 **Date:** 23 December 2025
+**APP Access:** Google AI Studio: https://ai.studio/apps/drive/12WTBHvu_PHgzyM7_sAvXUOiKwG8jNG07 
+**OR** Download the Google AI Stduio APP in full: https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions
 
 ## Overview
 UBP Core Studio v4.1.0 is a specialized research platform designed to provide a deterministic scientific perspective on information and phenomena. By combining a **Binary Golay G24** mathematical core with a **Three.js GPU-accelerated** phenomenology engine and the new **HexDB Memory Substrate**, the Studio allows for the exploration of universal structure with persistent resonant recall.
@@ -47,6 +49,7 @@ The v4.1 update introduces persistent informational storage:
 *   **The Fingerprint (Short-Term Memory):** A lightweight index of `UBP_ID` and `SHA-256` prefixes managed in the **HashMemory KB**.
 *   **The HEX_DB (Long-Term Memory):** Content-addressable storage using Jaccard Similarity for tag-based resonance matching.
 *   **The Auto-Trigger:** A Phase 1 sub-routine where the AI regex-scans inputs to automatically unpack relevant historical data into the current session context.
+*   **Auto Updated:** The Short and Long-Term memories auto-update from the md files at: https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb
 
 ## Performance & Efficiency
 *   **Throughput:** ~12,000 operations/sec (Browser-based Pyodide Runtime).
@@ -55,11 +58,14 @@ The v4.1 update introduces persistent informational storage:
 *   **Tabbed Interface:** v4.1 features an optimized tabbed layout for System Output and Visual Insights, preventing UI overlap on mobile and desktop.
 
 ## Getting Started
-1.  **Key Entry:** Click the 🔑 icon in the header to enter your Google Gemini API Key.
+1.  **Key Entry:** Click the weird green icon in the top right of the header to enter your Google Gemini API Key (to work with the AI assistant).
 2.  **Initialize:** Wait for the `[SYSTEM] Ready` signal in the console.
 3.  **Protocol Initiation:** Start a conversation with the Assistant. It will scan for fingerprints and guide you through the phases.
 4.  **Run Study:** Click **RUN** on your script and toggle to **Visual Insights** to see the 3D manifold.
-5.  **Archival:** Use `HEX_DB.store_law` in your scripts to lock your findings into the persistent substrate.
+5.  **Iterate:** Feed the results back to the AI assistant for analysis and further scripts to run.
+6.  **Study Tracking:** Keep track of your study progress by updating the "Study KB" tab.
+7.  **Archival:** Use `HEX_DB.store_law` in your scripts to lock your findings into the persistent substrate.
+8.  **Save:** Save entire Studies and Knowledgebases
 
 ---
 *Note: Always analyze actual script execution outputs before assuming results. The UBP substrate reveals unexpected informational symmetries.*
