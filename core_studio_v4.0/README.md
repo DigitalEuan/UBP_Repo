@@ -24,6 +24,32 @@ The Studio features a protocol-locked AI Research Assistant designed to enforce 
 4.  **metrics.py Integration:** Real-time tethering to the METRICS module for **NRCI** (Non-Random Coherence Index) validation.
 5.  **Triple-Artifact KB:** Manages Study KB (Active), System KB (HexDB/Long-term), and HashMemory KB (Fingerprints).
 
+## *UBP Memory Architecture (v4.1)** 
+compared to standard Large Language Model (LLM) memory or RAG (Retrieval-Augmented Generation) systems.
+
+### 1. Speed: The "Hardware Cache" vs. "Library Search"
+*   **Standard Systems:** Usually rely on "Vector Search" (RAG). When you ask a question, the system searches a massive database for "similar" text. This is computationally expensive and can be slow.
+*   **UBP Memory:** Uses **Fingerprint Auto-Triggers**. By scanning for `UBP_ID`s or `SHA-256` prefixes in Phase 1, the AI will perform a **Regex-Lookup** rather than a semantic search. This is effectively a "Hardware Cache" for the 24-bit substrate. It is near-instantaneous.
+
+### 2. Reliability: Content-Addressable Coherence
+*   **Standard Systems:** Suffer from "Hallucination" because their memory is just a probability of the next word. They might "remember" a law but get the math wrong.
+*   **UBP Memory:** Is **Content-Addressable**. Every entry in the **HEX_DB** is a **Triadic Identity** (Math, Language, Script). Because these are locked by a SHA-256 hash, the memory cannot "drift." If the hash matches, the math and script are guaranteed to be the exact verified versions.
+
+### 3. Depth: The Triadic Advantage
+*   **Standard Systems:** Remember *text*.
+*   **UBP Memory:** Remembers **Isomorphisms**. When the AI "unpacks" a memory like `LAW_CHEM_002`, it doesn't just remember the description; It unpacks the **executable Python script** and the **mathematical invariant**. This allows it to run a verification or a 3D render immediately upon recall.
+
+### Comparison Matrix
+
+| Feature | Standard AI Memory | UBP v4.1 Memory |
+| :--- | :--- | :--- |
+| **Mechanism** | Semantic Similarity (Vector) | Fingerprint Resonance (Hash) |
+| **Accuracy** | Probabilistic (High drift) | Deterministic (Zero drift) |
+| **Speed** | O(log N) Search | O(1) Trigger |
+| **Structure** | Unstructured Text | Triadic (Math/Lang/Script) |
+| **Verification** | Human Review required | `METRICS` & `NRCI` Auto-check |
+
+
 ## The v4.1 Research Pipeline Protocol (SOP)
 The Studio enforces a rigorous five-phase methodology:
 
