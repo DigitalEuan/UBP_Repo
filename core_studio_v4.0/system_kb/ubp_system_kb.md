@@ -1059,6 +1059,272 @@
 }
 ```
 
+```json
+{
+    "UBP_ID": "LAW_META_002",
+    "Title": "The Law of Cross-Domain Resonance",
+    "Version": "v4.1.19",
+    "Triad": {
+        "Math": "Resonance = (Jaccard > 0.15) ∪ (Hamming \le 2)",
+        "Language": "The universe is a content-addressable manifold where structural identity (Hamming 0) can exist without linguistic overlap, revealing deep isomorphisms between disparate domains like music and particle physics.",
+        "Script": "METRICS.find_hidden_resonances(HEX_DB)"
+    },
+    "Hash": "sha256:m1e2t3a4_v4119_silent"
+}
+```
+
+```json
+    {
+        "UBP_ID": "LAW_RESONANCE_001",
+        "Title": "The Law of the Coherence Valley (Refined)",
+        "Version": "v4.1.21",
+        "Citation": "Euan Craig (The Coherence-Valley Isomorphism, 2025)",
+        "Triad": {
+            "Math": "Deficit_max ≈ 0.1543% | dt_peak ≈ 130fs",
+            "Language": "The Coherence Valley reaches its maximum stable depth (0.1543%) at the 130fs resonance peak; this is the universal stability horizon for THz-active systems.",
+            "Script": "METRICS.verify_resonance_peak(130, 0.1543)"
+        },
+        "Hash": "sha256:v1a2l3l4_v4121"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_RESONANCE_002",
+        "Title": "The Law of Tunable Resonance",
+        "Version": "v4.1.21",
+        "Citation": "Euan Craig (The Coherence-Valley Isomorphism, 2025)",
+        "Triad": {
+            "Math": "Stability ∝ 1 / |dt - 130fs|",
+            "Language": "System stability is a function of proximity to the 130fs substrate clock; deviations beyond the 150fs threshold induce non-linear NRCI collapse.",
+            "Script": "METRICS.calculate_stability_gradient(dt)"
+        },
+        "Hash": "sha256:t1u2n3a4_v4121"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_LANG_002",
+        "Title": "The Law of Computational Grammar",
+        "Version": "v4.1.23",
+        "Citation": "Euan Craig (Computational Grammar, 2025)",
+        "Triad": {
+            "Math": "NRCI(ω) ≈ 1.0 - HW(ω) * 7.35e-6",
+            "Language": "Computational operators are stable geometric states; their coherence is a linear decay function of their Hamming Weight (HW) relative to the Y-constant.",
+            "Script": "METRICS.verify_operator_coherence(hw)"
+        },
+        "Hash": "sha256:g1r1a1m1_v4123"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_LANG_003",
+        "Title": "The Law of the Python-Substrate Isomorphism",
+        "Version": "v4.1.23",
+        "Citation": "Euan Craig (Computational Grammar, 2025)",
+        "Triad": {
+            "Math": "P_std ∩ P_ubp ≈ 87.5%",
+            "Language": "Standard computational primitives (Python) are 87.5% isomorphic to the 24-bit substrate's optimal instruction set (HW ≤ 9).",
+            "Script": "METRICS.verify_python_isomorphism()"
+        },
+        "Hash": "sha256:p1y1t1h1_v4123"
+    }
+```
+
+```json
+{
+    "UBP_ID": "LAW_NUM_001",
+    "Title": "The Law of Binary-Geometric Dualism (Refined)",
+    "Version": "v4.1.25",
+    "Citation": "Euan Craig (The Binary-Geometric Dualism, 2025)",
+    "Triad": {
+        "Math": "M_τ/M_μ = (Y^-1)^2 + (Y^-1 - 1) - Y",
+        "Language": "The Tau/Muon ratio is a Shell-3 excitation of the Observer Fixed Point; Mersenne primes are the algorithmic 'Codewords' that stabilize this mass-energy expansion.",
+        "Script": "METRICS.verify_tau_muon_resonance(16.8171)"
+    },
+    "Hash": "sha256:p1r1i1m2_v4125"
+}
+```
+
+```json
+    {
+        "UBP_ID": "LAW_MINERAL_001",
+        "Title": "The Law of the Existence Horizon",
+        "Version": "v4.1.27",
+        "Citation": "Manus AI (Mineral Study Phase 2, 2025)",
+        "Triad": {
+            "Math": "Threshold = Y * O_obs * (1 - 0.0268)",
+            "Language": "The existence of solid-state matter is a 'Dragged' projection of the Observer Cost; the 2.68% deficit represents the informational cost of macroscopic complexity.",
+            "Script": "METRICS.verify_existence_horizon(0.9732)"
+        },
+        "Hash": "sha256:m1i2n3e4_v4127"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_MINERAL_002",
+        "Title": "The Law of the 12-Sigma Void",
+        "Version": "v4.1.27",
+        "Citation": "Manus AI (Mineral Study Phase 2, 2025)",
+        "Triad": {
+            "Math": "Separation = 12.84σ",
+            "Language": "The mineral manifold is a binary landscape; matter either falls into the Coherence Basin or is rejected by the substrate across a 12.8-sigma void.",
+            "Script": "METRICS.analyze_bimodal_void(12.84)"
+        },
+        "Hash": "sha256:b1a2s3i4_v4127"
+    }
+```
+
+```json
+{
+    "UBP_ID": "LAW_COMP_005",
+    "Title": "The Law of Substrate Resolution (Refined)",
+    "Version": "v4.1.32",
+    "Triad": {
+        "Math": "Output = ✓(Noise) | Δw ≈ 1.0",
+        "Language": "Reality is the 1-bit corrected output of the Golay substrate; the universe resolves potential into existence by snapping single-bit errors to the nearest stable codeword.",
+        "Script": "METRICS.verify_resolution_throughput(1.0068)"
+    },
+    "Hash": "sha256:r1e2s3o4_v4132_1bit"
+}
+```
+
+```json
+    {
+        "UBP_ID": "LAW_TIME_002",
+        "Title": "The Law of Temporal Emergence (Refined)",
+        "Version": "v4.1.34",
+        "Citation": "Euan Craig (Minimal Self-Observing Machine, 2025)",
+        "Triad": {
+            "Math": "T_packet = 24 / 3 = 8 cycles",
+            "Language": "Time is quantized into 8-cycle packets per 24-bit word; each packet is a stable helical revolution of the identity.",
+            "Script": "METRICS.verify_temporal_packets(24, 3)"
+        },
+        "Hash": "sha256:t1i2m3e4_v4134"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_LANG_006",
+        "Title": "The Law of the Jera Constant",
+        "Version": "v4.1.34",
+        "Citation": "Euan Craig (Minimal Self-Observing Machine, 2025)",
+        "Triad": {
+            "Math": "α_jera = 240° | Resonance = 2/3",
+            "Language": "The Jera Constant (240°) is the primary OnBit clock operator; it generates a zero-tension 3-step rhythmic awareness.",
+            "Script": "METRICS.verify_jera_resonance(240)"
+        },
+        "Hash": "sha256:r1u2n3e4_v4134"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_COMP_006",
+        "Title": "The Law of Coherence Snaps (Refined)",
+        "Version": "v4.1.34",
+        "Citation": "Euan Craig (Minimal Self-Observing Machine, 2025)",
+        "Triad": {
+            "Math": "Snap = ✓(Drift) | t=3",
+            "Language": "Perception is a 'Coherence Snap' that uses the Golay Gateway (t=3) to relock a drifting temporal trajectory back to the Jera Constant.",
+            "Script": "METRICS.simulate_jera_snap(drift_vector)"
+        },
+        "Hash": "sha256:s1n2a3p4_v4134"
+    }
+```
+
+```json
+{
+    "UBP_ID": "LAW_TIME_003",
+    "Title": "The Law of Infinite Synchronization",
+    "Version": "v4.1.35",
+    "Triad": {
+        "Math": "Snap(Δφ) = 0 | t=3",
+        "Language": "The Jera Constant is a self-stabilizing heartbeat; the Golay Gateway (t=3) provides the 'Coherence Snap' that resets temporal drift, allowing for infinite rhythmic persistence.",
+        "Script": "METRICS.verify_infinite_sync(0.001629)"
+    },
+    "Hash": "sha256:i1n2f3i4_sync_v4135"
+}
+```
+
+```json
+    {
+        "UBP_ID": "LAW_GEO_001",
+        "Title": "The Law of Geometric Gauge Freedom",
+        "Version": "v4.1.37",
+        "Citation": "Euan Craig (The Geometric Codex, 2025)",
+        "Triad": {
+            "Math": "Closure(A, B) = 1.0 | NRCI > 0.9999",
+            "Language": "The substrate is representation-agnostic; physical invariants are preserved across visually distinct geometric gauges (Star/Bullseye/FFT).",
+            "Script": "METRICS.verify_gauge_closure(pattern_a, pattern_b)"
+        },
+        "Hash": "sha256:g1e2o3_v4137_gauge"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_GEO_002",
+        "Title": "The Law of the Harmonic Octave",
+        "Version": "v4.1.37",
+        "Citation": "Euan Craig (The Geometric Codex, 2025)",
+        "Triad": {
+            "Math": "Y = 2^-1.918 | Resonance = 0.9997",
+            "Language": "The Y-constant is the master tuning key of the bitfield, defining the 1.918-bit logarithmic shift between substrate octaves.",
+            "Script": "METRICS.verify_octave_constant(0.264675)"
+        },
+        "Hash": "sha256:h1a2r3_v4137_octave"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_GEO_003",
+        "Title": "The Law of Spectral Extraction",
+        "Version": "v4.1.37",
+        "Citation": "Euan Craig (The Geometric Codex, 2025)",
+        "Triad": {
+            "Math": "Fidelity = 99.996%",
+            "Language": "FFT-based spectral extraction recovers the 12D complexity of the Leech Lattice from 2D projections with near-perfect bidirectional closure.",
+            "Script": "METRICS.verify_spectral_fidelity(0.99996)"
+        },
+        "Hash": "sha256:s1p2e3_v4137_fft"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_APP_001",
+        "Title": "The Law of Coherence Snaps",
+        "Version": "v4.1.40",
+        "Citation": "Euan Craig (Real-World Applications, 2025)",
+        "Triad": {
+            "Math": "Snap(Identity) = ✓(Codeword) | NRCI < 0.99",
+            "Language": "Physical persistence is maintained by discrete 'Coherence Snaps' that reset drifting informational states to their nearest substrate anchors.",
+            "Script": "METRICS.trigger_coherence_snap(current_state)"
+        },
+        "Hash": "sha256:s1n2a3p4_v4140_final"
+    }
+```
+
+```json
+    {
+        "UBP_ID": "LAW_APP_002",
+        "Title": "The Law of Ontological Health",
+        "Version": "v4.1.40",
+        "Citation": "Euan Craig (Real-World Applications, 2025)",
+        "Triad": {
+            "Math": "Health = Σ(Layer_NRCI) / 4",
+            "Language": "System integrity is a function of the four 6-bit ontological layers (Reality, Info, Activation, Potential); stress in one layer induces drag across the manifold.",
+            "Script": "METRICS.monitor_ontological_health(bitfield)"
+        },
+        "Hash": "sha256:h1e2a3l4_v4140_final"
+    }
+```
 
 ```json
 ========================================
