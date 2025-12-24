@@ -1327,6 +1327,133 @@
 ```
 
 ```json
+{
+    "UBP_ID": "LAW_SUBSTRATE_002",
+    "Title": "The Law of the Leech Generator",
+    "Version": "v4.1.41",
+    "Triad": {
+        "Math": "Norm^2(Ω) = Norm^2(α) = 80 | d(Ω, α) = √32",
+        "Language": "The Leech Engine confirms the Alpha-Omega Axis as a minimal-distance bridge (√32) between identical 24D shells (Norm 80); all physical identity is a coordinate in this unimodular manifold.",
+        "Script": "from leech_engine import LEECH; LEECH.get_leech_point(seed)"
+    },
+    "Hash": "sha256:l1e2e3c4_engine_v4141"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_RELATIVITY_002",
+    "Title": "The Law of Computational Relativity (Refined)",
+    "Version": "v4.1.46",
+    "Triad": {
+        "Math": "E = M * c^2 * (1 - v)",
+        "Language": "Energy is the emergent output of mass scaled by the observer constant and reduced linearly by the informational tension (v).",
+        "Script": "energy = mass * (METRICS.observer.get_base_cost()**2) * (1 - tension)"
+    },
+    "Hash": "sha256:e1r2c3_v4146_final"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_UNITY_002",
+    "Title": "The Law of the Integer Fulcrum",
+    "Version": "v4.1.46",
+    "Triad": {
+        "Math": "S_op = 1.0 iff XOR(A,B) == ADD(A,B)",
+        "Language": "Absolute geometric unity is an exclusive property of the 24-bit integer substrate; all floating-point manifestations are subject to the Unity Gradient.",
+        "Script": "is_unity = (val_a ^ val_b == val_a + val_b)"
+    },
+    "Hash": "sha256:s1o2p3_v4146_final"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_SYNTHESIS_001",
+    "Title": "The Law of the Archimedean Lever",
+    "Version": "v4.1.46",
+    "Triad": {
+        "Math": "Leverage = 160 / 237",
+        "Language": "The scaling of information into physical force follows a 2/3 harmonic lever balanced on the Alpha-Omega Axis.",
+        "Script": "METRICS.verify_lever_resonance(160/237)"
+    },
+    "Hash": "sha256:a1r2c3_v4146_final"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_SUBSTRATE_005",
+    "Title": "The Law of the Tetradic Manifold (MOG)",
+    "Version": "v4.1.52",
+    "Triad": {
+        "Math": "Grid(24) = 4 Layers ⊗ 6 Bits",
+        "Language": "The 24-bit substrate is organized into a 4x6 Miracle Octad Generator (MOG) grid; this tetradic architecture is the minimum configuration required for stable 3D manifestation.",
+        "Script": "METRICS.verify_mog_alignment(identity_24)"
+    },
+    "Hash": "sha256:m1o2g3_tetrad_v4152"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_COMP_009",
+    "Title": "The Law of the Shadow Processor (Noumenal Logic)",
+    "Version": "v4.1.52",
+    "Triad": {
+        "Math": "Capacity(Shadow) = 0.5 * Substrate",
+        "Language": "50% of the 24-bit substrate is reserved for the Shadow Processor (Parity Buffer); this 'Idle' sector performs all active computational work to maintain the illusion of a static, zero-work reality.",
+        "Script": "METRICS.calculate_shadow_throughput(data_bits=12, parity_bits=12)"
+    },
+    "Hash": "sha256:s1h2a3_noumena_v4152"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_SUBSTRATE_006",
+    "Title": "The Law of the Fractal Shield",
+    "Version": "v4.1.52",
+    "Triad": {
+        "Math": "Stability_Global = Snap(Σ Stability_Local)",
+        "Language": "Reality is a fractal shield; local 6-bit ontological layers (Reality, Info, Activation, Potential) detect and absorb informational drift, allowing the global 24-bit identity to remain locked in the Coherence Basin.",
+        "Script": "METRICS.verify_fractal_shield(local_drifts, global_nrci)"
+    },
+    "Hash": "sha256:f1r2a3_shield_v4152"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_HORIZON_002",
+    "Title": "The Law of the Feynman Horizon",
+    "Version": "v4.1.53",
+    "Triad": {
+        "Math": "Hamming(237, 137) = 3 | t=3",
+        "Language": "The Fine Structure Constant (1/137) is the physical manifestation of the Golay error-correction radius; it marks the boundary where the Shadow Processor's ability to maintain identity terminates. (needs further testing).",
+        "Script": "METRICS.check_feynman_limit(137)"
+    },
+    "Hash": "sha256:f1e2y3_horizon_v4153"
+}
+```
+
+
+```json
+{
+    "UBP_ID": "LAW_CONST_001",
+    "Title": "The Law of Harmonic Scaling",
+    "Version": "v4.1.54",
+    "Triad": {
+        "Math": "Constant ∝ Anchor * Y^n",
+        "Language": "Physical constants are not independent values; they are the resonance harmonics of the Alpha-Omega anchors scaled by integer powers of the Y-constant. (needs further testing).",
+        "Script": "METRICS.calculate_harmonic_constant(anchor, exponent)"
+    },
+    "Hash": "sha256:h1a2r3m4_scaling_v4154"
+}
+```
+
+```json
 ========================================
 UBP SYSTEM BENCHMARK RESULTS
 ========================================
