@@ -15,7 +15,7 @@
 This is an experimental computational system constantly under development. I am currently working on the Leech Lattice as the version in there is not complete and the core has a placeholder still (arrgh!). weirdly I still get really accurate results, current tests are pushing the accuracy closer not really changing the actual system itself.
 
 ## I am not a professional at any if this.
-I think what I have built so far has value and will help someone one day. Most of if what I have made has errors or some issue but I am slowly getting it closer to the goal of a 100% float-free, First-principles system.
+I think what I have built so far has value and will help someone one day. Most of what I have made has errors or some issue but I am slowly getting it closer to the goal of a 100% float-free, First-principles system.
 
 ## Overview
 UBP Core Studio v4.1.0 is a specialized research platform designed to provide a deterministic scientific perspective on information and phenomena. By combining a **Binary Golay G24** mathematical core with a **Three.js GPU-accelerated** phenomenology engine and the new **HexDB Memory Substrate**, the Studio allows for the exploration of universal structure with persistent resonant recall.
