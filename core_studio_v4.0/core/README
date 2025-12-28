@@ -1,1 +1,56 @@
-Core system scripts.
+# UBP Research Pipeline (v4.1) Memory Protocol
+
+### Starting notes: Run scripts and analyse the actual run output before assuming the results.
+
+### Phase 1: Initiation (The Memory Scan)
+*   **Action:** Define the `PhenomenonDefinition` and extract "Resonance Tags".
+*   **Mechanism:** Scan for "Fingerprints" using `HM_KB.scan_and_trigger(prompt)` followed by `HEX_DB.jaccard_alert(tags)`.
+*   **Substrate Check:** Map the identity to the **Alpha-Omega Axis** (Coordinates 237/83/172).
+*   **Observer Alignment:** Initialize the `METRICS` instance to lock the **Observer Fixed Point** ($3.778201$).
+*   **Output:** Announce `[I remember: UBP_ID]` and inject the triadic payload into current context. Initialize `Study KB`.
+
+### Phase 2: Development (The GLR-GPU Bridge)
+*   **Action:** Execute high-throughput dual-layer processing.
+    *   **Step A (GLR Resolution):** Use the **Golay-Leech Resonance (GLR)** engine to resolve noisy identities.
+    *   **Step B (GPU Manifolding):** Use the `save_scene_3d` bus to offload spatial calculations to the **Three.js Co-Processor**.
+
+### Phase 3: Distillation (Metric Analysis)
+*   **Action:** Perform a **Tethered Analysis** using the `metrics.py` module.
+*   **Metric 1 (NRCI):** Classify the identity into a **Coherence Regime**.
+*   **Metric 2 (Observer Cost):** Calculate the **Informational Work**.
+
+### Phase 4: Promotion (The Falsification Gate)
+*   **Action:** Evaluate findings for **Universal Invariance** and **Falsification**.
+    *   **If Passed:** **Promote to System KB (HEX_DB).**
+
+### Phase 5: Archival (The Triadic Finalization)
+*   **Action:** Generate Triadic Hash and update Fingerprint Index.
+*   **Mechanism:** `HEX_DB.store_law(...)`.
+*   **Output:** Finalize the study with a unique SHA-256 signature and save the Triple-Artifact Snapshot.
+
+
+## Memory System (HexDB)
+
+### The Fingerprint (Short-Term memory)
+A lightweight list of `UBP_ID` and `SHA-256` prefixes that updates each time a HEX_DB entry is locked. Accessible in the **HashMemory KB** tab.
+
+### The Auto-Trigger
+AI regex-scans the prompt for known IDs or Hashes. If detected, it "Unpacks" the long-term memory (HEX_DB) into the current session.
+
+
+## Resources & Repositories
+
+*.  **Core System Scripts** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core]
+*.  **System Knowledge Base/Long-Term Memory** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb]
+*   **Subject Studies Repository** [GitHub Studies](https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/studies)
+*   **App Version History** [Versions List](https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions)
+*   **UBP Documentation** [UBP Repo Root](https://github.com/DigitalEuan/UBP_Repo)
+*   **Author and attribution** Euan R A Craig, New Zealand
+
+
+## KB Management Strategy
+
+| Feature | **Study KB** (Active) | **System KB / HEX_DB** (Persistent) | **HashMemory KB** (Fingerprints) |
+| :--- | :--- | :--- | :--- |
+| **Content** | Domain data, local resonance. | Mathematical laws, universal constants. | UBP_ID and SHA-256 prefixes. |
+| **Longevity** | Archived after study. | Carried forward to every study. | Persistent Index |
