@@ -19,7 +19,7 @@ This is an experimental computational system constantly under development.
 I think what I have built has value and will help someone one day.
 
 ## Overview
-UBP Core Studio v4.2.0 is a research platform designed to provide a deterministic scientific perspective on information and phenomena.
+UBP Core Studio v4.2.0 APP is a research platform designed to provide a deterministic scientific perspective on information and phenomena.
 
 ## Integrated Research Assistant (v4.1+ Memory)
 The Studio features an AI Research Assistant
@@ -117,32 +117,7 @@ Previously missing components:
 
 ---
 
-## Files Included
-
-### Core System
-**`ubp_system_complete_v4_2_0_FINAL.py`** (68 KB)
-- Full UBP implementation (hopefully)
-- Test suite included
-- Run directly: `python3 ubp_system_complete_v4_2_0_FINAL.py`
-
-### Demo Application
-**`ubp_demo_application.py`** (10 KB)
-- Demonstrates all system capabilities
-- 5 interactive demos
-- Particle physics predictions
-- Periodic table analysis
-- Information theory examples
-- TGIC dynamics simulation
-- Phenomenology framework
-
----
-
-## Quick Start
-
-# Initialize system
-system = initialize_ubp_system(verbose=True)
-
-# Access components
+## Access components
 golay = system['golay']
 leech = system['leech']
 physics = system['physics']
@@ -220,46 +195,6 @@ record, golay_identity, leech_point = phenomenology.process_observation(
 
 ---
 
-## Test Results Summary
-
-### All Tests Passing
-
-1. **Golay Code Properties**
-   - 4096 codewords generated
-   - Matches theoretical distribution
-   - Error correction: up to 3 bits
-
-2. **Leech Lattice Membership**
-   - All predicates validated
-   - 100/100 test points valid
-
-3. **Minimal Vector Generation**
-   - 10 minimal vectors with norm² = 4.0
-   - Construction A operational
-
-4. **Particle Physics**
-   - 6/6 predictions within error margins
-   - All formulas validated
-
-5. **Periodic Table**
-   - Stability predictions match known elements
-   - Omega Anchor (Z=83) confirmed
-
-6. **TGIC Dynamics**
-   - Transition constraints enforced
-   - Energy conservation tracked
-
-7. **Information-First Pipeline**
-   - Record creation operational
-   - Golay correction functional
-   - Leech mapping successful
-
-8. **Statistical Validation**
-   - 100/100 points valid
-   - All norms correct
-
----
-
 ## Scientific Predictions
 
 ### Particle Masses (All Validated)
@@ -307,37 +242,6 @@ Elements near Z=83 show maximum stability.
 
 ---
 
-## Applications
-
-With this system, you can build:
-
-1. **Quantum Chemistry Simulator**
-   - Element property predictions
-   - Molecular stability analysis
-   - Bond energy calculations
-
-2. **Particle Physics Explorer**
-   - Mass predictions for new particles
-   - Force coupling analysis
-   - Symmetry breaking studies
-
-3. **Information Theory Tools**
-   - Error-correcting code design
-   - Optimal packing problems
-   - Cryptographic applications
-
-4. **Drug Discovery**
-   - Manifold sparsity analysis
-   - Breakthrough singularity detection
-   - Molecular resonance optimization
-
-5. **Cosmology Predictions**
-   - Dark matter/energy ratios
-   - Universal density calculations
-   - Temporal quantization
-
----
-
 ### Performance
 
 - **Initialization:** ~0.5 seconds
@@ -361,65 +265,6 @@ Foundation of all UBP predictions.
 Alpha Anchor: 237 (Primary matter)
 Omega Anchor: 83 (Stability center - Bismuth)
 Beta Anchor: 172 (Resonance pivot)
-```
-
----
-
-## Development
-
-### System Requirements
-- Python 3.6+
-- No external dependencies (uses only stdlib)
-- Pure Python implementation
-
-### Installation
-No installation needed! Just:
-```bash
-python3 ubp_system_complete_v4_2_0_FINAL.py
-```
-
-### Testing
-Run the comprehensive test suite:
-```bash
-python3 ubp_system_complete_v4_2_0_FINAL.py
-```
-
-Run the demo:
-```bash
-python3 ubp_demo_application.py
-```
-
----
-
-## ⚡ Quick Examples
-
-### Predict Particle Mass
-```python
-system = initialize_ubp_system(verbose=False)
-physics = system['physics']
-muon_ratio = physics.muon_electron_ratio()
-print(f"Muon/Electron ratio: {float(muon_ratio):.6f}")
-# Output: 206.767598 (within 0.0003% of experimental)
-```
-
-### Analyze Element Stability
-```python
-system = initialize_ubp_system(verbose=False)
-periodic = system['periodic']
-props = periodic.predict_element_properties(82)  # Lead
-print(f"Stability: {props['stability_score']:.6f}")
-# Output: 1.0 (Very High - adjacent to Omega Anchor)
-```
-
-### Error Correction
-```python
-system = initialize_ubp_system(verbose=False)
-golay = system['golay']
-codeword = golay.encode([1,0,1,0,1,0,1,0,1,0,1,0])
-# Introduce 3 errors...
-corrected, meta = golay.decode(noisy)
-print(f"Errors corrected: {meta['error_weight']}")
-# Output: 3 (perfect correction)
 ```
 
 ---
