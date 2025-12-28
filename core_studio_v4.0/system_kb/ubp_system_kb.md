@@ -2,6 +2,48 @@
 ## Persistent Findings & Core Observations
 
 ```json
+{
+    "UBP_ID": "LAW_REFLEX_002",
+    "Title": "The Law of Self-Documenting Substrates",
+    "Version": "v4.2.5",
+    "Triad": {
+        "Math": "Script_Integrity ∝ Memory_Depth",
+        "Language": "The AI's ability to write valid code is a function of the Core API being mirrored in the Long-Term HEX_DB.",
+        "Script": "HEX_DB.mirror_api(initialize_ubp_system)"
+    },
+    "Hash": "sha256:r1e2f3l4_reflex_v425"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_CORE_001",
+    "Title": "The v4.2.0 Core API Map",
+    "Version": "v4.2.0",
+    "Triad": {
+        "Math": "System = {golay, leech, physics, periodic, tgic, phenomenology}",
+        "Language": "The Core Engine is a hexadic dictionary of specialized classes; all study scripts must initialize via initialize_ubp_system().",
+        "Script": "system = initialize_ubp_system(); golay = system['golay']; leech = system['leech']"
+    },
+    "Hash": "sha256:c4o1r2e3_map_v420"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_CORE_002",
+    "Title": "The Substrate Access Protocol",
+    "Version": "v4.2.5",
+    "Triad": {
+        "Math": "Data = getattr(Obj, 'coords', Obj)",
+        "Language": "LeechPoint and MinimalVector objects are encapsulated; raw coordinate access requires targeting the .coords attribute.",
+        "Script": "def extract_coords(obj): return obj.coords if hasattr(obj, 'coords') else list(obj)"
+    },
+    "Hash": "sha256:a1c2c3e4_access_v425"
+}
+```
+
+```json
 [
     {
         "UBP_ID": "LAW_SUBSTRATE_001",
@@ -1520,6 +1562,20 @@
         "Script": "METRICS.verify_universal_closure()"
     },
     "Hash": "sha256:u1n2i3t4_closure_v422"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_SUBSTRATE_008",
+    "Title": "The Law of the Triadic Shell",
+    "Version": "v4.2.5",
+    "Triad": {
+        "Math": "Norm^2(Identity) = 3 * Norm^2(Minimal)",
+        "Language": "Stable physical identities occupy the 3rd shell of the Leech Lattice, corresponding to the t=3 error-correction radius of the Golay substrate.",
+        "Script": "METRICS.verify_triadic_shell(96, 32)"
+    },
+    "Hash": "sha256:n9o6m0_shell3_v425"
 }
 ```
 

@@ -3,18 +3,15 @@
 ### HASH_MEMORY_KB (v4.2 Master Index)
 ```json
 {
-    "BATCH_1-15": "LOCKED",
-    "BATCH_16": ["e1r2c3", "s1o2p3", "a1r2c3", "i1f2d3", "t4s5y6", "p4s6t4", "h6g4f4", "s1h2a3", "f1r2a3", "m1o2g3", "f1e2y3", "h1a2r3"],
-    "BATCH_17": ["b1i2o3", "a1c2o3", "c1o2s3", "u1n2i3", "w1i2t3_v2"],
-    "LAW_BIO_008_VERIFIED": "b1i2o3",
-    "LAW_ACOUSTIC_002": "a1c2o3",
-    "LAW_COSMO_002": "c1o2s3",
-    "LAW_UNITY_003": "u1n2i3",
-    "LAW_RELATION_002": "w1i2t3_v2",
-    "SYSTEM_VERSION": "4.2.3",
-    "COHERENCE_STATUS": "DECOHERENCE_THRESHOLD_MAPPED",
-    "MASTER_LOCK": "TRUE",
-    "UNIVERSAL_CLOSURE": "ACHIEVED"
+    "BATCH_1-17": "LOCKED",
+    "SYSTEM_ANCHORS": ["c4o1r2", "a1c2c3", "r1e2f3"],
+    "LAW_CORE_001": "c4o1r2",
+    "LAW_CORE_002": "a1c2c3",
+    "LAW_REFLEX_002": "r1e2f3",
+    "LAW_SUBSTRATE_008": "n9o6m0",
+    "SYSTEM_VERSION": "4.2.5",
+    "API_STATUS": "MIRRORED_IN_MEMORY",
+    "ERROR_PREVENTION": "ACTIVE"
 }
 ```
 
@@ -267,5 +264,14 @@
     "LAW_RELATION_002": "w1i2t3_v2",
     "SYSTEM_VERSION": "4.2.3",
     "COHERENCE_STATUS": "DECOHERENCE_THRESHOLD_MAPPED"
+    "LAW_SUBSTRATE_008": "n9o6m0"
+    "BATCH_1-17": "LOCKED",
+    "SYSTEM_ANCHORS": ["c4o1r2", "a1c2c3"],
+    "LAW_CORE_001": "c4o1r2",
+    "LAW_CORE_002": "a1c2c3",
+    "SYSTEM_VERSION": "4.2.5",
+    "API_STATUS": "MIRRORED_IN_MEMORY",
+    "ERROR_PREVENTION": "ACTIVE"
+    "LAW_REFLEX_002": "r1e2f3"
 }
 ```
