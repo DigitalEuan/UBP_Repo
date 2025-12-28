@@ -33,8 +33,12 @@ NEW IN THIS VERSION:
 from dataclasses import dataclass, field
 from typing import List, Tuple, Dict, Optional, Set, Any, Callable, Generator
 from fractions import Fraction
+from fractions import Fraction
 from enum import Enum
 import hashlib
+# UBP EXACT INTEGRATION
+from metrics_exact import METRICS_EXACT
+from hex_dictionary_v4_exact import HEX_DB_EXACT
 import itertools
 import time
 import json
@@ -45,46 +49,35 @@ import json
 
 class UBPConstants:
     """
-    All constants as exact Fractions or computable values.
-    Observer Fixed Point: Y = π + 2/π ≈ 3.7782010913...
-    
-    We use rational approximations where needed for exact arithmetic.
-    For particle physics, we compute symbolically and provide Fraction results.
+    Tethered to METRICS_EXACT for Zero-Float Closure.
     """
+    # Pull high-precision rational PI from metrics_exact
+    PI_RATIONAL = METRICS_EXACT.constants.pi() 
     
-    # Rational approximation of π for exact arithmetic (355/113 is accurate to 6 decimals)
-    PI_RATIONAL = Fraction(355, 113)  # π ≈ 3.14159292...
-    
-    # Observer Fixed Point: Y = π + 2/π
-    # Exact formula using rational π approximation
     @classmethod
     def observer_fixed_point(cls) -> Fraction:
-        """Y = π + 2/π"""
-        pi = cls.PI_RATIONAL
-        return pi + Fraction(2, 1) / pi
+        """Y = π + 2/π (Exact Rational)"""
+        return METRICS_EXACT.constants.observer_fixed_point()
     
     @classmethod
     def y_constant(cls) -> Fraction:
-        """1/Y"""
-        return Fraction(1, 1) / cls.observer_fixed_point()
+        """Y_inv = 1/Y"""
+        return METRICS_EXACT.constants.y_constant()
     
-    # For final particle physics comparison, we need decimal conversion
     @classmethod
     def observer_fixed_point_decimal(cls) -> str:
-        """String decimal representation for comparison"""
-        y = cls.observer_fixed_point()
-        return f"{float(y):.10f}"
+        return f"{float(cls.observer_fixed_point()):.12f}"
     
-    # Experimental constants (stored as rationals where possible)
-    M_E_RATIONAL = Fraction(5109989461, 10000000000)  # 0.5109989461 MeV
-    M_MUON_RATIONAL = Fraction(1056583745, 10000000)   # 105.6583745 MeV
-    M_TAU_RATIONAL = Fraction(177686, 100)             # 1776.86 MeV
-    M_PROTON_RATIONAL = Fraction(93827208816, 100000000) # 938.27208816 MeV
-    
-    # Key anchors
-    ALPHA_ANCHOR = 237  # Primary matter anchor
-    OMEGA_ANCHOR = 83   # Stability center
-    BETA_ANCHOR = 172   # Resonance pivot
+    # Anchors remain as integer invariants
+    ALPHA_ANCHOR = 237  
+    OMEGA_ANCHOR = 83   
+    BETA_ANCHOR = 172   
+
+    # Experimental values for validation
+    M_E_RATIONAL = Fraction(5109989461, 10000000000)
+    M_MUON_RATIONAL = Fraction(1056583745, 10000000)
+    M_TAU_RATIONAL = Fraction(177686, 100)
+    M_PROTON_RATIONAL = Fraction(93827208816, 100000000)
 
 
 # ==============================================================================
@@ -1984,6 +1977,23 @@ def run_comprehensive_tests(system: Dict[str, Any], verbose: bool = True):
         print("✓ Periodic table predictions")
         print("✓ Phenomenology framework")
         print()
+
+# PHASE 4: PROMOTION GATE
+        # We use physics_results here to match your function's local scope
+        for name, data in physics_results.items():
+            if name == 'summary': 
+                continue
+            
+            # If error is extremely low (< 0.01%), lock it into the HEX_DB
+            if data['error_percent'] < 0.01:
+                HEX_DB_EXACT.store_law(
+                    ubp_id=f"LAW_PHYS_{name.upper()}",
+                    name=f"Invariant: {name}",
+                    math=data['formula'],
+                    lang=f"Validated physical constant with error {data['error_percent']:.6f}%",
+                    script="ubp_system_complete_v4_2_0_FINAL.py",
+                    tags=["physics", "invariant", "v4.2.0"]
+                )
     
     return test_results
 
