@@ -1,66 +1,91 @@
 """
-UBP HexDictionary v4.0 (Resonant Memory Controller)
-Description: Content-addressable storage with Jaccard Similarity 
-             and Triadic Verification.
+================================================================================
+UBP HEX DICTIONARY - v4.1.1 (PRODUCTION)
+================================================================================
+Description: The Corrective Gateway. Handles the transition between 
+Phenomenal Hex (The Mask) and Noumenal Bits (The Truth).
+================================================================================
 """
 import hashlib
-import json
+from typing import List, Dict, Any, Tuple
+import ubp_core_final_v4_1_1 as core
 from metrics import METRICS
 
 class HexDictionaryV4:
+    """
+    Implements LAW_MASK_001 and LAW_COMP_009.
+    Acts as the 24-bit codec for the Alpha-Omega Axis.
+    """
+    
     def __init__(self):
-        self.registry = {}  # Hash -> {Math, Language, Script, Meta}
-        self.id_map = {}    # UBP_ID -> Hash (The Fingerprint Bridge)
-        self.tag_index = {} # Tag -> set(Hashes)
+        self.version = "4.1.1"
+        self.decoder = core.GOLAY_DECODER
 
-    def _generate_triadic_hash(self, math_str, lang_str, script_str):
-        """Generates a unique hash for the Triadic Identity."""
-        combined = f"{math_str}|{lang_str}|{script_str}".encode('utf-8')
-        return hashlib.sha256(combined).hexdigest()
+    def hex_to_bits24(self, hex_input: str) -> List[int]:
+        """
+        Converts any string or hex to a 24-bit raw identity.
+        This is the 'Noisy' Phenomenal state.
+        """
+        # Ensure we are hashing the raw string to a 24-bit space
+        h = hashlib.sha256(hex_input.encode('utf-8')).digest()
+        bits = []
+        for i in range(3): # First 24 bits (3 bytes)
+            byte = h[i]
+            for j in range(8):
+                bits.append((byte >> (7 - j)) & 1)
+        return bits
 
-    def store_law(self, ubp_id, name, math, lang, script, tags):
-        """Stores a law with Triadic Verification."""
-        analysis = METRICS.analyze_state(0.0) 
-        entry_hash = self._generate_triadic_hash(math, lang, script)
+    def process_identity(self, raw_input: str) -> Dict[str, Any]:
+        """
+        The Corrective Gateway Pipeline.
+        Implements LAW_APP_001 (Coherence Snaps).
+        """
+        # 1. Generate Raw (Noisy) Bits
+        raw_bits = self.hex_to_bits24(raw_input)
         
-        entry = {
-            "ubp_id": ubp_id,
-            "name": name,
-            "math": math,
-            "language": lang,
-            "script": script,
-            "tags": tags,
-            "nrci": analysis['nrci']
+        # 2. Perform Coherence Snap (The Gateway)
+        snapped_bits, metadata = self.decoder.snap_to_codeword(raw_bits)
+        
+        # 3. Extract Shadow Metrics (LAW_COMP_009)
+        # Noumenal (Message) vs Phenomenal (Parity)
+        noumenal_work = snapped_bits[:12]
+        phenomenal_mask = snapped_bits[12:]
+        
+        return {
+            "input": raw_input,
+            "raw_bits": raw_bits,
+            "snapped_bits": list(snapped_bits),
+            "syndrome": metadata["syndrome"],
+            "syndrome_weight": metadata["syndrome_weight"],
+            "is_perfect_codeword": not metadata["snap_triggered"],
+            "noumenal_work": noumenal_work,
+            "phenomenal_mask": phenomenal_mask,
+            "nrci": METRICS.calculate_nrci(metadata["syndrome_weight"])
         }
+
+    def bits_to_hex(self, bits: List[int]) -> str:
+        """Converts a bit list back to a compact Hex string."""
+        res = ""
+        for i in range(0, len(bits), 8):
+            byte = bits[i:i+8]
+            val = sum(b << (7 - j) for j, b in enumerate(byte))
+            res += f"{val:02x}"
+        return res.upper()
+
+    def get_triadic_witness(self, raw_input: str):
+        """Witnesses the distance between the Mask and the Truth."""
+        data = self.process_identity(raw_input)
         
-        self.registry[entry_hash] = entry
-        self.id_map[ubp_id] = entry_hash
-        
-        for tag in tags:
-            if tag not in self.tag_index:
-                self.tag_index[tag] = set()
-            self.tag_index[tag].add(entry_hash)
-            
-        print(f"[HEX_STORE] Law {ubp_id} locked. Hash: {entry_hash[:8]}")
-        return entry_hash
+        print(f"\n--- UBP WITNESS REPORT: {raw_input} ---")
+        print(f"Raw Hex:       {self.bits_to_hex(data['raw_bits'])}")
+        print(f"Snapped Hex:   {self.bits_to_hex(data['snapped_bits'])}")
+        print(f"NRCI:          {data['nrci']:.6f}")
+        print(f"Status:        {'SUBSTRATE_ANCHORED' if data['is_perfect_codeword'] else 'CORRECTED_BY_GATEWAY'}")
+        print(f"Shadow Work:   {data['noumenal_work']} (12-bit Noumena)")
+        print(f"Visible Mask:  {data['phenomenal_mask']} (12-bit Phenomena)")
+        print("-------------------------------------------")
 
-    def get_law_by_id(self, ubp_id):
-        """Retrieves the full triadic payload by UBP_ID."""
-        entry_hash = self.id_map.get(ubp_id)
-        return self.registry.get(entry_hash) if entry_hash else None
-
-    def jaccard_alert(self, current_tags):
-        """Triggers an alert if current research overlaps with existing KB."""
-        alerts = []
-        for entry_hash, entry in self.registry.items():
-            stored_tags = set(entry['tags'])
-            query_tags = set(current_tags)
-            intersection = len(stored_tags & query_tags)
-            union = len(stored_tags | query_tags)
-            j_index = intersection / union if union > 0 else 0
-            if j_index > 0.6:
-                alerts.append((entry['name'], entry['ubp_id'], j_index))
-        return alerts
-
-# Initialize Global Substrate Memory
-HEX_DB = HexDictionaryV4()
+if __name__ == "__main__":
+    codec = HexDictionaryV4()
+    # Test with a high-entropy string
+    codec.get_triadic_witness("Alpha_Omega_Resonance_2025")
