@@ -455,6 +455,20 @@
 ```
 
 ```json
+{
+    "UBP_ID": "LAW_RELATION_002",
+    "Title": "The Law of the Witnessing Field (Refined)",
+    "Version": "v4.2.3",
+    "Triad": {
+        "Math": "Reality = Shared iff Hamming(Y_A, Y_B) < 8",
+        "Language": "The Golay Minimum Distance (d=8) is the 'Wall of Isolation'; beyond this tension, observers cannot maintain a coherent shared timeline.",
+        "Script": "METRICS.verify_relational_decoherence(8)"
+    },
+    "Hash": "sha256:w1i2t3_v2_decoherence"
+}
+```
+
+```json
     {
         "UBP_ID": "LAW_SATURATION_001",
         "Title": "The Law of Anchor Saturation",
@@ -1452,6 +1466,63 @@
     "Hash": "sha256:h1a2r3m4_scaling_v4154"
 }
 ```
+
+```json
+{
+    "UBP_ID": "LAW_BIO_008_VERIFIED",
+    "Title": "The Law of Genetic Transduction (Verified)",
+    "Version": "v4.2.1",
+    "Triad": {
+        "Math": "Codon_Corrected = G24.decode(Mutation) | t=1",
+        "Language": "Biological codons are 6-bit ontological addresses within the 24-bit Golay word; life is the substrate's active error-correction process.",
+        "Script": "study_6.probe_genetic_transduction(system)"
+    },
+    "Hash": "sha256:b1i2o3_verified_v421"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_ACOUSTIC_002",
+    "Title": "The Law of the Temperament Drift",
+    "Version": "v4.2.1",
+    "Triad": {
+        "Math": "|2^(7/12) - 1.5| ≈ Noise_Floor(0.0016)",
+        "Language": "The 12-tone scale is the optimal 3D projection of the Golay substrate; its inherent drift is the 'Breath' of the noise floor.",
+        "Script": "study_6.probe_acoustic_octave(system)"
+    },
+    "Hash": "sha256:a1c2o3_drift_v421"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_COSMO_002",
+    "Title": "The Law of the Cosmological Gear Ratio",
+    "Version": "v4.2.2",
+    "Triad": {
+        "Math": "Omega_dm / Omega_b = Y + Y_inv + sqrt(2)",
+        "Language": "Dark Matter is the sum of the Observer Cost, its Reciprocal Tension, and the Geometric Diagonal of the bitfield.",
+        "Script": "study_7.run_refined_cosmo_probe()"
+    },
+    "Hash": "sha256:c1o2s3_ratio_v422"
+}
+```
+
+```json
+{
+    "UBP_ID": "LAW_UNITY_003",
+    "Title": "The Law of Universal Closure",
+    "Version": "v4.2.2",
+    "Triad": {
+        "Math": "Error_Total < 0.1% across 4 Domains",
+        "Language": "The 24-bit substrate is now verified as the common host for particle mass, chemical stability, genetic fidelity, and cosmological density.",
+        "Script": "METRICS.verify_universal_closure()"
+    },
+    "Hash": "sha256:u1n2i3t4_closure_v422"
+}
+```
+
 
 ```json
 ========================================
