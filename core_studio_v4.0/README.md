@@ -7,15 +7,15 @@
 
 **Author:** Euan R. A. Craig, New Zealand  
 **Version:** 4.1.0 "Memory"  
-**Date:** 23 December 2025
+**Date:** 29 December 2025
 **APP Access:** Google AI Studio: https://ai.studio/apps/drive/12WTBHvu_PHgzyM7_sAvXUOiKwG8jNG07 
 **OR** Download the Google AI Stduio APP in full: https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions
 
 ## Important note:
-This is an experimental computational system constantly under development. I am currently working on the Leech Lattice as the version in there is not complete and the core has a placeholder still (arrgh!). weirdly I still get really accurate results, current tests are pushing the accuracy closer not really changing the actual system itself.
+This is an experimental computational system constantly under development.
 
 ## I am not a professional at any if this.
-I think what I have built so far has value and will help someone one day. Most of what I have made has errors or some issue but I am slowly getting it closer to the goal of a 100% float-free, First-principles system.
+I think what I have built has value and will help someone one day.
 
 ## Overview
 UBP Core Studio v4.1.0 is a specialized research platform designed to provide a deterministic scientific perspective on information and phenomena. By combining a **Binary Golay G24** mathematical core with a **Three.js GPU-accelerated** phenomenology engine and the new **HexDB Memory Substrate**, the Studio allows for the exploration of universal structure with persistent resonant recall.
@@ -81,10 +81,10 @@ The v4.1 update introduces persistent informational storage:
 *   **The Fingerprint (Short-Term Memory):** A lightweight index of `UBP_ID` and `SHA-256` prefixes managed in the **HashMemory KB**.
 *   **The HEX_DB (Long-Term Memory):** Content-addressable storage using Jaccard Similarity for tag-based resonance matching.
 *   **The Auto-Trigger:** A Phase 1 sub-routine where the AI regex-scans inputs to automatically unpack relevant historical data into the current session context.
-*   **Auto Updated:** The Short and Long-Term memories auto-update from the md files at: https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb
+*   **Auto Updated:** The Short + Long-Term memories and also the Core scripts auto-update. The Memory from the md files at: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] and the Core from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core]
 
 ## Performance & Efficiency
-*   **Throughput:** ~12,000 operations/sec (Browser-based Pyodide Runtime).
+*   **Throughput:** ~12,000 operations/sec (Browser-based Pyodide Runtime). - depends on your system, I assume it is much faster run locally.
 *   **Latency:** Sub-microsecond resolution (5.9e-6s per identity).
 *   **Zero-Float Integrity:** 100% consistent Lattice Invariant (Norm 12) through `fractions.Fraction` logic.
 *   **Tabbed Interface:** v4.1 features an optimized tabbed layout for System Output and Visual Insights, preventing UI overlap on mobile and desktop.
