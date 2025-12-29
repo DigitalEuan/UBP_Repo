@@ -1,3 +1,4 @@
+"""
 UBP Metrics (Exact) v4.x
 =======================
 
@@ -27,7 +28,6 @@ class CoherenceRegime(Enum):
     SUBCOHERENT = "Subcoherent"   # NRCI < 1/10
 
 # Continued-fraction coefficients for π: [3; 7, 15, 1, 292, 1, 1, 1, 2, 1, 3, 1, 14, ...]
-# Source is standard and widely published; coefficients are integers, so representation is exact.
 _PI_CF = [3, 7, 15, 1, 292, 1, 1, 1, 2, 1, 3, 1, 14, 2, 1, 1, 2, 2, 2, 2, 1, 84, 2, 1, 1, 15]
 
 def _cf_to_fraction(a) -> Fraction:
@@ -42,7 +42,6 @@ def _cf_to_fraction(a) -> Fraction:
 def pi_approx(terms: int = 10) -> Fraction:
     """
     Deterministic rational approximation of π using `terms` CF coefficients.
-
     terms=5 gives 355/113.
     """
     if terms < 1:
@@ -52,17 +51,13 @@ def pi_approx(terms: int = 10) -> Fraction:
 
 @dataclass(frozen=True)
 class UBPConstantsExact:
-    # Precision knob: more CF terms => larger numerator/denominator (still exact).
-    PI_TERMS: int = 6  # 6 already includes 355/113 (excellent) and stays lightweight.
-
-    # Coherence target as an exact rational
-    PGCI_TARGET: Fraction = Fraction(9999999, 10000000)  # 0.9999999
+    PI_TERMS: int = 6  
+    PGCI_TARGET: Fraction = Fraction(9999999, 10000000)  
 
     def pi(self) -> Fraction:
         return pi_approx(self.PI_TERMS)
 
     def observer_fixed_point(self) -> Fraction:
-        # π + 2/π, exact under the rational π approximation
         p = self.pi()
         return p + Fraction(2, 1) / p
 
@@ -77,41 +72,26 @@ class UBPObserverExact:
         return self.c.observer_fixed_point()
 
     def calculate_realm_cost(self, realm_complexity: Fraction = Fraction(1,1), dimensions: int = 6) -> Fraction:
-        # (dimensions/6) is exact
         return self.get_base_cost() * realm_complexity * Fraction(dimensions, 6)
 
 class UBPCoherenceExact:
     @staticmethod
     def clamp01(x: Fraction) -> Fraction:
-        if x < 0:
-            return Fraction(0,1)
-        if x > 1:
-            return Fraction(1,1)
+        if x < 0: return Fraction(0,1)
+        if x > 1: return Fraction(1,1)
         return x
 
     @staticmethod
     def calculate_nrci(observed_variance: Fraction, theoretical_variance: Fraction = Fraction(1,1)) -> Fraction:
-        # NRCI = 1 - observed/theoretical
         if theoretical_variance == 0:
             raise ZeroDivisionError("theoretical_variance must be nonzero")
         return UBPCoherenceExact.clamp01(Fraction(1,1) - (observed_variance / theoretical_variance))
 
     @staticmethod
-    def calculate_glr_nrci(error_sum: int, n_toggles: int) -> Fraction:
-        # denominator = 9 * n_toggles, exact
-        if n_toggles <= 0:
-            raise ValueError("n_toggles must be > 0")
-        denom = 9 * n_toggles
-        return UBPCoherenceExact.clamp01(Fraction(1,1) - Fraction(error_sum, denom))
-
-    @staticmethod
     def get_regime(nrci_value: Fraction, target: Fraction) -> CoherenceRegime:
-        if nrci_value >= target:
-            return CoherenceRegime.ONBIT
-        if nrci_value >= Fraction(1,2):
-            return CoherenceRegime.COHERENT
-        if nrci_value >= Fraction(1,10):
-            return CoherenceRegime.TRANSITIONAL
+        if nrci_value >= target: return CoherenceRegime.ONBIT
+        if nrci_value >= Fraction(1,2): return CoherenceRegime.COHERENT
+        if nrci_value >= Fraction(1,10): return CoherenceRegime.TRANSITIONAL
         return CoherenceRegime.SUBCOHERENT
 
 class UBPMetricsExact:
@@ -120,7 +100,6 @@ class UBPMetricsExact:
         self.observer = UBPObserverExact(self.constants)
         self.coherence = UBPCoherenceExact()
 
-    # --- Compatibility helpers (float-free) ---
     def analyze_state(self, variance: Fraction, realm: str = "standard") -> Dict[str, object]:
         nrci = self.coherence.calculate_nrci(variance)
         regime = self.coherence.get_regime(nrci, self.constants.PGCI_TARGET)
@@ -131,12 +110,4 @@ class UBPMetricsExact:
             "is_stable": nrci >= Fraction(1,2),
         }
 
-# Global instance (mirrors prior API style, but exact)
 METRICS_EXACT = UBPMetricsExact()
-
-if __name__ == "__main__":
-    c = METRICS_EXACT.constants
-    print("UBP Metrics (Exact) Initialized")
-    print("  π approx =", c.pi(), "≈", float(c.pi()))
-    print("  observer_fixed_point =", c.observer_fixed_point(), "≈", float(c.observer_fixed_point()))
-    print("  Y =", c.y_constant(), "≈", float(c.y_constant()))
