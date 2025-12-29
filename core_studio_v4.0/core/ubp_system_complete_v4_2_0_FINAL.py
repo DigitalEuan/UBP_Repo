@@ -970,49 +970,46 @@ class TGICEngine:
         
         return total_cost
     
-    def is_transition_allowed(self, source: List[int], target: List[int]) -> Tuple[bool, str]:
+def is_transition_allowed(self, source: List[int], target: List[int]) -> Tuple[bool, str]:
         """
         Check if transition is allowed under TGIC constraints.
+        Updated v4.2.1: Implements Subcoherent Recovery & Manifold Conservation.
         
         Constraints:
         1. Hamming distance ≤ 3 (within error-correction radius)
-        2. Both states must be valid Leech points
-        3. Energy change must be quantized
+        2. Manifold Conservation: Cannot exit Leech Lattice if already inside.
+        3. Recovery Permission: Allows transitions from noisy states back to the manifold.
         """
-        # Check Hamming distance
+        # 1. Check Hamming distance (Information Cost Limit)
         h_dist = hamming_distance(source, target)
         if h_dist > self.max_hamming_distance:
             return False, f"Hamming distance {h_dist} exceeds max {self.max_hamming_distance}"
-
-    # --- PATCH START: Subcoherent Recovery Logic ---
-    point_source = self.leech.golay_to_leech(source)
-    point_target = self.leech.golay_to_leech(target)
-    
-    source_in_leech = self.leech.is_in_leech(list(point_source.coords))
-    target_in_leech = self.leech.is_in_leech(list(point_target.coords))
-    
-    # If we are already in the lattice, target MUST be in the lattice (Conservation)
-    if source_in_leech and not target_in_leech:
-        return False, "Transition would exit the Leech Lattice manifold."
         
-    # If we are NOT in the lattice, we allow transitions that move TOWARDS it
-    # (i.e., reducing syndrome weight or reaching a codeword)
-    if not source_in_leech:
-        # We allow the move if it's a valid step towards recovery
-        return True, "Subcoherent recovery transition allowed."
-    # --- PATCH END ---
-        
-        # Check Leech membership
+        # 2. Check Leech membership for both points
         point_source = self.leech.golay_to_leech(source)
         point_target = self.leech.golay_to_leech(target)
         
-        if not self.leech.is_in_leech(list(point_source.coords)):
-            return False, "Source is not a valid Leech point"
+        source_in_leech = self.leech.is_in_leech(list(point_source.coords))
+        target_in_leech = self.leech.is_in_leech(list(point_target.coords))
         
-        if not self.leech.is_in_leech(list(point_target.coords)):
-            return False, "Target is not a valid Leech point"
+        # --- TGIC DYNAMICS LOGIC ---
         
-        return True, "Transition allowed"
+        # Rule A: Conservation of Coherence
+        # If we are already in the stable manifold, we cannot exit it through noise.
+        if source_in_leech and not target_in_leech:
+            return False, "Transition would exit the Leech Lattice manifold (Conservation Violation)."
+            
+        # Rule B: Recovery Permission (Informational Gravity)
+        # If we are currently in a noisy (subcoherent) state, we allow moves 
+        # that lead back toward the manifold.
+        if not source_in_leech:
+            # We allow the move. The simulate_dynamics method will then 
+            # pick the move that minimizes cost (Syndrome Weight).
+            return True, "Subcoherent recovery transition allowed."
+            
+        # Rule C: Standard Manifold Transition
+        # Both points are in the lattice.
+        return True, "Transition allowed within manifold."
     
     def create_transition(self, source_id: str, target_id: str) -> Optional[TriadEdge]:
         """
