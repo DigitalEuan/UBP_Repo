@@ -970,7 +970,7 @@ class TGICEngine:
         
         return total_cost
     
-def is_transition_allowed(self, source: List[int], target: List[int]) -> Tuple[bool, str]:
+    def is_transition_allowed(self, source: List[int], target: List[int]) -> Tuple[bool, str]:
         """
         Check if transition is allowed under TGIC constraints.
         Updated v4.2.1: Implements Subcoherent Recovery & Manifold Conservation.
