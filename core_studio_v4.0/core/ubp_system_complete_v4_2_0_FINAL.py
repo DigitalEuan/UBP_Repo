@@ -1069,50 +1069,61 @@ class TGICEngine:
         
         return edge
     
-    def simulate_dynamics(self, initial_state: List[int], steps: int = 10) -> List[Dict[str, Any]]:
+    def simulate_dynamics(self, initial_state: List[int], steps: int = 10, temperature: float = None) -> List[Dict[str, Any]]:
         """
-        Simulate TGIC dynamics starting from initial state.
-        
-        This performs a random walk through the Triad Graph,
-        respecting TGIC constraints at each step.
+        v4.2.1 Resonant Update:
+        Simulate TGIC dynamics using Stochastic Boltzmann Selection.
+        Allows 'tunneling' through tension barriers using a resonant temperature.
         """
+        import math
+        import random
+
+        # Use Y_inv as the default Resonant Temperature (Ground State) if none provided
+        if temperature is None:
+            temperature = float(self.Y_inv)
+
         trajectory = []
         current_state = initial_state[:]
         
         for step in range(steps):
-            # Record current state
             point = self.leech.golay_to_leech(current_state)
             syndrome = self.golay.compute_syndrome(current_state)
+            s_weight = hamming_weight(list(syndrome))
             
             trajectory.append({
                 'step': step,
                 'state': current_state[:],
                 'norm_sq': float(point.norm_sq_actual),
-                'syndrome_weight': hamming_weight(list(syndrome)),
-                'is_codeword': self.golay.is_codeword(current_state)
+                'syndrome_weight': s_weight,
+                'is_codeword': s_weight == 0
             })
             
-            # Find valid transitions
-            valid_transitions = []
-            
-            # Try single bit flips (Hamming distance 1)
+            # Stop if we hit the manifold
+            if s_weight == 0:
+                break
+
+            valid_candidates = []
             for i in range(24):
                 candidate = current_state[:]
-                candidate[i] = 1 - candidate[i]  # Flip bit
+                candidate[i] = 1 - candidate[i]
                 
                 allowed, _ = self.is_transition_allowed(current_state, candidate)
                 if allowed:
-                    cost = self.compute_transition_cost(current_state, candidate)
-                    valid_transitions.append((candidate, cost))
+                    cost = float(self.compute_transition_cost(current_state, candidate))
+                    valid_candidates.append((candidate, cost))
             
-            if not valid_transitions:
-                # No valid transitions, stop
+            if not valid_candidates:
                 break
             
-            # Choose transition with lowest cost
-            valid_transitions.sort(key=lambda x: x[1])
-            current_state = valid_transitions[0][0]
-        
+            # --- BOLTZMANN SELECTION LOGIC ---
+            # Calculate weights: e^(-Cost / T)
+            # At T=Y, the system is "hot" enough to jump over Weight 7 barriers.
+            weights = [math.exp(-c / temperature) for _, c in valid_candidates]
+            
+            # Stochastic choice based on Boltzmann weights
+            chosen_idx = random.choices(range(len(valid_candidates)), weights=weights, k=1)[0]
+            current_state = valid_candidates[chosen_idx][0]
+            
         return trajectory
     
     def get_statistics(self) -> Dict[str, Any]:
@@ -2047,4 +2058,3 @@ if __name__ == "__main__":
     print()
     print("Ready for application development!")
     print()
-
