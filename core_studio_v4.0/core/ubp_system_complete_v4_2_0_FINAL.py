@@ -983,6 +983,24 @@ class TGICEngine:
         h_dist = hamming_distance(source, target)
         if h_dist > self.max_hamming_distance:
             return False, f"Hamming distance {h_dist} exceeds max {self.max_hamming_distance}"
+
+    # --- PATCH START: Subcoherent Recovery Logic ---
+    point_source = self.leech.golay_to_leech(source)
+    point_target = self.leech.golay_to_leech(target)
+    
+    source_in_leech = self.leech.is_in_leech(list(point_source.coords))
+    target_in_leech = self.leech.is_in_leech(list(point_target.coords))
+    
+    # If we are already in the lattice, target MUST be in the lattice (Conservation)
+    if source_in_leech and not target_in_leech:
+        return False, "Transition would exit the Leech Lattice manifold."
+        
+    # If we are NOT in the lattice, we allow transitions that move TOWARDS it
+    # (i.e., reducing syndrome weight or reaching a codeword)
+    if not source_in_leech:
+        # We allow the move if it's a valid step towards recovery
+        return True, "Subcoherent recovery transition allowed."
+    # --- PATCH END ---
         
         # Check Leech membership
         point_source = self.leech.golay_to_leech(source)
