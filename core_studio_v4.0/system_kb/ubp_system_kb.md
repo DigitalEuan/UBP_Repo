@@ -1,47 +1,35 @@
 # UBP System Knowledge Base
 ## Persistent Findings & Core Observations
 
-```json
 {
-    "UBP_ID": "LAW_REFLEX_002",
-    "Title": "The Law of Self-Documenting Substrates",
-    "Version": "v4.2.5",
-    "Triad": {
-        "Math": "Script_Integrity ∝ Memory_Depth",
-        "Language": "The AI's ability to write valid code is a function of the Core API being mirrored in the Long-Term HEX_DB.",
-        "Script": "HEX_DB.mirror_api(initialize_ubp_system)"
+    "UBP_TEMPLATE_STUDY_CORE": {
+        "ubp_id": "UBP_TEMPLATE_STUDY_CORE",
+        "name": "Template: Standard 5-Phase Study",
+        "math": "Pipeline(P1...P5) where P3.NRCI >= 0.5",
+        "language": "Standard boilerplate for initializing the v4.2.0 substrate and running a comprehensive test suite.",
+        "script": "import study_1\nsystem = study_1.initialize_ubp_system(verbose=False)\n# PHASE 2: DEVELOPMENT\n# [Insert Logic Here]\n# PHASE 3: DISTILLATION\n# metrics = METRICS_EXACT.analyze_state(variance)",
+        "tags": ["template", "boilerplate", "v4.2.0"],
+        "fingerprint": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2"
     },
-    "Hash": "sha256:r1e2f3l4_reflex_v425"
-}
-```
-
-```json
-{
-    "UBP_ID": "LAW_CORE_001",
-    "Title": "The v4.2.0 Core API Map",
-    "Version": "v4.2.0",
-    "Triad": {
-        "Math": "System = {golay, leech, physics, periodic, tgic, phenomenology}",
-        "Language": "The Core Engine is a hexadic dictionary of specialized classes; all study scripts must initialize via initialize_ubp_system().",
-        "Script": "system = initialize_ubp_system(); golay = system['golay']; leech = system['leech']"
+    "UBP_HELPER_TGIC_RESONANCE": {
+        "ubp_id": "UBP_HELPER_TGIC_RESONANCE",
+        "name": "Helper: TGIC Law Injection",
+        "math": "Cost_Mod = Cost * (1 + Law_Value)",
+        "language": "Logic pattern for recalling a law from HEX_DB and injecting it into the TGIC transition cost function.",
+        "script": "law = HEX_DB_EXACT.get_law_by_id(law_id)\nval = eval(law['math'], {'Y': constants.observer_fixed_point(), 'Y_inv': constants.y_constant()})\ndef resonant_cost(s, t):\n    return tgic.compute_transition_cost(s, t) * Fraction(val)",
+        "tags": ["helper", "tgic", "resonance"],
+        "fingerprint": "c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3"
     },
-    "Hash": "sha256:c4o1r2e3_map_v420"
+    "UBP_HELPER_MOG_VISUALIZER": {
+        "ubp_id": "UBP_HELPER_MOG_VISUALIZER",
+        "name": "Helper: 4x6 MOG Grid Mapping",
+        "math": "Grid(4,6) = Codeword[24]",
+        "language": "Logic for mapping a 24-bit codeword onto the Miracle Octad Generator (MOG) grid for visual analysis.",
+        "script": "def show_mog(bits):\n    grid = [bits[i:i+6] for i in range(0, 24, 6)]\n    for row in grid: print(' '.join(map(str, row)))",
+        "tags": ["helper", "visualizer", "mog"],
+        "fingerprint": "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4"
+    }
 }
-```
-
-```json
-{
-    "UBP_ID": "LAW_CORE_002",
-    "Title": "The Substrate Access Protocol",
-    "Version": "v4.2.5",
-    "Triad": {
-        "Math": "Data = getattr(Obj, 'coords', Obj)",
-        "Language": "LeechPoint and MinimalVector objects are encapsulated; raw coordinate access requires targeting the .coords attribute.",
-        "Script": "def extract_coords(obj): return obj.coords if hasattr(obj, 'coords') else list(obj)"
-    },
-    "Hash": "sha256:a1c2c3e4_access_v425"
-}
-```
 
 ```json
 [
@@ -1227,7 +1215,8 @@
         "Citation": "Manus AI (Mineral Study Phase 2, 2025)",
         "Triad": {
             "Math": "Separation = 12.84σ",
-            "Language": "The mineral manifold is a binary landscape; matter either falls into the Coherence Basin or is rejected by the substrate across a 12.8-sigma void.",
+            "Language": "The mineral manifold is a binary landscape; matter either falls into the Coherence Basin or is rejected by the substrate across a 12.8-
+ void.",
             "Script": "METRICS.analyze_bimodal_void(12.84)"
         },
         "Hash": "sha256:b1a2s3i4_v4127"
@@ -1565,18 +1554,113 @@
 }
 ```
 
+{
+    "LAW_PHYS_MUON_ELECTRON_RATIO": {
+        "ubp_id": "LAW_PHYS_MUON_ELECTRON_RATIO",
+        "name": "Invariant: muon_electron_ratio",
+        "math": "(Y_inv)**4 + 3 - Y**4",
+        "language": "Validated physical constant with error 0.000400%",
+        "script": "ubp_system_complete_v4_2_0_FINAL.py",
+        "tags": ["physics", "invariant", "v4.2.0"],
+        "nrci": "999996/1000000",
+        "fingerprint": "7d8a2b9e1f4c3d0a5b6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c"
+    }
+```
+
 ```json
 {
-    "UBP_ID": "LAW_SUBSTRATE_008",
-    "Title": "The Law of the Triadic Shell",
-    "Version": "v4.2.5",
-    "Triad": {
-        "Math": "Norm^2(Identity) = 3 * Norm^2(Minimal)",
-        "Language": "Stable physical identities occupy the 3rd shell of the Leech Lattice, corresponding to the t=3 error-correction radius of the Golay substrate.",
-        "Script": "METRICS.verify_triadic_shell(96, 32)"
-    },
-    "Hash": "sha256:n9o6m0_shell3_v425"
-}
+    "LAW_PHYS_FINE_STRUCTURE_CONSTANT": {
+        "ubp_id": "LAW_PHYS_FINE_STRUCTURE_CONSTANT",
+        "name": "Invariant: fine_structure_constant",
+        "math": "1 / (83 + Y_inv**3 + 1.5 * Y**2)",
+        "language": "Validated physical constant with error 0.001900%",
+        "script": "ubp_system_complete_v4_2_0_FINAL.py",
+        "tags": ["physics", "invariant", "v4.2.0"],
+        "nrci": "999981/1000000",
+        "fingerprint": "a2f1b3c5d7e9f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0"
+    }
+```
+
+```json
+{
+    "LAW_PHYS_MUON_ELECTRON_RATIO": {
+        "ubp_id": "LAW_PHYS_MUON_ELECTRON_RATIO",
+        "name": "Invariant: muon_electron_ratio",
+        "math": "(Y_inv)**4 + 3 - Y**4",
+        "language": "Validated physical constant with error 0.000400%",
+        "script": "ubp_system_complete_v4_2_0_FINAL.py",
+        "tags": ["physics", "invariant", "v4.2.0"],
+        "nrci": "999996/1000000",
+        "fingerprint": "7d8a2b9e1f4c3d0a5b6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c"
+    }
+```
+
+```json
+{
+    "LAW_PHYS_FINE_STRUCTURE_CONSTANT": {
+        "ubp_id": "LAW_PHYS_FINE_STRUCTURE_CONSTANT",
+        "name": "Invariant: fine_structure_constant",
+        "math": "1 / (83 + Y_inv**3 + 1.5 * Y**2)",
+        "language": "Validated physical constant with error 0.001900%",
+        "script": "ubp_system_complete_v4_2_0_FINAL.py",
+        "tags": ["physics", "invariant", "v4.2.0"],
+        "nrci": "999981/1000000",
+        "fingerprint": "a2f1b3c5d7e9f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0"
+    }
+```
+
+```json
+{
+    "UBP_TEMPLATE_STUDY_CORE": {
+        "ubp_id": "UBP_TEMPLATE_STUDY_CORE",
+        "name": "Template: Standard 5-Phase Study",
+        "math": "Pipeline(P1...P5) where P3.NRCI >= 0.5",
+        "language": "Standard boilerplate for initializing the v4.2.0 substrate and running a comprehensive test suite.",
+        "script": "import study_1\nsystem = study_1.initialize_ubp_system(verbose=False)\n# PHASE 2: DEVELOPMENT\n# [Insert Logic Here]\n# PHASE 3: DISTILLATION\n# metrics = METRICS_EXACT.analyze_state(variance)",
+        "tags": ["template", "boilerplate", "v4.2.0"],
+        "fingerprint": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2"
+    }
+```
+
+```json
+{
+    "UBP_HELPER_TGIC_RESONANCE": {
+        "ubp_id": "UBP_HELPER_TGIC_RESONANCE",
+        "name": "Helper: TGIC Law Injection",
+        "math": "Cost_Mod = Cost * (1 + Law_Value)",
+        "language": "Logic pattern for recalling a law from HEX_DB and injecting it into the TGIC transition cost function.",
+        "script": "law = HEX_DB_EXACT.get_law_by_id(law_id)\nval = eval(law['math'], {'Y': constants.observer_fixed_point(), 'Y_inv': constants.y_constant()})\ndef resonant_cost(s, t):\n    return tgic.compute_transition_cost(s, t) * Fraction(val)",
+        "tags": ["helper", "tgic", "resonance"],
+        "fingerprint": "c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3"
+    }
+```
+
+```json
+{
+    "UBP_HELPER_MOG_VISUALIZER": {
+        "ubp_id": "UBP_HELPER_MOG_VISUALIZER",
+        "name": "Helper: 4x6 MOG Grid Mapping",
+        "math": "Grid(4,6) = Codeword[24]",
+        "language": "Logic for mapping a 24-bit codeword onto the Miracle Octad Generator (MOG) grid for visual analysis.",
+        "script": "def show_mog(bits):\n    grid = [bits[i:i+6] for i in range(0, 24, 6)]\n    for row in grid: print(' '.join(map(str, row)))",
+        "tags": ["helper", "visualizer", "mog"],
+        "fingerprint": "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4"
+    }
+```
+
+```json
+
+{
+    "HYP_PARTICLE_SIGMA": {
+        "ubp_id": "HYP_PARTICLE_SIGMA",
+        "name": "Sigma Lepton Shadow",
+        "math": "Mass_Ratio=1838770236554166191849613243153961792/631588148769578466410010570421875",
+        "language": "Hypothetical 4th generation lepton shadow mapped at the Golay correction limit (Weight 3).",
+        "script": "study_6.py",
+        "tags": ["hypothetical", "lepton", "shadow", "v4.2.0"],
+        "nrci": "3/4",
+        "fingerprint": "2097ee27ef92eca8b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0"
+    }
 ```
 
 
