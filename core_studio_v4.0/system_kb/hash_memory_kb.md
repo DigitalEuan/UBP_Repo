@@ -1,4 +1,8 @@
 {
+    "a16406ac": {
+        "ubp_id": "LAW_TEST_001",
+        "full_hash": "a16406ac3a1b1d0a12518de202cdc9d0fcd445871dcf363cb7472fe09c6b873f"
+    },
     "634938f8": {
         "ubp_id": "LAW_SUBSTRATE_001",
         "full_hash": "634938f838a6bf8e048cde8ee56b14e8ce69b24ca55308a1fd88680a3ce11600"
@@ -418,5 +422,21 @@
     "577915ac": {
         "ubp_id": "LAW_UNITY_003",
         "full_hash": "577915acb54b0716c535bbf00f8a06d70c47a0383feea571f244ad28bc173706"
+    },
+    "d781c402": {
+        "ubp_id": "LAW_CHEM_METHANE_001",
+        "full_hash": "d781c4024f06cac2b481e5539b6eb2f9c07209ff634a73852538ac778369a483"
+    },
+    "78c84923": {
+        "ubp_id": "LAW_GEO_432_FCC",
+        "full_hash": "78c849230b60685b84fdf7b3e46615d85f1f7dd4b6198a7907001339ecf07176"
+    },
+    "b4e137c0": {
+        "ubp_id": "LAW_OMEGA_ASYMMETRY_001",
+        "full_hash": "b4e137c01ecf00fe7f1da49ccaddb9d0c058c065ea771d6086e8094f8fe1551a"
+    },
+    "c69f9503": {
+        "ubp_id": "LAW_NOBLE_SCALING_001",
+        "full_hash": "c69f950323f3bde87378523e3d5ee59e2b992443eedbec6276322d09b8baad37"
     }
 }
