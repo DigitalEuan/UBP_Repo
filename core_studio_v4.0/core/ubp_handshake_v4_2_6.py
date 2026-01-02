@@ -8,8 +8,8 @@ Master handshake script for UBP Core v4.2.6 deployment and validation.
 Initializes all components and performs comprehensive system checks.
 
 Version: 4.2.6 Handshake (Production)
-Author: Euan R A Craig + UBP Research Team
-Date: 26 December 2025
+Author: Euan R A Craig, New Zealand
+Date: 2 January 2026
 
 FEATURES:
 ✓ Component initialization
