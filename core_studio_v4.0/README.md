@@ -78,8 +78,6 @@ The v4.1 update introduced persistent informational storage:
 ### Atuo-Updates
 *   **Auto Updated:** The Short + Long-Term memories and also the Core scripts auto-update. The Memory from the md files at: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] and the Core from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core]
 
-To make these instructions truly "user-friendly," I have clarified the confusing file-swapping step by using a **File Mapping Table**. This shows users exactly which "source" file goes into which "destination" folder.
-
 ---
 
 # Getting Started with UBP Core
