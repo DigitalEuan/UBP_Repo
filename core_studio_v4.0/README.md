@@ -1,4 +1,4 @@
-# UBP Core Studio v4.2.0
+# UBP Core Studio v4.2.6
 ## Universal Binary Principle (UBP) — Resonant Memory & Phenomenology Environment
 
 ![Version](https://img.shields.io/badge/version-4.2.0-purple.svg)
@@ -6,11 +6,10 @@
 ![Origin](https://img.shields.io/badge/Origin-New_Zealand-white.svg)
 
 **Author:** Euan R. A. Craig, New Zealand  
-**Version:** 4.2.0
-**Date:** 29 December 2025
-**APP Access:** Google AI Studio: https://ai.studio/apps/drive/12WTBHvu_PHgzyM7_sAvXUOiKwG8jNG07 
-**OR** Download the Google AI Stduio APP in full: https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions
-**OR** Run the ubp script in your own Python environment (currently ubp_system_complete_v4_2_0_FINAL.py)
+**Version:** 4.2.6
+**Date:** 2 January 2026
+**Download the Google AI Studio APP in full:** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions]
+**OR the files for it here::** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0]
 
 ## Important note:
 This is an experimental computational system constantly under development.
@@ -19,7 +18,7 @@ This is an experimental computational system constantly under development.
 I think what I have built has value and will help someone one day.
 
 ## Overview
-UBP Core Studio v4.2.0 APP is a research platform designed to provide a deterministic scientific perspective on information and phenomena.
+UBP Core Studio v4.2.6 APP is a research platform designed to provide a deterministic scientific perspective on information and phenomena.
 
 ## Integrated Research Assistant (v4.1+ Memory)
 The Studio features an AI Research Assistant
@@ -28,7 +27,7 @@ The Studio features an AI Research Assistant
 1.  **Memory Recall:** Automatically scans prompts for UBP Fingerprints and unpacks triadic identities from the long-term HEX_DB.
 2.  **Protocol Enforcement:** Guides studies through the ubp system Pipeline.
 3.  **Zero-Float Rigor:** Enforces the use of `fractions.Fraction` for all substrate calculations.
-4.  **metrics.py Integration:** Real-time tethering to the METRICS module for **NRCI** (Non-Random Coherence Index) validation.
+4.  **metrics_exact.py Integration:** Real-time tethering to the METRICS module for **NRCI** (Non-Random Coherence Index) validation.
 5.  **Triple-Artifact KB:** Manages Study KB (Active), System KB (HexDB/Long-term), and HashMemory KB (Fingerprints).
 
 ## *UBP Memory Architecture (v4.1+)** 
@@ -79,16 +78,114 @@ The v4.1 update introduced persistent informational storage:
 ### Atuo-Updates
 *   **Auto Updated:** The Short + Long-Term memories and also the Core scripts auto-update. The Memory from the md files at: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] and the Core from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core]
 
+To make these instructions truly "user-friendly," I have clarified the confusing file-swapping step by using a **File Mapping Table**. This shows users exactly which "source" file goes into which "destination" folder.
 
-## Getting Started with the UBP Core APP
-1.  **Key Entry:** Click the weird green icon in the top right of the header to enter your Google Gemini API Key (to work with the AI assistant).
-2.  **Initialize:** Wait for the `[SYSTEM] Ready` signal in the console.
-3.  **Protocol Initiation:** Start a conversation with the Assistant. It will scan for fingerprints and guide you through the phases.
-4.  **Run Study:** Click **RUN** on your script and toggle to **Visual Insights** to see the 3D manifold.
-5.  **Iterate:** Feed the results back to the AI assistant for analysis and further scripts to run.
-6.  **Study Tracking:** Keep track of your study progress by updating the "Study KB" tab.
-7.  **Archival:** Use `HEX_DB.store_law` in your scripts to lock your findings into the persistent substrate.
-8.  **Save:** Save entire Studies and Knowledgebases
+---
+
+# Getting Started with UBP Core
+
+Follow these steps to set up the UBP Core application on your local machine.
+
+### 1. Obtain a Gemini API Key
+
+The "brain" of this app requires an API key from Google.
+
+* Visit [Google AI Studio](https://aistudio.google.com/).
+* Create a free or paid **API Key**.
+* Save this key; you will need it for Step 4.
+
+### 2. Set Up Your Local Environment
+
+We use **Vite** to run the React application because it is fast and lightweight.
+
+1. **Install Node.js:** Ensure you have [Node.js](https://nodejs.org/) installed.
+2. **Initialize the Project:** Open your terminal and run the following commands:
+```bash
+# Create the project folder
+npm create vite@latest my-ubp-studio -- --template react-ts
+
+# Enter the folder
+cd my-ubp-studio
+
+# Install the base React files
+npm install
+
+```
+
+
+3. **Install App Dependencies:** Run this command to install the specific libraries used by UBP Core:
+```bash
+npm install @google/genai three pdfjs-dist marked
+
+```
+
+
+
+### 3. Move Source Code into the Project
+
+When you created the project in Step 2, Vite generated some "placeholder" files. You need to replace those placeholders with the actual UBP Core source code.
+
+**Please update your `src/` folder according to this map:**
+
+| Action | File/Folder to Create/Replace | What goes inside? |
+| --- | --- | --- |
+| **Replace** | `src/App.tsx` | Paste the content of your **App.tsx** here. |
+| **Replace** | `src/main.tsx` | Paste the content of your **index.tsx** here. |
+| **Create** | `src/types.ts` | Create this file and paste your Type definitions. |
+| **Create** | `src/constants.ts` | Create this file and paste your Constants. |
+| **New Folder** | `src/services/` | Create this folder and move your service files here. |
+| **New Folder** | `src/components/` | Create this folder and move your component files here. |
+
+### 4. Configure Your API Key
+
+To keep your API key secure, we use an environment variable.
+
+1. In the **root folder** (`my-ubp-studio`), create a new file named `.env`.
+2. Paste the following line into that file, replacing the placeholder with your actual key:
+```text
+VITE_API_KEY=your_actual_key_here
+
+```
+
+
+
+> [!NOTE]
+> If you are moving code from an AI Studio sandbox, ensure you change any code references from `process.env.API_KEY` to `import.meta.env.VITE_API_KEY` to work with Vite.
+
+### 5. Launch the App
+
+You are ready to go! Run the following command:
+
+```bash
+npm run dev
+
+```
+
+Once the terminal says "Ready," open **http://localhost:5173** in your browser.
+
+---
+
+### Quick Start Tip
+
+Once the app loads, look for the `[SYSTEM] Ready` signal in the browser console. This confirms your API key and 3D engine are properly connected.
+
+---
+## USAGE:
+
+    Initialize: Wait for the [SYSTEM] Ready signal in the console.
+
+    Protocol Initiation: Start a conversation with the Assistant. It will scan for fingerprints and guide you through the phases.
+
+    Run Study: Click RUN on your script and toggle to Visual Insights to see the 3D manifold.
+
+    Iterate: Feed the results back to the AI assistant for analysis and further scripts to run.
+
+    Study Tracking: Keep track of your study progress by updating the "Study KB" tab.
+
+    Archival: Use HEX_DB.store_law in your scripts to lock your findings into the persistent substrate.
+
+    Save: Save entire Studies and Knowledgebases.
+
 
 ---
 *Note: Always analyze actual script execution outputs before assuming results. The UBP substrate reveals unexpected informational symmetries.*
