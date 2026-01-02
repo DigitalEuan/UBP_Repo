@@ -8,8 +8,8 @@ Normalized Resonance Coherence Index (NRCI) calculation module.
 Integrates with metrics.py and provides coherence assessment.
 
 Version: 4.2.6 NRCI Calculator
-Author: Euan R A Craig + UBP Research Team
-Date: 26 December 2025
+Author: Euan R A Craig, New Zealand
+Date: 2 January 2026
 
 FEATURES:
 ✓ NRCI calculation from ontological health
