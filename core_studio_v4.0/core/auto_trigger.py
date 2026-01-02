@@ -1,5 +1,9 @@
 """
 UBP Auto-Trigger v4.2 (Resonance Scanner)
+
+Version: 4.2
+Author: Euan R A Craig, New Zealand
+Date: 02 January 2026
 -----------------------------------------
 Implements Jaccard Similarity for semantic recall and 
 Hamming Distance for fingerprint error-correction.
