@@ -438,5 +438,13 @@
     "c69f9503": {
         "ubp_id": "LAW_NOBLE_SCALING_001",
         "full_hash": "c69f950323f3bde87378523e3d5ee59e2b992443eedbec6276322d09b8baad37"
+    },
+    "4055d08f": {
+        "ubp_id": "LAW_BIO_HEMA_002",
+        "full_hash": "4055d08ff20a9d7c21273d364362fe05d6cc5838c9bde5f4808fb818645aa03e"
+    },
+    "713035e1": {
+        "ubp_id": "LAW_BIO_HEMA_003",
+        "full_hash": "713035e1f7bdd41c52127f2d83940774e256c5f212b6643a86433a527859e718"
     }
 }

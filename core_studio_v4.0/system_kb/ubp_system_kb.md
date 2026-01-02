@@ -1654,5 +1654,37 @@
         ],
         "fingerprint": "c69f950323f3bde87378523e3d5ee59e2b992443eedbec6276322d09b8baad37",
         "nrci": "1/1"
+    },
+    "LAW_BIO_HEMA_002": {
+        "ubp_id": "LAW_BIO_HEMA_002",
+        "name": "The Law of the Hemic Shell",
+        "math": "Norm^2(Blood) = 12",
+        "lang": "All human blood types occupy Leech Shell 1 (Norm 12), proving fundamental biological equality despite functional asymmetry.",
+        "script": "return point.norm_sq_actual == 12",
+        "tags": [
+            "biology",
+            "blood",
+            "hema",
+            "shell",
+            "leech"
+        ],
+        "fingerprint": "4055d08ff20a9d7c21273d364362fe05d6cc5838c9bde5f4808fb818645aa03e",
+        "nrci": "1/1"
+    },
+    "LAW_BIO_HEMA_003": {
+        "ubp_id": "LAW_BIO_HEMA_003",
+        "name": "The Law of Donor Fragility",
+        "math": "Syndrome(O-) = 9 >> 3",
+        "lang": "Universal utility requires structural fragility; the O- phenotype achieves compatibility by shedding informational constraints (antigens), pushing it beyond the error-correction horizon.",
+        "script": "return syndrome_weight > 3",
+        "tags": [
+            "biology",
+            "blood",
+            "hema",
+            "donor",
+            "fragility"
+        ],
+        "fingerprint": "713035e1f7bdd41c52127f2d83940774e256c5f212b6643a86433a527859e718",
+        "nrci": "1/1"
     }
 }
