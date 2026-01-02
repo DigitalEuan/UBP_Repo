@@ -1,94 +1,222 @@
 """
-UBP TGIC Engine v4.3 (Triad Graph Interaction Constraints)
-==========================================================
-A standalone module for simulating dynamic interactions between
-substrate states. Handles compatibility, flow, and triadic stability.
+TGIC-Capable Engine (Exact, Float-Free) v4.3
+============================================
+
+Euan Craig, New Zealand
+2 January 2026
+
+Implements the "Archimedean-Golay Construct" for dynamic system evolution.
+
+- State S: Sparse map of Coordinate -> OffBit (v, phi)
+- v: 24-bit integer vector
+- phi: 8-bit integer phase (0..255)
+- Dynamics: Deterministic updates via Gamma Gates (Sphere, Angle, Conservation)
 
 Dependencies: ubp_core_v4_2_6_COMBINED
 """
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import Dict, List, Tuple, Optional, Set
+import random
+import hashlib
 from ubp_core_v4_2_6_COMBINED import (
-    BinaryLinearAlgebra,
+    GOLAY_DECODER,
     LEECH_ENHANCED,
-    GOLAY_DECODER
+    BinaryLinearAlgebra,
+    LeechPointScaled
 )
-from fractions import Fraction
 
-class TGICEngine:
-    """
-    The Physics Engine for Inter-Identity Relations.
-    """
+# --- Constants ---
+PHASE_MOD = 256  # 8-bit phase
 
-    @staticmethod
-    def calculate_interaction_cost(state_a: list[int], state_b: list[int]) -> float:
-        """
-        Calculates the 'Energy Cost' of interaction.
-        Cost = Hamming_Distance + Delta_Symmetry_Tax
-        """
-        # 1. Hamming Distance (The raw bit-switching cost)
-        dist = BinaryLinearAlgebra.hamming_distance(state_a, state_b)
-        
-        # 2. Symmetry Tax Delta (The ontological stress difference)
-        tax_a = LEECH_ENHANCED.calculate_symmetry_tax(state_a)
-        tax_b = LEECH_ENHANCED.calculate_symmetry_tax(state_b)
-        delta_tax = abs(tax_a - tax_b)
-        
-        return float(dist) + delta_tax
+# --- Helper Functions ---
+def mod_phase(x: int) -> int:
+    return x % PHASE_MOD
 
-    @staticmethod
-    def validate_flow(source: list[int], target: list[int], mode: str = "subset") -> dict:
-        """
-        Determines if flow from Source -> Target is permissible.
+def phase_dist(a: int, b: int) -> int:
+    """Circular distance in 8-bit space."""
+    d = abs(a - b)
+    if d > 128:
+        d = 256 - d
+    return d
+
+# --- Data Structures ---
+Coord = Tuple[int, int, int] # Simplified 3D coord for demo (x,y,z)
+
+@dataclass(frozen=True)
+class OffBit:
+    v: Tuple[int, ...]  # 24 bits
+    phi: int            # 0..255
+
+    def with_updates(self, new_v: Optional[List[int]] = None, delta_phi: int = 0) -> "OffBit":
+        v2 = tuple(new_v) if new_v is not None else self.v
+        return OffBit(v=v2, phi=mod_phase(self.phi + delta_phi))
+
+@dataclass(frozen=True)
+class Toggle:
+    load_bits: Tuple[int, ...]  # Indices allowed to flip
+    fulcrum_bit: int            # Index FORBIDDEN to flip
+    effort: int                 # Energy barrier
+
+@dataclass(frozen=True)
+class Proposal:
+    coord: Coord
+    flip_mask: Tuple[int, ...]
+    delta_phi: int
+    toggle: Toggle
+
+# --- The Engine ---
+class TGICExactEngine:
+    def __init__(self):
+        self.golay = GOLAY_DECODER
+        self.leech = LEECH_ENHANCED
         
-        Modes:
-        - 'subset': Source bits must be a subset of Target bits (e.g., Blood Donation).
-                    Rule: (Source & NOT Target) == 0
-        - 'resonance': Hamming Distance must be <= Threshold (e.g., Communication).
+        # Physics Constants
+        self.SHELL_TARGET = 12  # Norm^2 = 12 (Hemic Shell)
+        self.ANGLE_TOLERANCE = 16 # approx pi/8 in 256-bin space
+
+    def neighbors(self, c: Coord) -> List[Coord]:
+        x, y, z = c
+        # 6-neighborhood
+        return [
+            (x+1, y, z), (x-1, y, z),
+            (x, y+1, z), (x, y-1, z),
+            (x, y, z+1), (x, y, z-1)
+        ]
+
+    def energy(self, S: Dict[Coord, OffBit]) -> int:
         """
-        results = {"allowed": False, "reason": "Unknown mode"}
+        Integer Energy Proxy:
+        E = Sum(HammingDist(neighbors) * PhaseDist(neighbors))
+        """
+        E = 0
+        seen_edges = set()
+        for c, off in S.items():
+            for n in self.neighbors(c):
+                if n in S:
+                    edge = tuple(sorted((c, n)))
+                    if edge in seen_edges: continue
+                    seen_edges.add(edge)
+                    
+                    off2 = S[n]
+                    h_dist = BinaryLinearAlgebra.hamming_distance(list(off.v), list(off2.v))
+                    p_dist = phase_dist(off.phi, off2.phi)
+                    
+                    # Coupling Strength = 1
+                    E += h_dist * p_dist
+        return E
+
+    # --- Gamma Gates (The Laws of Physics) ---
+    
+    def gamma_sphere(self, off: OffBit) -> bool:
+        """Gate 1: Must stay on the Leech Shell."""
+        # "Existence" requires Syndrome <= 3 (Correctable)
+        _, _, synd = self.golay.decode(list(off.v))
+        return synd <= 3
+
+    def gamma_angle(self, S: Dict[Coord, OffBit], prop: Proposal, off_new: OffBit) -> bool:
+        """Gate 2: Phase Coherence with neighbors."""
+        neigh_phis = [S[n].phi for n in self.neighbors(prop.coord) if n in S]
+        if not neigh_phis: return True # Isolated is free
         
-        if mode == "subset":
-            # Check for 'Antigen' conflict: Source has a 1 where Target has a 0
-            conflict_mask = [s & (1 - t) for s, t in zip(source, target)]
-            conflicts = sum(conflict_mask)
+        # Simple consensus: Must be within tolerance of average neighbor phase
+        avg_phi = sum(neigh_phis) // len(neigh_phis)
+        return phase_dist(off_new.phi, avg_phi) < self.ANGLE_TOLERANCE
+
+    def gamma_conservation(self, prop: Proposal, off_old: OffBit, off_new: OffBit) -> bool:
+        """Gate 3: Fulcrum Bit must not flip."""
+        f = prop.toggle.fulcrum_bit
+        return off_old.v[f] == off_new.v[f]
+
+    # --- Dynamics ---
+
+    def step(self, S: Dict[Coord, OffBit]) -> Tuple[Dict[Coord, OffBit], dict]:
+        if not S: return S, {"status": "empty"}
+        
+        # 1. Pick random site
+        coord = random.choice(list(S.keys()))
+        off_old = S[coord]
+        
+        # 2. Generate Toggle (Phenomenology)
+        # For demo, we try to flip 1 random bit (mutation)
+        flip_idx = random.randint(0, 23)
+        fulcrum = (flip_idx + 12) % 24 # Arbitrary fulcrum
+        
+        mask = [0]*24
+        mask[flip_idx] = 1
+        
+        toggle = Toggle(load_bits=(flip_idx,), fulcrum_bit=fulcrum, effort=10)
+        
+        # 3. Propose Phase Shift
+        d_phi = random.randint(-5, 5)
+        
+        prop = Proposal(coord, tuple(mask), d_phi, toggle)
+        
+        # 4. Apply Candidate
+        new_v = [b ^ m for b, m in zip(off_old.v, mask)]
+        off_new = off_old.with_updates(new_v=new_v, delta_phi=d_phi)
+        
+        # 5. Check Gates
+        if not self.gamma_conservation(prop, off_old, off_new):
+            return S, {"status": "rejected", "reason": "conservation"}
             
-            if conflicts == 0:
-                results = {"allowed": True, "conflicts": 0, "type": "Universal Flow"}
-            else:
-                results = {"allowed": False, "conflicts": conflicts, "type": "Rejection"}
-                
-        elif mode == "resonance":
-            # Law of Relation: d_H < 8 (Wall of Isolation)
-            dist = BinaryLinearAlgebra.hamming_distance(source, target)
-            if dist < 8:
-                results = {"allowed": True, "distance": dist, "type": "Coherent"}
-            else:
-                results = {"allowed": False, "distance": dist, "type": "Decoherent"}
-                
-        return results
+        if not self.gamma_sphere(off_new):
+            return S, {"status": "rejected", "reason": "sphere_collapse"}
+            
+        if not self.gamma_angle(S, prop, off_new):
+            return S, {"status": "rejected", "reason": "phase_decoherence"}
+            
+        # 6. Energy Check (Metropolis-like)
+        E_old = self.energy(S)
+        # Temporarily apply to check energy
+        S_temp = S.copy()
+        S_temp[coord] = off_new
+        E_new = self.energy(S_temp)
+        
+        dE = E_new - E_old
+        
+        # Simple threshold acceptance for demo
+        if dE <= toggle.effort:
+            return S_temp, {"status": "accepted", "dE": dE}
+        else:
+            return S, {"status": "rejected", "reason": "energy_barrier", "dE": dE}
 
-    @staticmethod
-    def analyze_triad(a: list[int], b: list[int], c: list[int]) -> dict:
-        """
-        Analyzes a 3-body system for stability (Triadic Closure).
-        Checks if A-B, B-C, and C-A interactions are all coherent.
-        """
-        d_ab = BinaryLinearAlgebra.hamming_distance(a, b)
-        d_bc = BinaryLinearAlgebra.hamming_distance(b, c)
-        d_ca = BinaryLinearAlgebra.hamming_distance(c, a)
-        
-        # Triangle Inequality Check (Metric Space validation)
-        # d_ac <= d_ab + d_bc
-        metric_valid = (d_ca <= d_ab + d_bc)
-        
-        # Stability: Are all links within the "Wall of Isolation" (d < 8)?
-        stable_links = sum(1 for d in [d_ab, d_bc, d_ca] if d < 8)
-        
-        return {
-            "distances": [d_ab, d_bc, d_ca],
-            "metric_valid": metric_valid,
-            "stability_score": stable_links / 3.0,
-            "is_stable": stable_links == 3
-        }
+# --- Initialization Helper ---
+def make_initial_state(n=5) -> Dict[Coord, OffBit]:
+    S = {}
+    # Create a small line of atoms
+    for i in range(n):
+        # Start with perfect codewords (Zero vector)
+        v = tuple([0]*24)
+        phi = 128 # Neutral phase
+        S[(i,0,0)] = OffBit(v, phi)
+    return S
 
-# Global Instance
-TGIC = TGICEngine()
+# --- MAIN EXECUTION BLOCK ---
+if __name__ == "__main__":
+    print("========================================")
+    print("   TGIC EXACT ENGINE v4.3 (SIMULATION)  ")
+    print("========================================")
+    
+    engine = TGICExactEngine()
+    state = make_initial_state(n=5)
+    
+    print(f"[INIT] System Size: {len(state)} atoms")
+    print(f"[INIT] Initial Energy: {engine.energy(state)}")
+    
+    accepted = 0
+    steps = 1000
+    
+    print(f"\n[RUN] Simulating {steps} steps...")
+    for i in range(steps):
+        state, meta = engine.step(state)
+        if meta['status'] == 'accepted':
+            accepted += 1
+            
+    print(f"\n[DONE] Simulation Complete.")
+    print(f"   Accepted Moves: {accepted}/{steps}")
+    print(f"   Final Energy:   {engine.energy(state)}")
+    
+    # Check final stability
+    stable_atoms = sum(1 for off in state.values() if engine.gamma_sphere(off))
+    print(f"   Stable Atoms:   {stable_atoms}/{len(state)}")
