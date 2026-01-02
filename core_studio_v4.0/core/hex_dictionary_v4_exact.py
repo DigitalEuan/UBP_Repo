@@ -1,5 +1,10 @@
 """
 UBP HexDictionary v4.x (Exact) - PATCHED v2
+
+Version: 4.2.6 Combined (Production - 100% Complete)
+Author: Euan R A Craig, New Zealand
+Date: 02 January 2026
+
 ------------------------------
 """
 from __future__ import annotations
