@@ -1,7 +1,7 @@
 """
-UBP HexDictionary v4.x (Exact) - PATCHED v2
+UBP HexDictionary v4.x
 
-Version: 4.2.6 Combined (Production - 100% Complete)
+Version: 4
 Author: Euan R A Craig, New Zealand
 Date: 02 January 2026
 
