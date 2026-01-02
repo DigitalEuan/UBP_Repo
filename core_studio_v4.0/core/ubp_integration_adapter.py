@@ -11,8 +11,8 @@ Bridges UBP Core v4.2.6 to existing UBP system components:
 - Auto-trigger system
 
 Version: 4.2.6 Integration Adapter
-Author: Euan R A Craig + UBP Research Team
-Date: 26 December 2025
+Author: Euan R A Craig, New Zealand
+Date: 2 January 2026
 
 FEATURES:
 ✓ HexDictionary integration
