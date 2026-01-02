@@ -5,6 +5,10 @@ UBP PHENOMENOLOGY ENGINE v4.2.6
 ================================================================================
 The "Top-Down" Bridge: Translates Real-World Phenomena -> UBP Substrate.
 
+Version: 4.2.6
+Author: Euan R A Craig, New Zealand
+Date: 02 January 2026
+
 Integrates with:
 1. UBP Core v4.2.6 (via Integration Adapter)
 2. HexDictionary (for storage)
