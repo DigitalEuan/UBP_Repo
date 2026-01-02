@@ -2,6 +2,10 @@
 UBP Metrics (Exact) v4.x
 =======================
 
+Version: 4.2.6 Combined (Production - 100% Complete)
+Author: Euan R A Craig, New Zealand
+Date: 02 January 2026
+
 Goal: strict float-free metrics suitable for core UBP logic.
 
 Design rules:
