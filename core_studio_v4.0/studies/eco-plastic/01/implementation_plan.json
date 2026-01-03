@@ -1,0 +1,162 @@
+{
+  "project_title": "Mapping Chemical Stability and Environmental Persistence through UBP Framework",
+  "hypothesis": {
+    "primary": "Environmentally persistent plastics exhibit distinct UBP signatures (higher Symmetry Tax, lower Stability Score) compared to biodegradable materials",
+    "secondary": "Toxic chemical additives show distinct Coherence Regimes compared to inert base polymers"
+  },
+  "steps": [
+    {
+      "id": 1,
+      "name": "Environment Setup and Validation",
+      "tasks": [
+        "Verify Python 3.12+ availability",
+        "Install required packages: pandas, numpy, matplotlib, scipy",
+        "Test UBP system imports and basic functionality",
+        "Create directory structure for outputs"
+      ],
+      "outputs": ["Environment verified", "UBP system functional"],
+      "success_criteria": "All UBP modules import successfully, test case runs without errors"
+    },
+    {
+      "id": 2,
+      "name": "Chemical Data Collection",
+      "tasks": [
+        "Compile dataset of 10-15 common plastics",
+        "Collect chemical formulas, SMILES, molecular weights",
+        "Collect atomic composition (C, H, O, N, Cl counts)",
+        "Collect real-world properties: biodegradability, persistence, toxicity",
+        "Create structured CSV dataset"
+      ],
+      "outputs": ["data/chemicals_dataset.csv"],
+      "success_criteria": "CSV file with ≥10 materials, complete property data"
+    },
+    {
+      "id": 3,
+      "name": "Design Molecular Resonance Mapping",
+      "tasks": [
+        "Create custom PhenomenonDefinition for chemicals",
+        "Implement bit generator: atomic composition (bits 0-11)",
+        "Implement bit generator: molecular weight (bits 12-17)",
+        "Implement bit generator: structure hash (bits 18-23)",
+        "Validate mapping produces diverse signatures"
+      ],
+      "outputs": ["workflow/03_molecular_mapping.py"],
+      "success_criteria": "Bit generator produces valid 24-bit vectors for all test chemicals"
+    },
+    {
+      "id": 4,
+      "name": "UBP Analysis Pipeline",
+      "tasks": [
+        "Process each chemical through UBP Core v4.2.6",
+        "Extract NRCI, Coherence Regime, Symmetry Tax, Stability Score",
+        "Calculate Leech Lattice coordinates",
+        "Save full results to JSON and CSV"
+      ],
+      "outputs": [
+        "data/ubp_results_full.json",
+        "data/ubp_metrics.csv"
+      ],
+      "success_criteria": "Complete metrics for all materials, no processing errors"
+    },
+    {
+      "id": 5,
+      "name": "Statistical Analysis",
+      "tasks": [
+        "Correlation: Stability Score vs. Biodegradability",
+        "Correlation: Symmetry Tax vs. Environmental Persistence",
+        "Group comparisons: biodegradable vs. non-biodegradable",
+        "Statistical tests: Mann-Whitney U, Spearman correlation",
+        "Calculate effect sizes with 95% CI"
+      ],
+      "outputs": [
+        "results/statistical_tests.csv",
+        "results/correlation_matrix.csv",
+        "results/group_comparisons.csv"
+      ],
+      "success_criteria": "p-values, effect sizes, and confidence intervals computed"
+    },
+    {
+      "id": 6,
+      "name": "Visualization and Interpretation",
+      "tasks": [
+        "Scatter plot: Stability Score vs. Persistence",
+        "Box plots: UBP metrics by material category",
+        "Heatmap: All UBP metrics across materials",
+        "3D projection: Leech Lattice dimensions colored by biodegradability",
+        "Generate interpretation table"
+      ],
+      "outputs": [
+        "figures/fig1_stability_vs_persistence.png",
+        "figures/fig2_metrics_by_category.png",
+        "figures/fig3_heatmap_all_metrics.png",
+        "figures/fig4_leech_lattice_3d.png"
+      ],
+      "success_criteria": "4-5 clear, labeled figures saved as PNG + PDF"
+    },
+    {
+      "id": 7,
+      "name": "Sensitivity Analysis",
+      "tasks": [
+        "Test alternative bit allocation schemes",
+        "Compare composition-based vs. structure-based mappings",
+        "Verify reproducibility (3 runs)",
+        "Document limitations and edge cases"
+      ],
+      "outputs": ["results/sensitivity_analysis.csv"],
+      "success_criteria": "Alternative mappings tested, reproducibility confirmed"
+    },
+    {
+      "id": 8,
+      "name": "Documentation and Reproducibility",
+      "tasks": [
+        "Create comprehensive README.md",
+        "Generate manifest.json",
+        "Write numbered workflow scripts",
+        "Document all software versions"
+      ],
+      "outputs": [
+        "README.md",
+        "manifest.json",
+        "workflow/*.py"
+      ],
+      "success_criteria": "External researcher can reproduce results from documentation"
+    },
+    {
+      "id": 9,
+      "name": "Results Synthesis",
+      "tasks": [
+        "Write scientific summary (Abstract, Methods, Results, Discussion)",
+        "Prepare data availability statement",
+        "List software versions",
+        "Create final execution summary"
+      ],
+      "outputs": ["reports/scientific_summary.md"],
+      "success_criteria": "Professional-grade summary document complete"
+    }
+  ],
+  "success_criteria_overall": [
+    "Complete dataset of ≥10 chemicals with UBP metrics",
+    "Statistical analysis showing whether hypothesis is supported",
+    "4-5 publication-quality figures",
+    "Fully reproducible pipeline with documentation",
+    "Clear interpretation of UBP signatures in chemical context",
+    "Code runs end-to-end without manual intervention"
+  ],
+  "data_sources": [
+    "IUPAC chemical databases",
+    "EPA Persistent Pollutants Database",
+    "PubChem and ChemSpider for structures",
+    "OECD Guidelines for biodegradability",
+    "Scientific literature"
+  ],
+  "software_requirements": [
+    "Python 3.12+",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "scipy",
+    "seaborn",
+    "UBP System modules from user_data"
+  ],
+  "expected_runtime": "60-90 minutes for full pipeline execution"
+}

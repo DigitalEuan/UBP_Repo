@@ -1,0 +1,29 @@
+{
+  "biodegradable_comparison": {
+    "comparison": "Biodegradable vs. Non-biodegradable",
+    "metric": "symmetry_tax",
+    "group1_n": 4,
+    "group1_mean": 3.994173161646402,
+    "group1_std": 0.3730858202959127,
+    "group2_n": 11,
+    "group2_mean": 3.790479186662217,
+    "group2_std": 0.8190771600661503,
+    "test": "Mann-Whitney U",
+    "statistic": 27.5,
+    "p_value": 0.506590884186682,
+    "effect_size": 0.625,
+    "significant": false
+  },
+  "kruskal_wallis": {
+    "test": "Kruskal-Wallis",
+    "categories": [
+      "Commodity Plastic",
+      "Biodegradable Plastic",
+      "Engineering Plastic",
+      "Semi-Biodegradable"
+    ],
+    "H_statistic": 0.9212569316081337,
+    "p_value": 0.8202952272070612,
+    "significant": false
+  }
+}
