@@ -1,0 +1,18 @@
+{
+  "num_compounds": 89,
+  "num_strategies": 4,
+  "num_comparisons": 36,
+  "significant_correlations": 30,
+  "best_result": {
+    "strategy": "strategy_1_functional_groups",
+    "metric": "jaccard_onbits",
+    "property": "biodegradable",
+    "correlation": -0.6891631866429596,
+    "p_value": 8.246062278163525e-14
+  },
+  "offbits_vs_onbits": {
+    "offbits_wins": 9,
+    "onbits_wins": 3,
+    "total_comparisons": 12
+  }
+}
