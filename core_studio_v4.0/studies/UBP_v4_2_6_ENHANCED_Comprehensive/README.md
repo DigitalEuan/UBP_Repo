@@ -1,6 +1,8 @@
 # Universal Binary Principle (UBP) v4.2.6 - Notebook Documentation
 
+
 **Notebook Repository**: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/studies/UBP_v4_2_6_ENHANCED_Comprehensive] 
+
 **Public Google CoLab Notebook**:[https://colab.research.google.com/drive/1Z6H7nvffT4SygSN22wWQpq47vrzid9gq?usp=sharing]
 
 ## Executive Summary
