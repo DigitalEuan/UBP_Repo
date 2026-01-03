@@ -17,6 +17,8 @@ The **K-Dense AI**, a multi-agent artificial intelligence system, was tasked wit
 a vast chemical space, iteratively refining its approach to identify patterns correlating to biodegradability and environmental persistence. 
 This process allowed for the computational design of new materials before physical synthesis.
 
+The K-Dense chat is available here: [https://app.k-dense.ai/share/session_20260102_222825_9c4bac117ac1]
+
 ## The Five-Part Study
 
 The research was structured as a series of five iterations, each building upon the insights of the last. Each folder in this repository 
