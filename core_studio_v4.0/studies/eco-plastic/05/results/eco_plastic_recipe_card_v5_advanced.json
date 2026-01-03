@@ -1,0 +1,135 @@
+{
+  "fingerprint": {
+    "binary": "001111100011111000010001",
+    "decimal": 4079121,
+    "hamming_weight": 12
+  },
+  "ubp_metrics": {
+    "persistence": 0.5833333333333334,
+    "biodegradability": 0.41666666666666663,
+    "vital_plastic_score": 1.0,
+    "lattice_tension": 0.0,
+    "stability_regime": "ENTROPIC",
+    "distance_to_octad": 10
+  },
+  "predicted_properties": {
+    "tensile_strength_mpa": 54.0,
+    "cost_per_kg_usd": 7.4
+  },
+  "target_property_ranges": {
+    "rings": [
+      1,
+      2
+    ],
+    "heteroatoms": [
+      1,
+      2
+    ],
+    "tpsa": [
+      560,
+      600
+    ],
+    "mw": [
+      10.0,
+      21.544346900318832
+    ],
+    "logp": [
+      13.666666666666668,
+      15.0
+    ],
+    "rot_bonds": [
+      2,
+      5
+    ]
+  },
+  "recommended_monomers": [
+    {
+      "name": "\u03b5-Caprolactone",
+      "smiles": "C1CCOC(=O)C1",
+      "match_score": 0.5,
+      "bio_source": "petroleum/bio",
+      "cost_kg": 5.0,
+      "properties": {
+        "rings": 1,
+        "heteroatoms": 2,
+        "tpsa": 26,
+        "mw": 114.14,
+        "logp": 0.8,
+        "rot_bonds": 2,
+        "tensile_mpa": 60.0
+      }
+    },
+    {
+      "name": "\u03b2-Propiolactone",
+      "smiles": "C1COC(=O)C1",
+      "match_score": 0.3333333333333333,
+      "bio_source": "synthesis",
+      "cost_kg": 15.0,
+      "properties": {
+        "rings": 1,
+        "heteroatoms": 2,
+        "tpsa": 26,
+        "mw": 72.06,
+        "logp": -0.3,
+        "rot_bonds": 0,
+        "tensile_mpa": 30.0
+      }
+    },
+    {
+      "name": "2,5-Furandicarboxylic acid",
+      "smiles": "C1=C(C(=O)O)OC(=C1)C(=O)O",
+      "match_score": 0.3333333333333333,
+      "bio_source": "cellulose",
+      "cost_kg": 8.0,
+      "properties": {
+        "rings": 1,
+        "heteroatoms": 5,
+        "tpsa": 83,
+        "mw": 156.09,
+        "logp": -0.7,
+        "rot_bonds": 2,
+        "tensile_mpa": 70.0
+      }
+    },
+    {
+      "name": "Vanillin",
+      "smiles": "COC1=C(C=CC(=C1)C=O)O",
+      "match_score": 0.3333333333333333,
+      "bio_source": "lignin",
+      "cost_kg": 6.0,
+      "properties": {
+        "rings": 1,
+        "heteroatoms": 3,
+        "tpsa": 47,
+        "mw": 152.15,
+        "logp": 1.2,
+        "rot_bonds": 2,
+        "tensile_mpa": 65.0
+      }
+    },
+    {
+      "name": "Ferulic acid",
+      "smiles": "COC1=C(C=CC(=C1)/C=C/C(=O)O)O",
+      "match_score": 0.3333333333333333,
+      "bio_source": "lignin",
+      "cost_kg": 10.0,
+      "properties": {
+        "rings": 1,
+        "heteroatoms": 4,
+        "tpsa": 67,
+        "mw": 194.18,
+        "logp": 1.5,
+        "rot_bonds": 3,
+        "tensile_mpa": 75.0
+      }
+    }
+  ],
+  "synthesis_recommendations": {
+    "polymerization_method": "Polycondensation",
+    "catalyst": "Titanium alkoxide",
+    "temperature_c": "220-260",
+    "pressure": "Reduced (0.1-1 mbar)",
+    "time_hours": "4-8",
+    "post_treatment": "Devolatilization + pelletization"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "algorithm": "Island Genetic Algorithm",
+  "configuration": {
+    "num_islands": 5,
+    "pop_per_island": 100,
+    "total_population": 500,
+    "num_generations": 500,
+    "initial_mutation_rate": 0.05,
+    "crossover_rate": 0.7,
+    "migration_interval": 50,
+    "migration_size": 5
+  },
+  "best_solution": {
+    "fingerprint_binary": "001111100011111000010001",
+    "fingerprint_decimal": 4079121,
+    "fitness": 0.7066666666666667,
+    "components": {
+      "biodegradability": 0.41666666666666663,
+      "mechanical_score": 1.0,
+      "cost_score": 0.7,
+      "vital_score": 1.0,
+      "tension_penalty": 0.0,
+      "total_fitness": 0.7066666666666667
+    }
+  },
+  "convergence": {
+    "final_generation": 500,
+    "final_best_fitness": 0.7066666666666667,
+    "final_avg_fitness": 0.7066666666666667,
+    "improvement": 0.043888888888888866
+  }
+}
