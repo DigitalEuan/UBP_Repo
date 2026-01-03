@@ -3,6 +3,7 @@
 
 - **Notebook Repository**: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/studies/UBP_v4_2_6_ENHANCED_Comprehensive] 
 - **Public Google CoLab Notebook**:[https://colab.research.google.com/drive/1Z6H7nvffT4SygSN22wWQpq47vrzid9gq?usp=sharing]
+- **Extended demonstration**: Eco-Plastics [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/studies/eco-plastic]
 
 ## Executive Summary
 
@@ -521,28 +522,15 @@ print(f"Muon/Electron: {predictions['muon_electron']}")
 
 ---
 
-## ❓ FAQ
-
-**Q: Is this peer-reviewed?**  
-A: Not yet. This is pre-publication research. Preprint submission to arXiv planned for early 2026. Seeking peer review and independent verification.
-
-**Q: Can I use this in my research?**  
-A: Yes! Open source (pending license specification). Please cite appropriately.
-
-**Q: How can I verify the calculations?**  
-A: Run the Jupyter notebook. All code is provided, calculations are transparent, results are reproducible.
-
-**Q: What if I find an error?**  
-A: Please report it! Science advances by finding and fixing errors. Contact the author or open an issue in the repository.
-
-**Q: Is this "theory of everything"?**  
-A: No. UBP addresses particle masses and some fundamental constants. It doesn't explain everything (yet). More work needed. 
-- Also it aims to be a **System of Everything** as theory only goes so far.
-
-**Q: Why should I believe this?**  
-A: You shouldn't "believe" - you should calculate and test! Download code, run tests, check predictions. Let the numbers speak.
-
----
 **Date**: 2 January 2026  
 **Status**: Pre-publication research, seeking peer review  
 **Version**: 4.2.6 Enhanced with 100+ tests and skeptical analysis
+
+---
+
+### Extended demonstration - Eco-Plastics 
+To demonstrate the application of this UBP system I have executed a study on Eco-Plastics 
+using the K-Dense Ai platform and the "Scientific Skills for Claude" available there.
+
+[https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/studies/eco-plastic]
+K-Dense URL: [https://app.k-dense.ai/share/session_20260102_222825_9c4bac117ac1]
