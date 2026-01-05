@@ -1,16 +1,16 @@
 """
-TGIC-Capable Engine (Exact, Float-Free) v4.3
-============================================
+TGIC-Capable Engine (Exact, Float-Free) v4.3.1 (FIXED)
+======================================================
 
-Euan Craig, New Zealand
-2 January 2026
+Version: 4.3.1
+Author: Euan R A Craig, New Zealand
+Date: 06 January 2026
 
-Implements the "Archimedean-Golay Construct" for dynamic system evolution.
-
-- State S: Sparse map of Coordinate -> OffBit (v, phi)
-- v: 24-bit integer vector
-- phi: 8-bit integer phase (0..255)
-- Dynamics: Deterministic updates via Gamma Gates (Sphere, Angle, Conservation)
+Fixes:
+- Method name mismatch (neighbors vs get_neighbors)
+- Invalid dataclass arithmetic in energy calculation
+- Undefined S_temp variable
+- Implements proper local energy delta calculation
 
 Dependencies: ubp_core_v4_2_6_COMBINED
 """
@@ -18,7 +18,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional, Set
 import random
-import hashlib
 from ubp_core_v4_2_6_COMBINED import (
     GOLAY_DECODER,
     LEECH_ENHANCED,
@@ -84,9 +83,24 @@ class TGICExactEngine:
             (x, y, z+1), (x, y, z-1)
         ]
 
+    def _site_energy(self, coord: Coord, off: OffBit, S: Dict[Coord, OffBit]) -> int:
+        """Calculates the interaction energy of a single site with its current neighbors."""
+        E = 0
+        for n in self.neighbors(coord):
+            if n in S:
+                off2 = S[n]
+                # Hamming Distance (Spatial)
+                h_dist = BinaryLinearAlgebra.hamming_distance(list(off.v), list(off2.v))
+                # Phase Distance (Temporal/Resonant)
+                p_dist = phase_dist(off.phi, off2.phi)
+                
+                # Coupling: E += Hamming * Phase
+                E += h_dist * p_dist
+        return E
+
     def energy(self, S: Dict[Coord, OffBit]) -> int:
         """
-        Integer Energy Proxy:
+        Global Integer Energy:
         E = Sum(HammingDist(neighbors) * PhaseDist(neighbors))
         """
         E = 0
@@ -102,14 +116,13 @@ class TGICExactEngine:
                     h_dist = BinaryLinearAlgebra.hamming_distance(list(off.v), list(off2.v))
                     p_dist = phase_dist(off.phi, off2.phi)
                     
-                    # Coupling Strength = 1
                     E += h_dist * p_dist
         return E
 
     # --- Gamma Gates (The Laws of Physics) ---
     
     def gamma_sphere(self, off: OffBit) -> bool:
-        """Gate 1: Must stay on the Leech Shell."""
+        """Gate 1: Must stay on the Leech Shell (Correctable Golay Code)."""
         # "Existence" requires Syndrome <= 3 (Correctable)
         _, _, synd = self.golay.decode(list(off.v))
         return synd <= 3
@@ -138,7 +151,6 @@ class TGICExactEngine:
         off_old = S[coord]
         
         # 2. Generate Toggle (Phenomenology)
-        # For demo, we try to flip 1 random bit (mutation)
         flip_idx = random.randint(0, 23)
         fulcrum = (flip_idx + 12) % 24 # Arbitrary fulcrum
         
@@ -167,21 +179,17 @@ class TGICExactEngine:
             return S, {"status": "rejected", "reason": "phase_decoherence"}
             
         # 6. Energy Check (Metropolis-like)
-        E_old = self.energy(S)
-        # Calculate energy difference directly
-        # Get current neighbors
-        neighbors_current = [S.get(n, 0) for n in self.get_neighbors(coord)]
-        neighbors_new = neighbors_current  # Same neighbors, just different center
+        # Calculate local energy difference only (Optimization)
+        E_local_old = self._site_energy(coord, off_old, S)
+        E_local_new = self._site_energy(coord, off_new, S)
         
-        # Energy difference from spin flip
-        E_current = -S[coord] * sum(neighbors_current)
-        E_new = -off_new * sum(neighbors_new)
+        dE = E_local_new - E_local_old
         
-        dE = E_new - E_old
-        
-        # Simple threshold acceptance for demo
+        # Simple threshold acceptance
         if dE <= toggle.effort:
-            return S_temp, {"status": "accepted", "dE": dE}
+            S_new = S.copy()
+            S_new[coord] = off_new
+            return S_new, {"status": "accepted", "dE": dE}
         else:
             return S, {"status": "rejected", "reason": "energy_barrier", "dE": dE}
 
@@ -199,7 +207,7 @@ def make_initial_state(n=5) -> Dict[Coord, OffBit]:
 # --- MAIN EXECUTION BLOCK ---
 if __name__ == "__main__":
     print("========================================")
-    print("   TGIC EXACT ENGINE v4.3 (SIMULATION)  ")
+    print("   TGIC EXACT ENGINE v4.3.1 (FIXED)     ")
     print("========================================")
     
     engine = TGICExactEngine()
