@@ -9,7 +9,7 @@ Initializes all components and performs comprehensive system checks.
 
 Version: 4.2.6 Handshake (Production)
 Author: Euan R A Craig, New Zealand
-Date: 2 January 2026
+Date: 6 January 2026
 
 FEATURES:
 ✓ Component initialization
@@ -322,12 +322,12 @@ if __name__ == "__main__":
     validator = UBPHandshakeValidator()
     results = validator.run_full_handshake()
     
-    # Export results
-    with open("/home/ubuntu/ubp_handshake_results.json", "w") as f:
+    # Export results to current directory
+    filename = "ubp_handshake_results.json"
+    with open(filename, "w") as f:
         json.dump(results, f, indent=2)
     
-    print("[INFO] Results saved to ubp_handshake_results.json")
+    print(f"[INFO] Results saved to {filename}")
     
-    # Exit with appropriate code
-    sys.exit(0 if results['status'] == 'READY' else 1)
-
+    # Removed sys.exit() to prevent Pyodide/WASM environment errors
+    # The script will terminate naturally here.
