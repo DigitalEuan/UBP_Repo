@@ -448,3 +448,126 @@
         "full_hash": "713035e1f7bdd41c52127f2d83940774e256c5f212b6643a86433a527859e718"
     }
 }
+
+### 8324721c43109be475062c068417d357f199bd00d0eff293451998035679803b
+**ID:** `LAW_MATH_002`
+**Name:** Noumenal Generator (Rational Sweep)
+**Resonance:** `Rational Generating Function`
+**Definition:** A single rational number 1/(4095^2) that generates the entire 12-bit Golay input space through binary expansion, exhibiting a carry-over singularity at 4094.
+**Constant:** `1/16769025`
+**Tags:** `#rational_sweep #golay_seed #holographic #singularity #generator`
+
+"59611377": {
+    "ubp_id": "LAW_TOPOLOGY_002",
+    "full_hash": "59611377b11faa9c4370a9bfd057e82d565cd2dac83a732c3dd326b9bf2c8e2b"
+},
+
+"0767d04d": {
+    "ubp_id": "LAW_BIO_001",
+    "full_hash": "0767d04d41a6ba5fc515b446c98982a2bbbb3b5b85c8d0f2ea7a573215ab1cb9"
+},
+
+"112f87a1": {
+    "ubp_id": "LAW_BIO_002",
+    "full_hash": "112f87a18cb5ce8179bfda3239c96bbe210fc3c8150b56f2fa5dd77358142ad9"
+},
+
+"71d50e13": {
+    "ubp_id": "LAW_BIO_003",
+    "full_hash": "71d50e133831b11f00120c3279f6e844eae52f3f6845cfe54de74dc254053966"
+},
+
+"db21b83e": {
+    "ubp_id": "LAW_PROTO_001",
+    "full_hash": "db21b83ec44445f759fd673ec09361003bcaef794ee9013c7a5b75c9d1249681"
+},
+
+"419c45b3": {
+    "ubp_id": "LAW_PHYSICS_001",
+    "full_hash": "419c45b31213d274defa76a7128d5a9776044756d23aff74c79317e884952162"
+},
+
+"4c1809b1": {
+    "ubp_id": "LAW_COSMOS_001",
+    "full_hash": "4c1809b1a0e8009a8dc79a1471623c8ad6a424ed64254f3e29ae527836c47f35"
+},
+
+"3a3d8246": {
+    "ubp_id": "LAW_PHYSICS_002",
+    "full_hash": "3a3d82467c46839de764d52d131e0874f843f08668dff5d78d2619deb7e4d535"
+},
+
+"d07bf329": {
+    "ubp_id": "LAW_COMP_010",
+    "full_hash": "d07bf329c433a42572b1efe3af38e0224eaf6222d3300e4cee4700ba363b1f69"
+},
+
+"d5925815": {
+    "ubp_id": "LAW_COSMOS_002",
+    "full_hash": "d592581534d2a686fd28b6be1dd449d3951c86055f7c9664e69c5e04f5749460"
+},
+
+"adcc2a32": {
+    "ubp_id": "LAW_PHYSICS_003",
+    "full_hash": "adcc2a3214c531b82e7f6f7e4e700afe3f5ddc848114c17a5a0a5faa36724fe0"
+},
+
+"cf2edc0b": {
+        "ubp_id": "LAW_GEO_SEAM_001",
+        "full_hash": "cf2edc0b918a6036b9f936e226b03a46f16f3ae8866ad493bf49b7274dbfee6d"
+    },
+"d04da16f": {
+        "ubp_id": "LAW_GEO_SEAM_002",
+        "full_hash": "d04da16faf4b267f19afbab1658892773c09417f81a97ed4288863570db6072e"
+    },
+
+"ff60af51": {
+        "ubp_id": "LAW_INFO_OID",
+        "full_hash": "ff60af51942b092dbc8cbe7be2a8d42be573eb337b33d62336989f8c0d144ccc"
+    },
+"f529b31b": {
+        "ubp_id": "LAW_TEMP_MOMENTUM",
+        "full_hash": "f529b31bd9da6a2b772231ee5af6fbc5c9865d5241b42295cb687d3535f812b2"
+    },
+"0b7e172d": {
+        "ubp_id": "LAW_PATH_LEAST_ACTION",
+        "full_hash": "0b7e172dbfcf578bb27e0166378c446649e3ee64a97f97509fb57acc63d63d87"
+    },
+
+"e7e795e1": {
+        "ubp_id": "LAW_GEO_HUB_001",
+        "full_hash": "e7e795e180f5a6a613cfe13f9f06f7b93d581fbb7ea1f1151da47a3f48c9099a"
+    },
+"310a9fc5": {
+        "ubp_id": "LAW_NUM_COLLATZ_001",
+        "full_hash": "310a9fc576711aa421ee227aa568bade0b02ae059271e6d39f25f5cc786df214"
+    },
+
+"d6137597": {
+        "ubp_id": "LAW_MAT_CONCRETE_001",
+        "full_hash": "d613759719281ba7a7a21ed976b86e4070e8b165074b9ab8bf5daa3c999a1a2e"
+    },
+
+"ba7b0337": {
+        "ubp_id": "LAW_BIO_CONCRETE_001",
+        "full_hash": "ba7b0337edf6ff636443c3be791535926c21bf04b71c00f10823ab7a46665b06"
+    },
+
+"da4cddf2": {
+        "ubp_id": "LAW_MAT_UHPC_001",
+        "full_hash": "da4cddf2a818abd7526c5ae13ee48cc8a10558d5a75ec77da7e520d0a8288fad"
+    },
+
+"810dda6e": {
+        "ubp_id": "LAW_LOGIC_GEO_001",
+        "full_hash": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a"
+    },
+"084e44a3": {
+        "ubp_id": "LAW_SEMANTIC_CHORD_001",
+        "full_hash": "084e44a31a96df48837a23afc1116bdda0bdcd0e12d1eb7da3559ff48178b923"
+    },
+
+"039cfc71": {
+        "ubp_id": "LAW_COMP_REFLEX_001",
+        "full_hash": "039cfc71601ced287d7b73fc98178171597683e24423fe5d99e25c383d772788"
+    },
