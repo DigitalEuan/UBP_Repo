@@ -2,6 +2,10 @@
 """
 UBP System v4.2.6 - System Initializer
 Provides comprehensive system initialization and access
+
+Author: Euan R A Craig, New Zealand
+Date: 06 January 2026
+
 """
 
 from ubp_core_v4_2_6_COMBINED import (
