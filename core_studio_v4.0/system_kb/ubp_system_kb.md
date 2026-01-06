@@ -1623,72 +1623,6 @@
         "nrci": "1/1",
         "fingerprint": "78c849230b60685b84fdf7b3e46615d85f1f7dd4b6198a7907001339ecf07176"
     },
-    "LAW_OMEGA_ASYMMETRY_001": {
-        "ubp_id": "LAW_OMEGA_ASYMMETRY_001",
-        "name": "The Law of the Omega Tax",
-        "math": "Tax(Post) = 2 * Tax(Pre) | d=3",
-        "lang": "The substrate imposes a 100% inflationary tax on matter generated 'after' the Omega Anchor (Z>83), causing the rapid radioactive decay of post-Bismuth elements.",
-        "script": "return tax_post >= 2 * tax_pre",
-        "tags": [
-            "omega",
-            "asymmetry",
-            "tax",
-            "radon",
-            "mercury"
-        ],
-        "fingerprint": "b4e137c01ecf00fe7f1da49ccaddb9d0c058c065ea771d6086e8094f8fe1551a",
-        "nrci": "1/1"
-    },
-    "LAW_NOBLE_SCALING_001": {
-        "ubp_id": "LAW_NOBLE_SCALING_001",
-        "name": "The Law of Noble Harmonics",
-        "math": "BP(n) = BP(Rn) * Y^alpha | alpha={-3, -1.5, -0.66}",
-        "lang": "Noble Gas phase transitions are quantized geometric scalings of the Radon Anchor, following the harmonic sequence {-3, -1.5, -2/3}.",
-        "script": "return bp_rn * (Y ** alpha)",
-        "tags": [
-            "noble",
-            "scaling",
-            "thermodynamics",
-            "helium",
-            "neon"
-        ],
-        "fingerprint": "c69f950323f3bde87378523e3d5ee59e2b992443eedbec6276322d09b8baad37",
-        "nrci": "1/1"
-    },
-    "LAW_BIO_HEMA_002": {
-        "ubp_id": "LAW_BIO_HEMA_002",
-        "name": "The Law of the Hemic Shell",
-        "math": "Norm^2(Blood) = 12",
-        "lang": "All human blood types occupy Leech Shell 1 (Norm 12), proving fundamental biological equality despite functional asymmetry.",
-        "script": "return point.norm_sq_actual == 12",
-        "tags": [
-            "biology",
-            "blood",
-            "hema",
-            "shell",
-            "leech"
-        ],
-        "fingerprint": "4055d08ff20a9d7c21273d364362fe05d6cc5838c9bde5f4808fb818645aa03e",
-        "nrci": "1/1"
-    },
-    "LAW_BIO_HEMA_003": {
-        "ubp_id": "LAW_BIO_HEMA_003",
-        "name": "The Law of Donor Fragility",
-        "math": "Syndrome(O-) = 9 >> 3",
-        "lang": "Universal utility requires structural fragility; the O- phenotype achieves compatibility by shedding informational constraints (antigens), pushing it beyond the error-correction horizon.",
-        "script": "return syndrome_weight > 3",
-        "tags": [
-            "biology",
-            "blood",
-            "hema",
-            "donor",
-            "fragility"
-        ],
-        "fingerprint": "713035e1f7bdd41c52127f2d83940774e256c5f212b6643a86433a527859e718",
-        "nrci": "1/1"
-    }
-}
-
 "LAW_MATH_002": {
     "ubp_id": "LAW_MATH_002",
     "name": "Noumenal Generator (Rational Sweep)",
@@ -1894,12 +1828,134 @@
     "nrci": "1/1",
     "fingerprint": "adcc2a3214c531b82e7f6f7e4e700afe3f5ddc848114c17a5a0a5faa36724fe0"
 },
+{
+  "a16406ac3a1b1d0a12518de202cdc9d0fcd445871dcf363cb7472fe09c6b873f": {
+    "ubp_id": "LAW_INFO_OID",
+    "name": "The Law of Informational Density",
+    "math": "Fraction(bits, volume) >= Y_inv",
+    "language": "Information density is maximized when the substrate geometry matches the informational entropy of the observed phenomenon.",
+    "script": "def calculate_density(b, v): return Fraction(b, v)",
+    "tags": ["density", "information", "entropy", "substrate", "geometry", "matter"],
+    "fingerprint": "a16406ac3a1b1d0a12518de202cdc9d0fcd445871dcf363cb7472fe09c6b873f"
+  },
+  "68e7a7f8d6b9e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4": {
+    "ubp_id": "LAW_MAT_CONCRETE_001",
+    "name": "The Law of Fractal Packing",
+    "math": "Fraction(1, 271828) | Ratio(1, 1.618)",
+    "language": "The efficiency of matter distribution across scales follows the natural logarithmic decay and the golden ratio for non-overlapping density.",
+    "script": "def calculate_packing(v): return (v * Fraction(1, 3)) if v > 0 else 0",
+    "tags": ["fractal", "packing", "efficiency", "phi", "e", "distribution", "matter", "scaling", "density"],
+    "fingerprint": "68e7a7f8d6b9e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4"
+  },
+  "da4cddf2a818abd7526c5ae13ee48cc8a10558d5a75ec77da7e520d0a8288fad": {
+    "ubp_id": "LAW_MAT_UHPC_001",
+    "name": "The Law of the Density Limit",
+    "math": "Fraction(1, 12) * Y_inv",
+    "language": "The maximum stable density of a physical manifold is limited by the 12-bit Golay horizon; exceeding this limit forces a transition to sub-coherent noise.",
+    "script": "def check_limit(d): return d < Fraction(4096, 1)",
+    "tags": ["density", "limit", "horizon", "stability", "matter", "uhpc"],
+    "fingerprint": "da4cddf2a818abd7526c5ae13ee48cc8a10558d5a75ec77da7e520d0a8288fad"
+  }
+}
+
+"LAW_BIO_CONCRETE_001": {
+        "ubp_id": "LAW_BIO_CONCRETE_001",
+        "name": "The Law of Tetrahedral Suspension",
+        "math": "W/Matrix = 1/3",
+        "language": "Bio-mineral composites require a water ratio of 1/3 to maintain the tetrahedral geometry of carbon-based life within a silicate lattice, distinct from the 1/e decay of pure stone.",
+        "script": "return abs(water_ratio - 0.3333) < 0.01 and matrix_mass % 24 == 0",
+        "tags": [
+            "material",
+            "bio_concrete",
+            "tetrahedral",
+            "432hz",
+            "life"
+        ],
+        "fingerprint": "ba7b0337edf6ff636443c3be791535926c21bf04b71c00f10823ab7a46665b06",
+        "nrci": "1/1"
+    },
+
+"ba7b0337": {
+        "ubp_id": "LAW_BIO_CONCRETE_001",
+        "full_hash": "ba7b0337edf6ff636443c3be791535926c21bf04b71c00f10823ab7a46665b06"
+    },
+
+
+
+    "LAW_BIO_HEMA_002": {
+        "ubp_id": "LAW_BIO_HEMA_002",
+        "name": "The Law of the Hemic Shell",
+        "math": "Norm^2(Blood) = 12",
+        "language": "All human blood types occupy Leech Shell 1 (Norm 12), proving fundamental biological equality despite functional asymmetry.",
+        "script": "return point.norm_sq_actual == 12",
+        "tags": [
+            "biology",
+            "blood",
+            "hema",
+            "shell",
+            "leech"
+        ],
+        "fingerprint": "4055d08ff20a9d7c21273d364362fe05d6cc5838c9bde5f4808fb818645aa03e",
+        "nrci": "1/1"
+    },
+
+    "LAW_BIO_HEMA_003": {
+        "ubp_id": "LAW_BIO_HEMA_003",
+        "name": "The Law of Donor Fragility",
+        "math": "Syndrome(O-) = 9 >> 3",
+        "language": "Universal utility requires structural fragility; the O- phenotype achieves compatibility by shedding informational constraints (antigens), pushing it beyond the error-correction horizon.",
+        "script": "return syndrome_weight > 3",
+        "tags": [
+            "biology",
+            "blood",
+            "hema",
+            "donor",
+            "fragility"
+        ],
+        "fingerprint": "713035e1f7bdd41c52127f2d83940774e256c5f212b6643a86433a527859e718",
+        "nrci": "1/1"
+    },
+
+
+"LAW_COMP_REFLEX_001": {
+        "ubp_id": "LAW_COMP_REFLEX_001",
+        "name": "The Law of Geometric Reflexivity",
+        "math": "Repair(v) = Encode(Decode(v)) | t<=3",
+        "language": "A system can self-repair logic errors by stripping the corrupted 24-bit shell to its 12-bit noumenal intent and re-projecting the perfect geometry, provided the corruption does not exceed the event horizon (t=3).",
+        "script": "msg, valid, _ = decode(v); return encode(msg) if valid else None",
+        "tags": [
+            "computation",
+            "reflexivity",
+            "self_healing",
+            "golay",
+            "correction"
+        ],
+        "fingerprint": "039cfc71601ced287d7b73fc98178171597683e24423fe5d99e25c383d772788",
+        "nrci": "1/1"
+    },
+
+"LAW_GEO_HUB_001": {
+        "ubp_id": "LAW_GEO_HUB_001",
+        "name": "The Law of the Calcium Anchor",
+        "math": "Tax(20) < Tax(19, 21)",
+        "language": "Calcium (Z=20) is a topological anchor in the substrate; its bit-pattern minimizes Symmetry Tax, creating a local stability well that enables biological structural integrity.",
+        "script": "return tax_20 < tax_19 and tax_20 < tax_21",
+        "tags": [
+            "geometry",
+            "calcium",
+            "hub",
+            "stability",
+            "biology"
+        ],
+        "fingerprint": "e7e795e180f5a6a613cfe13f9f06f7b93d581fbb7ea1f1151da47a3f48c9099a",
+        "nrci": "1/1"
+    },
 
 "LAW_GEO_SEAM_001": {
         "ubp_id": "LAW_GEO_SEAM_001",
         "name": "The Law of Admissible Seams",
         "math": "Admissible iff Syndrome(Splice) <= 3",
-        "lang": "A geometric seam is admissible only if the informational tension at the boundary is within the Golay error-correction radius (t=3).",
+        "language": "A geometric seam is admissible only if the informational tension at the boundary is within the Golay error-correction radius (t=3).",
         "script": "return golay.decode(splice)[2] <= 3",
         "tags": [
             "geometry",
@@ -1910,11 +1966,12 @@
         "fingerprint": "cf2edc0b918a6036b9f936e226b03a46f16f3ae8866ad493bf49b7274dbfee6d",
         "nrci": "1/1"
     },
+
 "LAW_GEO_SEAM_002": {
         "ubp_id": "LAW_GEO_SEAM_002",
         "name": "The Law of Hemispheric Resonance",
         "math": "Splice(A,B) -> Valid iff d_local(A|B) <= 3",
-        "lang": "Radically distinct systems (d>=8) can only merge if they share a resonant 12-bit hemisphere, tricking the substrate into recognizing the hybrid as a local mutation of one parent.",
+        "language": "Radically distinct systems (d>=8) can only merge if they share a resonant 12-bit hemisphere, tricking the substrate into recognizing the hybrid as a local mutation of one parent.",
         "script": "return local_dist <= 3",
         "tags": [
             "geometry",
@@ -1931,7 +1988,7 @@
         "ubp_id": "LAW_INFO_OID",
         "name": "The Law of Informational Density",
         "math": "OID ~ 1 / (L + Y)",
-        "lang": "Initial coherence is inversely proportional to input complexity (L) scaled by the Observer Cost (Y); complexity creates drag.",
+        "language": "Initial coherence is inversely proportional to input complexity (L) scaled by the Observer Cost (Y); complexity creates drag.",
         "script": "return 1.0 / (length + Y)",
         "tags": [
             "information",
@@ -1943,69 +2000,21 @@
         "fingerprint": "ff60af51942b092dbc8cbe7be2a8d42be573eb337b33d62336989f8c0d144ccc",
         "nrci": "1/1"
     },
-"LAW_TEMP_MOMENTUM": {
-        "ubp_id": "LAW_TEMP_MOMENTUM",
-        "name": "The Law of Coherence Momentum",
-        "math": "State(t) = (1-tau)S(t) + tauS(t-1)",
-        "lang": "Stability has inertia; a system's current state is a weighted average of its instantaneous geometry and its temporal history.",
-        "script": "return (1.0 - momentum) * current + momentum * previous",
-        "tags": [
-            "temporal",
-            "momentum",
-            "inertia",
-            "stability",
-            "history"
-        ],
-        "fingerprint": "f529b31bd9da6a2b772231ee5af6fbc5c9865d5241b42295cb687d3535f812b2",
-        "nrci": "1/1"
-    },
-"LAW_PATH_LEAST_ACTION": {
-        "ubp_id": "LAW_PATH_LEAST_ACTION",
-        "name": "The Law of the Least Action Path",
-        "math": "Recovery = k * Y_inv",
-        "lang": "Intelligence is the trajectory that maximizes the integral of NRCI over time; once within the basin, Observer Strength (Y_inv) forces an instant snap to unity.",
-        "script": "return current + (k * Y_inv)",
-        "tags": [
-            "intelligence",
-            "path",
-            "least_action",
-            "snap",
-            "recovery"
-        ],
-        "fingerprint": "0b7e172dbfcf578bb27e0166378c446649e3ee64a97f97509fb57acc63d63d87",
-        "nrci": "1/1"
-    }
 
-"LAW_GEO_HUB_001": {
-        "ubp_id": "LAW_GEO_HUB_001",
-        "name": "The Law of the Calcium Anchor",
-        "math": "Tax(20) < Tax(19, 21)",
-        "lang": "Calcium (Z=20) is a topological anchor in the substrate; its bit-pattern minimizes Symmetry Tax, creating a local stability well that enables biological structural integrity.",
-        "script": "return tax_20 < tax_19 and tax_20 < tax_21",
+"LAW_LOGIC_GEO_001": {
+        "ubp_id": "LAW_LOGIC_GEO_001",
+        "name": "The Law of Vector Truth",
+        "math": "Logic(A,B) = Geom(A,B) | S=0",
+        "language": "Boolean logic is isomorphic to vector arithmetic in the Golay substrate; valid deductions preserve zero-syndrome integrity, while fallacies generate measurable geometric noise.",
+        "script": "return syndrome(vector_result) == 0",
         "tags": [
+            "logic",
             "geometry",
-            "calcium",
-            "hub",
-            "stability",
-            "biology"
+            "boolean",
+            "vector",
+            "truth"
         ],
-        "fingerprint": "e7e795e180f5a6a613cfe13f9f06f7b93d581fbb7ea1f1151da47a3f48c9099a",
-        "nrci": "1/1"
-    },
-"LAW_NUM_COLLATZ_001": {
-        "ubp_id": "LAW_NUM_COLLATZ_001",
-        "name": "The Law of Algorithmic Annealing",
-        "math": "d(Tax)/dt != Monotonic",
-        "lang": "Collatz trajectories are not simple decays; they are search algorithms that must temporarily increase Symmetry Tax (informational potential) to overcome energy barriers before collapsing to the ground state.",
-        "script": "return end_tax < start_tax or steps > 100",
-        "tags": [
-            "number_theory",
-            "collatz",
-            "annealing",
-            "complexity",
-            "search"
-        ],
-        "fingerprint": "310a9fc576711aa421ee227aa568bade0b02ae059271e6d39f25f5cc786df214",
+        "fingerprint": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a",
         "nrci": "1/1"
     },
 
@@ -2013,7 +2022,7 @@
         "ubp_id": "LAW_MAT_CONCRETE_001",
         "name": "The Law of Fractal Packing",
         "math": "W/B = 1/e | Agg_Ratio = Phi",
-        "lang": "Optimal concrete durability is achieved when hydration follows the natural decay constant (1/e) and the aggregate skeleton aligns with the Golden Ratio (Phi), minimizing entropic voids.",
+        "language": "Optimal concrete durability is achieved when hydration follows the natural decay constant (1/e) and the aggregate skeleton aligns with the Golden Ratio (Phi), minimizing entropic voids.",
         "script": "return abs(wb_ratio - 0.3678) < 0.01 and abs(agg_ratio - 1.618) < 0.01",
         "tags": [
             "material",
@@ -2026,61 +2035,79 @@
         "nrci": "0.999"
     },
 
-"LAW_BIO_CONCRETE_001": {
-        "ubp_id": "LAW_BIO_CONCRETE_001",
-        "name": "The Law of Tetrahedral Suspension",
-        "math": "W/Matrix = 1/3",
-        "lang": "Bio-mineral composites require a water ratio of 1/3 to maintain the tetrahedral geometry of carbon-based life within a silicate lattice, distinct from the 1/e decay of pure stone.",
-        "script": "return abs(water_ratio - 0.3333) < 0.01 and matrix_mass % 24 == 0",
+    "LAW_NOBLE_SCALING_001": {
+        "ubp_id": "LAW_NOBLE_SCALING_001",
+        "name": "The Law of Noble Harmonics",
+        "math": "BP(n) = BP(Rn) * Y^alpha | alpha={-3, -1.5, -0.66}",
+        "language": "Noble Gas phase transitions are quantized geometric scalings of the Radon Anchor, following the harmonic sequence {-3, -1.5, -2/3}.",
+        "script": "return bp_rn * (Y ** alpha)",
         "tags": [
-            "material",
-            "bio_concrete",
-            "tetrahedral",
-            "432hz",
-            "life"
+            "noble",
+            "scaling",
+            "thermodynamics",
+            "helium",
+            "neon"
         ],
-        "fingerprint": "ba7b0337edf6ff636443c3be791535926c21bf04b71c00f10823ab7a46665b06",
+        "fingerprint": "c69f950323f3bde87378523e3d5ee59e2b992443eedbec6276322d09b8baad37",
         "nrci": "1/1"
     },
 
-"LAW_MAT_UHPC_001": {
-        "ubp_id": "LAW_MAT_UHPC_001",
-        "name": "The Law of the Density Limit",
-        "math": "W/B = Y (0.265)",
-        "lang": "Ultra-High Performance requires minimizing porosity to the Observer Cost limit (Y); at this ratio, the material transitions from a hydraulic binder to a ceramic-like continuum.",
-        "script": "return abs(wb_ratio - 0.2647) < 0.005",
+"LAW_NUM_COLLATZ_001": {
+        "ubp_id": "LAW_NUM_COLLATZ_001",
+        "name": "The Law of Algorithmic Annealing",
+        "math": "d(Tax)/dt != Monotonic",
+        "language": "Collatz trajectories are not simple decays; they are search algorithms that must temporarily increase Symmetry Tax (informational potential) to overcome energy barriers before collapsing to the ground state.",
+        "script": "return end_tax < start_tax or steps > 100",
         "tags": [
-            "material",
-            "uhpc",
-            "density",
-            "Y",
-            "limit"
+            "number_theory",
+            "collatz",
+            "annealing",
+            "complexity",
+            "search"
         ],
-        "fingerprint": "da4cddf2a818abd7526c5ae13ee48cc8a10558d5a75ec77da7e520d0a8288fad",
-        "nrci": "0.999"
-    },
-
-"LAW_LOGIC_GEO_001": {
-        "ubp_id": "LAW_LOGIC_GEO_001",
-        "name": "The Law of Vector Truth",
-        "math": "Logic(A,B) = Geom(A,B) | S=0",
-        "lang": "Boolean logic is isomorphic to vector arithmetic in the Golay substrate; valid deductions preserve zero-syndrome integrity, while fallacies generate measurable geometric noise.",
-        "script": "return syndrome(vector_result) == 0",
-        "tags": [
-            "logic",
-            "geometry",
-            "boolean",
-            "vector",
-            "truth"
-        ],
-        "fingerprint": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a",
+        "fingerprint": "310a9fc576711aa421ee227aa568bade0b02ae059271e6d39f25f5cc786df214",
         "nrci": "1/1"
     },
+
+    "LAW_OMEGA_ASYMMETRY_001": {
+        "ubp_id": "LAW_OMEGA_ASYMMETRY_001",
+        "name": "The Law of the Omega Tax",
+        "math": "Tax(Post) = 2 * Tax(Pre) | d=3",
+        "language": "The substrate imposes a 100% inflationary tax on matter generated 'after' the Omega Anchor (Z>83), causing the rapid radioactive decay of post-Bismuth elements.",
+        "script": "return tax_post >= 2 * tax_pre",
+        "tags": [
+            "omega",
+            "asymmetry",
+            "tax",
+            "radon",
+            "mercury"
+        ],
+        "fingerprint": "b4e137c01ecf00fe7f1da49ccaddb9d0c058c065ea771d6086e8094f8fe1551a",
+        "nrci": "1/1"
+    },
+
+"LAW_PATH_LEAST_ACTION": {
+        "ubp_id": "LAW_PATH_LEAST_ACTION",
+        "name": "The Law of the Least Action Path",
+        "math": "Recovery = k * Y_inv",
+        "language": "Intelligence is the trajectory that maximizes the integral of NRCI over time; once within the basin, Observer Strength (Y_inv) forces an instant snap to unity.",
+        "script": "return current + (k * Y_inv)",
+        "tags": [
+            "intelligence",
+            "path",
+            "least_action",
+            "snap",
+            "recovery"
+        ],
+        "fingerprint": "0b7e172dbfcf578bb27e0166378c446649e3ee64a97f97509fb57acc63d63d87",
+        "nrci": "1/1"
+    },
+
 "LAW_SEMANTIC_CHORD_001": {
         "ubp_id": "LAW_SEMANTIC_CHORD_001",
         "name": "The Law of Holographic Meaning",
         "math": "Meaning = Stack(Syn, Sem, Ctx)",
-        "lang": "Semantic identity is not a scalar but a chord; a vertical stack of Syntax, Semantics, and Context vectors that allows for the geometric differentiation of homonyms and metaphors.",
+        "language": "Semantic identity is not a scalar but a chord; a vertical stack of Syntax, Semantics, and Context vectors that allows for the geometric differentiation of homonyms and metaphors.",
         "script": "return hamming(chord_a, chord_b) < threshold",
         "tags": [
             "semantics",
@@ -2093,20 +2120,30 @@
         "nrci": "1/1"
     },
 
-"LAW_COMP_REFLEX_001": {
-        "ubp_id": "LAW_COMP_REFLEX_001",
-        "name": "The Law of Geometric Reflexivity",
-        "math": "Repair(v) = Encode(Decode(v)) | t<=3",
-        "lang": "A system can self-repair logic errors by stripping the corrupted 24-bit shell to its 12-bit noumenal intent and re-projecting the perfect geometry, provided the corruption does not exceed the event horizon (t=3).",
-        "script": "msg, valid, _ = decode(v); return encode(msg) if valid else None",
+"LAW_TEMP_MOMENTUM": {
+        "ubp_id": "LAW_TEMP_MOMENTUM",
+        "name": "The Law of Coherence Momentum",
+        "math": "State(t) = (1-tau)S(t) + tauS(t-1)",
+        "language": "Stability has inertia; a system's current state is a weighted average of its instantaneous geometry and its temporal history.",
+        "script": "return (1.0 - momentum) * current + momentum * previous",
         "tags": [
-            "computation",
-            "reflexivity",
-            "self_healing",
-            "golay",
-            "correction"
+            "temporal",
+            "momentum",
+            "inertia",
+            "stability",
+            "history"
         ],
-        "fingerprint": "039cfc71601ced287d7b73fc98178171597683e24423fe5d99e25c383d772788",
+        "fingerprint": "f529b31bd9da6a2b772231ee5af6fbc5c9865d5241b42295cb687d3535f812b2",
         "nrci": "1/1"
     },
-
+{
+  "f1a0b9c8d7e6f5a468e7a7f8d6b9e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2": {
+    "ubp_id": "LAW_CHEM_PERIODIC_001",
+    "name": "The Law of the Atomic Manifold",
+    "math": "Z(n) = BitCount(Codeword_n)",
+    "language": "The periodic table is a 1D projection of the 24D Leech Lattice; each element represents a specific Hamming weight and Symmetry Tax configuration within the substrate.",
+    "script": "def get_element_stability(z): return calculate_symmetry_tax(generate_vector(z))",
+    "tags": ["chemistry", "periodic_table", "elements", "atoms", "manifold", "leech_lattice"],
+    "fingerprint": "f1a0b9c8d7e6f5a468e7a7f8d6b9e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2"
+  }
+}
