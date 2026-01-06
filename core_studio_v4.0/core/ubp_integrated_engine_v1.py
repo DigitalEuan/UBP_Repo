@@ -8,6 +8,10 @@ Combines:
 
 All components now live in a single file for easy development and demonstration.
 A unified demo at the bottom shows each part working and lightly integrated.
+
+Author: Euan R A Craig, New Zealand
+Date: 06 January 2026
+
 """
 
 import hashlib
