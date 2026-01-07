@@ -718,5 +718,22 @@
     "3899ebcc": {
         "ubp_id": "ARCH_REACTOR_GEOMETRIC_001",
         "full_hash": "3899ebcccbe373d617a8d337a78dd5f00aa9045d2596bcfe6f549cfcd463fff4"
+    },
+    "fd5ee03f": {
+        "ubp_id": "LAW_RESONANCE_SPIKE_001",
+        "full_hash": "fd5ee03f7042c15fe5acbfe1825987dd5fcdd4bc27f76c18581c1a2c7bdc3362"
+    },
+    "1d3147f9": {
+        "ubp_id": "LAW_NOISE_THRESHOLD_001",
+        "full_hash": "1d3147f98285ceb2c201067055720bdf52e5e3a38b471981a86888571abfa928"
+    },
+{
+    "3ee33e38": {
+        "ubp_id": "LAW_ONTOLOGICAL_TENSION_001",
+        "full_hash": "3ee33e38f14e83785dd509318f9450eaa6e46e6cb3b682d54c9069bfa2d5f7fa"
+    },
+    "1bd2da28": {
+        "ubp_id": "LAW_ONTOLOGICAL_ANCHOR_001",
+        "full_hash": "1bd2da28366d8bd838db40531a9c3ad63d3eaeeeb3c1cc7a0b3991572ee4adde"
     }
 }
