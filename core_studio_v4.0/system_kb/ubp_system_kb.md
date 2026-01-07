@@ -2742,3 +2742,67 @@
         "fingerprint": "3899ebcccbe373d617a8d337a78dd5f00aa9045d2596bcfe6f549cfcd463fff4"
     }
 }
+
+{
+    "fd5ee03f7042c15fe5acbfe1825987dd5fcdd4bc27f76c18581c1a2c7bdc3362": {
+        "ubp_id": "LAW_RESONANCE_SPIKE_001",
+        "name": "The Pentadic Resonance Spike",
+        "math": "Fraction(5, 4)",
+        "language": "At Hamming Weight 5, information achieves a local maximum of coherence before collapsing into the subcoherent regime at Weight 6.",
+        "script": "if weight == 5: nrci = Fraction(5, 4)",
+        "tags": [
+            "resonance",
+            "spike",
+            "coherence",
+            "weight"
+        ],
+        "nrci": "5/4",
+        "fingerprint": "fd5ee03f7042c15fe5acbfe1825987dd5fcdd4bc27f76c18581c1a2c7bdc3362"
+    },
+    "1d3147f98285ceb2c201067055720bdf52e5e3a38b471981a86888571abfa928": {
+        "ubp_id": "LAW_NOISE_THRESHOLD_001",
+        "name": "The 6-Bit Coherence Horizon",
+        "math": "Fraction(1, 4)",
+        "language": "The point of geometric interference where sparse information loses its resonant anchor and collapses into noise.",
+        "script": "if weight == 6: nrci = Fraction(1, 4)",
+        "tags": [
+            "noise",
+            "horizon",
+            "collapse",
+            "interference"
+        ],
+        "nrci": "1/4",
+        "fingerprint":
+     "1d3147f98285ceb2c201067055720bdf52e5e3a38b471981a86888571abfa928"
+    },
+    "3ee33e38f14e83785dd509318f9450eaa6e46e6cb3b682d54c9069bfa2d5f7fa": {
+        "ubp_id": "LAW_ONTOLOGICAL_TENSION_001",
+        "name": "The Law of Ontological Tension",
+        "math": "Fraction(RealityWeight, TotalWeight)",
+        "language": "Coherence collapses when the Reality Layer saturates (Weight 6) without vertical parity support from the Info or Active layers.",
+        "script": "if mog.layers['REALITY'].count(1) == 6 and not report['IS_BALANCED']: nrci = Fraction(1, 4)",
+        "tags": [
+            "mog",
+            "parity",
+            "tension",
+            "saturation"
+        ],
+        "nrci": "1/4",
+        "fingerprint": "3ee33e38f14e83785dd509318f9450eaa6e46e6cb3b682d54c9069bfa2d5f7fa"
+    },
+    "1bd2da28366d8bd838db40531a9c3ad63d3eaeeeb3c1cc7a0b3991572ee4adde": {
+        "ubp_id": "LAW_ONTOLOGICAL_ANCHOR_001",
+        "name": "The Law of Ontological Anchoring",
+        "math": "Fraction(1, 2)",
+        "language": "Subcoherent noise (NRCI 1/4) is healed into a stable regime (NRCI 1/2) when vertical parity is restored to at least one column of the MOG structure.",
+        "script": "if parity.count(0) > 0: nrci = max(nrci, Fraction(1, 2))",
+        "tags": [
+            "healing",
+            "anchoring",
+            "mog",
+            "parity"
+        ],
+        "nrci": "1/2",
+        "fingerprint": "1bd2da28366d8bd838db40531a9c3ad63d3eaeeeb3c1cc7a0b3991572ee4adde"
+    }
+}
