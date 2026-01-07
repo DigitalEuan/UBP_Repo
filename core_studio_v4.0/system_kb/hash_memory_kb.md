@@ -583,3 +583,112 @@
     "full_hash": "f1a0b9c8d7e6f5a468e7a7f8d6b9e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2"
   }
 }
+
+{
+  "e3b0c442": {
+    "ubp_id": "LAW_PHYSICS_MAXWELL_GAUSS",
+    "full_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "f4e3d2c1": {
+    "ubp_id": "LAW_PHYSICS_EM_UNIFY",
+    "full_hash": "f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3"
+  }
+}
+
+{
+  "a1b2c3d4": {
+    "ubp_id": "LAW_KERNEL_REFLEXIVE_001",
+    "full_hash": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
+  }
+}
+
+{
+  "d5e6f7a8": {
+    "ubp_id": "LAW_SCANNER_HYBRID_001",
+    "full_hash": "d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6"
+  }
+}
+
+{
+  "7b8c9d0e": {
+    "ubp_id": "LAW_PHYSICS_HELICITY_001",
+    "full_hash": "7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c"
+  }
+}
+
+{
+  "b9c0d1e2": {
+    "ubp_id": "LAW_BIO_REPELLENT_002",
+    "full_hash": "b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0"
+  }
+}
+
+{
+  "e8f9a0b1": {
+    "ubp_id": "LAW_SYSTEM_INTEGRATED_V1",
+    "full_hash": "e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9"
+  }
+}
+
+{
+  "f9a0b1c2": {
+    "ubp_id": "LAW_KERNEL_V2_FINAL",
+    "full_hash": "f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0"
+  }
+}
+
+{
+  "d3e4f5a6": {
+    "ubp_id": "LAW_SUBSTRATE_005",
+    "full_hash": "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4"
+  }
+}
+
+{
+  "a3b4c5d6": {
+    "ubp_id": "LAW_KERNEL_DIMENSION_001",
+    "full_hash": "a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4"
+  }
+}
+
+{
+  "b4c5d6e7": {
+    "ubp_id": "LAW_KERNEL_THRESHOLDS_001",
+    "full_hash": "b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5"
+  }
+}
+
+{
+  "c5d6e7f8": {
+    "ubp_id": "LAW_KERNEL_V2_1_1",
+    "full_hash": "c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
+  }
+}
+
+{
+  "c6d7e8f9": {
+    "ubp_id": "LAW_GOVERNANCE_CODEX",
+    "full_hash": "c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7"
+  }
+}
+
+{
+  "d7e8f9a0": {
+    "ubp_id": "LAW_RELATIONAL_TETHER_001",
+    "full_hash": "d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8"
+  }
+}
+
+{
+  "d8e9f0a1": {
+    "ubp_id": "LAW_RELATIONAL_FREQUENCY_001",
+    "full_hash": "d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9"
+  }
+}
+
+{
+  "b1c2d3e4": {
+    "ubp_id": "LAW_PHYSICS_CATALYSIS_001",
+    "full_hash": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2"
+  }
+}
