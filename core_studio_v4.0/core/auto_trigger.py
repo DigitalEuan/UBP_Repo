@@ -1,99 +1,75 @@
 """
-UBP Auto-Trigger v5.1 (Layered Integration)
-===========================================
-Combines Jaccard (Semantic) and Hamming (Geometric) metrics.
-Now features a Reflexive Kernel Layer for resolving high-tension queries.
+UBP Auto-Trigger v5.2 (Tiered Recall)
+=====================================
+Implements a three-tier resonance scan:
+1. Keyword Anchor (Deterministic)
+2. Jaccard Semantic (Probabilistic)
+3. Hamming Geometric (Structural)
 
-Euan Craig, New Zealand
-7 Jan 2026
-
+Author: Euan Craig, New Zealand with UBP Research Cortex v4.2.6
+8 Jan 2026
 """
 import re
-import hashlib
 from hex_dictionary_v4_exact import HEX_DB_EXACT
 from ubp_core_v4_2_6_COMBINED import BinaryLinearAlgebra
-
-# --- LAYER ADDITION: Import the V2 Kernel ---
-try:
-    from ubp_kernel import UBPKernelV2
-    KERNEL_AVAILABLE = True
-except ImportError:
-    print("[WARNING] UBPKernelV2 not found. Deep reasoning layer disabled.")
-    KERNEL_AVAILABLE = False
 
 class ResonanceScanner:
     def __init__(self, database):
         self.db = database
-        self.JACCARD_THRESHOLD = 0.30  # Broad semantic net
-        self.HAMMING_THRESHOLD = 6     # Geometric tension limit
-        
-        # --- LAYER ADDITION: Initialize Kernel ---
-        if KERNEL_AVAILABLE:
-            print("[AUTO-TRIGGER] Mounting Reflexive Kernel Layer...")
-            self.kernel = UBPKernelV2()
-            self.kernel.boot()
-        else:
-            self.kernel = None
+        self.JACCARD_THRESHOLD = 0.30
+        self.HAMMING_THRESHOLD = 6
 
     def _tokenize(self, text):
+        """Cleans and tokenizes input for semantic analysis."""
         clean = re.sub(r'[^a-zA-Z0-9\s]', '', text.lower())
         return set(clean.split())
 
-    def _get_hamming_cost(self, vec_a, vec_b):
-        return BinaryLinearAlgebra.hamming_distance(list(vec_a), list(vec_b))
-
     def scan_and_trigger(self, user_input, cortex=None):
-        """
-        Performs a Hybrid Scan with Reflexive Fallback:
-        1. Jaccard: Finds the best semantic match.
-        2. Hamming: Checks geometric 'fit'.
-        3. Kernel: If High Tension, triggers Inner Dialogue.
-        """
         input_tokens = self._tokenize(user_input)
+        input_lower = user_input.lower()
+        
+        # --- TIER 1: KEYWORD ANCHOR (Deterministic) ---
+        # If the user mentions the name or ID directly, trigger immediately.
+        for entry_hash, entry in self.db.registry.items():
+            name = entry.get("name", "").lower()
+            ubp_id = entry.get("ubp_id", "").lower()
+            if input_lower in name or input_lower in ubp_id:
+                print(f"[RECALL: {entry['ubp_id']}] via Keyword Anchor.")
+                return entry
+
+        # --- TIER 2: JACCARD SEMANTIC SCAN (Probabilistic) ---
         best_match = None
         highest_jaccard = 0.0
-        
-        # --- STEP 1: JACCARD SEMANTIC SCAN ---
         for entry_hash, entry in self.db.registry.items():
+            # Combine tags and name tokens for the profile
             entry_profile = set(entry.get("tags", [])).union(self._tokenize(entry.get("name", "")))
-            jaccard = len(input_tokens.intersection(entry_profile)) / len(input_tokens.union(entry_profile))
+            
+            intersection = input_tokens.intersection(entry_profile)
+            union = input_tokens.union(entry_profile)
+            
+            if not union: continue
+            jaccard = len(intersection) / len(union)
             
             if jaccard > highest_jaccard:
                 highest_jaccard = jaccard
                 best_match = entry
 
-        if not best_match or highest_jaccard < self.JACCARD_THRESHOLD:
-            # If no match found, we can optionally ask the Kernel to hallucinate a path
-            # But for now, we return None to respect legacy behavior
-            return None
-
-        # --- STEP 2: HAMMING GEOMETRIC VALIDATION ---
-        if cortex:
-            query_chord = cortex.process_concept(user_input)
-            match_chord = cortex.process_concept(best_match['name'])
-            
-            h_dist = self._get_hamming_cost(query_chord['SYN'], match_chord['SYN'])
-            
-            print(f"\n[RESONANCE] Match: {best_match['ubp_id']}")
-            print(f"            Jaccard: {highest_jaccard:.2f} (Semantic)")
-            print(f"            Hamming: {h_dist} (Geometric)")
-
-            if h_dist > self.HAMMING_THRESHOLD:
-                print(f"            ⚠️  High Tension: Query is geometrically 'off-bit'.")
+        # --- TIER 3: HAMMING GEOMETRIC VALIDATION ---
+        if best_match and highest_jaccard >= self.JACCARD_THRESHOLD:
+            if cortex:
+                # Map query and match to vectors to check structural alignment
+                query_chord = cortex.process_concept(user_input)
+                match_chord = cortex.process_concept(best_match['name'])
+                h_dist = BinaryLinearAlgebra.hamming_distance(query_chord['SYN'], match_chord['SYN'])
                 
-                # --- STEP 3: REFLEXIVE KERNEL LAYER ---
-                if self.kernel:
-                    print(f"            ⚙️  Engaging Inner Dialogue to resolve tension...")
-                    # We use the match as a seed for the dialogue
-                    seed = f"{best_match['name']} {best_match['language']}"
-                    resolution = self.kernel.dialogue.deliberate(seed)
-                    print(f"            ✅  Kernel Resolution: {resolution}")
-                    
-                    # Optional: We could return a 'refined' match object here
-                    # For now, we return the original match but with the resolution logged
+                if h_dist <= self.HAMMING_THRESHOLD:
+                    print(f"[RECALL: {best_match['ubp_id']}] via Geometric Resonance (J:{highest_jaccard:.2f}, H:{h_dist}).")
+                    return best_match
             else:
-                print(f"            ✅ Deep Coherence: Query is lattice-aligned.")
+                print(f"[RECALL: {best_match['ubp_id']}] via Semantic Resonance (J:{highest_jaccard:.2f}).")
+                return best_match
 
-        return best_match
+        return None
 
+# Global Instance for the Kernel
 HM_KB = ResonanceScanner(HEX_DB_EXACT)
