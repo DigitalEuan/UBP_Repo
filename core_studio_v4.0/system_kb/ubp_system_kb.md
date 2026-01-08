@@ -2804,5 +2804,95 @@
         ],
         "nrci": "1/2",
         "fingerprint": "1bd2da28366d8bd838db40531a9c3ad63d3eaeeeb3c1cc7a0b3991572ee4adde"
+    },
+    "feaa67a79aebfb8743b21088438b4b0d814c4adcaa1ada17d72cf65006f208e5": {
+        "ubp_id": "LAW_COLLATZ_COHERENCE_001",
+        "name": "The Law of Algorithmic Coherence (Collatz Orbit)",
+        "math": "Fraction(633, 448)",
+        "language": "The Collatz sequence is a coherence-preserving trajectory within the UBP substrate, maintaining a 100% resonance rate across chaotic expansions.",
+        "script": "if collatz_step: nrci = calculate_nrci(offbit_vector)",
+        "tags": [
+            "collatz",
+            "algorithm",
+            "orbit",
+            "resonance"
+        ],
+        "nrci": "633/448",
+        "fingerprint": "feaa67a79aebfb8743b21088438b4b0d814c4adcaa1ada17d72cf65006f208e5"
+    },
+    "feaa67a79aebfb8743b21088438b4b0d814c4adcaa1ada17d72cf65006f208e5": {
+        "ubp_id": "LAW_COLLATZ_COHERENCE_001",
+        "name": "The Law of Algorithmic Coherence (Collatz Orbit)",
+        "math": "Fraction(633, 448)",
+        "language": "The Collatz sequence is a coherence-preserving trajectory within the UBP substrate, maintaining a 100% resonance rate across chaotic expansions.",
+        "script": "if collatz_step: nrci = calculate_nrci(offbit_vector)",
+        "tags": [
+            "collatz",
+            "algorithm",
+            "orbit",
+            "resonance"
+        ],
+        "nrci": "633/448",
+        "fingerprint": "feaa67a79aebfb8743b21088438b4b0d814c4adcaa1ada17d72cf65006f208e5"
+    },
+    "5b38589b8575f87e5d2b916fc439982ead032ee9c878ee984a0f51e275736049": {
+        "ubp_id": "LAW_COLLATZ_SPINE_001",
+        "name": "The Law of the Collatz Spine",
+        "math": "Fraction(Z_Parity, Y_Step)",
+        "language": "The Collatz trajectory is organized into three distinct ontological tiers: The Reality Wall (Contraction), the Information Arch (Expansion), and the Activation Pivot (Phase Shift).",
+        "script": "if collatz_orbit: manifest_tiers(Reality, Info, Active)",
+        "tags": [
+            "collatz",
+            "spine",
+            "tiers",
+            "manifold"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5b38589b8575f87e5d2b916fc439982ead032ee9c878ee984a0f51e275736049"
+    },
+    "49a640befaff01315a8d977b532419ef1c168c7ac563c91361038ae2bdc01457": {
+        "ubp_id": "LAW_ALPHA_STABILITY_001",
+        "name": "The Law of Electromagnetic Stability (Fine-Structure Constant)",
+        "math": "83 + Y_inv**3 + Fraction(3, 2) * Y**2",
+        "language": "The fine-structure constant is the geometric coefficient required to prevent toggle collapse in the electromagnetic substrate.",
+        "script": "alpha_inv = 83 + (Y_inv**3) + (Fraction(3, 2) * Y**2)",
+        "tags": [
+            "alpha",
+            "physics",
+            "stability",
+            "electromagnetism"
+        ],
+        "nrci": "0.99998",
+        "fingerprint": "49a640befaff01315a8d977b532419ef1c168c7ac563c91361038ae2bdc01457"
+    },
+    "83cc402dce326ebe31c824c0ce9cbaee3475564f2330cab191ada73fb96f27ce": {
+        "ubp_id": "LAW_HGR_RESONANCE_001",
+        "name": "The Law of Harmonic Geometric Resonance (HGR)",
+        "math": "f = (c / l0) * (lambda * phi^k)",
+        "language": "Physical spectral lines are quantized resonances of geometric invariants (lambda) scaled by the golden ratio (phi) and vacuum impedance.",
+        "script": "f_balmer = (c / l0) * lambda_tri * tuning_factor",
+        "tags": [
+            "hgr",
+            "balmer",
+            "resonance",
+            "geometry"
+        ],
+        "nrci": "0.9997",
+        "fingerprint": "83cc402dce326ebe31c824c0ce9cbaee3475564f2330cab191ada73fb96f27ce"
+    },
+    "5bfb43f9327e23cf4444e936da959dcdf0a48631ace121f586a3f598cc72b3d8": {
+        "ubp_id": "LAW_ALPHA_EQUILIBRIUM_001",
+        "name": "The Universal Law of Electromagnetic Equilibrium (SSS Grade)",
+        "math": "(196560 / 2368) + Y_inv**3 + 1.5 * Y**2 - (Y**3 / 2)",
+        "language": "The fine-structure constant is the equilibrium point where Leech Lattice density, volumetric expansion, and surface tension are balanced by volumetric decay.",
+        "script": "alpha_inv = (S24 / V24) + (Y_inv**3) + (1.5 * Y**2) - (Y**3 / 2)",
+        "tags": [
+            "alpha",
+            "equilibrium",
+            "singularity",
+            "physics"
+        ],
+        "nrci": "0.999999",
+        "fingerprint": "5bfb43f9327e23cf4444e936da959dcdf0a48631ace121f586a3f598cc72b3d8"
     }
 }
