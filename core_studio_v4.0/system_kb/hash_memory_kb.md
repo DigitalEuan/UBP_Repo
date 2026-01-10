@@ -842,5 +842,37 @@
     "7b4448a3": {
         "ubp_id": "LAW_PLATONIC_001",
         "full_hash": "7b4448a31fdf37ef63ac40099d02c15a3df8fd07ce491ba51d4c2623e7b28902"
+    },
+    "495a7af0": {
+        "ubp_id": "LAW_DRUG_005",
+        "full_hash": "495a7af076233f8ff286029fb489c696ab5e5300c98b1b19619dba3fe9957751"
+    },
+    "e66d820f": {
+        "ubp_id": "LAW_DRUG_006",
+        "full_hash": "e66d820fb9390a97522f2e54f6a6fea09891e37b60ff9b42a9314a7696c8d87f"
+    },
+    "eb0534d5": {
+        "ubp_id": "LAW_DRUG_007",
+        "full_hash": "eb0534d557bf83dc7c6b6aa035b411884f1b5d3cbe372c7f6726cc1958c23650"
+    },
+    "ab35af06": {
+        "ubp_id": "LAW_BIO_QUANTUM_001",
+        "full_hash": "ab35af06a48f4bd4af334dfafbceb8e448183fad9aa41620e739e0fc8071a368"
+    },
+    "fef8071e": {
+        "ubp_id": "LAW_ONTOLOGY_001",
+        "full_hash": "fef8071e5ba0e910db491918ed826083ec6cc3b833ec7c391392eaab10567832"
+    },
+    "a54d9c8b": {
+        "ubp_id": "LAW_UNIT_001",
+        "full_hash": "a54d9c8b97e8c06b25e729f995cba30f75a66d17d9786f64be4ab39123ab5797"
+    },
+    "a126ba32": {
+        "ubp_id": "LAW_UNITY_004",
+        "full_hash": "a126ba32d599d7715a17cd55a7dcc27ee5ef4d5e88146bcb47848d44fadf24de"
+    },
+    "60111f40": {
+        "ubp_id": "LAW_OBSERVER_OOB_001",
+        "full_hash": "60111f4077e065e3b3dda86ab983b097f5a9988cc94dab9288b7dac529fd6f2c"
     }
 }
