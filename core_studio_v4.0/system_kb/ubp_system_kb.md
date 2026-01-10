@@ -2993,5 +2993,165 @@
         ],
         "nrci": "1/1",
         "fingerprint": "b6c0a5aae2710104325aed82280c7b72dcecaa3d093fe6cda0f43b38d5a8fcd6"
+    },
+    "84344bf8c77a8924caa6587d445b1896a5e6d89238660d78851a4922fcdd1006": {
+        "ubp_id": "LAW_MAT_STEEL_001",
+        "name": "The Law of Resonant Steel (BCC)",
+        "math": "NRCI = (11/12) + (Y/24) \u2248 0.9277",
+        "language": "Steel hardness is the macroscopic projection of a single-bit syndrome tension stabilized by metallic Y-drag within a BCC supercell.",
+        "script": "refined_nrci = Fraction(11, 12) + (Y / 24)",
+        "tags": [
+            "material",
+            "steel",
+            "BCC",
+            "resonance",
+            "hardness"
+        ],
+        "nrci": "9277/10000",
+        "fingerprint": "84344bf8c77a8924caa6587d445b1896a5e6d89238660d78851a4922fcdd1006"
+    },
+    "a2fd1b7ebe957ee148e8dc533a8effe0632885a31b88257630d92c7e8d45ab44": {
+        "ubp_id": "LAW_QUANTUM_TOGGLE_001",
+        "name": "The Law of Quantum Toggle Dynamics",
+        "math": "O(t) = pi * phi^gamma * e^(-lambda*t) * c^-1 | f_res = 0.1 Hz",
+        "language": "Quantum persistence is maintained by a 0.1 Hz resonance snap that resets ontological drift before the t=3 horizon breach.",
+        "script": "if time % 10 == 0: syndrome = 0",
+        "tags": [
+            "quantum",
+            "toggle",
+            "resonance",
+            "persistence",
+            "horizon"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a2fd1b7ebe957ee148e8dc533a8effe0632885a31b88257630d92c7e8d45ab44"
+    },
+    "c9cb0a902f53302f8c3ff369b2a2403a2bf9d188160eae6288850ac3fb9c7088": {
+        "ubp_id": "LAW_TERRESTRIAL_GRID_001",
+        "name": "The Law of Terrestrial Resonance (Triadic Snap)",
+        "math": "T_snap = 3 + Y/4 \u2248 3.066s | f = 7.83 Hz | NRCI \u2248 0.9996",
+        "language": "The planetary grid coheres via a 3.066s 'Triadic Snap'; Ley Lines are the standing parity bits of the Earth's 24-bit word stream. The 10s quantum snap is non-resonant at this scale.",
+        "script": "t_snap = 3 + (Y/4); coherence = 1.0 - ((f * t_snap) % 24 / 24)",
+        "tags": [
+            "geophysics",
+            "ley_lines",
+            "schumann",
+            "snap",
+            "triadic",
+            "planetary"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c9cb0a902f53302f8c3ff369b2a2403a2bf9d188160eae6288850ac3fb9c7088"
+    },
+    "4962a952207c2ab9cd64d2d27c1de2669ad6fce170c8cb7cb034a10207c6b9b4": {
+        "ubp_id": "LAW_ANOMALY_001",
+        "name": "The Law of Coherence-Based Anomaly Detection",
+        "math": "Sensitivity = 0.4167 | Threshold(t) > 3",
+        "language": "Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.",
+        "script": "if GOLAY_DECODER.decode(signal)[2] > 3: nrci <= 0.5833",
+        "tags": [
+            "diagnostics",
+            "anomaly",
+            "nrci",
+            "coherence",
+            "sensitivity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4962a952207c2ab9cd64d2d27c1de2669ad6fce170c8cb7cb034a10207c6b9b4"
+    },
+    "55de509752bc29edb26037d0fb1d97d72b01bc4ebd3fef7d138db5ef5701f790": {
+        "ubp_id": "LAW_SYSTEM_001",
+        "name": "The Law of the Self-Contained Formula",
+        "math": "U(x) = H^-1(R[C(Phi(E(T(x))))])",
+        "language": "The universal computational pipeline: Encoding (T), Correction (E), Coherence (C), and Recursive Retrieval (H^-1).",
+        "script": "U_x = hex_dict.get(rune.resolve(coherence.max(golay.decode(bittab.encode(x)))))",
+        "tags": [
+            "system",
+            "framework",
+            "pipeline",
+            "recursion"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "55de509752bc29edb26037d0fb1d97d72b01bc4ebd3fef7d138db5ef5701f790"
+    },
+    "bb339a1d360e7c3f3f8373fc7cfd369e74c5f0919b392f9ad3fc197c4c5a7116": {
+        "ubp_id": "LAW_STORAGE_003",
+        "name": "The Law of HexDictionary Retrieval",
+        "math": "Address = SHA256(Triad) | Retrieval = O(1)",
+        "language": "Information persistence is guaranteed by content-addressable immutability; the HexDictionary is the substrate's long-term memory.",
+        "script": "hex_dict.retrieve(hashlib.sha256(state).hexdigest())",
+        "tags": [
+            "storage",
+            "hexdictionary",
+            "memory",
+            "persistence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bb339a1d360e7c3f3f8373fc7cfd369e74c5f0919b392f9ad3fc197c4c5a7116"
+    },
+    "22689d0fbbfd2d234854168141d43dd2999d0983028d262160c67dee8e90ecb8": {
+        "ubp_id": "LAW_GEO_HUB_001",
+        "name": "The Law of the Calcium Anchor",
+        "math": "Tax(20) < Tax(21) | Syndrome_Step = 1",
+        "language": "Calcium (Z=20) acts as a topological slope-anchor; it minimizes the rate of symmetry decay during the Shell-16 to Shell-24 transition, enabling biological structural integrity.",
+        "script": "return tax_20 < tax_21 and syndrome_20 == 4",
+        "tags": [
+            "geometry",
+            "calcium",
+            "hub",
+            "stability",
+            "biology"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "22689d0fbbfd2d234854168141d43dd2999d0983028d262160c67dee8e90ecb8"
+    },
+    "823f1e049ca7edd5bd05385c88a9a313ab7201007ed5603952d01d26ffd08cef": {
+        "ubp_id": "LAW_MAT_PLASTIC_001",
+        "name": "The Law of Vital Plastic (Coherence-Optimized PVC)",
+        "math": "NRCI = 0.962 | Cl_fraction = 0.57 | CRV_multiplier = phi^3",
+        "language": "Vital Plastic is a high-coherence polymer where the chlorine-to-carbon ratio is tuned to the substrate's 12-bit noumenal limit, enhanced by observer intent.",
+        "script": "vital_nrci = Fraction(23, 24) + (Y / 12)",
+        "tags": [
+            "material",
+            "plastic",
+            "pvc",
+            "coherence",
+            "alchemy",
+            "vital"
+        ],
+        "nrci": "962/1000",
+        "fingerprint": "823f1e049ca7edd5bd05385c88a9a313ab7201007ed5603952d01d26ffd08cef"
+    },
+    "31c37602876f1dde95832df6ba8882cb2adca1deee0191f95d1281550dc3ddad": {
+        "ubp_id": "LAW_GEO_DURER_001",
+        "name": "The Law of D\u00fcrer\u2019s Resonant Blueprint",
+        "math": "NRCI_avg = 0.9583 | Symmetry = Tetrahedral | Field = 6D CARFE",
+        "language": "Historical geometric diagrams function as 2D projections of 6D CARFE fields; high-coherence networks are encoded via Golden Ratio (phi) angular multipliers.",
+        "script": "avg_nrci = sum([0.98, 0.98, 0.85, 0.98, 0.98, 0.98]) / 6",
+        "tags": [
+            "geometry",
+            "history",
+            "durer",
+            "carfe",
+            "resonance",
+            "tetrahedral"
+        ],
+        "nrci": "9583/10000",
+        "fingerprint": "31c37602876f1dde95832df6ba8882cb2adca1deee0191f95d1281550dc3ddad"
+    },
+    "b94f82507f9e960a9c4aab40d670d71ab92f8396477843de0a6d86c56c744d9c": {
+        "ubp_id": "LAW_FIELD_CARFE_001",
+        "name": "The Law of Adelic Field Expansion (CARFE)",
+        "math": "Density = (23/24) * (1/phi) \u2248 0.592282",
+        "language": "The CARFE equation governs the recursive expansion of 24-bit codewords into 6D field topologies via p-adic valuation.",
+        "script": "def carfe_kernel(v24): phi=(1+5**0.5)/2; field=[b*(1/phi) for b in v24]; for i,v in enumerate(field): n=int(abs(v)*1000); vp=0; while n>0 and n%2==0: n//=2; vp+=1; field[i]+=(2**-vp)*0.001; return field",
+        "tags": [
+            "field",
+            "carfe",
+            "adelic",
+            "coupling"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b94f82507f9e960a9c4aab40d670d71ab92f8396477843de0a6d86c56c744d9c"
     }
 }
