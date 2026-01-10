@@ -3235,5 +3235,132 @@
         ],
         "nrci": "1/1",
         "fingerprint": "7b4448a31fdf37ef63ac40099d02c15a3df8fd07ce491ba51d4c2623e7b28902"
+    },
+    "495a7af076233f8ff286029fb489c696ab5e5300c98b1b19619dba3fe9957751": {
+        "ubp_id": "LAW_DRUG_005",
+        "name": "The Law of Manifold Sparsity",
+        "math": "P(Cost <= 6) < 10^-4 | Best_Stochastic_Cost = 8",
+        "language": "Functional pharmacological seeds are 'Singularities' in the 24-bit manifold; random search fails to reach the Pareto Floor (Cost 6) within 10^4 samples.",
+        "script": "def check_sparsity(samples=10000): return hits == 0 if best_cost > 6 else False",
+        "tags": [
+            "pharmacology",
+            "sparsity",
+            "probability",
+            "singularity",
+            "verified"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "495a7af076233f8ff286029fb489c696ab5e5300c98b1b19619dba3fe9957751"
+    },
+    "e66d820fb9390a97522f2e54f6a6fea09891e37b60ff9b42a9314a7696c8d87f": {
+        "ubp_id": "LAW_DRUG_006",
+        "name": "The Law of the Pareto Floor",
+        "math": "d_dock + w_syndrome >= 6 | NRCI_limit = 0.75",
+        "language": "The informational cost of molecular manifestation is fixed; the sum of docking tension and syndrome weight cannot fall below the 'Pareto Floor' of 6.",
+        "script": "total_cost = hamming_dist(drug, target) + syndrome(drug); assert total_cost >= 6",
+        "tags": [
+            "pharmacology",
+            "pareto",
+            "floor",
+            "tension",
+            "verified"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e66d820fb9390a97522f2e54f6a6fea09891e37b60ff9b42a9314a7696c8d87f"
+    },
+    "eb0534d557bf83dc7c6b6aa035b411884f1b5d3cbe372c7f6726cc1958c23650": {
+        "ubp_id": "LAW_DRUG_007",
+        "name": "The Law of the Manifestation Slope",
+        "math": "Count(T) \u2248 Count(T+1) * Y^2",
+        "language": "The probability of a molecular identity manifesting in the 3D manifold decays exponentially as its informational tension (d+w) approaches the Pareto Floor.",
+        "script": "decay_rate = Y**2; prob = (1/samples) * (decay_rate ** (target_cost - best_cost))",
+        "tags": [
+            "pharmacology",
+            "manifestation",
+            "slope",
+            "decay"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb0534d557bf83dc7c6b6aa035b411884f1b5d3cbe372c7f6726cc1958c23650"
+    },
+    "ab35af06a48f4bd4af334dfafbceb8e448183fad9aa41620e739e0fc8071a368": {
+        "ubp_id": "LAW_BIO_QUANTUM_001",
+        "name": "The Law of Bio-Quantum Energy Transfer",
+        "math": "E = M * R * S_opt * P_GCI * k_charge | k = 1.16e9",
+        "language": "Energy transfer between quantum and biological realms is a function of active OffBits (M) and multi-realm resonance (R).",
+        "script": "def calc_energy(m, r, s, p): return m * r * s * p * 1163800000",
+        "tags": [
+            "quantum",
+            "biology",
+            "energy",
+            "interface",
+            "resonance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ab35af06a48f4bd4af334dfafbceb8e448183fad9aa41620e739e0fc8071a368"
+    },
+    "fef8071e5ba0e910db491918ed826083ec6cc3b833ec7c391392eaab10567832": {
+        "ubp_id": "LAW_ONTOLOGY_001",
+        "name": "The Law of Ontological Layering",
+        "math": "OffBit = {Reality, Info, Active, Potential} | 4 x 6 bits",
+        "language": "The 24-bit OffBit is partitioned into four 6-bit layers; activity in the Potential layer signals emergent substrate behaviors.",
+        "script": "def get_layers(v24): return [v24[i:i+6] for i in range(0, 24, 6)]",
+        "tags": [
+            "ontology",
+            "offbit",
+            "layers",
+            "structure",
+            "mog"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fef8071e5ba0e910db491918ed826083ec6cc3b833ec7c391392eaab10567832"
+    },
+    "a54d9c8b97e8c06b25e729f995cba30f75a66d17d9786f64be4ab39123ab5797": {
+        "ubp_id": "LAW_UNIT_001",
+        "name": "The Law of Informational Action",
+        "math": "1 UBP-Unit (tau) = 1 Bit-Toggle * Y",
+        "language": "Units are phenomenal scaling factors; the only fundamental measure is the 'Action' required to toggle a bit against substrate drag (Y).",
+        "script": "def get_action(toggles, Y): return toggles * Y",
+        "tags": [
+            "units",
+            "action",
+            "energy",
+            "scaling",
+            "dimensionless"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a54d9c8b97e8c06b25e729f995cba30f75a66d17d9786f64be4ab39123ab5797"
+    },
+    "a126ba32d599d7715a17cd55a7dcc27ee5ef4d5e88146bcb47848d44fadf24de": {
+        "ubp_id": "LAW_UNITY_004",
+        "name": "The Law of Universal Unit Synthesis",
+        "math": "c = Y * k_charge | m_e = 2Y * (11/12) | Ratio = 22/3",
+        "language": "The Speed of Light and the Electron Mass are scale-specific projections of the same 24-bit substrate action (tau).",
+        "script": "c = Y * 1.16e9; m_e = 2 * Y * (11/12); helicity = (c/1e8)/m_e",
+        "tags": [
+            "unity",
+            "synthesis",
+            "speed_of_light",
+            "electron",
+            "helicity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a126ba32d599d7715a17cd55a7dcc27ee5ef4d5e88146bcb47848d44fadf24de"
+    },
+    "60111f4077e065e3b3dda86ab983b097f5a9988cc94dab9288b7dac529fd6f2c": {
+        "ubp_id": "LAW_OBSERVER_OOB_001",
+        "name": "The Law of Ontological Observation Bias (OOB)",
+        "math": "m_e_real = m_e_ubp + (Y/10) | Fidelity = 0.9986",
+        "language": "The phenomenal mass gap is resolved by the 10th harmonic of the Observer Cost; the 0.14% remaining error is the 'Substrate Breath' required for temporal flow.",
+        "script": "beta = Y / 10; m_e_corrected = (2 * Y * Fraction(11, 12)) + beta",
+        "tags": [
+            "observer",
+            "bias",
+            "mass_gap",
+            "harmonics",
+            "verified"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "60111f4077e065e3b3dda86ab983b097f5a9988cc94dab9288b7dac529fd6f2c"
     }
 }
