@@ -822,6 +822,25 @@
     "b94f8250": {
         "ubp_id": "LAW_FIELD_CARFE_001",
         "full_hash": "b94f82507f9e960a9c4aab40d670d71ab92f8396477843de0a6d86c56c744d9c"
+    },
+    "766ac996": {
+        "ubp_id": "LAW_PATTERN_001",
+        "full_hash": "766ac996e7572b214662b0e103031ba9f3bdc4021215697bd4a37d97ea1d2ae9"
+    },
+    "702f3523": {
+        "ubp_id": "LAW_BIO_GOLD_001",
+        "full_hash": "702f3523c0a2d8c95e8aadd644676041daeee70fc0f614fad24892b049e2e4cf"
+    },
+    "8dd006bc": {
+        "ubp_id": "LAW_BIO_GOLD_002",
+        "full_hash": "8dd006bc6c612f5ed88f1157ccb3b0bb430bc8584c3ab2c4df53a54b486d219d"
+    },
+    "0085cdcc": {
+        "ubp_id": "LAW_SYNTHESIS_001",
+        "full_hash": "0085cdcc603fdf4371838f0fc3d57ebd56499db2bae46f0fa371d691438f6d0f"
+    },
+    "7b4448a3": {
+        "ubp_id": "LAW_PLATONIC_001",
+        "full_hash": "7b4448a31fdf37ef63ac40099d02c15a3df8fd07ce491ba51d4c2623e7b28902"
     }
 }
-
