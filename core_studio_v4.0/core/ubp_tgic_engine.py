@@ -1,23 +1,23 @@
 """
-TGIC-Capable Engine (Exact, Float-Free) v4.3.2 (KERNEL COMPATIBLE)
-==================================================================
+TGIC-Capable Engine (Exact, Float-Free, Deterministic) v4.4
+===========================================================
 Updates:
-- Added calculate_interaction_cost for Kernel geometric reasoning.
+- REMOVED: 'random' library (Non-deterministic).
+- ADDED: 'hashlib' for content-addressable determinism.
+- The 'step' function now behaves identically for identical inputs.
 
 Tria-Graph Interaction Constraint (TGIC)
 Author: Euan R A Craig, New Zealand
-Date: 06 January 2026
-
+Date: 10 January 2026
 """
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional, Set
-import random
+import hashlib
 from ubp_core_v4_2_6_COMBINED import (
     GOLAY_DECODER,
     LEECH_ENHANCED,
-    BinaryLinearAlgebra,
-    LeechPointScaled
+    BinaryLinearAlgebra
 )
 
 # --- Constants ---
@@ -28,11 +28,40 @@ def mod_phase(x: int) -> int:
     return x % PHASE_MOD
 
 def phase_dist(a: int, b: int) -> int:
-    """Circular distance in 8-bit space."""
     d = abs(a - b)
     if d > 128:
         d = 256 - d
     return d
+
+# --- Deterministic RNG ---
+class DeterministicFlux:
+    """Generates pseudo-random numbers derived from the system state hash."""
+    def __init__(self, seed_obj):
+        # Create a seed from the string representation of the input object
+        seed_str = str(seed_obj)
+        self.digest = hashlib.sha256(seed_str.encode()).digest()
+        self.idx = 0
+
+    def _next_byte(self) -> int:
+        if self.idx >= len(self.digest):
+            # Reseed with own digest to continue stream
+            self.digest = hashlib.sha256(self.digest).digest()
+            self.idx = 0
+        val = self.digest[self.idx]
+        self.idx += 1
+        return val
+
+    def randint(self, a, b):
+        """Deterministic randint(a, b)."""
+        span = b - a + 1
+        val = self._next_byte()
+        return a + (val % span)
+
+    def choice(self, seq):
+        """Deterministic choice."""
+        if not seq: return None
+        idx = self.randint(0, len(seq) - 1)
+        return list(seq)[idx]
 
 # --- Data Structures ---
 Coord = Tuple[int, int, int]
@@ -68,11 +97,6 @@ class TGICExactEngine:
         self.ANGLE_TOLERANCE = 16
 
     def calculate_interaction_cost(self, v1: List[int], v2: List[int]) -> int:
-        """
-        Geometric Cost for Kernel Reasoner.
-        Returns Hamming Distance (Spatial Cost).
-        """
-        # Ensure inputs are lists for the algebra module
         l1 = list(v1) if isinstance(v1, (tuple, list)) else [0]*24
         l2 = list(v2) if isinstance(v2, (tuple, list)) else [0]*24
         return BinaryLinearAlgebra.hamming_distance(l1, l2)
@@ -95,21 +119,6 @@ class TGICExactEngine:
                 E += h_dist * p_dist
         return E
 
-    def energy(self, S: Dict[Coord, OffBit]) -> int:
-        E = 0
-        seen_edges = set()
-        for c, off in S.items():
-            for n in self.neighbors(c):
-                if n in S:
-                    edge = tuple(sorted((c, n)))
-                    if edge in seen_edges: continue
-                    seen_edges.add(edge)
-                    off2 = S[n]
-                    h_dist = BinaryLinearAlgebra.hamming_distance(list(off.v), list(off2.v))
-                    p_dist = phase_dist(off.phi, off2.phi)
-                    E += h_dist * p_dist
-        return E
-
     def gamma_sphere(self, off: OffBit) -> bool:
         _, _, synd = self.golay.decode(list(off.v))
         return synd <= 3
@@ -126,15 +135,25 @@ class TGICExactEngine:
 
     def step(self, S: Dict[Coord, OffBit]) -> Tuple[Dict[Coord, OffBit], dict]:
         if not S: return S, {"status": "empty"}
-        coord = random.choice(list(S.keys()))
+        
+        # Initialize Deterministic Flux based on current state S
+        # This ensures that if S is the same, the 'random' choice is the same.
+        # We sort keys to ensure consistent ordering for the hash.
+        state_repr = str(sorted(S.items(), key=lambda x: x[0]))
+        flux = DeterministicFlux(state_repr)
+
+        coord = flux.choice(list(S.keys()))
         off_old = S[coord]
-        flip_idx = random.randint(0, 23)
+        
+        flip_idx = flux.randint(0, 23)
         fulcrum = (flip_idx + 12) % 24
         mask = [0]*24
         mask[flip_idx] = 1
         toggle = Toggle(load_bits=(flip_idx,), fulcrum_bit=fulcrum, effort=10)
-        d_phi = random.randint(-5, 5)
+        
+        d_phi = flux.randint(-5, 5)
         prop = Proposal(coord, tuple(mask), d_phi, toggle)
+        
         new_v = [b ^ m for b, m in zip(off_old.v, mask)]
         off_new = off_old.with_updates(new_v=new_v, delta_phi=d_phi)
         
