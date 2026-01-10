@@ -1,75 +1,85 @@
 """
-UBP Auto-Trigger v5.2 (Tiered Recall)
-=====================================
-Implements a three-tier resonance scan:
-1. Keyword Anchor (Deterministic)
-2. Jaccard Semantic (Probabilistic)
-3. Hamming Geometric (Structural)
+UBP Auto-Trigger v5.6 (Reflexive Encapsulation)
+===============================================
+Optimized for high-density substrates (196+ laws).
+Implements Fuzzy Anchor Matching to bridge the Resonance Gap.
 
-Author: Euan Craig, New Zealand with UBP Research Cortex v4.2.6
-8 Jan 2026
+E R A Craig, New Zealand
+10 Jan 2026
 """
 import re
+import json
 from hex_dictionary_v4_exact import HEX_DB_EXACT
-from ubp_core_v4_2_6_COMBINED import BinaryLinearAlgebra
 
-class ResonanceScanner:
-    def __init__(self, database):
-        self.db = database
-        self.JACCARD_THRESHOLD = 0.30
-        self.HAMMING_THRESHOLD = 6
-
-    def _tokenize(self, text):
-        """Cleans and tokenizes input for semantic analysis."""
-        clean = re.sub(r'[^a-zA-Z0-9\s]', '', text.lower())
-        return set(clean.split())
-
-    def scan_and_trigger(self, user_input, cortex=None):
-        input_tokens = self._tokenize(user_input)
-        input_lower = user_input.lower()
-        
-        # --- TIER 1: KEYWORD ANCHOR (Deterministic) ---
-        # If the user mentions the name or ID directly, trigger immediately.
-        for entry_hash, entry in self.db.registry.items():
-            name = entry.get("name", "").lower()
-            ubp_id = entry.get("ubp_id", "").lower()
-            if input_lower in name or input_lower in ubp_id:
-                print(f"[RECALL: {entry['ubp_id']}] via Keyword Anchor.")
-                return entry
-
-        # --- TIER 2: JACCARD SEMANTIC SCAN (Probabilistic) ---
-        best_match = None
-        highest_jaccard = 0.0
-        for entry_hash, entry in self.db.registry.items():
-            # Combine tags and name tokens for the profile
-            entry_profile = set(entry.get("tags", [])).union(self._tokenize(entry.get("name", "")))
-            
-            intersection = input_tokens.intersection(entry_profile)
-            union = input_tokens.union(entry_profile)
-            
-            if not union: continue
-            jaccard = len(intersection) / len(union)
-            
-            if jaccard > highest_jaccard:
-                highest_jaccard = jaccard
-                best_match = entry
-
-        # --- TIER 3: HAMMING GEOMETRIC VALIDATION ---
-        if best_match and highest_jaccard >= self.JACCARD_THRESHOLD:
-            if cortex:
-                # Map query and match to vectors to check structural alignment
-                query_chord = cortex.process_concept(user_input)
-                match_chord = cortex.process_concept(best_match['name'])
-                h_dist = BinaryLinearAlgebra.hamming_distance(query_chord['SYN'], match_chord['SYN'])
-                
-                if h_dist <= self.HAMMING_THRESHOLD:
-                    print(f"[RECALL: {best_match['ubp_id']}] via Geometric Resonance (J:{highest_jaccard:.2f}, H:{h_dist}).")
-                    return best_match
-            else:
-                print(f"[RECALL: {best_match['ubp_id']}] via Semantic Resonance (J:{highest_jaccard:.2f}).")
-                return best_match
-
+def run_trigger_logic(input_text=None):
+    """
+    Encapsulated logic for UBP Resonance Scanning.
+    Variables are local to this scope to prevent namespace pollution.
+    """
+    # 1. Resolve Input (Global injection or direct argument)
+    target_text = input_text if input_text else globals().get('USER_INPUT', "")
+    if not target_text:
         return None
 
-# Global Instance for the Kernel
-HM_KB = ResonanceScanner(HEX_DB_EXACT)
+    # 2. Substrate Integrity Check
+    if not HEX_DB_EXACT.registry:
+        HEX_DB_EXACT.load_memory()
+    
+    registry = HEX_DB_EXACT.registry
+    if not registry:
+        print("[!] CRITICAL: Substrate is empty.")
+        return None
+
+    # 3. Pre-Processing
+    def tokenize(text):
+        return set(re.sub(r'[^a-zA-Z0-9\s]', '', text.lower()).split())
+
+    input_lower = target_text.lower().strip()
+    input_tokens = tokenize(input_lower)
+    
+    # 4. TIER 1: FUZZY ANCHOR SCAN (Highest Priority)
+    # Checks for partial matches in ID or Name (e.g., "baryon" matches "LAW_BARYON_001")
+    for f_print, entry in registry.items():
+        name = entry.get("name", "").lower()
+        ubp_id = entry.get("ubp_id", "").lower()
+        
+        if input_lower in name or input_lower in ubp_id:
+            print(f"[RECALL: {entry['ubp_id']}] via Fuzzy Anchor.")
+            return entry
+
+    # 5. TIER 2: SEMANTIC RESONANCE (Jaccard)
+    # Fallback for conceptual queries that don't share keywords with the title
+    best_match = None
+    highest_jaccard = 0.0
+    ADAPTIVE_THRESHOLD = 0.12 # Lowered for short queries
+
+    for f_print, entry in registry.items():
+        # Build profile from tags, name, and ID
+        profile = set(entry.get("tags", []))
+        profile.update(tokenize(entry.get("name", "")))
+        profile.update(tokenize(entry.get("ubp_id", "")))
+        
+        intersection = input_tokens.intersection(profile)
+        union = input_tokens.union(profile)
+        
+        if not union: continue
+        score = len(intersection) / len(union)
+        
+        if score > highest_jaccard:
+            highest_jaccard = score
+            best_match = entry
+
+    # 6. Final Resolution
+    if best_match and highest_jaccard >= ADAPTIVE_THRESHOLD:
+        print(f"[RECALL: {best_match['ubp_id']}] via Semantic Resonance (J:{highest_jaccard:.2f}).")
+        return best_match
+
+    # 7. Failsafe: Substrate Size Diagnostic
+    print(f"NO MATCH FOUND (Substrate Size: {len(registry)} laws).")
+    return None
+
+# --- Execution Bridge ---
+if __name__ == "__main__":
+    # The app injects USER_INPUT globally.
+    USER_INPUT = globals().get('USER_INPUT', "periodic singularity")
+    run_trigger_logic(USER_INPUT)
