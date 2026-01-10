@@ -1,8 +1,4 @@
 {
-    "a16406ac": {
-        "ubp_id": "LAW_TEST_001",
-        "full_hash": "a16406ac3a1b1d0a12518de202cdc9d0fcd445871dcf363cb7472fe09c6b873f"
-    },
     "634938f8": {
         "ubp_id": "LAW_SUBSTRATE_001",
         "full_hash": "634938f838a6bf8e048cde8ee56b14e8ce69b24ca55308a1fd88680a3ce11600"
@@ -758,6 +754,34 @@
     "5bfb43f9": {
         "ubp_id": "LAW_ALPHA_EQUILIBRIUM_001",
         "full_hash": "5bfb43f9327e23cf4444e936da959dcdf0a48631ace121f586a3f598cc72b3d8"
+    },
+    "4fe03596": {
+        "ubp_id": "LAW_COMP_HRHF_001",
+        "full_hash": "4fe03596107c40cbb20b2e892498415f146e9f6b3ac7f34c17e1b6ae081aa7ed"
+    },
+    "a5ca9132": {
+        "ubp_id": "LAW_OBSERVER_COMP_001",
+        "full_hash": "a5ca9132aa8b8b68d61fb29fc30386f26295cca823987d1e06658ebed29e67d2"
+    },
+    "8c600e8b": {
+        "ubp_id": "LAW_MATH_REGIMES_001",
+        "full_hash": "8c600e8b96ac73733d656f150582710862d733ae9b98c46c13f6f2a102640b24"
+    },
+    "50b3f1a9": {
+        "ubp_id": "LAW_HGR_RESONANCE_001",
+        "full_hash": "50b3f1a9f217e5ad32e10fec98324bccb9176990344f208fb049130b2595b989"
+    },
+    "f6bd28fa": {
+        "ubp_id": "LAW_CHEM_ENCODING_V1",
+        "full_hash": "f6bd28fa4ea79e658a6865786edce00fc900c137b9897bb798a6b4ed1c58d314"
+    },
+    "7f875624": {
+        "ubp_id": "LAW_BITTAB_ENTROPY",
+        "full_hash": "7f875624f4d82e122aaf4f4b72e9c434c994031322f51b080ef7256eed62d4ef"
+    },
+    "b6c0a5aa": {
+        "ubp_id": "LAW_PERIODIC_SINGULARITY",
+        "full_hash": "b6c0a5aae2710104325aed82280c7b72dcecaa3d093fe6cda0f43b38d5a8fcd6"
     }
 }
 
