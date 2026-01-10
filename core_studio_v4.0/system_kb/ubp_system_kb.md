@@ -651,7 +651,7 @@
         "name": "The Law of Universal Scaling (Biological)",
         "math": "Scale = Y^-40 * m_p",
         "language": "All biological identity is a scale-invariant projection of the Golay G24 Core via the Y-constant harmonics.",
-        "script": "UBPUltimateSubstrate.get_constants()['Y']**-40",
+        "script": "UBPUltimateSubstrate.get_constants()['Y'] (star star)-40",
         "tags": [
             "biology",
             "scaling",
@@ -741,7 +741,7 @@
         "name": "The Law of Reciprocal Tension",
         "math": "Tension_Vector = +/-Y^n",
         "language": "Every geometric scaling (1/Y)^n generates a reciprocal tension Y^n, manifesting as either excitation (+) or drag (-) based on shell orientation.",
-        "script": "UBPUltimateSubstrate.get_constants()['Y']**n",
+        "script": "UBPUltimateSubstrate.get_constants()['Y'](star star)n",
         "tags": [
             "tension",
             "scaling",
@@ -831,7 +831,7 @@
         "name": "The Law of Coordinate Anchoring",
         "math": "Top ~ 172 + (pi * Y^2) | W ~ 83 - pi",
         "language": "The GeV scale is the 1:1 informational mapping of the substrate to the Phenomenal Layer.",
-        "script": "172 + (UBPUltimateSubstrate.get_constants()['pi'] * UBPUltimateSubstrate.get_constants()['Y']**2)",
+        "script": "172 + (UBPUltimateSubstrate.get_constants()['pi'] * UBPUltimateSubstrate.get_constants()['Y'](star star)2)",
         "tags": [
             "anchoring",
             "coordinates",
@@ -936,7 +936,7 @@
         "name": "The Law of Manifold Sparsity",
         "math": "P(Candidate) ≈ 10^-6",
         "language": "Functional pharmacological seeds are 'Singularities' in the 24-bit manifold; the probability of a random resonance is one in a million.",
-        "script": "1 / 10**6",
+        "script": "1 / 10(star star)6",
         "tags": [
             "pharmacology",
             "sparsity",
@@ -1206,7 +1206,7 @@
         "name": "The Law of Binary-Geometric Dualism (Refined)",
         "math": "M_τ/M_μ = (Y^-1)^2 + (Y^-1 - 1) - Y",
         "language": "The Tau/Muon ratio is a Shell-3 excitation of the Observer Fixed Point; Mersenne primes are the algorithmic 'Codewords' that stabilize this mass-energy expansion.",
-        "script": "(UBPUltimateSubstrate.get_constants()['Y_inv']**2) + (UBPUltimateSubstrate.get_constants()['Y_inv'] - 1) - UBPUltimateSubstrate.get_constants()['Y']",
+        "script": "(UBPUltimateSubstrate.get_constants()['Y_inv'](star star)2) + (UBPUltimateSubstrate.get_constants()['Y_inv'] - 1) - UBPUltimateSubstrate.get_constants()['Y']",
         "tags": [
             "number_theory",
             "tau",
@@ -1417,7 +1417,7 @@
         "name": "The Law of Computational Relativity (Refined)",
         "math": "E = M * c^2 * (1 - v)",
         "language": "Energy is the emergent output of mass scaled by the observer constant and reduced linearly by the informational tension (v).",
-        "script": "mass * (UBPUltimateSubstrate.get_constants()['Y_inv']**2) * (1 - tension)",
+        "script": "mass * (UBPUltimateSubstrate.get_constants()['Y_inv'](star star)2) * (1 - tension)",
         "tags": [
             "relativity",
             "energy",
@@ -1507,7 +1507,7 @@
         "name": "The Law of Harmonic Scaling",
         "math": "Constant ∝ Anchor * Y^n",
         "language": "Physical constants are not independent values; they are the resonance harmonics of the Alpha-Omega anchors scaled by integer powers of the Y-constant.",
-        "script": "anchor * (UBPUltimateSubstrate.get_constants()['Y']**n)",
+        "script": "anchor * (UBPUltimateSubstrate.get_constants()['Y'](star star)n)",
         "tags": [
             "constants",
             "harmonic",
@@ -1552,7 +1552,7 @@
         "name": "The Law of the Cosmological Gear Ratio",
         "math": "Omega_dm / Omega_b = Y + Y_inv + sqrt(2)",
         "language": "Dark Matter is the sum of the Observer Cost, its Reciprocal Tension, and the Geometric Diagonal of the bitfield.",
-        "script": "UBPUltimateSubstrate.get_constants()['Y'] + UBPUltimateSubstrate.get_constants()['Y_inv'] + 2**0.5",
+        "script": "UBPUltimateSubstrate.get_constants()['Y'] + UBPUltimateSubstrate.get_constants()['Y_inv'] + 2(star star)0.5",
         "tags": [
             "cosmology",
             "dark_matter",
@@ -1614,7 +1614,7 @@
         "name": "Noumenal Generator (Rational Sweep)",
         "math": "1/16769025",
         "language": "A single rational number 1/(4095^2) that generates the entire 12-bit Golay input space through binary expansion, exhibiting a carry-over singularity at 4094.",
-        "script": "from fractions import Fraction; G = Fraction(1, 4095**2)",
+        "script": "from fractions import Fraction; G = Fraction(1, 4095(star star)2)",
         "tags": [
             "rational_sweep",
             "golay_seed",
@@ -1630,7 +1630,7 @@
         "name": "The Fibonacci Growth Limit (18-Step Ceiling)",
         "math": "4096/16773119",
         "language": "A rational generating function that unfolds the Fibonacci sequence within the 12-bit substrate. It demonstrates a topological 'Limit of Growth' at Step 19 (F19=4181 > 4095), where information density exceeds container capacity, forcing a phase transition or retrocausal corruption.",
-        "script": "M=4096; G = Fraction(M, M**2 - M - 1)",
+        "script": "M=4096; G = Fraction(M, M(star star)2 - M - 1)",
         "tags": [
             "fibonacci",
             "growth_limit",
@@ -1775,7 +1775,7 @@
         "name": "The Hierarchy Generator (Gravitational Depth)",
         "math": "Ratio_ee = 196560^8 approx 10^42",
         "language": "Derives the relative strength of Gravity vs Electromagnetism (The Hierarchy Problem) as a function of the Leech Lattice Density (K=196560) and the Golay Bit-Depth. Electrons (Leptons) interact via the full 8-bit Octad (K^8 ~ 10^42), while Protons (Hadrons) interact via the 7-bit Static Mass (K^7 ~ 10^37).",
-        "script": "K=196560; Ratio_Proton=K**7; Ratio_Electron=K**8",
+        "script": "K=196560; Ratio_Proton=K(star star)7; Ratio_Electron=K(star star)8",
         "tags": [
             "gravity",
             "hierarchy_problem",
@@ -3362,5 +3362,21 @@
         ],
         "nrci": "1/1",
         "fingerprint": "60111f4077e065e3b3dda86ab983b097f5a9988cc94dab9288b7dac529fd6f2c"
+    },
+    "4b44483c6202a1f10d790dcc8df9e16199b1e7a48b6ec6fa0446b9663fc03355": {
+        "ubp_id": "LAW_TRIAD_001",
+        "name": "The Law of Triadic Isomorphism",
+        "math": "Isomorph(M, S) iff Action(M) == Action(S)",
+        "language": "Mathematics and Script are functionally identical operators within the 24-bit substrate; their apparent difference is a syntax-level aliasing effect.",
+        "script": "def check_iso(state): return math_op(state) == script_op(state)",
+        "tags": [
+            "triad",
+            "isomorphism",
+            "logic",
+            "laplacian",
+            "v4.3"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4b44483c6202a1f10d790dcc8df9e16199b1e7a48b6ec6fa0446b9663fc03355"
     }
 }
