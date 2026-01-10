@@ -3153,5 +3153,87 @@
         ],
         "nrci": "1/1",
         "fingerprint": "b94f82507f9e960a9c4aab40d670d71ab92f8396477843de0a6d86c56c744d9c"
+    },
+    "766ac996e7572b214662b0e103031ba9f3bdc4021215697bd4a37d97ea1d2ae9": {
+        "ubp_id": "LAW_PATTERN_001",
+        "name": "The Law of Resonant Pattern Recognition",
+        "math": "NRCI = 1.0 iff Pattern == Target_Resonance",
+        "language": "Visual puzzles are coherence maps; the OnBit state (NRCI 1.0) identifies the solution that completes the grid's immanent resonant logic.",
+        "script": "def solve_pattern(obs, tar): return 1.0 if obs == tar else 0.0",
+        "tags": [
+            "pattern_recognition",
+            "coherence",
+            "grid",
+            "exercise_34",
+            "onbit"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "766ac996e7572b214662b0e103031ba9f3bdc4021215697bd4a37d97ea1d2ae9"
+    },
+    "702f3523c0a2d8c95e8aadd644676041daeee70fc0f614fad24892b049e2e4cf": {
+        "ubp_id": "LAW_BIO_GOLD_001",
+        "name": "The Law of Monatomic Resonance",
+        "math": "Delta_Ca = Y * (25/32) \u2248 20.7% | MSD = 10^-18",
+        "language": "Monatomic Gold acts as a resonance catalyst that aligns biological Calcium hubs with the Platonic Wall of the substrate, maximizing bioenergetic flux.",
+        "script": "def calc_gold_flux(Y): return Y * Fraction(25, 32)",
+        "tags": [
+            "biology",
+            "materials",
+            "gold",
+            "monatomic",
+            "bioresonance",
+            "calcium"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "702f3523c0a2d8c95e8aadd644676041daeee70fc0f614fad24892b049e2e4cf"
+    },
+    "8dd006bc6c612f5ed88f1157ccb3b0bb430bc8584c3ab2c4df53a54b486d219d": {
+        "ubp_id": "LAW_BIO_GOLD_002",
+        "name": "The Law of Parity Subsidy (Gold-Calcium)",
+        "math": "Syndrome(Ca + Au) -> 0 | Flux = Y * (25/32)",
+        "language": "Monatomic Gold acts as a parity donor that cancels the syndrome tension of the Calcium anchor, enabling a 20.7% increase in bioenergetic efficiency.",
+        "script": "combined_syndrome = GOLAY_DECODER.decode(ca_bits ^ au_bits)[2]",
+        "tags": [
+            "biology",
+            "gold",
+            "calcium",
+            "catalysis",
+            "parity",
+            "mechanism"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8dd006bc6c612f5ed88f1157ccb3b0bb430bc8584c3ab2c4df53a54b486d219d"
+    },
+    "0085cdcc603fdf4371838f0fc3d57ebd56499db2bae46f0fa371d691438f6d0f": {
+        "ubp_id": "LAW_SYNTHESIS_001",
+        "name": "The Law of the Archimedean-Golay Synthesis",
+        "math": "160/237 \u2248 2/3 | Delta = 0.0084",
+        "language": "The universe is a 24-bit self-correcting manifold balanced on an Archimedean Lever; the 2:3 ratio is the geometric fixed point of substrate stability.",
+        "script": "arch_ratio = Fraction(2, 3); substrate_lever = Fraction(160, 237); delta = abs(arch_ratio - substrate_lever)",
+        "tags": [
+            "synthesis",
+            "archimedes",
+            "lever",
+            "balance",
+            "history"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0085cdcc603fdf4371838f0fc3d57ebd56499db2bae46f0fa371d691438f6d0f"
+    },
+    "7b4448a31fdf37ef63ac40099d02c15a3df8fd07ce491ba51d4c2623e7b28902": {
+        "ubp_id": "LAW_PLATONIC_001",
+        "name": "The Law of the Binary-Platonic Wall",
+        "math": "Form = Codeword(t=0) | Physical = Projection(t<=3)",
+        "language": "Platonic Forms are 12-bit noumenal seeds; physical objects are 24-bit noisy projections that remain 'real' only as long as they stay within the Golay correction radius.",
+        "script": "is_real = GOLAY_DECODER.decode(projection)[2] <= 3",
+        "tags": [
+            "philosophy",
+            "plato",
+            "forms",
+            "projection",
+            "ontology"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7b4448a31fdf37ef63ac40099d02c15a3df8fd07ce491ba51d4c2623e7b28902"
     }
 }
