@@ -1,28 +1,17 @@
-#!/usr/bin/env python3
 """
 ================================================================================
-UBP PHENOMENOLOGY ENGINE v4.2.6
+UBP PHENOMENOLOGY ENGINE v4.2.6 (FLOAT-FREE PATCHED)
 ================================================================================
 The "Top-Down" Bridge: Translates Real-World Phenomena -> UBP Substrate.
 
 Version: 4.2.6
 Author: Euan R A Craig, New Zealand
-Date: 02 January 2026
-
-Integrates with:
-1. UBP Core v4.2.6 (via Integration Adapter)
-2. HexDictionary (for storage)
-3. Metrics (for validation)
-
-Usage:
-  engine = PhenomenologyEngine()
-  result = engine.process_phenomenon(my_phenomenon_def, input_data)
-================================================================================
+Date: 10 January 2026
 """
 
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Any, Callable, Optional
-from fractions import Fraction
+from fractions import Fraction # <--- CRITICAL FIX
 import hashlib
 import json
 
@@ -94,6 +83,14 @@ class PhenomenologyEngine:
             return {"status": "ERROR", "stage": "Core Processing", "message": core_result.get('message')}
 
         # C. Synthesize the Result
+        # FLOAT-FREE FIX: Use Fraction(1, 1) instead of 1.0
+        one = Fraction(1, 1)
+        zero = Fraction(0, 1)
+        
+        tax = core_result['symmetry_tax']
+        raw_stability = one - tax
+        stability = raw_stability if raw_stability > zero else zero
+
         result = {
             "phenomenon": definition.name,
             "domain": definition.domain,
@@ -102,8 +99,8 @@ class PhenomenologyEngine:
             "metrics": {
                 "nrci": core_result['nrci'],
                 "coherence": core_result['coherence_regime'],
-                "symmetry_tax": core_result['symmetry_tax'],
-                "stability_score": max(0.0, 1.0 - core_result['symmetry_tax']) # Simple normalized stability
+                "symmetry_tax": tax,
+                "stability_score": stability
             },
             "memory": {
                 "hex_id": core_result['hex_id'],
