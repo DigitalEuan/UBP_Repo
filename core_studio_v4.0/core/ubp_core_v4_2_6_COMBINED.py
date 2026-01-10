@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ================================================================================
 UBP CORE v4.2.6 - COMBINED ULTIMATE SYSTEM (PRODUCTION)
@@ -10,22 +9,7 @@ Combined system merging:
 
 Version: 4.2.6 Combined (Production - 100% Complete)
 Author: Euan R A Craig, New Zealand
-Date: 02 January 2026
-
-FEATURES:
-✓ 50-term π precision (ultimate accuracy)
-✓ Optimized particle physics coefficients
-✓ 7 law enhancements (LAW_SUBSTRATE_005, LAW_COMP_009, LAW_APP_001, LAW_SYMMETRY_001, etc.)
-✓ Ontological health assessment (MOG partition)
-✓ Shadow processor metrics (50/50 Noumenal/Phenomenal)
-✓ Coherence snaps (state persistence)
-✓ Symmetry tax calculation
-✓ Physical space conversion
-✓ Comprehensive Golay code engine
-✓ Leech lattice integration
-✓ 0.006354% average error (Grade A+)
-
-================================================================================
+Date: 10 January 2026 (Float-Free Patch)
 """
 
 from fractions import Fraction
@@ -399,11 +383,11 @@ class UBPOptimizedParticlePhysics:
 
 
 # ==============================================================================
-# SECTION 6: LEECH LATTICE ENGINE
+# SECTION 6: LEECH LATTICE ENGINE (FLOAT-FREE PATCH)
 # ==============================================================================
 
 class LeechLatticeEngine:
-    """Leech Lattice (Λ₂₄) Engine."""
+    """Leech Lattice (Λ₂₄) Engine - 100% Float-Free."""
     
     def __init__(self):
         """Initialize Leech Lattice Engine."""
@@ -413,12 +397,15 @@ class LeechLatticeEngine:
         self.golay = GolayCodeEngine()
         self.particle_validator = UBPOptimizedParticlePhysics(precision=50)
         
-        # UBP Observer constants
-        self.OBSERVER_FIXED_POINT = math.pi + (2.0 / math.pi)
-        self.Y_CONSTANT = 1.0 / self.OBSERVER_FIXED_POINT
+        # UBP Observer constants (LINKED TO SUBSTRATE)
+        constants = UBPUltimateSubstrate.get_constants(precision=50)
+        self.pi = constants['pi']
+        self.Y_CONSTANT = constants['Y']
+        # Observer Fixed Point = Y_inv = 1/Y
+        self.OBSERVER_FIXED_POINT = constants['Y_inv']
     
-    def calculate_symmetry_tax(self, point: List[int]) -> float:
-        """LAW_SYMMETRY_001: Symmetry Tax calculation."""
+    def calculate_symmetry_tax(self, point: List[int]) -> Fraction:
+        """LAW_SYMMETRY_001: Symmetry Tax calculation (Exact Fraction)."""
         if len(point) != 24:
             raise ValueError("Point must have 24 elements")
         
@@ -426,10 +413,12 @@ class LeechLatticeEngine:
         norm_sq = sum(x * x for x in point)
         Y = self.Y_CONSTANT
         
-        tax = (hamming * Y) + (norm_sq / 8.0)
+        # Exact Calculation: (Hamming * Y) + (NormSq / 8)
+        # Note: 8 is an integer, so Fraction(norm_sq, 8) keeps it exact.
+        tax = (Fraction(hamming, 1) * Y) + Fraction(norm_sq, 8)
         return tax
     
-    def rank_by_stability(self, points: List[List[int]]) -> List[Tuple[List[int], float]]:
+    def rank_by_stability(self, points: List[List[int]]) -> List[Tuple[List[int], Fraction]]:
         """Rank points by stability (lower tax = more stable)."""
         ranked = [(p, self.calculate_symmetry_tax(p)) for p in points]
         return sorted(ranked, key=lambda x: x[1])
@@ -443,6 +432,7 @@ class LeechLatticeEngine:
             "golay_codewords": len(self.golay.get_all_codewords()),
             "particle_physics_enabled": True,
             "law_enhancements": 7,
+            "precision": "100% Fraction (Float-Free)"
         }
 
 
@@ -509,4 +499,3 @@ if __name__ == "__main__":
     print("\n" + "=" * 80)
     print("✓ UBP CORE v4.2.6 INITIALIZATION COMPLETE")
     print("=" * 80)
-
