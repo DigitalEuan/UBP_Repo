@@ -874,5 +874,9 @@
     "60111f40": {
         "ubp_id": "LAW_OBSERVER_OOB_001",
         "full_hash": "60111f4077e065e3b3dda86ab983b097f5a9988cc94dab9288b7dac529fd6f2c"
+    },
+    "4b44483c": {
+        "ubp_id": "LAW_TRIAD_001",
+        "full_hash": "4b44483c6202a1f10d790dcc8df9e16199b1e7a48b6ec6fa0446b9663fc03355"
     }
 }
