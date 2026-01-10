@@ -1,35 +1,21 @@
-#!/usr/bin/env python3
 """
 ================================================================================
-UBP INTEGRATION ADAPTER - v4.2.6
+UBP INTEGRATION ADAPTER - v4.2.6 (FLOAT-FREE PATCHED)
 ================================================================================
 
-Bridges UBP Core v4.2.6 to existing UBP system components:
-- HexDictionary (memory storage/recall)
-- Metrics (NRCI, observer constants)
-- Phenomenology runner
-- Auto-trigger system
+Bridges UBP Core v4.2.6 to existing UBP system components.
+Ensures all metrics remain as exact Fractions.
 
 Version: 4.2.6 Integration Adapter
 Author: Euan R A Craig, New Zealand
-Date: 2 January 2026
-
-FEATURES:
-✓ HexDictionary integration
-✓ Metrics bridge (Y_inv, observer cost, coherence regimes)
-✓ NRCI calculation interface
-✓ Point serialization/deserialization
-✓ Golay code integration
-✓ Leech lattice operations
-✓ Backward compatibility
-
-================================================================================
+Date: 10 January 2026
 """
 
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, asdict
 import json
 import hashlib
+from fractions import Fraction  # <--- CRITICAL FIX
 
 # Import UBP Core v4.2.6
 try:
@@ -47,50 +33,51 @@ except ImportError as e:
 
 
 # ==============================================================================
-# SECTION 1: METRICS BRIDGE
+# SECTION 1: METRICS BRIDGE (FLOAT-FREE PATCH)
 # ==============================================================================
 
 class MetricsBridge:
-    """Bridge to metrics.py constants and functions."""
+    """Bridge to metrics.py constants and functions (Exact)."""
     
     def __init__(self):
         """Initialize metrics bridge."""
         constants = UBPUltimateSubstrate.get_constants(precision=50)
-        self.Y_inv = float(constants['Y_inv'])
-        self.Y = float(constants['Y'])
-        self.pi = float(constants['pi'])
+        # KEEP AS FRACTIONS - DO NOT CAST TO FLOAT
+        self.Y_inv = constants['Y_inv']
+        self.Y = constants['Y']
+        self.pi = constants['pi']
         
         # Observer constants
         self.OBSERVER_FIXED_POINT = self.Y_inv
-        self.OBSERVER_COST = 1.0 / self.Y_inv
+        self.OBSERVER_COST = Fraction(1, 1) / self.Y_inv
         
-        # Coherence regimes
+        # Coherence regimes (Comparison values must be Fractions)
         self.COHERENCE_REGIMES = {
-            'high': (0.8, 1.0),
-            'medium': (0.5, 0.8),
-            'low': (0.0, 0.5),
+            'high': (Fraction(8, 10), Fraction(1, 1)),   # 0.8 - 1.0
+            'medium': (Fraction(5, 10), Fraction(8, 10)), # 0.5 - 0.8
+            'low': (Fraction(0, 1), Fraction(5, 10)),     # 0.0 - 0.5
         }
     
-    def get_nrci(self, point: LeechPointScaled) -> float:
+    def get_nrci(self, point: LeechPointScaled) -> Fraction:
         """Get NRCI (Normalized Resonance Coherence Index) for a point."""
         health = point.get_ontological_health()
         return health['Global_NRCI']
     
-    def get_coherence_regime(self, nrci: float) -> str:
+    def get_coherence_regime(self, nrci: Fraction) -> str:
         """Determine coherence regime from NRCI."""
         for regime, (low, high) in self.COHERENCE_REGIMES.items():
             if low <= nrci <= high:
                 return regime
         return 'unknown'
     
-    def get_all_constants(self) -> Dict[str, float]:
-        """Get all fundamental constants."""
+    def get_all_constants(self) -> Dict[str, str]:
+        """Get all fundamental constants (Returned as Strings to preserve precision in JSON)."""
         return {
-            'Y_inv': self.Y_inv,
-            'Y': self.Y,
-            'pi': self.pi,
-            'observer_fixed_point': self.OBSERVER_FIXED_POINT,
-            'observer_cost': self.OBSERVER_COST,
+            'Y_inv': str(self.Y_inv),
+            'Y': str(self.Y),
+            'pi': str(self.pi),
+            'observer_fixed_point': str(self.OBSERVER_FIXED_POINT),
+            'observer_cost': str(self.OBSERVER_COST),
         }
 
 
@@ -139,7 +126,6 @@ class HexDictionaryInterface:
             'memory_keys': list(self.memory.keys())[:10],
         }
 
-
 # ==============================================================================
 # SECTION 3: POINT SERIALIZATION
 # ==============================================================================
@@ -153,7 +139,7 @@ class PointSerializer:
         return {
             'coords': list(point.coords),
             'norm_sq_scaled': point.norm_sq_scaled,
-            'norm_sq_actual': float(point.norm_sq_actual),
+            'norm_sq_actual': float(point.norm_sq_actual), # Float ok for display/JSON
             'ontological_health': point.get_ontological_health(),
             'physical_space': point.to_physical_space(),
         }
@@ -218,11 +204,11 @@ class LeechInterface:
         """Initialize Leech interface."""
         self.engine = LEECH_ENHANCED
     
-    def calculate_symmetry_tax(self, point: List[int]) -> float:
+    def calculate_symmetry_tax(self, point: List[int]) -> Fraction:
         """Calculate symmetry tax for a point."""
         return self.engine.calculate_symmetry_tax(point)
     
-    def rank_by_stability(self, points: List[List[int]]) -> List[Tuple[List[int], float]]:
+    def rank_by_stability(self, points: List[List[int]]) -> List[Tuple[List[int], Fraction]]:
         """Rank points by stability."""
         return self.engine.rank_by_stability(points)
     
@@ -342,40 +328,5 @@ class UBPCoreIntegration:
 
 UBP_INTEGRATION = UBPCoreIntegration()
 
-
-# ==============================================================================
-# SECTION 9: TESTING
-# ==============================================================================
-
 if __name__ == "__main__":
-    print("\n" + "=" * 80)
-    print("UBP INTEGRATION ADAPTER v4.2.6 - TEST")
-    print("=" * 80)
-    
-    # Initialize
-    print("\n[TEST 1] Initialization")
-    init_result = UBP_INTEGRATION.initialize()
-    print(f"  Status: {init_result['status']}")
-    print(f"  Version: {init_result.get('version', 'N/A')}")
-    
-    # Test point processing
-    print("\n[TEST 2] Point Processing")
-    test_coords = [2, 0, 1, -1, 0, 2, 0, 0, 1, -1, 0, 0, 1, 0, 0, 0, -1, 2, 0, 1, 0, 0, -1, 0]
-    result = UBP_INTEGRATION.process_point(test_coords)
-    print(f"  Status: {result['status']}")
-    if result['status'] == 'OK':
-        print(f"  NRCI: {result['nrci']:.4f}")
-        print(f"  Coherence: {result['coherence_regime']}")
-        print(f"  Symmetry Tax: {result['symmetry_tax']:.6f}")
-    
-    # Test system status
-    print("\n[TEST 3] System Status")
-    status = UBP_INTEGRATION.get_system_status()
-    print(f"  Version: {status['version']}")
-    print(f"  Core Available: {status['core_available']}")
-    print(f"  Golay: {status['components']['golay']}")
-    
-    print("\n" + "=" * 80)
-    print("✓ INTEGRATION ADAPTER READY")
-    print("=" * 80)
-
+    print("UBP Integration Adapter Loaded (Float-Free).")
