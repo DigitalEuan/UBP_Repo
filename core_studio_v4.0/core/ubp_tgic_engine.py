@@ -6,7 +6,7 @@ Updates:
 - ADDED: 'hashlib' for content-addressable determinism.
 - The 'step' function now behaves identically for identical inputs.
 
-Tria-Graph Interaction Constraint (TGIC)
+Triad-Graph Interaction Constraint (TGIC)
 Author: Euan R A Craig, New Zealand
 Date: 10 January 2026
 """
