@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
 """
 ================================================================================
-UBP NRCI CALCULATOR - v4.2.6
+UBP NRCI CALCULATOR - v4.2.6 (FLOAT-FREE PATCHED)
 ================================================================================
 
 Normalized Resonance Coherence Index (NRCI) calculation module.
@@ -9,21 +8,13 @@ Integrates with metrics.py and provides coherence assessment.
 
 Version: 4.2.6 NRCI Calculator
 Author: Euan R A Craig, New Zealand
-Date: 2 January 2026
-
-FEATURES:
-✓ NRCI calculation from ontological health
-✓ Coherence regime classification
-✓ Stability prediction
-✓ Multi-point analysis
-✓ Historical tracking
-
-================================================================================
+Date: 10 January 2026
 """
 
 from typing import Dict, List, Any, Tuple
 from dataclasses import dataclass
 import json
+from fractions import Fraction # <--- CRITICAL FIX
 
 try:
     from ubp_core_v4_2_6_COMBINED import LeechPointScaled
@@ -72,7 +63,17 @@ class NRCICalculator:
         
         # Calculate stability score (inverse of symmetry tax, normalized)
         tax = self.leech.calculate_symmetry_tax(coords)
-        stability = max(0.0, 10.0 - tax) / 10.0  # Normalize to 0-1
+        
+        # FLOAT-FREE FIX: Use Fraction(10, 1) instead of 10.0
+        # Stability = max(0, 10 - tax) / 10
+        max_val = Fraction(10, 1)
+        zero = Fraction(0, 1)
+        
+        raw_stability = max_val - tax
+        if raw_stability < zero:
+            raw_stability = zero
+            
+        stability = raw_stability / max_val  # Normalize to 0-1
         
         result = NRCIResult(
             point_coords=tuple(coords),
@@ -82,8 +83,8 @@ class NRCICalculator:
             activation_health=health['Activation'],
             potential_health=health['Potential'],
             coherence_regime=regime,
-            stability_score=stability,
-            symmetry_tax=tax,
+            stability_score=stability, # Now a Fraction
+            symmetry_tax=tax,          # Now a Fraction
         )
         
         self.history.append(result)
@@ -190,4 +191,3 @@ if __name__ == "__main__":
     print("\n" + "=" * 80)
     print("✓ NRCI CALCULATOR READY")
     print("=" * 80)
-
