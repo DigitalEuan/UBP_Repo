@@ -782,6 +782,46 @@
     "b6c0a5aa": {
         "ubp_id": "LAW_PERIODIC_SINGULARITY",
         "full_hash": "b6c0a5aae2710104325aed82280c7b72dcecaa3d093fe6cda0f43b38d5a8fcd6"
+    },
+    "84344bf8": {
+        "ubp_id": "LAW_MAT_STEEL_001",
+        "full_hash": "84344bf8c77a8924caa6587d445b1896a5e6d89238660d78851a4922fcdd1006"
+    },
+    "a2fd1b7e": {
+        "ubp_id": "LAW_QUANTUM_TOGGLE_001",
+        "full_hash": "a2fd1b7ebe957ee148e8dc533a8effe0632885a31b88257630d92c7e8d45ab44"
+    },
+    "c9cb0a90": {
+        "ubp_id": "LAW_TERRESTRIAL_GRID_001",
+        "full_hash": "c9cb0a902f53302f8c3ff369b2a2403a2bf9d188160eae6288850ac3fb9c7088"
+    },
+    "4962a952": {
+        "ubp_id": "LAW_ANOMALY_001",
+        "full_hash": "4962a952207c2ab9cd64d2d27c1de2669ad6fce170c8cb7cb034a10207c6b9b4"
+    },
+    "55de5097": {
+        "ubp_id": "LAW_SYSTEM_001",
+        "full_hash": "55de509752bc29edb26037d0fb1d97d72b01bc4ebd3fef7d138db5ef5701f790"
+    },
+    "bb339a1d": {
+        "ubp_id": "LAW_STORAGE_003",
+        "full_hash": "bb339a1d360e7c3f3f8373fc7cfd369e74c5f0919b392f9ad3fc197c4c5a7116"
+    },
+    "22689d0f": {
+        "ubp_id": "LAW_GEO_HUB_001",
+        "full_hash": "22689d0fbbfd2d234854168141d43dd2999d0983028d262160c67dee8e90ecb8"
+    },
+    "823f1e04": {
+        "ubp_id": "LAW_MAT_PLASTIC_001",
+        "full_hash": "823f1e049ca7edd5bd05385c88a9a313ab7201007ed5603952d01d26ffd08cef"
+    },
+    "31c37602": {
+        "ubp_id": "LAW_GEO_DURER_001",
+        "full_hash": "31c37602876f1dde95832df6ba8882cb2adca1deee0191f95d1281550dc3ddad"
+    },
+    "b94f8250": {
+        "ubp_id": "LAW_FIELD_CARFE_001",
+        "full_hash": "b94f82507f9e960a9c4aab40d670d71ab92f8396477843de0a6d86c56c744d9c"
     }
 }
 
