@@ -3378,5 +3378,107 @@
         ],
         "nrci": "1/1",
         "fingerprint": "4b44483c6202a1f10d790dcc8df9e16199b1e7a48b6ec6fa0446b9663fc03355"
+    },
+    "b2c1abd6dccc0dd181fc50f95e562c172a35c17d4d3266b41378f6b5e4f796ae": {
+        "ubp_id": "LAW_FLUX_001",
+        "name": "The Law of Fisher-Golay Flux",
+        "math": "T_info / T_energy < 0.2 | S_info != S_energy",
+        "language": "Information is a conserved fluid distinct from energy; decoupling occurs when a medium transmits Hamming Mass but reflects Syndrome Identity, creating a 'Shadow' current.",
+        "script": "return info_transmission < 0.2 and energy_transmission > 0.8",
+        "tags": [
+            "flux",
+            "fisher",
+            "continuity",
+            "conservation",
+            "decoupling",
+            "2309.00010v1"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b2c1abd6dccc0dd181fc50f95e562c172a35c17d4d3266b41378f6b5e4f796ae"
+    },
+    "abdf12ae36cc2c21f14ec7fce2249b966c3f33b000605197c44b5ba1f938bb42": {
+        "ubp_id": "LAW_STRUCT_001",
+        "name": "The Law of Structural Integrity",
+        "math": "NRCI(Aligned) - NRCI(Clustered) = 0.75 | Tax(A) == Tax(C)",
+        "language": "Stability is not solely a function of mass; geometric distribution across ontological layers acts as a coherence multiplier, enabling identical energy states to possess vastly different structural integrities.",
+        "script": "delta_nrci = nrci_aligned - nrci_clustered",
+        "tags": [
+            "structure",
+            "integrity",
+            "distribution",
+            "mog",
+            "coherence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "abdf12ae36cc2c21f14ec7fce2249b966c3f33b000605197c44b5ba1f938bb42"
+    },
+    "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a": {
+        "ubp_id": "LAW_LOGIC_GEO_001",
+        "name": "The Law of Vector Truth",
+        "math": "Logic(A,B) = Geom(A,B) | S=0",
+        "language": "Boolean logic is isomorphic to vector arithmetic in the Golay substrate; valid deductions preserve zero-syndrome integrity, while fallacies generate measurable geometric noise.",
+        "script": "return syndrome(vector_result) == 0",
+        "tags": [
+            "logic",
+            "geometry",
+            "boolean",
+            "vector",
+            "truth"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a"
+    },
+    "314bdf434ac895537c829a19bcfbe02c9b3237a2141e48d8b2e319d725c86683": {
+        "ubp_id": "LAW_RELATION_ORTHO_001",
+        "name": "The Law of Orthogonal Definition",
+        "math": "Hamming(Observer, Electron) = 12 | X = Dodecad",
+        "language": "Fundamental physical dualities (Observer/Matter) are geometrically orthogonal (Distance 12); they share exactly 50% of their informational structure, allowing interaction without identity collapse.",
+        "script": "return hamming_distance(vec_a, vec_b) == 12",
+        "tags": [
+            "relation",
+            "orthogonality",
+            "dodecad",
+            "observer",
+            "electron",
+            "duality"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "314bdf434ac895537c829a19bcfbe02c9b3237a2141e48d8b2e319d725c86683"
+    },
+    "2679cca2b2a171b1e91a069b8b5406d80fd5f756d5ef094aef7bcd1847a6068f": {
+        "ubp_id": "LAW_PROTO_INF_001",
+        "name": "The Law of Active Inference",
+        "math": "Truth(Q) = (d_H(Q, Axiom) <= 3) OR (d_H(Q, A+B) <= 3)",
+        "language": "Truth is a geometric coordinate; a statement is valid if it falls within the error-correction radius (t=3) of a known Axiom or the geometric synthesis of two Axioms.",
+        "script": "return min(dist(Q, A), dist(Q, A^B)) <= 3",
+        "tags": [
+            "protocol",
+            "inference",
+            "geometry",
+            "truth",
+            "triangulation",
+            "active",
+            "v2.2"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2679cca2b2a171b1e91a069b8b5406d80fd5f756d5ef094aef7bcd1847a6068f"
+    },
+    "0c28edb5dd2594ddfa7b5eedc35fb1263c8ee8c52d6c42cdc5169b7075984443": {
+        "ubp_id": "LAW_MECH_001",
+        "name": "The Law of the Universal Gearbox",
+        "math": "Order(P) = log_Y(P) | Muon = Y^-4.01",
+        "language": "Physical constants are harmonic 'gear ratios' of the Observer Constant (Y). Fundamental particles (Leptons) occupy Integer Gears (Y^-4), while composite structures (Baryons) occupy Fractional Gears (Y^-5.65).",
+        "script": "gear_ratio = math.log(value, Y)",
+        "tags": [
+            "hierarchy",
+            "gearbox",
+            "constants",
+            "Y",
+            "scaling",
+            "mechanical",
+            "muon"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0c28edb5dd2594ddfa7b5eedc35fb1263c8ee8c52d6c42cdc5169b7075984443"
     }
 }
