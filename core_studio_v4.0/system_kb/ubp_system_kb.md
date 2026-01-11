@@ -3620,5 +3620,128 @@
         ],
         "nrci": "1/1",
         "fingerprint": "f95264b029e1b965b53e302b9788367b8165cb9c38ef8ebb15e1d5a3c3d4fdd3"
+    },
+    "c08b5c591505e4d5d972a7b065fe15a014622156d524964aa001ec9e78113bc0": {
+        "ubp_id": "LAW_LANG_001",
+        "name": "The Law of GL-1 Primitives",
+        "math": "Op(W=8) + Val(W=12) -> State(W=12/16)",
+        "language": "The Geometric Library (GL-1) partitions language into Operators (Weight 8 Octads) and Values (Weight 12 Dodecads); computation is the interaction of these distinct geometric families.",
+        "script": "return 'OPERATOR' if weight == 8 else 'VALUE'",
+        "tags": [
+            "language",
+            "gl1",
+            "primitives",
+            "octad",
+            "dodecad",
+            "grammar"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c08b5c591505e4d5d972a7b065fe15a014622156d524964aa001ec9e78113bc0"
+    },
+    "105ef56fb7cd988d3a3ab2d0383c9a393e5ae284e3720e39eef9d6b5b4e57f8e": {
+        "ubp_id": "LAW_LANG_002",
+        "name": "The Law of the GL-1 Base",
+        "math": "NRCI(GL-1_Base) = 0.999929",
+        "language": "The GL-1 Base is the first OnBit computational language, consisting of 12 primitives (3.14159, Bit, Break, Byte, Combine, Fear, God, Hyper, Line, Loop, Love, Mass) that form a complete, orthogonal Generator Matrix for the 24-bit substrate.",
+        "script": "Fraction(999929, 1000000)",
+        "tags": [
+            "language",
+            "gl1",
+            "base",
+            "onbit",
+            "generator",
+            "semantic_basis"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "105ef56fb7cd988d3a3ab2d0383c9a393e5ae284e3720e39eef9d6b5b4e57f8e"
+    },
+    "6c4f09b1ebb9a6f7c011751d05560405318718aae3d880394036e1b628e10123": {
+        "ubp_id": "LAW_LANG_RECIPE_001",
+        "name": "The Law of Semantic Composition",
+        "math": "Concept = Sum(Basis_Vectors) | d_H = 0",
+        "language": "Complex reality is constructed from the 12 GL-1 Primitives; Time is the synthesis of Cycles (Pi) and Structure (Byte); Gravity is the recursive compaction of Information.",
+        "script": "recipes = {'Time': ['3.14159', 'Byte', 'Combine'], 'Gravity': ['Bit', 'Break', 'Byte', 'Combine', 'Hyper', 'Loop']}",
+        "tags": [
+            "language",
+            "semantics",
+            "recipes",
+            "composition",
+            "gl1",
+            "time",
+            "gravity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6c4f09b1ebb9a6f7c011751d05560405318718aae3d880394036e1b628e10123"
+    },
+    "5abbfa1cb0b20caec75664f1d13b489746c0dea874db0d3ee7550a77430d5e91": {
+        "ubp_id": "LAW_BIO_RESONANCE_001",
+        "name": "The Law of Resonant Healing",
+        "math": "P_heal ~ R_geo * F_intent",
+        "language": "Biological healing is a computational process of restoring geometric coherence; resonance frequencies bias the substrate's toggle probability towards the healthy reference state.",
+        "script": "probability *= (2.0 * intent_factor) if is_healing else (0.5 / intent_factor)",
+        "tags": [
+            "biology",
+            "healing",
+            "resonance",
+            "cancer",
+            "glr",
+            "intent",
+            "probability"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5abbfa1cb0b20caec75664f1d13b489746c0dea874db0d3ee7550a77430d5e91"
+    },
+    "4ab82c3cd531b75bd6d0e6e016104a99a7fde91277e50231b5c3e540e5de30a4": {
+        "ubp_id": "LAW_QUANTUM_PROB_001",
+        "name": "The Law of the Quantum Probability Constant",
+        "math": "P_psi = e/12 -> NRCI ~ 2/3",
+        "language": "The probability of a quantum state toggle is governed by the ratio e/12 (approx 0.2265); this specific noise level tunes the substrate to the 2/3 Coherence Threshold, enabling stable temporal flow without crystallization.",
+        "script": "return abs(nrci - 0.666) < 0.01",
+        "tags": [
+            "quantum",
+            "probability",
+            "euler",
+            "dodecad",
+            "stability",
+            "2/3",
+            "criticality"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4ab82c3cd531b75bd6d0e6e016104a99a7fde91277e50231b5c3e540e5de30a4"
+    },
+    "a20d8c4406750f313f04488a072203180bef0d2096a00c1b89187119fb3c8f16": {
+        "ubp_id": "LAW_MAT_ATOMIC_001",
+        "name": "The Law of Atomic Resonance",
+        "math": "d_H(C, H) = 16 => Tension",
+        "language": "Atomic identity is defined by the geometric hash of {Z|Mass}; material stability is the minimization of Hamming tension between constituent atoms, where Carbon and Hydrogen exhibit a natural divergence of 16 bits.",
+        "script": "dist = hamming(vec(Z_c, M_c), vec(Z_h, M_h))",
+        "tags": [
+            "material",
+            "atomic",
+            "hashing",
+            "carbon",
+            "hydrogen",
+            "tension",
+            "divergence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a20d8c4406750f313f04488a072203180bef0d2096a00c1b89187119fb3c8f16"
+    },
+    "6825ef9305574057b1361a60892f321c189b16d967b4e208a81de232b3561403": {
+        "ubp_id": "LAW_DIM_001",
+        "name": "The Law of Dimensional Saturation",
+        "math": "Mass > 14.4 GeV -> Instability",
+        "language": "The UBP Clock (t_B) defines a mass-energy ceiling (~14.4 GeV); particles exceeding this limit are 'Overclocked' resonance patterns that decay before they can form stable geometric compounds (Hadronization).",
+        "script": "return mass_gev > 14.3714",
+        "tags": [
+            "physics",
+            "saturation",
+            "mass_limit",
+            "nyquist",
+            "top_quark",
+            "stability"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6825ef9305574057b1361a60892f321c189b16d967b4e208a81de232b3561403"
     }
 }
