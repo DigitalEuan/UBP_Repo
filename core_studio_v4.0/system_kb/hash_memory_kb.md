@@ -970,5 +970,9 @@
     "b652ba85": {
         "ubp_id": "LAW_COMP_MOG_001",
         "full_hash": "b652ba85a95e5ea08eee996c7c5a63cc8bd5d939daa144505ad3f7a4a7ba4714"
+    },
+    "f1e6368b": {
+        "ubp_id": "LAW_COMP_MOG_002",
+        "full_hash": "f1e6368b223a4a23216c12cd2329198d7031753c77c9977f6214f3ee70517add"
     }
 }
