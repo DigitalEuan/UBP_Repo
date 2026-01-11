@@ -934,5 +934,33 @@
     "f95264b0": {
         "ubp_id": "LAW_COMP_SPELL_001",
         "full_hash": "f95264b029e1b965b53e302b9788367b8165cb9c38ef8ebb15e1d5a3c3d4fdd3"
+    },
+    "c08b5c59": {
+        "ubp_id": "LAW_LANG_001",
+        "full_hash": "c08b5c591505e4d5d972a7b065fe15a014622156d524964aa001ec9e78113bc0"
+    },
+    "105ef56f": {
+        "ubp_id": "LAW_LANG_002",
+        "full_hash": "105ef56fb7cd988d3a3ab2d0383c9a393e5ae284e3720e39eef9d6b5b4e57f8e"
+    },
+    "6c4f09b1": {
+        "ubp_id": "LAW_LANG_RECIPE_001",
+        "full_hash": "6c4f09b1ebb9a6f7c011751d05560405318718aae3d880394036e1b628e10123"
+    },
+    "5abbfa1c": {
+        "ubp_id": "LAW_BIO_RESONANCE_001",
+        "full_hash": "5abbfa1cb0b20caec75664f1d13b489746c0dea874db0d3ee7550a77430d5e91"
+    },
+    "4ab82c3c": {
+        "ubp_id": "LAW_QUANTUM_PROB_001",
+        "full_hash": "4ab82c3cd531b75bd6d0e6e016104a99a7fde91277e50231b5c3e540e5de30a4"
+    },
+    "a20d8c44": {
+        "ubp_id": "LAW_MAT_ATOMIC_001",
+        "full_hash": "a20d8c4406750f313f04488a072203180bef0d2096a00c1b89187119fb3c8f16"
+    },
+    "6825ef93": {
+        "ubp_id": "LAW_DIM_001",
+        "full_hash": "6825ef9305574057b1361a60892f321c189b16d967b4e208a81de232b3561403"
     }
 }
