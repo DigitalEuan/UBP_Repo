@@ -902,5 +902,37 @@
     "0c28edb5": {
         "ubp_id": "LAW_MECH_001",
         "full_hash": "0c28edb5dd2594ddfa7b5eedc35fb1263c8ee8c52d6c42cdc5169b7075984443"
+    },
+    "2dad0989": {
+        "ubp_id": "LAW_TIME_PULSE_001",
+        "full_hash": "2dad0989857ad7719e207b62f5d042be11aec79c19165d5f367b69989703abd4"
+    },
+    "3c6fad0d": {
+        "ubp_id": "LAW_TIME_RUNE_001",
+        "full_hash": "3c6fad0d350ed40387664c7304683a06f157b8060a71558b245bc472a781cc26"
+    },
+    "7e6cb692": {
+        "ubp_id": "LAW_TIME_CYCLE_001",
+        "full_hash": "7e6cb6925b73a558960ddcc1e8adf3466420d870edee004920985b33077d160b"
+    },
+    "58c45abb": {
+        "ubp_id": "LAW_KINETICS_001",
+        "full_hash": "58c45abbead4f74fb6abd0c0abcf597f863505208609b98515eb7c3dfe930353"
+    },
+    "dda8adfd": {
+        "ubp_id": "LAW_RELATIVITY_003",
+        "full_hash": "dda8adfd48b0e3c52d6c05910dfd235433669bd61628354d7df750523f8eda43"
+    },
+    "6bd3a503": {
+        "ubp_id": "LAW_GEO_FAMILY_001",
+        "full_hash": "6bd3a5033a374b0e94ac528c9436ec8a23e9119122979c32d742ed4f0179a2f0"
+    },
+    "2a07c218": {
+        "ubp_id": "LAW_MATH_SEVEN_001",
+        "full_hash": "2a07c218bf5b210f41883f473d8d74be9669e33dfb523ab84afd067a2d4f36b6"
+    },
+    "f95264b0": {
+        "ubp_id": "LAW_COMP_SPELL_001",
+        "full_hash": "f95264b029e1b965b53e302b9788367b8165cb9c38ef8ebb15e1d5a3c3d4fdd3"
     }
 }
