@@ -962,5 +962,13 @@
     "6825ef93": {
         "ubp_id": "LAW_DIM_001",
         "full_hash": "6825ef9305574057b1361a60892f321c189b16d967b4e208a81de232b3561403"
+    },
+    "f534e9d6": {
+        "ubp_id": "LAW_SUBSTRATE_005",
+        "full_hash": "f534e9d6c9321bc104ef3b60e718b8ed9df96263e4024e771e9ff4e661ab6726"
+    },
+    "b652ba85": {
+        "ubp_id": "LAW_COMP_MOG_001",
+        "full_hash": "b652ba85a95e5ea08eee996c7c5a63cc8bd5d939daa144505ad3f7a4a7ba4714"
     }
 }
