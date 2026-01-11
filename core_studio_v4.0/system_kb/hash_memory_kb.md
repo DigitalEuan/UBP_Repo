@@ -878,5 +878,29 @@
     "4b44483c": {
         "ubp_id": "LAW_TRIAD_001",
         "full_hash": "4b44483c6202a1f10d790dcc8df9e16199b1e7a48b6ec6fa0446b9663fc03355"
+    },
+    "b2c1abd6": {
+        "ubp_id": "LAW_FLUX_001",
+        "full_hash": "b2c1abd6dccc0dd181fc50f95e562c172a35c17d4d3266b41378f6b5e4f796ae"
+    },
+    "abdf12ae": {
+        "ubp_id": "LAW_STRUCT_001",
+        "full_hash": "abdf12ae36cc2c21f14ec7fce2249b966c3f33b000605197c44b5ba1f938bb42"
+    },
+    "810dda6e": {
+        "ubp_id": "LAW_LOGIC_GEO_001",
+        "full_hash": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a"
+    },
+    "314bdf43": {
+        "ubp_id": "LAW_RELATION_ORTHO_001",
+        "full_hash": "314bdf434ac895537c829a19bcfbe02c9b3237a2141e48d8b2e319d725c86683"
+    },
+    "2679cca2": {
+        "ubp_id": "LAW_PROTO_INF_001",
+        "full_hash": "2679cca2b2a171b1e91a069b8b5406d80fd5f756d5ef094aef7bcd1847a6068f"
+    },
+    "0c28edb5": {
+        "ubp_id": "LAW_MECH_001",
+        "full_hash": "0c28edb5dd2594ddfa7b5eedc35fb1263c8ee8c52d6c42cdc5169b7075984443"
     }
 }
