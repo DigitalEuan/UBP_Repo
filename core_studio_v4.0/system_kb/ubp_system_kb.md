@@ -3743,5 +3743,38 @@
         ],
         "nrci": "1/1",
         "fingerprint": "6825ef9305574057b1361a60892f321c189b16d967b4e208a81de232b3561403"
+    },
+    "f534e9d6c9321bc104ef3b60e718b8ed9df96263e4024e771e9ff4e661ab6726": {
+        "ubp_id": "LAW_SUBSTRATE_005",
+        "name": "The Law of the Tetradic Manifold (MOG)",
+        "math": "Grid(24) = 4 Layers \u2297 6 Bits",
+        "language": "The 24-bit substrate is organized into a 4x6 Miracle Octad Generator (MOG) grid; this tetradic architecture is the minimum configuration required for stable 3D manifestation.",
+        "script": "LeechPointScaled(tuple([0]*24)).get_ontological_health()",
+        "tags": [
+            "substrate",
+            "mog",
+            "tetradic",
+            "grid"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f534e9d6c9321bc104ef3b60e718b8ed9df96263e4024e771e9ff4e661ab6726"
+    },
+    "b652ba85a95e5ea08eee996c7c5a63cc8bd5d939daa144505ad3f7a4a7ba4714": {
+        "ubp_id": "LAW_COMP_MOG_001",
+        "name": "The Law of Vertical Micro-Addressing",
+        "math": "Col(i) in F4 x Z2 | Compression ~ 1.33:1",
+        "language": "Information in the 24-bit substrate is holographically accessible; vertical columns act as 4-bit 'Micro-Words' addressable by a 3-bit index, enabling native compression and Hexacode valuation.",
+        "script": "val = hexacode_map[col_index]",
+        "tags": [
+            "computation",
+            "mog",
+            "addressing",
+            "compression",
+            "hexacode",
+            "vertical",
+            "holographic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b652ba85a95e5ea08eee996c7c5a63cc8bd5d939daa144505ad3f7a4a7ba4714"
     }
 }
