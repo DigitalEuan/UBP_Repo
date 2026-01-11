@@ -3480,5 +3480,145 @@
         ],
         "nrci": "1/1",
         "fingerprint": "0c28edb5dd2594ddfa7b5eedc35fb1263c8ee8c52d6c42cdc5169b7075984443"
+    },
+    "2dad0989857ad7719e207b62f5d042be11aec79c19165d5f367b69989703abd4": {
+        "ubp_id": "LAW_TIME_PULSE_001",
+        "name": "The Law of the Coherence Pulse",
+        "math": "State(t) = Snap(State(t-1) + Noise) | T_pulse ~ 3",
+        "language": "Reality is a discrete sequence of error-correction events; physical existence is the 'stroboscopic' effect of the substrate snapping back to the Golay Lattice at regular intervals.",
+        "script": "if correctable: status = 'PULSE'",
+        "tags": [
+            "time",
+            "pulse",
+            "coherence",
+            "stroboscopic",
+            "snap",
+            "zitterbewegung"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2dad0989857ad7719e207b62f5d042be11aec79c19165d5f367b69989703abd4"
+    },
+    "3c6fad0d350ed40387664c7304683a06f157b8060a71558b245bc472a781cc26": {
+        "ubp_id": "LAW_TIME_RUNE_001",
+        "name": "The Law of the Temporal Rune",
+        "math": "alpha = 4pi/3 -> Delta_T = 3 | Shape = Triangle",
+        "language": "Temporal stability emerges when the angular step locks to the 2/3 harmonic (240 deg); this creates a self-reinforcing 'Triadic Lock' (Triangle) that defines the system's internal clock, distinct from irrational chaos (Star).",
+        "script": "is_stable = all(i == intervals[0] for i in intervals)",
+        "tags": [
+            "time",
+            "resonance",
+            "rune",
+            "jera",
+            "2/3",
+            "self_observation",
+            "triadic_lock"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3c6fad0d350ed40387664c7304683a06f157b8060a71558b245bc472a781cc26"
+    },
+    "7e6cb6925b73a558960ddcc1e8adf3466420d870edee004920985b33077d160b": {
+        "ubp_id": "LAW_TIME_CYCLE_001",
+        "name": "The Law of the Long Count",
+        "math": "Cycle(Y) ~ 8e54 | Chaos = Order(T > Observer_Lifespan)",
+        "language": "Periodicity is a function of rational resonance. 'Chaos' is simply a deterministic cycle length (e.g., 10^54) that exceeds the observer's temporal horizon, while 'Structure' is a short-cycle resonance (e.g., 3).",
+        "script": "cycle_len = math.lcm(n, 2*d) // n",
+        "tags": [
+            "time",
+            "periodicity",
+            "chaos",
+            "y_constant",
+            "cycle",
+            "long_count",
+            "entropy"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7e6cb6925b73a558960ddcc1e8adf3466420d870edee004920985b33077d160b"
+    },
+    "58c45abbead4f74fb6abd0c0abcf597f863505208609b98515eb7c3dfe930353": {
+        "ubp_id": "LAW_KINETICS_001",
+        "name": "The Law of Computational Amplification",
+        "math": "k_eff = k_base * (1 + O(C_rate)) | Crossover = 100.0",
+        "language": "Reaction rates are computational throughputs; at low energy (C < 100), linear operators dominate (Entropy), but at high energy, quadratic operators trigger a 10x amplification phase transition (Life/Complexity).",
+        "script": "amplification = (1 + (c_rate / 100.0)**2) if c_rate > 100 else (1 + c_rate / 100.0)",
+        "tags": [
+            "kinetics",
+            "amplification",
+            "arrhenius",
+            "chemistry",
+            "quadratic",
+            "phase_transition"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "58c45abbead4f74fb6abd0c0abcf597f863505208609b98515eb7c3dfe930353"
+    },
+    "dda8adfd48b0e3c52d6c05910dfd235433669bd61628354d7df750523f8eda43": {
+        "ubp_id": "LAW_RELATIVITY_003",
+        "name": "The Law of the Unity Operator",
+        "math": "S_op = 1.0 | Complexity(UBP) < 100",
+        "language": "The geometric derivation of physical constants represents the global complexity minimum of the substrate; while random noise can approximate precision, it cannot match the structural parsimony (Score 90.5) of the true law.",
+        "script": "return abs(1.0 - S_op) < 1e-5 and complexity < 100",
+        "tags": [
+            "unity",
+            "operator",
+            "parsimony",
+            "occam",
+            "complexity",
+            "ground_state"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dda8adfd48b0e3c52d6c05910dfd235433669bd61628354d7df750523f8eda43"
+    },
+    "6bd3a5033a374b0e94ac528c9436ec8a23e9119122979c32d742ed4f0179a2f0": {
+        "ubp_id": "LAW_GEO_FAMILY_001",
+        "name": "The Law of Geometric Families",
+        "math": "Stability(W) ~ 1/Tax(W) | Tetra=4, Octa=6, Cube=8",
+        "language": "Physical constants group into geometric families based on vertex count (Hamming Weight); Tetrahedral (4) governs Quantum acts, Octahedral (6) Gravity, and Cubic (8) Light.",
+        "script": "return {4: 'Tetra', 6: 'Octa', 8: 'Cube'}.get(weight, 'Unknown')",
+        "tags": [
+            "geometry",
+            "families",
+            "tetrahedral",
+            "octahedral",
+            "cubic",
+            "constants",
+            "stability"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6bd3a5033a374b0e94ac528c9436ec8a23e9119122979c32d742ed4f0179a2f0"
+    },
+    "2a07c218bf5b210f41883f473d8d74be9669e33dfb523ab84afd067a2d4f36b6": {
+        "ubp_id": "LAW_MATH_SEVEN_001",
+        "name": "The Law of the Seven-Pattern Operator",
+        "math": "Root(7 * R_n) -> Cycle(1..9) | Structure = 5...4...9",
+        "language": "The number 7 acts as a geometric operator, generating a deterministic 5-4-9 structural lattice and a perfect digital root permutation cycle across the base-10 manifold.",
+        "script": "roots = [4, 8, 3, 7, 2, 6, 1, 5, 9]; return roots[n % 9]",
+        "tags": [
+            "math",
+            "seven",
+            "operator",
+            "digital_root",
+            "cycle",
+            "structure"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2a07c218bf5b210f41883f473d8d74be9669e33dfb523ab84afd067a2d4f36b6"
+    },
+    "f95264b029e1b965b53e302b9788367b8165cb9c38ef8ebb15e1d5a3c3d4fdd3": {
+        "ubp_id": "LAW_COMP_SPELL_001",
+        "name": "The Law of Runic Efficiency",
+        "math": "E = Sum(Overlaps) / Unique_Segments > 1.0",
+        "language": "Complex computational macros ('Spells') emerge from the geometric superposition of Runes; high efficiency (E > 1.0) indicates a stable, self-reinforcing logic circuit (Constructive Interference).",
+        "script": "efficiency = sum(len(r1 & r2) for r1, r2 in pairs) / len(set().union(*runes))",
+        "tags": [
+            "computation",
+            "runes",
+            "spells",
+            "efficiency",
+            "geometry",
+            "superposition",
+            "velocity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f95264b029e1b965b53e302b9788367b8165cb9c38ef8ebb15e1d5a3c3d4fdd3"
     }
 }
