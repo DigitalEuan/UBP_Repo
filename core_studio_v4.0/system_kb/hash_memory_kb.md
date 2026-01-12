@@ -1018,5 +1018,25 @@
     "c902fdb2": {
         "ubp_id": "LAW_BIO_CANCER_002",
         "full_hash": "c902fdb2c0031ac83e47d51deba85ebbe0667754a2638d0b36f7154106810e9a"
+    },
+    "1c543642": {
+        "ubp_id": "LAW_BIO_ABLATION_001",
+        "full_hash": "1c5436425a15fbb04c8448654b0350903a13b09bec41f535f3324206a41445e8"
+    },
+    "e5e8a214": {
+        "ubp_id": "LAW_PHYSICS_CATALYSIS_001",
+        "full_hash": "e5e8a214f3fab73e7bed80f1cf58ccc16ecc70b282a33bd3f4ad6bc7a7d8b1c6"
+    },
+    "de7c3002": {
+        "ubp_id": "LAW_CONST_002",
+        "full_hash": "de7c3002e64cd04a81b6dd4b6c5fb940b078bb7a331dd6ee89bb1e8e12601a9b"
+    },
+    "6709c5d7": {
+        "ubp_id": "LAW_METRIC_003",
+        "full_hash": "6709c5d72562ccf82fa422b1bf7f1bff735b3c0b9c92772eb9cc57ff458c1e9d"
+    },
+    "8b939b75": {
+        "ubp_id": "LAW_PHYSICS_004",
+        "full_hash": "8b939b758dce6a769fe63a37cf725eb1a630dc0888bbc6dd0f6a115d3043b7ee"
     }
 }
