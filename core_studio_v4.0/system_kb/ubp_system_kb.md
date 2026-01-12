@@ -4064,5 +4064,137 @@
         ],
         "nrci": "1/1",
         "fingerprint": "8b939b758dce6a769fe63a37cf725eb1a630dc0888bbc6dd0f6a115d3043b7ee"
+    },
+    "6b5878b463c230d9a6ef2356db36c46aa0dada8823c0d73834d933b099fef8bf": {
+        "ubp_id": "LAW_COMP_011",
+        "name": "The Law of Computational Mode Shifts",
+        "math": "w_opt = {1.0, 1.53, 2.5} | Ratio = 2.5",
+        "language": "Physical phase transitions are reconfigurations of the substrate's operational geometry; active information processing (entanglement) requires a 1+2Y weight, while critical transitions trigger a shift to the 2.5 pentadic limit.",
+        "script": "w_entangle = 1 + 2*Y; w_critical = 2.5; shift = w_critical / w_ordered",
+        "tags": [
+            "entanglement",
+            "magnetism",
+            "phase_transition",
+            "complexity",
+            "mode_shift",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6b5878b463c230d9a6ef2356db36c46aa0dada8823c0d73834d933b099fef8bf"
+    },
+    "c153a0c90dce9b2d4d2d093e0c7517c3dc4cd3df6c11059af0ada43781674a4d": {
+        "ubp_id": "LAW_COSMO_006",
+        "name": "The Law of Dark Coherence",
+        "math": "DM_fraction = 333 * (0.999997 - NRCI_obs)",
+        "language": "Dark Matter is not a particle; it is the gravitational manifestation of informational noise (coherence deficit) within the 24-bit substrate.",
+        "script": "deficit = Fraction(999997, 1000000) - nrci_obs; dm_f = deficit * 333",
+        "tags": [
+            "dark_matter",
+            "coherence",
+            "deficit",
+            "cosmology",
+            "v3.3"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c153a0c90dce9b2d4d2d093e0c7517c3dc4cd3df6c11059af0ada43781674a4d"
+    },
+    "bb985a75bdce4fa83664b2afa13549c7c963e24e63c4c275ab465746be839655": {
+        "ubp_id": "LAW_TIME_004",
+        "name": "The Law of BitTime Quantization",
+        "math": "dt = 10^-12 s",
+        "language": "Time is the discrete sequence of substrate updates; the 'Wall of Reality' occurs at 1 THz.",
+        "script": "bit_time = Fraction(1, 10**12)",
+        "tags": [
+            "time",
+            "quantization",
+            "bittime",
+            "thz",
+            "v3.3"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bb985a75bdce4fa83664b2afa13549c7c963e24e63c4c275ab465746be839655"
+    },
+    "c14c608bb3cb815a307f020afd9adc018eaa03866e9871fbea00accf48edb35f": {
+        "ubp_id": "LAW_RESONANCE_003",
+        "name": "The Law of Crystalline Supercoherence",
+        "math": "f_res = (Y * O_obs) / (dt * (1 - NRCI))",
+        "language": "Natural crystal resonance is the frequency at which the substrate's error-correction (GLR) perfectly balances the informational drag of the lattice geometry; stability is maintained via sub-harmonic (Acoustic) or super-harmonic (Optical) locking.",
+        "script": "deficit = Fraction(1, 1) - nrci; f = (Y * O_obs) / (dt * deficit)",
+        "tags": [
+            "crystals",
+            "resonance",
+            "supercoherence",
+            "quartz",
+            "diamond",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c14c608bb3cb815a307f020afd9adc018eaa03866e9871fbea00accf48edb35f"
+    },
+    "9b2131f8a605b4f244aa1f475087aaedb45fbfd3e59b319ce26100aaa379b429": {
+        "ubp_id": "LAW_DRUG_007",
+        "name": "The Law of Molecular Coherence",
+        "math": "0.999995 <= NRCI <= 0.999998 | W=8",
+        "language": "Successful pharmaceuticals are constrained to an ultra-narrow coherence corridor; therapeutic efficacy is achieved when a molecule utilizes Aromatic Anchors (Weight 8) to minimize substrate tension.",
+        "script": "is_coherent = (0.999995 <= nrci <= 0.999998) and (weight == 8)",
+        "tags": [
+            "pharmacology",
+            "coherence",
+            "aromaticity",
+            "octad",
+            "drug_discovery",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9b2131f8a605b4f244aa1f475087aaedb45fbfd3e59b319ce26100aaa379b429"
+    },
+    "f97f8afc711202540911b6ad999fe7664128683fabb486c32f1d749d9f3bea05": {
+        "ubp_id": "LAW_MAT_SYNTHESIS_001",
+        "name": "The Law of Material Synthesis (MPI Hierarchy)",
+        "math": "MPI = NRCI_Global * S_opt * (1 - Uncertainty)",
+        "language": "Material performance is a hierarchical projection of multi-scale coherence; the MPI identifies the SSS-Grade (C-Fiber/SiC) as the peak of structural utility.",
+        "script": "mpi = nrci_global * s_opt * (1 - uncertainty)",
+        "tags": [
+            "materials",
+            "synthesis",
+            "MPI",
+            "hierarchy",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f97f8afc711202540911b6ad999fe7664128683fabb486c32f1d749d9f3bea05"
+    },
+    "2541d870a64bb1c84a0f377293512b76b6d27bfd86e1057077692f2976088bca": {
+        "ubp_id": "LAW_MAT_HEAL_001",
+        "name": "The Law of Computational Self-Healing",
+        "math": "Heal = ACTIVE iff NRCI > 0.94",
+        "language": "Self-healing is a substrate-level correction event; when global coherence exceeds the 0.94 threshold, the system can utilize the Potential Layer to reset local structural failures.",
+        "script": "can_heal = nrci_global > 0.94",
+        "tags": [
+            "materials",
+            "healing",
+            "potential_layer",
+            "correction",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2541d870a64bb1c84a0f377293512b76b6d27bfd86e1057077692f2976088bca"
+    },
+    "f8ac19fdcf375e2ffc630301ee74f3a329625a15df9d84e3728b730e2bb8bd0d": {
+        "ubp_id": "LAW_FORCE_003",
+        "name": "The Law of the Weak Horizon (Layer-Crossing)",
+        "math": "M_Z = 24 * Y_inv | M_W = 21 * Y_inv",
+        "language": "The Weak Force is the computational overhead of inter-layer information transfer; the Z-boson is the energy of a full 24-bit word sync, while the W-boson is the energy of a 21-bit shift (the correctable path).",
+        "script": "z_mass = 24 * Y_inv; w_mass = (24 - 3) * Y_inv",
+        "tags": [
+            "physics",
+            "weak_force",
+            "z_boson",
+            "w_boson",
+            "golay_radius",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f8ac19fdcf375e2ffc630301ee74f3a329625a15df9d84e3728b730e2bb8bd0d"
     }
 }
