@@ -974,5 +974,49 @@
     "f1e6368b": {
         "ubp_id": "LAW_COMP_MOG_002",
         "full_hash": "f1e6368b223a4a23216c12cd2329198d7031753c77c9977f6214f3ee70517add"
+    },
+    "7089e03e": {
+        "ubp_id": "LAW_COSMO_003",
+        "full_hash": "7089e03e19f80b9cbaed1ffdc2d964fa9772f8f45a4e1aa642855a0a15f44ba4"
+    },
+    "985f1406": {
+        "ubp_id": "LAW_COSMO_004",
+        "full_hash": "985f14067f5ef63db091368af457112afd09d667e5be8fe20836aa330b642971"
+    },
+    "83f47d4f": {
+        "ubp_id": "LAW_COSMO_005",
+        "full_hash": "83f47d4f995166ddbe85d12a15ec21e26c68524058be7a510c258ad27b2f5581"
+    },
+    "f491ebdb": {
+        "ubp_id": "LAW_EM_TOGGLE_001",
+        "full_hash": "f491ebdb514dd04b356258a2f04d01cc0977745f2f936952d3c8896404e9491d"
+    },
+    "1f89ac8d": {
+        "ubp_id": "LAW_PHYSICS_HELICITY_001",
+        "full_hash": "1f89ac8d93683a297de78efa73f1c4201031f66813645d87759dd0009a8efc87"
+    },
+    "1893e83f": {
+        "ubp_id": "LAW_COSMOS_002",
+        "full_hash": "1893e83f5453708d5b73ed87a42c6f17a5922af01985828ac84c3dc36846525f"
+    },
+    "24c931d6": {
+        "ubp_id": "LAW_PHYSICS_MAXWELL_002",
+        "full_hash": "24c931d65d1c38e99c174aca36143c122eeef4f121d476419821c9817cf6153c"
+    },
+    "876f225a": {
+        "ubp_id": "LAW_PHYSICS_MAXWELL_003",
+        "full_hash": "876f225a141a0807d17d901513500d5e90ebc78da1da4bf9906ecbafb17ceecd"
+    },
+    "fe1457e9": {
+        "ubp_id": "LAW_ENG_TOGGLE_POWER_001",
+        "full_hash": "fe1457e9d55fe4039819053c2c6566c24b22a77b64f0ea90c0e936780ad6ee65"
+    },
+    "fc4f5809": {
+        "ubp_id": "LAW_BIO_CANCER_001",
+        "full_hash": "fc4f5809bff6a699ee9d2d0dd41b5ca95c7e67f8e1c47c8f067bedf12c9c790f"
+    },
+    "c902fdb2": {
+        "ubp_id": "LAW_BIO_CANCER_002",
+        "full_hash": "c902fdb2c0031ac83e47d51deba85ebbe0667754a2638d0b36f7154106810e9a"
     }
 }
