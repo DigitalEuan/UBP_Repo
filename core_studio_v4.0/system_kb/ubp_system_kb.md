@@ -3980,5 +3980,89 @@
         ],
         "nrci": "1/1",
         "fingerprint": "c902fdb2c0031ac83e47d51deba85ebbe0667754a2638d0b36f7154106810e9a"
+    },
+    "1c5436425a15fbb04c8448654b0350903a13b09bec41f535f3324206a41445e8": {
+        "ubp_id": "LAW_BIO_ABLATION_001",
+        "name": "The Law of Informational Ablation",
+        "math": "NRCI -> 0 => Immune_Inference(Ghost)",
+        "language": "Mechanical destruction of a sub-coherent manifold (tumor) resets local entropy to zero, releasing the 'Holographic Ghost' of the identity which catalyzes a global system-wide correction (Immune Response).",
+        "script": "if pressure > threshold: nrci = 0; trigger_immune_inference(ghost_bits)",
+        "tags": [
+            "histotripsy",
+            "ablation",
+            "entropy_reset",
+            "immune_response",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1c5436425a15fbb04c8448654b0350903a13b09bec41f535f3324206a41445e8"
+    },
+    "e5e8a214f3fab73e7bed80f1cf58ccc16ecc70b282a33bd3f4ad6bc7a7d8b1c6": {
+        "ubp_id": "LAW_PHYSICS_CATALYSIS_001",
+        "name": "The Law of Geometric Catalysis",
+        "math": "Nucleation(Field) requires Template(Geometry)",
+        "language": "Mechanical ablation (NRCI -> 0) does not delete information; it releases a 1-bit 'Identity Anchor' (Holographic Ghost) that catalyzes a global system-wide correction (Immune Response).",
+        "script": "recovery_potential = Fraction(anchor_bit, 24) * 24",
+        "tags": [
+            "physics",
+            "catalysis",
+            "geometry",
+            "immune_response",
+            "holographic_ghost",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e5e8a214f3fab73e7bed80f1cf58ccc16ecc70b282a33bd3f4ad6bc7a7d8b1c6"
+    },
+    "de7c3002e64cd04a81b6dd4b6c5fb940b078bb7a331dd6ee89bb1e8e12601a9b": {
+        "ubp_id": "LAW_CONST_002",
+        "name": "The Law of Bit-Saturated Constants",
+        "math": "S_op = 1.0 | Tax = sum(Gears_LSB)",
+        "language": "Physical constants are the bit-saturated limits of the 24-bit substrate; the final precision of reality is a function of the Least Significant Bits (LSB) of the Leech and Golay manifolds.",
+        "script": "tax_g = (y/80) + (y/K) + 1/(8*N); tax_mp = (11/12 * y/6) + 1/N",
+        "tags": [
+            "constants",
+            "saturation",
+            "precision",
+            "LSB",
+            "quantization",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "de7c3002e64cd04a81b6dd4b6c5fb940b078bb7a331dd6ee89bb1e8e12601a9b"
+    },
+    "6709c5d72562ccf82fa422b1bf7f1bff735b3c0b9c92772eb9cc57ff458c1e9d": {
+        "ubp_id": "LAW_METRIC_003",
+        "name": "The Law of the Self-Actualizing Observer (Saturated)",
+        "math": "G = (O_obs * sqrt(pi) / 10^11) * (1 - (Y/80 + Y/K + 1/8N))",
+        "language": "The Gravitational Constant is the bit-saturated projection of the Observer's fixed point, corrected by the Leech curvature (1/80), density friction (1/K), and octad quantization (1/8N).",
+        "script": "G = (o_obs * math.sqrt(pi) / 10**11) * (1 - (y/80 + y/196560 + 1/(8*4096)))",
+        "tags": [
+            "gravity",
+            "observer",
+            "saturated",
+            "G",
+            "LSB",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6709c5d72562ccf82fa422b1bf7f1bff735b3c0b9c92772eb9cc57ff458c1e9d"
+    },
+    "8b939b758dce6a769fe63a37cf725eb1a630dc0888bbc6dd0f6a115d3043b7ee": {
+        "ubp_id": "LAW_PHYSICS_004",
+        "name": "The Law of the Planck Anchor (Saturated)",
+        "math": "m_p = (Y_m * 10^-7) * O_obs * (1 - (11/12 * Y/6 + 1/N))",
+        "language": "The Planck Mass is the bit-saturated density anchor of the substrate, limited by the 11/12 dimensional tax and the 1/N noumenal quantization floor.",
+        "script": "mp = (y_m * 10**-7) * o_obs * (1 - (Fraction(11,12) * y/6 + 1/4096))",
+        "tags": [
+            "physics",
+            "planck_mass",
+            "saturated",
+            "anchor",
+            "LSB",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8b939b758dce6a769fe63a37cf725eb1a630dc0888bbc6dd0f6a115d3043b7ee"
     }
 }
