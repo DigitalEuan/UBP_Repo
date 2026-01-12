@@ -1038,5 +1038,37 @@
     "8b939b75": {
         "ubp_id": "LAW_PHYSICS_004",
         "full_hash": "8b939b758dce6a769fe63a37cf725eb1a630dc0888bbc6dd0f6a115d3043b7ee"
+    },
+    "6b5878b4": {
+        "ubp_id": "LAW_COMP_011",
+        "full_hash": "6b5878b463c230d9a6ef2356db36c46aa0dada8823c0d73834d933b099fef8bf"
+    },
+    "c153a0c9": {
+        "ubp_id": "LAW_COSMO_006",
+        "full_hash": "c153a0c90dce9b2d4d2d093e0c7517c3dc4cd3df6c11059af0ada43781674a4d"
+    },
+    "bb985a75": {
+        "ubp_id": "LAW_TIME_004",
+        "full_hash": "bb985a75bdce4fa83664b2afa13549c7c963e24e63c4c275ab465746be839655"
+    },
+    "c14c608b": {
+        "ubp_id": "LAW_RESONANCE_003",
+        "full_hash": "c14c608bb3cb815a307f020afd9adc018eaa03866e9871fbea00accf48edb35f"
+    },
+    "9b2131f8": {
+        "ubp_id": "LAW_DRUG_007",
+        "full_hash": "9b2131f8a605b4f244aa1f475087aaedb45fbfd3e59b319ce26100aaa379b429"
+    },
+    "f97f8afc": {
+        "ubp_id": "LAW_MAT_SYNTHESIS_001",
+        "full_hash": "f97f8afc711202540911b6ad999fe7664128683fabb486c32f1d749d9f3bea05"
+    },
+    "2541d870": {
+        "ubp_id": "LAW_MAT_HEAL_001",
+        "full_hash": "2541d870a64bb1c84a0f377293512b76b6d27bfd86e1057077692f2976088bca"
+    },
+    "f8ac19fd": {
+        "ubp_id": "LAW_FORCE_003",
+        "full_hash": "f8ac19fdcf375e2ffc630301ee74f3a329625a15df9d84e3728b730e2bb8bd0d"
     }
 }
