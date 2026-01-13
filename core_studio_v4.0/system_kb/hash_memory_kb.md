@@ -1070,5 +1070,57 @@
     "f8ac19fd": {
         "ubp_id": "LAW_FORCE_003",
         "full_hash": "f8ac19fdcf375e2ffc630301ee74f3a329625a15df9d84e3728b730e2bb8bd0d"
+    },
+   "f92a9499": {
+        "ubp_id": "LAW_BIO_METABOLISM_001",
+        "full_hash": "f92a9499f31b790b6c11d250f0e976ba04c260e7935374dd8638857410425d2f"
+    },
+    "bead9daf": {
+        "ubp_id": "LAW_BIO_ANCHOR_001",
+        "full_hash": "bead9daf0f1377530ed7d7a8d5a14866fe39da45e476ff6b4d1f73483e8e6abb"
+    },
+    "6824700d": {
+        "ubp_id": "LAW_BIO_RECOVERY_001",
+        "full_hash": "6824700d16c882afe73cd34896e5c6cbda93b8d3e769f10c4335388f861f316e"
+    },
+    "65fad12d": {
+        "ubp_id": "LAW_BIO_HYSTERESIS_001",
+        "full_hash": "65fad12d95decfb42adde593a5e3663ee45c7f2766e6fcc3c67621e3dc6d15b6"
+    },
+    "5af4c528": {
+        "ubp_id": "LAW_BIO_ENDO_001",
+        "full_hash": "5af4c528ae441461d61caa52621a29ae38090d899fceaa79b26e9e0b045e9ca4"
+    },
+    "70618b7e": {
+        "ubp_id": "LAW_FORCE_004",
+        "full_hash": "70618b7ef473943eb2c5d6a8bb91d2fe152ea08b1204a84242fed02fb2c22922"
+    },
+    "86b29c1c": {
+        "ubp_id": "LAW_CHEM_HYDROCARBON_001",
+        "full_hash": "86b29c1cc75fd5924d5271ae20c8b8cda7f8e007138b83c1e093a909e4fa0dd7"
+    },
+    "d781c402": {
+        "ubp_id": "LAW_CHEM_METHANE_001",
+        "full_hash": "d781c4024f06cac2b481e5539b6eb2f9c07209ff634a73852538ac778369a483"
+    },
+    "69009663": {
+        "ubp_id": "LAW_CHEM_PHASE_001",
+        "full_hash": "69009663794385b3f31006ea53af931b97de1c5bb184ebdbb8a7c97f6997d15b"
+    },
+    "f6ddc3f9": {
+        "ubp_id": "LAW_GEO_001",
+        "full_hash": "f6ddc3f9c19a15c008e7ab7baece07ef2026c0ebb2a59db5402fd3a5b17938e2"
+    },
+    "24533e98": {
+        "ubp_id": "LAW_GEO_002",
+        "full_hash": "24533e98fefa6980b3633130c540731b54604306e6a7b4b530d003e177d938e4"
+    },
+    "a707e076": {
+        "ubp_id": "LAW_GEO_003",
+        "full_hash": "a707e07621cdaaa8fac1b210e13eeb1ab304dbace72d1976d825d526fd857eb5"
+    },
+    "aa94cec1": {
+        "ubp_id": "LAW_ACOUSTIC_003",
+        "full_hash": "aa94cec195c00133f30edd7f7b182ab113aacb107399cd03f8e03c33f5da5ed5"
     }
 }
