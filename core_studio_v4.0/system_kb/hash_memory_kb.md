@@ -1154,5 +1154,61 @@
     "e8f7c28f": {
         "ubp_id": "LAW_SUBSTRATE_007",
         "full_hash": "e8f7c28f5e716f148cdd1cd693d3e7d8ba3fe37a55602c5314313a4b0dd079ee"
+    },
+    "68fcefa3": {
+        "ubp_id": "LAW_CHEM_FERT_001",
+        "full_hash": "68fcefa3cce32d3ce6b884e2720263d495d24cc57bdef2563da3a1e1a8886ccc"
+    },
+    "de665e84": {
+        "ubp_id": "LAW_BIO_NUTRI_001",
+        "full_hash": "de665e849ce9c063eb65efce684510ff8d9f700c46736ce68ed444e87cb70d74"
+    },
+    "8889021e": {
+        "ubp_id": "LAW_COSMO_007",
+        "full_hash": "8889021eec648574e266b5ca7b671073582c6ca8db0f5b0181ca7582e213ef2e"
+    },
+    "17467a6e": {
+        "ubp_id": "LAW_TIME_005",
+        "full_hash": "17467a6eeec987c7f3a878fe17f0c599609978c4f7ba4f6e7df6dc9a32850d17"
+    },
+    "a3dc26dd": {
+        "ubp_id": "LAW_COMP_013",
+        "full_hash": "a3dc26ddf32cc20fca6a640aa9432186af84bd4156aacfb7693e3997a1443f0f"
+    },
+    "8ae073ea": {
+        "ubp_id": "LAW_RELATIVITY_001",
+        "full_hash": "8ae073ea8ec42a8317174669f038997dd33834a8f8b86381388d654830d87084"
+    },
+    "49e0f7fd": {
+        "ubp_id": "LAW_MINERAL_001",
+        "full_hash": "49e0f7fdf7984cdca3b16dca6490ec757a85006b30be4fc2fb7161b360dda941"
+    },
+    "8d1e98d6": {
+        "ubp_id": "LAW_MINERAL_002",
+        "full_hash": "8d1e98d655a68a8fca2e6c82a8437e95f135fefdabf511160f34bfba7a13ffe8"
+    },
+    "99664518": {
+        "ubp_id": "LAW_SYMBOL_004",
+        "full_hash": "99664518d36184a3134bd9430a6d9cf0c5848952980fd8689abbd83a60bc4fc5"
+    },
+    "a9bc4079": {
+        "ubp_id": "LAW_PHYSICS_NEUTRINO_001",
+        "full_hash": "a9bc4079b5725e2f7bce83a47b920b78176f04b4f856e4e994cc55e8ac127696"
+    },
+    "344435c4": {
+        "ubp_id": "LAW_LANG_004",
+        "full_hash": "344435c4f5d19321636f8e5515d7706cbfceaeeafede110a9217a5d2675de370"
+    },
+    "2cb8b8dd": {
+        "ubp_id": "LAW_LANG_005",
+        "full_hash": "2cb8b8dd3fc7c4c3728b31a04a113b59854fbc792e934fafb48079d3d1898c69"
+    },
+    "304ec1db": {
+        "ubp_id": "LAW_RESONANCE_002",
+        "full_hash": "304ec1db405972867cded212980226c6306d002e5a719635209c3eb31abc0f8e"
+    },
+    "50b3f1a9": {
+        "ubp_id": "LAW_HGR_001",
+        "full_hash": "50b3f1a9f217e5ad32e10fec98324bccb9176990344f208fb049130b2595b989"
     }
 }
