@@ -1,0 +1,60 @@
+# The Universal Binary Principle (UBP) – Metabolic Disease Model
+
+This repository contains the core framework and experimental studies for modeling metabolic signaling as a **24-bit error-correction process**. Based on the Binary Golay Code (), this model demonstrates that diabetes is a geometric collapse (the "Diabetic Horizon") occurring at a Hamming distance of .
+
+## 🔬 Core Theory
+
+The UBP framework posits that biological signaling is not continuous but **quantized**.
+
+* **The Substrate:** A 24-dimensional binary vector space.
+* **The Code:** The Binary Golay  code, providing perfect error correction for up to 3 bit-flips.
+* **The Horizon:** A transition point () where cellular receivers can no longer resolve the signal, leading to insulin resistance.
+
+## 🚀 Key Features
+
+* **Deterministic Reproducibility:** Built using Python's `fractions.Fraction` for exact rational arithmetic—eliminating floating-point drift.
+* **High-Dimensional Geometry:** Tools for mapping biochemical structures (via SHA-256 hashing) into the 24-bit  substrate.
+* **Resonance Simulation:** Experimental modules for testing external frequency biasing on state recovery.
+
+## 📊 Experimental Studies
+
+This repository includes the code and results for:
+
+1. **Universal Threshold Analysis:** Establishing the  "Diabetic Horizon."
+2. **Zinc Anchor Effect:** Modeling how structural rigidity reduces effective Hamming noise.
+3. **Resonance Tuning:** Accelerating state recovery (5$\times$ speedup) via geometric biasing.
+4. **Metabolic Hysteresis:** Quantifying the stability buffer of "Perfect Remission" () vs. "Symptomatic Management" ().
+5. **Multi-Pathway Dynamics:** Mapping interactions between Insulin, Glucagon, Leptin, GLP-1, and Cortisol.
+
+## 🛠 Usage
+
+The core framework is designed for researchers to plug in their own molecular sequences or perturbation datasets.
+
+```python
+from ubp_core import GolaySubstrate, MolecularMapper
+
+# Initialize the 24-bit geometric substrate
+substrate = GolaySubstrate()
+
+# Map a molecular identity (e.g., Insulin) to a 24-bit codeword
+insulin_codeword = MolecularMapper.map_to_g24("C257H383N65O77S6")
+
+# Calculate the Hamming distance of a perturbation
+noise_vector = [1, 0, 1, 1, 0, ...] # 24-bit noise
+distance = substrate.calculate_hamming(insulin_codeword, noise_vector)
+
+if distance >= 4:
+    print("Diabetic Horizon Breached: Signal Rejected")
+
+```
+
+## 📜 Citation
+
+If you use this framework in your research, please cite:
+
+> Craig, E. R. A. (2026). *The Universal Binary Principle: Metabolic Disease as Information Geometry*. GitHub: https://github.com/DigitalEuan/UBP_Repo/tree/main/metabolic_disease
+
+## 🤝 Acknowledgments
+
+* **GenSpark AI:** For donating computational credits.
+* **Marcel Golay & John Leech:** For the mathematical foundations of the  code and  lattice.
