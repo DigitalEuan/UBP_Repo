@@ -1138,5 +1138,21 @@
     "530a62f8": {
         "ubp_id": "LAW_META_GENESIS_001",
         "full_hash": "530a62f8633ac4849ebebcea54520ff83f11ccd5076e2b9860d87d928e350d56"
+    },
+    "ed5231f8": {
+        "ubp_id": "LAW_RAINBOW_001",
+        "full_hash": "ed5231f866cfd01176a5f162fd36091b46e79514153e130e2f6e6b081f9119cb"
+    },
+    "39fd9901": {
+        "ubp_id": "LAW_PLATONIC_001",
+        "full_hash": "39fd990119fc1c429bf465caaaf0f875ca45757d8ad3de12b9d92e431d2e89e9"
+    },
+    "b0cd4e5d": {
+        "ubp_id": "LAW_PLATONIC_001",
+        "full_hash": "b0cd4e5db6de20107c01bfd43f099c508421568f884787945020c1fb90a2eae0"
+    },
+    "e8f7c28f": {
+        "ubp_id": "LAW_SUBSTRATE_007",
+        "full_hash": "e8f7c28f5e716f148cdd1cd693d3e7d8ba3fe37a55602c5314313a4b0dd079ee"
     }
 }
