@@ -1122,5 +1122,21 @@
     "aa94cec1": {
         "ubp_id": "LAW_ACOUSTIC_003",
         "full_hash": "aa94cec195c00133f30edd7f7b182ab113aacb107399cd03f8e03c33f5da5ed5"
+    },
+    "8b1b7f1c": {
+        "ubp_id": "LAW_COMP_VERIFY_001",
+        "full_hash": "8b1b7f1cd73b77ea0000a9fc3d456049ef3705615d48fbe6b25becbf6b7736f3"
+    },
+    "b44855a4": {
+        "ubp_id": "LAW_MIND_001",
+        "full_hash": "b44855a4c4bbdc4c87f31882ea616c6807e4bd520d3c62898d78ee86c7a7e561"
+    },
+    "439d82a5": {
+        "ubp_id": "LAW_BIO_SANITATION_001",
+        "full_hash": "439d82a5c7540816a3643b74def42a3a0eb2e9238c6eeb2d410f28cc168ec21c"
+    },
+    "530a62f8": {
+        "ubp_id": "LAW_META_GENESIS_001",
+        "full_hash": "530a62f8633ac4849ebebcea54520ff83f11ccd5076e2b9860d87d928e350d56"
     }
 }
