@@ -4469,5 +4469,70 @@
         ],
         "nrci": "1/1",
         "fingerprint": "530a62f8633ac4849ebebcea54520ff83f11ccd5076e2b9860d87d928e350d56"
+    },
+    "ed5231f866cfd01176a5f162fd36091b46e79514153e130e2f6e6b081f9119cb": {
+        "ubp_id": "LAW_RAINBOW_001",
+        "name": "The Law of the Rainbow Horizon",
+        "math": "theta_opt \u2248 42 deg | Hamming(42, 0) = 3",
+        "language": "The 42 degree optical signature is the physical projection of the Golay G24 Error-Correction Radius (t=3).",
+        "script": "BinaryLinearAlgebra.hamming_weight([1, 0, 1, 0, 1, 0]) == 3",
+        "tags": [
+            "optics",
+            "rainbow",
+            "horizon",
+            "42",
+            "golay_limit"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ed5231f866cfd01176a5f162fd36091b46e79514153e130e2f6e6b081f9119cb"
+    },
+    "39fd990119fc1c429bf465caaaf0f875ca45757d8ad3de12b9d92e431d2e89e9": {
+        "ubp_id": "LAW_PLATONIC_001",
+        "name": "The Law of the Binary-Platonic Wall",
+        "math": "Ratio = 25/32 (0.78125)",
+        "language": "The saturation point of the 24-bit substrate; the maximum 3-bit displacement from the Zero-Anchor within an 8-bit byte.",
+        "script": "Fraction(25, 32)",
+        "tags": [
+            "geometry",
+            "platonic",
+            "saturation",
+            "ratio"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "39fd990119fc1c429bf465caaaf0f875ca45757d8ad3de12b9d92e431d2e89e9"
+    },
+    "b0cd4e5db6de20107c01bfd43f099c508421568f884787945020c1fb90a2eae0": {
+        "ubp_id": "LAW_PLATONIC_001",
+        "name": "The Law of the Binary-Platonic Wall",
+        "math": "Ratio = 25/32 | W=3 (Correctable)",
+        "language": "The saturation point of the 24-bit substrate is the ratio 25/32; this corresponds to a Hamming Weight of 3, representing the maximum bandwidth that can be error-corrected within a single byte.",
+        "script": "is_stable = hamming_weight(binary(25/32)) <= 3",
+        "tags": [
+            "geometry",
+            "platonic",
+            "saturation",
+            "ratio",
+            "fqhe",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b0cd4e5db6de20107c01bfd43f099c508421568f884787945020c1fb90a2eae0"
+    },
+    "e8f7c28f5e716f148cdd1cd693d3e7d8ba3fe37a55602c5314313a4b0dd079ee": {
+        "ubp_id": "LAW_SUBSTRATE_007",
+        "name": "The Law of the V4 Stabilizer",
+        "math": "L_R ^ L_I ^ L_A = 0 | Group = V4",
+        "language": "The four ontological layers of the MOG are governed by Klein Four-Group logic; this algebraic closure enables holographic error-correction and ensures that any two layers can reconstruct the third.",
+        "script": "assert (reality ^ info) == active",
+        "tags": [
+            "substrate",
+            "mog",
+            "v4",
+            "klein_group",
+            "stabilizer",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e8f7c28f5e716f148cdd1cd693d3e7d8ba3fe37a55602c5314313a4b0dd079ee"
     }
 }
