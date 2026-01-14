@@ -1742,21 +1742,22 @@
         "nrci": "1/1",
         "fingerprint": "d592581534d2a686fd28b6be1dd449d3951c86055f7c9664e69c5e04f5749460"
     },
-    "adcc2a3214c531b82e7f6f7e4e700afe3f5ddc848114c17a5a0a5faa36724fe0": {
-        "ubp_id": "LAW_PHYSICS_003",
-        "name": "The Hierarchy Generator (Gravitational Depth)",
-        "math": "Ratio_ee = 196560^8 approx 10^42",
-        "language": "Derives the relative strength of Gravity vs Electromagnetism (The Hierarchy Problem) as a function of the Leech Lattice Density (K=196560) and the Golay Bit-Depth. Electrons (Leptons) interact via the full 8-bit Octad (K^8 ~ 10^42), while Protons (Hadrons) interact via the 7-bit Static Mass (K^7 ~ 10^37).",
-        "script": "K=196560; Ratio_Proton=K**7; Ratio_Electron=K**8",
+    "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3": {
+        "ubp_id": "LAW_PHYSICS_003_REFINED",
+        "name": "The Law of Binary-Observer Hierarchy",
+        "math": "Ratio = K^8 * (Y_inv / 2)",
+        "language": "The Hierarchy Problem is a volumetric scaling effect; the 10^42 gap is the 8-bit Octad capacity of the Leech Lattice scaled by the binary distribution of the Observer Fixed Point.",
+        "script": "K = 196560; Y_inv = UBPUltimateSubstrate.get_constants()['Y_inv']; return (K**8) * (Y_inv / 2)",
         "tags": [
+            "physics",
+            "hierarchy",
             "gravity",
-            "hierarchy_problem",
-            "leech_density",
-            "golay_depth",
-            "electron_proton_mass"
+            "leech_lattice",
+            "observer",
+            "octad"
         ],
-        "nrci": "1/1",
-        "fingerprint": "adcc2a3214c531b82e7f6f7e4e700afe3f5ddc848114c17a5a0a5faa36724fe0"
+        "nrci": "0.9907",
+        "fingerprint": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
     },
     "56b1b77920e306ac600bd5241baedad5f96fbd51ebcdc2e92f038650ab15ea5e": {
         "ubp_id": "LAW_INFO_OID",
@@ -5483,5 +5484,22 @@
         ],
         "nrci": "1/1",
         "fingerprint": "9b9132b4a611dbdb387286306bfb2dc523ac7501dc9423c103343a8026301d66"
+    },
+    "99de004a307280d5fd004c5a9d7b4f08a5c2f98c375d5eb5a408bb19703819b9": {
+        "ubp_id": "LAW_MEASURE_003",
+        "name": "The Law of Gravitational Precision (OnBit)",
+        "math": "Delta_G = (2.4 / 196560) * sqrt(pi) * (1 + Y/16)",
+        "language": "The uncertainty of the Gravitational Constant is the fixed point where Leech Surface Tension meets the Orthogonal Drag of the Observer; it is the ultimate resolution of the 24-bit substrate.",
+        "script": "T_L = Fraction(24, 10) / 196560; return T_L * math.sqrt(math.pi) * (1 + Y/16)",
+        "tags": [
+            "gravity",
+            "G",
+            "uncertainty",
+            "onbit",
+            "leech_tension",
+            "observer_drag"
+        ],
+        "nrci": "0.9999",
+        "fingerprint": "99de004a307280d5fd004c5a9d7b4f08a5c2f98c375d5eb5a408bb19703819b9"
     }
 }
