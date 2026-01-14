@@ -1218,5 +1218,45 @@
     "3a42893e": {
         "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
         "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
+    },
+    "3a42893e": {
+        "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
+        "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
+    },
+    "4ace1985": {
+        "ubp_id": "LAW_COMP_001",
+        "full_hash": "4ace198570babbb5cb26abde322c29406c4a8dcd343e722585ee02b4d4bd8740"
+    },
+    "8ce06c82": {
+        "ubp_id": "LAW_TOPOLOGY_002",
+        "full_hash": "8ce06c823b8cc0c30102fc809f2c32359b1cfd0fb90c5fabe5d2fa8d40427f7e"
+    },
+    "775db1fc": {
+        "ubp_id": "LAW_DRUG_008",
+        "full_hash": "775db1fce2d540fba9b680d8c76ea8f3404b8c2707334f0f219467026de991d8"
+    },
+    "a8acc6eb": {
+        "ubp_id": "LAW_GATEWAY_001",
+        "full_hash": "a8acc6ebb0ee476bcb99c7ceb12042440bf64c850f8168720741ff14b2ce6c7d"
+    },
+    "eb21ef6e": {
+        "ubp_id": "LAW_LEPTON_002",
+        "full_hash": "eb21ef6e2b26555a659a65d73dcf562144f4f9769947a23a5d26ab776cc6cbaf"
+    },
+    "6e68a08a": {
+        "ubp_id": "LAW_NUM_001",
+        "full_hash": "6e68a08a95a23190835c843ec46dc34442006ce812abe2e6fc2c7c2290391cd2"
+    },
+    "8336ed0b": {
+        "ubp_id": "LAW_LEPTON_003",
+        "full_hash": "8336ed0b175cef43df82b0fc7ea171d144568607767b3b8113a25a53e3bd9272"
+    },
+    "4520ba2f": {
+        "ubp_id": "LAW_LEPTON_004",
+        "full_hash": "4520ba2f4b062b38a59e08fcd7adde4366c7b442947b6f5e857d8aff405f00c4"
+    },
+    "94bf4797": {
+        "ubp_id": "LAW_NEUTRINO_003",
+        "full_hash": "94bf47979e649275cc2b33377a807d772e25198b46aaaab6366ce112b46599fe"
     }
 }
