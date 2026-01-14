@@ -11,14 +11,6 @@
         "ubp_id": "LAW_AXIS_001",
         "full_hash": "31a5e5c5b8c7b363793a6dcebe67c27dcb0a4fcabd9919b085b1d5e006a0ee4b"
     },
-    "59941da3": {
-        "ubp_id": "LAW_LEPTON_001",
-        "full_hash": "59941da3a91897d3abcbaa606ac896f302921003e69143f01dc7fa751e6db459"
-    },
-    "22d18bc5": {
-        "ubp_id": "LAW_BARYON_001",
-        "full_hash": "22d18bc51497d5b24b285ca80a1285d9dc51d7dd35aa8f1c0d4d6c1cbe9e25bf"
-    },
     "4afa6ae4": {
         "ubp_id": "LAW_GRAVITY_001",
         "full_hash": "4afa6ae4e7eccaf8d69289e91640bd082d3e8f2410b4191d791cb6fba6a36c29"
@@ -243,9 +235,9 @@
         "ubp_id": "LAW_CHEM_004",
         "full_hash": "d26fed5359fa68039258efb5e3bc04241bbd5eecc3e4517150b93d3cf6d6c77d"
     },
-    "87551241": {
+    "118d0a3f": {
         "ubp_id": "LAW_CHEM_005",
-        "full_hash": "87551241f55fb1ef4ce45a5425c35e888de75f82e50b5c7f2edca4ad45a17122"
+        "full_hash": "118d0a3fe2d4f61fc9cf69eab6af194f1213b200ab42d1326126db217e0a7663"
     },
     "880bba77": {
         "ubp_id": "LAW_DRUG_001",
@@ -1258,5 +1250,25 @@
     "94bf4797": {
         "ubp_id": "LAW_NEUTRINO_003",
         "full_hash": "94bf47979e649275cc2b33377a807d772e25198b46aaaab6366ce112b46599fe"
+    },
+    "25237206": {
+        "ubp_id": "LAW_FORCE_005",
+        "full_hash": "25237206beffcc81a8922994faa13daddebc853b7da710404426891a613db2b8"
+    },
+    "d24cb917": {
+        "ubp_id": "LAW_LEPTON_001",
+        "full_hash": "d24cb917e214d862d09fe286f0be4e74603146c0b5e611d58682217f75996415"
+    },
+    "a7a9c149": {
+        "ubp_id": "LAW_BARYON_001",
+        "full_hash": "a7a9c14959f4e0c17a7ba5d79fe8aa6a7e7efebc49108e3c1309835dad8bc8f0"
+    },
+    "0959c7e1": {
+        "ubp_id": "LAW_FORCE_006",
+        "full_hash": "0959c7e19ccae4489a5286c56f5e5c54f6bae9dfb49bf3eca16311a394ca4d6b"
+    },
+    "fd971332": {
+        "ubp_id": "LAW_SUBSTRATE_010",
+        "full_hash": "fd9713320cf9a954e0cb07c59c65ebd92f785d56c3ea05f698796865f8a135cd"
     }
 }
