@@ -459,9 +459,9 @@
         "ubp_id": "LAW_COSMOS_002",
         "full_hash": "d592581534d2a686fd28b6be1dd449d3951c86055f7c9664e69c5e04f5749460"
     },
-    "adcc2a32": {
-        "ubp_id": "LAW_PHYSICS_003",
-        "full_hash": "adcc2a3214c531b82e7f6f7e4e700afe3f5ddc848114c17a5a0a5faa36724fe0"
+    "b2c3d4e5": {
+        "ubp_id": "LAW_PHYSICS_003_REFINED",
+        "full_hash": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
     },
     "56b1b779": {
         "ubp_id": "LAW_INFO_OID",
@@ -1382,5 +1382,9 @@
     "9b9132b4": {
         "ubp_id": "LAW_LEECH_TENSION_001",
         "full_hash": "9b9132b4a611dbdb387286306bfb2dc523ac7501dc9423c103343a8026301d66"
+    },
+    "99de004a": {
+        "ubp_id": "LAW_MEASURE_003",
+        "full_hash": "99de004a307280d5fd004c5a9d7b4f08a5c2f98c375d5eb5a408bb19703819b9"
     }
 }
