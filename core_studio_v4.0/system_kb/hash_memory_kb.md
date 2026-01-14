@@ -1386,5 +1386,13 @@
     "99de004a": {
         "ubp_id": "LAW_MEASURE_003",
         "full_hash": "99de004a307280d5fd004c5a9d7b4f08a5c2f98c375d5eb5a408bb19703819b9"
+    },
+    "b3c4d5e6": {
+        "ubp_id": "LAW_ENG_TRIADIC_LOCK_001",
+        "full_hash": "b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4"
+    },
+    "c4d5e6f7": {
+        "ubp_id": "LAW_ENG_SWITCH_001",
+        "full_hash": "c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5"
     }
 }
