@@ -1210,5 +1210,13 @@
     "50b3f1a9": {
         "ubp_id": "LAW_HGR_001",
         "full_hash": "50b3f1a9f217e5ad32e10fec98324bccb9176990344f208fb049130b2595b989"
+    },
+    "e3e76efa": {
+        "ubp_id": "LAW_COMP_015",
+        "full_hash": "e3e76efa94fdeb8d3246e342b570986fe5940156fd36963571382b490f4af7e9"
+    },
+    "3a42893e": {
+        "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
+        "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
     }
 }
