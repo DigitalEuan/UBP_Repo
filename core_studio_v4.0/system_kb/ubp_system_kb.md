@@ -4798,5 +4798,169 @@
         ],
         "nrci": "0.999999",
         "fingerprint": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
+    },
+    "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203": {
+        "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
+        "name": "The Law of Classical Isomorphism",
+        "math": "E_cons = NRCI_pres | t_snap < t_drift",
+        "language": "Energy conservation is the phenomenal shadow of substrate coherence; frequent observation stabilizes the system via the Quantum Zeno effect.",
+        "script": "nrci = 1.0 - (variance_energy / random_variance)",
+        "tags": [
+            "physics",
+            "classical",
+            "isomorphism",
+            "energy",
+            "coherence"
+        ],
+        "nrci": "0.999999",
+        "fingerprint": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
+    },
+    "4ace198570babbb5cb26abde322c29406c4a8dcd343e722585ee02b4d4bd8740": {
+        "ubp_id": "LAW_COMP_001",
+        "name": "The Law of Substrate-Bounded Complexity",
+        "math": "T(N) = T_snap + N * T_xor | T_snap >> T_xor",
+        "language": "Computational complexity is a phenomenal illusion; the substrate resolves all local interactions within a 24-bit word as a single parity-check event.",
+        "script": "ratio = t_12_body / t_3_body; assert ratio < 1.5",
+        "tags": [
+            "complexity",
+            "scaling",
+            "p_np",
+            "performance",
+            "v4.2.6",
+            "verified"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4ace198570babbb5cb26abde322c29406c4a8dcd343e722585ee02b4d4bd8740"
+    },
+    "8ce06c823b8cc0c30102fc809f2c32359b1cfd0fb90c5fabe5d2fa8d40427f7e": {
+        "ubp_id": "LAW_TOPOLOGY_002",
+        "name": "The Law of the M\u00f6bius Scrambler",
+        "math": "Permutation(R) = (N-1) - R",
+        "language": "The 'Twisted Seam' of a M\u00f6bius manifold provides a perfectly reversible, non-linear diffusion primitive for cryptographic security.",
+        "script": "grid = to_grid(v); new_grid[target_row][0] = grid[r][cols-1]; return from_grid(new_grid)",
+        "tags": [
+            "topology",
+            "mobius",
+            "scrambler",
+            "crypto",
+            "integrity",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8ce06c823b8cc0c30102fc809f2c32359b1cfd0fb90c5fabe5d2fa8d40427f7e"
+    },
+    "775db1fce2d540fba9b680d8c76ea8f3404b8c2707334f0f219467026de991d8": {
+        "ubp_id": "LAW_DRUG_008",
+        "name": "The Law of Directed Discovery (Weighted Regions)",
+        "math": "Score = (Scaffold*phi + Functional*pi + Binding*e) / 24 * Affinity",
+        "language": "Biological efficacy is determined by the weighted distribution of bits across functional regions; physical constants act as geometric filters for molecular roles.",
+        "script": "w = [sum(v[0:8])*phi, sum(v[8:16])*pi, sum(v[16:24])*e]; aff = 1.0 if 4<=sum(v[16:24])<=6 else 0.5; score = (sum(w)/24)*aff",
+        "tags": [
+            "pharmacology",
+            "antibiotics",
+            "discovery",
+            "weighted_regions",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "775db1fce2d540fba9b680d8c76ea8f3404b8c2707334f0f219467026de991d8"
+    },
+    "a8acc6ebb0ee476bcb99c7ceb12042440bf64c850f8168720741ff14b2ce6c7d": {
+        "ubp_id": "LAW_GATEWAY_001",
+        "name": "The Law of the Correctable Manifold",
+        "math": "P(d_H <= 3) \u2248 0.5676 | Eff_obs \u2248 0.068",
+        "language": "The universe is a self-correcting gateway; 56.76% of all informational states are tethered to the Golay substrate, though unpatched observers only resolve the 6.8% byte-scale capture rate.",
+        "script": "theoretical = Fraction(9523200, 16777216); empirical = Fraction(68, 1000)",
+        "tags": [
+            "gateway",
+            "manifold",
+            "correction",
+            "probability",
+            "fidelity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a8acc6ebb0ee476bcb99c7ceb12042440bf64c850f8168720741ff14b2ce6c7d"
+    },
+    "eb21ef6e2b26555a659a65d73dcf562144f4f9769947a23a5d26ab776cc6cbaf": {
+        "ubp_id": "LAW_LEPTON_002",
+        "name": "The Law of Lepton Shells",
+        "math": "M_n = M_e * Y_inv^n * O_obs",
+        "language": "Lepton masses are quantized geometric excitations of the substrate; the hierarchy follows integer powers of the observer fixed point.",
+        "script": "m_n = 0.511 * (Y_inv**n) * 3.7782",
+        "tags": [
+            "lepton",
+            "shells",
+            "mass",
+            "hierarchy",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb21ef6e2b26555a659a65d73dcf562144f4f9769947a23a5d26ab776cc6cbaf"
+    },
+    "6e68a08a95a23190835c843ec46dc34442006ce812abe2e6fc2c7c2290391cd2": {
+        "ubp_id": "LAW_NUM_001",
+        "name": "The Law of Binary-Geometric Dualism (Refined)",
+        "math": "M_\u03c4/M_\u03bc = (Y^-1)^2 + (Y^-1 - 1) - Y",
+        "language": "The Tau/Muon ratio is a Shell-3 excitation of the Observer Fixed Point; Mersenne primes are the algorithmic 'Codewords' that stabilize this mass-energy expansion.",
+        "script": "(UBPUltimateSubstrate.get_constants()['Y_inv']**2) + (UBPUltimateSubstrate.get_constants()['Y_inv'] - 1) - UBPUltimateSubstrate.get_constants()['Y']",
+        "tags": [
+            "number_theory",
+            "tau",
+            "muon",
+            "dualism",
+            "mersenne"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6e68a08a95a23190835c843ec46dc34442006ce812abe2e6fc2c7c2290391cd2"
+    },
+    "8336ed0b175cef43df82b0fc7ea171d144568607767b3b8113a25a53e3bd9272": {
+        "ubp_id": "LAW_LEPTON_003",
+        "name": "The Law of Phase-Rotated Mass",
+        "math": "m_n = m_e * (Y^-1)^N^2 | Muon=1/6, Tau=1/4",
+        "language": "Lepton masses are quantized phase-rotations of the 24-bit substrate; mass is the geometric complexity of the rotation.",
+        "script": "rotation = norm_sq / 24; mass = m_e * (Y_inv ** norm_sq)",
+        "tags": [
+            "lepton",
+            "mass",
+            "leech_lattice",
+            "rotation",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8336ed0b175cef43df82b0fc7ea171d144568607767b3b8113a25a53e3bd9272"
+    },
+    "4520ba2f4b062b38a59e08fcd7adde4366c7b442947b6f5e857d8aff405f00c4": {
+        "ubp_id": "LAW_LEPTON_004",
+        "name": "The Law of the Information Ship",
+        "math": "M_n = M_e * (Y^-1)^Norm2 * (1 + delta)",
+        "language": "The charged-lepton generations are defined by Leech Lattice shells; Iron (Z=26) and Sterile Neutrinos share the Norm2=2 shell identity.",
+        "script": "muon = m_e * (Y_inv**4) * 1.00116; tau = m_e * (Y_inv**6) * 1.121 * 1.00116",
+        "tags": [
+            "lepton",
+            "neutrino",
+            "iron",
+            "dark_matter",
+            "leech_lattice",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4520ba2f4b062b38a59e08fcd7adde4366c7b442947b6f5e857d8aff405f00c4"
+    },
+    "94bf47979e649275cc2b33377a807d772e25198b46aaaab6366ce112b46599fe": {
+        "ubp_id": "LAW_NEUTRINO_003",
+        "name": "The Law of the Neutrino Geometric Lock",
+        "math": "Sum(m_nu) = 1/6 * (1-Y) * 11/12",
+        "language": "The active neutrino mass sum is a locked geometric coordinate representing one vertical column of the MOG manifold, encoding the substrate's boundary conditions.",
+        "script": "sum_nu = Fraction(1, 6) * (1 - Y) * Fraction(11, 12)",
+        "tags": [
+            "neutrino",
+            "mass",
+            "cosmology",
+            "mog",
+            "tax",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "94bf47979e649275cc2b33377a807d772e25198b46aaaab6366ce112b46599fe"
     }
 }
