@@ -1358,5 +1358,29 @@
     "74daa546": {
         "ubp_id": "TOOL_QUANTUM_RCS",
         "full_hash": "74daa54641e5bb0291cf989512c90c4d075321af25d8981902ba9afaccffd05c"
+    },
+    "e8c3723c": {
+        "ubp_id": "TOOL_SIM_CLASSICAL",
+        "full_hash": "e8c3723cc14f98426cdacd82c22f0233dbfd7b34966cfdd690f5acd980492bb9"
+    },
+    "3a42893e": {
+        "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
+        "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
+    },
+    "b20d0a67": {
+        "ubp_id": "LAW_TOPO_EFFICIENCY_001",
+        "full_hash": "b20d0a67411d5757eeba74bde5d9ac0e3b2b0005b7d39d119ca8baf9898f54c8"
+    },
+    "015ee2d9": {
+        "ubp_id": "TOOL_IDEA_EXPLORER",
+        "full_hash": "015ee2d9f700d62ea9e88d8f5f68aeb3644b80b4718f21f1c5b465eb3acca0ed"
+    },
+    "65b435b1": {
+        "ubp_id": "LAW_SYS_DRAG_001",
+        "full_hash": "65b435b1734f5ce74680271baf0ab3c3b37a9732eed72a4f4889066ef4ab0ec8"
+    },
+    "9b9132b4": {
+        "ubp_id": "LAW_LEECH_TENSION_001",
+        "full_hash": "9b9132b4a611dbdb387286306bfb2dc523ac7501dc9423c103343a8026301d66"
     }
 }
