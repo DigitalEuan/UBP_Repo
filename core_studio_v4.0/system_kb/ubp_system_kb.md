@@ -44,36 +44,6 @@
         "nrci": "1/1",
         "fingerprint": "31a5e5c5b8c7b363793a6dcebe67c27dcb0a4fcabd9919b085b1d5e006a0ee4b"
     },
-    "59941da3a91897d3abcbaa606ac896f302921003e69143f01dc7fa751e6db459": {
-        "ubp_id": "LAW_LEPTON_001",
-        "name": "The Law of Lepton Scaling",
-        "math": "M_mu/M_e = (1/Y)^4 + 3 - Y^4",
-        "language": "Lepton masses are quantized geometric excitations; the Muon is a 'Dragged' state.",
-        "script": "PARTICLE_VALIDATOR.get_ultimate_predictions()['muon_electron']",
-        "tags": [
-            "physics",
-            "lepton",
-            "muon",
-            "mass"
-        ],
-        "nrci": "1/1",
-        "fingerprint": "59941da3a91897d3abcbaa606ac896f302921003e69143f01dc7fa751e6db459"
-    },
-    "22d18bc51497d5b24b285ca80a1285d9dc51d7dd35aa8f1c0d4d6c1cbe9e25bf": {
-        "ubp_id": "LAW_BARYON_001",
-        "name": "The Law of Baryon Symmetry",
-        "math": "M_p/M_e = 9(Y^-1)^4 + (Y^-1 - 1) - Y",
-        "language": "The Proton is the gravity anchor of the 24-bit substrate, representing maximum stable packing.",
-        "script": "PARTICLE_VALIDATOR.get_ultimate_predictions()['proton_electron']",
-        "tags": [
-            "physics",
-            "baryon",
-            "proton",
-            "gravity"
-        ],
-        "nrci": "1/1",
-        "fingerprint": "22d18bc51497d5b24b285ca80a1285d9dc51d7dd35aa8f1c0d4d6c1cbe9e25bf"
-    },
     "4afa6ae4e7eccaf8d69289e91640bd082d3e8f2410b4191d791cb6fba6a36c29": {
         "ubp_id": "LAW_GRAVITY_001",
         "name": "The Law of Informational Gravity",
@@ -651,7 +621,7 @@
         "name": "The Law of Universal Scaling (Biological)",
         "math": "Scale = Y^-40 * m_p",
         "language": "All biological identity is a scale-invariant projection of the Golay G24 Core via the Y-constant harmonics.",
-        "script": "UBPUltimateSubstrate.get_constants()['Y'] **-40",
+        "script": "UBPUltimateSubstrate.get_constants()['Y'] (star star)-40",
         "tags": [
             "biology",
             "scaling",
@@ -741,7 +711,7 @@
         "name": "The Law of Reciprocal Tension",
         "math": "Tension_Vector = +/-Y^n",
         "language": "Every geometric scaling (1/Y)^n generates a reciprocal tension Y^n, manifesting as either excitation (+) or drag (-) based on shell orientation.",
-        "script": "UBPUltimateSubstrate.get_constants()['Y']**n",
+        "script": "UBPUltimateSubstrate.get_constants()['Y'](star star)n",
         "tags": [
             "tension",
             "scaling",
@@ -831,7 +801,7 @@
         "name": "The Law of Coordinate Anchoring",
         "math": "Top ~ 172 + (pi * Y^2) | W ~ 83 - pi",
         "language": "The GeV scale is the 1:1 informational mapping of the substrate to the Phenomenal Layer.",
-        "script": "172 + (UBPUltimateSubstrate.get_constants()['pi'] * UBPUltimateSubstrate.get_constants()['Y']**2)",
+        "script": "172 + (UBPUltimateSubstrate.get_constants()['pi'] * UBPUltimateSubstrate.get_constants()['Y'](star star)2)",
         "tags": [
             "anchoring",
             "coordinates",
@@ -916,27 +886,29 @@
         "nrci": "1/1",
         "fingerprint": "d26fed5359fa68039258efb5e3bc04241bbd5eecc3e4517150b93d3cf6d6c77d"
     },
-    "87551241f55fb1ef4ce45a5425c35e888de75f82e50b5c7f2edca4ad45a17122": {
+    "118d0a3fe2d4f61fc9cf69eab6af194f1213b200ab42d1326126db217e0a7663": {
         "ubp_id": "LAW_CHEM_005",
         "name": "The Law of Geometric Anomalies",
-        "math": "Anomaly <-> d_J > 0.34",
-        "language": "Chemical anomalies (Cr, Cu, Au) are phase-shift events triggered when the Jaccard Distance (d_J) of orbital configurations exceeds the substrate's local correction capacity.",
-        "script": "element_z in [24, 29, 79]",
+        "math": "Delta_alpha approx 0.34 | Anomaly iff d_J > 0.34",
+        "language": "Chemical anomalies and shell transitions are phase-shift events triggered when the informational distance between configurations exceeds the substrate's local correction capacity of 0.34.",
+        "script": "is_anomaly = delta_alpha >= 0.34",
         "tags": [
             "chemistry",
             "anomaly",
             "orbitals",
-            "phase_shift"
+            "phase_shift",
+            "0.34",
+            "v4.2.6"
         ],
         "nrci": "1/1",
-        "fingerprint": "87551241f55fb1ef4ce45a5425c35e888de75f82e50b5c7f2edca4ad45a17122"
+        "fingerprint": "118d0a3fe2d4f61fc9cf69eab6af194f1213b200ab42d1326126db217e0a7663"
     },
     "880bba77de120f18b4954d0f4fad3161958e234044f7333c6b7879b1c146a95b": {
         "ubp_id": "LAW_DRUG_001",
         "name": "The Law of Manifold Sparsity",
         "math": "P(Candidate) ≈ 10^-6",
         "language": "Functional pharmacological seeds are 'Singularities' in the 24-bit manifold; the probability of a random resonance is one in a million.",
-        "script": "1 / 10**6",
+        "script": "1 / 10(star star)6",
         "tags": [
             "pharmacology",
             "sparsity",
@@ -1206,7 +1178,7 @@
         "name": "The Law of Binary-Geometric Dualism (Refined)",
         "math": "M_τ/M_μ = (Y^-1)^2 + (Y^-1 - 1) - Y",
         "language": "The Tau/Muon ratio is a Shell-3 excitation of the Observer Fixed Point; Mersenne primes are the algorithmic 'Codewords' that stabilize this mass-energy expansion.",
-        "script": "(UBPUltimateSubstrate.get_constants()['Y_inv']**2) + (UBPUltimateSubstrate.get_constants()['Y_inv'] - 1) - UBPUltimateSubstrate.get_constants()['Y']",
+        "script": "(UBPUltimateSubstrate.get_constants()['Y_inv'](star star)2) + (UBPUltimateSubstrate.get_constants()['Y_inv'] - 1) - UBPUltimateSubstrate.get_constants()['Y']",
         "tags": [
             "number_theory",
             "tau",
@@ -1417,7 +1389,7 @@
         "name": "The Law of Computational Relativity (Refined)",
         "math": "E = M * c^2 * (1 - v)",
         "language": "Energy is the emergent output of mass scaled by the observer constant and reduced linearly by the informational tension (v).",
-        "script": "mass * (UBPUltimateSubstrate.get_constants()['Y_inv']**2) * (1 - tension)",
+        "script": "mass * (UBPUltimateSubstrate.get_constants()['Y_inv'](star star)2) * (1 - tension)",
         "tags": [
             "relativity",
             "energy",
@@ -1507,7 +1479,7 @@
         "name": "The Law of Harmonic Scaling",
         "math": "Constant ∝ Anchor * Y^n",
         "language": "Physical constants are not independent values; they are the resonance harmonics of the Alpha-Omega anchors scaled by integer powers of the Y-constant.",
-        "script": "anchor * (UBPUltimateSubstrate.get_constants()['Y']**n)",
+        "script": "anchor * (UBPUltimateSubstrate.get_constants()['Y'](star star)n)",
         "tags": [
             "constants",
             "harmonic",
@@ -1552,7 +1524,7 @@
         "name": "The Law of the Cosmological Gear Ratio",
         "math": "Omega_dm / Omega_b = Y + Y_inv + sqrt(2)",
         "language": "Dark Matter is the sum of the Observer Cost, its Reciprocal Tension, and the Geometric Diagonal of the bitfield.",
-        "script": "UBPUltimateSubstrate.get_constants()['Y'] + UBPUltimateSubstrate.get_constants()['Y_inv'] + 2**0.5",
+        "script": "UBPUltimateSubstrate.get_constants()['Y'] + UBPUltimateSubstrate.get_constants()['Y_inv'] + 2(star star)0.5",
         "tags": [
             "cosmology",
             "dark_matter",
@@ -1614,7 +1586,7 @@
         "name": "Noumenal Generator (Rational Sweep)",
         "math": "1/16769025",
         "language": "A single rational number 1/(4095^2) that generates the entire 12-bit Golay input space through binary expansion, exhibiting a carry-over singularity at 4094.",
-        "script": "from fractions import Fraction; G = Fraction(1, 4095**2)",
+        "script": "from fractions import Fraction; G = Fraction(1, 4095(star star)2)",
         "tags": [
             "rational_sweep",
             "golay_seed",
@@ -1630,7 +1602,7 @@
         "name": "The Fibonacci Growth Limit (18-Step Ceiling)",
         "math": "4096/16773119",
         "language": "A rational generating function that unfolds the Fibonacci sequence within the 12-bit substrate. It demonstrates a topological 'Limit of Growth' at Step 19 (F19=4181 > 4095), where information density exceeds container capacity, forcing a phase transition or retrocausal corruption.",
-        "script": "M=4096; G = Fraction(M, M**2 - M - 1)",
+        "script": "M=4096; G = Fraction(M, M(star star)2 - M - 1)",
         "tags": [
             "fibonacci",
             "growth_limit",
@@ -1775,7 +1747,7 @@
         "name": "The Hierarchy Generator (Gravitational Depth)",
         "math": "Ratio_ee = 196560^8 approx 10^42",
         "language": "Derives the relative strength of Gravity vs Electromagnetism (The Hierarchy Problem) as a function of the Leech Lattice Density (K=196560) and the Golay Bit-Depth. Electrons (Leptons) interact via the full 8-bit Octad (K^8 ~ 10^42), while Protons (Hadrons) interact via the 7-bit Static Mass (K^7 ~ 10^37).",
-        "script": "K=196560; Ratio_Proton=K**7; Ratio_Electron=K**8",
+        "script": "K=196560; Ratio_Proton=K(star star)7; Ratio_Electron=K(star star)8",
         "tags": [
             "gravity",
             "hierarchy_problem",
@@ -4962,5 +4934,90 @@
         ],
         "nrci": "1/1",
         "fingerprint": "94bf47979e649275cc2b33377a807d772e25198b46aaaab6366ce112b46599fe"
+    },
+    "25237206beffcc81a8922994faa13daddebc853b7da710404426891a613db2b8": {
+        "ubp_id": "LAW_FORCE_005",
+        "name": "The Law of the Higgs Field (Saturated)",
+        "math": "M_H = Y_inv * (33 + 1/9)",
+        "language": "The Higgs mass is the energy required to lock the 11-bit dimensional tax across the 3-bit Golay radius, stabilized by the 1/9th triadic parity of the 24th bit.",
+        "script": "m_h = UBPUltimateSubstrate.get_constants()['Y_inv'] * (33 + Fraction(1,9))",
+        "tags": [
+            "physics",
+            "higgs",
+            "mass",
+            "parity",
+            "24th_bit",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "25237206beffcc81a8922994faa13daddebc853b7da710404426891a613db2b8"
+    },
+    "d24cb917e214d862d09fe286f0be4e74603146c0b5e611d58682217f75996415": {
+        "ubp_id": "LAW_LEPTON_001",
+        "name": "The Law of Lepton Scaling (Refined)",
+        "math": "M_mu/M_e = (Y^-1)^4 + 3 - Y^4",
+        "language": "Lepton masses are quantized geometric excitations; the Muon is a 4th-order excitation of the Observer Fixed Point, corrected by the 3 spatial dimensions and reciprocal substrate drag.",
+        "script": "muon_ratio = (Y_inv**4) + 3 - (Y**4)",
+        "tags": [
+            "physics",
+            "lepton",
+            "muon",
+            "mass",
+            "scaling",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d24cb917e214d862d09fe286f0be4e74603146c0b5e611d58682217f75996415"
+    },
+    "a7a9c14959f4e0c17a7ba5d79fe8aa6a7e7efebc49108e3c1309835dad8bc8f0": {
+        "ubp_id": "LAW_BARYON_001",
+        "name": "The Law of Baryon Symmetry (Refined)",
+        "math": "M_p/M_e = 9 * (Y^-1)^4 + (Y^-1 - 1) - Y",
+        "language": "The Proton is a composite geometric structure defined by the combinatorial expansion of 3 quarks and 3 colors (9x Shell 4), stabilized by the Observer's drag.",
+        "script": "proton_ratio = 9 * (Y_inv**4) + (Y_inv - 1) - Y",
+        "tags": [
+            "physics",
+            "baryon",
+            "proton",
+            "gravity",
+            "combinatorics",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a7a9c14959f4e0c17a7ba5d79fe8aa6a7e7efebc49108e3c1309835dad8bc8f0"
+    },
+    "0959c7e19ccae4489a5286c56f5e5c54f6bae9dfb49bf3eca16311a394ca4d6b": {
+        "ubp_id": "LAW_FORCE_006",
+        "name": "The Law of Electroweak Geometry",
+        "math": "sin^2 theta_W approx Y * (e / pi)",
+        "language": "The Weak Mixing Angle is the geometric ratio between the Observer's Drag (Y), the Growth Constant (e), and the Cycle Constant (pi), defining the unification point of the Electromagnetic and Weak forces.",
+        "script": "weinberg = Y * (e / pi)",
+        "tags": [
+            "physics",
+            "electroweak",
+            "weinberg",
+            "geometry",
+            "unification",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0959c7e19ccae4489a5286c56f5e5c54f6bae9dfb49bf3eca16311a394ca4d6b"
+    },
+    "fd9713320cf9a954e0cb07c59c65ebd92f785d56c3ea05f698796865f8a135cd": {
+        "ubp_id": "LAW_SUBSTRATE_010",
+        "name": "The Law of the Universal Invariant",
+        "math": "Norm^2 = 12.0 | Scale = sqrt(12/W)",
+        "language": "All physical and biological information states project onto a universal hypersphere with squared norm 12; observable differences in mass or complexity are artifacts of the scaling factor.",
+        "script": "scale = math.sqrt(12 / raw_weight); norm_vec = [x * scale for x in vec]",
+        "tags": [
+            "substrate",
+            "invariant",
+            "norm12",
+            "unification",
+            "geometry",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fd9713320cf9a954e0cb07c59c65ebd92f785d56c3ea05f698796865f8a135cd"
     }
 }
