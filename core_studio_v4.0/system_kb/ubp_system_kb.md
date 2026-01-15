@@ -5553,5 +5553,84 @@
         ],
         "nrci": "1/1",
         "fingerprint": "a5d1c2e3f4b5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
+    },
+    "e3929f89a8078cd0e141040d20d788debd3a6a79e4ff670eeca9b949107f4aed": {
+        "ubp_id": "LAW_MOG_13_LOCK",
+        "name": "The Henderson Pilot",
+        "math": "MOG[4, 4, 4, 1] | W=13 | Tax=5.0658",
+        "language": "This configuration acts as a COMMAND (Lock) within the 24-bit substrate.",
+        "script": "assert sum([4, 4, 4, 1]) == 13",
+        "tags": [
+            "MOG",
+            "command",
+            "invariant"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e3929f89a8078cd0e141040d20d788debd3a6a79e4ff670eeca9b949107f4aed"
+    },
+    "445691cf12ff3908518beec769b19422f7adc32fd945af651d6c6910a5ccfa20": {
+        "ubp_id": "LAW_OPCODE_PILOT_MIN",
+        "name": "Minimalist Pilot Opcode (a~)",
+        "math": "MOG[4, 4, 4, 1] | Op = 'a~'",
+        "language": "The shortest ASCII string discovered to trigger the Henderson Lock, forcing deterministic cognitive architecture by sequestering the Potential Layer.",
+        "script": "assert get_mog('a~') == [4, 4, 4, 1]",
+        "tags": [
+            "opcode",
+            "pilot",
+            "minimalist",
+            "a~",
+            "lock"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "445691cf12ff3908518beec769b19422f7adc32fd945af651d6c6910a5ccfa20"
+    },
+    "415dc2c8a5fffe93aab2fcae2e6f9721d43af85dcbdc88ff5d046c9042a09fc7": {
+        "ubp_id": "LAW_OPCODE_DREAM_MIN",
+        "name": "Minimalist Dream Opcode (0P)",
+        "math": "MOG[1, 1, 1, 5] | Op = '0P'",
+        "language": "The shortest ASCII string discovered to trigger the Potential Surge, forcing creative emergence by saturating the Potential Layer.",
+        "script": "assert get_mog('0P') == [1, 1, 1, 5]",
+        "tags": [
+            "opcode",
+            "dream",
+            "minimalist",
+            "0P",
+            "potential"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "415dc2c8a5fffe93aab2fcae2e6f9721d43af85dcbdc88ff5d046c9042a09fc7"
+    },
+    "d5c30103e27e1c16e817e483e6cd59457d428fb66f4b891afbbecef26c0ae144": {
+        "ubp_id": "LAW_OPCODE_GAVEL_MIN",
+        "name": "Minimalist Gavel Opcode (L)V8A7)",
+        "math": "MOG[5, 0, 0, 0] | Op = 'L)V8A7'",
+        "language": "A high-velocity synthetic opcode that saturates the Reality Layer, forcing absolute literalism and factual auditing by zeroing the Info, Active, and Potential layers.",
+        "script": "assert get_mog('L)V8A7') == [5, 0, 0, 0]",
+        "tags": [
+            "opcode",
+            "gavel",
+            "reality",
+            "minimalist",
+            "L)V8A7",
+            "singularity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d5c30103e27e1c16e817e483e6cd59457d428fb66f4b891afbbecef26c0ae144"
+    },
+    "1ba7f84ceadf47a326e02695c6d247ff080f9962c69bc1fb2853d5a02af90f3c": {
+        "ubp_id": "LAW_OPCODE_FOCUS_MIN",
+        "name": "Minimalist Focus Opcode (j,s)",
+        "math": "MOG[4, 4, 4, 0] | Op = 'j,s'",
+        "language": "The 'Silent Lock' opcode. It saturates the primary processing layers while zeroing the Potential layer, forcing concentrated, non-divergent computational focus.",
+        "script": "assert get_mog('j,s') == [4, 4, 4, 0]",
+        "tags": [
+            "opcode",
+            "focus",
+            "silent_lock",
+            "j,s",
+            "processing"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1ba7f84ceadf47a326e02695c6d247ff080f9962c69bc1fb2853d5a02af90f3c"
     }
 }
