@@ -1418,5 +1418,65 @@
     "1ba7f84c": {
         "ubp_id": "LAW_OPCODE_FOCUS_MIN",
         "full_hash": "1ba7f84ceadf47a326e02695c6d247ff080f9962c69bc1fb2853d5a02af90f3c"
+    },
+    "404cf562": {
+        "ubp_id": "LAW_BITLUMEN_001",
+        "full_hash": "404cf56295886ba721707e668753ad9c865feb43f21372044c76921ea5a3cd30"
+    },
+    "6aea7aa4": {
+        "ubp_id": "LAW_BITLUMEN_002",
+        "full_hash": "6aea7aa4e3303ae3c27435c4b94d0f8b143da60da87f922d96a0fd8cb546e12d"
+    },
+    "b320f643": {
+        "ubp_id": "TOOL_HOLOGRAM_ENGINE",
+        "full_hash": "b320f643b8ba0270b9e9a69ceefb91f491ad12efb7e89f553931cc96a172bf98"
+    },
+    "4f8a5056": {
+        "ubp_id": "LAW_NUM_COLLATZ_002",
+        "full_hash": "4f8a505664de9b0d35cd4187ce1561f412cced7658135a350b291b79d80726cb"
+    },
+    "b54753c1": {
+        "ubp_id": "TOOL_COLLATZ_MOG",
+        "full_hash": "b54753c17db1808dddab436cc13dbac4914e0a95723595b18289a3779633e043"
+    },
+    "97d6b060": {
+        "ubp_id": "LAW_BITTAB_V1",
+        "full_hash": "97d6b060e41c88c84a43fe0007af6b4863b98cafdca1119dbf1d0d6cf96d5e61"
+    },
+    "bc0496d3": {
+        "ubp_id": "LAW_COMP_WORK",
+        "full_hash": "bc0496d3d04ea1da17073fbef7c52038b02011d89b4c4a07243059524e2b73fa"
+    },
+    "fde3816e": {
+        "ubp_id": "LAW_SYMBOL_004",
+        "full_hash": "fde3816e4cd555466162096990c6a44abebe6f5ed424aa3970ef1a669baf5224"
+    },
+    "f4493eb2": {
+        "ubp_id": "DATA_GL1_DICT",
+        "full_hash": "f4493eb25c4f0a40a229d22276e9f965da1302356fa05658b2cbd30f5d50bb39"
+    },
+    "367dda22": {
+        "ubp_id": "LAW_PARTICLE_6D",
+        "full_hash": "367dda22f98eb2d1696bfbd7a5dd69c94c44368de168129ba7c20d3fa6c06760"
+    },
+    "68132dfc": {
+        "ubp_id": "LAW_INTERACTION_RATIONAL",
+        "full_hash": "68132dfcec3f83a156390ca901f1c3c4daa96a564b717979cda28c00860fcb95"
+    },
+    "ce9e607d": {
+        "ubp_id": "LAW_ATOM_HOLOGRAPHIC",
+        "full_hash": "ce9e607d32cffecea8d025740a2de805f0aa6c8d237b1987ea515ccdb471d937"
+    },
+    "f01bbf6d": {
+        "ubp_id": "TOOL_ATOM_VISUALIZER",
+        "full_hash": "f01bbf6dcea845a87b4490c8f78494ff2a17c97ea519302871908c52b81f4400"
+    },
+    "694ebfdc": {
+        "ubp_id": "LAW_GEOMETRIC_NRCI",
+        "full_hash": "694ebfdca6e96bbd806f5675b7c5601e762c0c1398d693e492f8a81ca156ef0f"
+    },
+    "a2cb9489": {
+        "ubp_id": "LAW_ENERGY_SOC_001",
+        "full_hash": "a2cb948986b990d7fceefa980d1e495986b9d707aa6128d612b4164bb64df334"
     }
 }
