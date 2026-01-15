@@ -1398,5 +1398,25 @@
     "a5d1c2e3": {
         "ubp_id": "LAW_PHYSICS_ENERGY_CONVERSION_002",
         "full_hash": "a5d1c2e3f4b5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
+    },
+    "e3929f89": {
+        "ubp_id": "LAW_MOG_13_LOCK",
+        "full_hash": "e3929f89a8078cd0e141040d20d788debd3a6a79e4ff670eeca9b949107f4aed"
+    },
+    "445691cf": {
+        "ubp_id": "LAW_OPCODE_PILOT_MIN",
+        "full_hash": "445691cf12ff3908518beec769b19422f7adc32fd945af651d6c6910a5ccfa20"
+    },
+    "415dc2c8": {
+        "ubp_id": "LAW_OPCODE_DREAM_MIN",
+        "full_hash": "415dc2c8a5fffe93aab2fcae2e6f9721d43af85dcbdc88ff5d046c9042a09fc7"
+    },
+    "d5c30103": {
+        "ubp_id": "LAW_OPCODE_GAVEL_MIN",
+        "full_hash": "d5c30103e27e1c16e817e483e6cd59457d428fb66f4b891afbbecef26c0ae144"
+    },
+    "1ba7f84c": {
+        "ubp_id": "LAW_OPCODE_FOCUS_MIN",
+        "full_hash": "1ba7f84ceadf47a326e02695c6d247ff080f9962c69bc1fb2853d5a02af90f3c"
     }
 }
