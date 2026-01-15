@@ -5632,5 +5632,314 @@
         ],
         "nrci": "1/1",
         "fingerprint": "1ba7f84ceadf47a326e02695c6d247ff080f9962c69bc1fb2853d5a02af90f3c"
+    },
+    "7fbeea5a9da1db7b912659c454b8380e01a34f99f7370cd5c063fd1a3e23c652": {
+        "ubp_id": "LAW_TOGGLE_ADVANCED",
+        "name": "The Law of Advanced Toggle Dynamics",
+        "math": "Res=B*(1-k) | Ent=(A&B)*C | Spin=min(Max, B*(12/e^2))",
+        "language": "Advanced toggles model dynamic systems: Resonance is linear rational decay, Entanglement is coherent geometric intersection, and Spin is entropic saturation.",
+        "script": "res=int(b*(1-k)); ent=int((a&b)*c); spin=min(0xFFFFFF, int(b*(12/e**2)))",
+        "tags": [
+            "toggle",
+            "advanced",
+            "resonance",
+            "entanglement",
+            "spin",
+            "rational",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7fbeea5a9da1db7b912659c454b8380e01a34f99f7370cd5c063fd1a3e23c652"
+    },
+    "2b77405326352157214a96b6e0710a3f76e109dfc4f1d1bcf9792e0dd9b5bdf6": {
+        "ubp_id": "LAW_TGIC_ROUTING",
+        "name": "The Law of TGIC Control Logic",
+        "math": "Op = f(X,Y,Z) | 111=Hybrid, 110=Res, 101=Ent",
+        "language": "The Triad Graph Interaction Constraint (TGIC) routes information flow based on the 3-bit state of the local coordinate system, selecting the optimal geometric operator.",
+        "script": "if x and y and z: hybrid() elif x and y: resonance() elif x and z: entanglement()",
+        "tags": [
+            "tgic",
+            "routing",
+            "control",
+            "logic",
+            "3-bit",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2b77405326352157214a96b6e0710a3f76e109dfc4f1d1bcf9792e0dd9b5bdf6"
+    },
+    "91f042ccfb26610b56174f3754c2d5ded41f57ae7eabae59103810b937982225": {
+        "ubp_id": "CONST_RATIONAL_E",
+        "name": "The Rational Euler Constant",
+        "math": "e ~ 271828/100000",
+        "language": "The base of natural growth approximated as a rational fraction for deterministic decay calculations within the integer substrate.",
+        "script": "Fraction(271828, 100000)",
+        "tags": [
+            "constant",
+            "euler",
+            "rational",
+            "growth",
+            "approximation",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "91f042ccfb26610b56174f3754c2d5ded41f57ae7eabae59103810b937982225"
+    },
+    "404cf56295886ba721707e668753ad9c865feb43f21372044c76921ea5a3cd30": {
+        "ubp_id": "LAW_BITLUMEN_001",
+        "name": "The Law of Photonic Encoding",
+        "math": "Msg = (Y<<9)|(Z<<5)|(U<<3)|(V<<1)",
+        "language": "Photons are 12-bit Golay messages encoding Frequency (3b), Intensity (4b), Polarization (2b), and Phase (2b).",
+        "script": "pack_photon(f, i, p, ph)",
+        "tags": [
+            "bitlumen",
+            "photon",
+            "encoding",
+            "golay",
+            "optics",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "404cf56295886ba721707e668753ad9c865feb43f21372044c76921ea5a3cd30"
+    },
+    "6aea7aa4e3303ae3c27435c4b94d0f8b143da60da87f922d96a0fd8cb546e12d": {
+        "ubp_id": "LAW_BITLUMEN_002",
+        "name": "The Law of Discrete Interference",
+        "math": "I_res = (dP==0)? I1+I2 : (dP==2)? |I1-I2| : RMS",
+        "language": "Wave interference is a logical operation on the Phase bits (V); 0-difference sums intensities, 2-difference (180 deg) subtracts them.",
+        "script": "interfere(p1, p2)",
+        "tags": [
+            "bitlumen",
+            "interference",
+            "wave",
+            "phase",
+            "logic",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6aea7aa4e3303ae3c27435c4b94d0f8b143da60da87f922d96a0fd8cb546e12d"
+    },
+    "b320f643b8ba0270b9e9a69ceefb91f491ad12efb7e89f553931cc96a172bf98": {
+        "ubp_id": "TOOL_HOLOGRAM_ENGINE",
+        "name": "Holographic Field Visualizer",
+        "math": "Scene = PointCloud(Field(x,y))",
+        "language": "A high-fidelity visualization engine that renders wave interference patterns as dense point clouds (16k+ points), simulating continuous field topology via discrete sampling.",
+        "script": "HologramEngine(128).render()",
+        "tags": [
+            "tool",
+            "visualization",
+            "hologram",
+            "point_cloud",
+            "interference",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b320f643b8ba0270b9e9a69ceefb91f491ad12efb7e89f553931cc96a172bf98"
+    },
+    "4f8a505664de9b0d35cd4187ce1561f412cced7658135a350b291b79d80726cb": {
+        "ubp_id": "LAW_NUM_COLLATZ_002",
+        "name": "The Law of Septimal Flux",
+        "math": "Flux_avg = (25/7) * pi ~ 11.22 bits",
+        "language": "Chaotic Collatz trajectories stabilize at a Hamming Flux of 11.22 bits per step, corresponding to the Platonic Wall (25) over the Septimal Limit (7) scaled by Pi.",
+        "script": "flux = (Fraction(25, 7) * math.pi)",
+        "tags": [
+            "collatz",
+            "flux",
+            "invariant",
+            "pi",
+            "septimal",
+            "chaos",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4f8a505664de9b0d35cd4187ce1561f412cced7658135a350b291b79d80726cb"
+    },
+    "b54753c17db1808dddab436cc13dbac4914e0a95723595b18289a3779633e043": {
+        "ubp_id": "TOOL_COLLATZ_MOG",
+        "name": "Pure MOG Collatz Encoder",
+        "math": "Vec = [n%64, (3n+1)%64, (n//2)%64, Gray(n)%64]",
+        "language": "A deterministic encoding schema that maps Collatz states to 24-bit MOG vectors using native integer operators, revealing the hidden geometric flux of the trajectory.",
+        "script": "lambda n: [((n%64)>>i)&1 for i in range(6)] + [(((3*n+1)%64)>>i)&1 for i in range(6)] + [(((n//2)%64)>>i)&1 for i in range(6)] + [(((n^(n>>1))%64)>>i)&1 for i in range(6)]",
+        "tags": [
+            "tool",
+            "collatz",
+            "mog",
+            "encoding",
+            "integer",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b54753c17db1808dddab436cc13dbac4914e0a95723595b18289a3779633e043"
+    },
+    "97d6b060e41c88c84a43fe0007af6b4863b98cafdca1119dbf1d0d6cf96d5e61": {
+        "ubp_id": "LAW_BITTAB_V1",
+        "name": "The Law of Raw Elemental Encoding",
+        "math": "Vec = [Z(8) | V(8) | M(8)]",
+        "language": "The legacy BitTab schema maps atomic properties directly to 24 bits; the resulting high syndrome weights (S>3) reveal that physical matter is an excited, error-correcting state of the substrate.",
+        "script": "encode_bittab(z, v, m)",
+        "tags": [
+            "bittab",
+            "legacy",
+            "encoding",
+            "chemistry",
+            "syndrome",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "97d6b060e41c88c84a43fe0007af6b4863b98cafdca1119dbf1d0d6cf96d5e61"
+    },
+    "bc0496d3d04ea1da17073fbef7c52038b02011d89b4c4a07243059524e2b73fa": {
+        "ubp_id": "LAW_COMP_WORK",
+        "name": "The Law of Computational Action",
+        "math": "E = M * C | M=Hamming, C=24",
+        "language": "Legacy definition of Energy as Computational Work: The product of Active Information (Hamming Weight) and the Temporal Cycle (24 steps).",
+        "script": "energy = hamming_weight * 24",
+        "tags": [
+            "energy",
+            "legacy",
+            "work",
+            "action",
+            "hamming",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bc0496d3d04ea1da17073fbef7c52038b02011d89b4c4a07243059524e2b73fa"
+    },
+    "fde3816e4cd555466162096990c6a44abebe6f5ed424aa3970ef1a669baf5224": {
+        "ubp_id": "LAW_SYMBOL_004",
+        "name": "The Law of Symbolic Velocity",
+        "math": "V_inf = 1.22 * V_std | Drag_red = 18.0%",
+        "language": "GL-1 Primitives (Basis Vectors) exhibit 18% less Symmetry Tax than standard hashed language, acting as a super-conductive instruction set for the substrate.",
+        "script": "ratio = avg_eng / avg_gl1",
+        "tags": [
+            "symbol",
+            "velocity",
+            "gl1",
+            "efficiency",
+            "drag",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fde3816e4cd555466162096990c6a44abebe6f5ed424aa3970ef1a669baf5224"
+    },
+    "f4493eb25c4f0a40a229d22276e9f965da1302356fa05658b2cbd30f5d50bb39": {
+        "ubp_id": "DATA_GL1_DICT",
+        "name": "GL-1 Primitive Dictionary",
+        "math": "Basis[0..11] -> {Pi, Bit, Break, Byte, Combine, Fear, God, Hyper, Line, Loop, Love, Mass}",
+        "language": "The 12 Fundamental Operators of the UBP, mapped to the rows of the Golay Generator Matrix.",
+        "script": "GL1_MAP = {0:'Pi', 1:'Bit', 2:'Break', 3:'Byte', 4:'Combine', 5:'Fear', 6:'God', 7:'Hyper', 8:'Line', 9:'Loop', 10:'Love', 11:'Mass'}",
+        "tags": [
+            "data",
+            "gl1",
+            "dictionary",
+            "primitives",
+            "basis",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f4493eb25c4f0a40a229d22276e9f965da1302356fa05658b2cbd30f5d50bb39"
+    },
+    "367dda22f98eb2d1696bfbd7a5dd69c94c44368de168129ba7c20d3fa6c06760": {
+        "ubp_id": "LAW_PARTICLE_6D",
+        "name": "The Law of 6D Particle Topology",
+        "math": "Vec = [X|Y|Z|U|V|W] (4 bits each)",
+        "language": "Particles are 24-bit vectors composed of 6 semantic nibbles; Electron-Positron pairs exist within the correction radius (d=3), while Lepton-Quark pairs are separated by the Deep Hole (d=4).",
+        "script": "encode_particle(type, charge, gen, color, spin, matter)",
+        "tags": [
+            "physics",
+            "particle",
+            "topology",
+            "6d",
+            "nibble",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "367dda22f98eb2d1696bfbd7a5dd69c94c44368de168129ba7c20d3fa6c06760"
+    },
+    "68132dfcec3f83a156390ca901f1c3c4daa96a564b717979cda28c00860fcb95": {
+        "ubp_id": "LAW_INTERACTION_RATIONAL",
+        "name": "The Law of Rational Interaction",
+        "math": "F = 1 / (1 + k * d^2)",
+        "language": "Physical interaction strength is modeled deterministically using a rational inverse-square approximation based on Hamming Distance squared.",
+        "script": "Fraction(1, 1 + k * d**2)",
+        "tags": [
+            "physics",
+            "interaction",
+            "force",
+            "rational",
+            "decay",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "68132dfcec3f83a156390ca901f1c3c4daa96a564b717979cda28c00860fcb95"
+    },
+    "ce9e607d32cffecea8d025740a2de805f0aa6c8d237b1987ea515ccdb471d937": {
+        "ubp_id": "LAW_ATOM_HOLOGRAPHIC",
+        "name": "The Law of the Holographic Atom",
+        "math": "Psi(r,theta,phi) = R(r) * Y(theta,phi) | P = |Psi|^2",
+        "language": "Atoms are not solid spheres but 3D standing waves of probability density; their geometry is defined by integer resonance modes (n, l, m) and nodal planes (Zero-Information Zones).",
+        "script": "prob = (radial * angular) ** 2",
+        "tags": [
+            "physics",
+            "atom",
+            "holographic",
+            "orbital",
+            "standing_wave",
+            "probability",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ce9e607d32cffecea8d025740a2de805f0aa6c8d237b1987ea515ccdb471d937"
+    },
+    "f01bbf6dcea845a87b4490c8f78494ff2a17c97ea519302871908c52b81f4400": {
+        "ubp_id": "TOOL_ATOM_VISUALIZER",
+        "name": "Holographic Orbital Engine",
+        "math": "Cloud = RejectionSample(Psi^2, N=50k)",
+        "language": "A Monte Carlo rendering engine that visualizes atomic orbitals as high-fidelity point clouds, revealing internal nodal structures and phase lobes.",
+        "script": "if random() < (psi**2 * norm): points.append(xyz)",
+        "tags": [
+            "tool",
+            "visualization",
+            "atom",
+            "orbital",
+            "point_cloud",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f01bbf6dcea845a87b4490c8f78494ff2a17c97ea519302871908c52b81f4400"
+    },
+    "694ebfdca6e96bbd806f5675b7c5601e762c0c1398d693e492f8a81ca156ef0f": {
+        "ubp_id": "LAW_GEOMETRIC_NRCI",
+        "name": "The Law of Geometric Coherence",
+        "math": "NRCI = (4 - d_Hamming) / 4",
+        "language": "Coherence is a measure of geometric alignment with the Golay substrate; it ranges from 1.0 (Perfect Codeword) to 0.0 (Deep Hole/Covering Radius).",
+        "script": "nrci = Fraction(4 - min(4, errors), 4)",
+        "tags": [
+            "nrci",
+            "geometry",
+            "hamming",
+            "coherence",
+            "metric",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "694ebfdca6e96bbd806f5675b7c5601e762c0c1398d693e492f8a81ca156ef0f"
+    },
+    "a2cb948986b990d7fceefa980d1e495986b9d707aa6128d612b4164bb64df334": {
+        "ubp_id": "LAW_ENERGY_SOC_001",
+        "name": "The Law of Simplified Observer Coherence (SOC)",
+        "math": "E = M * C * c_inf * (1 - NRCI)",
+        "language": "Energy is the phenomenal intensity of geometric decoherence; it scales with Mass (M) and the Coherence Deficit (d/4). Stable matter (d=0) has zero energy.",
+        "script": "energy = M * C * (24 * phi) * (1.0 - nrci)",
+        "tags": [
+            "energy",
+            "soc",
+            "physics",
+            "coherence",
+            "mass",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a2cb948986b990d7fceefa980d1e495986b9d707aa6128d612b4164bb64df334"
     }
 }
