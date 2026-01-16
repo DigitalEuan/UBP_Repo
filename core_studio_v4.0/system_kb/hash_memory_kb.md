@@ -1546,5 +1546,13 @@
     "752bef52": {
         "ubp_id": "LAW_PHYSICS_001_REFINED",
         "full_hash": "752bef52118afbd531f62869333f285a07ee918b2303c6dd7b74c7544c475309"
+    },
+    "7ba1c5de": {
+        "ubp_id": "LAW_CHEM_006",
+        "full_hash": "7ba1c5de90c148fcd3fb6cc85892ed4360a644045a31caf134f45cad7492bb93"
+    },
+    "fd132284": {
+        "ubp_id": "LAW_CHEM_007",
+        "full_hash": "fd132284110f9c03286f9176b0add40a93a9b4afd1c413051e3c3934fae3bf02"
     }
 }
