@@ -6218,5 +6218,39 @@
         ],
         "nrci": "1/1",
         "fingerprint": "3742c0f183c46cdf364fb36d7467c9b55e8716d209244bcef9da8bfbab1a8069"
+    },
+    "7ba1c5de90c148fcd3fb6cc85892ed4360a644045a31caf134f45cad7492bb93": {
+        "ubp_id": "LAW_CHEM_006",
+        "name": "The Law of Binary Anchors",
+        "math": "Stability_max iff Z in {2^n} | Tax_min = 0.3897",
+        "language": "The periodic table is anchored by binary power nodes (8, 16, 32, 64, 128); these coordinates represent the ground-state harmonics of the 24-bit substrate.",
+        "script": "is_anchor = (z & (z - 1) == 0) and z >= 8",
+        "tags": [
+            "chemistry",
+            "stability",
+            "binary",
+            "anchor",
+            "periodic",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7ba1c5de90c148fcd3fb6cc85892ed4360a644045a31caf134f45cad7492bb93"
+    },
+    "fd132284110f9c03286f9176b0add40a93a9b4afd1c413051e3c3934fae3bf02": {
+        "ubp_id": "LAW_CHEM_007",
+        "name": "The Law of Alpha-Clustering (4-Bit Resonance)",
+        "math": "Peak(Z) iff Z % 4 == 0",
+        "language": "Nuclear stability peaks every 4 units of atomic mass/charge, corresponding to the tetrahedral vertex capacity of the 24-bit MOG layers.",
+        "script": "is_peak = z % 4 == 0",
+        "tags": [
+            "chemistry",
+            "nuclear",
+            "alpha",
+            "clustering",
+            "resonance",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fd132284110f9c03286f9176b0add40a93a9b4afd1c413051e3c3934fae3bf02"
     }
 }
