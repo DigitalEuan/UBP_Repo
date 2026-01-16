@@ -439,14 +439,6 @@
         "ubp_id": "LAW_PROTO_001",
         "full_hash": "db21b83ec44445f759fd673ec09361003bcaef794ee9013c7a5b75c9d1249681"
     },
-    "419c45b3": {
-        "ubp_id": "LAW_PHYSICS_001",
-        "full_hash": "419c45b31213d274defa76a7128d5a9776044756d23aff74c79317e884952162"
-    },
-    "4c1809b1": {
-        "ubp_id": "LAW_COSMOS_001",
-        "full_hash": "4c1809b1a0e8009a8dc79a1471623c8ad6a424ed64254f3e29ae527836c47f35"
-    },
     "3a3d8246": {
         "ubp_id": "LAW_PHYSICS_002",
         "full_hash": "3a3d82467c46839de764d52d131e0874f843f08668dff5d78d2619deb7e4d535"
@@ -1478,5 +1470,81 @@
     "a2cb9489": {
         "ubp_id": "LAW_ENERGY_SOC_001",
         "full_hash": "a2cb948986b990d7fceefa980d1e495986b9d707aa6128d612b4164bb64df334"
+    },
+    "9e9cfbf7": {
+        "ubp_id": "CONST_CRV_EUPHI",
+        "full_hash": "9e9cfbf7771234b0477d612ea831e8a82dbb2c03f4433511469dc1ad366d6b00"
+    },
+    "8e484af8": {
+        "ubp_id": "CONST_CRV_TAUPI",
+        "full_hash": "8e484af84ed8c260bf14fc676ee908ae2c199f6f6ff17ac058ccc1d5dd6498fb"
+    },
+    "082d265a": {
+        "ubp_id": "CONST_CRV_PIPI",
+        "full_hash": "082d265a995a677556e60ee158fde03d462a0133dbc953472585f72a05fdea80"
+    },
+    "577011f5": {
+        "ubp_id": "CONST_CRV_ETAU",
+        "full_hash": "577011f541a67607d138110bbcdf9d1fc9a3f0c2606040127204f213e6e3ed95"
+    },
+    "55ccf5a7": {
+        "ubp_id": "LAW_MATH_OPERATIONAL_002",
+        "full_hash": "55ccf5a70b73d7237fd42e4f81ae9bbe59e63100de3bcfc2eb7acabd1fb1cfc0"
+    },
+    "d4560adc": {
+        "ubp_id": "CONST_GELFOND_SCHNEIDER",
+        "full_hash": "d4560adc8fc5e247cf2bfdff7d9c6d914058808db972325e547a73ffc14fa3fa"
+    },
+    "133c6e59": {
+        "ubp_id": "LAW_BITLUMEN_MASTER_MODE",
+        "full_hash": "133c6e5959158d1b4a6aac842421f38ee5106c71e6d969a874a9cf96108c260b"
+    },
+    "75d05eb8": {
+        "ubp_id": "DATA_BITLUMEN_SPECTRUM_SCORES",
+        "full_hash": "75d05eb83c5e689eb37a1561db38b937d4b636f31aca41f3205eb3b078d568d1"
+    },
+    "ac37265d": {
+        "ubp_id": "LAW_GCE_003",
+        "full_hash": "ac37265d4dc5f951f3e196696fbe07252e680a3c00ed4edca89575e965e9c45b"
+    },
+    "7467dc4f": {
+        "ubp_id": "LAW_TERRESTRIAL_GRID_001",
+        "full_hash": "7467dc4f3ad8233d81b2b16076f52f014038c5a841b11c5a147449f915cb8373"
+    },
+    "2b36a02d": {
+        "ubp_id": "LAW_SEASONAL_COUPLING_001",
+        "full_hash": "2b36a02d746b23b9af8c77b11d339973939e6b3cccef5a9d168a77b4940d17e0"
+    },
+    "8124f097": {
+        "ubp_id": "LAW_CLOSURE_001",
+        "full_hash": "8124f0973bbab5454ae36c7ba95f2016442daf3aa8040776cd7c2b0b82a23b9f"
+    },
+    "dcb77abc": {
+        "ubp_id": "LAW_REFLEX_002",
+        "full_hash": "dcb77abc7699d975dd92245c9b5cb0561d842d792fc6853f01a19e883abc2b42"
+    },
+    "94c0dad1": {
+        "ubp_id": "TOOL_TELECOM_GLR",
+        "full_hash": "94c0dad112f8c547e06fc999d15d6b90a6ce8c942e8029e4d457cc96e2a8ca59"
+    },
+    "cd4520eb": {
+        "ubp_id": "LAW_GRAPHENE_001_REFINED",
+        "full_hash": "cd4520ebad930bd3d63b102d4255186b733368c4f1485ba95a9e09b2e2f82e3f"
+    },
+    "70973700": {
+        "ubp_id": "LAW_SUPERCONDUCT_001",
+        "full_hash": "70973700b62666f4bec5a488653d6e5fb770a84fe23726ebceead57b8bec0fe6"
+    },
+    "3742c0f1": {
+        "ubp_id": "LAW_RTS_REQUIREMENT_001",
+        "full_hash": "3742c0f183c46cdf364fb36d7467c9b55e8716d209244bcef9da8bfbab1a8069"
+    },
+    "c7ada63b": {
+        "ubp_id": "LAW_COSMOS_001_REFINED",
+        "full_hash": "c7ada63b36ddd4c319c99ce11bf07bae62e41188a801e7908a5e7287d80d973f"
+    },
+    "752bef52": {
+        "ubp_id": "LAW_PHYSICS_001_REFINED",
+        "full_hash": "752bef52118afbd531f62869333f285a07ee918b2303c6dd7b74c7544c475309"
     }
 }
