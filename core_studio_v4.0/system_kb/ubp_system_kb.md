@@ -1661,38 +1661,35 @@
         "nrci": "1/1",
         "fingerprint": "db21b83ec44445f759fd673ec09361003bcaef794ee9013c7a5b75c9d1249681"
     },
-    "419c45b31213d274defa76a7128d5a9776044756d23aff74c79317e884952162": {
-        "ubp_id": "LAW_PHYSICS_001",
-        "name": "The Electron Shell Generator (Fine Structure)",
-        "math": "Alpha^-1 = 64 * ((pi-1) - 8/((9216*(pi-1))+8))",
-        "language": "Derives the Fine-Structure Constant (1/137.036...) from the integer capacities of the first four electron shells (2, 8, 18, 32), corrected by the transcendental geometry of Pi. Represents the friction between Digital Matter and Analog Space.",
-        "script": "P=9216; T=P*(pi-1)+8; inv_alpha=64*((pi-1)-8/T)",
+    "c7ada63b36ddd4c319c99ce11bf07bae62e41188a801e7908a5e7287d80d973f": {
+        "ubp_id": "LAW_COSMOS_001_REFINED",
+        "name": "The Hubble Generator (Dimensional Tax)",
+        "math": "H_glob = 100 * (1 - Y) * (11/12)",
+        "language": "The Global Hubble Constant is the Local Expansion reduced by the 11/12 Dimensional Tax of the 12-bit horizon.",
+        "script": "H_glob = 100 * (1 - (1/(pi + 2/pi))) * (11/12)",
         "tags": [
+            "hubble",
+            "tax",
+            "cosmology",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c7ada63b36ddd4c319c99ce11bf07bae62e41188a801e7908a5e7287d80d973f"
+    },
+    "752bef52118afbd531f62869333f285a07ee918b2303c6dd7b74c7544c475309": {
+        "ubp_id": "LAW_PHYSICS_001_REFINED",
+        "name": "The Fine Structure Generator",
+        "math": "Alpha^-1 = 64 * ((pi-1) - 8/T)",
+        "language": "The Fine Structure Constant is a geometric function of Pi and the integer capacities of the first four electron shells.",
+        "script": "inv_alpha = 64 * ((pi-1) - 8/((9216*(pi-1))+8))",
+        "tags": [
+            "alpha",
             "fine_structure",
             "electron_shells",
-            "alpha",
-            "geometric_derivation",
-            "phenomenology",
-            "golden_result"
+            "v4.2.6"
         ],
         "nrci": "1/1",
-        "fingerprint": "419c45b31213d274defa76a7128d5a9776044756d23aff74c79317e884952162"
-    },
-    "4c1809b1a0e8009a8dc79a1471623c8ad6a424ed64254f3e29ae527836c47f35": {
-        "ubp_id": "LAW_COSMOS_001",
-        "name": "The Hubble Generator (Dimensional Tax)",
-        "math": "H_global = 100 * (1 - (1/(pi + 2/pi))) * (11/12)",
-        "language": "Derives the Global Hubble Constant (67.40) from the Local Expansion (73.53) by applying a 1/12 'Dimensional Tax'. This tax represents the energy required to maintain the 12-bit Topological Horizon, resolving the tension between Phenomenal (Supernova) and Noumenal (CMB) measurements.",
-        "script": "Y=1/(pi+2/pi); H_loc=100*(1-Y); H_glob=H_loc*(11/12)",
-        "tags": [
-            "hubble_constant",
-            "cosmology",
-            "dimensional_tax",
-            "horizon_limit",
-            "planck_resonance"
-        ],
-        "nrci": "1/1",
-        "fingerprint": "4c1809b1a0e8009a8dc79a1471623c8ad6a424ed64254f3e29ae527836c47f35"
+        "fingerprint": "752bef52118afbd531f62869333f285a07ee918b2303c6dd7b74c7544c475309"
     },
     "3a3d82467c46839de764d52d131e0874f843f08668dff5d78d2619deb7e4d535": {
         "ubp_id": "LAW_PHYSICS_002",
@@ -5941,5 +5938,285 @@
         ],
         "nrci": "1/1",
         "fingerprint": "a2cb948986b990d7fceefa980d1e495986b9d707aa6128d612b4164bb64df334"
+    },
+    "9e9cfbf7771234b0477d612ea831e8a82dbb2c03f4433511469dc1ad366d6b00": {
+        "ubp_id": "CONST_CRV_EUPHI",
+        "name": "The Biological Growth Limit (Euphi)",
+        "math": "Xi = e^phi ~ 5.043166",
+        "language": "The intersection of natural growth (e) and structural geometry (phi); defines the maximum information density for stable biological systems.",
+        "script": "float(UBPUltimateSubstrate.get_constants()['e']) ** float(UBPUltimateSubstrate.get_constants()['phi'])",
+        "tags": [
+            "constant",
+            "crv",
+            "biology",
+            "growth",
+            "euphi",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9e9cfbf7771234b0477d612ea831e8a82dbb2c03f4433511469dc1ad366d6b00"
+    },
+    "8e484af84ed8c260bf14fc676ee908ae2c199f6f6ff17ac058ccc1d5dd6498fb": {
+        "ubp_id": "CONST_CRV_TAUPI",
+        "name": "The Electromagnetic Anchor (Taupi)",
+        "math": "Psi = tau^pi ~ 321.777750",
+        "language": "The resonance anchor for electromagnetic phenomena, relating the full circle (tau) to the cycle constant (pi).",
+        "script": "float(UBPUltimateSubstrate.get_constants()['tau']) ** float(UBPUltimateSubstrate.get_constants()['pi'])",
+        "tags": [
+            "constant",
+            "crv",
+            "electromagnetism",
+            "taupi",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8e484af84ed8c260bf14fc676ee908ae2c199f6f6ff17ac058ccc1d5dd6498fb"
+    },
+    "082d265a995a677556e60ee158fde03d462a0133dbc953472585f72a05fdea80": {
+        "ubp_id": "CONST_CRV_PIPI",
+        "name": "The Self-Reference Cycle (Pipi)",
+        "math": "Omega = pi^pi ~ 36.462160",
+        "language": "The geometric density required for self-referential loops (consciousness/recursion) to stabilize.",
+        "script": "float(UBPUltimateSubstrate.get_constants()['pi']) ** float(UBPUltimateSubstrate.get_constants()['pi'])",
+        "tags": [
+            "constant",
+            "crv",
+            "consciousness",
+            "recursion",
+            "pipi",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "082d265a995a677556e60ee158fde03d462a0133dbc953472585f72a05fdea80"
+    },
+    "577011f541a67607d138110bbcdf9d1fc9a3f0c2606040127204f213e6e3ed95": {
+        "ubp_id": "CONST_CRV_ETAU",
+        "name": "The Cross-Realm Bridge (Etau)",
+        "math": "X = e^tau ~ 535.491655",
+        "language": "The high-energy scaling factor bridging quantum growth (e) with the full geometric cycle (tau).",
+        "script": "float(UBPUltimateSubstrate.get_constants()['e']) ** float(UBPUltimateSubstrate.get_constants()['tau'])",
+        "tags": [
+            "constant",
+            "crv",
+            "physics",
+            "bridge",
+            "etau",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "577011f541a67607d138110bbcdf9d1fc9a3f0c2606040127204f213e6e3ed95"
+    },
+    "55ccf5a70b73d7237fd42e4f81ae9bbe59e63100de3bcfc2eb7acabd1fb1cfc0": {
+        "ubp_id": "LAW_MATH_OPERATIONAL_002",
+        "name": "The Law of Operational Regimes",
+        "math": "U(c) = {Super > 0.7, Active > 0.5, Damped < 0.5}",
+        "language": "Mathematical constants occupy discrete functional regimes in the substrate; Super-Operators drive structural manifestation, while Damped values represent entropic noise.",
+        "script": "score = (0.3 * stability) + (0.4 * coupling) + (0.3 * resonance)",
+        "tags": [
+            "math",
+            "operational",
+            "regimes",
+            "scoring",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "55ccf5a70b73d7237fd42e4f81ae9bbe59e63100de3bcfc2eb7acabd1fb1cfc0"
+    },
+    "d4560adc8fc5e247cf2bfdff7d9c6d914058808db972325e547a73ffc14fa3fa": {
+        "ubp_id": "CONST_GELFOND_SCHNEIDER",
+        "name": "Gelfond-Schneider Constant (Operational)",
+        "math": "2^sqrt(2) ~ 2.665144 | Score = 0.777",
+        "language": "The highest-scoring transcendental compound; acts as a primary logic gate for non-linear phase transitions in the 24-bit manifold.",
+        "script": "2 ** (2**0.5)",
+        "tags": [
+            "constant",
+            "gelfond",
+            "transcendental",
+            "logic_gate",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d4560adc8fc5e247cf2bfdff7d9c6d914058808db972325e547a73ffc14fa3fa"
+    },
+    "133c6e5959158d1b4a6aac842421f38ee5106c71e6d969a874a9cf96108c260b": {
+        "ubp_id": "LAW_BITLUMEN_MASTER_MODE",
+        "name": "The Law of the BitLumen Master Mode (Orange)",
+        "math": "U(514 THz) = 0.731 | S_opt = 0.68",
+        "language": "Orange (514 THz) is the Super-Operator of the visible spectrum; it provides the maximum structural stability and coupling for information transport in the 24-bit manifold.",
+        "script": "if freq == 514.0: status = 'SUPER_OPERATOR'",
+        "tags": [
+            "bitlumen",
+            "orange",
+            "master_mode",
+            "operational",
+            "coherence",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "133c6e5959158d1b4a6aac842421f38ee5106c71e6d969a874a9cf96108c260b"
+    },
+    "75d05eb83c5e689eb37a1561db38b937d4b636f31aca41f3205eb3b078d568d1": {
+        "ubp_id": "DATA_BITLUMEN_SPECTRUM_SCORES",
+        "name": "BitLumen Operational Spectrum Data",
+        "math": "Scores = {O:0.73, Y:0.72, IR:0.69, G:0.66, V:0.63, C:0.62, B:0.61, R:0.60}",
+        "language": "The complete operational ranking of the 8 BitLumen modes, identifying the transition from Super-Operators (Orange/Yellow) to Damped-Noise (Red).",
+        "script": "spectrum_scores = {'Orange': 0.731, 'Yellow': 0.727, 'IR': 0.690, 'Green': 0.662}",
+        "tags": [
+            "data",
+            "bitlumen",
+            "spectrum",
+            "scores",
+            "operational",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "75d05eb83c5e689eb37a1561db38b937d4b636f31aca41f3205eb3b078d568d1"
+    },
+    "ac37265d4dc5f951f3e196696fbe07252e680a3c00ed4edca89575e965e9c45b": {
+        "ubp_id": "LAW_GCE_003",
+        "name": "The Law of the Integer Trigger (Refined)",
+        "math": "Snap = TRUE iff R_eff > 3.0",
+        "language": "Macroscopic coherence events trigger when the effective resonance potential exceeds the Golay Radius (t=3). NOTE: This law is currently validated via computational simulation only; empirical field verification is pending.",
+        "script": "is_snap = R_eff > 3.0",
+        "tags": [
+            "gce",
+            "trigger",
+            "snap",
+            "golay_radius",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ac37265d4dc5f951f3e196696fbe07252e680a3c00ed4edca89575e965e9c45b"
+    },
+    "7467dc4f3ad8233d81b2b16076f52f014038c5a841b11c5a147449f915cb8373": {
+        "ubp_id": "LAW_TERRESTRIAL_GRID_001",
+        "name": "The Law of Lattice Spines (Ley Lines)",
+        "math": "L_amp = 1.618 iff Coord in {Spine}",
+        "language": "Ley Lines are high-coherence waveguides in the Earth's Bitfield that amplify resonance potential by the Golden Ratio. NOTE: Computational model only; geological verification required.",
+        "script": "R_eff *= 1.618",
+        "tags": [
+            "geophysics",
+            "ley_lines",
+            "lattice_spine",
+            "amplification",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7467dc4f3ad8233d81b2b16076f52f014038c5a841b11c5a147449f915cb8373"
+    },
+    "2b36a02d746b23b9af8c77b11d339973939e6b3cccef5a9d168a77b4940d17e0": {
+        "ubp_id": "LAW_SEASONAL_COUPLING_001",
+        "name": "The Law of Angular Resonance",
+        "math": "A = cos(theta_tilt) | Seasonality",
+        "language": "The efficiency of solar-to-substrate information transfer is a function of the Earth's axial tilt relative to the Leech Lattice's 24D projection. NOTE: Computational model only.",
+        "script": "R_eff *= season_factor",
+        "tags": [
+            "astrophysics",
+            "seasonality",
+            "angular_coupling",
+            "resonance",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2b36a02d746b23b9af8c77b11d339973939e6b3cccef5a9d168a77b4940d17e0"
+    },
+    "8124f0973bbab5454ae36c7ba95f2016442daf3aa8040776cd7c2b0b82a23b9f": {
+        "ubp_id": "LAW_CLOSURE_001",
+        "name": "The Law of Bidirectional Closure",
+        "math": "Y * Y_inv = 1 | Error = 0",
+        "language": "The UBP substrate is a perfectly reversible manifold; information transformed into geometry space (Y) can be recovered with zero loss via the observer constant (Y_inv).",
+        "script": "from fractions import Fraction; p=Fraction(355,113); yi=p+2/p; y=1/yi; assert y*yi==1",
+        "tags": [
+            "substrate",
+            "closure",
+            "reversibility",
+            "involutory",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8124f0973bbab5454ae36c7ba95f2016442daf3aa8040776cd7c2b0b82a23b9f"
+    },
+    "dcb77abc7699d975dd92245c9b5cb0561d842d792fc6853f01a19e883abc2b42": {
+        "ubp_id": "LAW_REFLEX_002",
+        "name": "The Law of Self-Healing Logic",
+        "math": "NRCI_new = NRCI_old + (1 - NRCI_old) * Y",
+        "language": "Logical coherence can be restored by abstracting a noisy state into geometry space; the Y-constant acts as a restorative force that pulls information back toward the lattice.",
+        "script": "from fractions import Fraction; y=Fraction(264675,1000000); n=Fraction(1,2); healed=n+(1-n)*y",
+        "tags": [
+            "logic",
+            "healing",
+            "coherence",
+            "abstraction",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dcb77abc7699d975dd92245c9b5cb0561d842d792fc6853f01a19e883abc2b42"
+    },
+    "94c0dad112f8c547e06fc999d15d6b90a6ce8c942e8029e4d457cc96e2a8ca59": {
+        "ubp_id": "TOOL_TELECOM_GLR",
+        "name": "GLR-Telecom Codec (Float-Free)",
+        "math": "NRCI = (4 - d_H) / 4 | t=3",
+        "language": "A signal processing codec that maps IQ samples to the 24-bit Golay substrate, providing deterministic error correction for high-noise environments.",
+        "script": "from fractions import Fraction; d=min(4, errors); nrci=Fraction(4-d, 4); success=d<=3",
+        "tags": [
+            "telecom",
+            "5g",
+            "glr",
+            "error_correction",
+            "codec",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "94c0dad112f8c547e06fc999d15d6b90a6ce8c942e8029e4d457cc96e2a8ca59"
+    },
+    "cd4520ebad930bd3d63b102d4255186b733368c4f1485ba95a9e09b2e2f82e3f": {
+        "ubp_id": "LAW_GRAPHENE_001_REFINED",
+        "name": "The Law of Binary Superconductivity",
+        "math": "NRCI -> 1.0 iff L_moire == 2^n",
+        "language": "Superconductivity in twisted bilayer graphene occurs when the Moir\u00e9 period locks onto a binary power node (128 Angstroms), eliminating substrate drag.",
+        "script": "nrci = 1 - (abs(L - 128) / 128) / Y",
+        "tags": [
+            "graphene",
+            "superconductivity",
+            "binary_lock",
+            "128",
+            "magic_angle",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cd4520ebad930bd3d63b102d4255186b733368c4f1485ba95a9e09b2e2f82e3f"
+    },
+    "70973700b62666f4bec5a488653d6e5fb770a84fe23726ebceead57b8bec0fe6": {
+        "ubp_id": "LAW_SUPERCONDUCT_001",
+        "name": "The Law of Substrate-Stabilized Superconductivity",
+        "math": "NRCI_eff = NRCI_base + (Y * 11/12) - Noise_T",
+        "language": "Room temperature superconductivity is achieved when the Moir\u00e9 period locks to a binary anchor and the thermal noise is offset by the substrate's dimensional drag (Y).",
+        "script": "subsidy = Y * Fraction(11, 12); nrci_eff = base + subsidy - noise",
+        "tags": [
+            "graphene",
+            "superconductivity",
+            "thermal_bridge",
+            "room_temperature",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "70973700b62666f4bec5a488653d6e5fb770a84fe23726ebceead57b8bec0fe6"
+    },
+    "3742c0f183c46cdf364fb36d7467c9b55e8716d209244bcef9da8bfbab1a8069": {
+        "ubp_id": "LAW_RTS_REQUIREMENT_001",
+        "name": "The Law of RTS Requirements (The Recipe)",
+        "math": "Theta = 1.10117 deg | L = 128 Angstroms | NRCI = 1.0926",
+        "language": "Room-temperature superconductivity is achieved when the twist angle locks the Moir\u00e9 period to the 2^7 binary anchor (128A), utilizing the Y-subsidy to negate 300K thermal noise.",
+        "script": "from fractions import Fraction; import math; L=128; a=2.46; sin_half=a/(2*L); theta=math.degrees(2*math.asin(sin_half))",
+        "tags": [
+            "superconductivity",
+            "rts",
+            "recipe",
+            "magic_angle",
+            "128",
+            "v4.2.6"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3742c0f183c46cdf364fb36d7467c9b55e8716d209244bcef9da8bfbab1a8069"
     }
 }
