@@ -1,18 +1,18 @@
-# UBP Core Studio v4.2.6
+# UBP Core Studio v4.2.7
 ## Universal Binary Principle (UBP) — Resonant Memory & Phenomenology Environment
 
-![Version](https://img.shields.io/badge/version-4.2.6-purple.svg)
+![Version](https://img.shields.io/badge/version-4.2.7-purple.svg)
 ![Status](https://img.shields.io/badge/Status-Production_Ready-green.svg)
 ![Origin](https://img.shields.io/badge/Origin-New_Zealand-white.svg)
 
 **Author:** E. R. A. Craig, New Zealand  
-**Version:** 4.2.6 (Combined Ultimate)  
+**Version:** 4.2.7 (Combined Ultimate)  
 **Date:** 19 January 2026
 
 ---
 
 ## Overview
-**UBP Core Studio v4.2.6** is the definitive scientific research platform for exploring the **Universal Binary Principle**. It provides a deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate.
+**UBP Core Studio v4.2.7** is the definitive scientific research platform for exploring the **Universal Binary Principle**. It provides a deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate.
 
 Unlike probabilistic models, this system operates on **Exact Rational Logic** (`fractions.Fraction`), eliminating floating-point aliasing errors. It integrates a **Reflexive Cortex** for active reasoning and a **Three.js** bridge for real-time manifold visualization.
 
@@ -23,7 +23,7 @@ Unlike probabilistic models, this system operates on **Exact Rational Logic** (`
 
 ---
 
-## Core Capabilities (v4.2.6)
+## Core Capabilities (v4.2.7)
 
 ### 1. The Integrated Cortex
 The Studio is driven by a hybrid intelligence system that "thinks before it speaks," operating across three distinct cognitive layers:
@@ -48,11 +48,11 @@ Includes **UBP Drive v3.1.1**, a digital alchemy tool that:
 
 ## System Architecture
 
-The v4.2.6 architecture unifies previously separate modules into a single `COMBINED` core for maximum throughput (~170k identities/sec).
+The v4.2.7 architecture unifies previously separate modules into a single `COMBINED` core for maximum throughput (~170k identities/sec).
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
-│  UBP CORE v4.2.6 (COMBINED)                             │
+│  UBP CORE v4.2.7 (COMBINED)                             │
 ├─────────────────────────────────────────────────────────┤
 │  [KERNEL LAYER]                                         │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
@@ -217,6 +217,8 @@ A lightweight index for O(1) lookups by the Auto-Trigger. It maps the first 8 ch
 ```
 
 **CRITICAL:** Do not manually edit these files unless you are performing a **Phase 5 Archival**. Corruption of the JSON structure will blind the Cortex.
+
+Memories are updated from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb]
 
 ---
 
