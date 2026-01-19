@@ -1,15 +1,14 @@
 """
-UBP INTEGRATED ENGINE v2.2 (GEOMETRIC CORTEX - RE-GROUNDED)
-========================================================
+UBP INTEGRATED ENGINE v2.0 (SELF-AWARE CORTEX)
+==============================================
 Features:
-1. Mathematically Significant Anchor Mapping (Symmetry Groups)
-2. Spatial Indexing for O(1) Geometric Queries
-3. Canonical Vector Generation for Semantic Integrity
-4. Float-Free Metric Calculation via Fractional Arithmetic
+1. EMBEDDED OBSERVER: Recursive state evaluation via UBPObserver.
+2. SELF-STABILIZATION: Rejects queries that violate geometric integrity.
+3. METABOLIC COSTING: Calculates energy tax for every operation.
 
-Author: Euan R A Craig, New Zealand
+Author: E R A Craig, New Zealand
 UBP Research Cortex v4.2.7
-Date: 19 January 2026
+Date: 20 January 2026
 """
 
 import hashlib
@@ -17,135 +16,156 @@ import re
 import json
 from typing import Dict, List, Any, Tuple, Optional
 from fractions import Fraction
-from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra
+from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra, UBPUltimateSubstrate
 from hex_dictionary_v4_exact import HEX_DB_EXACT
 
-class SemanticCortexV2:
+# --- MODULE 1: THE OBSERVER ---
+class UBPObserver:
+    def __init__(self, db):
+        self.golay = GOLAY_DECODER
+        self.db = db
+        
+        # Constants
+        self.Y_inv = UBPUltimateSubstrate.get_constants()['Y_inv']
+        self.COHERENCE_THRESHOLD = 0.95
+        self.OBSERVATION_COST = 3.7782 # Fixed tax
+        
+        # The "Self"
+        self.integrity_vector = self._initialize_self_vector()
+        print(f"[OBSERVER] Online. Self-Vector Weight: {sum(self.integrity_vector)}")
+
+    def _initialize_self_vector(self) -> List[int]:
+        """Generates the System Identity by XORing all known Truths."""
+        identity = [0] * 24
+        count = 0
+        for _, entry in self.db.registry.items():
+            vec = entry.get('vector')
+            if vec and len(vec) == 24:
+                identity = [(a ^ b) for a, b in zip(identity, vec)]
+                count += 1
+        
+        # Ensure Identity is a valid codeword
+        corrected, _, _ = self.golay.decode(identity)
+        return self.golay.encode(corrected)
+
+    def observe(self, state_vector: List[int]) -> Dict[str, Any]:
+        """Measures geometric tension between Input and System Identity."""
+        _, _, errors = self.golay.decode(state_vector)
+        
+        # Local Coherence (Internal Consistency)
+        local_coherence = Fraction(4 - min(4, errors), 4)
+        
+        # Global Alignment (Distance to Self)
+        dist_to_self = BinaryLinearAlgebra.hamming_distance(state_vector, self.integrity_vector)
+        
+        action = "MAINTAIN"
+        if local_coherence < 1:
+            if errors <= 3:
+                action = "CORRECT"
+            else:
+                action = "RECALIBRATE"
+
+        return {
+            "action": action,
+            "coherence": float(local_coherence),
+            "dist_to_self": dist_to_self,
+            "energy_cost": self.OBSERVATION_COST * (1.0 - float(local_coherence))
+        }
+
+# --- MODULE 2: THE CORTEX ---
+class SemanticCortexV3:
     def __init__(self):
         self.golay = GOLAY_DECODER
         self.db = HEX_DB_EXACT
+        if not self.db.registry: self.db.load_memory()
         
-        # Ensure DB is loaded
-        if not self.db.registry:
-            self.db.load_memory()
-            
-        self.anchors = self._load_anchors_from_db()
-        self.spatial_index = self._build_spatial_index()
-        print(f"[CORTEX] Neural Link Established: {len(self.anchors)} Geometric Anchors active.")
+        # Initialize Observer
+        self.observer = UBPObserver(self.db)
+        self.anchors = self._load_anchors()
 
-    def _is_geometric_anchor(self, entry: Dict) -> bool:
-        """Determines if an entry should be used as a geometric anchor"""
-        raw_tags = entry.get('tags', [])
-        tags = [str(t).lower() for t in raw_tags if isinstance(t, (str, int))]
-        
-        # Broad detection logic to fix Anchor Depletion
-        ubp_id = str(entry.get('ubp_id', '')).upper()
-        anchor_patterns = [
-            'PRIMITIVE_', 'CONSTANT_', 'OPERATOR_', 'AXIOM_', 
-            'VOID', 'UNITY', 'Y_INVARIANT', 'STATE_', 'LAW_'
-        ]
-        
-        return (any(pattern in ubp_id for pattern in anchor_patterns) or 
-                any(t in ['anchor', 'primitive', 'law', 'constant'] for t in tags))
-
-    def _extract_vector(self, entry: Dict) -> Optional[List[int]]:
-        """Safely extract vector with fallback strategies"""
-        # Strategy 1: Direct Field
-        for field in ['vector', 'geometry', 'codeword']:
-            v = entry.get(field)
-            if isinstance(v, list) and len(v) == 24:
-                return [int(b) for b in v]
-                
-        # Strategy 2: Script Parsing
-        script = str(entry.get('script', ''))
-        match = re.search(r'vector\s*=\s*(\[[0-1,\s]+\])', script)
-        if match:
-            try:
-                v = json.loads(match.group(1))
-                if isinstance(v, list) and len(v) == 24:
-                    return [int(b) for b in v]
-            except: pass
-        return None
-
-    def _load_anchors_from_db(self) -> Dict[str, List[int]]:
+    def _load_anchors(self) -> Dict[str, List[int]]:
         anchors = {}
-        registry = self.db.registry if self.db.registry else {}
-        for h_hash, entry in registry.items():
-            if not isinstance(entry, dict): continue
-            if self._is_geometric_anchor(entry):
-                vec = self._extract_vector(entry)
-                if vec:
-                    name = str(entry.get('name', entry.get('ubp_id', 'UNKNOWN'))).upper()
-                    anchors[name] = vec
+        for _, entry in self.db.registry.items():
+            vec = entry.get('vector')
+            if vec:
+                name = str(entry.get('name', entry.get('ubp_id', 'UNKNOWN'))).upper()
+                anchors[name] = vec
         return anchors
 
-    def _build_spatial_index(self) -> Dict[int, List[Tuple[str, List[int]]]]:
-        index = {w: [] for w in range(25)}
-        for name, vec in self.anchors.items():
-            weight = sum(vec)
-            if 0 <= weight <= 24:
-                index[weight].append((name, vec))
-        return index
-
-    def find_nearest_anchor(self, query_vec: List[int]) -> Tuple[str, int]:
-        min_dist = 25
-        nearest = "UNKNOWN"
-        # Search all anchors for the absolute nearest neighbor
-        for name, anchor in self.anchors.items():
-            d = BinaryLinearAlgebra.hamming_distance(query_vec, anchor)
-            if d < min_dist:
-                min_dist = d
-                nearest = name
-        return nearest, min_dist
-
     def word_to_vector(self, word: str) -> List[int]:
-        """Maps a word to its nearest geometric primitive in the lattice"""
-        word_hash = hashlib.sha256(word.lower().encode()).digest()
-        seed_value = int.from_bytes(word_hash[:3], 'big') % 4096
-        raw_vec = [(seed_value >> i) & 1 for i in range(23, -1, -1)]
-        corrected, _, _ = self.golay.decode(raw_vec)
-        return self.golay.encode(corrected)
+        h = hashlib.sha256(word.lower().encode()).digest()
+        val = int.from_bytes(h[:3], 'big') % 4096
+        raw = [(val >> i) & 1 for i in range(23, -1, -1)]
+        cw, _, _ = self.golay.decode(raw)
+        return self.golay.encode(cw)
 
-    def generate_concept_card(self, query: str):
-        """Generates the UBP Identity Card using Dynamic Anchors."""
-        words = query.lower().replace("?", "").split()
-        if not words: words = ["void"]
+    def process_query(self, query: str) -> Dict[str, Any]:
+        """
+        The Main Loop:
+        1. Vectorize Input
+        2. OBSERVE (Check Coherence)
+        3. ACT (Generate or Reject)
+        """
+        print(f"\n[CORTEX] Processing: '{query}'")
         
-        # Superposition (XOR)
+        # 1. Vectorize
+        words = query.lower().replace("?", "").split()
         vec = [0] * 24
         for w in words:
             v = self.word_to_vector(w)
             vec = [(a ^ b) for a, b in zip(vec, v)]
+            
+        # 2. Observe
+        observation = self.observer.observe(vec)
+        print(f"  [OBSERVER] Action: {observation['action']} | Coherence: {observation['coherence']:.2f}")
         
-        weight = sum(vec)
-        nearest_name, min_dist = self.find_nearest_anchor(vec)
-        
-        # Interpretation Logic
-        if min_dist == 0:
-            desc = f"Perfect resonance with {nearest_name}. A fundamental truth."
-        elif min_dist <= 4:
-            desc = f"Strong alignment with {nearest_name}. A variation of this family."
-        elif min_dist <= 8:
-            desc = f"Structural relationship to {nearest_name}. Shares mathematical properties."
-        else:
-            desc = "Transitional geometry. Represents a bridge state between families."
-
+        # 3. Act
+        if observation['action'] == "RECALIBRATE":
+            return {
+                "status": "REJECTED",
+                "reason": "Geometric Hallucination Detected (Deep Hole)",
+                "metrics": observation
+            }
+            
+        if observation['action'] == "CORRECT":
+            print("  [CORTEX] Applying Geometric Correction...")
+            corrected, _, _ = self.golay.decode(vec)
+            vec = self.golay.encode(corrected)
+            # Re-observe to confirm fix
+            observation = self.observer.observe(vec)
+            
+        # Find Nearest Anchor
+        min_dist = 25
+        nearest = "UNKNOWN"
+        for name, anchor in self.anchors.items():
+            d = BinaryLinearAlgebra.hamming_distance(vec, anchor)
+            if d < min_dist:
+                min_dist = d
+                nearest = name
+                
         return {
-            "UBP_ID": f"CONCEPT_{hashlib.sha256(query.encode()).hexdigest()[:8].upper()}",
-            "Name": query.title(),
-            "Math": f"W={weight} | d({nearest_name})={min_dist}",
-            "Language": desc,
-            "Nearest_Anchor": nearest_name,
-            "Distance": min_dist,
-            "Vector": vec
+            "status": "ACCEPTED",
+            "concept": query.upper(),
+            "vector_hex": hex(int("".join(map(str, vec)), 2)),
+            "resonance": {
+                "anchor": nearest,
+                "distance": min_dist,
+                "type": "PERFECT" if min_dist == 0 else "VARIANT"
+            },
+            "observer_metrics": observation
         }
 
-# Global Instance
-CORTEX_V2 = SemanticCortexV2()
-
+# --- EXECUTION ---
 if __name__ == "__main__":
-    # Quick Diagnostic
-    test = CORTEX_V2.generate_concept_card("Is energy a form of mass?")
-    print(f"\n[DIAGNOSTIC RESULT]")
-    print(f"  Concept: {test['Name']}")
-    print(f"  Resonance: {test['Nearest_Anchor']} (d={test['Distance']})")
+    cortex = SemanticCortexV3()
+    
+    # Test 1: Valid Concept
+    result = cortex.process_query("Energy Time")
+    print(json.dumps(result, indent=2))
+    
+    # Test 2: Forced Hallucination (Random Noise)
+    # We simulate a vector that we know is a Deep Hole (Weight 4, e.g., 111100...)
+    print("\n[TEST] Injecting Deep Hole Vector...")
+    bad_vec = [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    obs = cortex.observer.observe(bad_vec)
+    print(f"  Result: {obs['action']} (Coherence {obs['coherence']})")
