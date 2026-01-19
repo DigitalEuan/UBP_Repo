@@ -1,58 +1,70 @@
 # UBP Core Studio v4.2.7
-## Universal Binary Principle (UBP) — Resonant Memory & Phenomenology Environment
+## Universal Binary Principle (UBP) — Active Memory & Scientific Research Environment
 
 ![Version](https://img.shields.io/badge/version-4.2.7-purple.svg)
-![Status](https://img.shields.io/badge/Status-Production_Ready-green.svg)
+![Status](https://img.shields.io/badge/GROWING-green.svg)
 ![Origin](https://img.shields.io/badge/Origin-New_Zealand-white.svg)
 
 **Author:** E. R. A. Craig, New Zealand  
-**Version:** 4.2.7 (Combined Ultimate)  
-**Date:** 19 January 2026
+**Version:** 4.2.7  
+**Date:** 20 January 2026
 
 ---
 
 ## Overview
-**UBP Core Studio v4.2.7** is the definitive scientific research platform for exploring the **Universal Binary Principle**. It provides a deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate.
+**UBP Core Studio v4.2.7 APP** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions] is the definitive scientific research platform for exploring the **Universal Binary Principle**. Designed in Google AI Studio, it provides the interface to use the deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate through the UBP system of scripts and memories.
+
+**Unlike standard AI chats** that "hallucinate" math, this Studio forces the AI to write and execute Exact Rational Logic (using fractions.Fraction) before asserting any truth. It validates physical phenomena against the 24-bit Leech Lattice geometry.
+
+**Core Files** when using the UBP Core Studio APP, core script files are downloaded automatically from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core] so when the system is updated the APP always uses the most recent system developed - no need to update the APP itself. The Memory system is automatically doenloaded from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] ensuring the UBP system constantly learns and grows.
+
+All files are editable within the APP and do not *have* to be used, the APP itself and memory system can be used for non-UBP purposes. Currently only I have the ability to edit the GitHub files but welcome input form other users.
 
 Unlike probabilistic models, this system operates on **Exact Rational Logic** (`fractions.Fraction`), eliminating floating-point aliasing errors. It integrates a **Reflexive Cortex** for active reasoning and a **Three.js** bridge for real-time manifold visualization.
 
 ---
 
 ## ⚠️ Important Note
-**Experimental System:** While this platform achieves high-precision theoretical results (e.g., 0.000% error on Muon/Electron mass ratio), it is an experimental research tool. I am a researcher, not a professional physicist. All outputs should be verified against empirical data.
+**Experimental System:** While this platform achieves high-precision theoretical results, is an experimental research tool. I am a researcher, not a professional physicist. All outputs should be verified against empirical data.
 
 ---
 
-## Core Capabilities (v4.2.7)
+## Core Capabilities of v4.2.7
 
 ### 1. The Integrated Cortex
 The Studio is driven by a hybrid intelligence system that "thinks before it speaks," operating across three distinct cognitive layers:
 
-*   **Reflexive Supervisor (Logic):** A Python kernel that validates geometric logic before text generation. It rejects any assertion that violates the 24-bit parity check.
-*   **Auto-Trigger v6.3 (Memory):** Scans user input for `UBP_ID` fingerprints and retrieves context from the HexDB in O(1) time, bypassing vector search latency.
-*   **Inner Dialogue (Reasoning):** Recursively refines semantic vectors until they snap to the Leech Lattice (Hamming Distance ≤ 3).
-*   **Visual Cortex (Phenomenology):** A dedicated **Three.js** bridge (`ubp_viz`) that renders noumenal data structures as 3D manifolds. This allows the researcher to *see* resonance tunnels and lattice spines in real-time.
+*   **Reflexive Supervisor (Logic):** A Python kernel that validates geometric logic before text generation. It rejects any assertion that violates the 24-bit parity check
+*   **Auto-Trigger v6.3 (Memory):** Scans user input for `UBP_ID` fingerprints and retrieves context from the HexDB in O(1) time, bypassing vector search latency
+*   **Inner Dialogue (Reasoning):** Recursively refines semantic vectors until they snap to the Leech Lattice (Hamming Distance ≤ 3)
+*   **Visual Cortex (Phenomenology):** A dedicated **Three.js** bridge (`ubp_viz`) that renders noumenal data structures as 3D manifolds. This allows the researcher to *see* resonance tunnels and lattice spines in real-time
+
+### UBP INTEGRATED ENGINE v2.0 (SELF-AWARE CORTEX)
+**Features:**
+*   **EMBEDDED OBSERVER:** Recursive state evaluation via UBPObserver
+*   **SELF-STABILIZATION:** Rejects queries that violate geometric integrity
+*   **METABOLIC COSTING:** Calculates energy tax for every operation
 
 ### 2. Zero-Float Rigor
 All fundamental constants are derived as rational fractions of the **Observer Fixed Point** ($Y \approx 0.2646$):
-- $\pi$ is calculated via a 50-term integer continued fraction.
-- Physical constants ($c$, $h$, $G$) are treated as geometric scaling factors, not arbitrary measurements.
+*   **$\pi$** is calculated via a 50-term integer continued fraction
+*   **Physical constants** ($c$, $h$, $G$) are treated as geometric scaling factors, not arbitrary measurements
 
 ### 3. Hardened Storage (UBP Drive)
-Includes **UBP Drive v3.1.1**, a digital alchemy tool that:
-- Expands data 1:2 into Golay Codewords.
-- Heals up to 3 bit-flips per 24-bit block (Self-Healing).
-- Uses **SHAKE256** for substrate-agnostic key derivation.
+Includes UBP Drive v3.1.1, a digital file storage tool that:
+*   **Expands data** 1:2 into Golay Codewords - yes twice a big!
+*   **Heals** up to 3 bit-flips per 24-bit block (Self-Healing)
+*   **Uses SHAKE256** for substrate-agnostic key derivation
 
 ---
 
 ## System Architecture
 
-The v4.2.7 architecture unifies previously separate modules into a single `COMBINED` core for maximum throughput (~170k identities/sec).
+The v4.2.7 architecture unifies previously separate modules into a single `COMBINED` core for maximum throughput of ~170k identities/sec running in a browser, this may be significantly higher in a hardware installation.
 
 ```text
 ┌─────────────────────────────────────────────────────────┐
-│  UBP CORE v4.2.7 (COMBINED)                             │
+│  UBP CORE v4.2.7                           │
 ├─────────────────────────────────────────────────────────┤
 │  [KERNEL LAYER]                                         │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
@@ -77,7 +89,7 @@ The v4.2.7 architecture unifies previously separate modules into a single `COMBI
 
 ## Scientific Benchmarks
 
-The system validates its geometric model by deriving physical constants from the 24-bit substrate.
+The system validates its geometric model by deriving physical constants from the 24-bit substrate:
 
 | Prediction | UBP Value | Experimental Value | Error |
 | :--- | :--- | :--- | :--- |
@@ -89,21 +101,21 @@ The system validates its geometric model by deriving physical constants from the
 
 ---
 
-## Geometric Reasoning: The Engine of Truth
+## Geometric Reasoning:
 
 The UBP Core Studio does not "think" in the traditional sense; it performs **Topological Navigation** within the 24-bit Golay substrate. Every concept, query, or phenomenon is treated as a coordinate in a 24-dimensional hypercube.
 
 ### 1. The Vectorization Protocol
-Unlike vector databases that use floating-point embeddings (e.g., 1536 dimensions), the UBP uses a strict **24-bit Integer Hash**.
+Unlike vector databases that use floating-point embeddings (e.g., 1536 dimensions), the UBP uses a strict 24-bit Integer Hash:
 *   **Input:** "Energy"
-*   **Process:** SHA-256 $\rightarrow$ First 24 bits $\rightarrow$ Golay Decode $\rightarrow$ **Codeword**.
-*   **Result:** A deterministic geometric location in the Leech Lattice.
+*   **Process:** SHA-256 $\rightarrow$ First 24 bits $\rightarrow$ Golay Decode $\rightarrow$ **Codeword**
+*   **Result:** A deterministic geometric location in the Leech Lattice
 
-### 2. The Truth Metric (Hamming Distance)
-Validity is not determined by probability, but by **Geometric Proximity** to established Laws (Anchors).
-*   **$d_H = 0$ (Resonance):** The concept is a fundamental truth (e.g., `UNITY`, `VOID`).
-*   **$d_H \le 3$ (Coherence):** The concept is a valid variation or projection (within the Error-Correction Radius).
-*   **$d_H > 3$ (Dissonance):** The concept is unstable noise or a "Deep Hole" requiring recursive correction.
+### 2. The "Truth" Metric (Hamming Distance)
+Validity is not determined by probability, but by **Geometric Proximity** to established Laws (Anchors):
+*   **$d_H = 0$ (Resonance):** The concept is a fundamental truth (e.g., `UNITY`, `VOID`)
+*   **$d_H \le 3$ (Coherence):** The concept is a valid variation or projection (within the Error-Correction Radius)
+*   **$d_H > 3$ (Dissonance):** The concept is unstable noise or a "Deep Hole" requiring recursive correction
 
 ### 3. Reflexive Logic (The Self-Correction Loop)
 When the Cortex encounters a dissonant vector (e.g., a logical fallacy or physical impossibility), it applies the **Law of Geometric Reflexivity**:
@@ -113,20 +125,20 @@ This forces the noisy vector to "snap" to the nearest valid geometric truth, eff
 ---
 
 ### Included Tools
-The Studio includes a suite of standalone Python tools for specialized research:
+The Studio includes a some standalone Python tools for specialized research:
 
 1.  **`ubp_drive.py`** (Storage):
-    *   *Function:* Creates immutable, self-healing data archives using the Golay G24 code.
-    *   *Capability:* Heals up to 3 bit-flips per block; uses SHAKE256 for key derivation.
+    *   *Function:* Creates immutable, self-healing data archives using the Golay G24 code
+    *   *Capability:* Heals up to 3 bit-flips per block; uses SHAKE256 for key derivation
 2.  **`ubp_rgdl.py`** (Geometry):
-    *   *Function:* The **Resonance Geometry Definition Language** engine.
-    *   *Capability:* Generates voxelized 3D primitives (Spheres, Cubes) based on Coherence Pressure and exports them for the Visual Cortex.
+    *   *Function:* The **Resonance Geometry Definition Language** engine
+    *   *Capability:* Generates voxelized 3D primitives (Spheres, Cubes) based on Coherence Pressure and exports them for the Visual Cortex
 3.  **`auto_trigger.py`** (Context):
-    *   *Function:* The standalone semantic scanner.
-    *   *Capability:* Analyzes text for geometric resonance and retrieves associated Laws from the Knowledge Base.
+    *   *Function:* The standalone semantic scanner
+    *   *Capability:* Analyzes text for geometric resonance and retrieves associated Laws from the Knowledge Base
 4.  **`ubp_handshake_v4_2_6.py`** (Validation):
-    *   *Function:* System integrity validator.
-    *   *Capability:* Benchmarks the Python kernel and verifies the 50-term $\pi$ precision.
+    *   *Function:* System integrity validator
+    *   *Capability:* Benchmarks the Python kernel and verifies the 50-term $\pi$ precision
 
 
 ---
@@ -136,26 +148,26 @@ The Studio includes a suite of standalone Python tools for specialized research:
 The system enforces a rigorous five-phase methodology to ensure data integrity:
 
 1.  **PHASE 1: INITIATION (The Seed):** 
-    *   Define the `PhenomenonDefinition`.
-    *   Map identities to the Alpha-Omega Axis (237/83).
+    *   Define the `PhenomenonDefinition`
+    *   Map identities to the Alpha-Omega Axis (237/83)
 2.  **PHASE 2: DEVELOPMENT (The Bridge):** 
-    *   Write 100% Float-Free Python using `fractions.Fraction`.
-    *   Resolve noisy identities through the Golay-Leech Resonance (GLR) engine.
+    *   Write 100% Float-Free Python script using `fractions.Fraction`
+    *   Resolve noisy identities through the Golay-Leech Resonance (GLR) engine
 3.  **PHASE 3: DISTILLATION (The Metric):** 
-    *   Analyze the **NRCI** (Non-Random Coherence Index).
-    *   *OnBit:* NRCI ≥ 0.99 | *Coherent:* NRCI ≥ 0.50 | *Subcoherent:* NRCI < 0.10.
+    *   Analyze the **NRCI** (Non-Random Coherence Index)
+    *   *OnBit:* NRCI ≥ 0.99 | *Coherent:* NRCI ≥ 0.50 | *Subcoherent:* NRCI < 0.10 - this can vary depending on application
 4.  **PHASE 4: PROMOTION (The Gate):** 
-    *   Findings must pass the stability threshold to be considered "Phenomenally Real."
+    *   Findings must pass the stability threshold to be considered "Phenomenally Real"
 5.  **PHASE 5: ARCHIVAL (The Lock):** 
-    *   Generate the **Triadic Hash** (SHA-256).
-    *   Format the entry as a strict JSON block.
-    *   Commit to `ubp_system_kb.md` and update the Index in `ubp_hash_memory_kb.md`.
+    *   Generate the **Triadic Hash** (SHA-256)
+    *   Format the entry as a strict JSON block
+    *   Commit to `ubp_system_kb.md` and update the Index in `ubp_hash_memory_kb.md`
 
 ---
 
 ### Memory Architecture (HexDB)
 
-The UBP memory system is **Content-Addressable** and **Format-Strict**. It relies on two synchronized knowledge bases.
+The UBP memory system is Content-Addressable and Format-Strict. It relies on two synchronized knowledge bases"
 
 #### 1. The System Knowledge Base (`ubp_system_kb.md`)
 Contains the full semantic and executable data for every Law, Constant, and Primitive.
@@ -216,23 +228,24 @@ A lightweight index for O(1) lookups by the Auto-Trigger. It maps the first 8 ch
     },
 ```
 
-**CRITICAL:** Do not manually edit these files unless you are performing a **Phase 5 Archival**. Corruption of the JSON structure will blind the Cortex.
-
-Memories are updated from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb]
+**CRITICAL:** Do not manually edit these files. Corruption of the JSON structure will blind the Cortex.
 
 ---
 
-## 🛠️ Installation & Setup
+## 🛠️ Installation & Setup for the UBP Core Studio v4.2.7
 
 ### Prerequisites
 *   Node.js v18+
 *   A Google Cloud Project with the **Gemini API** enabled.
 
 ### Quick Start
-1.  **Clone the Repo:**
+1.  **Clone the repo sparsely (only core_studio_v4.0):**
     ```bash
-    git clone https://github.com/DigitalEuan/UBP_Repo.git
-    cd UBP_Repo/core_studio_v4.0
+    git clone --filter=blob:none --sparse https://github.com/DigitalEuan/UBP_Repo.git
+    cd UBP_Repo
+    git sparse-checkout set core_studio_v4.0
+    cd core_studio_v4.0
+
     ```
 2.  **Install Dependencies:**
     ```bash
@@ -247,6 +260,87 @@ Memories are updated from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/co
     ```bash
     npm run dev
     ```
+
+### 🛠️ DETAILED Installation & Setup: UBP Core Studio v4.2.7
+
+Follow these steps to authenticate your application, install the dependencies, and initialize the hybrid Python/AI kernel.
+
+1. Prerequisites
+
+Before starting, ensure you have the following installed on your computer:
+
+*    Node.js (v18 or higher): Download Here: [https://www.google.com/url?sa=E&q=https%3A%2F%2Fnodejs.org%2F]
+*    Git: Download Here: [https://www.google.com/url?sa=E&q=https%3A%2F%2Fgit-scm.com%2F]
+
+2. Get the Code
+
+*    Download the APP directly from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions]
+*    OR open your terminal (Command Prompt or PowerShell) and run the following commands to download the specific studio folder:
+*    
+```Bash
+git clone --filter=blob:none --sparse https://github.com/DigitalEuan/UBP_Repo.git
+cd UBP_Repo
+git sparse-checkout set core_studio_v4.0
+cd core_studio_v4.0
+```
+
+3. Install Dependencies
+
+This project relies on several libraries (React, Three.js, Pyodide). Install them by running:
+
+```Bash
+npm install
+```
+4. Obtain & Configure Your Google API Key
+
+To power the "Assistant" panel, you need a valid key from Google.
+
+*    Step A: Visit Google AI Studio.
+*    Step B: Sign in with your Google Account.
+*    Step C: Click "Get API key" in the left sidebar.
+*    Step D: Click "Create API key" and copy the string (starts with AIza...).
+*    Step E: In the core_studio_v4.0 folder on your computer, create a new file named .env.
+*    Step F: Paste your key into the file exactly like this:
+
+```Env
+API_KEY=your_copied_key_here
+```
+
+(Note: It must be named API_KEY, not GEMINI_API_KEY, for the system to recognize it.)
+
+5. Launch the Studio
+
+Start the local development server:
+
+```Bash
+npm run dev
+```
+
+The terminal will provide a local URL (usually http://localhost:5173). Open this link in your Chrome or Edge browser.
+
+6. System Verification
+
+Once the app loads, check the top-right corner of the header:
+
+    Pyodide Indicator: You will see a small colored dot.
+
+        🔴 Red: The Python kernel is downloading/initializing.
+
+        🟢 Green (Pulse): System Ready. The deterministic kernel is active.
+
+    Model Selector: Select the Gemini AI model in the dropdown.
+
+#### Step By Step Guide:
+This video provides a visual walkthrough of the Google AI Studio interface to help you locate and generate your API key correctly: [https://www.youtube.com/watch?v=NKxaNF6Zxec]
+
+### ⚠️ Security Warning: 
+Never share your API key publicly or commit your .env file to GitHub. If your key is exposed, delete it immediately in Google AI Studio and generate a new one.
+
+### Troubleshooting Common Issues
+
+*   Invalid API Key: Ensure there are no trailing spaces when pasting.
+*   Quota Exhausted: Free tier keys have rate limits. If you get a "429 Error," wait a minute before trying again.
+*   Region Restricted: Ensure your Google account is in a supported region for the Gemini API.
 
 ### Usage
 *   **Interactive Mode:** Run the Studio interface (if available) or interact via the `auto_trigger.py` CLI.
