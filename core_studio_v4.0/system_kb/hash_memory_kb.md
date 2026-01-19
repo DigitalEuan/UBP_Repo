@@ -396,7 +396,7 @@
         "full_hash": "7cc71263df43fe8f984abdac5654eb8f611937e2dac52a49fb9370cfd75101a1"
     },
     "c95be209": {
-        "ubp_id": "LAW_BIO_008_VERIFIED",
+        "ubp_id": "LAW_BIO_008_VERIFIED_001",
         "full_hash": "c95be209ebf85a3c0f951a74590a60762c5aa5aaf7aa68ad05488a9ba5277089"
     },
     "b442e10e": {
@@ -416,7 +416,7 @@
         "full_hash": "d781c4024f06cac2b481e5539b6eb2f9c07209ff634a73852538ac778369a483"
     },
     "78c84923": {
-        "ubp_id": "LAW_GEO_432_FCC",
+        "ubp_id": "LAW_GEO_432_FCC_001",
         "full_hash": "78c849230b60685b84fdf7b3e46615d85f1f7dd4b6198a7907001339ecf07176"
     },
     "8324721c": {
@@ -439,6 +439,14 @@
         "ubp_id": "LAW_PROTO_001",
         "full_hash": "db21b83ec44445f759fd673ec09361003bcaef794ee9013c7a5b75c9d1249681"
     },
+    "c7ada63b": {
+        "ubp_id": "LAW_COSMOS_001_REFINED_001",
+        "full_hash": "c7ada63b36ddd4c319c99ce11bf07bae62e41188a801e7908a5e7287d80d973f"
+    },
+    "752bef52": {
+        "ubp_id": "LAW_PHYSICS_001_REFINED_001",
+        "full_hash": "752bef52118afbd531f62869333f285a07ee918b2303c6dd7b74c7544c475309"
+    },
     "3a3d8246": {
         "ubp_id": "LAW_PHYSICS_002",
         "full_hash": "3a3d82467c46839de764d52d131e0874f843f08668dff5d78d2619deb7e4d535"
@@ -452,11 +460,11 @@
         "full_hash": "d592581534d2a686fd28b6be1dd449d3951c86055f7c9664e69c5e04f5749460"
     },
     "b2c3d4e5": {
-        "ubp_id": "LAW_PHYSICS_003_REFINED",
+        "ubp_id": "LAW_PHYSICS_003_REFINED_001",
         "full_hash": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
     },
     "56b1b779": {
-        "ubp_id": "LAW_INFO_OID",
+        "ubp_id": "LAW_INFO_OID_001",
         "full_hash": "56b1b77920e306ac600bd5241baedad5f96fbd51ebcdc2e92f038650ab15ea5e"
     },
     "88fff09e": {
@@ -496,7 +504,7 @@
         "full_hash": "d04da16faf4b267f19afbab1658892773c09417f81a97ed4288863570db6072e"
     },
     "ff60af51": {
-        "ubp_id": "LAW_INFO_OID",
+        "ubp_id": "LAW_INFO_OID_002",
         "full_hash": "ff60af51942b092dbc8cbe7be2a8d42be573eb337b33d62336989f8c0d144ccc"
     },
     "810dda6e": {
@@ -504,7 +512,7 @@
         "full_hash": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a"
     },
     "d6137597": {
-        "ubp_id": "LAW_MAT_CONCRETE_001",
+        "ubp_id": "LAW_MAT_CONCRETE_002",
         "full_hash": "d613759719281ba7a7a21ed976b86e4070e8b165074b9ab8bf5daa3c999a1a2e"
     },
     "c69f9503": {
@@ -520,7 +528,7 @@
         "full_hash": "b4e137c01ecf00fe7f1da49ccaddb9d0c058c065ea771d6086e8094f8fe1551a"
     },
     "0b7e172d": {
-        "ubp_id": "LAW_PATH_LEAST_ACTION",
+        "ubp_id": "LAW_PATH_LEAST_ACTION_001",
         "full_hash": "0b7e172dbfcf578bb27e0166378c446649e3ee64a97f97509fb57acc63d63d87"
     },
     "084e44a3": {
@@ -528,7 +536,7 @@
         "full_hash": "084e44a31a96df48837a23afc1116bdda0bdcd0e12d1eb7da3559ff48178b923"
     },
     "f529b31b": {
-        "ubp_id": "LAW_TEMP_MOMENTUM",
+        "ubp_id": "LAW_TEMP_MOMENTUM_001",
         "full_hash": "f529b31bd9da6a2b772231ee5af6fbc5c9865d5241b42295cb687d3535f812b2"
     },
     "0d4a4c11": {
@@ -536,11 +544,11 @@
         "full_hash": "0d4a4c11de385e97af3a5f3258772c45c678d5f604b3a4e3678b1433cc16c22d"
     },
     "a5dd152f": {
-        "ubp_id": "LAW_PHYSICS_MAXWELL_GAUSS",
+        "ubp_id": "LAW_PHYSICS_MAXWELL_GAUSS_001",
         "full_hash": "a5dd152f0a1656b085840a6b2d3c7e717a91aeb5397bbf08030a2ca94dc63147"
     },
     "d90ab9c4": {
-        "ubp_id": "LAW_PHYSICS_EM_UNIFY",
+        "ubp_id": "LAW_PHYSICS_EM_UNIFY_001",
         "full_hash": "d90ab9c47cef0b158682f3b56485e608c50b1bb3b3579db32aad58a8b6983a62"
     },
     "cb1abbee": {
@@ -560,15 +568,15 @@
         "full_hash": "5e0fa0e2daec4ef9a95b93035a99ab0cd94b00a2e10572beaeb266cad6467a92"
     },
     "cff65e5f": {
-        "ubp_id": "LAW_SYSTEM_INTEGRATED_V1",
+        "ubp_id": "LAW_SYSTEM_INTEGRATED_V1_001",
         "full_hash": "cff65e5f04f626e8cfaeae45dc809043a30e6375df65667f28b3a72e2365f768"
     },
     "6cd57250": {
-        "ubp_id": "LAW_KERNEL_V2_FINAL",
+        "ubp_id": "LAW_KERNEL_V2_FINAL_001",
         "full_hash": "6cd57250094eb84f3a42da854372cdffae6480f35bc8a58fb97db48f79ea27d3"
     },
     "9e4e9d35": {
-        "ubp_id": "LAW_KERNEL_V2_1_MOG",
+        "ubp_id": "LAW_KERNEL_V2_1_MOG_001",
         "full_hash": "9e4e9d350c76689ed87f4dda4700706287d5f304e3579ade24b0e6dcd11dd19f"
     },
     "c1b1e3c2": {
@@ -580,11 +588,11 @@
         "full_hash": "0f00a82cee4756945c902155a6d51caf3496a675ef87c0e32d647cbdc74ef6a3"
     },
     "d7af3f3a": {
-        "ubp_id": "LAW_KERNEL_V2_1_1",
+        "ubp_id": "LAW_KERNEL_V2_001",
         "full_hash": "d7af3f3aa0e4e99362b986208cbe3b7ba677942bfbea22e59f33fda9098f7f16"
     },
     "3b2adab9": {
-        "ubp_id": "LAW_GOVERNANCE_CODEX",
+        "ubp_id": "LAW_GOVERNANCE_001",
         "full_hash": "3b2adab9ffddc98d50d7d06112d91039124ca714389bfb2a569a3c8b99f79467"
     },
     "11c029cb": {
@@ -604,7 +612,7 @@
         "full_hash": "f8b3294de9b562b4efe8c761ac6de093348a9691fca996100b35a3cb11b0dad1"
     },
     "33983431": {
-        "ubp_id": "TOOL_UBP_DRIVE_V2",
+        "ubp_id": "TOOL_UBP_DRIVE_V2_001",
         "full_hash": "339834316e59b7ec9982136f54c20a6ce59cb170152e890a8fc84be76f2891a0"
     },
     "0017a215": {
@@ -620,7 +628,7 @@
         "full_hash": "9a46b5eeb0fa5b05789700d889d4242b0e84854b66b5e94dde3843830dc4007b"
     },
     "433e5b55": {
-        "ubp_id": "NOTE_PAPER_01_VERIFIED",
+        "ubp_id": "NOTE_PAPER_01_VERIFIED_001",
         "full_hash": "433e5b55011ceae259a96370b76b61d6d0e44680be2a0db2b236d53629c97b7e"
     },
     "9a348a1c": {
@@ -660,11 +668,11 @@
         "full_hash": "bdbc4e3353b3f449eb1e2239e8e01d5a4ae2c87be484fc8b3e078ca7a0e21de6"
     },
     "b40c3c5e": {
-        "ubp_id": "LAW_MATH_TRIADIC_SUM",
+        "ubp_id": "LAW_MATH_TRIADIC_SUM_001",
         "full_hash": "b40c3c5ebd197d03adb97393427f422026805343091e67ed07b6f387177e1cc1"
     },
     "e5208f75": {
-        "ubp_id": "LAW_MATH_PHIP_PI",
+        "ubp_id": "LAW_MATH_PHIP_PI_001",
         "full_hash": "e5208f752059964be1ef48712591ee579f74e1ba405ad6e813f2ef6b599418ad"
     },
     "5c5ea713": {
@@ -680,7 +688,7 @@
         "full_hash": "2431fe9b38f61a1710e6366b6d99058a26d01febb181a6169cf72b12fe59d439"
     },
     "eaf58cb0": {
-        "ubp_id": "TOOL_UBP_RGDL_V1",
+        "ubp_id": "TOOL_UBP_RGDL_V1_001",
         "full_hash": "eaf58cb0d972b3368323defab1d8195e931b70a283274e1f05b3a9d79d399ff2"
     },
     "a6409a3a": {
@@ -723,10 +731,6 @@
         "ubp_id": "LAW_COLLATZ_SPINE_001",
         "full_hash": "5b38589b8575f87e5d2b916fc439982ead032ee9c878ee984a0f51e275736049"
     },
-    "feaa67a7": {
-        "ubp_id": "LAW_COLLATZ_COHERENCE_001",
-        "full_hash": "feaa67a79aebfb8743b21088438b4b0d814c4adcaa1ada17d72cf65006f208e5"
-    },
     "49a640be": {
         "ubp_id": "LAW_ALPHA_STABILITY_001",
         "full_hash": "49a640befaff01315a8d977b532419ef1c168c7ac563c91361038ae2bdc01457"
@@ -752,19 +756,19 @@
         "full_hash": "8c600e8b96ac73733d656f150582710862d733ae9b98c46c13f6f2a102640b24"
     },
     "50b3f1a9": {
-        "ubp_id": "LAW_HGR_RESONANCE_001",
+        "ubp_id": "LAW_HGR_001",
         "full_hash": "50b3f1a9f217e5ad32e10fec98324bccb9176990344f208fb049130b2595b989"
     },
     "f6bd28fa": {
-        "ubp_id": "LAW_CHEM_ENCODING_V1",
+        "ubp_id": "LAW_CHEM_ENCODING_V1_001",
         "full_hash": "f6bd28fa4ea79e658a6865786edce00fc900c137b9897bb798a6b4ed1c58d314"
     },
     "7f875624": {
-        "ubp_id": "LAW_BITTAB_ENTROPY",
+        "ubp_id": "LAW_BITTAB_ENTROPY_001",
         "full_hash": "7f875624f4d82e122aaf4f4b72e9c434c994031322f51b080ef7256eed62d4ef"
     },
     "b6c0a5aa": {
-        "ubp_id": "LAW_PERIODIC_SINGULARITY",
+        "ubp_id": "LAW_PERIODIC_SINGULARITY_001",
         "full_hash": "b6c0a5aae2710104325aed82280c7b72dcecaa3d093fe6cda0f43b38d5a8fcd6"
     },
     "84344bf8": {
@@ -792,7 +796,7 @@
         "full_hash": "bb339a1d360e7c3f3f8373fc7cfd369e74c5f0919b392f9ad3fc197c4c5a7116"
     },
     "22689d0f": {
-        "ubp_id": "LAW_GEO_HUB_001",
+        "ubp_id": "LAW_GEO_HUB_002",
         "full_hash": "22689d0fbbfd2d234854168141d43dd2999d0983028d262160c67dee8e90ecb8"
     },
     "823f1e04": {
@@ -820,19 +824,19 @@
         "full_hash": "8dd006bc6c612f5ed88f1157ccb3b0bb430bc8584c3ab2c4df53a54b486d219d"
     },
     "0085cdcc": {
-        "ubp_id": "LAW_SYNTHESIS_001",
+        "ubp_id": "LAW_SYNTHESIS_002",
         "full_hash": "0085cdcc603fdf4371838f0fc3d57ebd56499db2bae46f0fa371d691438f6d0f"
     },
     "7b4448a3": {
-        "ubp_id": "LAW_PLATONIC_001",
+        "ubp_id": "LAW_PLATONIC_002",
         "full_hash": "7b4448a31fdf37ef63ac40099d02c15a3df8fd07ce491ba51d4c2623e7b28902"
     },
     "495a7af0": {
-        "ubp_id": "LAW_DRUG_005",
+        "ubp_id": "LAW_DRUG_009",
         "full_hash": "495a7af076233f8ff286029fb489c696ab5e5300c98b1b19619dba3fe9957751"
     },
     "e66d820f": {
-        "ubp_id": "LAW_DRUG_006",
+        "ubp_id": "LAW_DRUG_010",
         "full_hash": "e66d820fb9390a97522f2e54f6a6fea09891e37b60ff9b42a9314a7696c8d87f"
     },
     "eb0534d5": {
@@ -856,7 +860,7 @@
         "full_hash": "a126ba32d599d7715a17cd55a7dcc27ee5ef4d5e88146bcb47848d44fadf24de"
     },
     "60111f40": {
-        "ubp_id": "LAW_OBSERVER_OOB_001",
+        "ubp_id": "LAW_OBSERVER_OOB_002",
         "full_hash": "60111f4077e065e3b3dda86ab983b097f5a9988cc94dab9288b7dac529fd6f2c"
     },
     "4b44483c": {
@@ -870,10 +874,6 @@
     "abdf12ae": {
         "ubp_id": "LAW_STRUCT_001",
         "full_hash": "abdf12ae36cc2c21f14ec7fce2249b966c3f33b000605197c44b5ba1f938bb42"
-    },
-    "810dda6e": {
-        "ubp_id": "LAW_LOGIC_GEO_001",
-        "full_hash": "810dda6e98355d2bea38e180682b7e7dc3c881f88607920878ccdd23c139fc0a"
     },
     "314bdf43": {
         "ubp_id": "LAW_RELATION_ORTHO_001",
@@ -920,11 +920,11 @@
         "full_hash": "f95264b029e1b965b53e302b9788367b8165cb9c38ef8ebb15e1d5a3c3d4fdd3"
     },
     "c08b5c59": {
-        "ubp_id": "LAW_LANG_001",
+        "ubp_id": "LAW_LANG_007",
         "full_hash": "c08b5c591505e4d5d972a7b065fe15a014622156d524964aa001ec9e78113bc0"
     },
     "105ef56f": {
-        "ubp_id": "LAW_LANG_002",
+        "ubp_id": "LAW_LANG_008",
         "full_hash": "105ef56fb7cd988d3a3ab2d0383c9a393e5ae284e3720e39eef9d6b5b4e57f8e"
     },
     "6c4f09b1": {
@@ -944,12 +944,8 @@
         "full_hash": "a20d8c4406750f313f04488a072203180bef0d2096a00c1b89187119fb3c8f16"
     },
     "6825ef93": {
-        "ubp_id": "LAW_DIM_001",
+        "ubp_id": "LAW_DIM_002",
         "full_hash": "6825ef9305574057b1361a60892f321c189b16d967b4e208a81de232b3561403"
-    },
-    "f534e9d6": {
-        "ubp_id": "LAW_SUBSTRATE_005",
-        "full_hash": "f534e9d6c9321bc104ef3b60e718b8ed9df96263e4024e771e9ff4e661ab6726"
     },
     "b652ba85": {
         "ubp_id": "LAW_COMP_MOG_001",
@@ -976,11 +972,11 @@
         "full_hash": "f491ebdb514dd04b356258a2f04d01cc0977745f2f936952d3c8896404e9491d"
     },
     "1f89ac8d": {
-        "ubp_id": "LAW_PHYSICS_HELICITY_001",
+        "ubp_id": "LAW_PHYSICS_HELICITY_002",
         "full_hash": "1f89ac8d93683a297de78efa73f1c4201031f66813645d87759dd0009a8efc87"
     },
     "1893e83f": {
-        "ubp_id": "LAW_COSMOS_002",
+        "ubp_id": "LAW_COSMOS_003",
         "full_hash": "1893e83f5453708d5b73ed87a42c6f17a5922af01985828ac84c3dc36846525f"
     },
     "24c931d6": {
@@ -1008,7 +1004,7 @@
         "full_hash": "1c5436425a15fbb04c8448654b0350903a13b09bec41f535f3324206a41445e8"
     },
     "e5e8a214": {
-        "ubp_id": "LAW_PHYSICS_CATALYSIS_001",
+        "ubp_id": "LAW_PHYSICS_CATALYSIS_002",
         "full_hash": "e5e8a214f3fab73e7bed80f1cf58ccc16ecc70b282a33bd3f4ad6bc7a7d8b1c6"
     },
     "de7c3002": {
@@ -1040,7 +1036,7 @@
         "full_hash": "c14c608bb3cb815a307f020afd9adc018eaa03866e9871fbea00accf48edb35f"
     },
     "9b2131f8": {
-        "ubp_id": "LAW_DRUG_007",
+        "ubp_id": "LAW_DRUG_011",
         "full_hash": "9b2131f8a605b4f244aa1f475087aaedb45fbfd3e59b319ce26100aaa379b429"
     },
     "f97f8afc": {
@@ -1055,7 +1051,7 @@
         "ubp_id": "LAW_FORCE_003",
         "full_hash": "f8ac19fdcf375e2ffc630301ee74f3a329625a15df9d84e3728b730e2bb8bd0d"
     },
-   "f92a9499": {
+    "f92a9499": {
         "ubp_id": "LAW_BIO_METABOLISM_001",
         "full_hash": "f92a9499f31b790b6c11d250f0e976ba04c260e7935374dd8638857410425d2f"
     },
@@ -1083,25 +1079,9 @@
         "ubp_id": "LAW_CHEM_HYDROCARBON_001",
         "full_hash": "86b29c1cc75fd5924d5271ae20c8b8cda7f8e007138b83c1e093a909e4fa0dd7"
     },
-    "d781c402": {
-        "ubp_id": "LAW_CHEM_METHANE_001",
-        "full_hash": "d781c4024f06cac2b481e5539b6eb2f9c07209ff634a73852538ac778369a483"
-    },
     "69009663": {
         "ubp_id": "LAW_CHEM_PHASE_001",
         "full_hash": "69009663794385b3f31006ea53af931b97de1c5bb184ebdbb8a7c97f6997d15b"
-    },
-    "f6ddc3f9": {
-        "ubp_id": "LAW_GEO_001",
-        "full_hash": "f6ddc3f9c19a15c008e7ab7baece07ef2026c0ebb2a59db5402fd3a5b17938e2"
-    },
-    "24533e98": {
-        "ubp_id": "LAW_GEO_002",
-        "full_hash": "24533e98fefa6980b3633130c540731b54604306e6a7b4b530d003e177d938e4"
-    },
-    "a707e076": {
-        "ubp_id": "LAW_GEO_003",
-        "full_hash": "a707e07621cdaaa8fac1b210e13eeb1ab304dbace72d1976d825d526fd857eb5"
     },
     "aa94cec1": {
         "ubp_id": "LAW_ACOUSTIC_003",
@@ -1123,16 +1103,8 @@
         "ubp_id": "LAW_META_GENESIS_001",
         "full_hash": "530a62f8633ac4849ebebcea54520ff83f11ccd5076e2b9860d87d928e350d56"
     },
-    "ed5231f8": {
-        "ubp_id": "LAW_RAINBOW_001",
-        "full_hash": "ed5231f866cfd01176a5f162fd36091b46e79514153e130e2f6e6b081f9119cb"
-    },
-    "39fd9901": {
-        "ubp_id": "LAW_PLATONIC_001",
-        "full_hash": "39fd990119fc1c429bf465caaaf0f875ca45757d8ad3de12b9d92e431d2e89e9"
-    },
     "b0cd4e5d": {
-        "ubp_id": "LAW_PLATONIC_001",
+        "ubp_id": "LAW_PLATONIC_003",
         "full_hash": "b0cd4e5db6de20107c01bfd43f099c508421568f884787945020c1fb90a2eae0"
     },
     "e8f7c28f": {
@@ -1163,12 +1135,8 @@
         "ubp_id": "LAW_RELATIVITY_001",
         "full_hash": "8ae073ea8ec42a8317174669f038997dd33834a8f8b86381388d654830d87084"
     },
-    "49e0f7fd": {
-        "ubp_id": "LAW_MINERAL_001",
-        "full_hash": "49e0f7fdf7984cdca3b16dca6490ec757a85006b30be4fc2fb7161b360dda941"
-    },
     "8d1e98d6": {
-        "ubp_id": "LAW_MINERAL_002",
+        "ubp_id": "LAW_MINERAL_003",
         "full_hash": "8d1e98d655a68a8fca2e6c82a8437e95f135fefdabf511160f34bfba7a13ffe8"
     },
     "99664518": {
@@ -1180,7 +1148,7 @@
         "full_hash": "a9bc4079b5725e2f7bce83a47b920b78176f04b4f856e4e994cc55e8ac127696"
     },
     "344435c4": {
-        "ubp_id": "LAW_LANG_004",
+        "ubp_id": "LAW_LANG_009",
         "full_hash": "344435c4f5d19321636f8e5515d7706cbfceaeeafede110a9217a5d2675de370"
     },
     "2cb8b8dd": {
@@ -1188,12 +1156,8 @@
         "full_hash": "2cb8b8dd3fc7c4c3728b31a04a113b59854fbc792e934fafb48079d3d1898c69"
     },
     "304ec1db": {
-        "ubp_id": "LAW_RESONANCE_002",
+        "ubp_id": "LAW_RESONANCE_004",
         "full_hash": "304ec1db405972867cded212980226c6306d002e5a719635209c3eb31abc0f8e"
-    },
-    "50b3f1a9": {
-        "ubp_id": "LAW_HGR_001",
-        "full_hash": "50b3f1a9f217e5ad32e10fec98324bccb9176990344f208fb049130b2595b989"
     },
     "e3e76efa": {
         "ubp_id": "LAW_COMP_015",
@@ -1203,16 +1167,12 @@
         "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
         "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
     },
-    "3a42893e": {
-        "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
-        "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
-    },
     "4ace1985": {
-        "ubp_id": "LAW_COMP_001",
+        "ubp_id": "LAW_COMP_007",
         "full_hash": "4ace198570babbb5cb26abde322c29406c4a8dcd343e722585ee02b4d4bd8740"
     },
     "8ce06c82": {
-        "ubp_id": "LAW_TOPOLOGY_002",
+        "ubp_id": "LAW_TOPOLOGY_003",
         "full_hash": "8ce06c823b8cc0c30102fc809f2c32359b1cfd0fb90c5fabe5d2fa8d40427f7e"
     },
     "775db1fc": {
@@ -1220,16 +1180,12 @@
         "full_hash": "775db1fce2d540fba9b680d8c76ea8f3404b8c2707334f0f219467026de991d8"
     },
     "a8acc6eb": {
-        "ubp_id": "LAW_GATEWAY_001",
+        "ubp_id": "LAW_GATEWAY_002",
         "full_hash": "a8acc6ebb0ee476bcb99c7ceb12042440bf64c850f8168720741ff14b2ce6c7d"
     },
     "eb21ef6e": {
         "ubp_id": "LAW_LEPTON_002",
         "full_hash": "eb21ef6e2b26555a659a65d73dcf562144f4f9769947a23a5d26ab776cc6cbaf"
-    },
-    "6e68a08a": {
-        "ubp_id": "LAW_NUM_001",
-        "full_hash": "6e68a08a95a23190835c843ec46dc34442006ce812abe2e6fc2c7c2290391cd2"
     },
     "8336ed0b": {
         "ubp_id": "LAW_LEPTON_003",
@@ -1268,12 +1224,8 @@
         "full_hash": "67c7e9f8a142943d6727cf848c14bf52ac9317fb57f55619ccdac88dbeb9c73f"
     },
     "40da3074": {
-        "ubp_id": "TOOL_SENSORS_V1",
+        "ubp_id": "TOOL_SENSORS_V1_001",
         "full_hash": "40da30748df55edc1c5b8f4d8bbb160d0a9605d36bf92fa325f9d5b8aa7f47cf"
-    },
-"67c7e9f8": {
-        "ubp_id": "LAW_TOPO_CONNECTIVITY_001",
-        "full_hash": "67c7e9f8a142943d6727cf848c14bf52ac9317fb57f55619ccdac88dbeb9c73f"
     },
     "a3ac79f4": {
         "ubp_id": "LAW_TOPO_EFFICIENCY_001",
@@ -1292,15 +1244,15 @@
         "full_hash": "a5edee1e02ca8027ef7d1a11cc5085081801f24f665f5a5d87a0650774d33916"
     },
     "df2c9184": {
-        "ubp_id": "CONST_BIO_DNA_BREATH",
+        "ubp_id": "CONST_BIO_DNA_BREATH_001",
         "full_hash": "df2c9184ee38bbe4f646018536e7d63b1aefea370d9758c879ae7ecd4b4ce796"
     },
     "3c8ee893": {
-        "ubp_id": "CONST_PLASMA_ITER",
+        "ubp_id": "CONST_PLASMA_ITER_001",
         "full_hash": "3c8ee8936000aef79e0c5a07921f88ae695bc57bc6eec0e8dddcdf78884afe6d"
     },
     "e7f71d37": {
-        "ubp_id": "LAW_QUANTUM_PROB_001",
+        "ubp_id": "LAW_QUANTUM_PROB_002",
         "full_hash": "e7f71d371a8b92c61d741082c930efa166b7032ba9e46fe4ac81672c2e8c26ff"
     },
     "d27a49b8": {
@@ -1312,19 +1264,15 @@
         "full_hash": "a711b67031935d6980a23b3c1670cd9aa993a1b4e0cd13a64749953cb524929c"
     },
     "b21da8d9": {
-        "ubp_id": "TOOL_CYMATICS_V1",
+        "ubp_id": "TOOL_CYMATICS_V1_001",
         "full_hash": "b21da8d9c026193fb0c6e129145460f48f1518024b032bed53c35d1e4f56c901"
     },
-    "6bd3a503": {
-        "ubp_id": "LAW_GEO_FAMILY_001",
-        "full_hash": "6bd3a5033a374b0e94ac528c9436ec8a23e9119122979c32d742ed4f0179a2f0"
-    },
     "667a3288": {
-        "ubp_id": "DATA_PHENOMENAL_CONSTANTS",
+        "ubp_id": "DATA_PHENOMENAL_CONSTANTS_001",
         "full_hash": "667a3288c8a1568a664e4ed69f8247f916278711a5df649284937f94305ea9b8"
     },
     "75e99041": {
-        "ubp_id": "TOOL_CYMATICS_CORE",
+        "ubp_id": "TOOL_CYMATICS_CORE_001",
         "full_hash": "75e99041beff5b5c185cec59d4b9dfa8c0d1e2972d91e4210d282c4613f48a6b"
     },
     "6a809700": {
@@ -1344,27 +1292,23 @@
         "full_hash": "e3100ecffe7b049d48bef2bf582dc1b7ec751fef4abd568037f7e92ae09d3d07"
     },
     "fb072865": {
-        "ubp_id": "DATA_PHYSICAL_CONSTANTS",
+        "ubp_id": "DATA_PHYSICAL_CONSTANTS_001",
         "full_hash": "fb0728659cab2ddec672b408f2a9d4291b127049c9beedbbcb957af7b7a59241"
     },
     "74daa546": {
-        "ubp_id": "TOOL_QUANTUM_RCS",
+        "ubp_id": "TOOL_QUANTUM_RCS_001",
         "full_hash": "74daa54641e5bb0291cf989512c90c4d075321af25d8981902ba9afaccffd05c"
     },
     "e8c3723c": {
-        "ubp_id": "TOOL_SIM_CLASSICAL",
+        "ubp_id": "TOOL_SIM_CLASSICAL_001",
         "full_hash": "e8c3723cc14f98426cdacd82c22f0233dbfd7b34966cfdd690f5acd980492bb9"
     },
-    "3a42893e": {
-        "ubp_id": "LAW_CLASSICAL_BRIDGE_001",
-        "full_hash": "3a42893e9675e73e1d64c2f01377e73fa514836b85a2b598d02bde42f6486203"
-    },
     "b20d0a67": {
-        "ubp_id": "LAW_TOPO_EFFICIENCY_001",
+        "ubp_id": "LAW_TOPO_EFFICIENCY_002",
         "full_hash": "b20d0a67411d5757eeba74bde5d9ac0e3b2b0005b7d39d119ca8baf9898f54c8"
     },
     "015ee2d9": {
-        "ubp_id": "TOOL_IDEA_EXPLORER",
+        "ubp_id": "TOOL_IDEA_EXPLORER_001",
         "full_hash": "015ee2d9f700d62ea9e88d8f5f68aeb3644b80b4718f21f1c5b465eb3acca0ed"
     },
     "65b435b1": {
@@ -1392,23 +1336,23 @@
         "full_hash": "a5d1c2e3f4b5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
     },
     "e3929f89": {
-        "ubp_id": "LAW_MOG_13_LOCK",
+        "ubp_id": "LAW_MOG_13_LOCK_001",
         "full_hash": "e3929f89a8078cd0e141040d20d788debd3a6a79e4ff670eeca9b949107f4aed"
     },
     "445691cf": {
-        "ubp_id": "LAW_OPCODE_PILOT_MIN",
+        "ubp_id": "LAW_OPCODE_PILOT_MIN_001",
         "full_hash": "445691cf12ff3908518beec769b19422f7adc32fd945af651d6c6910a5ccfa20"
     },
     "415dc2c8": {
-        "ubp_id": "LAW_OPCODE_DREAM_MIN",
+        "ubp_id": "LAW_OPCODE_DREAM_MIN_001",
         "full_hash": "415dc2c8a5fffe93aab2fcae2e6f9721d43af85dcbdc88ff5d046c9042a09fc7"
     },
     "d5c30103": {
-        "ubp_id": "LAW_OPCODE_GAVEL_MIN",
+        "ubp_id": "LAW_OPCODE_GAVEL_MIN_001",
         "full_hash": "d5c30103e27e1c16e817e483e6cd59457d428fb66f4b891afbbecef26c0ae144"
     },
     "1ba7f84c": {
-        "ubp_id": "LAW_OPCODE_FOCUS_MIN",
+        "ubp_id": "LAW_OPCODE_FOCUS_MIN_001",
         "full_hash": "1ba7f84ceadf47a326e02695c6d247ff080f9962c69bc1fb2853d5a02af90f3c"
     },
     "404cf562": {
@@ -1420,7 +1364,7 @@
         "full_hash": "6aea7aa4e3303ae3c27435c4b94d0f8b143da60da87f922d96a0fd8cb546e12d"
     },
     "b320f643": {
-        "ubp_id": "TOOL_HOLOGRAM_ENGINE",
+        "ubp_id": "TOOL_HOLOGRAM_ENGINE_001",
         "full_hash": "b320f643b8ba0270b9e9a69ceefb91f491ad12efb7e89f553931cc96a172bf98"
     },
     "4f8a5056": {
@@ -1428,63 +1372,63 @@
         "full_hash": "4f8a505664de9b0d35cd4187ce1561f412cced7658135a350b291b79d80726cb"
     },
     "b54753c1": {
-        "ubp_id": "TOOL_COLLATZ_MOG",
+        "ubp_id": "TOOL_COLLATZ_MOG_001",
         "full_hash": "b54753c17db1808dddab436cc13dbac4914e0a95723595b18289a3779633e043"
     },
     "97d6b060": {
-        "ubp_id": "LAW_BITTAB_V1",
+        "ubp_id": "LAW_BITTAB_V1_001",
         "full_hash": "97d6b060e41c88c84a43fe0007af6b4863b98cafdca1119dbf1d0d6cf96d5e61"
     },
     "bc0496d3": {
-        "ubp_id": "LAW_COMP_WORK",
+        "ubp_id": "LAW_COMP_WORK_001",
         "full_hash": "bc0496d3d04ea1da17073fbef7c52038b02011d89b4c4a07243059524e2b73fa"
     },
     "fde3816e": {
-        "ubp_id": "LAW_SYMBOL_004",
+        "ubp_id": "LAW_SYMBOL_005",
         "full_hash": "fde3816e4cd555466162096990c6a44abebe6f5ed424aa3970ef1a669baf5224"
     },
     "f4493eb2": {
-        "ubp_id": "DATA_GL1_DICT",
+        "ubp_id": "DATA_GL1_DICT_001",
         "full_hash": "f4493eb25c4f0a40a229d22276e9f965da1302356fa05658b2cbd30f5d50bb39"
     },
     "367dda22": {
-        "ubp_id": "LAW_PARTICLE_6D",
+        "ubp_id": "LAW_PARTICLE_6D_001",
         "full_hash": "367dda22f98eb2d1696bfbd7a5dd69c94c44368de168129ba7c20d3fa6c06760"
     },
     "68132dfc": {
-        "ubp_id": "LAW_INTERACTION_RATIONAL",
+        "ubp_id": "LAW_INTERACTION_RATIONAL_001",
         "full_hash": "68132dfcec3f83a156390ca901f1c3c4daa96a564b717979cda28c00860fcb95"
     },
     "ce9e607d": {
-        "ubp_id": "LAW_ATOM_HOLOGRAPHIC",
+        "ubp_id": "LAW_ATOM_HOLOGRAPHIC_001",
         "full_hash": "ce9e607d32cffecea8d025740a2de805f0aa6c8d237b1987ea515ccdb471d937"
     },
     "f01bbf6d": {
-        "ubp_id": "TOOL_ATOM_VISUALIZER",
+        "ubp_id": "TOOL_ATOM_VISUALIZER_001",
         "full_hash": "f01bbf6dcea845a87b4490c8f78494ff2a17c97ea519302871908c52b81f4400"
     },
     "694ebfdc": {
-        "ubp_id": "LAW_GEOMETRIC_NRCI",
+        "ubp_id": "LAW_GEOMETRIC_NRCI_001",
         "full_hash": "694ebfdca6e96bbd806f5675b7c5601e762c0c1398d693e492f8a81ca156ef0f"
     },
     "a2cb9489": {
-        "ubp_id": "LAW_ENERGY_SOC_001",
+        "ubp_id": "LAW_ENERGY_SOC_002",
         "full_hash": "a2cb948986b990d7fceefa980d1e495986b9d707aa6128d612b4164bb64df334"
     },
     "9e9cfbf7": {
-        "ubp_id": "CONST_CRV_EUPHI",
+        "ubp_id": "CONST_CRV_EUPHI_001",
         "full_hash": "9e9cfbf7771234b0477d612ea831e8a82dbb2c03f4433511469dc1ad366d6b00"
     },
     "8e484af8": {
-        "ubp_id": "CONST_CRV_TAUPI",
+        "ubp_id": "CONST_CRV_TAUPI_001",
         "full_hash": "8e484af84ed8c260bf14fc676ee908ae2c199f6f6ff17ac058ccc1d5dd6498fb"
     },
     "082d265a": {
-        "ubp_id": "CONST_CRV_PIPI",
+        "ubp_id": "CONST_CRV_PIPI_001",
         "full_hash": "082d265a995a677556e60ee158fde03d462a0133dbc953472585f72a05fdea80"
     },
     "577011f5": {
-        "ubp_id": "CONST_CRV_ETAU",
+        "ubp_id": "CONST_CRV_ETAU_001",
         "full_hash": "577011f541a67607d138110bbcdf9d1fc9a3f0c2606040127204f213e6e3ed95"
     },
     "55ccf5a7": {
@@ -1492,15 +1436,15 @@
         "full_hash": "55ccf5a70b73d7237fd42e4f81ae9bbe59e63100de3bcfc2eb7acabd1fb1cfc0"
     },
     "d4560adc": {
-        "ubp_id": "CONST_GELFOND_SCHNEIDER",
+        "ubp_id": "CONST_GELFOND_SCHNEIDER_001",
         "full_hash": "d4560adc8fc5e247cf2bfdff7d9c6d914058808db972325e547a73ffc14fa3fa"
     },
     "133c6e59": {
-        "ubp_id": "LAW_BITLUMEN_MASTER_MODE",
+        "ubp_id": "LAW_BITLUMEN_MASTER_MODE_001",
         "full_hash": "133c6e5959158d1b4a6aac842421f38ee5106c71e6d969a874a9cf96108c260b"
     },
     "75d05eb8": {
-        "ubp_id": "DATA_BITLUMEN_SPECTRUM_SCORES",
+        "ubp_id": "DATA_BITLUMEN_SPECTRUM_SCORES_001",
         "full_hash": "75d05eb83c5e689eb37a1561db38b937d4b636f31aca41f3205eb3b078d568d1"
     },
     "ac37265d": {
@@ -1508,7 +1452,7 @@
         "full_hash": "ac37265d4dc5f951f3e196696fbe07252e680a3c00ed4edca89575e965e9c45b"
     },
     "7467dc4f": {
-        "ubp_id": "LAW_TERRESTRIAL_GRID_001",
+        "ubp_id": "LAW_TERRESTRIAL_GRID_002",
         "full_hash": "7467dc4f3ad8233d81b2b16076f52f014038c5a841b11c5a147449f915cb8373"
     },
     "2b36a02d": {
@@ -1524,11 +1468,11 @@
         "full_hash": "dcb77abc7699d975dd92245c9b5cb0561d842d792fc6853f01a19e883abc2b42"
     },
     "94c0dad1": {
-        "ubp_id": "TOOL_TELECOM_GLR",
+        "ubp_id": "TOOL_TELECOM_GLR_001",
         "full_hash": "94c0dad112f8c547e06fc999d15d6b90a6ce8c942e8029e4d457cc96e2a8ca59"
     },
     "cd4520eb": {
-        "ubp_id": "LAW_GRAPHENE_001_REFINED",
+        "ubp_id": "LAW_GRAPHENE_001_REFINED_001",
         "full_hash": "cd4520ebad930bd3d63b102d4255186b733368c4f1485ba95a9e09b2e2f82e3f"
     },
     "70973700": {
@@ -1539,14 +1483,6 @@
         "ubp_id": "LAW_RTS_REQUIREMENT_001",
         "full_hash": "3742c0f183c46cdf364fb36d7467c9b55e8716d209244bcef9da8bfbab1a8069"
     },
-    "c7ada63b": {
-        "ubp_id": "LAW_COSMOS_001_REFINED",
-        "full_hash": "c7ada63b36ddd4c319c99ce11bf07bae62e41188a801e7908a5e7287d80d973f"
-    },
-    "752bef52": {
-        "ubp_id": "LAW_PHYSICS_001_REFINED",
-        "full_hash": "752bef52118afbd531f62869333f285a07ee918b2303c6dd7b74c7544c475309"
-    },
     "7ba1c5de": {
         "ubp_id": "LAW_CHEM_006",
         "full_hash": "7ba1c5de90c148fcd3fb6cc85892ed4360a644045a31caf134f45cad7492bb93"
@@ -1554,5 +1490,805 @@
     "fd132284": {
         "ubp_id": "LAW_CHEM_007",
         "full_hash": "fd132284110f9c03286f9176b0add40a93a9b4afd1c413051e3c3934fae3bf02"
+    },
+    "d51c4e14": {
+        "ubp_id": "PRIMITIVE_VOID_001",
+        "full_hash": "d51c4e14d984e64ce80dcd791f81ec068085f03322934ae1e31a97709f9e9f75"
+    },
+    "83966036": {
+        "ubp_id": "PRIMITIVE_UNITY_001",
+        "full_hash": "83966036d6116f2708d1f2754b35d16608924d5cc30a39a08fc4501771027468"
+    },
+    "3c0f1634": {
+        "ubp_id": "PRIMITIVE_BALANCE_001",
+        "full_hash": "3c0f1634690da0fb750dfcf15a320ccac9e82d5738915f7c9b71de54f285381d"
+    },
+    "fec1c524": {
+        "ubp_id": "PRIMITIVE_ENTROPY_001",
+        "full_hash": "fec1c52480f909c8ea70a09d3891691d6db0fb68a86a0483390cd84b26e23b35"
+    },
+    "3eef5170": {
+        "ubp_id": "PRIMITIVE_POTENTIAL_001",
+        "full_hash": "3eef5170d7121af5c14f9f970eea5ac220fb7d693468389f900630534ce7b43e"
+    },
+    "09c5ef6e": {
+        "ubp_id": "OPERATOR_AND_001",
+        "full_hash": "09c5ef6e9e07511971898de164460639f8e61104f21aab7b4ec8600347eb5f84"
+    },
+    "6e6f9512": {
+        "ubp_id": "OPERATOR_OR_001",
+        "full_hash": "6e6f9512986d9d24dfd630677e5c9530b3d79844c9ab9b8eba65cd284aeae1bb"
+    },
+    "90bd4f36": {
+        "ubp_id": "OPERATOR_XOR_001",
+        "full_hash": "90bd4f36a510617c1fbcd0dcb90cb2349317813e341a91e77a62688122cf7d0b"
+    },
+    "caedfbcc": {
+        "ubp_id": "OPERATOR_NOT_001",
+        "full_hash": "caedfbccaa8ec80f6439c691cc34bf6c4e607bbcd74ec9512a05aa5f0b096809"
+    },
+    "60451796": {
+        "ubp_id": "OPERATOR_IMPLIES_001",
+        "full_hash": "60451796a8cae46302ab0fc61f7203d270d755a78d247f81ad497ab3f6801d1e"
+    },
+    "165f4864": {
+        "ubp_id": "OPERATOR_NAND_001",
+        "full_hash": "165f4864335a59f078d9b8745626949b29668670f71e84556a47dff26ca015e6"
+    },
+    "c1d0f83c": {
+        "ubp_id": "CONSTANT_PI_001",
+        "full_hash": "c1d0f83c224e2c595f15ce2285bedf16f5fc910e6c222ffa50c45c60acbb37b1"
+    },
+    "cf004302": {
+        "ubp_id": "CONSTANT_PHI_001",
+        "full_hash": "cf0043026dd82f701005250a0ec217a2dc4d893dcdc783ff0f32e3cfed44e238"
+    },
+    "80c9ad1f": {
+        "ubp_id": "CONSTANT_E_001",
+        "full_hash": "80c9ad1f56aaf1ba25c985faaa60863c9bcf6fae0c6d90a1e585e74fb402362e"
+    },
+    "d4a9b763": {
+        "ubp_id": "CONSTANT_SQRT_002",
+        "full_hash": "d4a9b763d9e13dce26b0c2dc8ddfab1082956bebecc196d7330249286c3ade56"
+    },
+    "aed75b5e": {
+        "ubp_id": "CONSTANT_FINE_STRUCTURE_001",
+        "full_hash": "aed75b5e3e6454c193133012aac09445efe8853b9b85fd9fbde5cca69ea58f18"
+    },
+    "cbfcc231": {
+        "ubp_id": "STATE_STABLE_001",
+        "full_hash": "cbfcc2317f03d86bd1ef83c7f7bbd126ff9a7c70a9faf450306cf4d69fd46783"
+    },
+    "f88ac837": {
+        "ubp_id": "STATE_UNSTABLE_001",
+        "full_hash": "f88ac8371d5051b3ba2e5bc44d5cf251ae15748a5431c30d241ef17c7b59a76e"
+    },
+    "852827c8": {
+        "ubp_id": "STATE_SYMMETRY_001",
+        "full_hash": "852827c8baf838b1ac9ca6966139189a601bc4d5253ee59fd360ff7623ede25b"
+    },
+    "d89a1bb7": {
+        "ubp_id": "STATE_ASYMMETRY_001",
+        "full_hash": "d89a1bb7ba146209cf9536042a581acfde7fe4df22daa7adac9aa9eb879046fa"
+    },
+    "00232051": {
+        "ubp_id": "STATE_COHERENT_001",
+        "full_hash": "00232051237d38e8f35f5f2559c59fd06648bcccc8c5286d2535903cb9b6c5bd"
+    },
+    "d262ea96": {
+        "ubp_id": "STATE_DECOHERENT_001",
+        "full_hash": "d262ea9653a3b3749ee7acb6d5c572bf80fea5cf9bac3fd93aa3d1b72948fa84"
+    },
+    "b51c6d64": {
+        "ubp_id": "STATE_ORTHOGONAL_001",
+        "full_hash": "b51c6d64f46ec3929c14742f378ffd066bfcb2570cdc9126fa10aa99d8bdef3f"
+    },
+    "8de46757": {
+        "ubp_id": "STATE_PARALLEL_001",
+        "full_hash": "8de467578d0de8fec0b6f522cc450499502e0cee3f346c509f5300ad1ae8b0bb"
+    },
+    "af060479": {
+        "ubp_id": "TRANSFORM_ENCODE_001",
+        "full_hash": "af06047940981d9dcf030f3b01281aac1539166d8a2f14f5f63f35c3f64b873b"
+    },
+    "838fcdf9": {
+        "ubp_id": "TRANSFORM_DECODE_001",
+        "full_hash": "838fcdf9b651d4d614037c6366c4ea1cb872bf3f982ac2426b19e30846395308"
+    },
+    "ab5f20a9": {
+        "ubp_id": "TRANSFORM_PROJECT_001",
+        "full_hash": "ab5f20a9b8ee115baa2c4469e4773958b36ba1d61bc5b390809f4d499ae0d8fe"
+    },
+    "89d107f7": {
+        "ubp_id": "TRANSFORM_REFLECT_001",
+        "full_hash": "89d107f7abb8cb19fc132cff6c78535ee1959336d5e8e2b0b763000982b9c847"
+    },
+    "4c7bde1c": {
+        "ubp_id": "TRANSFORM_ROTATE_001",
+        "full_hash": "4c7bde1ca8cc07db94636804c103cb835a45d944c845c5368373059715818745"
+    },
+    "08a996b6": {
+        "ubp_id": "TRANSFORM_SCALE_001",
+        "full_hash": "08a996b6e6b7ce0cabf1bd6180c9602d1d6342273fb257230acdb4b3a355d251"
+    },
+    "48cfcc2e": {
+        "ubp_id": "TRANSFORM_NORMALIZE_001",
+        "full_hash": "48cfcc2ea2ab5d9d2e4af57a09bff2acc1388e33707f868350c2ae43e1656176"
+    },
+    "66518578": {
+        "ubp_id": "QUANTIFIER_EXISTS_001",
+        "full_hash": "66518578256e575d4d4683558e4fe445f9d9e8c11b3a862ceccbe09997624971"
+    },
+    "2a9fcc88": {
+        "ubp_id": "QUANTIFIER_FORALL_001",
+        "full_hash": "2a9fcc882953049eb10188cb8dcad24b6591160f878019b65e74b50657a129d4"
+    },
+    "8a0db0cb": {
+        "ubp_id": "QUANTIFIER_COUNT_001",
+        "full_hash": "8a0db0cb933a567d0354c2e87b55679e667554ec9d87a90faf4b42a03e894dc5"
+    },
+    "71ab0f43": {
+        "ubp_id": "QUANTIFIER_MEASURE_001",
+        "full_hash": "71ab0f436adcd45b2345da93493fc1671cb4f538d13c9af99a23e83060b6f8c8"
+    },
+    "a8036d4f": {
+        "ubp_id": "QUANTIFIER_DISTANCE_001",
+        "full_hash": "a8036d4f26f5766984e44404628cf881924bc633d13e850e65311e0f1d3dfdd3"
+    },
+    "dc5c8c93": {
+        "ubp_id": "QUANTIFIER_SIMILARITY_001",
+        "full_hash": "dc5c8c936eff25eddba844063f205047eaa63fe3bb21f5936e48cf8290d3b1d0"
+    },
+    "5f6947ec": {
+        "ubp_id": "RELATION_EQUALS_001",
+        "full_hash": "5f6947ec37d206d4ea016f2c27cc6e0147bc45620baa2ce0862def80bc00b9e4"
+    },
+    "97e4b7da": {
+        "ubp_id": "RELATION_LESS_THAN_001",
+        "full_hash": "97e4b7da4a24f14cd163aeeb96850b00429aa6e0ec364bd51f4d3c8076028289"
+    },
+    "0123cbc7": {
+        "ubp_id": "RELATION_GREATER_THAN_001",
+        "full_hash": "0123cbc7ad75e6f3ac643370c5e00d13b55bf5364cbcc48175979c1b5780e727"
+    },
+    "f3cd09e5": {
+        "ubp_id": "RELATION_SUBSET_001",
+        "full_hash": "f3cd09e5d9de78566a41af678b8f7c7d7f5398c0e6e01a81ead02a8395006e6c"
+    },
+    "4fb3311c": {
+        "ubp_id": "RELATION_DISJOINT_001",
+        "full_hash": "4fb3311c224c756ba65dcc2baa23a68064ff32bacc9137d3e7beb8e89a20a247"
+    },
+    "b422f0a1": {
+        "ubp_id": "RELATION_OVERLAPS_001",
+        "full_hash": "b422f0a1a395f2cfc1394e2b87284475049326a44ad06eff69b88d262fed7117"
+    },
+    "55cd11ef": {
+        "ubp_id": "RELATION_ADJACENT_001",
+        "full_hash": "55cd11ef789a73f9b2e718ddf6fd318a3746fb65ffbd8aed4a17c9bbbc0f2b26"
+    },
+    "9cce9329": {
+        "ubp_id": "RELATION_EQUIVALENT_001",
+        "full_hash": "9cce932937052f394226820db8444be9142d1f8584a9a6815072ba61bf24efa9"
+    },
+    "425e8793": {
+        "ubp_id": "PRIMITIVE_ZERO_048",
+        "full_hash": "425e8793a07a2a3575e7ec85c8ee6e0ab56814d6857c9022b9d3f3a35ea29681"
+    },
+    "e0f8c6bc": {
+        "ubp_id": "CONCEPT_ENERGY_001",
+        "full_hash": "e0f8c6bcd0a25e61d58adcd0b842cfce17dfbcb8a8a5cca94e92262207bcc4d8"
+    },
+    "7900db08": {
+        "ubp_id": "CONCEPT_MASS_001",
+        "full_hash": "7900db0881f8d7af0c6d60489b0d402e43ce0d33aee3f40e8e21b777e3947abc"
+    },
+    "fe0c505d": {
+        "ubp_id": "CONCEPT_LIGHT_001",
+        "full_hash": "fe0c505d2d3a10cfb3af036b1a5587e7da88777599d72a69d9d0362b236dcd8c"
+    },
+    "60242a0a": {
+        "ubp_id": "CONCEPT_GRAVITY_001",
+        "full_hash": "60242a0a5b3ab02d594b40f8c6309cf527cc70a46aeb0adb177e6e4c1a7624d3"
+    },
+    "e66389b0": {
+        "ubp_id": "CONCEPT_SPACE_001",
+        "full_hash": "e66389b0ce61b644d2ca6fdc4d6978b20dcab6bc593cb783348d4214b53dc36e"
+    },
+    "ee6b07a2": {
+        "ubp_id": "CONCEPT_TIME_001",
+        "full_hash": "ee6b07a2a29d1a8f4867ab3dd9303c5399c829df13565dd9b56b191f44dbaeb3"
+    },
+    "0fa54c08": {
+        "ubp_id": "CONCEPT_FORCE_001",
+        "full_hash": "0fa54c0876bcf432ea0aa5494670b0f25326c93448eb52a79ab0c0bdf2f2d471"
+    },
+    "50e152a8": {
+        "ubp_id": "CONCEPT_FIELD_001",
+        "full_hash": "50e152a8c0cbd6fb1fc95ed725924fe2e0928247ede2549b1b58f5d7f94a252c"
+    },
+    "bf295bd1": {
+        "ubp_id": "CONCEPT_LIFE_001",
+        "full_hash": "bf295bd1ffe91bd56e279d7ac6046b8450de59cdb2d9bbfc969fa98c0b975f03"
+    },
+    "6ba8f6f8": {
+        "ubp_id": "CONCEPT_DEATH_001",
+        "full_hash": "6ba8f6f86bf45ace63a485e18cc341ee59ed6edd7a6783a45e23e80536303f57"
+    },
+    "5b030087": {
+        "ubp_id": "CONCEPT_DNA_001",
+        "full_hash": "5b0300878c82f34dac42f6eebea232072deabfec7876dd321ae2d52e2e1b6372"
+    },
+    "32ec1104": {
+        "ubp_id": "CONCEPT_MIND_001",
+        "full_hash": "32ec110460efbbd221f6369f88e138643b3cb2f7197a33deca59f07d727f4447"
+    },
+    "e0f02b52": {
+        "ubp_id": "CONCEPT_BODY_001",
+        "full_hash": "e0f02b5299a250110bbea940ab5164da759670e887ed6dff809d1d2d09154557"
+    },
+    "3f5bddd8": {
+        "ubp_id": "CONCEPT_ORDER_001",
+        "full_hash": "3f5bddd88b17a7294856bde606810551ef3047ca556254a16ddd7eea52b5d9e0"
+    },
+    "c9ddae76": {
+        "ubp_id": "CONCEPT_CHAOS_001",
+        "full_hash": "c9ddae7663c7ccca25ee65fba989e85ee03b7057a892664dca42ce852e7ce8c3"
+    },
+    "223f6c85": {
+        "ubp_id": "CONCEPT_GOOD_001",
+        "full_hash": "223f6c85592e1a5043fac9d49050455817ab79882c8bb0c960902fea4f3debc0"
+    },
+    "ca9d39bc": {
+        "ubp_id": "CONCEPT_EVIL_001",
+        "full_hash": "ca9d39bca08555e6ba23471365cfa59f90d917bb99dbd5389edf54f3fda477fc"
+    },
+    "71b4e979": {
+        "ubp_id": "CONCEPT_TRUTH_001",
+        "full_hash": "71b4e979f09c92af13451e1c8ca89e73ecb26aa48d7b7ab970122bb2044a05e5"
+    },
+    "b93d0e22": {
+        "ubp_id": "ACTION_CREATE_001",
+        "full_hash": "b93d0e22194a4ea3a6f6f052d5a321c7cbf9134e5001deb437ed1ead9707858b"
+    },
+    "ec911a93": {
+        "ubp_id": "ACTION_DESTROY_001",
+        "full_hash": "ec911a9338a737c6b29da818599c0d0438aaf95a95509287aded5dc483a73549"
+    },
+    "52819c4b": {
+        "ubp_id": "ACTION_TRANSFORM_001",
+        "full_hash": "52819c4bd2ebb71ac5b33ec62048eba71479ba3716cd2e5a136df6036f26c942"
+    },
+    "56cac18d": {
+        "ubp_id": "ACTION_BIND_001",
+        "full_hash": "56cac18d97e55ce725d3d4db0c2ac23f4a27a93303e21973eb3449bed6f6eea6"
+    },
+    "749078bd": {
+        "ubp_id": "ACTION_SEPARATE_001",
+        "full_hash": "749078bd02e61fe0f7b8b5447dadba410b0d027091710856125fa9bce6569cbc"
+    },
+    "d16be383": {
+        "ubp_id": "ACTION_FLOW_001",
+        "full_hash": "d16be3830cdf858ad22f24bf6c53acc2161063740522e60cc783115e12afb11d"
+    },
+    "05451c65": {
+        "ubp_id": "WORD_ENTROPY_001",
+        "full_hash": "05451c659d5925e5f5df30a879749fb2bd379d4c9e4eafa8ab2790c8b3292434"
+    },
+    "206fd26f": {
+        "ubp_id": "WORD_SYMMETRY_001",
+        "full_hash": "206fd26ff96e7bd9b50e41cee7793838f0e74d19892f2dda037635ab1ddebb94"
+    },
+    "4486f884": {
+        "ubp_id": "WORD_RESONANCE_001",
+        "full_hash": "4486f884a13c08ba7f80722703b16e963f4add2e37fd65a44057773bc34602d2"
+    },
+    "a8de1652": {
+        "ubp_id": "WORD_COHERENCE_001",
+        "full_hash": "a8de16525f2f81d703c785325af5bb8d1e3a5b98733320eb67d5da34522fe758"
+    },
+    "e871f171": {
+        "ubp_id": "WORD_EMERGENCE_001",
+        "full_hash": "e871f171027e022ff291bae1357531a2f8bcae2a69be344b97705b9822318bce"
+    },
+    "02e4681c": {
+        "ubp_id": "WORD_RECURSION_001",
+        "full_hash": "02e4681c01d9e0678ad7d44ea7108a9a2b0b66d3ae6528147096b2de23035cae"
+    },
+    "20d0a565": {
+        "ubp_id": "WORD_ABSTRACTION_001",
+        "full_hash": "20d0a565bb087f6eb133193b972587d643e7924a784dbd45f0b6dccd5a9d331c"
+    },
+    "cf689978": {
+        "ubp_id": "WORD_INVARIANT_001",
+        "full_hash": "cf6899780e36f658b099020ceefb6626c8783cde085a48537fd17e58bbcb9424"
+    },
+    "97d762fa": {
+        "ubp_id": "WORD_THRESHOLD_001",
+        "full_hash": "97d762fa2cb4de5935c5bfbe756eff0aa01be3595c79dc1278fb64661e77cc44"
+    },
+    "14fa6e45": {
+        "ubp_id": "WORD_GRADIENT_001",
+        "full_hash": "14fa6e457866a3245f751cb3e7d2c9bd59d6aca4be795a4c4b2b3e47002f7cda"
+    },
+    "e1bc05fb": {
+        "ubp_id": "WORD_MANIFOLD_001",
+        "full_hash": "e1bc05fb610e49b49d7315a64a254256f52b04aada10fba72dc86247fa76e6c0"
+    },
+    "837d3a96": {
+        "ubp_id": "WORD_TOPOLOGY_001",
+        "full_hash": "837d3a963645b1118b17ad77e87111dbcd02aafdf6770d8c9b2b37839f7b5576"
+    },
+    "aaa50aae": {
+        "ubp_id": "WORD_ISOMORPHISM_001",
+        "full_hash": "aaa50aaea9e68d34c18db06c6adf9b03b0375eb65abfe2caa9bb87dae307a02b"
+    },
+    "2b259871": {
+        "ubp_id": "WORD_HOMOMORPHISM_001",
+        "full_hash": "2b2598714c16443608d38c449aceffd35666977585903e5ecad48953ba4bde15"
+    },
+    "3b763a3c": {
+        "ubp_id": "WORD_DUALITY_001",
+        "full_hash": "3b763a3c6a76062f9eb7602ed98dd57c36531317d65f0e0475ef188e91767d12"
+    },
+    "fad7ec36": {
+        "ubp_id": "WORD_ORTHOGONAL_001",
+        "full_hash": "fad7ec3601ba4dcbef019815297a17624bfaacd7413e6cc60cd66f2cfe4e543f"
+    },
+    "df240544": {
+        "ubp_id": "WORD_EIGENVALUE_001",
+        "full_hash": "df240544b39f62f1f30af55fb0d425447ad642311be281301882b6eee568dc92"
+    },
+    "74ee077f": {
+        "ubp_id": "WORD_CONVOLUTION_001",
+        "full_hash": "74ee077ffb920a365f3d3ce896bdef86d81eae4b5c7f4daf1a24565e6530fc84"
+    },
+    "22f583e0": {
+        "ubp_id": "WORD_ENTROPY_INFO_001",
+        "full_hash": "22f583e07aea76142037807cb42af879c75a887579dbd51375526d781cf8dadd"
+    },
+    "23a14ea2": {
+        "ubp_id": "WORD_CARDINALITY_001",
+        "full_hash": "23a14ea232e82ffe4cbb87184561a3bbd95c35ce2e353b51c8e5a985a2302be1"
+    },
+    "6e0c6d89": {
+        "ubp_id": "WORD_BIJECTION_001",
+        "full_hash": "6e0c6d8950b3dbe306f5b9b18274338eaf3481931d4163fc6239879bf8e5edef"
+    },
+    "1b60e4e6": {
+        "ubp_id": "WORD_IDEMPOTENT_001",
+        "full_hash": "1b60e4e626a6d91283b19a1cc626e7f447f6d3c37aa94b760e9d0fa51cb5f6ea"
+    },
+    "25421fbe": {
+        "ubp_id": "WORD_COMMUTATIVE_001",
+        "full_hash": "25421fbe348663dcce336a7ea6b359109b0c127112255ff36a4eda1462724c09"
+    },
+    "53357039": {
+        "ubp_id": "WORD_ASSOCIATIVE_001",
+        "full_hash": "53357039d5b2c7c76a2aa0c2dd19d7da00c2c9caf1c767c6724d89200598a598"
+    },
+    "6139094e": {
+        "ubp_id": "WORD_DISTRIBUTIVE_001",
+        "full_hash": "6139094e21a1941a2c896ca8e7c93511458ba8d10361ce8f9ff65b354ad0646f"
+    },
+    "9dc0381d": {
+        "ubp_id": "WORD_TRANSITIVE_001",
+        "full_hash": "9dc0381d8a7f1b3ec4dec5e4bf97e610f11fb9213cf7005d07db5a17c88120c4"
+    },
+    "51f51d3f": {
+        "ubp_id": "WORD_REFLEXIVE_001",
+        "full_hash": "51f51d3f4549305b7da015f1a4522b647ad8e4df97b6f46a063fdb576415ec5d"
+    },
+    "75a08ac9": {
+        "ubp_id": "WORD_AXIOM_001",
+        "full_hash": "75a08ac9ef7ca3f05e8638d120c9dceab441f25442120a11b8684bf8c0121dea"
+    },
+    "173b6c83": {
+        "ubp_id": "WORD_THEOREM_001",
+        "full_hash": "173b6c83cfd6c9e2eaa254dae180637d9ad5ad1ab10403ea7795ce8279749492"
+    },
+    "b8d7f185": {
+        "ubp_id": "WORD_LEMMA_001",
+        "full_hash": "b8d7f1851eca6966bef7da65ac73885ecfc4999f19913d7409082347379e2b47"
+    },
+    "4c2c1659": {
+        "ubp_id": "WORD_COROLLARY_001",
+        "full_hash": "4c2c165940eb4ca1e9ce420de2663efe148b9672ce5cd618ee842c2f16698bff"
+    },
+    "e0a5409f": {
+        "ubp_id": "WORD_CONJECTURE_001",
+        "full_hash": "e0a5409f1bf1f9edb4a245b16fdbf4980d125d3cc0dda95ce20f7e9f3ad1ce8c"
+    },
+    "e8b5b0d7": {
+        "ubp_id": "WORD_HEURISTIC_001",
+        "full_hash": "e8b5b0d790f95c71b830e1633cbf0b901f4825f48c12015ce603d400b1741a36"
+    },
+    "ee5236e5": {
+        "ubp_id": "WORD_DETERMINISTIC_001",
+        "full_hash": "ee5236e5105e86da440ee29e54836e8aed93a07c04d201931827fe264fcd50da"
+    },
+    "b1b82d36": {
+        "ubp_id": "WORD_STOCHASTIC_001",
+        "full_hash": "b1b82d369417ae2982001035ad946dfee40a1db9d860308729babc704f08a310"
+    },
+    "a0b388c6": {
+        "ubp_id": "WORD_ERGODIC_001",
+        "full_hash": "a0b388c626abd1640ff43dcf9e52a324740b14a17af68b96ca55295a04a88e9c"
+    },
+    "39e3fc22": {
+        "ubp_id": "WORD_ATTRACTOR_001",
+        "full_hash": "39e3fc228a5b197e1b8e4942ada54403acb41a2a646f2cd9b24c1b6cb8a8d702"
+    },
+    "e4282493": {
+        "ubp_id": "WORD_BIFURCATION_001",
+        "full_hash": "e42824935c879a6b74d1037aceeede7ff375776504ee8b8399e49f8f7c8b11d7"
+    },
+    "b658524c": {
+        "ubp_id": "WORD_PERTURBATION_001",
+        "full_hash": "b658524ca3cb23bbc292a63836d859f8f385a122081d34960661ecd5e7f2c862"
+    },
+    "7fcb3487": {
+        "ubp_id": "WORD_SUPERPOSITION_001",
+        "full_hash": "7fcb3487460bc752c4ef3256ad360e70744a2c6095b8fbeaf45dcce50881adb7"
+    },
+    "f1a70bbc": {
+        "ubp_id": "WORD_ENTANGLEMENT_001",
+        "full_hash": "f1a70bbc18a6289466e45f77adda4bdcc6e84d489480918527f17826483cd7d7"
+    },
+    "49067d0e": {
+        "ubp_id": "WORD_DECOHERENCE_001",
+        "full_hash": "49067d0e2fe3d78ded8d4803efe7c23bee96abaa1f3743fd74be3ad417bfd4ba"
+    },
+    "5a538d4b": {
+        "ubp_id": "WORD_NORMALIZATION_001",
+        "full_hash": "5a538d4b102d95d65760310fbd13771009426f0f5a6f2f241086fcdbe5ac21fb"
+    },
+    "987a2a32": {
+        "ubp_id": "WORD_INTERPOLATION_001",
+        "full_hash": "987a2a329ad43a269b9ddc6f087cdb29e144a82a508e1739f8258dd9c1d7bb0c"
+    },
+    "9d2ef36e": {
+        "ubp_id": "WORD_EXTRAPOLATION_001",
+        "full_hash": "9d2ef36e8812c4beb327855cb0a6c2d7f119285f29d23eb0da9bcfb16f025cae"
+    },
+    "bbb002be": {
+        "ubp_id": "WORD_CONVERGENCE_001",
+        "full_hash": "bbb002be5f34b2c88996b57d95151b2ca802af94a1feb1a84f0021aafbd76adc"
+    },
+    "4c1e4dda": {
+        "ubp_id": "WORD_DIVERGENCE_001",
+        "full_hash": "4c1e4dda1898c461eeb291d7ee3f27a573297818a35f61f31c9ea3cf916daa5e"
+    },
+    "0807f13c": {
+        "ubp_id": "WORD_ASYMPTOTE_001",
+        "full_hash": "0807f13c72be0ffaba9b60a636a96f1b8e7ecd53d55a934c3f5afed2a4fe9672"
+    },
+    "d51acc57": {
+        "ubp_id": "WORD_SINGULARITY_001",
+        "full_hash": "d51acc57534b7bb805d3c1448dc4158ddec8bb77ce4e3fc4ae5e6680f3953d57"
+    },
+    "49efbd50": {
+        "ubp_id": "WORD_CONTINUITY_001",
+        "full_hash": "49efbd5049f50a8f276c21ebdc3b52409984bb014105ae777801edc61171275b"
+    },
+    "b2001a39": {
+        "ubp_id": "MATH_PRIME_001",
+        "full_hash": "b2001a395f1957b45cc7bb9f4b2653259f5af20fa64f1c315d0f4581a108861f"
+    },
+    "e74d1d42": {
+        "ubp_id": "MATH_FIBONACCI_001",
+        "full_hash": "e74d1d425442ebfcdaafe2a3b53436034d28edc90606bb980c6b57b19bcf0196"
+    },
+    "1e581587": {
+        "ubp_id": "MATH_GOLDEN_001",
+        "full_hash": "1e5815875f0f0ba278f358b4053b4a63a33e3f90e5930d4ba0be3d5cb897e549"
+    },
+    "88895060": {
+        "ubp_id": "MATH_EULER_001",
+        "full_hash": "88895060b59c9383213d9183bb0f995030c8b991bf7944c14b1efb2ac5da92ae"
+    },
+    "ff402a0f": {
+        "ubp_id": "MATH_PYTHAGOREAN_001",
+        "full_hash": "ff402a0f95fa804ba96eb3fe597410d3aeae83dd11d238b4734aa15b7aea3b55"
+    },
+    "d396833d": {
+        "ubp_id": "MATH_QUADRATIC_001",
+        "full_hash": "d396833d67d683c2f3822906f309581f4592bc2bd51b0e36c16e91cc5ef78ae9"
+    },
+    "4c04bcaf": {
+        "ubp_id": "MATH_BINOMIAL_001",
+        "full_hash": "4c04bcafe5e3b477db26e66731dc7b93b67fec7533338697657c8c979df4904d"
+    },
+    "37a31862": {
+        "ubp_id": "MATH_DERIVATIVE_001",
+        "full_hash": "37a31862f5ff4c16eb242341b59de9ffaa9b14ee37aaee69b7bf540c640879e1"
+    },
+    "fb6fb132": {
+        "ubp_id": "MATH_INTEGRAL_001",
+        "full_hash": "fb6fb132979640de67ba18d43b2c15b20179ed12592b9b44d89881529ed73e1d"
+    },
+    "a89f734a": {
+        "ubp_id": "MATH_TAYLOR_001",
+        "full_hash": "a89f734ab52ec61e0399790584e7c19006cb5593420732c173fef85cb05cf8e7"
+    },
+    "2683cb8a": {
+        "ubp_id": "MATH_FOURIER_001",
+        "full_hash": "2683cb8a5a9e9aceb123523bd412fbe6758e6717ffe26f1136350aab85a5ccaf"
+    },
+    "8c42be8c": {
+        "ubp_id": "MATH_LAPLACE_001",
+        "full_hash": "8c42be8c5217ac9973fa2a1a27cbe643dd799d83af3932cd767a6ec0db78d7b1"
+    },
+    "b5d72f16": {
+        "ubp_id": "MATH_MATRIX_001",
+        "full_hash": "b5d72f1605afe32f86fc9617780e176745308e8615f3c056b2fbad85e17fc624"
+    },
+    "1422645e": {
+        "ubp_id": "MATH_DETERMINANT_001",
+        "full_hash": "1422645e7cf500924258b8711848a36d5c4322ed42e3a96e19653092a00350e2"
+    },
+    "4fad3b6b": {
+        "ubp_id": "MATH_INVERSE_001",
+        "full_hash": "4fad3b6b197bf00ea971511bb1bb40c2364ff3577a337fd9d9707d88282f8012"
+    },
+    "ebcf8eb6": {
+        "ubp_id": "MATH_DOT_001",
+        "full_hash": "ebcf8eb684e7fcf0da89c56c5da6998b9eb1ce3ebb7e78ffef448fefb343d89f"
+    },
+    "75f785e9": {
+        "ubp_id": "MATH_CROSS_001",
+        "full_hash": "75f785e917173e094619547f5b0b5f968f77c39bb44adac73b64bd9dbdedab12"
+    },
+    "ebc27f8d": {
+        "ubp_id": "MATH_MODULAR_001",
+        "full_hash": "ebc27f8d01338c43d733711ae1456698a9d5810449e035e28ee3517d3af98f17"
+    },
+    "9cd68120": {
+        "ubp_id": "MATH_GCD_001",
+        "full_hash": "9cd68120144769fadedada1fe50851c2babaae363ff5ce244ed965f6d8a74fd2"
+    },
+    "7c8d23b6": {
+        "ubp_id": "MATH_LCM_001",
+        "full_hash": "7c8d23b6cc5931d0eccc89822d84ca4fa020e103d5cad4e7b6aed50ba702b878"
+    },
+    "d59ae993": {
+        "ubp_id": "MATH_FACTORIAL_001",
+        "full_hash": "d59ae993401e9652bf5d6b41fdd3c8c2e72262be529de3a5a1616e3386162ce5"
+    },
+    "d62dfb52": {
+        "ubp_id": "MATH_COMBINATION_001",
+        "full_hash": "d62dfb52bf3914efc6cd28b2bcc3e0d6022298347c80f443d23b63979c3b4d39"
+    },
+    "f93ee82e": {
+        "ubp_id": "MATH_PERMUTATION_001",
+        "full_hash": "f93ee82eb4cd374a08f32af2bebe75492c64aaf83fbafd4e15f056184d55f898"
+    },
+    "7b6802c5": {
+        "ubp_id": "MATH_LOGARITHM_001",
+        "full_hash": "7b6802c5d87b20499136dfd5cb27f9e1e7091460dff46e443af3b5eedcf531ac"
+    },
+    "d2630414": {
+        "ubp_id": "MATH_EXPONENTIAL_001",
+        "full_hash": "d263041472996c084f23a7d25cdb90c88c8da8b76538eb33cc2829d4cee7c3f7"
+    },
+    "99ef7212": {
+        "ubp_id": "MATH_COMPLEX_001",
+        "full_hash": "99ef72129459cf359f3498892918e2ba5e2e32f9a1d68159728ea27d65b6e80f"
+    },
+    "3e508945": {
+        "ubp_id": "MATH_POLAR_001",
+        "full_hash": "3e508945516261b18bec3b4416e590ffc9c9612fec7d5a132cb3f7c44598015a"
+    },
+    "bd7baf06": {
+        "ubp_id": "MATH_VECTOR_001",
+        "full_hash": "bd7baf06bf7b1af14ccdd8d0768b59ffb1d5c0f1df5c46ad70d62fe9ad4ad888"
+    },
+    "5b5e9967": {
+        "ubp_id": "MATH_BASIS_001",
+        "full_hash": "5b5e99678ee02d77597182497e6971ea7bf2828f9349000aba966221dcb45937"
+    },
+    "02ae54fc": {
+        "ubp_id": "MATH_DIMENSION_001",
+        "full_hash": "02ae54fc7df295614d3031a14005d72f8f01e90a8531c1a77021c6acad76d97d"
+    },
+    "a2c6555e": {
+        "ubp_id": "CODE_SORT_BUBBLE_001",
+        "full_hash": "a2c6555e3b3802c12242113dfeebe53909f23ad105198da38f959d0b950f278d"
+    },
+    "27c1fd3a": {
+        "ubp_id": "CODE_SORT_QUICK_001",
+        "full_hash": "27c1fd3a5d77c6e1b58c319d637dcf38215a218c1b7d551377c0dce2927e3fb4"
+    },
+    "ca516f0a": {
+        "ubp_id": "CODE_SORT_MERGE_001",
+        "full_hash": "ca516f0a8fad48822326a80b2fb453305a0aaa6f9383e8e8997f4496df914270"
+    },
+    "2866e21d": {
+        "ubp_id": "CODE_SEARCH_BINARY_001",
+        "full_hash": "2866e21db39c2d528dab3c8ba6bf36aaaae374aca663b90ae7f492dc7f2eb008"
+    },
+    "d50d94ea": {
+        "ubp_id": "CODE_SEARCH_LINEAR_001",
+        "full_hash": "d50d94eac197ea269a7ad965f0e29ff675e65e90c6f44608157f7abe1ff6df22"
+    },
+    "d62285a1": {
+        "ubp_id": "CODE_HASH_001",
+        "full_hash": "d62285a12e994ec3a6739fbd90dc34a19ac230da43708f28390b5a6f0149e639"
+    },
+    "06bd4fc4": {
+        "ubp_id": "CODE_TREE_BST_001",
+        "full_hash": "06bd4fc42ec475a80830db3ed1fc9bdda3ae10a64c6c84efb9bc40963600ddbf"
+    },
+    "dd902d6b": {
+        "ubp_id": "CODE_GRAPH_BFS_001",
+        "full_hash": "dd902d6b2d7dc8b0180bbb91c906eaddaa689fb764e8f84160883dc2e99d27a1"
+    },
+    "b37be658": {
+        "ubp_id": "CODE_GRAPH_DFS_001",
+        "full_hash": "b37be658638b1a2fb38d905b882c5f1ba681bca2dbc2cee961d8affdc7b59087"
+    },
+    "72d4575e": {
+        "ubp_id": "CODE_DP_001",
+        "full_hash": "72d4575e752c6ba7fa05e37d373b2ec588650d22b0911362b6ea515a13c1fe7c"
+    },
+    "4b9647df": {
+        "ubp_id": "CODE_GREEDY_001",
+        "full_hash": "4b9647df244b81d1e7082db3c87f505e1a8ad40fd585e752333f5f4531395155"
+    },
+    "051c88a7": {
+        "ubp_id": "CODE_RECURSION_001",
+        "full_hash": "051c88a720b4b13783f1ff4fddeba1fdf3510647c4fbb16a32f6d60eb9464d46"
+    },
+    "65c0eedb": {
+        "ubp_id": "CODE_MEMOIZE_001",
+        "full_hash": "65c0eedbaf331aba8c17d687903d2e65b9e536b5a14d64228833b0a156d52f6e"
+    },
+    "0351e99f": {
+        "ubp_id": "CODE_CLOSURE_001",
+        "full_hash": "0351e99f3c300747b41f2ea0f0bdc795392931c6a7605a1f9c8239f3018437d4"
+    },
+    "cdfb10c9": {
+        "ubp_id": "CODE_DECORATOR_001",
+        "full_hash": "cdfb10c929ea04aefaac7c24b28d679fa58b9efde342089f8ca6f683601cd39a"
+    },
+    "a9219629": {
+        "ubp_id": "CODE_GENERATOR_001",
+        "full_hash": "a92196295053d0e840758b15dedaf8f8210870aba7b3dd4d0b8c6f02b481eae8"
+    },
+    "cb1e0fab": {
+        "ubp_id": "CODE_LAMBDA_001",
+        "full_hash": "cb1e0fab62022731d1115242ef16d3b46a9c5c5548c49e2c249c0469a16f73b9"
+    },
+    "277a72b4": {
+        "ubp_id": "CODE_MAP_001",
+        "full_hash": "277a72b43e4864a9cce60c9f113733e2b5551767c6c6989ce595f997057bd15b"
+    },
+    "d40654d8": {
+        "ubp_id": "CODE_FILTER_001",
+        "full_hash": "d40654d8b1712e23da9e5699cc5fd913c5af6656a59c7c27afffdcf1c0d1d53e"
+    },
+    "0f0cd487": {
+        "ubp_id": "CODE_REDUCE_001",
+        "full_hash": "0f0cd487e5ce08c0782b31d91bccc704633806c4611ea7cf7c79ebe583114c0a"
+    },
+    "4a5286b8": {
+        "ubp_id": "CODE_COMPREHENSION_001",
+        "full_hash": "4a5286b86bb78f24f00d00ac4e6c0d467414a5b67414f60ae7ec842f7a7cf469"
+    },
+    "c99bcbbe": {
+        "ubp_id": "CODE_DICT_COMP_001",
+        "full_hash": "c99bcbbee9d30ed794dcfbf5cd95b698378fb53a1e1afe20a6a3ec9037cc96f1"
+    },
+    "a0713978": {
+        "ubp_id": "CODE_SET_COMP_001",
+        "full_hash": "a0713978726fd84784b04a5f37a0449dbd87e19b41e6a6ea026961ef49ef6d85"
+    },
+    "4910f186": {
+        "ubp_id": "CODE_CONTEXT_001",
+        "full_hash": "4910f18652a1864d0b4e2d4df04a66fa30435eda8077c0d625116bed4ec26e0d"
+    },
+    "781ed78f": {
+        "ubp_id": "CODE_EXCEPTION_001",
+        "full_hash": "781ed78f0505d74cd4bc9ca75704e4fabb399498e466bebb03c12bb490f3fe3a"
+    },
+    "157cb517": {
+        "ubp_id": "CODE_CLASS_001",
+        "full_hash": "157cb51771c28a466c28688761c841a61fcceb550fa46eb1ec40393d8677765d"
+    },
+    "678902b9": {
+        "ubp_id": "CODE_INHERIT_001",
+        "full_hash": "678902b9b28be34215e2e58f530fe0d9cc97465fb0d510f9ddcf3382b4350763"
+    },
+    "4795a2f0": {
+        "ubp_id": "CODE_POLYMORPHISM_001",
+        "full_hash": "4795a2f06e977b11e57757a8ef34eb120c14c108d604f08f45225458ea8b4725"
+    },
+    "a535c609": {
+        "ubp_id": "CODE_ENCAPSULATION_001",
+        "full_hash": "a535c60916a4e20039b92c5734bbabcc34511940e364fc51709518930fb1042a"
+    },
+    "585e13ec": {
+        "ubp_id": "CODE_ITERATOR_001",
+        "full_hash": "585e13ec4c582ca26603ac3ab282903fade8549d2638e91da50f3537bd8ef694"
+    },
+    "4d6bcd77": {
+        "ubp_id": "CONCEPT_FEEDBACK_001",
+        "full_hash": "4d6bcd7732a3b2f3a4165e093bf07b4be40d92ec969c05415cbee9e5b116e93c"
+    },
+    "5fef6d00": {
+        "ubp_id": "CONCEPT_HOMEOSTASIS_001",
+        "full_hash": "5fef6d00ae83d92995ee06733ba407f5a9282756a379b773b940004046268c80"
+    },
+    "5c5a43bc": {
+        "ubp_id": "CONCEPT_EQUILIBRIUM_001",
+        "full_hash": "5c5a43bc0fcdc9c2eba5064e90fba1150e69670ffc892870d33dd55185ddf4eb"
+    },
+    "86b889bf": {
+        "ubp_id": "CONCEPT_CAUSALITY_001",
+        "full_hash": "86b889bfe6d65f512dc2a9cbd05114ca31ddbaf968a69790843e6a2938fe1086"
+    },
+    "0e262112": {
+        "ubp_id": "CONCEPT_CORRELATION_001",
+        "full_hash": "0e262112a5b78ff8bf936bfa4f5fd3fdc8ba02a27404d92164347023e740f317"
+    },
+    "72cf5192": {
+        "ubp_id": "CONCEPT_ENTROPY_THERMO_001",
+        "full_hash": "72cf5192aa2d0c663dbbca5335882c186b5730b9d904f70a8201ff4b50493bc9"
+    },
+    "845bee37": {
+        "ubp_id": "CONCEPT_INFORMATION_001",
+        "full_hash": "845bee373fdb2337802971ea556c05ce28169506bae1c581a78ad6691e9e28d1"
+    },
+    "f5990c4d": {
+        "ubp_id": "CONCEPT_SIGNAL_NOISE_001",
+        "full_hash": "f5990c4d0d301b9f6aea58a9678dde345798c4c575d9e290bca4dc975a21c784"
+    },
+    "b5645dd1": {
+        "ubp_id": "CONCEPT_BANDWIDTH_001",
+        "full_hash": "b5645dd16abda36f16d0660ecc8a91533d29987962c14b9b76c172eba8148fc3"
+    },
+    "52615b55": {
+        "ubp_id": "CONCEPT_LATENCY_001",
+        "full_hash": "52615b55ec1e1eb825426cf15f751a8f2e0d50b00b2822a00edd97d1a6b5e452"
+    },
+    "a28a4d69": {
+        "ubp_id": "CONCEPT_THROUGHPUT_001",
+        "full_hash": "a28a4d6907bad7f70d2133b6ce7dd1df7e61ac38647ac4709996f12a6af1eee5"
+    },
+    "6aeb0486": {
+        "ubp_id": "CONCEPT_SCALABILITY_001",
+        "full_hash": "6aeb04862f0097a8e8b15dc7261463e7977c250a97c89b8832f783c91cea722e"
+    },
+    "32097394": {
+        "ubp_id": "LAW_SYNTH_498EE71E",
+        "full_hash": "3209739412ea8c13d5ce968d6a47228844952d01298509a34f8fa7aca9ff152b"
+    },
+    "0d839b29": {
+        "ubp_id": "LAW_SYNTH_42C7A8DC",
+        "full_hash": "0d839b29880f7b521d2f28ce24b2d82e66ca1adc52fafd4f6f73b0035745e96e"
+    },
+    "476796bc": {
+        "ubp_id": "META_SELF_AWARENESS",
+        "full_hash": "476796bc46310d47853c7c11a865a9314ec0f3ced6bb0d2fd43b0a045f305ed9"
+    },
+    "d60f039f": {
+        "ubp_id": "META_RECURSION",
+        "full_hash": "d60f039ff659f1cf2a8f8c51b728e899095e5229d54cf6f2b968d18836bf1071"
+    },
+    "af923932": {
+        "ubp_id": "META_IDENTITY_LOCK",
+        "full_hash": "af9239323009ae3c0e5f70e3756cb4bde40326f935887a568e2ebec15e949fec"
+    },
+    "94894b11": {
+        "ubp_id": "META_TRIANGULATE",
+        "full_hash": "94894b11cd8d61407c2aab48dddbed6eea59d814d31333dce90aee06bcbd3b65"
+    },
+    "62a9c023": {
+        "ubp_id": "META_LATTICE_HEALTH",
+        "full_hash": "62a9c023cf0af4eb64ff11e880a699120b87f010ae642891b523b9c93dc8e46c"
+    },
+    "f367baa9": {
+        "ubp_id": "LAW_SYNTH_8A5AD646",
+        "full_hash": "f367baa948cfb6407b40f1ea9280c2aecef73c41096d335cf799daf96d50a4a6"
     }
 }
