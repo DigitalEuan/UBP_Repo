@@ -12,215 +12,62 @@ UBP Research Cortex v4.2.7
 import re
 import hashlib
 import json
-from typing import Dict, List, Any, Tuple, Optional
 from hex_dictionary_v4_exact import HEX_DB_EXACT
 from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra
 
-# --- GEOMETRIC CORTEX MODULE ---
 class SemanticCortex:
     def __init__(self):
         self.golay = GOLAY_DECODER
         self.db = HEX_DB_EXACT
-        
-        if not self.db.registry: 
-            self.db.load_memory()
-            
+        if not self.db.registry: self.db.load_memory()
         self.anchors = self._load_anchors()
-        self.spatial_index = self._build_spatial_index()
 
-    def _is_geometric_anchor(self, entry: Dict) -> bool:
-        """Determines if an entry should be used as a geometric anchor"""
-        # Primary criteria: explicit anchor designation
-        raw_tags = entry.get('tags', [])
-        tags = [str(t).lower() for t in raw_tags if isinstance(t, (str, int))]
-        
-        if 'anchor' in tags or 'primitive' in tags:
-            return True
-            
-        # Secondary criteria: UBP ID patterns
-        ubp_id = str(entry.get('ubp_id', '')).upper()
-        anchor_patterns = [
-            'PRIMITIVE_', 'CONSTANT_', 'OPERATOR_', 'AXIOM_', 
-            'VOID', 'UNITY', 'Y_INVARIANT', 'STATE_'
-        ]
-        return any(pattern in ubp_id for pattern in anchor_patterns)
+    def _load_anchors(self):
+        anchors = {}
+        for _, entry in self.db.registry.items():
+            uid = str(entry.get('ubp_id', '')).upper()
+            tags = [str(t).lower() for t in entry.get('tags', [])]
+            if uid.startswith(('PRIMITIVE_', 'CONSTANT_', 'STATE_', 'OPERATOR_', 'LAW_', 'VOID', 'UNITY')) or \
+               any(t in ['anchor', 'primitive', 'law'] for t in tags):
+                vec = self._extract_vector(entry)
+                if vec: anchors[str(entry.get('name', uid)).upper()] = vec
+        return anchors
 
-    def _validate_vector(self, vec) -> bool:
-        """Validates that a vector is a proper 24-bit binary vector"""
-        return (isinstance(vec, list) and 
-                len(vec) == 24 and 
-                all(isinstance(b, int) and b in (0, 1) for b in vec))
-
-    def _extract_vector(self, entry: Dict) -> Optional[List[int]]:
-        """Safely extract vector with multiple fallback strategies"""
-        # Strategy 1: Check standard vector fields
-        for field in ['vector', 'geometry', 'codeword']:
-            v_field = entry.get(field)
-            if self._validate_vector(v_field):
-                return v_field
-                
-        # Strategy 2: Parse from script field
-        script = str(entry.get('script', ''))
-        match = re.search(r'vector\s*=\s*(\[[0-1,\s]+\])', script)
+    def _extract_vector(self, entry):
+        if 'vector' in entry and len(entry['vector']) == 24: return entry['vector']
+        match = re.search(r'vector\s*=\s*(\[[0-1,\s]+\])', str(entry.get('script', '')))
         if match:
             try:
                 v = json.loads(match.group(1))
-                if self._validate_vector(v):
-                    return v
-            except json.JSONDecodeError:
-                pass
-                
-        # Strategy 3: Generate canonical vector based on entry properties
-        ubp_id = str(entry.get('ubp_id', ''))
-        if ubp_id:
-            return self._generate_canonical_vector(ubp_id)
-            
+                if len(v) == 24: return v
+            except: pass
         return None
 
-    def _generate_canonical_vector(self, ubp_id: str) -> List[int]:
-        """Generates mathematically significant vectors based on concept type"""
-        # Map concept types to symmetry groups and weights
-        CONCEPT_TYPES = {
-            'PRIMITIVE_VOID': {'symmetry': 'trivial', 'weight': 0},
-            'PRIMITIVE_UNITY': {'symmetry': 'octahedral', 'weight': 12},
-            'OPERATOR_XOR': {'symmetry': 'tetrahedral', 'weight': 8},
-            'CONSTANT_PI': {'symmetry': 'circular', 'weight': 16},
-            'STATE_ENTROPY': {'symmetry': 'icosahedral', 'weight': 20},
-            'OPERATOR_AND': {'symmetry': 'cubic', 'weight': 6},
-            'OPERATOR_OR': {'symmetry': 'cubic', 'weight': 18},
-            'CONSTANT_Y': {'symmetry': 'dihedral', 'weight': 14},
-        }
-        
-        # Determine concept type from ID
-        concept_key = None
-        for key in CONCEPT_TYPES.keys():
-            if key in ubp_id.upper():
-                concept_key = key
-                break
-        
-        # Default fallback
-        if not concept_key:
-            concept_key = 'PRIMITIVE_UNITY'
-            
-        params = CONCEPT_TYPES[concept_key]
-        
-        # Generate seed based on ID hash (deterministic but meaningful)
-        seed_hash = hashlib.sha256(ubp_id.encode()).digest()
-        seed_value = int.from_bytes(seed_hash[:3], 'big') % 4096
-        
-        # This would call a real canonical vector generator in production
-        # For now, we'll create a valid vector with the right weight
-        target_weight = params['weight']
-        base_vec = [0] * 24
-        for i in range(target_weight):
-            base_vec[(seed_value + i) % 24] = 1
-            
-        # Ensure it's a valid Golay codeword
-        corrected, _, _ = self.golay.decode(base_vec)
-        return self.golay.encode(corrected)
-
-    def _load_anchors(self) -> Dict[str, List[int]]:
-        """Load geometric anchors from knowledge base"""
-        anchors = {}
-        
-        for _, entry in self.db.registry.items():
-            if not isinstance(entry, dict): 
-                continue
-                
-            if self._is_geometric_anchor(entry):
-                vec = self._extract_vector(entry)
-                if vec:
-                    # Use name if available, fallback to UID
-                    name = str(entry.get('name', entry.get('ubp_id', 'UNKNOWN'))).upper()
-                    anchors[name] = vec
-                    
-        print(f"[CORTEX] Neural Link Established: {len(anchors)} Geometric Anchors active.")
-        return anchors
-
-    def _build_spatial_index(self) -> Dict[int, List[Tuple[str, List[int]]]]:
-        """Builds a spatial partitioning index for fast nearest-neighbor lookup"""
-        index = {w: [] for w in range(25)}  # 0-24 possible weights
-        
-        for name, vec in self.anchors.items():
-            weight = sum(vec)
-            if 0 <= weight <= 24:
-                index[weight].append((name, vec))
-                
-        return index
-
-    def find_nearest_anchor(self, query_vec: List[int]) -> Tuple[str, int]:
-        """Finds nearest anchor using spatial index for efficiency"""
-        weight = sum(query_vec)
-        candidates = []
-        
-        # Check nearby weight buckets (current, ±1, ±2)
-        for dw in range(-2, 3):
-            w_bucket = max(0, min(24, weight + dw))
-            candidates.extend(self.spatial_index[w_bucket])
-        
-        # Compute distances only for candidate anchors
-        min_dist = 25
-        nearest = "UNKNOWN"
-        
-        for name, anchor in candidates:
-            d = BinaryLinearAlgebra.hamming_distance(query_vec, anchor)
-            if d < min_dist:
-                min_dist = d
-                nearest = name
-                
-        return nearest, min_dist
-
-    def word_to_vector(self, word: str) -> List[int]:
-        """Maps a word to its nearest geometric primitive in the lattice"""
-        word_upper = word.upper()
-        
-        # First check if we have this word as an anchor
-        if word_upper in self.anchors:
-            return self.anchors[word_upper]
-        
-        # Otherwise find nearest semantic neighbor using hash-based seed
-        word_hash = hashlib.sha256(word.encode()).digest()
-        seed_value = int.from_bytes(word_hash[:3], 'big') % 4096
-        
-        # Create base vector with appropriate properties
-        raw_vec = [(seed_value >> i) & 1 for i in range(23, -1, -1)]
-        corrected, _, _ = self.golay.decode(raw_vec)
-        return self.golay.encode(corrected)
-
-    def analyze(self, query: str) -> Dict[str, Any]:
-        """Performs geometric analysis of input query"""
+    def analyze(self, query):
         words = query.lower().replace("?", "").split()
-        if not words: 
-            return None
-        
-        # Superposition (XOR) of word vectors
         vec = [0] * 24
         for w in words:
-            v = self.word_to_vector(w)
+            h = hashlib.sha256(w.encode()).hexdigest()
+            val = int(h[:6], 16)
+            raw = [(val >> i) & 1 for i in range(23, -1, -1)]
+            cw, _, _ = self.golay.decode(raw)
+            v = self.golay.encode(cw)
             vec = [(a ^ b) for a, b in zip(vec, v)]
-            
-        weight = sum(vec)
-        nearest, min_dist = self.find_nearest_anchor(vec)
         
-        return {
-            "weight": weight,
-            "nearest": nearest,
-            "dist": min_dist,
-            "vector": vec
-        }
+        nearest, min_dist = "UNKNOWN", 24
+        for name, anchor in self.anchors.items():
+            d = BinaryLinearAlgebra.hamming_distance(vec, anchor)
+            if d < min_dist: min_dist, nearest = d, name
+        return {"weight": sum(vec), "nearest": nearest, "dist": min_dist}
 
-# Global Cortex Instance (Lazy Load)
 CORTEX = SemanticCortex()
 
 def run_trigger_logic(input_text=None):
-    """
-    UBP Resonance Engine v6.2
-    """
     target_text = input_text if input_text else globals().get('USER_INPUT', "")
-    if not target_text: 
-        return None
-
-    print(f"\n[UBP AUTO-TRIGGER v6.2]")
+    if not target_text: return None
+    print(f"\n[UBP AUTO-TRIGGER v6.3]")
+    geo = CORTEX.analyze(target_text)
+    print(f"[GEOMETRIC ANALYSIS]\n  Vector: W={geo['weight']} | Nearest: {geo['nearest']} (d={geo['dist']})")
 
     # --- LAYER 1: GEOMETRIC ANALYSIS ---
     try:
