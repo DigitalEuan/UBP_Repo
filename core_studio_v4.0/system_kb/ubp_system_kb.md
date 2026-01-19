@@ -2,7 +2,7 @@
     "634938f838a6bf8e048cde8ee56b14e8ce69b24ca55308a1fd88680a3ce11600": {
         "ubp_id": "LAW_SUBSTRATE_001",
         "name": "The Law of the Golay Engine",
-        "math": "t_B \u2248 4.58e-26s | Parity(Identity) = 0",
+        "math": "t_B ≈ 4.58e-26s | Parity(Identity) = 0",
         "language": "Matter is information successfully corrected to a codeword.",
         "script": "GOLAY_DECODER.decode(identity)",
         "tags": [
@@ -62,7 +62,7 @@
     "3140aff22cf58cdc2e1704d603740b31bcf23666617d094dd910ae97a821475e": {
         "ubp_id": "LAW_FORCE_001",
         "name": "The Law of the Force Horizon",
-        "math": "1/alpha \u2248 83 + (Y^-1)^3 + 1.5Y^2",
+        "math": "1/alpha ≈ 83 + (Y^-1)^3 + 1.5Y^2",
         "language": "137 is the geometric limit of the 24-bit error-correction radius.",
         "script": "PARTICLE_VALIDATOR.get_ultimate_predictions()['alpha_inv']",
         "tags": [
@@ -183,7 +183,7 @@
     "1bb5fe4f0f630f23a797f2423144d1361b594a4d45853037733ac99822bf3150": {
         "ubp_id": "LAW_TIME_001",
         "name": "The Law of Temporal Quantization",
-        "math": "t_B \u2248 4.58e-26s | M_Z = (24 * Y_inv) + 2Y",
+        "math": "t_B ≈ 4.58e-26s | M_Z = (24 * Y_inv) + 2Y",
         "language": "Time is the discrete sequence of parity-checks; the Z-boson is the substrate's hardware clock.",
         "script": "24 * UBPUltimateSubstrate.get_constants()['Y_inv'] + 2 * UBPUltimateSubstrate.get_constants()['Y']",
         "tags": [
@@ -199,7 +199,7 @@
         "ubp_id": "LAW_HORIZON_001",
         "name": "The Law of the Aliasing Horizon",
         "math": "Hamming_Distance(237, 137) = 3",
-        "language": "137 is the 'Feynman Point'\u2014the maximum stable coordinate before the substrate fails to correct the identity.",
+        "language": "137 is the 'Feynman Point'—the maximum stable coordinate before the substrate fails to correct the identity.",
         "script": "BinaryLinearAlgebra.hamming_distance(vector_237, vector_137)",
         "tags": [
             "horizon",
@@ -243,7 +243,7 @@
     "ed5231f866cfd01176a5f162fd36091b46e79514153e130e2f6e6b081f9119cb": {
         "ubp_id": "LAW_RAINBOW_001",
         "name": "The Law of the Rainbow Horizon",
-        "math": "theta_opt \u2248 42 deg | Hamming(42, 0) = 3",
+        "math": "theta_opt ≈ 42 deg | Hamming(42, 0) = 3",
         "language": "The 42 degree optical signature is the physical projection of the Golay G24 Error-Correction Radius (t=3).",
         "script": "BinaryLinearAlgebra.hamming_weight([1, 0, 1, 0, 1, 0]) == 3",
         "tags": [
@@ -304,7 +304,7 @@
     "c43984581f4b2f3054d8293a6bf685b5ce598a265ecf50504d0a3e0a51be4ae7": {
         "ubp_id": "LAW_SUPER_001",
         "name": "The Law of Pressure-Induced Resonance",
-        "math": "H2S_Resonance \u2248 9 * (1/Y)",
+        "math": "H2S_Resonance ≈ 9 * (1/Y)",
         "language": "High-pressure superconductivity is the physical compression of an identity into a Y-constant harmonic.",
         "script": "9 * UBPUltimateSubstrate.get_constants()['Y_inv']",
         "tags": [
@@ -844,7 +844,7 @@
     "08126e5209f918221dc99c5ed10fc6a46e69b621930bbeb164756edcce27b6ae": {
         "ubp_id": "LAW_OMEGA_001",
         "name": "The Law of the Omega Spine",
-        "math": "NRCI_Lead(82) \u2248 0.999999",
+        "math": "NRCI_Lead(82) ≈ 0.999999",
         "language": "Lead (Z=82) is the informational shadow of the Omega Anchor (83); stability is a function of proximity.",
         "script": "abs(82 - 83)",
         "tags": [
@@ -906,7 +906,7 @@
     "880bba77de120f18b4954d0f4fad3161958e234044f7333c6b7879b1c146a95b": {
         "ubp_id": "LAW_DRUG_001",
         "name": "The Law of Manifold Sparsity",
-        "math": "P(Candidate) \u2248 10^-6",
+        "math": "P(Candidate) ≈ 10^-6",
         "language": "Functional pharmacological seeds are 'Singularities' in the 24-bit manifold; the probability of a random resonance is one in a million.",
         "script": "1 / 10**6",
         "tags": [
@@ -951,7 +951,7 @@
     "5d60a59e764ab73d96c94b74ceacbecf710f6a87351e6112abf4b3fc8d38a855": {
         "ubp_id": "LAW_DRUG_006",
         "name": "The Law of the Manifestation Slope",
-        "math": "Count(T) \u2248 Count(T+1) * Y^2",
+        "math": "Count(T) ≈ Count(T+1) * Y^2",
         "language": "The probability of a molecular identity manifesting in the 3D manifold decays exponentially as its informational tension (d+w) approaches the Pareto Floor.",
         "script": "count_T / count_T_plus_1",
         "tags": [
@@ -966,7 +966,7 @@
     "984b3cbcc44c6dcc7d736da8846318938deb0df6de2c98bb2b46432c176ea0c2": {
         "ubp_id": "LAW_ACOUSTIC_001",
         "name": "The Law of the Acoustic Octave",
-        "math": "Tension(P5) \u2248 Error(H2O) \u2248 0.0016",
+        "math": "Tension(P5) ≈ Error(H2O) ≈ 0.0016",
         "language": "The 12-tone scale is the optimal substrate manifold where the Perfect Fifth (3/2) is tethered to the Universal Noise Floor (0.0016).",
         "script": "Fraction(16, 10000)",
         "tags": [
@@ -981,7 +981,7 @@
     "8809bfd4ffd454337e08382418469b505cdb347ce5c012e40fd4c8ff658e359e": {
         "ubp_id": "LAW_GATEWAY_001",
         "name": "The Law of the Correctable Manifold",
-        "math": "P(d_H <= 3) \u2248 0.9985",
+        "math": "P(d_H <= 3) ≈ 0.9985",
         "language": "The universe is a self-correcting gateway; 99.85% of all informational states are tethered to the Golay substrate via the t=3 error-correction radius.",
         "script": "Fraction(9985, 10000)",
         "tags": [
@@ -996,7 +996,7 @@
     "016688378a57040909ce5d9ecf7bae529bea68b7ecb975ccddb05c6633f5067a": {
         "ubp_id": "LAW_REALM_001",
         "name": "The Law of Realm-Specific Mapping",
-        "math": "Bio \u2248 16% | Conscious \u2248 0%",
+        "math": "Bio ≈ 16% | Conscious ≈ 0%",
         "language": "Biological life is the high-entropy center of the substrate; Consciousness is the low-entropy singularity at the Alpha-Omega boundaries.",
         "script": "{'Bio': Fraction(16, 100), 'Conscious': 0}",
         "tags": [
@@ -1025,9 +1025,9 @@
     },
     "278ef832333fbca8e8be0d45c3edb5df3f14a1559c765f46e79808130882903d": {
         "ubp_id": "LAW_TOPOLOGY_002",
-        "name": "The Law of the M\u00f6bius Scrambler",
+        "name": "The Law of the Möbius Scrambler",
         "math": "Permutation(R) = (N-1) - R",
-        "language": "The 'Twisted Seam' of a M\u00f6bius manifold provides a perfectly reversible, non-linear diffusion primitive for cryptographic security.",
+        "language": "The 'Twisted Seam' of a Möbius manifold provides a perfectly reversible, non-linear diffusion primitive for cryptographic security.",
         "script": "[(N - 1) - r for r in range(N)]",
         "tags": [
             "topology",
@@ -1041,7 +1041,7 @@
     "1412ed1b6278adcc7cbdfee698cfc5de46cfe3d4f18fed3e83333bbacf9f9d17": {
         "ubp_id": "LAW_SYMBOL_001",
         "name": "The Law of Symbolic Coherence",
-        "math": "NRCI \u221d 1 / (D6 * 1.15 + D5 * 0.39)",
+        "math": "NRCI ∝ 1 / (D6 * 1.15 + D5 * 0.39)",
         "language": "The coherence of a symbol is inversely proportional to its dependency depth (complexity) and its meaning count (ambiguity).",
         "script": "1 / (d6 * 1.15 + d5 * 0.39)",
         "tags": [
@@ -1073,7 +1073,7 @@
         "name": "The Law of GL-1 Primitives",
         "math": "NRCI(GL-1) > 0.9999",
         "language": "GL-1 is a generative computational language where every operator is engineered to minimize substrate tension (D5, D6, D8).",
-        "script": "['\u2205', '\u229b', '\u2133', '\u2713']",
+        "script": "['∅', '⊛', 'ℳ', '✓']",
         "tags": [
             "language",
             "gl1",
@@ -1087,7 +1087,7 @@
         "ubp_id": "LAW_LANG_002",
         "name": "The Law of the GL-1 Base",
         "math": "NRCI(GL-1_Base) = 0.999929",
-        "language": "The GL-1 Base is the first OnBit computational language, consisting of four primitives (\u2205, \u229b, \u2133, \u2713) engineered at the Generative Floor.",
+        "language": "The GL-1 Base is the first OnBit computational language, consisting of four primitives (∅, ⊛, ℳ, ✓) engineered at the Generative Floor.",
         "script": "Fraction(999929, 1000000)",
         "tags": [
             "language",
@@ -1101,7 +1101,7 @@
     "d81a15eb61317ef4b411f41c799d666d1bb37897a153211dd7d2db5fa0942d4f": {
         "ubp_id": "LAW_META_002",
         "name": "The Law of Cross-Domain Resonance",
-        "math": "Resonance = (Jaccard > 0.15) \u222a (Hamming <= 2)",
+        "math": "Resonance = (Jaccard > 0.15) ∪ (Hamming <= 2)",
         "language": "The universe is a content-addressable manifold where structural identity (Hamming 0) can exist without linguistic overlap, revealing deep isomorphisms between disparate domains like music and particle physics.",
         "script": "(jaccard > 0.15) or (hamming <= 2)",
         "tags": [
@@ -1116,7 +1116,7 @@
     "6687cbcb51df76d370a267c6d7aae8da16d90f549af505809b1361ec43b2a9e7": {
         "ubp_id": "LAW_RESONANCE_001",
         "name": "The Law of the Coherence Valley (Refined)",
-        "math": "Deficit_max \u2248 0.1543% | dt_peak \u2248 130fs",
+        "math": "Deficit_max ≈ 0.1543% | dt_peak ≈ 130fs",
         "language": "The Coherence Valley reaches its maximum stable depth (0.1543%) at the 130fs resonance peak; this is the universal stability horizon for THz-active systems.",
         "script": "Fraction(1543, 1000000)",
         "tags": [
@@ -1131,7 +1131,7 @@
     "ae2552c632381f87414a121a0360752dfc55b5bfa4ddef6a0021c708f645d88b": {
         "ubp_id": "LAW_RESONANCE_002",
         "name": "The Law of Tunable Resonance",
-        "math": "Stability \u221d 1 / |dt - 130fs|",
+        "math": "Stability ∝ 1 / |dt - 130fs|",
         "language": "System stability is a function of proximity to the 130fs substrate clock; deviations beyond the 150fs threshold induce non-linear NRCI collapse.",
         "script": "1 / abs(dt - 130)",
         "tags": [
@@ -1146,7 +1146,7 @@
     "9833b27a33af38c4a1f2e741149509c6739bcf2d9baba6c921a58755427fc56d": {
         "ubp_id": "LAW_LANG_003",
         "name": "The Law of Computational Grammar",
-        "math": "NRCI(\u03c9) \u2248 1.0 - HW(\u03c9) * 7.35e-6",
+        "math": "NRCI(ω) ≈ 1.0 - HW(ω) * 7.35e-6",
         "language": "Computational operators are stable geometric states; their coherence is a linear decay function of their Hamming Weight (HW) relative to the Y-constant.",
         "script": "1.0 - hamming_weight * 7.35e-6",
         "tags": [
@@ -1161,8 +1161,8 @@
     "abe6954af2267efad014f47795bccb67b18824af35e70f7e424383506b55fa8f": {
         "ubp_id": "LAW_LANG_004",
         "name": "The Law of the Python-Substrate Isomorphism",
-        "math": "P_std \u2229 P_ubp \u2248 87.5%",
-        "language": "Standard computational primitives (Python) are 87.5% isomorphic to the 24-bit substrate's optimal instruction set (HW \u2264 9).",
+        "math": "P_std ∩ P_ubp ≈ 87.5%",
+        "language": "Standard computational primitives (Python) are 87.5% isomorphic to the 24-bit substrate's optimal instruction set (HW ≤ 9).",
         "script": "Fraction(875, 1000)",
         "tags": [
             "language",
@@ -1176,7 +1176,7 @@
     "6e68a08a95a23190835c843ec46dc34442006ce812abe2e6fc2c7c2290391cd2": {
         "ubp_id": "LAW_NUM_001",
         "name": "The Law of Binary-Geometric Dualism (Refined)",
-        "math": "M_\u03c4/M_\u03bc = (Y^-1)^2 + (Y^-1 - 1) - Y",
+        "math": "M_τ/M_μ = (Y^-1)^2 + (Y^-1 - 1) - Y",
         "language": "The Tau/Muon ratio is a Shell-3 excitation of the Observer Fixed Point; Mersenne primes are the algorithmic 'Codewords' that stabilize this mass-energy expansion.",
         "script": "(UBPUltimateSubstrate.get_constants()['Y_inv']**2) + (UBPUltimateSubstrate.get_constants()['Y_inv'] - 1) - UBPUltimateSubstrate.get_constants()['Y']",
         "tags": [
@@ -1207,7 +1207,7 @@
     "75974c78afc59ef6df59e8809921ef5456609d816a90d0e444d15bc5e0fee0e9": {
         "ubp_id": "LAW_MINERAL_002",
         "name": "The Law of the 12-Sigma Void",
-        "math": "Separation = 12.84\u03c3",
+        "math": "Separation = 12.84σ",
         "language": "The mineral manifold is a binary landscape; matter either falls into the Coherence Basin or is rejected by the substrate across a 12.8-sigma void.",
         "script": "Fraction(1284, 100)",
         "tags": [
@@ -1222,7 +1222,7 @@
     "51f49aebf08ed9d9cec58c6996e971183850229c120f918f6619c2b0e5d92729": {
         "ubp_id": "LAW_COMP_005",
         "name": "The Law of Substrate Resolution (Refined)",
-        "math": "Output = \u2713(Noise) | \u0394w \u2248 1.0",
+        "math": "Output = ✓(Noise) | Δw ≈ 1.0",
         "language": "Reality is the 1-bit corrected output of the Golay substrate; the universe resolves potential into existence by snapping single-bit errors to the nearest stable codeword.",
         "script": "Fraction(10068, 10000)",
         "tags": [
@@ -1252,8 +1252,8 @@
     "1b6a75737c8e568c387fd213740879ceaa4198a8c62e4622d6e820f2fbacf1dc": {
         "ubp_id": "LAW_LANG_006",
         "name": "The Law of the Jera Constant",
-        "math": "\u03b1_jera = 240\u00b0 | Resonance = 2/3",
-        "language": "The Jera Constant (240\u00b0) is the primary OnBit clock operator; it generates a zero-tension 3-step rhythmic awareness.",
+        "math": "α_jera = 240° | Resonance = 2/3",
+        "language": "The Jera Constant (240°) is the primary OnBit clock operator; it generates a zero-tension 3-step rhythmic awareness.",
         "script": "Fraction(2, 3)",
         "tags": [
             "language",
@@ -1267,7 +1267,7 @@
     "015fed01ec57f03b409711dd918c8cea1b21e4f85e0f60854838b50e14a28535": {
         "ubp_id": "LAW_COMP_006",
         "name": "The Law of Coherence Snaps (Refined)",
-        "math": "Snap = \u2713(Drift) | t=3",
+        "math": "Snap = ✓(Drift) | t=3",
         "language": "Perception is a 'Coherence Snap' that uses the Golay Gateway (t=3) to relock a drifting temporal trajectory back to the Jera Constant.",
         "script": "GOLAY_DECODER.snap_to_codeword(drift_vector)",
         "tags": [
@@ -1282,7 +1282,7 @@
     "092af19f7f157feef2fea259dd91a27e222497068e440a2481efd9407d2415d1": {
         "ubp_id": "LAW_TIME_003",
         "name": "The Law of Infinite Synchronization",
-        "math": "Snap(\u0394\u03c6) = 0 | t=3",
+        "math": "Snap(Δφ) = 0 | t=3",
         "language": "The Jera Constant is a self-stabilizing heartbeat; the Golay Gateway (t=3) provides the 'Coherence Snap' that resets temporal drift, allowing for infinite rhythmic persistence.",
         "script": "GOLAY_DECODER.decode(state)[2] <= 3",
         "tags": [
@@ -1342,7 +1342,7 @@
     "c2be86dca0aac68a0aeaa3fa33736c1eb1f8b4a53d575194c21e5d7c1a8bb090": {
         "ubp_id": "LAW_APP_001",
         "name": "The Law of Coherence Snaps",
-        "math": "Snap(Identity) = \u2713(Codeword) | NRCI < 0.99",
+        "math": "Snap(Identity) = ✓(Codeword) | NRCI < 0.99",
         "language": "Physical persistence is maintained by discrete 'Coherence Snaps' that reset drifting informational states to their nearest substrate anchors.",
         "script": "GOLAY_DECODER.snap_to_codeword(current_state)",
         "tags": [
@@ -1357,7 +1357,7 @@
     "98f95a623997247725aad02a4ebd2ac4de298b583ce6c93fbba501dc0000e145": {
         "ubp_id": "LAW_APP_002",
         "name": "The Law of Ontological Health",
-        "math": "Health = \u03a3(Layer_NRCI) / 4",
+        "math": "Health = Σ(Layer_NRCI) / 4",
         "language": "System integrity is a function of the four 6-bit ontological layers (Reality, Info, Activation, Potential); stress in one layer induces drag across the manifold.",
         "script": "LeechPointScaled(tuple(bitfield)).get_ontological_health()",
         "tags": [
@@ -1372,8 +1372,8 @@
     "e8eace9fc1122cae007c2b4de18e0d71795be3e6f9eb45301c5caec88257bd60": {
         "ubp_id": "LAW_SUBSTRATE_002",
         "name": "The Law of the Leech Generator",
-        "math": "Norm^2(\u03a9) = Norm^2(\u03b1) = 80 | d(\u03a9, \u03b1) = \u221a32",
-        "language": "The Leech Engine confirms the Alpha-Omega Axis as a minimal-distance bridge (\u221a32) between identical 24D shells (Norm 80); all physical identity is a coordinate in this unimodular manifold.",
+        "math": "Norm^2(Ω) = Norm^2(α) = 80 | d(Ω, α) = √32",
+        "language": "The Leech Engine confirms the Alpha-Omega Axis as a minimal-distance bridge (√32) between identical 24D shells (Norm 80); all physical identity is a coordinate in this unimodular manifold.",
         "script": "LeechPointScaled(tuple(seed))",
         "tags": [
             "substrate",
@@ -1417,7 +1417,7 @@
     "f534e9d6c9321bc104ef3b60e718b8ed9df96263e4024e771e9ff4e661ab6726": {
         "ubp_id": "LAW_SUBSTRATE_005",
         "name": "The Law of the Tetradic Manifold (MOG)",
-        "math": "Grid(24) = 4 Layers \u2297 6 Bits",
+        "math": "Grid(24) = 4 Layers ⊗ 6 Bits",
         "language": "The 24-bit substrate is organized into a 4x6 Miracle Octad Generator (MOG) grid; this tetradic architecture is the minimum configuration required for stable 3D manifestation.",
         "script": "LeechPointScaled(tuple([0]*24)).get_ontological_health()",
         "tags": [
@@ -1447,7 +1447,7 @@
     "1a8513560ca7a4e86063c4cbe9dacbbdb90dae2af11d12f2398220b0baefbe2c": {
         "ubp_id": "LAW_SUBSTRATE_006",
         "name": "The Law of the Fractal Shield",
-        "math": "Stability_Global = Snap(\u03a3 Stability_Local)",
+        "math": "Stability_Global = Snap(Σ Stability_Local)",
         "language": "Reality is a fractal shield; local 6-bit ontological layers (Reality, Info, Activation, Potential) detect and absorb informational drift, allowing the global 24-bit identity to remain locked in the Coherence Basin.",
         "script": "LeechPointScaled(tuple(drift_vector)).get_ontological_health()",
         "tags": [
@@ -1477,7 +1477,7 @@
     "7cc71263df43fe8f984abdac5654eb8f611937e2dac52a49fb9370cfd75101a1": {
         "ubp_id": "LAW_CONST_001",
         "name": "The Law of Harmonic Scaling",
-        "math": "Constant \u221d Anchor * Y^n",
+        "math": "Constant ∝ Anchor * Y^n",
         "language": "Physical constants are not independent values; they are the resonance harmonics of the Alpha-Omega anchors scaled by integer powers of the Y-constant.",
         "script": "anchor * (UBPUltimateSubstrate.get_constants()['Y']**n)",
         "tags": [
@@ -1507,7 +1507,7 @@
     "b442e10ec4d0e2884848cad617d5dd43e78dba8811dfb76f7dd6c2481f1c9112": {
         "ubp_id": "LAW_ACOUSTIC_002",
         "name": "The Law of the Temperament Drift",
-        "math": "|2^(7/12) - 1.5| \u2248 Noise_Floor(0.0016)",
+        "math": "|2^(7/12) - 1.5| ≈ Noise_Floor(0.0016)",
         "language": "The 12-tone scale is the optimal 3D projection of the Golay substrate; its inherent drift is the 'Breath' of the noise floor.",
         "script": "abs(2**(7/12) - 1.5)",
         "tags": [
@@ -7081,7 +7081,7 @@
     "1e5815875f0f0ba278f358b4053b4a63a33e3f90e5930d4ba0be3d5cb897e549": {
         "ubp_id": "MATH_GOLDEN_001",
         "name": "Golden Ratio",
-        "math": "phi = (1 + sqrt(5)) / 2 \u2248 1.618",
+        "math": "phi = (1 + sqrt(5)) / 2 ≈ 1.618",
         "language": "The ratio where the whole is to the larger part as the larger is to the smaller.",
         "script": "phi = (1 + 5**0.5) / 2",
         "tags": [
@@ -7098,7 +7098,7 @@
         "name": "Euler's Identity",
         "math": "e^(i*pi) + 1 = 0",
         "language": "The most beautiful equation connecting e, i, pi, 1, and 0.",
-        "script": "euler_identity = cmath.exp(1j * cmath.pi) + 1  # \u2248 0",
+        "script": "euler_identity = cmath.exp(1j * cmath.pi) + 1  # ≈ 0",
         "tags": [
             "euler",
             "identity",
@@ -7126,7 +7126,7 @@
     "d396833d67d683c2f3822906f309581f4592bc2bd51b0e36c16e91cc5ef78ae9": {
         "ubp_id": "MATH_QUADRATIC_001",
         "name": "Quadratic Formula",
-        "math": "x = (-b \u00b1 sqrt(b^2-4ac)) / 2a",
+        "math": "x = (-b ± sqrt(b^2-4ac)) / 2a",
         "language": "The solution to any quadratic equation ax^2 + bx + c = 0.",
         "script": "x = (-b + (b**2 - 4*a*c)**0.5) / (2*a)",
         "tags": [
@@ -7306,7 +7306,7 @@
     "ebc27f8d01338c43d733711ae1456698a9d5810449e035e28ee3517d3af98f17": {
         "ubp_id": "MATH_MODULAR_001",
         "name": "Modular Arithmetic",
-        "math": "a \u2261 b (mod n) iff n|(a-b)",
+        "math": "a ≡ b (mod n) iff n|(a-b)",
         "language": "Arithmetic where numbers wrap around upon reaching a modulus.",
         "script": "mod_eq = (a - b) % n == 0",
         "tags": [
@@ -8248,7 +8248,8 @@
             "state",
             "self_awareness"
         ],
-        "fingerprint": "476796bc46310d47853c7c11a865a9314ec0f3ced6bb0d2fd43b0a045f305ed9"
+        "fingerprint": "476796bc46310d47853c7c11a865a9314ec0f3ced6bb0d2fd43b0a045f305ed9",
+        "nrci": "1/1"
     },
     "d60f039ff659f1cf2a8f8c51b728e899095e5229d54cf6f2b968d18836bf1071": {
         "name": "RECURSION",
@@ -8288,7 +8289,8 @@
             "process",
             "recursion"
         ],
-        "fingerprint": "d60f039ff659f1cf2a8f8c51b728e899095e5229d54cf6f2b968d18836bf1071"
+        "fingerprint": "d60f039ff659f1cf2a8f8c51b728e899095e5229d54cf6f2b968d18836bf1071",
+        "nrci": "1/1"
     },
     "af9239323009ae3c0e5f70e3756cb4bde40326f935887a568e2ebec15e949fec": {
         "name": "IDENTITY_LOCK",
@@ -8328,7 +8330,8 @@
             "state",
             "identity_lock"
         ],
-        "fingerprint": "af9239323009ae3c0e5f70e3756cb4bde40326f935887a568e2ebec15e949fec"
+        "fingerprint": "af9239323009ae3c0e5f70e3756cb4bde40326f935887a568e2ebec15e949fec",
+        "nrci": "1/1"
     },
     "94894b11cd8d61407c2aab48dddbed6eea59d814d31333dce90aee06bcbd3b65": {
         "name": "TRIANGULATE",
@@ -8368,7 +8371,8 @@
             "process",
             "triangulate"
         ],
-        "fingerprint": "94894b11cd8d61407c2aab48dddbed6eea59d814d31333dce90aee06bcbd3b65"
+        "fingerprint": "94894b11cd8d61407c2aab48dddbed6eea59d814d31333dce90aee06bcbd3b65",
+        "nrci": "1/1"
     },
     "62a9c023cf0af4eb64ff11e880a699120b87f010ae642891b523b9c93dc8e46c": {
         "name": "LATTICE_HEALTH",
@@ -8408,46 +8412,7009 @@
             "state",
             "lattice_health"
         ],
-    "f367baa948cfb6407b40f1ea9280c2aecef73c41096d335cf799daf96d50a4a6": {
-        "ubp_id": "LAW_SYNTH_8A5AD646",
-        "name": "The Law of Informational Curvature",
-        "math": "Gravity(W12) ^ Information(W12) -> LAW_SYNTH_8A5AD646(W12)",
-        "language": "Gravity is the geometric manifestation of informational density. This law defines the specific bit-pattern where substrate lag becomes observable as physical attraction.",
-        "script": "vector = [1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1]",
-        "vector": [
-            1,
-            0,
-            1,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            1,
-            1,
-            1,
-            0,
-            1,
-            1,
-            0,
-            1
-        ],
+        "f367baa948cfb6407b40f1ea9280c2aecef73c41096d335cf799daf96d50a4a6": {
+            "ubp_id": "LAW_SYNTH_8A5AD646",
+            "name": "The Law of Informational Curvature",
+            "math": "Gravity(W12) ^ Information(W12) -> LAW_SYNTH_8A5AD646(W12)",
+            "language": "Gravity is the geometric manifestation of informational density. This law defines the specific bit-pattern where substrate lag becomes observable as physical attraction.",
+            "script": "vector = [1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1]",
+            "vector": [
+                1,
+                0,
+                1,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0,
+                1
+            ],
+            "tags": [
+                "synthesis",
+                "gravity",
+                "information",
+                "curvature",
+                "resonance"
+            ],
+            "nrci": "1/1",
+            "fingerprint": "f367baa948cfb6407b40f1ea9280c2aecef73c41096d335cf799daf96d50a4a6"
+        },
+        "nrci": "1/1",
+        "fingerprint": "62a9c023cf0af4eb64ff11e880a699120b87f010ae642891b523b9c93dc8e46c"
+    },
+    "190cdfdafdb069456eb159dac837e7103a622b13621f304d91e2b84fad2d16c6": {
+        "ubp_id": "ELEM_H_001",
+        "name": "Element: Hydrogen (H)",
+        "math": "Z=1 | M=1.008 | Config=1s1",
+        "language": "Hydrogen is a nonmetal with atomic number 1, atomic mass 1.008, and electron configuration 1s1.",
+        "script": "element = {'Z': 1, 'symbol': 'H', 'mass': 1.008, 'category': 'nonmetal', 'oxidation': [1,-1]}",
         "tags": [
-            "synthesis",
-            "gravity",
-            "information",
-            "curvature",
-            "resonance"
+            "element",
+            "nonmetal",
+            "period_1",
+            "periodic_table"
         ],
         "nrci": "1/1",
-        "fingerprint": "f367baa948cfb6407b40f1ea9280c2aecef73c41096d335cf799daf96d50a4a6"
+        "fingerprint": "190cdfdafdb069456eb159dac837e7103a622b13621f304d91e2b84fad2d16c6"
+    },
+    "3d673ca174c8c27c6f2b3cbff894f501752843427aeb1ef1ce2270d6f9ced4c5": {
+        "ubp_id": "ELEM_HE_002",
+        "name": "Element: Helium (He)",
+        "math": "Z=2 | M=4.003 | Config=1s2",
+        "language": "Helium is a noble gas with atomic number 2, atomic mass 4.003, and electron configuration 1s2.",
+        "script": "element = {'Z': 2, 'symbol': 'He', 'mass': 4.003, 'category': 'noble_gas', 'oxidation': [0]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3d673ca174c8c27c6f2b3cbff894f501752843427aeb1ef1ce2270d6f9ced4c5"
+    },
+    "ffcd9aec5ed168704a908a683d772e14c3e0de168c3c0de01c3231ad952cfd80": {
+        "ubp_id": "ELEM_LI_003",
+        "name": "Element: Lithium (Li)",
+        "math": "Z=3 | M=6.941 | Config=[He]2s1",
+        "language": "Lithium is a alkali metal with atomic number 3, atomic mass 6.941, and electron configuration [He]2s1.",
+        "script": "element = {'Z': 3, 'symbol': 'Li', 'mass': 6.941, 'category': 'alkali_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "alkali_metal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ffcd9aec5ed168704a908a683d772e14c3e0de168c3c0de01c3231ad952cfd80"
+    },
+    "64156ae0f891accb548fbe8924a6356bcd9bb208328e2bf6b89600b44a374e51": {
+        "ubp_id": "ELEM_BE_004",
+        "name": "Element: Beryllium (Be)",
+        "math": "Z=4 | M=9.012 | Config=[He]2s2",
+        "language": "Beryllium is a alkaline earth with atomic number 4, atomic mass 9.012, and electron configuration [He]2s2.",
+        "script": "element = {'Z': 4, 'symbol': 'Be', 'mass': 9.012, 'category': 'alkaline_earth', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "alkaline_earth",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "64156ae0f891accb548fbe8924a6356bcd9bb208328e2bf6b89600b44a374e51"
+    },
+    "873d5f41d372d5c6d20555307e56340190cc6c63e636d78066c63111c0a4adda": {
+        "ubp_id": "ELEM_B_005",
+        "name": "Element: Boron (B)",
+        "math": "Z=5 | M=10.81 | Config=[He]2s2 2p1",
+        "language": "Boron is a metalloid with atomic number 5, atomic mass 10.81, and electron configuration [He]2s2 2p1.",
+        "script": "element = {'Z': 5, 'symbol': 'B', 'mass': 10.81, 'category': 'metalloid', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "873d5f41d372d5c6d20555307e56340190cc6c63e636d78066c63111c0a4adda"
+    },
+    "b42a84a0154ad32f573721061e0c25c9df03c1f1f8a86045a7e4d6fc74c3723c": {
+        "ubp_id": "ELEM_C_006",
+        "name": "Element: Carbon (C)",
+        "math": "Z=6 | M=12.01 | Config=[He]2s2 2p2",
+        "language": "Carbon is a nonmetal with atomic number 6, atomic mass 12.01, and electron configuration [He]2s2 2p2.",
+        "script": "element = {'Z': 6, 'symbol': 'C', 'mass': 12.01, 'category': 'nonmetal', 'oxidation': [-4,4]}",
+        "tags": [
+            "element",
+            "nonmetal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b42a84a0154ad32f573721061e0c25c9df03c1f1f8a86045a7e4d6fc74c3723c"
+    },
+    "ea31a17ed9b32e1ff0cd50e88d7682cc1327bb0f196d70fe67c9f6078bc8caf1": {
+        "ubp_id": "ELEM_N_007",
+        "name": "Element: Nitrogen (N)",
+        "math": "Z=7 | M=14.01 | Config=[He]2s2 2p3",
+        "language": "Nitrogen is a nonmetal with atomic number 7, atomic mass 14.01, and electron configuration [He]2s2 2p3.",
+        "script": "element = {'Z': 7, 'symbol': 'N', 'mass': 14.01, 'category': 'nonmetal', 'oxidation': [-3,3,5]}",
+        "tags": [
+            "element",
+            "nonmetal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ea31a17ed9b32e1ff0cd50e88d7682cc1327bb0f196d70fe67c9f6078bc8caf1"
+    },
+    "57e3e4dbb94f2b8a631df3d3d45f99b1b44a5d51c7efb3fcaf14e2212859cf7e": {
+        "ubp_id": "ELEM_O_008",
+        "name": "Element: Oxygen (O)",
+        "math": "Z=8 | M=16.0 | Config=[He]2s2 2p4",
+        "language": "Oxygen is a nonmetal with atomic number 8, atomic mass 16.0, and electron configuration [He]2s2 2p4.",
+        "script": "element = {'Z': 8, 'symbol': 'O', 'mass': 16.0, 'category': 'nonmetal', 'oxidation': [-2]}",
+        "tags": [
+            "element",
+            "nonmetal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "57e3e4dbb94f2b8a631df3d3d45f99b1b44a5d51c7efb3fcaf14e2212859cf7e"
+    },
+    "56823b3e0b16189494e609f36126a361e1dd6b5f48effbdb979eb2c5038a2d33": {
+        "ubp_id": "ELEM_F_009",
+        "name": "Element: Fluorine (F)",
+        "math": "Z=9 | M=19.0 | Config=[He]2s2 2p5",
+        "language": "Fluorine is a halogen with atomic number 9, atomic mass 19.0, and electron configuration [He]2s2 2p5.",
+        "script": "element = {'Z': 9, 'symbol': 'F', 'mass': 19.0, 'category': 'halogen', 'oxidation': [-1]}",
+        "tags": [
+            "element",
+            "halogen",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "56823b3e0b16189494e609f36126a361e1dd6b5f48effbdb979eb2c5038a2d33"
+    },
+    "f61121d8f36b1f8442cb0f66636b85f96a31d80a087f41503156fc1e414eae4b": {
+        "ubp_id": "ELEM_NE_010",
+        "name": "Element: Neon (Ne)",
+        "math": "Z=10 | M=20.18 | Config=[He]2s2 2p6",
+        "language": "Neon is a noble gas with atomic number 10, atomic mass 20.18, and electron configuration [He]2s2 2p6.",
+        "script": "element = {'Z': 10, 'symbol': 'Ne', 'mass': 20.18, 'category': 'noble_gas', 'oxidation': [0]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f61121d8f36b1f8442cb0f66636b85f96a31d80a087f41503156fc1e414eae4b"
+    },
+    "6852934be7d221f4f307e434ee3a171b28d1b79b48551171520438f251137166": {
+        "ubp_id": "ELEM_NA_011",
+        "name": "Element: Sodium (Na)",
+        "math": "Z=11 | M=22.99 | Config=[Ne]3s1",
+        "language": "Sodium is a alkali metal with atomic number 11, atomic mass 22.99, and electron configuration [Ne]3s1.",
+        "script": "element = {'Z': 11, 'symbol': 'Na', 'mass': 22.99, 'category': 'alkali_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "alkali_metal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6852934be7d221f4f307e434ee3a171b28d1b79b48551171520438f251137166"
+    },
+    "f881dbcf7b87f34af70c080339ce5bae74669daa4c00fea9976fc32c36ec7998": {
+        "ubp_id": "ELEM_MG_012",
+        "name": "Element: Magnesium (Mg)",
+        "math": "Z=12 | M=24.31 | Config=[Ne]3s2",
+        "language": "Magnesium is a alkaline earth with atomic number 12, atomic mass 24.31, and electron configuration [Ne]3s2.",
+        "script": "element = {'Z': 12, 'symbol': 'Mg', 'mass': 24.31, 'category': 'alkaline_earth', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "alkaline_earth",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f881dbcf7b87f34af70c080339ce5bae74669daa4c00fea9976fc32c36ec7998"
+    },
+    "c3520d57dd1001458cc587b8891ed4235ce99b1663de55bb40261774e51f747e": {
+        "ubp_id": "ELEM_AL_013",
+        "name": "Element: Aluminum (Al)",
+        "math": "Z=13 | M=26.98 | Config=[Ne]3s2 3p1",
+        "language": "Aluminum is a post transition with atomic number 13, atomic mass 26.98, and electron configuration [Ne]3s2 3p1.",
+        "script": "element = {'Z': 13, 'symbol': 'Al', 'mass': 26.98, 'category': 'post_transition', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c3520d57dd1001458cc587b8891ed4235ce99b1663de55bb40261774e51f747e"
+    },
+    "80b3c00b03616cbd0fcb1ee06cce0503c5f17bc5cab8a29724a3cdcf7434c169": {
+        "ubp_id": "ELEM_SI_014",
+        "name": "Element: Silicon (Si)",
+        "math": "Z=14 | M=28.09 | Config=[Ne]3s2 3p2",
+        "language": "Silicon is a metalloid with atomic number 14, atomic mass 28.09, and electron configuration [Ne]3s2 3p2.",
+        "script": "element = {'Z': 14, 'symbol': 'Si', 'mass': 28.09, 'category': 'metalloid', 'oxidation': [-4,4]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "80b3c00b03616cbd0fcb1ee06cce0503c5f17bc5cab8a29724a3cdcf7434c169"
+    },
+    "48bdd6cb3774b8a9adea6b6c5bdaff4324548a502e6e534bdea029ae494f76a6": {
+        "ubp_id": "ELEM_P_015",
+        "name": "Element: Phosphorus (P)",
+        "math": "Z=15 | M=30.97 | Config=[Ne]3s2 3p3",
+        "language": "Phosphorus is a nonmetal with atomic number 15, atomic mass 30.97, and electron configuration [Ne]3s2 3p3.",
+        "script": "element = {'Z': 15, 'symbol': 'P', 'mass': 30.97, 'category': 'nonmetal', 'oxidation': [-3,3,5]}",
+        "tags": [
+            "element",
+            "nonmetal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "48bdd6cb3774b8a9adea6b6c5bdaff4324548a502e6e534bdea029ae494f76a6"
+    },
+    "6a48fc2da9aa242f198ce1d8b099690d2a0efb6d6f711b450d1d39d63a2300c3": {
+        "ubp_id": "ELEM_S_016",
+        "name": "Element: Sulfur (S)",
+        "math": "Z=16 | M=32.07 | Config=[Ne]3s2 3p4",
+        "language": "Sulfur is a nonmetal with atomic number 16, atomic mass 32.07, and electron configuration [Ne]3s2 3p4.",
+        "script": "element = {'Z': 16, 'symbol': 'S', 'mass': 32.07, 'category': 'nonmetal', 'oxidation': [-2,4,6]}",
+        "tags": [
+            "element",
+            "nonmetal",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6a48fc2da9aa242f198ce1d8b099690d2a0efb6d6f711b450d1d39d63a2300c3"
+    },
+    "887885b9983c2f9ccca482e04c7b815bbab4298a965ef3b264b11ebe8ff1643c": {
+        "ubp_id": "ELEM_CL_017",
+        "name": "Element: Chlorine (Cl)",
+        "math": "Z=17 | M=35.45 | Config=[Ne]3s2 3p5",
+        "language": "Chlorine is a halogen with atomic number 17, atomic mass 35.45, and electron configuration [Ne]3s2 3p5.",
+        "script": "element = {'Z': 17, 'symbol': 'Cl', 'mass': 35.45, 'category': 'halogen', 'oxidation': [-1,1,3,5,7]}",
+        "tags": [
+            "element",
+            "halogen",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "887885b9983c2f9ccca482e04c7b815bbab4298a965ef3b264b11ebe8ff1643c"
+    },
+    "266055ae617470014e101cbf373ecebcbde01bf00a718d737fccc53e92e63da9": {
+        "ubp_id": "ELEM_AR_018",
+        "name": "Element: Argon (Ar)",
+        "math": "Z=18 | M=39.95 | Config=[Ne]3s2 3p6",
+        "language": "Argon is a noble gas with atomic number 18, atomic mass 39.95, and electron configuration [Ne]3s2 3p6.",
+        "script": "element = {'Z': 18, 'symbol': 'Ar', 'mass': 39.95, 'category': 'noble_gas', 'oxidation': [0]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_1",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "266055ae617470014e101cbf373ecebcbde01bf00a718d737fccc53e92e63da9"
+    },
+    "237755ee751ab2ce7fe95a03fa86244a3b0a49eabf7be440f99871d679caae09": {
+        "ubp_id": "ELEM_K_019",
+        "name": "Element: Potassium (K)",
+        "math": "Z=19 | M=39.1 | Config=[Ar]4s1",
+        "language": "Potassium is a alkali metal with atomic number 19, atomic mass 39.1, and electron configuration [Ar]4s1.",
+        "script": "element = {'Z': 19, 'symbol': 'K', 'mass': 39.1, 'category': 'alkali_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "alkali_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "237755ee751ab2ce7fe95a03fa86244a3b0a49eabf7be440f99871d679caae09"
+    },
+    "ae3079996f07b07bd89da90823944581a129d944435a4de6fccc3c2f13640438": {
+        "ubp_id": "ELEM_CA_020",
+        "name": "Element: Calcium (Ca)",
+        "math": "Z=20 | M=40.08 | Config=[Ar]4s2",
+        "language": "Calcium is a alkaline earth with atomic number 20, atomic mass 40.08, and electron configuration [Ar]4s2.",
+        "script": "element = {'Z': 20, 'symbol': 'Ca', 'mass': 40.08, 'category': 'alkaline_earth', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "alkaline_earth",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ae3079996f07b07bd89da90823944581a129d944435a4de6fccc3c2f13640438"
+    },
+    "08378616b2ac41cc1c55d1ae22f68e72a083a942fbc3e70131de6fdc0563d171": {
+        "ubp_id": "ELEM_SC_021",
+        "name": "Element: Scandium (Sc)",
+        "math": "Z=21 | M=44.96 | Config=[Ar]3d1 4s2",
+        "language": "Scandium is a transition metal with atomic number 21, atomic mass 44.96, and electron configuration [Ar]3d1 4s2.",
+        "script": "element = {'Z': 21, 'symbol': 'Sc', 'mass': 44.96, 'category': 'transition_metal', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "08378616b2ac41cc1c55d1ae22f68e72a083a942fbc3e70131de6fdc0563d171"
+    },
+    "8a611f57b0c0743b00eaf068f7640e211c4524ebc2d58179e420572e33fa53fd": {
+        "ubp_id": "ELEM_TI_022",
+        "name": "Element: Titanium (Ti)",
+        "math": "Z=22 | M=47.87 | Config=[Ar]3d2 4s2",
+        "language": "Titanium is a transition metal with atomic number 22, atomic mass 47.87, and electron configuration [Ar]3d2 4s2.",
+        "script": "element = {'Z': 22, 'symbol': 'Ti', 'mass': 47.87, 'category': 'transition_metal', 'oxidation': [2,3,4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8a611f57b0c0743b00eaf068f7640e211c4524ebc2d58179e420572e33fa53fd"
+    },
+    "e21e79785b3776a9e00ba08f23b6237773b4741dfae86210fd43ef818e8ab58d": {
+        "ubp_id": "ELEM_V_023",
+        "name": "Element: Vanadium (V)",
+        "math": "Z=23 | M=50.94 | Config=[Ar]3d3 4s2",
+        "language": "Vanadium is a transition metal with atomic number 23, atomic mass 50.94, and electron configuration [Ar]3d3 4s2.",
+        "script": "element = {'Z': 23, 'symbol': 'V', 'mass': 50.94, 'category': 'transition_metal', 'oxidation': [2,3,4,5]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e21e79785b3776a9e00ba08f23b6237773b4741dfae86210fd43ef818e8ab58d"
+    },
+    "5feb705828fd334a41706d3a7fb1f171719446bccd657b1b06a44567048964d4": {
+        "ubp_id": "ELEM_CR_024",
+        "name": "Element: Chromium (Cr)",
+        "math": "Z=24 | M=52.0 | Config=[Ar]3d5 4s1",
+        "language": "Chromium is a transition metal with atomic number 24, atomic mass 52.0, and electron configuration [Ar]3d5 4s1.",
+        "script": "element = {'Z': 24, 'symbol': 'Cr', 'mass': 52.0, 'category': 'transition_metal', 'oxidation': [2,3,6]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5feb705828fd334a41706d3a7fb1f171719446bccd657b1b06a44567048964d4"
+    },
+    "0cbc345c5386c95c1b61cb19c57e4bfcb44b1e59e7d6bb5e1c910497b8095581": {
+        "ubp_id": "ELEM_MN_025",
+        "name": "Element: Manganese (Mn)",
+        "math": "Z=25 | M=54.94 | Config=[Ar]3d5 4s2",
+        "language": "Manganese is a transition metal with atomic number 25, atomic mass 54.94, and electron configuration [Ar]3d5 4s2.",
+        "script": "element = {'Z': 25, 'symbol': 'Mn', 'mass': 54.94, 'category': 'transition_metal', 'oxidation': [2,4,7]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0cbc345c5386c95c1b61cb19c57e4bfcb44b1e59e7d6bb5e1c910497b8095581"
+    },
+    "d6b780c12bbb8dc8facff8656602b741bac1ab694c2b7de523782eababa08d8e": {
+        "ubp_id": "ELEM_FE_026",
+        "name": "Element: Iron (Fe)",
+        "math": "Z=26 | M=55.85 | Config=[Ar]3d6 4s2",
+        "language": "Iron is a transition metal with atomic number 26, atomic mass 55.85, and electron configuration [Ar]3d6 4s2.",
+        "script": "element = {'Z': 26, 'symbol': 'Fe', 'mass': 55.85, 'category': 'transition_metal', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d6b780c12bbb8dc8facff8656602b741bac1ab694c2b7de523782eababa08d8e"
+    },
+    "68fdfdf6301a8c9b6ff8b036a998b02b21f4f840ca26b0ac690015bb75a31aec": {
+        "ubp_id": "ELEM_CO_027",
+        "name": "Element: Cobalt (Co)",
+        "math": "Z=27 | M=58.93 | Config=[Ar]3d7 4s2",
+        "language": "Cobalt is a transition metal with atomic number 27, atomic mass 58.93, and electron configuration [Ar]3d7 4s2.",
+        "script": "element = {'Z': 27, 'symbol': 'Co', 'mass': 58.93, 'category': 'transition_metal', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "68fdfdf6301a8c9b6ff8b036a998b02b21f4f840ca26b0ac690015bb75a31aec"
+    },
+    "8b5b1a762698e36d1c8ac8f0b4648c397ab99672396fc26fc3c6895b1a35090c": {
+        "ubp_id": "ELEM_NI_028",
+        "name": "Element: Nickel (Ni)",
+        "math": "Z=28 | M=58.69 | Config=[Ar]3d8 4s2",
+        "language": "Nickel is a transition metal with atomic number 28, atomic mass 58.69, and electron configuration [Ar]3d8 4s2.",
+        "script": "element = {'Z': 28, 'symbol': 'Ni', 'mass': 58.69, 'category': 'transition_metal', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8b5b1a762698e36d1c8ac8f0b4648c397ab99672396fc26fc3c6895b1a35090c"
+    },
+    "c223550a5d71841fa4e367b040611466cd114d3a25f8db60fdedf048c874fdac": {
+        "ubp_id": "ELEM_CU_029",
+        "name": "Element: Copper (Cu)",
+        "math": "Z=29 | M=63.55 | Config=[Ar]3d10 4s1",
+        "language": "Copper is a transition metal with atomic number 29, atomic mass 63.55, and electron configuration [Ar]3d10 4s1.",
+        "script": "element = {'Z': 29, 'symbol': 'Cu', 'mass': 63.55, 'category': 'transition_metal', 'oxidation': [1,2]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c223550a5d71841fa4e367b040611466cd114d3a25f8db60fdedf048c874fdac"
+    },
+    "96f6ed1e42bbb7f11e180a95eecebc8c6efcb6bf4007b17391af328819103c22": {
+        "ubp_id": "ELEM_ZN_030",
+        "name": "Element: Zinc (Zn)",
+        "math": "Z=30 | M=65.38 | Config=[Ar]3d10 4s2",
+        "language": "Zinc is a transition metal with atomic number 30, atomic mass 65.38, and electron configuration [Ar]3d10 4s2.",
+        "script": "element = {'Z': 30, 'symbol': 'Zn', 'mass': 65.38, 'category': 'transition_metal', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "96f6ed1e42bbb7f11e180a95eecebc8c6efcb6bf4007b17391af328819103c22"
+    },
+    "715108eea47cf87282357452c4fba65273e173bdaa72ea9ffd52aa7efe0033c6": {
+        "ubp_id": "ELEM_GA_031",
+        "name": "Element: Gallium (Ga)",
+        "math": "Z=31 | M=69.72 | Config=[Ar]3d10 4s2 4p1",
+        "language": "Gallium is a post transition with atomic number 31, atomic mass 69.72, and electron configuration [Ar]3d10 4s2 4p1.",
+        "script": "element = {'Z': 31, 'symbol': 'Ga', 'mass': 69.72, 'category': 'post_transition', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "715108eea47cf87282357452c4fba65273e173bdaa72ea9ffd52aa7efe0033c6"
+    },
+    "88c6d192e642c1df2c4405adf7f9143f9fc3039cd625f55c7109042a7194e363": {
+        "ubp_id": "ELEM_GE_032",
+        "name": "Element: Germanium (Ge)",
+        "math": "Z=32 | M=72.63 | Config=[Ar]3d10 4s2 4p2",
+        "language": "Germanium is a metalloid with atomic number 32, atomic mass 72.63, and electron configuration [Ar]3d10 4s2 4p2.",
+        "script": "element = {'Z': 32, 'symbol': 'Ge', 'mass': 72.63, 'category': 'metalloid', 'oxidation': [2,4]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "88c6d192e642c1df2c4405adf7f9143f9fc3039cd625f55c7109042a7194e363"
+    },
+    "2d6a17586509c30914768e901708f8b4e0666cba3df44bd12b1c60b4c2512a9f": {
+        "ubp_id": "ELEM_AS_033",
+        "name": "Element: Arsenic (As)",
+        "math": "Z=33 | M=74.92 | Config=[Ar]3d10 4s2 4p3",
+        "language": "Arsenic is a metalloid with atomic number 33, atomic mass 74.92, and electron configuration [Ar]3d10 4s2 4p3.",
+        "script": "element = {'Z': 33, 'symbol': 'As', 'mass': 74.92, 'category': 'metalloid', 'oxidation': [-3,3,5]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2d6a17586509c30914768e901708f8b4e0666cba3df44bd12b1c60b4c2512a9f"
+    },
+    "34c4df75bb7557a80968abb7f178df4d7d9bdb13d5783a91ad0bdf257a2424a4": {
+        "ubp_id": "ELEM_SE_034",
+        "name": "Element: Selenium (Se)",
+        "math": "Z=34 | M=78.97 | Config=[Ar]3d10 4s2 4p4",
+        "language": "Selenium is a nonmetal with atomic number 34, atomic mass 78.97, and electron configuration [Ar]3d10 4s2 4p4.",
+        "script": "element = {'Z': 34, 'symbol': 'Se', 'mass': 78.97, 'category': 'nonmetal', 'oxidation': [-2,4,6]}",
+        "tags": [
+            "element",
+            "nonmetal",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "34c4df75bb7557a80968abb7f178df4d7d9bdb13d5783a91ad0bdf257a2424a4"
+    },
+    "4955f9cde30764fb5456291e252d75b73cfeecd2cccd2ccad3392080b0421f8e": {
+        "ubp_id": "ELEM_BR_035",
+        "name": "Element: Bromine (Br)",
+        "math": "Z=35 | M=79.9 | Config=[Ar]3d10 4s2 4p5",
+        "language": "Bromine is a halogen with atomic number 35, atomic mass 79.9, and electron configuration [Ar]3d10 4s2 4p5.",
+        "script": "element = {'Z': 35, 'symbol': 'Br', 'mass': 79.9, 'category': 'halogen', 'oxidation': [-1,1,3,5]}",
+        "tags": [
+            "element",
+            "halogen",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4955f9cde30764fb5456291e252d75b73cfeecd2cccd2ccad3392080b0421f8e"
+    },
+    "11cf5f9babbaa98e6f690b51e283d270c38a8ac16d516bd8f365705e9a7f0cd1": {
+        "ubp_id": "ELEM_KR_036",
+        "name": "Element: Krypton (Kr)",
+        "math": "Z=36 | M=83.8 | Config=[Ar]3d10 4s2 4p6",
+        "language": "Krypton is a noble gas with atomic number 36, atomic mass 83.8, and electron configuration [Ar]3d10 4s2 4p6.",
+        "script": "element = {'Z': 36, 'symbol': 'Kr', 'mass': 83.8, 'category': 'noble_gas', 'oxidation': [0,2]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_2",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "11cf5f9babbaa98e6f690b51e283d270c38a8ac16d516bd8f365705e9a7f0cd1"
+    },
+    "865413f8271ecaea3e0207aa563a57f5ccea0d8a3ce139da04dbd8a6fab34a70": {
+        "ubp_id": "ELEM_RB_037",
+        "name": "Element: Rubidium (Rb)",
+        "math": "Z=37 | M=85.47 | Config=[Kr]5s1",
+        "language": "Rubidium is a alkali metal with atomic number 37, atomic mass 85.47, and electron configuration [Kr]5s1.",
+        "script": "element = {'Z': 37, 'symbol': 'Rb', 'mass': 85.47, 'category': 'alkali_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "alkali_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "865413f8271ecaea3e0207aa563a57f5ccea0d8a3ce139da04dbd8a6fab34a70"
+    },
+    "b5bbc4a3d4e1a313e08380b0f14af926e33cbb1e838cf4d239a7da1c4351f3e1": {
+        "ubp_id": "ELEM_SR_038",
+        "name": "Element: Strontium (Sr)",
+        "math": "Z=38 | M=87.62 | Config=[Kr]5s2",
+        "language": "Strontium is a alkaline earth with atomic number 38, atomic mass 87.62, and electron configuration [Kr]5s2.",
+        "script": "element = {'Z': 38, 'symbol': 'Sr', 'mass': 87.62, 'category': 'alkaline_earth', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "alkaline_earth",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b5bbc4a3d4e1a313e08380b0f14af926e33cbb1e838cf4d239a7da1c4351f3e1"
+    },
+    "928e44e1aed5b82c647b476cb5e5e55899bd6f3f670946aa188a172a2e0d4986": {
+        "ubp_id": "ELEM_Y_039",
+        "name": "Element: Yttrium (Y)",
+        "math": "Z=39 | M=88.91 | Config=[Kr]4d1 5s2",
+        "language": "Yttrium is a transition metal with atomic number 39, atomic mass 88.91, and electron configuration [Kr]4d1 5s2.",
+        "script": "element = {'Z': 39, 'symbol': 'Y', 'mass': 88.91, 'category': 'transition_metal', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "928e44e1aed5b82c647b476cb5e5e55899bd6f3f670946aa188a172a2e0d4986"
+    },
+    "2314b6259e05fb61ea3549d9b5e275b0edca90057b943cbbe36881cca1a58c31": {
+        "ubp_id": "ELEM_ZR_040",
+        "name": "Element: Zirconium (Zr)",
+        "math": "Z=40 | M=91.22 | Config=[Kr]4d2 5s2",
+        "language": "Zirconium is a transition metal with atomic number 40, atomic mass 91.22, and electron configuration [Kr]4d2 5s2.",
+        "script": "element = {'Z': 40, 'symbol': 'Zr', 'mass': 91.22, 'category': 'transition_metal', 'oxidation': [4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2314b6259e05fb61ea3549d9b5e275b0edca90057b943cbbe36881cca1a58c31"
+    },
+    "f6101ae3d0b8744f6085296471545c06ecb9a4ee3b581495fc309f744f3831ab": {
+        "ubp_id": "ELEM_NB_041",
+        "name": "Element: Niobium (Nb)",
+        "math": "Z=41 | M=92.91 | Config=[Kr]4d4 5s1",
+        "language": "Niobium is a transition metal with atomic number 41, atomic mass 92.91, and electron configuration [Kr]4d4 5s1.",
+        "script": "element = {'Z': 41, 'symbol': 'Nb', 'mass': 92.91, 'category': 'transition_metal', 'oxidation': [3,5]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f6101ae3d0b8744f6085296471545c06ecb9a4ee3b581495fc309f744f3831ab"
+    },
+    "4de207995b0661e852dd001964898a7f036dd717b04372f37bbf91a945c4debe": {
+        "ubp_id": "ELEM_MO_042",
+        "name": "Element: Molybdenum (Mo)",
+        "math": "Z=42 | M=95.95 | Config=[Kr]4d5 5s1",
+        "language": "Molybdenum is a transition metal with atomic number 42, atomic mass 95.95, and electron configuration [Kr]4d5 5s1.",
+        "script": "element = {'Z': 42, 'symbol': 'Mo', 'mass': 95.95, 'category': 'transition_metal', 'oxidation': [4,6]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4de207995b0661e852dd001964898a7f036dd717b04372f37bbf91a945c4debe"
+    },
+    "55d0bdfecf5afd1c65fe3f527d2fa039cb39fe497f10b69601be4297c422569b": {
+        "ubp_id": "ELEM_TC_043",
+        "name": "Element: Technetium (Tc)",
+        "math": "Z=43 | M=98.0 | Config=[Kr]4d5 5s2",
+        "language": "Technetium is a transition metal with atomic number 43, atomic mass 98.0, and electron configuration [Kr]4d5 5s2.",
+        "script": "element = {'Z': 43, 'symbol': 'Tc', 'mass': 98.0, 'category': 'transition_metal', 'oxidation': [4,7]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "55d0bdfecf5afd1c65fe3f527d2fa039cb39fe497f10b69601be4297c422569b"
+    },
+    "568c9f58a43d381c68cfae91d7c0f6e9e863dc07d68320aa39814df318d4d292": {
+        "ubp_id": "ELEM_RU_044",
+        "name": "Element: Ruthenium (Ru)",
+        "math": "Z=44 | M=101.1 | Config=[Kr]4d7 5s1",
+        "language": "Ruthenium is a transition metal with atomic number 44, atomic mass 101.1, and electron configuration [Kr]4d7 5s1.",
+        "script": "element = {'Z': 44, 'symbol': 'Ru', 'mass': 101.1, 'category': 'transition_metal', 'oxidation': [3,4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "568c9f58a43d381c68cfae91d7c0f6e9e863dc07d68320aa39814df318d4d292"
+    },
+    "b1fb226f455701bf3c46e14cec3306c29a6ab2c4f8b556860aab5caaed992fac": {
+        "ubp_id": "ELEM_RH_045",
+        "name": "Element: Rhodium (Rh)",
+        "math": "Z=45 | M=102.9 | Config=[Kr]4d8 5s1",
+        "language": "Rhodium is a transition metal with atomic number 45, atomic mass 102.9, and electron configuration [Kr]4d8 5s1.",
+        "script": "element = {'Z': 45, 'symbol': 'Rh', 'mass': 102.9, 'category': 'transition_metal', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b1fb226f455701bf3c46e14cec3306c29a6ab2c4f8b556860aab5caaed992fac"
+    },
+    "813947186aedbaee78515078ea540df50a272ab51759f50ad084f99093725955": {
+        "ubp_id": "ELEM_PD_046",
+        "name": "Element: Palladium (Pd)",
+        "math": "Z=46 | M=106.4 | Config=[Kr]4d10",
+        "language": "Palladium is a transition metal with atomic number 46, atomic mass 106.4, and electron configuration [Kr]4d10.",
+        "script": "element = {'Z': 46, 'symbol': 'Pd', 'mass': 106.4, 'category': 'transition_metal', 'oxidation': [2,4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "813947186aedbaee78515078ea540df50a272ab51759f50ad084f99093725955"
+    },
+    "2c8501ccd5994c5f34a38984f9bb4cb548997d8b3b0b1ebacab0f8200bcfc262": {
+        "ubp_id": "ELEM_AG_047",
+        "name": "Element: Silver (Ag)",
+        "math": "Z=47 | M=107.9 | Config=[Kr]4d10 5s1",
+        "language": "Silver is a transition metal with atomic number 47, atomic mass 107.9, and electron configuration [Kr]4d10 5s1.",
+        "script": "element = {'Z': 47, 'symbol': 'Ag', 'mass': 107.9, 'category': 'transition_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2c8501ccd5994c5f34a38984f9bb4cb548997d8b3b0b1ebacab0f8200bcfc262"
+    },
+    "21be8867e6bf98f70ac937e84e0b9bcca749084b5623f9efa519192e257a306d": {
+        "ubp_id": "ELEM_CD_048",
+        "name": "Element: Cadmium (Cd)",
+        "math": "Z=48 | M=112.4 | Config=[Kr]4d10 5s2",
+        "language": "Cadmium is a transition metal with atomic number 48, atomic mass 112.4, and electron configuration [Kr]4d10 5s2.",
+        "script": "element = {'Z': 48, 'symbol': 'Cd', 'mass': 112.4, 'category': 'transition_metal', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "21be8867e6bf98f70ac937e84e0b9bcca749084b5623f9efa519192e257a306d"
+    },
+    "f8eb771337ad40efe3768a25716ca597d5315c3f0d82edc274231e9c52a51e62": {
+        "ubp_id": "ELEM_IN_049",
+        "name": "Element: Indium (In)",
+        "math": "Z=49 | M=114.8 | Config=[Kr]4d10 5s2 5p1",
+        "language": "Indium is a post transition with atomic number 49, atomic mass 114.8, and electron configuration [Kr]4d10 5s2 5p1.",
+        "script": "element = {'Z': 49, 'symbol': 'In', 'mass': 114.8, 'category': 'post_transition', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f8eb771337ad40efe3768a25716ca597d5315c3f0d82edc274231e9c52a51e62"
+    },
+    "eb6d308b1817b80e0a95ee9847a92c50318592dc2213d57b1f2c996bfc7d894f": {
+        "ubp_id": "ELEM_SN_050",
+        "name": "Element: Tin (Sn)",
+        "math": "Z=50 | M=118.7 | Config=[Kr]4d10 5s2 5p2",
+        "language": "Tin is a post transition with atomic number 50, atomic mass 118.7, and electron configuration [Kr]4d10 5s2 5p2.",
+        "script": "element = {'Z': 50, 'symbol': 'Sn', 'mass': 118.7, 'category': 'post_transition', 'oxidation': [2,4]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb6d308b1817b80e0a95ee9847a92c50318592dc2213d57b1f2c996bfc7d894f"
+    },
+    "a9fdf57484d287bcdedc302e94ca45032c0bcb74603eccd9d8e9f3be978bfebc": {
+        "ubp_id": "ELEM_SB_051",
+        "name": "Element: Antimony (Sb)",
+        "math": "Z=51 | M=121.8 | Config=[Kr]4d10 5s2 5p3",
+        "language": "Antimony is a metalloid with atomic number 51, atomic mass 121.8, and electron configuration [Kr]4d10 5s2 5p3.",
+        "script": "element = {'Z': 51, 'symbol': 'Sb', 'mass': 121.8, 'category': 'metalloid', 'oxidation': [-3,3,5]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a9fdf57484d287bcdedc302e94ca45032c0bcb74603eccd9d8e9f3be978bfebc"
+    },
+    "49b29217819fed45749f4616fd2352c87ddf3c103af4998edd9dc8c2469698b6": {
+        "ubp_id": "ELEM_TE_052",
+        "name": "Element: Tellurium (Te)",
+        "math": "Z=52 | M=127.6 | Config=[Kr]4d10 5s2 5p4",
+        "language": "Tellurium is a metalloid with atomic number 52, atomic mass 127.6, and electron configuration [Kr]4d10 5s2 5p4.",
+        "script": "element = {'Z': 52, 'symbol': 'Te', 'mass': 127.6, 'category': 'metalloid', 'oxidation': [-2,4,6]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "49b29217819fed45749f4616fd2352c87ddf3c103af4998edd9dc8c2469698b6"
+    },
+    "5bb2b175c387af6c2346576f9489fffbb49cabc845e23bcf325d6eed748b4e80": {
+        "ubp_id": "ELEM_I_053",
+        "name": "Element: Iodine (I)",
+        "math": "Z=53 | M=126.9 | Config=[Kr]4d10 5s2 5p5",
+        "language": "Iodine is a halogen with atomic number 53, atomic mass 126.9, and electron configuration [Kr]4d10 5s2 5p5.",
+        "script": "element = {'Z': 53, 'symbol': 'I', 'mass': 126.9, 'category': 'halogen', 'oxidation': [-1,1,5,7]}",
+        "tags": [
+            "element",
+            "halogen",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5bb2b175c387af6c2346576f9489fffbb49cabc845e23bcf325d6eed748b4e80"
+    },
+    "7cead63c323b4f2a3aa1a52e47d2254d21ed69515c65a80adbe0e94521c51c75": {
+        "ubp_id": "ELEM_XE_054",
+        "name": "Element: Xenon (Xe)",
+        "math": "Z=54 | M=131.3 | Config=[Kr]4d10 5s2 5p6",
+        "language": "Xenon is a noble gas with atomic number 54, atomic mass 131.3, and electron configuration [Kr]4d10 5s2 5p6.",
+        "script": "element = {'Z': 54, 'symbol': 'Xe', 'mass': 131.3, 'category': 'noble_gas', 'oxidation': [0,2,4,6]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_3",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7cead63c323b4f2a3aa1a52e47d2254d21ed69515c65a80adbe0e94521c51c75"
+    },
+    "c3ddcf74932507ab2b3d24457668355343ce7a7ef5678a8db0edea2418921abf": {
+        "ubp_id": "ELEM_CS_055",
+        "name": "Element: Cesium (Cs)",
+        "math": "Z=55 | M=132.9 | Config=[Xe]6s1",
+        "language": "Cesium is a alkali metal with atomic number 55, atomic mass 132.9, and electron configuration [Xe]6s1.",
+        "script": "element = {'Z': 55, 'symbol': 'Cs', 'mass': 132.9, 'category': 'alkali_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "alkali_metal",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c3ddcf74932507ab2b3d24457668355343ce7a7ef5678a8db0edea2418921abf"
+    },
+    "6e7121ecdbf3d6d99eb0005f409d4233d0d3a1f32959c22253efcd49cb76ee7b": {
+        "ubp_id": "ELEM_BA_056",
+        "name": "Element: Barium (Ba)",
+        "math": "Z=56 | M=137.3 | Config=[Xe]6s2",
+        "language": "Barium is a alkaline earth with atomic number 56, atomic mass 137.3, and electron configuration [Xe]6s2.",
+        "script": "element = {'Z': 56, 'symbol': 'Ba', 'mass': 137.3, 'category': 'alkaline_earth', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "alkaline_earth",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6e7121ecdbf3d6d99eb0005f409d4233d0d3a1f32959c22253efcd49cb76ee7b"
+    },
+    "f73ea322ab9f3ad31e0773e5f07297c52b4feb39474e073cd577dd6a6d99a6ee": {
+        "ubp_id": "ELEM_LA_057",
+        "name": "Element: Lanthanum (La)",
+        "math": "Z=57 | M=138.9 | Config=[Xe]5d1 6s2",
+        "language": "Lanthanum is a lanthanide with atomic number 57, atomic mass 138.9, and electron configuration [Xe]5d1 6s2.",
+        "script": "element = {'Z': 57, 'symbol': 'La', 'mass': 138.9, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f73ea322ab9f3ad31e0773e5f07297c52b4feb39474e073cd577dd6a6d99a6ee"
+    },
+    "6e8eef84c431c83572782737f6fed31537f1658e848ebe356ac3f4cd7ff97e61": {
+        "ubp_id": "ELEM_CE_058",
+        "name": "Element: Cerium (Ce)",
+        "math": "Z=58 | M=140.1 | Config=[Xe]4f1 5d1 6s2",
+        "language": "Cerium is a lanthanide with atomic number 58, atomic mass 140.1, and electron configuration [Xe]4f1 5d1 6s2.",
+        "script": "element = {'Z': 58, 'symbol': 'Ce', 'mass': 140.1, 'category': 'lanthanide', 'oxidation': [3,4]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6e8eef84c431c83572782737f6fed31537f1658e848ebe356ac3f4cd7ff97e61"
+    },
+    "c47b7dd1ae6a98f2c9a551a6a5f602408717b14f439ce174c0db42bc67441b8e": {
+        "ubp_id": "ELEM_PR_059",
+        "name": "Element: Praseodymium (Pr)",
+        "math": "Z=59 | M=140.9 | Config=[Xe]4f3 6s2",
+        "language": "Praseodymium is a lanthanide with atomic number 59, atomic mass 140.9, and electron configuration [Xe]4f3 6s2.",
+        "script": "element = {'Z': 59, 'symbol': 'Pr', 'mass': 140.9, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c47b7dd1ae6a98f2c9a551a6a5f602408717b14f439ce174c0db42bc67441b8e"
+    },
+    "a4c8c76f2513e0495f3d6d26ab00655fae69661eb751b0b30aea0fe77e55a5b6": {
+        "ubp_id": "ELEM_ND_060",
+        "name": "Element: Neodymium (Nd)",
+        "math": "Z=60 | M=144.2 | Config=[Xe]4f4 6s2",
+        "language": "Neodymium is a lanthanide with atomic number 60, atomic mass 144.2, and electron configuration [Xe]4f4 6s2.",
+        "script": "element = {'Z': 60, 'symbol': 'Nd', 'mass': 144.2, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a4c8c76f2513e0495f3d6d26ab00655fae69661eb751b0b30aea0fe77e55a5b6"
+    },
+    "e7ff382bc9ed3401b6cf873bbdbf4c8f7da32dd45f6bacd658fddf0110305872": {
+        "ubp_id": "ELEM_PM_061",
+        "name": "Element: Promethium (Pm)",
+        "math": "Z=61 | M=145.0 | Config=[Xe]4f5 6s2",
+        "language": "Promethium is a lanthanide with atomic number 61, atomic mass 145.0, and electron configuration [Xe]4f5 6s2.",
+        "script": "element = {'Z': 61, 'symbol': 'Pm', 'mass': 145.0, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e7ff382bc9ed3401b6cf873bbdbf4c8f7da32dd45f6bacd658fddf0110305872"
+    },
+    "062a8b4b320fc83cbc1e78d9a7eaa7a477f1cf9eb595240a4af424d2c7be39aa": {
+        "ubp_id": "ELEM_SM_062",
+        "name": "Element: Samarium (Sm)",
+        "math": "Z=62 | M=150.4 | Config=[Xe]4f6 6s2",
+        "language": "Samarium is a lanthanide with atomic number 62, atomic mass 150.4, and electron configuration [Xe]4f6 6s2.",
+        "script": "element = {'Z': 62, 'symbol': 'Sm', 'mass': 150.4, 'category': 'lanthanide', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "062a8b4b320fc83cbc1e78d9a7eaa7a477f1cf9eb595240a4af424d2c7be39aa"
+    },
+    "e8575cfe4dc142093b5a25fa436f5b0e3042d57cf2d5bae8e4871378ea0081bf": {
+        "ubp_id": "ELEM_EU_063",
+        "name": "Element: Europium (Eu)",
+        "math": "Z=63 | M=152.0 | Config=[Xe]4f7 6s2",
+        "language": "Europium is a lanthanide with atomic number 63, atomic mass 152.0, and electron configuration [Xe]4f7 6s2.",
+        "script": "element = {'Z': 63, 'symbol': 'Eu', 'mass': 152.0, 'category': 'lanthanide', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e8575cfe4dc142093b5a25fa436f5b0e3042d57cf2d5bae8e4871378ea0081bf"
+    },
+    "5c8f36ebcc8f00dba87a6bab893ce9cabf2dc69019b214483504680b41a0df9a": {
+        "ubp_id": "ELEM_GD_064",
+        "name": "Element: Gadolinium (Gd)",
+        "math": "Z=64 | M=157.3 | Config=[Xe]4f7 5d1 6s2",
+        "language": "Gadolinium is a lanthanide with atomic number 64, atomic mass 157.3, and electron configuration [Xe]4f7 5d1 6s2.",
+        "script": "element = {'Z': 64, 'symbol': 'Gd', 'mass': 157.3, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5c8f36ebcc8f00dba87a6bab893ce9cabf2dc69019b214483504680b41a0df9a"
+    },
+    "982d25abf563d82ffb758f6ac58a9955dcd70059a47088075f7dc8d92ff7c3df": {
+        "ubp_id": "ELEM_TB_065",
+        "name": "Element: Terbium (Tb)",
+        "math": "Z=65 | M=158.9 | Config=[Xe]4f9 6s2",
+        "language": "Terbium is a lanthanide with atomic number 65, atomic mass 158.9, and electron configuration [Xe]4f9 6s2.",
+        "script": "element = {'Z': 65, 'symbol': 'Tb', 'mass': 158.9, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "982d25abf563d82ffb758f6ac58a9955dcd70059a47088075f7dc8d92ff7c3df"
+    },
+    "6d26e237206b91ec555cd255b3f6cbab6a7dbc20ae4c983d6ae5abdcbb909bda": {
+        "ubp_id": "ELEM_DY_066",
+        "name": "Element: Dysprosium (Dy)",
+        "math": "Z=66 | M=162.5 | Config=[Xe]4f10 6s2",
+        "language": "Dysprosium is a lanthanide with atomic number 66, atomic mass 162.5, and electron configuration [Xe]4f10 6s2.",
+        "script": "element = {'Z': 66, 'symbol': 'Dy', 'mass': 162.5, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6d26e237206b91ec555cd255b3f6cbab6a7dbc20ae4c983d6ae5abdcbb909bda"
+    },
+    "aa352c5d3c0aebffb5d07c8312a0b63b63a4cb092d2970b26a4b74933f02715b": {
+        "ubp_id": "ELEM_HO_067",
+        "name": "Element: Holmium (Ho)",
+        "math": "Z=67 | M=164.9 | Config=[Xe]4f11 6s2",
+        "language": "Holmium is a lanthanide with atomic number 67, atomic mass 164.9, and electron configuration [Xe]4f11 6s2.",
+        "script": "element = {'Z': 67, 'symbol': 'Ho', 'mass': 164.9, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "aa352c5d3c0aebffb5d07c8312a0b63b63a4cb092d2970b26a4b74933f02715b"
+    },
+    "aac441aaad85c2dfe38f775233d828ba8f348c592efed511b7ebbc390a4a4c1e": {
+        "ubp_id": "ELEM_ER_068",
+        "name": "Element: Erbium (Er)",
+        "math": "Z=68 | M=167.3 | Config=[Xe]4f12 6s2",
+        "language": "Erbium is a lanthanide with atomic number 68, atomic mass 167.3, and electron configuration [Xe]4f12 6s2.",
+        "script": "element = {'Z': 68, 'symbol': 'Er', 'mass': 167.3, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "aac441aaad85c2dfe38f775233d828ba8f348c592efed511b7ebbc390a4a4c1e"
+    },
+    "aeb97ffe49184f5b5cbcb30ac7203df7e4608a56062e17a447888f604e7e9a4b": {
+        "ubp_id": "ELEM_TM_069",
+        "name": "Element: Thulium (Tm)",
+        "math": "Z=69 | M=168.9 | Config=[Xe]4f13 6s2",
+        "language": "Thulium is a lanthanide with atomic number 69, atomic mass 168.9, and electron configuration [Xe]4f13 6s2.",
+        "script": "element = {'Z': 69, 'symbol': 'Tm', 'mass': 168.9, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "aeb97ffe49184f5b5cbcb30ac7203df7e4608a56062e17a447888f604e7e9a4b"
+    },
+    "63a1daaa8954de08783c9ca8a8fb028e6b40aa7da884be60cef7449647b311ef": {
+        "ubp_id": "ELEM_YB_070",
+        "name": "Element: Ytterbium (Yb)",
+        "math": "Z=70 | M=173.0 | Config=[Xe]4f14 6s2",
+        "language": "Ytterbium is a lanthanide with atomic number 70, atomic mass 173.0, and electron configuration [Xe]4f14 6s2.",
+        "script": "element = {'Z': 70, 'symbol': 'Yb', 'mass': 173.0, 'category': 'lanthanide', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "63a1daaa8954de08783c9ca8a8fb028e6b40aa7da884be60cef7449647b311ef"
+    },
+    "5556225ec2a5b0fbf7712732a067e7ff01bdfccc460a7966e49e26e20b0d961e": {
+        "ubp_id": "ELEM_LU_071",
+        "name": "Element: Lutetium (Lu)",
+        "math": "Z=71 | M=175.0 | Config=[Xe]4f14 5d1 6s2",
+        "language": "Lutetium is a lanthanide with atomic number 71, atomic mass 175.0, and electron configuration [Xe]4f14 5d1 6s2.",
+        "script": "element = {'Z': 71, 'symbol': 'Lu', 'mass': 175.0, 'category': 'lanthanide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "lanthanide",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5556225ec2a5b0fbf7712732a067e7ff01bdfccc460a7966e49e26e20b0d961e"
+    },
+    "eb79cd2cc8ed76214ccf2bf53f3cf9b89308e47b334fcf8c1c6a4ec106236a29": {
+        "ubp_id": "ELEM_HF_072",
+        "name": "Element: Hafnium (Hf)",
+        "math": "Z=72 | M=178.5 | Config=[Xe]4f14 5d2 6s2",
+        "language": "Hafnium is a transition metal with atomic number 72, atomic mass 178.5, and electron configuration [Xe]4f14 5d2 6s2.",
+        "script": "element = {'Z': 72, 'symbol': 'Hf', 'mass': 178.5, 'category': 'transition_metal', 'oxidation': [4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_4",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb79cd2cc8ed76214ccf2bf53f3cf9b89308e47b334fcf8c1c6a4ec106236a29"
+    },
+    "3e707289a8e9c941201fc7c3b0aad4970a2bb81efa66728b8a5e96da6d2318da": {
+        "ubp_id": "ELEM_TA_073",
+        "name": "Element: Tantalum (Ta)",
+        "math": "Z=73 | M=180.9 | Config=[Xe]4f14 5d3 6s2",
+        "language": "Tantalum is a transition metal with atomic number 73, atomic mass 180.9, and electron configuration [Xe]4f14 5d3 6s2.",
+        "script": "element = {'Z': 73, 'symbol': 'Ta', 'mass': 180.9, 'category': 'transition_metal', 'oxidation': [5]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3e707289a8e9c941201fc7c3b0aad4970a2bb81efa66728b8a5e96da6d2318da"
+    },
+    "53980117d4beaf821f872fae07f3fd7ce2963ea38a5db66269e62ec316c1c403": {
+        "ubp_id": "ELEM_W_074",
+        "name": "Element: Tungsten (W)",
+        "math": "Z=74 | M=183.8 | Config=[Xe]4f14 5d4 6s2",
+        "language": "Tungsten is a transition metal with atomic number 74, atomic mass 183.8, and electron configuration [Xe]4f14 5d4 6s2.",
+        "script": "element = {'Z': 74, 'symbol': 'W', 'mass': 183.8, 'category': 'transition_metal', 'oxidation': [4,6]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "53980117d4beaf821f872fae07f3fd7ce2963ea38a5db66269e62ec316c1c403"
+    },
+    "e070a1029196b735707b5f5477acf3f9b748ecd218a68b13470cabcb457c5d3b": {
+        "ubp_id": "ELEM_RE_075",
+        "name": "Element: Rhenium (Re)",
+        "math": "Z=75 | M=186.2 | Config=[Xe]4f14 5d5 6s2",
+        "language": "Rhenium is a transition metal with atomic number 75, atomic mass 186.2, and electron configuration [Xe]4f14 5d5 6s2.",
+        "script": "element = {'Z': 75, 'symbol': 'Re', 'mass': 186.2, 'category': 'transition_metal', 'oxidation': [4,7]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e070a1029196b735707b5f5477acf3f9b748ecd218a68b13470cabcb457c5d3b"
+    },
+    "7b789aac8c076c94d1de47d8cd1a0b5be664d49f2e0bb69d2c9664cf766ad003": {
+        "ubp_id": "ELEM_OS_076",
+        "name": "Element: Osmium (Os)",
+        "math": "Z=76 | M=190.2 | Config=[Xe]4f14 5d6 6s2",
+        "language": "Osmium is a transition metal with atomic number 76, atomic mass 190.2, and electron configuration [Xe]4f14 5d6 6s2.",
+        "script": "element = {'Z': 76, 'symbol': 'Os', 'mass': 190.2, 'category': 'transition_metal', 'oxidation': [4,8]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7b789aac8c076c94d1de47d8cd1a0b5be664d49f2e0bb69d2c9664cf766ad003"
+    },
+    "f737765256988f0fe48afd2b6c77db2187e554a5cf472de58dc43123e47ae9e3": {
+        "ubp_id": "ELEM_IR_077",
+        "name": "Element: Iridium (Ir)",
+        "math": "Z=77 | M=192.2 | Config=[Xe]4f14 5d7 6s2",
+        "language": "Iridium is a transition metal with atomic number 77, atomic mass 192.2, and electron configuration [Xe]4f14 5d7 6s2.",
+        "script": "element = {'Z': 77, 'symbol': 'Ir', 'mass': 192.2, 'category': 'transition_metal', 'oxidation': [3,4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f737765256988f0fe48afd2b6c77db2187e554a5cf472de58dc43123e47ae9e3"
+    },
+    "b6e61051ec1b79dbfaf5b675a0f1f7aadadbeb9792394902aed54b5e36e0c08a": {
+        "ubp_id": "ELEM_PT_078",
+        "name": "Element: Platinum (Pt)",
+        "math": "Z=78 | M=195.1 | Config=[Xe]4f14 5d9 6s1",
+        "language": "Platinum is a transition metal with atomic number 78, atomic mass 195.1, and electron configuration [Xe]4f14 5d9 6s1.",
+        "script": "element = {'Z': 78, 'symbol': 'Pt', 'mass': 195.1, 'category': 'transition_metal', 'oxidation': [2,4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b6e61051ec1b79dbfaf5b675a0f1f7aadadbeb9792394902aed54b5e36e0c08a"
+    },
+    "938f7708a840686012aab47270992f51d030bd4878d2cc847e024de616e59b86": {
+        "ubp_id": "ELEM_AU_079",
+        "name": "Element: Gold (Au)",
+        "math": "Z=79 | M=197.0 | Config=[Xe]4f14 5d10 6s1",
+        "language": "Gold is a transition metal with atomic number 79, atomic mass 197.0, and electron configuration [Xe]4f14 5d10 6s1.",
+        "script": "element = {'Z': 79, 'symbol': 'Au', 'mass': 197.0, 'category': 'transition_metal', 'oxidation': [1,3]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "938f7708a840686012aab47270992f51d030bd4878d2cc847e024de616e59b86"
+    },
+    "56982784609911ec8772e5ea54c86028d3123f03ba9b20d5c893bf44ba38acb3": {
+        "ubp_id": "ELEM_HG_080",
+        "name": "Element: Mercury (Hg)",
+        "math": "Z=80 | M=200.6 | Config=[Xe]4f14 5d10 6s2",
+        "language": "Mercury is a transition metal with atomic number 80, atomic mass 200.6, and electron configuration [Xe]4f14 5d10 6s2.",
+        "script": "element = {'Z': 80, 'symbol': 'Hg', 'mass': 200.6, 'category': 'transition_metal', 'oxidation': [1,2]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "56982784609911ec8772e5ea54c86028d3123f03ba9b20d5c893bf44ba38acb3"
+    },
+    "be25075125eb2e2bae9e5e8e3a0247a62f21651a8bdcb6b3c441583538f48aa1": {
+        "ubp_id": "ELEM_TL_081",
+        "name": "Element: Thallium (Tl)",
+        "math": "Z=81 | M=204.4 | Config=[Xe]4f14 5d10 6s2 6p1",
+        "language": "Thallium is a post transition with atomic number 81, atomic mass 204.4, and electron configuration [Xe]4f14 5d10 6s2 6p1.",
+        "script": "element = {'Z': 81, 'symbol': 'Tl', 'mass': 204.4, 'category': 'post_transition', 'oxidation': [1,3]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "be25075125eb2e2bae9e5e8e3a0247a62f21651a8bdcb6b3c441583538f48aa1"
+    },
+    "70d0aefd1714b8a33260066aea468cd41acf23b418819a69d06fec4e645d0977": {
+        "ubp_id": "ELEM_PB_082",
+        "name": "Element: Lead (Pb)",
+        "math": "Z=82 | M=207.2 | Config=[Xe]4f14 5d10 6s2 6p2",
+        "language": "Lead is a post transition with atomic number 82, atomic mass 207.2, and electron configuration [Xe]4f14 5d10 6s2 6p2.",
+        "script": "element = {'Z': 82, 'symbol': 'Pb', 'mass': 207.2, 'category': 'post_transition', 'oxidation': [2,4]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "70d0aefd1714b8a33260066aea468cd41acf23b418819a69d06fec4e645d0977"
+    },
+    "57299f12e78885c1b6de649091fbd13e85c7ee7bec1f1fe0912d6525367a305f": {
+        "ubp_id": "ELEM_BI_083",
+        "name": "Element: Bismuth (Bi)",
+        "math": "Z=83 | M=209.0 | Config=[Xe]4f14 5d10 6s2 6p3",
+        "language": "Bismuth is a post transition with atomic number 83, atomic mass 209.0, and electron configuration [Xe]4f14 5d10 6s2 6p3.",
+        "script": "element = {'Z': 83, 'symbol': 'Bi', 'mass': 209.0, 'category': 'post_transition', 'oxidation': [3,5]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "57299f12e78885c1b6de649091fbd13e85c7ee7bec1f1fe0912d6525367a305f"
+    },
+    "1d28bd55199eab9db1251ff9f9ae13af3c6d5ae973e428f9b9ed22f0c53a1c74": {
+        "ubp_id": "ELEM_PO_084",
+        "name": "Element: Polonium (Po)",
+        "math": "Z=84 | M=209.0 | Config=[Xe]4f14 5d10 6s2 6p4",
+        "language": "Polonium is a metalloid with atomic number 84, atomic mass 209.0, and electron configuration [Xe]4f14 5d10 6s2 6p4.",
+        "script": "element = {'Z': 84, 'symbol': 'Po', 'mass': 209.0, 'category': 'metalloid', 'oxidation': [2,4]}",
+        "tags": [
+            "element",
+            "metalloid",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1d28bd55199eab9db1251ff9f9ae13af3c6d5ae973e428f9b9ed22f0c53a1c74"
+    },
+    "4829ade1054c11191ee69dca7ce0528c48ad4de87ce687b42d9fd3c1e48c4c02": {
+        "ubp_id": "ELEM_AT_085",
+        "name": "Element: Astatine (At)",
+        "math": "Z=85 | M=210.0 | Config=[Xe]4f14 5d10 6s2 6p5",
+        "language": "Astatine is a halogen with atomic number 85, atomic mass 210.0, and electron configuration [Xe]4f14 5d10 6s2 6p5.",
+        "script": "element = {'Z': 85, 'symbol': 'At', 'mass': 210.0, 'category': 'halogen', 'oxidation': [-1,1]}",
+        "tags": [
+            "element",
+            "halogen",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4829ade1054c11191ee69dca7ce0528c48ad4de87ce687b42d9fd3c1e48c4c02"
+    },
+    "54d61b433e796d21c338a44184a39864abac5fa98805b3a9fc409faddf4c8620": {
+        "ubp_id": "ELEM_RN_086",
+        "name": "Element: Radon (Rn)",
+        "math": "Z=86 | M=222.0 | Config=[Xe]4f14 5d10 6s2 6p6",
+        "language": "Radon is a noble gas with atomic number 86, atomic mass 222.0, and electron configuration [Xe]4f14 5d10 6s2 6p6.",
+        "script": "element = {'Z': 86, 'symbol': 'Rn', 'mass': 222.0, 'category': 'noble_gas', 'oxidation': [0]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "54d61b433e796d21c338a44184a39864abac5fa98805b3a9fc409faddf4c8620"
+    },
+    "35afae60983d6a7e7f86602db184ee44b3e3c6e77856820c0f953ceeb2f5cf30": {
+        "ubp_id": "ELEM_FR_087",
+        "name": "Element: Francium (Fr)",
+        "math": "Z=87 | M=223.0 | Config=[Rn]7s1",
+        "language": "Francium is a alkali metal with atomic number 87, atomic mass 223.0, and electron configuration [Rn]7s1.",
+        "script": "element = {'Z': 87, 'symbol': 'Fr', 'mass': 223.0, 'category': 'alkali_metal', 'oxidation': [1]}",
+        "tags": [
+            "element",
+            "alkali_metal",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "35afae60983d6a7e7f86602db184ee44b3e3c6e77856820c0f953ceeb2f5cf30"
+    },
+    "7ec0c316d90576eda7597b0f826e3c3311fbe1d89f06e864246d372e5e77f76f": {
+        "ubp_id": "ELEM_RA_088",
+        "name": "Element: Radium (Ra)",
+        "math": "Z=88 | M=226.0 | Config=[Rn]7s2",
+        "language": "Radium is a alkaline earth with atomic number 88, atomic mass 226.0, and electron configuration [Rn]7s2.",
+        "script": "element = {'Z': 88, 'symbol': 'Ra', 'mass': 226.0, 'category': 'alkaline_earth', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "alkaline_earth",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7ec0c316d90576eda7597b0f826e3c3311fbe1d89f06e864246d372e5e77f76f"
+    },
+    "46e97266af000617f66042ac8e592e98070079365b838d370328e03ce9a32dfa": {
+        "ubp_id": "ELEM_AC_089",
+        "name": "Element: Actinium (Ac)",
+        "math": "Z=89 | M=227.0 | Config=[Rn]6d1 7s2",
+        "language": "Actinium is a actinide with atomic number 89, atomic mass 227.0, and electron configuration [Rn]6d1 7s2.",
+        "script": "element = {'Z': 89, 'symbol': 'Ac', 'mass': 227.0, 'category': 'actinide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "46e97266af000617f66042ac8e592e98070079365b838d370328e03ce9a32dfa"
+    },
+    "81cacb449b6f6fc4521a4675b636915c9cbef7b40db93fc5d28ab5d0748356fe": {
+        "ubp_id": "ELEM_TH_090",
+        "name": "Element: Thorium (Th)",
+        "math": "Z=90 | M=232.0 | Config=[Rn]6d2 7s2",
+        "language": "Thorium is a actinide with atomic number 90, atomic mass 232.0, and electron configuration [Rn]6d2 7s2.",
+        "script": "element = {'Z': 90, 'symbol': 'Th', 'mass': 232.0, 'category': 'actinide', 'oxidation': [4]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_5",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "81cacb449b6f6fc4521a4675b636915c9cbef7b40db93fc5d28ab5d0748356fe"
+    },
+    "dba1ccb25cd8ce80de8fc569a45d4950192c8ab609cf1f6e6e66c53450f8987b": {
+        "ubp_id": "ELEM_PA_091",
+        "name": "Element: Protactinium (Pa)",
+        "math": "Z=91 | M=231.0 | Config=[Rn]5f2 6d1 7s2",
+        "language": "Protactinium is a actinide with atomic number 91, atomic mass 231.0, and electron configuration [Rn]5f2 6d1 7s2.",
+        "script": "element = {'Z': 91, 'symbol': 'Pa', 'mass': 231.0, 'category': 'actinide', 'oxidation': [4,5]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dba1ccb25cd8ce80de8fc569a45d4950192c8ab609cf1f6e6e66c53450f8987b"
+    },
+    "05e4fef7a0747b744d0f7bb4914731c019e628e194c53e776bf44e4b9fcd0c11": {
+        "ubp_id": "ELEM_U_092",
+        "name": "Element: Uranium (U)",
+        "math": "Z=92 | M=238.0 | Config=[Rn]5f3 6d1 7s2",
+        "language": "Uranium is a actinide with atomic number 92, atomic mass 238.0, and electron configuration [Rn]5f3 6d1 7s2.",
+        "script": "element = {'Z': 92, 'symbol': 'U', 'mass': 238.0, 'category': 'actinide', 'oxidation': [3,4,5,6]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "05e4fef7a0747b744d0f7bb4914731c019e628e194c53e776bf44e4b9fcd0c11"
+    },
+    "41abfbe745ceaed22cd6f13b01b4895cfd3d037138cbb2af40a401cc53228a34": {
+        "ubp_id": "ELEM_NP_093",
+        "name": "Element: Neptunium (Np)",
+        "math": "Z=93 | M=237.0 | Config=[Rn]5f4 6d1 7s2",
+        "language": "Neptunium is a actinide with atomic number 93, atomic mass 237.0, and electron configuration [Rn]5f4 6d1 7s2.",
+        "script": "element = {'Z': 93, 'symbol': 'Np', 'mass': 237.0, 'category': 'actinide', 'oxidation': [3,4,5,6]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "41abfbe745ceaed22cd6f13b01b4895cfd3d037138cbb2af40a401cc53228a34"
+    },
+    "967c1ac229f9c8acf9da63bbb7a46dfa757701a66fb75d42f78563f8e6bf5cb2": {
+        "ubp_id": "ELEM_PU_094",
+        "name": "Element: Plutonium (Pu)",
+        "math": "Z=94 | M=244.0 | Config=[Rn]5f6 7s2",
+        "language": "Plutonium is a actinide with atomic number 94, atomic mass 244.0, and electron configuration [Rn]5f6 7s2.",
+        "script": "element = {'Z': 94, 'symbol': 'Pu', 'mass': 244.0, 'category': 'actinide', 'oxidation': [3,4,5,6]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "967c1ac229f9c8acf9da63bbb7a46dfa757701a66fb75d42f78563f8e6bf5cb2"
+    },
+    "b4d0c77d1b7e87f18558c3bff56a51b769d8352a940775705aa30838b44b0d99": {
+        "ubp_id": "ELEM_AM_095",
+        "name": "Element: Americium (Am)",
+        "math": "Z=95 | M=243.0 | Config=[Rn]5f7 7s2",
+        "language": "Americium is a actinide with atomic number 95, atomic mass 243.0, and electron configuration [Rn]5f7 7s2.",
+        "script": "element = {'Z': 95, 'symbol': 'Am', 'mass': 243.0, 'category': 'actinide', 'oxidation': [3,4,5,6]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b4d0c77d1b7e87f18558c3bff56a51b769d8352a940775705aa30838b44b0d99"
+    },
+    "6977183fcb884400d1a752b83cae6efca08889a27e47bfdcde50ab732858b042": {
+        "ubp_id": "ELEM_CM_096",
+        "name": "Element: Curium (Cm)",
+        "math": "Z=96 | M=247.0 | Config=[Rn]5f7 6d1 7s2",
+        "language": "Curium is a actinide with atomic number 96, atomic mass 247.0, and electron configuration [Rn]5f7 6d1 7s2.",
+        "script": "element = {'Z': 96, 'symbol': 'Cm', 'mass': 247.0, 'category': 'actinide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6977183fcb884400d1a752b83cae6efca08889a27e47bfdcde50ab732858b042"
+    },
+    "6d543d5fe9e19d5c9a07f0a1fb5483a287bfd78b2f153992b990a7243628dd18": {
+        "ubp_id": "ELEM_BK_097",
+        "name": "Element: Berkelium (Bk)",
+        "math": "Z=97 | M=247.0 | Config=[Rn]5f9 7s2",
+        "language": "Berkelium is a actinide with atomic number 97, atomic mass 247.0, and electron configuration [Rn]5f9 7s2.",
+        "script": "element = {'Z': 97, 'symbol': 'Bk', 'mass': 247.0, 'category': 'actinide', 'oxidation': [3,4]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6d543d5fe9e19d5c9a07f0a1fb5483a287bfd78b2f153992b990a7243628dd18"
+    },
+    "3f73013aed7551eda0e8abca55d37e9ad559c8212f7b7ce9dfa68c7a32c1d0f8": {
+        "ubp_id": "ELEM_CF_098",
+        "name": "Element: Californium (Cf)",
+        "math": "Z=98 | M=251.0 | Config=[Rn]5f10 7s2",
+        "language": "Californium is a actinide with atomic number 98, atomic mass 251.0, and electron configuration [Rn]5f10 7s2.",
+        "script": "element = {'Z': 98, 'symbol': 'Cf', 'mass': 251.0, 'category': 'actinide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3f73013aed7551eda0e8abca55d37e9ad559c8212f7b7ce9dfa68c7a32c1d0f8"
+    },
+    "8a9b80111017715e8ff54f8690550192d91f92653dceddce646df199ddd38259": {
+        "ubp_id": "ELEM_ES_099",
+        "name": "Element: Einsteinium (Es)",
+        "math": "Z=99 | M=252.0 | Config=[Rn]5f11 7s2",
+        "language": "Einsteinium is a actinide with atomic number 99, atomic mass 252.0, and electron configuration [Rn]5f11 7s2.",
+        "script": "element = {'Z': 99, 'symbol': 'Es', 'mass': 252.0, 'category': 'actinide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8a9b80111017715e8ff54f8690550192d91f92653dceddce646df199ddd38259"
+    },
+    "3a3f943cc4e51194e94eeb300f415ffb59fb93382d212b212c1a6cf2a038accd": {
+        "ubp_id": "ELEM_FM_100",
+        "name": "Element: Fermium (Fm)",
+        "math": "Z=100 | M=257.0 | Config=[Rn]5f12 7s2",
+        "language": "Fermium is a actinide with atomic number 100, atomic mass 257.0, and electron configuration [Rn]5f12 7s2.",
+        "script": "element = {'Z': 100, 'symbol': 'Fm', 'mass': 257.0, 'category': 'actinide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3a3f943cc4e51194e94eeb300f415ffb59fb93382d212b212c1a6cf2a038accd"
+    },
+    "6b66e9775e50327b75ff74dd7c5fe84f4bce67be6e4128da351ee5fda6bb61c8": {
+        "ubp_id": "ELEM_MD_101",
+        "name": "Element: Mendelevium (Md)",
+        "math": "Z=101 | M=258.0 | Config=[Rn]5f13 7s2",
+        "language": "Mendelevium is a actinide with atomic number 101, atomic mass 258.0, and electron configuration [Rn]5f13 7s2.",
+        "script": "element = {'Z': 101, 'symbol': 'Md', 'mass': 258.0, 'category': 'actinide', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6b66e9775e50327b75ff74dd7c5fe84f4bce67be6e4128da351ee5fda6bb61c8"
+    },
+    "21a2b3ab536e9e757feb91c83f92687665e3d7ee496f9c748106ebe9662ab204": {
+        "ubp_id": "ELEM_NO_102",
+        "name": "Element: Nobelium (No)",
+        "math": "Z=102 | M=259.0 | Config=[Rn]5f14 7s2",
+        "language": "Nobelium is a actinide with atomic number 102, atomic mass 259.0, and electron configuration [Rn]5f14 7s2.",
+        "script": "element = {'Z': 102, 'symbol': 'No', 'mass': 259.0, 'category': 'actinide', 'oxidation': [2,3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "21a2b3ab536e9e757feb91c83f92687665e3d7ee496f9c748106ebe9662ab204"
+    },
+    "d7e28da6db9c8c784315d79c8e61d11f5ea82cd434b19f24bdba0c29b205383b": {
+        "ubp_id": "ELEM_LR_103",
+        "name": "Element: Lawrencium (Lr)",
+        "math": "Z=103 | M=266.0 | Config=[Rn]5f14 7s2 7p1",
+        "language": "Lawrencium is a actinide with atomic number 103, atomic mass 266.0, and electron configuration [Rn]5f14 7s2 7p1.",
+        "script": "element = {'Z': 103, 'symbol': 'Lr', 'mass': 266.0, 'category': 'actinide', 'oxidation': [3]}",
+        "tags": [
+            "element",
+            "actinide",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d7e28da6db9c8c784315d79c8e61d11f5ea82cd434b19f24bdba0c29b205383b"
+    },
+    "c906bd22f196177c7197e6684ca3132514df4c8e15793cca3f0eb59bf876cc56": {
+        "ubp_id": "ELEM_RF_104",
+        "name": "Element: Rutherfordium (Rf)",
+        "math": "Z=104 | M=267.0 | Config=[Rn]5f14 6d2 7s2",
+        "language": "Rutherfordium is a transition metal with atomic number 104, atomic mass 267.0, and electron configuration [Rn]5f14 6d2 7s2.",
+        "script": "element = {'Z': 104, 'symbol': 'Rf', 'mass': 267.0, 'category': 'transition_metal', 'oxidation': [4]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c906bd22f196177c7197e6684ca3132514df4c8e15793cca3f0eb59bf876cc56"
+    },
+    "d07d837062f1908647268e87725f6c702f973613cce60c2b6c6cc9766022ac0d": {
+        "ubp_id": "ELEM_DB_105",
+        "name": "Element: Dubnium (Db)",
+        "math": "Z=105 | M=268.0 | Config=[Rn]5f14 6d3 7s2",
+        "language": "Dubnium is a transition metal with atomic number 105, atomic mass 268.0, and electron configuration [Rn]5f14 6d3 7s2.",
+        "script": "element = {'Z': 105, 'symbol': 'Db', 'mass': 268.0, 'category': 'transition_metal', 'oxidation': [5]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d07d837062f1908647268e87725f6c702f973613cce60c2b6c6cc9766022ac0d"
+    },
+    "73e4dc15dcdd92697b4a7860cad17966b5ad265c87f610ee49f2de7c885db6e0": {
+        "ubp_id": "ELEM_SG_106",
+        "name": "Element: Seaborgium (Sg)",
+        "math": "Z=106 | M=269.0 | Config=[Rn]5f14 6d4 7s2",
+        "language": "Seaborgium is a transition metal with atomic number 106, atomic mass 269.0, and electron configuration [Rn]5f14 6d4 7s2.",
+        "script": "element = {'Z': 106, 'symbol': 'Sg', 'mass': 269.0, 'category': 'transition_metal', 'oxidation': [6]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "73e4dc15dcdd92697b4a7860cad17966b5ad265c87f610ee49f2de7c885db6e0"
+    },
+    "5074234303db0d44b5505d24a0e53e718e554ab1ca68eacf97d810b8fff83e45": {
+        "ubp_id": "ELEM_BH_107",
+        "name": "Element: Bohrium (Bh)",
+        "math": "Z=107 | M=270.0 | Config=[Rn]5f14 6d5 7s2",
+        "language": "Bohrium is a transition metal with atomic number 107, atomic mass 270.0, and electron configuration [Rn]5f14 6d5 7s2.",
+        "script": "element = {'Z': 107, 'symbol': 'Bh', 'mass': 270.0, 'category': 'transition_metal', 'oxidation': [7]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5074234303db0d44b5505d24a0e53e718e554ab1ca68eacf97d810b8fff83e45"
+    },
+    "be2669ff2da3aee6cc4b847a4827e3d560ec7932aebe1420274284eddf2eaceb": {
+        "ubp_id": "ELEM_HS_108",
+        "name": "Element: Hassium (Hs)",
+        "math": "Z=108 | M=277.0 | Config=[Rn]5f14 6d6 7s2",
+        "language": "Hassium is a transition metal with atomic number 108, atomic mass 277.0, and electron configuration [Rn]5f14 6d6 7s2.",
+        "script": "element = {'Z': 108, 'symbol': 'Hs', 'mass': 277.0, 'category': 'transition_metal', 'oxidation': [8]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_6",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "be2669ff2da3aee6cc4b847a4827e3d560ec7932aebe1420274284eddf2eaceb"
+    },
+    "6af29e35d4767371ab644e5c0b50410cb1cc14fd05afc0e691673a292bf252fc": {
+        "ubp_id": "ELEM_MT_109",
+        "name": "Element: Meitnerium (Mt)",
+        "math": "Z=109 | M=278.0 | Config=[Rn]5f14 6d7 7s2",
+        "language": "Meitnerium is a transition metal with atomic number 109, atomic mass 278.0, and electron configuration [Rn]5f14 6d7 7s2.",
+        "script": "element = {'Z': 109, 'symbol': 'Mt', 'mass': 278.0, 'category': 'transition_metal', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6af29e35d4767371ab644e5c0b50410cb1cc14fd05afc0e691673a292bf252fc"
+    },
+    "330ca8aca8eab770bdd2909e9284284dbaa174adf31b0079d0a99d53dfa85b43": {
+        "ubp_id": "ELEM_DS_110",
+        "name": "Element: Darmstadtium (Ds)",
+        "math": "Z=110 | M=281.0 | Config=[Rn]5f14 6d8 7s2",
+        "language": "Darmstadtium is a transition metal with atomic number 110, atomic mass 281.0, and electron configuration [Rn]5f14 6d8 7s2.",
+        "script": "element = {'Z': 110, 'symbol': 'Ds', 'mass': 281.0, 'category': 'transition_metal', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "330ca8aca8eab770bdd2909e9284284dbaa174adf31b0079d0a99d53dfa85b43"
+    },
+    "56a0b5f085201249026a893ed6b3a4ef48a05288aa98454de0b74b17abde61bf": {
+        "ubp_id": "ELEM_RG_111",
+        "name": "Element: Roentgenium (Rg)",
+        "math": "Z=111 | M=282.0 | Config=[Rn]5f14 6d9 7s2",
+        "language": "Roentgenium is a transition metal with atomic number 111, atomic mass 282.0, and electron configuration [Rn]5f14 6d9 7s2.",
+        "script": "element = {'Z': 111, 'symbol': 'Rg', 'mass': 282.0, 'category': 'transition_metal', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "56a0b5f085201249026a893ed6b3a4ef48a05288aa98454de0b74b17abde61bf"
+    },
+    "f26468323a0c82aadc19709769109e593661db2e27dd7298c9733c2920fb551d": {
+        "ubp_id": "ELEM_CN_112",
+        "name": "Element: Copernicium (Cn)",
+        "math": "Z=112 | M=285.0 | Config=[Rn]5f14 6d10 7s2",
+        "language": "Copernicium is a transition metal with atomic number 112, atomic mass 285.0, and electron configuration [Rn]5f14 6d10 7s2.",
+        "script": "element = {'Z': 112, 'symbol': 'Cn', 'mass': 285.0, 'category': 'transition_metal', 'oxidation': [2]}",
+        "tags": [
+            "element",
+            "transition_metal",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f26468323a0c82aadc19709769109e593661db2e27dd7298c9733c2920fb551d"
+    },
+    "4ab3bb63a53a120ca3ae8f24bfbc40de47432efc740f0fc77df42c9f2aa690ed": {
+        "ubp_id": "ELEM_NH_113",
+        "name": "Element: Nihonium (Nh)",
+        "math": "Z=113 | M=286.0 | Config=[Rn]5f14 6d10 7s2 7p1",
+        "language": "Nihonium is a post transition with atomic number 113, atomic mass 286.0, and electron configuration [Rn]5f14 6d10 7s2 7p1.",
+        "script": "element = {'Z': 113, 'symbol': 'Nh', 'mass': 286.0, 'category': 'post_transition', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4ab3bb63a53a120ca3ae8f24bfbc40de47432efc740f0fc77df42c9f2aa690ed"
+    },
+    "3e6c2a88cb53e79e9b8c7c30d07a4430f70f9e9b4eb6de78770aacaed3089e56": {
+        "ubp_id": "ELEM_FL_114",
+        "name": "Element: Flerovium (Fl)",
+        "math": "Z=114 | M=289.0 | Config=[Rn]5f14 6d10 7s2 7p2",
+        "language": "Flerovium is a post transition with atomic number 114, atomic mass 289.0, and electron configuration [Rn]5f14 6d10 7s2 7p2.",
+        "script": "element = {'Z': 114, 'symbol': 'Fl', 'mass': 289.0, 'category': 'post_transition', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3e6c2a88cb53e79e9b8c7c30d07a4430f70f9e9b4eb6de78770aacaed3089e56"
+    },
+    "d7e0aa8bc5dc4a662b46903fac2fb2b60df4beca8e136c6648a3cf08e7724387": {
+        "ubp_id": "ELEM_MC_115",
+        "name": "Element: Moscovium (Mc)",
+        "math": "Z=115 | M=290.0 | Config=[Rn]5f14 6d10 7s2 7p3",
+        "language": "Moscovium is a post transition with atomic number 115, atomic mass 290.0, and electron configuration [Rn]5f14 6d10 7s2 7p3.",
+        "script": "element = {'Z': 115, 'symbol': 'Mc', 'mass': 290.0, 'category': 'post_transition', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d7e0aa8bc5dc4a662b46903fac2fb2b60df4beca8e136c6648a3cf08e7724387"
+    },
+    "6cdd5e472adfec62db84c057b904c014dffdd7dbadf90394f324031d16792aa9": {
+        "ubp_id": "ELEM_LV_116",
+        "name": "Element: Livermorium (Lv)",
+        "math": "Z=116 | M=293.0 | Config=[Rn]5f14 6d10 7s2 7p4",
+        "language": "Livermorium is a post transition with atomic number 116, atomic mass 293.0, and electron configuration [Rn]5f14 6d10 7s2 7p4.",
+        "script": "element = {'Z': 116, 'symbol': 'Lv', 'mass': 293.0, 'category': 'post_transition', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "post_transition",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6cdd5e472adfec62db84c057b904c014dffdd7dbadf90394f324031d16792aa9"
+    },
+    "e3d96d14e9663e1a4fdc5a4d74b8bd95a134120bc70a3e34fb2d7b87f3261e9e": {
+        "ubp_id": "ELEM_TS_117",
+        "name": "Element: Tennessine (Ts)",
+        "math": "Z=117 | M=294.0 | Config=[Rn]5f14 6d10 7s2 7p5",
+        "language": "Tennessine is a halogen with atomic number 117, atomic mass 294.0, and electron configuration [Rn]5f14 6d10 7s2 7p5.",
+        "script": "element = {'Z': 117, 'symbol': 'Ts', 'mass': 294.0, 'category': 'halogen', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "halogen",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e3d96d14e9663e1a4fdc5a4d74b8bd95a134120bc70a3e34fb2d7b87f3261e9e"
+    },
+    "503088aef379de513064ab3fcbc4571cf64ae4d8822159687596aa48518a2e61": {
+        "ubp_id": "ELEM_OG_118",
+        "name": "Element: Oganesson (Og)",
+        "math": "Z=118 | M=294.0 | Config=[Rn]5f14 6d10 7s2 7p6",
+        "language": "Oganesson is a noble gas with atomic number 118, atomic mass 294.0, and electron configuration [Rn]5f14 6d10 7s2 7p6.",
+        "script": "element = {'Z': 118, 'symbol': 'Og', 'mass': 294.0, 'category': 'noble_gas', 'oxidation': [unknown]}",
+        "tags": [
+            "element",
+            "noble_gas",
+            "period_7",
+            "periodic_table"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "503088aef379de513064ab3fcbc4571cf64ae4d8822159687596aa48518a2e61"
+    },
+    "b2e330b547461a0b5648f790bd38db4c54db43fde61632ee5a54d78fc65fb76a": {
+        "ubp_id": "PHYS_NEWTON1_001",
+        "name": "Newton's First Law",
+        "math": "F_net = 0 => dv/dt = 0",
+        "language": "An object at rest stays at rest, and an object in motion stays in motion unless acted upon by a net external force.",
+        "script": "if net_force == 0: acceleration = 0",
+        "tags": [
+            "newton",
+            "inertia",
+            "mechanics",
+            "motion"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b2e330b547461a0b5648f790bd38db4c54db43fde61632ee5a54d78fc65fb76a"
+    },
+    "1bc24b681296f7ed06bddca09ea274d0724cab79f8593364f5dabfbdfe4ad286": {
+        "ubp_id": "PHYS_NEWTON2_001",
+        "name": "Newton's Second Law",
+        "math": "F = m * a",
+        "language": "The acceleration of an object is directly proportional to the net force and inversely proportional to its mass.",
+        "script": "acceleration = force / mass",
+        "tags": [
+            "newton",
+            "force",
+            "mass",
+            "acceleration"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1bc24b681296f7ed06bddca09ea274d0724cab79f8593364f5dabfbdfe4ad286"
+    },
+    "420f5c3fce06ae51c72de8e190fb04ac6912d21058beb51e0a9dbf636392dec3": {
+        "ubp_id": "PHYS_NEWTON3_001",
+        "name": "Newton's Third Law",
+        "math": "F_12 = -F_21",
+        "language": "For every action, there is an equal and opposite reaction.",
+        "script": "reaction_force = -action_force",
+        "tags": [
+            "newton",
+            "action",
+            "reaction",
+            "force"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "420f5c3fce06ae51c72de8e190fb04ac6912d21058beb51e0a9dbf636392dec3"
+    },
+    "7a25274e781ca06058535990e4205941d9db9c2db7323451e41d040fddcb4c78": {
+        "ubp_id": "PHYS_CONSERVE_001",
+        "name": "Conservation of Energy",
+        "math": "E_total = constant",
+        "language": "Energy cannot be created or destroyed, only transformed from one form to another.",
+        "script": "E_final = E_initial  # In isolated system",
+        "tags": [
+            "conservation",
+            "energy",
+            "thermodynamics",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7a25274e781ca06058535990e4205941d9db9c2db7323451e41d040fddcb4c78"
+    },
+    "c22cde9125cb78dbc655cf1ea4135127b2691965848e5d4e862dedcfcd2636b0": {
+        "ubp_id": "PHYS_CONSERVE_002",
+        "name": "Conservation of Momentum",
+        "math": "p_total = constant",
+        "language": "The total momentum of an isolated system remains constant.",
+        "script": "p_final = p_initial  # In isolated system",
+        "tags": [
+            "conservation",
+            "momentum",
+            "collision",
+            "mechanics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c22cde9125cb78dbc655cf1ea4135127b2691965848e5d4e862dedcfcd2636b0"
+    },
+    "dbd4c4598725c29d58680bfa56111a6d39e2513772fa8e43bb595c86a1bf64d9": {
+        "ubp_id": "PHYS_CONSERVE_003",
+        "name": "Conservation of Angular Momentum",
+        "math": "L = I * omega = constant",
+        "language": "The total angular momentum of an isolated system remains constant.",
+        "script": "L = moment_of_inertia * angular_velocity",
+        "tags": [
+            "conservation",
+            "angular",
+            "momentum",
+            "rotation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dbd4c4598725c29d58680bfa56111a6d39e2513772fa8e43bb595c86a1bf64d9"
+    },
+    "c8ea6132c7eaaf77f073c4232e9316a2bf8a5a2966ff2079e713383b95842a4e": {
+        "ubp_id": "PHYS_CONSERVE_004",
+        "name": "Conservation of Charge",
+        "math": "Q_total = constant",
+        "language": "Electric charge can neither be created nor destroyed.",
+        "script": "Q_final = Q_initial",
+        "tags": [
+            "conservation",
+            "charge",
+            "electric",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c8ea6132c7eaaf77f073c4232e9316a2bf8a5a2966ff2079e713383b95842a4e"
+    },
+    "b954aa240e1b72f11566c69e2122d144df91657d371f0a60225f6591a0fff6c6": {
+        "ubp_id": "PHYS_THERMO0_001",
+        "name": "Zeroth Law of Thermodynamics",
+        "math": "A~B and B~C => A~C",
+        "language": "If two systems are in thermal equilibrium with a third, they are in equilibrium with each other.",
+        "script": "if T_A == T_B and T_B == T_C: T_A == T_C",
+        "tags": [
+            "thermodynamics",
+            "equilibrium",
+            "temperature",
+            "zeroth"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b954aa240e1b72f11566c69e2122d144df91657d371f0a60225f6591a0fff6c6"
+    },
+    "52253b68cb8de7b1de141131573c53fd1755360c77fe399ac12c6013fc3bc301": {
+        "ubp_id": "PHYS_THERMO1_001",
+        "name": "First Law of Thermodynamics",
+        "math": "dU = Q - W",
+        "language": "The change in internal energy equals heat added minus work done by the system.",
+        "script": "delta_U = heat_in - work_out",
+        "tags": [
+            "thermodynamics",
+            "energy",
+            "heat",
+            "work"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "52253b68cb8de7b1de141131573c53fd1755360c77fe399ac12c6013fc3bc301"
+    },
+    "367ab7eb8eeb68187df14885d0e7216a55143e350bab06b4d70b1e457db705bd": {
+        "ubp_id": "PHYS_THERMO2_001",
+        "name": "Second Law of Thermodynamics",
+        "math": "dS >= 0",
+        "language": "The entropy of an isolated system never decreases; it tends toward maximum.",
+        "script": "delta_S_universe >= 0",
+        "tags": [
+            "thermodynamics",
+            "entropy",
+            "irreversibility",
+            "second"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "367ab7eb8eeb68187df14885d0e7216a55143e350bab06b4d70b1e457db705bd"
+    },
+    "72fc384f33719154c6cd9e9c57557a808b2a230919d6a5647ada266735a1fe5d": {
+        "ubp_id": "PHYS_THERMO3_001",
+        "name": "Third Law of Thermodynamics",
+        "math": "lim(T->0) S = 0",
+        "language": "As temperature approaches absolute zero, entropy approaches a constant minimum.",
+        "script": "S_0K = 0  # For perfect crystal",
+        "tags": [
+            "thermodynamics",
+            "entropy",
+            "absolute_zero",
+            "third"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "72fc384f33719154c6cd9e9c57557a808b2a230919d6a5647ada266735a1fe5d"
+    },
+    "0f00db3222ba6a45cbb9a9b6279697058272a2ce0873c1bde72601dc8e27bd03": {
+        "ubp_id": "PHYS_ENTROPY_001",
+        "name": "Entropy Definition",
+        "math": "S = k_B * ln(W)",
+        "language": "Entropy is proportional to the logarithm of the number of microstates.",
+        "script": "S = k_B * math.log(num_microstates)",
+        "tags": [
+            "entropy",
+            "statistical",
+            "boltzmann",
+            "microstates"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0f00db3222ba6a45cbb9a9b6279697058272a2ce0873c1bde72601dc8e27bd03"
+    },
+    "1d7a8ef73b753d2a63dfddc47b4d276d3a9521b6939eaca38cdcdf22362cd7d6": {
+        "ubp_id": "PHYS_ENTHALPY_001",
+        "name": "Enthalpy",
+        "math": "H = U + PV",
+        "language": "Enthalpy is the sum of internal energy and the product of pressure and volume.",
+        "script": "H = U + P * V",
+        "tags": [
+            "enthalpy",
+            "thermodynamics",
+            "heat",
+            "pressure"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1d7a8ef73b753d2a63dfddc47b4d276d3a9521b6939eaca38cdcdf22362cd7d6"
+    },
+    "3fa1bc88028c0c77e2478472e846c47d8b1e892d0c5a214c26e3315b0bcc46f1": {
+        "ubp_id": "PHYS_COULOMB_001",
+        "name": "Coulomb's Law",
+        "math": "F = k * q1 * q2 / r^2",
+        "language": "The electric force between two charges is proportional to their product and inversely proportional to distance squared.",
+        "script": "F = k * q1 * q2 / r**2",
+        "tags": [
+            "coulomb",
+            "electric",
+            "force",
+            "charge"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3fa1bc88028c0c77e2478472e846c47d8b1e892d0c5a214c26e3315b0bcc46f1"
+    },
+    "02376e311598d16f86192d0f3a96fd5bae39129deb258505b754f7d5ee561fe1": {
+        "ubp_id": "PHYS_GAUSS_E_001",
+        "name": "Gauss's Law (Electric)",
+        "math": "div(E) = rho / epsilon_0",
+        "language": "The electric flux through a closed surface is proportional to the enclosed charge.",
+        "script": "flux_E = Q_enclosed / epsilon_0",
+        "tags": [
+            "gauss",
+            "electric",
+            "flux",
+            "maxwell"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "02376e311598d16f86192d0f3a96fd5bae39129deb258505b754f7d5ee561fe1"
+    },
+    "fb22431fe1b63cf9d532b01756ebf0c9ec42853193625e518395f245e27d6d0f": {
+        "ubp_id": "PHYS_GAUSS_M_001",
+        "name": "Gauss's Law (Magnetic)",
+        "math": "div(B) = 0",
+        "language": "There are no magnetic monopoles; magnetic field lines form closed loops.",
+        "script": "magnetic_monopoles = 0  # Always",
+        "tags": [
+            "gauss",
+            "magnetic",
+            "monopole",
+            "maxwell"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fb22431fe1b63cf9d532b01756ebf0c9ec42853193625e518395f245e27d6d0f"
+    },
+    "40586a3d2d45dd630c290c095cc2567ac6b835e6a46d6b0d26827e9e61e437b5": {
+        "ubp_id": "PHYS_FARADAY_001",
+        "name": "Faraday's Law",
+        "math": "curl(E) = -dB/dt",
+        "language": "A changing magnetic field induces an electric field.",
+        "script": "emf = -d_flux_B / dt",
+        "tags": [
+            "faraday",
+            "induction",
+            "electric",
+            "maxwell"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "40586a3d2d45dd630c290c095cc2567ac6b835e6a46d6b0d26827e9e61e437b5"
+    },
+    "135b8d60f65496d98bd032c85e77143031182fac42fa70d25e40732fcc08a8c0": {
+        "ubp_id": "PHYS_AMPERE_001",
+        "name": "Ampere-Maxwell Law",
+        "math": "curl(B) = mu_0 * J + mu_0 * epsilon_0 * dE/dt",
+        "language": "Electric currents and changing electric fields produce magnetic fields.",
+        "script": "B = mu_0 * I / (2 * pi * r)",
+        "tags": [
+            "ampere",
+            "magnetic",
+            "current",
+            "maxwell"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "135b8d60f65496d98bd032c85e77143031182fac42fa70d25e40732fcc08a8c0"
+    },
+    "fa1bd4e6a7b66200d21b72f9e5867755de0da30813a9bfbee719b4d2ec7a0537": {
+        "ubp_id": "PHYS_OHM_001",
+        "name": "Ohm's Law",
+        "math": "V = I * R",
+        "language": "Voltage equals current times resistance.",
+        "script": "V = I * R",
+        "tags": [
+            "ohm",
+            "voltage",
+            "current",
+            "resistance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fa1bd4e6a7b66200d21b72f9e5867755de0da30813a9bfbee719b4d2ec7a0537"
+    },
+    "941d255dfabf04edde260fd1d219d18677e72089ea17bf4d8258b0bdd9fec150": {
+        "ubp_id": "PHYS_LORENTZ_001",
+        "name": "Lorentz Force",
+        "math": "F = q * (E + v x B)",
+        "language": "The force on a charged particle in electromagnetic fields.",
+        "script": "F = q * (E + cross(v, B))",
+        "tags": [
+            "lorentz",
+            "force",
+            "electromagnetic",
+            "charge"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "941d255dfabf04edde260fd1d219d18677e72089ea17bf4d8258b0bdd9fec150"
+    },
+    "9b9afc0222204f275c9f153c5c8d75652f83ddc2a26c939ebe19d54c371be367": {
+        "ubp_id": "PHYS_WAVE_001",
+        "name": "Wave Equation",
+        "math": "d2y/dx2 = (1/v^2) * d2y/dt2",
+        "language": "The fundamental equation describing wave propagation.",
+        "script": "d2y_dx2 = (1/v**2) * d2y_dt2",
+        "tags": [
+            "wave",
+            "equation",
+            "propagation",
+            "mechanics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9b9afc0222204f275c9f153c5c8d75652f83ddc2a26c939ebe19d54c371be367"
+    },
+    "ee33d7c26a26965bcd8609b908fcd1e27db36f2d8b413fc75612c918a0b34552": {
+        "ubp_id": "PHYS_WAVE_002",
+        "name": "Wave Speed",
+        "math": "v = f * lambda",
+        "language": "Wave speed equals frequency times wavelength.",
+        "script": "v = frequency * wavelength",
+        "tags": [
+            "wave",
+            "speed",
+            "frequency",
+            "wavelength"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ee33d7c26a26965bcd8609b908fcd1e27db36f2d8b413fc75612c918a0b34552"
+    },
+    "11c511ec614543aa4cadb5a1292b2cc83b3a13fd6102a7849b1e3d0e6019597a": {
+        "ubp_id": "PHYS_DOPPLER_001",
+        "name": "Doppler Effect",
+        "math": "f' = f * (v +/- v_r) / (v -/+ v_s)",
+        "language": "The change in frequency due to relative motion between source and observer.",
+        "script": "f_observed = f_source * (v + v_receiver) / (v - v_source)",
+        "tags": [
+            "doppler",
+            "frequency",
+            "motion",
+            "wave"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "11c511ec614543aa4cadb5a1292b2cc83b3a13fd6102a7849b1e3d0e6019597a"
+    },
+    "a2180abc2ea685d3c7efc6c9a1766a212efc5d97be51f6a284834b4342a8fea1": {
+        "ubp_id": "PHYS_SNELL_001",
+        "name": "Snell's Law",
+        "math": "n1 * sin(theta1) = n2 * sin(theta2)",
+        "language": "The relationship between angles of incidence and refraction.",
+        "script": "theta2 = math.asin(n1 * math.sin(theta1) / n2)",
+        "tags": [
+            "snell",
+            "refraction",
+            "optics",
+            "light"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a2180abc2ea685d3c7efc6c9a1766a212efc5d97be51f6a284834b4342a8fea1"
+    },
+    "e8ac53e0c12ad7300a777435c9b428ab4137ae9afa1210c0e4cdf4e75c036a85": {
+        "ubp_id": "PHYS_SCHROD_001",
+        "name": "Schrodinger Equation",
+        "math": "i*hbar*d(psi)/dt = H*psi",
+        "language": "The fundamental equation of quantum mechanics describing wave function evolution.",
+        "script": "# i * hbar * dpsi_dt = H @ psi",
+        "tags": [
+            "schrodinger",
+            "quantum",
+            "wavefunction",
+            "hamiltonian"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e8ac53e0c12ad7300a777435c9b428ab4137ae9afa1210c0e4cdf4e75c036a85"
+    },
+    "709ba7b279e960157f27bca40f331d28dc4d7360f6af17bf554156e8f8e8bcdf": {
+        "ubp_id": "PHYS_HEISEN_001",
+        "name": "Heisenberg Uncertainty",
+        "math": "delta_x * delta_p >= hbar/2",
+        "language": "Position and momentum cannot both be precisely known simultaneously.",
+        "script": "uncertainty_product = delta_x * delta_p  # >= hbar/2",
+        "tags": [
+            "heisenberg",
+            "uncertainty",
+            "quantum",
+            "measurement"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "709ba7b279e960157f27bca40f331d28dc4d7360f6af17bf554156e8f8e8bcdf"
+    },
+    "8d6ff5524dbaaa64e91d1a39e0d18cdbaa92ce98c1578fcc1c17b753b00c04b6": {
+        "ubp_id": "PHYS_PLANCK_001",
+        "name": "Planck's Law",
+        "math": "E = h * f",
+        "language": "Energy of a photon is proportional to its frequency.",
+        "script": "E = h * frequency",
+        "tags": [
+            "planck",
+            "photon",
+            "energy",
+            "quantum"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8d6ff5524dbaaa64e91d1a39e0d18cdbaa92ce98c1578fcc1c17b753b00c04b6"
+    },
+    "dafe3c499c8c149a990a498ecf7cbb9c6fb2c2d4bc568355a110a79773e756b6": {
+        "ubp_id": "PHYS_DEBROG_001",
+        "name": "de Broglie Wavelength",
+        "math": "lambda = h / p",
+        "language": "Every particle has an associated wavelength inversely proportional to momentum.",
+        "script": "wavelength = h / momentum",
+        "tags": [
+            "debroglie",
+            "wavelength",
+            "matter",
+            "wave"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dafe3c499c8c149a990a498ecf7cbb9c6fb2c2d4bc568355a110a79773e756b6"
+    },
+    "464c352a537daca97f02270a5ca721ed85edf6f04e6e9bbfe83b19cd489c69a0": {
+        "ubp_id": "PHYS_PAULI_001",
+        "name": "Pauli Exclusion Principle",
+        "math": "No two fermions in same quantum state",
+        "language": "No two identical fermions can occupy the same quantum state simultaneously.",
+        "script": "# Each quantum state holds at most one fermion",
+        "tags": [
+            "pauli",
+            "exclusion",
+            "fermion",
+            "quantum"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "464c352a537daca97f02270a5ca721ed85edf6f04e6e9bbfe83b19cd489c69a0"
+    },
+    "9c23bcf34feaa6ff821fbe89ad981bb06dc8ab5b14c121ce285644a1dd983842": {
+        "ubp_id": "PHYS_RELAT_001",
+        "name": "Time Dilation",
+        "math": "t' = t * gamma = t / sqrt(1 - v^2/c^2)",
+        "language": "Moving clocks run slower relative to stationary observers.",
+        "script": "t_moving = t_rest / math.sqrt(1 - v**2/c**2)",
+        "tags": [
+            "relativity",
+            "time",
+            "dilation",
+            "special"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9c23bcf34feaa6ff821fbe89ad981bb06dc8ab5b14c121ce285644a1dd983842"
+    },
+    "10a71c5a8cc1c1645ec25742383816d3ba8160ee4ddb6dcaf6fe1a759370cefb": {
+        "ubp_id": "PHYS_RELAT_002",
+        "name": "Length Contraction",
+        "math": "L' = L / gamma = L * sqrt(1 - v^2/c^2)",
+        "language": "Moving objects are contracted in the direction of motion.",
+        "script": "L_moving = L_rest * math.sqrt(1 - v**2/c**2)",
+        "tags": [
+            "relativity",
+            "length",
+            "contraction",
+            "special"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "10a71c5a8cc1c1645ec25742383816d3ba8160ee4ddb6dcaf6fe1a759370cefb"
+    },
+    "2c85c5d4fb275139a6929625caa9c16c3eb0b886b118d5d500648b719b48b103": {
+        "ubp_id": "PHYS_RELAT_003",
+        "name": "Mass-Energy Equivalence",
+        "math": "E = m * c^2",
+        "language": "Mass and energy are equivalent and interconvertible.",
+        "script": "E = m * c**2",
+        "tags": [
+            "einstein",
+            "mass",
+            "energy",
+            "relativity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2c85c5d4fb275139a6929625caa9c16c3eb0b886b118d5d500648b719b48b103"
+    },
+    "4fe99b9f52252565f1340dbc88e956d8a44a625da5e704a20949f9fbd7bc6a08": {
+        "ubp_id": "PHYS_RELAT_004",
+        "name": "Relativistic Energy",
+        "math": "E^2 = (pc)^2 + (mc^2)^2",
+        "language": "The total energy of a relativistic particle.",
+        "script": "E = math.sqrt((p*c)**2 + (m*c**2)**2)",
+        "tags": [
+            "relativity",
+            "energy",
+            "momentum",
+            "special"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4fe99b9f52252565f1340dbc88e956d8a44a625da5e704a20949f9fbd7bc6a08"
+    },
+    "ccb7efce1ddd9f8c5355e3dd5ff1313fdf343482e09d82ea3f00909ea467c6f9": {
+        "ubp_id": "PHYS_RELAT_005",
+        "name": "Equivalence Principle",
+        "math": "m_inertial = m_gravitational",
+        "language": "Inertial mass equals gravitational mass; gravity is indistinguishable from acceleration.",
+        "script": "m_inertial = m_gravitational  # Always",
+        "tags": [
+            "equivalence",
+            "gravity",
+            "inertia",
+            "general"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ccb7efce1ddd9f8c5355e3dd5ff1313fdf343482e09d82ea3f00909ea467c6f9"
+    },
+    "16e970481fddadaa0d1ec1535cdbb8b985760008252701257a13297c3f5fc842": {
+        "ubp_id": "PHYS_GRAV_001",
+        "name": "Newton's Gravitation",
+        "math": "F = G * m1 * m2 / r^2",
+        "language": "Gravitational force is proportional to masses and inversely proportional to distance squared.",
+        "script": "F = G * m1 * m2 / r**2",
+        "tags": [
+            "gravity",
+            "newton",
+            "force",
+            "universal"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "16e970481fddadaa0d1ec1535cdbb8b985760008252701257a13297c3f5fc842"
+    },
+    "c5bdd17e887091eecd70efb6047a7831b07ad5ce50ed3c887d1f67e9b5156bd2": {
+        "ubp_id": "PHYS_GRAV_002",
+        "name": "Gravitational Potential Energy",
+        "math": "U = -G * m1 * m2 / r",
+        "language": "The potential energy of two masses due to gravitational attraction.",
+        "script": "U = -G * m1 * m2 / r",
+        "tags": [
+            "gravity",
+            "potential",
+            "energy",
+            "mechanics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c5bdd17e887091eecd70efb6047a7831b07ad5ce50ed3c887d1f67e9b5156bd2"
+    },
+    "b1a3b0ec560bf44d856a672c07643dd7f83ee6ecb79770de968335d84ab37b27": {
+        "ubp_id": "PHYS_KEPLER1_001",
+        "name": "Kepler's First Law",
+        "math": "Orbits are ellipses with Sun at focus",
+        "language": "Planets orbit in ellipses with the Sun at one focus.",
+        "script": "orbit_shape = 'ellipse'; focus = 'sun'",
+        "tags": [
+            "kepler",
+            "orbit",
+            "ellipse",
+            "planetary"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b1a3b0ec560bf44d856a672c07643dd7f83ee6ecb79770de968335d84ab37b27"
+    },
+    "2dd55ae30faa8f230366a3d60301a5a797c9c9042ef53d0c08cdf6f0b2fbc02d": {
+        "ubp_id": "PHYS_KEPLER2_001",
+        "name": "Kepler's Second Law",
+        "math": "dA/dt = constant",
+        "language": "A line from planet to Sun sweeps equal areas in equal times.",
+        "script": "area_rate = constant  # Equal areas in equal times",
+        "tags": [
+            "kepler",
+            "orbit",
+            "area",
+            "angular_momentum"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2dd55ae30faa8f230366a3d60301a5a797c9c9042ef53d0c08cdf6f0b2fbc02d"
+    },
+    "dbe4d67a154fdd1545b3f6391a649eeda0a045624b76bd3a6cc142b69291096e": {
+        "ubp_id": "PHYS_KEPLER3_001",
+        "name": "Kepler's Third Law",
+        "math": "T^2 / a^3 = constant",
+        "language": "The square of orbital period is proportional to the cube of semi-major axis.",
+        "script": "T**2 / a**3 = 4 * pi**2 / (G * M)",
+        "tags": [
+            "kepler",
+            "orbit",
+            "period",
+            "planetary"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dbe4d67a154fdd1545b3f6391a649eeda0a045624b76bd3a6cc142b69291096e"
+    },
+    "5ea09b7e29bddcda44e11570d710ef67c11d9b4b34107616de1c8a0b1fd894ef": {
+        "ubp_id": "PHYS_PASCAL_001",
+        "name": "Pascal's Principle",
+        "math": "P = F / A (transmitted equally)",
+        "language": "Pressure applied to a confined fluid is transmitted equally in all directions.",
+        "script": "P = F / A  # Transmitted equally",
+        "tags": [
+            "pascal",
+            "pressure",
+            "fluid",
+            "hydraulic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5ea09b7e29bddcda44e11570d710ef67c11d9b4b34107616de1c8a0b1fd894ef"
+    },
+    "6394fbf0fd6c56d1af9e90556808d04f044e7927ba0b5fe2c36a9fbe18050e56": {
+        "ubp_id": "PHYS_ARCHIM_001",
+        "name": "Archimedes' Principle",
+        "math": "F_buoyant = rho * g * V",
+        "language": "Buoyant force equals the weight of displaced fluid.",
+        "script": "F_buoyant = rho_fluid * g * V_displaced",
+        "tags": [
+            "archimedes",
+            "buoyancy",
+            "fluid",
+            "displacement"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6394fbf0fd6c56d1af9e90556808d04f044e7927ba0b5fe2c36a9fbe18050e56"
+    },
+    "db8ec630adfcdabff7b770bdbe01685847a5fe0050bca5ec5899f92be5f1e457": {
+        "ubp_id": "PHYS_BERNOULLI_001",
+        "name": "Bernoulli's Equation",
+        "math": "P + 0.5*rho*v^2 + rho*g*h = constant",
+        "language": "In steady flow, the sum of pressure, kinetic, and potential energy per unit volume is constant.",
+        "script": "P1 + 0.5*rho*v1**2 + rho*g*h1 = P2 + 0.5*rho*v2**2 + rho*g*h2",
+        "tags": [
+            "bernoulli",
+            "fluid",
+            "pressure",
+            "flow"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "db8ec630adfcdabff7b770bdbe01685847a5fe0050bca5ec5899f92be5f1e457"
+    },
+    "744fe460145a9a26f179e1dc433aef10fced6cf768bd7e74bdd780b1523775d6": {
+        "ubp_id": "PHYS_SHM_001",
+        "name": "Simple Harmonic Motion",
+        "math": "x = A * cos(omega*t + phi)",
+        "language": "Oscillatory motion where restoring force is proportional to displacement.",
+        "script": "x = A * math.cos(omega * t + phi)",
+        "tags": [
+            "harmonic",
+            "oscillation",
+            "spring",
+            "pendulum"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "744fe460145a9a26f179e1dc433aef10fced6cf768bd7e74bdd780b1523775d6"
+    },
+    "9244703ed374eba2c761a5c17ec9eb691f200a4ccd6334b062931f2bb35953c7": {
+        "ubp_id": "PHYS_SPRING_001",
+        "name": "Hooke's Law",
+        "math": "F = -k * x",
+        "language": "The restoring force of a spring is proportional to displacement.",
+        "script": "F = -k * x",
+        "tags": [
+            "hooke",
+            "spring",
+            "elastic",
+            "force"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9244703ed374eba2c761a5c17ec9eb691f200a4ccd6334b062931f2bb35953c7"
+    },
+    "a9ee63d2c95e773fb02535ae70a8801da9681a2df1d39230e27b84ed8cbfd341": {
+        "ubp_id": "PHYS_PENDULUM_001",
+        "name": "Simple Pendulum Period",
+        "math": "T = 2*pi*sqrt(L/g)",
+        "language": "The period of a simple pendulum depends on length and gravity.",
+        "script": "T = 2 * math.pi * math.sqrt(L / g)",
+        "tags": [
+            "pendulum",
+            "period",
+            "oscillation",
+            "gravity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a9ee63d2c95e773fb02535ae70a8801da9681a2df1d39230e27b84ed8cbfd341"
+    },
+    "0da517541d9efa73de05dfd8b51d37185d3b996f0c8d134e0eb8ad4ad92c17ae": {
+        "ubp_id": "CONST_PI_001",
+        "name": "Pi",
+        "math": "pi = 3.14159265358979...",
+        "language": "The ratio of a circle's circumference to its diameter; fundamental to geometry and trigonometry.",
+        "script": "pi = 3.141592653589793",
+        "tags": [
+            "pi",
+            "circle",
+            "geometry",
+            "transcendental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0da517541d9efa73de05dfd8b51d37185d3b996f0c8d134e0eb8ad4ad92c17ae"
+    },
+    "6668574b6a8c7e7422ff7a16c49c1ad555144acb7688591dcc5b299c9acdd22a": {
+        "ubp_id": "CONST_E_001",
+        "name": "Euler's Number",
+        "math": "e = 2.71828182845904...",
+        "language": "The base of natural logarithms; fundamental to calculus and exponential growth.",
+        "script": "e = 2.718281828459045",
+        "tags": [
+            "euler",
+            "exponential",
+            "logarithm",
+            "transcendental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6668574b6a8c7e7422ff7a16c49c1ad555144acb7688591dcc5b299c9acdd22a"
+    },
+    "ddafff95a1891389bcdd9d8ffbe6d74a2976f331ef1a7df3ec75c99db8fe084e": {
+        "ubp_id": "CONST_PHI_001",
+        "name": "Golden Ratio",
+        "math": "phi = (1 + sqrt(5)) / 2 = 1.618...",
+        "language": "The ratio where the whole is to the larger part as the larger is to the smaller.",
+        "script": "phi = (1 + 5**0.5) / 2",
+        "tags": [
+            "golden",
+            "ratio",
+            "fibonacci",
+            "proportion"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ddafff95a1891389bcdd9d8ffbe6d74a2976f331ef1a7df3ec75c99db8fe084e"
+    },
+    "75aeb17e06d1160ab8f782bbf334385973e1b63713a2c7d7475980ad83dea8ab": {
+        "ubp_id": "CONST_SQRT2_001",
+        "name": "Square Root of 2",
+        "math": "sqrt(2) = 1.41421356...",
+        "language": "The first proven irrational number; the diagonal of a unit square.",
+        "script": "sqrt2 = 2**0.5",
+        "tags": [
+            "sqrt2",
+            "irrational",
+            "geometry",
+            "diagonal"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "75aeb17e06d1160ab8f782bbf334385973e1b63713a2c7d7475980ad83dea8ab"
+    },
+    "4a092d07520a026d931fed6f846be1ad31abcf93e40840ff825413181221378b": {
+        "ubp_id": "CONST_C_001",
+        "name": "Speed of Light",
+        "math": "c = 299792458 m/s",
+        "language": "The speed of light in vacuum; the universal speed limit.",
+        "script": "c = 299792458  # m/s exactly",
+        "tags": [
+            "light",
+            "speed",
+            "relativity",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4a092d07520a026d931fed6f846be1ad31abcf93e40840ff825413181221378b"
+    },
+    "9dd7ea179618dd2af366633553d5468baf786065d9bee52e2c06e300e20be351": {
+        "ubp_id": "CONST_H_001",
+        "name": "Planck Constant",
+        "math": "h = 6.62607015e-34 J*s",
+        "language": "The quantum of action; relates photon energy to frequency.",
+        "script": "h = 6.62607015e-34  # J*s exactly",
+        "tags": [
+            "planck",
+            "quantum",
+            "action",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9dd7ea179618dd2af366633553d5468baf786065d9bee52e2c06e300e20be351"
+    },
+    "3ee4aa399b32eae3057cd889322ccd63f2ce3aa3f09228c3824f6b963e05f606": {
+        "ubp_id": "CONST_HBAR_001",
+        "name": "Reduced Planck Constant",
+        "math": "hbar = h / (2*pi) = 1.054571817e-34 J*s",
+        "language": "Planck's constant divided by 2*pi; used in quantum mechanics.",
+        "script": "hbar = 1.054571817e-34  # J*s",
+        "tags": [
+            "planck",
+            "quantum",
+            "reduced",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3ee4aa399b32eae3057cd889322ccd63f2ce3aa3f09228c3824f6b963e05f606"
+    },
+    "de6a276301cd01fdb9c308a8debac004885c322590060b17da1482e5afe53193": {
+        "ubp_id": "CONST_G_001",
+        "name": "Gravitational Constant",
+        "math": "G = 6.67430e-11 m^3/(kg*s^2)",
+        "language": "The constant of proportionality in Newton's law of gravitation.",
+        "script": "G = 6.67430e-11  # m^3/(kg*s^2)",
+        "tags": [
+            "gravity",
+            "newton",
+            "universal",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "de6a276301cd01fdb9c308a8debac004885c322590060b17da1482e5afe53193"
+    },
+    "782798899061fd22df731346e96a278d197a24f5b967c84d0d2cb4da14d8f293": {
+        "ubp_id": "CONST_KB_001",
+        "name": "Boltzmann Constant",
+        "math": "k_B = 1.380649e-23 J/K",
+        "language": "Relates temperature to energy; fundamental to statistical mechanics.",
+        "script": "k_B = 1.380649e-23  # J/K exactly",
+        "tags": [
+            "boltzmann",
+            "temperature",
+            "entropy",
+            "statistical"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "782798899061fd22df731346e96a278d197a24f5b967c84d0d2cb4da14d8f293"
+    },
+    "bad63f5406a9376a2942a486b36cccde2fa305dec8c67bb2b5a64879444b81d9": {
+        "ubp_id": "CONST_E_CHARGE_001",
+        "name": "Elementary Charge",
+        "math": "e = 1.602176634e-19 C",
+        "language": "The electric charge of a proton; fundamental unit of charge.",
+        "script": "e_charge = 1.602176634e-19  # Coulombs exactly",
+        "tags": [
+            "charge",
+            "electron",
+            "proton",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bad63f5406a9376a2942a486b36cccde2fa305dec8c67bb2b5a64879444b81d9"
+    },
+    "3a9d1eb57620920fd4ec8e09f9ff49742801ac8dc26b90af9c98ed5f9e37b544": {
+        "ubp_id": "CONST_ME_001",
+        "name": "Electron Mass",
+        "math": "m_e = 9.1093837015e-31 kg",
+        "language": "The rest mass of an electron.",
+        "script": "m_e = 9.1093837015e-31  # kg",
+        "tags": [
+            "electron",
+            "mass",
+            "particle",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3a9d1eb57620920fd4ec8e09f9ff49742801ac8dc26b90af9c98ed5f9e37b544"
+    },
+    "a4db09f29d91e63cc0aea9d818288021e459b0fa3c90eae7f3dca4558c200fbe": {
+        "ubp_id": "CONST_MP_001",
+        "name": "Proton Mass",
+        "math": "m_p = 1.67262192369e-27 kg",
+        "language": "The rest mass of a proton.",
+        "script": "m_p = 1.67262192369e-27  # kg",
+        "tags": [
+            "proton",
+            "mass",
+            "particle",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a4db09f29d91e63cc0aea9d818288021e459b0fa3c90eae7f3dca4558c200fbe"
+    },
+    "cb37ff81380114df6743ee7e7793b7b47bb37be16d2b4b2e7b602249484ba56a": {
+        "ubp_id": "CONST_NA_001",
+        "name": "Avogadro Number",
+        "math": "N_A = 6.02214076e23 mol^-1",
+        "language": "The number of particles in one mole of substance.",
+        "script": "N_A = 6.02214076e23  # mol^-1 exactly",
+        "tags": [
+            "avogadro",
+            "mole",
+            "chemistry",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cb37ff81380114df6743ee7e7793b7b47bb37be16d2b4b2e7b602249484ba56a"
+    },
+    "7017015351320966e5ab773f5459757a19f862f91474620f76277d4315902587": {
+        "ubp_id": "CONST_R_001",
+        "name": "Gas Constant",
+        "math": "R = 8.314462618 J/(mol*K)",
+        "language": "The constant in the ideal gas law; relates pressure, volume, and temperature.",
+        "script": "R = 8.314462618  # J/(mol*K)",
+        "tags": [
+            "gas",
+            "ideal",
+            "thermodynamics",
+            "molar"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7017015351320966e5ab773f5459757a19f862f91474620f76277d4315902587"
+    },
+    "27c810a7e9a02d61a650341b94bc0a1d56bcea46f16f067052d58840015fcd51": {
+        "ubp_id": "CONST_EPS0_001",
+        "name": "Vacuum Permittivity",
+        "math": "epsilon_0 = 8.8541878128e-12 F/m",
+        "language": "The permittivity of free space; appears in Coulomb's law.",
+        "script": "epsilon_0 = 8.8541878128e-12  # F/m",
+        "tags": [
+            "permittivity",
+            "vacuum",
+            "electric",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "27c810a7e9a02d61a650341b94bc0a1d56bcea46f16f067052d58840015fcd51"
+    },
+    "b9b6a177e5009a026946c0258660be10be9178c4834628b3db7607eb0586be8d": {
+        "ubp_id": "CONST_MU0_001",
+        "name": "Vacuum Permeability",
+        "math": "mu_0 = 1.25663706212e-6 H/m",
+        "language": "The permeability of free space; appears in magnetic force laws.",
+        "script": "mu_0 = 1.25663706212e-6  # H/m",
+        "tags": [
+            "permeability",
+            "vacuum",
+            "magnetic",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b9b6a177e5009a026946c0258660be10be9178c4834628b3db7607eb0586be8d"
+    },
+    "c728565ec928e39577043612e1736ed8c79a9204ab77d46d52d81abd1f3fbf21": {
+        "ubp_id": "CONST_ALPHA_001",
+        "name": "Fine Structure Constant",
+        "math": "alpha = e^2/(4*pi*eps0*hbar*c) ≈ 1/137",
+        "language": "The dimensionless coupling constant for electromagnetic interactions.",
+        "script": "alpha = 7.2973525693e-3  # approximately 1/137",
+        "tags": [
+            "fine_structure",
+            "alpha",
+            "electromagnetic",
+            "dimensionless"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c728565ec928e39577043612e1736ed8c79a9204ab77d46d52d81abd1f3fbf21"
+    },
+    "513e958f423aa3064c874775dfc4dabfc72ed732f607f4f9b8a6813117c1b79e": {
+        "ubp_id": "CONST_RYDBERG_001",
+        "name": "Rydberg Constant",
+        "math": "R_inf = 10973731.568160 m^-1",
+        "language": "Relates to the wavelengths of spectral lines of hydrogen.",
+        "script": "R_inf = 10973731.568160  # m^-1",
+        "tags": [
+            "rydberg",
+            "spectral",
+            "hydrogen",
+            "atomic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "513e958f423aa3064c874775dfc4dabfc72ed732f607f4f9b8a6813117c1b79e"
+    },
+    "1843afb51464ef3c5ccb257b88bdb28cfb4bd43e46b0f210e8f9aaf2562cf917": {
+        "ubp_id": "CONST_STEFAN_001",
+        "name": "Stefan-Boltzmann Constant",
+        "math": "sigma = 5.670374419e-8 W/(m^2*K^4)",
+        "language": "Relates the total radiation from a black body to its temperature.",
+        "script": "sigma = 5.670374419e-8  # W/(m^2*K^4)",
+        "tags": [
+            "stefan",
+            "boltzmann",
+            "radiation",
+            "blackbody"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1843afb51464ef3c5ccb257b88bdb28cfb4bd43e46b0f210e8f9aaf2562cf917"
+    },
+    "e5e82c9f46790f1c678987cc765a5a3392258d8444f9eff20c97706cc26e3a76": {
+        "ubp_id": "CONST_EULER_GAMMA_001",
+        "name": "Euler-Mascheroni Constant",
+        "math": "gamma = 0.5772156649...",
+        "language": "The limiting difference between the harmonic series and natural logarithm.",
+        "script": "gamma = 0.5772156649015329",
+        "tags": [
+            "euler",
+            "mascheroni",
+            "harmonic",
+            "series"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e5e82c9f46790f1c678987cc765a5a3392258d8444f9eff20c97706cc26e3a76"
+    },
+    "ab56fbf640317953b1eb567d467988567c56ac56e1576f4b4b3bdd4f96a7a74d": {
+        "ubp_id": "CHEM_IONIC_001",
+        "name": "Ionic Bond",
+        "math": "M + X -> M+ + X- (electron transfer)",
+        "language": "A bond formed by the transfer of electrons from a metal to a nonmetal.",
+        "script": "bond = 'ionic' if abs(electronegativity_diff) > 1.7 else 'covalent'",
+        "tags": [
+            "ionic",
+            "bond",
+            "electron",
+            "transfer"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ab56fbf640317953b1eb567d467988567c56ac56e1576f4b4b3bdd4f96a7a74d"
+    },
+    "3caaf6eca2e5bbd6bc2a38e9ca35229f70cf9e8fd262f060dea9f4df59fc06ae": {
+        "ubp_id": "CHEM_COVALENT_001",
+        "name": "Covalent Bond",
+        "math": "A:B (shared electron pair)",
+        "language": "A bond formed by sharing electrons between atoms.",
+        "script": "bond = 'covalent' if abs(electronegativity_diff) <= 1.7 else 'ionic'",
+        "tags": [
+            "covalent",
+            "bond",
+            "electron",
+            "sharing"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3caaf6eca2e5bbd6bc2a38e9ca35229f70cf9e8fd262f060dea9f4df59fc06ae"
+    },
+    "b6d3ae6270e2dfb4630169dc8d752aa68add81ea1624a451aa73fca762c199a4": {
+        "ubp_id": "CHEM_METALLIC_001",
+        "name": "Metallic Bond",
+        "math": "M+ in electron sea",
+        "language": "A bond where electrons are delocalized among metal cations.",
+        "script": "bond = 'metallic'  # Electron sea model",
+        "tags": [
+            "metallic",
+            "bond",
+            "electron",
+            "delocalized"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b6d3ae6270e2dfb4630169dc8d752aa68add81ea1624a451aa73fca762c199a4"
+    },
+    "927b885ac0a9d1835f9ce89a697c58cd9ed91b4652881473ff6f0930e22dee13": {
+        "ubp_id": "CHEM_HYDROGEN_001",
+        "name": "Hydrogen Bond",
+        "math": "X-H...Y (X,Y = N,O,F)",
+        "language": "A weak bond between hydrogen and electronegative atoms.",
+        "script": "h_bond = donor_H and acceptor in ['N', 'O', 'F']",
+        "tags": [
+            "hydrogen",
+            "bond",
+            "weak",
+            "intermolecular"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "927b885ac0a9d1835f9ce89a697c58cd9ed91b4652881473ff6f0930e22dee13"
+    },
+    "9c084eaaa297fe05cd72c744d5506248b6a6257708e64a8a5126a8e6d1eb95be": {
+        "ubp_id": "CHEM_VDWAALS_001",
+        "name": "Van der Waals Forces",
+        "math": "Induced dipole interactions",
+        "language": "Weak intermolecular forces due to temporary dipoles.",
+        "script": "vdw_force = polarizability * distance**(-6)",
+        "tags": [
+            "vanderwaals",
+            "dispersion",
+            "london",
+            "intermolecular"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9c084eaaa297fe05cd72c744d5506248b6a6257708e64a8a5126a8e6d1eb95be"
+    },
+    "8a9b4509300202777bcad936475a8fab0f57b48efe659fd275cb31233d537cb3": {
+        "ubp_id": "CHEM_SYNTH_001",
+        "name": "Synthesis Reaction",
+        "math": "A + B -> AB",
+        "language": "A reaction where two or more substances combine to form a single product.",
+        "script": "products = [combine(reactant1, reactant2)]",
+        "tags": [
+            "synthesis",
+            "combination",
+            "reaction",
+            "formation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8a9b4509300202777bcad936475a8fab0f57b48efe659fd275cb31233d537cb3"
+    },
+    "bc0b88bc57b85ea0318ca91843d67e6dc2d4a170489eabf08c8856632b01a378": {
+        "ubp_id": "CHEM_DECOMP_001",
+        "name": "Decomposition Reaction",
+        "math": "AB -> A + B",
+        "language": "A reaction where a compound breaks down into simpler substances.",
+        "script": "products = decompose(compound)",
+        "tags": [
+            "decomposition",
+            "breakdown",
+            "reaction",
+            "analysis"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bc0b88bc57b85ea0318ca91843d67e6dc2d4a170489eabf08c8856632b01a378"
+    },
+    "fa1b9f172e11424bd8102328330aa5a2626bd6746dfffbfcb794a6fac048234c": {
+        "ubp_id": "CHEM_SINGLE_001",
+        "name": "Single Replacement",
+        "math": "A + BC -> AC + B",
+        "language": "A reaction where one element replaces another in a compound.",
+        "script": "products = [combine(A, C), B] if activity(A) > activity(B) else None",
+        "tags": [
+            "single",
+            "replacement",
+            "displacement",
+            "reaction"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fa1b9f172e11424bd8102328330aa5a2626bd6746dfffbfcb794a6fac048234c"
+    },
+    "48513038abbf3defaa0dcf41d2c7860c42c57cd3a718c2ecc6c5349765c5c0be": {
+        "ubp_id": "CHEM_DOUBLE_001",
+        "name": "Double Replacement",
+        "math": "AB + CD -> AD + CB",
+        "language": "A reaction where ions in two compounds exchange places.",
+        "script": "products = [combine(A, D), combine(C, B)]",
+        "tags": [
+            "double",
+            "replacement",
+            "metathesis",
+            "reaction"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "48513038abbf3defaa0dcf41d2c7860c42c57cd3a718c2ecc6c5349765c5c0be"
+    },
+    "eb6e27eccd25175174a7ba880ffafab8abea99e083830c58ecfe8497bbe72bfa": {
+        "ubp_id": "CHEM_COMBUST_001",
+        "name": "Combustion Reaction",
+        "math": "CxHy + O2 -> CO2 + H2O",
+        "language": "A reaction where a substance reacts rapidly with oxygen, releasing heat.",
+        "script": "products = ['CO2', 'H2O']; energy = 'released'",
+        "tags": [
+            "combustion",
+            "oxidation",
+            "exothermic",
+            "reaction"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb6e27eccd25175174a7ba880ffafab8abea99e083830c58ecfe8497bbe72bfa"
+    },
+    "4a68fa49d9f075f18586fa3e2a6507d9360ba9fbf8c8cbc43623f2abcf3049e5": {
+        "ubp_id": "CHEM_REDOX_001",
+        "name": "Redox Reaction",
+        "math": "Oxidation + Reduction",
+        "language": "A reaction involving transfer of electrons between species.",
+        "script": "oxidation = loss_of_electrons; reduction = gain_of_electrons",
+        "tags": [
+            "redox",
+            "oxidation",
+            "reduction",
+            "electron"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4a68fa49d9f075f18586fa3e2a6507d9360ba9fbf8c8cbc43623f2abcf3049e5"
+    },
+    "78080ce8fe89bcc3052f7f221087901b018792ba90fc89bba89fc07f2e235d38": {
+        "ubp_id": "CHEM_EQUIL_001",
+        "name": "Chemical Equilibrium",
+        "math": "rate_forward = rate_reverse",
+        "language": "A state where forward and reverse reaction rates are equal.",
+        "script": "at_equilibrium = rate_forward == rate_reverse",
+        "tags": [
+            "equilibrium",
+            "dynamic",
+            "reversible",
+            "balance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "78080ce8fe89bcc3052f7f221087901b018792ba90fc89bba89fc07f2e235d38"
+    },
+    "28923613080bdf9eac89fd415cddeb5cf9c98d0274b9f63b042152fab889d6fc": {
+        "ubp_id": "CHEM_LECHAT_001",
+        "name": "Le Chatelier's Principle",
+        "math": "System opposes change",
+        "language": "A system at equilibrium shifts to counteract applied stress.",
+        "script": "if stress_applied: shift_to_reduce_stress()",
+        "tags": [
+            "lechatelier",
+            "equilibrium",
+            "stress",
+            "shift"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "28923613080bdf9eac89fd415cddeb5cf9c98d0274b9f63b042152fab889d6fc"
+    },
+    "3347dc7bc0bba518464aadd09b484df7921c3d3bf9e564ef1e3b5ae23c832a9c": {
+        "ubp_id": "CHEM_KC_001",
+        "name": "Equilibrium Constant",
+        "math": "K_c = [products]^n / [reactants]^m",
+        "language": "The ratio of product to reactant concentrations at equilibrium.",
+        "script": "K_c = prod(C_products**n) / prod(C_reactants**m)",
+        "tags": [
+            "equilibrium",
+            "constant",
+            "concentration",
+            "ratio"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3347dc7bc0bba518464aadd09b484df7921c3d3bf9e564ef1e3b5ae23c832a9c"
+    },
+    "0e1500611a29836c95c18f0680d99928d15d2e4a23a77d5c418abbe6d0017b94": {
+        "ubp_id": "CHEM_GIBBS_001",
+        "name": "Gibbs Free Energy",
+        "math": "G = H - T*S",
+        "language": "The energy available to do work; determines reaction spontaneity.",
+        "script": "delta_G = delta_H - T * delta_S",
+        "tags": [
+            "gibbs",
+            "free_energy",
+            "spontaneity",
+            "thermodynamics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0e1500611a29836c95c18f0680d99928d15d2e4a23a77d5c418abbe6d0017b94"
+    },
+    "0001d47dc4a0e5e88f172629b1b2b11b6bac03a90c87715ff8a43d03ff0969db": {
+        "ubp_id": "CHEM_PH_001",
+        "name": "pH Definition",
+        "math": "pH = -log10([H+])",
+        "language": "A measure of hydrogen ion concentration; scale from 0 to 14.",
+        "script": "pH = -math.log10(H_concentration)",
+        "tags": [
+            "pH",
+            "acid",
+            "base",
+            "hydrogen"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0001d47dc4a0e5e88f172629b1b2b11b6bac03a90c87715ff8a43d03ff0969db"
+    },
+    "9e030f968472f94261785f947381d1c372442af56b04b3eea832dd4b70dc0502": {
+        "ubp_id": "CHEM_PKA_001",
+        "name": "pKa Definition",
+        "math": "pKa = -log10(Ka)",
+        "language": "A measure of acid strength; lower pKa means stronger acid.",
+        "script": "pKa = -math.log10(Ka)",
+        "tags": [
+            "pKa",
+            "acid",
+            "dissociation",
+            "strength"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9e030f968472f94261785f947381d1c372442af56b04b3eea832dd4b70dc0502"
+    },
+    "057ea7479a082cb313cb82b66cda3e0ef45d2508041d97880a7f3c75f567d766": {
+        "ubp_id": "CHEM_BUFFER_001",
+        "name": "Buffer Solution",
+        "math": "pH = pKa + log([A-]/[HA])",
+        "language": "A solution that resists pH changes; Henderson-Hasselbalch equation.",
+        "script": "pH = pKa + math.log10(conjugate_base / weak_acid)",
+        "tags": [
+            "buffer",
+            "pH",
+            "henderson",
+            "hasselbalch"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "057ea7479a082cb313cb82b66cda3e0ef45d2508041d97880a7f3c75f567d766"
+    },
+    "c44b36dec94c4cb1df9a1c2c50a1b5ba4cae45003690dae490de97cd19f9b372": {
+        "ubp_id": "CHEM_NEUTRAL_001",
+        "name": "Neutralization",
+        "math": "Acid + Base -> Salt + Water",
+        "language": "A reaction between an acid and base producing salt and water.",
+        "script": "products = [salt, 'H2O']",
+        "tags": [
+            "neutralization",
+            "acid",
+            "base",
+            "salt"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c44b36dec94c4cb1df9a1c2c50a1b5ba4cae45003690dae490de97cd19f9b372"
+    },
+    "21ffe6a94bac5fe3f47e46549702ff0d54bf91f4b85f7b5a1fd69da24aeb7a60": {
+        "ubp_id": "CHEM_ALKANE_001",
+        "name": "Alkane",
+        "math": "CnH(2n+2) - single bonds only",
+        "language": "Saturated hydrocarbons with only single carbon-carbon bonds.",
+        "script": "formula = f'C{n}H{2*n+2}'  # Alkane general formula",
+        "tags": [
+            "alkane",
+            "saturated",
+            "hydrocarbon",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "21ffe6a94bac5fe3f47e46549702ff0d54bf91f4b85f7b5a1fd69da24aeb7a60"
+    },
+    "23f58d2b64467c2946611184bce2df0da4e29518567e09b3cdd6103b79fdb827": {
+        "ubp_id": "CHEM_ALKENE_001",
+        "name": "Alkene",
+        "math": "CnH(2n) - contains C=C double bond",
+        "language": "Unsaturated hydrocarbons with at least one carbon-carbon double bond.",
+        "script": "formula = f'C{n}H{2*n}'  # Alkene general formula",
+        "tags": [
+            "alkene",
+            "unsaturated",
+            "double_bond",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "23f58d2b64467c2946611184bce2df0da4e29518567e09b3cdd6103b79fdb827"
+    },
+    "fa36461bd97d0064d22a1540768b7858263af1c083a9cd32303a8f68eaf49e49": {
+        "ubp_id": "CHEM_ALKYNE_001",
+        "name": "Alkyne",
+        "math": "CnH(2n-2) - contains C≡C triple bond",
+        "language": "Unsaturated hydrocarbons with at least one carbon-carbon triple bond.",
+        "script": "formula = f'C{n}H{2*n-2}'  # Alkyne general formula",
+        "tags": [
+            "alkyne",
+            "unsaturated",
+            "triple_bond",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fa36461bd97d0064d22a1540768b7858263af1c083a9cd32303a8f68eaf49e49"
+    },
+    "914c42eaa640035f7ec536325a41e910d4040cf2c5a77c7092dd441c6f676cf4": {
+        "ubp_id": "CHEM_ALCOHOL_001",
+        "name": "Alcohol",
+        "math": "R-OH functional group",
+        "language": "Organic compounds containing a hydroxyl group bonded to carbon.",
+        "script": "is_alcohol = 'OH' in functional_groups",
+        "tags": [
+            "alcohol",
+            "hydroxyl",
+            "functional",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "914c42eaa640035f7ec536325a41e910d4040cf2c5a77c7092dd441c6f676cf4"
+    },
+    "7f26c455ce7be905f3ee2815fa03c7b7facef1cf9cf47b3ab55d40b72125116b": {
+        "ubp_id": "CHEM_CARBOX_001",
+        "name": "Carboxylic Acid",
+        "math": "R-COOH functional group",
+        "language": "Organic acids containing a carboxyl group.",
+        "script": "is_carboxylic = 'COOH' in functional_groups",
+        "tags": [
+            "carboxylic",
+            "acid",
+            "functional",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7f26c455ce7be905f3ee2815fa03c7b7facef1cf9cf47b3ab55d40b72125116b"
+    },
+    "31d597ce82002ac76eab4fd2783ec9e4146a61c90ddec655258e124a9f97cec0": {
+        "ubp_id": "CHEM_ESTER_001",
+        "name": "Ester",
+        "math": "R-COO-R' functional group",
+        "language": "Organic compounds formed from acid and alcohol; often fragrant.",
+        "script": "ester = acid + alcohol - 'H2O'",
+        "tags": [
+            "ester",
+            "condensation",
+            "functional",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "31d597ce82002ac76eab4fd2783ec9e4146a61c90ddec655258e124a9f97cec0"
+    },
+    "fe20f0ab62b5f0cabea8930170cb35fccaab884cb4620a2ee1f150faffc55266": {
+        "ubp_id": "CHEM_AMINE_001",
+        "name": "Amine",
+        "math": "R-NH2 functional group",
+        "language": "Organic compounds derived from ammonia with alkyl or aryl groups.",
+        "script": "is_amine = 'NH2' in functional_groups or 'NH' in functional_groups",
+        "tags": [
+            "amine",
+            "nitrogen",
+            "functional",
+            "organic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "fe20f0ab62b5f0cabea8930170cb35fccaab884cb4620a2ee1f150faffc55266"
+    },
+    "ce9ec00b64a391a8dbb1c560a3eebc72e66e56c93fc2702b7c8c33a89c4d14d3": {
+        "ubp_id": "CHEM_GALVANIC_001",
+        "name": "Galvanic Cell",
+        "math": "Spontaneous redox produces electricity",
+        "language": "An electrochemical cell that converts chemical energy to electrical energy.",
+        "script": "voltage = E_cathode - E_anode  # Positive for spontaneous",
+        "tags": [
+            "galvanic",
+            "voltaic",
+            "battery",
+            "electrochemistry"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ce9ec00b64a391a8dbb1c560a3eebc72e66e56c93fc2702b7c8c33a89c4d14d3"
+    },
+    "162253012e4169b77c873378c1c78f1569df0ed26f294dc08dc315af79723299": {
+        "ubp_id": "CHEM_ELECTROL_001",
+        "name": "Electrolysis",
+        "math": "Electricity drives non-spontaneous redox",
+        "language": "Using electrical energy to drive a non-spontaneous chemical reaction.",
+        "script": "# Apply voltage > cell potential to force reaction",
+        "tags": [
+            "electrolysis",
+            "electrochemistry",
+            "nonspontaneous",
+            "plating"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "162253012e4169b77c873378c1c78f1569df0ed26f294dc08dc315af79723299"
+    },
+    "cc8c87998f7f68c62b734658318f26f93d0a3b504144e9399805590dfc587186": {
+        "ubp_id": "CHEM_NERNST_001",
+        "name": "Nernst Equation",
+        "math": "E = E0 - (RT/nF)*ln(Q)",
+        "language": "Relates cell potential to standard potential and reaction quotient.",
+        "script": "E = E0 - (R*T/(n*F)) * math.log(Q)",
+        "tags": [
+            "nernst",
+            "potential",
+            "electrochemistry",
+            "concentration"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cc8c87998f7f68c62b734658318f26f93d0a3b504144e9399805590dfc587186"
+    },
+    "e6dae9a935d3fb40b99a3f39f49b27f75b23fde0168fc59e5edf3df759f6cb9a": {
+        "ubp_id": "CHEM_MOLE_001",
+        "name": "Mole Concept",
+        "math": "1 mol = 6.022e23 particles",
+        "language": "The amount of substance containing Avogadro's number of particles.",
+        "script": "n_particles = n_moles * 6.022e23",
+        "tags": [
+            "mole",
+            "avogadro",
+            "amount",
+            "stoichiometry"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e6dae9a935d3fb40b99a3f39f49b27f75b23fde0168fc59e5edf3df759f6cb9a"
+    },
+    "c4d2907dcf6b1545a42c22534a2f2081b6ec455218eea6041cc6228a63d24e5f": {
+        "ubp_id": "CHEM_MOLARITY_001",
+        "name": "Molarity",
+        "math": "M = mol / L",
+        "language": "Concentration expressed as moles of solute per liter of solution.",
+        "script": "molarity = moles_solute / volume_liters",
+        "tags": [
+            "molarity",
+            "concentration",
+            "solution",
+            "molar"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c4d2907dcf6b1545a42c22534a2f2081b6ec455218eea6041cc6228a63d24e5f"
+    },
+    "582c71fbc918e6c90a9723b7424511de205dcfd8a7a39250f334401954c31eb3": {
+        "ubp_id": "CHEM_DILUTION_001",
+        "name": "Dilution Equation",
+        "math": "M1*V1 = M2*V2",
+        "language": "The relationship between concentration and volume during dilution.",
+        "script": "V2 = M1 * V1 / M2",
+        "tags": [
+            "dilution",
+            "concentration",
+            "volume",
+            "solution"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "582c71fbc918e6c90a9723b7424511de205dcfd8a7a39250f334401954c31eb3"
+    },
+    "284d796f9b8bf35752be3112b08410a28e80169060fb9cebafb38cacc11c5b34": {
+        "ubp_id": "BIO_CELL_001",
+        "name": "Cell Theory",
+        "math": "All living things are made of cells",
+        "language": "The fundamental theory that cells are the basic unit of life.",
+        "script": "is_living = has_cells and can_reproduce and has_metabolism",
+        "tags": [
+            "cell",
+            "theory",
+            "life",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "284d796f9b8bf35752be3112b08410a28e80169060fb9cebafb38cacc11c5b34"
+    },
+    "310e978f6e49f6e975a6bfcd0910bedcbf1bfa82be26bd40f5246b4e650c452a": {
+        "ubp_id": "BIO_NUCLEUS_001",
+        "name": "Cell Nucleus",
+        "math": "Contains genetic material (DNA)",
+        "language": "The membrane-bound organelle containing the cell's genetic information.",
+        "script": "nucleus = {'contains': 'DNA', 'function': 'genetic_control'}",
+        "tags": [
+            "nucleus",
+            "organelle",
+            "DNA",
+            "eukaryote"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "310e978f6e49f6e975a6bfcd0910bedcbf1bfa82be26bd40f5246b4e650c452a"
+    },
+    "3d11203abc8ad61cca75df464e16012830880143108b84356721dfabe6088556": {
+        "ubp_id": "BIO_MITO_001",
+        "name": "Mitochondria",
+        "math": "ATP production via cellular respiration",
+        "language": "The powerhouse of the cell; produces ATP through oxidative phosphorylation.",
+        "script": "ATP_produced = glucose * 36  # Approximate ATP yield",
+        "tags": [
+            "mitochondria",
+            "ATP",
+            "respiration",
+            "energy"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3d11203abc8ad61cca75df464e16012830880143108b84356721dfabe6088556"
+    },
+    "3a3cd1c1dbf33f97d18f12317c93fee0bbe20d77baf1eaf98d0711e6e1144267": {
+        "ubp_id": "BIO_CHLORO_001",
+        "name": "Chloroplast",
+        "math": "Photosynthesis: CO2 + H2O + light -> glucose + O2",
+        "language": "The organelle in plant cells that performs photosynthesis.",
+        "script": "glucose = CO2 + H2O + light_energy",
+        "tags": [
+            "chloroplast",
+            "photosynthesis",
+            "plant",
+            "energy"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3a3cd1c1dbf33f97d18f12317c93fee0bbe20d77baf1eaf98d0711e6e1144267"
+    },
+    "98cc6189fb1235485d6b6dbda622450a2dd1572457350455b89bea907f73a495": {
+        "ubp_id": "BIO_RIBOS_001",
+        "name": "Ribosome",
+        "math": "Protein synthesis from mRNA",
+        "language": "The cellular machinery that translates mRNA into proteins.",
+        "script": "protein = ribosome.translate(mRNA)",
+        "tags": [
+            "ribosome",
+            "protein",
+            "translation",
+            "synthesis"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "98cc6189fb1235485d6b6dbda622450a2dd1572457350455b89bea907f73a495"
+    },
+    "99af73ef72cb15a2226f48d873b17d0137944688ecac465971c311c2327febf1": {
+        "ubp_id": "BIO_MEMBRANE_001",
+        "name": "Cell Membrane",
+        "math": "Phospholipid bilayer - selective permeability",
+        "language": "The selectively permeable barrier surrounding cells.",
+        "script": "can_pass = molecule.is_small and molecule.is_nonpolar",
+        "tags": [
+            "membrane",
+            "phospholipid",
+            "permeability",
+            "barrier"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "99af73ef72cb15a2226f48d873b17d0137944688ecac465971c311c2327febf1"
+    },
+    "c989c621a7092e7764dbfbb90bf0163132ce4aea22b447a8c5473281426c291a": {
+        "ubp_id": "BIO_OSMOSIS_001",
+        "name": "Osmosis",
+        "math": "Water movement across semipermeable membrane",
+        "language": "The diffusion of water from low to high solute concentration.",
+        "script": "water_flow = 'toward_higher_solute_concentration'",
+        "tags": [
+            "osmosis",
+            "diffusion",
+            "water",
+            "membrane"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c989c621a7092e7764dbfbb90bf0163132ce4aea22b447a8c5473281426c291a"
+    },
+    "94765982b273112ea6ce4ff88c7bd36d263cb11065024a74b27045f820aa6b0f": {
+        "ubp_id": "BIO_MITOSIS_001",
+        "name": "Mitosis",
+        "math": "Cell division producing identical daughter cells",
+        "language": "Nuclear division resulting in two genetically identical cells.",
+        "script": "daughter_cells = [parent_cell.copy(), parent_cell.copy()]",
+        "tags": [
+            "mitosis",
+            "division",
+            "cell_cycle",
+            "reproduction"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "94765982b273112ea6ce4ff88c7bd36d263cb11065024a74b27045f820aa6b0f"
+    },
+    "1339c4b9c7c08dab2403e1b3bbdcd9dec5a3007c96c7dede4a276bfece944d22": {
+        "ubp_id": "BIO_MEIOSIS_001",
+        "name": "Meiosis",
+        "math": "Cell division producing gametes (haploid)",
+        "language": "Reduction division producing four genetically diverse haploid cells.",
+        "script": "gametes = [haploid_cell for _ in range(4)]  # n chromosomes each",
+        "tags": [
+            "meiosis",
+            "gamete",
+            "haploid",
+            "reproduction"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1339c4b9c7c08dab2403e1b3bbdcd9dec5a3007c96c7dede4a276bfece944d22"
+    },
+    "e4e608651de9eb02e49f38a1eff7fd0fc6179a20b0692af05d659e7fffdf10c5": {
+        "ubp_id": "BIO_DNA_001",
+        "name": "DNA Structure",
+        "math": "Double helix: A-T, G-C base pairing",
+        "language": "The double helix structure of DNA with complementary base pairing.",
+        "script": "complement = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}",
+        "tags": [
+            "DNA",
+            "helix",
+            "base_pair",
+            "genetic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e4e608651de9eb02e49f38a1eff7fd0fc6179a20b0692af05d659e7fffdf10c5"
+    },
+    "18e56438a5ff61a1b24a3eda2bffb844ab4bfa2b9578d51fc0e1c22c826fb47c": {
+        "ubp_id": "BIO_REPLIC_001",
+        "name": "DNA Replication",
+        "math": "Semiconservative: each strand templates new",
+        "language": "The process of copying DNA before cell division.",
+        "script": "new_DNA = [original_strand + new_strand for strand in DNA]",
+        "tags": [
+            "replication",
+            "DNA",
+            "semiconservative",
+            "polymerase"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "18e56438a5ff61a1b24a3eda2bffb844ab4bfa2b9578d51fc0e1c22c826fb47c"
+    },
+    "dd93a650ae0dc32879dcb1714e7b5f9157b397affd87513302619362af8910d8": {
+        "ubp_id": "BIO_TRANSCR_001",
+        "name": "Transcription",
+        "math": "DNA -> mRNA (RNA polymerase)",
+        "language": "The process of copying DNA information into messenger RNA.",
+        "script": "mRNA = transcribe(DNA_template_strand)",
+        "tags": [
+            "transcription",
+            "RNA",
+            "mRNA",
+            "gene_expression"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dd93a650ae0dc32879dcb1714e7b5f9157b397affd87513302619362af8910d8"
+    },
+    "80fca5cf0b11254692e85388ee7db42bc8b13366b0a8a670be458cbb6546ed25": {
+        "ubp_id": "BIO_TRANSL_001",
+        "name": "Translation",
+        "math": "mRNA -> Protein (ribosome)",
+        "language": "The process of synthesizing proteins from mRNA instructions.",
+        "script": "protein = ''.join(codon_table[codon] for codon in mRNA_codons)",
+        "tags": [
+            "translation",
+            "protein",
+            "ribosome",
+            "codon"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "80fca5cf0b11254692e85388ee7db42bc8b13366b0a8a670be458cbb6546ed25"
+    },
+    "40a484b4b1b1996bf72c642f4fc55c6e16b77b67f2674a374b97d18638ac9e62": {
+        "ubp_id": "BIO_MENDEL1_001",
+        "name": "Mendel's First Law",
+        "math": "Segregation of alleles",
+        "language": "Allele pairs separate during gamete formation.",
+        "script": "gamete_alleles = random.choice(parent_alleles)",
+        "tags": [
+            "mendel",
+            "segregation",
+            "allele",
+            "inheritance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "40a484b4b1b1996bf72c642f4fc55c6e16b77b67f2674a374b97d18638ac9e62"
+    },
+    "a6328a15433ab2637cd40706b7d4d5515f96ae2061a0c1b4aba7932ea6a19978": {
+        "ubp_id": "BIO_MENDEL2_001",
+        "name": "Mendel's Second Law",
+        "math": "Independent assortment",
+        "language": "Genes for different traits assort independently during gamete formation.",
+        "script": "gamete = [random.choice(gene) for gene in genes]",
+        "tags": [
+            "mendel",
+            "independent",
+            "assortment",
+            "inheritance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a6328a15433ab2637cd40706b7d4d5515f96ae2061a0c1b4aba7932ea6a19978"
+    },
+    "c39fb99954d81aae0cd60eb0b5d5a39cd58bbde8fab3bdfa244089525fe58dfe": {
+        "ubp_id": "BIO_PUNNET_001",
+        "name": "Punnett Square",
+        "math": "Predict offspring genotype ratios",
+        "language": "A diagram showing all possible combinations of parental alleles.",
+        "script": "offspring = [(a1+a2) for a1 in parent1 for a2 in parent2]",
+        "tags": [
+            "punnett",
+            "genetics",
+            "probability",
+            "cross"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c39fb99954d81aae0cd60eb0b5d5a39cd58bbde8fab3bdfa244089525fe58dfe"
+    },
+    "42eddc7f1d1983ca941a602f9a2ac57d68513aa57dc9ea1e2597e46c744dd863": {
+        "ubp_id": "BIO_NATSEL_001",
+        "name": "Natural Selection",
+        "math": "Survival of the fittest",
+        "language": "The process by which organisms with favorable traits survive and reproduce more.",
+        "script": "survivors = [org for org in population if org.fitness > threshold]",
+        "tags": [
+            "evolution",
+            "selection",
+            "fitness",
+            "darwin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "42eddc7f1d1983ca941a602f9a2ac57d68513aa57dc9ea1e2597e46c744dd863"
+    },
+    "ab69b114958b8aa3ab9f2cbda2345d1804be87355b1d0f8694657af5b3f3bc89": {
+        "ubp_id": "BIO_MUTATION_001",
+        "name": "Mutation",
+        "math": "Random change in DNA sequence",
+        "language": "A permanent change in the nucleotide sequence of DNA.",
+        "script": "mutated_DNA = DNA[:pos] + new_base + DNA[pos+1:]",
+        "tags": [
+            "mutation",
+            "DNA",
+            "variation",
+            "evolution"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ab69b114958b8aa3ab9f2cbda2345d1804be87355b1d0f8694657af5b3f3bc89"
+    },
+    "a3d781ff8629ec0d4e09a13ba3de5f7b874ec67788806a8389213c7e85fb5300": {
+        "ubp_id": "BIO_DRIFT_001",
+        "name": "Genetic Drift",
+        "math": "Random changes in allele frequency",
+        "language": "Random fluctuations in allele frequencies, especially in small populations.",
+        "script": "new_freq = random_sample(allele_pool, population_size)",
+        "tags": [
+            "drift",
+            "random",
+            "population",
+            "evolution"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a3d781ff8629ec0d4e09a13ba3de5f7b874ec67788806a8389213c7e85fb5300"
+    },
+    "52bfc6c1650c84c1c59ca580c291d54527dce91ac9e49244463224ff64e136a1": {
+        "ubp_id": "BIO_SPECIATION_001",
+        "name": "Speciation",
+        "math": "Formation of new species",
+        "language": "The evolutionary process by which new species arise.",
+        "script": "new_species = population.isolate().diverge().reproductively_isolate()",
+        "tags": [
+            "speciation",
+            "evolution",
+            "species",
+            "isolation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "52bfc6c1650c84c1c59ca580c291d54527dce91ac9e49244463224ff64e136a1"
+    },
+    "d779c0f82632c34068aab458cd9d7f86c8874184f81d8c67ec6d81f764aafe1d": {
+        "ubp_id": "BIO_ATP_001",
+        "name": "ATP",
+        "math": "Adenosine triphosphate - energy currency",
+        "language": "The primary energy carrier molecule in cells.",
+        "script": "energy_released = ATP.hydrolyze()  # ~30.5 kJ/mol",
+        "tags": [
+            "ATP",
+            "energy",
+            "adenosine",
+            "phosphate"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d779c0f82632c34068aab458cd9d7f86c8874184f81d8c67ec6d81f764aafe1d"
+    },
+    "5c632685f3d9f25d95eef15aafb4d0fca22c2f2d525daa2340f36a9a51f22557": {
+        "ubp_id": "BIO_ENZYME_001",
+        "name": "Enzyme",
+        "math": "Biological catalyst - lowers activation energy",
+        "language": "Proteins that catalyze biochemical reactions by lowering activation energy.",
+        "script": "rate = k * [S] / (Km + [S])  # Michaelis-Menten",
+        "tags": [
+            "enzyme",
+            "catalyst",
+            "protein",
+            "kinetics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5c632685f3d9f25d95eef15aafb4d0fca22c2f2d525daa2340f36a9a51f22557"
+    },
+    "eb2ebfb5887a8f3feb3e33e4db86bc0b0ced649db464075545562dde50da5f89": {
+        "ubp_id": "BIO_GLYCOL_001",
+        "name": "Glycolysis",
+        "math": "Glucose -> 2 Pyruvate + 2 ATP + 2 NADH",
+        "language": "The metabolic pathway that breaks down glucose in the cytoplasm.",
+        "script": "products = {'pyruvate': 2, 'ATP': 2, 'NADH': 2}",
+        "tags": [
+            "glycolysis",
+            "metabolism",
+            "glucose",
+            "ATP"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb2ebfb5887a8f3feb3e33e4db86bc0b0ced649db464075545562dde50da5f89"
+    },
+    "d86e4c587e1664b44f777d5d21895cac58597ee77f3a45eea87563025beef425": {
+        "ubp_id": "BIO_KREBS_001",
+        "name": "Krebs Cycle",
+        "math": "Acetyl-CoA -> CO2 + ATP + NADH + FADH2",
+        "language": "The citric acid cycle that completes glucose oxidation.",
+        "script": "products = {'CO2': 2, 'ATP': 1, 'NADH': 3, 'FADH2': 1}",
+        "tags": [
+            "krebs",
+            "citric",
+            "cycle",
+            "respiration"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d86e4c587e1664b44f777d5d21895cac58597ee77f3a45eea87563025beef425"
+    },
+    "7f687930ae0df2d06648dd74dc72f5bfcc8b5380a27e2e05dae9ba7e002c6175": {
+        "ubp_id": "BIO_ETC_001",
+        "name": "Electron Transport Chain",
+        "math": "NADH/FADH2 -> ATP (oxidative phosphorylation)",
+        "language": "The final stage of cellular respiration producing most ATP.",
+        "script": "ATP_from_NADH = 2.5; ATP_from_FADH2 = 1.5",
+        "tags": [
+            "electron",
+            "transport",
+            "ATP",
+            "oxidative"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7f687930ae0df2d06648dd74dc72f5bfcc8b5380a27e2e05dae9ba7e002c6175"
+    },
+    "e2b415867771e27b78da9e3c643db64170e582dc6a7a0c0b84a9ef95572f21b5": {
+        "ubp_id": "BIO_NERVOUS_001",
+        "name": "Nervous System",
+        "math": "Neurons transmit electrical signals",
+        "language": "The organ system that coordinates body activities through electrical impulses.",
+        "script": "signal = neuron.fire() if stimulus > threshold else None",
+        "tags": [
+            "nervous",
+            "neuron",
+            "brain",
+            "signal"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e2b415867771e27b78da9e3c643db64170e582dc6a7a0c0b84a9ef95572f21b5"
+    },
+    "e8e7b2f228d4bac70c837bf84513b9dd4a3f7f5f6c03735bd63faab720b9bc9a": {
+        "ubp_id": "BIO_CIRC_001",
+        "name": "Circulatory System",
+        "math": "Heart pumps blood through vessels",
+        "language": "The organ system that transports blood, nutrients, and gases.",
+        "script": "cardiac_output = heart_rate * stroke_volume",
+        "tags": [
+            "circulatory",
+            "heart",
+            "blood",
+            "vessels"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e8e7b2f228d4bac70c837bf84513b9dd4a3f7f5f6c03735bd63faab720b9bc9a"
+    },
+    "7606db61f8972928bbc4761b240e3c528243f8ce8ccb2263f9d4ce02048f796c": {
+        "ubp_id": "BIO_RESP_001",
+        "name": "Respiratory System",
+        "math": "Gas exchange: O2 in, CO2 out",
+        "language": "The organ system responsible for breathing and gas exchange.",
+        "script": "gas_exchange = {'O2': 'in', 'CO2': 'out'}",
+        "tags": [
+            "respiratory",
+            "lungs",
+            "breathing",
+            "oxygen"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7606db61f8972928bbc4761b240e3c528243f8ce8ccb2263f9d4ce02048f796c"
+    },
+    "a2821d9818499cb2d74584539f93cfa3eb6f3f7bfd98aadd19e9482bff2c636b": {
+        "ubp_id": "BIO_DIGEST_001",
+        "name": "Digestive System",
+        "math": "Break down food, absorb nutrients",
+        "language": "The organ system that processes food and absorbs nutrients.",
+        "script": "nutrients = digest(food).absorb()",
+        "tags": [
+            "digestive",
+            "stomach",
+            "intestine",
+            "absorption"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a2821d9818499cb2d74584539f93cfa3eb6f3f7bfd98aadd19e9482bff2c636b"
+    },
+    "58d5ac4773cf6ec9a946717f754489b5f08f697a357e9075ef7c73aa064cc7b6": {
+        "ubp_id": "BIO_IMMUNE_001",
+        "name": "Immune System",
+        "math": "Defense against pathogens",
+        "language": "The organ system that protects the body from disease.",
+        "script": "response = immune_system.detect(pathogen).neutralize()",
+        "tags": [
+            "immune",
+            "antibody",
+            "pathogen",
+            "defense"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "58d5ac4773cf6ec9a946717f754489b5f08f697a357e9075ef7c73aa064cc7b6"
+    },
+    "96e65d680a865435d5375714c6ae25eecea1901711ed1b5d32ee8de0dad7242f": {
+        "ubp_id": "ELEC_RESISTOR_001",
+        "name": "Resistor",
+        "math": "V = I * R (Ohm's Law)",
+        "language": "A component that opposes current flow; dissipates energy as heat.",
+        "script": "V = I * R",
+        "tags": [
+            "resistor",
+            "ohm",
+            "resistance",
+            "component"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "96e65d680a865435d5375714c6ae25eecea1901711ed1b5d32ee8de0dad7242f"
+    },
+    "6782de76c584928dd3980a7fbb59b05c9eb8a53513c758ffb67c7bfb840c8b58": {
+        "ubp_id": "ELEC_CAPACITOR_001",
+        "name": "Capacitor",
+        "math": "Q = C * V; stores electric charge",
+        "language": "A component that stores energy in an electric field.",
+        "script": "Q = C * V; energy = 0.5 * C * V**2",
+        "tags": [
+            "capacitor",
+            "charge",
+            "storage",
+            "component"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6782de76c584928dd3980a7fbb59b05c9eb8a53513c758ffb67c7bfb840c8b58"
+    },
+    "c9c766745d198c4216759efdcca4fc94e9ba24f0f0206b491323f71bacaa5d2e": {
+        "ubp_id": "ELEC_INDUCTOR_001",
+        "name": "Inductor",
+        "math": "V = L * dI/dt; stores magnetic energy",
+        "language": "A component that stores energy in a magnetic field.",
+        "script": "V = L * dI_dt; energy = 0.5 * L * I**2",
+        "tags": [
+            "inductor",
+            "magnetic",
+            "coil",
+            "component"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c9c766745d198c4216759efdcca4fc94e9ba24f0f0206b491323f71bacaa5d2e"
+    },
+    "22f02837180ff8773f00d00f4db74c1395815d79a3c329c5d4172e0795850c39": {
+        "ubp_id": "ELEC_DIODE_001",
+        "name": "Diode",
+        "math": "Current flows in one direction only",
+        "language": "A semiconductor device that allows current in only one direction.",
+        "script": "I = I_s * (exp(V/(n*V_T)) - 1)  # Shockley equation",
+        "tags": [
+            "diode",
+            "semiconductor",
+            "rectifier",
+            "component"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "22f02837180ff8773f00d00f4db74c1395815d79a3c329c5d4172e0795850c39"
+    },
+    "2199d0ddc4480aa05e2f9ae8b83940d90f24561665c83e39c7fa37c5d6a44187": {
+        "ubp_id": "ELEC_TRANSISTOR_001",
+        "name": "Transistor",
+        "math": "Amplifier/switch using semiconductor",
+        "language": "A semiconductor device used for amplification or switching.",
+        "script": "I_c = beta * I_b  # BJT current gain",
+        "tags": [
+            "transistor",
+            "amplifier",
+            "switch",
+            "semiconductor"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2199d0ddc4480aa05e2f9ae8b83940d90f24561665c83e39c7fa37c5d6a44187"
+    },
+    "5a9906f5f9ed0bb850e77a90bcd24c9e60e7a3ce562451af39140bed5b2894d4": {
+        "ubp_id": "ELEC_OHM_001",
+        "name": "Ohm's Law",
+        "math": "V = I * R",
+        "language": "Voltage equals current times resistance.",
+        "script": "V = I * R; I = V / R; R = V / I",
+        "tags": [
+            "ohm",
+            "voltage",
+            "current",
+            "resistance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5a9906f5f9ed0bb850e77a90bcd24c9e60e7a3ce562451af39140bed5b2894d4"
+    },
+    "e5543431f6a3ae65e4aa6f9918f9804c58fe9faa76db51f99f1beae5515656df": {
+        "ubp_id": "ELEC_KVL_001",
+        "name": "Kirchhoff's Voltage Law",
+        "math": "Sum of voltages around loop = 0",
+        "language": "The algebraic sum of voltages around any closed loop is zero.",
+        "script": "sum(voltages_in_loop) == 0",
+        "tags": [
+            "kirchhoff",
+            "voltage",
+            "loop",
+            "conservation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e5543431f6a3ae65e4aa6f9918f9804c58fe9faa76db51f99f1beae5515656df"
+    },
+    "7c411fd0929ac507f2631a04a6af07865f761cd2a826b502a02e5586829caac5": {
+        "ubp_id": "ELEC_KCL_001",
+        "name": "Kirchhoff's Current Law",
+        "math": "Sum of currents at node = 0",
+        "language": "The algebraic sum of currents entering a node equals zero.",
+        "script": "sum(currents_into_node) == 0",
+        "tags": [
+            "kirchhoff",
+            "current",
+            "node",
+            "conservation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7c411fd0929ac507f2631a04a6af07865f761cd2a826b502a02e5586829caac5"
+    },
+    "e25c31a6532eae2e41857a15133636647e7416ba62c60cccc0ee9b27cc754d5f": {
+        "ubp_id": "ELEC_POWER_001",
+        "name": "Electrical Power",
+        "math": "P = V * I = I^2 * R = V^2 / R",
+        "language": "The rate of energy transfer in an electrical circuit.",
+        "script": "P = V * I",
+        "tags": [
+            "power",
+            "watt",
+            "energy",
+            "dissipation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e25c31a6532eae2e41857a15133636647e7416ba62c60cccc0ee9b27cc754d5f"
+    },
+    "3aee839f50b4f17cb643bc48e8b20dd8868f2e1c990d699f9521b0eecab81964": {
+        "ubp_id": "ELEC_SERIES_001",
+        "name": "Series Resistors",
+        "math": "R_total = R1 + R2 + ... + Rn",
+        "language": "Total resistance of resistors in series is the sum.",
+        "script": "R_total = sum(resistors)",
+        "tags": [
+            "series",
+            "resistor",
+            "equivalent",
+            "circuit"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3aee839f50b4f17cb643bc48e8b20dd8868f2e1c990d699f9521b0eecab81964"
+    },
+    "db48f4be3cfa5a3732abd2378107a1a4d7164d42c827c63b84ef2ad9cb022a1f": {
+        "ubp_id": "ELEC_PARALLEL_001",
+        "name": "Parallel Resistors",
+        "math": "1/R_total = 1/R1 + 1/R2 + ...",
+        "language": "Total resistance of parallel resistors is the reciprocal of sum of reciprocals.",
+        "script": "R_total = 1 / sum(1/R for R in resistors)",
+        "tags": [
+            "parallel",
+            "resistor",
+            "equivalent",
+            "circuit"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "db48f4be3cfa5a3732abd2378107a1a4d7164d42c827c63b84ef2ad9cb022a1f"
+    },
+    "1e4b3996a2af11739b619268de448c1f1f46e761bfb79eda2e8afa4567bb1bb1": {
+        "ubp_id": "ELEC_AC_001",
+        "name": "AC Voltage",
+        "math": "V(t) = V_peak * sin(omega*t + phi)",
+        "language": "Alternating current voltage varies sinusoidally with time.",
+        "script": "V = V_peak * math.sin(omega * t + phi)",
+        "tags": [
+            "AC",
+            "alternating",
+            "sinusoidal",
+            "voltage"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1e4b3996a2af11739b619268de448c1f1f46e761bfb79eda2e8afa4567bb1bb1"
+    },
+    "e62e2d543c862b07e27c9c64323e53244b0f34a5449d05fc5187a58da7e89128": {
+        "ubp_id": "ELEC_IMPED_001",
+        "name": "Impedance",
+        "math": "Z = R + jX (complex resistance)",
+        "language": "The total opposition to AC current including resistance and reactance.",
+        "script": "Z = complex(R, X); magnitude = abs(Z)",
+        "tags": [
+            "impedance",
+            "AC",
+            "reactance",
+            "complex"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e62e2d543c862b07e27c9c64323e53244b0f34a5449d05fc5187a58da7e89128"
+    },
+    "276418d1281c3a03e450b3ee578ff24e56127a726c7488cf461e4d78959d7d0d": {
+        "ubp_id": "ELEC_REACT_C_001",
+        "name": "Capacitive Reactance",
+        "math": "X_C = 1 / (omega * C)",
+        "language": "The opposition to AC current by a capacitor.",
+        "script": "X_C = 1 / (omega * C)",
+        "tags": [
+            "reactance",
+            "capacitor",
+            "AC",
+            "frequency"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "276418d1281c3a03e450b3ee578ff24e56127a726c7488cf461e4d78959d7d0d"
+    },
+    "4d7e4e2dcaba50ce76f247647d6b6a85f249201d643f342f8839977e5f52a9a7": {
+        "ubp_id": "ELEC_REACT_L_001",
+        "name": "Inductive Reactance",
+        "math": "X_L = omega * L",
+        "language": "The opposition to AC current by an inductor.",
+        "script": "X_L = omega * L",
+        "tags": [
+            "reactance",
+            "inductor",
+            "AC",
+            "frequency"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4d7e4e2dcaba50ce76f247647d6b6a85f249201d643f342f8839977e5f52a9a7"
+    },
+    "155be1630e1bccf25f542384c4746d49a3d73b0cd22b6760f104483faf328ec8": {
+        "ubp_id": "ELEC_RESON_001",
+        "name": "Resonance",
+        "math": "omega_0 = 1 / sqrt(L*C)",
+        "language": "The frequency at which inductive and capacitive reactances cancel.",
+        "script": "omega_0 = 1 / math.sqrt(L * C)",
+        "tags": [
+            "resonance",
+            "frequency",
+            "LC",
+            "circuit"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "155be1630e1bccf25f542384c4746d49a3d73b0cd22b6760f104483faf328ec8"
+    },
+    "52bc1c58de6ee8d22010a92a5b060bb5adb042bffc2a9e83e9b71c6383bb47d5": {
+        "ubp_id": "ELEC_AND_001",
+        "name": "AND Gate",
+        "math": "Y = A AND B",
+        "language": "A logic gate that outputs 1 only when all inputs are 1.",
+        "script": "Y = A and B",
+        "tags": [
+            "AND",
+            "gate",
+            "logic",
+            "digital"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "52bc1c58de6ee8d22010a92a5b060bb5adb042bffc2a9e83e9b71c6383bb47d5"
+    },
+    "2d8c9542358937d321520b20f72b8ad9c334eb667efcb5efcd10af04213d9d6b": {
+        "ubp_id": "ELEC_OR_001",
+        "name": "OR Gate",
+        "math": "Y = A OR B",
+        "language": "A logic gate that outputs 1 when any input is 1.",
+        "script": "Y = A or B",
+        "tags": [
+            "OR",
+            "gate",
+            "logic",
+            "digital"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2d8c9542358937d321520b20f72b8ad9c334eb667efcb5efcd10af04213d9d6b"
+    },
+    "cad896f142ecd79dbceaf6094be93de6a9fdc9b5684b3bcb0468e85a7088e2b2": {
+        "ubp_id": "ELEC_NOT_001",
+        "name": "NOT Gate",
+        "math": "Y = NOT A",
+        "language": "A logic gate that inverts its input.",
+        "script": "Y = not A",
+        "tags": [
+            "NOT",
+            "inverter",
+            "gate",
+            "logic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cad896f142ecd79dbceaf6094be93de6a9fdc9b5684b3bcb0468e85a7088e2b2"
+    },
+    "d6370ae7dbf300023102daa268c07fddacdabbde96147ccac0be1d0cd4376380": {
+        "ubp_id": "ELEC_NAND_001",
+        "name": "NAND Gate",
+        "math": "Y = NOT(A AND B)",
+        "language": "A universal logic gate; NOT of AND.",
+        "script": "Y = not (A and B)",
+        "tags": [
+            "NAND",
+            "gate",
+            "universal",
+            "logic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d6370ae7dbf300023102daa268c07fddacdabbde96147ccac0be1d0cd4376380"
+    },
+    "ad110a8f7a39b08803c5f0636835f41612b0228c5ad2beccab4977760105b3ca": {
+        "ubp_id": "ELEC_XOR_001",
+        "name": "XOR Gate",
+        "math": "Y = A XOR B",
+        "language": "A logic gate that outputs 1 when inputs differ.",
+        "script": "Y = A ^ B  # XOR in Python",
+        "tags": [
+            "XOR",
+            "gate",
+            "exclusive",
+            "logic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ad110a8f7a39b08803c5f0636835f41612b0228c5ad2beccab4977760105b3ca"
+    },
+    "ee6656a38e381203781c8c64287555ddf0c6145f43331dfb043040f9f3883d1e": {
+        "ubp_id": "ELEC_FLIPFLOP_001",
+        "name": "Flip-Flop",
+        "math": "Memory element - stores 1 bit",
+        "language": "A bistable circuit that stores a single bit of information.",
+        "script": "Q_next = D if clock_edge else Q",
+        "tags": [
+            "flipflop",
+            "memory",
+            "sequential",
+            "latch"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ee6656a38e381203781c8c64287555ddf0c6145f43331dfb043040f9f3883d1e"
+    },
+    "43226940dd0b32f6b7fae96a599a7e6f0d034d3bd2426ef41c7be79c9faaf8ce": {
+        "ubp_id": "GEO_CRUST_001",
+        "name": "Earth's Crust",
+        "math": "5-70 km thick; oceanic and continental",
+        "language": "The outermost solid layer of Earth; thinner under oceans, thicker under continents.",
+        "script": "crust = {'oceanic': '5-10 km', 'continental': '30-70 km'}",
+        "tags": [
+            "crust",
+            "lithosphere",
+            "earth",
+            "layer"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "43226940dd0b32f6b7fae96a599a7e6f0d034d3bd2426ef41c7be79c9faaf8ce"
+    },
+    "1b258c0d0319e457fee760f062e45306b824e8fea72e5f71da067426bdcded18": {
+        "ubp_id": "GEO_MANTLE_001",
+        "name": "Earth's Mantle",
+        "math": "2900 km thick; convection currents",
+        "language": "The thick layer between crust and core; drives plate tectonics through convection.",
+        "script": "mantle = {'thickness': 2900, 'state': 'plastic_solid'}",
+        "tags": [
+            "mantle",
+            "convection",
+            "earth",
+            "layer"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1b258c0d0319e457fee760f062e45306b824e8fea72e5f71da067426bdcded18"
+    },
+    "1adf75901a49594ff630214e71539fbee60a7cab33fdfe05680ca198f0fe2b2c": {
+        "ubp_id": "GEO_CORE_001",
+        "name": "Earth's Core",
+        "math": "Outer liquid, inner solid; iron-nickel",
+        "language": "The innermost layers of Earth; generates magnetic field.",
+        "script": "core = {'outer': 'liquid', 'inner': 'solid', 'composition': 'Fe-Ni'}",
+        "tags": [
+            "core",
+            "iron",
+            "magnetic",
+            "earth"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1adf75901a49594ff630214e71539fbee60a7cab33fdfe05680ca198f0fe2b2c"
+    },
+    "0ae9512a37aecc307a1a1efdc59f93e5a603920ebaaa2877790b3c2f8f6b2b4e": {
+        "ubp_id": "GEO_DIVERGENT_001",
+        "name": "Divergent Boundary",
+        "math": "Plates move apart; new crust forms",
+        "language": "A boundary where tectonic plates separate, creating new oceanic crust.",
+        "script": "boundary = 'divergent'; result = 'seafloor_spreading'",
+        "tags": [
+            "divergent",
+            "boundary",
+            "spreading",
+            "tectonics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0ae9512a37aecc307a1a1efdc59f93e5a603920ebaaa2877790b3c2f8f6b2b4e"
+    },
+    "f2d387c260e042bac05f6e8910194deda063851b86b787b66f73ac9acc034fca": {
+        "ubp_id": "GEO_CONVERGENT_001",
+        "name": "Convergent Boundary",
+        "math": "Plates collide; subduction or mountains",
+        "language": "A boundary where plates collide, causing subduction or mountain building.",
+        "script": "boundary = 'convergent'; result = 'subduction' or 'mountains'",
+        "tags": [
+            "convergent",
+            "boundary",
+            "subduction",
+            "tectonics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f2d387c260e042bac05f6e8910194deda063851b86b787b66f73ac9acc034fca"
+    },
+    "b426ec8df492c38e2044c0c64ad9ffeacf025206d8a5c956d06071dac62eae48": {
+        "ubp_id": "GEO_TRANSFORM_001",
+        "name": "Transform Boundary",
+        "math": "Plates slide past each other",
+        "language": "A boundary where plates slide horizontally past each other.",
+        "script": "boundary = 'transform'; result = 'earthquakes'",
+        "tags": [
+            "transform",
+            "boundary",
+            "fault",
+            "tectonics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b426ec8df492c38e2044c0c64ad9ffeacf025206d8a5c956d06071dac62eae48"
+    },
+    "26cd6b90c13e9df71e26689737740d621c761af303a2393f51287bb63c690984": {
+        "ubp_id": "GEO_IGNEOUS_001",
+        "name": "Igneous Rock",
+        "math": "Formed from cooled magma/lava",
+        "language": "Rock formed by the cooling and solidification of molten material.",
+        "script": "igneous = magma.cool()  # Intrusive or extrusive",
+        "tags": [
+            "igneous",
+            "magma",
+            "volcanic",
+            "rock"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "26cd6b90c13e9df71e26689737740d621c761af303a2393f51287bb63c690984"
+    },
+    "963ee2f5b2085e89974ef94c2148216939b0a5b5c0b8795e1770d66ad6ee4be7": {
+        "ubp_id": "GEO_SEDIMENT_001",
+        "name": "Sedimentary Rock",
+        "math": "Formed from compressed sediments",
+        "language": "Rock formed by the accumulation and cementation of sediments.",
+        "script": "sedimentary = sediments.compact().cement()",
+        "tags": [
+            "sedimentary",
+            "layers",
+            "fossils",
+            "rock"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "963ee2f5b2085e89974ef94c2148216939b0a5b5c0b8795e1770d66ad6ee4be7"
+    },
+    "9d14aed63b788361b23b46c834b95e1e3291dd422c40ba63b719535a51162922": {
+        "ubp_id": "GEO_METAMORPH_001",
+        "name": "Metamorphic Rock",
+        "math": "Transformed by heat and pressure",
+        "language": "Rock changed by high temperature and pressure without melting.",
+        "script": "metamorphic = rock.apply_heat_pressure()",
+        "tags": [
+            "metamorphic",
+            "pressure",
+            "heat",
+            "rock"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9d14aed63b788361b23b46c834b95e1e3291dd422c40ba63b719535a51162922"
+    },
+    "2fc6963e1f8f0646c2ebcb265a6be00e082f4b2b925c2a31c10aa0bd04247ba8": {
+        "ubp_id": "GEO_MINERAL_001",
+        "name": "Mineral Definition",
+        "math": "Natural, inorganic, crystalline solid",
+        "language": "A naturally occurring, inorganic solid with a definite chemical composition.",
+        "script": "is_mineral = natural and inorganic and crystalline and solid",
+        "tags": [
+            "mineral",
+            "crystal",
+            "inorganic",
+            "natural"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2fc6963e1f8f0646c2ebcb265a6be00e082f4b2b925c2a31c10aa0bd04247ba8"
+    },
+    "5388e55a9efddb9239a7e8dba246d69b8f665c69a88a5bead959eba51c9f08ce": {
+        "ubp_id": "GEO_MOHS_001",
+        "name": "Mohs Hardness Scale",
+        "math": "1 (talc) to 10 (diamond)",
+        "language": "A scale of mineral hardness based on scratch resistance.",
+        "script": "hardness = {'talc': 1, 'gypsum': 2, 'calcite': 3, 'fluorite': 4, 'apatite': 5, 'feldspar': 6, 'quartz': 7, 'topaz': 8, 'corundum': 9, 'diamond': 10}",
+        "tags": [
+            "mohs",
+            "hardness",
+            "mineral",
+            "scale"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5388e55a9efddb9239a7e8dba246d69b8f665c69a88a5bead959eba51c9f08ce"
+    },
+    "0ef79320d0de1fa8be8532c42a3cd03be3b4f296af09c75d167be3220b00e5b7": {
+        "ubp_id": "GEO_SILICATE_001",
+        "name": "Silicate Minerals",
+        "math": "SiO4 tetrahedra - most common minerals",
+        "language": "Minerals containing silicon-oxygen tetrahedra; make up most of Earth's crust.",
+        "script": "silicate = {'unit': 'SiO4', 'abundance': '90% of crust'}",
+        "tags": [
+            "silicate",
+            "silicon",
+            "oxygen",
+            "mineral"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0ef79320d0de1fa8be8532c42a3cd03be3b4f296af09c75d167be3220b00e5b7"
+    },
+    "b67838e2001c812c8e8971ab61de6a36b970e507072a2f6dd321217718c27370": {
+        "ubp_id": "GEO_EON_001",
+        "name": "Geological Eons",
+        "math": "Hadean, Archean, Proterozoic, Phanerozoic",
+        "language": "The largest divisions of geological time.",
+        "script": "eons = ['Hadean', 'Archean', 'Proterozoic', 'Phanerozoic']",
+        "tags": [
+            "eon",
+            "time",
+            "geological",
+            "history"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b67838e2001c812c8e8971ab61de6a36b970e507072a2f6dd321217718c27370"
+    },
+    "eb3ef3cb8eb410132a83394ffc5b8704dc2e1ef829710c30ae4ed98b71cb4880": {
+        "ubp_id": "GEO_ERA_001",
+        "name": "Geological Eras",
+        "math": "Paleozoic, Mesozoic, Cenozoic (Phanerozoic)",
+        "language": "Major divisions within the Phanerozoic eon.",
+        "script": "eras = ['Paleozoic', 'Mesozoic', 'Cenozoic']",
+        "tags": [
+            "era",
+            "time",
+            "geological",
+            "phanerozoic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eb3ef3cb8eb410132a83394ffc5b8704dc2e1ef829710c30ae4ed98b71cb4880"
+    },
+    "9814c26bc6fb4d298ce464a930a664bc8c6a592c2c1c3dafde1f2a19fe9f8c29": {
+        "ubp_id": "GEO_EARTHQUAKE_001",
+        "name": "Earthquake",
+        "math": "Seismic waves from fault rupture",
+        "language": "Ground shaking caused by sudden release of energy along a fault.",
+        "script": "magnitude = math.log10(amplitude) + corrections  # Richter",
+        "tags": [
+            "earthquake",
+            "seismic",
+            "fault",
+            "hazard"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9814c26bc6fb4d298ce464a930a664bc8c6a592c2c1c3dafde1f2a19fe9f8c29"
+    },
+    "285230fcf848366164ccd4423445d6f7ca24f14688fad418a8ddd4d293ee8f7d": {
+        "ubp_id": "GEO_VOLCANO_001",
+        "name": "Volcano",
+        "math": "Magma reaches surface through vent",
+        "language": "An opening in Earth's crust through which molten rock erupts.",
+        "script": "eruption_type = 'explosive' if silica_content > 0.65 else 'effusive'",
+        "tags": [
+            "volcano",
+            "magma",
+            "eruption",
+            "hazard"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "285230fcf848366164ccd4423445d6f7ca24f14688fad418a8ddd4d293ee8f7d"
+    },
+    "d542389df7cae6afebd4763d9d9787855a7c4fd83237efc36062fce913b51f76": {
+        "ubp_id": "GEO_TSUNAMI_001",
+        "name": "Tsunami",
+        "math": "Ocean waves from seafloor displacement",
+        "language": "Large ocean waves generated by underwater earthquakes or landslides.",
+        "script": "wave_speed = math.sqrt(g * depth)  # Shallow water wave",
+        "tags": [
+            "tsunami",
+            "wave",
+            "ocean",
+            "hazard"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d542389df7cae6afebd4763d9d9787855a7c4fd83237efc36062fce913b51f76"
+    },
+    "a3bd292c32ea7445f4b4fb2eadfb969733fb792b1f63b383c89f373ee3b19ec6": {
+        "ubp_id": "LANG_NOUN_001",
+        "name": "Noun",
+        "math": "Person, place, thing, or idea",
+        "language": "A word that represents a person, place, thing, or abstract concept.",
+        "script": "is_noun = word.pos == 'NOUN'",
+        "tags": [
+            "noun",
+            "grammar",
+            "part_of_speech",
+            "naming"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a3bd292c32ea7445f4b4fb2eadfb969733fb792b1f63b383c89f373ee3b19ec6"
+    },
+    "4ab58699a20a4568a47dbe0d7c98a0fd22eb76ac162b74c474a1fcf3750d4516": {
+        "ubp_id": "LANG_VERB_001",
+        "name": "Verb",
+        "math": "Action or state of being",
+        "language": "A word expressing an action, occurrence, or state of being.",
+        "script": "is_verb = word.pos == 'VERB'",
+        "tags": [
+            "verb",
+            "grammar",
+            "action",
+            "part_of_speech"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4ab58699a20a4568a47dbe0d7c98a0fd22eb76ac162b74c474a1fcf3750d4516"
+    },
+    "7d4269f08f21dabc31fb63daf22b5c967cd1eb6f3803c7423cd68d7461cb547f": {
+        "ubp_id": "LANG_ADJ_001",
+        "name": "Adjective",
+        "math": "Describes or modifies a noun",
+        "language": "A word that describes or modifies a noun or pronoun.",
+        "script": "is_adjective = word.pos == 'ADJ'",
+        "tags": [
+            "adjective",
+            "grammar",
+            "modifier",
+            "descriptive"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7d4269f08f21dabc31fb63daf22b5c967cd1eb6f3803c7423cd68d7461cb547f"
+    },
+    "67f728f9e50728302994e6f4845764d07ac8d307748efa4090d492da53b79144": {
+        "ubp_id": "LANG_ADV_001",
+        "name": "Adverb",
+        "math": "Modifies verb, adjective, or other adverb",
+        "language": "A word that modifies a verb, adjective, or another adverb.",
+        "script": "is_adverb = word.pos == 'ADV'",
+        "tags": [
+            "adverb",
+            "grammar",
+            "modifier",
+            "manner"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "67f728f9e50728302994e6f4845764d07ac8d307748efa4090d492da53b79144"
+    },
+    "8b0f289c541725447ce09436fc3ac4b4fc48c0256a1a5035e1500334f9275f4b": {
+        "ubp_id": "LANG_PREP_001",
+        "name": "Preposition",
+        "math": "Shows relationship between words",
+        "language": "A word showing the relationship between a noun and other words.",
+        "script": "prepositions = ['in', 'on', 'at', 'by', 'for', 'with', 'to', 'from']",
+        "tags": [
+            "preposition",
+            "grammar",
+            "relation",
+            "position"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8b0f289c541725447ce09436fc3ac4b4fc48c0256a1a5035e1500334f9275f4b"
+    },
+    "02ec85f5a6a6d609124ae3fa0f79290972bb0feec1f6cdd13ceec57297293f09": {
+        "ubp_id": "LANG_CONJ_001",
+        "name": "Conjunction",
+        "math": "Connects words, phrases, or clauses",
+        "language": "A word that connects words, phrases, or clauses.",
+        "script": "conjunctions = ['and', 'but', 'or', 'nor', 'for', 'yet', 'so']",
+        "tags": [
+            "conjunction",
+            "grammar",
+            "connector",
+            "linking"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "02ec85f5a6a6d609124ae3fa0f79290972bb0feec1f6cdd13ceec57297293f09"
+    },
+    "96cd73f214bc3c291b230d30493098956f5b4de250425e205cceefa45ab19216": {
+        "ubp_id": "LANG_PRON_001",
+        "name": "Pronoun",
+        "math": "Replaces a noun",
+        "language": "A word that takes the place of a noun.",
+        "script": "pronouns = ['I', 'you', 'he', 'she', 'it', 'we', 'they']",
+        "tags": [
+            "pronoun",
+            "grammar",
+            "substitute",
+            "reference"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "96cd73f214bc3c291b230d30493098956f5b4de250425e205cceefa45ab19216"
+    },
+    "a4b5c7c920715161cf51b96620bcffa87f0d696cd7c2e503747ba4f6c20212c5": {
+        "ubp_id": "LANG_ARTICLE_001",
+        "name": "Article",
+        "math": "Defines noun specificity (a, an, the)",
+        "language": "A word that defines whether a noun is specific or general.",
+        "script": "articles = {'definite': 'the', 'indefinite': ['a', 'an']}",
+        "tags": [
+            "article",
+            "grammar",
+            "determiner",
+            "specificity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a4b5c7c920715161cf51b96620bcffa87f0d696cd7c2e503747ba4f6c20212c5"
+    },
+    "706354ebf8dd8757c3276bce80711370649ff5a6300a00811e9a4c53009975be": {
+        "ubp_id": "LANG_AND_001",
+        "name": "Logical AND",
+        "math": "P AND Q: both must be true",
+        "language": "A logical connective true only when both operands are true.",
+        "script": "result = P and Q",
+        "tags": [
+            "and",
+            "conjunction",
+            "logic",
+            "connective"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "706354ebf8dd8757c3276bce80711370649ff5a6300a00811e9a4c53009975be"
+    },
+    "e1f6f62830a401e22458e8b34e9e757cfeaa0764ff41de13cf2728bc1b636019": {
+        "ubp_id": "LANG_OR_001",
+        "name": "Logical OR",
+        "math": "P OR Q: at least one true",
+        "language": "A logical connective true when at least one operand is true.",
+        "script": "result = P or Q",
+        "tags": [
+            "or",
+            "disjunction",
+            "logic",
+            "connective"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e1f6f62830a401e22458e8b34e9e757cfeaa0764ff41de13cf2728bc1b636019"
+    },
+    "f0f0f8ca6b7ea4a7cf140bb873075e5728b2589d93ada8a126b3495695fe6f88": {
+        "ubp_id": "LANG_NOT_001",
+        "name": "Logical NOT",
+        "math": "NOT P: negation",
+        "language": "A logical connective that inverts the truth value.",
+        "script": "result = not P",
+        "tags": [
+            "not",
+            "negation",
+            "logic",
+            "connective"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f0f0f8ca6b7ea4a7cf140bb873075e5728b2589d93ada8a126b3495695fe6f88"
+    },
+    "23e48cafee768b58a4ba52942f01f80350a73fac52698fb9d8557a1508924e0d": {
+        "ubp_id": "LANG_IFTHEN_001",
+        "name": "Logical Implication",
+        "math": "IF P THEN Q: P implies Q",
+        "language": "A logical connective where P being true guarantees Q is true.",
+        "script": "result = (not P) or Q  # P -> Q",
+        "tags": [
+            "implication",
+            "conditional",
+            "logic",
+            "connective"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "23e48cafee768b58a4ba52942f01f80350a73fac52698fb9d8557a1508924e0d"
+    },
+    "97f7c216982104651d0581763c86a0659f1679a3255d2dbc2fc1858f67d7c778": {
+        "ubp_id": "LANG_IFF_001",
+        "name": "Logical Biconditional",
+        "math": "P IFF Q: both same truth value",
+        "language": "A logical connective true when both operands have the same truth value.",
+        "script": "result = P == Q  # P <-> Q",
+        "tags": [
+            "biconditional",
+            "equivalence",
+            "logic",
+            "connective"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "97f7c216982104651d0581763c86a0659f1679a3255d2dbc2fc1858f67d7c778"
+    },
+    "b22f3bca5ef2ef798c7bde72125eadaaf9afb5900f2576d506a777e7de5ec367": {
+        "ubp_id": "LANG_XOR_001",
+        "name": "Logical XOR",
+        "math": "P XOR Q: exactly one true",
+        "language": "A logical connective true when exactly one operand is true.",
+        "script": "result = P != Q  # Exclusive or",
+        "tags": [
+            "xor",
+            "exclusive",
+            "logic",
+            "connective"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b22f3bca5ef2ef798c7bde72125eadaaf9afb5900f2576d506a777e7de5ec367"
+    },
+    "48f8974ad8cc90b4f8a066d230dd95a5886635f8cf98b9166dbdc8d69908acb5": {
+        "ubp_id": "LANG_SYNONYM_001",
+        "name": "Synonym",
+        "math": "Words with similar meaning",
+        "language": "Words that have the same or nearly the same meaning.",
+        "script": "are_synonyms = meaning(word1) == meaning(word2)",
+        "tags": [
+            "synonym",
+            "semantics",
+            "meaning",
+            "similar"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "48f8974ad8cc90b4f8a066d230dd95a5886635f8cf98b9166dbdc8d69908acb5"
+    },
+    "65931487c931088c5597e5f8de6c552ef07ecf9a60897bba450f34eacc84f4a6": {
+        "ubp_id": "LANG_ANTONYM_001",
+        "name": "Antonym",
+        "math": "Words with opposite meaning",
+        "language": "Words that have opposite meanings.",
+        "script": "are_antonyms = meaning(word1) == opposite(meaning(word2))",
+        "tags": [
+            "antonym",
+            "semantics",
+            "opposite",
+            "meaning"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "65931487c931088c5597e5f8de6c552ef07ecf9a60897bba450f34eacc84f4a6"
+    },
+    "9e4f502fcb2c3f3a30b31f586086547a9646c20578eaa96b39d43e27c1360b41": {
+        "ubp_id": "LANG_HYPERNYM_001",
+        "name": "Hypernym",
+        "math": "More general term (superordinate)",
+        "language": "A word whose meaning includes the meaning of a more specific word.",
+        "script": "is_hypernym = category(word1).contains(word2)",
+        "tags": [
+            "hypernym",
+            "semantics",
+            "general",
+            "category"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9e4f502fcb2c3f3a30b31f586086547a9646c20578eaa96b39d43e27c1360b41"
+    },
+    "2fc00f6dd926c9bca1437dfe2bfa01fa5466eb53c72c3c75db1900f191c1450e": {
+        "ubp_id": "LANG_HYPONYM_001",
+        "name": "Hyponym",
+        "math": "More specific term (subordinate)",
+        "language": "A word whose meaning is included in a more general word.",
+        "script": "is_hyponym = category(word2).contains(word1)",
+        "tags": [
+            "hyponym",
+            "semantics",
+            "specific",
+            "subcategory"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2fc00f6dd926c9bca1437dfe2bfa01fa5466eb53c72c3c75db1900f191c1450e"
+    },
+    "97d17287edec7414ccb04dc8ef1f623f5caf922b671cf6030dd7a4367d2de115": {
+        "ubp_id": "LANG_MERONYM_001",
+        "name": "Meronym",
+        "math": "Part-whole relationship",
+        "language": "A word denoting a part of something denoted by another word.",
+        "script": "is_meronym = word1 in parts_of(word2)",
+        "tags": [
+            "meronym",
+            "semantics",
+            "part",
+            "whole"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "97d17287edec7414ccb04dc8ef1f623f5caf922b671cf6030dd7a4367d2de115"
+    },
+    "0f0698da39280bd840676be2f33f14d730f111ae7a568b074a0503f61c58aa9f": {
+        "ubp_id": "LANG_TRUTH_001",
+        "name": "Truth",
+        "math": "Correspondence with reality",
+        "language": "The quality of being in accordance with fact or reality.",
+        "script": "is_true = statement.corresponds_to(reality)",
+        "tags": [
+            "truth",
+            "concept",
+            "reality",
+            "correspondence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0f0698da39280bd840676be2f33f14d730f111ae7a568b074a0503f61c58aa9f"
+    },
+    "cc7d2d9e2d5a89e90f1534e7f61b75e008cdc08b6a72fa53dd91d247d180715d": {
+        "ubp_id": "LANG_KNOWLEDGE_001",
+        "name": "Knowledge",
+        "math": "Justified true belief",
+        "language": "Awareness or understanding gained through experience or learning.",
+        "script": "has_knowledge = believes(P) and P and justified(P)",
+        "tags": [
+            "knowledge",
+            "concept",
+            "belief",
+            "justified"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cc7d2d9e2d5a89e90f1534e7f61b75e008cdc08b6a72fa53dd91d247d180715d"
+    },
+    "afce15073db00bcaf15eeb7d75d99021c89217e00387611e3897796f76dc4e64": {
+        "ubp_id": "LANG_BELIEF_001",
+        "name": "Belief",
+        "math": "Acceptance of proposition as true",
+        "language": "Mental acceptance of a proposition as being true.",
+        "script": "believes = mental_state.accepts(proposition)",
+        "tags": [
+            "belief",
+            "concept",
+            "mental",
+            "acceptance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "afce15073db00bcaf15eeb7d75d99021c89217e00387611e3897796f76dc4e64"
+    },
+    "0f440b426d7db69ea3696c23d694480501859e2ffdf856e90d735fdabf08f2e4": {
+        "ubp_id": "LANG_POSSIBLE_001",
+        "name": "Possibility",
+        "math": "Could be true in some world",
+        "language": "The state of being able to happen or exist.",
+        "script": "is_possible = exists(world where P)",
+        "tags": [
+            "possibility",
+            "modal",
+            "concept",
+            "potential"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0f440b426d7db69ea3696c23d694480501859e2ffdf856e90d735fdabf08f2e4"
+    },
+    "7c5ff2baa221e85f76d9469ce7d76504991e5d2d72ef7fce245f2f0fbc0a06ee": {
+        "ubp_id": "LANG_NECESSARY_001",
+        "name": "Necessity",
+        "math": "Must be true in all worlds",
+        "language": "The state of being required or inevitable.",
+        "script": "is_necessary = forall(world, P)",
+        "tags": [
+            "necessity",
+            "modal",
+            "concept",
+            "required"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7c5ff2baa221e85f76d9469ce7d76504991e5d2d72ef7fce245f2f0fbc0a06ee"
+    },
+    "59fd77707ce3174c785ac81cad41abca9ca8524e8adc59a93be230f6ab897a7b": {
+        "ubp_id": "LANG_ASSERT_001",
+        "name": "Assert",
+        "math": "State as fact",
+        "language": "To state or declare positively and forcefully.",
+        "script": "assert_statement = {'type': 'assertion', 'content': P, 'commitment': True}",
+        "tags": [
+            "assert",
+            "speech_act",
+            "declare",
+            "state"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "59fd77707ce3174c785ac81cad41abca9ca8524e8adc59a93be230f6ab897a7b"
+    },
+    "41230e361c92bd9082eded01b4d61f2b9e817e073fb0041ec1725ba411209a46": {
+        "ubp_id": "LANG_DENY_001",
+        "name": "Deny",
+        "math": "State as false",
+        "language": "To declare untrue or refuse to acknowledge.",
+        "script": "deny_statement = {'type': 'denial', 'content': P, 'negation': True}",
+        "tags": [
+            "deny",
+            "speech_act",
+            "negate",
+            "refuse"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "41230e361c92bd9082eded01b4d61f2b9e817e073fb0041ec1725ba411209a46"
+    },
+    "bc0ba0ddf4e5b9a5609f872bc63ce3731c281379b6eb2cbc56f3784d74e651e9": {
+        "ubp_id": "LANG_QUESTION_001",
+        "name": "Question",
+        "math": "Request information",
+        "language": "To ask for information or express doubt.",
+        "script": "question = {'type': 'interrogative', 'seeks': 'information'}",
+        "tags": [
+            "question",
+            "speech_act",
+            "inquiry",
+            "ask"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bc0ba0ddf4e5b9a5609f872bc63ce3731c281379b6eb2cbc56f3784d74e651e9"
+    },
+    "5b16eca8acb57de1faf461b20eadcd2d22dca9f5089316421e81e9fd834529b7": {
+        "ubp_id": "LANG_COMMAND_001",
+        "name": "Command",
+        "math": "Direct action",
+        "language": "To give an authoritative order or instruction.",
+        "script": "command = {'type': 'imperative', 'requires': 'action'}",
+        "tags": [
+            "command",
+            "speech_act",
+            "order",
+            "directive"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5b16eca8acb57de1faf461b20eadcd2d22dca9f5089316421e81e9fd834529b7"
+    },
+    "9462fcc1576d6ee4b0e2581caa5eaa3f5127a05389dbb88c1a4d72c7af02ad37": {
+        "ubp_id": "LANG_PROMISE_001",
+        "name": "Promise",
+        "math": "Commit to future action",
+        "language": "To declare that one will do or refrain from doing something.",
+        "script": "promise = {'type': 'commissive', 'commitment': 'future_action'}",
+        "tags": [
+            "promise",
+            "speech_act",
+            "commit",
+            "future"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9462fcc1576d6ee4b0e2581caa5eaa3f5127a05389dbb88c1a4d72c7af02ad37"
+    },
+    "4fd0c2444df0415835d770b93d5df0184e751f6e8d75fd12849b8f585f0e643b": {
+        "ubp_id": "LANG_SUBJECT_001",
+        "name": "Subject",
+        "math": "Who/what performs action",
+        "language": "The noun or pronoun that performs the action of the verb.",
+        "script": "subject = sentence.find_agent()",
+        "tags": [
+            "subject",
+            "syntax",
+            "agent",
+            "sentence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4fd0c2444df0415835d770b93d5df0184e751f6e8d75fd12849b8f585f0e643b"
+    },
+    "0a18d6616bb01adb8bcd864715c21e1eff1d7765e786fd50d58a3c81d9d06948": {
+        "ubp_id": "LANG_PREDICATE_001",
+        "name": "Predicate",
+        "math": "What is said about subject",
+        "language": "The part of a sentence that tells what the subject does or is.",
+        "script": "predicate = sentence.find_action_or_state()",
+        "tags": [
+            "predicate",
+            "syntax",
+            "verb_phrase",
+            "sentence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0a18d6616bb01adb8bcd864715c21e1eff1d7765e786fd50d58a3c81d9d06948"
+    },
+    "7fa6075c4ee695fac7bc9be75d213da21533f03c7d676124a04edd156549037d": {
+        "ubp_id": "LANG_OBJECT_001",
+        "name": "Object",
+        "math": "Receives action",
+        "language": "The noun or pronoun that receives the action of the verb.",
+        "script": "object = sentence.find_patient()",
+        "tags": [
+            "object",
+            "syntax",
+            "patient",
+            "sentence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7fa6075c4ee695fac7bc9be75d213da21533f03c7d676124a04edd156549037d"
+    },
+    "2006e918bd27df7bc877d9a9ce4d5c742233319ba13a8bd0f4cf5ad1c46413d5": {
+        "ubp_id": "LANG_CLAUSE_001",
+        "name": "Clause",
+        "math": "Group with subject and predicate",
+        "language": "A group of words containing a subject and predicate.",
+        "script": "is_clause = has_subject and has_predicate",
+        "tags": [
+            "clause",
+            "syntax",
+            "sentence",
+            "structure"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2006e918bd27df7bc877d9a9ce4d5c742233319ba13a8bd0f4cf5ad1c46413d5"
+    },
+    "06656008d2d6a4fbcc68cae44802e1b23d7d912d930f35aae947db293d7cf8d5": {
+        "ubp_id": "LANG_PHRASE_001",
+        "name": "Phrase",
+        "math": "Group without subject-predicate",
+        "language": "A group of words that functions as a single unit without subject-predicate.",
+        "script": "is_phrase = word_group and not is_clause",
+        "tags": [
+            "phrase",
+            "syntax",
+            "group",
+            "structure"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "06656008d2d6a4fbcc68cae44802e1b23d7d912d930f35aae947db293d7cf8d5"
+    },
+    "6ffd1d9124edbe72eb488777c082f45c70780890e3f26982e3486cf5d7e6c8f6": {
+        "ubp_id": "MATH_COMPOSITE_001",
+        "name": "Composite Number",
+        "math": "n > 1 with divisors other than 1 and n",
+        "language": "A natural number greater than 1 that has divisors other than 1 and itself.",
+        "script": "is_composite = n > 1 and not is_prime(n)",
+        "tags": [
+            "composite",
+            "number",
+            "divisibility",
+            "factorization"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6ffd1d9124edbe72eb488777c082f45c70780890e3f26982e3486cf5d7e6c8f6"
+    },
+    "25ad3e193cccc07588f25a819d725faca698fc6006811c754f400e45f912404d": {
+        "ubp_id": "MATH_FERMAT_001",
+        "name": "Fermat's Little Theorem",
+        "math": "a^(p-1) ≡ 1 (mod p) for prime p",
+        "language": "For prime p and a not divisible by p, a^(p-1) ≡ 1 (mod p).",
+        "script": "pow(a, p-1, p) == 1  # For prime p, gcd(a,p)=1",
+        "tags": [
+            "fermat",
+            "prime",
+            "modular",
+            "theorem"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "25ad3e193cccc07588f25a819d725faca698fc6006811c754f400e45f912404d"
+    },
+    "dd2b5400e6c1282cd38d3611a1082e4bea1720aeef65e366b554b4f3db646527": {
+        "ubp_id": "MATH_FACTOR_001",
+        "name": "Fundamental Theorem of Algebra",
+        "math": "Every polynomial has n complex roots",
+        "language": "Every non-constant polynomial has at least one complex root.",
+        "script": "num_roots = degree  # Counting multiplicity",
+        "tags": [
+            "algebra",
+            "polynomial",
+            "roots",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dd2b5400e6c1282cd38d3611a1082e4bea1720aeef65e366b554b4f3db646527"
+    },
+    "e8ca3f66f18e5230ad8fbe4749b4b9c2fd380256e873c86a9c76e464f2e212fb": {
+        "ubp_id": "MATH_DETERM_001",
+        "name": "Determinant",
+        "math": "det(A) = sum(sign(p)*prod(A_i,p(i)))",
+        "language": "A scalar encoding the scaling factor of a linear transformation.",
+        "script": "det = sum(sign(p) * prod(A[i][p[i]] for i in range(n)) for p in perms)",
+        "tags": [
+            "determinant",
+            "matrix",
+            "scaling",
+            "linear"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e8ca3f66f18e5230ad8fbe4749b4b9c2fd380256e873c86a9c76e464f2e212fb"
+    },
+    "4be26b087b0785c73bc8a9277d7d33900c726abf50ec6a7db81501c6233e0f49": {
+        "ubp_id": "MATH_EIGEN_001",
+        "name": "Eigenvalue Equation",
+        "math": "A*v = lambda*v",
+        "language": "A scalar by which an eigenvector is scaled under a linear transformation.",
+        "script": "eigenvalues = [l for l, v in eigen_decompose(matrix)]",
+        "tags": [
+            "eigenvalue",
+            "eigenvector",
+            "linear",
+            "transformation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4be26b087b0785c73bc8a9277d7d33900c726abf50ec6a7db81501c6233e0f49"
+    },
+    "56c41b0be10507a65afc87ef7105948e3d5679c34c917458ecd294ab8657f1ab": {
+        "ubp_id": "MATH_LIMIT_001",
+        "name": "Limit Definition",
+        "math": "lim(x->a) f(x) = L",
+        "language": "The value a function approaches as the input approaches some value.",
+        "script": "limit = f(a + epsilon)  # As epsilon -> 0",
+        "tags": [
+            "limit",
+            "calculus",
+            "continuity",
+            "analysis"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "56c41b0be10507a65afc87ef7105948e3d5679c34c917458ecd294ab8657f1ab"
+    },
+    "8119c0778b19c04ad89e3fce9d9319eb2de8df64cdf4e931b24de3ea0f476478": {
+        "ubp_id": "MATH_DERIV_001",
+        "name": "Derivative Definition",
+        "math": "f'(x) = lim(h->0) (f(x+h)-f(x))/h",
+        "language": "The instantaneous rate of change of a function at a point.",
+        "script": "derivative = (f(x+h) - f(x)) / h  # h very small",
+        "tags": [
+            "derivative",
+            "calculus",
+            "rate",
+            "change"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8119c0778b19c04ad89e3fce9d9319eb2de8df64cdf4e931b24de3ea0f476478"
+    },
+    "6412eee3aea21249dbf719274318903ccbae115a988de6d056f77bb4b6188314": {
+        "ubp_id": "MATH_INTEG_001",
+        "name": "Integral Definition",
+        "math": "integral(f) = lim sum(f(x_i)*dx)",
+        "language": "The accumulation of quantities; the area under a curve.",
+        "script": "integral = sum(f(x) * dx for x in range(a, b, dx))",
+        "tags": [
+            "integral",
+            "calculus",
+            "area",
+            "accumulation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6412eee3aea21249dbf719274318903ccbae115a988de6d056f77bb4b6188314"
+    },
+    "11abf844df0b6232043a6d9fa125bd3df44be57e508cdd88aa0c6d5a9eb13405": {
+        "ubp_id": "MATH_FTC_001",
+        "name": "Fundamental Theorem of Calculus",
+        "math": "d/dx integral(f) = f(x)",
+        "language": "Differentiation and integration are inverse operations.",
+        "script": "# d/dx integral(a,x,f(t)dt) = f(x)",
+        "tags": [
+            "fundamental",
+            "calculus",
+            "derivative",
+            "integral"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "11abf844df0b6232043a6d9fa125bd3df44be57e508cdd88aa0c6d5a9eb13405"
+    },
+    "e95c319574f99fd814950dc9847928b627d31271d10f48d0f1953a6d6ceab7f0": {
+        "ubp_id": "MATH_PYTHAG_001",
+        "name": "Pythagorean Theorem",
+        "math": "a^2 + b^2 = c^2",
+        "language": "In a right triangle, the square of the hypotenuse equals sum of squares of legs.",
+        "script": "c = (a**2 + b**2)**0.5",
+        "tags": [
+            "pythagorean",
+            "triangle",
+            "geometry",
+            "theorem"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e95c319574f99fd814950dc9847928b627d31271d10f48d0f1953a6d6ceab7f0"
+    },
+    "714537655284c7d3f666d3edb4a9db8a66e9a023857e88ea736b5a8fe64cd929": {
+        "ubp_id": "MATH_CIRCLE_001",
+        "name": "Circle Area",
+        "math": "A = pi * r^2",
+        "language": "The area enclosed by a circle with radius r.",
+        "script": "area = math.pi * r**2",
+        "tags": [
+            "circle",
+            "area",
+            "geometry",
+            "formula"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "714537655284c7d3f666d3edb4a9db8a66e9a023857e88ea736b5a8fe64cd929"
+    },
+    "621fe9aab19581dd9a1edc82e51ebe5dd74b979bcb4cc01693d203997e53937d": {
+        "ubp_id": "MATH_SPHERE_001",
+        "name": "Sphere Volume",
+        "math": "V = (4/3) * pi * r^3",
+        "language": "The volume enclosed by a sphere with radius r.",
+        "script": "volume = (4/3) * math.pi * r**3",
+        "tags": [
+            "sphere",
+            "volume",
+            "geometry",
+            "formula"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "621fe9aab19581dd9a1edc82e51ebe5dd74b979bcb4cc01693d203997e53937d"
+    },
+    "ec919532428443ed2545898c5e6bcdcf6c409a5c1f974006380cf384d074806d": {
+        "ubp_id": "MATH_SINCOS_001",
+        "name": "Pythagorean Identity",
+        "math": "sin^2(x) + cos^2(x) = 1",
+        "language": "The fundamental trigonometric identity relating sine and cosine.",
+        "script": "identity = math.sin(x)**2 + math.cos(x)**2  # Always 1",
+        "tags": [
+            "trigonometry",
+            "identity",
+            "sine",
+            "cosine"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ec919532428443ed2545898c5e6bcdcf6c409a5c1f974006380cf384d074806d"
+    },
+    "0ce01cae809a925b915e833903d6f5b40b93344d67f803f7d6447be3308fa45e": {
+        "ubp_id": "MATH_BAYES_001",
+        "name": "Bayes' Theorem",
+        "math": "P(A|B) = P(B|A)*P(A) / P(B)",
+        "language": "Relates conditional probabilities; foundation of Bayesian inference.",
+        "script": "P_A_given_B = P_B_given_A * P_A / P_B",
+        "tags": [
+            "bayes",
+            "probability",
+            "conditional",
+            "inference"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0ce01cae809a925b915e833903d6f5b40b93344d67f803f7d6447be3308fa45e"
+    },
+    "3ef8da9a96e3ac5057c3baba461c0be0bb8b49db83e646ecab28bc92baed652e": {
+        "ubp_id": "MATH_EXPECT_001",
+        "name": "Expected Value",
+        "math": "E[X] = sum(x * P(x))",
+        "language": "The weighted average of all possible values of a random variable.",
+        "script": "expected = sum(x * p for x, p in zip(values, probabilities))",
+        "tags": [
+            "expected",
+            "value",
+            "probability",
+            "average"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3ef8da9a96e3ac5057c3baba461c0be0bb8b49db83e646ecab28bc92baed652e"
+    },
+    "6af445993e4856d4b9410a2a116c07e8d3e849e0139da048fb6ac8b96b906deb": {
+        "ubp_id": "MATH_VARIANCE_001",
+        "name": "Variance",
+        "math": "Var(X) = E[(X - mu)^2]",
+        "language": "A measure of the spread of a probability distribution.",
+        "script": "variance = sum((x - mean)**2 * p for x, p in zip(values, probs))",
+        "tags": [
+            "variance",
+            "spread",
+            "probability",
+            "statistics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6af445993e4856d4b9410a2a116c07e8d3e849e0139da048fb6ac8b96b906deb"
+    },
+    "5a12fd415b77cd686baff54ac458811de5af16c0bc8d14627e99363b146963dc": {
+        "ubp_id": "CODE_LIST_001",
+        "name": "Python List",
+        "math": "list = [e1, e2, ..., en]",
+        "language": "An ordered, mutable sequence of elements accessed by index.",
+        "script": "my_list = [1, 2, 3]; my_list.append(4); my_list[0]",
+        "tags": [
+            "list",
+            "python",
+            "sequence",
+            "mutable"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "5a12fd415b77cd686baff54ac458811de5af16c0bc8d14627e99363b146963dc"
+    },
+    "b138a1e7062f3cec1bea9e9c1611b6f86ca019b9d8002f4c3cc80cc0e65729f9": {
+        "ubp_id": "CODE_DICT_001",
+        "name": "Python Dictionary",
+        "math": "dict = {k1: v1, k2: v2, ...}",
+        "language": "A mutable mapping of unique keys to values with O(1) lookup.",
+        "script": "my_dict = {'a': 1, 'b': 2}; my_dict['c'] = 3; my_dict.get('a')",
+        "tags": [
+            "dict",
+            "python",
+            "mapping",
+            "hashmap"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b138a1e7062f3cec1bea9e9c1611b6f86ca019b9d8002f4c3cc80cc0e65729f9"
+    },
+    "cc8b72ef9e547e3e7ff64ddb6c74ca3d63eea576f5313d39a1f741c350d3d2de": {
+        "ubp_id": "CODE_SET_001",
+        "name": "Python Set",
+        "math": "set = {e1, e2, ...} (unique elements)",
+        "language": "An unordered collection of unique elements with O(1) membership test.",
+        "script": "my_set = {1, 2, 3}; my_set.add(4); 2 in my_set",
+        "tags": [
+            "set",
+            "python",
+            "unique",
+            "collection"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cc8b72ef9e547e3e7ff64ddb6c74ca3d63eea576f5313d39a1f741c350d3d2de"
+    },
+    "dcb48d2a2f17b5c687e45815ffc72cf5c8b4981ef3141d8f23d249eab85dc25d": {
+        "ubp_id": "CODE_TUPLE_001",
+        "name": "Python Tuple",
+        "math": "tuple = (e1, e2, ...) (immutable)",
+        "language": "An ordered, immutable sequence of elements.",
+        "script": "my_tuple = (1, 2, 3); x, y, z = my_tuple",
+        "tags": [
+            "tuple",
+            "python",
+            "immutable",
+            "sequence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dcb48d2a2f17b5c687e45815ffc72cf5c8b4981ef3141d8f23d249eab85dc25d"
+    },
+    "836cb6eb6b3e399d59708b5103a528c7727ace55487742db13d5320ff63ad57f": {
+        "ubp_id": "CODE_DEQUE_001",
+        "name": "Python Deque",
+        "math": "deque - double-ended queue",
+        "language": "A double-ended queue with O(1) append and pop from both ends.",
+        "script": "from collections import deque; d = deque([1,2,3]); d.appendleft(0)",
+        "tags": [
+            "deque",
+            "python",
+            "queue",
+            "collections"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "836cb6eb6b3e399d59708b5103a528c7727ace55487742db13d5320ff63ad57f"
+    },
+    "3add70188fc3d26a57a1e7389987f690a56bbfd67100a1a33015e5b0cac0c186": {
+        "ubp_id": "CODE_HEAP_001",
+        "name": "Python Heapq",
+        "math": "heapq - min-heap operations",
+        "language": "A binary heap implementation for priority queue operations.",
+        "script": "import heapq; heapq.heappush(h, x); heapq.heappop(h)",
+        "tags": [
+            "heap",
+            "python",
+            "priority",
+            "queue"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "3add70188fc3d26a57a1e7389987f690a56bbfd67100a1a33015e5b0cac0c186"
+    },
+    "823dc6f393c1c0754553be07061b3dc1fd9e92d084391d8bf81972ef1fa92f32": {
+        "ubp_id": "CODE_COUNTER_001",
+        "name": "Python Counter",
+        "math": "Counter - element frequency",
+        "language": "A dictionary subclass for counting hashable objects.",
+        "script": "from collections import Counter; c = Counter('abracadabra')",
+        "tags": [
+            "counter",
+            "python",
+            "frequency",
+            "collections"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "823dc6f393c1c0754553be07061b3dc1fd9e92d084391d8bf81972ef1fa92f32"
+    },
+    "d6e2eafad9da4b20ce17521f75affc4f00eb5e70cbd93b1d95d90c93d90d1464": {
+        "ubp_id": "CODE_DEFAULTDICT_001",
+        "name": "Python DefaultDict",
+        "math": "defaultdict - auto-initialize",
+        "language": "A dictionary that provides default values for missing keys.",
+        "script": "from collections import defaultdict; d = defaultdict(list)",
+        "tags": [
+            "defaultdict",
+            "python",
+            "dictionary",
+            "collections"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d6e2eafad9da4b20ce17521f75affc4f00eb5e70cbd93b1d95d90c93d90d1464"
+    },
+    "d03c7805d6e9436f4e7d3f5d4d6fce427427e597830c7ced4ec0a42bb806de4f": {
+        "ubp_id": "CODE_ZIP_001",
+        "name": "Python Zip",
+        "math": "zip(iter1, iter2, ...) -> tuples",
+        "language": "Combine multiple iterables element-wise into tuples.",
+        "script": "pairs = list(zip([1,2,3], ['a','b','c']))",
+        "tags": [
+            "zip",
+            "python",
+            "combine",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d03c7805d6e9436f4e7d3f5d4d6fce427427e597830c7ced4ec0a42bb806de4f"
+    },
+    "d62c8ac291603fcfc140da49ebab8ecc6d6beb8b5a5a9b5453ce64fc74b81275": {
+        "ubp_id": "CODE_ENUMERATE_001",
+        "name": "Python Enumerate",
+        "math": "enumerate(iter) -> (index, value)",
+        "language": "Return index-value pairs from an iterable.",
+        "script": "for i, v in enumerate(['a','b','c']): print(i, v)",
+        "tags": [
+            "enumerate",
+            "python",
+            "index",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d62c8ac291603fcfc140da49ebab8ecc6d6beb8b5a5a9b5453ce64fc74b81275"
+    },
+    "0ed8d66bfb6af9723a294532354866c260970a05d791ceb3b3e3262a18059ac6": {
+        "ubp_id": "CODE_SORTED_001",
+        "name": "Python Sorted",
+        "math": "sorted(iter, key=, reverse=)",
+        "language": "Return a new sorted list from an iterable.",
+        "script": "sorted_list = sorted([3,1,2], key=lambda x: -x)",
+        "tags": [
+            "sorted",
+            "python",
+            "sort",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0ed8d66bfb6af9723a294532354866c260970a05d791ceb3b3e3262a18059ac6"
+    },
+    "d9d236537fb3a7184a5c63a709f7981819fdca155fac6076498aba555f7c3570": {
+        "ubp_id": "CODE_ANY_001",
+        "name": "Python Any",
+        "math": "any(iter) -> True if any element true",
+        "language": "Return True if any element of the iterable is true.",
+        "script": "has_positive = any(x > 0 for x in [-1, 0, 1])",
+        "tags": [
+            "any",
+            "python",
+            "boolean",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d9d236537fb3a7184a5c63a709f7981819fdca155fac6076498aba555f7c3570"
+    },
+    "df8ee50024c582aeb9ef75d132229d661e185adf8dcc3d770000f8ce6556cacf": {
+        "ubp_id": "CODE_ALL_001",
+        "name": "Python All",
+        "math": "all(iter) -> True if all elements true",
+        "language": "Return True if all elements of the iterable are true.",
+        "script": "all_positive = all(x > 0 for x in [1, 2, 3])",
+        "tags": [
+            "all",
+            "python",
+            "boolean",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "df8ee50024c582aeb9ef75d132229d661e185adf8dcc3d770000f8ce6556cacf"
+    },
+    "60c21aca978424dd33c9c9cf2ad7a79ad0298b7ed91a42e89392ab964f7d6af0": {
+        "ubp_id": "CODE_LISTCOMP_001",
+        "name": "List Comprehension",
+        "math": "[expr for x in iter if cond]",
+        "language": "Concise way to create lists from iterables with optional filtering.",
+        "script": "squares = [x**2 for x in range(10) if x % 2 == 0]",
+        "tags": [
+            "comprehension",
+            "python",
+            "list",
+            "concise"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "60c21aca978424dd33c9c9cf2ad7a79ad0298b7ed91a42e89392ab964f7d6af0"
+    },
+    "6244f6caf490883ed2b044fd966acd9999b6a768c880993a806df0191a242987": {
+        "ubp_id": "CODE_DICTCOMP_001",
+        "name": "Dict Comprehension",
+        "math": "{k: v for x in iter}",
+        "language": "Concise way to create dictionaries from iterables.",
+        "script": "square_dict = {x: x**2 for x in range(5)}",
+        "tags": [
+            "comprehension",
+            "python",
+            "dict",
+            "concise"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6244f6caf490883ed2b044fd966acd9999b6a768c880993a806df0191a242987"
+    },
+    "db962802bb4caf9299fc771c2af1a15af88beb6bbd754cc9c3689854ccd7e199": {
+        "ubp_id": "CODE_SETCOMP_001",
+        "name": "Set Comprehension",
+        "math": "{expr for x in iter}",
+        "language": "Concise way to create sets from iterables.",
+        "script": "unique_squares = {x**2 for x in [-2, -1, 1, 2]}",
+        "tags": [
+            "comprehension",
+            "python",
+            "set",
+            "concise"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "db962802bb4caf9299fc771c2af1a15af88beb6bbd754cc9c3689854ccd7e199"
+    },
+    "4493beefa6131d9b9dbb3111b2b0d12f42ebc5f0d4d9e0f60100480d7eb8d2a3": {
+        "ubp_id": "CODE_GENEXP_001",
+        "name": "Generator Expression",
+        "math": "(expr for x in iter)",
+        "language": "Memory-efficient lazy evaluation of expressions.",
+        "script": "gen = (x**2 for x in range(1000000))  # Lazy",
+        "tags": [
+            "generator",
+            "python",
+            "lazy",
+            "memory"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4493beefa6131d9b9dbb3111b2b0d12f42ebc5f0d4d9e0f60100480d7eb8d2a3"
+    },
+    "a94a9e3941f4b3bef33f647fc32e99de5f7a33ca758185ef5e5d0a1f2b065492": {
+        "ubp_id": "CODE_PROPERTY_001",
+        "name": "Python Property",
+        "math": "@property decorator",
+        "language": "A way to define getters and setters for class attributes.",
+        "script": "@property\ndef value(self): return self._value",
+        "tags": [
+            "property",
+            "python",
+            "oop",
+            "getter"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a94a9e3941f4b3bef33f647fc32e99de5f7a33ca758185ef5e5d0a1f2b065492"
+    },
+    "6ab973d651a5a4275c9a6739e3fc36f7ed52a7f77e16948775b1d8cd5cca3e2c": {
+        "ubp_id": "CODE_CLASSMETHOD_001",
+        "name": "Python Classmethod",
+        "math": "@classmethod decorator",
+        "language": "A method that receives the class as first argument instead of instance.",
+        "script": "@classmethod\ndef from_string(cls, s): return cls(int(s))",
+        "tags": [
+            "classmethod",
+            "python",
+            "oop",
+            "factory"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6ab973d651a5a4275c9a6739e3fc36f7ed52a7f77e16948775b1d8cd5cca3e2c"
+    },
+    "a83ca4f9c7ee3444ffd5d0859c3f3bc926b79154c59124be89f5b5529d6c9bd7": {
+        "ubp_id": "CODE_STATICMETHOD_001",
+        "name": "Python Staticmethod",
+        "math": "@staticmethod decorator",
+        "language": "A method that doesn't receive implicit first argument.",
+        "script": "@staticmethod\ndef validate(x): return x > 0",
+        "tags": [
+            "staticmethod",
+            "python",
+            "oop",
+            "utility"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a83ca4f9c7ee3444ffd5d0859c3f3bc926b79154c59124be89f5b5529d6c9bd7"
+    },
+    "ef732a735c2d82464a0c67bc7b34b6a99d897e3f05d0174ea56b4f3cea06bf93": {
+        "ubp_id": "CODE_BINSEARCH_001",
+        "name": "Binary Search",
+        "math": "O(log n) search in sorted array",
+        "language": "Efficiently find element in sorted array by halving search space.",
+        "script": "def bsearch(arr,x): l,r=0,len(arr)-1; while l<=r: m=(l+r)//2; if arr[m]==x: return m; elif arr[m]<x: l=m+1; else: r=m-1; return -1",
+        "tags": [
+            "binary",
+            "search",
+            "algorithm",
+            "logarithmic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ef732a735c2d82464a0c67bc7b34b6a99d897e3f05d0174ea56b4f3cea06bf93"
+    },
+    "acc1c0bd865b3798c1ddfb8556c0641dff0905b7bf7eabe458e44c6c74586d75": {
+        "ubp_id": "CODE_QUICKSORT_001",
+        "name": "Quicksort",
+        "math": "O(n log n) average sorting",
+        "language": "Divide-and-conquer sorting using pivot partitioning.",
+        "script": "def qsort(a): return [] if not a else qsort([x for x in a[1:] if x<=a[0]])+[a[0]]+qsort([x for x in a[1:] if x>a[0]])",
+        "tags": [
+            "quicksort",
+            "sort",
+            "algorithm",
+            "divide"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "acc1c0bd865b3798c1ddfb8556c0641dff0905b7bf7eabe458e44c6c74586d75"
+    },
+    "717775d53a99ef0658bf25097e20850e81242c298bd26ba2da07e5bb7bdacab3": {
+        "ubp_id": "CODE_MERGESORT_001",
+        "name": "Mergesort",
+        "math": "O(n log n) stable sorting",
+        "language": "Divide-and-conquer sorting by merging sorted halves.",
+        "script": "def msort(a): return a if len(a)<=1 else merge(msort(a[:len(a)//2]),msort(a[len(a)//2:]))",
+        "tags": [
+            "mergesort",
+            "sort",
+            "algorithm",
+            "stable"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "717775d53a99ef0658bf25097e20850e81242c298bd26ba2da07e5bb7bdacab3"
+    },
+    "2036246a9dfbbf84e2ea759973a8713c0ed3ad0969fd54252ddaabe093c3c0f7": {
+        "ubp_id": "CODE_BFS_001",
+        "name": "Breadth-First Search",
+        "math": "Level-order graph traversal",
+        "language": "Explore graph level by level using a queue.",
+        "script": "def bfs(g,s): q=[s]; seen={s}; while q: n=q.pop(0); for nb in g[n]: if nb not in seen: seen.add(nb); q.append(nb)",
+        "tags": [
+            "bfs",
+            "graph",
+            "traversal",
+            "algorithm"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2036246a9dfbbf84e2ea759973a8713c0ed3ad0969fd54252ddaabe093c3c0f7"
+    },
+    "e1ad1b12ac8fb25965df890eb865146ab5dad2bc3e974da81e4d3f2fcc0e74b4": {
+        "ubp_id": "CODE_DFS_001",
+        "name": "Depth-First Search",
+        "math": "Deep graph traversal",
+        "language": "Explore graph by going as deep as possible before backtracking.",
+        "script": "def dfs(g,n,seen=set()): seen.add(n); for nb in g[n]: if nb not in seen: dfs(g,nb,seen)",
+        "tags": [
+            "dfs",
+            "graph",
+            "traversal",
+            "algorithm"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e1ad1b12ac8fb25965df890eb865146ab5dad2bc3e974da81e4d3f2fcc0e74b4"
+    },
+    "6cd458c81ba9dfd378ba3f15e254c9e48b72a2905740d36f725c9a4a87d73b6d": {
+        "ubp_id": "CODE_DIJKSTRA_001",
+        "name": "Dijkstra's Algorithm",
+        "math": "Shortest path in weighted graph",
+        "language": "Find shortest paths from source to all vertices in weighted graph.",
+        "script": "def dijkstra(g,s): dist={s:0}; pq=[(0,s)]; # Use heapq for priority queue",
+        "tags": [
+            "dijkstra",
+            "shortest",
+            "path",
+            "algorithm"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6cd458c81ba9dfd378ba3f15e254c9e48b72a2905740d36f725c9a4a87d73b6d"
+    },
+    "8bee725684d8529536b80936c08d3859dd0bc6f7378874986331b46252f53ea8": {
+        "ubp_id": "CODE_SPLIT_001",
+        "name": "String Split",
+        "math": "str.split(sep) -> list",
+        "language": "Split string into list of substrings by separator.",
+        "script": "words = 'hello world'.split(' ')",
+        "tags": [
+            "split",
+            "string",
+            "python",
+            "parsing"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8bee725684d8529536b80936c08d3859dd0bc6f7378874986331b46252f53ea8"
+    },
+    "cb43a59dd2143e60b8359786ee8f4b52a697c42a64a34a4a91dbe9eea74826d9": {
+        "ubp_id": "CODE_JOIN_001",
+        "name": "String Join",
+        "math": "sep.join(iterable) -> str",
+        "language": "Join iterable elements into string with separator.",
+        "script": "sentence = ' '.join(['hello', 'world'])",
+        "tags": [
+            "join",
+            "string",
+            "python",
+            "concatenate"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cb43a59dd2143e60b8359786ee8f4b52a697c42a64a34a4a91dbe9eea74826d9"
+    },
+    "8195aec2e615c44c3cdb7a7e778610d787c8be2c0c36e31dc2b9586e97c14b99": {
+        "ubp_id": "CODE_FORMAT_001",
+        "name": "String Format",
+        "math": "f'{var}' or str.format()",
+        "language": "Insert values into string template.",
+        "script": "msg = f'Hello {name}, you are {age} years old'",
+        "tags": [
+            "format",
+            "string",
+            "python",
+            "interpolation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8195aec2e615c44c3cdb7a7e778610d787c8be2c0c36e31dc2b9586e97c14b99"
+    },
+    "a67a5c747e2d601e2a50e994c7f25afa1348c70db9b1a3c9ea68c14133cb125a": {
+        "ubp_id": "CODE_REGEX_001",
+        "name": "Regular Expression",
+        "math": "re module pattern matching",
+        "language": "Pattern matching and text manipulation using regex.",
+        "script": "import re; matches = re.findall(r'\\d+', 'a1b2c3')",
+        "tags": [
+            "regex",
+            "pattern",
+            "python",
+            "matching"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a67a5c747e2d601e2a50e994c7f25afa1348c70db9b1a3c9ea68c14133cb125a"
+    },
+    "1f127f3484dd27fa8454ede000e4e427d42b66c3660228ba5cdd9cdc1a32e5cc": {
+        "ubp_id": "CODE_OPEN_001",
+        "name": "File Open",
+        "math": "open(path, mode) -> file object",
+        "language": "Open a file for reading, writing, or appending.",
+        "script": "with open('file.txt', 'r') as f: content = f.read()",
+        "tags": [
+            "open",
+            "file",
+            "python",
+            "io"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1f127f3484dd27fa8454ede000e4e427d42b66c3660228ba5cdd9cdc1a32e5cc"
+    },
+    "b0793141ccd51fb8fa59b61603dbf5b7f942581794542af4030c83683f49cbb7": {
+        "ubp_id": "CODE_READ_001",
+        "name": "File Read",
+        "math": "f.read() or f.readlines()",
+        "language": "Read content from an open file object.",
+        "script": "lines = f.readlines()  # List of lines",
+        "tags": [
+            "read",
+            "file",
+            "python",
+            "io"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b0793141ccd51fb8fa59b61603dbf5b7f942581794542af4030c83683f49cbb7"
+    },
+    "09912a0536b430b8dc52451fc4fc070f4f5275be08cbc38c667602b023f10d3a": {
+        "ubp_id": "CODE_WRITE_001",
+        "name": "File Write",
+        "math": "f.write(str) or f.writelines()",
+        "language": "Write content to an open file object.",
+        "script": "f.write('Hello\\n'); f.writelines(['line1\\n', 'line2\\n'])",
+        "tags": [
+            "write",
+            "file",
+            "python",
+            "io"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "09912a0536b430b8dc52451fc4fc070f4f5275be08cbc38c667602b023f10d3a"
+    },
+    "91e1ba79f88cd6cf3e34c25f5545172e2c00daf4f8ae3e45345a6061f6c44f33": {
+        "ubp_id": "CODE_TRY_001",
+        "name": "Try-Except",
+        "math": "try: ... except: ...",
+        "language": "Handle exceptions gracefully without crashing.",
+        "script": "try: x = 1/0 except ZeroDivisionError: x = 0",
+        "tags": [
+            "try",
+            "except",
+            "python",
+            "error"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "91e1ba79f88cd6cf3e34c25f5545172e2c00daf4f8ae3e45345a6061f6c44f33"
+    },
+    "f860bde77e427a59ed3bbbc26c19fdd9d71a65e65e83f139b3f791e4e18114f5": {
+        "ubp_id": "CODE_RAISE_001",
+        "name": "Raise Exception",
+        "math": "raise ExceptionType(msg)",
+        "language": "Explicitly raise an exception.",
+        "script": "if x < 0: raise ValueError('x must be non-negative')",
+        "tags": [
+            "raise",
+            "exception",
+            "python",
+            "error"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f860bde77e427a59ed3bbbc26c19fdd9d71a65e65e83f139b3f791e4e18114f5"
+    },
+    "a55d61eb8c7f3326680276ef78bf1e72a2239bbca367c0c59d27c700e85b53fb": {
+        "ubp_id": "CODE_ASSERT_001",
+        "name": "Assert Statement",
+        "math": "assert condition, message",
+        "language": "Test a condition and raise AssertionError if false.",
+        "script": "assert len(data) > 0, 'Data cannot be empty'",
+        "tags": [
+            "assert",
+            "debug",
+            "python",
+            "testing"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a55d61eb8c7f3326680276ef78bf1e72a2239bbca367c0c59d27c700e85b53fb"
+    },
+    "e0c370e08df57a94d45bb87eb25e269d3d7f434e596b79d20da32484ceefa652": {
+        "ubp_id": "WORD_ENCAPSULATION_001",
+        "name": "Encapsulation",
+        "math": "Bundle data with methods",
+        "language": "Bundling data and methods that operate on that data within a single unit.",
+        "script": "class Capsule: def __init__(self): self._private = 0",
+        "tags": [
+            "encapsulation",
+            "oop",
+            "data",
+            "hiding"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e0c370e08df57a94d45bb87eb25e269d3d7f434e596b79d20da32484ceefa652"
+    },
+    "997c7c6914a2021d738275915e7babc479f5fac094b16322731f649e2b9e552a": {
+        "ubp_id": "WORD_POLYMORPHISM_001",
+        "name": "Polymorphism",
+        "math": "Same interface, different behavior",
+        "language": "The ability of different types to respond to the same method call.",
+        "script": "def speak(animal): return animal.make_sound()  # Works for any animal",
+        "tags": [
+            "polymorphism",
+            "oop",
+            "interface",
+            "behavior"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "997c7c6914a2021d738275915e7babc479f5fac094b16322731f649e2b9e552a"
+    },
+    "761474fffd7c71063b9d48936560bcd9f12ba9f39e0dcbc35c2ce5d424593b91": {
+        "ubp_id": "WORD_CORRELATION_001",
+        "name": "Correlation",
+        "math": "Measure of linear relationship",
+        "language": "A statistical measure of how two variables move together.",
+        "script": "corr = cov(X, Y) / (std(X) * std(Y))",
+        "tags": [
+            "correlation",
+            "statistics",
+            "relationship",
+            "covariance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "761474fffd7c71063b9d48936560bcd9f12ba9f39e0dcbc35c2ce5d424593b91"
+    },
+    "21ce99ceab20ac54a86665d179befbe7d09a84b2b317f1544bea127341b08b3e": {
+        "ubp_id": "WORD_NORMALIZE_001",
+        "name": "Normalize",
+        "math": "Scale to unit length or range",
+        "language": "Transform data to a standard scale or unit magnitude.",
+        "script": "normalized = v / norm(v)  # Unit vector",
+        "tags": [
+            "normalize",
+            "scale",
+            "unit",
+            "standardize"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "21ce99ceab20ac54a86665d179befbe7d09a84b2b317f1544bea127341b08b3e"
+    },
+    "ecfd06d743d3798b55d50962793baefadc421e94adf3f79f38e0dfc41d267895": {
+        "ubp_id": "WORD_INTERPOLATE_001",
+        "name": "Interpolate",
+        "math": "Estimate values between known points",
+        "language": "Estimate unknown values between known data points.",
+        "script": "y = y0 + (y1-y0) * (x-x0) / (x1-x0)  # Linear",
+        "tags": [
+            "interpolate",
+            "estimate",
+            "approximate",
+            "between"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ecfd06d743d3798b55d50962793baefadc421e94adf3f79f38e0dfc41d267895"
+    },
+    "e6cc3825bf7e1afa2fc702f6009606f13a1acf69634a2f27972469d5c04ccdd1": {
+        "ubp_id": "WORD_EXTRAPOLATE_001",
+        "name": "Extrapolate",
+        "math": "Estimate values beyond known range",
+        "language": "Estimate values outside the range of known data.",
+        "script": "y_ext = model.predict(x_beyond_range)",
+        "tags": [
+            "extrapolate",
+            "estimate",
+            "beyond",
+            "predict"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e6cc3825bf7e1afa2fc702f6009606f13a1acf69634a2f27972469d5c04ccdd1"
+    },
+    "b0c4cd4bd5a31e990a1ac5c9c169b55500a9d776914cbf423cfa38ddfa8c8655": {
+        "ubp_id": "WORD_ITERATE_001",
+        "name": "Iterate",
+        "math": "Repeat process successively",
+        "language": "Apply a process repeatedly to successive results.",
+        "script": "for item in collection: process(item)",
+        "tags": [
+            "iterate",
+            "repeat",
+            "loop",
+            "successive"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b0c4cd4bd5a31e990a1ac5c9c169b55500a9d776914cbf423cfa38ddfa8c8655"
+    },
+    "ecead0689f535deb8e7eca256dd53d6ec6ccb085bc67935acbe283a4de134c6f": {
+        "ubp_id": "WORD_AGGREGATE_001",
+        "name": "Aggregate",
+        "math": "Combine into a whole",
+        "language": "Combine multiple elements into a single summary value.",
+        "script": "total = sum(values); avg = total / len(values)",
+        "tags": [
+            "aggregate",
+            "combine",
+            "sum",
+            "collect"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ecead0689f535deb8e7eca256dd53d6ec6ccb085bc67935acbe283a4de134c6f"
+    },
+    "8f9b5dcc58aea08f849376831ea2a419bbecff90ee02ce949d52a9ca554cd9c1": {
+        "ubp_id": "WORD_PARTITION_001",
+        "name": "Partition",
+        "math": "Divide into non-overlapping parts",
+        "language": "Divide a set into disjoint subsets that cover the whole.",
+        "script": "parts = [s for s in subsets if union(parts) == whole]",
+        "tags": [
+            "partition",
+            "divide",
+            "disjoint",
+            "subset"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8f9b5dcc58aea08f849376831ea2a419bbecff90ee02ce949d52a9ca554cd9c1"
+    },
+    "9542384db866be59abfa404eee6366b7c61fa052eda559336bbfdd09b38ed248": {
+        "ubp_id": "WORD_PERMUTATION_001",
+        "name": "Permutation",
+        "math": "Ordered arrangement of elements",
+        "language": "An arrangement of elements where order matters.",
+        "script": "from itertools import permutations; list(permutations([1,2,3]))",
+        "tags": [
+            "permutation",
+            "arrangement",
+            "order",
+            "combinatorics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9542384db866be59abfa404eee6366b7c61fa052eda559336bbfdd09b38ed248"
+    },
+    "ab08941ca0bf4fcc7106e07c45d2498b2db10c014f7ba6d29bf6990ec2bed760": {
+        "ubp_id": "WORD_COMBINATION_001",
+        "name": "Combination",
+        "math": "Unordered selection of elements",
+        "language": "A selection of elements where order does not matter.",
+        "script": "from itertools import combinations; list(combinations([1,2,3], 2))",
+        "tags": [
+            "combination",
+            "selection",
+            "unordered",
+            "combinatorics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ab08941ca0bf4fcc7106e07c45d2498b2db10c014f7ba6d29bf6990ec2bed760"
+    },
+    "12df4174c0ae5abe2a0b0c0d1c7848e8d91995a3e8572657c14170c7db814480": {
+        "ubp_id": "WORD_CATALYST_001",
+        "name": "Catalyst",
+        "math": "Speeds reaction without being consumed",
+        "language": "A substance that increases reaction rate without being consumed.",
+        "script": "rate_with_catalyst > rate_without_catalyst",
+        "tags": [
+            "catalyst",
+            "reaction",
+            "chemistry",
+            "speed"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "12df4174c0ae5abe2a0b0c0d1c7848e8d91995a3e8572657c14170c7db814480"
+    },
+    "dda2732f3297c04cf198c19a95c8ed2df7a98785c30512d736940cde3ee1bff1": {
+        "ubp_id": "WORD_EQUILIBRIUM_001",
+        "name": "Equilibrium",
+        "math": "Balance of opposing forces/processes",
+        "language": "A state where opposing forces or processes are balanced.",
+        "script": "at_equilibrium = rate_forward == rate_reverse",
+        "tags": [
+            "equilibrium",
+            "balance",
+            "stable",
+            "dynamic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dda2732f3297c04cf198c19a95c8ed2df7a98785c30512d736940cde3ee1bff1"
+    },
+    "24cef3de2805fad6d8960a2ade5699b623441b7862d414f502a146a281299cd8": {
+        "ubp_id": "WORD_CURL_001",
+        "name": "Curl",
+        "math": "Rotation of vector field",
+        "language": "A measure of the rotation or circulation of a vector field.",
+        "script": "curl_F = [dFz_dy - dFy_dz, dFx_dz - dFz_dx, dFy_dx - dFx_dy]",
+        "tags": [
+            "curl",
+            "rotation",
+            "vector",
+            "field"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "24cef3de2805fad6d8960a2ade5699b623441b7862d414f502a146a281299cd8"
+    },
+    "8e30dfe4b2d729d65b90583163f7d816fad50a748b50ed03344c29c0ab862f0a": {
+        "ubp_id": "WORD_LAPLACIAN_001",
+        "name": "Laplacian",
+        "math": "Divergence of gradient",
+        "language": "The sum of second partial derivatives; measures local deviation from average.",
+        "script": "laplacian = d2f_dx2 + d2f_dy2 + d2f_dz2",
+        "tags": [
+            "laplacian",
+            "divergence",
+            "gradient",
+            "operator"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8e30dfe4b2d729d65b90583163f7d816fad50a748b50ed03344c29c0ab862f0a"
+    },
+    "449eb899fbf43c00c3448d068e17d33e65721e44e2f54bd1402221ed5651b0c3": {
+        "ubp_id": "WORD_SPECTRUM_001",
+        "name": "Spectrum",
+        "math": "Distribution across frequencies",
+        "language": "The distribution of a quantity across different frequencies or energies.",
+        "script": "spectrum = fft(signal)",
+        "tags": [
+            "spectrum",
+            "frequency",
+            "distribution",
+            "analysis"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "449eb899fbf43c00c3448d068e17d33e65721e44e2f54bd1402221ed5651b0c3"
+    },
+    "bc1075dc37cc71ecbdf1b9b86f25ad061e04c903514961baa3186c9f169527a1": {
+        "ubp_id": "WORD_AMPLITUDE_001",
+        "name": "Amplitude",
+        "math": "Maximum displacement from equilibrium",
+        "language": "The maximum extent of a vibration or oscillation from equilibrium.",
+        "script": "amplitude = max(abs(signal))",
+        "tags": [
+            "amplitude",
+            "wave",
+            "magnitude",
+            "oscillation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bc1075dc37cc71ecbdf1b9b86f25ad061e04c903514961baa3186c9f169527a1"
+    },
+    "826d7e80f5884e0be21c11dbd592e7835983dfd53d5267a0fc4580ebb7a661a2": {
+        "ubp_id": "WORD_WAVELENGTH_001",
+        "name": "Wavelength",
+        "math": "Spatial period of wave",
+        "language": "The distance over which a wave's shape repeats.",
+        "script": "wavelength = velocity / frequency",
+        "tags": [
+            "wavelength",
+            "wave",
+            "period",
+            "spatial"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "826d7e80f5884e0be21c11dbd592e7835983dfd53d5267a0fc4580ebb7a661a2"
+    },
+    "d13b3fcf8bf42f4023c6c7ad4f1a61b8283071b01dd6f5d4bd57526915462331": {
+        "ubp_id": "WORD_FREQUENCY_001",
+        "name": "Frequency",
+        "math": "Cycles per unit time",
+        "language": "The number of occurrences of a repeating event per unit time.",
+        "script": "frequency = 1 / period",
+        "tags": [
+            "frequency",
+            "cycle",
+            "time",
+            "hertz"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d13b3fcf8bf42f4023c6c7ad4f1a61b8283071b01dd6f5d4bd57526915462331"
+    },
+    "10cc07fc9163ec45a64bdcca4a16bc9a58c575ce05f41a758e71fc6874aec612": {
+        "ubp_id": "WORD_PHASE_001",
+        "name": "Phase",
+        "math": "Position in cycle",
+        "language": "The position of a point in time on a waveform cycle.",
+        "script": "phase = omega * t + phi_0",
+        "tags": [
+            "phase",
+            "cycle",
+            "angle",
+            "wave"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "10cc07fc9163ec45a64bdcca4a16bc9a58c575ce05f41a758e71fc6874aec612"
+    },
+    "22ed5480417d3e7c26efcc5532d7195980708a18b500883bc68855f33df5c39e": {
+        "ubp_id": "WORD_IMPEDANCE_001",
+        "name": "Impedance",
+        "math": "Opposition to AC current",
+        "language": "The total opposition to alternating current flow.",
+        "script": "Z = complex(R, X)",
+        "tags": [
+            "impedance",
+            "resistance",
+            "reactance",
+            "AC"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "22ed5480417d3e7c26efcc5532d7195980708a18b500883bc68855f33df5c39e"
+    },
+    "e3004d94429c3873f6034c89333c33045f54efaf472788549441aa8ec4e2846c": {
+        "ubp_id": "WORD_CAPACITANCE_001",
+        "name": "Capacitance",
+        "math": "Charge storage ability",
+        "language": "The ability of a system to store electric charge.",
+        "script": "C = Q / V",
+        "tags": [
+            "capacitance",
+            "charge",
+            "storage",
+            "electric"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e3004d94429c3873f6034c89333c33045f54efaf472788549441aa8ec4e2846c"
+    },
+    "a9b085d4ef8dc14f001a1da4e591c2e7a92d22cf1f37d20addef9d0dee6c4ae5": {
+        "ubp_id": "WORD_INDUCTANCE_001",
+        "name": "Inductance",
+        "math": "Magnetic flux linkage per current",
+        "language": "The property of a conductor by which a change in current induces EMF.",
+        "script": "L = Phi / I",
+        "tags": [
+            "inductance",
+            "magnetic",
+            "flux",
+            "coil"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a9b085d4ef8dc14f001a1da4e591c2e7a92d22cf1f37d20addef9d0dee6c4ae5"
+    },
+    "223ae22fedb8c55851afa03345b68a28dfeda617ce2a01e5407a76bf046572ef": {
+        "ubp_id": "WORD_VISCOSITY_001",
+        "name": "Viscosity",
+        "math": "Resistance to flow",
+        "language": "A measure of a fluid's resistance to deformation or flow.",
+        "script": "tau = mu * dv_dy  # Shear stress",
+        "tags": [
+            "viscosity",
+            "fluid",
+            "resistance",
+            "flow"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "223ae22fedb8c55851afa03345b68a28dfeda617ce2a01e5407a76bf046572ef"
+    },
+    "54d6d70be59b573552b6dd37024fdc8be90c6fbb7ebb1d539f9eb0c67d4b999d": {
+        "ubp_id": "WORD_DENSITY_001",
+        "name": "Density",
+        "math": "Mass per unit volume",
+        "language": "The mass of a substance per unit volume.",
+        "script": "density = mass / volume",
+        "tags": [
+            "density",
+            "mass",
+            "volume",
+            "property"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "54d6d70be59b573552b6dd37024fdc8be90c6fbb7ebb1d539f9eb0c67d4b999d"
+    },
+    "4dac3c89df3a0c0c8d4ec077a2268c7b3f80b2aadf9a5339bdd24a238e0ae044": {
+        "ubp_id": "WORD_PRESSURE_001",
+        "name": "Pressure",
+        "math": "Force per unit area",
+        "language": "The force applied perpendicular to a surface per unit area.",
+        "script": "pressure = force / area",
+        "tags": [
+            "pressure",
+            "force",
+            "area",
+            "pascal"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4dac3c89df3a0c0c8d4ec077a2268c7b3f80b2aadf9a5339bdd24a238e0ae044"
+    },
+    "340510edc49f4568e2d7b52c8ab9e1a3b69eac3361a92ae1b2b58af2882fa820": {
+        "ubp_id": "WORD_TORQUE_001",
+        "name": "Torque",
+        "math": "Rotational force",
+        "language": "A measure of the force that causes an object to rotate.",
+        "script": "torque = r * F * sin(theta)",
+        "tags": [
+            "torque",
+            "rotation",
+            "force",
+            "moment"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "340510edc49f4568e2d7b52c8ab9e1a3b69eac3361a92ae1b2b58af2882fa820"
+    },
+    "ee587740e2c9352c3883ddcdd7480acbc73a39dea6defc50672c4212bb870805": {
+        "ubp_id": "WORD_MOMENTUM_001",
+        "name": "Momentum",
+        "math": "Mass times velocity",
+        "language": "The quantity of motion of a moving body.",
+        "script": "momentum = mass * velocity",
+        "tags": [
+            "momentum",
+            "motion",
+            "mass",
+            "velocity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ee587740e2c9352c3883ddcdd7480acbc73a39dea6defc50672c4212bb870805"
+    },
+    "685c2094af97e681eb88b7bcf17c2614d943a939b4f88d5ec3b49209466956cf": {
+        "ubp_id": "WORD_INERTIA_001",
+        "name": "Inertia",
+        "math": "Resistance to change in motion",
+        "language": "The tendency of an object to resist changes in its state of motion.",
+        "script": "inertia = mass  # For linear motion",
+        "tags": [
+            "inertia",
+            "mass",
+            "motion",
+            "resistance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "685c2094af97e681eb88b7bcf17c2614d943a939b4f88d5ec3b49209466956cf"
+    },
+    "1ea374ee781fd3999144c875794bbbefc8f0d0ba1d4645206fdf1213e6b93853": {
+        "ubp_id": "MATH_UNION_001",
+        "name": "Set Union",
+        "math": "A ∪ B = {x: x ∈ A or x ∈ B}",
+        "language": "The set of all elements in either set A or set B.",
+        "script": "union = A | B  # In Python",
+        "tags": [
+            "union",
+            "set",
+            "or",
+            "combination"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1ea374ee781fd3999144c875794bbbefc8f0d0ba1d4645206fdf1213e6b93853"
+    },
+    "54faae0e2685a81fbf3a95810e4084ee92f5a916a0de8bc57d5a232d9b5859cf": {
+        "ubp_id": "MATH_INTERSECT_001",
+        "name": "Set Intersection",
+        "math": "A ∩ B = {x: x ∈ A and x ∈ B}",
+        "language": "The set of all elements in both set A and set B.",
+        "script": "intersection = A & B  # In Python",
+        "tags": [
+            "intersection",
+            "set",
+            "and",
+            "common"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "54faae0e2685a81fbf3a95810e4084ee92f5a916a0de8bc57d5a232d9b5859cf"
+    },
+    "1317887754efb7acf6f7cbc1731712c0a267bd18bdbb416f20ad3fbbce5083f9": {
+        "ubp_id": "MATH_DIFF_001",
+        "name": "Set Difference",
+        "math": "A - B = {x: x ∈ A and x ∉ B}",
+        "language": "The set of elements in A but not in B.",
+        "script": "difference = A - B  # In Python",
+        "tags": [
+            "difference",
+            "set",
+            "minus",
+            "subtract"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1317887754efb7acf6f7cbc1731712c0a267bd18bdbb416f20ad3fbbce5083f9"
+    },
+    "1c3a99c33eabb1454365574895fa3d6d6b2bec229b5fe1f2fa005fb7f53ca842": {
+        "ubp_id": "MATH_SUBSET_001",
+        "name": "Subset",
+        "math": "A ⊆ B iff ∀x(x ∈ A → x ∈ B)",
+        "language": "Set A is a subset of B if every element of A is in B.",
+        "script": "is_subset = A <= B  # In Python",
+        "tags": [
+            "subset",
+            "set",
+            "contained",
+            "relation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1c3a99c33eabb1454365574895fa3d6d6b2bec229b5fe1f2fa005fb7f53ca842"
+    },
+    "e1af9c5d9af041eb781e10f753ed868fc669cc53339172441f00d4c01d4f6d3b": {
+        "ubp_id": "MATH_POWERSET_001",
+        "name": "Power Set",
+        "math": "P(A) = {S: S ⊆ A}",
+        "language": "The set of all subsets of a set, including empty set and itself.",
+        "script": "powerset = [set(c) for r in range(len(A)+1) for c in combinations(A,r)]",
+        "tags": [
+            "powerset",
+            "set",
+            "subsets",
+            "all"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e1af9c5d9af041eb781e10f753ed868fc669cc53339172441f00d4c01d4f6d3b"
+    },
+    "e6ea96f598f72c1a070c0a8e1ba53d23057931a5c7f4a246c893e82ff4ebbb47": {
+        "ubp_id": "MATH_CARDINALITY_001",
+        "name": "Cardinality",
+        "math": "|A| = number of elements",
+        "language": "The number of elements in a set.",
+        "script": "cardinality = len(A)",
+        "tags": [
+            "cardinality",
+            "set",
+            "size",
+            "count"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e6ea96f598f72c1a070c0a8e1ba53d23057931a5c7f4a246c893e82ff4ebbb47"
+    },
+    "a59aebc627ec07e1fa7ad445acaf50046299fb6a6b73c44538119383d830dd8e": {
+        "ubp_id": "MATH_TAUTOLOGY_001",
+        "name": "Tautology",
+        "math": "Always true proposition",
+        "language": "A proposition that is true under all possible interpretations.",
+        "script": "is_tautology = all(evaluate(P, assignment) for assignment in all_assignments)",
+        "tags": [
+            "tautology",
+            "logic",
+            "always",
+            "true"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a59aebc627ec07e1fa7ad445acaf50046299fb6a6b73c44538119383d830dd8e"
+    },
+    "574350013c0db830b766fc2daf6300682ce58bc484b66ffff7949027b5847b2f": {
+        "ubp_id": "MATH_CONTRADICT_001",
+        "name": "Contradiction",
+        "math": "Always false proposition",
+        "language": "A proposition that is false under all possible interpretations.",
+        "script": "is_contradiction = not any(evaluate(P, a) for a in all_assignments)",
+        "tags": [
+            "contradiction",
+            "logic",
+            "always",
+            "false"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "574350013c0db830b766fc2daf6300682ce58bc484b66ffff7949027b5847b2f"
+    },
+    "cf845f938c01b38029a083f30a5d923d3421b87b6e194c091e119858ba14ebb6": {
+        "ubp_id": "MATH_CONTRAPOS_001",
+        "name": "Contrapositive",
+        "math": "(P → Q) ≡ (¬Q → ¬P)",
+        "language": "The logically equivalent form: if not Q then not P.",
+        "script": "contrapositive = (not Q) implies (not P)",
+        "tags": [
+            "contrapositive",
+            "logic",
+            "implication",
+            "equivalent"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "cf845f938c01b38029a083f30a5d923d3421b87b6e194c091e119858ba14ebb6"
+    },
+    "7045fcd875f385594f76ba43ca5dab5e2f17a0c440dc6bc4f31f1730ecff3f8c": {
+        "ubp_id": "MATH_DEMORGAN_001",
+        "name": "De Morgan's Laws",
+        "math": "¬(A∧B) = ¬A∨¬B; ¬(A∨B) = ¬A∧¬B",
+        "language": "Rules for negating conjunctions and disjunctions.",
+        "script": "not (A and B) == (not A) or (not B)",
+        "tags": [
+            "demorgan",
+            "logic",
+            "negation",
+            "law"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7045fcd875f385594f76ba43ca5dab5e2f17a0c440dc6bc4f31f1730ecff3f8c"
+    },
+    "4d675afcea2f6ec2c86d93fb2258caa451f51eb2ef31af193ab53bd260f32ab9": {
+        "ubp_id": "MATH_NATURAL_001",
+        "name": "Natural Numbers",
+        "math": "N = {0, 1, 2, 3, ...}",
+        "language": "The counting numbers starting from zero or one.",
+        "script": "is_natural = isinstance(n, int) and n >= 0",
+        "tags": [
+            "natural",
+            "number",
+            "counting",
+            "positive"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "4d675afcea2f6ec2c86d93fb2258caa451f51eb2ef31af193ab53bd260f32ab9"
+    },
+    "629ab501f4c688fd10429c9c7e28c2fa516d09361f1d3904ce411e265e77e860": {
+        "ubp_id": "MATH_INTEGER_001",
+        "name": "Integers",
+        "math": "Z = {..., -2, -1, 0, 1, 2, ...}",
+        "language": "Whole numbers including negative numbers and zero.",
+        "script": "is_integer = isinstance(n, int)",
+        "tags": [
+            "integer",
+            "number",
+            "whole",
+            "signed"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "629ab501f4c688fd10429c9c7e28c2fa516d09361f1d3904ce411e265e77e860"
+    },
+    "53999160bc9e17a602d6a718f5e832ab0effe802857aa59892afb3e18f1bc672": {
+        "ubp_id": "MATH_RATIONAL_001",
+        "name": "Rational Numbers",
+        "math": "Q = {p/q: p,q ∈ Z, q ≠ 0}",
+        "language": "Numbers expressible as a ratio of two integers.",
+        "script": "is_rational = can_express_as_fraction(n)",
+        "tags": [
+            "rational",
+            "number",
+            "fraction",
+            "ratio"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "53999160bc9e17a602d6a718f5e832ab0effe802857aa59892afb3e18f1bc672"
+    },
+    "dfa76376f006293d5ba4c00bc02b6d39999bb7d617bd0a078834f743b6a05825": {
+        "ubp_id": "MATH_REAL_001",
+        "name": "Real Numbers",
+        "math": "R = Q ∪ (irrationals)",
+        "language": "All rational and irrational numbers on the number line.",
+        "script": "is_real = isinstance(n, (int, float))",
+        "tags": [
+            "real",
+            "number",
+            "continuous",
+            "line"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dfa76376f006293d5ba4c00bc02b6d39999bb7d617bd0a078834f743b6a05825"
+    },
+    "798c54764ed780a8fabbbbf1b3420955461e1fc3d2c060f46255ad693f3f0960": {
+        "ubp_id": "MATH_ARITH_SEQ_001",
+        "name": "Arithmetic Sequence",
+        "math": "a_n = a_1 + (n-1)*d",
+        "language": "A sequence where each term differs by a constant.",
+        "script": "a_n = a_1 + (n - 1) * d",
+        "tags": [
+            "arithmetic",
+            "sequence",
+            "linear",
+            "progression"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "798c54764ed780a8fabbbbf1b3420955461e1fc3d2c060f46255ad693f3f0960"
+    },
+    "7d5cfcbbd7dc11772748e6581f3d0a2d5139c83c9fdac821b69bd2e722856e11": {
+        "ubp_id": "MATH_GEOM_SEQ_001",
+        "name": "Geometric Sequence",
+        "math": "a_n = a_1 * r^(n-1)",
+        "language": "A sequence where each term is multiplied by a constant ratio.",
+        "script": "a_n = a_1 * r**(n - 1)",
+        "tags": [
+            "geometric",
+            "sequence",
+            "ratio",
+            "progression"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7d5cfcbbd7dc11772748e6581f3d0a2d5139c83c9fdac821b69bd2e722856e11"
+    },
+    "6e29774c786e384fb31e5023539d37324f443912a09d94d1383d7308fe3c54d6": {
+        "ubp_id": "MATH_SERIES_001",
+        "name": "Infinite Series",
+        "math": "S = sum(a_n) for n=1 to infinity",
+        "language": "The sum of infinitely many terms of a sequence.",
+        "script": "S = sum(a(n) for n in range(1, N))  # Approximate",
+        "tags": [
+            "series",
+            "sum",
+            "infinite",
+            "convergence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6e29774c786e384fb31e5023539d37324f443912a09d94d1383d7308fe3c54d6"
+    },
+    "c9de7e77c37eb6dcd6c1cdb8ab9d215334d83538414df78a68b4f5303ef00f36": {
+        "ubp_id": "MATH_GRAPH_001",
+        "name": "Graph",
+        "math": "G = (V, E) vertices and edges",
+        "language": "A mathematical structure of vertices connected by edges.",
+        "script": "G = {'vertices': V, 'edges': E}",
+        "tags": [
+            "graph",
+            "vertex",
+            "edge",
+            "network"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c9de7e77c37eb6dcd6c1cdb8ab9d215334d83538414df78a68b4f5303ef00f36"
+    },
+    "2ac64f70d6140a11fed0723de8a9c31849c4fd6f1be0da04f94fcae22241b778": {
+        "ubp_id": "MATH_DEGREE_001",
+        "name": "Vertex Degree",
+        "math": "deg(v) = number of incident edges",
+        "language": "The number of edges connected to a vertex.",
+        "script": "degree = len(adjacency_list[v])",
+        "tags": [
+            "degree",
+            "vertex",
+            "graph",
+            "connectivity"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2ac64f70d6140a11fed0723de8a9c31849c4fd6f1be0da04f94fcae22241b778"
+    },
+    "9f0d47ee912cc15a3495b6b2a45d305f6d13a5bce6a3022979e2257476430e06": {
+        "ubp_id": "MATH_PATH_001",
+        "name": "Path",
+        "math": "Sequence of vertices connected by edges",
+        "language": "A sequence of vertices where each adjacent pair is connected by an edge.",
+        "script": "is_path = all((path[i], path[i+1]) in E for i in range(len(path)-1))",
+        "tags": [
+            "path",
+            "graph",
+            "sequence",
+            "connected"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9f0d47ee912cc15a3495b6b2a45d305f6d13a5bce6a3022979e2257476430e06"
+    },
+    "93650aeb4f0fe870bb8e1ecf564e9b40a9e48ac6022b5da441414c38f9816f97": {
+        "ubp_id": "MATH_CYCLE_001",
+        "name": "Cycle",
+        "math": "Path that starts and ends at same vertex",
+        "language": "A path that begins and ends at the same vertex.",
+        "script": "is_cycle = is_path and path[0] == path[-1]",
+        "tags": [
+            "cycle",
+            "graph",
+            "loop",
+            "closed"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "93650aeb4f0fe870bb8e1ecf564e9b40a9e48ac6022b5da441414c38f9816f97"
+    },
+    "842cebc5a062a01b54470ce966636f76797d56a943baa44726f30acec2261e34": {
+        "ubp_id": "MATH_TREE_001",
+        "name": "Tree",
+        "math": "Connected acyclic graph",
+        "language": "A connected graph with no cycles; n vertices, n-1 edges.",
+        "script": "is_tree = is_connected(G) and len(E) == len(V) - 1",
+        "tags": [
+            "tree",
+            "graph",
+            "acyclic",
+            "connected"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "842cebc5a062a01b54470ce966636f76797d56a943baa44726f30acec2261e34"
+    },
+    "36165ca6fee1b3bb46b951e4db0bef3d52ff0e90eb6c41d21582b81092f399d8": {
+        "ubp_id": "MATH_PROB_001",
+        "name": "Probability",
+        "math": "P(A) = favorable / total outcomes",
+        "language": "A measure of the likelihood of an event occurring.",
+        "script": "P = favorable_outcomes / total_outcomes",
+        "tags": [
+            "probability",
+            "likelihood",
+            "chance",
+            "measure"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "36165ca6fee1b3bb46b951e4db0bef3d52ff0e90eb6c41d21582b81092f399d8"
+    },
+    "90fe17f47fb207d3fb2745f51b4636e37759fc24a39914ee0783d8f05794a662": {
+        "ubp_id": "MATH_COND_PROB_001",
+        "name": "Conditional Probability",
+        "math": "P(A|B) = P(A∩B) / P(B)",
+        "language": "The probability of A given that B has occurred.",
+        "script": "P_A_given_B = P_A_and_B / P_B",
+        "tags": [
+            "conditional",
+            "probability",
+            "given",
+            "dependent"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "90fe17f47fb207d3fb2745f51b4636e37759fc24a39914ee0783d8f05794a662"
+    },
+    "efe4d86a8301759ec052db3ac2b1284cbf60f5c36ab82a40946289f13d0cec1e": {
+        "ubp_id": "MATH_INDEP_001",
+        "name": "Independence",
+        "math": "P(A∩B) = P(A) * P(B)",
+        "language": "Events A and B are independent if their joint probability factors.",
+        "script": "is_independent = P_A_and_B == P_A * P_B",
+        "tags": [
+            "independence",
+            "probability",
+            "events",
+            "product"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "efe4d86a8301759ec052db3ac2b1284cbf60f5c36ab82a40946289f13d0cec1e"
+    },
+    "8ed85cbe66888c9fabdde7915a22e5fa5e299544ac8ed258902c2249e7fe265a": {
+        "ubp_id": "MATH_NORMAL_001",
+        "name": "Normal Distribution",
+        "math": "f(x) = exp(-(x-μ)²/(2σ²)) / (σ√(2π))",
+        "language": "The bell curve distribution; fundamental to statistics.",
+        "script": "pdf = math.exp(-(x-mu)**2/(2*sigma**2)) / (sigma*math.sqrt(2*math.pi))",
+        "tags": [
+            "normal",
+            "gaussian",
+            "distribution",
+            "bell"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8ed85cbe66888c9fabdde7915a22e5fa5e299544ac8ed258902c2249e7fe265a"
+    },
+    "6fdf15a93110e953837b89eb00be3baa7ba49d721c7d8134a2a31e6cf2a6dab8": {
+        "ubp_id": "MATH_POISSON_001",
+        "name": "Poisson Distribution",
+        "math": "P(k) = λ^k * e^(-λ) / k!",
+        "language": "Distribution of events occurring at a constant average rate.",
+        "script": "P_k = (lam**k * math.exp(-lam)) / factorial(k)",
+        "tags": [
+            "poisson",
+            "distribution",
+            "events",
+            "rate"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "6fdf15a93110e953837b89eb00be3baa7ba49d721c7d8134a2a31e6cf2a6dab8"
+    },
+    "17a8bbbacb9f6349aa35deb51612c7556ceea907ba89a49b9a0c262c7ab6fa33": {
+        "ubp_id": "WORD_ENTROPY_003",
+        "name": "Entropy",
+        "math": "S = -k * sum(p * log(p))",
+        "language": "A measure of disorder, randomness, or uncertainty in a system.",
+        "script": "entropy = -sum(p * math.log(p) for p in probs if p > 0)",
+        "tags": [
+            "entropy",
+            "disorder",
+            "information",
+            "thermodynamics"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "17a8bbbacb9f6349aa35deb51612c7556ceea907ba89a49b9a0c262c7ab6fa33"
+    },
+    "af4ae7d763462417c7d87cda3bc125857c7a82a42aadb80b2484c9965a1f8e7b": {
+        "ubp_id": "WORD_SYMMETRY_003",
+        "name": "Symmetry",
+        "math": "f(T(x)) = T(f(x)) for transformation T",
+        "language": "Invariance under a transformation; balance and proportion.",
+        "script": "is_symmetric = all(f(T(x)) == T(f(x)) for x in domain)",
+        "tags": [
+            "symmetry",
+            "invariance",
+            "transformation",
+            "balance"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "af4ae7d763462417c7d87cda3bc125857c7a82a42aadb80b2484c9965a1f8e7b"
+    },
+    "d315715397ea1ead0fc34a3659b3dad9b12fdc724a45b5cc837d3d155d1b187c": {
+        "ubp_id": "WORD_RESONANCE_003",
+        "name": "Resonance",
+        "math": "omega = omega_0 (natural frequency)",
+        "language": "Amplification when driving frequency matches natural frequency.",
+        "script": "resonance = abs(omega - omega_0) < epsilon",
+        "tags": [
+            "resonance",
+            "frequency",
+            "amplification",
+            "oscillation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "d315715397ea1ead0fc34a3659b3dad9b12fdc724a45b5cc837d3d155d1b187c"
+    },
+    "1bb9fa4b08ab00b62a93d60a9a3a8433c10d25829066efffb2266e4f8f74a5c7": {
+        "ubp_id": "WORD_COHERENCE_003",
+        "name": "Coherence",
+        "math": "Constant phase relationship",
+        "language": "A fixed phase relationship between waves or signals.",
+        "script": "is_coherent = phase_diff == constant",
+        "tags": [
+            "coherence",
+            "phase",
+            "wave",
+            "correlation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "1bb9fa4b08ab00b62a93d60a9a3a8433c10d25829066efffb2266e4f8f74a5c7"
+    },
+    "248b046b5a5c2f3c5fbb013622a35b7438fec082546d0dc211a07f14b685a51e": {
+        "ubp_id": "WORD_EMERGENCE_003",
+        "name": "Emergence",
+        "math": "Whole > sum of parts",
+        "language": "Complex patterns arising from simpler interactions.",
+        "script": "emergent = system_property not in component_properties",
+        "tags": [
+            "emergence",
+            "complexity",
+            "system",
+            "pattern"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "248b046b5a5c2f3c5fbb013622a35b7438fec082546d0dc211a07f14b685a51e"
+    },
+    "e5fcd55aecbc64b813604eaf94b2996b74ab01b50b0477bbdb099786d912fc57": {
+        "ubp_id": "WORD_RECURSION_003",
+        "name": "Recursion",
+        "math": "f(n) defined in terms of f(n-1)",
+        "language": "A process that refers to itself in its definition.",
+        "script": "def factorial(n): return 1 if n <= 1 else n * factorial(n-1)",
+        "tags": [
+            "recursion",
+            "self-reference",
+            "iteration",
+            "definition"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e5fcd55aecbc64b813604eaf94b2996b74ab01b50b0477bbdb099786d912fc57"
+    },
+    "b94a250cce7c7dcf126531d90c08ab4ac58eb82fd662e24a990776136ec99cae": {
+        "ubp_id": "WORD_ABSTRACTION_003",
+        "name": "Abstraction",
+        "math": "Hide complexity, expose interface",
+        "language": "The process of hiding implementation details behind a simpler interface.",
+        "script": "class Interface: def method(self): raise NotImplementedError",
+        "tags": [
+            "abstraction",
+            "interface",
+            "complexity",
+            "design"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b94a250cce7c7dcf126531d90c08ab4ac58eb82fd662e24a990776136ec99cae"
+    },
+    "bc872e7892f68e3c61b9c401fc6e235664f71d5634544290e9f57a68802756f5": {
+        "ubp_id": "WORD_INVARIANT_003",
+        "name": "Invariant",
+        "math": "Property that remains unchanged",
+        "language": "A property that remains true throughout a process or transformation.",
+        "script": "assert invariant_holds(state)  # Must be true at all times",
+        "tags": [
+            "invariant",
+            "constant",
+            "property",
+            "unchanged"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "bc872e7892f68e3c61b9c401fc6e235664f71d5634544290e9f57a68802756f5"
+    },
+    "f204b3a36bd1c1f7399f7ec84447828af2b807c27691542aa5f54f94b069f575": {
+        "ubp_id": "WORD_GRADIENT_003",
+        "name": "Gradient",
+        "math": "Rate of change in space",
+        "language": "The rate and direction of change of a quantity in space.",
+        "script": "gradient = [df_dx, df_dy, df_dz]",
+        "tags": [
+            "gradient",
+            "derivative",
+            "direction",
+            "change"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "f204b3a36bd1c1f7399f7ec84447828af2b807c27691542aa5f54f94b069f575"
+    },
+    "c7c7dfdc190ef6b1a552a922753a01ed99be93565cf8422cfcbfe86e86730374": {
+        "ubp_id": "WORD_ISOMORPHISM_003",
+        "name": "Isomorphism",
+        "math": "Structure-preserving bijection",
+        "language": "A mapping that preserves the structure between two mathematical objects.",
+        "script": "is_isomorphic = bijection(A, B) and preserves_structure(f)",
+        "tags": [
+            "isomorphism",
+            "structure",
+            "mapping",
+            "equivalence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c7c7dfdc190ef6b1a552a922753a01ed99be93565cf8422cfcbfe86e86730374"
+    },
+    "e22424378422305b51040eb6e7f44c1a12e994d1f2819d7d1686a11471d37a15": {
+        "ubp_id": "WORD_HOMOMORPHISM_003",
+        "name": "Homomorphism",
+        "math": "Structure-preserving map",
+        "language": "A mapping that preserves algebraic structure between objects.",
+        "script": "is_homomorphism = f(a * b) == f(a) * f(b)",
+        "tags": [
+            "homomorphism",
+            "structure",
+            "algebra",
+            "mapping"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "e22424378422305b51040eb6e7f44c1a12e994d1f2819d7d1686a11471d37a15"
+    },
+    "b9d088d9de1f580b7eea2b7d07626a2fdcf8e6e16a01e0e5a3900eaa09911a41": {
+        "ubp_id": "WORD_ORTHOGONAL_003",
+        "name": "Orthogonal",
+        "math": "Perpendicular; dot product = 0",
+        "language": "At right angles; independent; having zero inner product.",
+        "script": "is_orthogonal = dot(v1, v2) == 0",
+        "tags": [
+            "orthogonal",
+            "perpendicular",
+            "independent",
+            "vector"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b9d088d9de1f580b7eea2b7d07626a2fdcf8e6e16a01e0e5a3900eaa09911a41"
+    },
+    "9b920d6b01fbfbf7df3870df76c873bcfa3f424664ca3ca44d15a1c881ea7732": {
+        "ubp_id": "WORD_CONVOLUTION_003",
+        "name": "Convolution",
+        "math": "(f * g)(t) = integral(f(tau) * g(t-tau))",
+        "language": "An operation combining two functions by sliding one over the other.",
+        "script": "conv = sum(f[k] * g[n-k] for k in range(len(f)))",
+        "tags": [
+            "convolution",
+            "signal",
+            "filter",
+            "integral"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9b920d6b01fbfbf7df3870df76c873bcfa3f424664ca3ca44d15a1c881ea7732"
+    },
+    "dcd6a8d2c9dcefb0f721957147c13e0a586766ab67aa4f232b8b94534da8e99c": {
+        "ubp_id": "WORD_BIJECTION_003",
+        "name": "Bijection",
+        "math": "One-to-one and onto mapping",
+        "language": "A function that is both injective and surjective; a perfect pairing.",
+        "script": "is_bijection = is_injective(f) and is_surjective(f)",
+        "tags": [
+            "bijection",
+            "mapping",
+            "function",
+            "correspondence"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "dcd6a8d2c9dcefb0f721957147c13e0a586766ab67aa4f232b8b94534da8e99c"
+    },
+    "25c1d66b38ff818232ab7ac26d02160d4d78e154c7499724c2918f12e7d43f8c": {
+        "ubp_id": "WORD_COMMUTATIVE_003",
+        "name": "Commutative",
+        "math": "a * b = b * a",
+        "language": "An operation where the order of operands does not affect the result.",
+        "script": "is_commutative = f(a, b) == f(b, a)",
+        "tags": [
+            "commutative",
+            "operation",
+            "order",
+            "algebra"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "25c1d66b38ff818232ab7ac26d02160d4d78e154c7499724c2918f12e7d43f8c"
+    },
+    "eef08476baa469b44e99317b8ac6804cefb11160ff542b59b9aee8cf12b14a82": {
+        "ubp_id": "WORD_ASSOCIATIVE_003",
+        "name": "Associative",
+        "math": "(a * b) * c = a * (b * c)",
+        "language": "An operation where grouping does not affect the result.",
+        "script": "is_associative = f(f(a,b), c) == f(a, f(b,c))",
+        "tags": [
+            "associative",
+            "operation",
+            "grouping",
+            "algebra"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "eef08476baa469b44e99317b8ac6804cefb11160ff542b59b9aee8cf12b14a82"
+    },
+    "70b99018010ca6decf0a2fd6ef9f24acc1a4e0ef82a819be43abac6c67ee2563": {
+        "ubp_id": "WORD_DISTRIBUTIVE_003",
+        "name": "Distributive",
+        "math": "a * (b + c) = a*b + a*c",
+        "language": "An operation that distributes over another operation.",
+        "script": "is_distributive = a * (b + c) == a*b + a*c",
+        "tags": [
+            "distributive",
+            "operation",
+            "algebra",
+            "property"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "70b99018010ca6decf0a2fd6ef9f24acc1a4e0ef82a819be43abac6c67ee2563"
+    },
+    "9b93590b2b39a384a408386d9feef933d4f3c05a882249a7cc4a5c2373d543a7": {
+        "ubp_id": "WORD_TRANSITIVE_003",
+        "name": "Transitive",
+        "math": "aRb and bRc implies aRc",
+        "language": "A relation where if a relates to b and b to c, then a relates to c.",
+        "script": "is_transitive = all((a,c) in R for (a,b) in R for (b2,c) in R if b==b2)",
+        "tags": [
+            "transitive",
+            "relation",
+            "property",
+            "logic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9b93590b2b39a384a408386d9feef933d4f3c05a882249a7cc4a5c2373d543a7"
+    },
+    "0be2cccfd86f78c76cb95c9f1b17405f6066c2609f265194eb3ac74aa0dd3473": {
+        "ubp_id": "WORD_REFLEXIVE_003",
+        "name": "Reflexive",
+        "math": "aRa for all a",
+        "language": "A relation where every element relates to itself.",
+        "script": "is_reflexive = all((a,a) in R for a in domain)",
+        "tags": [
+            "reflexive",
+            "relation",
+            "property",
+            "logic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0be2cccfd86f78c76cb95c9f1b17405f6066c2609f265194eb3ac74aa0dd3473"
+    },
+    "7121db2157448d0162c9abc735872b4fb9c85f7c79182d6140e018e761a3c55b": {
+        "ubp_id": "WORD_DIVERGENCE_003",
+        "name": "Divergence",
+        "math": "Outward flux density",
+        "language": "A measure of how much a vector field spreads out from a point.",
+        "script": "div_F = dFx_dx + dFy_dy + dFz_dz",
+        "tags": [
+            "divergence",
+            "flux",
+            "vector",
+            "field"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7121db2157448d0162c9abc735872b4fb9c85f7c79182d6140e018e761a3c55b"
+    },
+    "b85a8797adccccb4a6aab5d1e36207aa574e71c3a63b874355cc0ec45a11d2ed": {
+        "ubp_id": "MATH_PRIME_003",
+        "name": "Prime Number",
+        "math": "n > 1 with only divisors 1 and n",
+        "language": "A natural number greater than 1 divisible only by 1 and itself.",
+        "script": "is_prime = n > 1 and all(n % i != 0 for i in range(2, int(n**0.5)+1))",
+        "tags": [
+            "prime",
+            "number",
+            "divisibility",
+            "fundamental"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "b85a8797adccccb4a6aab5d1e36207aa574e71c3a63b874355cc0ec45a11d2ed"
+    },
+    "be8aa23e417b89f03c600faf73f6645d52445773b85eb9e0a73b9d8da1b27564": {
+        "ubp_id": "MATH_FIBONACCI_003",
+        "name": "Fibonacci Sequence",
+        "math": "F_n = F_(n-1) + F_(n-2)",
+        "language": "A sequence where each term is the sum of the two preceding terms.",
+        "script": "def fib(n): return n if n < 2 else fib(n-1) + fib(n-2)",
+        "tags": [
+            "fibonacci",
+            "sequence",
+            "recursive",
+            "golden"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "be8aa23e417b89f03c600faf73f6645d52445773b85eb9e0a73b9d8da1b27564"
+    },
+    "ddb9b719e666812870dad496c1fd88e2bda64843ef045ba17bcc253ea6ac86d4": {
+        "ubp_id": "MATH_EULER_003",
+        "name": "Euler's Formula",
+        "math": "e^(ix) = cos(x) + i*sin(x)",
+        "language": "The fundamental relationship between exponential and trigonometric functions.",
+        "script": "cmath.exp(1j * x) == complex(math.cos(x), math.sin(x))",
+        "tags": [
+            "euler",
+            "formula",
+            "complex",
+            "exponential"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ddb9b719e666812870dad496c1fd88e2bda64843ef045ba17bcc253ea6ac86d4"
+    },
+    "7e7da6fdfe56ba37935a0a56c8513f3a9e4fb174ea5428281303534b14e4f4c3": {
+        "ubp_id": "MATH_TAYLOR_003",
+        "name": "Taylor Series",
+        "math": "f(x) = sum(f^(n)(a)/n! * (x-a)^n)",
+        "language": "A representation of a function as an infinite sum of terms.",
+        "script": "taylor = sum(f_deriv_n(a)/factorial(n) * (x-a)**n for n in range(N))",
+        "tags": [
+            "taylor",
+            "series",
+            "expansion",
+            "approximation"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7e7da6fdfe56ba37935a0a56c8513f3a9e4fb174ea5428281303534b14e4f4c3"
+    },
+    "ce8a827226d6ab8e40380380bc673723ce36b5641be722e9fdf5a616ab9093c4": {
+        "ubp_id": "MATH_MODULAR_003",
+        "name": "Modular Arithmetic",
+        "math": "a ≡ b (mod n) iff n|(a-b)",
+        "language": "Arithmetic where numbers wrap around upon reaching a modulus.",
+        "script": "congruent = (a - b) % n == 0",
+        "tags": [
+            "modular",
+            "congruence",
+            "remainder",
+            "arithmetic"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "ce8a827226d6ab8e40380380bc673723ce36b5641be722e9fdf5a616ab9093c4"
+    },
+    "71071318a0eafa27684cb97e433b7eff8064e695a489ef81ceec3724dd464a33": {
+        "ubp_id": "MATH_GCD_003",
+        "name": "Greatest Common Divisor",
+        "math": "gcd(a,b) = max{d: d|a and d|b}",
+        "language": "The largest positive integer that divides both numbers.",
+        "script": "gcd = lambda a,b: a if b==0 else gcd(b, a%b)",
+        "tags": [
+            "gcd",
+            "divisor",
+            "euclidean",
+            "algorithm"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "71071318a0eafa27684cb97e433b7eff8064e695a489ef81ceec3724dd464a33"
+    },
+    "7e5fcf38974d1d3640dcc09adf138c5c7cc8dee7ae49462ef1737460c2280085": {
+        "ubp_id": "MATH_COMPLEX_003",
+        "name": "Complex Numbers",
+        "math": "C = {a + bi: a,b ∈ R}",
+        "language": "Numbers with real and imaginary parts.",
+        "script": "z = complex(a, b)  # a + bi",
+        "tags": [
+            "complex",
+            "number",
+            "imaginary",
+            "plane"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "7e5fcf38974d1d3640dcc09adf138c5c7cc8dee7ae49462ef1737460c2280085"
+    },
+    "815e23961fe524ea3c04c694fc21fd50de1f4998953d6cb83335adab6591135b": {
+        "ubp_id": "CODE_DP_003",
+        "name": "Dynamic Programming",
+        "math": "Optimal substructure + overlapping subproblems",
+        "language": "Solve complex problems by breaking into simpler subproblems.",
+        "script": "def fib(n,memo={}): return memo.setdefault(n, n if n<2 else fib(n-1)+fib(n-2))",
+        "tags": [
+            "dynamic",
+            "programming",
+            "memoization",
+            "algorithm"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "815e23961fe524ea3c04c694fc21fd50de1f4998953d6cb83335adab6591135b"
+    },
+    "9e70b440eec62655fe3e8c98bfe2ae7ce93f3e512669aec46b1d5de5cb6057a8": {
+        "ubp_id": "CODE_CLOSURE_003",
+        "name": "Python Closure",
+        "math": "Inner function captures outer scope",
+        "language": "A function that remembers values from its enclosing scope.",
+        "script": "def make_adder(n): return lambda x: x + n",
+        "tags": [
+            "closure",
+            "python",
+            "scope",
+            "functional"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "9e70b440eec62655fe3e8c98bfe2ae7ce93f3e512669aec46b1d5de5cb6057a8"
+    },
+    "0ecb7997d6f92e6a81a0276a7ce8e94b2090123acadb2b0aeac15830e669f5af": {
+        "ubp_id": "CODE_DECORATOR_003",
+        "name": "Python Decorator",
+        "math": "@decorator syntax",
+        "language": "A function that modifies the behavior of another function.",
+        "script": "def log(f): def wrapper(*a): print(f'Calling {f.__name__}'); return f(*a); return wrapper",
+        "tags": [
+            "decorator",
+            "python",
+            "wrapper",
+            "functional"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "0ecb7997d6f92e6a81a0276a7ce8e94b2090123acadb2b0aeac15830e669f5af"
+    },
+    "71f0129e394f7f6c16971d892cdb131645520e9c5506e8355ab17322982dbdd3": {
+        "ubp_id": "CODE_GENERATOR_003",
+        "name": "Python Generator",
+        "math": "yield keyword",
+        "language": "A function that yields values one at a time, maintaining state.",
+        "script": "def count(): n=0; while True: yield n; n+=1",
+        "tags": [
+            "generator",
+            "python",
+            "yield",
+            "iterator"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "71f0129e394f7f6c16971d892cdb131645520e9c5506e8355ab17322982dbdd3"
+    },
+    "31077860f9078008f49131eef5adadbbb27722a467fcf2028cdd8cd0b11bea1e": {
+        "ubp_id": "CODE_LAMBDA_003",
+        "name": "Python Lambda",
+        "math": "lambda args: expression",
+        "language": "Anonymous function for simple one-line operations.",
+        "script": "square = lambda x: x**2; square(5)",
+        "tags": [
+            "lambda",
+            "python",
+            "anonymous",
+            "function"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "31077860f9078008f49131eef5adadbbb27722a467fcf2028cdd8cd0b11bea1e"
+    },
+    "30cadec57f1c81f97f021e3599784c01e0d87cb805b0f74eec03fdc2e87ddc75": {
+        "ubp_id": "CODE_MAP_003",
+        "name": "Python Map",
+        "math": "map(func, iterable) -> iterator",
+        "language": "Apply a function to every item of an iterable.",
+        "script": "result = list(map(lambda x: x**2, [1, 2, 3]))",
+        "tags": [
+            "map",
+            "python",
+            "functional",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "30cadec57f1c81f97f021e3599784c01e0d87cb805b0f74eec03fdc2e87ddc75"
+    },
+    "a978ea9e368e477aac794041f5ec6cbafef7b17b6378fbf36d840acaef1c8ee0": {
+        "ubp_id": "CODE_FILTER_003",
+        "name": "Python Filter",
+        "math": "filter(func, iterable) -> iterator",
+        "language": "Filter elements based on a predicate function.",
+        "script": "result = list(filter(lambda x: x > 0, [-1, 0, 1, 2]))",
+        "tags": [
+            "filter",
+            "python",
+            "functional",
+            "builtin"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a978ea9e368e477aac794041f5ec6cbafef7b17b6378fbf36d840acaef1c8ee0"
+    },
+    "c07bc072faa0dd3339d9f07f77de4b70e05c26dc2766ece3de91640d3d0d953d": {
+        "ubp_id": "CODE_REDUCE_003",
+        "name": "Python Reduce",
+        "math": "reduce(func, iterable) -> single value",
+        "language": "Apply a function cumulatively to reduce iterable to single value.",
+        "script": "from functools import reduce; sum = reduce(lambda a,b: a+b, [1,2,3])",
+        "tags": [
+            "reduce",
+            "python",
+            "functional",
+            "accumulate"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "c07bc072faa0dd3339d9f07f77de4b70e05c26dc2766ece3de91640d3d0d953d"
+    },
+    "8eb7d60c876cbe7b8160b190936c93a9e0489528dd7e96147375f4cd21d18a66": {
+        "ubp_id": "CODE_CONTEXT_003",
+        "name": "Context Manager",
+        "math": "with statement",
+        "language": "Ensure proper resource management with automatic cleanup.",
+        "script": "with open('f.txt') as f: data = f.read()  # Auto-closes",
+        "tags": [
+            "context",
+            "manager",
+            "python",
+            "resource"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "8eb7d60c876cbe7b8160b190936c93a9e0489528dd7e96147375f4cd21d18a66"
+    },
+    "2b4aa2a245e9fc776cbecd0d4a38c99291b203cd424294207e7be686185c7079": {
+        "ubp_id": "CODE_CLASS_003",
+        "name": "Python Class",
+        "math": "class Name: def __init__(self):",
+        "language": "A blueprint for creating objects with attributes and methods.",
+        "script": "class Dog: def __init__(self, name): self.name = name",
+        "tags": [
+            "class",
+            "python",
+            "oop",
+            "object"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "2b4aa2a245e9fc776cbecd0d4a38c99291b203cd424294207e7be686185c7079"
+    },
+    "28e52f48983d6ada3bf0aeb217059efe506f651c30ba441407eaaf5e78464549": {
+        "ubp_id": "CODE_INHERIT_003",
+        "name": "Python Inheritance",
+        "math": "class Child(Parent):",
+        "language": "A mechanism for creating new classes based on existing ones.",
+        "script": "class Cat(Animal): def speak(self): return 'meow'",
+        "tags": [
+            "inheritance",
+            "python",
+            "oop",
+            "extend"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "28e52f48983d6ada3bf0aeb217059efe506f651c30ba441407eaaf5e78464549"
     }
 }
