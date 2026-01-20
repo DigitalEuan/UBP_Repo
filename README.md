@@ -63,14 +63,8 @@ My work is fundamentally driven by **empirical verification**. The code in this 
 
 # 🚀 Getting Started with the UBP Repository
 
-We recommend starting with the most stable and well-documented system in this repository to minimize initial friction.
-
-## 1. Primary Starting Point
-
-I suggest beginning with **ubp\_3.6**:
-
-* **Repository Link:** [ubp\_3.6](https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_3.6)
-* **Reasoning:** Version 3.6 is a **well-worked-out operating system** and is designed to be more stable than earlier prototypes. Starting here will provide the best environment for early experimentation.
+Current implementation:
+[https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0]
 
 ## 2. Execution Environment Options
 
@@ -79,7 +73,7 @@ The code consists of **Python scripts** and can be run in any modern Python envi
 | Environment | Benefit | Note |
 | :--- | :--- | :--- |
 | **Cloud Notebooks** | **Rapid setup** and **AI Assistance** | Platforms like Google CoLab or Kaggle Notebooks are excellent for creating and running scripts. CoLab, in particular, offers useful AI assistance for implementation. |
-| **Local System** | **Full control** | Running Python scripts directly in your local terminal provides the highest control. I have also had success using **Anaconda Navigator** for managing environments. |
+| **Local System** | **Full control** | Running Python scripts directly in your local terminal provides the highest control. 
 
 Once a solid notebook or local script environment is established, you can easily add cells or modules to explore specific uses of the UBP system.
 
@@ -89,23 +83,10 @@ For complex studies and rapid iteration on the UBP framework, I have successfull
 
 ### 💡 AI Agent Workspaces
 
-These tools allow you to instruct an AI (like Gemini) to use your UBP scripts as functions, acting as an intelligent partner for research:
-
-* **AI Agent Workspace V4.0 (Recommended):**
-    * **Description:** An AI agent powered by Function Calling and a real client-side Python (Pyodide) sandbox.
-    * **How I Use It:** I fill this workspace with UBP Python scripts. The agent can then search the web, execute code, manage files, and generate plots with high accuracy.
-    * **Link:** [AI Agent Workspace V4.0](https://ai.studio/apps/drive/1tPb95gvhj9PoZNhJtr-Lo9pftvp1uyTS)
-
-* **Manus AI (Hands-on Guidance Required):**
-    * **How I Use It:** I connect Manus AI to the `ubp_3.6` or `gpu_ubp` repository and instruct it to use the system to conduct a study.
-
-* **AI Realm Architect (Sophisticated IDE):**
-    * **Description:** A sophisticated, browser-based Python Development Environment (IDE) powered by Gemini. It uses **Pyodide** to run a full Python interpreter in the browser via WebAssembly.
-    * **Key Features for UBP:** The AI assistant uses "tools" to create, read, and manage files in a **Virtual File System** (including a `/persistent_state` folder). This allows you to build and run complex, stateful data workflows entirely in the browser.
-    * **Link:** [AI Realm Architect](https://ai.studio/apps/drive/1PE2YoRpY6zjz7VTyBX3zKPzaNA45pMpo)
-## Contributing
-
-* **Caveat:** All of these ai assisted methods require **careful, hands-on directing** to prevent the AI from defaulting to its own interpretations, simplifications, or placeholders.
+* **AI Agent Workspace V4.0 (current):**
+    * **Description:** An AI agent powered by Function Calling and a real client-side Python (Pyodide) sandbox created in Google AI Studio.
+    * **How I Use It:** the workspace fills with UBP Python scripts. The agent can then search the web, execute code, manage files, and generate plots with high accuracy. A memory system assists the AI assistant.
+    * **Link:** [AI Agent Workspace V4.0]
 
 Contributions are welcomed. If you have improvements or suggestions, feel free to open an issue or pull request. I would really like to see what others do with the UBP system - please let me know!
 
