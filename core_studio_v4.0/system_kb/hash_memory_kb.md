@@ -2586,5 +2586,109 @@
     "92112966": {
         "ubp_id": "LAW_ENERGY_SOC_002",
         "full_hash": "92112966a0c6fff244423f5dd27225944c2e19e4e9662433404d54dc7b5d2faf"
+    },
+    "b6cd6855": {
+        "ubp_id": "CONCEPT_TENSION",
+        "full_hash": "b6cd68556a92ae8721e3e864940996394b01dc5ed1cf2a897062de7ff5d5f058"
+    },
+    "5f74d6ab": {
+        "ubp_id": "CONCEPT_RESISTANCE",
+        "full_hash": "5f74d6ab2a5dc0a34b96ae155c778e5617c8e5b53718d555c38c70f36082c5b8"
+    },
+    "f5327f2e": {
+        "ubp_id": "CONCEPT_REFRACTION",
+        "full_hash": "f5327f2e91872af95916fc3169e79a79a594342770e972ea6a77737dd78942cf"
+    },
+    "8f8a94fa": {
+        "ubp_id": "CONCEPT_ORBIT",
+        "full_hash": "8f8a94fa428dc473b39a254398c0359fa04598824521e9cebfcffc719a8aa3e2"
+    },
+    "c47fcb33": {
+        "ubp_id": "PHYS_HOOKES_021",
+        "full_hash": "c47fcb331345eebbd6a90c564d8633e494efa3479f3c2b7337fc697f3a5bfef1"
+    },
+    "47384404": {
+        "ubp_id": "PHYS_OHMS_022",
+        "full_hash": "473844043dca94e18a1b6e1e96764e6fce8cb67f2a3aa6bca6f39583bb90bd41"
+    },
+    "e4d94657": {
+        "ubp_id": "PHYS_SNELL_023",
+        "full_hash": "e4d9465736093501ee3e35b5ba5a01a01731c73f385d7c7954bb50624ef05c44"
+    },
+    "c0a361c8": {
+        "ubp_id": "PHYS_KEPLER_024",
+        "full_hash": "c0a361c88f95f3cad54d0fa4ed2a93a1dc2c7a51dbc97d379c8da421dec94040"
+    },
+    "231e934c": {
+        "ubp_id": "LAW_FRACTAL_001",
+        "full_hash": "231e934c9a47f642e04ae2ab5f46a18a405989dea41b7fe05c72dc377bc9fd10"
+    },
+    "d1515796": {
+        "ubp_id": "LAW_INT_RESONANCE_001",
+        "full_hash": "d1515796de0ebcc57712a258fe3981edbde863b37c6d50514881c7501fa73029"
+    },
+    "4ad46fad": {
+        "ubp_id": "LAW_PROJECTION_DOT_001",
+        "full_hash": "4ad46fad779bbd2db494ae2f8fc1ed3355159ae5a857cef797d7029ade78b8aa"
+    },
+    "c7751068": {
+        "ubp_id": "LAW_FIELD_TOPOLOGY_001",
+        "full_hash": "c7751068cc94c7204153f0363f3a7953d1f1cb89790b972bf329737cb7ab8b5c"
+    },
+    "eed7487f": {
+        "ubp_id": "LAW_DISCRETE_RENORM_001",
+        "full_hash": "eed7487f84244fcf9d149425a965f78970093ffcadc1993a071a6a14d0481672"
+    },
+    "04723c6d": {
+        "ubp_id": "LAW_UNIFIED_FIELD_001",
+        "full_hash": "04723c6d40aad25b1f0f90a79d15e6ae2d3de80bc0d58f0ac5da1e1ef7b23843"
+    },
+    "0a20635d": {
+        "ubp_id": "LAW_UNITY_005",
+        "full_hash": "0a20635da83f5a5b565609a249974cde2f1eda6bb7e3b82cc52b03c9ada3b444"
+    },
+    "19ee5b5a": {
+        "ubp_id": "LAW_COSMO_008",
+        "full_hash": "19ee5b5a66740ee408e4b88b0ef71002bc91518dcfc7ce6dfa94932fce3d9d50"
+    },
+    "09af0286": {
+        "ubp_id": "PARTICLE_OMEGA_003",
+        "full_hash": "09af0286dbd6556358e83891e8fb8a521267d5a06a23533c06c3ae95c169be39"
+    },
+    "bf1507ec": {
+        "ubp_id": "PARTICLE_STERILE_NU_003",
+        "full_hash": "bf1507ecc8bd24301484ac765a2aa5d933e2f441d3882a0e03245db222d1f36a"
+    },
+    "0ab176b8": {
+        "ubp_id": "LAW_TOE_VERIFICATION_001",
+        "full_hash": "0ab176b8cae953892233395b0fa57b38ae49965cd39b1c0ee075913be824693c"
+    },
+    "f1a8b691": {
+        "ubp_id": "LAW_LOGIC_FUNCTIONAL_001",
+        "full_hash": "f1a8b691ed8827279345c0202c4eccc2c5efe9e6ccb988b46b061b9773897fc5"
+    },
+    "0fffb5ea": {
+        "ubp_id": "GATE_ROOT_001",
+        "full_hash": "0fffb5eaf6d682773ac31164cd38954a362054318915ae18ea8ccc647057f04c"
+    },
+    "410ca8b1": {
+        "ubp_id": "GATE_INFO_001",
+        "full_hash": "410ca8b19311ebef972066f556a57b93db4418b54019214bb738e6760db3f92c"
+    },
+    "6d615f3e": {
+        "ubp_id": "GATE_POTENTIAL_001",
+        "full_hash": "6d615f3efbda94354b290bfa1877801b6b07282e9dd97c82540a81b333dd3b0e"
+    },
+    "62a88c26": {
+        "ubp_id": "LAW_LOGIC_RECIP_001",
+        "full_hash": "62a88c2612f15435720beee90b72f4d3f7e77b1dd81e3e0e55a91cf86310927b"
+    },
+    "b94aa4c3": {
+        "ubp_id": "LAW_GEO_FOLD_001",
+        "full_hash": "b94aa4c30277aaa177329405467639383eccc9f6f4a155b076c7988a02004117"
+    },
+    "4f877524": {
+        "ubp_id": "LAW_SEMANTIC_STACK_001",
+        "full_hash": "4f8775244b33b80e79f1f905f492201d69065451450e5f73e1aa8270233df688"
     }
 }
