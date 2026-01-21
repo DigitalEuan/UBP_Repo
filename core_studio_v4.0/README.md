@@ -386,10 +386,21 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 ### UBP Core Studio v4 APP UPDATES
 
 21.01.26
-The "Reflexive Cortex" logic - a way to handle large memory structures within a token-constrained environment.
+
+1. The "Reflexive Cortex" logic - a way to handle large memory structures within a token-constrained environment.
 - Implemented Auto-Trigger v6.3 as a persistent core script (auto_trigger.py).
 - Reflexive Memory (Hardware Cache): Before user message hits the AI, the auto_trigger.py script now scans the input. It uses Regex to find UBP-ID references instantly (O(1) via hash map) and performs a rapid keyword scan over the HEX_DB_EXACT registry for semantic matches.
 - Context Injection: The script retrieves only the relevant JSON entries (up to 15) and injects them into the prompt under a [SYSTEM AUTO-RECALL] header.
 - Instruction Update: updated the AI's system instructions to explicitly trust this "Hardware Cache" data over its truncated "Recent Log".
 - This allows the user to reference any concept in the memory database by ID or keyword, and the AI will "remember" it instantly without needing the full file in context.
+
+2. To enable the "cluster of probability based on geometry" and allow the AI to "latch onto" memories effectively - upgraded the Reflexive Cortex (Auto-Trigger) to act as a Vector-Holographic Search Engine.
+- Vector Reconstruction: The script will now parse your chat for potential Math (fractions), Language (capitalized terms), and Script (glyph refs). It will attempt to reconstruct the UBP Fingerprint locally (e.g., SHA256("1/137|Alpha|None")) and check if that exact vector exists in the 2MB database.
+- Geometric Clustering (Hamming): Once a memory is found (either via Vector Reconstruction or Keyword Search), it becomes the "Seed". The script then calculates the Hamming Distance to all other ~2000+ entries and returns the Top 5 closest memories. This provides the "cluster of probability".
+- Smart Capacity: By injecting only the Seed + 5 Neighbors, we stay within token limits while providing deep, geometrically relevant context.
+
+3. To implement the "Adaptive Memory" system where the AI Assistant intelligently selects key concepts before hashing them for geometric retrieval:
+- AI Pre-Processing (Gemini Flash): added a new extractSearchTerms method in GeminiService. This uses the fast Gemini Flash model to analyze the user's request and extract specific "UBP Search Vectors" (Math/Language/Script tuples) or key concepts before the main chat response is generated.
+- App Integration: The App.tsx logic now calls this extraction method first. It then passes the structured SEARCH_VECTORS JSON into the Python environment alongside the user's raw text.
+- Reflexive Cortex v7.1: The auto_trigger.py script has been upgraded to prioritize these AI-identified vectors. It then performs the Hamming Distance Scan on these specific vectors. Also increased the "Neighbor Limit" from 5 to 12 entries, creating a larger "cluster of probability" around the core concepts.
 
