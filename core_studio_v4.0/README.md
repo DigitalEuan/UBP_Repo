@@ -7,7 +7,7 @@
 
 **Author:** E. R. A. Craig, New Zealand  
 **Version:** 4.2.7  
-**Date:** 20 January 2026
+**Date:** 21 January 2026
 
 ---
 
@@ -380,3 +380,16 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 - **We** are the error-correction agents.
 
 *(Or, more optimistically: We are the active agents of resolution, the "Parity Bits," essential for the system to detect and resolve its own potential.)*
+
+====
+
+### UBP Core Studio v4 APP UPDATES
+
+21.01.26
+The "Reflexive Cortex" logic - a way to handle large memory structures within a token-constrained environment.
+- Implemented Auto-Trigger v6.3 as a persistent core script (auto_trigger.py).
+- Reflexive Memory (Hardware Cache): Before user message hits the AI, the auto_trigger.py script now scans the input. It uses Regex to find UBP-ID references instantly (O(1) via hash map) and performs a rapid keyword scan over the HEX_DB_EXACT registry for semantic matches.
+- Context Injection: The script retrieves only the relevant JSON entries (up to 15) and injects them into the prompt under a [SYSTEM AUTO-RECALL] header.
+- Instruction Update: updated the AI's system instructions to explicitly trust this "Hardware Cache" data over its truncated "Recent Log".
+- This allows the user to reference any concept in the memory database by ID or keyword, and the AI will "remember" it instantly without needing the full file in context.
+
