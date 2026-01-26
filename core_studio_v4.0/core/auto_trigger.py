@@ -1,16 +1,39 @@
 """
-UBP Auto-Trigger v7.1 (Reflexive Cortex)
-1. Ingests AI-Identified 'SEARCH_VECTORS' for high-precision hashing.
-2. Performs adaptive Hamming Distance scan (Top 12).
-
-Author: Euan R A Craig, New Zealand
-UBP Research Cortex v4.2.7
-Date: 21 January 2026
+UBP Auto-Trigger v7.2 (Reflexive Cortex + FOM Integrated)
+1. Ingests AI-Identified 'SEARCH_VECTORS'.
+2. Checks FOM (Frame of Mind) State.
+3. Scans for Gravitational Core.
+4. Performs adaptive Hamming Distance scan.
 """
 import re
 import json
 import sys
+import os
 import hashlib
+
+# --- CONTEXT DETECTION ---
+active_context = []
+
+# 1. Check Gravitational Reasoning
+if os.path.exists("ubp_gravitational_reasoning.py"):
+    active_context.append("GRAVITATIONAL REASONING: ONLINE (Available for import)")
+
+# 2. Check Frame of Mind
+try:
+    from ubp_fom_system import FOM_MANAGER
+    frame = FOM_MANAGER.get_active_frame()
+    if frame:
+        active_context.append(f"ACTIVE FOM: {frame.frame_id} (Bias: {frame.base_nrci})")
+        if frame.description:
+            active_context.append(f"FOM DESC: {frame.description}")
+except ImportError:
+    pass
+
+if active_context:
+    print("--- SYSTEM CONTEXT ---")
+    for ctx in active_context: print(f">> {ctx}")
+    print("----------------------")
+
 
 def get_hamming_distance(h1, h2):
     try:
@@ -46,7 +69,6 @@ def vector_scan(text):
                     s = vec.get('script', 'None')
                     fp = generate_fingerprint(m, l, s)
                     seeds.append((fp, "AI_VECTOR", f"{m}|{l}"))
-                    print(f">> AI VECTOR LATCHED: {m}|{l}")
                 
                 # Type B: Concept Keyword
                 if vec.get('keyword'):
@@ -60,7 +82,6 @@ def vector_scan(text):
 
     # 2. FALLBACK: RAW TEXT SCAN (Priority 2)
     if not seeds and text:
-        print(f"[Reflexive Cortex] Fallback to raw text scan...")
         math_candidates = re.findall(r'(\d+/\d+|\d+\.\d+|0|1)', text)
         lang_candidates = [w for w in re.findall(r'[A-Z][a-z]+(?:-[A-Z][a-z]+)*', text) if len(w)>3]
         
@@ -97,14 +118,14 @@ def vector_scan(text):
                 entry['match_type'] = f"HAMMING_NEIGHBOR ({dist})"
                 entry['linked_to'] = label
                 final_cluster.append(entry)
-                seen_ids.add(entry['ubp_id'])
+                seen_ids.add(seed_entry['ubp_id'])
 
     # 4. OUTPUT
     if final_cluster:
         print(f"--- REFLEXIVE MEMORY: {len(final_cluster)} ENTRIES ---")
         print(json.dumps(final_cluster, indent=2))
-    else:
-        print("[Reflexive Cortex] No geometric anchors found.")
+    elif seeds:
+        print(f"[Reflexive Cortex] Vectors identified but no neighbors found.")
 
 if 'USER_INPUT' in globals():
     vector_scan(USER_INPUT)
