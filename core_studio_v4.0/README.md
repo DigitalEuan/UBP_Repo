@@ -1,4 +1,4 @@
-# UBP Core Studio v4.2.7
+# UBP Core Studio v4.2.7 - Reflexive Memory • Frame of Mind • Local AI
 ## Universal Binary Principle (UBP) — Active Memory & Scientific Research Environment
 
 ![Version](https://img.shields.io/badge/version-4.2.7-purple.svg)
@@ -7,7 +7,7 @@
 
 **Author:** E. R. A. Craig, New Zealand  
 **Version:** 4.2.7  
-**Date:** 21 January 2026
+**Date:** 27 January 2026
 
 ---
 
@@ -55,6 +55,10 @@ Includes UBP Drive v3.1.1, a digital file storage tool that:
 *   **Expands data** 1:2 into Golay Codewords - yes twice a big!
 *   **Heals** up to 3 bit-flips per 24-bit block (Self-Healing)
 *   **Uses SHAKE256** for substrate-agnostic key derivation
+
+#### 4. FOM (Frame of Mind) System
+*   **Core Logic (Python):** The app injects a persistent Python module (ubp_fom_system.py) into the Pyodide kernel. This creates a FOMManager class that maintains a registry of "Frames" saved to ubp_fom_index.json.
+*   **Bias Mechanism:** Each Frame contains a base_nrci (default probability) and a dictionary of weights (specific Memories (UBP-IDs) mapped to custom probabilities). This allows you to mechanically shift the "probability mass" of specific concepts (e.g., making "Logic" heavier than "Emotion").
 
 ---
 
@@ -385,7 +389,7 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 
 ### UBP Core Studio v4 APP UPDATES
 
-21.01.26
+#### 21.01.26
 
 1. The **Reflexive Cortex** logic - a way to handle large memory structures within a token-constrained environment.
 - Implemented Auto-Trigger v6.3 as a persistent core script (auto_trigger.py).
@@ -404,6 +408,30 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 - App Integration: The App.tsx logic now calls this extraction method first. It then passes the structured SEARCH_VECTORS JSON into the Python environment alongside the user's raw text.
 - Reflexive Cortex v7.1: The auto_trigger.py script has been upgraded to prioritize these AI-identified vectors. It then performs the Hamming Distance Scan on these specific vectors. Also increased the "Neighbor Limit" from 5 to 12 entries, creating a larger "cluster of probability" around the core concepts.
 - 
-4. G**eometric Categorization**, the "Octad" of Substance: Organism, Algorithm, Quantity, Mechanism, Imperative, Entropy, Meaning
+4. **Geometric Categorization**, the "Octad" of Substance: Organism, Algorithm, Quantity, Mechanism, Imperative, Entropy, Meaning
 - The React frontend cannot calculate Hamming distances directly (that happens in your Python kernel) - implement a Reflexive Mapper in the **Status** UI. This mapper will read the tags the user generates in Python (e.g., "SUBSTANCE") or infer the geometric category based on the UBP ID patterns the user established (e.g., ELEM_ -> SUBSTANCE, ALGO_ -> ALGORITHM)
 
+#### 27.01.26
+
+1. Workspace UX Overhaul: Replaced native browser dialogs with a robust, inline file management system.
+2. Inline Creation & Renaming: "New Script" and "Rename" actions now spawn text input fields directly within the file list, preventing browser popup blocking and offering a smoother workflow.
+3. Two-Step Deletion: Implemented a specific UI state for deletion (Delete? Yes/No) directly on the file row, preventing accidental data loss and ensuring reliable execution.
+4. State Synchronization: Refactored the file operation logic to immediately update the React UI state (Optimistic UI) while asynchronously synchronizing with the Python (Pyodide) file system, ensuring the interface feels instant and responsive.
+
+#### FOM (Frame of Mind) System
+
+1. Core Logic (Python): The app injects a persistent Python module (ubp_fom_system.py) into the Pyodide kernel. This creates a FOMManager class that maintains a registry of "Frames" saved to ubp_fom_index.json.
+2. Bias Mechanism: Each Frame contains a base_nrci (default probability) and a dictionary of weights (specific Memories (UBP-IDs) mapped to custom probabilities). This allows you to mechanically shift the "probability mass" of specific concepts (e.g., making "Logic" heavier than "Emotion").
+3. UI Management: The FOMStatus panel provides a complete CRUD interface. Users can Create, Delete, Import, Export, and Switch the active frame. The "Edit" mode exposes the raw JSON, allowing precise granular control over the weight dictionaries.
+4. Persistence: Frames are saved/loaded to the virtual file system, preserving the cognitive biases across session reloads.
+
+#### Local AI Integration (Mac/LocalHost)
+1. Service Adapter: A dedicated LocalLLMService runs alongside the Gemini service. It acts as a universal adapter for local inference servers running on a local machine.
+
+**Current supported Providers:**
+* Ollama: Defaults to port 11434.
+* LM Studio: Defaults to port 1234 (OpenAI-compatible endpoint).
+* GPT4All: Defaults to port 4891.
+
+** Health Checks:** The system includes a "heartbeat" check (isServiceAvailable) that polls the local ports to determine if the local server is running, updating the UI status indicators (Green/Red) in real-time.
+** Context Injection:** When a local provider is selected, the app constructs a specialized, token-efficient system prompt that injects the Workspace Files, System KB, and Hash Memory directly into the local model's context window, allowing offline LLMs to "read" the UBP research.
