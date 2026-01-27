@@ -9231,14 +9231,6 @@
         "ubp_id": "LAW_CHEM_VALENCE_EFFICIENCY",
         "full_hash": "01ed268ad2742b1e21c84c5f97c1a72bf95c8746a6bae7a4253644199f9fca5a"
     },
-    "aed19f6b": {
-        "ubp_id": "LAW_CHEM_KINETICS_001",
-        "full_hash": "aed19f6b5406341cbdd10c786488614593cb3a19df46b0b5193e7050e8d3c8db"
-    },
-    "9792fe35": {
-        "ubp_id": "LAW_CHEM_VALENCE_EFFICIENCY",
-        "full_hash": "9792fe35f49fa8f9156f213d126f046b0243626f638e9cbda45747867367f5f2"
-    },
     "a2f7cf45": {
         "ubp_id": "LAW_CHEM_ONTOLOGICAL_YIELD",
         "full_hash": "a2f7cf45eceb6b3665f60164fb34824ebdec2baf181578b16521ca1d2d5bb8dd"
