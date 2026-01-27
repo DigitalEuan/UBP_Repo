@@ -9218,5 +9218,33 @@
     "b8db25f6": {
         "ubp_id": "CONST_PI_GAIN_012",
         "full_hash": "b8db25f6b71ed720b39a7d132efa1244ce7b30667da3897d833d87bdc09a9fb8"
+    },
+    "9c6ca824": {
+        "ubp_id": "LAW_CHEM_NOBLE_001",
+        "full_hash": "9c6ca824be9359093b5440e67c987d4028a0cc5f5fef1b4d88f29f5c5762b9e0"
+    },
+    "aed19f6b": {
+        "ubp_id": "LAW_CHEM_KINETICS_001",
+        "full_hash": "aed19f6b5406341cbdd10c786488614593cb3a19df46b0b5193e7050e8d3c8db"
+    },
+    "01ed268a": {
+        "ubp_id": "LAW_CHEM_VALENCE_EFFICIENCY",
+        "full_hash": "01ed268ad2742b1e21c84c5f97c1a72bf95c8746a6bae7a4253644199f9fca5a"
+    },
+    "aed19f6b": {
+        "ubp_id": "LAW_CHEM_KINETICS_001",
+        "full_hash": "aed19f6b5406341cbdd10c786488614593cb3a19df46b0b5193e7050e8d3c8db"
+    },
+    "9792fe35": {
+        "ubp_id": "LAW_CHEM_VALENCE_EFFICIENCY",
+        "full_hash": "9792fe35f49fa8f9156f213d126f046b0243626f638e9cbda45747867367f5f2"
+    },
+    "a2f7cf45": {
+        "ubp_id": "LAW_CHEM_ONTOLOGICAL_YIELD",
+        "full_hash": "a2f7cf45eceb6b3665f60164fb34824ebdec2baf181578b16521ca1d2d5bb8dd"
+    },
+    "945ec630": {
+        "ubp_id": "CONST_CHEM_ORGANIC_KAPPA",
+        "full_hash": "945ec630f4cc41f2f144ee5d918983eb03dee2ddf948fa12a650d76c6da70828"
     }
 }
