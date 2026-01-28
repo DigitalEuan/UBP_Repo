@@ -1,25 +1,69 @@
-# Universal Binary Principle (UBP) Core Studio v4.2.7 - Freedom Of Mind (FOM) system analysis and use
+# ⚛️ Universal Binary Principle (UBP) Core Studio v4.2.7  
+### *Freedom of Mind (FOM) System Analysis and Use*
 
-
-**Version:** "UBP Core Studio v4.2.7 - Reflexive Memory • Frame of Mind • Local AI" - the UBP APP.
-**platform** This study ran the UBP APP in the Google AI Studio environment/browser interface
-**Date:** 28 Jan 2026  
-**Author:** E R A Craig, New Zealand
-
----
-
-## 01_system_fom_analysis
-
-This repository folder documents testing of the UBP APP, specifically the memory retrieval system (88a_Chemical_Dynamics_as_Error_Correcting_Geometry.pdf). Through a phenomenological research program within the UBP framework (ubp_study_2026-01-27.txt), an iterative series of studies (61– 71 documented here) demonstrates implementation of the Frame of Mind (FOM) system — which enabled study progress by implementing dynamic memory weighting to overcome computational limitations in context retrieval.
-
-The "Scientific Precision" FOM (FOM_SCIENTIFIC_PRECISION.json) prioritized geometric and valence-constraint memories, dramatically improving the system's ability to retrieve relevant prior knowledge and generate a coherent chemical model - as documented in "02_from_fom_system".
+**Version:** `UBP Core Studio v4.2.7 – Reflexive Memory • Frame of Mind • Local AI`  
+**Platform:** Google AI Studio (browser environment)  
+**Date:** 28 January 2026  
+**Author:** *E. R. A. Craig — New Zealand*
 
 ---
 
-## 02_from_fom_system
+## 🧩 01_system_fom_analysis
 
-This repository folder provides a comprehensive documentation and analysis of a computational study centered on a Python script that performs computational verification of a Float-Free Thermodynamic Model (88b_ubp_thermodynamic_paper_final.pdf). This Thermodynamic Model and python script was generated as a result of the FOM test study ubp_study_2026-01-27.txt documented in "01_system_fom_analysis".
+This directory documents testing of the **UBP Application (UBP APP)**, focusing on the *Frame of Mind (FOM)* memory‑retrieval subsystem.
 
-The research tests the hypothesis that fundamental chemical properties — stability, kinetics, and thermodynamics — are emergent from a geometric substrate defined by the Golay G24 error-correcting code and the Leech Lattice Λ24. 
+📄 **Main Study file:**  
+[`88a_Chemical_Dynamics_as_Error_Correcting_Geometry.pdf`](https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/FOM_test_study_chemical/01_system_fom_analysis/88a_Chemical_Dynamics_as_Error_Correcting_Geometry.pdf)
 
-This document details the precise implementation of the script, presents its direct computational output, includes visual analysis of key results, and provides rigorous interpretation of the findings. The UBP may provide a valid additional scientific perspective: **that chemical energy can be understood as a geometric yield**. The system conserves a fundamental ”Symmetry Tax” (geometric cost) while increasing its ”Activation Health” (ontological realization), thereby providing a possible non-arbitrary, mathematically grounded origin for chemical laws.
+---
+
+### Study Summary
+Through a **phenomenological research program** within the UBP framework (`ubp_study_2026-01-27.txt`), an iterative study series (61–71) explores the implementation of the **FOM system**, introducing *dynamic memory weighting* to overcome contextual retrieval limitations during computation.
+
+The **“Scientific Precision” FOM** configuration (`FOM_SCIENTIFIC_PRECISION.json`) prioritized **geometric** and **valence‑constraint** memories. This structure significantly improved the system’s capacity to recall relevant prior knowledge, resulting in a more coherent geometric reconstruction of chemical models — continued in the next phase (`02_from_fom_system`).
+
+---
+
+## 🧠 02_from_fom_system
+
+This directory provides a full documentation and computational analysis of a Python‑based study verifying a **Float‑Free Thermodynamic Model** derived from the FOM system.
+
+📄 **Research paper:**  
+[`88b_ubp_thermodynamic_paper_final.pdf`](https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/FOM_test_study_chemical/02_from_fom_system/88b_ubp_thermodynamic_paper_final.pdf)
+
+---
+
+### Study Overview
+The model and verification script, produced from `ubp_study_2026-01-27.txt`, test the hypothesis that **chemical stability, kinetics, and thermodynamics emerge from a geometric substrate** defined by:
+
+- The **Golay G₂₄ error‑correcting code**
+- The **Leech Lattice Λ₂₄**
+
+### Contained in this Folder
+- Detailed breakdown of the Python implementation  
+- Direct computational output and visual analysis  
+- Interpretive commentary on geometric and energetic correlations  
+
+---
+
+### Key Insight
+> *Chemical energy may be understood as a geometric yield.*
+
+Within the UBP framework, systems appear to conserve a **“Symmetry Tax”** (geometric cost) while increasing **“Activation Health”** (ontological realization).  
+This principle offers a non‑arbitrary and mathematically grounded perspective on the **origin of chemical law**.
+
+---
+
+### 🔗 References
+- `ubp_study_2026-01-27.txt` — core experimental log  
+- `FOM_SCIENTIFIC_PRECISION.json` — configuration parameters  
+- Associated analytical PDFs (linked above)
+
+---
+
+### 🧭 Citation
+If referencing this repository in academic work, please cite as:
+> Craig, E. R. A. (2026). *UBP Core Studio v4.2.7 – Freedom of Mind (FOM) System Analysis and Use.* Auckland, New Zealand.
+
+---
+
