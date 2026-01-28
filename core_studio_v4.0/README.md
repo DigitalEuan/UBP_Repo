@@ -411,6 +411,7 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 4. **Geometric Categorization**, the "Octad" of Substance: Organism, Algorithm, Quantity, Mechanism, Imperative, Entropy, Meaning
 - The React frontend cannot calculate Hamming distances directly (that happens in your Python kernel) - implement a Reflexive Mapper in the **Status** UI. This mapper will read the tags the user generates in Python (e.g., "SUBSTANCE") or infer the geometric category based on the UBP ID patterns the user established (e.g., ELEM_ -> SUBSTANCE, ALGO_ -> ALGORITHM)
 
+
 #### 27.01.26
 
 1. Workspace UX Overhaul: Replaced native browser dialogs with a robust, inline file management system.
@@ -433,5 +434,26 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 * LM Studio: Defaults to port 1234 (OpenAI-compatible endpoint).
 * GPT4All: Defaults to port 4891.
 
-** Health Checks:** The system includes a "heartbeat" check (isServiceAvailable) that polls the local ports to determine if the local server is running, updating the UI status indicators (Green/Red) in real-time.
-** Context Injection:** When a local provider is selected, the app constructs a specialized, token-efficient system prompt that injects the Workspace Files, System KB, and Hash Memory directly into the local model's context window, allowing offline LLMs to "read" the UBP research.
+**Health Checks:** The system includes a "heartbeat" check (isServiceAvailable) that polls the local ports to determine if the local server is running, updating the UI status indicators (Green/Red) in real-time.
+
+**Context Injection:** When a local provider is selected, the app constructs a specialized, token-efficient system prompt that injects the Workspace Files, System KB, and Hash Memory directly into the local model's context window, allowing offline LLMs to "read" the UBP research.
+
+
+#### 29.01.26
+
+1. Update the app to enhance the Frame of Mind (FOM) system to support Category-based weighting and significantly improve the Memory Status categorization logic to catch tags like "element" and "periodic_table".
+
+Summary of Changes:
+
+**App.tsx (Python Core):**
+* Updated the FrameOfMind Python class to include category_weights.
+* Updated get_weight (and get_mass) to accept an optional category argument. If a specific UBP-ID weight isn't found, it now checks the category_weights before falling back to base probability.
+
+**components/MemoryStatus.tsx:**
+* Refined the categorize function with a comprehensive keyword list for the "Octad", it now specifically catches tags like ELEMENT, PERIODIC, ATOM, LOGIC, FUNCTION, BIOLOGY, ensuring far fewer "UNCATEGORIZED" entries.
+
+**components/FOMStatus.tsx:**
+* Updated the "Create New Frame" template to include a category_weights section.
+* Updated the view mode to display these category weights (e.g., SUBSTANCE: 0.8) alongside specific ID weights.
+* Refine the categorization logic. Specifically prioritize the LAW_ ID prefix to ensure UBP Laws remain "IMPERATIVE", while routing general #physics and #math tags to "MECHANISM" and "QUANTITY" respectively. Also explicitly map #vocabulary to "MEANING".
+
