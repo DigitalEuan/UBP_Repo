@@ -10,6 +10,7 @@ import json
 import sys
 import os
 import hashlib
+from ubp_rational_engine import RationalCortex
 
 # --- CONTEXT DETECTION ---
 active_context = []
@@ -79,6 +80,13 @@ def vector_scan(text):
                         if kw in entry_str:
                             seeds.append((fp, "AI_KEYWORD", kw))
                             break # Only one seed per keyword to avoid flooding
+
+                # Type C: Rational
+                if RATIONAL_BRAIN and ("what is" in text.lower() or "counterpart" in text.lower()):
+                    # Logic to extract concept and target domain from text
+                    # Example: "What is the Neon of MECHANISM?"
+                    # This would trigger: RATIONAL_BRAIN.find_counterpart("Neon", "MECHANISM")
+                    pass
 
     # 2. FALLBACK: RAW TEXT SCAN (Priority 2)
     if not seeds and text:
