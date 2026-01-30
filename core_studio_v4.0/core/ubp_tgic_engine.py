@@ -88,7 +88,38 @@ class Proposal:
     delta_phi: int
     toggle: Toggle
 
-# --- The Engine ---
+# --- 1. SEMANTIC REACTION LAYER (The Beaker) ---
+class SemanticBeaker:
+    @staticmethod
+    def react(id_a: str, id_b: str):
+        if not HEX_DB_EXACT.registry: HEX_DB_EXACT.load_memory()
+        
+        e_a = HEX_DB_EXACT.find_by_id(id_a)
+        e_b = HEX_DB_EXACT.find_by_id(id_b)
+        
+        if not e_a or not e_b: return None
+
+        # Interaction (XOR) + Reflexive Snap
+        raw_v = [(a ^ b) for a, b in zip(e_a['vector'], e_b['vector'])]
+        decoded, _, _ = GOLAY_DECODER.decode(raw_v)
+        product_v = GOLAY_DECODER.encode(decoded)
+        
+        # Find Resonance
+        best_match = None
+        min_dist = 25
+        for fp, entry in HEX_DB_EXACT.registry.items():
+            dist = BinaryLinearAlgebra.hamming_distance(product_v, entry.get('vector', []))
+            if dist < min_dist:
+                min_dist = dist
+                best_match = entry
+        
+        return {
+            "product_vector": product_v,
+            "match": best_match['ubp_id'] if best_match else "UNKNOWN",
+            "stability": min_dist
+        }
+
+# --- 2. LOW-LEVEL LATTICE LAYER (TGIC) ---
 class TGICExactEngine:
     def __init__(self):
         self.golay = GOLAY_DECODER
