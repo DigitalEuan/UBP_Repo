@@ -59,6 +59,90 @@ Includes UBP Drive v3.1.1, a digital file storage tool that:
 #### 4. FOM (Frame of Mind) System
 *   **Core Logic (Python):** The app injects a persistent Python module (ubp_fom_system.py) into the Pyodide kernel. This creates a FOMManager class that maintains a registry of "Frames" saved to ubp_fom_index.json.
 *   **Bias Mechanism:** Each Frame contains a base_nrci (default probability) and a dictionary of weights (specific Memories (UBP-IDs) mapped to custom probabilities). This allows you to mechanically shift the "probability mass" of specific concepts (e.g., making "Logic" heavier than "Emotion").
+*   
+
+#### 5.To trigger the 3D Visualizer**
+* In this app the Python script needs to generate a specific data structure and save it to a file named scene_3d.json.
+* The system has a built-in helper module called ubp_viz to make this easy.
+
+**Procedure**
+1. Import the Helper: In your Python script (in the Editor tab), import the save function:
+
+```
+    from ubp_viz import save_scene_3d
+
+    Construct the Data Dictionary: Create a dictionary containing lists for points, lines, and/or spheres.
+
+    Save the Scene: Call save_scene_3d(data).
+```
+
+**Example Script**
+You can copy and run this directly in the app's editor to test it:
+
+```
+from ubp_viz import save_scene_3d
+import math
+
+# 1. Prepare lists for geometric data
+points = []
+lines = []
+spheres = []
+
+# Example: Create a spiral of points
+for i in range(50):
+    angle = i * 0.5
+    x = math.cos(angle) * (i * 0.1)
+    z = math.sin(angle) * (i * 0.1)
+    y = i * 0.1
+    
+    # Add a point
+    points.append({
+        "x": x, 
+        "y": y, 
+        "z": z, 
+        "color": "#00ffff",  # Hex color string
+        "size": 0.2
+    })
+    
+    # Add a line connecting to the center axis
+    lines.append({
+        "start": [0, y, 0],
+        "end": [x, y, z],
+        "color": "#333333"
+    })
+
+# Add a central sphere
+spheres.append({
+    "x": 0, "y": 0, "z": 0,
+    "r": 0.5,
+    "color": "#ff0000"
+})
+
+# 2. Construct the scene dictionary
+scene_data = {
+    "points": points,
+    "lines": lines,
+    "spheres": spheres
+}
+
+# 3. Export to Visualizer
+save_scene_3d(scene_data)
+print("3D Scene generated.")
+```
+
+**Supported Data Structures**
+The React ThreeViewer component expects this JSON structure:
+
+```
+    points: List of { x: float, y: float, z: float, color: str, size: float }
+
+    lines: List of { start: [x,y,z], end: [x,y,z], color: str }
+
+    spheres: List of { x: float, y: float, z: float, r: float, color: str }
+```
+
+**Once executed**
+The app automatically detects the scene_3d.json file, switches the Right Panel to the Visual tab, and renders the interactive 3D scene.
 
 ---
 
@@ -457,3 +541,33 @@ Summary of Changes:
 * Updated the view mode to display these category weights (e.g., SUBSTANCE: 0.8) alongside specific ID weights.
 * Refine the categorization logic. Specifically prioritize the LAW_ ID prefix to ensure UBP Laws remain "IMPERATIVE", while routing general #physics and #math tags to "MECHANISM" and "QUANTITY" respectively. Also explicitly map #vocabulary to "MEANING".
 
+
+#### 30.01.26
+
+1. The System Knowledge Base is now parsed via a Bit-12 Logic Engine that automatically categorizes entries into one of eight fundamental domains (The Octad):
+
+* 1) Substance: Stable Matter & Elements (Bit 12=1).
+* 2) Quantity: Pure Magnitude & Constants (Bit 12=0).
+* 3) Organism: Biological & Complex Systems.
+* 4) Algorithm: Logic, Code & Information.
+* 5) Mechanism: Physical Interactions & Reactions.
+* 6) Imperative: System Laws & Constraints (High Priority).
+* 7) Entropy: Chaos, Void & Dissolution.
+* 8) Meaning: Semantic & Linguistic Value.
+
+This allows the AI to "see" the shape of the research data (memories) rather than just reading text, enabling sophisticated filtering and bias weighting via the FOM system.
+
+2. Frame of Mind (FOM) v4.3 Integration
+
+The Reflexive Cortex now supports advanced cognitive biasing:
+
+* Category Weighting: FOM Frames can now bias entire Geometric Domains (e.g., a "Materialist" FOM frame can weight SUBSTANCE: 0.9 and MEANING: 0.1).
+* JSON Editor: Full read/write access to FOM Frame definitions directly in the UI.
+* Persistency: FOM Frames can be imported/exported as JSON files.
+
+3. Rational File System & IO
+
+The logic kernel (Pyodide) is now fully synchronized with the UI:
+* Bidirectional Sync: Python scripts can write files (with open('data.json', 'w')...) which immediately appear in the Workspace Explorer.
+* Large Buffer Handling: Knowledge Base files (system_kb.md, etc.) are managed in the background to prevent browser rendering stalls, ensuring stability even with massive datasets.
+* Local LLM Support: Integrated support for local inference via Ollama, LM Studio, or GPT4All.
