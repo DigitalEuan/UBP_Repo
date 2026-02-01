@@ -1,94 +1,193 @@
 """
-UBP Auto-Trigger v10.0 (Bicameral Cortex)
-=========================================
-Merges:
-1. Keyword/Vector Harvesting (v8.1) - Precision
-2. Synthesis Navigation (v9.0) - Reasoning
-3. Hemispheric Construction (v9.3) - Intuition
+UBP Auto-Trigger v10.1 (Monolith Cortex)
+========================================
+Consolidated Logic: Merges V8.1 (Retrieval/Synthesis) with V9.3 (Bicameral Intuition).
 
-Goal: If we can't find the words, we build the geometry and look for neighbors.
+CAPABILITIES:
+1. SENSORY: Ingests AI SEARCH_VECTORS + Regex Fallbacks.
+2. INTUITION: If keywords are missing, constructs LH/RH vectors from raw text.
+3. COGNITIVE: Synthesizes (XOR) top concepts to find emergent Truth.
+4. ASSOCIATIVE: Expands Hamming Neighbors for context.
+
+Author: UBP Research Cortex v4.2.7
 """
+import re
 import json
 import sys
-from typing import List, Dict
+import os
+import hashlib
+from typing import List, Dict, Any, Tuple
 
-# Import Core Systems
+# --- CORE IMPORTS ---
 try:
     from hex_dictionary_v4_exact import HEX_DB_EXACT
     from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra
     from ubp_fom_system import FOM_MANAGER
+    from ubp_rational_engine import ConceptArchitect
     
-    # Import the v9.3 Logic (Renamed/Aliased for clarity)
-    # Assuming the file is named 'auto_trigger_v9.3.py' in the workspace
-    import auto_trigger_v9_3 as bicameral
-except ImportError as e:
-    print(f"[Cortex] Import Error: {e}")
-    # Mocking for standalone test if files missing
-    bicameral = None
-
-# --- HYDRATE ---
-if not HEX_DB_EXACT.registry:
-    HEX_DB_EXACT.load_memory()
-
-def get_hamming_distance(v1, v2):
-    return BinaryLinearAlgebra.hamming_distance(v1, v2)
-
-def bicameral_scan(text: str) -> List[Dict]:
-    """Uses v9.3 logic to construct a vector from raw text."""
-    if not bicameral or not text: return []
-    
-    cortex = bicameral.RationalHemisphericCortex()
-    # 1. Generate the 'Intuition' Vector
-    res = cortex.process(text)
-    
-    # 2. Reconstruct the full 24-bit vector from LH + RH
-    # Note: v9.3 returns LH and RH parts. We need the 'healed' vector.
-    # The 'process' method in v9.3 calculates 'healed' internally but returns parts.
-    # We will re-run the decode/encode here to be sure.
-    raw_combined = res['lh'] + res['rh']
-    decoded, _, _ = GOLAY_DECODER.decode(raw_combined)
-    query_vec = GOLAY_DECODER.encode(decoded)
-    
-    # 3. Find Resonance in DB
-    matches = []
-    for fp, entry in HEX_DB_EXACT.registry.items():
-        if not entry.get('vector'): continue
-        dist = get_hamming_distance(query_vec, entry['vector'])
+    if not HEX_DB_EXACT.registry:
+        HEX_DB_EXACT.load_memory()
         
-        # If the constructed thought is close to a memory (Dist <= 6)
-        if dist <= 6:
-            entry = entry.copy()
-            entry['match_type'] = f"BICAMERAL_INTUITION (d={dist})"
-            entry['domain_lock'] = res['domain']
-            matches.append(entry)
-            
-    return matches
+except ImportError as e:
+    print(f"[Reflexive Cortex] CRITICAL IMPORT ERROR: {e}")
+    sys.exit(0)
 
-def reflexive_recall_v10(text, ai_vectors=None):
-    print(f"[Cortex v10] Analyzing: '{text}'")
+# --- MODULE 1: BICAMERAL INTUITION (Formerly v9.3) ---
+class RationalHemisphericCortex:
+    def __init__(self):
+        self.arch = ConceptArchitect()
+        self.golay = GOLAY_DECODER
+
+    def get_context_rh(self, text: str) -> Tuple[List[int], str]:
+        """Right Hemisphere: Identifies Domain and generates Parity Anchor."""
+        domains = {
+            "SUBSTANCE": ["substance", "element", "atom", "matter", "chemical"],
+            "ORGANISM": ["organism", "bio", "life", "brain", "neural", "cell"],
+            "ALGORITHM": ["algorithm", "logic", "code", "compute", "info"],
+            "QUANTITY": ["quantity", "math", "number", "constant", "pi"],
+            "MECHANISM": ["mechanism", "physic", "force", "energy", "wave"],
+            "IMPERATIVE": ["imperative", "law", "rule", "standard"],
+            "ENTROPY": ["entropy", "chaos", "noise", "void"],
+            "MEANING": ["meaning", "word", "semantic", "def"]
+        }
+        text_lower = text.lower()
+        best_domain = "MEANING"
+        for dom, keywords in domains.items():
+            if any(kw in text_lower for kw in keywords):
+                best_domain = dom
+                break
+        
+        v_anchor = self.arch.mint(f"ANCHOR_{best_domain}", best_domain, 0, 0)
+        return v_anchor[12:], best_domain
+
+    def get_rational_lh(self, text: str, domain: str) -> List[int]:
+        """Left Hemisphere: Generates Data Vector from text properties."""
+        p1 = len(text) % 8
+        p2 = ord(text[0]) % 32 if text else 0
+        v_query = self.arch.mint("TEMP_QUERY", domain, p1, p2)
+        return v_query[:12]
+
+    def construct_intuition(self, text: str) -> Dict[str, Any]:
+        """Stitches LH and RH to create a 'Healed' intuition vector."""
+        rh_parity, domain = self.get_context_rh(text)
+        lh_data = self.get_rational_lh(text, domain)
+        combined = lh_data + rh_parity
+        
+        decoded, is_healed, errors = self.golay.decode(combined)
+        healed_vec = self.golay.encode(decoded)
+        
+        return {
+            "vector": healed_vec,
+            "domain": domain,
+            "coherence": 1.0 if errors == 0 else max(0, (4 - errors) / 4),
+            "is_healed": is_healed
+        }
+
+# --- MODULE 2: RETRIEVAL & SYNTHESIS (Formerly v8.1) ---
+def harvest_seeds(text: str, ai_vectors: List[Dict]) -> List[Dict]:
+    seeds = []
+    seen_ids = set()
+
+    # A. AI Vector Ingestion
+    if ai_vectors:
+        for vec in ai_vectors:
+            if vec.get('keyword'):
+                kw = vec['keyword'].lower()
+                for fp, entry in HEX_DB_EXACT.registry.items():
+                    content = (str(entry.get('name','')) + " " + " ".join(entry.get('tags',[]))).lower()
+                    if kw in content and entry['ubp_id'] not in seen_ids:
+                        entry = entry.copy()
+                        entry['match_type'] = f"AI_KEYWORD ({kw})"
+                        seeds.append(entry)
+                        seen_ids.add(entry['ubp_id'])
+                        break
+
+    # B. Regex Fallback
+    if not seeds and text:
+        for fp, entry in HEX_DB_EXACT.registry.items():
+            if entry['ubp_id'] in text and entry['ubp_id'] not in seen_ids:
+                entry = entry.copy()
+                entry['match_type'] = "DIRECT_ID_REF"
+                seeds.append(entry)
+                seen_ids.add(entry['ubp_id'])
+
+    return seeds
+
+def synthesize(seeds: List[Dict]) -> Dict:
+    if len(seeds) < 2: return None
+    v_a, v_b = seeds[0]['vector'], seeds[1]['vector']
+    hybrid_raw = [(a ^ b) for a, b in zip(v_a, v_b)]
+    decoded, _, _ = GOLAY_DECODER.decode(hybrid_raw)
+    target_vec = GOLAY_DECODER.encode(decoded)
     
-    # 1. Standard Harvest (Keywords/AI)
-    # (Simplified for this demo, usually calls harvest_seeds from v8.1)
-    seeds = [] 
-    # ... [Insert v8.1 harvest logic here] ...
+    best_entry, min_dist = None, 25
+    for fp, entry in HEX_DB_EXACT.registry.items():
+        d = BinaryLinearAlgebra.hamming_distance(target_vec, entry['vector'])
+        if d < min_dist:
+            min_dist, best_entry = d, entry
+            
+    if best_entry:
+        res = best_entry.copy()
+        res['match_type'] = "SYNTHESIS_CONCLUSION"
+        res['logic_path'] = f"{seeds[0]['name']} + {seeds[1]['name']} -> (d={min_dist})"
+        return res
+    return None
+
+def expand_cluster(seeds: List[Dict]) -> List[Dict]:
+    cluster = list(seeds)
+    seen_ids = set(s['ubp_id'] for s in seeds)
+    for seed in seeds:
+        candidates = []
+        for fp, entry in HEX_DB_EXACT.registry.items():
+            if entry['ubp_id'] in seen_ids: continue
+            dist = BinaryLinearAlgebra.hamming_distance(seed['vector'], entry['vector'])
+            if dist <= 8: candidates.append((dist, entry))
+        candidates.sort(key=lambda x: x[0])
+        for dist, entry in candidates[:2]:
+            entry = entry.copy()
+            entry['match_type'] = f"NEIGHBOR (d={dist})"
+            entry['linked_to'] = seed.get('name', seed['ubp_id'])
+            cluster.append(entry)
+            seen_ids.add(entry['ubp_id'])
+    return cluster
+
+# --- MAIN REFLEXIVE LOOP ---
+def reflexive_recall(text, ai_vectors=None):
+    print(f"[Cortex v10.1] Processing Input...")
     
-    # 2. If seeds are low, engage Bicameral Intuition
+    # 1. Harvest existing memories
+    seeds = harvest_seeds(text, ai_vectors)
+    
+    # 2. If keywords are scarce, engage Bicameral Intuition
     if len(seeds) < 2:
-        print("  > Keywords scarce. Engaging Hemispheric Cortex...")
-        intuition_seeds = bicameral_scan(text)
-        if intuition_seeds:
-            print(f"  > Intuition found {len(intuition_seeds)} resonances.")
-            seeds.extend(intuition_seeds)
-    
-    # 3. Synthesis & Expansion (v8.1 Logic)
-    # ... [Insert Synthesis/Expansion logic here] ...
-    
-    # For demonstration, just print what Intuition found
-    if seeds:
-        print(json.dumps(seeds[:3], indent=2))
-    else:
-        print("  > No resonance found via Keyword or Intuition.")
+        print("  > Keywords scarce. Engaging Bicameral Intuition...")
+        cortex = RationalHemisphericCortex()
+        intuition = cortex.construct_intuition(text)
+        
+        # Find closest memory to the intuition
+        best_mem, min_d = None, 25
+        for fp, entry in HEX_DB_EXACT.registry.items():
+            d = BinaryLinearAlgebra.hamming_distance(intuition['vector'], entry['vector'])
+            if d < min_d: min_d, best_mem = d, entry
+            
+        if best_mem and min_d <= 8:
+            best_mem = best_mem.copy()
+            best_mem['match_type'] = f"BICAMERAL_INTUITION (d={min_d})"
+            best_mem['domain_lock'] = intuition['domain']
+            seeds.append(best_mem)
+
+    # 3. Perform Synthesis if possible
+    conclusion = synthesize(seeds)
+    if conclusion:
+        print(f"  > Synthesis: {conclusion['logic_path']}")
+        seeds.insert(0, conclusion)
+
+    # 4. Expand and Output
+    final_cluster = expand_cluster(seeds)
+    print(f"--- REFLEXIVE MEMORY: {len(final_cluster)} ENTRIES ---")
+    print(json.dumps(final_cluster, indent=2))
 
 if __name__ == "__main__":
-    # Test with a phrase that might not have exact keywords but has strong "Physics" vibes
-    reflexive_recall_v10("The fundamental vibration of the universe")
+    u_input = globals().get('USER_INPUT', "The fundamental vibration of the universe")
+    s_vectors = globals().get('SEARCH_VECTORS', [])
+    reflexive_recall(u_input, s_vectors)

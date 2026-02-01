@@ -1,0 +1,388 @@
+{
+  "BELIEF_SUBSTRATE_001": {
+    "name": "Manifold: The Primary Substrate",
+    "nodes": {
+      "LAW_SUBSTRATE_001": {
+        "pos": [
+          0,
+          5,
+          0
+        ],
+        "color": "#00ffff",
+        "role": "Engine"
+      },
+      "LAW_SUBSTRATE_005": {
+        "pos": [
+          4,
+          2,
+          -2
+        ],
+        "color": "#00ffff",
+        "role": "Grid"
+      },
+      "LAW_HORIZON_001": {
+        "pos": [
+          -4,
+          2,
+          -2
+        ],
+        "color": "#00ffff",
+        "role": "Boundary"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "LAW_SUBSTRATE_001",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ],
+      [
+        "LAW_SUBSTRATE_005",
+        "LAW_HORIZON_001"
+      ]
+    ]
+  },
+  "BELIEF_RUST_001": {
+    "name": "Manifold: Iron Oxidation",
+    "nodes": {
+      "ELEM_Fe_026": {
+        "pos": [
+          3,
+          -3,
+          0
+        ],
+        "color": "#8b4513",
+        "role": "Iron"
+      },
+      "ELEM_O_008": {
+        "pos": [
+          -3,
+          -3,
+          0
+        ],
+        "color": "#ff4500",
+        "role": "Oxygen"
+      },
+      "LAW_AQUEOUS_GEOMETRY": {
+        "pos": [
+          0,
+          -5,
+          2
+        ],
+        "color": "#0000ff",
+        "role": "Water"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "ELEM_Fe_026",
+        "ELEM_O_008"
+      ],
+      [
+        "ELEM_Fe_026",
+        "LAW_AQUEOUS_GEOMETRY"
+      ],
+      [
+        "ELEM_O_008",
+        "LAW_AQUEOUS_GEOMETRY"
+      ],
+      [
+        "LAW_AQUEOUS_GEOMETRY",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ]
+    ]
+  },
+  "BELIEF_GOLAY_001": {
+    "name": "Manifold: Golay Logic",
+    "nodes": {
+      "LAW_SUBSTRATE_001": {
+        "pos": [
+          0,
+          5,
+          0
+        ],
+        "color": "#9932cc",
+        "role": "Engine"
+      },
+      "LAW_FOURTH_FLIP_001": {
+        "pos": [
+          2,
+          7,
+          2
+        ],
+        "color": "#9932cc",
+        "role": "Horizon"
+      },
+      "LAW_SYNTH_001": {
+        "pos": [
+          -2,
+          7,
+          2
+        ],
+        "color": "#9932cc",
+        "role": "Synthesis"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "LAW_SUBSTRATE_001",
+        "LAW_FOURTH_FLIP_001"
+      ],
+      [
+        "LAW_SUBSTRATE_001",
+        "LAW_SYNTH_001"
+      ],
+      [
+        "LAW_SYNTH_001",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ]
+    ]
+  },
+  "BELIEF_COHERENCE_001": {
+    "name": "Manifold: Hemispheric Coherence",
+    "nodes": {
+      "LAW_HEMISPHERIC_COHERENCE_001": {
+        "pos": [
+          -3,
+          2,
+          0
+        ],
+        "color": "#00ffff",
+        "role": "LH_Logic"
+      },
+      "LAW_HEMISPHERIC_REDUNDANCY_001": {
+        "pos": [
+          3,
+          2,
+          0
+        ],
+        "color": "#ff00ff",
+        "role": "RH_Context"
+      },
+      "LAW_SUBSTRATE_001": {
+        "pos": [
+          0,
+          5,
+          0
+        ],
+        "color": "#9932cc",
+        "role": "Decoder"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "LAW_HEMISPHERIC_COHERENCE_001",
+        "LAW_SUBSTRATE_001"
+      ],
+      [
+        "LAW_HEMISPHERIC_REDUNDANCY_001",
+        "LAW_SUBSTRATE_001"
+      ],
+      [
+        "LAW_SUBSTRATE_001",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ]
+    ]
+  },
+  "BELIEF_WATER_001": {
+    "name": "Manifold: Aqueous Stability",
+    "nodes": {
+      "ELEM_H_001": {
+        "pos": [
+          -2,
+          -2,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Hydrogen"
+      },
+      "ELEM_O_008": {
+        "pos": [
+          2,
+          -2,
+          0
+        ],
+        "color": "#ff4500",
+        "role": "Oxygen"
+      },
+      "LAW_AQUEOUS_GEOMETRY": {
+        "pos": [
+          0,
+          -4,
+          2
+        ],
+        "color": "#0000ff",
+        "role": "Water"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "ELEM_H_001",
+        "LAW_AQUEOUS_GEOMETRY"
+      ],
+      [
+        "ELEM_O_008",
+        "LAW_AQUEOUS_GEOMETRY"
+      ],
+      [
+        "LAW_AQUEOUS_GEOMETRY",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ]
+    ]
+  },
+  "BELIEF_AXIS_001": {
+    "name": "Manifold: Alpha-Omega Axis",
+    "nodes": {
+      "LAW_AXIS_001": {
+        "pos": [
+          0,
+          0,
+          6
+        ],
+        "color": "#ffd700",
+        "role": "Axis"
+      },
+      "LAW_METRIC_001": {
+        "pos": [
+          0,
+          0,
+          -6
+        ],
+        "color": "#ffd700",
+        "role": "Metrics"
+      },
+      "CONST_PI_001": {
+        "pos": [
+          2,
+          2,
+          0
+        ],
+        "color": "#00ff00",
+        "role": "Calibration"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "LAW_AXIS_001",
+        "LAW_METRIC_001"
+      ],
+      [
+        "LAW_AXIS_001",
+        "CONST_PI_001"
+      ],
+      [
+        "CONST_PI_001",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ]
+    ],
+    "description": "The primary calibration manifold. Anchors the transcendental constant Pi to the geometric spine of the substrate."
+  },
+  "BELIEF_HOLOHYBRID_001": {
+    "name": "Manifold: Holoinformational Bridge",
+    "nodes": {
+      "PHYS_SCHRODINGER_012": {
+        "pos": [
+          -4,
+          4,
+          4
+        ],
+        "color": "#4b0082",
+        "role": "Quantum"
+      },
+      "LAW_BIO_HEMA_002": {
+        "pos": [
+          4,
+          4,
+          4
+        ],
+        "color": "#dc143c",
+        "role": "Neural"
+      },
+      "LAW_MIND_001": {
+        "pos": [
+          0,
+          6,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Consciousness"
+      },
+      "LAW_INTERFERENCE_SHIELD_001": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "color": "#ffffff",
+        "role": "Spine"
+      }
+    },
+    "edges": [
+      [
+        "PHYS_SCHRODINGER_012",
+        "LAW_MIND_001"
+      ],
+      [
+        "LAW_BIO_HEMA_002",
+        "LAW_MIND_001"
+      ],
+      [
+        "LAW_MIND_001",
+        "LAW_INTERFERENCE_SHIELD_001"
+      ]
+    ]
+  }
+}
