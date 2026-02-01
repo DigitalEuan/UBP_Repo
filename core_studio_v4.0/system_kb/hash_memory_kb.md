@@ -6239,6 +6239,10 @@
         "ubp_id": "ASTRO_014",
         "full_hash": "92cade9acdc8426266f8e9227b87f49d9b322b69439bb8086a90e86e0513289f"
     },
+    "d331d531": {
+        "ubp_id": "ASTRO_015",
+        "full_hash": "d331d5318ea53181adcb1b02d4de1be47b3cbafc3db16fff11b0a9303c61efe1"
+    },
     "568a670f": {
         "ubp_id": "BOND_001",
         "full_hash": "568a670f6c04d79a2471cebc9bde6e056ad1e1c8a229cdac7fe76699d44b75c7"
@@ -8507,66 +8511,6 @@
         "ubp_id": "EARTH_018",
         "full_hash": "7417c0443d1cd9bc2f653dd68a12a47eb43aa27d0f0603ba6274a3f30b3216e0"
     },
-    "847ab9d9": {
-        "ubp_id": "ASTRO_001",
-        "full_hash": "847ab9d9fc73746f00ac69d4edde7d6034ce980a0b577a7274ce241dd400db7a"
-    },
-    "7d94f4ff": {
-        "ubp_id": "ASTRO_002",
-        "full_hash": "7d94f4ff323fe311b3805dc0ab1b020bb64cd8affbc64deb0837dff61bfb738c"
-    },
-    "81e526ed": {
-        "ubp_id": "ASTRO_003",
-        "full_hash": "81e526ed4a860c172d0f48cd7386a2cff5df17ec254ff0a62b5681800a7660a4"
-    },
-    "574d9238": {
-        "ubp_id": "ASTRO_004",
-        "full_hash": "574d9238322fd8ee93124d7ce1624b69a9fe85b9124cf098ba14f1c28ca86805"
-    },
-    "3a9f061c": {
-        "ubp_id": "ASTRO_005",
-        "full_hash": "3a9f061c2bc5d1cf3e05acbfd53d327b6516423b5dde6b2cd69426e0b54c923e"
-    },
-    "bd6a7d54": {
-        "ubp_id": "ASTRO_006",
-        "full_hash": "bd6a7d540df0fd21fa3ab32569e0962249c353a4cadabe29425bfc401df174a1"
-    },
-    "0a62d417": {
-        "ubp_id": "ASTRO_007",
-        "full_hash": "0a62d41705749a173c2ae212d3369d53f02c3583d1cd6583c34e01194eec0177"
-    },
-    "c9e49855": {
-        "ubp_id": "ASTRO_008",
-        "full_hash": "c9e498558f24fc45a929c2be2cc27f24dd3cc34a1c8912768c3656171c08a412"
-    },
-    "2f652935": {
-        "ubp_id": "ASTRO_009",
-        "full_hash": "2f652935ff6b5b2bf3472ea4026907eab992c060a948c4072a1ab19e7c64bb49"
-    },
-    "44cdd9b7": {
-        "ubp_id": "ASTRO_010",
-        "full_hash": "44cdd9b71b786811d568f0aee413d06b74c11beec51b45d3dd2c9b5820554ee0"
-    },
-    "18662add": {
-        "ubp_id": "ASTRO_011",
-        "full_hash": "18662add5dda3ed74706569c72c1db5b57676a89ffd81cad6ccd9c078e6f162b"
-    },
-    "2b5ff19e": {
-        "ubp_id": "ASTRO_012",
-        "full_hash": "2b5ff19ea429be1c60efbe89d311ff70ac3b26524dab4a10026cd1d091ca7a2e"
-    },
-    "71015a04": {
-        "ubp_id": "ASTRO_013",
-        "full_hash": "71015a04a3c1e834151723f571ae555b17538a76ac19170124055419960023ab"
-    },
-    "28acd501": {
-        "ubp_id": "ASTRO_014",
-        "full_hash": "28acd501413e9fc39b0643c2735e572ad68fe7eebfa5b5d1ed4c47c6a6b5841c"
-    },
-    "d331d531": {
-        "ubp_id": "ASTRO_015",
-        "full_hash": "d331d5318ea53181adcb1b02d4de1be47b3cbafc3db16fff11b0a9303c61efe1"
-    },
     "95552bd2": {
         "ubp_id": "ECO_001",
         "full_hash": "95552bd2996895587df2789a301b08f46ea9e01a6f17989fdd708ddf88044fd3"
@@ -9221,23 +9165,23 @@
     },
     "9c6ca824": {
         "ubp_id": "LAW_CHEM_NOBLE_001",
-        "full_hash": "9c6ca824be9359093b5440e67c987d4028a0cc5f5fef1b4d88f29f5c5762b9e0"
+        "full_hash": "9d0914ecf00225342a30c989c6bf22f95a8a7e01f923ebf9498e65111e6e4b98"
     },
     "aed19f6b": {
         "ubp_id": "LAW_CHEM_KINETICS_001",
-        "full_hash": "aed19f6b5406341cbdd10c786488614593cb3a19df46b0b5193e7050e8d3c8db"
+        "full_hash": "8a6414a289799458541197f3cf5fec89e7061a4c508ed952d2986166f7c66133"
     },
     "01ed268a": {
         "ubp_id": "LAW_CHEM_VALENCE_EFFICIENCY",
-        "full_hash": "01ed268ad2742b1e21c84c5f97c1a72bf95c8746a6bae7a4253644199f9fca5a"
+        "full_hash": "ff189d70623013e7615a935563f4b36343ba11c46358ab12242803697640f8e1"
     },
     "a2f7cf45": {
         "ubp_id": "LAW_CHEM_ONTOLOGICAL_YIELD",
-        "full_hash": "a2f7cf45eceb6b3665f60164fb34824ebdec2baf181578b16521ca1d2d5bb8dd"
+        "full_hash": "a917ded7ff4141b02fecdd5066a0e577a34ab743dbbfdc7abbde245b7979f2d2"
     },
     "945ec630": {
         "ubp_id": "CONST_CHEM_ORGANIC_KAPPA",
-        "full_hash": "945ec630f4cc41f2f144ee5d918983eb03dee2ddf948fa12a650d76c6da70828"
+        "full_hash": "31296680e6741af67d1e40a231dfeabfdec6cce61e8afc34fbb7e9f150ce257f"
     },
     "ba481b50": {
         "ubp_id": "LAW_FOURTH_FLIP_001",
@@ -9246,9 +9190,29 @@
     "ba481b50": {
         "ubp_id": "LAW_FOURTH_FLIP_001",
         "full_hash": "ba481b5078a2c3e3567eed956f05e20c09500c018b4f38f5bd31b7ae4b4ed450"
-  },
-    "107f7660": {
-        "ubp_id": "CONCEPT_QFD_001",
-        "full_hash": "107f7660db4dfc26ed71067e717d5b97e4c606158309616d5ac44f9419ba918d"
+    },
+    "5d426f57": {
+        "ubp_id": "LAW_PHASE_RESONANCE_001",
+        "full_hash": "b15a1b50af19446ab50c559a2682630bae9a420f1ee1655db8263aeeb9104219"
+    },
+    "982fcf31": {
+        "ubp_id": "LAW_SYNTH_001",
+        "full_hash": "3d6034591fa7e92e70215527aeb9f354154d44e32c90b5c1842e92b8b934823a"
+    },
+    "c1839eeb": {
+        "ubp_id": "LAW_HEMISPHERIC_COHERENCE_001",
+        "full_hash": "c1839eeba3bdb2f65d7f185688d680604ef1acdcc4046b6043827561266c3170"
+    },
+    "2d24016f": {
+        "ubp_id": "LAW_HEMISPHERIC_REDUNDANCY_001",
+        "full_hash": "2d24016f83fedaeda42430888925cc64c686af2d23b8a0749617da1c2a0790a5"
+    },
+    "f7c36764": {
+        "ubp_id": "GEO_CON_001",
+        "full_hash": "f7c36764b03de827b3c248462b5b8806bf077e419168e41c52f4a78167f664f4"
+    },
+    "7af739a7": {
+        "ubp_id": "LAW_INTERFERENCE_SHIELD_001",
+        "full_hash": "7af739a7b3a52553499674a220b635e427d1079a8d26136b5c3b8fe7dbf8fb0c"
   }
 }
