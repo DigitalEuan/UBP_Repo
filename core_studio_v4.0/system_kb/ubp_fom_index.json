@@ -1,0 +1,120 @@
+[
+  {
+    "frame_id": "FOM_DEFAULT",
+    "description": "Balanced Standard Bias",
+    "base_nrci": 0.5,
+    "weights": {},
+    "category_weights": {}
+  },
+  {
+    "frame_id": "FOM_SEMANTIC_PURE",
+    "description": "Language-only test. Prioritizes Meaning, Grammar, and Logic. Suppresses Physics.",
+    "base_nrci": 0.2,
+    "weights": {
+      "LAW_LANG_001": 1,
+      "LAW_SEMANTIC_CHORD_001": 1,
+      "LAW_SYMBOL_001": 0.95,
+      "WORD_SYMMETRY_002": 0.9
+    },
+    "category_weights": {
+      "MEANING": 0.99,
+      "ALGORITHM": 0.9,
+      "IMPERATIVE": 0.85,
+      "SUBSTANCE": 0.1,
+      "MECHANISM": 0.1,
+      "QUANTITY": 0.3
+    }
+  },
+  {
+    "frame_id": "FOM_MATERIALIST",
+    "description": "Hard Physics. Only Matter and Forces are real. Semantics are noise.",
+    "base_nrci": 0.3,
+    "weights": {
+      "LAW_GRAVITY_001": 1,
+      "CONST_FINE_STRUCTURE_006": 1,
+      "PRIMITIVE_UNITY": 0.1
+    },
+    "category_weights": {
+      "SUBSTANCE": 0.99,
+      "MECHANISM": 0.99,
+      "QUANTITY": 0.8,
+      "MEANING": 0.05,
+      "ORGANISM": 0.4
+    }
+  },
+  {
+    "frame_id": "FOM_PLATONIC",
+    "description": "Pure Math. The Universe is Number. Matter is a shadow.",
+    "base_nrci": 0.4,
+    "weights": {
+      "CONST_PI_001": 1,
+      "PRIMITIVE_UNITY": 1,
+      "LAW_MATH_PRIME_001": 1
+    },
+    "category_weights": {
+      "QUANTITY": 1,
+      "ALGORITHM": 0.95,
+      "IMPERATIVE": 0.9,
+      "SUBSTANCE": 0.3,
+      "MECHANISM": 0.5
+    }
+  },
+  {
+    "frame_id": "FOM_ORGANIC",
+    "description": "Bio-Centric. Focus on Life, DNA, and Entropy resistance.",
+    "base_nrci": 0.5,
+    "weights": {
+      "LAW_BIO_001": 1,
+      "CONCEPT_DNA": 1,
+      "CONCEPT_LIFE": 1
+    },
+    "category_weights": {
+      "ORGANISM": 0.99,
+      "ENTROPY": 0.8,
+      "SUBSTANCE": 0.7,
+      "MECHANISM": 0.6
+    }
+  },
+  {
+    "frame_id": "FOM_SCIENTIFIC_PRECISION",
+    "description": "High-gain focus on geometric rigor, exact rational math, and chemical valence constraints. Suppresses semantic drift.",
+    "base_nrci": 0.8,
+    "weights": {
+      "LAW_SUBSTRATE_001": 1,
+      "LAW_SYMMETRY_001": 1,
+      "LAW_CHEM_VALENCE_001": 0.95,
+      "LAW_SYNDROME_ACTIVATION_001": 0.95,
+      "CONST_CHEM_ORGANIC_KAPPA": 0.9,
+      "LAW_CHEM_NOBLE_001": 0.9,
+      "PRIMITIVE_VOID": 0.1,
+      "WORD_RESONANCE_003": 0.85
+    },
+    "category_weights": {}
+  },
+  {
+    "frame_id": "FOM_CROSS_DOMAIN",
+    "description": "High-Gain Geometric Scanner",
+    "base_nrci": 0.3,
+    "weights": {
+      "ACTION_BIND": 0.95,
+      "ELEM_Tm_069": 0.95,
+      "LAW_SYNTHESIS_001": 0.8
+    },
+    "category_weights": {}
+  },
+  {
+    "frame_id": "FOM_SCIENTIFIC_STRICT",
+    "description": "Prioritizes Laws, Physics, and Constants. Suppresses Elements and Vocabulary.",
+    "base_nrci": 0.5,
+    "weights": {
+    },
+    "category_weights": {
+      "IMPERATIVE": 0.95,
+      "MECHANISM": 0.9,
+      "QUANTITY": 0.85,
+      "ALGORITHM": 0.7,
+      "SUBSTANCE": 0.2,
+      "MEANING": 0.1
+    }
+  }
+]
