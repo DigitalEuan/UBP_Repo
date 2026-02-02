@@ -6,7 +6,7 @@ UBP INNER DIALOGUE MODULE v1.1
 Fixed: Robust anchor loading and iterative convergence logic.
 Author: E R A Craig, New Zealand
 UBP Research Cortex v4.2.7
-19 Jan 2026
+2 Feb 2026
 """
 import hashlib
 import json
@@ -19,7 +19,7 @@ from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra
 class UBPInnerDialogue:
     def __init__(self):
         self.golay = GOLAY_DECODER
-        self.filename = "ubp_system_kb.md"
+        self.filename = "ubp_system_kb.json"
         self.anchors = self._load_cortex()
         self.threshold = 3 # The Error-Correction Radius (t=3)
 
