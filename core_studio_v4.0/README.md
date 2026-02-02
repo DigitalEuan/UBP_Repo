@@ -579,7 +579,8 @@ v4.2.7 Update Summary: Core Architecture & Geometric Engine
 
 1. Knowledge Base Migration (JSON Architecture)
 * Transition to JSON: migrated the System Knowledge Base to ubp_system_kb.json, added a "Beliefs" Registry as ubp_beliefs_kb.json, and Hash Memory to ubp_hash_memory_kb.json - files changed from Markdown to JSON. This ensures faster parsing, atomic updates, and structural integrity for the Python kernel.
-* Belief Structures: Integrated the ubp_beliefs_kb.json to formally define "Understanding Structures" alongside the "Geometric Nodes" in the system memory.
+* Belief Structures: Integrated the ubp_beliefs_kb.json to formally define "Understanding Structures" alongside the "Geometric Nodes" in the system memory. Auto-downloads on APP start from [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/core/ubp_beliefs_kb.json]
+* A set Frame Of Mind (FOM) Index auto-downloads from [https://www.google.com/url?sa=E&q=https%3A%2F%2Fgithub.com%2FDigitalEuan%2FUBP_Repo%2Fblob%2Fmain%2Fcore_studio_v4.0%2Fsystem_kb%2Fubp_fom_index.json]
 
 2. New Core Modules
 * ubp_geometric_reasoning_v4_enhanced.py: Implements the logic for the "Octad" (8 Geometric Domains). Handles the automatic categorization of UBP IDs into domains (Substance, Organism, Algorithm, Quantity, Mechanism, Imperative, Entropy, Meaning) based on Bit 12 logic and tags.
