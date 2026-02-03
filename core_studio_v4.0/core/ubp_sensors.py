@@ -1,5 +1,6 @@
+from fractions import Fraction
 """
-UBP SENSORS v1.0 (Phenomenology Pack)
+UBP SENSORS vFraction(1, 1) (Phenomenology Pack)
 =====================================
 Consolidated logic for Spectral Extraction and Resonance Detection.
 Dependencies: numpy, scipy
@@ -73,7 +74,7 @@ class ResonanceScope:
     """Core logic from resonance_detector_fft.py"""
     
     @staticmethod
-    def analyze(signal: np.ndarray, sample_rate: float = 1.0) -> list:
+    def analyze(signal: np.ndarray, sample_rate: float = Fraction(1, 1)) -> list:
         """
         Detects resonance peaks in 1D signal.
         Returns: List of {'freq': f, 'amp': a, 'phase': p}
@@ -83,7 +84,7 @@ class ResonanceScope:
         
         # 1. FFT
         fft_res = rfft(signal * window)
-        freqs = rfftfreq(n, d=1.0/sample_rate)
+        freqs = rfftfreq(n, d=Fraction(1, 1)/sample_rate)
         amps = np.abs(fft_res) / n
         phases = np.angle(fft_res)
         

@@ -1,5 +1,5 @@
 """
-UBP BINARY REALMS v1.0 (Consolidated Primitives)
+UBP BINARY REALMS vFraction(1, 1) (Consolidated Primitives)
 ================================================
 Harvested logic from v3.7.1 Nuclear, Optical, and Quantum realms.
 Adapts legacy logic to v4.2.6 Float-Free Standards.
@@ -74,7 +74,7 @@ class BinaryQuantumEngine:
         # Deterministic "Randomness" based on state hash would go here in full engine
         # For pure logic, we define the mask magnitude
         
-        # If coherence is 1.0, mask is 0 (No collapse, perfect state)
+        # If coherence is Fraction(1, 1), mask is 0 (No collapse, perfect state)
         # If coherence is 0.0, mask is Full (Total randomization)
         
         if coherence >= 1: return state

@@ -1,6 +1,7 @@
+from fractions import Fraction
 #!/usr/bin/env python3
 """
-UBP RGDL Engine v1.0 (Resonance Geometry Definition Language)
+UBP RGDL Engine vFraction(1, 1) (Resonance Geometry Definition Language)
 =============================================================
 The Standard Visualization Engine for the UBP System.
 

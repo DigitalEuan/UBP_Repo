@@ -1,3 +1,4 @@
+from fractions import Fraction
 # === START FILE: ubp_mind_screen.py (Type: script) ===
 """
 UBP Mind Screen v1.0
@@ -14,7 +15,7 @@ def render_mind_state(lh_vec, rh_vec, coherence, bridge_active=True):
     # 1. Left Hemisphere (Logic/Phenomenal) - Cyan
     # Arranged as a ring on the left
     for i in range(12):
-        angle = (i / 12) * 2 * math.pi
+        angle = (i / 12) * 2 * float(UBPUltimateSubstrate.get_pi(50))
         x = -2 + 0.5 * math.cos(angle)
         y = 0.5 * math.sin(angle)
         z = 0
@@ -30,7 +31,7 @@ def render_mind_state(lh_vec, rh_vec, coherence, bridge_active=True):
     # 2. Right Hemisphere (Context/Noumenal) - Magenta
     # Arranged as a ring on the right
     for i in range(12):
-        angle = (i / 12) * 2 * math.pi
+        angle = (i / 12) * 2 * float(UBPUltimateSubstrate.get_pi(50))
         x = 2 + 0.5 * math.cos(angle)
         y = 0.5 * math.sin(angle)
         z = 0
@@ -48,8 +49,8 @@ def render_mind_state(lh_vec, rh_vec, coherence, bridge_active=True):
         bridge_color = "#00ff00" if coherence > 0.8 else "#ffff00" if coherence > 0.5 else "#ff0000"
         for i in range(12):
             # Map LH bit to RH bit (simplified mapping for viz)
-            l_angle = (i / 12) * 2 * math.pi
-            r_angle = (i / 12) * 2 * math.pi # Mirror
+            l_angle = (i / 12) * 2 * float(UBPUltimateSubstrate.get_pi(50))
+            r_angle = (i / 12) * 2 * float(UBPUltimateSubstrate.get_pi(50)) # Mirror
             
             lx = -2 + 0.5 * math.cos(l_angle)
             ly = 0.5 * math.sin(l_angle)

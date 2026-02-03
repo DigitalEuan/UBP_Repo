@@ -1,5 +1,6 @@
+from fractions import Fraction
 """
-UBP Horizon Monitor v1.0 (Production)
+UBP Horizon Monitor vFraction(1, 1) (Production)
 =====================================
 A topological diagnostic tool for detecting phase transitions in growing systems.
 Maps scalar values against the three fundamental UBP Horizons.
@@ -19,8 +20,8 @@ class HorizonMonitor:
             "BIOLOGIC (Phi)": 18.0      # ~4181 (F_19)
         }
         # The Observer Constant (Efficiency Limit)
-        self.Y = 0.264675
-        self.SAFE_LOAD = 1.0 - self.Y  # ~73.5%
+        self.Y = UBPUltimateSubstrate.get_constants(50)['Y']
+        self.SAFE_LOAD = Fraction(1, 1) - self.Y  # ~73.5%
 
     def check(self, value, name="Metric"):
         """Checks a value against all horizons."""

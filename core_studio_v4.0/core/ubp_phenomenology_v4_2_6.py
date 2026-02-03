@@ -83,7 +83,7 @@ class PhenomenologyEngine:
             return {"status": "ERROR", "stage": "Core Processing", "message": core_result.get('message')}
 
         # C. Synthesize the Result
-        # FLOAT-FREE FIX: Use Fraction(1, 1) instead of 1.0
+        # FLOAT-FREE FIX: Use Fraction(1, 1) instead of Fraction(1, 1)
         one = Fraction(1, 1)
         zero = Fraction(0, 1)
         

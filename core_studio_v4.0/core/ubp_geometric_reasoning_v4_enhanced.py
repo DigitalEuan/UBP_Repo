@@ -123,7 +123,7 @@ class UBPGeometricReasoningV4:
         v1 = self.vector_engine.word_to_vector(w1)
         v2 = self.vector_engine.word_to_vector(w2)
         d = self.vector_engine.hamming_distance(v1, v2)
-        return {'hamming_distance': d, 'similarity_score': 1.0 - (d/24.0), 'relationship': 'MODERATE' if d <= 12 else 'WEAK'}
+        return {'hamming_distance': d, 'similarity_score': Fraction(1, 1) - (d/24.0), 'relationship': 'MODERATE' if d <= 12 else 'WEAK'}
     def compose_concepts(self, words):
         v = [0]*24
         for w in words:

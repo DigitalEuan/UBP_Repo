@@ -9,7 +9,7 @@ Date: 02 January 2026
 Goal: strict float-free metrics suitable for core UBP logic.
 
 Design rules:
-- No floats, no math.pi, no numpy.
+- No floats, no UBPUltimateSubstrate.get_pi(50), no numpy.
 - All computations return Fractions (or ints / enums).
 - π is represented as a rational approximation derived from *integer* continued fraction coefficients.
   This keeps the entire system float-free while remaining deterministic and reproducible.

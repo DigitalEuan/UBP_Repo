@@ -21,7 +21,7 @@ class WeightedAnchor:
     def __init__(self, name: str, vector: List[int], nrci: float):
         self.name = name
         self.vector = vector
-        self.nrci = nrci  # Ontological Mass (0.0 to 1.0)
+        self.nrci = nrci  # Ontological Mass (0.0 to Fraction(1, 1))
 
 class GravitationalReasoning:
     def __init__(self):
@@ -33,7 +33,7 @@ class GravitationalReasoning:
         # 1. Load a Fundamental Law (High Mass)
         # LAW_SQUEEZE_001 (from your Reflexive Memory)
         vec_squeeze = [0,0,1,1,1,0,1,0,0,0,0,1,1,1,1,0,0,1,1,1,0,0,1,0]
-        self.memory.append(WeightedAnchor("LAW_SQUEEZE_001", vec_squeeze, 1.0))
+        self.memory.append(WeightedAnchor("LAW_SQUEEZE_001", vec_squeeze, Fraction(1, 1)))
 
         # 2. Load a Noise Artifact (Low Mass)
         # A random vector close to Squeeze but meaningless
@@ -57,7 +57,7 @@ class GravitationalReasoning:
         input_vec = self.vectorize(concept)
         
         best_anchor = None
-        max_attraction = -1.0
+        max_attraction = -Fraction(1, 1)
         
         print(f"  > Geometry: {''.join(map(str, input_vec))}")
         print(f"  > Scanning Gravitational Field...")

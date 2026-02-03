@@ -28,7 +28,7 @@ class UBPObserver:
         # Constants
         self.Y_inv = UBPUltimateSubstrate.get_constants()['Y_inv']
         self.COHERENCE_THRESHOLD = 0.95
-        self.OBSERVATION_COST = 3.7782 # Fixed tax
+        self.OBSERVATION_COST = UBPUltimateSubstrate.get_constants(50)['Y_inv'] # Fixed tax
         
         # The "Self"
         self.integrity_vector = self._initialize_self_vector()
@@ -69,7 +69,7 @@ class UBPObserver:
             "action": action,
             "coherence": float(local_coherence),
             "dist_to_self": dist_to_self,
-            "energy_cost": self.OBSERVATION_COST * (1.0 - float(local_coherence))
+            "energy_cost": self.OBSERVATION_COST * (Fraction(1, 1) - float(local_coherence))
         }
 
 # --- MODULE 2: THE CORTEX ---

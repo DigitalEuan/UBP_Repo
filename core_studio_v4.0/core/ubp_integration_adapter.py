@@ -53,7 +53,7 @@ class MetricsBridge:
         
         # Coherence regimes (Comparison values must be Fractions)
         self.COHERENCE_REGIMES = {
-            'high': (Fraction(8, 10), Fraction(1, 1)),   # 0.8 - 1.0
+            'high': (Fraction(8, 10), Fraction(1, 1)),   # 0.8 - Fraction(1, 1)
             'medium': (Fraction(5, 10), Fraction(8, 10)), # 0.5 - 0.8
             'low': (Fraction(0, 1), Fraction(5, 10)),     # 0.0 - 0.5
         }
