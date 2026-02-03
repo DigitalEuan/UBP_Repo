@@ -94545,7 +94545,7 @@
       0
     ]
   },
-"a8cb319d7ff0267eb2a1eb3b52d16ef10096dae4aed330be8135c3258a02eba2": {
+  "a8cb319d7ff0267eb2a1eb3b52d16ef10096dae4aed330be8135c3258a02eba2": {
         "ubp_id": "LAW_BRIDGE_CONTRACT_001",
         "name": "UBP-BRIDGE-V1 Interoperability Contract",
         "math": "Anchor=24-bit | Metrics=p/q | Mapping=Octad",
@@ -94586,5 +94586,47 @@
             0,
             0
         ]
-    }
+    },
+  "2aff7a3ba2c13e32a951701899bdab6d47a1dd4b17cf57e5b18e239916c38dbe": {
+  "ubp_id": "LAW_GHOST_HEALING_001",
+  "name": "Law of Ghost Healing (ARX Restoration)",
+  "math": "V_restored = argmin(dH_Lattice + dH_Tail)",
+  "language": "Biological systems maintain coherence through 'Ghost Healing.' When the primary 24-bit substrate is disrupted beyond the 3-bit limit (dH >= 4), the system uses an 8-bit 'Phase Memory' (Tail) to select the most resonant 'Ghost Truth.' This allows for functional restoration even when original data is lost, effectively 'scarring' the lattice into a new stable state.",
+  "script": "method='ARX_RESTORATION'; ghosts=22; horizon=5",
+  "tags": [
+    "biology",
+    "healing",
+    "ARX",
+    "ghost",
+    "IMPERATIVE"
+  ],
+  "nrci": "1/1",
+  "fingerprint": "2aff7a3ba2c13e32a951701899bdab6d47a1dd4b17cf57e5b18e239916c38dbe",
+  "vector": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0
+  ]
+}
 }
