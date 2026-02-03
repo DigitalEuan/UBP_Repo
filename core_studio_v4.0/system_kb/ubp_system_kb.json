@@ -94017,7 +94017,7 @@
       "noble_gas",
       "IMPERATIVE"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "vector": [
       1,
       0,
@@ -94058,7 +94058,7 @@
       "kinetics",
       "activation"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "vector": [
       1,
       0,
@@ -94100,7 +94100,7 @@
       "pi",
       "IMPERATIVE"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "vector": [
       1,
       0,
@@ -94141,7 +94141,7 @@
       "thermodynamics",
       "activation"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "vector": [
       1,
       0,
@@ -94182,7 +94182,7 @@
       "constant",
       "QUANTITY"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "vector": [
       1,
       0,
@@ -94225,7 +94225,7 @@
       "IMPERATIVE",
       "error_correction"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "fingerprint": "ba481b5078a2c3e3567eed956f05e20c09500c018b4f38f5bd31b7ae4b4ed450",
     "vector": [
       1,
@@ -94472,7 +94472,7 @@
       "interference",
       "IMPERATIVE"
     ],
-    "nrci": "1.0",
+    "nrci": "1/1",
     "vector": [
       1,
       0,
@@ -94500,5 +94500,91 @@
       0
     ],
     "fingerprint": "7af739a7b3a52553499674a220b635e427d1079a8d26136b5c3b8fe7dbf8fb0c"
-  }
+  },
+  "914f9a3addfbad62184749ca0db886b8658d57725601df690d672f313ef8754a": {
+    "ubp_id": "LAW_ARX_HORIZON_006",
+    "name": "Law of the ARX Horizon (Super-Coherence)",
+    "math": "N=4096 | r=6 | S=62.505 bits",
+    "language": "In a high-dimensional semantic lattice (N=4096), the maximum entropy allowed before identity collapse is a Hamming Radius of 6. This creates a 'Super-Coherent' basin of 62.5 bits. Derived from the ARX Reflection theory by Dean Kulik.",
+    "script": "arx_vol = lambda n=4096, r=6: sum(__import__('math').comb(n, k) for k in range(r+1))",
+    "tags": [
+      "memory",
+      "horizon",
+      "4096-bit",
+      "super_coherence",
+      "arx",
+      "dean_kulik",
+      "IMPERATIVE"
+    ],
+    "nrci": "1/1",
+    "fingerprint": "914f9a3addfbad62184749ca0db886b8658d57725601df690d672f313ef8754a",
+    "vector": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+"a8cb319d7ff0267eb2a1eb3b52d16ef10096dae4aed330be8135c3258a02eba2": {
+        "ubp_id": "LAW_BRIDGE_CONTRACT_001",
+        "name": "UBP-BRIDGE-V1 Interoperability Contract",
+        "math": "Anchor=24-bit | Metrics=p/q | Mapping=Octad",
+        "language": "Compatibility with HELM UBP-7/37 requires: 1. Identity Anchors must be 24-bit Golay codewords. 2. All rational outputs must be exported as 'p/q' strings to maintain zero-float integrity. 3. FOM weights must map to the 8 Geometric Domains (The Octad). 4. Proof Artifacts must include exact rational values.",
+        "script": "contract_version = '4.2.7'; required_format = 'p/q'; substrate = 'G24'",
+        "tags": [
+            "bridge",
+            "interop",
+            "standard",
+            "HELM",
+            "IMPERATIVE"
+        ],
+        "nrci": "1/1",
+        "fingerprint": "a8cb319d7ff0267eb2a1eb3b52d16ef10096dae4aed330be8135c3258a02eba2",
+        "vector": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0
+        ]
+    }
 }
