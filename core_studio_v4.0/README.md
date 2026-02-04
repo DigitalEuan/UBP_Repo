@@ -612,3 +612,29 @@ The logic kernel (Pyodide) is now fully synchronized with the UI:
 * Fraction-Aware FOM: Upgraded `ubp_fom_system.py` to v4.3.1, enabling the manager to dynamically convert string-based weights into high-precision `Fraction` objects during runtime
 
 **Throughput:** 2.25M ips (in browser)
+
+
+#### 04.02.26 — Semantic Cortex & Delta Integration
+
+1.  **Integration of Delta Reasoning Engine v3.0:**
+    *   **Attention Field Dynamics:** Transitioned from simple keyword lookups to a multi-word "Attention Field." The system now identifies "Spikes" of geometric intersection between multiple concepts in a single query
+    *   **Contextual Persistence:** Implemented a `ContextWindow` within the Pyodide kernel. This allows the AI to maintain short-term memory across chat turns (e.g., understanding what "it" refers to based on previous geometric resolutions) even if the LLM context is truncated
+    *   **Hebbian Feedback Loop:** Enabled the `reinforce()` mechanism, allowing the system to mathematically adjust NRCI weights based on session-specific successful resolutions
+
+2.  **Auto-Trigger v12.1 (Semantic-Aware):**
+    *   **Hybrid Recall:** Merged the high-speed Regex ID scanner (Fast Path) with the Delta Reasoning Engine (Deep Path)
+    *   **Lexicon Definition Injection:** Integrated **`ubp_lexicon_v2_defs.json`**. The system now possesses a native "Language Knowledge" base, allowing it to ground geometric toggles in human-readable definitions before performing higher-order law synthesis
+    *   **Geometric Audit:** Maintained strict v10.2 rigor by re-calculating Hamming Distances for all retrieved memories using Integer bit-count math, ensuring zero-float integrity is preserved
+
+3.  **Workspace Consolidation (The Great Harvest):**
+    *   Consolidated logic from several standalone research scripts into the core `ubp_delta_engine_v3.py` and `ubp_core_v4_2_6_COMBINED.py`
+    *   **Redundancy Removal:** Safely deprecated `ubp_kernel.py`, `ubp_gravitational_reasoning.py` and `ubp_binary_realms.py`. Their functions (Ontological Mass, E8-G2 folding, and recursive alchemy) are now native to the Delta Substrate
+
+4.  **Memory optimization:**
+    *   **ubp_lexicon_v2_defs.json:** 463 KB. Removed "language" and "numbers" from the system_kb into a dedicated language Lexicon. Rather than storing all 176,046 English words individually, the system leverages the Golay code's structure:
+   *   **Hash-to-Codeword**: Each word is hashed (SHA-256) and mapped to one of 4,096 valid Golay codewords
+   *   **Cluster Representative**: Multiple words hash to the same codeword, forming semantic clusters
+   *   **Geometric Proximity**: Words in the same cluster are treated as **geometrically synonymous** (Hamming distance = 0)
+
+**Throughput:** 2.25M ips
+**system_kb Memory:** 1709 entries
