@@ -3,7 +3,7 @@
 UBP NRCI CALCULATOR - v4.2.6 (FLOAT-FREE PATCHED)
 ================================================================================
 
-Normalized Resonance Coherence Index (NRCI) calculation module.
+Non-Random Coherence Index (NRCI) calculation module.
 Integrates with metrics.py and provides coherence assessment.
 
 Version: 4.2.6 NRCI Calculator
