@@ -471,6 +471,59 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 
 ====
 
+================================================================================
+FILE STRUCTURE REFERENCE
+================================================================================
+
+UBP_REPO/
+├── core_studio_v4.0/
+│   ├── core/
+│   │   ├── advanced_toggle_algebra.py
+│   │   ├── auto_trigger.py
+│   │   ├── hex_dictionary_v4_exact.py
+│   │   ├── metrics_exact.py
+│   │   ├── rational_cortex.json
+│   │   ├── ubp_beliefs_kb.json
+│   │   ├── ubp_core_v4_2_6_COMBINED.py    [PRIMARY ENGINE]
+│   │   ├── ubp_delta_engine_v3.py         [REASONING]
+│   │   ├── ubp_discovery_engine.py
+│   │   ├── ubp_drive.py
+│   │   ├── ubp_fom_manager_v2.py          [FOM]
+│   │   ├── ubp_fom_system.py              [FOM]
+│   │   ├── ubp_geometric_reasoning_v4_enhanced.py
+│   │   ├── ubp_handshake_v4_2_6.py        [VALIDATION]
+│   │   ├── ubp_horizon_monitor.py
+│   │   ├── ubp_inner_dialogue_v1.py
+│   │   ├── ubp_inner_dialogue_v1.py
+│   │   ├── ubp_integration_adapter.py
+│   │   ├── ubp_lexicon_v2_defs.json       [LEXICON]
+│   │   ├── ubp_mind_screen.py
+│   │   ├── ubp_nrci_calculator.py
+│   │   ├── ubp_phenomenology_v4_2_6.py    [BRIDGE]
+│   │   ├── ubp_rational_engine.py
+│   │   ├── ubp_rgdl.py                    [VISUALIZATION]
+│   │   ├── ubp_sensors.py
+│   │   ├── ubp_system_initializer.py
+│   │   ├── ubp_tgic_engine.py
+│   │   ├── viz_spatial_simplification.py
+│   │   ├── archive_core/                  [DEPRECATED]
+│   │   └── ...
+│   ├── studies/
+│   │   ├── FOM_test_study_chemical/
+│   │   ├── UBP_v4_2_6_ENHANCED_Comprehensive/
+│   │   ├── eco-plastic/
+│   │   ├── mesaLyons_ubp_study_2025-12-20.json
+│   ├── system_kb/
+│   │   ├── ubp_system_kb.json             [MAIN KB]
+│   │   ├── ubp_hash_memory_kb.json        [INDEX]
+│   │   └── ubp_fom_index.json             [FOM REGISTRY]
+│   ├── versions/
+│   │   └── 17_fom-ubp-core-studio-v1.zip [APP BUNDLE]
+│   └── ...
+└── ...
+
+====
+
 ### UBP Core Studio v4 APP UPDATES
 
 #### 21.01.26
