@@ -471,10 +471,10 @@ The UBP suggests that we live in a **Self-Correcting Geometric Manifold**.
 
 ====
 
-================================================================================
-FILE STRUCTURE REFERENCE
-================================================================================
 
+### FILE STRUCTURE REFERENCE
+
+```
 UBP_REPO/
 ├── core_studio_v4.0/
 │   ├── core/
@@ -521,8 +521,8 @@ UBP_REPO/
 │   │   └── 17_fom-ubp-core-studio-v1.zip [APP BUNDLE]
 │   └── ...
 └── ...
+```
 
-====
 
 ### UBP Core Studio v4 APP UPDATES
 
