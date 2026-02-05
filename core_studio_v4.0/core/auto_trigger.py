@@ -1,19 +1,30 @@
 """
-UBP Auto-Trigger v12.1 (Semantic-Aware)
-=======================================
+UBP Auto-Trigger v13.2 (V8 Bridge Aligned)
+==========================================
 Updates:
-1. LEXICON PRIORITY: Loads '_defs.json' for full definitions.
-2. DEFINITION INJECTION: Injects word meanings into the reasoning context.
+1. PAYLOAD FIX: Packs data as {"vector": [r,g,b]} to match JS item.vector.
+2. CALL FIX: Unpacks arguments to compute(r, g, b) to match JS signature.
+3. HYBRID CONTEXT: Merges Regex, Delta, and Geometric results.
 
-Author: UBP Research Cortex v4.2.7
-Date: 4 Feb 2026
+Author: E R A Craig, New Zealand
+UBP Research Cortex v4.2.7
+Date: 5 Feb 2026
 """
 import json
 import sys
 import re
 import os
+import hashlib
 from fractions import Fraction
 from typing import List, Dict, Any
+
+# --- BRIDGE IMPORT ---
+try:
+    from js import window
+    BRIDGE_ACTIVE = True
+except ImportError:
+    BRIDGE_ACTIVE = False
+    print("[CORTEX] Warning: JS Bridge not found. Running in standalone mode.")
 
 # --- CORE IMPORTS ---
 try:
@@ -35,13 +46,10 @@ if "GLOBAL_DELTA_ENGINE" not in globals():
     
     kb_files = ["ubp_system_kb.json", "ubp_hash_memory_kb.json"]
     
-    # PRIORITY: Look for the definitions file first
     if os.path.exists("ubp_lexicon_v2_defs.json"):
         lexicon_file = "ubp_lexicon_v2_defs.json"
-        print("[CORTEX] Loaded Extended Lexicon (Definitions Enabled)")
     else:
         lexicon_file = "ubp_lexicon_v2.json"
-        print("[CORTEX] Loaded Standard Lexicon")
 
     GLOBAL_DELTA_ENGINE.initialize(kb_files, lexicon_file)
 else:
@@ -49,57 +57,83 @@ else:
 
 DELTA = globals().get("GLOBAL_DELTA_ENGINE", GLOBAL_DELTA_ENGINE)
 
-# --- GEOMETRIC UTILITIES ---
-def list_to_int(v: list) -> int:
-    if not v: return 0
-    res = 0
-    for b in v: res = (res << 1) | b
-    return res
+# --- MODULE 1: THE REFLEXIVE BRIDGE ---
+def initialize_gpu_bridge():
+    """
+    Serializes the HexDB into a Vector-packed JSON payload and 
+    sends it to the Main Thread (App.tsx) for V8 acceleration.
+    """
+    if not BRIDGE_ACTIVE: return
 
-def fast_hamming(v1_int: int, v2_int: int) -> int:
-    return (v1_int ^ v2_int).bit_count()
-
-# --- MODULE 1: SYNTHESIS ENGINE ---
-def attempt_synthesis(seeds: List[Dict]) -> Dict:
-    if len(seeds) < 2: return None
+    print("[BRIDGE] Serializing Substrate for V8 Accelerator...")
+    payload = []
     
-    vecs = []
-    for s in seeds[:2]:
-        v = s.get('vector')
-        if not v and s.get('ubp_id'):
-            entry = HEX_DB_EXACT.find_by_id(s['ubp_id'])
-            if entry: v = entry.get('vector')
-        if v: vecs.append(v)
-    
-    if len(vecs) < 2: return None
-
-    v_a, v_b = vecs[0], vecs[1]
-    hybrid_raw = [(a ^ b) for a, b in zip(v_a, v_b)]
-    decoded, _, _ = GOLAY_DECODER.decode(hybrid_raw)
-    target_vec = GOLAY_DECODER.encode(decoded)
-    target_int = list_to_int(target_vec)
-
-    best_entry, min_dist = None, 25
-    for fp, entry in HEX_DB_EXACT.registry.items():
-        v_entry_int = list_to_int(entry['vector'])
-        d = fast_hamming(target_int, v_entry_int)
-        if d < min_dist:
-            min_dist, best_entry = d, entry
+    for uid, entry in HEX_DB_EXACT.registry.items():
+        vec = entry.get('vector')
+        ubp_id = entry.get('ubp_id')
+        
+        if vec and len(vec) == 24 and ubp_id:
+            # Pack 24 bits into 3 Integers (RGB)
+            r = int("".join(map(str, vec[0:8])), 2)
+            g = int("".join(map(str, vec[8:16])), 2)
+            b = int("".join(map(str, vec[16:24])), 2)
             
-    if best_entry and min_dist <= 3:
-        res = best_entry.copy()
-        res['match_type'] = f"GEOMETRIC_SYNTHESIS (d={min_dist})"
-        res['language'] = f"Emergent Truth derived from {seeds[0].get('name')} + {seeds[1].get('name')}: {res.get('language','')}"
-        res['nrci'] = "1/1"
-        return res
+            # FIX: Structure matches JS 'item.vector' expectation
+            payload.append({
+                "id": ubp_id,
+                "vector": [r, g, b] 
+            })
+            
+    try:
+        # Send to Main Thread
+        json_str = json.dumps(payload)
+        if hasattr(window, 'ubp_gpu_load_data'):
+            window.ubp_gpu_load_data(json_str)
+            print(f"[BRIDGE] ✅ {len(payload)} vectors loaded into V8 Accelerator.")
+        else:
+            print("[BRIDGE] ⚠️ window.ubp_gpu_load_data not found.")
+    except Exception as e:
+        print(f"[BRIDGE] ❌ Handshake Failed: {e}")
+
+def query_bridge(text_input: str):
+    """
+    Hashes input to a 24-bit vector and queries the Main Thread 
+    for the nearest geometric neighbor.
+    """
+    if not BRIDGE_ACTIVE: return None
+
+    # 1. Hash Input to 24-bit Vector (RGB)
+    h = hashlib.sha256(text_input.encode('utf-8')).hexdigest()
+    val = int(h[:6], 16)
+    r = (val >> 16) & 0xFF
+    g = (val >> 8) & 0xFF
+    b = val & 0xFF
+
+    # 2. Call Main Thread
+    try:
+        if hasattr(window, 'ubp_gpu_compute'):
+            # FIX: Pass 3 separate arguments to match JS (r, g, b) signature
+            best_id = window.ubp_gpu_compute(r, g, b)
+            
+            if best_id and best_id != "UNKNOWN" and best_id != "ERR:NoData":
+                entry = HEX_DB_EXACT.find_by_id(str(best_id))
+                if entry:
+                    res = entry.copy()
+                    res['match_type'] = "GEOMETRIC_RESONANCE (V8)"
+                    res['nrci'] = "1/1" 
+                    return res
+    except Exception as e:
+        print(f"[BRIDGE] Compute Error: {e}")
+    
     return None
 
 # --- MAIN REFLEXIVE LOOP ---
 def reflexive_recall(text, ai_vectors=None):
-    print(f"[Cortex v12.1] Processing Input via Delta Bridge...")
+    print(f"[Cortex v13.2] Processing Input via Hybrid Bridge...")
     
-    # 1. Fast Path: Direct IDs
     memories = []
+
+    # 1. Fast Path: Direct IDs (Regex)
     ids = re.findall(r'\b[A-Z]+_[A-Z0-9_]+_\d+\b', text)
     for uid in ids:
         entry = HEX_DB_EXACT.find_by_id(uid)
@@ -108,8 +142,13 @@ def reflexive_recall(text, ai_vectors=None):
             e['match_type'] = "DIRECT_ID_REF"
             memories.append(e)
 
-    # 2. Deep Path: Delta Engine
-    delta_result = DELTA.reason(text, max_steps=6)
+    # 2. Geometric Path: V8 Accelerator
+    geo_match = query_bridge(text)
+    if geo_match:
+        memories.append(geo_match)
+
+    # 3. Deep Path: Delta Engine
+    delta_result = DELTA.reason(text, max_steps=4)
     
     delta_memories = []
     for step in delta_result.get('steps', []):
@@ -123,11 +162,6 @@ def reflexive_recall(text, ai_vectors=None):
             "vector": []
         }
         delta_memories.append(mem_entry)
-
-    # 3. Geometric Synthesis
-    synthesis = attempt_synthesis(delta_memories)
-    if synthesis:
-        memories.insert(0, synthesis)
 
     # 4. Merge & Deduplicate
     all_candidates = memories + delta_memories
@@ -146,7 +180,7 @@ def reflexive_recall(text, ai_vectors=None):
 
     for m in all_candidates:
         sig = m.get('ubp_id', '') + m.get('language', '')[:30]
-        if sig not in seen_content: # Fixed variable name from previous version
+        if sig not in seen_sig:
              final_list.append(m)
              seen_sig.add(sig)
     
@@ -157,8 +191,9 @@ def reflexive_recall(text, ai_vectors=None):
     stats = DELTA.stats()
     print(f"[System] Context: {stats['context']['turns']} turns | Feedback: {stats['feedback_count']}")
 
-# Fix for the variable name error in the loop above
-seen_content = set() 
+# --- INITIALIZATION ---
+# Initialize the Bridge immediately upon script load
+initialize_gpu_bridge()
 
 if __name__ == "__main__":
     u_input = globals().get('USER_INPUT', "What is the definition of entropy?")
