@@ -1,4 +1,4 @@
-# STUDY REPORT: The Geometric Architecture of the Elements  
+# The Geometric Architecture of the Elements  
 *A Topological Reconstruction of the Periodic Table via the Universal Binary Principle*
 
 ---
