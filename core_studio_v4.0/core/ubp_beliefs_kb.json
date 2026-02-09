@@ -587,5 +587,62 @@
         "LAW_INTERFERENCE_SHIELD_001"
       ]
     ]
+  },
+  "BELIEF_WEYL_RESONANCE_001": {
+    "name": "Manifold: Weyl Geometric Interference",
+    "description": "The geometric architecture of $WTe_2$ nonlinearity and Berry Phase stability. It connects the high-Z elements (W, Te) to the Pi-Resonant platform (Graphene) via the 3/2 Harmonic Bridge.",
+    "nodes": {
+      "ELEM_W_074": {
+        "pos": [
+          -4,
+          2,
+          0
+        ],
+        "color": "#ffd700",
+        "role": "Source_A"
+      },
+      "ELEM_Te_052": {
+        "pos": [
+          4,
+          2,
+          0
+        ],
+        "color": "#00ffff",
+        "role": "Source_B"
+      },
+      "LAW_BERRY_PHASE_RESONANCE_001": {
+        "pos": [
+          0,
+          3.11,
+          0
+        ],
+        "color": "#00ff00",
+        "role": "Stability_Platform"
+      },
+      "LAW_QUANTUM_GEOMETRIC_RESONANCE_001": {
+        "pos": [
+          0,
+          -4,
+          2
+        ],
+        "color": "#ff00ff",
+        "role": "Resonance_Anchor"
+      }
+    },
+    "edges": [
+      [
+        "ELEM_W_074",
+        "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"
+      ],
+      [
+        "ELEM_Te_052",
+        "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"
+      ],
+      [
+        "LAW_BERRY_PHASE_RESONANCE_001",
+        "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"
+      ]
+    ],
+    "verification_script": "ubp_script_20260209025230.py"
   }
 }
