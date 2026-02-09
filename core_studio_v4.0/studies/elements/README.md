@@ -6,7 +6,7 @@
 **Author:** E. R. A. Craig, New Zealand  
 **Date:** 09 February 2026  
 **System Version:** UBP Core Studio v4.2.7 [https://github.com/DigitalEuan/UBP_Repo/new/main/core_studio_v4.0]
-
+**Update:** 10 Feb 2026: [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/elements/89_The_Geometric_Architecture_of_the_Elements___A_Unified_Topological_Analysis_via_the_Universal_Binary_Principle.pdf]
 ---
 
 ## Executive Summary
@@ -499,3 +499,7 @@ The manifold may enable *a priori* prediction of:
 I have possibly provided an additional method to view the Periodic Table as a geometric object — a toroidal manifold where atomic identity emerges from the topology of a 24-bit information substrate. This work implements the Universal Binary Principle's core tenet: *physical reality is the macroscopic manifestation of synchronized binary toggles within a deterministic substrate* - well that how the UBP views it.
 
 ---
+
+## Study Development
+
+**Update:** 10 Feb 2026 - from Torus to a spiral, the Elements move up in information space and create a tornado-like structure: [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/elements/89_The_Geometric_Architecture_of_the_Elements___A_Unified_Topological_Analysis_via_the_Universal_Binary_Principle.pdf]
