@@ -590,59 +590,37 @@
   },
   "BELIEF_WEYL_RESONANCE_001": {
     "name": "Manifold: Weyl Geometric Interference",
-    "description": "The geometric architecture of $WTe_2$ nonlinearity and Berry Phase stability. It connects the high-Z elements (W, Te) to the Pi-Resonant platform (Graphene) via the 3/2 Harmonic Bridge.",
+    "description": "A geometric proof of nonlinear magnetization. It meshes the high-Z sources (W, Te) with the Pi-Stability Platform to anchor the 3/2 Harmonic Resonance.",
     "nodes": {
-      "ELEM_W_074": {
-        "pos": [
-          -4,
-          2,
-          0
-        ],
-        "color": "#ffd700",
-        "role": "Source_A"
-      },
-      "ELEM_Te_052": {
-        "pos": [
-          4,
-          2,
-          0
-        ],
-        "color": "#00ffff",
-        "role": "Source_B"
-      },
-      "LAW_BERRY_PHASE_RESONANCE_001": {
-        "pos": [
-          0,
-          3.11,
-          0
-        ],
-        "color": "#00ff00",
-        "role": "Stability_Platform"
-      },
-      "LAW_QUANTUM_GEOMETRIC_RESONANCE_001": {
-        "pos": [
-          0,
-          -4,
-          2
-        ],
-        "color": "#ff00ff",
-        "role": "Resonance_Anchor"
-      }
+      "ELEM_W_074": {"pos": [-5, 0, -2], "color": "#ffd700", "role": "Source_A"},
+      "ELEM_Te_052": {"pos": [5, 0, -2], "color": "#00ffff", "role": "Source_B"},
+      "LAW_BERRY_PHASE_RESONANCE_001": {"pos": [0, 3.11, 0], "color": "#00ff00", "role": "Stability_Platform"},
+      "LAW_QUANTUM_GEOMETRIC_RESONANCE_001": {"pos": [0, -2, 4], "color": "#ff00ff", "role": "Resonance_Anchor"}
     },
     "edges": [
-      [
-        "ELEM_W_074",
-        "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"
-      ],
-      [
-        "ELEM_Te_052",
-        "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"
-      ],
-      [
-        "LAW_BERRY_PHASE_RESONANCE_001",
-        "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"
-      ]
+      ["ELEM_W_074", "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"],
+      ["ELEM_Te_052", "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"],
+      ["LAW_BERRY_PHASE_RESONANCE_001", "LAW_QUANTUM_GEOMETRIC_RESONANCE_001"],
+      ["ELEM_W_074", "LAW_BERRY_PHASE_RESONANCE_001"],
+      ["ELEM_Te_052", "LAW_BERRY_PHASE_RESONANCE_001"]
     ],
-    "verification_script": "ubp_script_20260209025230.py"
+    "geometric_proof": "The convergence of Source A and B onto the 3/2 Harmonic Anchor is stabilized by the Pi-Platform (Y=3.11), creating a closed interference loop."
+  },
+  "BELIEF_ELEMENTAL_VORTEX_001": {
+    "name": "Manifold: The Elemental Vortex",
+    "description": "A geometric proof of the open-ended nature of matter. It meshes the evolutionary anchors (H, Gd, Og) with the Law of Vortex Dynamics to visualize the widening stability radius.",
+    "nodes": {
+      "ELEM_H_001": {"pos": [0, 0, 0], "color": "#ffffff", "role": "Vortex_Base"},
+      "ELEM_Gd_064": {"pos": [0, 12.8, 0], "color": "#00ffff", "role": "Systemic_Median"},
+      "ELEM_Og_118": {"pos": [5, 23.6, 5], "color": "#ff0000", "role": "Vortex_Peak"},
+      "LAW_VORTEX_DYNAMICS_001": {"pos": [-5, 12.8, 5], "color": "#9932cc", "role": "Expansion_Constraint"}
+    },
+    "edges": [
+      ["ELEM_H_001", "ELEM_Gd_064"],
+      ["ELEM_Gd_064", "ELEM_Og_118"],
+      ["LAW_VORTEX_DYNAMICS_001", "ELEM_H_001"],
+      ["LAW_VORTEX_DYNAMICS_001", "ELEM_Og_118"]
+    ],
+    "geometric_proof": "The displacement of Og relative to the H-Gd axis confirms the 0.0056 expansion slope, proving the system is a divergent spiral rather than a closed loop."
   }
 }
