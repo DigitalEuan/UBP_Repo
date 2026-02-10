@@ -697,7 +697,7 @@ The logic kernel (Pyodide) is now fully synchronized with the UI:
 #### 05.02.26 — GPU Proxy Bridge
 
 1. Implemented the GPU Proxy Bridge directly in the main application thread (App.tsx). This ensures the compute function is available to Python regardless of whether the "Visual" tab is currently open or not.
-2. Optimized the "compute" logic using high-performance JavaScript (V8 JIT), which acts as the "Main Thread Proxy". It is orders of magnitude faster than Pyodide looping and eliminates the overhead of Python-to-Wasm context switching for heavy loops.
+2. Optimized the "compute" logic using high-performance JavaScript (V8 JIT), which acts as the "Main Thread Proxy". It is orders of magnitude faster than Pyodide looping and eliminates the overhead of Python-to-Wasm context switching for heavy loops - something like ~600X faster!
 
 Changes Summary
 * types.ts: Added type definitions for the global ubp_gpu_ functions so TypeScript and Pyodide can interact safely.
@@ -787,3 +787,13 @@ These dimensions represent the "Time" and "Spin" factors you identified.
 5. "BELIEF_WEYL_RESONANCE_001": The geometric architecture of $WTe_2$ nonlinearity and Berry Phase stability. It connects the high-Z elements (W, Te) to the Pi-Resonant platform (Graphene) via the 3/2 Harmonic Bridge.
 
 
+### 11.02.26
+**auto_trigger.py update:** 
+To integrate Acoustic-Golay Mapping into the Reflexive Cortex, I upgraded `auto_trigger.py` to v14.0. 
+1.  **Acoustic Intelligence:** The system now monitors user/script input for "vibrational" intent.
+2.  **Resonance Pull Integration:** If the user asks about "harmony" or "frequency," the system doesn't just look for those words. It uses the `AcousticCortex` to generate a vector, applies the Resonance Pull to find the most stable geometric neighbor, and then searches the database for that resolved state - I will attempt to get this to be part of the reasoning system for language eventually. I am not 100% convinced the method of triggering the system is excellent but it works for now.
+3.  **Self-Correction:** This effectively means the AI "auto-tunes" your queries to the Natural Temporal Scale before answering.
+This update is **non-destructive**: it preserves all existing Regex, Delta Engine, and V8 Bridge logic, but adds a new "Acoustic Path" that triggers when vibrational keywords are detected.
+**system_kb refinement**
+* Updated system_kb to use "math" field only for Fingerprint generation
+* Updated hash_memory_kb fingerprints
