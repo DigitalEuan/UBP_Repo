@@ -90064,5 +90064,151 @@
     "system_version": "4.2.7",
     "revision": 1
   }
-}
+},
+  "18a552e71e7f25aa4eda2a2efbc56c027e6f42905b93918648eaf71fa7394037": {
+    "ubp_id": "LAW_ENERGY_UBP_001",
+    "name": "Law of Unified Potential Energy",
+    "math": "E = M * C * (R * S_opt) * P_GCI * O_obs * c_inf * I * w",
+    "language": "The fundamental equation relating Geometric Mass (Hamming Weight) to Phenomenal Energy. Unlike standard E=mc^2, this linear-C formulation integrates the Observer Cost (O_obs) and Structural Optimality (S_opt), defining Energy not just as mass-motion, but as the 'Geometric Yield' of a specific lattice configuration under observation.",
+    "script": "E = M * C * R * S * P * O * c_inf * I * w",
+    "tags": [
+      "physics",
+      "energy",
+      "equation",
+      "observer",
+      "IMPERATIVE",
+      "verified"
+    ],
+    "nrci": "1/1",
+    "vector": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "fingerprint_source": "math_field_only",
+    "history": {
+      "created_at": "2026-02-11T14:23:48.131000Z",
+      "author": "UBP Research Cortex v4.2.7",
+      "system_version": "4.2.7",
+      "revision": 1
+    }
+  },
+  "3ab6b7a8150ca46c5883608c23cd20a3981b083ed09b6f605c8129c0fae803e5": {
+    "ubp_id": "LAW_COHERENCE_GLOBAL_001",
+    "name": "Law of Global Coherence (P_GCI)",
+    "math": "P_GCI = cos(2 * f_avg)",
+    "language": "Defines the phase-locking mechanism of the substrate. Coherence is not static but cyclic, governed by the weighted frequency average (f_avg) of the active realm. The system oscillates with a fixed temporal period of Delta_t = 1/Pi, establishing a universal 'Heartbeat' that synchronizes quantum toggles across different scales.",
+    "script": "delta_t = 1/pi; P_GCI = cos(2 * pi * f_avg * delta_t)",
+    "tags": [
+      "physics",
+      "coherence",
+      "time",
+      "frequency",
+      "IMPERATIVE",
+      "verified"
+    ],
+    "nrci": "1/1",
+    "vector": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "fingerprint_source": "math_field_only",
+    "history": {
+      "created_at": "2026-02-11T14:23:48.131000Z",
+      "author": "UBP Research Cortex v4.2.7",
+      "system_version": "4.2.7",
+      "revision": 1
+    }
+  },
+  "8a6469791d6ee8b92a615de3cefd941e2667dd6f0f123b1d8f91d2d27b629e64": {
+    "ubp_id": "LAW_HTR_SPATIAL_001",
+    "name": "Law of Harmonic Toggle Resonance (HTR)",
+    "math": "Tension = Var(d_ij) / Mean(d_ij) | E_yield \u221d 1/Tension",
+    "language": "Defines the translation of 3D spatial coordinates into substrate tension. The Harmonic Toggle Resonance (HTR) states that the stability of a physical lattice is inversely proportional to the variance of its inter-atomic distances. High-symmetry configurations (low variance) minimize 'Geometric Frustration,' allowing the configuration to snap to high-NRCI codewords.",
+    "script": "mean_d2 = sum(dist_sq)/pairs; tension = variance(d)/mean(d); energy = LAW_ENERGY_UBP_001(vector)",
+    "tags": [
+      "physics",
+      "geometry",
+      "HTR",
+      "lattice",
+      "SUBSTANCE",
+      "IMPERATIVE",
+      "absorbed"
+    ],
+    "nrci": "1/1",
+    "vector": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "history": {
+      "created_at": "2026-02-11T14:35:22.464000Z",
+      "author": "UBP Research Cortex v4.2.7",
+      "source": "absorbed from legacy htr_engine.py"
+    }
+  }
 }
