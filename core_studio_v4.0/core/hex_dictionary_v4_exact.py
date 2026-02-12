@@ -1,5 +1,5 @@
 """
-UBP HexDictionary v4.5 (Definitive Spine Integration)
+UBP HexDictionary v4.6
 =====================================================
 Features:
 1. SPINE VECTOR GENERATOR: Uses SHA256(UBP_ID) to derive unique geometric coordinates.
@@ -9,7 +9,7 @@ Features:
 
 E R A Craig, New Zealand
 UBP Research Cortex v4.2.7
-Updated: 02 Feb 2026
+Updated: 12 Feb 2026
 """
 import hashlib
 import json
@@ -147,5 +147,26 @@ class HexDictionaryV4Exact:
     def find_by_id(self, ubp_id: str) -> Optional[Dict[str, Any]]:
         f_print = self.id_map.get(ubp_id)
         return self.registry.get(f_print) if f_print else None
+
+    def get_nrci_exact(self, ubp_id):
+        """
+        Retrieves the exact rational NRCI. 
+        Prioritizes the new 'math_exact' structure.
+        """
+        entry = self.get_entry(ubp_id)
+        if not entry: return Fraction(1, 2)
+        
+        # New Atlas Standard
+        if "math_exact" in entry:
+            return Fraction(entry["math_exact"]["nrci"]["n"], 
+                            entry["math_exact"]["nrci"]["d"])
+        
+        # Legacy String Standard ("1/1", "24/25")
+        nrci_val = entry.get("nrci", "1/2")
+        if isinstance(nrci_val, str) and "/" in nrci_val:
+            n, d = nrci_val.split("/")
+            return Fraction(int(n), int(d))
+            
+        return Fraction(1, 2)
 
 HEX_DB_EXACT = HexDictionaryV4Exact()
