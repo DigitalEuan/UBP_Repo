@@ -788,6 +788,7 @@ These dimensions represent the "Time" and "Spin" factors you identified.
 
 
 ### 11.02.26
+
 **auto_trigger.py update:** 
 To integrate Acoustic-Golay Mapping into the Reflexive Cortex, I upgraded `auto_trigger.py` to v14.0. 
 1.  **Acoustic Intelligence:** The system now monitors user/script input for "vibrational" intent.
@@ -800,17 +801,16 @@ This update is **non-destructive**: it preserves all existing Regex, Delta Engin
 
 
 ### 12.02.2026
-**MathAtlas v1.3**
+
+#### MathAtlas v1.3
 **MathAtlas** is the geometric "translation layer" of the Universal Binary Principle. Its purpose is to turn abstract information (like the boiling point of an element or a logical law) into a **literal 3D physical structure** within the 24-bit substrate.
 
----
-
-#### 1. The Input: Phenomenal Data
+##### 1. The Input: Phenomenal Data
 Everything starts with the **"math"** field in a Knowledge Base entry. This field contains the raw, measurable dimensions of a phenomenon.
 *   **Example (Hydrogen):** `Z=1|Valence=1|Ion=1312`
 *   **Rule:** No metadata, no dates. Only the "DNA" of the object.
 
-#### 2. The Construction: The Voxel Walker
+##### 2. The Construction: The Voxel Walker
 MathAtlas treats these numbers as instructions for a **3D Voxel Walker**. It starts at the origin `(0,0,0)` and builds a "Data Crystal" using four geometric primitives:
 
 *   **D (Distinction):** Represents positive magnitude. The walker moves **Forward (+X)**. (Color: **Cyan**)
@@ -820,7 +820,7 @@ MathAtlas treats these numbers as instructions for a **3D Voxel Walker**. It sta
 
 **Result:** A complex measurement like `Ion=1312` creates a literal line of 1,312 voxels in the 3D manifold. A rational like `11/5` creates a vertical structure of 11 voxels over 5.
 
-#### 3. The Metrics: Symmetry Tax & NRCI
+##### 3. The Metrics: Symmetry Tax & NRCI
 Once the 3D shape is built, MathAtlas calculates its "cost" to exist in the universe using **Exact Rational Logic** (`fractions.Fraction`).
 
 *   **Symmetry Tax:** This is the "Geometric Rent" the object pays. It is derived from the **Observer Fixed Point ($Y \approx 0.2646$)**.
@@ -830,13 +830,13 @@ Once the 3D shape is built, MathAtlas calculates its "cost" to exist in the univ
     *   **Abstract Logic** (like $1+1$) is "Light" and has a high NRCI.
     *   **Physical Matter** (like Uranium) is "Heavy" and has a low NRCI.
 
-#### 4. The Identity: 24-bit Vectorization
+##### 4. The Identity: 24-bit Vectorization
 To give the object a home in the **Leech Lattice**, the 3D voxel cloud is converted into a 24-bit binary vector.
 *   **Deterministic Hashing:** MathAtlas takes the coordinates of every voxel, sorts them, and runs a **Merkle-style hash**.
 *   **Golay Encoding:** The first 12 bits of that hash become the "Noumenal Address," and the remaining 12 bits are generated as "Parity" to ensure it is a valid Golay codeword.
 *   **Insight:** when tested with the elements, if two different elements result in the same 3D shape, they will have the same vector. They are "Geometric Synonyms."
 
-#### 5. The Compass: Geometric Charge (Tilt)
+##### 5. The Compass: Geometric Charge (Tilt)
 Finally, MathAtlas measures how the object "leans" relative to the **Systemic North**.
 *   **Systemic North:** The average orientation of all stable matter in the database.
 *   **Tilt:** The angle between the object's vector and North.
@@ -848,4 +848,19 @@ Finally, MathAtlas measures how the object "leans" relative to the **Systemic No
 *   **Systemic North Discovery:** Identified the universal alignment axis of the 24-bit substrate `[-0.3066, -0.9197, 0.2453]`. This allows for the calculation of "Geometric Charge" (Tilt) for any mathematical or physical concept.
 *   **Content-Addressable KB Standard:** Established `LAW_SYSTEM_KB_SOP_001` - trying to ensure knowledge Base entries are now indexed by the SHA256 hash of their measurable data, ensuring a deterministic 1:1 link between phenomenal measurements and noumenal identity.
 *   **118 Elements Hardening:** Successfully migrated the entire Periodic Table to the v1.3 standard, revealing the "Complexity Gradient" and identifying "Logic Isotopes" at addresses 3874, 30, and 1499.
+
+----
+
+#### upgraded the Visual tab's ThreeViewer component
+It now includes a floating toolbar with options to export high-definition snapshots and 3D model files (GLB and OBJ formats).
+*   **Updated index.html** to ensure the specific 3D exporters are loaded correctly from the CDN.
+*   **index.html:** Updated the import map to explicitly include the GLTFExporter and OBJExporter to prevent module resolution errors.
+*   **components/ThreeViewer.tsx:** Enabled preserveDrawingBuffer: true on the renderer to allow screenshots.
+*   **Added a Toolbar with:**
+
+            📸 Snapshot: Takes a high-res (2x pixel density) PNG screenshot of the current view.
+
+            📦 Export GLB: Exports the scene (including colors and positions) to a modern binary 3D format.
+
+            🗿 Export OBJ: Exports the raw geometry structure.
 
