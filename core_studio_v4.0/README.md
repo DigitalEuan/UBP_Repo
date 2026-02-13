@@ -864,3 +864,10 @@ It now includes a floating toolbar with options to export high-definition snapsh
 
             🗿 Export OBJ: Exports the raw geometry structure.
 
+
+### 13.02.2026
+
+* Updated MathAtlas to version 4.0 with new features and optimizations.
+* Hardened Algorithm system_kb entries with MathAtlas in the "math" field
+
+ 
