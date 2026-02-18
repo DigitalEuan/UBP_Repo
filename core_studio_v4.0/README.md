@@ -924,6 +924,6 @@ The following files are now **redundant** and have been moved to the `core/archi
     *   **Observable Effects:** Mathematically demonstrated that the electron maintains identity within a **3-bit Golay radius**. Beyond $d_H=3$, the "Grip" of the substrate collapses, providing a geometric proof for the transition from Particle to Wave (Heisenberg Limit) - a good reality check at this stage.
     *   **Interaction Mining:** Successfully simulated electron-electron collisions, observing the emergent necessity of **Archimedean-Golay Synthesis** and **Spherical Primitives** as the primary interaction products.
 
-**Substrate Status:** 50.0% Capacity (2045/4096)
-**Semantic Density:** 5,694 Searchable Terms
-**Cortex State:** HIGH COHERENCE
+
+5.  **Updated Imports:** Now using ubp_core_v5_3_merged.py as the standard UBP core.
+6.  **Note:** Although the system seems solid and the scripts run well I am finding the size of the scripts and ubp_system_kb.json are becomming an issue for the Gemini AI Assistant, I am having to manually remind it of things again so I susspect another threshold approaching. I aim to consolodate scripts, optimize tools and work on the Geometric reasoning for a more natural-style memory recall system, I can see this working well at times but still fell it isn't as great as it can be. Current developments are around how information is formatted and structured and how it needs to be a deterministics, self-contained, geometric - virtually located non-randomly from the "math" field and chained - linked to or explicitly constructed from the primitives it is made from.
