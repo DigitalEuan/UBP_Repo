@@ -1,5 +1,5 @@
 """
-TGIC-Capable Engine (Exact, Float-Free, Deterministic) v4.4
+TGIC-Capable Engine (Exact, Float-Free, Deterministic) v5.3
 ===========================================================
 Updates:
 - REMOVED: 'random' library (Non-deterministic).
@@ -14,9 +14,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional, Set
 import hashlib
-from ubp_core_v4_2_6_COMBINED import (
-    GOLAY_DECODER,
-    LEECH_ENHANCED,
+from ubp_core_v5_3_merged import (
+    GOLAY_ENGINE,
+    LEECH_ENGINE,
     BinaryLinearAlgebra
 )
 
@@ -101,8 +101,8 @@ class SemanticBeaker:
 
         # Interaction (XOR) + Reflexive Snap
         raw_v = [(a ^ b) for a, b in zip(e_a['vector'], e_b['vector'])]
-        decoded, _, _ = GOLAY_DECODER.decode(raw_v)
-        product_v = GOLAY_DECODER.encode(decoded)
+        decoded, _, _ = GOLAY_ENGINE.decode(raw_v)
+        product_v = GOLAY_ENGINE.encode(decoded)
         
         # Find Resonance
         best_match = None
@@ -122,8 +122,8 @@ class SemanticBeaker:
 # --- 2. LOW-LEVEL LATTICE LAYER (TGIC) ---
 class TGICExactEngine:
     def __init__(self):
-        self.golay = GOLAY_DECODER
-        self.leech = LEECH_ENHANCED
+        self.golay = GOLAY_ENGINE
+        self.leech = LEECH_ENGINE
         self.SHELL_TARGET = 12
         self.ANGLE_TOLERANCE = 16
 
@@ -151,7 +151,7 @@ class TGICExactEngine:
         return E
 
     def gamma_sphere(self, off: OffBit) -> bool:
-        _, _, synd = self.golay.decode(list(off.v))
+        _, _, synd = GOLAY_ENGINE.decode(list(off.v))
         return synd <= 3
 
     def gamma_angle(self, S: Dict[Coord, OffBit], prop: Proposal, off_new: OffBit) -> bool:

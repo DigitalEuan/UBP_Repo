@@ -16,7 +16,7 @@ import json
 import os
 import re
 from typing import Dict, List, Optional, Any, Tuple
-from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER
+from ubp_core_v5_3_merged import GOLAY_ENGINE as GOLAY_DECODER
 
 class HexDictionaryV4Exact:
     # --- UBP STANDARDS (Embedded) ---

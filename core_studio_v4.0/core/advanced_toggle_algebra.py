@@ -9,7 +9,7 @@ UBP Research Cortex v4.2.6
 16 Jan 2026
 """
 from fractions import Fraction
-from ubp_core_v4_2_6_COMBINED import UBPUltimateSubstrate, BinaryLinearAlgebra
+from ubp_core_v5_3_merged import UBPUltimateSubstrate, BinaryLinearAlgebra
 
 class RationalMath:
     """Deterministic approximations for transcendental functions."""
