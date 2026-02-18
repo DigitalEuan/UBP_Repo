@@ -410,6 +410,71 @@ class UBPOptimizedParticlePhysics:
             }
         }
 
+class UBPOptimizedParticlePhysics:
+    """
+    UBP Optimized Particle Physics v5.4
+    Integrates Leech Lattice Anchors with Cubic Partition Scaling.
+    
+    Formalizes the 'Existence Unit' (U_e) and 'Cubic Partition' (P_i) laws.
+    """
+    def __init__(self, precision: int = 50):
+        constants = UBPUltimateSubstrate.get_constants(precision)
+        self.Y = constants['Y']
+        self.Y_INV = constants['Y_INV']
+        self.U_e = Fraction(24**3, 1) # The Existence Unit (13,824)
+        self.m_e = Fraction(51099895, 100000000) # Electron mass in MeV
+        
+        # Experimental Targets for Error Calculation
+        self.EXPERIMENTAL = {
+            'muon_electron': 206.7682827,
+            'proton_electron': 1836.15267343,
+            'alpha_inv': 137.035999206,
+            'W_BOSON': 80377.0,
+            'Z_BOSON': 91187.6,
+            'HIGGS': 125250.0,
+            'TOP_QUARK': 172760.0
+        }
+
+    def get_ultimate_predictions(self) -> Dict[str, Any]:
+        """
+        The Master Audit: Combines Leech Anchors and Cubic Partitions.
+        Returns results in the format expected by the UBP Core main() function.
+        """
+        # 1. Leech Lattice Anchors (The 'Spine')
+        muon_ratio = self.Y_INV**4 + 3 - self.Y**4
+        proton_ratio = Fraction(9, 1) * self.Y_INV**4 + (self.Y_INV - 1) - self.Y
+        alpha_inv = 83 + self.Y_INV**3 + Fraction(3, 2) * self.Y**2
+
+        # 2. Heavy Sector (The 'Cubic Partitions')
+        # Top=Edges(12), Higgs=Corners(9), Bosons=Faces(6)
+        higgs_mev = self.U_e * (Fraction(9, 1) + self.Y**2)
+        top_mev = self.U_e * (Fraction(12, 1) + self.Y + self.Y**2)
+        z_mev = self.U_e * (Fraction(6, 1) + 2 * self.Y)
+        w_mev = self.U_e * (Fraction(6, 1) - (self.Y / 2))
+
+        # 3. Synthesize Report
+        results = {
+            'muon_electron': self._fmt('muon_electron', float(muon_ratio), '(Y_inv^4 + 3 - Y^4)'),
+            'proton_electron': self._fmt('proton_electron', float(proton_ratio), '9*Y_inv^4 + (Y_inv-1) - Y'),
+            'alpha_inv': self._fmt('alpha_inv', float(alpha_inv), '83 + Y_inv^3 + 1.5*Y^2'),
+            'higgs_boson': self._fmt('HIGGS', float(higgs_mev), 'U_e * (9 + Y^2)'),
+            'top_quark': self._fmt('TOP_QUARK', float(top_mev), 'U_e * (12 + Y + Y^2)'),
+            'z_boson': self._fmt('Z_BOSON', float(z_mev), 'U_e * (6 + 2Y)'),
+            'w_boson': self._fmt('W_BOSON', float(w_mev), 'U_e * (6 - Y/2)')
+        }
+        return results
+
+    def _fmt(self, key, pred, formula):
+        target = self.EXPERIMENTAL.get(key, pred)
+        err_abs = abs(pred - target)
+        err_pct = (err_abs / target * 100) if target != 0 else 0
+        return {
+            'predicted': pred,
+            'experimental': target,
+            'error_absolute': err_abs,
+            'error_percent': err_pct,
+            'formula': formula
+        }
 
 # ==============================================================================
 # SECTION 6: LEECH LATTICE ENGINE (FLOAT-FREE)
