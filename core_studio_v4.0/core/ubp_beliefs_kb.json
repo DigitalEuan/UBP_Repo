@@ -663,5 +663,23 @@
       ["STATE_NOISE_FLOOR", "LAW_M24_SYMMETRY_001"]
     ],
     "verification": "Coherence is achieved when the AC modulation frequency matches the Observer Constant (Y). This 'snaps' the 14-coil physical projection to the 24-bit noumenal grid."
-  }
+  },
+  "BELIEF_STABILITY_FUNNEL_001": {
+  "name": "Manifold: The Stability Funnel",
+  "description": "The definitive 3D map of elemental stability. It visualizes the 'Sinking' of heavy matter into the entropic floor. The Red Horizon (r=50) marks the limit of non-radioactive coherence. The Island of Stability (Z=124) represents a recursive resonance fold.",
+  "nodes": {
+    "ELEM_Fe_026": {"pos": [31.39, 21.42, 4.51], "color": "#8b4513", "role": "Foundation"},
+    "ELEM_Pb_082": {"pos": [107.23, 58.18, 1.59], "color": "#708090", "role": "Shield"},
+    "ELEM_U_092": {"pos": [101.29, 99.52, 1.31], "color": "#00ff00", "role": "Heavy"},
+    "ELEM_Og_118": {"pos": [169.78, -53.47, 0.99], "color": "#ff4500", "role": "Horizon"},
+    "ELEM_Z_124": {"pos": [0.0, 126.0, 1.58], "color": "#ffd700", "role": "Island"}
+  },
+  "edges": [
+    ["ELEM_Fe_026", "ELEM_Pb_082"],
+    ["ELEM_Pb_082", "ELEM_U_092"],
+    ["ELEM_U_092", "ELEM_Og_118"],
+    ["ELEM_Og_118", "ELEM_Z_124"]
+  ],
+  "verification": "The Z-axis drop from 4.5 to 0.99 confirms the Law of Ontological Friction. The 'Island' altitude increase confirms a topological fold in the 24-bit substrate."
+}
 }
