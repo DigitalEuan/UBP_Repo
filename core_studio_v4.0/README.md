@@ -927,3 +927,15 @@ The following files are now **redundant** and have been moved to the `core/archi
 
 5.  **Updated Imports:** Now using ubp_core_v5_3_merged.py as the standard UBP core.
 6.  **Note:** Although the system seems solid and the scripts run well I am finding the size of the scripts and ubp_system_kb.json are becomming an issue for the Gemini AI Assistant, I am having to manually remind it of things again so I susspect another threshold approaching. I aim to consolodate scripts, optimize tools and work on the Geometric reasoning for a more natural-style memory recall system, I can see this working well at times but still fell it isn't as great as it can be. Current developments are around how information is formatted and structured and how it needs to be a deterministics, self-contained, geometric - virtually located non-randomly from the "math" field and chained - linked to or explicitly constructed from the primitives it is made from.
+
+
+### **19.02.2026 — Added Particle Predictions**
+On startup - 'ubp_core_v5_3_merged.py' particle physics predictions now include:
+    *   **muon_electron:** 0.000353% error
+    *   **proton_electron:** 0.017047% error
+    *   **alpha_inv:** 0.001929% error
+    *   **higgs_boson:** 0.107316% error
+    *   **top_quark:** 1.299325% error
+    *   **z_boson:** 1.015329% error
+    *   **w_boson:** 0.917630% error
+
