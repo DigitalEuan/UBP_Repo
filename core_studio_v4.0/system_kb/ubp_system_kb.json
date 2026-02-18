@@ -101180,5 +101180,55 @@
       "voxel_count": 34,
       "symmetry_tax": "4.6761"
     }
+  },
+  "9b7561ec33f19a999b176ae138d945c9b217bfb552e6bba0b3e1f59d8b167908": {
+    "ubp_id": "LAW_QUADRATIC_ENTHALPY_001",
+    "name": "Law of Quadratic Information Enthalpy",
+    "category": "imperative.physics",
+    "math": "dQ/dH = 0.5 * I^2 * Y | Primitives: [D_intensity, N_scale] | I = HammingWeight | Y = 0.2647",
+    "language": "The thermodynamic energy (Q) released per bit of information (H) during a field collapse is proportional to the square of the field intensity (I) scaled by the Observer Constant (Y). This provides the geometric derivation for the classical energy density formula u = 1/2 * epsilon * E^2.",
+    "script": "energy_release = 0.5 * (intensity**2) * 0.2646 * bits_lost",
+    "tags": [
+      "physics",
+      "thermodynamics",
+      "electromagnetism",
+      "enthalpy",
+      "IMPERATIVE",
+      "HARDENED_V4"
+    ],
+    "nrci": "1/1",
+    "vector": [
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "hamming_weight": 12,
+    "fingerprint": "9b7561ec33f19a999b176ae138d945c9b217bfb552e6bba0b3e1f59d8b167908",
+    "lexicon": "[Law of Quadratic Information Enthalpy], [Energy released per bit of information lost is proportional to the square of field intensity.]",
+    "atlas_metadata": {
+      "voxel_count": 144,
+      "symmetry_tax": "4.6761"
+    }
   }
 }
