@@ -930,7 +930,7 @@ The following files are now **redundant** and have been moved to the `core/archi
 
 
 ### **19.02.2026 — Added Particle Predictions**
-On startup - 'ubp_core_v5_3_merged.py' particle physics predictions now include:
+1.  **On startup:** - 'ubp_core_v5_3_merged.py' particle physics predictions now include:
     *   **muon_electron:** 0.000353% error
     *   **proton_electron:** 0.017047% error
     *   **alpha_inv:** 0.001929% error
@@ -939,3 +939,6 @@ On startup - 'ubp_core_v5_3_merged.py' particle physics predictions now include:
     *   **z_boson:** 1.015329% error
     *   **w_boson:** 0.917630% error
 
+2.  **Understanding Engine:** updated with continuing development.
+
+3.  **system_kb:** removed a load of entries other than LAW, elements and Algorithm - aiming to build up from primitives so a lighter KB make it a bit faster and clearer.
