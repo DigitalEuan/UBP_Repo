@@ -942,3 +942,51 @@ The following files are now **redundant** and have been moved to the `core/archi
 2.  **Understanding Engine:** updated with continuing development.
 
 3.  **system_kb:** removed a load of entries other than LAW, elements and Algorithm - aiming to build up from primitives so a lighter KB make it a bit faster and clearer.
+
+
+### 20 Feb 2026 — Brain, Understanding, Building, SOP_002 & Cortex v3.0
+
+**Substrate Hardening & Data Efficiency**
+ubp_system_kb.json - removed redundant top-level vectors and consolidating metrics, the substrate size was reduced by **~15% (1.1MB to 957KB)**, significantly increasing the AI Assistant's contextual efficiency.
+
+#### 1. The SOP_002 Entry Schema
+Every entry is now a self-contained unit of truth, keyed by the `SHA256` hash of its phenomenal measurements - the "math" field.
+
+```json
+{
+  "FINGERPRINT_KEY": {
+    "ubp_id": "Internal_Identifier",
+    "lexicon": "[Name], [Instructional Definition for AI Context]",
+    "math": "Phenomenal DNA: Raw measurable dimensions (e.g., Mass, Density, Ionization)",
+    "logic": "Executable Python verify() function to prove the math matches the key",
+    "atlas": {
+      "hierarchy": "Noumenal Assembly: The 'Recipe' (e.g., 1×PROTON + 1×ELECTRON)",
+      "vector": [24-bit Golay Codeword],
+      "nrci": "Calculated Stability Fraction (p/q)",
+      "tax": "Calculated Geometric Cost Fraction (p/q)",
+      "weight": "Hamming Weight",
+      "tilt": "Geometric Charge (Angle to Systemic North)"
+    },
+    "tags": ["DOMAIN", "CLASSIFICATION"]
+  }
+}
+```
+
+#### 2. Recursive Hierarchy: The Lineage of Matter
+The system utilizes the `atlas.hierarchy` to navigate the **Lineage of Matter** in two directions:
+
+*   **Building UP (Synthesis):** The system can mathematically construct complex phenomena from simpler anchors. 
+    *   *Example:* `Quarks` $\rightarrow$ `Baryons` $\rightarrow$ `Atoms` $\rightarrow$ `Molecules`.
+    *   This allows the system to predict the geometric address of a new molecule by summing the vectors of its constituent atoms.
+*   **Decomposing DOWN (Reduction):** The system can "strip" any complex object back to its irreducible primitives.
+    *   *Example:* `Water` $\rightarrow$ `2x Hydrogen + 1x Oxygen` $\rightarrow$ `Protons/Electrons` $\rightarrow$ `Quarks`.
+    *   This ensures that every high-level concept is grounded in the fundamental 24-bit substrate.
+
+#### 3. The Reasoning Engines (v3.0)
+*   **ubp_brain_consolidated.py (The Navigator):** Manages the "Up/Down" traversal. It uses the Lexicon to map natural language to fingerprints and performs **Majority-Vote Composition** to find the geometric center of multi-term queries.
+*   **ubp_understanding_engine.py (The Auditor):** Performs the "Lattice Gap Audit." It calculates the vector sum of the hierarchy parts and compares it to the measured phenomenal vector. Any difference is recorded as **Binding Tension** (e.g., the 12-bit "Shadow Signal" found in molecular emergence).
+
+#### 4. auto_trigger.py - The Reflexive Cortex (v17.2)
+*   **Phrase-Lock Scanning:** Pre-indexes multi-word concepts (e.g., "Informational Materialism") to ensure the AI Assistant anchors to the correct Law even when individual keywords are common.
+*   **Triadic Recall:** Simultaneously scans for **Direct IDs**, **Semantic Keywords**, and **Math DNA** to provide a zero-latency "Reflexive Memory" for the AI.
+
