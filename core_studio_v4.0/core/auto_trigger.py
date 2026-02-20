@@ -1,11 +1,13 @@
 """
-UBP Auto-Trigger v15.0 (Brain-Consolidated)
-============================================
-INTEGRATION: Swaps legacy Delta Engine for UBPBrain Consolidated v2.
-Provides high-coherence context injection using v5.3 Merged Core.
+UBP Auto-Trigger v17.2 (Phrase-Lock Edition)
+==============================================
+Features:
+1. PHRASE-LOCK SCANNING: Matches exact strings from Lexicon [Name] parts.
+2. TRIADIC SCORING: Prioritizes Phrases > Math DNA > Keywords.
+3. SOP_002 COMPLIANCE: Fully integrated with fingerprint-keyed KB.
 
 Author: E R A Craig, New Zealand
-Date: 17 Feb 2026
+Date: 20 Feb 2026
 """
 import json
 import sys
@@ -14,79 +16,117 @@ import os
 import hashlib
 from typing import List, Dict, Any
 
-# --- CORE BRAIN IMPORT ---
+# --- 1. SYSTEM INTEGRATION ---
 try:
     from ubp_brain_consolidated import UBPBrain
-    from hex_dictionary_v4_exact import HEX_DB_EXACT
-    from ubp_core_v5_3_merged import GOLAY_ENGINE
     
-    # Initialize the Consolidated Brain
     BRAIN = UBPBrain()
-    kb_files = ['ubp_system_kb.json']
-    if os.path.exists('ubp_atlas.json'):
-        kb_files.append('ubp_atlas.json')
+    BRAIN.initialize(['ubp_system_kb.json'])
     
-    BRAIN.initialize(kb_files)
-    print(f"[Cortex v15.0] Brain Initialized with {len(BRAIN.memory.kb)} entries.")
+    # Build Reverse Map (ID -> Fingerprint)
+    ID_TO_FP = {v.get('ubp_id'): k for k, v in BRAIN.memory.kb.items() if v.get('ubp_id')}
+    
+    # Build Phrase Map (Full Lexicon Name -> Fingerprint)
+    # This allows us to find "Informational Materialism" as a single unit
+    PHRASE_TO_FP = {}
+    for fp, entry in BRAIN.memory.kb.items():
+        lex = entry.get('lexicon', '')
+        if lex.startswith('['):
+            name = lex.split('],')[0].strip('[')
+            PHRASE_TO_FP[name.lower()] = fp
+
+    print(f"[Cortex v17.2] Phrase-Lock Active. {len(PHRASE_TO_FP)} Semantic Anchors.")
 
 except ImportError as e:
-    print(f"[Reflexive Cortex] CRITICAL IMPORT ERROR: {e}")
+    print(f"[Cortex] CRITICAL ERROR: {e}")
     sys.exit(0)
 
-def reflexive_recall(text):
-    print(f"[Cortex v15.0] Processing Input via Consolidated Brain...")
-    memories = []
+# --- 2. HELPER FUNCTIONS ---
 
-    # 1. Fast Path: Direct IDs (Regex)
+def parse_lexicon(lex_str: str) -> tuple:
+    """Extracts [Name] and [Meaning] from SOP_002 Lexicon."""
+    if not lex_str or not lex_str.startswith('['):
+        return "Unknown", lex_str
+    # Split by the first occurrence of '],'
+    parts = lex_str.split('],')
+    name = parts[0].strip('[') if len(parts) > 0 else "Unknown"
+    meaning = parts[1].strip().strip('[') if len(parts) > 1 else lex_str
+    # Remove trailing bracket if present
+    if meaning.endswith(']'): meaning = meaning[:-1]
+    return name, meaning
+
+# --- 3. THE REFLEXIVE LOOP ---
+
+def reflexive_recall(text: str):
+    print(f"[Cortex] Scanning for Semantic Anchors...")
+    memories = {} # Key = Fingerprint
+    input_lower = text.lower()
+
+    # A. PHRASE-LOCK SCAN (High Priority)
+    # Checks if any full Lexicon Name exists in the user's query
+    for phrase, fp in PHRASE_TO_FP.items():
+        if phrase in input_lower:
+            entry = BRAIN.memory.kb[fp].copy()
+            entry['match_type'] = "PHRASE_LOCK"
+            entry['score_boost'] = 2.0
+            memories[fp] = entry
+
+    # B. DIRECT ID SCAN (Regex)
     ids = re.findall(r'\b[A-Z]+_[A-Z0-9_]+_\d+\b', text)
     for uid in ids:
-        entry = HEX_DB_EXACT.find_by_id(uid)
-        if entry:
-            e = entry.copy()
-            e['match_type'] = "DIRECT_ID_REF"
-            memories.append(e)
+        fp = ID_TO_FP.get(uid)
+        if fp and fp not in memories:
+            entry = BRAIN.memory.kb[fp].copy()
+            entry['match_type'] = "DIRECT_ID"
+            entry['score_boost'] = 1.5
+            memories[fp] = entry
 
-    # 2. Deep Path: Consolidated Brain Reasoning
-    # This replaces the old Delta Engine loop
-    brain_result = BRAIN.process_query(text)
-    
-    # Inject the primary concept found by the brain
-    if brain_result.primary_concept:
-        concept = brain_result.primary_concept.to_dict()
-        concept['match_type'] = "BRAIN_PRIMARY_RESONANCE"
-        memories.append(concept)
+    # C. MATH DNA SCAN (Hashing)
+    if "=" in text or "|" in text:
+        fp = hashlib.sha256(text.strip().encode()).hexdigest()
+        if fp in BRAIN.memory.kb and fp not in memories:
+            entry = BRAIN.memory.kb[fp].copy()
+            entry['match_type'] = "MATH_DNA"
+            entry['score_boost'] = 1.8
+            memories[fp] = entry
 
-    # Inject the reasoning chain steps as contextual memories
-    for step in brain_result.reasoning_chain:
-        step_mem = step.concept.to_dict()
-        step_mem['match_type'] = f"BRAIN_CHAIN_{step.operation.upper()}"
-        memories.append(step_mem)
+    # D. KEYWORD SCAN (Lexicon Index)
+    words = re.findall(r'\b\w{4,}\b', input_lower)
+    for word in words:
+        fps = BRAIN.memory.lexicon_index.get(word, [])
+        for fp in fps:
+            if fp not in memories:
+                entry = BRAIN.memory.kb[fp].copy()
+                entry['match_type'] = "KEYWORD"
+                entry['score_boost'] = 1.0
+                memories[fp] = entry
 
-    # 3. Deduplicate and Format for AI Context
-    seen_ids = set()
+    # --- 4. FORMAT FOR AI CONTEXT ---
     final_context = []
     
-    # Add the Brain's synthesized response as a system hint
-    final_context.append({
-        "ubp_id": "SYS_BRAIN_SYNTHESIS",
-        "name": "Brain Synthesis Hint",
-        "language": brain_result.response,
-        "nrci": str(brain_result.final_nrci),
-        "warnings": brain_result.warnings
-    })
+    # Sort by boost (Phrases first)
+    sorted_memories = sorted(memories.values(), key=lambda x: x.get('score_boost', 0), reverse=True)
 
-    for m in memories:
-        uid = m.get('ubp_id', 'UNK')
-        if uid not in seen_ids:
-            final_context.append(m)
-            seen_ids.add(uid)
+    for m in sorted_memories[:12]: # Top 12
+        name, meaning = parse_lexicon(m.get('lexicon', ''))
+        atlas = m.get('atlas', {})
+        
+        ctx_entry = {
+            "ubp_id": m.get('ubp_id'),
+            "name": name,
+            "meaning": meaning,
+            "math": m.get('math'),
+            "hierarchy": atlas.get('hierarchy'),
+            "nrci": atlas.get('nrci'),
+            "match": m.get('match_type')
+        }
+        final_context.append(ctx_entry)
 
-    print(f"--- REFLEXIVE MEMORY: {len(final_context)} ENTRIES INJECTED ---")
-    # In the real App, this JSON is what gets injected into the prompt
+    print(f"--- CORTEX RECALL: {len(final_context)} ANCHORS INJECTED ---")
     return final_context
 
 if __name__ == "__main__":
-    # Test with the query that started it all
-    u_input = globals().get('USER_INPUT', "What is the relationship between an electron and logic?")
-    results = reflexive_recall(u_input)
-    print(json.dumps(results, indent=2))
+    # Test with the specific phrase
+    q = "What is Informational Materialism?"
+    res = reflexive_recall(q)
+    print(json.dumps(res, indent=2))
