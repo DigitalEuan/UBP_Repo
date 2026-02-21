@@ -990,3 +990,46 @@ The system utilizes the `atlas.hierarchy` to navigate the **Lineage of Matter** 
 *   **Phrase-Lock Scanning:** Pre-indexes multi-word concepts (e.g., "Informational Materialism") to ensure the AI Assistant anchors to the correct Law even when individual keywords are common.
 *   **Triadic Recall:** Simultaneously scans for **Direct IDs**, **Semantic Keywords**, and **Math DNA** to provide a zero-latency "Reflexive Memory" for the AI.
 
+
+### 21 Feb 2026
+Updating for ubp_core_v5_3_merged compliance
+
+*   ubp_integration_adapter.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+
+*   ubp_discovery_engine.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+Replaces random bit-flipping with `GOLAY_ENGINE.decode` for snapping. Uses `LEECH_ENGINE` for tax calculation.
+
+*   ubp_phenomenology_v4_2_6.py renamed ubp_phenomenology.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+Implements the **Hyperbolic Stability Formula** ($1 / (1 + Tax/10)$) to handle v5.3 Symmetry Tax values (which can be > 1.0).
+
+*   ubp_nrci_calculator.py
+Uses `LeechPointScaled` from v5.3 and the new stability formula.
+
+*   viz_spatial_simplification.py
+Replaces legacy imports with `ubp_core_v5_3_merged`.
+
+*   ubp_fom_manager_v2.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+Aliased `GOLAY_ENGINE` as `GOLAY_DECODER` to maintain logic compatibility.
+Ensured `Fraction` usage for weights.
+
+*   ubp_integrated_engine_v1.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+Updated `UBPObserver` to use `GOLAY_ENGINE`.
+Updated constants to pull from `UBPUltimateSubstrate` (v5.3).
+
+*   ubp_system_initializer.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+Updated component references to v5.3 standards.
+
+*   viz_spatial_simplification.py
+Replaced `ubp_core_v4_2_6_COMBINED` with `ubp_core_v5_3_merged`.
+
+*   ubp_handshake_v5_3.py renamed ubp_handshake.py
+Created a new handshake script specifically for v5.3.
+Replaces `ubp_handshake_v4_2_6.py`.
+Validates the new `GOLAY_ENGINE` and `LEECH_ENGINE`.
+
