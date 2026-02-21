@@ -1,9 +1,9 @@
 import json
-from ubp_core_v4_2_6_COMBINED import BinaryLinearAlgebra
-from ubp_rational_engine import ConceptArchitect
+from ubp_core_v5_3_merged import BinaryLinearAlgebra
 
 def simplify_manifold():
-    # Load the current state (simulated from your JSON)
+    # Load the current state (simulated from your JSON or use existing scene_3d.json if available)
+    # For this script, we generate a synthetic test set to demonstrate the simplification logic.
     nodes = [
         {"name": "Spatial", "vec": [1,0,1,0,0,0,0,1,0,0,0,1,1,0,0,1,1,1,1,1,1,1,0,0], "pos": [4, -4, 0]},
         {"name": "Geometry", "vec": [0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0], "pos": [-2, 0, 2]},
@@ -15,7 +15,7 @@ def simplify_manifold():
     
     simplified_lines = []
     
-    print("--- SPATIAL FACE ANALYSIS ---")
+    print("--- SPATIAL FACE ANALYSIS (v5.3 Core) ---")
     # Rule: Only draw lines that form a "Face" with the Interference Node (0,0,0)
     # This creates a "Pyramid" structure instead of a "Web"
     origin = nodes[5]

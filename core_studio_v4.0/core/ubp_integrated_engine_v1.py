@@ -1,6 +1,6 @@
 """
-UBP INTEGRATED ENGINE v2.0 (SELF-AWARE CORTEX)
-==============================================
+UBP INTEGRATED ENGINE v2.1 (v5.3 Core Compatible)
+=================================================
 Features:
 1. EMBEDDED OBSERVER: Recursive state evaluation via UBPObserver.
 2. SELF-STABILIZATION: Rejects queries that violate geometric integrity.
@@ -8,7 +8,7 @@ Features:
 
 Author: E R A Craig, New Zealand
 UBP Research Cortex v4.2.7
-Date: 20 January 2026
+Date: 20 Feb 2026
 """
 
 import hashlib
@@ -16,19 +16,21 @@ import re
 import json
 from typing import Dict, List, Any, Tuple, Optional
 from fractions import Fraction
-from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra, UBPUltimateSubstrate
+# v5.3 Migration
+from ubp_core_v5_3_merged import GOLAY_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
 from hex_dictionary_v4_exact import HEX_DB_EXACT
 
 # --- MODULE 1: THE OBSERVER ---
 class UBPObserver:
     def __init__(self, db):
-        self.golay = GOLAY_DECODER
+        self.golay = GOLAY_ENGINE
         self.db = db
         
-        # Constants
-        self.Y_inv = UBPUltimateSubstrate.get_constants()['Y_inv']
-        self.COHERENCE_THRESHOLD = 0.95
-        self.OBSERVATION_COST = UBPUltimateSubstrate.get_constants(50)['Y_inv'] # Fixed tax
+        # Constants from v5.3 Substrate
+        constants = UBPUltimateSubstrate.get_constants(50)
+        self.Y_inv = constants['Y_INV']
+        self.COHERENCE_THRESHOLD = Fraction(95, 100)
+        self.OBSERVATION_COST = self.Y_inv # Fixed tax
         
         # The "Self"
         self.integrity_vector = self._initialize_self_vector()
@@ -69,13 +71,13 @@ class UBPObserver:
             "action": action,
             "coherence": float(local_coherence),
             "dist_to_self": dist_to_self,
-            "energy_cost": self.OBSERVATION_COST * (Fraction(1, 1) - float(local_coherence))
+            "energy_cost": float(self.OBSERVATION_COST * (Fraction(1, 1) - local_coherence))
         }
 
 # --- MODULE 2: THE CORTEX ---
 class SemanticCortexV3:
     def __init__(self):
-        self.golay = GOLAY_DECODER
+        self.golay = GOLAY_ENGINE
         self.db = HEX_DB_EXACT
         if not self.db.registry: self.db.load_memory()
         
@@ -162,10 +164,3 @@ if __name__ == "__main__":
     # Test 1: Valid Concept
     result = cortex.process_query("Energy Time")
     print(json.dumps(result, indent=2))
-    
-    # Test 2: Forced Hallucination (Random Noise)
-    # We simulate a vector that we know is a Deep Hole (Weight 4, e.g., 111100...)
-    print("\n[TEST] Injecting Deep Hole Vector...")
-    bad_vec = [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    obs = cortex.observer.observe(bad_vec)
-    print(f"  Result: {obs['action']} (Coherence {obs['coherence']})")

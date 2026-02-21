@@ -1,34 +1,34 @@
 """
 ================================================================================
-UBP INTEGRATION ADAPTER - v4.2.6 (FLOAT-FREE PATCHED)
+UBP INTEGRATION ADAPTER - v5.3 (FLOAT-FREE PATCHED)
 ================================================================================
 
-Bridges UBP Core v4.2.6 to existing UBP system components.
+Bridges UBP Core v5.3 to existing UBP system components.
 Ensures all metrics remain as exact Fractions.
 
-Version: 4.2.6 Integration Adapter
+Version: 5.3 Integration Adapter
 Author: Euan R A Craig, New Zealand
-Date: 10 January 2026
+Date: 20 February 2026
 """
 
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, asdict
 import json
 import hashlib
-from fractions import Fraction  # <--- CRITICAL FIX
+from fractions import Fraction
 
-# Import UBP Core v4.2.6
+# Import UBP Core v5.3
 try:
-    from ubp_core_v4_2_6_COMBINED import (
-        GOLAY_DECODER,
-        LEECH_ENHANCED,
-        PARTICLE_VALIDATOR,
+    from ubp_core_v5_3_merged import (
+        GOLAY_ENGINE,
+        LEECH_ENGINE,
+        PARTICLE_PHYSICS,
         LeechPointScaled,
         UBPUltimateSubstrate,
     )
     CORE_AVAILABLE = True
 except ImportError as e:
-    print(f"[WARNING] Could not import UBP Core v4.2.6: {e}")
+    print(f"[WARNING] Could not import UBP Core v5.3: {e}")
     CORE_AVAILABLE = False
 
 
@@ -41,19 +41,27 @@ class MetricsBridge:
     
     def __init__(self):
         """Initialize metrics bridge."""
-        constants = UBPUltimateSubstrate.get_constants(precision=50)
-        # KEEP AS FRACTIONS - DO NOT CAST TO FLOAT
-        self.Y_inv = constants['Y_inv']
-        self.Y = constants['Y']
-        self.pi = constants['pi']
-        
-        # Observer constants
-        self.OBSERVER_FIXED_POINT = self.Y_inv
-        self.OBSERVER_COST = Fraction(1, 1) / self.Y_inv
+        if CORE_AVAILABLE:
+            constants = UBPUltimateSubstrate.get_constants(precision=50)
+            # KEEP AS FRACTIONS - DO NOT CAST TO FLOAT
+            self.Y_inv = constants['Y_INV'] # Updated key case for v5.3
+            self.Y = constants['Y']
+            self.pi = constants['PI']       # Updated key case for v5.3
+            
+            # Observer constants
+            self.OBSERVER_FIXED_POINT = self.Y_inv
+            self.OBSERVER_COST = Fraction(1, 1) / self.Y_inv
+        else:
+            # Fallback defaults if core missing
+            self.Y_inv = Fraction(1, 1)
+            self.Y = Fraction(1, 1)
+            self.pi = Fraction(22, 7)
+            self.OBSERVER_FIXED_POINT = Fraction(1, 1)
+            self.OBSERVER_COST = Fraction(1, 1)
         
         # Coherence regimes (Comparison values must be Fractions)
         self.COHERENCE_REGIMES = {
-            'high': (Fraction(8, 10), Fraction(1, 1)),   # 0.8 - Fraction(1, 1)
+            'high': (Fraction(8, 10), Fraction(1, 1)),   # 0.8 - 1.0
             'medium': (Fraction(5, 10), Fraction(8, 10)), # 0.5 - 0.8
             'low': (Fraction(0, 1), Fraction(5, 10)),     # 0.0 - 0.5
         }
@@ -170,7 +178,8 @@ class GolayInterface:
     
     def __init__(self):
         """Initialize Golay interface."""
-        self.decoder = GOLAY_DECODER
+        # Map v5.3 GOLAY_ENGINE to local decoder property
+        self.decoder = GOLAY_ENGINE
     
     def encode_message(self, message: List[int]) -> List[int]:
         """Encode 12-bit message to 24-bit Golay codeword."""
@@ -202,7 +211,8 @@ class LeechInterface:
     
     def __init__(self):
         """Initialize Leech interface."""
-        self.engine = LEECH_ENHANCED
+        # Map v5.3 LEECH_ENGINE to local engine property
+        self.engine = LEECH_ENGINE
     
     def calculate_symmetry_tax(self, point: List[int]) -> Fraction:
         """Calculate symmetry tax for a point."""
@@ -232,7 +242,8 @@ class ParticlePhysicsInterface:
     
     def __init__(self):
         """Initialize particle physics interface."""
-        self.validator = PARTICLE_VALIDATOR
+        # Map v5.3 PARTICLE_PHYSICS to local validator property
+        self.validator = PARTICLE_PHYSICS
     
     def get_predictions(self) -> Dict[str, Any]:
         """Get all particle physics predictions."""
@@ -258,7 +269,7 @@ class ParticlePhysicsInterface:
 # ==============================================================================
 
 class UBPCoreIntegration:
-    """Master integration interface for UBP Core v4.2.6."""
+    """Master integration interface for UBP Core v5.3."""
     
     def __init__(self):
         """Initialize all integration components."""
@@ -272,11 +283,11 @@ class UBPCoreIntegration:
     def initialize(self) -> Dict[str, Any]:
         """Initialize and validate all components."""
         if not CORE_AVAILABLE:
-            return {'status': 'ERROR', 'message': 'UBP Core v4.2.6 not available'}
+            return {'status': 'ERROR', 'message': 'UBP Core v5.3 not available'}
         
         return {
             'status': 'OK',
-            'version': '4.2.6',
+            'version': '5.3',
             'components': {
                 'metrics': 'ready',
                 'hex_dictionary': 'ready',
@@ -309,7 +320,7 @@ class UBPCoreIntegration:
     def get_system_status(self) -> Dict[str, Any]:
         """Get complete system status."""
         return {
-            'version': '4.2.6',
+            'version': '5.3',
             'core_available': CORE_AVAILABLE,
             'components': {
                 'metrics': 'operational',
@@ -329,4 +340,4 @@ class UBPCoreIntegration:
 UBP_INTEGRATION = UBPCoreIntegration()
 
 if __name__ == "__main__":
-    print("UBP Integration Adapter Loaded (Float-Free).")
+    print("UBP Integration Adapter Loaded (v5.3 Bridge).")

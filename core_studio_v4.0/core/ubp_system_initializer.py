@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-UBP System v4.2.6 - System Initializer
-Provides comprehensive system initialization and access
+UBP System v5.3 - System Initializer
+Provides comprehensive system initialization and access.
+Updated for UBP Core v5.3 Merged.
 
 Author: Euan R A Craig, New Zealand
-Date: 06 January 2026
-
+Date: 20 Feb 2026
 """
 
-from ubp_core_v4_2_6_COMBINED import (
-    GOLAY_DECODER,
-    LEECH_ENHANCED,
-    PARTICLE_VALIDATOR,
+from ubp_core_v5_3_merged import (
+    GOLAY_ENGINE,
+    LEECH_ENGINE,
+    PARTICLE_PHYSICS,
     UBPUltimateSubstrate,
     BinaryLinearAlgebra,
     GolayCodeEngine,
@@ -42,9 +42,9 @@ def initialize_ubp_system():
         dict: System dictionary with all components
     """
     system = {
-        'golay': GOLAY_DECODER,
-        'leech': LEECH_ENHANCED,
-        'physics': PARTICLE_VALIDATOR,
+        'golay': GOLAY_ENGINE,
+        'leech': LEECH_ENGINE,
+        'physics': PARTICLE_PHYSICS,
         'substrate': UBPUltimateSubstrate,
         'algebra': BinaryLinearAlgebra,
         'phenomenology': PhenomenologyEngine(),
@@ -59,7 +59,7 @@ def get_system_status():
     system = initialize_ubp_system()
     
     status = {
-        'version': '4.2.6',
+        'version': '5.3 (Merged)',
         'status': 'OPERATIONAL',
         'components': {
             'golay': 'Ready (4096 codewords)',
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     status = get_system_status()
     
     print("\n" + "=" * 80)
-    print("UBP SYSTEM v4.2.6 - INITIALIZATION")
+    print("UBP SYSTEM v5.3 - INITIALIZATION")
     print("=" * 80)
     print(f"\nVersion: {status['version']}")
     print(f"Status: {status['status']}")
