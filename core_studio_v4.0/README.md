@@ -992,6 +992,7 @@ The system utilizes the `atlas.hierarchy` to navigate the **Lineage of Matter** 
 
 
 ### 21 Feb 2026
+
 Updating for ubp_core_v5_3_merged compliance
 
 *   ubp_integration_adapter.py
@@ -1033,3 +1034,9 @@ Created a new handshake script specifically for v5.3.
 Replaces `ubp_handshake_v4_2_6.py`.
 Validates the new `GOLAY_ENGINE` and `LEECH_ENGINE`.
 
+
+### 24.02.25
+Updates to the Google Ai Studio (where the UBP Core APP is made) have allowed sharing of the UBP Core APP directly:
+*   **Online:** [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
+No set up - just click and go inside the Google AI Studio
+*   **GitHub Repository for the APP:** [https://github.com/DigitalEuan/ubp_core_studio_app]
