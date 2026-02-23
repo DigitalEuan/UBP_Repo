@@ -1040,3 +1040,5 @@ Updates to the Google Ai Studio (where the UBP Core APP is made) have allowed sh
 *   **Online:** [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
 No set up - just click and go inside the Google AI Studio
 *   **GitHub Repository for the APP:** [https://github.com/DigitalEuan/ubp_core_studio_app]
+
+Changed where the "ubp_beliefs_kb.json" file is downloaded from - now comes from the [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/system_kb/] folder where the other kb files download from also.
