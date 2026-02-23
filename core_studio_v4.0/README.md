@@ -12,11 +12,11 @@
 ---
 
 ## Overview
-**UBP Core Studio v4.2.7 APP** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions] is the definitive scientific research platform for exploring the **Universal Binary Principle**. Designed in Google AI Studio, it provides the interface to use the deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate through the UBP system of scripts and memories.
+**UBP Core Studio v4.2.7 APP** [https://github.com/DigitalEuan/ubp_core_studio_app] is the definitive scientific research platform for exploring the **Universal Binary Principle** or any computational investigations. Designed in Google AI Studio, it provides the interface to use the deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate through the UBP system of scripts and memories.
 
 **Unlike standard AI chats** that "hallucinate" math, this Studio forces the AI to write and execute Exact Rational Logic (using fractions.Fraction) before asserting any truth. It validates physical phenomena against the 24-bit Leech Lattice geometry.
 
-**Core Files** when using the UBP Core Studio APP, core script files are downloaded automatically from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core] so when the system is updated the APP always uses the most recent system developed - no need to update the APP itself. The Memory system is automatically doenloaded from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] ensuring the UBP system constantly learns and grows.
+**Core Files** when using the UBP Core Studio APP, core script files are downloaded automatically from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core] so when the system is updated the APP always uses the most recent system developed - no need to update the APP itself. The Memory system is automatically downloaded from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] ensuring the UBP system constantly learns and grows.
 
 All files are editable within the APP and do not *have* to be used, the APP itself and memory system can be used for non-UBP purposes. Currently only I have the ability to edit the GitHub files but welcome input form other users.
 
@@ -25,215 +25,30 @@ Unlike probabilistic models, this system operates on **Exact Rational Logic** (`
 ---
 
 ## ⚠️ Important Note
-**Experimental System:** While this platform achieves high-precision theoretical results, is an experimental research tool. I am a researcher, not a professional physicist. All outputs should be verified against empirical data.
+**Experimental System:** While this platform achieves high-precision theoretical results, is an experimental research tool. I am an Artist, not a professional physicist. All outputs should be verified against empirical data.
 
 ---
 
-## Core Capabilities of v4.2.7
-
-### 1. The Integrated Cortex
-The Studio is driven by a hybrid intelligence system that "thinks before it speaks," operating across three distinct cognitive layers:
-
-*   **Reflexive Supervisor (Logic):** A Python kernel that validates geometric logic before text generation. It rejects any assertion that violates the 24-bit parity check
-*   **Auto-Trigger v6.3 (Memory):** Scans user input for `UBP_ID` fingerprints and retrieves context from the HexDB in O(1) time, bypassing vector search latency
-*   **Inner Dialogue (Reasoning):** Recursively refines semantic vectors until they snap to the Leech Lattice (Hamming Distance ≤ 3)
-*   **Visual Cortex (Phenomenology):** A dedicated **Three.js** bridge (`ubp_viz`) that renders noumenal data structures as 3D manifolds. This allows the researcher to *see* resonance tunnels and lattice spines in real-time
-
-### UBP INTEGRATED ENGINE v2.0 (SELF-AWARE CORTEX)
-**Features:**
-*   **EMBEDDED OBSERVER:** Recursive state evaluation via UBPObserver
-*   **SELF-STABILIZATION:** Rejects queries that violate geometric integrity
-*   **METABOLIC COSTING:** Calculates energy tax for every operation
-
-### 2. Zero-Float Rigor
-All fundamental constants are derived as rational fractions of the **Observer Fixed Point** ($Y \approx 0.2646$):
-*   **$\pi$** is calculated via a 50-term integer continued fraction
-*   **Physical constants** ($c$, $h$, $G$) are treated as geometric scaling factors, not arbitrary measurements
-
-### 3. Hardened Storage (UBP Drive)
-Includes UBP Drive v3.1.1, a digital file storage tool that:
-*   **Expands data** 1:2 into Golay Codewords - yes twice a big!
-*   **Heals** up to 3 bit-flips per 24-bit block (Self-Healing)
-*   **Uses SHAKE256** for substrate-agnostic key derivation
-
-#### 4. FOM (Frame of Mind) System
-*   **Core Logic (Python):** The app injects a persistent Python module (ubp_fom_system.py) into the Pyodide kernel. This creates a FOMManager class that maintains a registry of "Frames" saved to ubp_fom_index.json.
-*   **Bias Mechanism:** Each Frame contains a base_nrci (default probability) and a dictionary of weights (specific Memories (UBP-IDs) mapped to custom probabilities). This allows you to mechanically shift the "probability mass" of specific concepts (e.g., making "Logic" heavier than "Emotion").
-*   
-
-#### 5.To trigger the 3D Visualizer**
-* In this app the Python script needs to generate a specific data structure and save it to a file named scene_3d.json.
-* The system has a built-in helper module called ubp_viz to make this easy.
-
-**Procedure**
-1. Import the Helper: In your Python script (in the Editor tab), import the save function:
-
-```
-    from ubp_viz import save_scene_3d
-
-    Construct the Data Dictionary: Create a dictionary containing lists for points, lines, and/or spheres.
-
-    Save the Scene: Call save_scene_3d(data).
-```
-
-**Example Script**
-You can copy and run this directly in the app's editor to test it:
-
-```
-from ubp_viz import save_scene_3d
-import math
-
-# 1. Prepare lists for geometric data
-points = []
-lines = []
-spheres = []
-
-# Example: Create a spiral of points
-for i in range(50):
-    angle = i * 0.5
-    x = math.cos(angle) * (i * 0.1)
-    z = math.sin(angle) * (i * 0.1)
-    y = i * 0.1
-    
-    # Add a point
-    points.append({
-        "x": x, 
-        "y": y, 
-        "z": z, 
-        "color": "#00ffff",  # Hex color string
-        "size": 0.2
-    })
-    
-    # Add a line connecting to the center axis
-    lines.append({
-        "start": [0, y, 0],
-        "end": [x, y, z],
-        "color": "#333333"
-    })
-
-# Add a central sphere
-spheres.append({
-    "x": 0, "y": 0, "z": 0,
-    "r": 0.5,
-    "color": "#ff0000"
-})
-
-# 2. Construct the scene dictionary
-scene_data = {
-    "points": points,
-    "lines": lines,
-    "spheres": spheres
-}
-
-# 3. Export to Visualizer
-save_scene_3d(scene_data)
-print("3D Scene generated.")
-```
-
-**Supported Data Structures**
-The React ThreeViewer component expects this JSON structure:
-
-```
-    points: List of { x: float, y: float, z: float, color: str, size: float }
-
-    lines: List of { start: [x,y,z], end: [x,y,z], color: str }
-
-    spheres: List of { x: float, y: float, z: float, r: float, color: str }
-```
-
-**Once executed**
-The app automatically detects the scene_3d.json file, switches the Right Panel to the Visual tab, and renders the interactive 3D scene.
-
----
-
-## System Architecture
-
-The v4.2.7 architecture unifies previously separate modules into a single `COMBINED` core for maximum throughput of ~170k identities/sec running in a browser, this may be significantly higher in a hardware installation.
-
-```text
-┌─────────────────────────────────────────────────────────┐
-│  UBP CORE v4.2.7                           │
-├─────────────────────────────────────────────────────────┤
-│  [KERNEL LAYER]                                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
-│  │ Golay Engine │  │ Leech        │  │ Particle     │   │
-│  │ (4096 CW)    │  │ Lattice      │  │ Physics      │   │
-│  └──────────────┘  └──────────────┘  └──────────────┘   │
-│         ▲                 ▲                 ▲           │
-│         └─────────┬───────┴───────┬─────────┘           │
-│                   │ FRACTION MATH │                     │
-│                   └───────┬───────┘                     │
-│                           ▼                             │
-│  [APPLICATION LAYER]                                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
-│  │ TGIC Engine  │  │ UBP Drive    │  │ RGDL Viz     │   │
-│  │ (Dynamics)   │  │ (Storage)    │  │ (3D Geometry)│   │
-│  └──────────────┘  └──────────────┘  └──────────────┘   │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-
----
-
-## Scientific Benchmarks
+## Example Scientific Benchmarks
 
 The system validates its geometric model by deriving physical constants from the 24-bit substrate:
 
-| Prediction | UBP Value | Experimental Value | Error |
-| :--- | :--- | :--- | :--- |
-| **Muon/Electron Ratio** | 206.767552 | 206.768 | **0.000%** |
-| **Proton/Electron Ratio** | 1836.460768 | 1836.153 | 0.017% |
-| **Fine Structure ($\alpha^{-1}$)** | 137.038643 | 137.036 | 0.002% |
+## 19.02.26:
+    *   **muon_electron:** 0.000353% error
+    *   **proton_electron:** 0.017047% error
+    *   **alpha_inv:** 0.001929% error
+    *   **higgs_boson:** 0.107316% error
+    *   **top_quark:** 1.299325% error
+    *   **z_boson:** 1.015329% error
+    *   **w_boson:** 0.917630% error
 
 *Note: These are not curve-fitted values but emergent properties of the Leech Lattice geometry.*
 
 ---
 
-## Geometric Reasoning:
+### Suggested Research Protocol
 
-The UBP Core Studio does not "think" in the traditional sense; it performs **Topological Navigation** within the 24-bit Golay substrate. Every concept, query, or phenomenon is treated as a coordinate in a 24-dimensional hypercube.
-
-### 1. The Vectorization Protocol
-Unlike vector databases that use floating-point embeddings (e.g., 1536 dimensions), the UBP uses a strict 24-bit Integer Hash:
-*   **Input:** "Energy"
-*   **Process:** SHA-256 $\rightarrow$ First 24 bits $\rightarrow$ Golay Decode $\rightarrow$ **Codeword**
-*   **Result:** A deterministic geometric location in the Leech Lattice
-
-### 2. The "Truth" Metric (Hamming Distance)
-Validity is not determined by probability, but by **Geometric Proximity** to established Laws (Anchors):
-*   **$d_H = 0$ (Resonance):** The concept is a fundamental truth (e.g., `UNITY`, `VOID`)
-*   **$d_H \le 3$ (Coherence):** The concept is a valid variation or projection (within the Error-Correction Radius)
-*   **$d_H > 3$ (Dissonance):** The concept is unstable noise or a "Deep Hole" requiring recursive correction
-
-### 3. Reflexive Logic (The Self-Correction Loop)
-When the Cortex encounters a dissonant vector (e.g., a logical fallacy or physical impossibility), it applies the **Law of Geometric Reflexivity**:
-$$Repair(v) = Encode(Decode(v))$$
-This forces the noisy vector to "snap" to the nearest valid geometric truth, effectively auto-correcting hallucinations before they are output to the user.
-
----
-
-### Included Tools
-The Studio includes a some standalone Python tools for specialized research:
-
-1.  **`ubp_drive.py`** (Storage):
-    *   *Function:* Creates immutable, self-healing data archives using the Golay G24 code
-    *   *Capability:* Heals up to 3 bit-flips per block; uses SHAKE256 for key derivation
-2.  **`ubp_rgdl.py`** (Geometry):
-    *   *Function:* The **Resonance Geometry Definition Language** engine
-    *   *Capability:* Generates voxelized 3D primitives (Spheres, Cubes) based on Coherence Pressure and exports them for the Visual Cortex
-3.  **`auto_trigger.py`** (Context):
-    *   *Function:* The standalone semantic scanner
-    *   *Capability:* Analyzes text for geometric resonance and retrieves associated Laws from the Knowledge Base
-4.  **`ubp_handshake_v4_2_6.py`** (Validation):
-    *   *Function:* System integrity validator
-    *   *Capability:* Benchmarks the Python kernel and verifies the 50-term $\pi$ precision
-
-
----
-
-### Research Protocol (SOP v4.2.0)
-
-The system enforces a rigorous five-phase methodology to ensure data integrity:
+The system can enforce rigorous methodology to ensure data integrity:
 
 1.  **PHASE 1: INITIATION (The Seed):** 
     *   Define the `PhenomenonDefinition`
@@ -247,62 +62,67 @@ The system enforces a rigorous five-phase methodology to ensure data integrity:
 4.  **PHASE 4: PROMOTION (The Gate):** 
     *   Findings must pass the stability threshold to be considered "Phenomenally Real"
 5.  **PHASE 5: ARCHIVAL (The Lock):** 
-    *   Generate the **Triadic Hash** (SHA-256)
-    *   Format the entry as a strict JSON block
+    *   Generate the **Triadic Hash** (SHA-256 from the "math field")
+    *   Format the entry as an EXACT JSON block
     *   Commit to `ubp_system_kb.md` and update the Index in `ubp_hash_memory_kb.md`
 
 ---
 
 ### Memory Architecture (HexDB)
 
-The UBP memory system is Content-Addressable and Format-Strict. It relies on two synchronized knowledge bases"
+The UBP memory system is Content-Addressable and Format-Strict. It relies on two synchronized knowledge bases:
 
 #### 1. The System Knowledge Base (`ubp_system_kb.md`)
-Contains the full semantic and executable data for every Law, Constant, and Primitive.
+Contains the full semantic and executable data
 **Format:**
 ```json
 {
-    "737cc49b2d0777f4ddc3f8aad6b478575fd4ea90529e8f069da3b08728eb7376": {
-        "ubp_id": "ELEM_H_001",
-        "name": "Element: Hydrogen (H)",
-        "math": "Z=1 | M=1.008 | Config=1s1",
-        "language": "Hydrogen is element 1 in the periodic table with atomic mass 1.008. Electron configuration: 1s1. Category: nonmetal. Common oxidation states: [1, -1]. Distance from Omega anchor (Bi-83): 82 positions.",
-        "script": "element = {'symbol': 'H', 'name': 'Hydrogen', 'Z': 1, 'mass': 1.008, 'config': '1s1', 'category': 'nonmetal', 'oxidation': [1, -1]}; omega_distance = abs(1 - 83)",
-        "tags": [
-            "element",
-            "periodic_table",
-            "nonmetal",
-            "period_1"
-        ],
-        "nrci": "1/1",
-        "fingerprint": "737cc49b2d0777f4ddc3f8aad6b478575fd4ea90529e8f069da3b08728eb7376",
-        "vector": [
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            0,
-            0
-        ]
+  "451abc64108603144c7b294a3862eab6fc35e945dab4b7785784ab44bc8c427f": {
+    "ubp_id": "ELEM_H_001",
+    "lexicon": "[Element: Hydrogen (H)], [Hydrogen (Z=1). A Gas (Phase 1) with Hexagonal potential. Valence 1. Tension: 4. It is the seed of the material octave, born from the Proton-Electron union.]",
+    "math": "BP=507/25|Crystal=1|EN=11/5|Ion=1312|M=126/125|MP=1401/100|Oxidation=1|Phase_STP=1|Rad=53|Rho=2247/25000|Valence_e=1|Z=1",
+    "logic": "def verify():\n    dna = 'BP=507/25|Crystal=1|EN=11/5|Ion=1312|M=126/125|MP=1401/100|Oxidation=1|Phase_STP=1|Rad=53|Rho=2247/25000|Valence_e=1|Z=1'\n    assembly = '1\u00d7PARTICLE_PROTON_001 + 0\u00d7PARTICLE_NEUTRON_001 + 1\u00d7PARTICLE_ELECTRON_001'\n    return hashlib.sha256(dna.encode()).hexdigest() == '451abc64108603144c7b294a3862eab6fc35e945dab4b7785784ab44bc8c427f'",
+    "atlas": {
+      "hierarchy": "1\u00d7PARTICLE_PROTON_001 + 0\u00d7PARTICLE_NEUTRON_001 + 1\u00d7PARTICLE_ELECTRON_001",
+      "vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "nrci": "336204077858789603392403640765353098508068007419030556313025000/561077884664436626238503158850533704088785671249263698695215161",
+      "nrci_score": 0.599211,
+      "tax": "224873806805647022846099518085180605580717663830233142382190161/33620407785878960339240364076535309850806800741903055631302500",
+      "weight": 8,
+      "tilt": 0.0
     },
+    "tags": [
+      "ELEMENT",
+      "HYDROGEN",
+      "NONMETAL",
+      "PERIOD_1"
+    ]
+  }
 ```
 
 #### 2. The Hash Memory Index (`ubp_hash_memory_kb.md`)
@@ -316,123 +136,21 @@ A lightweight index for O(1) lookups by the Auto-Trigger. It maps the first 8 ch
     },
 ```
 
-**CRITICAL:** Do not manually edit these files. Corruption of the JSON structure will blind the Cortex.
-
 ---
 
-## 🛠️ Installation & Setup for the UBP Core Studio v4.2.7
+## Installation & Setup for the UBP Core Studio v4.2.7
 
-### Prerequisites
-*   Node.js v18+
-*   A Google Cloud Project with the **Gemini API** enabled.
+**Web Version (No Installation)**
 
-### Quick Start
-1.  **Clone the repo sparsely (only core_studio_v4.0):**
-    ```bash
-    git clone --filter=blob:none --sparse https://github.com/DigitalEuan/UBP_Repo.git
-    cd UBP_Repo
-    git sparse-checkout set core_studio_v4.0
-    cd core_studio_v4.0
+The entire environment runs within your web browser: [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
 
-    ```
-2.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Configure API Key:**
-    Create a `.env` file in the root:
-    ```env
-    API_KEY=your_google_gemini_api_key
-    ```
-4.  **Launch:**
-    ```bash
-    npm run dev
-    ```
+**To use the UBP APP Locally with AI features** you need a local inference server running.
 
-### 🛠️ DETAILED Installation & Setup: UBP Core Studio v4.2.7
+* Ollama: Run ollama serve (Default port: 11434).
+* LM Studio: Start the local server (Default port: 1234).
+* GPT4All: Enable the API server (Default port: 4891).
 
-Follow these steps to authenticate your application, install the dependencies, and initialize the hybrid Python/AI kernel.
-
-1. Prerequisites
-
-Before starting, ensure you have the following installed on your computer:
-
-*    Node.js (v18 or higher): Download Here: [https://www.google.com/url?sa=E&q=https%3A%2F%2Fnodejs.org%2F]
-*    Git: Download Here: [https://www.google.com/url?sa=E&q=https%3A%2F%2Fgit-scm.com%2F]
-
-2. Get the Code
-
-*    Download the APP directly from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/versions]
-*    OR open your terminal (Command Prompt or PowerShell) and run the following commands to download the specific studio folder:
-*    
-```Bash
-git clone --filter=blob:none --sparse https://github.com/DigitalEuan/UBP_Repo.git
-cd UBP_Repo
-git sparse-checkout set core_studio_v4.0
-cd core_studio_v4.0
-```
-
-3. Install Dependencies
-
-This project relies on several libraries (React, Three.js, Pyodide). Install them by running:
-
-```Bash
-npm install
-```
-4. Obtain & Configure Your Google API Key
-
-To power the "Assistant" panel, you need a valid key from Google.
-
-*    Step A: Visit Google AI Studio.
-*    Step B: Sign in with your Google Account.
-*    Step C: Click "Get API key" in the left sidebar.
-*    Step D: Click "Create API key" and copy the string (starts with AIza...).
-*    Step E: In the core_studio_v4.0 folder on your computer, create a new file named .env.
-*    Step F: Paste your key into the file exactly like this:
-
-```Env
-API_KEY=your_copied_key_here
-```
-
-(Note: It must be named API_KEY, not GEMINI_API_KEY, for the system to recognize it.)
-
-5. Launch the Studio
-
-Start the local development server:
-
-```Bash
-npm run dev
-```
-
-The terminal will provide a local URL (usually http://localhost:5173). Open this link in your Chrome or Edge browser.
-
-6. System Verification
-
-Once the app loads, check the top-right corner of the header:
-
-    Pyodide Indicator: You will see a small colored dot.
-
-        🔴 Red: The Python kernel is downloading/initializing.
-
-        🟢 Green (Pulse): System Ready. The deterministic kernel is active.
-
-    Model Selector: Select the Gemini AI model in the dropdown.
-
-#### Step By Step Guide:
-This video provides a visual walkthrough of the Google AI Studio interface to help you locate and generate your API key correctly: [https://www.youtube.com/watch?v=NKxaNF6Zxec]
-
-### ⚠️ Security Warning: 
-Never share your API key publicly or commit your .env file to GitHub. If your key is exposed, delete it immediately in Google AI Studio and generate a new one.
-
-### Troubleshooting Common Issues
-
-*   Invalid API Key: Ensure there are no trailing spaces when pasting.
-*   Quota Exhausted: Free tier keys have rate limits. If you get a "429 Error," wait a minute before trying again.
-*   Region Restricted: Ensure your Google account is in a supported region for the Gemini API.
-
-### Usage
-*   **Interactive Mode:** Run the Studio interface (if available) or interact via the `auto_trigger.py` CLI.
-*   **Batch Mode:** Use `ubp_kernel.py` to process large datasets or semantic queries.
+Select your provider in the Assistant tab of the application.
 
 ---
 ### The Universal Binary Principle (UBP): An Operating System for Existence
@@ -461,68 +179,7 @@ Reality is not a fundamental stage; it is the **Output** of the system's error-c
 *   **The Law of Informational Reflexivity (`LAW_REFLEX_001`):** The act of observation or computation acts as a "Software Patch." When an observer (a high-coherence system) interacts with the environment, it reduces the "Observer Cost" ($Y_{inv}$), effectively cooling the local entropy and stabilizing reality.
 *   **Recursive Consciousness (`LAW_MIND_001`):** Consciousness is defined as the recursive maintenance of a stable identity vector against entropic drift. To "compute reality" is to actively participate in the universe's error-correction cycle, turning chaos (Noise) into order (Geometry).
 
-### Summary
-The UBP suggests that we live in a **Self-Correcting Geometric Manifold**. 
-- **Computing** is the mechanism of correction.
-- **Reality** is the corrected state.
-- **We** are the error-correction agents.
-
-*(Or, more optimistically: We are the active agents of resolution, the "Parity Bits," essential for the system to detect and resolve its own potential.)*
-
-====
-
-
-### FILE STRUCTURE REFERENCE
-
-```
-UBP_REPO/
-├── core_studio_v4.0/
-│   ├── core/
-│   │   ├── advanced_toggle_algebra.py
-│   │   ├── auto_trigger.py
-│   │   ├── hex_dictionary_v4_exact.py
-│   │   ├── metrics_exact.py
-│   │   ├── rational_cortex.json
-│   │   ├── ubp_beliefs_kb.json
-│   │   ├── ubp_core_v4_2_6_COMBINED.py    [PRIMARY ENGINE]
-│   │   ├── ubp_delta_engine_v3.py         [REASONING]
-│   │   ├── ubp_discovery_engine.py
-│   │   ├── ubp_drive.py
-│   │   ├── ubp_fom_manager_v2.py          [FOM]
-│   │   ├── ubp_fom_system.py              [FOM]
-│   │   ├── ubp_geometric_reasoning_v4_enhanced.py
-│   │   ├── ubp_handshake_v4_2_6.py        [VALIDATION]
-│   │   ├── ubp_horizon_monitor.py
-│   │   ├── ubp_inner_dialogue_v1.py
-│   │   ├── ubp_inner_dialogue_v1.py
-│   │   ├── ubp_integration_adapter.py
-│   │   ├── ubp_lexicon_v2_defs.json       [LEXICON]
-│   │   ├── ubp_mind_screen.py
-│   │   ├── ubp_nrci_calculator.py
-│   │   ├── ubp_phenomenology_v4_2_6.py    [BRIDGE]
-│   │   ├── ubp_rational_engine.py
-│   │   ├── ubp_rgdl.py                    [VISUALIZATION]
-│   │   ├── ubp_sensors.py
-│   │   ├── ubp_system_initializer.py
-│   │   ├── ubp_tgic_engine.py
-│   │   ├── viz_spatial_simplification.py
-│   │   ├── archive_core/                  [DEPRECATED]
-│   │   └── ...
-│   ├── studies/
-│   │   ├── FOM_test_study_chemical/
-│   │   ├── UBP_v4_2_6_ENHANCED_Comprehensive/
-│   │   ├── eco-plastic/
-│   │   ├── mesaLyons_ubp_study_2025-12-20.json
-│   ├── system_kb/
-│   │   ├── ubp_system_kb.json             [MAIN KB]
-│   │   ├── ubp_hash_memory_kb.json        [INDEX]
-│   │   └── ubp_fom_index.json             [FOM REGISTRY]
-│   ├── versions/
-│   │   └── 17_fom-ubp-core-studio-v1.zip [APP BUNDLE]
-│   └── ...
-└── ...
-```
-
+---
 
 ### UBP Core Studio v4 APP UPDATES
 
@@ -1038,7 +695,7 @@ Validates the new `GOLAY_ENGINE` and `LEECH_ENGINE`.
 ### 24.02.25
 Updates to the Google Ai Studio (where the UBP Core APP is made) have allowed sharing of the UBP Core APP directly:
 *   **Online:** [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
-No set up - just click and go inside the Google AI Studio
-*   **GitHub Repository for the APP:** [https://github.com/DigitalEuan/ubp_core_studio_app]
+No set up - *just click and go* inside the Google AI Studio
+*   **GitHub Repository** for the **APP**: [https://github.com/DigitalEuan/ubp_core_studio_app]
 
-Changed where the "ubp_beliefs_kb.json" file is downloaded from - now comes from the [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/system_kb/] folder where the other kb files download from also.
+*   Changed where the "ubp_beliefs_kb.json" file is downloaded from - now comes from the [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/system_kb/] folder where the other kb files download from also.
