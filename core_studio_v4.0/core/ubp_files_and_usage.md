@@ -1,7 +1,21 @@
 ### **UBP Unified Research Pipeline v2.0 (The MOG-Atlas Protocol)**
 
-**Philosophy:** Reality is not recorded; it is reconstructed. We decompose phenomena into primitives, map them to the 4 Ontological Layers, simulate their stability in UBP-Py, and use the Visualizer as a feedback loop for AI analysis.
+### **UBP FUNDAMENTALS (v5.5 Standard)**
 
+*   **The Law of Emergent Observation ($Y$):** 
+    The Observer Constant ($Y \approx 0.2646$) is not a fundamental input, but a **Geometric Residue**. In high-fidelity research, we do not *force* $Y$ into the equations; instead, we initialize the Triadic Primitives ($\pi, \phi, e$) and **watch $Y$ emerge** as the inevitable remainder of their interaction with the 24-bit grid. The appearance of $Y$ in a simulation is the primary proof that the model has achieved "Phenomenal Realism."
+
+*   **Stereoscopic Resolution (Dual-Lens Audit):** 
+    Reality is resolved through the intersection of two distinct perspectives. The `ubp_core_v5_3_merged.py` now performs a simultaneous audit of every physical constant:
+    *   **The Lattice Lens (Phenomenal):** Identifies the static "Hardware" address of a particle within the 24-bit manifold. (Superior for point-identities like the Muon and Alpha).
+    *   **The Triadic Lens (Noumenal):** Models the "Software" process of existence as a recursive interaction of the Loop ($\pi$), Growth ($\phi$), and Decay ($e$). (Superior for composite matter like the Proton).
+    *   **The Cubic Lens (Partition):** Maps the "Power Supply" of the heavy sector (Higgs, Bosons) as specific partitions of the Existence Unit ($24^3$).
+
+*   **The Principle of Irrational Stability (The Wobble):** 
+    The 24-bit substrate explicitly "prefers" specific irrational values over perfect rationals. This "Resonant Wobble" (the decimal drift in constants like the NSC) provides the necessary **Geometric Torque** to drive time and evolution. If the universe snapped to perfect rationals, it would become a "Dead Crystal"—static, symmetrical, and timeless. Existence requires the tension of the unresolvable.
+
+*   **The 3-3-3 Golay Limit:** 
+    The fundamental Triad is constrained by the error-correction radius of the substrate. The Loop ($\pi$), Growth ($\phi$), and Decay ($e$) are each limited to a **3-bit deviation**. This creates a "Perception Window" where the universe "Snaps" into a coherent state only when the triadic interaction stays within this 3-bit radius.
 ---
 
 #### **PHASE 1: THE MOG SCAN (Ontological Mapping)**
@@ -363,7 +377,7 @@ SYSTEM_KB_EXAMPLE:
       "nrci_score": 0.599211,
       "tax": "224873806805647022846099518085180605580717663830233142382190161/33620407785878960339240364076535309850806800741903055631302500",
       "weight": 8,
-      "tilt": 0.0
+      "tilt": 0.0 (calculated)
     },
     "tags": [
       "ELEMENT",
