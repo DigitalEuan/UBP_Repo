@@ -1,16 +1,17 @@
 """
 ================================================================================
-UBP PHENOMENOLOGY ENGINE v5.3 (CORE COMPATIBLE)
+UBP PHENOMENOLOGY ENGINE v5.4 (DUAL-MODE)
 ================================================================================
-The "Top-Down" Bridge: Translates Real-World Phenomena -> UBP Substrate.
+1. PHENOMENOLOGY (Scanner): Translates Real-World Data -> UBP Substrate.
+2. NOUMENOLOGY (Projector): Translates Shadow Intent -> Required Matter.
 
-Updates for v5.3:
-- Implements Hyperbolic Stability Formula (1 / (1 + Tax/10)) to handle 
-  v5.3 Symmetry Tax values (which can be > 1.0).
-- Aligned with new Integration Adapter.
+Updates for v5.4:
+- Integrated 'NoumenalProjector' for Shadow Inversion.
+- Implements the 'Physics of Will' via the B-Matrix.
+- Enforces Observer Threshold (Y) for manifestation.
 
 Author: Euan R A Craig, New Zealand
-Date: 20 February 2026
+Date: 24 February 2026
 """
 
 from dataclasses import dataclass, field
@@ -19,154 +20,173 @@ from fractions import Fraction
 import hashlib
 import json
 
-# Import the Integration Adapter (Bridges to v5.3 Core)
+# Import Core v5.3 Components
 try:
     from ubp_integration_adapter import UBP_INTEGRATION
-    ADAPTER_AVAILABLE = True
+    from ubp_core_v5_3_merged import (
+        GOLAY_ENGINE, 
+        LEECH_ENGINE, 
+        BinaryLinearAlgebra, 
+        UBPUltimateSubstrate
+    )
+    CORE_AVAILABLE = True
 except ImportError:
-    print("[WARNING] UBP Integration Adapter not found. Core functions disabled.")
-    ADAPTER_AVAILABLE = False
+    print("[WARNING] UBP Core not found. Functionality limited.")
+    CORE_AVAILABLE = False
 
 # ==============================================================================
-# 1. DEFINITION LAYER (The Contract)
+# 1. PHENOMENOLOGY LAYER (The Scanner)
 # ==============================================================================
 
 @dataclass
 class PhenomenonDefinition:
-    """
-    Defines how a real-world phenomenon maps to the 24-bit substrate.
-    """
+    """Defines how a real-world phenomenon maps to the 24-bit substrate."""
     name: str
-    domain: str  # e.g., "Physics", "Biology", "Color"
-    
-    # The Logic: How do we turn data into 24 bits?
-    # This function takes a data dict and returns a list of 24 ints (0 or 1)
+    domain: str
     bit_generator: Callable[[Dict[str, Any]], List[int]]
-    
-    # Metadata for the Knowledge Base
     tags: List[str] = field(default_factory=list)
-    version: str = "5.3"
-
-# ==============================================================================
-# 2. EXECUTION LAYER (The Runner)
-# ==============================================================================
 
 class PhenomenologyEngine:
     def __init__(self):
-        self.adapter = UBP_INTEGRATION if ADAPTER_AVAILABLE else None
-        if self.adapter:
-            self.adapter.initialize()
+        self.adapter = UBP_INTEGRATION if CORE_AVAILABLE else None
+        if self.adapter: self.adapter.initialize()
 
     def process_phenomenon(self, definition: PhenomenonDefinition, data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        1. Generates bits from the definition.
-        2. Maps bits to the Leech Lattice (via Core).
-        3. Calculates Metrics (NRCI, Tax).
-        4. Returns a full Study Result.
-        """
-        print(f"\n[PHENOMENOLOGY v5.3] Processing: {definition.name}")
+        """Generates bits from data and maps to Leech Lattice."""
+        print(f"\n[PHENOMENOLOGY] Scanning: {definition.name}")
         
-        # A. Generate the Substrate Identity (The Bits)
         try:
             bits = definition.bit_generator(data)
-            if len(bits) != 24:
-                raise ValueError(f"Bit generator produced {len(bits)} bits; expected 24.")
+            if len(bits) != 24: raise ValueError("Generator must return 24 bits.")
         except Exception as e:
-            return {"status": "ERROR", "stage": "Bit Generation", "message": str(e)}
+            return {"status": "ERROR", "message": str(e)}
 
-        print(f"  > Substrate Identity: {''.join(map(str, bits))}")
+        if not self.adapter: return {"status": "ERROR", "message": "Core unavailable."}
 
-        # B. Process via UBP Core v5.3 (via Adapter)
-        if not self.adapter:
-            return {"status": "ERROR", "message": "Core Adapter unavailable."}
-
-        # This step calculates NRCI, Coherence, and Symmetry Tax
+        # Process via Core
         core_result = self.adapter.process_point(bits)
         
-        if core_result['status'] != 'OK':
-            return {"status": "ERROR", "stage": "Core Processing", "message": core_result.get('message')}
-
-        # C. Synthesize the Result (v5.3 Logic)
+        # Calculate Stability (Hyperbolic)
         tax = core_result['symmetry_tax']
-        
-        # v5.3 Hyperbolic Stability Formula: 1 / (1 + Tax/10)
-        # This handles Tax > 1.0 without clamping to zero.
-        one = Fraction(1, 1)
-        ten = Fraction(10, 1)
-        stability = one / (one + (tax / ten))
+        stability = Fraction(1, 1) / (Fraction(1, 1) + (tax / Fraction(10, 1)))
 
         result = {
+            "mode": "SCAN",
             "phenomenon": definition.name,
-            "domain": definition.domain,
-            "input_data": data,
-            "substrate_identity": bits,
+            "vector": bits,
             "metrics": {
-                "nrci": core_result['nrci'], # Ontological Health (MOG Partition)
-                "coherence": core_result['coherence_regime'],
-                "symmetry_tax": tax,
-                "stability_score": stability # Calculated Stability
+                "nrci": float(core_result['nrci']),
+                "tax": float(tax),
+                "stability": float(stability)
             },
-            "memory": {
-                "hex_id": core_result['hex_id'],
-                "stored": True
-            }
+            "hex_id": core_result['hex_id']
         }
-        
         self._print_summary(result)
         return result
 
     def _print_summary(self, res):
         m = res['metrics']
-        print(f"  > NRCI (Health): {m['nrci']:.4f} ({m['coherence']})")
-        print(f"  > Symmetry Tax:  {m['symmetry_tax']:.4f}")
-        print(f"  > Stability:     {m['stability_score']:.4f}")
-        print(f"  > ID:            {res['memory']['hex_id'][:8]}...")
-        print(f"[COMPLETE] Phenomenon mapped to Substrate.\n")
+        print(f"  > Vector:      {''.join(map(str, res['vector']))}")
+        print(f"  > Stability:   {m['stability']:.4f} (Tax: {m['tax']:.4f})")
+        print(f"  > NRCI:        {m['nrci']:.4f}")
+        print(f"  > ID:          {res['hex_id'][:8]}...")
 
 # ==============================================================================
-# 3. EXAMPLE DEFINITIONS (Standard Library)
+# 2. NOUMENOLOGY LAYER (The Projector)
 # ==============================================================================
 
-def _simple_text_hasher(data: Dict[str, Any]) -> List[int]:
-    """Simple utility to turn a string into 24 bits via SHA-256."""
-    s = str(data.get('value', ''))
-    h = hashlib.sha256(s.encode()).hexdigest()
-    # Take first 6 hex chars = 24 bits
-    val = int(h[:6], 16)
-    return [(val >> i) & 1 for i in range(23, -1, -1)]
+class NoumenalProjector:
+    """
+    The Engine of Will.
+    Uses the Shadow Inversion Principle (Law of Shadow Inversion) to calculate
+    the physical matter required to sustain a specific Noumenal Intent.
+    """
+    def __init__(self):
+        if not CORE_AVAILABLE: raise RuntimeError("Core required for Noumenology.")
+        self.golay = GOLAY_ENGINE
+        self.leech = LEECH_ENGINE
+        # Extract B-Matrix (The Shadow Inverter) from Generator Matrix [I | B]
+        self.B = [row[12:] for row in self.golay.G]
+        
+        # Observer Constants
+        c = UBPUltimateSubstrate.get_constants(50)
+        self.Y = c['Y']
+        self.THRESHOLD = Fraction(1, 2) # Coherence Limit
 
-# Standard "Text-to-Substrate" Definition
-DEF_SEMANTIC_HASH = PhenomenonDefinition(
-    name="Semantic Resonance",
-    domain="Information",
-    bit_generator=_simple_text_hasher,
-    tags=["hashing", "text", "semantic"]
-)
+    def manifest_intent(self, name: str, shadow_bits: List[int]) -> Dict[str, Any]:
+        """
+        Attempts to manifest a Shadow Intent into Reality.
+        Returns the required Matter configuration if stable.
+        """
+        print(f"\n[NOUMENOLOGY] Projecting: {name}")
+        print(f"  > Intent (Shadow): {''.join(map(str, shadow_bits))}")
+
+        if len(shadow_bits) != 12:
+            print("  [ERROR] Intent must be exactly 12 bits.")
+            return None
+
+        # 1. INVERSION: Calculate Required Matter (Data = Intent * B)
+        required_matter = BinaryLinearAlgebra.matrix_vector_multiply(self.B, shadow_bits)
+        
+        # 2. CONSTRUCTION: Full 24-bit Vector [Matter | Intent]
+        full_vector = required_matter + shadow_bits
+        
+        # 3. AUDIT: Calculate Metrics
+        tax = self.leech.calculate_symmetry_tax(full_vector)
+        stability = Fraction(1, 1) / (Fraction(1, 1) + (tax / Fraction(10, 1)))
+        
+        print(f"  > Required Matter: {''.join(map(str, required_matter))}")
+        print(f"  > Symmetry Tax:    {float(tax):.4f}")
+        print(f"  > Stability:       {float(stability):.4f} (Threshold: {float(self.THRESHOLD)})")
+
+        # 4. THE GATE
+        success = stability >= self.THRESHOLD
+        status = "MANIFESTED" if success else "REJECTED"
+        
+        if success:
+            print(f"  [RESULT] SUCCESS. The lattice accepts this reality.")
+        else:
+            print(f"  [RESULT] REJECTED. Entropic Dissolution (Too expensive).")
+
+        return {
+            "mode": "PROJECT",
+            "name": name,
+            "intent": shadow_bits,
+            "matter": required_matter,
+            "full_vector": full_vector,
+            "metrics": {"tax": float(tax), "stability": float(stability)},
+            "status": status
+        }
 
 # ==============================================================================
-# 4. MAIN EXECUTION
+# 3. UTILITIES & DEMO
 # ==============================================================================
+
+def text_to_12bits(text: str) -> List[int]:
+    """Hashes text to 12 bits for Intent generation."""
+    h = hashlib.sha256(text.encode()).hexdigest()
+    val = int(h[:3], 16) # 12 bits
+    return [(val >> i) & 1 for i in range(11, -1, -1)]
 
 if __name__ == "__main__":
-    engine = PhenomenologyEngine()
+    # 1. Scanner Demo
+    scanner = PhenomenologyEngine()
+    def rgb_gen(d): 
+        val = (d['r']<<16)|(d['g']<<8)|d['b']
+        return [(val>>i)&1 for i in range(23,-1,-1)]
     
-    # Test 1: Information-First (Semantic Mapping)
-    # "What is the geometric shape of the word 'Truth'?"
-    engine.process_phenomenon(DEF_SEMANTIC_HASH, {"value": "Truth"})
-    
-    # Test 2: Custom Definition (e.g., RGB Color Mapping)
-    def rgb_to_bits(data):
-        # Map R, G, B (0-255) to 8 bits each -> 24 bits
-        r, g, b = data['r'], data['g'], data['b']
-        combined = (r << 16) | (g << 8) | b
-        return [(combined >> i) & 1 for i in range(23, -1, -1)]
-
-    DEF_COLOR = PhenomenonDefinition(
-        name="Color Qualia",
-        domain="Optics",
-        bit_generator=rgb_to_bits,
-        tags=["color", "light", "perception"]
+    scanner.process_phenomenon(
+        PhenomenonDefinition("Pure Cyan", "Optics", rgb_gen), 
+        {"r":0, "g":255, "b":255}
     )
-    
-    # "What is the stability of Pure Cyan?"
-    engine.process_phenomenon(DEF_COLOR, {"r": 0, "g": 255, "b": 255})
+
+    # 2. Projector Demo
+    if CORE_AVAILABLE:
+        projector = NoumenalProjector()
+        
+        # A. Manifest "Order" (Alternating)
+        projector.manifest_intent("ORDER", [1,0,1,0,1,0,1,0,1,0,1,0])
+        
+        # B. Manifest a Concept (e.g., "Truth")
+        intent_truth = text_to_12bits("Truth")
+        projector.manifest_intent("CONCEPT: Truth", intent_truth)

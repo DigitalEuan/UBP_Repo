@@ -1,13 +1,14 @@
 """
-UBP Auto-Trigger v17.2 (Phrase-Lock Edition)
+UBP Auto-Trigger v17.2.1 (Phrase-Lock Edition)
 ==============================================
+FIX: Aligned with UBPBrainV3 class naming.
 Features:
 1. PHRASE-LOCK SCANNING: Matches exact strings from Lexicon [Name] parts.
 2. TRIADIC SCORING: Prioritizes Phrases > Math DNA > Keywords.
 3. SOP_002 COMPLIANCE: Fully integrated with fingerprint-keyed KB.
 
 Author: E R A Craig, New Zealand
-Date: 20 Feb 2026
+Date: 25 Feb 2026
 """
 import json
 import sys
@@ -18,28 +19,35 @@ from typing import List, Dict, Any
 
 # --- 1. SYSTEM INTEGRATION ---
 try:
-    from ubp_brain_consolidated import UBPBrain
+    # Import the correct class name from your consolidated brain
+    from ubp_brain_consolidated import UBPBrainV3
     
-    BRAIN = UBPBrain()
-    BRAIN.initialize(['ubp_system_kb.json'])
+    BRAIN = UBPBrainV3()
+    BRAIN.load('ubp_system_kb.json')
     
-    # Build Reverse Map (ID -> Fingerprint)
-    ID_TO_FP = {v.get('ubp_id'): k for k, v in BRAIN.memory.kb.items() if v.get('ubp_id')}
+    # Access the KB dictionary (keyed by fingerprint in SOP_002)
+    KB_DATA = BRAIN.kb.by_fingerprint
+    
+    # Build Reverse Map (ID -> Fingerprint) for Direct ID lookups
+    ID_TO_FP = {entry.ubp_id: fp for fp, entry in KB_DATA.items() if entry.ubp_id}
     
     # Build Phrase Map (Full Lexicon Name -> Fingerprint)
     # This allows us to find "Informational Materialism" as a single unit
     PHRASE_TO_FP = {}
-    for fp, entry in BRAIN.memory.kb.items():
-        lex = entry.get('lexicon', '')
+    for fp, entry in KB_DATA.items():
+        lex = entry.lexicon
         if lex.startswith('['):
             name = lex.split('],')[0].strip('[')
             PHRASE_TO_FP[name.lower()] = fp
 
-    print(f"[Cortex v17.2] Phrase-Lock Active. {len(PHRASE_TO_FP)} Semantic Anchors.")
+    print(f"[Cortex v17.2.1] Phrase-Lock Active. {len(PHRASE_TO_FP)} Semantic Anchors.")
 
 except ImportError as e:
     print(f"[Cortex] CRITICAL ERROR: {e}")
-    sys.exit(0)
+    # Fallback to prevent system crash, though recall will be limited
+    KB_DATA = {}
+    PHRASE_TO_FP = {}
+    ID_TO_FP = {}
 
 # --- 2. HELPER FUNCTIONS ---
 
@@ -63,43 +71,53 @@ def reflexive_recall(text: str):
     input_lower = text.lower()
 
     # A. PHRASE-LOCK SCAN (High Priority)
-    # Checks if any full Lexicon Name exists in the user's query
     for phrase, fp in PHRASE_TO_FP.items():
         if phrase in input_lower:
-            entry = BRAIN.memory.kb[fp].copy()
-            entry['match_type'] = "PHRASE_LOCK"
-            entry['score_boost'] = 2.0
-            memories[fp] = entry
+            entry_obj = KB_DATA[fp]
+            memories[fp] = {
+                'data': entry_obj,
+                'match_type': "PHRASE_LOCK",
+                'score_boost': 2.0
+            }
 
     # B. DIRECT ID SCAN (Regex)
     ids = re.findall(r'\b[A-Z]+_[A-Z0-9_]+_\d+\b', text)
     for uid in ids:
         fp = ID_TO_FP.get(uid)
         if fp and fp not in memories:
-            entry = BRAIN.memory.kb[fp].copy()
-            entry['match_type'] = "DIRECT_ID"
-            entry['score_boost'] = 1.5
-            memories[fp] = entry
+            entry_obj = KB_DATA[fp]
+            memories[fp] = {
+                'data': entry_obj,
+                'match_type': "DIRECT_ID",
+                'score_boost': 1.5
+            }
 
     # C. MATH DNA SCAN (Hashing)
     if "=" in text or "|" in text:
+        # Attempt to see if the user provided raw Math DNA
         fp = hashlib.sha256(text.strip().encode()).hexdigest()
-        if fp in BRAIN.memory.kb and fp not in memories:
-            entry = BRAIN.memory.kb[fp].copy()
-            entry['match_type'] = "MATH_DNA"
-            entry['score_boost'] = 1.8
-            memories[fp] = entry
+        if fp in KB_DATA and fp not in memories:
+            entry_obj = KB_DATA[fp]
+            memories[fp] = {
+                'data': entry_obj,
+                'match_type': "MATH_DNA",
+                'score_boost': 1.8
+            }
 
-    # D. KEYWORD SCAN (Lexicon Index)
-    words = re.findall(r'\b\w{4,}\b', input_lower)
-    for word in words:
-        fps = BRAIN.memory.lexicon_index.get(word, [])
-        for fp in fps:
-            if fp not in memories:
-                entry = BRAIN.memory.kb[fp].copy()
-                entry['match_type'] = "KEYWORD"
-                entry['score_boost'] = 1.0
-                memories[fp] = entry
+    # D. KEYWORD SCAN (Lexicon Search)
+    # Only scan if we haven't found too many high-priority matches
+    if len(memories) < 5:
+        words = re.findall(r'\b\w{4,}\b', input_lower)
+        for word in words:
+            for fp, entry_obj in KB_DATA.items():
+                if word in entry_obj.lexicon.lower() or word in entry_obj.ubp_id.lower():
+                    if fp not in memories:
+                        memories[fp] = {
+                            'data': entry_obj,
+                            'match_type': "KEYWORD",
+                            'score_boost': 1.0
+                        }
+                if len(memories) > 15: break # Cap search
 
     # --- 4. FORMAT FOR AI CONTEXT ---
     final_context = []
@@ -108,17 +126,17 @@ def reflexive_recall(text: str):
     sorted_memories = sorted(memories.values(), key=lambda x: x.get('score_boost', 0), reverse=True)
 
     for m in sorted_memories[:12]: # Top 12
-        name, meaning = parse_lexicon(m.get('lexicon', ''))
-        atlas = m.get('atlas', {})
+        entry = m['data']
+        name, meaning = parse_lexicon(entry.lexicon)
         
         ctx_entry = {
-            "ubp_id": m.get('ubp_id'),
+            "ubp_id": entry.ubp_id,
             "name": name,
             "meaning": meaning,
-            "math": m.get('math'),
-            "hierarchy": atlas.get('hierarchy'),
-            "nrci": atlas.get('nrci'),
-            "match": m.get('match_type')
+            "math": entry.math,
+            "hierarchy": entry.hierarchy,
+            "nrci": str(entry.nrci),
+            "match": m['match_type']
         }
         final_context.append(ctx_entry)
 
@@ -126,7 +144,7 @@ def reflexive_recall(text: str):
     return final_context
 
 if __name__ == "__main__":
-    # Test with the specific phrase
-    q = "What is Informational Materialism?"
+    # Test with a known concept
+    q = "What is a Proton?"
     res = reflexive_recall(q)
     print(json.dumps(res, indent=2))
