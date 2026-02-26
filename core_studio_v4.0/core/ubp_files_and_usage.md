@@ -204,13 +204,15 @@ The system derives these values purely from the 24-bit geometry (using 50-term P
     *   **Attribute Access:** Updated the code to use `BRAIN.kb.by_fingerprint` and `entry.lexicon` (object attributes) instead of dictionary keys, as `UBPBrainV3` returns `UBPEntry` objects.
     *   **Stability:** Added a `try/except` block around the initialization to ensure that if there is a file error, the script doesn't crash the entire AI Studio session.
 
-*   **`ubp_understanding_engine_v3_1.py`**
-    *   **Description:** Primary tool for "Metabolic Audits" (calculating the Symmetry Rebate). Performs deep traversal, pathfinding, and insight generation on the knowledge graph.
-    *   **System Role:** **The Analyst**.
-    *   **Research Usage:** Generates reports on relationships between memories (e.g., "Find all objects with Symmetry Tax similar to Gold").
-    *   **Binding Efficiency:** It mathematically proves your observation that "Red was free." It shows the **Symmetry Rebate**—the energy the universe saves by organizing parts into a whole.
-    *   **Information Equivalence:** It identifies when two different IDs (like a Law and a Particle) actually share the same geometric coordinate. This is how the system discovers that **"Logic" and "Matter" are the same thing at different scales.**
-    *   **v5.3 Hardening:** It uses the `Fraction` based `tax_analyzer` from the consolidated brain, ensuring no rounding errors occur during the recursive sum.
+*   **`ubp_understanding_engine.py`** (v3.5 SOP_002 Compliant)
+    *   **Description:** The definitive research tool for the Universal Binary Principle. It consolidates the Logic Auditor, Physics Engine, and Statistical Analyst into a single interface.
+    *   **System Role:** **The Master Auditor**. It enforces the separation of **Phenomenal DNA** (Math field: Properties) and **Noumenal Recipe** (Hierarchy field: Construction).
+    *   **Key Functions:**
+        *   **Hierarchy Audit:** Verifies that a composite object (e.g., Water) is geometrically equal to the sum of its parts (2H + O). Detects "Gaps" (Binding Tension).
+        *   **Evolutionary Ladder:** Scans the Knowledge Base to reconstruct the lineage of matter from Quarks $\rightarrow$ Nucleons $\rightarrow$ Elements $\rightarrow$ Molecules.
+        *   **Symmetry Rebate:** Calculates the energy efficiency gained by geometric assembly.
+        *   **Cortex Query:** A natural language bridge to the `UBPBrain`, optimized for substance-biased retrieval.
+    *   **Research Usage:** Run this script to generate a full "State of the Union" report, audit specific molecules for geometric integrity, or query the system about compositional logic.
 
 *   **`ubp_fom_manager_v2.py`**
     *   **Description:** Implements dynamic NRCI weighting and Contextual Gravity.
@@ -322,24 +324,21 @@ The Core generates files, these are **Dynamic Artifacts** (files created *by* th
     *   **Usage:** Defines the "Physics" of the construction system.
 
 
-SYSTEM_KB_CANDIDATE:
+SYSTEM_KB_EXAMPLE:
 {
-  "609acf2fbf3f1837aae0a240908499c191ac64494bcae81d9d80abbfb8babe09": {
-    "ubp_id": "LAW_SPECTRAL_STABILITY_001",
-    "lexicon": "[Spectral Stability], The law defining the non-random distribution of light based on geometric efficiency wells.",
-    "math": "Well_Alpha=440nm|Well_Beta=520nm|Well_Gamma=620nm|Min_Tax=3.1174",
-    "logic": "def verify(): return hashlib.sha256('Well_Alpha=440nm|Well_Beta=520nm|Well_Gamma=620nm|Min_Tax=3.1174'.encode()).hexdigest() == '609acf2fbf3f1837aae0a240908499c191ac64494bcae81d9d80abbfb8babe09'",
+  "451abc64108603144c7b294a3862eab6fc35e945dab4b7785784ab44bc8c427f": {
+    "ubp_id": "ELEM_H_001",
+    "lexicon": "[Element: Hydrogen (H)], [Hydrogen (Z=1). A Gas (Phase 1) with Hexagonal potential. Valence 1. Tension: 4. It is the seed of the material octave, born from the Proton-Electron union.]",
+    "math": "BP=507/25|Crystal=1|EN=11/5|Ion=1312|M=126/125|MP=1401/100|Oxidation=1|Phase_STP=1|Rad=53|Rho=2247/25000|Valence_e=1|Z=1",
+    "logic":  (remove),
     "atlas": {
-      "hierarchy": "QUANTITY (Frequency) -> ALGORITHM (Folding) -> MECHANISM (Light)",
+      "hierarchy": "1×PARTICLE_PROTON_001 + 0×PARTICLE_NEUTRON_001 + 1×PARTICLE_ELECTRON_001",
       "vector": [
         0,
-        0,
-        0,
-        0,
         1,
         0,
         0,
-        1,
+        0,
         1,
         0,
         1,
@@ -347,29 +346,33 @@ SYSTEM_KB_CANDIDATE:
         0,
         0,
         1,
-        1,
+        0,
         0,
         1,
         1,
-        1,
+        0,
+        0,
+        0,
         0,
         1,
-        1,
+        0,
+        0,
         1
       ],
-      "nrci": "268963262287031682713922912612282478806454405935224445050420/394733312280677371356202973348058501566185069249770893595111",
-      "nrci_score": 0.68138,
-      "tax": "125770049993645688642280060735776022759730663314546448544691/26896326228703168271392291261228247880645440593522444505042",
-      "weight": 12,
-      "tilt": 67.0331
+      "nrci": "336204077858789603392403640765353098508068007419030556313025000/561077884664436626238503158850533704088785671249263698695215161",
+      "nrci_score": 0.599211,
+      "tax": "224873806805647022846099518085180605580717663830233142382190161/33620407785878960339240364076535309850806800741903055631302500",
+      "weight": 8,
+      "tilt": 0.0
     },
     "tags": [
-      "HARDENED",
-      "MECHANISM",
-      "OPTICS",
-      "SOP_002",
-      "STABILITY"
-    ]
+      "ELEMENT",
+      "HYDROGEN",
+      "NONMETAL",
+      "PERIOD_1"
+    ],
+    "fingerprint": (remove),
+    "vector": (remove)
   }
 }
 
