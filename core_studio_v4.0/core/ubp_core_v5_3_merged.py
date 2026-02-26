@@ -301,179 +301,115 @@ class LeechPointScaled:
         return [Fraction(c * c, 8) for c in self.coords]
 
 
+
 # ==============================================================================
-# SECTION 5: OPTIMIZED PARTICLE PHYSICS
+# SECTION 5: OPTIMIZED PARTICLE PHYSICS (STEREOSCOPIC EDITION v5.5)
 # ==============================================================================
 
 class UBPOptimizedParticlePhysics:
-    """Optimized particle physics with maximum theoretical accuracy."""
-    
-    EXPERIMENTAL = {
-        'muon_electron': 206.7682827,
-        'proton_electron': 1836.15267343,
-        'alpha_inv': 137.035999206
-    }
-    
-    def __init__(self, precision: int = 50):
-        """Initialize with ultimate precision."""
-        constants = UBPUltimateSubstrate.get_constants(precision)
-        self.Y = constants['Y']
-        self.Y_inv = constants['Y_INV']
-        self.pi = constants['PI']
-        self.precision = precision
-        self._find_optimal_coefficients()
-    
-    def _find_optimal_coefficients(self):
-        """Find optimal coefficients through systematic exploration."""
-        candidates = []
-        
-        # Explore rational coefficients near 9
-        for num in range(170, 181):
-            for denom in [2]:
-                coeff = Fraction(num, denom)
-                result = coeff*(self.Y_inv**4) + (self.Y_inv - 1) - self.Y
-                error = abs(float(result) - self.EXPERIMENTAL['proton_electron'])
-                candidates.append((coeff, result, error))
-        
-        # Explore around 9 with finer precision
-        for num in range(355, 370):
-            for denom in [40]:
-                coeff = Fraction(num, denom)
-                result = coeff*(self.Y_inv**4) + (self.Y_inv - 1) - self.Y
-                error = abs(float(result) - self.EXPERIMENTAL['proton_electron'])
-                candidates.append((coeff, result, error))
-        
-        best_candidate = min(candidates, key=lambda x: x[2])
-        self.optimal_proton_coeff = best_candidate[0]
-        self.optimal_proton_result = best_candidate[1]
-        self.optimal_proton_error = best_candidate[2]
-        self._apply_symmetry_corrections()
-    
-    def _apply_symmetry_corrections(self):
-        """Apply symmetry-based corrections from Leech lattice theory."""
-        sym_correction_1 = self.Y**3 / 24
-        sym_correction_2 = (self.Y / (self.Y_inv + 1))
-        sym_correction_3 = self.Y**5 * self.Y_inv
-        
-        variations = {
-            'base': self.optimal_proton_result,
-            'sym1': self.optimal_proton_result - sym_correction_1,
-            'sym2': self.optimal_proton_result + sym_correction_2,
-            'sym3': self.optimal_proton_result - sym_correction_3,
-            'combo1': self.optimal_proton_result - sym_correction_1 + sym_correction_2,
-            'combo2': self.optimal_proton_result + sym_correction_2 - sym_correction_3
-        }
-        
-        best_sym = min(variations.items(), 
-                      key=lambda x: abs(float(x[1]) - self.EXPERIMENTAL['proton_electron']))
-        
-        self.best_symmetry_formula = best_sym[0]
-        self.best_proton_prediction = best_sym[1]
-        self.best_proton_error = abs(float(best_sym[1]) - self.EXPERIMENTAL['proton_electron'])
-    
-    def get_ultimate_predictions(self) -> Dict[str, Any]:
-        """Get ultimate theoretical predictions with maximum accuracy."""
-        muon_pred = (1/self.Y)**4 + 3 - self.Y**4
-        muon_error = abs(float(muon_pred) - self.EXPERIMENTAL['muon_electron'])
-        
-        alpha_pred = 83 + self.Y_inv**3 + Fraction(3,2)*self.Y**2
-        alpha_error = abs(float(alpha_pred) - self.EXPERIMENTAL['alpha_inv'])
-        
-        return {
-            'muon_electron': {
-                'predicted': float(muon_pred),
-                'experimental': self.EXPERIMENTAL['muon_electron'],
-                'error_absolute': muon_error,
-                'error_percent': muon_error / self.EXPERIMENTAL['muon_electron'] * 100,
-                'formula': '(1/Y)^4 + 3 - Y^4'
-            },
-            'proton_electron': {
-                'predicted': float(self.best_proton_prediction),
-                'experimental': self.EXPERIMENTAL['proton_electron'],
-                'error_absolute': self.best_proton_error,
-                'error_percent': self.best_proton_error / self.EXPERIMENTAL['proton_electron'] * 100,
-                'formula': f'Optimized: {self.optimal_proton_coeff} with {self.best_symmetry_formula}',
-                'base_coefficient': float(self.optimal_proton_coeff)
-            },
-            'alpha_inv': {
-                'predicted': float(alpha_pred),
-                'experimental': self.EXPERIMENTAL['alpha_inv'],
-                'error_absolute': alpha_error,
-                'error_percent': alpha_error / self.EXPERIMENTAL['alpha_inv'] * 100,
-                'formula': '83 + Y_inv^3 + 1.5*Y^2'
-            },
-            'precision_info': {
-                'pi_terms': self.precision,
-                'pi_value': float(self.pi),
-                'Y_inv': float(self.Y_inv),
-                'Y': float(self.Y)
-            }
-        }
-
-class UBPOptimizedParticlePhysics:
     """
-    UBP Optimized Particle Physics v5.4
-    Integrates Leech Lattice Anchors with Cubic Partition Scaling.
-    
-    Formalizes the 'Existence Unit' (U_e) and 'Cubic Partition' (P_i) laws.
+    UBP Optimized Particle Physics v5.5
+    Dual-Lens Integration: Lattice Anchors (Phenomenal) + Triadic Genesis (Noumenal).
+    Also incorporates Cubic Partition Scaling for the Heavy Sector.
     """
+    
     def __init__(self, precision: int = 50):
         constants = UBPUltimateSubstrate.get_constants(precision)
         self.Y = constants['Y']
         self.Y_INV = constants['Y_INV']
-        self.U_e = Fraction(24**3, 1) # The Existence Unit (13,824)
-        self.m_e = Fraction(51099895, 100000000) # Electron mass in MeV
+        self.pi = constants['PI']
         
-        # Experimental Targets for Error Calculation
+        # Triadic Primitives (Hardened Rationals)
+        self.PHI = Fraction(1618033988749895, 1000000000000000)
+        self.E_CONST = Fraction(2718281828459045, 1000000000000000)
+        self.U_e = Fraction(24**3, 1) # The Existence Unit (13,824)
+        
+        # Invariants
+        self.RG = Fraction(4203, 10000) # Resolution Gap
+        self.SINK = Fraction(46761, 10000) # 4.6761 Stability Sink
+        
+        # Experimental Targets (CODATA 2018 / PDG 2024)
         self.EXPERIMENTAL = {
             'muon_electron': 206.7682827,
             'proton_electron': 1836.15267343,
             'alpha_inv': 137.035999206,
-            'W_BOSON': 80377.0,
-            'Z_BOSON': 91187.6,
-            'HIGGS': 125250.0,
-            'TOP_QUARK': 172760.0
+            'higgs_boson': 125250.0,   # MeV
+            'top_quark': 172760.0,     # MeV
+            'z_boson': 91187.6,        # MeV
+            'w_boson': 80377.0         # MeV
         }
+
+    def _get_triadic_vector(self, val_frac):
+        """Deterministic 24-bit vectorization for the Triadic Cycle."""
+        seed = f"{val_frac.numerator}/{val_frac.denominator}"
+        h = hashlib.sha256(seed.encode()).hexdigest()
+        val_int = int(h[:6], 16)
+        return [(val_int >> i) & 1 for i in range(23, -1, -1)]
+
+    def run_triadic_genesis(self, steps=137) -> Fraction:
+        """Simulates the 137-step interaction of the Triad to find Noumenal Volume."""
+        volume = Fraction(0)
+        triadic_monad = self.pi * self.PHI * self.E_CONST
+        for n in range(1, steps + 1):
+            pressure = triadic_monad * Fraction(n, 10)
+            vec = self._get_triadic_vector(pressure)
+            tax = LEECH_ENGINE.calculate_symmetry_tax(vec)
+            if tax <= self.SINK:
+                volume += triadic_monad * self.Y
+        return volume
 
     def get_ultimate_predictions(self) -> Dict[str, Any]:
-        """
-        The Master Audit: Combines Leech Anchors and Cubic Partitions.
-        Returns results in the format expected by the UBP Core main() function.
-        """
-        # 1. Leech Lattice Anchors (The 'Spine')
-        muon_ratio = self.Y_INV**4 + 3 - self.Y**4
-        proton_ratio = Fraction(9, 1) * self.Y_INV**4 + (self.Y_INV - 1) - self.Y
-        alpha_inv = 83 + self.Y_INV**3 + Fraction(3, 2) * self.Y**2
+        """Master Audit: Compares Lattice-First vs. Triadic-First perspectives."""
+        
+        # 1. LENS 1: LATTICE ANCHORS (Phenomenal)
+        lat_muon = self.Y_INV**4 + 3 - self.Y**4
+        lat_alpha = 83 + self.Y_INV**3 + Fraction(3, 2) * self.Y**2
+        lat_proton = Fraction(9, 1) * self.Y_INV**4 + (self.Y_INV - 1) - self.Y
 
-        # 2. Heavy Sector (The 'Cubic Partitions')
-        # Top=Edges(12), Higgs=Corners(9), Bosons=Faces(6)
-        higgs_mev = self.U_e * (Fraction(9, 1) + self.Y**2)
-        top_mev = self.U_e * (Fraction(12, 1) + self.Y + self.Y**2)
-        z_mev = self.U_e * (Fraction(6, 1) + 2 * self.Y)
-        w_mev = self.U_e * (Fraction(6, 1) - (self.Y / 2))
+        # 2. LENS 2: TRIADIC GENESIS (Noumenal)
+        v_n = self.run_triadic_genesis(137)
+        tri_alpha = (v_n * Fraction(2, 3)) + self.RG
+        tri_muon = v_n + Fraction(2, 1)
+        tri_proton = (v_n * 9) - Fraction(7, 1)
 
-        # 3. Synthesize Report
-        results = {
-            'muon_electron': self._fmt('muon_electron', float(muon_ratio), '(Y_inv^4 + 3 - Y^4)'),
-            'proton_electron': self._fmt('proton_electron', float(proton_ratio), '9*Y_inv^4 + (Y_inv-1) - Y'),
-            'alpha_inv': self._fmt('alpha_inv', float(alpha_inv), '83 + Y_inv^3 + 1.5*Y^2'),
-            'higgs_boson': self._fmt('HIGGS', float(higgs_mev), 'U_e * (9 + Y^2)'),
-            'top_quark': self._fmt('TOP_QUARK', float(top_mev), 'U_e * (12 + Y + Y^2)'),
-            'z_boson': self._fmt('Z_BOSON', float(z_mev), 'U_e * (6 + 2Y)'),
-            'w_boson': self._fmt('W_BOSON', float(w_mev), 'U_e * (6 - Y/2)')
-        }
-        return results
+        # 3. HEAVY SECTOR (Cubic Partitions)
+        higgs = self.U_e * (Fraction(9, 1) + self.Y**2)
+        top = self.U_e * (Fraction(12, 1) + self.Y + self.Y**2)
+        z_boson = self.U_e * (Fraction(6, 1) + 2 * self.Y)
+        w_boson = self.U_e * (Fraction(6, 1) - (self.Y / 2))
 
-    def _fmt(self, key, pred, formula):
-        target = self.EXPERIMENTAL.get(key, pred)
-        err_abs = abs(pred - target)
-        err_pct = (err_abs / target * 100) if target != 0 else 0
+        # 4. SYNTHESIZE STEREOSCOPIC REPORT
         return {
-            'predicted': pred,
-            'experimental': target,
-            'error_absolute': err_abs,
-            'error_percent': err_pct,
-            'formula': formula
+            'alpha_inv': self._fmt_dual('alpha_inv', lat_alpha, tri_alpha),
+            'muon_electron': self._fmt_dual('muon_electron', lat_muon, tri_muon),
+            'proton_electron': self._fmt_dual('proton_electron', lat_proton, tri_proton),
+            'higgs_boson': self._fmt_single('higgs_boson', higgs),
+            'top_quark': self._fmt_single('top_quark', top),
+            'z_boson': self._fmt_single('z_boson', z_boson),
+            'w_boson': self._fmt_single('w_boson', w_boson),
+            'noumenal_volume': float(v_n)
+        }
+
+    def _fmt_dual(self, key, lat_val, tri_val):
+        target = self.EXPERIMENTAL[key]
+        err_lat = abs(float(lat_val) - target) / target * 100
+        err_tri = abs(float(tri_val) - target) / target * 100
+        return {
+            'lattice_err': err_lat,
+            'triadic_err': err_tri,
+            'error_percent': min(err_lat, err_tri), # For main() compatibility
+            'best_lens': 'Lattice' if err_lat < err_tri else 'Triadic',
+            'lat_val': float(lat_val),
+            'tri_val': float(tri_val)
+        }
+
+    def _fmt_single(self, key, val):
+        target = self.EXPERIMENTAL[key]
+        err = abs(float(val) - target) / target * 100
+        return {
+            'error_percent': err,
+            'val': float(val),
+            'best_lens': 'Cubic'
         }
 
 # ==============================================================================
@@ -936,43 +872,33 @@ print("  - Construction system: D, X, N, J primitives")
 
 def main():
     print("="*80)
-    print("UBP CORE v5.3 - MERGED ULTIMATE SYSTEM")
+    print("UBP CORE v5.5 - STEREOSCOPIC ULTIMATE SYSTEM")
     print("="*80)
     
     engine = TriadActivationEngine()
     engine.seed_primitives()
     success = engine.activate(max_iter=5)
     
-    if success:
-        print("\n" + "="*80)
-        print("SUCCESS: Triad is fully operational")
-        print("="*80)
-    else:
-        print("\nPartial activation achieved")
-    
     engine.export_atlas()
     engine.export_primitives()
     
-    # Summary
     print("\n" + "="*80)
-    print("SYSTEM SUMMARY")
+    print("PARTICLE PHYSICS PREDICTIONS (DUAL-LENS AUDIT)")
     print("="*80)
-    print(f"Total objects: {len(engine.atlas)}")
-    print(f"Stable objects: {engine.triad_state['stable_count']}")
-    print(f"Sporadic groups: {engine.triad_state['sporadic_count']}")
-    print(f"Golay active: {engine.triad_state['golay_active']}")
-    print(f"Leech active: {engine.triad_state['leech_active']}")
-    print(f"Monster active: {engine.triad_state['monster_active']}")
+    print(f"{'PARTICLE':<18} | {'LATTICE ERR':<12} | {'TRIADIC ERR':<12} | {'WINNER'}")
+    print("-" * 80)
     
-    # Particle physics
-    print("\n" + "="*80)
-    print("PARTICLE PHYSICS PREDICTIONS")
-    print("="*80)
     predictions = PARTICLE_PHYSICS.get_ultimate_predictions()
-    for key, val in predictions.items():
-        if isinstance(val, dict) and 'error_percent' in val:
-            print(f"{key}: {val['error_percent']:.6f}% error")
+    for key, data in predictions.items():
+        if isinstance(data, dict):
+            if 'lattice_err' in data:
+                print(f"{key:<18} | {data['lattice_err']:10.6f}% | {data['triadic_err']:10.6f}% | {data['best_lens']}")
+            elif 'error_percent' in data:
+                print(f"{key:<18} | {data['error_percent']:10.6f}% | {'N/A':<12} | {data['best_lens']}")
 
+    print("\n" + "="*80)
+    print(f"NOUMENAL VOLUME (V_n): {predictions.get('noumenal_volume'):.6f}")
+    print("="*80)
 
 if __name__ == "__main__":
     main()
