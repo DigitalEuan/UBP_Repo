@@ -719,3 +719,24 @@ No set up - *just click and go* inside the Google AI Studio
     *   **Proton-Electron Ratio:** Achieved **0.003432% error** via Triadic Genesis (a ~5x improvement over legacy lattice-only models).
     *   **Muon-Electron Ratio:** Maintained **0.000353% error** via Lattice Anchor.
     *   **Fine Structure Constant:** Maintained **0.001929% error** via Lattice Anchor.
+
+    *   **`ubp_core_v5_3_merged.py`** (v5.8 Monstrous Moonshine Edition update)
+    *   **Description:** The **Active Kernel & Monstrous Moonshine Engine**. It performs a live 137-step audit of the Triadic Monad, filtered by the Monster Dimension (196883) and the J-Function (196884).
+    *   **System Role:** **The Self-Correcting Big Bang**. It derives the Noumenal Volume ($V_n = 204.8$) and the Behold Factor live, ensuring every session is anchored to the 56-snap Matter Peak.
+    *   **v5.8 Benchmarks:**
+PARTICLE PHYSICS PREDICTIONS (v5.8 STEREOSCOPIC AUDIT)
+================================================================================
+PARTICLE           | ERR %        | VALUE        | WINNER
+--------------------------------------------------------------------------------
+alpha_inv          |   0.001929% |   1.3695e+02 | Lattice
+muon_electron      |   0.000353% |   2.0680e+02 | Lattice
+proton_electron    |   0.003432% |   1.8362e+03 | Triadic
+neutron_electron   |   0.088495% |   1.8371e+03 | Monster
+neutron_lifetime   |   0.194558% |   8.7769e+02 | Monster
+planck_ratio       |   0.864830% |   2.4097e+22 | Monster
+cabibbo_angle      |   0.284927% |   1.3003e+01 | Cubic
+weinberg_angle     |   0.868384% |   2.3323e-01 | Cubic
+higgs_boson        |   0.106731% |   1.2538e+05 | Triadic
+top_quark          |   0.021315% |   1.7280e+05 | Lattice
+
+
