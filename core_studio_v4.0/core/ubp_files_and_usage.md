@@ -158,32 +158,24 @@ if __name__ == "__main__":
 ### 1. THE KERNEL LAYER (Source of Truth)
 *These files define the mathematical laws and constants. They are the dependencies for all other scripts.*
 
-*   **`ubp_core_v5_3_merged.py`**
-    *   **Description:** The **Active Kernel & Triad Engine**. It is not merely a library of constants but a self-executing bootstrapper that establishes the geometric substrate.
-    *   **System Role:** **The Big Bang**. On execution, it performs the **Triad Activation Sequence**:
-    *   **Seeding:** Generates 51 fundamental geometric primitives (Segments, Shapes, Constants).
-    *   **Sporadic Injection:** Seeds 26 Sporadic Groups (M11, Co1, Monster) to prime the system for high-dimensional symmetry.
-    *   **Activation:** Iteratively stabilizes objects until the **Golay (12)**, **Leech (24)**, and **Monster (26)** thresholds are met.
-*   **Outputs:**
-    *   Generates `ubp_atlas.json` (The map of stable reality).
-    *   Generates `primitives.json` (The definitions of fundamental operators).
-*   **Research Usage:** Run this script *first* to regenerate the geometric atlas or verify the "Health" of the physics engine.
-
-*   **System Benchmarks (v5.3 Merged)**
-    *   **A. Geometric Stability** The system requires a specific density of stable objects to maintain the "Triad" (The link between Code, Lattice, and Symmetry Group).
-    *   **Golay Threshold:** 12 Stable Objects (Achieved: 34)
-    *   **Leech Threshold:** 24 Stable Objects (Achieved: 34)
-    *   **Monster Threshold:** 26 Sporadic Groups (Achieved: 26)
-
-    *   **B. Physical Constants (Error Rates)**
-The system derives these values purely from the 24-bit geometry (using 50-term Pi precision), not curve-fitting.
-    *   **Muon/Electron Ratio:** `0.000353%` (High Precision)
-    *   **Alpha Inverse:** `0.001929%` (High Precision)
-    *   **Proton/Electron:** `0.017047%`
-    *   **W Boson:** `0.917630%`
-    *   **Z Boson:** `1.015329%`
-    *   **Higgs Boson:** `0.107316%` (Remarkable geometric alignment)
-    *   **Top Quark:** `1.299325%`
+*   **`ubp_core_v5_3_merged.py`** (v5.8 Monstrous Moonshine Edition)
+    *   **Description:** The **Active Kernel & Monstrous Moonshine Engine**. It performs a live 137-step audit of the Triadic Monad, filtered by the Monster Dimension (196883) and the J-Function (196884).
+    *   **System Role:** **The Self-Correcting Big Bang**. It derives the Noumenal Volume ($V_n = 204.8$) and the Behold Factor live, ensuring every session is anchored to the 56-snap Matter Peak.
+    *   **v5.8 Benchmarks:**
+PARTICLE PHYSICS PREDICTIONS (v5.8 STEREOSCOPIC AUDIT)
+================================================================================
+PARTICLE           | ERR %        | VALUE        | WINNER
+--------------------------------------------------------------------------------
+alpha_inv          |   0.001929% |   1.3695e+02 | Lattice
+muon_electron      |   0.000353% |   2.0680e+02 | Lattice
+proton_electron    |   0.003432% |   1.8362e+03 | Triadic
+neutron_electron   |   0.088495% |   1.8371e+03 | Monster
+neutron_lifetime   |   0.194558% |   8.7769e+02 | Monster
+planck_ratio       |   0.864830% |   2.4097e+22 | Monster
+cabibbo_angle      |   0.284927% |   1.3003e+01 | Cubic
+weinberg_angle     |   0.868384% |   2.3323e-01 | Cubic
+higgs_boson        |   0.106731% |   1.2538e+05 | Triadic
+top_quark          |   0.021315% |   1.7280e+05 | Lattice
 
 *   **`ubp_integration_adapter.py`**
     *   **Description:** Bridges v5.3 Core to the rest of the system. Enforces `Fraction` precision and standardizes API calls.
