@@ -1,214 +1,438 @@
 """
 ================================================================================
-UBP UNDERSTANDING ENGINE v3.3 (The Complete Suite)
+UBP UNDERSTANDING ENGINE v4.1 (Standardized)
 ================================================================================
-The definitive research tool for the Universal Binary Principle.
-Consolidates all functions from v1, v3.1, and vA into a single aligned class.
+The UBP Understanding Engine sits above the Brain and provides:
 
-Author: Euan R A Craig & UBP Research Cortex
-Date: 26 Feb 2026
+  1. HIERARCHY AUDIT    — Verify internal consistency of KB entries.
+  2. NRCI LANDSCAPE     — Survey the information-complexity landscape.
+  3. PRIMITIVE BUILD-UP — Show how complex objects emerge from primitives.
+  4. SCALING EXPERIMENT — Measure how recall quality improves as KB grows.
+  5. CROSS-DOMAIN MAP   — Find informationally equivalent objects across domains.
+  6. LLM-STYLE CHAT     — Natural language Q&A using the dual-layer brain.
+  7. INSIGHT DISCOVERY  — Surface non-obvious relationships from the KB.
+
+Author: Euan R A Craig, New Zealand
+Date: 28 Feb 2026
+Version: 4.1 (Import Fixes)
 ================================================================================
 """
 
-import json
-import re
 import os
 import sys
-import hashlib
-from collections import defaultdict, Counter
+import json
+import re
 from fractions import Fraction
-from typing import Dict, List, Tuple, Optional, Any
-import statistics
+from collections import defaultdict
+from typing import Dict, List, Tuple, Optional
 
-# --- CORE IMPORTS ---
+# ── Standardized Imports ──────────────────────────────────────────────────────
 try:
-    from ubp_brain_consolidated import UBPBrain
-    from ubp_core_v5_3_merged import GOLAY_ENGINE, BinaryLinearAlgebra, LEECH_ENGINE
-    CORE_AVAILABLE = True
+    from ubp_brain_consolidated import (
+        UBPBrain, 
+        extract_name, 
+        extract_description, 
+        extract_vector, 
+        extract_nrci, 
+        extract_tax, 
+        is_belief
+    )
+    print("[Understanding Engine] Successfully linked to UBP Brain v4.0")
 except ImportError as e:
-    print(f"[CRITICAL] Import failed: {e}")
+    print(f"[CRITICAL] Could not import UBP Brain: {e}")
     sys.exit(1)
 
-# --- HELPERS ---
-def find_best_kb():
-    candidates = ['ubp_system_kb_v2.json', 'ubp_system_kb_enriched.json', 'ubp_system_kb.json']
-    for c in candidates:
-        if os.path.exists(c): return c
+# ==============================================================================
+# SECTION 1: INITIALIZATION
+# ==============================================================================
+
+def _find_kb_path() -> Optional[str]:
+    """Locate the Knowledge Base file."""
+    candidates = [
+        'ubp_system_kb.json',
+        'system_kb/ubp_system_kb.json',
+        '../system_kb/ubp_system_kb.json',
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return os.path.abspath(p)
     return None
 
-def parse_math_dna(dna: str) -> Dict[str, int]:
-    if not dna or not isinstance(dna, str): return {}
-    if '|' in dna: dna = dna.split('|', 1)[1].strip()
-    components = {}
-    mult_pattern = re.compile(r'(\d+)\s*[×xX]\s*([A-Z][A-Za-z0-9]*_[A-Za-z0-9_]+)')
-    for mult_str, comp_id in mult_pattern.findall(dna):
-        components[comp_id] = components.get(comp_id, 0) + int(mult_str)
-    id_pattern = re.compile(r'\b([A-Z][A-Za-z0-9]*_[A-Za-z0-9_]{3,})\b')
-    for comp_id in id_pattern.findall(dna):
-        if comp_id not in components: components[comp_id] = 1
-    junk = {'N', 'Z', 'Tax', 'Mean', 'Dist', 'Snap', 'NRCI', 'TAX', 'Mass', 'Spin', 'Charge'}
-    return {k: v for k, v in components.items() if k not in junk and not k.isdigit()}
+def init_brain() -> UBPBrain:
+    """Initialize the Brain with the found KB."""
+    brain = UBPBrain()
+    kb_path = _find_kb_path()
+    if not kb_path:
+        print("[ERROR] ubp_system_kb.json not found in standard paths.")
+        # Return uninitialized brain to prevent crash, but warn user
+        return brain
+        
+    brain.initialize([kb_path])
+    return brain
 
 # ==============================================================================
-# THE UNIFIED ENGINE CLASS
+# SECTION 2: HIERARCHY AUDIT
 # ==============================================================================
 
-class UBPUnderstandingEngine:
-    def __init__(self, kb_path: str = None):
-        print(f"[Engine v3.3] Booting...")
-        self.brain = UBPBrain()
-        target_kb = kb_path or find_best_kb()
-        if not target_kb: raise FileNotFoundError("No Knowledge Base found.")
-        self.brain.initialize([target_kb])
-        self.kb = self.brain.memory.kb # Direct access to dictionary
-        print(f"[Engine v3.3] Online. {len(self.kb)} concepts indexed.")
+def run_hierarchy_audit(brain: UBPBrain) -> Dict:
+    print("\n" + "=" * 70)
+    print("HIERARCHY AUDIT")
+    print("=" * 70)
 
-    def _get_vec(self, entry):
-        if 'vector' in entry: return entry['vector']
-        return entry.get('atlas', {}).get('vector')
+    if not brain.initialized:
+        print("Brain not initialized.")
+        return {}
 
-    def _get_tax(self, entry):
-        tax_val = entry.get('tax') or entry.get('atlas', {}).get('tax', '0/1')
-        try: return Fraction(tax_val)
-        except: return Fraction(0)
+    kb = brain.kb_manager.kb
+    hier = brain.hierarchy
 
-    # --- SECTION 1: HIERARCHY & BINDING ---
+    results = {"pass": 0, "anomaly": 0, "no_vector": 0, "total": 0}
+    anomalies = []
 
-    def audit_hierarchy(self, ubp_id: str) -> Dict[str, Any]:
-        entry = self.kb.get(ubp_id)
-        if not entry: return {"status": "MISSING"}
-        target_vec = self._get_vec(entry)
-        components = parse_math_dna(entry.get('math', ''))
-        if not components: return {"status": "PRIMITIVE", "name": entry.get('name', ubp_id)}
+    # Filter for Understanding entries (not Beliefs)
+    entries = [(uid, e) for uid, e in kb.items() if not is_belief(e)]
+    print(f"Auditing {len(entries)} understanding entries...")
 
-        composed_coords = [0] * 24
-        for comp_id, count in components.items():
-            comp = self.kb.get(comp_id)
-            c_vec = self._get_vec(comp) if comp else None
-            if c_vec:
-                vals = [1 if b else -1 for b in c_vec]
-                for _ in range(count):
-                    for i in range(24): composed_coords[i] += vals[i]
+    for uid, entry in entries:
+        results["total"] += 1
+        vec = extract_vector(entry)
+        if vec is None:
+            results["no_vector"] += 1
+            continue
 
-        raw_bits = [1 if c > 0 else 0 for c in composed_coords]
-        snapped, _, _ = self.brain.vector_engine.coherence_snap(raw_bits)
-        dist = BinaryLinearAlgebra.hamming_distance(target_vec, snapped)
-        return {"status": "AUDITED", "name": entry.get('name', ubp_id), "gap": dist, "is_closed": dist == 0}
+        nrci = float(extract_nrci(entry))
+        level = hier.get_hierarchy_level(uid)
+        prims = hier.decompose_to_primitives(uid)
+        prim_count = sum(prims.values())
 
-    def audit_binding_energy(self, ubp_id: str) -> Dict[str, Any]:
-        entry = self.kb.get(ubp_id)
-        if not entry: return {}
-        assembly_tax = self._get_tax(entry)
-        components = parse_math_dna(entry.get('math', ''))
-        parts_tax_sum = Fraction(0)
-        for comp_id, count in components.items():
-            comp = self.kb.get(comp_id)
-            if comp: parts_tax_sum += (self._get_tax(comp) * count)
-        if parts_tax_sum == 0: return {"status": "PRIMITIVE"}
-        rebate = parts_tax_sum - assembly_tax
-        eff = (float(rebate) / float(parts_tax_sum)) * 100 if parts_tax_sum > 0 else 0
-        return {"name": entry.get('name', ubp_id), "parts_tax": float(parts_tax_sum), 
-                "assembly_tax": float(assembly_tax), "rebate": float(rebate), "efficiency_percent": eff}
+        # Anomaly Detection Rules
+        if level == 0 and nrci < 0.7:
+            anomalies.append((uid, extract_name(entry), level, nrci,
+                               "L0 primitive has low NRCI"))
+            results["anomaly"] += 1
+        elif level > 0 and nrci > 0.99 and prim_count > 10:
+            anomalies.append((uid, extract_name(entry), level, nrci,
+                               "High NRCI for complex composite"))
+            results["anomaly"] += 1
+        else:
+            results["pass"] += 1
 
-    # --- SECTION 2: STRUCTURAL ANALYSIS ---
+    print(f"  Pass:      {results['pass']}")
+    print(f"  Anomaly:   {results['anomaly']}")
+    print(f"  No vector: {results['no_vector']}")
 
-    def list_primitives(self):
-        prims = [e for e in self.kb.values() if e.get('atlas', {}).get('hierarchy') == 'absolute_primitive']
-        return sorted([{"id": p['ubp_id'], "tax": float(self._get_tax(p))} for p in prims], key=lambda x: x['tax'])
+    if anomalies:
+        print(f"\nTop anomalies:")
+        for uid, name, level, nrci, reason in anomalies[:8]:
+            print(f"  [{reason}] {name} (L{level}, NRCI={nrci:.4f})")
 
-    def build_up_from_quarks(self):
-        print("\n[Build Up] Evolutionary Ladder:")
-        # Use fuzzy matching for quarks to handle different naming versions
-        quarks = [uid for uid in self.kb if 'QUARK' in uid and ('UP' in uid or 'DOWN' in uid)]
-        
-        # Level 1: Nucleons (Protons/Neutrons)
-        nucleons = [uid for uid, e in self.kb.items() 
-                   if any(q in e.get('math', '') for q in quarks) and 'PARTICLE_' in uid and 'QUARK' not in uid]
-        print(f"  L1 Nucleons: {', '.join(nucleons[:3]) if nucleons else 'None Found'}")
-        
-        # Level 2: Elements
-        elements = [uid for uid, e in self.kb.items() 
-                   if any(n in e.get('math', '') for n in nucleons) and 'ELEM_' in uid]
-        print(f"  L2 Elements: {', '.join(elements[:3]) if elements else 'None Found'}")
-        
-        # Level 3: Molecules
-        molecules = [uid for uid, e in self.kb.items() 
-                    if any(el in e.get('math', '') for el in elements) and 'MOLECULE_' in uid]
-        print(f"  L3 Molecules: {', '.join(molecules[:3]) if molecules else 'None Found'}")
-
-    def ask(self, query: str):
-        # Refinement: If the query contains biological or chemical terms, 
-        # we temporarily boost the SUBSTANCE domain in the brain's reasoning.
-        if any(word in query.upper() for word in ["ATP", "WATER", "GLUCOSE", "PROTON"]):
-            # This is a conceptual 'nudge' to the brain
-            return self.brain.process_query(query + " (Focus: Substance)").response
-        return self.brain.process_query(query).response
-
-    # --- SECTION 3: STATISTICAL LANDSCAPE ---
-
-    def analyse_nrci_landscape(self):
-        data = defaultdict(list)
-        for e in self.kb.values():
-            prefix = e['ubp_id'].split('_')[0]
-            nrci = e.get('atlas', {}).get('nrci_score', 0)
-            data[prefix].append(float(nrci))
-        
-        print("\n[Landscape] NRCI Distribution by Domain:")
-        for prefix, vals in sorted(data.items()):
-            print(f"  {prefix:12}: mean={statistics.mean(vals):.4f} (n={len(vals)})")
-
-    def analyze_tax_patterns(self):
-        print("\n[Patterns] TAX Efficiency Ratios:")
-        for uid in ["PARTICLE_PROTON_001", "ELEM_H_001", "MOLECULE_H2O"]:
-            res = self.audit_binding_energy(uid)
-            if 'efficiency_percent' in res:
-                print(f"  {uid:20}: {res['efficiency_percent']:.2f}% Efficiency")
-
-    # --- SECTION 4: DISCOVERY & SCALING ---
-
-    def run_scaling_experiment(self):
-        print("\n[Experiment] Intelligence Scaling:")
-        sizes = [100, 300, 500, len(self.kb)]
-        for s in sizes:
-            coverage = (s / len(self.kb)) * 100
-            # Heuristic: Accuracy scales with log of KB size in UBP
-            acc = 40 + (statistics.math.log(s) * 5)
-            print(f"  KB Size: {s:4} | Coverage: {coverage:5.1f}% | Predicted Accuracy: {acc:.1f}%")
-
-    def compare(self, id_a, id_b):
-        e_a, e_b = self.kb.get(id_a), self.kb.get(id_b)
-        if not e_a or not e_b: return "Missing ID"
-        dist = BinaryLinearAlgebra.hamming_distance(self._get_vec(e_a), self._get_vec(e_b))
-        return {"dist": dist, "tax_delta": float(abs(self._get_tax(e_a) - self._get_tax(e_b)))}
-
-    # --- SECTION 5: COMMUNICATION ---
-
-    def ask(self, query: str):
-        return self.brain.process_query(query).response
+    return results
 
 # ==============================================================================
-# MAIN EXECUTION
+# SECTION 3: NRCI LANDSCAPE
 # ==============================================================================
+
+def run_nrci_landscape(brain: UBPBrain) -> Dict:
+    print("\n" + "=" * 70)
+    print("NRCI LANDSCAPE SURVEY")
+    print("=" * 70)
+
+    if not brain.initialized: return {}
+
+    kb = brain.kb_manager.kb
+    hier = brain.hierarchy
+
+    by_level: Dict[int, List[float]] = defaultdict(list)
+    by_category: Dict[str, List[float]] = defaultdict(list)
+    beliefs_nrci = []
+
+    for uid, entry in kb.items():
+        vec = extract_vector(entry)
+        if vec is None:
+            continue
+        nrci = float(extract_nrci(entry))
+        category = uid.split('_')[0]
+
+        if is_belief(entry):
+            beliefs_nrci.append(nrci)
+        else:
+            level = hier.get_hierarchy_level(uid)
+            by_level[level].append(nrci)
+        by_category[category].append(nrci)
+
+    print("\nNRCI by Hierarchy Level (Understanding layer):")
+    print(f"  {'Level':<18} {'Count':>6} {'Mean NRCI':>12} {'Min':>8} {'Max':>8}")
+    print("  " + "-" * 56)
+    level_names = {
+        0: "L0 Primitive", 1: "L1 Nucleon", 2: "L2 Element",
+        3: "L3 Molecule", 4: "L4 Structure"
+    }
+    stats = {}
+    for level in sorted(by_level.keys()):
+        vals = by_level[level]
+        if vals:
+            mean_v = sum(vals) / len(vals)
+            stats[level] = {'mean': mean_v, 'min': min(vals),
+                             'max': max(vals), 'count': len(vals)}
+            label = level_names.get(level, f"L{level}")
+            print(f"  {label:<18} {len(vals):>6}   {mean_v:>10.6f}   "
+                  f"{min(vals):>6.4f}   {max(vals):>6.4f}")
+
+    if beliefs_nrci:
+        mean_b = sum(beliefs_nrci) / len(beliefs_nrci)
+        print(f"  {'Beliefs (LAW)':<18} {len(beliefs_nrci):>6}   {mean_b:>10.6f}   "
+              f"{min(beliefs_nrci):>6.4f}   {max(beliefs_nrci):>6.4f}")
+
+    print("\nNRCI by Category (top 10 by count):")
+    print(f"  {'Category':<16} {'Count':>6} {'Mean NRCI':>12}")
+    print("  " + "-" * 38)
+    sorted_cats = sorted(by_category.items(), key=lambda x: -len(x[1]))[:10]
+    for cat, vals in sorted_cats:
+        mean_v = sum(vals) / len(vals)
+        print(f"  {cat:<16} {len(vals):>6}   {mean_v:>10.6f}")
+
+    return stats
+
+# ==============================================================================
+# SECTION 4: PRIMITIVE BUILD-UP
+# ==============================================================================
+
+def run_primitive_buildup(brain: UBPBrain, target_id: str) -> None:
+    if not brain.initialized: return
+
+    kb = brain.kb_manager.kb
+    hier = brain.hierarchy
+
+    entry = kb.get(target_id)
+    if not entry:
+        print(f"Entry '{target_id}' not found")
+        return
+
+    name = extract_name(entry)
+    level = hier.get_hierarchy_level(target_id)
+    prims = hier.decompose_to_primitives(target_id)
+
+    print(f"\n{'='*60}")
+    print(f"  BUILD-UP: {name}")
+    print(f"{'='*60}")
+    print(f"  Hierarchy level: {level}")
+    print(f"  Total primitive count: {sum(prims.values())}")
+
+    if len(prims) == 1 and target_id in prims:
+        print("  Status: ABSOLUTE PRIMITIVE -- no further decomposition")
+        return
+
+    def show_level(uid, indent=0, _visited=None):
+        if _visited is None:
+            _visited = set()
+        if uid in _visited:
+            return
+        _visited.add(uid)
+        e = kb.get(uid, {})
+        n = extract_name(e) if e else uid
+        nrci = float(extract_nrci(e)) if e else 0.0
+        lv = hier.get_hierarchy_level(uid)
+        prefix = "  " + "  " * indent
+        print(f"{prefix}[L{lv}] {n}  (NRCI={nrci:.4f})")
+
+        math_str = e.get('math', '') if e else ''
+        atlas = e.get('atlas', {}) if e else {}
+        hier_str = atlas.get('hierarchy', '') if isinstance(atlas, dict) else ''
+        components = hier.parse_components(math_str)
+        if not components:
+            components = hier.parse_components(hier_str)
+
+        for comp_id, count in sorted(components.items(), key=lambda x: -x[1]):
+            ce = kb.get(comp_id, {})
+            cn = extract_name(ce) if ce else comp_id
+            clv = hier.get_hierarchy_level(comp_id)
+            cprefix = "  " + "  " * (indent + 1)
+            print(f"{cprefix}{count}x [L{clv}] {cn}")
+            if clv > 0 and indent < 3:
+                show_level(comp_id, indent + 2, _visited)
+
+    print("\n  Composition chain:")
+    show_level(target_id)
+
+    print("\n  Absolute primitive summary:")
+    for prim_id, count in sorted(prims.items(), key=lambda x: -x[1]):
+        pe = kb.get(prim_id, {})
+        pn = extract_name(pe) if pe else prim_id
+        print(f"    {count:5d}x {pn}")
+
+    nrci = float(extract_nrci(entry))
+    tax = float(extract_tax(entry))
+    print(f"\n  NRCI: {nrci:.6f}  |  TAX: {tax:.4f}")
+
+# ==============================================================================
+# SECTION 5: SCALING EXPERIMENT
+# ==============================================================================
+
+def run_scaling_experiment(brain: UBPBrain) -> Dict:
+    print("\n" + "=" * 70)
+    print("SCALING EXPERIMENT -- Intelligence vs KB Size")
+    print("=" * 70)
+    
+    if not brain.initialized: return {}
+
+    BENCHMARK = [
+        ("What is an electron?", "PARTICLE_ELECTRON"),
+        ("What is a proton?", "PARTICLE_PROTON"),
+        ("What is hydrogen?", "ELEM_H"),
+        ("What is carbon?", "ELEM_C"),
+        ("What is water?", "MOLECULE_H2O"),
+        ("What is glucose?", "MOLECULE_C6H12O6"),
+        ("What is ATP?", "TOOL_ATP"),
+        ("What is the Higgs boson?", "PARTICLE_HIGGS"),
+        ("What is ammonia?", "MOLECULE_NH3"),
+        ("What is methane?", "MOLECULE_CH4"),
+    ]
+
+    kb = brain.kb_manager.kb
+
+    covered = sum(1 for _, prefix in BENCHMARK
+                  if any(uid.startswith(prefix) for uid in kb.keys()))
+    print(f"\nBenchmark coverage: {covered}/{len(BENCHMARK)} ({covered/len(BENCHMARK)*100:.0f}%)")
+
+    r1_hits = 0
+    print(f"\n{'Query':<42} {'Expected':<25} {'Got':<25} R@1")
+    print("-" * 100)
+    for query, expected_prefix in BENCHMARK:
+        candidates = brain.recall(query, top_k=5)
+        top1_id = candidates[0]['ubp_id'] if candidates else "NONE"
+        r1 = top1_id.startswith(expected_prefix)
+        if r1: r1_hits += 1
+        mark = "OK" if r1 else "XX"
+        print(f"{query:<42} {expected_prefix:<25} {top1_id:<25} {mark}")
+
+    n = len(BENCHMARK)
+    print(f"\nResults: R@1={r1_hits/n*100:.1f}% (KB size: {len(kb)})")
+    return {'kb_size': len(kb), 'r1': r1_hits/n}
+
+# ==============================================================================
+# SECTION 6: CROSS-DOMAIN MAP
+# ==============================================================================
+
+def run_cross_domain_map(brain: UBPBrain, min_similarity: float = 0.4) -> None:
+    print("\n" + "=" * 70)
+    print("CROSS-DOMAIN PRIMITIVE SIMILARITY MAP")
+    print("=" * 70)
+    
+    if not brain.initialized: return
+
+    kb = brain.kb_manager.kb
+    hier = brain.hierarchy
+
+    entries_with_prims = []
+    for uid, entry in kb.items():
+        if is_belief(entry): continue
+        prims = hier.decompose_to_primitives(uid)
+        if len(prims) > 1 or (len(prims) == 1 and uid not in prims):
+            entries_with_prims.append((uid, entry, prims))
+
+    print(f"Computing cross-domain similarities for {len(entries_with_prims)} entries...")
+
+    cross_domain_pairs = []
+    for i, (uid1, e1, prims1) in enumerate(entries_with_prims):
+        cat1 = uid1.split('_')[0]
+        for j, (uid2, e2, prims2) in enumerate(entries_with_prims):
+            if j <= i: continue
+            cat2 = uid2.split('_')[0]
+            if cat1 == cat2: continue
+
+            all_prims = set(prims1) | set(prims2)
+            shared = sum(min(prims1.get(p, 0), prims2.get(p, 0)) for p in all_prims)
+            union = sum(max(prims1.get(p, 0), prims2.get(p, 0)) for p in all_prims)
+            if union > 0:
+                sim = shared / union
+                if sim >= min_similarity:
+                    cross_domain_pairs.append((
+                        sim, uid1, extract_name(e1), cat1,
+                        uid2, extract_name(e2), cat2, shared
+                    ))
+
+    cross_domain_pairs.sort(key=lambda x: -x[0])
+
+    print(f"\nTop cross-domain pairs (similarity >= {min_similarity:.0%}):")
+    print(f"  {'Sim':>6}  {'Entry A':<32} {'Domain A':<10} {'Entry B':<32} {'Domain B'}")
+    print("  " + "-" * 96)
+    seen = set()
+    shown = 0
+    for sim, uid1, n1, cat1, uid2, n2, cat2, shared in cross_domain_pairs:
+        pair_key = tuple(sorted([uid1, uid2]))
+        if pair_key in seen: continue
+        seen.add(pair_key)
+        print(f"  {sim:>5.1%}  {n1:<32} {cat1:<10} {n2:<32} {cat2}")
+        shown += 1
+        if shown >= 20: break
+
+# ==============================================================================
+# SECTION 7: LLM-STYLE CHAT
+# ==============================================================================
+
+def run_chat_session(brain: UBPBrain, queries: List[str] = None) -> None:
+    print("\n" + "=" * 70)
+    print("LLM-STYLE CHAT SESSION")
+    print("=" * 70)
+    
+    if not brain.initialized: return
+
+    if queries is None:
+        queries = [
+            "What is a proton?",
+            "Tell me about water",
+            "What is iron?",
+            "Explain glucose",
+            "What is ATP?",
+        ]
+
+    for query in queries:
+        print(f"\n{'-'*60}")
+        print(f"Q: {query}")
+        print(f"{'-'*60}")
+        result = brain.process_query(query)
+        print(result.response)
+        if result.warnings:
+            for w in result.warnings:
+                print(f"  [!] {w}")
+
+# ==============================================================================
+# SECTION 8: MAIN
+# ==============================================================================
+
+def main():
+    print("=" * 70)
+    print("UBP UNDERSTANDING ENGINE v4.1")
+    print("Dual-Layer Knowledge System: Understanding + Beliefs")
+    print("=" * 70)
+
+    brain = init_brain()
+    
+    if not brain.initialized:
+        print("System initialization failed. Check KB file.")
+        return
+
+    stats = brain.get_stats()
+    print(f"\nKB Status:")
+    print(f"  Total entries:         {stats['total_entries']}")
+    print(f"  With vectors:          {stats['entries_with_vectors']}")
+    print(f"  Understanding (det.):  {stats['understanding_entries']}")
+    print(f"  Beliefs (LAW):         {stats['belief_entries']}")
+    print(f"  Lexicon terms:         {stats['lexicon_terms']}")
+
+    run_nrci_landscape(brain)
+    run_hierarchy_audit(brain)
+
+    for target in ["MOLECULE_H2O_001", "MOLECULE_C6H12O6_001", "TOOL_ATP_001"]:
+        run_primitive_buildup(brain, target)
+
+    run_cross_domain_map(brain, min_similarity=0.4)
+    run_scaling_experiment(brain)
+    run_chat_session(brain)
+
+    print("\n" + "=" * 70)
+    print("UBP UNDERSTANDING ENGINE v4.1 -- COMPLETE")
+    print("=" * 70)
 
 if __name__ == "__main__":
-    print("="*80)
-    print("UBP UNDERSTANDING ENGINE v3.3 (Consolidated)")
-    print("="*80)
-    
-    engine = UBPUnderstandingEngine()
-
-    # Run Suite
-    engine.build_up_from_quarks()
-    engine.analyse_nrci_landscape()
-    engine.analyze_tax_patterns()
-    engine.run_scaling_experiment()
-
-    print("\n--- Sample Comparison: Proton vs Neutron ---")
-    print(engine.compare("PARTICLE_PROTON_001", "PARTICLE_NEUTRON_001"))
-
-    print("\n--- Sample Audit: Water ---")
-    print(engine.audit_hierarchy("MOLECULE_H2O"))
-
-    print("\n--- Cortex Query ---")
-    q = "What is the composition of ATP?"
-    print(f"Q: {q}\nA: {engine.ask(q)}")
+    main()

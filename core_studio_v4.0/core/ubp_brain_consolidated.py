@@ -1,45 +1,144 @@
 """
 ================================================================================
-UBP BRAIN CONSOLIDATED v3.1 — ENRICHED KB + LEXICON COMMUNICATION
+UBP BRAIN CONSOLIDATED v4.0 — SOP_002 NATIVE + DUAL-LAYER ARCHITECTURE
 ================================================================================
-Changes from v3.0:
-  - Fixed Vector Extraction: Now searches entry['atlas']['vector'].
-  - Fixed NRCI/Tax Extraction: Now searches entry['atlas']['nrci'].
-  - Class Name: UBPBrain (Standardized).
+Architecture:
+  - UNDERSTANDING layer: deterministic entries (particles, elements, molecules)
+    built from primitives. Verifiable, exact, composable.
+  - BELIEF layer: LAW entries — learned memories with FOM-weighted meaning.
+
+Key design principles (SOP_002):
+  - Fingerprint key = SHA256(math_dna)
+  - Vector stored in entry['atlas']['vector']
+  - NRCI stored in entry['atlas']['nrci_score']
+  - Name extracted from entry['lexicon'] first bracket [Name]
 
 Author: Euan R A Craig, New Zealand
-Date: February 2026
-Version: 3.1
+Date: 28 Feb 2026
+Version: 4.0 (Production)
 ================================================================================
 """
 
-from fractions import Fraction
-from dataclasses import dataclass, field
-from typing import List, Tuple, Dict, Optional, Any, Set
-from datetime import datetime
 import json
 import hashlib
 import os
 import re
-from collections import defaultdict, Counter
+from fractions import Fraction
+from dataclasses import dataclass, field
+from typing import List, Tuple, Dict, Optional, Any, Set
+from collections import defaultdict
+from datetime import datetime
 
-# Import from UBP Core Foundation
+# ── UBP Core Foundation ───────────────────────────────────────────────────────
 try:
     from ubp_core_v5_3_merged import (
-        GOLAY_ENGINE,
-        LEECH_ENGINE,
-        SUBSTRATE,
+        GOLAY_ENGINE, 
+        LEECH_ENGINE, 
+        SUBSTRATE, 
         PARTICLE_PHYSICS,
         BinaryLinearAlgebra
     )
     CORE_AVAILABLE = True
-except ImportError:
+    print("[UBP Brain v4] UBP Core v5.3 FOUND — Full Golay/Leech functionality enabled")
+except ImportError as _e:
     CORE_AVAILABLE = False
     BinaryLinearAlgebra = None
-    print("[WARNING] UBP Core v5.3 not found. Running in fallback mode.")
+    GOLAY_ENGINE = None
+    print(f"[WARNING] UBP Core not found ({_e}). Running in fallback mode.")
 
 # ==============================================================================
-# SECTION 1: DATA STRUCTURES
+# SECTION 1: HELPERS — SOP_002 field extraction
+# ==============================================================================
+
+def extract_vector(entry: Dict) -> Optional[List[int]]:
+    """Extract 24-bit Golay vector from an SOP_002 entry (atlas.vector)."""
+    # 1. Check Atlas (Standard)
+    atlas = entry.get('atlas', {})
+    if isinstance(atlas, dict):
+        v = atlas.get('vector')
+        if isinstance(v, list) and len(v) == 24:
+            return v
+    # 2. Legacy flat format fallback
+    for field_name in ('vector', 'vectors', 'golay_vector', 'golay', 'vec', 'code'):
+        v = entry.get(field_name)
+        if isinstance(v, list) and len(v) == 24:
+            return v
+    return None
+
+def extract_nrci(entry: Dict) -> Fraction:
+    """Extract NRCI as Fraction from an SOP_002 entry."""
+    atlas = entry.get('atlas', {})
+    if isinstance(atlas, dict):
+        # Prefer exact rational form string "p/q"
+        nrci_str = atlas.get('nrci', '')
+        if isinstance(nrci_str, str) and '/' in nrci_str:
+            try:
+                n, d = nrci_str.split('/')
+                return Fraction(int(n), int(d))
+            except Exception:
+                pass
+        # Fallback to float score
+        score = atlas.get('nrci_score')
+        if score is not None:
+            return Fraction(score).limit_denominator(1000000)
+            
+    # Legacy flat format
+    nrci_str = entry.get('nrci', '1/1')
+    if isinstance(nrci_str, str) and '/' in nrci_str:
+        try:
+            n, d = nrci_str.split('/')
+            return Fraction(int(n), int(d))
+        except Exception:
+            pass
+    return Fraction(1, 1)
+
+def extract_tax(entry: Dict) -> Fraction:
+    """Extract TAX as Fraction from an SOP_002 entry."""
+    atlas = entry.get('atlas', {})
+    if isinstance(atlas, dict):
+        tax_str = atlas.get('tax', '')
+        if isinstance(tax_str, str) and '/' in tax_str:
+            try:
+                n, d = tax_str.split('/')
+                return Fraction(int(n), int(d))
+            except Exception:
+                pass
+    return Fraction(0, 1)
+
+def extract_name(entry: Dict) -> str:
+    """Extract the display name from an SOP_002 lexicon field: '[Name], [Description]'."""
+    lexicon = entry.get('lexicon', '')
+    if isinstance(lexicon, str):
+        # Match content inside first brackets
+        m = re.match(r'\[([^\]]+)\]', lexicon)
+        if m:
+            return m.group(1).strip()
+    # Fallback to ubp_id
+    return entry.get('ubp_id', 'Unknown')
+
+def extract_description(entry: Dict) -> str:
+    """Extract the description from an SOP_002 lexicon field."""
+    lexicon = entry.get('lexicon', '')
+    if isinstance(lexicon, str):
+        # Split by '], [' or just find all bracketed groups
+        parts = re.findall(r'\[([^\]]+)\]', lexicon)
+        if len(parts) >= 2:
+            return parts[1].strip()
+        if len(parts) == 1:
+            # Sometimes description is outside brackets or just one block
+            return parts[0].strip()
+        # Fallback: return everything after the first comma if no brackets
+        if ',' in lexicon and not parts:
+            return lexicon.split(',', 1)[1].strip()
+    return lexicon
+
+def is_belief(entry: Dict) -> bool:
+    """Return True if this entry is a LAW/BELIEF (not a deterministic object)."""
+    uid = entry.get('ubp_id', '')
+    return uid.startswith(('LAW_', 'BELIEF_', 'AXIOM_', 'IMPERATIVE_'))
+
+# ==============================================================================
+# SECTION 2: DATA STRUCTURES
 # ==============================================================================
 
 @dataclass
@@ -47,45 +146,31 @@ class UBPConcept:
     """A single concept in the UBP ontology."""
     ubp_id: str
     name: str
+    description: str
     vector: List[int]
     category: str
     math: str
-    language: str
     nrci: Fraction
     tax: Fraction
     lexicon: str
     fingerprint: str
     tags: List[str]
+    is_belief: bool = False
 
     def to_dict(self) -> Dict:
         return {
             "ubp_id": self.ubp_id,
             "name": self.name,
+            "description": self.description,
             "vector": self.vector,
             "category": self.category,
             "math": self.math,
-            "language": self.language,
             "nrci": str(self.nrci),
             "tax": str(self.tax),
             "lexicon": self.lexicon,
             "fingerprint": self.fingerprint,
-            "tags": self.tags
-        }
-
-@dataclass
-class ThoughtStep:
-    """A single step in the reasoning chain."""
-    concept: UBPConcept
-    operation: str
-    coherence: Fraction
-    timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-
-    def to_dict(self) -> Dict:
-        return {
-            "concept": self.concept.to_dict(),
-            "operation": self.operation,
-            "coherence": str(self.coherence),
-            "timestamp": self.timestamp
+            "tags": self.tags,
+            "is_belief": self.is_belief
         }
 
 @dataclass
@@ -94,360 +179,109 @@ class ReasoningResult:
     query: str
     response: str
     primary_concept: Optional[UBPConcept]
-    reasoning_chain: List[ThoughtStep]
+    candidates: List[Dict]
     final_vector: List[int]
     final_nrci: Fraction
-    final_tax: Fraction
     coherence_snap: bool
     warnings: List[str]
-    matched_terms: List[str]
     primitive_decomposition: Dict[str, int]
     related_concepts: List[Dict]
-
-    def to_dict(self) -> Dict:
-        return {
-            "query": self.query,
-            "response": self.response,
-            "primary_concept": self.primary_concept.to_dict() if self.primary_concept else None,
-            "reasoning_chain": [s.to_dict() for s in self.reasoning_chain],
-            "final_vector": self.final_vector,
-            "final_nrci": str(self.final_nrci),
-            "final_tax": str(self.final_tax),
-            "coherence_snap": self.coherence_snap,
-            "warnings": self.warnings,
-            "matched_terms": self.matched_terms,
-            "primitive_decomposition": self.primitive_decomposition,
-            "related_concepts": self.related_concepts
-        }
+    layer: str  # 'understanding' or 'belief'
 
 # ==============================================================================
-# SECTION 2: RATIONAL MATH ENGINE
-# ==============================================================================
-
-class RationalMathEngine:
-    """Float-free mathematical operations for UBP."""
-
-    def __init__(self):
-        self.precision_threshold = Fraction(1, 1000000)
-
-    def calculate_nrci(self, vector: List[int], reference_vector: Optional[List[int]] = None) -> Fraction:
-        """Calculate Normalized Resonance Coherence Index."""
-        if reference_vector is None:
-            reference_vector = [0] * 24
-        hamming = sum(1 for a, b in zip(vector, reference_vector) if a != b)
-        return Fraction(24 - hamming, 24)
-
-    def calculate_tax(self, operations: int, depth: int) -> Fraction:
-        """Calculate ontological tax (friction)."""
-        base_tax = Fraction(1, 1000)
-        op_tax = Fraction(operations, 10000)
-        depth_tax = Fraction(depth, 5000)
-        return base_tax + op_tax + depth_tax
-
-    def validate_fraction(self, value: Any) -> Fraction:
-        """Ensure a value is a Fraction."""
-        if isinstance(value, Fraction):
-            return value
-        elif isinstance(value, (int, float)):
-            return Fraction(value).limit_denominator(1000000)
-        elif isinstance(value, str) and '/' in value:
-            try:
-                n, d = value.split('/')
-                return Fraction(int(n), int(d))
-            except:
-                return Fraction(1, 1)
-        elif isinstance(value, str):
-            try:
-                return Fraction(float(value)).limit_denominator(1000000)
-            except:
-                return Fraction(1, 1)
-        else:
-            return Fraction(1, 1)
-
-# ==============================================================================
-# SECTION 3: CONCEPT ARCHITECT
-# ==============================================================================
-
-class ConceptArchitect:
-    """Mints new concepts with valid Golay vectors."""
-
-    def __init__(self, golay_engine=None):
-        self.golay = golay_engine if golay_engine else self._fallback_golay()
-        self.registry = {}
-        self.registry_file = 'ubp_rational_memory.json'
-        self._load_registry()
-
-    def _fallback_golay(self):
-        class FallbackGolay:
-            def encode(self, msg: List[int]) -> List[int]:
-                return (msg + [0] * 24)[:24]
-            def decode(self, vec: List[int]) -> Tuple[List[int], List[int], int]:
-                return (vec, [0] * 24, 0)
-        return FallbackGolay()
-
-    def _load_registry(self):
-        if os.path.exists(self.registry_file):
-            try:
-                with open(self.registry_file, 'r') as f:
-                    self.registry = json.load(f)
-            except:
-                self.registry = {}
-
-    def _save_registry(self):
-        with open(self.registry_file, 'w') as f:
-            json.dump(self.registry, f, indent=2)
-
-    def mint(self, name: str, domain: str, p1: int, p2: int, p3: int = 0) -> List[int]:
-        """Mint a new concept with a valid Golay vector."""
-        dom_bits = self._get_domain_bits(domain)
-        p1_bits = self._gray_encode(p1, 3)
-        p2_bits = self._gray_encode(p2, 5)
-        p3_bits = [p3 & 1]
-        msg = dom_bits + p1_bits + p2_bits + p3_bits
-        msg = (msg + [0] * 12)[:12]
-        vector = self.golay.encode(msg)
-        self.registry[name] = {
-            "name": name, "domain": domain,
-            "params": [p1, p2, p3], "vector": vector,
-            "created_at": datetime.now().isoformat()
-        }
-        self._save_registry()
-        return vector
-
-    def _get_domain_bits(self, domain: str) -> List[int]:
-        domain_map = {
-            "particle": [0, 0, 0, 1], "geometry": [0, 0, 1, 0],
-            "physics": [0, 0, 1, 1], "biology": [0, 1, 0, 0],
-            "logic": [0, 1, 0, 1], "math": [0, 1, 1, 0],
-            "system": [0, 1, 1, 1], "law": [1, 0, 0, 0]
-        }
-        return domain_map.get(domain.lower(), [0, 0, 0, 0])
-
-    def _gray_encode(self, value: int, bits: int) -> List[int]:
-        gray = value ^ (value >> 1)
-        return [(gray >> i) & 1 for i in range(bits - 1, -1, -1)]
-
-# ==============================================================================
-# SECTION 4: VECTOR ENGINE
+# SECTION 3: VECTOR ENGINE
 # ==============================================================================
 
 class UBPVectorEngine:
-    """Handles vector operations, concept composition, and geometric reasoning."""
+    """Handles vector operations using real Golay engine when available."""
 
-    def __init__(self, golay_engine=None, math_engine=None):
-        self.golay = golay_engine if golay_engine else self._fallback_golay()
-        self.math = math_engine if math_engine else RationalMathEngine()
-        self.vector_cache: Dict[str, List[int]] = {}
-        self.metrics = {
-            'total_vectorizations': 0, 'cache_hits': 0,
-            'error_corrections': 0, 'validation_passes': 0,
-            'vector_not_found': 0, 'invalid_vector_length': 0
-        }
+    def __init__(self):
+        self.golay = GOLAY_ENGINE if CORE_AVAILABLE else None
+        self.metrics = {'error_corrections': 0, 'total_ops': 0}
 
-    def _fallback_golay(self):
-        class FallbackGolay:
-            def encode(self, msg: List[int]) -> List[int]:
-                return (msg + [0] * 24)[:24]
-            def decode(self, vec: List[int]) -> Tuple[List[int], List[int], int]:
-                return (vec, [0] * 24, 0)
-        return FallbackGolay()
-
-    def _extract_vector(self, entry: Dict) -> Optional[List[int]]:
-        """Extract 24-bit vector from KB entry, checking 'atlas' first."""
-        # 1. Check Atlas (SOP_002 Standard)
-        if 'atlas' in entry and isinstance(entry['atlas'], dict):
-            vec = entry['atlas'].get('vector')
-            if isinstance(vec, list) and len(vec) == 24:
-                return vec
-
-        # 2. Check Top Level
-        for field_name in ['vector', 'vectors', 'golay_vector', 'golay', 'vec', 'code']:
-            if field_name in entry:
-                vector = entry[field_name]
-                if isinstance(vector, list) and len(vector) == 24:
-                    return vector
-
-        # 3. Check Nested Data
-        if 'data' in entry and isinstance(entry['data'], dict):
-            return self._extract_vector(entry['data'])
-
-        return None
-
-    def compose_vectors(self, vectors: List[List[int]], operation: str = 'xor') -> List[int]:
-        """Compose multiple vectors."""
-        if not vectors:
-            return [0] * 24
-        result = vectors[0].copy()
-        for vec in vectors[1:]:
-            if operation == 'xor':
-                result = [(a ^ b) for a, b in zip(result, vec)]
-            elif operation == 'and':
-                result = [(a & b) for a, b in zip(result, vec)]
-            elif operation == 'or':
-                result = [(a | b) for a, b in zip(result, vec)]
-            elif operation == 'add':
-                result = [(a + b) % 2 for a, b in zip(result, vec)]
-        return result
+    def hamming_distance(self, v1: List[int], v2: List[int]) -> int:
+        return sum(a != b for a, b in zip(v1, v2))
 
     def majority_vote(self, vectors: List[List[int]]) -> List[int]:
-        """Combine vectors by majority vote — reduces noise."""
+        """Combine vectors by majority vote — noise-resistant composition."""
         if not vectors:
             return [0] * 24
         result = []
         for i in range(24):
-            bits = [v[i] for v in vectors]
-            result.append(1 if sum(bits) >= len(bits) / 2 else 0)
+            bits = [v[i] for v in vectors if len(v) == 24]
+            result.append(1 if sum(bits) > len(bits) / 2 else 0)
         return result
 
     def coherence_snap(self, vector: List[int]) -> Tuple[List[int], bool, int]:
-        """Snap a vector to the nearest valid Golay codeword."""
-        if not CORE_AVAILABLE:
-            return (vector, False, 0)
-        decoded_message, syndrome, weight = self.golay.decode(vector)
-        was_corrected = weight > 0
-        if was_corrected:
-            self.metrics['error_corrections'] += 1
-        snapped_vector = self.golay.encode(decoded_message)
-        if len(snapped_vector) != 24:
-            snapped_vector = (snapped_vector + [0] * 24)[:24]
-        return (snapped_vector, was_corrected, weight)
-
-    def hamming_distance(self, v1: List[int], v2: List[int]) -> int:
-        return sum(1 for a, b in zip(v1, v2) if a != b)
-
-    def find_neighbors(self, target_vector: List[int], kb: Dict[str, Dict],
-                       max_distance: int = 4, limit: int = 10) -> List[Dict]:
-        """Find all concepts within Hamming distance of target."""
-        neighbors = []
-        for ubp_id, entry in kb.items():
-            entry_vector = self._extract_vector(entry)
-            if entry_vector is None or len(entry_vector) != 24:
-                continue
-            dist = self.hamming_distance(target_vector, entry_vector)
-            if dist <= max_distance:
-                neighbors.append({
-                    'ubp_id': ubp_id,
-                    'name': entry.get('name', ''),
-                    'category': entry.get('category', ''),
-                    'distance': dist
-                })
-        return sorted(neighbors, key=lambda x: x['distance'])[:limit]
+        """Snap vector to nearest valid Golay codeword."""
+        self.metrics['total_ops'] += 1
+        if not CORE_AVAILABLE or self.golay is None:
+            return vector, False, 0
+        try:
+            decoded_msg, syndrome, weight = self.golay.decode(vector)
+            was_corrected = weight > 0
+            if was_corrected:
+                self.metrics['error_corrections'] += 1
+            snapped = self.golay.encode(decoded_msg)
+            if len(snapped) != 24:
+                snapped = (snapped + [0] * 24)[:24]
+            return snapped, was_corrected, weight
+        except Exception:
+            return vector, False, 0
 
 # ==============================================================================
-# SECTION 5: INNER DIALOGUE
-# ==============================================================================
-
-class UBPInnerDialogue:
-    """Reflexive deliberation system."""
-
-    def __init__(self, golay_engine=None, kb: Dict[str, Dict] = None):
-        self.golay = golay_engine if golay_engine else self._fallback_golay()
-        self.kb = kb if kb else {}
-        self.anchors: Dict[str, List[int]] = {}
-        self.threshold = 3
-        self.max_iterations = 12
-        self.vector_engine = UBPVectorEngine() # Helper for extraction
-        self._load_anchors()
-
-    def _fallback_golay(self):
-        class FallbackGolay:
-            def encode(self, msg: List[int]) -> List[int]:
-                return (msg + [0] * 24)[:24]
-            def decode(self, vec: List[int]) -> Tuple[List[int], List[int], int]:
-                return (vec, [0] * 24, 0)
-        return FallbackGolay()
-
-    def _load_anchors(self):
-        """Load anchor concepts from KB — LAW entries and hardened primitives."""
-        for ubp_id, entry in self.kb.items():
-            vector = self.vector_engine._extract_vector(entry)
-            tags = entry.get('tags', [])
-            if vector and len(vector) == 24:
-                if ('LAW' in ubp_id or 'AXIOM' in ubp_id or
-                        'IMPERATIVE' in tags or 'KERNEL' in ubp_id or
-                        'HARDENED' in ' '.join(tags)):
-                    self.anchors[ubp_id] = vector
-        print(f"[Dialogue] Loaded {len(self.anchors)} anchor concepts")
-
-    def deliberate(self, query_vector: List[int], max_steps: int = 6) -> Tuple[str, Fraction]:
-        """Perform reflexive deliberation on a query vector."""
-        if len(query_vector) != 24:
-            return ("UNKNOWN", Fraction(24, 24))
-        current_vec = query_vector.copy()
-        best_name = "UNKNOWN"
-        best_cost = Fraction(24, 24)
-        for step in range(max_steps):
-            closest_anchor = None
-            closest_dist = 25
-            for anchor_name, anchor_vec in self.anchors.items():
-                dist = sum(1 for a, b in zip(current_vec, anchor_vec) if a != b)
-                if dist < closest_dist:
-                    closest_dist = dist
-                    closest_anchor = anchor_name
-            if closest_anchor is None:
-                break
-            cost = Fraction(closest_dist, 24)
-            if cost < best_cost:
-                best_cost = cost
-                best_name = closest_anchor
-            if closest_dist <= self.threshold:
-                break
-            anchor_vec = self.anchors[closest_anchor]
-            reflexive_vec = [(a ^ b) for a, b in zip(current_vec, anchor_vec)]
-            if CORE_AVAILABLE:
-                insight, _, _ = self.golay.decode(reflexive_vec)
-                current_vec = self.golay.encode(insight)
-            else:
-                current_vec = reflexive_vec
-        return best_name, best_cost
-
-# ==============================================================================
-# SECTION 6: HIERARCHY TRAVERSAL ENGINE
+# SECTION 4: HIERARCHY ENGINE
 # ==============================================================================
 
 class HierarchyEngine:
     """
     Recursively decomposes KB entries to their absolute primitives.
     """
-    COMPONENT_PATTERN = re.compile(r'(\d+)\s*[×xX]\s*([A-Z][A-Za-z0-9]*_[A-Za-z0-9_]+)')
-    STANDALONE_PATTERN = re.compile(r'(?<!\d[×xX]\s)(?<!\d[×xX])(?<!\d)\b([A-Z][A-Za-z0-9]*_[A-Za-z0-9_]{3,})\b')
+    # Match "2×ELEM_H_001" or "2xELEM_H_001"
+    MULT_PATTERN = re.compile(r'(\d+)\s*[×xX]\s*([A-Z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+)')
+    # Match standalone IDs like "ELEM_H_001"
+    ID_PATTERN = re.compile(r'\b([A-Z][A-Za-z0-9]*(?:_[A-Za-z0-9]+){2,})\b')
+    JUNK_IDS = {'N', 'Z', 'Tax', 'Mean', 'Dist', 'Snap', 'SOP', 'MATH', 'ALGO'}
 
-    def __init__(self, kb: Dict[str, Dict]):
+    def __init__(self, kb: Dict):
         self.kb = kb
-        self._cache: Dict[str, Dict[str, int]] = {}
+        self._decomp_cache: Dict[str, Dict[str, int]] = {}
+        self._level_cache: Dict[str, int] = {}
 
-    def parse_math(self, math_str: str) -> Dict[str, int]:
-        if not math_str: return {}
-        if '|' in math_str:
-            math_str = math_str.split('|', 1)[1].strip()
+    def parse_components(self, math_str: str) -> Dict[str, int]:
+        """Parse a math/hierarchy string into {component_id: count}."""
+        if not math_str or math_str in ('atomic', 'absolute_primitive', ''):
+            return {}
         components: Dict[str, int] = {}
-        for mult_str, comp_id in self.COMPONENT_PATTERN.findall(math_str):
-            components[comp_id] = components.get(comp_id, 0) + int(mult_str)
-        remaining = math_str
-        for comp_id in list(components.keys()):
-            remaining = remaining.replace(comp_id, '')
-        for comp_id in self.STANDALONE_PATTERN.findall(remaining):
-            if comp_id not in components:
-                components[comp_id] = 1
-        junk = {'N', 'Z', 'Tax', 'Mean', 'Dist', 'Snap'}
-        return {k: v for k, v in components.items()
-                if k not in junk and not k.isdigit() and v > 0}
+        # Find "N×ID" patterns
+        for mult_str, comp_id in self.MULT_PATTERN.findall(math_str):
+            if comp_id not in self.JUNK_IDS and comp_id in self.kb:
+                components[comp_id] = components.get(comp_id, 0) + int(mult_str)
+        # Find standalone IDs
+        used = set(components.keys())
+        for comp_id in self.ID_PATTERN.findall(math_str):
+            if comp_id not in used and comp_id not in self.JUNK_IDS and comp_id in self.kb:
+                components[comp_id] = components.get(comp_id, 0) + 1
+        return components
 
     def decompose_to_primitives(self, ubp_id: str, depth: int = 0, max_depth: int = 20) -> Dict[str, int]:
-        if ubp_id in self._cache: return dict(self._cache[ubp_id])
+        """Recursively decompose to absolute primitive counts."""
+        if ubp_id in self._decomp_cache: return dict(self._decomp_cache[ubp_id])
         if depth > max_depth: return {ubp_id: 1}
+
         entry = self.kb.get(ubp_id)
         if not entry: return {ubp_id: 1}
 
-        # Check hierarchy field first, then math
-        hier = entry.get('atlas', {}).get('hierarchy', '')
         math_str = entry.get('math', '')
+        atlas = entry.get('atlas', {})
+        hier_str = atlas.get('hierarchy', '') if isinstance(atlas, dict) else ''
 
-        components = self.parse_math(hier) if hier else self.parse_math(math_str)
+        components = self.parse_components(math_str)
+        if not components: components = self.parse_components(hier_str)
 
-        if not components or hier == 'absolute_primitive':
+        if not components:
             result = {ubp_id: 1}
-            self._cache[ubp_id] = result
+            self._decomp_cache[ubp_id] = result
             return result
 
         total: Dict[str, int] = {}
@@ -455,255 +289,310 @@ class HierarchyEngine:
             sub = self.decompose_to_primitives(comp_id, depth + 1, max_depth)
             for prim_id, prim_count in sub.items():
                 total[prim_id] = total.get(prim_id, 0) + prim_count * count
-        self._cache[ubp_id] = total
+
+        self._decomp_cache[ubp_id] = total
         return dict(total)
 
-    def get_hierarchy_level(self, ubp_id: str) -> int:
+    def get_hierarchy_level(self, ubp_id: str, _visited: Optional[Set] = None) -> int:
+        """0=Primitive, 1=Nucleon, 2=Element, 3=Molecule, 4=Structure"""
+        if ubp_id in self._level_cache: return self._level_cache[ubp_id]
+        if _visited is None: _visited = set()
+        if ubp_id in _visited: return 0
+        _visited.add(ubp_id)
+
         entry = self.kb.get(ubp_id)
         if not entry: return -1
-        hier = entry.get('atlas', {}).get('hierarchy', '')
-        if hier == 'absolute_primitive': return 0
 
-        components = self.parse_math(entry.get('math', ''))
-        if not components: return 0
+        math_str = entry.get('math', '')
+        atlas = entry.get('atlas', {})
+        hier_str = atlas.get('hierarchy', '') if isinstance(atlas, dict) else ''
 
-        max_child = 0
-        for comp_id in components:
-            child_level = self.get_hierarchy_level(comp_id)
-            if child_level > max_child: max_child = child_level
-        return max_child + 1
+        components = self.parse_components(math_str)
+        if not components: components = self.parse_components(hier_str)
 
-    def find_cross_domain_relatives(self, ubp_id: str, threshold: float = 0.3) -> List[Dict]:
+        if not components:
+            self._level_cache[ubp_id] = 0
+            return 0
+
+        max_child = max(self.get_hierarchy_level(cid, _visited) for cid in components)
+        level = max_child + 1
+        self._level_cache[ubp_id] = level
+        return level
+
+    def find_cross_domain_relatives(self, ubp_id: str, threshold: float = 0.25, limit: int = 8) -> List[Dict]:
+        """Find entries sharing significant primitive overlap."""
         target_prims = self.decompose_to_primitives(ubp_id)
-        if not target_prims: return []
+        if not target_prims or (len(target_prims) == 1 and ubp_id in target_prims):
+            return []
+
         relatives = []
         for other_id, other_entry in self.kb.items():
-            if other_id == ubp_id: continue
+            if other_id == ubp_id or is_belief(other_entry): continue
             other_prims = self.decompose_to_primitives(other_id)
-            if not other_prims: continue
-            shared = sum(min(target_prims.get(p, 0), other_prims.get(p, 0)) for p in set(target_prims) | set(other_prims))
-            union = sum(max(target_prims.get(p, 0), other_prims.get(p, 0)) for p in set(target_prims) | set(other_prims))
+            if not other_prims or (len(other_prims) == 1 and other_id in other_prims): continue
+
+            all_prims = set(target_prims) | set(other_prims)
+            shared = sum(min(target_prims.get(p, 0), other_prims.get(p, 0)) for p in all_prims)
+            union = sum(max(target_prims.get(p, 0), other_prims.get(p, 0)) for p in all_prims)
+            
             if union > 0:
-                similarity = shared / union
-                if similarity >= threshold:
+                sim = shared / union
+                if sim >= threshold:
                     relatives.append({
                         'ubp_id': other_id,
-                        'name': other_entry.get('name', other_id),
-                        'category': other_entry.get('category', ''),
-                        'similarity': round(similarity, 3),
-                        'shared_primitives': shared
+                        'name': extract_name(other_entry),
+                        'category': other_entry.get('ubp_id', '').split('_')[0],
+                        'similarity': round(sim, 3),
+                        'shared_primitive_count': shared
                     })
-        return sorted(relatives, key=lambda x: -x['similarity'])[:8]
+        return sorted(relatives, key=lambda x: -x['similarity'])[:limit]
 
 # ==============================================================================
-# SECTION 7: DELTA MEMORY ENGINE
+# SECTION 5: KNOWLEDGE BASE MANAGER
 # ==============================================================================
 
-class DeltaMemoryEngine:
-    """Memory management, context window, KB growth, and lexicon indexing."""
+class KBManager:
+    CATEGORY_PRIORITY = {
+        'PARTICLE': 100, 'ELEM': 90, 'MOLECULE': 80, 'CRYSTAL': 70,
+        'REACTION': 60, 'ALGO': 50, 'TOOL': 40, 'MATH': 35,
+        'GEO': 30, 'LAW': 20, 'BELIEF': 15, 'DS': 10
+    }
 
     def __init__(self):
         self.kb: Dict[str, Dict] = {}
-        self.lexicon_index: defaultdict = defaultdict(list)
-        self.name_index: Dict[str, str] = {}
+        self.lexicon_index: Dict[str, List[str]] = defaultdict(list)
         self.short_name_index: Dict[str, str] = {}
-        self.context_window: List[Dict] = []
-        self.context_max_size = 24
-        self.vector_engine = UBPVectorEngine()
-        self.stats = {'lexicon_terms': 0, 'kb_entries': 0, 'entries_with_vectors': 0}
+        self.fingerprint_index: Dict[str, str] = {}
+        self.stats = {'total_entries': 0, 'lexicon_terms': 0}
 
-    def load_kb(self, paths: List[str]) -> int:
+    def load(self, paths: List[str]) -> int:
         self.kb = {}
-        total_entries = 0
         for path in paths:
             if not os.path.exists(path): continue
             try:
                 with open(path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                # Handle both list and dict formats
+                # Unwrap nested formats
                 if isinstance(data, dict):
-                    # Check if it's a wrapper like {"entries": ...}
-                    if 'entries' in data: data = data['entries']
-                    elif 'kb' in data: data = data['kb']
-
-                    if isinstance(data, dict):
-                        for key, entry in data.items():
-                            ubp_id = entry.get('ubp_id', key)
-                            if ubp_id: self.kb[ubp_id] = entry
-                    elif isinstance(data, list):
-                        for entry in data:
-                            ubp_id = entry.get('ubp_id')
-                            if ubp_id: self.kb[ubp_id] = entry
-                elif isinstance(data, list):
-                    for entry in data:
-                        ubp_id = entry.get('ubp_id')
-                        if ubp_id: self.kb[ubp_id] = entry
-
-                total_entries = len(self.kb)
+                    for wrap_key in ('objects', 'kb', 'entries'):
+                        if wrap_key in data and isinstance(data[wrap_key], dict):
+                            data = data[wrap_key]
+                            break
+                    for key, entry in data.items():
+                        if isinstance(entry, dict) and 'ubp_id' in entry:
+                            self.kb[entry['ubp_id']] = entry
             except Exception as e:
-                print(f"[ERROR] Failed to load KB {path}: {e}")
+                print(f"[ERROR] Failed to load {path}: {e}")
+        self._build_indexes()
+        return len(self.kb)
 
-        self._build_lexicon_index()
-        self.stats['kb_entries'] = len(self.kb)
-        return total_entries
-
-    def _build_lexicon_index(self):
+    def _build_indexes(self):
         self.lexicon_index = defaultdict(list)
-        self.name_index = {}
         self.short_name_index = {}
-        self.stats['entries_with_vectors'] = 0
+        self.fingerprint_index = {}
 
-        for ubp_id, entry in self.kb.items():
-            vector = self.vector_engine._extract_vector(entry)
-            if vector is None or len(vector) != 24:
-                continue
-            self.stats['entries_with_vectors'] += 1
+        for uid, entry in self.kb.items():
+            if 'fingerprint' in entry: self.fingerprint_index[entry['fingerprint']] = uid
+            
+            name = extract_name(entry)
+            desc = extract_description(entry)
+            
+            # Lexicon Indexing
+            terms = set()
+            terms.add(name.lower())
+            terms.update(re.findall(r'\b\w{2,}\b', name.lower()))
+            terms.update(re.findall(r'\b\w{3,}\b', desc.lower()))
+            for tag in entry.get('tags', []): terms.add(tag.lower())
+            for part in uid.split('_'): 
+                if len(part) >= 2: terms.add(part.lower())
 
-            terms = []
-            # 1. Lexicon field
-            lexicon_field = entry.get('lexicon', '')
-            if isinstance(lexicon_field, str):
-                parts = re.findall(r'\[([^\]]+)\]', lexicon_field)
-                for part in parts:
-                    terms.append(part.strip())
-                    for word in re.findall(r'\b\w{3,}\b', part.lower()):
-                        terms.append(word)
+            for term in terms: self.lexicon_index[term].append(uid)
 
-            # 2. Name field (if exists)
-            name = entry.get('name', '')
-            if name:
-                terms.append(name)
-                self.name_index[name.lower()] = ubp_id
+            # Short Name Indexing (Priority)
+            uid_prefix = uid.split('_')[0]
+            my_priority = self.CATEGORY_PRIORITY.get(uid_prefix, 5)
+            
+            clean = re.sub(r'^(Element:|Quark:|Particle:|Molecule:|Law:|Belief:)\s*', '', name, flags=re.I)
+            clean_no_paren = re.sub(r'\s*\([^)]+\)', '', clean).strip().lower()
+            
+            candidates = [clean_no_paren]
+            for sym in re.findall(r'\(([A-Za-z0-9+\-]+)\)', name):
+                candidates.append(sym.lower())
 
-            # 3. ID parts
-            if '_' in ubp_id:
-                parts = ubp_id.split('_')
-                for p in parts:
-                    if len(p) > 2 and not p.isdigit(): terms.append(p)
+            for short in candidates:
+                if not short or len(short) < 2: continue
+                existing = self.short_name_index.get(short)
+                if existing is None:
+                    self.short_name_index[short] = uid
+                else:
+                    ex_prefix = existing.split('_')[0]
+                    if my_priority > self.CATEGORY_PRIORITY.get(ex_prefix, 5):
+                        self.short_name_index[short] = uid
 
-            # Map terms
-            for term in terms:
-                if isinstance(term, str) and term.strip():
-                    term_clean = term.strip().lower()
-                    if term_clean:
-                        self.lexicon_index[term_clean].append(ubp_id)
-
+        self.stats['total_entries'] = len(self.kb)
         self.stats['lexicon_terms'] = len(self.lexicon_index)
 
-    def add_to_context(self, entry: Dict):
-        self.context_window.append(entry)
-        if len(self.context_window) > self.context_max_size:
-            self.context_window = self.context_window[-self.context_max_size:]
+# ==============================================================================
+# SECTION 6: INNER DIALOGUE
+# ==============================================================================
+
+class InnerDialogue:
+    def __init__(self, kb: Dict, golay=None):
+        self.golay = golay
+        self.anchors: Dict[str, List[int]] = {}
+        self.threshold = 3
+        for uid, entry in kb.items():
+            vec = extract_vector(entry)
+            if vec and is_belief(entry):
+                self.anchors[uid] = vec
+
+    def deliberate(self, query_vector: List[int], max_steps: int = 6) -> Tuple[str, Fraction]:
+        if len(query_vector) != 24: return "UNKNOWN", Fraction(1, 1)
+        current = query_vector.copy()
+        best_name, best_cost = "UNKNOWN", Fraction(1, 1)
+
+        for _ in range(max_steps):
+            closest_name, closest_dist = None, 25
+            for name, anchor_vec in self.anchors.items():
+                d = sum(a != b for a, b in zip(current, anchor_vec))
+                if d < closest_dist: closest_dist, closest_name = d, name
+            
+            if closest_name is None: break
+            cost = Fraction(closest_dist, 24)
+            if cost < best_cost: best_cost, best_name = cost, closest_name
+            if closest_dist <= self.threshold: break
+            
+            # Reflexive Step
+            anchor_vec = self.anchors[closest_name]
+            reflexive = [a ^ b for a, b in zip(current, anchor_vec)]
+            if CORE_AVAILABLE and self.golay:
+                try:
+                    msg, _, _ = self.golay.decode(reflexive)
+                    current = self.golay.encode(msg)
+                except: current = reflexive
+            else: current = reflexive
+
+        return best_name, best_cost
 
 # ==============================================================================
-# SECTION 8: CONSOLIDATED UBP BRAIN (Main Interface)
+# SECTION 7: CONSOLIDATED UBP BRAIN
 # ==============================================================================
 
 class UBPBrain:
-    """Consolidated UBP Reasoning System v3.1"""
-
     def __init__(self):
         self.golay = GOLAY_ENGINE if CORE_AVAILABLE else None
-        self.math = RationalMathEngine()
-        self.architect = ConceptArchitect(self.golay)
-        self.vector_engine = UBPVectorEngine(self.golay, self.math)
-        self.memory = DeltaMemoryEngine()
-        self.dialogue = None
-        self.hierarchy = None
+        self.vector_engine = UBPVectorEngine()
+        self.kb_manager = KBManager()
+        self.hierarchy: Optional[HierarchyEngine] = None
+        self.dialogue: Optional[InnerDialogue] = None
+        self.fom_context: str = "general"
         self.initialized = False
+        self.memory = self.kb_manager # Alias for compatibility
 
-    def initialize(self, kb_paths: List[str]):
-        print("[UBP Brain v3.1] Initializing...")
-        self.memory.load_kb(kb_paths)
-        self.dialogue = UBPInnerDialogue(self.golay, self.memory.kb)
-        self.hierarchy = HierarchyEngine(self.memory.kb)
+    def initialize(self, kb_paths: List[str]) -> bool:
+        print("[UBP Brain v4] Initializing...")
+        n = self.kb_manager.load(kb_paths)
+        if n == 0: return False
+        self.hierarchy = HierarchyEngine(self.kb_manager.kb)
+        self.dialogue = InnerDialogue(self.kb_manager.kb, self.golay)
         self.initialized = True
-        print(f"[UBP Brain v3.1] Initialized: {self.memory.stats['kb_entries']} entries, {self.memory.stats['entries_with_vectors']} vectors.")
+        return True
+
+    def _score_candidate(self, uid: str, entry: Dict, query_words: List[str], query_lower: str) -> float:
+        score = 0.0
+        name = extract_name(entry).lower()
+        desc = extract_description(entry).lower()
+        
+        # 1. Exact Short Name Match
+        for short, sid in self.kb_manager.short_name_index.items():
+            if sid == uid and short in query_lower: score += 50.0; break
+        
+        # 2. Full Name Match
+        if name and name in query_lower: score += 40.0
+        
+        # 3. Keyword Match
+        for word in query_words:
+            if len(word) >= 3:
+                if word in name: score += 15.0
+                if word in desc: score += 6.0
+                if word in entry.get('tags', []): score += 4.0
+
+        # 4. Category Bonus
+        uid_prefix = uid.split('_')[0]
+        score += self.kb_manager.CATEGORY_PRIORITY.get(uid_prefix, 10) / 10.0
+        return score
+
+    def recall(self, query: str, top_k: int = 8) -> List[Dict]:
+        query_lower = query.lower()
+        query_words = re.findall(r'\b\w{2,}\b', query_lower)
+        candidate_ids = set()
+
+        for word in query_words:
+            if word in self.kb_manager.short_name_index:
+                candidate_ids.add(self.kb_manager.short_name_index[word])
+            for uid in self.kb_manager.lexicon_index.get(word, [])[:8]:
+                candidate_ids.add(uid)
+
+        scored = []
+        for uid in candidate_ids:
+            entry = self.kb_manager.kb.get(uid)
+            if not entry: continue
+            vec = extract_vector(entry)
+            if vec is None: continue
+            score = self._score_candidate(uid, entry, query_words, query_lower)
+            scored.append({'ubp_id': uid, 'entry': entry, 'vector': vec, 'score': score})
+
+        scored.sort(key=lambda x: -x['score'])
+        return scored[:top_k]
 
     def process_query(self, query: str) -> ReasoningResult:
-        # Simple recall for now
-        candidates = self.recall(query)
+        candidates = self.recall(query, top_k=8)
+        if not candidates:
+            return ReasoningResult(query, "No concepts found.", None, [], [0]*24, Fraction(0), False, [], {}, [], 'none')
 
-        primary = None
-        if candidates:
-            top = candidates[0]
-            entry = top['entry']
-            vec = top['vector']
-
-            # Get NRCI/Tax from Atlas if available
-            nrci_val = entry.get('atlas', {}).get('nrci', '1/1')
-            tax_val = entry.get('atlas', {}).get('tax', '0/1')
-
-            primary = UBPConcept(
-                ubp_id=top['ubp_id'],
-                name=entry.get('name', top['ubp_id']),
-                vector=vec,
-                category=entry.get('category', 'unknown'),
-                math=entry.get('math', ''),
-                language=entry.get('lexicon', ''),
-                nrci=self.math.validate_fraction(nrci_val),
-                tax=self.math.validate_fraction(tax_val),
-                lexicon=entry.get('lexicon', ''),
-                fingerprint=entry.get('fingerprint', ''),
-                tags=entry.get('tags', [])
-            )
-
-        # Generate response
-        response = self._generate_response(query, primary, candidates)
-
-        return ReasoningResult(
-            query=query,
-            response=response,
-            primary_concept=primary,
-            reasoning_chain=[],
-            final_vector=primary.vector if primary else [0]*24,
-            final_nrci=primary.nrci if primary else Fraction(0),
-            final_tax=primary.tax if primary else Fraction(0),
-            coherence_snap=False,
-            warnings=[],
-            matched_terms=[],
-            primitive_decomposition={},
-            related_concepts=[]
+        top = candidates[0]
+        entry = top['entry']
+        primary = UBPConcept(
+            ubp_id=top['ubp_id'],
+            name=extract_name(entry),
+            description=extract_description(entry),
+            vector=top['vector'],
+            category=top['ubp_id'].split('_')[0],
+            math=entry.get('math', ''),
+            nrci=extract_nrci(entry),
+            tax=extract_tax(entry),
+            lexicon=entry.get('lexicon', ''),
+            fingerprint=entry.get('fingerprint', ''),
+            tags=entry.get('tags', []),
+            is_belief=is_belief(entry)
         )
 
-    def recall(self, query: str, top_k: int = 5) -> List[Dict]:
-        query_lower = query.lower()
-        words = re.findall(r'\b\w{3,}\b', query_lower)
-        candidates = set()
+        # Vector Composition
+        vectors = [c['vector'] for c in candidates[:4]]
+        composed = self.vector_engine.majority_vote(vectors)
+        snapped, corrected, _ = self.vector_engine.coherence_snap(composed)
+        
+        # Decomposition
+        prims = {}
+        if self.hierarchy and not primary.is_belief:
+            prims = self.hierarchy.decompose_to_primitives(primary.ubp_id)
 
-        for word in words:
-            if word in self.memory.lexicon_index:
-                candidates.update(self.memory.lexicon_index[word])
+        # Response Generation
+        response = f"**{primary.name}** ({primary.ubp_id})\n{primary.description}\n"
+        if prims:
+            p_str = ", ".join([f"{v}x {k}" for k,v in list(prims.items())[:5]])
+            response += f"Primitives: {p_str}\n"
+        response += f"NRCI: {float(primary.nrci):.4f} | Tax: {float(primary.tax):.4f}"
 
-        results = []
-        for uid in candidates:
-            entry = self.memory.kb[uid]
-            vec = self.vector_engine._extract_vector(entry)
-            if vec:
-                score = 0
-                if uid.lower() in query_lower: score += 10
-                if entry.get('name', '').lower() in query_lower: score += 5
-                results.append({'ubp_id': uid, 'entry': entry, 'vector': vec, 'score': score})
-
-        return sorted(results, key=lambda x: -x['score'])[:top_k]
-
-    def _generate_response(self, query, concept, candidates):
-        if not concept:
-            return f"No concept found for '{query}'."
-
-        lines = [f"**{concept.ubp_id}**"]
-        if concept.lexicon: lines.append(f"Lexicon: {concept.lexicon}")
-        if concept.math: lines.append(f"Math: {concept.math}")
-
-        if self.hierarchy:
-            prims = self.hierarchy.decompose_to_primitives(concept.ubp_id)
-            if prims:
-                lines.append("Primitives: " + ", ".join([f"{v}x {k}" for k,v in prims.items()]))
-
-        return "\n".join(lines)
+        return ReasoningResult(
+            query=query, response=response, primary_concept=primary, candidates=candidates,
+            final_vector=snapped, final_nrci=Fraction(sum(snapped), 24),
+            coherence_snap=corrected, warnings=[], primitive_decomposition=prims,
+            related_concepts=[], layer='belief' if primary.is_belief else 'understanding'
+        )
 
 if __name__ == "__main__":
     brain = UBPBrain()
     if os.path.exists('ubp_system_kb.json'):
         brain.initialize(['ubp_system_kb.json'])
-        print(brain.process_query("hydrogen").response)
+        print(brain.process_query("What is water?").response)
