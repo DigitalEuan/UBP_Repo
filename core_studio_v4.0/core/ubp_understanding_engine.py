@@ -1,6 +1,6 @@
 """
 ================================================================================
-UBP UNDERSTANDING ENGINE v4.1 (Standardized)
+UBP UNDERSTANDING ENGINE v4.2 (Fix: Stats Calculation)
 ================================================================================
 The UBP Understanding Engine sits above the Brain and provides:
 
@@ -10,11 +10,10 @@ The UBP Understanding Engine sits above the Brain and provides:
   4. SCALING EXPERIMENT — Measure how recall quality improves as KB grows.
   5. CROSS-DOMAIN MAP   — Find informationally equivalent objects across domains.
   6. LLM-STYLE CHAT     — Natural language Q&A using the dual-layer brain.
-  7. INSIGHT DISCOVERY  — Surface non-obvious relationships from the KB.
 
 Author: Euan R A Craig, New Zealand
-Date: 28 Feb 2026
-Version: 4.1 (Import Fixes)
+Date: 01 March 2026
+Version: 4.2 (Fixed get_stats error)
 ================================================================================
 """
 
@@ -49,9 +48,9 @@ except ImportError as e:
 def _find_kb_path() -> Optional[str]:
     """Locate the Knowledge Base file."""
     candidates = [
+        'ubp_system_kb_cleanup.json', # Prioritize the cleaned file if it exists
         'ubp_system_kb.json',
         'system_kb/ubp_system_kb.json',
-        '../system_kb/ubp_system_kb.json',
     ]
     for p in candidates:
         if os.path.exists(p):
@@ -64,11 +63,33 @@ def init_brain() -> UBPBrain:
     kb_path = _find_kb_path()
     if not kb_path:
         print("[ERROR] ubp_system_kb.json not found in standard paths.")
-        # Return uninitialized brain to prevent crash, but warn user
         return brain
         
+    print(f"[Understanding Engine] Loading KB from: {kb_path}")
     brain.initialize([kb_path])
     return brain
+
+def calculate_brain_stats(brain: UBPBrain) -> Dict:
+    """Manually calculate statistics since UBPBrain lacks get_stats()."""
+    kb = brain.kb_manager.kb
+    stats = {
+        'total_entries': len(kb),
+        'lexicon_terms': brain.kb_manager.stats.get('lexicon_terms', 0),
+        'entries_with_vectors': 0,
+        'understanding_entries': 0,
+        'belief_entries': 0
+    }
+    
+    for entry in kb.values():
+        if extract_vector(entry):
+            stats['entries_with_vectors'] += 1
+        
+        if is_belief(entry):
+            stats['belief_entries'] += 1
+        else:
+            stats['understanding_entries'] += 1
+            
+    return stats
 
 # ==============================================================================
 # SECTION 2: HIERARCHY AUDIT
@@ -205,15 +226,24 @@ def run_primitive_buildup(brain: UBPBrain, target_id: str) -> None:
 
     entry = kb.get(target_id)
     if not entry:
-        print(f"Entry '{target_id}' not found")
-        return
+        # Try finding by short name if ID fails
+        found = False
+        for uid, e in kb.items():
+            if target_id.lower() in uid.lower():
+                target_id = uid
+                entry = e
+                found = True
+                break
+        if not found:
+            print(f"Entry '{target_id}' not found")
+            return
 
     name = extract_name(entry)
     level = hier.get_hierarchy_level(target_id)
     prims = hier.decompose_to_primitives(target_id)
 
     print(f"\n{'='*60}")
-    print(f"  BUILD-UP: {name}")
+    print(f"  BUILD-UP: {name} ({target_id})")
     print(f"{'='*60}")
     print(f"  Hierarchy level: {level}")
     print(f"  Total primitive count: {sum(prims.values())}")
@@ -402,7 +432,7 @@ def run_chat_session(brain: UBPBrain, queries: List[str] = None) -> None:
 
 def main():
     print("=" * 70)
-    print("UBP UNDERSTANDING ENGINE v4.1")
+    print("UBP UNDERSTANDING ENGINE v4.2")
     print("Dual-Layer Knowledge System: Understanding + Beliefs")
     print("=" * 70)
 
@@ -412,7 +442,9 @@ def main():
         print("System initialization failed. Check KB file.")
         return
 
-    stats = brain.get_stats()
+    # FIX: Calculate stats manually instead of calling brain.get_stats()
+    stats = calculate_brain_stats(brain)
+    
     print(f"\nKB Status:")
     print(f"  Total entries:         {stats['total_entries']}")
     print(f"  With vectors:          {stats['entries_with_vectors']}")
@@ -423,7 +455,9 @@ def main():
     run_nrci_landscape(brain)
     run_hierarchy_audit(brain)
 
-    for target in ["MOLECULE_H2O_001", "MOLECULE_C6H12O6_001", "TOOL_ATP_001"]:
+    # Try to build up some common molecules if they exist
+    targets = ["MOLECULE_H2O_001", "MOLECULE_C6H12O6_001", "TOOL_ATP_001"]
+    for target in targets:
         run_primitive_buildup(brain, target)
 
     run_cross_domain_map(brain, min_similarity=0.4)
@@ -431,7 +465,7 @@ def main():
     run_chat_session(brain)
 
     print("\n" + "=" * 70)
-    print("UBP UNDERSTANDING ENGINE v4.1 -- COMPLETE")
+    print("UBP UNDERSTANDING ENGINE v4.2 -- COMPLETE")
     print("=" * 70)
 
 if __name__ == "__main__":
