@@ -1,172 +1,132 @@
 """
-UBP HexDictionary v4.6
+UBP HexDictionary v4.8 (Spatial-Deterministic Edition)
 =====================================================
-Features:
-1. SPINE VECTOR GENERATOR: Uses SHA256(UBP_ID) to derive unique geometric coordinates.
-2. AUTOMATIC DOMAIN MAPPING: Infers geometric domain from UBP_ID prefixes.
-3. INTEGRITY CHECK: Detects duplicate IDs and vector collisions.
-4. SPATIAL CACHE: O(1) access to geometric anchors.
+Identity is derived from TOPOLOGY. 
+The 'math' field is treated as a 3D Voxel Structure.
+The Vector is a measurement of that structure's Volume and Compactness.
 
-E R A Craig, New Zealand
-UBP Research Cortex v4.2.7
-Updated: 12 Feb 2026
+STANDARDS:
+1. Domain: Bits 0-2 (Prefix)
+2. Volume: Bits 3-7 (Voxel Count, Gray Coded)
+3. Compactness: Bits 8-11 (Surface Area Proxy, Gray Coded)
+4. Parity: Bits 12-23 (Golay [24,12,8])
+
+Author: Euan R A Craig & UBP Research Cortex v4.2.7
+Date: 28 Feb 2026
 """
-import hashlib
+
 import json
 import os
 import re
+import math
 from typing import Dict, List, Optional, Any, Tuple
-from ubp_core_v5_3_merged import GOLAY_ENGINE as GOLAY_DECODER
+from fractions import Fraction
+
+# --- UBP CORE INTEGRATION ---
+try:
+    from ubp_core_v5_3_merged import GOLAY_ENGINE, BinaryLinearAlgebra
+    CORE_AVAILABLE = True
+except ImportError:
+    CORE_AVAILABLE = False
 
 class HexDictionaryV4Exact:
-    # --- UBP STANDARDS (Embedded) ---
     DOMAINS = {
-        "SUBSTANCE": 0, "MECHANISM": 1, "ORGANISM": 2, "ALGORITHM": 3,
-        "QUANTITY": 4, "IMPERATIVE": 5, "ENTROPY": 6, "MEANING": 7
+        "QUANTITY": 0, "SUBSTANCE": 1, "MECHANISM": 2, "ALGORITHM": 3,
+        "ORGANISM": 4, "IMPERATIVE": 5, "ENTROPY": 6, "MEANING": 7
     }
-    GRAY_3BIT = [0b000, 0b001, 0b011, 0b010, 0b110, 0b111, 0b101, 0b100]
-    GRAY_5BIT = [0, 1, 3, 2, 6, 7, 5, 4, 12, 13, 15, 14, 10, 11, 9, 8,
-                 24, 25, 27, 26, 30, 31, 29, 28, 20, 21, 23, 22, 18, 19, 17, 16]
 
     def __init__(self):
-        self.registry: Dict[str, Dict[str, Any]] = {}   
-        self.id_map: Dict[str, str] = {}                
+        self.registry: Dict[str, Dict[str, Any]] = {}
+        self.id_map: Dict[str, str] = {}
         self.vector_cache: Dict[str, List[int]] = {}
 
-    def load_memory(self, json_file: str = "ubp_system_kb.json", md_file: str = "ubp_system_kb.md"):
-        target_files = [json_file, md_file, "ubp_hash_memory_kb.md"]
-        for fname in target_files:
-            if not os.path.exists(fname): continue
-            with open(fname, 'r', encoding='utf-8') as f:
-                content = f.read()
-            found_blocks = self._scavenge_json_blocks(content)
-            for block in found_blocks:
-                if isinstance(block, dict):
-                    if all(isinstance(v, dict) for v in block.values()):
-                        for _, entry in block.items(): self._register_entry(entry)
-                    else: self._register_entry(block)
+    def _int_to_gray(self, n: int, bits: int) -> List[int]:
+        """Gray code ensures that similar volumes have similar bit-patterns."""
+        n = int(n) % (2**bits)
+        gray = n ^ (n >> 1)
+        return [(gray >> i) & 1 for i in range(bits - 1, -1, -1)]
 
-        self._check_integrity()
-
-    def _scavenge_json_blocks(self, text: str) -> List[Any]:
-        results = []
-        starts = [m.start() for m in re.finditer('{', text)]
-        last_end = 0
-        for start in starts:
-            if start < last_end: continue
-            for end in range(len(text), start, -1):
-                if text[end-1] != '}': continue
-                try:
-                    data = json.loads(text[start:end])
-                    results.append(data); last_end = end; break
-                except: continue
-        return results
-
-    def _register_entry(self, entry: Dict[str, Any]):
-        if not isinstance(entry, dict) or "ubp_id" not in entry: return
-
-        uid = entry["ubp_id"]
-        f_print = entry.get("fingerprint")
-        if not f_print:
-            seed = f"{entry.get('math')}|{entry.get('language')}|{entry.get('script')}"
-            f_print = hashlib.sha256(seed.encode()).hexdigest()
-            entry["fingerprint"] = f_print
-
-        # Use existing vector or Mint a Rational Spine vector
-        vec = entry.get("vector")
-        if not vec or len(vec) != 24:
-            vec = self.mint_rational_vector(uid)
-            entry["vector"] = vec
-
-        self.registry[f_print] = entry
-        self.id_map[uid] = f_print
-        self.vector_cache[uid] = vec
-
-    # --- CORE SPINE LOGIC ---
-
-    def _get_domain_for_type(self, ubp_id: str) -> str:
-        """Determine the appropriate domain based on entry type prefix."""
+    def _get_domain_for_id(self, ubp_id: str) -> int:
         uid = ubp_id.upper()
-        if uid.startswith(("ELEM_", "CHEM_", "MAT_")): return "SUBSTANCE"
-        if uid.startswith(("PHYS_", "MECH_", "QM_", "WAVE_", "THERMO_", "FORCE_", "PARTICLE_")): return "MECHANISM"
-        if uid.startswith(("BIO", "CELL_", "PSYCH_", "ECO_")): return "ORGANISM"
-        if uid.startswith(("PY_", "CODE_", "ALGO_", "DS_", "CRYPTO_", "ML_", "BITOP_")): return "ALGORITHM"
-        if uid.startswith(("NUM_", "CONST_", "MATH_", "CALC_", "STATS_", "MATRIX_", "GEO_")): return "QUANTITY"
-        if uid.startswith(("LAW_", "ACTION_", "STATE_", "TAX_")): return "IMPERATIVE"
-        if uid.startswith(("PATTERN_", "TRANSFORM_", "GATE_", "NOISE_")): return "ENTROPY"
-        return "MEANING" # Default
+        if uid.startswith(("NUM_", "CONST_", "MATH_", "GEO_")): return 0
+        if uid.startswith(("ELEM_", "CHEM_", "MAT_", "CRYSTAL_")): return 1
+        if uid.startswith(("PHYS_", "MECH_", "PARTICLE_", "FORCE_")): return 2
+        if uid.startswith(("PY_", "CODE_", "ALGO_", "DS_", "BITOP_")): return 3
+        if uid.startswith(("BIO_", "CELL_", "PSYCH_", "MOLECULE_")): return 4
+        if uid.startswith(("LAW_", "ACTION_", "STATE_", "IMPERATIVE_")): return 5
+        if uid.startswith(("PATTERN_", "TRANSFORM_", "NOISE_")): return 6
+        return 7
 
-    def _get_domain_bits(self, domain_name: str) -> List[int]:
-        val = self.DOMAINS.get(domain_name.upper(), 7)
-        return [(val >> i) & 1 for i in range(2, -1, -1)]
-
-    def _get_gray_bits(self, value: int, width: int = 3) -> List[int]:
-        limit = (1 << width) - 1
-        idx = max(0, min(limit, value))
-        table = self.GRAY_3BIT if width == 3 else self.GRAY_5BIT
-        code = table[idx] if idx < len(table) else idx
-        return [(code >> i) & 1 for i in range(width-1, -1, -1)]
-
-    def mint_rational_vector(self, ubp_id: str) -> List[int]:
+    def _measure_topology(self, math_dna: str) -> Tuple[int, int]:
         """
-        Generates a DEFINITIVE SPINE VECTOR.
-        Guaranteed unique for unique UBP_IDs.
-        Method: SHA256(ID) -> Extract P1, P2, P3 -> Combine with Domain -> Golay Encode.
+        SYMBOLIC HASHING:
+        Turns the math string into a Voxel Count (Volume) 
+        and a 'Complexity' score (Compactness).
         """
-        # 1. Determine Domain
-        domain = self._get_domain_for_type(ubp_id)
+        if not math_dna or math_dna in ["atomic", "absolute_primitive"]:
+            return 1, 0
+            
+        # 1. Volume (V): Total magnitude of all dimensions
+        # Example: "Z=1|Valence=1" -> Volume 2
+        numbers = re.findall(r"[-+]?\d*\.\d+|\d+", math_dna)
+        volume = sum(abs(float(n)) for n in numbers)
+        
+        # 2. Compactness (C): Ratio of properties to volume
+        # High property count per volume = 'Jagged' (High Surface Area)
+        # Low property count per volume = 'Smooth' (Low Surface Area)
+        prop_count = math_dna.count('|') + 1
+        compactness = int((prop_count * 100) / (volume if volume > 0 else 1))
+        
+        return int(volume), int(compactness)
 
-        # 2. Hash the ID for parameters
-        h = hashlib.sha256(ubp_id.upper().encode()).digest()
-        combined = int.from_bytes(h[:4], 'big')
+    def mint_rational_vector(self, ubp_id: str, math_dna: str) -> List[int]:
+        """
+        PROJECTS a vector from the SPATIAL properties of the math.
+        """
+        # 1. Domain Bits (3 bits)
+        dom_val = self._get_domain_for_id(ubp_id)
+        dom_bits = [(dom_val >> i) & 1 for i in range(2, -1, -1)]
 
-        # 3. Extract Parameters (Non-overlapping bits)
-        p1 = (combined >> 17) % 8   # bits 17-19 -> 0-7
-        p2 = (combined >> 7) % 32   # bits 7-11 -> 0-31
-        p3 = (combined >> 0) % 2    # bit 0 -> 0-1
+        # 2. Measure Topology (Volume and Compactness)
+        volume, compactness = self._measure_topology(math_dna)
+        
+        # Parameter A: Volume (5 bits, 0-31)
+        p1_bits = self._int_to_gray(volume, 5)
+        
+        # Parameter B: Compactness (4 bits, 0-15)
+        p2_bits = self._int_to_gray(compactness, 4)
 
-        # 4. Construct Message
-        dom_bits = self._get_domain_bits(domain)
-        p1_bits = self._get_gray_bits(p1, 3)
-        p2_bits = self._get_gray_bits(p2, 5)
-        p3_bits = [p3 & 1]
+        # 3. Construct 12-bit Noumenal Seed [Domain][Volume][Compactness]
+        message = dom_bits + p1_bits + p2_bits
+        
+        # 4. Encode to 24-bit Phenomenal Codeword
+        if CORE_AVAILABLE:
+            return GOLAY_ENGINE.encode(message)
+        return message + [0]*12
 
-        msg = dom_bits + p1_bits + p2_bits + p3_bits
+    def load_memory(self, filepath: str = "ubp_system_kb.json"):
+        if not os.path.exists(filepath): return
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            entries = data.get('objects', data)
+            for fp, entry in entries.items():
+                uid = entry.get('ubp_id')
+                if uid:
+                    self.registry[fp] = entry
+                    self.id_map[uid] = fp
+                    vec = entry.get('atlas', {}).get('vector')
+                    if vec: self.vector_cache[uid] = vec
+            print(f"[HEX_DB] Loaded {len(self.id_map)} spatial-deterministic entries.")
+        except Exception as e:
+            print(f"[HEX_DB] Load failed: {e}")
 
-        # 5. Encode to 24-bit Vector
-        return GOLAY_DECODER.encode(msg)
-
-    def _check_integrity(self):
-        unique_ids = set(self.id_map.keys())
-        if len(self.registry) > len(unique_ids):
-            print(f"[INTEGRITY] Warning: {len(self.registry) - len(unique_ids)} Duplicate IDs detected.")
+    def find_by_id(self, ubp_id: str) -> Optional[Dict[str, Any]]:
+        fp = self.id_map.get(ubp_id)
+        return self.registry.get(fp) if fp else None
 
     def get_vector(self, ubp_id: str) -> Optional[List[int]]:
         return self.vector_cache.get(ubp_id)
 
-    def find_by_id(self, ubp_id: str) -> Optional[Dict[str, Any]]:
-        f_print = self.id_map.get(ubp_id)
-        return self.registry.get(f_print) if f_print else None
-
-    def get_nrci_exact(self, ubp_id):
-        """
-        Retrieves the exact rational NRCI. 
-        Prioritizes the new 'math_exact' structure.
-        """
-        entry = self.get_entry(ubp_id)
-        if not entry: return Fraction(1, 2)
-        
-        # New Atlas Standard
-        if "math_exact" in entry:
-            return Fraction(entry["math_exact"]["nrci"]["n"], 
-                            entry["math_exact"]["nrci"]["d"])
-        
-        # Legacy String Standard ("1/1", "24/25")
-        nrci_val = entry.get("nrci", "1/2")
-        if isinstance(nrci_val, str) and "/" in nrci_val:
-            n, d = nrci_val.split("/")
-            return Fraction(int(n), int(d))
-            
-        return Fraction(1, 2)
-
+# Global Instance
 HEX_DB_EXACT = HexDictionaryV4Exact()
