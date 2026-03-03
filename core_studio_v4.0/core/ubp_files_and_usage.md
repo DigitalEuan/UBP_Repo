@@ -250,10 +250,10 @@ top_quark          |   0.021315% |   1.7280e+05 | Lattice
     *   **System Role:** **The Collider**.
     *   **Research Usage:** Automated research to find "Hidden Resonances" between existing concepts.
 
-*   **`ubp_tgic_engine.py`**
-    *   **Description:** Triad-Graph Interaction Constraint. Simulates dynamic behavior and time evolution using Deterministic Flux.
-    *   **System Role:** **Lattice Physics Simulator**.
-    *   **Research Usage:** Simulates how concepts interact over time (e.g., "Do Logic and Emotion merge or repel?").
+*   **`ubp_tgic_engine.py`** (v6.2 Relational Master, updated 3 Mar 26)
+    *   **Description:** Triad-Graph Interaction Constraint. A high-fidelity physics engine that balances internal bit-harmony (9 Pairwise Interactions) against substrate restorative pressure (Leech Tax) and cross-node Relational Gravity.
+    *   **System Role:** **Lattice Physics & Relational Dynamics Simulator**.
+    *   **Research Usage:** Simulates the emergence of stable "Phenomenal" states ($d \le 3$). Used to model how concepts attract, repel, or orbit each other. Enforces the "Event Horizon" where excessive noise ($d \ge 4$) leads to informational dissolution.
 
 *   **`ubp_nrci_calculator.py`**
     *   **Description:** Calculates Non-Random Coherence Index and Symmetry Tax.
@@ -330,57 +330,55 @@ The Core generates files, these are **Dynamic Artifacts** (files created *by* th
     *   **Usage:** Defines the "Physics" of the construction system.
 
 
-SYSTEM_KB_EXAMPLE:
+UBP_SYSTEM_KB_EXAMPLE:
 {
   "451abc64108603144c7b294a3862eab6fc35e945dab4b7785784ab44bc8c427f": {
     "ubp_id": "ELEM_H_001",
     "lexicon": "[Element: Hydrogen (H)], [Hydrogen (Z=1). A Gas (Phase 1) with Hexagonal potential. Valence 1. Tension: 4. It is the seed of the material octave, born from the Proton-Electron union.]",
     "math": "BP=507/25|Crystal=1|EN=11/5|Ion=1312|M=126/125|MP=1401/100|Oxidation=1|Phase_STP=1|Rad=53|Rho=2247/25000|Valence_e=1|Z=1",
-    "logic":  (remove),
     "atlas": {
-      "hierarchy": "1×PARTICLE_PROTON_001 + 0×PARTICLE_NEUTRON_001 + 1×PARTICLE_ELECTRON_001",
+      "hierarchy": "1\u00d7PARTICLE_PROTON_001 + 0\u00d7PARTICLE_NEUTRON_001 + 1\u00d7PARTICLE_ELECTRON_001",
       "vector": [
         0,
-        1,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1,
-        0,
-        0,
         0,
         1,
         0,
         0,
         1,
         1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
         0,
         0,
         0,
         0,
         1,
         0,
-        0,
-        1
+        0
       ],
-      "nrci": "336204077858789603392403640765353098508068007419030556313025000/561077884664436626238503158850533704088785671249263698695215161",
-      "nrci_score": 0.599211,
-      "tax": "224873806805647022846099518085180605580717663830233142382190161/33620407785878960339240364076535309850806800741903055631302500",
+      "nrci": "33620407785878960339240364076535309850806800741903055631302500/55608508046372509626759775532373494451963521314512091269063661",
+      "nrci_score": 0.604591,
+      "tax": "21988100260493549287519411455838184601156720572609035637761161/3362040778587896033924036407653530985080680074190305563130250",
       "weight": 8,
-      "tilt": 0.0 (calculated)
+      "tilt": 86.6654
     },
     "tags": [
       "ELEMENT",
+      "HARDENED",
       "HYDROGEN",
       "NONMETAL",
-      "PERIOD_1"
-    ],
-    "fingerprint": (remove),
-    "vector": (remove)
+      "PERIOD_1",
+      "SOP_002"
+    ]
   }
-}
 
 ====
 
