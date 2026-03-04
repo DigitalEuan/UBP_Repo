@@ -1,166 +1,122 @@
 """
-UBP INTEGRATED ENGINE v2.1 (v5.3 Core Compatible)
-=================================================
-Features:
-1. EMBEDDED OBSERVER: Recursive state evaluation via UBPObserver.
-2. SELF-STABILIZATION: Rejects queries that violate geometric integrity.
-3. METABOLIC COSTING: Calculates energy tax for every operation.
-
-Author: E R A Craig, New Zealand
-UBP Research Cortex v4.2.7
-Date: 20 Feb 2026
+UBP INTEGRATED ENGINE v2.2.1 (SOP_002 Compliant)
+================================================
+FIX: Corrected vector path to entry['atlas']['vector'].
 """
 
 import hashlib
 import re
 import json
-from typing import Dict, List, Any, Tuple, Optional
+from typing import Dict, List, Any, Tuple
 from fractions import Fraction
-# v5.3 Migration
-from ubp_core_v5_3_merged import GOLAY_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
-from hex_dictionary_v4_exact import HEX_DB_EXACT
 
-# --- MODULE 1: THE OBSERVER ---
-class UBPObserver:
+# UBP Core & Brain Imports
+try:
+    from ubp_core_v5_3_merged import GOLAY_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
+    from hex_dictionary_v4_exact import HEX_DB_EXACT
+    # Import the helpers from the brain to ensure path consistency
+    from ubp_brain_consolidated import SoftGolayDecoder, extract_vector, extract_name
+    CORE_AVAILABLE = True
+except ImportError as e:
+    print(f"[WARNING] Core dependencies missing: {e}")
+    CORE_AVAILABLE = False
+
+# --- MODULE 1: THE SOFT OBSERVER ---
+class UBPObserverSoft:
     def __init__(self, db):
-        self.golay = GOLAY_ENGINE
         self.db = db
-        
-        # Constants from v5.3 Substrate
+        self.soft_decoder = SoftGolayDecoder()
         constants = UBPUltimateSubstrate.get_constants(50)
         self.Y_inv = constants['Y_INV']
-        self.COHERENCE_THRESHOLD = Fraction(95, 100)
-        self.OBSERVATION_COST = self.Y_inv # Fixed tax
-        
-        # The "Self"
-        self.integrity_vector = self._initialize_self_vector()
-        print(f"[OBSERVER] Online. Self-Vector Weight: {sum(self.integrity_vector)}")
+        self.OBSERVATION_COST = self.Y_inv
+        print(f"[OBSERVER] Soft-Decision Observer Online.")
 
-    def _initialize_self_vector(self) -> List[int]:
-        """Generates the System Identity by XORing all known Truths."""
-        identity = [0] * 24
-        count = 0
-        for _, entry in self.db.registry.items():
-            vec = entry.get('vector')
-            if vec and len(vec) == 24:
-                identity = [(a ^ b) for a, b in zip(identity, vec)]
-                count += 1
-        
-        # Ensure Identity is a valid codeword
-        corrected, _, _ = self.golay.decode(identity)
-        return self.golay.encode(corrected)
-
-    def observe(self, state_vector: List[int]) -> Dict[str, Any]:
-        """Measures geometric tension between Input and System Identity."""
-        _, _, errors = self.golay.decode(state_vector)
-        
-        # Local Coherence (Internal Consistency)
-        local_coherence = Fraction(4 - min(4, errors), 4)
-        
-        # Global Alignment (Distance to Self)
-        dist_to_self = BinaryLinearAlgebra.hamming_distance(state_vector, self.integrity_vector)
-        
+    def observe(self, analog_vector: List[float]) -> Dict[str, Any]:
+        best_codeword, confidence, _ = self.soft_decoder.decode_soft(analog_vector)
         action = "MAINTAIN"
-        if local_coherence < 1:
-            if errors <= 3:
-                action = "CORRECT"
-            else:
-                action = "RECALIBRATE"
+        if confidence < 0.99:
+            action = "SOFT_CORRECT" if confidence >= 0.50 else "FORCED_SNAP"
 
         return {
             "action": action,
-            "coherence": float(local_coherence),
-            "dist_to_self": dist_to_self,
-            "energy_cost": float(self.OBSERVATION_COST * (Fraction(1, 1) - local_coherence))
+            "confidence": float(confidence),
+            "snapped_vector": best_codeword,
+            "energy_cost": float(self.OBSERVATION_COST * Fraction(int((1.0 - confidence)*1000), 1000))
         }
 
-# --- MODULE 2: THE CORTEX ---
-class SemanticCortexV3:
+# --- MODULE 2: THE ANALOG CORTEX ---
+class SemanticCortexSoft:
     def __init__(self):
-        self.golay = GOLAY_ENGINE
         self.db = HEX_DB_EXACT
-        if not self.db.registry: self.db.load_memory()
-        
-        # Initialize Observer
-        self.observer = UBPObserver(self.db)
-        self.anchors = self._load_anchors()
+        if not self.db.registry: 
+            self.db.load_memory()
+            
+        self.observer = UBPObserverSoft(self.db)
+        self.anchors, self.vocab = self._load_anchors_and_vocab()
 
-    def _load_anchors(self) -> Dict[str, List[int]]:
+    def _load_anchors_and_vocab(self) -> Tuple[Dict[str, List[int]], Dict[str, List[int]]]:
         anchors = {}
+        vocab = {}
         for _, entry in self.db.registry.items():
-            vec = entry.get('vector')
-            if vec:
-                name = str(entry.get('name', entry.get('ubp_id', 'UNKNOWN'))).upper()
+            # FIX: Use the helper to find the vector in entry['atlas']['vector']
+            vec = extract_vector(entry)
+            if vec and len(vec) == 24:
+                name = extract_name(entry).upper()
                 anchors[name] = vec
-        return anchors
+                
+                # Index words for the vocabulary
+                clean_name = re.sub(r'[^a-zA-Z0-9\s]', '', name.lower())
+                for word in clean_name.split():
+                    if len(word) > 2:
+                        vocab[word] = vec
+        
+        print(f"[CORTEX] Anchored {len(anchors)} memories into Euclidean space.")
+        return anchors, vocab
 
-    def word_to_vector(self, word: str) -> List[int]:
-        h = hashlib.sha256(word.lower().encode()).digest()
+    def word_to_bipolar(self, word: str) -> List[float]:
+        if word in self.vocab:
+            binary_vec = self.vocab[word]
+            return [1.0 if b == 1 else -1.0 for b in binary_vec]
+            
+        h = hashlib.sha256(word.encode()).digest()
         val = int.from_bytes(h[:3], 'big') % 4096
-        raw = [(val >> i) & 1 for i in range(23, -1, -1)]
-        cw, _, _ = self.golay.decode(raw)
-        return self.golay.encode(cw)
+        raw_binary = [(val >> i) & 1 for i in range(23, -1, -1)]
+        return [0.3 if b == 1 else -0.3 for b in raw_binary]
 
     def process_query(self, query: str) -> Dict[str, Any]:
-        """
-        The Main Loop:
-        1. Vectorize Input
-        2. OBSERVE (Check Coherence)
-        3. ACT (Generate or Reject)
-        """
-        print(f"\n[CORTEX] Processing: '{query}'")
-        
-        # 1. Vectorize
-        words = query.lower().replace("?", "").split()
-        vec = [0] * 24
+        words = re.sub(r'[^a-zA-Z0-9\s]', '', query.lower()).split()
+        if not words: return {"status": "ERROR", "reason": "Empty query"}
+            
+        sum_vector = [0.0] * 24
         for w in words:
-            v = self.word_to_vector(w)
-            vec = [(a ^ b) for a, b in zip(vec, v)]
+            bipolar_v = self.word_to_bipolar(w)
+            sum_vector = [s + b for s, b in zip(sum_vector, bipolar_v)]
             
-        # 2. Observe
-        observation = self.observer.observe(vec)
-        print(f"  [OBSERVER] Action: {observation['action']} | Coherence: {observation['coherence']:.2f}")
+        analog_vector = [s / len(words) for s in sum_vector]
+        observation = self.observer.observe(analog_vector)
+        snapped_binary = observation["snapped_vector"]
         
-        # 3. Act
-        if observation['action'] == "RECALIBRATE":
-            return {
-                "status": "REJECTED",
-                "reason": "Geometric Hallucination Detected (Deep Hole)",
-                "metrics": observation
-            }
-            
-        if observation['action'] == "CORRECT":
-            print("  [CORTEX] Applying Geometric Correction...")
-            corrected, _, _ = self.golay.decode(vec)
-            vec = self.golay.encode(corrected)
-            # Re-observe to confirm fix
-            observation = self.observer.observe(vec)
-            
-        # Find Nearest Anchor
-        min_dist = 25
+        min_dist = 24 # Corrected max distance
         nearest = "UNKNOWN"
         for name, anchor in self.anchors.items():
-            d = BinaryLinearAlgebra.hamming_distance(vec, anchor)
+            d = BinaryLinearAlgebra.hamming_distance(snapped_binary, anchor)
             if d < min_dist:
                 min_dist = d
                 nearest = name
                 
         return {
             "status": "ACCEPTED",
-            "concept": query.upper(),
-            "vector_hex": hex(int("".join(map(str, vec)), 2)),
+            "query": query,
             "resonance": {
                 "anchor": nearest,
                 "distance": min_dist,
-                "type": "PERFECT" if min_dist == 0 else "VARIANT"
+                "confidence": f"{observation['confidence']:.2%}"
             },
-            "observer_metrics": observation
+            "action": observation["action"]
         }
 
-# --- EXECUTION ---
 if __name__ == "__main__":
-    cortex = SemanticCortexV3()
-    
-    # Test 1: Valid Concept
-    result = cortex.process_query("Energy Time")
-    print(json.dumps(result, indent=2))
+    if CORE_AVAILABLE:
+        cortex = SemanticCortexSoft()
+        # Test with the specific term you asked about
+        print(json.dumps(cortex.process_query("What is the purpose of ubppy?"), indent=2))
