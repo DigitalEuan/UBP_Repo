@@ -129,6 +129,12 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ## Updates
 
+### 05 March 2026 — Soft-Decision Upgrade (Conway & Sloane Integration)
+*   **Soft-Decision Decoding:** Integrated the Conway & Sloane (1986) algorithm into the `UBPVectorEngine`. The brain can now "squint" at noisy data to recover truth.
+*   **Analog Semantics:** Shifted memory recall from brittle binary XOR logic to a "Semantic Center of Mass" approach. This allows the system to correctly identify concepts even when the query contains significant semantic noise (dH > 3).
+*   **Recall Confidence:** Implemented Euclidean correlation scoring. Every memory recall now provides a percentage-based confidence metric, allowing the AI to distinguish between "Hard Facts" and "Speculative Resonances."
+*   **Deep-Hole Immunity:** Successfully demonstrated the recovery of a shattered 24-bit vector with 4 bit-flips—a state that previously caused total system blindness.
+
 ### 04 March 2026 — Gemini 3.1 Pro
 *   Added Gemini 3.1 Pro Preview to the AI model selector and set it as the new default model for the application. You can now select it from the dropdown in the Assistant tab.
 *   Added a "debounce" to the synchronization process. Now, when you type in the Knowledge Base editors, the app waits until you stop typing for 1 second before it syncs files to the Python engine.
