@@ -129,6 +129,11 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ## Updates
 
+### 04 March 2026 — Gemini 3.1 Pro
+*   Added Gemini 3.1 Pro Preview to the AI model selector and set it as the new default model for the application. You can now select it from the dropdown in the Assistant tab.
+*   Added a "debounce" to the synchronization process. Now, when you type in the Knowledge Base editors, the app waits until you stop typing for 1 second before it syncs files to the Python engine.
+
+
 ### 03 March 2026 — TGIC v6.2 & Relational Gravity
 *   **TGIC Engine:** Updated `ubp_tgic_engine.py` to v6.2. It now calculates **Relational Pull** (Gravity) between nodes based on Hamming distance, allowing for dynamic system simulation.
 *   **Energy Audit:** Integrated Leech Tax and Coherence Penalty ($d^4$) into the total energy cost of a thought.
