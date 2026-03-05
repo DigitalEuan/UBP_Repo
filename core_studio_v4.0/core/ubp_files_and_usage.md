@@ -68,6 +68,7 @@ We do not assign random vectors. We build the object using the **Voxel Operators
 
 ### GRAPHS:
 
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -94,6 +95,7 @@ plt.savefig('plot.png', bbox_inches='tight', dpi=150)
 
 print("Graph successfully generated and saved to plot.png!")
 print("Check the VISUAL tab to see it.")
+"""
 
 ---
 
