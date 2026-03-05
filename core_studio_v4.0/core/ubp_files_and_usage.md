@@ -66,6 +66,35 @@ We do not assign random vectors. We build the object using the **Voxel Operators
 4.  **AI Loop:** Feed this spatial data back to the Assistant.
     *   *Prompt:* "The visualizer shows [Object A] forms a stable tetrahedron with [Object B] and [Object C]. What does this imply about their relationship?"
 
+### GRAPHS:
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. Create Data
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# 2. Create the Plot
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, color='cyan', linewidth=2, label='Sine Wave')
+plt.title('UBP Basic 2D Plot', color='white')
+plt.xlabel('X Axis', color='lightgray')
+plt.ylabel('Y Axis', color='lightgray')
+
+# Make it look good on the dark theme
+plt.gca().set_facecolor('#111111')
+plt.gcf().patch.set_facecolor('#111111')
+plt.tick_params(colors='lightgray')
+plt.grid(True, color='#333333', linestyle='--')
+plt.legend(facecolor='#222222', edgecolor='none', labelcolor='white')
+
+# 3. CRITICAL STEP: Save as 'plot.png'
+plt.savefig('plot.png', bbox_inches='tight', dpi=150)
+
+print("Graph successfully generated and saved to plot.png!")
+print("Check the VISUAL tab to see it.")
+
 ---
 
 ### **Draft Script: `ubp_unified_pipeline.py`**
