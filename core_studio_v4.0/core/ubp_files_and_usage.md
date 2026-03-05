@@ -468,7 +468,7 @@ In standard computing (and standard Python), variables are arbitrary containers.
 The system is composed of three core Python scripts:
 
 1.  **`ubppy.py` (The Entry Point):** The main script used to load and run `.ubp` programs.
-2.  **`ubp_py_runtime.py` (The Virtual Machine):** The "Machine" that handles vector addition, metabolic costing, and lineage tracking.
+2.  *`ubp_py_runtime.py`** (v2.3.4 SOP_002 Patched)\n    *   **Description:** The Virtual Machine for UBP-Py. Handles vector addition, metabolic costing, and lineage tracking.\n    *   **System Role:** **Execution Engine**. Fixed argument mismatch in `calculate_metrics` to ensure 100% SOP_002 compliance."
 3.  **`ubp_py_lang.py` (The Language Parser):** The "Instructions" that translate text commands into VM operations.
 
 ---
