@@ -18,7 +18,7 @@ from ubp_core_v5_3_merged import (
     LeechPointScaled,
 )
 
-from ubp_phenomenology_v4_2_6 import (
+from ubp_phenomenology import (
     PhenomenologyEngine,
 )
 

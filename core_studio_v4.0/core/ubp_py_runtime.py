@@ -5,11 +5,11 @@ from fractions import Fraction
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
-from ubp_core_v5_3_merged import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
+from ubp_core_v5_3_merged import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
 from ubp_kb_architect import KBArchitect
 
 # System Constants
-CONST = UBPUltimateSubstrate.get_constants(50)
+CONST = SUBSTRATE.get_constants(50)
 Y_CONST = CONST['Y']
 
 @dataclass
@@ -40,15 +40,22 @@ class CortexAtom:
 
 class UBPPyVM:
     def __init__(self, kb_path='ubp_system_kb.json', lattice_path='ubp_py_lattice.json', trace_path='ubp_py_trace.json', fom_index_path='ubp_fom_index.json'):
-        print(f"[VM] Initializing v2.3.0 (Full Feature Set)")
+        print(f"[VM] Initializing v2.3.4 (SOP_002 Final Patch)")
         self.env = {}
         self.trace = []
         self.kb_path = kb_path
         self.lattice_path = lattice_path
         self.trace_path = trace_path
         self.fom_path = fom_index_path
-        self.kb_cache = None
-        self.id_map = {}
+        self.kb_cache = {}
+        self._load_kb()
+
+    def _load_kb(self):
+        try:
+            with open(self.kb_path, 'r') as f:
+                self.kb_cache = json.load(f)
+        except:
+            self.kb_cache = {}
 
     def log(self, msg):
         print(f"[VM] {msg}")
@@ -57,13 +64,66 @@ class UBPPyVM:
     def let(self, label, val_str, tier=0, category="QUANTITY"):
         math_dna = f"Val={val_str}|Cat={category}"
         vec = KBArchitect.generate_vector(math_dna)
-        tax, nrci = KBArchitect.calculate_metrics(math_dna)
+        # FIXED: Pass both math_dna and vec
+        tax, nrci = KBArchitect.calculate_metrics(math_dna, vec)
+
         self.env[label] = CortexAtom(
             label=label, value=Fraction(val_str), vector=vec,
             nrci=nrci, tax=tax, tilt=KBArchitect.calculate_tilt(vec), 
             tier=tier, category=category, hierarchy="atomic"
         )
         self.log(f"LET {label} = {val_str}")
+
+    def import_atom(self, ubp_id, alias=None):
+        target_label = alias if alias else ubp_id
+        entry = None
+        for key, val in self.kb_cache.items():
+            if val.get('ubp_id') == ubp_id:
+                entry = val
+                break
+
+        if entry:
+            atlas = entry.get('atlas', {})
+            self.env[target_label] = CortexAtom(
+                label=target_label,
+                value=Fraction(1, 1),
+                vector=atlas.get('vector'),
+                nrci=Fraction(atlas.get('nrci', '1/1')),
+                tax=Fraction(atlas.get('tax', '0/1')),
+                tilt=atlas.get('tilt', 0.0),
+                tier=0,
+                category=entry.get('tags', ['IMPORTED'])[0],
+                hierarchy=atlas.get('hierarchy', 'atomic')
+            )
+            self.log(f"IMPORT {ubp_id} as {target_label}")
+        else:
+            self.log(f"ERROR: {ubp_id} not found in KB.")
+
+    def synth(self, label, recipe_str):
+        self.log(f"SYNTH {label} FROM {recipe_str}")
+        components = re.findall(r'(\d+)x([A-Za-z0-9_]+)', recipe_str)
+        composite_vec = [0] * 24
+        total_val = Fraction(0)
+        for count_str, comp_label in components:
+            count = int(count_str)
+            if comp_label in self.env:
+                atom = self.env[comp_label]
+                for _ in range(count):
+                    composite_vec = [(a + b) % 2 for a, b in zip(composite_vec, atom.vector)]
+                    total_val += atom.value
+
+        decoded, _, _ = GOLAY_ENGINE.decode(composite_vec)
+        snapped = GOLAY_ENGINE.encode(decoded)
+
+        math_dna = f"Synth={label}|Recipe={recipe_str}"
+        # FIXED: Pass both math_dna and snapped vector
+        tax, nrci = KBArchitect.calculate_metrics(math_dna, snapped)
+
+        self.env[label] = CortexAtom(
+            label=label, value=total_val, vector=snapped,
+            nrci=nrci, tax=tax, tilt=KBArchitect.calculate_tilt(snapped),
+            tier=1, category="SYNTHESIS", hierarchy=recipe_str
+        )
 
     def spiral(self, label, iterations, transform_name, label_prefix):
         if label not in self.env: return
@@ -75,8 +135,9 @@ class UBPPyVM:
             decoded, _, _ = GOLAY_ENGINE.decode(new_vec)
             snapped = GOLAY_ENGINE.encode(decoded)
 
-            tax = LEECH_ENGINE.calculate_symmetry_tax(snapped)
-            nrci = Fraction(10, 1) / (Fraction(10, 1) + tax)
+            math_dna = f"Spiral={new_label}|Parent={label}"
+            # FIXED: Pass both math_dna and snapped vector
+            tax, nrci = KBArchitect.calculate_metrics(math_dna, snapped)
 
             self.env[new_label] = CortexAtom(
                 label=new_label, value=new_val, vector=snapped,
@@ -92,8 +153,10 @@ class UBPPyVM:
             if atom.nrci < threshold:
                 decoded, _, _ = GOLAY_ENGINE.decode(atom.vector)
                 corrected = GOLAY_ENGINE.encode(decoded)
-                new_tax = LEECH_ENGINE.calculate_symmetry_tax(corrected)
-                new_nrci = Fraction(10, 1) / (Fraction(10, 1) + new_tax)
+
+                math_dna = f"Reflex={label}|Original={atom.hierarchy}"
+                # FIXED: Pass both math_dna and corrected vector
+                new_tax, new_nrci = KBArchitect.calculate_metrics(math_dna, corrected)
 
                 if new_nrci >= threshold:
                     atom.vector = corrected
