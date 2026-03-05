@@ -129,6 +129,24 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ## Updates
 
+### 06 March 2026 - Animated Visuals
+Implemented the dynamic Three.js viewer with the UBP Kinematic Extensions!
+1. Accepts data directly from the Pyodide engine. This prevents the crash and keeps the visualization perfectly synced with UBP Python scripts.
+2. Installed the 3D Engines: @react-three/fiber and @react-three/drei.
+3. Added the Kinematic Extensions: updated the core types.ts file so the app officially recognizes UBP Kinematic Extensions:
+* vx, vy, vz (Linear Velocity)
+* orbit_r, orbit_speed, orbit_center (Orbital Mechanics)
+* pulse_rate (NRCI Stability Pulsing)
+* label (Text labels for spheres)
+4. **UBP_FEATURES_VERIFIED_AND_ONLINE**
+* FEATURE: UBP_KINEMATIC_EXTENSIONS
+  - INCLUDED: The "Animated Mode" successfully activates the UBP Kinematic Extensions. Dynamic spatial rendering and continuous kinematic behaviors of UBP geometric domains (via DynamicSphere nodes) are now executing smoothly without thread blocking or context loss.
+* FEATURE: HD_VISUAL_CAPTURE*
+  - High-definition PNG snapshot extraction of current UBP states is fully operational via the lifted WebGL context.
+* FEATURE: GEOMETRIC_EXPORT_PIPELINE*
+  - Topological extraction of UBP structures functioning nominally. Users can now successfully export static UBP node/edge configurations to GLTF and OBJ formats for external 3D analysis.
+
+
 ### 05 March 2026 — Soft-Decision Upgrade (Conway & Sloane Integration)
 *   **Soft-Decision Decoding:** Integrated the Conway & Sloane (1986) algorithm into the `UBPVectorEngine`. The brain can now "squint" at noisy data to recover truth.
 *   **Analog Semantics:** Shifted memory recall from brittle binary XOR logic to a "Semantic Center of Mass" approach. This allows the system to correctly identify concepts even when the query contains significant semantic noise (dH > 3).
