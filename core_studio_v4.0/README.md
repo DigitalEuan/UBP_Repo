@@ -134,6 +134,10 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 *   **Analog Semantics:** Shifted memory recall from brittle binary XOR logic to a "Semantic Center of Mass" approach. This allows the system to correctly identify concepts even when the query contains significant semantic noise (dH > 3).
 *   **Recall Confidence:** Implemented Euclidean correlation scoring. Every memory recall now provides a percentage-based confidence metric, allowing the AI to distinguish between "Hard Facts" and "Speculative Resonances."
 *   **Deep-Hole Immunity:** Successfully demonstrated the recovery of a shattered 24-bit vector with 4 bit-flips—a state that previously caused total system blindness.
+*   Runtime Stabilization & SOP_002 Fix",
+        "*   **Runtime v2.3.4:** Patched `ubp_py_runtime.py` to resolve a `TypeError` in the `let` and `synth` methods.",
+        "*   **Signature Alignment:** Corrected `KBArchitect.calculate_metrics` calls to explicitly pass the 24-bit vector alongside the math DNA.",
+        "*   **Demo Verified:** Confirmed `ubppy.py` successfully executes the spiral growth and visualization export sequence.
 
 ### 04 March 2026 — Gemini 3.1 Pro
 *   Added Gemini 3.1 Pro Preview to the AI model selector and set it as the new default model for the application. You can now select it from the dropdown in the Assistant tab.
