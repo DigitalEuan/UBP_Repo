@@ -702,7 +702,7 @@ vm.synth("H2O", "2xELEM_H_001 + 1xELEM_O_008")
    ```
 Or as a graph:
 
-"""
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -729,7 +729,7 @@ plt.savefig('plot.png', bbox_inches='tight', dpi=150)
 
 print("Graph successfully generated and saved to plot.png!")
 print("Check the VISUAL tab to see it.")
-"""
+```
 
 2. **Visual Analysis:** The researcher examines the 3D manifold for:
    - **Clustering:** Does the object form a stable "Face" with other nodes?
