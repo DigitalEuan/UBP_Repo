@@ -1023,9 +1023,11 @@ The broader Core Studio has also evolved significantly:
 #### 1. The Axiomatic Foundation (The Triad)
 Reality is modeled as the interference pattern of three irrational primitives. 
 Let the **Triadic Monad** $\mathcal{T}$ be defined as:
+
 $$ \mathcal{T} = \{ \pi, \phi, e \} $$
 
 From the Loop ($\pi$), we derive the **Observer Constant ($Y$)**, which represents the geometric drag or "cost of perception" in the substrate:
+
 $$ Y = \frac{1}{\pi + \frac{2}{\pi}} \approx 0.264675 $$
 
 #### 2. The Substrate Space
@@ -1041,39 +1043,52 @@ When two objects interact (e.g., Hydrogen + Oxygen), they do not simply combine;
 
 Given two parent vectors $\mathbf{v}_a, \mathbf{v}_b \in \mathcal{C}_{24}$:
 
-**Step 1: Stereoscopic Lift (Binary to Euclidean)**
+**Step 1: Stereoscopic Lift (Binary to Euclidean)**  
 We map the binary bits $\{0, 1\}$ to physical Euclidean space $\{\pm 1\}$:
+
 $$ \psi(\mathbf{v})_i = 1 - 2v_i $$
 
-**Step 2: Vector Flow (Interference)**
+**Step 2: Vector Flow (Interference)**  
 The objects are added together in standard integer space $\mathbb{Z}^{24}$. This preserves the "history" and magnitude of both parents:
+
 $$ \mathbf{f} = \psi(\mathbf{v}_a) + \psi(\mathbf{v}_b) $$
 
-**Step 3: Phenomenal Collapse**
+**Step 3: Phenomenal Collapse**  
 The universe forces the continuous flow back into a binary state based on the "pressure" (sign) of the coordinates:
+
 $$ r_i = \begin{cases} 0 & \text{if } f_i > 0 \\ 1 & \text{if } f_i < 0 \\ 0 & \text{if } f_i = 0 \text{ (Deep Hole)} \end{cases} $$
 
-**Step 4: The Lattice Snap (Error Correction)**
+**Step 4: The Lattice Snap (Error Correction)**  
 The collapsed vector $\mathbf{r}$ is usually noisy. The universe applies Golay Error Correction to "snap" it to the nearest stable Truth:
-$$ \mathbf{s} = \operatorname{Decode}_{\mathcal{C}_{24}}(\mathbf{r}) $$
 
-**Step 5: The Gap (Emergence of Mass/Reality)**
+```
+$$ \mathbf{s} = \operatorname{Decode}_{\mathcal{C}_{24}}(\mathbf{r}) $$
+```
+
+**Step 5: The Gap (Emergence of Mass/Reality)**  
 The distance between the raw collapse $\mathbf{r}$ and the snapped truth $\mathbf{s}$ is the **Gap** ($\Delta$). 
+
 $$ \Delta = d_H(\mathbf{r}, \mathbf{s}) $$
+
 *   If $\Delta = 0$: The object is pure math (Noumenal).
 *   If $\Delta > 0$: The object requires energy to exist (Phenomenal Matter).
 
-**Step 6: Binding Tension & Stability (NRCI)**
+**Step 6: Binding Tension & Stability (NRCI)**  
 The energy required to hold this new object together is the **Symmetry Tax** ($T$), which dictates its **Stability** ($\eta$):
+
 $$ \Xi = \Delta \cdot Y \quad \text{(Binding Energy)} $$
+
 $$ T(\mathbf{s}) = (Y \cdot w_H(\mathbf{s})) + \frac{||\psi(\mathbf{s})||^2}{8} $$
+
 $$ \eta(\mathbf{s}) = \frac{1}{1 + T(\mathbf{s})/10} $$
 
 #### 4. The Proof: Emergent Constants
 Because this math is geometrically absolute, we can read physical constants directly from the substrate without inputting any physical data. 
 
 For example, the **Muon-to-Electron mass ratio** emerges purely from the Observer Constant ($Y$) interacting with the 4th-order Leech Lattice shell:
+
 $$ \frac{m_\mu}{m_e} \approx Y^{-4} + 3 - Y^4 \approx 206.767552 $$
+
 *(Experimental value: 206.768283. Error: 0.000353%)*
 
 
