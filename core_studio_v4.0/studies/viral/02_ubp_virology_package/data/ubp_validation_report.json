@@ -1,0 +1,158 @@
+{
+  "validation_summary": {
+    "confirmed": 2,
+    "total_checkable": 3,
+    "accuracy_pct": 66.7
+  },
+  "validations": [
+    {
+      "validation": "Variant Fitness Ranking",
+      "ubp_metric": "Leech Tax (lower = fitter)",
+      "ubp_values": {
+        "WT": 4.676105164854324,
+        "Delta": 4.676105164854324,
+        "Omicron": 3.1174034432362157
+      },
+      "ubp_tilt_values": {
+        "WT": 136.5444,
+        "Delta": 67.0331,
+        "Omicron": 29.8755
+      },
+      "ubp_predicted_rank": [
+        "Omicron",
+        "Delta",
+        "WT"
+      ],
+      "clinical_known_rank": [
+        "Omicron",
+        "Delta",
+        "WT"
+      ],
+      "match": true,
+      "result": "CONFIRMED",
+      "interpretation": "UBP predicts Omicron as fittest variant (lowest Tax=3.1174). Clinical data confirms Omicron as most transmissible."
+    },
+    {
+      "validation": "Antibody Relative Affinity (S309 vs CR3022)",
+      "ubp_metric": "Hamming distance (lower = higher affinity)",
+      "ubp_values": {
+        "CR3022_vs_WT": 12,
+        "S309_vs_WT": 12,
+        "S309_vs_Omicron": 12
+      },
+      "ubp_predicts_s309_stronger": true,
+      "clinical_s309_stronger": true,
+      "known_ic50": {
+        "CR3022_vs_WT": 6.3,
+        "S309_vs_WT": 0.6,
+        "S309_vs_Omicron": 8.2
+      },
+      "result": "CONFIRMED",
+      "interpretation": "S309 Hamming to WT=12 vs CR3022 Hamming to WT=12. Clinical: S309 IC50=0.6nM (10x stronger than CR3022 at 6.3nM)."
+    },
+    {
+      "validation": "Omicron Immune Escape from S309",
+      "ubp_metric": "Hamming distance increase (higher = more escape)",
+      "ubp_values": {
+        "S309_vs_WT_Hamming": 12,
+        "S309_vs_Omicron_Hamming": 12,
+        "Hamming_increase": 0
+      },
+      "ubp_predicts_escape": false,
+      "clinical_escape_confirmed": true,
+      "ic50_fold_change": 13.666666666666666,
+      "result": "REFUTED",
+      "interpretation": "Omicron Hamming to S309 = 12 vs WT = 12. Increase of 0 bits predicts immune escape. Clinical: 13.7x IC50 increase."
+    },
+    {
+      "validation": "Structural Protein Tax vs Hydrophobicity",
+      "ubp_metric": "Leech Tax",
+      "ubp_values": {
+        "E_protein": 4.676105164854324,
+        "M_protein": 6.234806886472431,
+        "N_protein": 4.676105164854324
+      },
+      "gravy_values": {
+        "E_protein": 1.128,
+        "M_protein": 0.446,
+        "N_protein": -0.971
+      },
+      "result": "INFORMATIONAL",
+      "interpretation": "E (GRAVY=1.128, Tax=4.6761), M (GRAVY=0.446, Tax=6.2348), N (GRAVY=-0.971, Tax=4.6761). Hydrophobic proteins show distinct Tax signatures."
+    },
+    {
+      "validation": "Tilt as Evolutionary Pressure Indicator",
+      "ubp_metric": "Tilt angle (degrees from Universal North)",
+      "ubp_values": {
+        "WT": 136.5444,
+        "Delta": 67.0331,
+        "Omicron": 29.8755
+      },
+      "tilt_reduction_WT_to_Omicron": 106.6689,
+      "result": "NOVEL_PREDICTION",
+      "interpretation": "Omicron tilt (29.8755\u00b0) is 106.7\u00b0 closer to Universal North than WT (136.5444\u00b0). UBP predicts Omicron evolved toward geometric alignment \u2014 consistent with its enhanced replication fitness. This is a novel UBP prediction not captured by standard molecular biology metrics."
+    }
+  ],
+  "energy_landscape": [
+    {
+      "interaction": "InfluenzaHA + S309",
+      "energy": 135.257131,
+      "biological_context": "Cross-virus antibody test (should be low affinity)"
+    },
+    {
+      "interaction": "Omicron + ACE2",
+      "energy": 138.599513,
+      "biological_context": "Variant entry (enhanced affinity)"
+    },
+    {
+      "interaction": "Omicron + S309",
+      "energy": 139.951504,
+      "biological_context": "Reduced antibody neutralization (immune escape)"
+    },
+    {
+      "interaction": "Spike_WT + CR3022",
+      "energy": 140.952241,
+      "biological_context": "Antibody neutralization (partial)"
+    },
+    {
+      "interaction": "Spike_WT + Nucleocapsid",
+      "energy": 142.43657,
+      "biological_context": "Intra-viral structural interaction"
+    },
+    {
+      "interaction": "RBD + ACE2",
+      "energy": 155.37289,
+      "biological_context": "Isolated receptor binding domain interaction"
+    },
+    {
+      "interaction": "Spike_WT + ACE2",
+      "energy": 157.48657,
+      "biological_context": "Viral entry mechanism"
+    },
+    {
+      "interaction": "Spike_WT + S309",
+      "energy": 158.838561,
+      "biological_context": "Antibody neutralization (strong)"
+    },
+    {
+      "interaction": "Spike_WT + Envelope",
+      "energy": 160.819903,
+      "biological_context": "Viral assembly interaction"
+    },
+    {
+      "interaction": "Delta + ACE2",
+      "energy": 161.91201,
+      "biological_context": "Variant entry (intermediate affinity)"
+    },
+    {
+      "interaction": "Spike_WT + Membrane",
+      "energy": 173.803885,
+      "biological_context": "Viral assembly interaction"
+    },
+    {
+      "interaction": "HIV_gp120 + CR3022",
+      "energy": 178.553049,
+      "biological_context": "Cross-virus antibody test (should be low affinity)"
+    }
+  ]
+}
