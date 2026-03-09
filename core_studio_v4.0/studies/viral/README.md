@@ -4,6 +4,7 @@
 **Computational Research:** Manus AI  
 **Contact:** info@digitaleuan.com  
 **Interactive Tool:** [UBP Geometric Virology Tool v4.0](https://digitaleuan.com/ubp_viral/UBP_Geometric_Virology_Tool.html)  
+**Full UBP system in Google AI Studio:** [https://aistudio.google.com/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
 **UBP App:** [UBP System of Everything](https://ubp-system-of-eveything.lovable.app/)
 
 ---
