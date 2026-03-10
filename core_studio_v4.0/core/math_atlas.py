@@ -161,6 +161,46 @@ class MathObjectV4:
             }
         }
 
+    def calculate_compactness(self) -> Fraction:
+        """
+        Calculates the 3D efficiency of the voxel cloud.
+        """
+        voxels = self.get_canonical_path().voxels
+        if not voxels: return Fraction(0)
+    
+        volume = len(voxels)
+        coords = set((v[0], v[1], v[2]) for v in voxels)
+    
+        # Calculate Surface Area (Exposed Faces)
+        surface = 0
+        for x, y, z in coords:
+            # Check all 6 directions for empty space
+            neighbors = [(x+1,y,z), (x-1,y,z), (x,y+1,z), (x,y-1,z), (x,y,z+1), (x,y,z-1)]
+            for n in neighbors:
+                if n not in coords:
+                    surface += 1
+    
+        if surface == 0: return Fraction(1)
+    
+        # C = Volume^(2/3) / Surface
+        # We use a rational approximation for the 2/3 power
+        vol_2_3 = Fraction(int(math.pow(volume, 2/3) * 1000), 1000)
+        return vol_2_3 / surface
+
+    def get_nrci(self) -> Fraction:
+        """
+        v6.0 Unified Stability Formula.
+        """
+        cp = self.get_canonical_path()
+        c_factor = self.calculate_compactness()
+    
+        # Get the vector and calculate the REBATED tax
+        vec = self.get_vector()
+        final_tax = LEECH_ENGINE.calculate_symmetry_tax(vec, compactness=c_factor)
+    
+        # Hyperbolic Stability: 10 / (10 + Tax)
+        return Fraction(10, 1) / (Fraction(10, 1) + final_tax)
+
 # --- CONSTRUCTORS ---
 
 def PositiveInteger(n: int) -> MathObjectV4:
