@@ -858,7 +858,7 @@ print("[UBP Core v5.7 Pure Geometry] Initialization...")
 GOLAY_ENGINE = GolayCodeEngine()
 LEECH_ENGINE = LeechLatticeEngine()
 # Note: PARTICLE_PHYSICS now runs the 137-step audit on creation
-PARTICLE_PHYSICS = UBPOptimizedParticlePhysics(precision=50)
+PARTICLE_PHYSICS = UBPSourceCodeParticlePhysics(precision=50)
 SUBSTRATE = UBPUltimateSubstrate()
 
 print("[UBP Core v5.7 Pure Geometry] Initialization complete")
