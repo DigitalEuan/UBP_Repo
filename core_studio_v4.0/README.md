@@ -129,6 +129,12 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ## Updates
 
+### 13 March 2026 — TGIC v6.4 Genesis Upgrade
+> *   **3-6-9 Hardening:** Integrated the fundamental 3-6-9 Genesis laws into the `TGICExactEngine`, enforcing Axis Orthogonality and Neighborhood Limits.
+> *   **RuneCube Port:** Successfully ported legacy Lisp-based face operations into float-free Python transforms, enabling high-stability "RuneCore" simulations.
+> *   **Identity Protection:** Implemented mandatory Golay snaps for all internal bit-flows, preventing informational dissolution (Deep Hole drift) during complex relational simulations.
+> *   **Stability Sink:** Verified the 4.6761 Symmetry Tax as the primary stability attractor for hardened 24-bit manifolds.
+
 ### 10 March 2026 — v6.0 Source Code Edition (13D Sink Protocol)
 *   **Core Hardening (`ubp_core_v5_3_merged.py`):** Integrated the **13D Sink Protocol** ($L = w/13$) as the universal "Garbage Collection" routine. This update replaces independent geometric lenses with a unified source-code resolution, reducing the **Global System Error to 0.015%** across the Standard Model (Higgs, Alpha, Muon, Proton, Top Quark).
 *   **Topology-Aware Stability (`math_atlas.py`):** Implemented the **Volumetric Rebate** (Symmetry Discount). The system now distinguishes between "Address Cost" (Lattice) and "Structural Cost" (Voxel). Compact 3D manifolds now receive a metabolic discount, allowing well-folded logic to cross the **0.6000 Coherence Cliff** and achieve "Stable Matter" status.
