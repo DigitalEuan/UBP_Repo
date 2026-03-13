@@ -506,9 +506,7 @@ The real-time interface between the user and the system's memory. Automatically 
 
 Sits above the Brain and provides a comprehensive analysis suite: NRCI landscape surveys, hierarchy audits, primitive build-up analysis, cross-domain mapping, vector collision maps, and LLM-style chat.
 
-**`ubp_tgic_engine.py`** — *The Relational Gravity Engine*
-
-The TGIC (Triad-Graph Interaction) implementation. Calculates Relational Pull (Gravity) between nodes based on Hamming distance, allowing for dynamic system simulation. Integrates 9 internal interactions and Cross-Node Relational Gravity, with energy auditing via Leech Tax and Coherence Penalty ($d^4$).
+**`ubp_tgic_engine.py` (v6.4 - Genesis Edition):** The definitive TGIC implementation. Upgraded to include the **3-6-9 Genesis Logic** (Axis Orthogonality, Face Coherence, and Neighborhood Limits). Integrated the **RuneCube Face Module**, allowing for deterministic `AND/XOR/OR` operations across the X, Y, and Z axes. Every internal bit-flow is now protected by a mandatory Lattice Snap, ensuring the simulation remains within the Golay correction radius. Node energy is now "Identity-Aware," calculating the restorative pressure required to maintain structural integrity.
 
 ### 6.3 Phenomenology Layer
 
