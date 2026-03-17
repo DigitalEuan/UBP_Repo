@@ -480,6 +480,25 @@ class LeechLatticeEngine:
             "precision": "100% Fraction (Float-Free)"
         }
 
+    def expand_octad_to_physical(self, octad_vector: List[int]) -> List[List[int]]:
+        """
+        Lifts a binary Golay Octad (weight 8) into 128 Leech Lattice coordinates.
+        Rule: Active bits become +/- 2. The number of minus signs must be even.
+        Resulting Squared Norm is always 32.
+        """
+        import itertools
+        active_indices = [i for i, bit in enumerate(octad_vector) if bit == 1]
+        physical_addresses = []
+        
+        for signs in itertools.product([2, -2], repeat=8):
+            if sum(1 for s in signs if s == -2) % 2 == 0:
+                address = [0] * 24
+                for idx, sign in zip(active_indices, signs):
+                    address[idx] = sign
+                physical_addresses.append(address)
+                
+        return physical_addresses
+
 
 # ==============================================================================
 # SECTION 7: CONSTRUCTION SYSTEM (v5.2)
@@ -930,6 +949,19 @@ def main():
     print(f"13D SINK LEAKAGE:  {meta['leakage_L']:.10f}")
     print(f"SINK STATUS:       {meta['status']}")
     print("-" * 80)
+
+    # 3.5 Test Leech Lattice Expansion (Octad Shell)
+    print("\n" + "="*80)
+    print("LEECH LATTICE EXPANSION TEST (OCTAD SHELL)")
+    print("="*80)
+    sample_octad = GOLAY_ENGINE.get_octads()[0]
+    expanded_points = LEECH_ENGINE.expand_octad_to_physical(sample_octad)
+    norm_sq = sum(x**2 for x in expanded_points[0])
+    
+    print(f"Binary Seed: {sample_octad}")
+    print(f"Generated {len(expanded_points)} physical addresses.")
+    print(f"Sample Address: {expanded_points[1]}")
+    print(f"Squared Norm: {norm_sq} (Target: 32) -> {'STABLE' if norm_sq == 32 else 'ERROR'}")
 
     # 4. Final System Report
     print(f"\nGLOBAL SYSTEM ERROR: {predictions['global_error']:.6f}%")
