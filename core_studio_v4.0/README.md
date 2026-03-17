@@ -129,6 +129,10 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ## Updates
 
+### 17 March 2026 - Geometric refinement
+> *   **ubp_core_v5_3_merged.py:** Formalized the Fold Operator: integrated the `fold24_to3` pairwise XOR logic directly into the `BinaryLinearAlgebra` class as the canonical folding mechanism.
+> *   **ubp_py_runtime.py:** Replaced the `spiral` method to use Shift + Phi XOR
+
 ### 13 March 2026 — TGIC v6.4 Genesis Upgrade
 > *   **3-6-9 Hardening:** Integrated the fundamental 3-6-9 Genesis laws into the `TGICExactEngine`, enforcing Axis Orthogonality and Neighborhood Limits.
 > *   **RuneCube Port:** Successfully ported legacy Lisp-based face operations into float-free Python transforms, enabling high-stability "RuneCore" simulations.
