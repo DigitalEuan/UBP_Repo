@@ -130,6 +130,19 @@ class BinaryLinearAlgebra:
             raise ValueError("Vectors must have same length")
         return sum(1 for i in range(len(v1)) if v1[i] != v2[i])
 
+    @staticmethod
+    def fold24_to3(vec: List[int]) -> List[int]:
+        """
+        [LAW_GEO_FOLD_001] Folds a 24-bit vector down to 3 bits 
+        via recursive pairwise XOR. Reveals the core tension of the manifold.
+        """
+        if len(vec) != 24:
+            raise ValueError("Vector must be 24 bits")
+        v = list(vec)
+        for n in (12, 6, 3):
+            v = [v[2*i] ^ v[2*i+1] for i in range(n)]
+        return v
+
 
 # ==============================================================================
 # SECTION 3: GOLAY CODE ENGINE [24,12,8] - COMPLETE IMPLEMENTATION

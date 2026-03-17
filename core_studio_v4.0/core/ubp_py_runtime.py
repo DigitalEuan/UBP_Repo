@@ -128,15 +128,22 @@ class UBPPyVM:
     def spiral(self, label, iterations, transform_name, label_prefix):
         if label not in self.env: return
         current = self.env[label]
+        
+        # MATH_CONST_PHI_001 Vector (The Growth Primitive)
+        PHI_VEC = [1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1]
+        
         for i in range(1, iterations + 1):
             new_label = f"{label_prefix}_{i}"
             new_val = current.value + Fraction(1, 1)
-            new_vec = [(b ^ 1) if idx % 2 == 0 else b for idx, b in enumerate(current.vector)]
+            
+            # V5.8 SPIRAL DYNAMICS: 1-Bit Shift + Phi XOR
+            shifted = current.vector[-1:] + current.vector[:-1]
+            new_vec = [(b ^ p) for b, p in zip(shifted, PHI_VEC)]
+            
             decoded, _, _ = GOLAY_ENGINE.decode(new_vec)
             snapped = GOLAY_ENGINE.encode(decoded)
 
             math_dna = f"Spiral={new_label}|Parent={label}"
-            # FIXED: Pass both math_dna and snapped vector
             tax, nrci = KBArchitect.calculate_metrics(math_dna, snapped)
 
             self.env[new_label] = CortexAtom(
@@ -145,7 +152,7 @@ class UBPPyVM:
                 tier=current.tier + i, category="SPIRAL", hierarchy=f"SPIRAL({label})"
             )
             current = self.env[new_label]
-        self.log(f"SPIRAL complete: {iterations} iterations.")
+        self.log(f"SPIRAL complete: {iterations} iterations (Phi-Shift Dynamics).")
 
     def reflex(self, threshold):
         to_remove = []
