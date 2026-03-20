@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>UBP Geometry Investigatory Study</title>
+  <style>
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 980px; margin: 40px auto; line-height:1.45; color:#111;}
+    h1,h2,h3{line-height:1.2}
+    code,pre{background:#f6f8fa; padding:2px 6px; border-radius:6px}
+    pre{padding:12px; overflow:auto}
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    img{max-width:100%; border:1px solid #e5e7eb; border-radius:10px; padding:6px; background:white;}
+    .note{background:#fff7ed; border:1px solid #fed7aa; padding:12px; border-radius:10px;}
+    a{color:#0b63ce; text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+<h1>UBP Geometry Investigatory Study</h1>
+<p><b>System used:</b> UBP Core Studio v4.0 (UBP Core v5.7) from <a href="https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0">DigitalEuan/UBP_Repo</a>.</p>
+
+<div class="note">
+<p><b>Highlights (deep-tested):</b></p>
+<ul>
+  <li><b>Octad triad-closure graph</b> is perfectly regular: 759 nodes, each degree 280; adjacent pairs share 140 common neighbors.</li>
+  <li><b>3-fold folding (XOR fold)</b> compresses all 4096 Golay codewords into exactly 4 fold-states (000/011/101/110) with perfect balance.</li>
+  <li><b>UBP-Py spiral operator</b> is an involution: the entire codebook decomposes into 2048 two-cycles (no fixed points).</li>
+</ul>
+</div>
+
+<h2>Figures</h2>
+<div class="grid">
+  <figure>
+    <img src="../figures/weight_distribution.png" alt="weight distribution"/>
+    <figcaption>Golay codeword weight distribution</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/fold3_weight_by_weight.png" alt="fold3"/>
+    <figcaption>Fold-3 core-tension counts</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/octad_degree_hist.png" alt="octad degree"/>
+    <figcaption>Octad triad-closure degree distribution (uniform)</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/octad_triads_subgraph.png" alt="octad subgraph"/>
+    <figcaption>Top-degree octad subgraph (spring layout)</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/spiral_period_hist.png" alt="spiral periods"/>
+    <figcaption>Spiral-cycle periods (all observed = 2)</figcaption>
+  </figure>
+</div>
+
+<p>For the full narrative and artifact list, read <code>findings.md</code> in the same folder.</p>
+
+</body>
+</html>
