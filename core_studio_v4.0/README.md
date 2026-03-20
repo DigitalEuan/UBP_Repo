@@ -129,6 +129,40 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ## Updates
 
+### 20 March 2026
+*   **My Oo NCC integration**
+I have updated the ubp_core_v5_3_merged.py again to further refine the particle predictions system, incorporating My Oo's NCC into a "Hybrid Stereoscopic Edition" reducing Global Error rate to 0.09439% from 0.09461%.
+```
+=====================================================================================
+PARTICLE / CONSTANT    | PREDICTED      | TARGET       | ERR %
+-------------------------------------------------------------------------------------
+Alpha Inv              | 137.0629       | 137.0360     | * 0.0196%
+Proton/e- Ratio        | 1836.1520      | 1836.1527    | ⭐ 0.0000%
+Muon/e- Ratio          | 206.7547       | 206.7683     | * 0.0066%
+Electron (e-)          | 0.5055         | 0.5110       | 1.0773%
+Muon (mu-)             | 105.6514       | 105.6580     | * 0.0062%
+Tau (tau-)             | 1777.2609      | 1776.8600    | * 0.0226%
+Proton (p+)            | 938.2717       | 938.2720     | ⭐ 0.0000%
+Neutron (n0)           | 939.5716       | 939.5650     | ⭐ 0.0007%
+Delta++ (D++)          | 1229.4356      | 1232.0000    | 0.2081%
+Higgs Boson            | 125285.4022    | 125250.0000  | * 0.0283%
+Top Quark              | 172796.8868    | 172760.0000  | * 0.0214%
+Xi_bc+ (bcu)           | 6951.6818      | 6943.0000    | 0.1250%
+Xi_bb (bbu)            | 10143.1089     | 10143.0000   | * 0.0011%
+Omega_bbb (bbb)        | 14375.7406     | 14371.0000   | * 0.0330%
+Xicc++ (ccu)           | 3621.5500      | 3621.5500    | ⭐ 0.0000%
+Xicc+ (ccd)            | 3621.9200      | 3621.9200    | ⭐ 0.0000%
+Omcc+ (ccs)            | 3773.2765      | 3773.2800    | ⭐ 0.0001%
+Omccc++ (ccc)          | 4760.5750      | 4760.5700    | ⭐ 0.0001%
+Lc+ (udc)              | 2290.6744      | 2286.4600    | 0.1843%
+Xic+ (usc)             | 2472.7462      | 2467.7100    | 0.2041%
+Omc0 (ssc)             | 2696.3783      | 2695.2000    | * 0.0437%
+-------------------------------------------------------------------------------------
+STEREOSCOPIC GAIN (σ): 29/24 (Spectral 29 / Spatial 24)
+BARYONIC SINK (L_s):   0.0759930339
+GLOBAL SYSTEM ERROR:   0.09439%
+```
+
 ### 18-19 March 2026
 *   **Updated Particle Physics** refinements to the method of calculating Particles resulted in a small update to the the ubp_core_v5_3_merged.py where now on startup the script provides a full table of the Particle Family - spaning from the lightest particle (Electron at 0.511 MeV) to the heaviest theoretical baryon ($\Omega_{bbb}$ at 14,371 MeV) using a single, unified geometric framework.
 *   **No Magic Numbers:** Every mass is derived from the interaction of the substrate constants ($Y, L, \pi, \phi, e$) and the geometric properties of the Leech Lattice (Dimensions, Octads, Shells).
