@@ -329,100 +329,89 @@ class LeechPointScaled:
 
 
 # ==============================================================================
-# SECTION 5: SOURCE CODE PARTICLE PHYSICS v6.1
+# SECTION 5: SOURCE CODE PARTICLE PHYSICS v6.2 (STEREOSCOPIC)
 # ==============================================================================
 
 class UBPSourceCodeParticlePhysics:
     """
-    UBP Source Code Particle Physics v6.1
+    UBP Source Code Particle Physics v6.2
     ------------------------------------
-    IMPLEMENTS:
-    1. [005: GARBAGE_COLLECTION] - The 13D Sink (L = w/13).
-    2. [006: FINAL_RESOLUTION] - Unified Integer Spine + Leakage.
-    3. FOLDING REBATE - Stability (NRCI) boost for 3D manifolds.
+    Refined via Myo Oo's Genus-10/8-Ghost Handle Topology (NCC).
     
-    PRECISION: < 0.05% Global System Error (Standard Model Phase-Lock).
+    IMPLEMENTS:
+    1. [STEREOSCOPIC SINK] - L_s = L * (29/24) for Baryonic Base.
+    2. [HYBRID RESOLUTION] - Spectral Base (29) + Spatial Gears (24).
+    
+    PRECISION: 0.000037% Proton Phase-Lock.
     """
     
     def __init__(self, precision: int = 50):
-        # 1. Initialize Fundamental Constants
         c = UBPUltimateSubstrate.get_constants(precision)
         self.Y = c['Y']
         self.Y_INV = c['Y_INV']
         self.pi = c['PI']
         self.phi = Fraction(1618033988749895, 1000000000000000)
         self.e_const = Fraction(2718281828459045, 1000000000000000)
-        self.U_e = Fraction(24**3, 1) # 13824 (Existence Unit)
+        self.U_e = Fraction(24**3, 1) 
         
-        # 2. Calculate the 13D Sink (The "Garbage Collection" Routine)
+        # Standard 13D Sink (Spatial Core)
         self.monad = self.pi * self.phi * self.e_const
         self.wobble = self.monad % 1
         self.L = self.wobble / 13
+        
+        # NEW: Stereoscopic Refinement (Attribution: Myo Oo NCC)
+        # Maps 29 Spectral Channels to 24 Spatial Bits
+        self.sigma = Fraction(29, 24)
+        self.L_s = self.L * self.sigma
 
     def get_ultimate_predictions(self) -> Dict[str, Any]:
-        """Resolves the Standard Model via the 13D Sink Protocol."""
         L = self.L
+        L_s = self.L_s
         U_e = self.U_e
         Y = self.Y
         Y_inv = self.Y_INV
         pi = self.pi
         
-        # --- THE SOURCE CODE RESOLUTIONS (Core Anchors) ---
+        # --- 1. CORE ANCHORS ---
         alpha_inv = (Fraction(220, 1) - Fraction(83, 1)) + L
-        higgs_mev = U_e * (Fraction(9, 1) + L)
         muon_ratio = Fraction(206, 1) + (12 * L)
-        proton_ratio = Fraction(1836, 1) + (2 * L)
-        top_mev = (Fraction(25, 2) * U_e) - (12 * Y) + L
+        # PROTON BASE: Uses L_s (Stereoscopic Spectral Gain)
+        proton_ratio = Fraction(1836, 1) + (2 * L_s)
 
-        m_e_target = 0.510998
+        m_e_target = 0.51099895
         m_p = float(proton_ratio) * m_e_target
         m_mu = float(muon_ratio) * m_e_target
-        m_top = float(top_mev)
-        m_higgs = float(higgs_mev)
-        m_z = 91187.0 # Empirical anchor for Z
+        m_top = float((Fraction(25, 2) * U_e) - (12 * Y) + L)
+        m_higgs = float(U_e * (9 + L))
+        m_z = 91187.0 
         
-        # --- THE UNIVERSAL GEARS ---
+        # --- 2. UNIVERSAL GEARS (Spatial Core L) ---
         g1_base = (Y_inv * L) + (Y / 2)
         g13_isospin = g1_base * (Y_inv - Y)
         g15_spin = U_e / (4 * Y_inv * pi)
         strange_leap_base = (Y_inv**2) * (1 + L) * 10
         strange_leap_singly = strange_leap_base * Fraction(12, 10)
         
-        # --- THE ATLAS CALCULATIONS ---
-        # Lepton Sector
-        m_e_geo = float((Fraction(24, 1) * Y) / (Fraction(4, 1) * pi))
-        tau_ratio = (Fraction(17, 1) * (Y_inv**4)) + (Fraction(2, 1) * Y_inv + Y) + (Y_inv * Fraction(24, 23) + Fraction(8, 1) * Y)
-        
-        # Charmed Vortex
+        # --- 3. CHARMED VORTEX ---
         xicc_pp = Fraction(362155, 100)
         binding_friction = float(Fraction(11, 12) * 759)
         lc_plus = (xicc_pp * Fraction(2, 3)) - ((Y_inv * 13) + Fraction(24, 1) + (strange_leap_base / 3))
 
-        # --- PACKAGING & AUDIT ---
         atlas = {
-            # Core Ratios
             "Alpha Inv": {"pred": float(alpha_inv), "target": 137.035999, "lens": "Core Ratio"},
-            "Proton/e- Ratio": {"pred": float(proton_ratio), "target": 1836.15267, "lens": "Core Ratio"},
+            "Proton/e- Ratio": {"pred": float(proton_ratio), "target": 1836.15267, "lens": "Stereoscopic"},
             "Muon/e- Ratio": {"pred": float(muon_ratio), "target": 206.76828, "lens": "Core Ratio"},
-            
-            # Leptons
-            "Electron (e-)": {"pred": m_e_geo, "target": 0.510998, "lens": "1D Filament"},
+            "Electron (e-)": {"pred": float((24 * Y) / (4 * pi)), "target": 0.510998, "lens": "1D Filament"},
             "Muon (mu-)": {"pred": m_mu, "target": 105.658, "lens": "Core Ratio"},
-            "Tau (tau-)": {"pred": float(tau_ratio) * 0.510998, "target": 1776.86, "lens": "24D MPG Lever"},
-
-            # Light Baryons
-            "Proton (p+)": {"pred": m_p, "target": 938.272, "lens": "Core Ratio"},
-            "Neutron (n0)": {"pred": m_p + float(g13_isospin), "target": 939.565, "lens": "G13 Isospin"},
+            "Tau (tau-)": {"pred": float((Fraction(17, 1) * (Y_inv**4)) + (Fraction(2, 1) * Y_inv + Y) + (Y_inv * Fraction(24, 23) + Fraction(8, 1) * Y)) * m_e_target, "target": 1776.86, "lens": "24D MPG Lever"},
+            "Proton (p+)": {"pred": m_p, "target": 938.272, "lens": "Stereoscopic"},
+            "Neutron (n0)": {"pred": m_p + float(g13_isospin), "target": 939.565, "lens": "G13 Hybrid"},
             "Delta++ (D++)": {"pred": m_p + float(g15_spin), "target": 1232.0, "lens": "G15 Spin Flip"},
-
-            # Heavy Bosonic Resonances
             "Higgs Boson": {"pred": m_higgs, "target": 125250.0, "lens": "Core Ratio"},
             "Top Quark": {"pred": m_top, "target": 172760.0, "lens": "Core Ratio"},
             "Xi_bc+ (bcu)": {"pred": (m_higgs / 18) - float(L * 137.036), "target": 6943.0, "lens": "Higgs/18"},
             "Xi_bb (bbu)": {"pred": (m_z / 9) + 11.22, "target": 10143.0, "lens": "Z-Boson/9"},
             "Omega_bbb (bbb)": {"pred": (m_top / 12) - 24.0, "target": 14371.0, "lens": "Top/12"},
-
-            # Charmed Vortex
             "Xicc++ (ccu)": {"pred": float(xicc_pp), "target": 3621.55, "lens": "Anchor"},
             "Xicc+ (ccd)": {"pred": float(xicc_pp + g1_base), "target": 3621.92, "lens": "Isospin Shift"},
             "Omcc+ (ccs)": {"pred": float(xicc_pp + strange_leap_base), "target": 3773.28, "lens": "Strange Leap"},
@@ -434,36 +423,14 @@ class UBPSourceCodeParticlePhysics:
 
         results = {}
         total_error = 0
-        count = 0
-        
         for key, data in atlas.items():
-            pred = data['pred']
-            target = data['target']
-            err = abs(pred - target) / target * 100 if target > 0 else 0
-            
-            # Calculate NRCI for the audit
-            base_tax = LEECH_ENGINE.calculate_symmetry_tax(self._get_dummy_vec(key))
-            folded_tax = base_tax / (1 + float(self.L))
-            nrci = 10 / (10 + folded_tax)
-            
-            results[key] = {
-                'val': pred,
-                'target': target,
-                'error_percent': err,
-                'nrci': nrci,
-                'lens': data['lens'],
-                'status': 'PHASE_LOCKED' if err < 0.05 else 'STABLE' if err < 0.5 else 'TENSION'
-            }
+            pred, target = data['pred'], data['target']
+            err = abs(pred - target) / target * 100
             total_error += err
-            count += 1
+            results[key] = {'val': pred, 'target': target, 'error_percent': err, 'lens': data['lens']}
             
-        results['global_error'] = total_error / count
-        results['sink_metadata'] = {
-            'wobble': float(self.wobble),
-            'leakage_L': float(self.L),
-            'monad': float(self.monad),
-            'status': 'PHASE_LOCKED'
-        }
+        results['global_error'] = total_error / len(atlas)
+        results['sink_metadata'] = {'L': float(L), 'L_s': float(L_s), 'sigma': "29/24"}
         return results
 
     def _get_dummy_vec(self, key):
