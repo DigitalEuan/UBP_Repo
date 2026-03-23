@@ -39221,5 +39221,101 @@
       "SOP_002"
     ],
     "fingerprint": "831baa43df6878a4987bc26ad4295ab6909c9cf1fae75179cb8e7e72679f3a43"
+  },
+  "eac00eb545f0abe5d68487c5074d96fdccff16162f52a0990e873c4115ee944c": {
+    "ubp_id": "LAW_AQUEOUS_AFFINITY_001",
+    "lexicon": "[Law of Aqueous Affinity (Quantized Refraction)], The 256D bulk interacts with 24D seeds via quantized stability steps. These steps follow a Fibonacci-scaled progression: 0.0487 (Field), 0.0817 (Biological), and 0.1305 (Golden). This defines the 'Refractive Index' of matter within the aqueous medium.",
+    "math": "Steps={0.0487, 0.0817, 0.1305}|Ratio_Step3_Step2=1.597|Medium=H2O",
+    "atlas": {
+      "hierarchy": "atomic",
+      "vector": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nrci": "268963262287031682713922912612282478806454405935224445050420/394733312280677371356202973348058501566185069249770893595111",
+      "nrci_score": 0.68138,
+      "tax": "125770049993645688642280060735776022759730663314546448544691/26896326228703168271392291261228247880645440593522444505042",
+      "weight": 12,
+      "tilt": 64.3066
+    },
+    "tags": [
+      "AQUEOUS",
+      "FIBONACCI",
+      "HARDENED",
+      "MACRO_PHYSICS",
+      "REFRACTION",
+      "SOP_002"
+    ],
+    "fingerprint": "eac00eb545f0abe5d68487c5074d96fdccff16162f52a0990e873c4115ee944c"
+  },
+  "545a69b078daba8a9f70494925ed1685f59671457d0e4301214f7da7da01aae6": {
+    "ubp_id": "LAW_PYRITE_ANTIRESONANCE_001",
+    "lexicon": "[Law of Pyrite Anti-Resonance], Identifies Iron Disulfide (Pyrite) as the geometric inverse of Water within the 256D bulk. Its refractive gain of -0.8072 represents the maximum possible inhibition, marking the absolute boundary of aqueous stability.",
+    "math": "Gain_H2O=+0.8072|Gain_FeS2=-0.8072|State=Anti_Resonant",
+    "atlas": {
+      "hierarchy": "atomic",
+      "vector": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "nrci": "268963262287031682713922912612282478806454405935224445050420/394733312280677371356202973348058501566185069249770893595111",
+      "nrci_score": 0.68138,
+      "tax": "125770049993645688642280060735776022759730663314546448544691/26896326228703168271392291261228247880645440593522444505042",
+      "weight": 12,
+      "tilt": 67.0331
+    },
+    "tags": [
+      "ANTI_RESONANCE",
+      "BOUNDARY",
+      "HARDENED",
+      "MINERALOGY",
+      "PYRITE",
+      "SOP_002"
+    ],
+    "fingerprint": "545a69b078daba8a9f70494925ed1685f59671457d0e4301214f7da7da01aae6"
   }
 }
