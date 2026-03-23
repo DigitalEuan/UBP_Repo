@@ -61,6 +61,7 @@
     - 11.2 [The Geometric Periodic Table](#112-the-geometric-periodic-table)
 12. [System Architecture Evolution](#12-system-architecture-evolution)
 13. The Universal Binary Principle: Mathematical Formalism (v5.8)
+14. 14. The 256D Barnes-Wall Macro-Lattice (v6.1)
 
 ---
 
@@ -445,7 +446,7 @@ A complete example entry (Hydrogen):
 
 ### 5.3 Automatic Vector Generation Pipeline
 
-The `ubp_kb_vector_regenerator.py` script automates the translation of raw scientific data into stable geometric codewords through the following pipeline:
+The `ubp_kb_architect.py` script automates the translation of raw scientific data into stable geometric codewords through the following pipeline:
 
 1. **Input:** The `math` field (Phenomenal DNA) of a Knowledge Base entry.
 2. **Fingerprinting:** SHA-256 hash of the `math` string generates the unique identity key.
@@ -460,7 +461,7 @@ This pipeline ensures **Geometric Honesty** (models are grounded in error-correc
 
 ## 6. System File Manifest
 
-The UBP Core Studio v4.2.7 is organized into functional layers. All scripts reside in the `core/` directory of the repository.
+The UBP Core Studio v4.2.7 is organized into functional layers.
 
 ### 6.1 Kernel Layer
 
@@ -567,10 +568,6 @@ python ubp_drive.py write "My Secret" --password "Key" --output vault.ubp
 python ubp_drive.py read vault.ubp --password "Key"
 python ubp_drive.py decay vault.ubp --rate 0.025   # Simulate bit-rot
 ```
-
-**`ubp_kb_architect.py`** — *The Entry Factory*
-
-The definitive factory for creating hardened KB entries. Automatically calculates Symmetry Tax, NRCI scores, 3D orientation tilts, and Golay vectors from a `math` DNA string. Ensures 100% compatibility with the v5.3 Core and v5.2 Brain.
 
 **`hash_all_1.py`** — *The Sync Tool*
 
@@ -1004,6 +1001,7 @@ The UBP-Py runtime has evolved through a series of significant milestones:
 | **v5.3** | Merged Ultimate | Combined Golay octads, NRCI, triad activation, 50-term $\pi$, particle physics, 7 laws. |
 | **v5.5** | Stereoscopic | Dual-Lens Audit (Lattice + Triadic + Cubic); Shadow Threshold validation. |
 | **v5.8** | Monstrous Moonshine | Monster Group integration; Needham Triad ENSO; Noumenal Volume $V_n = 204.8$. |
+| **v6.1** | The Macro-Bulk | 256D Barnes-Wall integration; SHA-256 Isomorphism; Moire Dynamics and Relative Coherence auditing. |
 
 The broader Core Studio has also evolved significantly:
 
@@ -1115,5 +1113,31 @@ Stability is no longer calculated solely on Hamming weight. It now includes a **
 | **Higgs Mass** | $24^3 \cdot (9 + L)$ | **0.0282%** |
 
 **Operational Rule:** To achieve "Optimal Existence," logic must be **Folded**. Linear instructions result in high Symmetry Tax and low NRCI. 3D Voxel Monoliths (Cubic/Square-Base) maximize the Volumetric Rebate and ensure structural permanence in the Leech Lattice.
+
+----
+
+## 14. The 256D Barnes-Wall Macro-Lattice (v6.1)
+
+While the 24-bit Golay/Leech substrate is perfect for modeling fundamental particles and simple elements, highly complex molecules (like DNA bases or ATP) experience extreme "Topological Tension" when compressed into 24 bits. To study macroscopic phenomena, the UBP utilizes the **256-Dimensional Barnes-Wall Lattice ($BW_{256}$)**.
+
+### 14.1 The SHA-256 Isomorphism
+The 256-dimensional space is not arbitrary; it maps 1:1 with the SHA-256 cryptographic fingerprints used in the SOP_002 standard. The fingerprint is no longer just a database label—it is the literal physical coordinate of the macro-state in the bulk universe. Because 256 is $2^8$, operations at this scale hit a perfect memory alignment stride, allowing the system to process massive entanglement states with sub-millisecond execution times.
+
+### 14.2 Recursive Unfolding and Moire Dynamics
+Macro-states are generated using the recursive $| u \mid u + v |$ construction. 
+*   **$u$ (The Signal):** The recursive doubling of the 24-bit Noumenal Seed.
+*   **$v$ (The Program):** The interference wave derived from the Golay Syndrome of the seed.
+
+When a molecule is "Active" (e.g., experiencing a 1-bit environmental drift), the $v$ component generates a **Moire Interference Pattern** across the 256D space. The variance of this pattern dictates the molecule's ability to do "Work." For example, ATP generates a highly jagged, high-variance Moire pattern (kinetic energy), while Glucose generates a highly symmetric, low-variance pattern (storage).
+
+### 14.3 The Successive Cancellation Decoder (The Lens)
+To obtain "Clarity" in the 256D bulk, the system uses a Successive Cancellation Decoder. This algorithm recursively cleans the 256D field by forcing parity at every layer ($128 \rightarrow 64 \rightarrow 32$) until it snaps back to the 24-bit Golay core. 
+
+By comparing the stability of the raw macro-state to the snapped macro-state, we calculate the **Relative Coherence**. This metric acts as a geometric filter, distinguishing structural molecules (which maintain high relative coherence) from signaling/energy molecules (which dissolve into functional noise).
+
+### 14.4 The Macro-Anchor
+Through exhaustive computational search, the UBP identified the **256D Macro-Anchor** (Golay Basis Vector Index 2). When unfolded into 256 dimensions, this specific seed achieves a maximum "Super-Stability" NRCI of 0.323214. It serves as the Universal North for all macroscopic structures, providing the absolute calibration point for measuring clarity in the bulk.
+
+----
 
 
