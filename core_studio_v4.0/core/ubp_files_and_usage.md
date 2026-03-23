@@ -509,6 +509,8 @@ Sits above the Brain and provides a comprehensive analysis suite: NRCI landscape
 
 **`ubp_tgic_engine.py` (v6.4 - Genesis Edition):** The definitive TGIC implementation. Upgraded to include the **3-6-9 Genesis Logic** (Axis Orthogonality, Face Coherence, and Neighborhood Limits). Integrated the **RuneCube Face Module**, allowing for deterministic `AND/XOR/OR` operations across the X, Y, and Z axes. Every internal bit-flow is now protected by a mandatory Lattice Snap, ensuring the simulation remains within the Golay correction radius. Node energy is now "Identity-Aware," calculating the restorative pressure required to maintain structural integrity.
 
+> **`ubp_integrated_engine_v1.py` (v3.2 — Composite Scene Edition):** The master executive layer. It now performs a **Penta-Audit** on every query: Semantic Resolution, 24D Micro-Stability, 256D Ontological Drift, Macro-Coherence, and Visual Tension Mapping. It features "Composite Query Detection," allowing it to bypass confidence thresholds when multiple known entities are detected, routing them into a virtual 3D sandbox for simultaneous observation.
+
 ### 6.3 Phenomenology Layer
 
 The Phenomenology Layer translates information between the real world and the 24-bit substrate.
@@ -684,9 +686,7 @@ vm.synth("H2O", "2xELEM_H_001 + 1xELEM_O_008")
 - **Gap 0:** Pure mathematical truth (Noumenal).
 - **Gap > 0:** Phenomenal Reality — exists under constant Restorative Pressure from the substrate.
 
-### 7.4 Phase 4 — The Visual Feedback Loop (Insight)
-
-**Goal:** Visual-spatial analysis for AI feedback.
+> **The Imagination Sandbox:** The system no longer requires external rendering to "sense" geometry. It can instantiate a "Mental Image" internally, placing 24-bit vectors into a 14x14 retina grid. By projecting these patches into the 256D bulk via SHA-256 isomorphism, the **ViT Eyes** detect "Geometric Frustration," allowing the AI to focus its attention on the most "interesting" (high-tax) parts of a thought.
 
 **Process:**
 
