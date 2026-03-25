@@ -522,6 +522,54 @@ class UBPBrain:
                 query_vector[i] += t['vector'][i]
         query_vector = [v / len(tokens) for v in query_vector]
 
+        # --- NEW: CONTEXTUAL DOMAIN DETECTION ---
+        # Maps keywords to the Octad Domains
+        DOMAIN_MAP = {
+            "SUBSTANCE": ["atom", "element", "molecule", "chem", "reaction", "metal", "gas", "solid"],
+            "QUANTITY": ["math", "calculate", "constant", "number", "ratio", "pi", "phi", "euler"],
+            "MECHANISM": ["physics", "force", "energy", "particle", "quantum", "gravity", "boson"],
+            "ORGANISM": ["bio", "cell", "life", "blood", "protein", "dna", "body", "health"],
+            "ALGORITHM": ["code", "logic", "bit", "byte", "sort", "hash", "process", "data"],
+            "IMPERATIVE": ["law", "rule", "standard", "sop", "axiom", "must", "enforce"]
+        }
+        
+        query_lower = query.lower()
+        detected_domains = [dom for dom, keys in DOMAIN_MAP.items() if any(k in query_lower for k in keys)]
+        # ----------------------------------------
+
+        # 2.5. FULL SCAN SCORING (Updated with Contextual Filter)
+        memory_scores = []
+        for uid, entry in self.kb_manager.kb.items():
+            mem_vec = extract_vector(entry)
+            if mem_vec is None: continue
+
+            # Bipolar dot product similarity
+            qv_bipolar = [(v * 2) - 1 for v in query_vector]
+            mv_bipolar = [(v * 2) - 1 for v in mem_vec]
+            similarity = sum(q * m for q, m in zip(qv_bipolar, mv_bipolar)) / 24.0
+
+            # --- NEW: CONTEXTUAL MULTIPLIER ---
+            # Determine entry domain from ID prefix
+            entry_prefix = uid.split('_')[0]
+            # Map prefix to Octad (Simplified)
+            entry_domain = "SUBSTANCE" if entry_prefix in ["ELEM", "MOLECULE", "CRYSTAL"] else \
+                           "MECHANISM" if entry_prefix in ["PARTICLE", "PHYS", "FORCE"] else \
+                           "IMPERATIVE" if entry_prefix in ["LAW", "AXIOM", "IMPERATIVE"] else "OTHER"
+
+            context_multiplier = 1.0
+            if entry_domain in detected_domains:
+                context_multiplier = 1.5  # Primary Match
+            elif entry_domain == "IMPERATIVE":
+                context_multiplier = 1.1  # Laws are always relevant
+            elif detected_domains: # If we detected a domain but this isn't it
+                context_multiplier = 0.7  # Obscure Resonance (Sandwich protection)
+
+            score = (similarity + 1.0) * context_multiplier
+            memory_scores.append((uid, score))
+
+
+
+
         # 3. FULL SCAN SCORING (Restored Original Logic)
         memory_scores = []
         for uid, entry in self.kb_manager.kb.items():
