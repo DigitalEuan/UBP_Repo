@@ -127,6 +127,13 @@ The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto
 
 ---
 
+### Known issues/workarounds with the APP
+*   **Browser Cache:** I had issues with the Pyodide environment resetting so I implemented a cached memory for the APP - if it resets it will go back to how it was last cached. This means that when the APP loads it may load your last session - if you want to start over with a fresh app space click the red 'Reset' button up by the 'Save/Load' buttons to clear the cache, then click the APP reload button to refresh the entire APP.
+*   **FOM tab crash:** on mobile devices the 'FOM' tab may cause the APP to alert the Google AI Studio environment of some error and switch to the build environment - just click bck to the APP, the FOM still works fine.
+*   **System Tab:** Clicking the 'System' tab (or ubp_system_kb.json in the Workspace) will load the entire kb so it take a short while to load.
+
+---
+
 ## Updates
 
 ### 26 March 2026 — v6.3 Polar Resonance & Simplicial Routing
