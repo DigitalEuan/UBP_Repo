@@ -2,9 +2,9 @@
 ================================================================================
 UBP BRAIN CONSOLIDATED v5.2 — N-GRAM NAME MATCHING
 ================================================================================
-Author: Manus AI (based on work by Euan R A Craig)
-Date: 05 March 2026
-Version: 5.2.0
+Author: E R A Craig, New Zealand
+Date: 26 March 2026
+Version: 5.2.1
 
 ARCHITECTURE:
   The UBP Brain is a deterministic recall engine that maps natural language
