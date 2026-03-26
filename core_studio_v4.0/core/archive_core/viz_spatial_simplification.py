@@ -1,5 +1,5 @@
 import json
-from ubp_core_v5_3_merged import BinaryLinearAlgebra
+from core import BinaryLinearAlgebra
 
 def simplify_manifold():
     # Load the current state (simulated from your JSON or use existing scene_3d.json if available)
