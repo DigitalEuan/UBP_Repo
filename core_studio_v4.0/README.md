@@ -1,142 +1,82 @@
-## Universal Binary Principle (UBP) — Active Memory & Scientific Research Environment
+# Universal Binary Principle (UBP) — Active Research Environment
 
 **Author:** E. R. A. Craig, New Zealand  
-**Version:** 4.2.7 (March 2026 Update)  
-**Date:** 03 March 2026
-**For detailed documentation of files and system usage see: ubp_files_and_usage.md
-
-## ⚠️ Important Note
-**Experimental System:** While this platform achieves high-precision theoretical results, is an experimental research tool. I am an Artist, not a professional physicist. All outputs should be verified against empirical data.
+**Version:** 6.3.0 
+**Date:** 26 March 2026  
+**Documentation:** See `ubp_files_and_usage.md` for operational protocols.
 
 ---
 
 ## Overview
-**UBP Core Studio v4.2.7 APP** is the definitive scientific research platform for exploring the **Universal Binary Principle**. It operates in a deterministic, float-free environment where physical phenomena, semantic logic, and geometric structure are mapped to a unified 24-bit **Golay G24** substrate.
+**UBP Core Studio v6.3** is a high-precision scientific research platform designed to explore the **Universal Binary Principle**. It operates on the hypothesis that physical reality is a deterministic, error-corrected projection of a 24-bit binary substrate. 
 
-**Core Architecture (v5.8 Standard):**
-*   **Substrate:** 24-bit Extended Binary Golay Code (4096 codewords).
-*   **Geometry:** Leech Lattice ($\\Lambda_{24}$) with 196,560 kissing points.
-*   **Logic:** Exact Rational Arithmetic (`fractions.Fraction`) for 100% precision.
-*   **Cognition:** Dual-Layer Brain (Understanding + Beliefs).
 
----
+**This is my experimental system so please double-check results.**
 
-## Scientific Benchmarks (v5.8 Stereoscopic Audit)
 
-The system validates its geometric model by deriving physical constants from the 24-bit substrate using the **Monstrous Moonshine** engine.
+The system utilizes a modular architecture to map physical constants, chemical elements, biological structures, and semantic logic into a unified geometric manifold.
 
-| Constant | Error % | Derivation Source |
-| :--- | :--- | :--- |
-| **Muon/Electron** | **0.000353%** | Lattice Anchor (Phenomenal) |
-| **Alpha Inverse** | **0.001929%** | Lattice Anchor (Phenomenal) |
-| **Proton/Electron** | **0.003432%** | Triadic Genesis ($V_n = 204.8$) |
-| **Top Quark** | **0.021315%** | Lattice Edge Tension |
-| **Neutron/Electron** | **0.088495%** | Monster Group Correction |
-| **Higgs Boson** | **0.106731%** | Triadic Monad |
-
-*Note: These are emergent properties of the Leech Lattice geometry, not curve-fitted values.*
+### Core Pillars (v6.0 Standard)
+*   **Substrate:** 24-bit Extended Binary Golay Code $[24,12,8]$ (4,096 Noumenal Seeds).
+*   **Geometry:** Leech Lattice ($\Lambda_{24}$) with 196,560 Phenomenal Kissing Points.
+*   **Macro-Bulk:** 256-dimensional Barnes-Wall Lattice ($BW_{256}$) for macroscopic entanglement.
+*   **Logic:** 100% Exact Rational Arithmetic (`fractions.Fraction`) to eliminate floating-point drift.
+*   **Physics:** The **13D Sink Protocol** ($L$), deriving particle masses from geometric residuals.
 
 ---
 
-## Cognitive Architecture: The Dual-Layer Brain
+## Scientific Benchmarks (v6.0 Source Code Audit)
 
-The **UBP Brain v4.0** (`ubp_brain_consolidated.py`) divides knowledge into two distinct geometric layers:
+The system derives fundamental constants directly from the interaction of the **Triadic Monad** ($\pi, \phi, e$) and the Leech Lattice. The following results represent the current state of "Phase-Lock" with empirical data:
 
-### 1. The Understanding Layer (Deterministic)
-*   **Content:** Particles, Elements, Molecules, Algorithms.
-*   **Structure:** Built recursively from primitives (e.g., `Water = 2xH + 1xO`).
-*   **Verification:** **SOP_002 Standard**. The Identity (Fingerprint) is the SHA-256 hash of the measurable properties (`math` field).
-*   **Logic:** If the math changes, the ID changes. It is immutable truth.
+| Constant | Predicted | Target | Error % | Lens |
+| :--- | :--- | :--- | :--- | :--- |
+| **Proton/Electron** | **1836.1520** | 1836.1527 | **0.0000%** | Stereoscopic (29/24) |
+| **Proton Mass (p+)** | **938.2717** | 938.2720 | **0.0000%** | Stereoscopic (29/24) |
+| **Muon/Electron** | **206.7547** | 206.7683 | **0.0066%** | Core Ratio |
+| **Alpha Inverse** | **137.0629** | 137.0360 | **0.0196%** | Core Ratio |
+| **Top Quark** | **172796.8** | 172760.0 | **0.0214%** | Core Ratio |
+| **Neutron (n0)** | **939.5716** | 939.5650 | **0.0007%** | G13 Hybrid |
 
-### 2. The Belief Layer (Contextual)
-*   **Content:** Laws, Manifolds, Imperatives (IDs starting with `LAW_`, `BELIEF_`).
-*   **Structure:** Associative networks weighted by the **Frame of Mind (FOM)**.
-*   **Verification:** Validated by **NRCI** (Non-Random Coherence Index) and **TGIC** (Triad-Graph Interaction).
-*   **Logic:** Malleable based on the observer's bias.
-
----
-
-## The SOP_002 Entry Standard
-
-All entries in the System Knowledge Base (`ubp_system_kb.json`) must adhere to the **SOP_002** hardening protocol to ensure geometric integrity.
-
-#### 1. **Entry Schema:**
-
-```
-json
-{
-  "SHA256_HASH_OF_MATH_STRING": {
-    "ubp_id": "CATEGORY_NAME_001",
-    "lexicon": "[Name], [Strict Definition]",
-    "math": "Phenomenal DNA (e.g., Mass=1.007|Charge=+1)",
-    "logic": "Executable verification script",
-    "atlas": {
-      "hierarchy": "Compositional Recipe (e.g., 2xUP + 1xDOWN)",
-      "vector": [24-bit Golay Codeword derived from Math],
-      "nrci": "Rational Stability Score (p/q)",
-      "tax": "Symmetry Tax (p/q)",
-      "tilt": "Geometric Angle to Universal North"
-    },
-    "tags": ["descriptive", "links"]
-  }
-}
-```
-
-#### 2. The Hash Memory Index (`ubp_hash_memory_kb.md`)
-A lightweight index for O(1) lookups by the Auto-Trigger. It maps the first 8 characters of the hash to the full ID.
-
-**Format:**
-
-```json
-{
-    "737cc49b": {
-        "ubp_id": "ELEM_H_001",
-        "full_hash": "737cc49b2d0777f4ddc3f8aad6b478575fd4ea90529e8f069da3b08728eb7376"
-    },
-```
+*Note: These values are emergent properties of the substrate geometry, not curve-fitted parameters.*
 
 ---
 
-## Core Tools & Scripts
+## Cognitive Architecture: The Penta-Audit
 
-### 1. The Cortex Layer
-*   **`ubp_brain_consolidated.py` (v4.0):** The central logic engine. Manages the KB, handles hierarchy decomposition, and performs vector arithmetic.
-*   **`auto_trigger.py` (v17.2.3):** The Reflexive Cortex. Scans user input for **Phrase-Locks** (e.g., "Water") and injects the corresponding SOP_002 memory into the AI context instantly.
-*   **`ubp_understanding_engine.py` (v4.2):** The Auditor. Verifies that composite objects (Molecules) are geometrically valid sums of their parts.
+The **UBP Integrated Engine** (`ubp_integrated_engine_v1.py`) performs a five-stage analysis on any query to determine its "Realness" and stability:
 
-### 2. The Physics Layer
-*   **`ubp_core_v5_3_merged.py`:** The Kernel. Contains the Golay Engine, Leech Lattice Engine, and the 50-term Pi precision substrate.
-*   **`ubp_tgic_engine.py` (v6.2):** Relational Dynamics. Simulates how concepts attract or repel based on 9 internal interaction types and external relational gravity.
-*   **`ubp_phenomenology.py`:** The Scanner. Translates real-world data (Light, Text) into 24-bit vectors.
-
-### 3. The Visualization Layer
-*   **`ubp_viz.py`:** The Bridge. Converts Python geometric data into JSON for the React/Three.js 3D visualizer.
-*   **`math_atlas.py`:** The Voxel Builder. Turns abstract numbers into 3D crystal structures.
+1.  **Semantic Resolution:** Maps natural language to 24-bit vectors using N-Gram matching.
+2.  **Micro-Stability (24D):** Calculates the **Symmetry Tax** and **NRCI** (Non-Random Coherence Index).
+3.  **Ontological Drift:** Measures the "Shadow Gap" to distinguish between **Phenomenal** (Matter) and **Noumenal** (Math) states.
+4.  **Macro-Audit (256D):** Tests the resilience of the concept within the high-dimensional Barnes-Wall bulk.
+5.  **Imagination Sandbox:** Generates a 3D visual tension map using **ViT Eyes** to detect geometric frustration.
 
 ---
 
-## Installation & Setup
+## Standard Operating Procedures (SOP_002)
 
-**Web Version (No Installation)**
-[https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
-
-**Local AI Integration**
-The system supports local inference via Ollama, LM Studio, or GPT4All. The `auto_trigger.py` script acts as the bridge, injecting UBP context into the local model's prompt.
-
-**Core Files** when using the UBP Core Studio APP, core script files are downloaded automatically from [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/core] so when the system is updated the APP always uses the most recent system developed - no need to update the APP itself. The Memory system is automatically downloaded from: [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/system_kb] ensuring the UBP system constantly learns and grows.
-
----
-
-### Known issues/workarounds with the APP
-*   **Browser Cache:** I had issues with the Pyodide environment resetting so I implemented a cached memory for the APP - if it resets it will go back to how it was last cached. This means that when the APP loads it may load your last session - if you want to start over with a fresh app space click the red 'Reset' button up by the 'Save/Load' buttons to clear the cache, then click the APP reload button to refresh the entire APP.
-*   **FOM tab crash:** on mobile devices the 'FOM' tab may cause the APP to alert the Google AI Studio environment of some error and switch to the build environment - just click bck to the APP, the FOM still works fine.
-*   **System Tab:** Clicking the 'System' tab (or ubp_system_kb.json in the Workspace) will load the entire kb so it take a short while to load.
+To maintain the integrity of the **System Knowledge Base**, all entries must follow the **SOP_002** hardening protocol:
+*   **Fingerprinting:** The primary key is the `SHA256` hash of the `math` field.
+*   **Deterministic Vectors:** 24-bit vectors are generated by encoding the first 12 bits of the fingerprint.
+*   **Rational Metrics:** All stability scores must be stored as exact `p/q` strings.
 
 ---
 
 ## Updates
 
-### 26 March 2026 — v6.3 Polar Resonance & Simplicial Routing + Contextual Domain Filtering & N-Gram Recall
+### 26 March 2026
+
+### MAJOR UPDATE - v6.3 Modular Core & Dynamic Brain Upgrade
+*   **Modular Foundation:** Successfully decomposed the monolithic core into four specialized modules: `core.py` (Engines), `physics.py` (Metrics), `geometry.py` (MathAtlas), and `constants.py` (Values). This architecture eliminates circular dependencies and optimizes memory usage for the Pyodide environment.
+*   **Dynamic Brain v5.3:** Eliminated any remaining hardcoded semantic aliases. The Brain now builds its intelligence dynamically by scanning the `lexicon` and `tags` fields of the Knowledge Base. Integrated **N-Gram Matching** (Bigrams/Trigrams), allowing the system to resolve multi-word entities like "Fine Structure Constant" or "Sodium Hydroxide" without manual hardcoding.
+*   **Integrated Engine v3.2:** Implemented **Composite Scene Detection**. The engine now detects multiple entities within a single query and constructs a multi-object "Mental Scene" for the ViT Eyes. This resolves the "Geometric Collision" bug where complex molecular midpoints were previously misidentified as simple atomic anchors.
+*   **Phenomenology v5.5:** Hard-wired the scanner to the modular core. Real-time scans (e.g., RGB to Vector) now utilize the **LEECH_ENGINE** directly for instant, float-free Symmetry Tax and NRCI calculation.
+*   **Physics Milestone:** Verified the **13D Sink Protocol** ($L$) within the new modular framework, achieving a record **Global Atlas Error of 0.04311%** across the Standard Model particle family, including a 0.0000% phase-lock on the Proton/Electron mass ratio.
+
+**Prior to the v6 update but still 26 March 2026:**
+
+### v6.3 Polar Resonance & Simplicial Routing + Contextual Domain Filtering & N-Gram Recall
 *   **Law of Polar Resonance:** Formally integrated **LAW_POLAR_RESONANCE_001**, inspired by Google's **TurboQuant** (PolarQuant/QJL) research. This law proves that a concept's **Energy (Tax)** and **Orientation (Tilt)** are noise-resilient invariants, maintaining 100% Recall@50 even under 5-bit substrate distortion.
 *   **Turbo-Polar Indexing:** Upgraded the `KBManager` with a 2D Polar Index. This provides the UBP Brain with "Peripheral Vision," allowing for high-speed geometric filtering and 1.83x faster recall potential.
 *   **Simplicial Face Analysis:** Discovered the **3.1174 Golay Degeneracy** in raw vector routing. Resolved this by implementing **Ontological Friction** weighting across the 4x6 MOG layers, allowing the system to distinguish between "Lineage" (who made the object) and "State" (what the object is now).
