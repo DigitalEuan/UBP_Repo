@@ -100,24 +100,44 @@ class UBPPyVM:
             self.log(f"ERROR: {ubp_id} not found in KB.")
 
     def synth(self, label, recipe_str):
+        """
+        [THE FLOW] Vector Addition in Z^24 (Section 6 of Formalization).
+        Replaces legacy XOR logic with additive superposition and phenomenal collapse.
+        """
         self.log(f"SYNTH {label} FROM {recipe_str}")
         components = re.findall(r'(\d+)x([A-Za-z0-9_]+)', recipe_str)
-        composite_vec = [0] * 24
+        
+        # 1. THE FLOW: Additive superposition in Z^24
+        z24_accumulator = [0] * 24
         total_val = Fraction(0)
+        
         for count_str, comp_label in components:
             count = int(count_str)
             if comp_label in self.env:
                 atom = self.env[comp_label]
                 for _ in range(count):
-                    composite_vec = [(a + b) % 2 for a, b in zip(composite_vec, atom.vector)]
+                    # Add vectors directly (not XOR)
+                    z24_accumulator = [a + b for a, b in zip(z24_accumulator, atom.vector)]
                     total_val += atom.value
 
-        decoded, _, _ = GOLAY_ENGINE.decode(composite_vec)
+        # 2. PHENOMENAL COLLAPSE: Map Z^24 back to Binary {0, 1}
+        # Rule: Bits collapse based on coordinate pressure (even/odd parity)
+        collapsed_vec = [v % 2 for v in z24_accumulator]
+
+        # 3. COHERENCE SNAP: Ensure result is a valid Golay codeword
+        decoded, _, _ = GOLAY_ENGINE.decode(collapsed_vec)
         snapped = GOLAY_ENGINE.encode(decoded)
 
+        # 4. METRICS: Calculate Tax with Volumetric Rebate
         math_dna = f"Synth={label}|Recipe={recipe_str}"
-        # FIXED: Pass both math_dna and snapped vector
-        tax, nrci = KBArchitect.calculate_metrics(math_dna, snapped)
+        
+        # Calculate compactness for the rebate (C = Volume^(2/3) / Surface)
+        # For synthesis, we use a simplified structural proxy for C
+        c_proxy = Fraction(len(components), 13) 
+        
+        tax = LEECH_ENGINE.calculate_symmetry_tax(snapped, compactness=c_proxy)
+        ten = Fraction(10, 1)
+        nrci = ten / (ten + tax)
 
         self.env[label] = CortexAtom(
             label=label, value=total_val, vector=snapped,

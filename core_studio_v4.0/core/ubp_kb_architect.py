@@ -19,7 +19,7 @@ import numpy as np
 import math
 from fractions import Fraction
 from typing import Tuple, List, Any
-from ubp_core_v5_3_merged import GOLAY_ENGINE, LEECH_ENGINE, UBPUltimateSubstrate
+from core import GOLAY_ENGINE, LEECH_ENGINE, UBPUltimateSubstrate
 
 # Universal Constants for Alignment
 CONST = UBPUltimateSubstrate.get_constants(50)

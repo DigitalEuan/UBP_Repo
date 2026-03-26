@@ -353,15 +353,28 @@ class LeechLatticeEngine:
         self.Y_CONST = constants['Y_CONST']
         self.OBSERVER_FIXED_POINT = constants['Y_INV']
 
-    def calculate_symmetry_tax(self, point: List[int]) -> Fraction:
-        """LAW_SYMMETRY_001: Symmetry Tax calculation (Exact Fraction)."""
+    def calculate_symmetry_tax(self, point: List[int], compactness: Fraction = None) -> Fraction:
+        """
+        [LAW_SYMMETRY_001] Symmetry Tax calculation (Exact Fraction).
+        REFINED: Implements the Volumetric Rebate (Section 4.2 of Formalization).
+        """
         if len(point) != 24:
             raise ValueError('Point must have 24 elements')
+            
         hamming = sum((1 for x in point if x != 0))
         norm_sq = sum((x * x for x in point))
         Y = self.Y_CONSTANT
-        tax = Fraction(hamming, 1) * Y + Fraction(norm_sq, 8)
-        return tax
+        
+        # Base Tax Calculation
+        base_tax = Fraction(hamming, 1) * Y + Fraction(norm_sq, 8)
+        
+        # Apply Volumetric Rebate if compactness (C) is provided
+        # Formula: T_adj = T_base * (1 - C/13)
+        if compactness is not None:
+            rebate_factor = Fraction(1, 1) - (compactness / 13)
+            return base_tax * rebate_factor
+            
+        return base_tax
 
     def rank_by_stability(self, points: List[List[int]]) -> List[Tuple[List[int], Fraction]]:
         """Rank points by stability (lower tax = more stable)."""
