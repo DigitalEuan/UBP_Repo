@@ -80,13 +80,26 @@ class HexDictionaryV4Exact:
     def mint_rational_vector(self, ubp_id: str, math_dna: str) -> List[int]:
         """
         PROJECTS a vector from the SPATIAL properties of the math.
+        [FIX ISSUE 2] Enforces the Domain Pivot on Bit 12 (Index 11).
         """
         dom_val = self._get_domain_for_id(ubp_id)
-        dom_bits = [dom_val >> i & 1 for i in range(2, -1, -1)]
+        
+        # Measure topology for payload
         volume, compactness = self._measure_topology(math_dna)
-        p1_bits = self._int_to_gray(volume, 5)
-        p2_bits = self._int_to_gray(compactness, 4)
-        message = dom_bits + p1_bits + p2_bits
+        
+        # We need 11 bits for payload to leave room for the 1-bit pivot
+        # Let's use 6 bits for volume and 5 bits for compactness
+        p1_bits = self._int_to_gray(volume, 6)
+        p2_bits = self._int_to_gray(compactness, 5)
+        payload_bits = p1_bits + p2_bits
+        
+        # Force the Domain Pivot to Bit 12 (Index 11)
+        # 1: Phenomenal (Matter/Substance/Organism/Mechanism/Algorithm)
+        # 0: Noumenal (Quantity/Imperative/Entropy/Meaning)
+        is_phenomenal = 1 if dom_val in [1, 2, 3, 4] else 0
+        
+        message = payload_bits[:11] + [is_phenomenal]
+        
         if CORE_AVAILABLE:
             return GOLAY_ENGINE.encode(message)
         return message + [0] * 12

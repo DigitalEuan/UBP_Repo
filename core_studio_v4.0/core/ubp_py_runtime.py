@@ -116,13 +116,21 @@ class UBPPyVM:
             if comp_label in self.env:
                 atom = self.env[comp_label]
                 for _ in range(count):
-                    # Add vectors directly (not XOR)
-                    z24_accumulator = [a + b for a, b in zip(z24_accumulator, atom.vector)]
+                    # FIX ISSUE 1: Convert binary (0,1) to bipolar (-1,1) for true pressure addition
+                    bipolar_vec = [(v * 2) - 1 for v in atom.vector]
+                    z24_accumulator = [a + b for a, b in zip(z24_accumulator, bipolar_vec)]
                     total_val += atom.value
 
         # 2. PHENOMENAL COLLAPSE: Map Z^24 back to Binary {0, 1}
-        # Rule: Bits collapse based on coordinate pressure (even/odd parity)
-        collapsed_vec = [v % 2 for v in z24_accumulator]
+        # Rule: Bits collapse based on coordinate pressure (sign)
+        collapsed_vec = []
+        for f_i in z24_accumulator:
+            if f_i > 0:
+                collapsed_vec.append(0)
+            elif f_i < 0:
+                collapsed_vec.append(1)
+            else:
+                collapsed_vec.append(0) # Deep Hole / Void state resolves to 0
 
         # 3. COHERENCE SNAP: Ensure result is a valid Golay codeword
         decoded, _, _ = GOLAY_ENGINE.decode(collapsed_vec)
@@ -131,11 +139,14 @@ class UBPPyVM:
         # 4. METRICS: Calculate Tax with Volumetric Rebate
         math_dna = f"Synth={label}|Recipe={recipe_str}"
         
-        # Calculate compactness for the rebate (C = Volume^(2/3) / Surface)
-        # For synthesis, we use a simplified structural proxy for C
-        c_proxy = Fraction(len(components), 13) 
+        # FIX ISSUE 3: True Volumetric Rebate instead of linear proxy
+        from geometry import MathObjectV4
+        temp_obj = MathObjectV4(ubp_id="TEMP", name="TEMP", description="")
+        total_atoms = sum(int(c[0]) for c in components)
+        temp_obj.add_path([('D', total_atoms)], 'direct')
+        true_compactness = temp_obj.calculate_compactness()
         
-        tax = LEECH_ENGINE.calculate_symmetry_tax(snapped, compactness=c_proxy)
+        tax = LEECH_ENGINE.calculate_symmetry_tax(snapped, compactness=true_compactness)
         ten = Fraction(10, 1)
         nrci = ten / (ten + tax)
 
@@ -174,7 +185,29 @@ class UBPPyVM:
             current = self.env[new_label]
         self.log(f"SPIRAL complete: {iterations} iterations (Phi-Shift Dynamics).")
 
+    def apply_tgic_pressure(self):
+        """[FIX ISSUE 4] Enforces the 9-Neighbor Limit across the active manifold."""
+        manifold_vectors = [atom.vector for atom in self.env.values()]
+        
+        for label, atom in self.env.items():
+            # Count neighbors within resonance radius (Hamming Distance <= 8)
+            # Subtract 1 to exclude the atom itself
+            neighbors = sum(1 for v in manifold_vectors if BinaryLinearAlgebra.hamming_distance(atom.vector, v) <= 8) - 1
+            
+            if neighbors > 9:
+                # Calculate penalty: (Excess Neighbors) * Y_CONST
+                penalty = Fraction(neighbors - 9, 1) * Y_CONST
+                
+                # Apply penalty to the Tax, which lowers the NRCI
+                atom.tax += penalty
+                ten = Fraction(10, 1)
+                atom.nrci = ten / (ten + atom.tax)
+                
+                self.log(f"TGIC WARNING: {label} is overheating ({neighbors} neighbors). NRCI degraded to {float(atom.nrci):.4f}")
+
     def reflex(self, threshold):
+        self.apply_tgic_pressure() # Apply TGIC before reflex pruning
+        
         to_remove = []
         for label, atom in self.env.items():
             if atom.nrci < threshold:
@@ -182,7 +215,6 @@ class UBPPyVM:
                 corrected = GOLAY_ENGINE.encode(decoded)
 
                 math_dna = f"Reflex={label}|Original={atom.hierarchy}"
-                # FIXED: Pass both math_dna and corrected vector
                 new_tax, new_nrci = KBArchitect.calculate_metrics(math_dna, corrected)
 
                 if new_nrci >= threshold:
