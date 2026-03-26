@@ -65,6 +65,12 @@ To maintain the integrity of the **System Knowledge Base**, all entries must fol
 
 ## Updates
 
+### 27 March 2026 — v6.3.1 Formalization Phase-Lock
+*   **Phenomenal Collapse Logic:** Replaced legacy modulo arithmetic in the VM's `synth` method with strict sign-pressure collapse. Positive coordinate pressure now correctly resolves to `0` (positive space) and negative tension to `1`, preserving spatial history during vector superposition.
+*   **Domain Pivot Enforcement:** Hardened the `HexDictionaryV4Exact` encoding pipeline to strictly enforce the 12th bit (Index 11) as the Ontological Pivot. Phenomenal domains (Matter/Substance) are now structurally guaranteed to have Bit 12 = 1, while Noumenal domains (Math/Laws) have Bit 12 = 0.
+*   **True Volumetric Rebate:** Deprecated the linear component proxy in the VM. Synthesis operations now instantiate a temporary `MathObjectV4` to calculate the true $V^{2/3}/S_{face}$ topological compactness, ensuring accurate Symmetry Tax rebates for complex 3D manifolds.
+*   **TGIC 9-Neighbor Limit:** Integrated dynamic Triad-Graph Interaction Constraint (TGIC) pressure into the VM's reflex cycle. Nodes exceeding 9 resonant neighbors ($d_H \le 8$) now suffer a linear NRCI decay penalty, preventing informational overheating and enforcing substrate sparsity.
+
 ### 26 March 2026
 
 ### MAJOR UPDATE - v6.3 Modular Core & Dynamic Brain Upgrade
