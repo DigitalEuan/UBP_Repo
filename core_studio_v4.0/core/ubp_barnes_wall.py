@@ -21,7 +21,7 @@ Date: 22 March 2026
 import hashlib
 from fractions import Fraction
 from typing import List, Tuple, Dict, Union, Any
-from ubp_core_v5_3_merged import GOLAY_ENGINE, SUBSTRATE, BinaryLinearAlgebra
+from core import GOLAY_ENGINE, SUBSTRATE, BinaryLinearAlgebra
 
 class BarnesWallEngine:
     def __init__(self, dimension: int = 256):

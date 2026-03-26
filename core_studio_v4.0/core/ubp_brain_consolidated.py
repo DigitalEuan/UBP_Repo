@@ -52,20 +52,11 @@ from fractions import Fraction
 from dataclasses import dataclass, field
 from typing import List, Tuple, Dict, Optional, Any, Set
 from collections import defaultdict
-from datetime import datetime
 import math
 
-# --- UBP Core Foundation ---
-try:
-    if os.path.exists('ubp_core_v5_3_merged.py'):
-        sys.path.insert(0, 'core')
-    from ubp_core_v5_3_merged import GOLAY_ENGINE
-    CORE_AVAILABLE = True
-    print('[UBP Brain v5.2] UBP Core v5.3 FOUND — Full Golay/Leech functionality enabled')
-except ImportError as _e:
-    CORE_AVAILABLE = False
-    GOLAY_ENGINE = None
-    print(f'[WARNING] UBP Core not found ({_e}). Running in fallback mode.')
+# Link to the new modular core
+from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra
+CORE_AVAILABLE = True
 
 # ==============================================================================
 # SECTION 1: HELPERS
@@ -183,156 +174,51 @@ class KBManager:
     UNDERSTANDING_PREFIXES_SET = ('ELEM_', 'MOLECULE_', 'PARTICLE_', 'CRYSTAL_', 'REACTION_', 'TOOL_', 'MATH_', 'ALGO_')
 
     def _build_indexes(self):
-        """Build the short_name_index, bigram_index, trigram_index, and lexicon_index.
-
-        N-gram indexes are ONLY built from UNDERSTANDING entries (not LAW/BELIEF entries)
-        to prevent law names from polluting multi-word query matching.
+        """
+        DYNAMIC INDEXER v5.3
+        No hardcoding. Extracts intelligence directly from Lexicon and Tags.
         """
         for uid, entry in self.kb.items():
-            is_understanding_uid = uid.startswith(self.UNDERSTANDING_PREFIXES_SET)
-
-            # Primary name index
-            name = extract_name(entry).lower()
-            if name and name not in ('unknown', uid.lower()):
-                self.short_name_index[name] = uid
-
-                # Build n-gram indexes ONLY from understanding entries
-                if is_understanding_uid:
-                    words = name.split()
-                    if len(words) >= 2:
-                        for i in range(len(words) - 1):
-                            bigram = f'{words[i]} {words[i+1]}'
-                            if bigram not in self.bigram_index:
-                                self.bigram_index[bigram] = uid
-                    if len(words) >= 3:
-                        for i in range(len(words) - 2):
-                            trigram = f'{words[i]} {words[i+1]} {words[i+2]}'
-                            if trigram not in self.trigram_index:
-                                self.trigram_index[trigram] = uid
-
-            # Also index chemical symbols from lexicon like '(H)', '(C)', '(O)'
+            # 1. Extract Primary Name from [Type: Name (Symbol)]
             lexicon = entry.get('lexicon', '')
-            if isinstance(lexicon, str):
-                # Extract symbol from '[Type: Name (Symbol)]' format
-                sym_match = re.search(r'\(([A-Z][a-z]?)\)', lexicon)
-                if sym_match:
-                    sym = sym_match.group(1).lower()
-                    if sym not in self.short_name_index:
-                        self.short_name_index[sym] = uid
-                # Extract all words from the first bracket as aliases (UNDERSTANDING only)
-                if is_understanding_uid:
-                    first_bracket = re.match(r'^\[([^\]]+)\]', lexicon)
-                    if first_bracket:
-                        content = first_bracket.group(1)
-                        for word in re.findall(r'\b[a-zA-Z]{3,}\b', content):
-                            word_lower = word.lower()
-                            if word_lower not in self.short_name_index and word_lower not in (
-                                'element', 'molecule', 'particle', 'crystal', 'reaction',
-                                'law', 'tool', 'math', 'algo', 'geo', 'belief', 'axiom'
-                            ):
-                                self.short_name_index[word_lower] = uid
+            name_match = re.search(r'\[.*?: (.*?)\]', lexicon)
+            
+            if name_match:
+                full_name = name_match.group(1).lower()
+                # Clean name: "hydrogen (h)" -> "hydrogen"
+                clean_name = re.sub(r'\s*\(.*?\)', '', full_name).strip()
+                self.short_name_index[clean_name] = uid
+                
+                # Extract Symbol: "hydrogen (h)" -> "h"
+                symbol_match = re.search(r'\((.*?)\)', full_name)
+                if symbol_match:
+                    self.short_name_index[symbol_match.group(1).strip()] = uid
 
-        # Explicit aliases for entries with non-standard or abbreviated names
-        if 'PARTICLE_W_BOSON_PLUS_001' in self.kb:
-            self.bigram_index['w boson'] = 'PARTICLE_W_BOSON_PLUS_001'
-            self.short_name_index['w+'] = 'PARTICLE_W_BOSON_PLUS_001'
-        if 'PARTICLE_W_BOSON_MINUS_001' in self.kb:
-            self.short_name_index['w-'] = 'PARTICLE_W_BOSON_MINUS_001'
-        if 'REACTION_HABER_BOSCH_001' in self.kb:
-            self.bigram_index['haber process'] = 'REACTION_HABER_BOSCH_001'
-            self.bigram_index['haber bosch'] = 'REACTION_HABER_BOSCH_001'
-        if 'MOLECULE_WATER_001' in self.kb:
-            self.short_name_index['h2o'] = 'MOLECULE_WATER_001'
-        if 'MOLECULE_GLUCOSE_001' in self.kb:
-            self.short_name_index['c6h12o6'] = 'MOLECULE_GLUCOSE_001'
-            self.short_name_index['dextrose'] = 'MOLECULE_GLUCOSE_001'
-        if 'MOLECULE_AMMONIA_001' in self.kb:
-            self.short_name_index['nh3'] = 'MOLECULE_AMMONIA_001'
-        if 'MATH_PLANCK_CONSTANT_001' in self.kb:
-            self.short_name_index['planck'] = 'MATH_PLANCK_CONSTANT_001'
-            self.bigram_index['planck constant'] = 'MATH_PLANCK_CONSTANT_001'
-        if 'MATH_FINE_STRUCTURE_CONSTANT_001' in self.kb:
-            self.trigram_index['fine structure constant'] = 'MATH_FINE_STRUCTURE_CONSTANT_001'
-            self.bigram_index['fine structure'] = 'MATH_FINE_STRUCTURE_CONSTANT_001'
-            self.short_name_index['alpha'] = 'MATH_FINE_STRUCTURE_CONSTANT_001'
-        if 'MATH_GRAVITATIONAL_CONSTANT_001' in self.kb:
-            self.bigram_index['gravitational constant'] = 'MATH_GRAVITATIONAL_CONSTANT_001'
-        if 'MATH_BOLTZMANN_CONSTANT_001' in self.kb:
-            self.bigram_index['boltzmann constant'] = 'MATH_BOLTZMANN_CONSTANT_001'
-        if 'MATH_AVOGADRO_CONSTANT_001' in self.kb:
-            self.bigram_index['avogadro constant'] = 'MATH_AVOGADRO_CONSTANT_001'
-        if 'MATH_SPEED_OF_LIGHT_001' in self.kb:
-            self.trigram_index['speed of light'] = 'MATH_SPEED_OF_LIGHT_001'
-            self.short_name_index['lightspeed'] = 'MATH_SPEED_OF_LIGHT_001'
-        if 'PARTICLE_HIGGS_BOSON_001' in self.kb:
-            self.bigram_index['higgs boson'] = 'PARTICLE_HIGGS_BOSON_001'
-            self.short_name_index['higgs'] = 'PARTICLE_HIGGS_BOSON_001'
-        if 'PARTICLE_ALPHA_001' in self.kb:
-            self.bigram_index['alpha particle'] = 'PARTICLE_ALPHA_001'
-        if 'REACTION_NUCLEAR_FUSION_DT_001' in self.kb:
-            self.bigram_index['nuclear fusion'] = 'REACTION_NUCLEAR_FUSION_DT_001'
-        if 'REACTION_NUCLEAR_FISSION_U235_001' in self.kb:
-            self.bigram_index['nuclear fission'] = 'REACTION_NUCLEAR_FISSION_U235_001'
-        # British/American spelling aliases
-        if 'ELEM_Al_013' in self.kb:
-            self.short_name_index['aluminium'] = 'ELEM_Al_013'
-            self.short_name_index['aluminum'] = 'ELEM_Al_013'
-        if 'ELEM_S_016' in self.kb:
-            self.short_name_index['sulphur'] = 'ELEM_S_016'
-            self.short_name_index['sulfur'] = 'ELEM_S_016'
-        if 'MOLECULE_SULFURIC_ACID_001' in self.kb:
-            self.bigram_index['sulphuric acid'] = 'MOLECULE_SULFURIC_ACID_001'
-        # Additional common aliases
-        if 'ELEM_Fe_026' in self.kb:
-            self.short_name_index['fe'] = 'ELEM_Fe_026'
-            self.short_name_index['ferrum'] = 'ELEM_Fe_026'
-        if 'ELEM_Au_079' in self.kb:
-            self.short_name_index['aurum'] = 'ELEM_Au_079'
-        if 'ELEM_Na_011' in self.kb:
-            self.short_name_index['natrium'] = 'ELEM_Na_011'
-        if 'ELEM_K_019' in self.kb:
-            self.short_name_index['kalium'] = 'ELEM_K_019'
-        if 'ELEM_Ag_047' in self.kb:
-            self.short_name_index['argentum'] = 'ELEM_Ag_047'
-            self.short_name_index['silver'] = 'ELEM_Ag_047'
-        if 'MOLECULE_CARBON_DIOXIDE_001' in self.kb:
-            self.short_name_index['co2'] = 'MOLECULE_CARBON_DIOXIDE_001'
-        if 'MOLECULE_METHANE_001' in self.kb:
-            self.short_name_index['ch4'] = 'MOLECULE_METHANE_001'
-        if 'MOLECULE_ETHANOL_001' in self.kb:
-            self.short_name_index['ethyl'] = 'MOLECULE_ETHANOL_001'
-        if 'PARTICLE_ELECTRON_001' in self.kb:
-            self.short_name_index['electrons'] = 'PARTICLE_ELECTRON_001'
-        if 'PARTICLE_PROTON_001' in self.kb:
-            self.short_name_index['protons'] = 'PARTICLE_PROTON_001'
-        if 'PARTICLE_NEUTRON_001' in self.kb:
-            self.short_name_index['neutrons'] = 'PARTICLE_NEUTRON_001' 
+            # 2. Index by Tags (e.g., "h2o", "dextrose", "lightspeed")
+            # We use tags as a dynamic alias system
+            for tag in entry.get('tags', []):
+                tag_lower = tag.lower()
+                if tag_lower not in self.short_name_index:
+                    self.short_name_index[tag_lower] = uid
 
-            # Lexicon index (all words in name + description)
-            desc = extract_description(entry).lower()
-            full_text = name + ' ' + desc
-            for word in re.findall(r'\b\w{3,}\b', full_text):
-                if word not in self.lexicon_index or uid not in self.lexicon_index[word]:
+            # 3. Build N-Grams (Bigrams/Trigrams) for multi-word names
+            # This allows "up quark" to be found without hardcoding
+            words = clean_name.split() if name_match else []
+            if len(words) >= 2:
+                self.bigram_index[' '.join(words[:2])] = uid
+            if len(words) >= 3:
+                self.trigram_index[' '.join(words[:3])] = uid
+
+            # 4. Lexicon Word Index (for fuzzy keyword search)
+            desc = lexicon.lower()
+            for word in re.findall(r'\b\w{3,}\b', desc):
+                if uid not in self.lexicon_index[word]:
                     self.lexicon_index[word].append(uid)
-
-            self.polar_index = []
-        for uid, entry in self.kb.items():
-            vec = extract_vector(entry)
-            if not vec: continue
-            atlas = entry.get('atlas', {})
-            # Convert rational tax string to float for fast filtering
-            tax_str = atlas.get('tax', '0/1')
-            tax_val = float(Fraction(tax_str))
-            tilt_val = float(atlas.get('tilt', 0.0))
-            self.polar_index.append({
-                'uid': uid, 'vec': vec, 'tax': tax_val, 'tilt': tilt_val
-            })
 
         self.stats = {
             'total_entries': len(self.kb),
             'indexed_names': len(self.short_name_index),
             'bigrams': len(self.bigram_index),
-            'trigrams': len(self.trigram_index),
             'lexicon_terms': len(self.lexicon_index),
         }
 

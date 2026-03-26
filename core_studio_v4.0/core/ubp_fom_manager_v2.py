@@ -13,7 +13,7 @@ import hashlib
 from fractions import Fraction
 from typing import Dict, List, Any, Optional
 # v5.3 Migration: Use GOLAY_ENGINE
-from ubp_core_v5_3_merged import GOLAY_ENGINE as GOLAY_DECODER, BinaryLinearAlgebra
+from core import GOLAY_ENGINE as GOLAY_DECODER, BinaryLinearAlgebra
 
 # --- 1. THE FRAME CONTAINER ---
 class FrameOfMind:

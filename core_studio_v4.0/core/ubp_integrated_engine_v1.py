@@ -18,7 +18,7 @@ import hashlib
 from fractions import Fraction
 from typing import Dict, List, Any
 from ubp_brain_consolidated import UBPBrain, extract_vector, extract_name, extract_nrci
-from ubp_core_v5_3_merged import BinaryLinearAlgebra, GOLAY_ENGINE
+from core import BinaryLinearAlgebra, GOLAY_ENGINE
 from ubp_barnes_wall import BarnesWallEngine
 
 def hex_to_bw256(hex_str: str) -> list:
@@ -77,30 +77,33 @@ class UBPIntegratedEngine:
     def analyze_query(self, query: str):
         """Performs a Penta-Audit on the query."""
         
-        # 1. Detect Explicit Entities (Composite Query Check)
+        # 1. Detect Explicit Entities
         query_lower = query.lower()
-        explicit_uids = set()
+        explicit_uids = []
         
-        # Sort by length to catch "carbon dioxide" before "carbon"
-        for name in sorted(self.brain.kb_manager.short_name_index.keys(), key=len, reverse=True):
-            if name in query_lower:
-                explicit_uids.add(self.brain.kb_manager.short_name_index[name])
-                query_lower = query_lower.replace(name, "") # Consume the word
-                
+        for name, uid in self.brain.kb_manager.short_name_index.items():
+            if len(name) > 3 and name in query_lower:
+                # NEW: If we find a Molecule or Element, ignore generic "Stability" laws
+                if "stability" in name and any(x in query_lower for x in ["glucose", "atp", "water"]):
+                    continue 
+                if uid not in explicit_uids:
+                    explicit_uids.append(uid)
+
         is_composite = len(explicit_uids) > 1
 
         # 2. Semantic Resolution
         result = self.brain.process_query(query)
         
-        # Bailout ONLY if confidence is low AND it's not a composite scene
-        if not result.ubp_id or (result.confidence < 0.10 and not is_composite):
-            return {"status": "NULL_RESONANCE", "query": query, "response": result.response}
+        # 3. Fetch Primary Entry (FIX: Priority to explicit detection)
+        if explicit_uids:
+            primary_uid = explicit_uids[0] # Focus on the first thing mentioned
+            confidence_str = "EXPLICIT_MATCH" if not is_composite else "COMPOSITE_SCENE"
+        else:
+            primary_uid = result.ubp_id
+            confidence_str = f"{result.confidence:.2%}"
 
-        # 3. Fetch Primary Entry
-        primary_uid = result.ubp_id
-        # If it's a composite query and the averaged vector missed the explicit targets, force the first target
-        if is_composite and primary_uid not in explicit_uids and result.confidence < 0.10:
-            primary_uid = list(explicit_uids)[0]
+        if not primary_uid:
+            return {"status": "NULL_RESONANCE", "query": query, "response": result.response}
 
         entry = self.brain.kb_manager.kb[primary_uid]
         true_v24 = extract_vector(entry)
@@ -111,11 +114,12 @@ class UBPIntegratedEngine:
             "status": "RESOLVED",
             "query": query,
             "primary_subject": extract_name(entry),
-            "confidence": f"{result.confidence:.2%}" if not is_composite else "COMPOSITE_SCENE",
+            "detected_entities": [extract_name(self.brain.kb_manager.kb[u]) for u in explicit_uids],
+            "confidence": confidence_str,
             "micro_nrci": float(micro_nrci_frac),
         }
 
-        # 4. Ontological Drift Lens
+        # 4. Ontological Drift Lens (256D -> 24D)
         if fingerprint and true_v24:
             hash_vec_256 = hex_to_bw256(fingerprint)
             snapped_256 = self.bw_engine.snap(hash_vec_256)
@@ -128,33 +132,24 @@ class UBPIntegratedEngine:
             
             response_data["ontology"] = f"{ontology} [{drift} bits drift]"
 
-        # 5. Macro-Coherence Lens
-        if float(micro_nrci_frac) < self.COMPLEXITY_THRESHOLD and fingerprint:
+        # 5. Macro-Coherence Lens (256D Audit)
+        if fingerprint:
             macro_audit = self.bw_engine.audit(primary_uid, micro_nrci_frac, fingerprint)
             response_data["macro_audit"] = {
                 "macro_nrci": macro_audit["macro_nrci"],
                 "relative_coherence": f"{macro_audit['relative_coherence']:.2%}",
                 "clarity_status": macro_audit["clarity_status"]
             }
-        else:
-            response_data["macro_audit"] = "Not required (High 24D Stability)"
 
         # 6. Imagination Sandbox (ViT Eyes)
         scene_objects = []
-        if is_composite:
-            # Load the explicitly mentioned objects
-            for uid in explicit_uids:
-                e = self.brain.kb_manager.kb.get(uid)
-                if e and extract_vector(e):
-                    scene_objects.append({"name": extract_name(e), "vector": extract_vector(e)})
-        elif len(result.top_candidates) > 1:
-            # Fallback: Load the top semantic associations
-            for uid, score in result.top_candidates[:3]:
-                e = self.brain.kb_manager.kb.get(uid)
-                if e and extract_vector(e):
-                    scene_objects.append({"name": extract_name(e), "vector": extract_vector(e)})
+        uids_to_viz = explicit_uids if explicit_uids else ([result.ubp_id] if result.ubp_id else [])
+        for uid in uids_to_viz[:5]:
+            e = self.brain.kb_manager.kb.get(uid)
+            if e and extract_vector(e):
+                scene_objects.append({"name": extract_name(e), "vector": extract_vector(e)})
         
-        if len(scene_objects) > 1:
+        if scene_objects:
             vision_report = self.eyes.observe_scene(scene_objects)
             response_data["imagination_sandbox"] = vision_report
 

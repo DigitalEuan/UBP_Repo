@@ -19,7 +19,7 @@ from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional, Any
 
 try:
-    from ubp_core_v5_3_merged import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
+    from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
     CORE_AVAILABLE = True
     CONST = SUBSTRATE.get_constants(50)
 except ImportError:

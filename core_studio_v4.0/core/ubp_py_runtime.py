@@ -5,7 +5,7 @@ from fractions import Fraction
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
-from ubp_core_v5_3_merged import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
+from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
 from ubp_kb_architect import KBArchitect
 
 # System Constants
