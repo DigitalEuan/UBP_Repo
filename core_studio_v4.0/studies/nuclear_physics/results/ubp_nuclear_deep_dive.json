@@ -1,0 +1,190 @@
+{
+  "binding_energy_analysis": {
+    "be_proxy_linear_fit": {
+      "r": -0.181,
+      "p": 0.049851,
+      "slope": -0.01868431,
+      "intercept": 8.220992
+    },
+    "spearman_nrci_vs_BE": {
+      "rho": -0.5379,
+      "p": 0.0
+    },
+    "spearman_tax_vs_BE": {
+      "rho": 0.5379,
+      "p": 0.0
+    }
+  },
+  "magic_number_analysis": {
+    "t_test_nrci": {
+      "t": -2.0614,
+      "p": 0.041504
+    },
+    "t_test_drift": {
+      "t": NaN,
+      "p": NaN
+    },
+    "magic_mean_nrci": 0.598781,
+    "nonmagic_mean_nrci": 0.624041
+  },
+  "decay_analysis": {
+    "n_radioactive_with_hl": 17,
+    "spearman_stability_pressure_vs_log_hl": {
+      "rho": 0.201,
+      "p": 0.439234
+    },
+    "spearman_nrci_vs_log_hl": {
+      "rho": -0.5748,
+      "p": 0.015791
+    }
+  },
+  "stable_vs_unstable_nrci": {
+    "stable_mean": 0.606255,
+    "unstable_mean": 0.658882,
+    "cohens_d": -3.1448,
+    "t_stat": -15.8489,
+    "p_value": 0.0
+  },
+  "gradient_analysis": {
+    "r_grad_tax_vs_BE": 0.0396,
+    "p_grad": 0.669971
+  },
+  "particle_physics_predictions": {
+    "Alpha Inv": {
+      "val": 137.0629,
+      "target": 137.035999,
+      "error_pct": 0.01962,
+      "lens": "Core Ratio"
+    },
+    "Proton/e- Ratio": {
+      "val": 1836.152,
+      "target": 1836.15267,
+      "error_pct": 4e-05,
+      "lens": "Stereoscopic"
+    },
+    "Muon/e- Ratio": {
+      "val": 206.7547,
+      "target": 206.76828,
+      "error_pct": 0.00657,
+      "lens": "Core Ratio"
+    },
+    "Electron (e-)": {
+      "val": 0.511,
+      "target": 0.510998,
+      "error_pct": 0.00043,
+      "lens": "1D Filament + 7/80 Sink"
+    },
+    "Muon (mu-)": {
+      "val": 105.6514,
+      "target": 105.658,
+      "error_pct": 0.00622,
+      "lens": "Core Ratio"
+    },
+    "Tau (tau-)": {
+      "val": 1777.2609,
+      "target": 1776.86,
+      "error_pct": 0.02256,
+      "lens": "24D MPG Lever"
+    },
+    "Proton (p+)": {
+      "val": 938.2717,
+      "target": 938.272,
+      "error_pct": 3e-05,
+      "lens": "Stereoscopic"
+    },
+    "Neutron (n0)": {
+      "val": 939.5716,
+      "target": 939.565,
+      "error_pct": 0.0007,
+      "lens": "G13 Hybrid"
+    },
+    "Delta++ (D++)": {
+      "val": 1229.4356,
+      "target": 1232.0,
+      "error_pct": 0.20815,
+      "lens": "G15 Spin Flip"
+    },
+    "Higgs Boson": {
+      "val": 125285.4022,
+      "target": 125250.0,
+      "error_pct": 0.02827,
+      "lens": "Core Ratio"
+    },
+    "Top Quark": {
+      "val": 172796.8868,
+      "target": 172760.0,
+      "error_pct": 0.02135,
+      "lens": "Core Ratio"
+    },
+    "Xi_bc+ (bcu)": {
+      "val": 6951.6818,
+      "target": 6943.0,
+      "error_pct": 0.12504,
+      "lens": "Higgs/18"
+    },
+    "Xi_bb (bbu)": {
+      "val": 10143.1089,
+      "target": 10143.0,
+      "error_pct": 0.00107,
+      "lens": "Z-Boson/9"
+    },
+    "Omega_bbb (bbb)": {
+      "val": 14375.7406,
+      "target": 14371.0,
+      "error_pct": 0.03299,
+      "lens": "Top/12"
+    },
+    "Xicc++ (ccu)": {
+      "val": 3621.55,
+      "target": 3621.55,
+      "error_pct": 0.0,
+      "lens": "Anchor"
+    },
+    "Xicc+ (ccd)": {
+      "val": 3621.92,
+      "target": 3621.92,
+      "error_pct": 0.0,
+      "lens": "Isospin Shift"
+    },
+    "Omcc+ (ccs)": {
+      "val": 3773.2765,
+      "target": 3773.28,
+      "error_pct": 9e-05,
+      "lens": "Strange Leap"
+    },
+    "Omccc++ (ccc)": {
+      "val": 4760.575,
+      "target": 4760.57,
+      "error_pct": 0.00011,
+      "lens": "Triple Compression"
+    },
+    "Lc+ (udc)": {
+      "val": 2290.6744,
+      "target": 2286.46,
+      "error_pct": 0.18432,
+      "lens": "Archimedean Lever"
+    },
+    "Xic+ (usc)": {
+      "val": 2472.7462,
+      "target": 2467.71,
+      "error_pct": 0.20408,
+      "lens": "Singly Strange"
+    },
+    "Omc0 (ssc)": {
+      "val": 2696.3783,
+      "target": 2695.2,
+      "error_pct": 0.04372,
+      "lens": "Double Strange"
+    }
+  },
+  "particle_physics_global_error_pct": 0.04311,
+  "13d_sink_metadata": {
+    "L": 0.06289078670588419,
+    "L_s": 0.07599303393627674,
+    "sigma": "29/24",
+    "monad": 13.817580227176494,
+    "wobble": 0.8175802271764946,
+    "leakage_L": 0.06289078670588419,
+    "status": "ACTIVE"
+  }
+}

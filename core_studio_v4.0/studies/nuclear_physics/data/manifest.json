@@ -1,0 +1,99 @@
+{
+  "session_dir": "/app/sandbox/session_20260327_124022_fb146e883394",
+  "created": "1774569534.9847865",
+  "session": "session_20260327_124022_fb146e883394",
+  "study": "UBP Nuclear Physics: Binding Energies and Decay Rates",
+  "status": "analysis_complete",
+  "current_step": "analysis_complete",
+  "writeup_type": "paper",
+  "outputs": [
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/data/ubp_elements_raw.csv",
+      "type": "data",
+      "description": "Raw element data from UBP KB: Z, symbol, NRCI, tax, weight, tilt, vectors"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/data/ubp_nuclear_metrics.csv",
+      "type": "data",
+      "description": "UBP nuclear metrics per element: NRCI, symmetry tax, NCI, be_proxy, stability_pressure, phase_lock"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/data/experimental_nuclear.csv",
+      "type": "data",
+      "description": "Experimental nuclear data: semi-empirical binding energies (AME2020), half-lives (NUBASE2020)"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/data/ubp_vs_experiment.csv",
+      "type": "data",
+      "description": "Merged UBP metrics vs experimental data for all 118 elements"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/results/ubp_nuclear_summary.json",
+      "type": "result",
+      "description": "Primary statistical summary with all correlations and key findings"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/results/ubp_nuclear_deep_dive.json",
+      "type": "result",
+      "description": "Deep dive: magic numbers, decay rates, gradient analysis, particle predictions"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/results/iron_peak_analysis.csv",
+      "type": "result",
+      "description": "Iron peak region Z=20-35 detailed UBP analysis"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/results/decay_rate_analysis.csv",
+      "type": "result",
+      "description": "Radioactive elements Z=43-98 with UBP metrics and half-lives"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/results/particle_physics_predictions.csv",
+      "type": "result",
+      "description": "13D Sink Protocol predictions for 21 particles vs PDG targets"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig1_nrci_periodic_table.png",
+      "type": "figure",
+      "description": "Fig 1: UBP NRCI across the periodic table with BE/A overlay"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig2_nrci_vs_be.png",
+      "type": "figure",
+      "description": "Fig 2: NRCI vs binding energy per nucleon scatter with regression"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig3_magic_numbers.png",
+      "type": "figure",
+      "description": "Fig 3: Magic number UBP metric comparison"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig4_decay_rates.png",
+      "type": "figure",
+      "description": "Fig 4: UBP metrics vs radioactive half-lives"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig5_particle_predictions.png",
+      "type": "figure",
+      "description": "Fig 5: 13D Sink Protocol particle mass prediction accuracy"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig6_iron_peak.png",
+      "type": "figure",
+      "description": "Fig 6: Iron peak region deep dive"
+    },
+    {
+      "path": "/app/sandbox/session_20260327_124022_fb146e883394/figures/fig7_phase_lock_distribution.png",
+      "type": "figure",
+      "description": "Fig 7: UBP Phase-Lock classification across the periodic table"
+    }
+  ],
+  "key_findings": {
+    "spearman_nrci_vs_BE_per_A": -0.5379,
+    "cohens_d_stable_vs_unstable": -3.1448,
+    "magic_number_p_value": 0.0415,
+    "decay_nrci_spearman_rho": -0.5748,
+    "particle_physics_global_error_pct": 0.04311,
+    "phase_lock_elements": 72
+  }
+}

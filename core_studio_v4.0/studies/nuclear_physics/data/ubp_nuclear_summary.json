@@ -1,0 +1,206 @@
+{
+  "study_name": "UBP Nuclear Physics Study: Binding Energies and Decay Rates",
+  "data_version": "AME2020 semi-empirical + NUBASE2020 half-lives",
+  "n_elements": 118,
+  "correlations": {
+    "nrci_vs_BE_per_A": {
+      "r": -0.2343,
+      "p": 0.01067
+    },
+    "symmetry_tax_vs_BE_per_A": {
+      "r": 0.2307,
+      "p": 0.011946
+    },
+    "nci_vs_BE_per_A": {
+      "r": -0.2189,
+      "p": 0.017217
+    },
+    "stability_pressure_vs_log_halflife": {
+      "r": 0.2076,
+      "p": 0.424002
+    }
+  },
+  "magic_number_analysis": {
+    "magic_mean_nrci": 0.611913,
+    "non_magic_mean_nrci": 0.623761,
+    "t_stat": -1.2114,
+    "p_value": 0.228203,
+    "interpretation": "Magic nuclei show NRCI difference vs non-magic"
+  },
+  "iron_peak": {
+    "Z": 26,
+    "nrci": 0.600344,
+    "nci": 0.567598,
+    "be_proxy": 4.96,
+    "phase_lock": "PHASE_LOCK"
+  },
+  "particle_physics_global_error": 0.04311,
+  "ubp_13d_sink": {
+    "L": 0.06289078670588419,
+    "L_s": 0.07599303393627674,
+    "sigma": "29/24",
+    "monad": 13.817580227176494,
+    "wobble": 0.8175802271764946,
+    "leakage_L": 0.06289078670588419,
+    "status": "ACTIVE"
+  },
+  "L_SINK": 0.06289078670588419,
+  "phase_lock_distribution": {
+    "PHASE_LOCK": 94,
+    "UNSTABLE": 24
+  },
+  "top10_highest_nrci": [
+    {
+      "Z": 118,
+      "symbol": "Og",
+      "nrci_score": 0.68399,
+      "be_per_A_semi": 7.078636342916792,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 106,
+      "symbol": "Sg",
+      "nrci_score": 0.680406,
+      "be_per_A_semi": 7.341495260369457,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 114,
+      "symbol": "Fl",
+      "nrci_score": 0.680406,
+      "be_per_A_semi": 7.1629671396194015,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 113,
+      "symbol": "Nh",
+      "nrci_score": 0.676768,
+      "be_per_A_semi": 7.183693155978153,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 100,
+      "symbol": "Fm",
+      "nrci_score": 0.673079,
+      "be_per_A_semi": 7.467779518520007,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 101,
+      "symbol": "Md",
+      "nrci_score": 0.673079,
+      "be_per_A_semi": 7.446348695001115,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 102,
+      "symbol": "No",
+      "nrci_score": 0.673079,
+      "be_per_A_semi": 7.420054187427755,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 103,
+      "symbol": "Lr",
+      "nrci_score": 0.673079,
+      "be_per_A_semi": 7.39874276048308,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 117,
+      "symbol": "Ts",
+      "nrci_score": 0.673079,
+      "be_per_A_semi": 7.094914435776042,
+      "is_magic_Z": false
+    },
+    {
+      "Z": 109,
+      "symbol": "Mt",
+      "nrci_score": 0.669339,
+      "be_per_A_semi": 7.267985702148874,
+      "is_magic_Z": false
+    }
+  ],
+  "top10_highest_nci": [
+    {
+      "Z": 20,
+      "symbol": "Ca",
+      "nci": 0.7181518266213949,
+      "nrci_score": 0.637914,
+      "be_per_A_semi": 8.61441347500607,
+      "magic_factor": 2
+    },
+    {
+      "Z": 2,
+      "symbol": "He",
+      "nci": 0.6758562129083147,
+      "nrci_score": 0.600344,
+      "be_per_A_semi": 5.710251689316814,
+      "magic_factor": 2
+    },
+    {
+      "Z": 8,
+      "symbol": "O",
+      "nci": 0.6566199831634278,
+      "nrci_score": 0.583257,
+      "be_per_A_semi": 7.873190939285797,
+      "magic_factor": 2
+    },
+    {
+      "Z": 5,
+      "symbol": "B",
+      "nci": 0.629719,
+      "nrci_score": 0.629719,
+      "be_per_A_semi": 6.4743953016226925,
+      "magic_factor": 0
+    },
+    {
+      "Z": 18,
+      "symbol": "Ar",
+      "nci": 0.617242,
+      "nrci_score": 0.617242,
+      "be_per_A_semi": 8.580673450060408,
+      "magic_factor": 0
+    },
+    {
+      "Z": 25,
+      "symbol": "Mn",
+      "nci": 0.6147138619469326,
+      "nrci_score": 0.613042,
+      "be_per_A_semi": 8.79251859939875,
+      "magic_factor": 1
+    },
+    {
+      "Z": 4,
+      "symbol": "Be",
+      "nci": 0.613042,
+      "nrci_score": 0.613042,
+      "be_per_A_semi": 6.810840863354102,
+      "magic_factor": 0
+    },
+    {
+      "Z": 66,
+      "symbol": "Dy",
+      "nci": 0.6123879739739574,
+      "nrci_score": 0.64599,
+      "be_per_A_semi": 8.217877432009777,
+      "magic_factor": 1
+    },
+    {
+      "Z": 43,
+      "symbol": "Tc",
+      "nci": 0.6089101914893617,
+      "nrci_score": 0.665553,
+      "be_per_A_semi": 8.646913219338346,
+      "magic_factor": 0
+    },
+    {
+      "Z": 6,
+      "symbol": "C",
+      "nci": 0.608824,
+      "nrci_score": 0.608824,
+      "be_per_A_semi": 7.467688226210055,
+      "magic_factor": 0
+    }
+  ]
+}
