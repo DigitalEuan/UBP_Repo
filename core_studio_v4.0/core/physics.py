@@ -27,6 +27,7 @@ from dataclasses import dataclass
 from enum import Enum
 from fractions import Fraction
 from typing import Dict, Optional
+from core import BinaryLinearAlgebra, GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE, UBPUltimateSubstrate
 
 class CoherenceRegime(Enum):
     ONBIT = 'OnBit'
@@ -83,6 +84,20 @@ class UBPObserverExact:
 class UBPCoherenceExact:
 
     @staticmethod
+    def calculate_holographic_nrci(tax: Fraction, constants: Dict[str, Fraction]) -> Fraction:
+        """
+        [LAW_HOLO_BOUND_001] v6.4.0 Refined Holographic NRCI.
+        Scales the Leech Kissing Number entropy by the Observer Constant (Y).
+        """
+        # S_holo = log2(196560) approx 17.58496
+        s_holo = Fraction(1758496, 100000)
+        y = constants['Y']
+        ten = Fraction(10, 1)
+        
+        # Formula: 10 / (10 + Tax + (S_holo * Y))
+        return ten / (ten + tax + (s_holo * y))
+
+    @staticmethod
     def clamp01(x: Fraction) -> Fraction:
         if x < 0:
             return Fraction(0, 1)
@@ -108,13 +123,21 @@ class UBPCoherenceExact:
 
 class UBPMetricsExact:
 
-    def __init__(self, constants: Optional[UBPConstantsExact]=None):
-        self.constants = constants or UBPConstantsExact()
-        self.observer = UBPObserverExact(self.constants)
-        self.coherence = UBPCoherenceExact()
-
-    def analyze_state(self, variance: Fraction, realm: str='standard') -> Dict[str, object]:
+    def analyze_state(self, variance: Fraction, realm: str='standard', is_quantum: bool=False) -> Dict[str, object]:
         nrci = self.coherence.calculate_nrci(variance)
+        
+        # v6.4.0 Ultra-Fine Audit
+        if is_quantum:
+            # Local import to bypass environment cache issues
+            from core import UBPUltimateSubstrate
+            c = UBPUltimateSubstrate.get_v6_constants()
+            # Treat variance as Tax for this calculation
+            nrci = self.coherence.calculate_holographic_nrci(variance, c)
+            
         regime = self.coherence.get_regime(nrci, self.constants.PGCI_TARGET)
-        return {'nrci': nrci, 'regime': regime.value, 'observer_cost': self.observer.get_base_cost(), 'is_stable': nrci >= Fraction(1, 2)}
-METRICS_EXACT = UBPMetricsExact()
+        return {
+            'nrci': nrci, 
+            'regime': regime.value, 
+            'observer_cost': self.observer.get_base_cost(), 
+            'is_stable': nrci >= Fraction(42, 100) # Noise Floor check
+        }
