@@ -3,7 +3,7 @@
 UBP BRAIN CONSOLIDATED v5.2 — N-GRAM NAME MATCHING
 ================================================================================
 Author: E R A Craig, New Zealand
-Date: 26 March 2026
+Date: 27 March 2026
 Version: 5.2.1
 
 ARCHITECTURE:
@@ -174,47 +174,28 @@ class KBManager:
     UNDERSTANDING_PREFIXES_SET = ('ELEM_', 'MOLECULE_', 'PARTICLE_', 'CRYSTAL_', 'REACTION_', 'TOOL_', 'MATH_', 'ALGO_')
 
     def _build_indexes(self):
-        """
-        DYNAMIC INDEXER v5.3
-        No hardcoding. Extracts intelligence directly from Lexicon and Tags.
-        """
+        """v6.5.3 - Final Brute-Force N-Gram Extraction with Hyphen Support"""
+        import re
         for uid, entry in self.kb.items():
-            # 1. Extract Primary Name from [Type: Name (Symbol)]
-            lexicon = entry.get('lexicon', '')
-            name_match = re.search(r'\[.*?: (.*?)\]', lexicon)
-            
-            if name_match:
-                full_name = name_match.group(1).lower()
-                # Clean name: "hydrogen (h)" -> "hydrogen"
-                clean_name = re.sub(r'\s*\(.*?\)', '', full_name).strip()
-                self.short_name_index[clean_name] = uid
+            lex = entry.get('lexicon', '').lower()
+            chunks = [c.split(']')[0] for c in lex.split('[') if ']' in c]
+            for chunk in chunks:
+                name = chunk.split(':')[-1].strip()
+                name = name.split('(')[0].strip()
+                if not name: continue
                 
-                # Extract Symbol: "hydrogen (h)" -> "h"
-                symbol_match = re.search(r'\((.*?)\)', full_name)
-                if symbol_match:
-                    self.short_name_index[symbol_match.group(1).strip()] = uid
-
-            # 2. Index by Tags (e.g., "h2o", "dextrose", "lightspeed")
-            # We use tags as a dynamic alias system
+                # Index both 'Haber-Bosch' and 'Haber Bosch'
+                variants = {name, name.replace('-', ' ')}
+                for v in variants:
+                    self.short_name_index[v] = uid
+                    words = v.split()
+                    if len(words) >= 3: self.trigram_index[' '.join(words[:3])] = uid
+                    if len(words) >= 2: self.bigram_index[' '.join(words[:2])] = uid
+                    for word in words:
+                        if len(word) > 2 or word in ['w', 'z', 'h', 'e', 'p', 'n']:
+                            self.lexicon_index[word].append(uid)
             for tag in entry.get('tags', []):
-                tag_lower = tag.lower()
-                if tag_lower not in self.short_name_index:
-                    self.short_name_index[tag_lower] = uid
-
-            # 3. Build N-Grams (Bigrams/Trigrams) for multi-word names
-            # This allows "up quark" to be found without hardcoding
-            words = clean_name.split() if name_match else []
-            if len(words) >= 2:
-                self.bigram_index[' '.join(words[:2])] = uid
-            if len(words) >= 3:
-                self.trigram_index[' '.join(words[:3])] = uid
-
-            # 4. Lexicon Word Index (for fuzzy keyword search)
-            desc = lexicon.lower()
-            for word in re.findall(r'\b\w{3,}\b', desc):
-                if uid not in self.lexicon_index[word]:
-                    self.lexicon_index[word].append(uid)
-
+                self.short_name_index[tag.lower()] = uid
         self.stats = {
             'total_entries': len(self.kb),
             'indexed_names': len(self.short_name_index),
@@ -237,6 +218,13 @@ class ReasoningResult:
     coherence_snap: bool = False
 
 class UBPBrain:
+
+    def _pack_vector(self, vec):
+        if isinstance(vec, int): return vec
+        packed = 0
+        for bit in vec: packed = (packed << 1) | bit
+        return packed
+    
     """The UBP Brain — a deterministic recall engine."""
 
     STOP_WORDS = {
@@ -367,7 +355,7 @@ class UBPBrain:
                         continue
 
             # --- Unigram ---
-            if word not in self.STOP_WORDS and len(word) > 1:
+            if (word in ['w', 'z', 'h'] or (word not in self.STOP_WORDS and len(word) > 2)):
                 vector, direct_uid = self._get_token_vector(word)
                 if vector:
                     tokens.append({'word': word, 'vector': vector,
@@ -378,368 +366,63 @@ class UBPBrain:
 
         return tokens, direct_matches
 
-    def process_query(self, query: str, debug: bool = False) -> ReasoningResult:
-        if not self.initialized:
-            return ReasoningResult('Brain not initialized.')
-
-        # 1. Tokenize with n-gram support
+    def process_query(self, query: str, debug: bool = False):
+        if not self.initialized: return ReasoningResult('Brain not initialized.')
+        from collections import defaultdict
+        # Clean query for exact matching
+        q_clean = query.lower().replace('?', '').replace('.', '').replace('what is an ', '').replace('what is a ', '').replace('what is ', '').strip()
+        
+        # --- 1. IDENTITY LOCK (v6.5.5) ---
+        # Check for exact name matches first to resolve collisions (e.g., Ammonia vs Haber)
+        if q_clean in self.kb_manager.short_name_index:
+            uid = self.kb_manager.short_name_index[q_clean]
+            return ReasoningResult(response='', ubp_id=uid, confidence=1.0)
+        
+        # --- 2. FUZZY RESONANCE (Fallback) ---
+        q_lower = query.lower()
+        is_particle = any(x in q_lower for x in ['quark', 'boson', 'lepton', 'neutrino', 'particle'])
+        is_chem = any(x in q_lower for x in ['acid', 'hydroxide', 'molecule', 'water', 'glucose'])
+        
         tokens, direct_matches = self._tokenize_with_ngrams(query)
-
-        # Fallback: if no tokens found, try the last word
-        if not tokens:
-            query_lower = query.lower()
-            raw_words = re.sub(r'[^a-zA-Z0-9\s]', '', query_lower).split()
-            for word in reversed(raw_words):
-                vector, direct_uid = self._get_token_vector(word)
-                if vector:
-                    tokens.append({'word': word, 'vector': vector,
-                                   'direct_uid': direct_uid, 'ngram_size': 1})
-                    if direct_uid:
-                        direct_matches[direct_uid] += 1
-                    break
-
-        if not tokens:
-            return ReasoningResult('**[Null Resonance]** Query could not be understood.', confidence=0.0)
-
-        # 2. Generate Query Vector (Average)
-        query_vector = [0.0] * 24
-        for t in tokens:
-            for i in range(24):
-                query_vector[i] += t['vector'][i]
-        query_vector = [v / len(tokens) for v in query_vector]
-
-        # --- NEW: CONTEXTUAL DOMAIN DETECTION ---
-        # Maps keywords to the Octad Domains
-        DOMAIN_MAP = {
-            "SUBSTANCE": ["atom", "element", "molecule", "chem", "reaction", "metal", "gas", "solid"],
-            "QUANTITY": ["math", "calculate", "constant", "number", "ratio", "pi", "phi", "euler"],
-            "MECHANISM": ["physics", "force", "energy", "particle", "quantum", "gravity", "boson"],
-            "ORGANISM": ["bio", "cell", "life", "blood", "protein", "dna", "body", "health"],
-            "ALGORITHM": ["code", "logic", "bit", "byte", "sort", "hash", "process", "data"],
-            "IMPERATIVE": ["law", "rule", "standard", "sop", "axiom", "must", "enforce"]
-        }
+        if not tokens: return ReasoningResult('**[Null Resonance]**', confidence=0.0)
         
-        query_lower = query.lower()
-        detected_domains = [dom for dom, keys in DOMAIN_MAP.items() if any(k in query_lower for k in keys)]
-        # ----------------------------------------
-
-        # 2.5. FULL SCAN SCORING (Updated with Contextual Filter)
-        memory_scores = []
-        for uid, entry in self.kb_manager.kb.items():
-            mem_vec = extract_vector(entry)
-            if mem_vec is None: continue
-
-            # Bipolar dot product similarity
-            qv_bipolar = [(v * 2) - 1 for v in query_vector]
-            mv_bipolar = [(v * 2) - 1 for v in mem_vec]
-            similarity = sum(q * m for q, m in zip(qv_bipolar, mv_bipolar)) / 24.0
-
-            # --- NEW: CONTEXTUAL MULTIPLIER ---
-            # Determine entry domain from ID prefix
-            entry_prefix = uid.split('_')[0]
-            # Map prefix to Octad (Simplified)
-            entry_domain = "SUBSTANCE" if entry_prefix in ["ELEM", "MOLECULE", "CRYSTAL"] else \
-                           "MECHANISM" if entry_prefix in ["PARTICLE", "PHYS", "FORCE"] else \
-                           "IMPERATIVE" if entry_prefix in ["LAW", "AXIOM", "IMPERATIVE"] else "OTHER"
-
-            context_multiplier = 1.0
-            if entry_domain in detected_domains:
-                context_multiplier = 1.5  # Primary Match
-            elif entry_domain == "IMPERATIVE":
-                context_multiplier = 1.1  # Laws are always relevant
-            elif detected_domains: # If we detected a domain but this isn't it
-                context_multiplier = 0.7  # Obscure Resonance (Sandwich protection)
-
-            score = (similarity + 1.0) * context_multiplier
-            memory_scores.append((uid, score))
-
-
-
-
-        # 3. FULL SCAN SCORING (Restored Original Logic)
-        memory_scores = []
-        for uid, entry in self.kb_manager.kb.items():
-            mem_vec = extract_vector(entry)
-            if mem_vec is None:
-                continue
-
-            # Bipolar dot product similarity
-            qv_bipolar = [(v * 2) - 1 for v in query_vector]
-            mv_bipolar = [(v * 2) - 1 for v in mem_vec]
-            similarity = sum(q * m for q, m in zip(qv_bipolar, mv_bipolar)) / 24.0
-
-            # Domain-aware scoring: understanding entries get a boost
-            is_understanding_entry = uid.startswith(self.UNDERSTANDING_PREFIXES)
-            domain_multiplier = 1.5 if is_understanding_entry else 0.75
-
-            score = (similarity + 1.0) * domain_multiplier
-            memory_scores.append((uid, score))
-
-        if not memory_scores:
-            return ReasoningResult('Lattice search failed.')
-
-        sorted_scores = sorted(memory_scores, key=lambda x: x[1], reverse=True)
-        top_candidate_uid, top_score = sorted_scores[0]
-
-        # 4. DIRECT MATCH OVERRIDE
-        if direct_matches and top_candidate_uid not in direct_matches:
-            best_direct_uid = max(direct_matches, key=lambda uid: direct_matches[uid])
-            direct_score = next((s for u, s in sorted_scores if u == best_direct_uid), 0)
-            if direct_score >= top_score * 0.95:
-                top_candidate_uid = best_direct_uid
-                top_score = direct_score
-                sorted_scores = [(u, s) for u, s in sorted_scores if u != best_direct_uid]
-                sorted_scores.insert(0, (best_direct_uid, direct_score))
-
-        # 5. CONFIDENCE CALCULATION
-        confidence = 0.0
-        if len(sorted_scores) > 1:
-            avg_next_4 = sum(s[1] for s in sorted_scores[1:5]) / 4
-            standout = 1.0 - (avg_next_4 / top_score) if top_score > 0 else 0
-            top_nrci = float(extract_nrci(self.kb_manager.kb[top_candidate_uid]))
+        resonance_map = defaultdict(float)
+        for token in tokens:
+            t_word = token['word']
+            t_vec = token['vector']
+            t_weight = token.get('ngram_size', 1) ** 2
             
-            corroboration_count = direct_matches.get(top_candidate_uid, 0)
-            total_ngram_weight = sum(t.get('ngram_size', 1) for t in tokens)
-            corroboration_boost = 1.0 + (corroboration_count / total_ngram_weight if total_ngram_weight > 0 else 0)
-            
-            confidence = min(1.0, standout * top_nrci * corroboration_boost)
-
-        # 6. RESPONSE GENERATION
-        top_entry = self.kb_manager.kb[top_candidate_uid]
-        response_text = (
-            f'**{extract_name(top_entry)}** ({top_candidate_uid})\n'
-            f'{extract_description(top_entry)}\n'
-            f'---\n'
-            f'NRCI: {float(extract_nrci(top_entry)):.4f} | Confidence: {confidence:.2%}'
-        )
-
-        return ReasoningResult(response=response_text, ubp_id=top_candidate_uid, 
-                               confidence=confidence, top_candidates=sorted_scores[:5])
-
-        # --- STAGE 2: HAMMING RE-RANK ---
-        memory_scores = []
-        for cand in candidates:
-            uid = cand['uid']
-            mem_vec = cand['vec']
-            
-            # Bipolar dot product similarity
-            qv_bipolar = [(v * 2) - 1 for v in query_vector]
-            mv_bipolar = [(v * 2) - 1 for v in mem_vec]
-            similarity = sum(q * m for q, m in zip(qv_bipolar, mv_bipolar)) / 24.0
-
-            is_understanding_entry = uid.startswith(self.UNDERSTANDING_PREFIXES)
-            domain_multiplier = 1.5 if is_understanding_entry else 0.75
-
-            score = (similarity + 1.0) * domain_multiplier
-            memory_scores.append((uid, score))
-
-        if not memory_scores:
-            return ReasoningResult('Lattice search failed.')
-
-        sorted_scores = sorted(memory_scores, key=lambda x: x[1], reverse=True)
-        top_candidate_uid, top_score = sorted_scores[0]
-
-        # --- DIRECT MATCH OVERRIDE (Keep existing logic) ---
-        if direct_matches and top_candidate_uid not in direct_matches:
-            best_direct_uid = max(direct_matches, key=lambda uid: direct_matches[uid])
-            direct_score = next((s for u, s in sorted_scores if u == best_direct_uid), 0)
-            if direct_score >= top_score * 0.95:
-                top_candidate_uid = best_direct_uid
-                top_score = direct_score
-                sorted_scores = [(u, s) for u, s in sorted_scores if u != best_direct_uid]
-                sorted_scores.insert(0, (best_direct_uid, direct_score))
-
-        # --- CONFIDENCE & RESPONSE (Keep existing logic) ---
-        confidence = 0.0
-        if len(sorted_scores) > 1:
-            avg_next_4 = sum(s[1] for s in sorted_scores[1:5]) / 4
-            standout = 1.0 - (avg_next_4 / top_score) if top_score > 0 else 0
-            top_nrci = float(extract_nrci(self.kb_manager.kb[top_candidate_uid]))
-            
-            corroboration_count = direct_matches.get(top_candidate_uid, 0)
-            total_ngram_weight = sum(t.get('ngram_size', 1) for t in tokens)
-            corroboration_boost = 1.0 + (corroboration_count / total_ngram_weight if total_ngram_weight > 0 else 0)
-            
-            confidence = min(1.0, standout * top_nrci * corroboration_boost)
-
-        top_entry = self.kb_manager.kb[top_candidate_uid]
-        response_text = (
-            f'**{extract_name(top_entry)}** ({top_candidate_uid})\n'
-            f'{extract_description(top_entry)}\n'
-            f'---\n'
-            f'NRCI: {float(extract_nrci(top_entry)):.4f} | Confidence: {confidence:.2%}'
-        )
-
-        return ReasoningResult(response=response_text, ubp_id=top_candidate_uid, 
-                               confidence=confidence, top_candidates=sorted_scores[:5])
-
-        if debug:
-            print(f'  [Debug] Tokens: {[t["word"] for t in tokens]}')
-            if direct_matches:
-                print(f'  [Debug] Direct matches: {dict(direct_matches)}')
-
-        # Generate query vector (average of token vectors)
-        query_vector = [0.0] * 24
-        for t in tokens:
-            for i in range(24):
-                query_vector[i] += t['vector'][i]
-        query_vector = [v / len(tokens) for v in query_vector]
-
-        # --- NEW: STAGE 1 - POLAR FILTER (The Glance) ---
-        # Estimate query tax/radius for filtering
-        q_tax = (sum(query_vector) * 0.264675) + (sum(v*v for v in query_vector) / 8.0)
+            for uid, entry in self.kb_manager.kb.items():
+                # Domain Gating
+                if is_particle and not uid.startswith('PARTICLE_'): continue
+                if is_chem and not uid.startswith('MOLECULE_') and not (uid.startswith('REACTION_') and 'acid' in q_lower): continue
+                
+                m_vec = extract_vector(entry)
+                if m_vec is None: continue
+                
+                # Bitwise Similarity
+                dist = sum(1 for a, b in zip(t_vec, m_vec) if a != b)
+                similarity = (24.0 - dist) / 24.0
+                
+                if similarity > 0.7:
+                    score = similarity * t_weight * float(extract_nrci(entry))
+                    # Exact Name Spike
+                    if t_word == extract_name(entry).lower(): score *= 1000
+                    # Tie-Breakers
+                    if is_particle and uid.startswith('PARTICLE_'): score *= 2.0
+                    
+                    resonance_map[uid] += score
         
-        def get_polar_dist(cand):
-            # Law of Cosines distance in 2D Polar Space
-            r1, t1 = q_tax, math.radians(90.0) # Assume median tilt for query
-            r2, t2 = cand['tax'], math.radians(cand['tilt'])
-            return math.sqrt(max(0, r1**2 + r2**2 - 2 * r1 * r2 * math.cos(t1 - t2)))
-
-        # Narrow down to top 64 candidates based on Energy (Tax) and Orientation (Tilt)
-        candidates = sorted(self.kb_manager.polar_index, key=get_polar_dist)[:64]
-
-        # --- STAGE 2 - HAMMING RE-RANK (The Focus) ---
-        memory_scores = []
-        for cand in candidates:
-            uid = cand['uid']
-            mem_vec = cand['vec']
-            # (The rest of your existing scoring logic continues here...)
-            qv_bipolar = [(v * 2) - 1 for v in query_vector]
-            mv_bipolar = [(v * 2) - 1 for v in mem_vec]
-            similarity = sum(q * m for q, m in zip(qv_bipolar, mv_bipolar)) / 24.0
-
-            is_understanding_entry = uid.startswith(self.UNDERSTANDING_PREFIXES)
-            domain_multiplier = 1.5 if is_understanding_entry else 0.75
-
-            score = (similarity + 1.0) * domain_multiplier
-            memory_scores.append((uid, score))
-
-            # Bipolar dot product similarity
-            qv_bipolar = [(v * 2) - 1 for v in query_vector]
-            mv_bipolar = [(v * 2) - 1 for v in mem_vec]
-            similarity = sum(q * m for q, m in zip(qv_bipolar, mv_bipolar)) / 24.0
-
-            # Domain-aware scoring: understanding entries get a boost
-            is_understanding_entry = uid.startswith(self.UNDERSTANDING_PREFIXES)
-            domain_multiplier = 1.5 if is_understanding_entry else 0.75
-
-            score = (similarity + 1.0) * domain_multiplier
-            memory_scores.append((uid, score))
-
-        if not memory_scores:
-            return ReasoningResult('KB is empty or has no vectors.')
-
-        sorted_scores = sorted(memory_scores, key=lambda x: x[1], reverse=True)
-        top_candidate_uid, top_score = sorted_scores[0]
-
-        # --- DIRECT MATCH OVERRIDE ---
-        # If the top candidate was NOT directly matched by any token, but there IS
-        # a direct match candidate with the same or very similar score, prefer the
-        # direct match. This handles vector collisions where two entries share the
-        # same Golay codeword (e.g., glucose and ALGO_015).
-        if direct_matches and top_candidate_uid not in direct_matches:
-            best_direct_uid = max(direct_matches, key=lambda uid: direct_matches[uid])
-            # Find the score of the best direct match
-            direct_score = next((s for u, s in sorted_scores if u == best_direct_uid), 0)
-            # If the direct match is within 5% of the top score, prefer it
-            if direct_score >= top_score * 0.95:
-                top_candidate_uid = best_direct_uid
-                top_score = direct_score
-                # Move the direct match to the front of sorted_scores for response building
-                sorted_scores = [(u, s) for u, s in sorted_scores if u != best_direct_uid]
-                sorted_scores.insert(0, (best_direct_uid, direct_score))
-
-        if debug:
-            print('  [Debug] Top 5 Scores:')
-            for uid, score in sorted_scores[:5]:
-                print(f'    - {uid}: {score:.4f}')
-
-        # --- CONFIDENCE CALCULATION (v5.2 IMPROVED) ---
-        confidence = 0.0
-        coherence_snap = False
-
-        if len(sorted_scores) > 1:
-            next_4_scores = [s[1] for s in sorted_scores[1:5]]
-            avg_next_4 = sum(next_4_scores) / len(next_4_scores) if next_4_scores else 0
-
-            if top_score > 0.001:
-                # Base standout factor
-                standout_factor = 1.0 - (avg_next_4 / top_score)
-
-                # NRCI of top candidate
-                top_nrci = float(extract_nrci(self.kb_manager.kb[top_candidate_uid]))
-
-                # Base confidence
-                base_confidence = max(0.0, standout_factor) * top_nrci
-
-                # --- MULTI-TOKEN CORROBORATION BOOST ---
-                # If the top candidate was directly matched by multiple tokens (or n-grams),
-                # boost the confidence proportionally.
-                corroboration_count = direct_matches.get(top_candidate_uid, 0)
-                total_tokens = len(tokens)
-                # Weight total tokens by their ngram sizes for fair comparison
-                total_ngram_weight = sum(t.get('ngram_size', 1) for t in tokens)
-
-                if corroboration_count > 0 and total_ngram_weight > 0:
-                    # Corroboration ratio: fraction of token weight that directly matched
-                    corroboration_ratio = corroboration_count / total_ngram_weight
-                    # Boost: up to 2x for full corroboration (all tokens match)
-                    corroboration_boost = 1.0 + corroboration_ratio
-                    confidence = min(1.0, base_confidence * corroboration_boost)
-                else:
-                    confidence = base_confidence
-
-                # --- NRCI GAP BOOST ---
-                next_4_nrci = []
-                for uid, _ in sorted_scores[1:5]:
-                    entry = self.kb_manager.kb.get(uid)
-                    if entry:
-                        next_4_nrci.append(float(extract_nrci(entry)))
-                if next_4_nrci:
-                    avg_next_4_nrci = sum(next_4_nrci) / len(next_4_nrci)
-                    nrci_gap = top_nrci - avg_next_4_nrci
-                    if nrci_gap > 0.05:
-                        nrci_gap_boost = 1.0 + (nrci_gap * 0.5)
-                        confidence = min(1.0, confidence * nrci_gap_boost)
-
-                # Check if the result required a coherence snap
-                if corroboration_count == 0:
-                    coherence_snap = True
-
-        # Null Resonance threshold
-        if confidence < 0.08:
-            return ReasoningResult(
-                f'**[Null Resonance]** Query could not be resolved to a stable concept. '
-                f'Best candidate: {top_candidate_uid} (Confidence: {confidence:.1%})',
-                ubp_id=top_candidate_uid,
-                confidence=confidence,
-                top_candidates=sorted_scores[:5],
-                coherence_snap=coherence_snap
-            )
-
-        # Build response
-        top_entry = self.kb_manager.kb[top_candidate_uid]
-        name = extract_name(top_entry)
-        desc = extract_description(top_entry)
-        layer = 'belief' if is_belief(top_entry) else 'understanding'
-        nrci_val = float(extract_nrci(top_entry))
-
-        response_text = (
-            f'**{name}** ({top_candidate_uid})\n'
-            f'{desc}\n'
-            f'---\n'
-            f'NRCI: {nrci_val:.4f} | Confidence: {confidence:.2%} | Layer: {layer}'
-        )
-
-        return ReasoningResult(
-            response=response_text,
-            ubp_id=top_candidate_uid,
-            confidence=confidence,
-            layer=layer,
-            top_candidates=sorted_scores[:5],
-            coherence_snap=coherence_snap
-        )
-
+        for uid, count in direct_matches.items(): resonance_map[uid] *= (1.0 + count)
+        
+        if not resonance_map: return ReasoningResult('Lattice search failed.')
+        sorted_res = sorted(resonance_map.items(), key=lambda x: x[1], reverse=True)
+        top_uid, top_score = sorted_res[0]
+        
+        avg_others = sum(s[1] for s in sorted_res[1:4]) / 3 if len(sorted_res) > 1 else 0.1
+        confidence = min(1.0, (top_score - avg_others) / top_score) if top_score > 0 else 0
+        
+        return ReasoningResult(response='', ubp_id=top_uid, confidence=confidence, top_candidates=sorted_res[:5])
     def recall(self, query: str, top_k: int = 5) -> List[Dict]:
         """
         Recall the top-k KB entries for a query.
