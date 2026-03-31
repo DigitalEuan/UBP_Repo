@@ -65,6 +65,19 @@ To maintain the integrity of the **System Knowledge Base**, all entries must fol
 
 ## Updates
 
+### 31 March 2026 — Semantic reasoning
+
+*   Added **'ubp_lang_kb_combined_v4.json'** - the experimental "Natural Language" KB of the UBP
+*   Added **'ubp_semantic_engine.py'** to work wth semantic experiments (likely to be absorbed by the 'auto_trigger.py' and archived soon)
+*   **'auto_trigger.py'** now has full loading of both ubp_system_kb.json + ubp_lang_kb_combined_v4.json
+*   Rich automatic operator trigger-word map (194 words)
+*   Extended **Gray-code numeric encoder** (Dipole, Density, Phase, pKa1, etc.)
+*   nl_to_math() (heuristic)
+*   numeric_trigger() with masked Hamming distance
+*   reflexive_recall() that ranks operators > numeric > phrase/ID > keyword
+*   New synth_context() helper that gives the user a clean, ready-to-paste context block for the AI
+
+
 ### 27 March 2026 C — UBP Core v6.5.5 "Cognitive Phase-Lock"
 
 #### **Physical Layer: Reflexive System Boost (v6.4.1)**
