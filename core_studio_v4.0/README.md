@@ -65,17 +65,75 @@ To maintain the integrity of the **System Knowledge Base**, all entries must fol
 
 ## Updates
 
-### 31 March 2026 — Semantic reasoning
+# 31 March 2026 — Semantic reasoning + LinearStateEncoder and DQI Metrics + MOGOntology (OffBits) and u_score
 
-*   Added **'ubp_lang_kb_combined_v4.json'** - the experimental "Natural Language" KB of the UBP
-*   Added **'ubp_semantic_engine.py'** to work wth semantic experiments (likely to be absorbed by the 'auto_trigger.py' and archived soon)
-*   **'auto_trigger.py'** now has full loading of both ubp_system_kb.json + ubp_lang_kb_combined_v4.json
-*   Rich automatic operator trigger-word map (194 words)
-*   Extended **Gray-code numeric encoder** (Dipole, Density, Phase, pKa1, etc.)
-*   nl_to_math() (heuristic)
-*   numeric_trigger() with masked Hamming distance
-*   reflexive_recall() that ranks operators > numeric > phrase/ID > keyword
-*   New synth_context() helper that gives the user a clean, ready-to-paste context block for the AI
+## ubp script updates
+
+Updated `core.py': added:
+* **LinearStateEncoder** - maps continuous chemical parameters to a stable Golay codeword ($NRCI \approx 0.616$). 
+* **DQI (Design Quality Index)** calculation ($0.8004$) - measure functional utility alongside geometric stability.
+*   **Leech Expansion:** reintegrated `expand_octad_to_physical` into `core.py`. The system can now lift any 24-bit binary seed into its **128 Euclidean coordinates** in $\Lambda_{24}$ (NormSq 32).
+*   **Stereoscopic Sink ($L_s$):** reintegrated the **NCC Spectral Gain** ($29/24$ ratio). This anchors the Baryonic mass sector (Proton/Neutron) with $0.000037\%$ precision.
+*   **Sporadic Anchors:** reintegrated the 26 sporadic group identifiers (`SPORADIC_ANCHORS`) to ensure the Triad Activation Engine can regenerate the Monster-Leech-Golay connection from a cold boot.
+
+* Updated `ubp_py_runtime.py` - integrated:
+**LinearStateEncoder**
+**DQI** metrics
+**TGIC 9-Neighbor Limit**
+preserved the **SPIRAL** and **THE FLOW** logic
+SYNTH now supports U_SCORE
+**Tetradic MOG Health)** reintegrated into the `CortexAtom` and `audit` methods`
+three critical fixes:
+1.  **DQI Persistence:** Ensure `u_score` is multiplied by `NRCI` and stored in the `CortexAtom`.
+2.  **Weighted Superposition:** The `u_score` should act as a "Probability Amplitude." A low `u_score` (like 0.25) should make the bits "flicker" or drift, resulting in a different, less stable vector than a high `u_score` (1.0).
+3.  **MOG Integration:** reintegrated the `MOGOntology` class so it's a native part of the VM.
+
+* Updated `ubp_py_lang.py`: expose the `STATE` command. This will allow us to define continuous physical states directly in the `.ubp` scripts using a readable syntax.
+
+* Added 'ubp_lang_kb_combined_v4.json' - the experimental "Natural Language" KB of the UBP
+
+* Added 'ubp_semantic_engine.py' to work wth semantic experiments (likely to be absorbed by the 'auto_trigger.py' and archived soon)
+
+* 'auto_trigger.py' now has full loading of both ubp_system_kb.json + ubp_lang_kb_combined_v4.json
+* Rich automatic operator trigger-word map (194 words)
+* Extended Gray-code numeric encoder (Dipole, Density, Phase, pKa1, etc.)
+* nl_to_math() (heuristic)
+* numeric_trigger() with masked Hamming distance
+* reflexive_recall() that ranks operators > numeric > phrase/ID > keyword
+* New synth_context() helper that gives the user a clean, ready-to-paste context block for the AI
+
+### **LANGUAGE_SOP_004: The Triple Delta Protocol (Phrase-Locking)**
+To create a new word (Operator) that perfectly resolves a specific query to a specific Law:
+1.  **Identify the Triad:**
+    *   **$V_{target}$**: The vector of the Law you want to find (e.g., `LAW_PHI_ORBIT_1953`).
+    *   **$V_{subject}$**: The vector of the Entity being discussed (e.g., `ELEM_Bi_083`).
+    *   **$V_{query}$**: The vector of the interrogative/context word (e.g., `OP_HOW`).
+2.  **Calculate the Key ($V_{word}$):**
+    *   Perform a bitwise XOR (mod-2 addition) of all three:
+    *   **$V_{word} = V_{target} \oplus V_{subject} \oplus V_{query}$**
+3.  **Commit to Language KB:**
+    *   Save $V_{word}$ as the vector for your new Operator (e.g., `OP_UNWIND`).
+    *   **Result:** When the Semantic Engine sees the phrase "How does [Subject] [Word]?", the vectors for *How*, *Subject*, and *Word* will cancel each other out, leaving only the *Target Law* at distance 0.
+
+## UBP Core Studio v4.2.7 updates
+Implemented the TurboQuant Context Compression strategy and a dedicated Reset Kernel button to address AI Assistant token limit errors.
+Key Improvements:
+    TurboQuant Context Compression (Gemini & Local LLMs):
+        History Pruning: The AI now only sees the last 50 messages in its active context.
+        Workspace File Truncation: Now includes up to 40 files (up from 15) with a much larger per-file limit of 120,000 characters (approx. 30k tokens).
+        Aggressive KB Snippets: The System KB, Beliefs, and Hash Index snippets have been expanded by 4x to 8x (e.g., System KB now allows up to 80,000 characters).
+        Attachment Limits: PDF and text attachments now allow up to 60,000 characters of context.
+        Improved Local LLM Context: The local LLM service (Ollama/LM Studio) now also receives the Instruction Manual and has its own relaxed (but still safe for local hardware) context limits
+
+    Integrated "Reset Kernel" Button:
+        When a "Context Overflow" or "System Error" is detected, a dedicated Reset Kernel button will now appear directly within the chat message.
+        Clicking this button will clear the temporary session memory and reload the application, restoring the default state from the GitHub repository.
+
+    AI Awareness:
+        The AI's system instructions have been updated to inform it that its context is "TurboQuant Compressed." It now knows that if it needs deep details from a truncated file, it should use the Python Kernel to read the file directly from the workspace.
+
+    Developer Tools:
+        Added a lint script to package.json (npm run lint) to help catch potential code issues early.
 
 
 ### 27 March 2026 C — UBP Core v6.5.5 "Cognitive Phase-Lock"
