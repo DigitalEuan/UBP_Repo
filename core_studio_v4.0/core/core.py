@@ -1,10 +1,6 @@
-"""UBP Condensed Module: core"""
-
-
-# --- Extracted from ubp_core_v5_3_merged.py ---
 """
 ================================================================================
-UBP CORE v5.3 - MERGED ULTIMATE SYSTEM (PRODUCTION)
+UBP CORE v6.1
 ================================================================================
 
 Merged system combining:
@@ -23,9 +19,9 @@ This is the complete System Of Everything (SOE) implementation with:
 - Coherence snap functionality
 - Full compositional architecture
 
-Version: 5.3 Merged (Production - 100% Complete)
+Version: v6.1
 Author: Euan R A Craig, New Zealand
-Date: 17 February 2026
+Date: 31 march 2026
 """
 import math
 import statistics
@@ -337,6 +333,49 @@ class UBPSourceCodeParticlePhysics:
         msg = [h[0] >> i & 1 for i in range(7, -1, -1)] + [0, 0, 0, 0]
         return GOLAY_ENGINE.encode(msg)
 PARTICLE_PHYSICS = UBPSourceCodeParticlePhysics(precision=50)
+
+class LinearStateEncoder:
+    """
+    UBP Linear State Encoder v1.1 (SOP_002 Standard)
+    Maps continuous parameters into the 24-bit Golay manifold 
+    to track monotonic degradation and state transitions.
+    """
+    def __init__(self, golay_engine):
+        self.golay = golay_engine
+
+    def _to_gray_bits(self, val: int, bits: int = 3) -> List[int]:
+        """Converts an integer to a Gray code bit array."""
+        g = val ^ (val >> 1)
+        return [(g >> i) & 1 for i in range(bits - 1, -1, -1)]
+
+    def encode_state(self, params: Dict[str, float], schema: Dict[str, Dict[str, float]]) -> List[int]:
+        """Encodes up to 12 bits of parameters into a 24-bit Golay codeword."""
+        message = []
+        total_bits = 0
+        for key, bounds in schema.items():
+            bits = int(bounds.get("bits", 3))
+            total_bits += bits
+            if total_bits > 12: raise ValueError("Schema exceeds 12-bit capacity.")
+            val = params.get(key, bounds["min"])
+            max_int = (1 << bits) - 1
+            norm = (val - bounds["min"]) / (bounds["max"] - bounds["min"]) if bounds["max"] > bounds["min"] else 0.0
+            discrete_val = int(round(max(0.0, min(1.0, norm)) * max_int))
+            message.extend(self._to_gray_bits(discrete_val, bits))
+        while len(message) < 12: message.append(0)
+        return self.golay.encode(message)
+
+class UBPQualityMetrics:
+    """
+    Implements the Design Quality Index (DQI) from the Electrical Study.
+    Bridges geometric stability with functional utility.
+    """
+    @staticmethod
+    def calculate_dqi(nrci: float, u_score: float, gap_score: float) -> float:
+        """Weighted harmonic mean of Stability, Utility, and Template Accuracy."""
+        e = 1e-6
+        w_n, w_u, w_t = 0.40, 0.40, 0.20
+        dqi = (w_n + w_u + w_t) / (w_n/max(e, nrci) + w_u/max(e, u_score) + w_t/max(e, gap_score))
+        return round(min(1.0, dqi), 4)
 
 class LeechLatticeEngine:
     """Leech Lattice (Λ₂₄) Engine - 100% Float-Free."""
@@ -781,3 +820,50 @@ if __name__ == '__main__':
         print('✅ DECODER VERIFIED: Clarity obtained.')
     else:
         print('❌ ERROR: Decoder failed to improve stability.')
+
+class LinearStateEncoder:
+    """
+    UBP Linear State Encoder v1.1 (SOP_002 Standard)
+    Maps continuous parameters into the 24-bit Golay manifold 
+    to track monotonic degradation and state transitions.
+    """
+    def __init__(self, golay_engine):
+        self.golay = golay_engine
+
+    def _to_gray_bits(self, val: int, bits: int = 3) -> list:
+        """Converts an integer to a Gray code bit array."""
+        g = val ^ (val >> 1)
+        return [(g >> i) & 1 for i in range(bits - 1, -1, -1)]
+
+    def encode_state(self, params: dict, schema: dict) -> list:
+        """Encodes up to 12 bits of parameters into a 24-bit Golay codeword."""
+        message = []
+        total_bits = 0
+        for key, bounds in schema.items():
+            bits = int(bounds.get("bits", 3))
+            total_bits += bits
+            if total_bits > 12: raise ValueError("Schema exceeds 12-bit capacity.")
+            val = params.get(key, bounds["min"])
+            max_int = (1 << bits) - 1
+            norm = (val - bounds["min"]) / (bounds["max"] - bounds["min"]) if bounds["max"] > bounds["min"] else 0.0
+            discrete_val = int(round(max(0.0, min(1.0, norm)) * max_int))
+            message.extend(self._to_gray_bits(discrete_val, bits))
+        while len(message) < 12: message.append(0)
+        return self.golay.encode(message)
+
+class UBPQualityMetrics:
+    """
+    Implements the Design Quality Index (DQI) from the Electrical Study.
+    Bridges geometric stability with functional utility.
+    """
+    @staticmethod
+    def calculate_dqi(nrci: float, u_score: float, gap_score: float) -> float:
+        """Weighted harmonic mean of Stability, Utility, and Template Accuracy."""
+        e = 1e-6
+        w_n, w_u, w_t = 0.40, 0.40, 0.20
+        dqi = (w_n + w_u + w_t) / (w_n/max(e, nrci) + w_u/max(e, u_score) + w_t/max(e, gap_score))
+        return round(min(1.0, dqi), 4)
+
+
+# --- TRIAD ACTIVATION ANCHORS ---
+SPORADIC_ANCHORS = ['M11', 'M12', 'M22', 'M23', 'M24', 'Co1', 'Co2', 'Co3', 'Fi22', 'Fi23', "Fi24'", 'HS', 'McL', 'He', 'Suz', 'J1', 'J2', 'J3', 'J4', 'Ly', 'ON', 'Ru', 'Th', 'HN', 'B', 'M']
