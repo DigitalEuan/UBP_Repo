@@ -39975,5 +39975,102 @@
       "THUNDER"
     ],
     "fingerprint": "a862ff803c4e4a85774cc68228146e2bbef40568347d5a0f44bab6f3325abdd7"
+  },
+  "fd18558e217e265207dd1a68aca426aafe719c3c3cc668f8a373e811b586f438": {
+    "ubp_id": "LAW_DQI_METRIC_001",
+    "lexicon": "[Law: Design Quality Index (DQI)], The definitive metric for evaluating UBP synthesis quality. It calculates the harmonic balance between structural coherence (NRCI), universal alignment (U_Score), and mapping efficiency (Gap_Score).",
+    "math": "DQI = 1.0 / (0.4/NRCI + 0.4/U_Score + 0.2/Gap_Score) | Refinement=Harmonic_SOP002",
+    "atlas": {
+      "hierarchy": "IMPERATIVE -> METRIC -> QUALITY_CONTROL",
+      "vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nrci": "201722446715273762035442184459211859104840804451418333787815/327492496708919450677722245194987881864571467765964782332506",
+      "nrci_score": 0.615961,
+      "tax": "251540099987291377284560121471552045519461326629092897089382/40344489343054752407088436891842371820968160890283666757563",
+      "weight": 16,
+      "tilt": 102.3147
+    },
+    "tags": [
+      "DQI",
+      "HARDENED",
+      "IMPERATIVE",
+      "METRIC",
+      "QUALITY",
+      "SOP_002"
+    ],
+    "fingerprint": "fd18558e217e265207dd1a68aca426aafe719c3c3cc668f8a373e811b586f438"
+  },
+  "dbe7067681fef2a738cd539be15e00679010e559a8de88b84a86da1d2bcc9f78": {
+    "ubp_id": "LAW_SEMANTIC_RESONANCE_001",
+    "lexicon": "[Law: Semantic Resonance], Defines the closure of the Lexical Gap via Triple Delta synthesis. A semantic operator (Word) is the XOR difference between a physical Law, a subject Entity, and an interrogative Frame. When V_word = V_law ^ V_subject ^ V_frame, natural language achieves d=0 deterministic recall.",
+    "math": "V_op=V_target^V_subject^V_interrogative|Resonance=Perfect|d=0|SOP=004",
+    "atlas": {
+      "hierarchy": "LAW_PHI_ORBIT_1953 ^ ELEM_Bi_083 ^ OP_HOW -> OP_UNWIND",
+      "vector": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nrci": "201722446715273762035442184459211859104840804451418333787815/327492496708919450677722245194987881864571467765964782332506",
+      "nrci_score": 0.615961,
+      "tax": "251540099987291377284560121471552045519461326629092897089382/40344489343054752407088436891842371820968160890283666757563",
+      "weight": 16,
+      "tilt": 150.1245
+    },
+    "tags": [
+      "ALGORITHM",
+      "HARDENED",
+      "LANGUAGE",
+      "RESONANCE",
+      "SOP_002",
+      "SOP_004",
+      "TRIPLE_DELTA"
+    ],
+    "fingerprint": "dbe7067681fef2a738cd539be15e00679010e559a8de88b84a86da1d2bcc9f78"
   }
 }
