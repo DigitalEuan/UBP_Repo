@@ -1,172 +1,222 @@
 """
-UBP Auto-Trigger v14.0 (Acoustic-Integrated)
+UBP Auto-Trigger v17.4 (Full Semantic + Numeric)
 ============================================
-Updates:
-1. ACOUSTIC PATH: Triggers AcousticCortex logic on vibrational keywords.
-2. RESONANCE PULL: Automatically resolves dissonant queries toward harmony.
-3. HYBRID CONTEXT: Merges Regex, Delta, Geometric, and Acoustic results.
-
-Author: E R A Craig, New Zealand
-UBP Research Cortex v4.2.7
-Date: 11 Feb 2026
+Now loads ubp_lang_kb_combined_v4.json + system KB
+Semantic operators are detected and returned in context.
+Author: E R A Craig & UBP Research Cortex + GLM Study Team
+Date: 31 March 2026
 """
+
 import json
-import sys
 import re
 import os
-import hashlib
-from fractions import Fraction
 from typing import List, Dict, Any
 
-# --- BRIDGE IMPORT ---
+# --- 1. LOAD BOTH KNOWLEDGE BASES ---
+kb_system_path = 'ubp_system_kb.json'
+kb_lang_path   = 'ubp_lang_kb_combined_v4.json'
+
 try:
-    from js import window
-    BRIDGE_ACTIVE = True
-except ImportError:
-    BRIDGE_ACTIVE = False
-    print("[CORTEX] Warning: JS Bridge not found. Running in standalone mode.")
+    with open(kb_system_path, 'r', encoding='utf-8') as f:
+        KB_SYSTEM = json.load(f)
+    print(f"[Cortex] System KB loaded: {len(KB_SYSTEM)} entries")
 
-# --- CORE IMPORTS ---
-try:
-    from ubp_delta_engine_v3 import DeltaReasoningEngine
-    from hex_dictionary_v4_exact import HEX_DB_EXACT
-    from ubp_core_v4_2_6_COMBINED import GOLAY_DECODER, BinaryLinearAlgebra
-    
-    # New Acoustic Integration
-    try:
-        from ubp_acoustic_cortex import AcousticCortex
-        HAS_ACOUSTIC = True
-    except ImportError:
-        HAS_ACOUSTIC = False
+    with open(kb_lang_path, 'r', encoding='utf-8') as f:
+        KB_LANG = json.load(f)
+    print(f"[Cortex] Language KB loaded: {len(KB_LANG)} semantic operators")
 
-    if not HEX_DB_EXACT.registry:
-        HEX_DB_EXACT.load_memory()
+except Exception as e:
+    print(f"[Cortex] CRITICAL LOAD ERROR: {e}")
+    KB_SYSTEM = {}
+    KB_LANG = {}
 
-except ImportError as e:
-    print(f"[Reflexive Cortex] CRITICAL IMPORT ERROR: {e}")
-    sys.exit(0)
+# --- 2. REVERSE MAPS (System + Language) ---
+ID_TO_KEY = {}          # ubp_id → fingerprint (system)
+PHRASE_TO_KEY = {}      # name → fingerprint (system)
+OPERATOR_TO_KEY = {}    # OP_XXX → fingerprint (language)
+OP_TRIGGER_WORDS = {}   # common words → operator fingerprint
 
-# --- SINGLETON DELTA ENGINE ---
-if "GLOBAL_DELTA_ENGINE" not in globals():
-    GLOBAL_DELTA_ENGINE = DeltaReasoningEngine()
-    kb_files = ["ubp_system_kb.json", "ubp_hash_memory_kb.json"]
-    lexicon_file = "ubp_lexicon_v2_defs.json" if os.path.exists("ubp_lexicon_v2_defs.json") else "ubp_lexicon_v2.json"
-    GLOBAL_DELTA_ENGINE.initialize(kb_files, lexicon_file)
+for key, entry in KB_SYSTEM.items():
+    uid = entry.get('ubp_id')
+    if uid:
+        ID_TO_KEY[uid] = key
+    name = entry.get('lexicon', '').split(']')[0].strip('[]').split(':')[-1].strip()
+    if name and name != "Unknown":
+        PHRASE_TO_KEY[name.lower()] = key
 
-DELTA = globals().get("GLOBAL_DELTA_ENGINE", GLOBAL_DELTA_ENGINE)
+for key, entry in KB_LANG.items():
+    uid = entry.get('ubp_id')
+    if uid and uid.startswith('OP_'):
+        OPERATOR_TO_KEY[uid] = key
+        # Simple trigger word extraction from lexicon
+        lex_lower = entry.get('lexicon', '').lower()
+        for word in ['why', 'how', 'what', 'which', 'and', 'or', 'not', 'xor', 'equal', 'greater', 'less', 
+                     'before', 'after', 'during', 'know', 'believe', 'predict', 'infer', 'force', 'flow']:
+            if word in lex_lower:
+                OP_TRIGGER_WORDS[word] = key
+                break
 
-# --- MODULE 1: THE REFLEXIVE BRIDGE ---
-def initialize_gpu_bridge():
-    if not BRIDGE_ACTIVE: return
-    payload = []
-    for uid, entry in HEX_DB_EXACT.registry.items():
-        vec = entry.get('vector')
-        ubp_id = entry.get('ubp_id')
-        if vec and len(vec) == 24 and ubp_id:
-            r = int("".join(map(str, vec[0:8])), 2)
-            g = int("".join(map(str, vec[8:16])), 2)
-            b = int("".join(map(str, vec[16:24])), 2)
-            payload.append({"id": ubp_id, "vector": [r, g, b]})
-    try:
-        json_str = json.dumps(payload)
-        if hasattr(window, 'ubp_gpu_load_data'):
-            window.ubp_gpu_load_data(json_str)
-    except Exception: pass
+print(f"[Cortex] Maps ready — {len(OPERATOR_TO_KEY)} operators, {len(OP_TRIGGER_WORDS)} trigger words")
 
-def query_bridge_by_vector(vector: List[int]):
-    """Queries V8 Accelerator using a raw 24-bit vector."""
-    if not BRIDGE_ACTIVE: return None
-    r = int("".join(map(str, vector[0:8])), 2)
-    g = int("".join(map(str, vector[8:16])), 2)
-    b = int("".join(map(str, vector[16:24])), 2)
-    try:
-        best_id = window.ubp_gpu_compute(r, g, b)
-        if best_id and best_id not in ["UNKNOWN", "ERR:NoData"]:
-            return HEX_DB_EXACT.find_by_id(str(best_id))
-    except Exception: pass
-    return None
+# ================================================================
+# NUMERIC TRIGGER (Gray-code) — unchanged from previous version
+# ================================================================
+class MathStringParser:
+    @staticmethod
+    def parse(math_str: str) -> Dict[str, float]:
+        if not math_str: return {}
+        props = {}
+        for pair in math_str.split('|'):
+            if '=' in pair:
+                k, v = pair.split('=', 1)
+                k = k.strip()
+                v = v.strip()
+                try:
+                    if '/' in v:
+                        num, den = v.split('/')
+                        props[k] = float(num) / float(den)
+                    else:
+                        props[k] = float(v)
+                except:
+                    pass
+        return props
 
-# --- MAIN REFLEXIVE LOOP ---
-def reflexive_recall(text, ai_vectors=None):
-    print(f"[Cortex v14.0] Processing Input via Acoustic-Hybrid Bridge...")
+class MetricPreservingEncoder:
+    def __init__(self):
+        self.schema = {  # same as GLM Study Step 5
+            'Z': {'scale':'linear','bits':7,'min':0,'max':120},
+            'M': {'scale':'log','bits':8,'min':0.5,'max':310},
+            'BP':{'scale':'log','bits':8,'min':0.05,'max':7000},
+            'MP':{'scale':'log','bits':8,'min':0.05,'max':4000},
+            'EN':{'scale':'linear','bits':6,'min':0,'max':4.5},
+            'Ion':{'scale':'log','bits':8,'min':50,'max':30000},
+            'Rho':{'scale':'log','bits':8,'min':5e-5,'max':30},
+            'Rad':{'scale':'linear','bits':7,'min':20,'max':310},
+            'Valence_e':{'scale':'linear','bits':4,'min':0,'max':8},
+            'Phase_STP':{'scale':'linear','bits':2,'min':0,'max':3},
+            'Oxidation':{'scale':'linear','bits':5,'min':-4,'max':8},
+            'Crystal':{'scale':'linear','bits':4,'min':0,'max':10},
+            'Dipole':{'scale':'linear','bits':8,'min':0,'max':10},
+            'Density':{'scale':'log','bits':8,'min':5e-5,'max':30},
+            'pKa1':{'scale':'linear','bits':8,'min':-2,'max':16},
+        }
+
+    def _gray_encode(self, value: int, bits: int) -> list[int]:
+        binary = value ^ (value >> 1)
+        return [(binary >> i) & 1 for i in range(bits-1, -1, -1)]
+
+    def encode(self, props: Dict[str, float]) -> list[int]:
+        vector = []
+        for key, spec in self.schema.items():
+            val = props.get(key)
+            present = 1 if val is not None else 0
+            vector.append(present)
+            if present:
+                v = max(spec['min'], min(spec['max'], val))
+                if spec['scale'] == 'log':
+                    v = (v - spec['min']) / (spec['max'] - spec['min'] + 1e-12)
+                    v = int(v * (2**spec['bits'] - 1))
+                else:
+                    v = int((v - spec['min']) / (spec['max'] - spec['min']) * (2**spec['bits'] - 1))
+                vector.extend(self._gray_encode(v, spec['bits']))
+            else:
+                vector.extend([0] * spec['bits'])
+        return vector[:142]
+
+encoder = MetricPreservingEncoder()
+
+def numeric_trigger(text: str) -> List[Dict]:
+    math_str = ""  # reuse the heuristic from before
+    text_l = text.lower()
+    m = re.search(r'mass.*?(\d+\.?\d*)|molecular weight.*?(\d+\.?\d*)|(\d+\.?\d*)\s*g/mol', text_l)
+    if m: math_str += f"M={float(next(x for x in m.groups() if x))}|"
+    bp = re.search(r'boil.*?(\d+\.?\d*)|bp.*?(\d+\.?\d*)', text_l)
+    if bp: math_str += f"BP={float(next(x for x in bp.groups() if x))}|"
+    mp = re.search(r'melt.*?(\d+\.?\d*)|mp.*?(\d+\.?\d*)', text_l)
+    if mp: math_str += f"MP={float(next(x for x in mp.groups() if x))}|"
+    if 'liquid' in text_l or 'solvent' in text_l: math_str += "Phase_STP=2|"
+
+    if not math_str: return []
+    props = MathStringParser.parse(math_str)
+    query_vec = encoder.encode(props)
+
     memories = []
+    for key, entry in KB_SYSTEM.items():
+        gray = entry.get('atlas', {}).get('gray_vector')
+        if gray and len(gray) == 142:
+            dist = sum(x != y for x, y in zip(query_vec, gray))
+            if dist <= 14:
+                memories.append({
+                    "data": entry,
+                    "match": "NUMERIC",
+                    "boost": 3.5 - (dist / 142),
+                    "numeric_dist": dist,
+                    "math_str": math_str
+                })
+    return sorted(memories, key=lambda x: x['boost'], reverse=True)[:12]
 
-    # 1. Fast Path: Direct IDs (Regex)
+# --- 3. MAIN REFLEXIVE RECALL (now fully semantic) ---
+def reflexive_recall(text: str):
+    memories = {}
+    input_lower = text.lower()
+
+    # 1. NUMERIC TRIGGER (highest priority)
+    for m in numeric_trigger(text):
+        key = next((k for k, v in KB_SYSTEM.items() if v is m['data']), None)
+        if key:
+            memories[key] = m
+
+    # 2. OPERATOR TRIGGER (semantic understanding)
+    for word, op_key in OP_TRIGGER_WORDS.items():
+        if word in input_lower and op_key not in memories:
+            if op_key in KB_LANG:
+                memories[op_key] = {
+                    "data": KB_LANG[op_key],
+                    "match": "OPERATOR",
+                    "boost": 3.0
+                }
+
+    # 3. PHRASE + ID (system KB)
+    for phrase, key in PHRASE_TO_KEY.items():
+        if phrase in input_lower and key not in memories:
+            memories[key] = {"data": KB_SYSTEM[key], "match": "PHRASE", "boost": 2.2}
+
     ids = re.findall(r'\b[A-Z]+_[A-Z0-9_]+_\d+\b', text)
     for uid in ids:
-        entry = HEX_DB_EXACT.find_by_id(uid)
-        if entry:
-            e = entry.copy()
-            e['match_type'] = "DIRECT_ID_REF"
-            memories.append(e)
+        key = ID_TO_KEY.get(uid)
+        if key and key not in memories:
+            memories[key] = {"data": KB_SYSTEM[key], "match": "ID", "boost": 1.8}
 
-    # 2. Acoustic Path: Vibrational Context
-    acoustic_keywords = ['frequency', 'sound', 'vibration', 'harmony', 'pitch', 'acoustic', 'resonance', 'chord', 'tone']
-    if HAS_ACOUSTIC and any(kw in text.lower() for kw in acoustic_keywords):
-        print("  [!] Acoustic Context Detected. Initializing Resonance Pull...")
-        ac = AcousticCortex()
-        # Extract potential pitch (default to C/0 if not found)
-        pitch_match = re.search(r'pitch\s*(\d+)', text.lower())
-        p = int(pitch_match.group(1)) if pitch_match else 0
-        
-        # Encode and Resolve
-        raw_v = ac.encode_vibration(pitch=p)
-        resolved_v, pull = ac.resonance_pull(raw_v)
-        
-        # Query resolved vector
-        geo_match = query_bridge_by_vector(resolved_v)
-        if geo_match:
-            e = geo_match.copy()
-            e['match_type'] = f"ACOUSTIC_RESONANCE (Pull: {pull})"
-            memories.append(e)
+    # 4. KEYWORD FALLBACK
+    if len(memories) < 10:
+        words = re.findall(r'\b\w{4,}\b', input_lower)
+        for word in words:
+            for key, entry in KB_SYSTEM.items():
+                if word in entry.get('lexicon', '').lower() and key not in memories:
+                    memories[key] = {"data": entry, "match": "KEYWORD", "boost": 1.0}
+            for key, entry in KB_LANG.items():
+                if word in entry.get('lexicon', '').lower() and key not in memories:
+                    memories[key] = {"data": entry, "match": "KEYWORD_OP", "boost": 1.2}
 
-    # 3. Geometric Path: Standard V8 Accelerator
-    h = hashlib.sha256(text.encode('utf-8')).hexdigest()
-    val = int(h[:6], 16)
-    std_v = [(val >> i) & 1 for i in range(23, -1, -1)]
-    geo_match = query_bridge_by_vector(std_v)
-    if geo_match:
-        e = geo_match.copy()
-        e['match_type'] = "GEOMETRIC_RESONANCE (V8)"
-        memories.append(e)
-
-    # 4. Deep Path: Delta Engine
-    delta_result = DELTA.reason(text, max_steps=4)
-    for step in delta_result.get('steps', []):
-        mem_entry = {
-            "ubp_id": "DELTA_RECALL",
-            "name": "Contextual Memory",
-            "language": step.get('content', ''),
-            "domain": step.get('domain', 'UNKNOWN'),
-            "nrci": f"{step.get('coherence', 0.5):.2f}",
-            "match_type": f"DELTA_{step.get('source', 'ASSOC').upper()}"
+    # Format context for AI
+    final_context = []
+    sorted_mem = sorted(memories.values(), key=lambda x: x.get('boost', 1.0), reverse=True)
+    for m in sorted_mem[:15]:
+        entry = m['data']
+        atlas = entry.get('atlas', {})
+        ctx = {
+            "ubp_id": entry.get('ubp_id'),
+            "name": entry.get('lexicon', '').split(']')[0].strip('[]').split(':')[-1].strip(),
+            "math": entry.get('math'),
+            "hierarchy": atlas.get('hierarchy'),
+            "nrci": str(entry.get('atlas', {}).get('nrci_score', 'N/A')),
+            "match_type": m.get('match'),
+            "numeric_dist": m.get('numeric_dist')
         }
-        memories.append(mem_entry)
+        final_context.append(ctx)
 
-    # 5. Merge & Deduplicate
-    seen_sig = set()
-    final_list = []
-    if delta_result.get('response'):
-        final_list.append({
-            "ubp_id": "SYS_DELTA_SYNTHESIS",
-            "name": "Delta Synthesis",
-            "language": delta_result['response'],
-            "match_type": "SYNTHESIS_OUTPUT",
-            "nrci": "1/1"
-        })
-
-    for m in memories:
-        sig = m.get('ubp_id', '') + m.get('language', '')[:30]
-        if sig not in seen_sig:
-             final_list.append(m)
-             seen_sig.add(sig)
-    
-    print(f"--- REFLEXIVE MEMORY: {len(final_list)} ENTRIES ---")
-    print(json.dumps(final_list, indent=2))
-
-# --- INITIALIZATION ---
-initialize_gpu_bridge()
+    return final_context
 
 if __name__ == "__main__":
-    u_input = globals().get('USER_INPUT', "What is the frequency of harmony?")
-    reflexive_recall(u_input)
+    test = "why does water dissolve sodium chloride"
+    print(json.dumps(reflexive_recall(test), indent=2))
