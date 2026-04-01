@@ -1,0 +1,49 @@
+* **UBP NZ Fuel Study V2** — Computational Analysis
+* **Study:** UBP-NZF-2026-V2 | Author: E R A Craig, New Zealand
+* **Framework:** Universal Binary Principal (UBP) Core Studio v4.0
+* **Author:** E R A Craig, New Zealand
+* **Date:**1 April 2026 (no, it is not an April fools joke)
+
+K-Dense.ai study: https://app.k-dense.ai/share/session_20260401_122838_1d6509467bbc
+UBP Repository: https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0
+Live App: https://aistudio.google.com/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5
+
+## Fuel Crisis to Fuel Solution
+A Universal Binary Principal Analysis of New Zealand’s 2026 Energy Emergency and the Optimisation of Combustion Efficiency Through Phase, Blend, and Coherence Engineering
+
+## New Zealand faces an acute fuel supply crisis in 2026, with onshore diesel reserves standing at approximately 18 days and petrol at 33 days — significantly below the national security threshold. 
+
+This repository study applies the Universal Binary Principal (UBP) framework, my experimental, deterministic information-theoretic system which uses the 24-dimensional Leech Lattice (Λ24) and the Extended Binary Golay Code [24,12,8], to analyse, computationally simulate, and optimise candidate fuel-efficiency interventions. 
+
+Using the UBP pipeline — including the MOG-Atlas Protocol, MathAtlas molecular construction, UBP-Py simulation, and Hamming Drift analysis — I establish a UBP Fuel Quality Index (FQI) for automotive fuels and demonstrate that the New Zealand fuel system currently operates at a composite "Non-Random Coherence Index" (NRCI) of 0.50, well below the 0.60 anomaly threshold. 
+
+Computational simulation of 15 fuel molecules, 32 blend combinations, and 12 phase states produces a novel finding: full vapor combustion supplemented with oxygenated additives (A10+E10) achieves 28.8% fuel efficiency improvement with less than 2% power loss — compared to the 9% power penalty reported for conventional full-vapor combustion. The optimal short-term intervention stack (A5 acetone+E10 ethanol mandate+60°C fuel preheating) is shown to raise NZ’s fuel system health to NRCI 0.64 within six months, crossing the UBP coherence threshold. Long-term domestic fuel independence via biomass-to-liquid production (BTL) represents the structural solution, capable of supplying 40% of national liquid fuel needs within ten years at a NZD$3.5B total investment.
+
+
+## Directory Structure
+
+- `user_data/ubp_nz_fuel_v1_study.md` - V1 study (internal reference only, not cited)
+- `workflow/` - Implementation scripts:
+  - `01_ubp_core_engine.py` - UBP Golay/Leech/NRCI core engine
+  - `02_molecular_mathatlas.py` - Full MathAtlas molecular construction
+  - `03_combustion_simulation.py` - Vapor vs liquid combustion simulation
+  - `04_hamming_drift_system.py` - System health trajectory analysis
+  - `05_generate_figures.py` - Publication figures (6 total)
+- `results/` - JSON results from all simulations
+- `figures/` - 6 publication-quality figures (PNG + PDF)
+- `writing_outputs/` - Final research paper
+
+## Key Results Summary
+
+- NZ System Health: 0.50 → 0.64+ (6 months with interventions)
+- Novel V2 Finding: Full vapor + A10 + E10 → 28.8% saving, <2% power loss
+- Optimal preheating: 90°C (11.1% BSFC, minimal power loss)
+- New UBP Law discovered: LAW_CHEM_VAPOR_OPT_001
+- 4 new Laws proposed for ubp_system_kb.json hardening
+
+## Status: COMPLETE — All simulations, figures, and paper generated
+
+## Final Deliverable
+- **PDF Paper (28 pages, 4.52 MB):** `writing_outputs/ubp_nz_fuel_v2_paper.pdf`
+- **Markdown source:** `writing_outputs/ubp_nz_fuel_v2_paper.md`
+- **LaTeX source:** `writing_outputs/ubp_nz_fuel_v2_paper.tex`
