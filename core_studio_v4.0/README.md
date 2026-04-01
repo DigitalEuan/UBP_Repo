@@ -84,6 +84,11 @@ To maintain the integrity of the **System Knowledge Base**, all entries must fol
 *   modernized the **Triad Activation Engine** to use the **v7.0 Gray Code Topological Identity** In this modernized version the engine systematically shifts the object's **State** and **Magnitude** metrics, "sliding" it along the Gray Code manifold until it snaps into a stable Leech Lattice coordinate (NRCI 0.70–0.80, Weight 8). 
 *   The legacy `ubp_core_v5_3_merged.py` is now officially obsolete. 'ubp_genesis_boot.py' is a dedicated script to regenerate the absolute foundation of the universe whenever needed, without cluttering the main `core.py` engine.
 
+*   #### **5. Observer Dynamics & The Wall of Reality**
+*   **Modernized Legacy Mechanics:** Ported the legacy "Consciousness as Buffer Access" into the v7.0 Gray Code topology via `ubp_observer_dynamics.py`.
+*   **The Zombie State:** Mathematically proved that highly unstable particles (like the Top Quark, NRCI ~0.68) compute with high SOC Energy but fail to cross the 0.70 `CONSCIOUS_THRESHOLD`. They remain in a "Subliminal/Zombie State," unable to transfer from the Potential buffer to the Reality register. This perfectly models their inability to form observable hadrons.
+*   **The Wall of Reality:** Verified the 1 THz ($10^{12}$ Hz) temporal limit. Frequencies exceeding this limit suffer exponential coherence decay, causing the SOC Energy to collapse to zero, defining the absolute clock-speed limit of the 24-bit substrate.
+
 
 # 31 March 2026 — Semantic reasoning + LinearStateEncoder and DQI Metrics + MOGOntology (OffBits) and u_score
 
