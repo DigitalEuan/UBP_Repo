@@ -8,6 +8,8 @@ Computational Analysis
 * **Author:** E R A Craig, New Zealand
 * **Date:** 1 April 2026 (no, it is not an April fools joke)
 
+* **Read the paper:** [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/studies/2026_nz_fuel_emergency_efficiency/writing_outputs/100_ubp_nz_fuel_v2_paper.pdf]
+
 * **K-Dense.ai study:** [https://app.k-dense.ai/share/session_20260401_122838_1d6509467bbc]
 * **UBP Repository:** [https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0/studies/2026_nz_fuel_emergency_efficiency]
 * **UBP Core Studio App:** [https://aistudio.google.com/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
