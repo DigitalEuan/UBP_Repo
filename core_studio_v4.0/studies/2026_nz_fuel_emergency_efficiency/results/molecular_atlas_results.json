@@ -1,0 +1,503 @@
+{
+  "molecule_atlas": [
+    {
+      "key": "acetone",
+      "name": "Acetone",
+      "formula": "C3H6O",
+      "NRCI": 0.712164,
+      "Tax": 4.0417,
+      "Z_total": 32,
+      "mass": 58.08,
+      "phase": "liquid",
+      "hamming_drift": 5.39,
+      "activation_energy_liquid": 10.9583,
+      "activation_energy_vapor": 10.2854
+    },
+    {
+      "key": "biodiesel",
+      "name": "Methyl Oleate (Biodiesel)",
+      "formula": "C19H36O2",
+      "NRCI": 0.70753,
+      "Tax": 4.1337,
+      "Z_total": 166,
+      "mass": 296.495,
+      "phase": "liquid",
+      "hamming_drift": 6.98,
+      "activation_energy_liquid": 10.8663,
+      "activation_energy_vapor": 10.1781
+    },
+    {
+      "key": "co2_gas",
+      "name": "Carbon Dioxide",
+      "formula": "CO2",
+      "NRCI": 0.70753,
+      "Tax": 4.1337,
+      "Z_total": 22,
+      "mass": 44.009,
+      "phase": "gas",
+      "hamming_drift": 9.0,
+      "activation_energy_liquid": 10.8663,
+      "activation_energy_vapor": 10.1781
+    },
+    {
+      "key": "ethanol",
+      "name": "Ethanol",
+      "formula": "C2H6O",
+      "NRCI": 0.724055,
+      "Tax": 3.8111,
+      "Z_total": 26,
+      "mass": 46.069,
+      "phase": "liquid",
+      "hamming_drift": 5.31,
+      "activation_energy_liquid": 11.1889,
+      "activation_energy_vapor": 10.5543
+    },
+    {
+      "key": "ethanol_vapor",
+      "name": "Ethanol (Vapor Phase)",
+      "formula": "C2H6O",
+      "NRCI": 0.724055,
+      "Tax": 3.8111,
+      "Z_total": 26,
+      "mass": 46.069,
+      "phase": "vapor",
+      "hamming_drift": 7.5,
+      "activation_energy_liquid": 11.1889,
+      "activation_energy_vapor": 10.5543
+    },
+    {
+      "key": "ft_diesel",
+      "name": "FT Synthetic Diesel (approx. C16H34)",
+      "formula": "C16H34",
+      "NRCI": 0.708412,
+      "Tax": 4.1161,
+      "Z_total": 130,
+      "mass": 226.448,
+      "phase": "liquid",
+      "hamming_drift": 7.0,
+      "activation_energy_liquid": 10.8839,
+      "activation_energy_vapor": 10.1986
+    },
+    {
+      "key": "h2_gas",
+      "name": "Hydrogen Gas",
+      "formula": "H2",
+      "NRCI": 0.762311,
+      "Tax": 3.118,
+      "Z_total": 2,
+      "mass": 2.016,
+      "phase": "gas",
+      "hamming_drift": 9.0,
+      "activation_energy_liquid": 11.882,
+      "activation_energy_vapor": 11.3629
+    },
+    {
+      "key": "h2o_liquid",
+      "name": "Water",
+      "formula": "H2O",
+      "NRCI": 0.762311,
+      "Tax": 3.118,
+      "Z_total": 10,
+      "mass": 18.015,
+      "phase": "liquid",
+      "hamming_drift": 5.18,
+      "activation_energy_liquid": 11.882,
+      "activation_energy_vapor": 11.3629
+    },
+    {
+      "key": "isooctane",
+      "name": "Isooctane (2,2,4-trimethylpentane)",
+      "formula": "C8H18",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "Z_total": 66,
+      "mass": 114.232,
+      "phase": "liquid",
+      "hamming_drift": 6.14,
+      "activation_energy_liquid": 10.9223,
+      "activation_energy_vapor": 10.2434
+    },
+    {
+      "key": "isooctane_60c",
+      "name": "Isooctane (Preheated 60\u00b0C)",
+      "formula": "C8H18",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "Z_total": 66,
+      "mass": 114.232,
+      "phase": "preheated",
+      "hamming_drift": 7.64,
+      "activation_energy_liquid": 10.9223,
+      "activation_energy_vapor": 10.2434
+    },
+    {
+      "key": "isooctane_90c",
+      "name": "Isooctane (Preheated 90\u00b0C)",
+      "formula": "C8H18",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "Z_total": 66,
+      "mass": 114.232,
+      "phase": "preheated",
+      "hamming_drift": 8.64,
+      "activation_energy_liquid": 10.9223,
+      "activation_energy_vapor": 10.2434
+    },
+    {
+      "key": "isooctane_vapor",
+      "name": "Isooctane (Vapor Phase)",
+      "formula": "C8H18",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "Z_total": 66,
+      "mass": 114.232,
+      "phase": "vapor",
+      "hamming_drift": 7.5,
+      "activation_energy_liquid": 10.9223,
+      "activation_energy_vapor": 10.2434
+    },
+    {
+      "key": "methanol",
+      "name": "Methanol",
+      "formula": "CH4O",
+      "NRCI": 0.733254,
+      "Tax": 3.6378,
+      "Z_total": 18,
+      "mass": 32.042,
+      "phase": "liquid",
+      "hamming_drift": 5.21,
+      "activation_energy_liquid": 11.3622,
+      "activation_energy_vapor": 10.7565
+    },
+    {
+      "key": "nheptane",
+      "name": "n-Heptane",
+      "formula": "C7H16",
+      "NRCI": 0.71087,
+      "Tax": 4.0673,
+      "Z_total": 58,
+      "mass": 100.205,
+      "phase": "liquid",
+      "hamming_drift": 6.0,
+      "activation_energy_liquid": 10.9327,
+      "activation_energy_vapor": 10.2555
+    },
+    {
+      "key": "o2_gas",
+      "name": "Oxygen Gas",
+      "formula": "O2",
+      "NRCI": 0.763009,
+      "Tax": 3.106,
+      "Z_total": 16,
+      "mass": 31.998,
+      "phase": "gas",
+      "hamming_drift": 9.0,
+      "activation_energy_liquid": 11.894,
+      "activation_energy_vapor": 11.3769
+    }
+  ],
+  "blend_NRCI": {
+    "acetone": {
+      "A0": {
+        "NRCI_blend": 0.710344,
+        "Tax_blend": 4.077692,
+        "Mass_blend": 114.232,
+        "Oxygen_mass_fraction": 0.0,
+        "NRCI_improvement": 0.0
+      },
+      "A1": {
+        "NRCI_blend": 0.710362,
+        "Tax_blend": 4.077332,
+        "Mass_blend": 113.67048,
+        "Oxygen_mass_fraction": 0.002755,
+        "NRCI_improvement": 1.8e-05
+      },
+      "A2": {
+        "NRCI_blend": 0.71038,
+        "Tax_blend": 4.076972,
+        "Mass_blend": 113.10896,
+        "Oxygen_mass_fraction": 0.005509,
+        "NRCI_improvement": 3.6e-05
+      },
+      "A3": {
+        "NRCI_blend": 0.710398,
+        "Tax_blend": 4.076613,
+        "Mass_blend": 112.54744,
+        "Oxygen_mass_fraction": 0.008264,
+        "NRCI_improvement": 5.5e-05
+      },
+      "A5": {
+        "NRCI_blend": 0.710435,
+        "Tax_blend": 4.075893,
+        "Mass_blend": 111.4244,
+        "Oxygen_mass_fraction": 0.013773,
+        "NRCI_improvement": 9.1e-05
+      },
+      "A8": {
+        "NRCI_blend": 0.710489,
+        "Tax_blend": 4.074813,
+        "Mass_blend": 109.73984,
+        "Oxygen_mass_fraction": 0.022037,
+        "NRCI_improvement": 0.000146
+      },
+      "A10": {
+        "NRCI_blend": 0.710526,
+        "Tax_blend": 4.074093,
+        "Mass_blend": 108.6168,
+        "Oxygen_mass_fraction": 0.027546,
+        "NRCI_improvement": 0.000182
+      },
+      "A15": {
+        "NRCI_blend": 0.710617,
+        "Tax_blend": 4.072293,
+        "Mass_blend": 105.8092,
+        "Oxygen_mass_fraction": 0.04132,
+        "NRCI_improvement": 0.000273
+      }
+    },
+    "ethanol": {
+      "E0": {
+        "NRCI_blend": 0.710344,
+        "Tax_blend": 4.077692,
+        "Mass_blend": 114.232,
+        "Oxygen_mass_fraction": 0.0,
+        "NRCI_improvement": 0.0
+      },
+      "E5": {
+        "NRCI_blend": 0.711029,
+        "Tax_blend": 4.064363,
+        "Mass_blend": 110.82385,
+        "Oxygen_mass_fraction": 0.017364,
+        "NRCI_improvement": 0.000686
+      },
+      "E10": {
+        "NRCI_blend": 0.711715,
+        "Tax_blend": 4.051034,
+        "Mass_blend": 107.4157,
+        "Oxygen_mass_fraction": 0.034728,
+        "NRCI_improvement": 0.001371
+      },
+      "E15": {
+        "NRCI_blend": 0.7124,
+        "Tax_blend": 4.037705,
+        "Mass_blend": 104.00755,
+        "Oxygen_mass_fraction": 0.052093,
+        "NRCI_improvement": 0.002057
+      },
+      "E20": {
+        "NRCI_blend": 0.713086,
+        "Tax_blend": 4.024376,
+        "Mass_blend": 100.5994,
+        "Oxygen_mass_fraction": 0.069457,
+        "NRCI_improvement": 0.002742
+      },
+      "E85": {
+        "NRCI_blend": 0.721998,
+        "Tax_blend": 3.851098,
+        "Mass_blend": 56.29345,
+        "Oxygen_mass_fraction": 0.295191,
+        "NRCI_improvement": 0.011654
+      },
+      "E100": {
+        "NRCI_blend": 0.724055,
+        "Tax_blend": 3.811111,
+        "Mass_blend": 46.069,
+        "Oxygen_mass_fraction": 0.347283,
+        "NRCI_improvement": 0.013711
+      }
+    },
+    "combined": {
+      "A3+E10": {
+        "NRCI_blend": 0.711769,
+        "Tax_blend": 4.049954,
+        "Mass_blend": 105.73114,
+        "Oxygen_mass_fraction": 0.042992,
+        "NRCI_improvement": 0.001426
+      },
+      "A5+E10": {
+        "NRCI_blend": 0.711806,
+        "Tax_blend": 4.049235,
+        "Mass_blend": 104.6081,
+        "Oxygen_mass_fraction": 0.048502,
+        "NRCI_improvement": 0.001462
+      },
+      "A5+E15": {
+        "NRCI_blend": 0.712491,
+        "Tax_blend": 4.035906,
+        "Mass_blend": 101.19995,
+        "Oxygen_mass_fraction": 0.065866,
+        "NRCI_improvement": 0.002148
+      },
+      "A3+E5": {
+        "NRCI_blend": 0.711084,
+        "Tax_blend": 4.063283,
+        "Mass_blend": 109.13929,
+        "Oxygen_mass_fraction": 0.025628,
+        "NRCI_improvement": 0.00074
+      }
+    }
+  },
+  "vapor_analysis": [
+    {
+      "state": "Isooctane \u2014 Liquid (20\u00b0C)",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "hamming_drift": 6.14,
+      "activation_energy": 10.9223,
+      "note": ""
+    },
+    {
+      "state": "Isooctane \u2014 Preheated 60\u00b0C",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "hamming_drift": 7.64,
+      "activation_energy": 10.7413,
+      "note": "+80% efficiency, no power loss"
+    },
+    {
+      "state": "Isooctane \u2014 Preheated 90\u00b0C",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "hamming_drift": 8.64,
+      "activation_energy": 10.6055,
+      "note": "+90% efficiency, minimal power loss"
+    },
+    {
+      "state": "Isooctane \u2014 Full Vapor",
+      "NRCI": 0.710344,
+      "Tax": 4.0777,
+      "hamming_drift": 7.5,
+      "activation_energy": 10.2434,
+      "note": "28.8% fuel saving, -9% power"
+    },
+    {
+      "state": "Ethanol \u2014 Liquid",
+      "NRCI": 0.724055,
+      "Tax": 3.8111,
+      "hamming_drift": 5.31,
+      "activation_energy": 11.1889,
+      "note": "Natural pre-vaporization at BP=78.4\u00b0C"
+    },
+    {
+      "state": "Ethanol \u2014 Vapor",
+      "NRCI": 0.724055,
+      "Tax": 3.8111,
+      "hamming_drift": 7.5,
+      "activation_energy": 10.5543,
+      "note": "Pre-seeded vapor in E10 blend"
+    },
+    {
+      "state": "H2 Gas (for HHO)",
+      "NRCI": 0.762311,
+      "Tax": 3.118,
+      "hamming_drift": 9.0,
+      "activation_energy": 11.882,
+      "note": "Pi-stability anchor; NRCI peak"
+    }
+  ],
+  "combustion_reactions": {
+    "isooctane": {
+      "Tax_reactants": 42.902692,
+      "Tax_products": 61.131333,
+      "Delta_Tax": 18.228641,
+      "NRCI_reactants_avg": 0.759108,
+      "NRCI_products_avg": 0.736532,
+      "Delta_NRCI": -0.022576
+    },
+    "ethanol": {
+      "Tax_reactants": 13.129111,
+      "Tax_products": 17.621333,
+      "Delta_Tax": 4.492222,
+      "NRCI_reactants_avg": 0.753271,
+      "NRCI_products_avg": 0.740399,
+      "Delta_NRCI": -0.012872
+    },
+    "acetone": {
+      "Tax_reactants": 16.4657,
+      "Tax_products": 21.755,
+      "Delta_Tax": 5.2893,
+      "NRCI_reactants_avg": 0.75284,
+      "NRCI_products_avg": 0.734921,
+      "Delta_NRCI": -0.017919
+    }
+  },
+  "fuel_quality_index": {
+    "Pure Isooctane (liquid)": {
+      "NRCI": 0.710344,
+      "E_act": 10.9223,
+      "O_fraction": 0.0,
+      "FQI": 0.193104,
+      "vs_base": 0.0
+    },
+    "Isooctane Preheated 60\u00b0C": {
+      "NRCI": 0.710344,
+      "E_act": 10.7413,
+      "O_fraction": 0.0,
+      "FQI": 0.201678,
+      "vs_base": 0.008574
+    },
+    "Isooctane Preheated 90\u00b0C": {
+      "NRCI": 0.710344,
+      "E_act": 10.6055,
+      "O_fraction": 0.0,
+      "FQI": 0.208108,
+      "vs_base": 0.015004
+    },
+    "Isooctane Full Vapor": {
+      "NRCI": 0.710344,
+      "E_act": 10.2434,
+      "O_fraction": 0.0,
+      "FQI": 0.225256,
+      "vs_base": 0.032152
+    },
+    "Pure Ethanol": {
+      "NRCI": 0.724055,
+      "E_act": 11.1889,
+      "O_fraction": 0.3473,
+      "FQI": 0.215909,
+      "vs_base": 0.022805
+    },
+    "A5 (5% Acetone)": {
+      "NRCI": 0.710435,
+      "E_act": 3.8,
+      "O_fraction": 0.0138,
+      "FQI": 0.534111,
+      "vs_base": 0.341007
+    },
+    "A10 (10% Acetone)": {
+      "NRCI": 0.710526,
+      "E_act": 3.5,
+      "O_fraction": 0.0275,
+      "FQI": 0.552239,
+      "vs_base": 0.359135
+    },
+    "E10 (10% Ethanol)": {
+      "NRCI": 0.711715,
+      "E_act": 3.7,
+      "O_fraction": 0.0347,
+      "FQI": 0.545468,
+      "vs_base": 0.352364
+    },
+    "E10 + A5 Combined": {
+      "NRCI": 0.711806,
+      "E_act": 3.3,
+      "O_fraction": 0.0485,
+      "FQI": 0.568673,
+      "vs_base": 0.375569
+    },
+    "FT Synthetic Diesel": {
+      "NRCI": 0.708412,
+      "E_act": 10.8839,
+      "O_fraction": 0.0,
+      "FQI": 0.194392,
+      "vs_base": 0.001288
+    },
+    "Biodiesel (B100)": {
+      "NRCI": 0.70753,
+      "E_act": 10.8663,
+      "O_fraction": 0.113,
+      "FQI": 0.205996,
+      "vs_base": 0.012892
+    }
+  }
+}
