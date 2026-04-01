@@ -15,7 +15,7 @@ import json
 try:
     # Pointing to your new modular files
     from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
-    from physics import METRICS_EXACT
+    from physics import UBPMetricsExact
     CORE_AVAILABLE = True
     print("[Phenomenology] Modular Core Linked Successfully.")
 except ImportError as e:
