@@ -1,6 +1,8 @@
 # UBP NZ Fuel Study V2
 Computational Analysis
 
+![2026 Fuel Emergency Efficiency Guide](2026 Fuel Emergency Efficiency Guide.png)
+
 * **Study:** UBP-NZF-2026-V2 | Author: E R A Craig, New Zealand
 * **Framework:** Universal Binary Principal (UBP) Core Studio v4.0
 * **Author:** E R A Craig, New Zealand
