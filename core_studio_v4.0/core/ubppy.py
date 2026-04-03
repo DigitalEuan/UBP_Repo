@@ -1,12 +1,14 @@
 """
-UBP-Py v2.1 (Standard) - Adjusted Threshold
-===========================================
-LOWERED REFLEX THRESHOLD to 0.6 to allow spiral manifestation.
+UBP-Py v2.3 (Standard) - Signature Alignment
+============================================
+Fixed TypeError by strictly matching the UBPPyVM signature 
+defined in ubp_py_runtime.py.
 """
 
 import argparse
-from fractions import Fraction
 import os
+import json
+from fractions import Fraction
 
 from ubp_py_runtime import UBPPyVM
 from ubp_py_lang import execute_program
@@ -19,44 +21,38 @@ def load_program_file(path):
         return f.read()
 
 def run_demo(vm: UBPPyVM) -> None:
-    """Demonstration of VM usage without the text language."""
-    print("--- INITIALIZING UBP-PY v2.0 STANDARD (DEMO) ---")
+    """Demonstration of VM usage."""
+    print("--- INITIALIZING UBP-PY v2.3 STANDARD (DEMO) ---")
 
     # 1. Create a starting value
     vm.let("START_VAL", "1/1", tier=0, category="QUANTITY")
     
-    # 2. Run a spiral growth
-    vm.spiral("START_VAL", iterations=4, transform_name="INC", label_prefix="START_VAL")
+    # 2. Run a manual synthesis
+    vm.synth("STEP_1", "2xSTART_VAL", u_score=1.0)
     
-    # 3. Perform a self-healing audit
-    # CHANGED: Threshold lowered from 7/10 (0.7) to 6/10 (0.6)
-    # This allows the 0.6814 atoms to survive.
-    vm.reflex(threshold=Fraction(6, 10))
+    # 3. Audit the result
+    vm.audit("STEP_1")
 
     # 4. Save results
     vm.commit()
-    vm.export_trace(vm.trace_path)
-    vm.export_env("ubp_py_env.json")
-
+    
     # 5. Update Visualization
-    scene = vm.to_scene_3d()
-    save_scene_3d(scene)
-    print("[Visual] Demo scene exported to scene_3d.json")
+    if hasattr(vm, 'to_scene_3d'):
+        save_scene_3d(vm.to_scene_3d())
+        print("[Visual] Scene updated.")
+    else:
+        print("[Visual] Warning: to_scene_3d() method missing in runtime.")
 
 def main() -> None:
     ap = argparse.ArgumentParser(prog="ubp_py_v2_standard")
     ap.add_argument("--program", type=str, default=None, help="Path to .ubp text program")
     ap.add_argument("--lattice", type=str, default="ubp_py_lattice.json")
-    ap.add_argument("--trace", type=str, default="ubp_py_trace.json")
-    ap.add_argument("--env", type=str, default="ubp_py_env.json")
-    ap.add_argument("--scene", type=str, default="scene_3d.json")
     args = ap.parse_args()
 
-    # Initialize VM
+    # Initialize VM - STRICT MATCH for ubp_py_runtime.py
     vm = UBPPyVM(
-        lattice_path=args.lattice, 
-        trace_path=args.trace, 
-        fom_index_path="ubp_py_fom_index.json"
+        kb_path='ubp_system_kb.json',
+        lattice_path=args.lattice
     )
 
     if args.program is None:
@@ -66,17 +62,11 @@ def main() -> None:
     # Execute from file
     text = load_program_file(args.program)
     if text:
-        report = execute_program(vm, text)
-        
+        execute_program(vm, text)
         vm.commit()
-        vm.export_trace(args.trace)
-        vm.export_env(args.env)
-        
-        save_scene_3d(vm.to_scene_3d())
-
+        if hasattr(vm, 'to_scene_3d'):
+            save_scene_3d(vm.to_scene_3d())
         print("--- UBP-Py Program Complete ---")
-        print(f"Lattice saved to: {args.lattice}")
-        print(f"Trace saved to: {args.trace}")
     else:
         print(f"Error: Program file '{args.program}' is empty or not found.")
 

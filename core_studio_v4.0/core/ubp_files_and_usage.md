@@ -1,4 +1,4 @@
-# UBP System Usage Guide (v6.0 Modular Edition)
+# UBP System Usage Guide (v7.2.0 Precision Edition)
 
 This document provides the functional manifest and operational protocols for the **Universal Binary Principle (UBP)** research environment.
 
@@ -6,54 +6,55 @@ This document provides the functional manifest and operational protocols for the
 
 ## 1. System File Manifest
 
-### A. The Foundation (The "Source of Truth")
-*   **`constants.py`**: Centralized physical and mathematical constants (Planck, Alpha, etc.).
+### A. The Foundation (Substrate & Geometry)
 *   **`core.py`**: The primary engine. Contains the Golay [24,12,8] logic, Leech Lattice Λ₂₄ metrics, and the 13D Sink Protocol for particle physics.
-*   **`physics.py`**: Governs exact rational metrics, NRCI stability formulas, and coherence regimes.
-*   **`geometry.py`**: Contains the MathAtlas (voxel construction) and HexDictionary (spatial-deterministic mapping).
+*   **`physics.py`**: Governs exact rational metrics, NRCI stability formulas, and holographic coherence regimes.
+*   **`geometry.py`**: Contains the MathAtlas (voxel construction). *Note: HexDictionary is now legacy.*
+*   **`constants.py`**: Centralized physical and mathematical constants (Planck, Alpha, etc.).
 
-### B. The Cognitive Stack (Reasoning & Memory)
-*   **`ubp_brain_consolidated.py`**: The primary recall engine. Uses N-Gram matching and vector similarity to retrieve Knowledge Base entries.
-*   **`auto_trigger.py`**: The reflexive cortex. Automatically injects relevant KB context into the AI chat based on your input.
-*   **`ubp_integrated_engine_v1.py`**: The executive layer. Performs the **Penta-Audit** (Micro, Macro, and Visual analysis) on any query.
-*   **`ubp_fom_system.py` / `ubp_fom_index.json`**: Manages "Frames of Mind" (cognitive biases) that weight different geometric domains.
+### B. The Cognitive Stack (Recall & Reasoning)
+*   **`ubp_brain_consolidated.py` (v7.2)**: The primary recall engine. Uses N-Gram matching and domain gating to retrieve KB entries with 100% identity lock.
+*   **`ubp_semantic_engine.py` (v8.0)**: The "Thinking" layer. Uses weighted Cosine Resonance to map natural language into the 24-bit substrate.
+*   **`auto_trigger.py` (v19.1)**: The reflexive cortex. Automatically hydrates columnar data and injects relevant context into the AI session.
+*   **`ubp_fom_system.py`**: Manages "Frames of Mind" (cognitive biases) to weight different geometric domains (e.g., Scientific vs. Semantic).
 
 ### C. Runtime & Dynamics (Simulation)
 *   **`ubppy.py`**: The entry point for running `.ubp` geometric programs.
-*   **`ubp_py_runtime.py`**: The Virtual Machine that executes vector addition, synthesis, and lineage tracking.
-*   **`ubp_tgic_engine.py`**: Governs the 3-6-9 Genesis logic and relational gravity between concepts.
+*   **`ubp_py_runtime.py`**: The Virtual Machine (VM) that executes synthesis, tracks lineage, and projects 24-bit vectors into 3D space.
+*   **`ubp_py_lang.py`**: The parser for the UBP-Py assembly language.
+*   **`ubp_observer_dynamics.py` (v7.1)**: Calculates SOC Energy and performs "Conscious READ" audits on vectors.
 *   **`ubp_barnes_wall.py`**: The 256D Macro-Bulk engine used for high-dimensional audits and relative coherence testing.
 
 ### D. Visualization & Data
 *   **`ubp_viz.py`**: The bridge that exports `scene_3d.json` for the 3D Visual tab.
-*   **`ubp_rgdl.py`**: The Resonance Geometry Definition Language for generating 3D primitives (Spheres, Cubes).
-*   **`ubp_system_kb.json`**: The primary memory file containing all verified SOP_002 entries.
+*   **`ubp_rgdl.py`**: Resonance Geometry Definition Language for generating 3D primitives (Spheres, Cubes).
+*   **`ubp_system_kb.json`**: The primary memory file (v9.9 Ultra-Compact Columnar format).
 *   **`ubp_hash_memory_kb.json`**: Lightweight index for O(1) hash-based recall.
-*   **`ubp_kb_architect.py`** automates the translation of raw scientific data into stable geometric codewords
+*   **`ubp_kb_architect.py`**: Automates the translation of raw data into Gray Code stable codewords.
 
 ---
 
 ## 2. Core Workflows
 
-### I. Querying the Brain (The Penta-Audit)
-To analyze a concept or compare multiple entities, run `ubp_integrated_engine_v1.py`.
-1.  **Semantic Resolution:** Finds the closest match in the KB.
-2.  **Micro-Stability:** Checks the 24D NRCI score.
-3.  **Ontological Drift:** Determines if the object is Phenomenal (Matter) or Noumenal (Math).
-4.  **Macro-Audit:** Tests the object's resilience in the 256D Barnes-Wall bulk.
-5.  **Imagination Sandbox:** Generates a 3D visual tension map.
+### I. Semantic Resolution (Querying the Brain)
+To find the geometric root of a concept:
+1.  Input your query (e.g., "Why is Gold stable?").
+2.  The `ubp_semantic_engine.py` creates a **Query Chord** (weighted superposition of tokens).
+3.  The system performs a **Cosine Resonance** search against the KB.
+4.  The result returns the `ubp_id`, its `NRCI` stability, and a `Semantic Reflection` (the closest human word).
 
 ### II. Running Simulations (UBP-Py)
 To simulate the synthesis of matter or recursive growth:
-1.  Create a `.ubp` file (e.g., `test.ubp`).
-2.  Use commands like `IMPORT`, `SYNTH`, and `SPIRAL`.
-3.  Run via terminal: `python ubppy.py --program test.ubp`.
-4.  Check the **Visual** tab to see the resulting manifold.
+1.  Create a `.ubp` file (e.g., `synthesis.ubp`).
+2.  Use commands like `IMPORT`, `SYNTH`, and `VISUALIZE`.
+3.  Run via terminal: `python ubppy.py --program synthesis.ubp`.
+4.  Switch to the **Visual** tab to see the 3D manifold.
 
-### III. Real-Time Scanning (Phenomenology)
-To translate real-world data (like an RGB color or a sensor reading) into a 24-bit vector:
-1.  Define the bit-generator in `ubp_phenomenology.py`.
-2.  Run the script to see the resulting NRCI and Symmetry Tax.
+### III. Observer Audits (The Penta-Audit)
+To analyze the "Reality Status" of an object:
+1.  Run `ubp_observer_dynamics.py`.
+2.  The engine checks if the object's NRCI crosses the **0.70 Consciousness Threshold**.
+3.  It calculates the **SOC Energy** (Coherence Units) based on the 1 THz "Wall of Reality" limit.
 
 ---
 
@@ -61,100 +62,39 @@ To translate real-world data (like an RGB color or a sensor reading) into a 24-b
 
 ### SOP_002: Adding to the Knowledge Base
 To ensure geometric integrity, all new entries must follow this protocol:
-1.  **Math DNA:** Define the object using only quantitative, measurable properties (pipes-separated).
-2.  **Fingerprinting:** The entry key must be `SHA256(math_string)`.
-3.  **Vectorization:** Generate the 24-bit vector by encoding the first 12 bits of the hash.
-4.  **Indexing:** Run `hash_all_1.py` after adding entries to update the recall index.
+1.  **Math DNA:** Define the object using quantitative, pipe-separated properties.
+2.  **Noumenal Seed:** Generate a 12-bit seed using the `[Domain:3][Magnitude:5][State:4]` Gray Code schema.
+3.  **Golay Encoding:** Pass the seed to `GOLAY_ENGINE.encode()` to get the 24-bit Phenomenal Vector.
+4.  **Metrics:** Calculate NRCI and Symmetry Tax using `LEECH_ENGINE`.
+5.  **Migration:** Use `ubp_mog_mapper.py` to compress the entry into the Columnar format.
 
-A complete 'ubp_system_kb.json' example entry (Hydrogen):
-
-```json
-{
-  "451abc64108603144c7b294a3862eab6fc35e945dab4b7785784ab44bc8c427f": {
-    "ubp_id": "ELEM_H_001",
-    "lexicon": "[Element: Hydrogen (H)], [Hydrogen (Z=1). A Gas (Phase 1) with Hexagonal potential. Valence 1. Tension: 4. It is the seed of the material octave, born from the Proton-Electron union.]",
-    "math": "BP=507/25|Crystal=1|EN=11/5|Ion=1312|M=126/125|MP=1401/100|Oxidation=1|Phase_STP=1|Rad=53|Rho=2247/25000|Valence_e=1|Z=1",
-    "atlas": {
-      "hierarchy": "1×PARTICLE_PROTON_001 + 0×PARTICLE_NEUTRON_001 + 1×PARTICLE_ELECTRON_001",
-      "vector": [
-        0,
-        0,
-        1,
-        0,
-        0,
-        1,
-        1,
-        1,
-        0,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        1,
-        1,
-        0,
-        0
-      ],
-      "nrci": "33620407785878960339240364076535309850806800741903055631302500/55608508046372509626759775532373494451963521314512091269063661",
-      "nrci_score": 0.604591,
-      "tax": "21988100260493549287519411455838184601156720572609035637761161/3362040778587896033924036407653530985080680074190305563130250",
-      "weight": 8,
-      "tilt": 86.6654
-    },
-    "tags": [
-      "ELEMENT",
-      "HARDENED",
-      "HYDROGEN",
-      "NONMETAL",
-      "PERIOD_1",
-      "SOP_002"
-    ],
-    "fingerprint": "451abc64108603144c7b294a3862eab6fc35e945dab4b7785784ab44bc8c427f"
-  }
-```
-
-### Automatic Vector Generation Pipeline
-
-The `ubp_kb_architect.py` script automates the translation of raw scientific data into stable geometric codewords through the following pipeline:
-
-1. **Input:** The `math` field (Phenomenal DNA) of a Knowledge Base entry.
-2. **Fingerprinting:** SHA-256 hash of the `math` string generates the unique identity key.
-3. **Noumenal Seeding:** The first 12 bits of the hash serve as the "Noumenal Seed" — the core informational intent of the object.
-4. **Golay Encoding:** The 12-bit seed is passed to `GOLAY_ENGINE.encode()`, which generates 12 parity bits, resulting in a perfect 24-bit Phenomenal Codeword.
-5. **Geometric Anchoring:** The 24-bit vector serves as the object's hardware address within $\Lambda_{24}$.
-6. **Metrics Calculation:** The system automatically calculates the NRCI stability score and Symmetry Tax.
+### SOP_004: The Triple Delta Protocol (Word Creation)
+To create a new semantic operator (Word) that perfectly resolves to a Law:
+1.  **Formula:** $V_{word} = V_{target\_law} \oplus V_{subject\_entity} \oplus V_{interrogative\_frame}$
+2.  This ensures that when the three vectors interact, they collapse into a $d=0$ deterministic match.
 
 ---
 
-### SOP_003: Frame of Mind (FOM) Bias
-To shift the AI's perspective:
-1.  Open the **FOM** tab in the UI.
-2.  Select a frame (e.g., `SCIENTIFIC_STRICT` for physics, `BIOLOGICAL_RESONANCE` for life sciences).
-3.  The Brain will now prioritize results from the weighted Geometric Domains (The Octad).
+## 4. UBP-Py Language Reference
+
+| Command | Syntax | Description |
+| :--- | :--- | :--- |
+| `LET` | `LET A 1/1 TIER 0 CAT QUANTITY` | Creates a stable geometric anchor. |
+| `IMPORT` | `IMPORT ELEM_H_001 AS Hydrogen` | Imports a KB entry into the VM. |
+| `STATE` | `STATE S PARAMS ox=1 SCHEMA ox=0:3:4` | Encodes continuous data into a vector. |
+| `SYNTH` | `SYNTH C FROM "2xHydrogen + 1xOxygen"` | Merges vectors via the Leech Flow. |
+| `SPIRAL` | `SPIRAL A 5 TRANSFORM K` | Automates recursive growth (5 iterations). |
+| `AUDIT` | `AUDIT A` | Prints Tax, NRCI, Tilt, and MOG Health. |
+| `VISUALIZE` | `VISUALIZE` | Updates the 3D scene in the Visual tab. |
 
 ---
 
-## 4. Stability Thresholds (NRCI)
+## 5. Stability Thresholds (NRCI)
 
-*   **1.0000 (OnBit):** Perfect mathematical truth.
-*   **0.6000 - 0.9800 (Stable):** Valid physical matter (e.g., Hydrogen, Water).
-*   **0.4200 (Noise Floor):** The threshold for random noise.
-*   **< 0.1000 (High Tension):** Complex biological systems or heavy elements.
-*   **0.0000 (Deep Hole):** Informational collapse; the object cannot exist in the substrate.
-
----
-
-## 5. **The Imagination Sandbox:** 
-
-The system no longer requires external rendering to "sense" geometry. It can instantiate a "Mental Image" internally, placing 24-bit vectors into a 14x14 retina grid. By projecting these patches into the 256D bulk via SHA-256 isomorphism, the **ViT Eyes** detect "Geometric Frustration," allowing the AI to focus its attention on the most "interesting" (high-tax) parts of a thought.
-
+*   **1.0000 (OnBit):** Pure Mathematical/Noumenal Truth.
+*   **0.7000 - 0.9800 (Stable):** Manifested Physical Matter (The "Conscious" Zone).
+*   **0.4200 (Noise Floor):** The limit of random informational noise.
+*   **0.0000 (Deep Hole):** Geometric collapse; the object cannot exist.
 ---
 
 ## 6. **Visual Analysis:**
