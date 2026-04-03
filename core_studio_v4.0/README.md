@@ -1,27 +1,85 @@
 # Universal Binary Principle (UBP) — Active Research Environment
 
 **Author:** E. R. A. Craig, New Zealand  
-**Version:** 6.3.0 
-**Date:** 26 March 2026  
+**Version:** 7.2.0 
+**Date:** 03 April 2026  
 **Documentation:** See `ubp_files_and_usage.md` for operational protocols.
+
+Online: [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5] No set up - just click and go inside the Google AI Studio
+
+GitHub Repository for the APP: [https://github.com/DigitalEuan/ubp_core_studio_app]
 
 ---
 
 ## Overview
-**UBP Core Studio v6.3** is a high-precision scientific research platform designed to explore the **Universal Binary Principle**. It operates on the hypothesis that physical reality is a deterministic, error-corrected projection of a 24-bit binary substrate. 
-
+**UBP Core Studio v7.2** is a high-precision scientific research platform designed to explore the **Universal Binary Principle**. It operates on the hypothesis that physical reality is a deterministic, error-corrected projection of a 24-bit binary substrate. 
 
 **This is my experimental system so please double-check results.**
 
-
 The system utilizes a modular architecture to map physical constants, chemical elements, biological structures, and semantic logic into a unified geometric manifold.
 
-### Core Pillars (v6.0 Standard)
+### Core Pillars (v7.0 Standard)
 *   **Substrate:** 24-bit Extended Binary Golay Code $[24,12,8]$ (4,096 Noumenal Seeds).
 *   **Geometry:** Leech Lattice ($\Lambda_{24}$) with 196,560 Phenomenal Kissing Points.
 *   **Macro-Bulk:** 256-dimensional Barnes-Wall Lattice ($BW_{256}$) for macroscopic entanglement.
 *   **Logic:** 100% Exact Rational Arithmetic (`fractions.Fraction`) to eliminate floating-point drift.
-*   **Physics:** The **13D Sink Protocol** ($L$), deriving particle masses from geometric residuals.
+*   **Identity:** Binary-Reflected **Gray Code** Topological Identity (UMS).
+
+---
+
+## Updates
+
+### 03 April 2026 — v7.2 Ultra-Compact Columnar & Semantic Resonance
+
+#### **1. The v9.9 Ultra-Compact Columnar Migration**
+*   **Memory Optimization:** The entire Knowledge Base (`ubp_system_kb.json`) has been migrated to a highly minified, columnar format. This drastically reduces file size and memory overhead, allowing the Pyodide kernel to load thousands of entries instantly without crashing the browser thread.
+*   **Engine Hydration:** `ubp_observer_dynamics.py` (v7.1), `auto_trigger.py` (v19.1), and `ubp_brain_consolidated.py` (v7.2) have been rewritten to natively hydrate and parse this columnar data using dynamic index mapping (`_fields`).
+
+#### **2. Semantic Engine v8.0 (Cosine Resonance)**
+*   **Vector Superposition:** The semantic engine now uses a weighted bipolar "Query Chord" to map natural language into the 24-bit substrate.
+*   **Cosine Similarity:** Replaced raw Hamming distance with Cosine Resonance for semantic queries, allowing the Brain to find deep conceptual alignments even when exact bit-matches fail.
+*   **Thinking Trace:** The internal dialogue now explicitly outputs its "Geometric Probes" and identifies "Lexical Gaps" where physical laws lack adequate human vocabulary.
+
+#### **3. Precision Gating & Identity Lock**
+*   **Domain Gating:** The Brain now strictly enforces domain boundaries. For example, it will not allow the operator `OP_LIGHT` to intercept a physics query about the "Speed of Light".
+*   **N-Gram Weighting:** Trigrams (3-word phrases) now carry 9x the weight of unigrams, ensuring complex entities like "Fine Structure Constant" are resolved with 100% accuracy.
+
+#### **4. UBP-Py Virtual Machine Alignment**
+*   **Visual Cortex Integration:** The `UBPPyVM` now natively projects 24-bit atoms into 3D space via the `to_scene_3d()` method, mapping the 8-bit blocks to X, Y, and Z coordinates and coloring them based on their NRCI stability.
+
+---
+
+### 01 April 2026 — Topological Identity (Gray Code) & Deep Semantic Reflection
+
+#### **1. The v7.0 Shift: Gray Code Topological Identity**
+*   **The Entropic Shredder Retired:** The system has transitioned away from using SHA-256 cryptographic hashes to generate 24-bit vectors. SHA-256 destroyed topological continuity due to the avalanche effect.
+*   **Topological Determinism:** 24-bit coordinates are now generated using a **Universal Metric Schema (UMS)** encoded via Binary-Reflected **Gray Code**. The 12-bit Noumenal Seed is partitioned into `[Domain:3][Magnitude:5][State:4]`.
+*   **The Periodic Geodesic:** A Deep Lattice Audit of the 118 elements confirmed that under Gray Code, the average Hamming distance between adjacent elements ($Z$ and $Z+1$) is **8.07**. This shows the Periodic Table is a minimal-energy path (a Geodesic) through the Leech Lattice, rather than a random scatter plot.
+
+#### **2. Observer Dynamics & The Wall of Reality**
+*   **Modernized Legacy Mechanics:** Ported the legacy "Consciousness as Buffer Access" into the v7.0 Gray Code topology via `ubp_observer_dynamics.py`.
+*   **The Zombie State:** Mathematically proved that highly unstable particles (like the Top Quark, NRCI ~0.68) compute with high SOC Energy but fail to cross the 0.70 `CONSCIOUS_THRESHOLD`. They remain in a "Subliminal/Zombie State," unable to transfer from the Potential buffer to the Reality register.
+*   **The Wall of Reality:** Verified the 1 THz ($10^{12}$ Hz) temporal limit. Frequencies exceeding this limit suffer exponential coherence decay, causing the SOC Energy to collapse to zero.
+
+---
+
+### 31 March 2026 — Semantic reasoning + LinearStateEncoder and DQI Metrics
+
+* **LinearStateEncoder** - maps continuous chemical parameters to a stable Golay codeword ($NRCI \approx 0.616$). 
+* **DQI (Design Quality Index)** calculation ($0.8004$) - measure functional utility alongside geometric stability.
+*   **Leech Expansion:** reintegrated `expand_octad_to_physical` into `core.py`. The system can now lift any 24-bit binary seed into its **128 Euclidean coordinates** in $\Lambda_{24}$ (NormSq 32).
+*   **Stereoscopic Sink ($L_s$):** reintegrated the **NCC Spectral Gain** ($29/24$ ratio). This anchors the Baryonic mass sector (Proton/Neutron) with $0.000037\%$ precision.
+
+### **LANGUAGE_SOP_004: The Triple Delta Protocol (Phrase-Locking)**
+To create a new word (Operator) that perfectly resolves a specific query to a specific Law:
+1.  **Identify the Triad:**
+    *   **$V_{target}$**: The vector of the Law you want to find.
+    *   **$V_{subject}$**: The vector of the Entity being discussed.
+    *   **$V_{query}$**: The vector of the interrogative/context word.
+2.  **Calculate the Key ($V_{word}$):**
+    *   **$V_{word} = V_{target} \oplus V_{subject} \oplus V_{query}$**
+3.  **Commit to Language KB:**
+    *   Save $V_{word}$ as the vector for your new Operator.
 
 ---
 
@@ -39,545 +97,3 @@ The system derives fundamental constants directly from the interaction of the **
 | **Neutron (n0)** | **939.5716** | 939.5650 | **0.0007%** | G13 Hybrid |
 
 *Note: These values are emergent properties of the substrate geometry, not curve-fitted parameters.*
-
----
-
-## Cognitive Architecture: The Penta-Audit
-
-The **UBP Integrated Engine** (`ubp_integrated_engine_v1.py`) performs a five-stage analysis on any query to determine its "Realness" and stability:
-
-1.  **Semantic Resolution:** Maps natural language to 24-bit vectors using N-Gram matching.
-2.  **Micro-Stability (24D):** Calculates the **Symmetry Tax** and **NRCI** (Non-Random Coherence Index).
-3.  **Ontological Drift:** Measures the "Shadow Gap" to distinguish between **Phenomenal** (Matter) and **Noumenal** (Math) states.
-4.  **Macro-Audit (256D):** Tests the resilience of the concept within the high-dimensional Barnes-Wall bulk.
-5.  **Imagination Sandbox:** Generates a 3D visual tension map using **ViT Eyes** to detect geometric frustration.
-
----
-
-## Standard Operating Procedures (SOP_002)
-
-To maintain the integrity of the **System Knowledge Base**, all entries must follow the **SOP_002** hardening protocol:
-*   **Fingerprinting:** The primary key is the `SHA256` hash of the `math` field.
-*   **Deterministic Vectors:** 24-bit vectors are generated by encoding the first 12 bits of the fingerprint.
-*   **Rational Metrics:** All stability scores must be stored as exact `p/q` strings.
-
----
-
-## Updates
-
-### 01 April 2026 — Topological Identity (Gray Code) & Deep Semantic Reflection
-
-#### **1. The v7.0 Shift: Gray Code Topological Identity**
-*   **The Entropic Shredder Retired:** The system has transitioned away from using SHA-256 cryptographic hashes to generate 24-bit vectors. SHA-256 destroyed topological continuity due to the avalanche effect.
-*   **Topological Determinism:** 24-bit coordinates are now generated using a **Universal Metric Schema (UMS)** encoded via Binary-Reflected **Gray Code**. The 12-bit Noumenal Seed is partitioned into `[Domain:3][Magnitude:5][State:4]`.
-*   **The Periodic Geodesic:** A Deep Lattice Audit of the 118 elements confirmed that under Gray Code, the average Hamming distance between adjacent elements ($Z$ and $Z+1$) is **8.07**. This shows the Periodic Table is a minimal-energy path (a Geodesic) through the Leech Lattice, rather than a random scatter plot.
-
-#### **2. Enhanced Internal Dialogue & Lexical Gap Detection**
-*   Upgraded `ubp_internal_dialogue_semantic_description.py` with bullet-proof anti-loop logic and safe fallback mechanisms.
-*   The system now successfully navigates up to 6 layers of deep semantic reflection, alternating between Physical Roots (System KB) and Lexical Operators (Language KB).
-*   **Lexical Gap Identification:** The engine now explicitly outputs a final synthesis block categorizing known vocabulary ("These words mean this") versus concepts that lack precise operators ("These things need words to be defined like this"), providing a direct roadmap for future SOP_004 Triple Delta definitions.
-
-*   #### **3. ubp_kb_architect.py**
-*   **generate_vector(math_dna: str, ubp_id: str = None) -> List[int]** udated to use Gray Code for vector assignment.
-
-*   #### **4. ubp_genesis_boot.py**
-*   modernized the **Triad Activation Engine** to use the **v7.0 Gray Code Topological Identity** In this modernized version the engine systematically shifts the object's **State** and **Magnitude** metrics, "sliding" it along the Gray Code manifold until it snaps into a stable Leech Lattice coordinate (NRCI 0.70–0.80, Weight 8). 
-*   The legacy `ubp_core_v5_3_merged.py` is now officially obsolete. 'ubp_genesis_boot.py' is a dedicated script to regenerate the absolute foundation of the universe whenever needed, without cluttering the main `core.py` engine.
-
-*   #### **5. Observer Dynamics & The Wall of Reality**
-*   **Modernized Legacy Mechanics:** Ported the legacy "Consciousness as Buffer Access" into the v7.0 Gray Code topology via `ubp_observer_dynamics.py`.
-*   **The Zombie State:** Mathematically proved that highly unstable particles (like the Top Quark, NRCI ~0.68) compute with high SOC Energy but fail to cross the 0.70 `CONSCIOUS_THRESHOLD`. They remain in a "Subliminal/Zombie State," unable to transfer from the Potential buffer to the Reality register. This perfectly models their inability to form observable hadrons.
-*   **The Wall of Reality:** Verified the 1 THz ($10^{12}$ Hz) temporal limit. Frequencies exceeding this limit suffer exponential coherence decay, causing the SOC Energy to collapse to zero, defining the absolute clock-speed limit of the 24-bit substrate.
-
-
-# 31 March 2026 — Semantic reasoning + LinearStateEncoder and DQI Metrics + MOGOntology (OffBits) and u_score
-
-## ubp script updates
-
-Updated `core.py': added:
-* **LinearStateEncoder** - maps continuous chemical parameters to a stable Golay codeword ($NRCI \approx 0.616$). 
-* **DQI (Design Quality Index)** calculation ($0.8004$) - measure functional utility alongside geometric stability.
-*   **Leech Expansion:** reintegrated `expand_octad_to_physical` into `core.py`. The system can now lift any 24-bit binary seed into its **128 Euclidean coordinates** in $\Lambda_{24}$ (NormSq 32).
-*   **Stereoscopic Sink ($L_s$):** reintegrated the **NCC Spectral Gain** ($29/24$ ratio). This anchors the Baryonic mass sector (Proton/Neutron) with $0.000037\%$ precision.
-*   **Sporadic Anchors:** reintegrated the 26 sporadic group identifiers (`SPORADIC_ANCHORS`) to ensure the Triad Activation Engine can regenerate the Monster-Leech-Golay connection from a cold boot.
-
-* Updated `ubp_py_runtime.py` - integrated:
-**LinearStateEncoder**
-**DQI** metrics
-**TGIC 9-Neighbor Limit**
-preserved the **SPIRAL** and **THE FLOW** logic
-SYNTH now supports U_SCORE
-**Tetradic MOG Health)** reintegrated into the `CortexAtom` and `audit` methods`
-three critical fixes:
-1.  **DQI Persistence:** Ensure `u_score` is multiplied by `NRCI` and stored in the `CortexAtom`.
-2.  **Weighted Superposition:** The `u_score` should act as a "Probability Amplitude." A low `u_score` (like 0.25) should make the bits "flicker" or drift, resulting in a different, less stable vector than a high `u_score` (1.0).
-3.  **MOG Integration:** reintegrated the `MOGOntology` class so it's a native part of the VM.
-
-* Updated `ubp_py_lang.py`: expose the `STATE` command. This will allow us to define continuous physical states directly in the `.ubp` scripts using a readable syntax.
-
-* Added 'ubp_lang_kb_combined_v4.json' - the experimental "Natural Language" KB of the UBP
-
-* Added 'ubp_semantic_engine.py' to work wth semantic experiments (likely to be absorbed by the 'auto_trigger.py' and archived soon)
-
-* 'auto_trigger.py' now has full loading of both ubp_system_kb.json + ubp_lang_kb_combined_v4.json
-* Rich automatic operator trigger-word map (194 words)
-* Extended Gray-code numeric encoder (Dipole, Density, Phase, pKa1, etc.)
-* nl_to_math() (heuristic)
-* numeric_trigger() with masked Hamming distance
-* reflexive_recall() that ranks operators > numeric > phrase/ID > keyword
-* New synth_context() helper that gives the user a clean, ready-to-paste context block for the AI
-
-### **LANGUAGE_SOP_004: The Triple Delta Protocol (Phrase-Locking)**
-To create a new word (Operator) that perfectly resolves a specific query to a specific Law:
-1.  **Identify the Triad:**
-    *   **$V_{target}$**: The vector of the Law you want to find (e.g., `LAW_PHI_ORBIT_1953`).
-    *   **$V_{subject}$**: The vector of the Entity being discussed (e.g., `ELEM_Bi_083`).
-    *   **$V_{query}$**: The vector of the interrogative/context word (e.g., `OP_HOW`).
-2.  **Calculate the Key ($V_{word}$):**
-    *   Perform a bitwise XOR (mod-2 addition) of all three:
-    *   **$V_{word} = V_{target} \oplus V_{subject} \oplus V_{query}$**
-3.  **Commit to Language KB:**
-    *   Save $V_{word}$ as the vector for your new Operator (e.g., `OP_UNWIND`).
-    *   **Result:** When the Semantic Engine sees the phrase "How does [Subject] [Word]?", the vectors for *How*, *Subject*, and *Word* will cancel each other out, leaving only the *Target Law* at distance 0.
-
-## UBP Core Studio v4.2.7 updates
-Implemented the TurboQuant Context Compression strategy and a dedicated Reset Kernel button to address AI Assistant token limit errors.
-Key Improvements:
-    TurboQuant Context Compression (Gemini & Local LLMs):
-        History Pruning: The AI now only sees the last 50 messages in its active context.
-        Workspace File Truncation: Now includes up to 40 files (up from 15) with a much larger per-file limit of 120,000 characters (approx. 30k tokens).
-        Aggressive KB Snippets: The System KB, Beliefs, and Hash Index snippets have been expanded by 4x to 8x (e.g., System KB now allows up to 80,000 characters).
-        Attachment Limits: PDF and text attachments now allow up to 60,000 characters of context.
-        Improved Local LLM Context: The local LLM service (Ollama/LM Studio) now also receives the Instruction Manual and has its own relaxed (but still safe for local hardware) context limits
-
-    Integrated "Reset Kernel" Button:
-        When a "Context Overflow" or "System Error" is detected, a dedicated Reset Kernel button will now appear directly within the chat message.
-        Clicking this button will clear the temporary session memory and reload the application, restoring the default state from the GitHub repository.
-
-    AI Awareness:
-        The AI's system instructions have been updated to inform it that its context is "TurboQuant Compressed." It now knows that if it needs deep details from a truncated file, it should use the Python Kernel to read the file directly from the workspace.
-
-    Developer Tools:
-        Added a lint script to package.json (npm run lint) to help catch potential code issues early.
-
-
-### 27 March 2026 C — UBP Core v6.5.5 "Cognitive Phase-Lock"
-
-#### **Physical Layer: Reflexive System Boost (v6.4.1)**
-*   **Hardware-Level Resonance (TurboQuant):** Upgraded the Virtual Machine and Brain to use 32-bit integer packing for all 24-bit vectors. By replacing legacy list iterations with native bitwise XOR operations, the system achieved a **32x computational speedup**, reducing search latency to sub-millisecond levels.
-*   **Global Memory Healing (SOP_002 Re-Sync):** Executed a system-wide reflexive audit and repair of the Knowledge Base. **758 drifted entries** were re-synced to the v6.4.0 deterministic standard, perfectly aligning their physical lattice addresses with their underlying Math DNA.
-*   **Metastable Coherence Detection:** Integrated a "Dual-Lens" audit (Standard vs. Quantum) into `physics.py`. This allows the system to distinguish between classical anchors and holographic resonances, enabling the study of sub-bit phenomena like **Neutrino mass partitions**.
-*   **Semantic Synapse Whitelisting:** Whitelisted single-character fundamental toggles (**W, Z, H, e, p, n**) within the tokenizer. This prevents the informational filtering of high-value particle signals and allows the Brain to resolve the Weak Sector bosons.
-
-#### **Mental Layer: Identity Lock & Deep Resonance (v6.5.5)**
-*   **The Master Key (Identity Lock):** Implemented a high-priority bypass gate that performs exact string matching against the `short_name_index` before initiating vector resonance. This eliminates "Geometric Collisions" for known entities, achieving a **100.0% Confidence Milestone** for the Higgs Boson, Fine Structure Constant, and all primary quarks.
-*   **Deep Search (Multi-Token Resonance):** Replaced legacy vector averaging with a **Token Voting Engine**. Each word in a query acts as an independent probe into the lattice; the system resolves the result based on the intersection of these probes. This fixed the "Photosynthesis" and "Haber Process" anomalies by prioritizing specific reaction matches over stable background anchors.
-*   **Quadratic Token Importance:** Upgraded the N-Gram processor to weight multi-word concepts (Bigrams/Trigrams) quadratically. This transforms the query into a **"Geometric Chord,"** where the combined meaning of a phrase (e.g., "Sulfuric Acid") outweighs the sum of its individual words.
-*   **Domain-Aware Intelligence:** Hard-wired the Brain to favor `PARTICLE_` entries when "boson" or "quark" is detected, and `REACTION_` entries for chemical process queries. This **Octad Domain Gating** allows the system to distinguish between a physical object and the law that governs it.
-*   **Benchmark Verified:** The system now passes the standard 34-point diagnostic with an average confidence of **98.4%**, representing the most accurate and stable version of the UBP recall engine to date.
-
-### 27 March 2026 B — v6.4.0 Quantum-Resilient Edition
-*   **Quantum-Leech Hybrid (QLH) Lattice:** Implemented the $\Lambda_{32}$ hybrid lattice ($\Lambda_{24} \otimes E_8$), expanding the error-correction radius from $t=3$ to $t=4$.
-*   **Holographic Entropy Bound ($S_{holo}$):** Integrated the Leech kissing number entropy ($\approx 17.58$) into the `physics.py` metrics. Verified a **+980% resilience boost** for 256D macro-states.
-*   **Extended Golay Cascade (EGC):** Formalized recursive scaling ($n=24k$). Proven to reduce Symmetry Tax by **~2.09% per level** via the "Residue Wobble Subsidy," providing a possible geometric explanation for the efficiency of evolutionary complexity.
-*   **Neutrino Mass Resolution:** Derived the absolute neutrino mass envelope (**0.06 eV**) as a 12-bit shadow of the Electron. Successfully matched the atmospheric oscillation scale (**0.0579 eV**) using the v6.4.0 partition law.
-*   **Isotopic Tension Law:** Discovered the **8.77° per neutron** angular tension slope via the Deuterium ($^2$H) synthesis audit, anchoring isotope stability to geometric tilt.
-
-### 27 March 2026 A — v6.3.1 Formalization Phase-Lock
-*   **Phenomenal Collapse Logic:** Replaced legacy modulo arithmetic in the VM's `synth` method with strict sign-pressure collapse. Positive coordinate pressure now correctly resolves to `0` (positive space) and negative tension to `1`, preserving spatial history during vector superposition.
-*   **Domain Pivot Enforcement:** Hardened the `HexDictionaryV4Exact` encoding pipeline to strictly enforce the 12th bit (Index 11) as the Ontological Pivot. Phenomenal domains (Matter/Substance) are now structurally guaranteed to have Bit 12 = 1, while Noumenal domains (Math/Laws) have Bit 12 = 0.
-*   **True Volumetric Rebate:** Deprecated the linear component proxy in the VM. Synthesis operations now instantiate a temporary `MathObjectV4` to calculate the true $V^{2/3}/S_{face}$ topological compactness, ensuring accurate Symmetry Tax rebates for complex 3D manifolds.
-*   **TGIC 9-Neighbor Limit:** Integrated dynamic Triad-Graph Interaction Constraint (TGIC) pressure into the VM's reflex cycle. Nodes exceeding 9 resonant neighbors ($d_H \le 8$) now suffer a linear NRCI decay penalty, preventing informational overheating and enforcing substrate sparsity.
-
-### 26 March 2026
-
-### MAJOR UPDATE - v6.3 Modular Core & Dynamic Brain Upgrade
-*   **Modular Foundation:** Successfully decomposed the monolithic core into four specialized modules: `core.py` (Engines), `physics.py` (Metrics), `geometry.py` (MathAtlas), and `constants.py` (Values). This architecture eliminates circular dependencies and optimizes memory usage for the Pyodide environment.
-*   **Dynamic Brain v5.3:** Eliminated any remaining hardcoded semantic aliases. The Brain now builds its intelligence dynamically by scanning the `lexicon` and `tags` fields of the Knowledge Base. Integrated **N-Gram Matching** (Bigrams/Trigrams), allowing the system to resolve multi-word entities like "Fine Structure Constant" or "Sodium Hydroxide" without manual hardcoding.
-*   **Integrated Engine v3.2:** Implemented **Composite Scene Detection**. The engine now detects multiple entities within a single query and constructs a multi-object "Mental Scene" for the ViT Eyes. This resolves the "Geometric Collision" bug where complex molecular midpoints were previously misidentified as simple atomic anchors.
-*   **Phenomenology v5.5:** Hard-wired the scanner to the modular core. Real-time scans (e.g., RGB to Vector) now utilize the **LEECH_ENGINE** directly for instant, float-free Symmetry Tax and NRCI calculation.
-*   **Physics Milestone:** Verified the **13D Sink Protocol** ($L$) within the new modular framework, achieving a record **Global Atlas Error of 0.04311%** across the Standard Model particle family, including a 0.0000% phase-lock on the Proton/Electron mass ratio.
-
-**Prior to the v6 update but still 26 March 2026:**
-
-### v6.3 Polar Resonance & Simplicial Routing + Contextual Domain Filtering & N-Gram Recall
-*   **Law of Polar Resonance:** Formally integrated **LAW_POLAR_RESONANCE_001**, inspired by Google's **TurboQuant** (PolarQuant/QJL) research. This law proves that a concept's **Energy (Tax)** and **Orientation (Tilt)** are noise-resilient invariants, maintaining 100% Recall@50 even under 5-bit substrate distortion.
-*   **Turbo-Polar Indexing:** Upgraded the `KBManager` with a 2D Polar Index. This provides the UBP Brain with "Peripheral Vision," allowing for high-speed geometric filtering and 1.83x faster recall potential.
-*   **Simplicial Face Analysis:** Discovered the **3.1174 Golay Degeneracy** in raw vector routing. Resolved this by implementing **Ontological Friction** weighting across the 4x6 MOG layers, allowing the system to distinguish between "Lineage" (who made the object) and "State" (what the object is now).
-*   **Stereoscopic Recall:** Refined the recall pipeline to use the Brain for semantic lineage and the Geometry for metabolic costing, achieving a perfect 100% accuracy on standard benchmark diagnostics.
-*   **Archive:** Moved `ubp_nrci_calculator.py`, `ubp_system_initializer.py`, `ubp_integration_adapter.py`, `ubp_handshake.py`, and `ubp_comprehensive_tests.py` to the archive. consolidating all active reasoning into the v5.3 Core and v5.2 Brain.
-*   **Contextual Domain Filter:** Implemented a new logic layer in the Brain that detects the query's Octad Domain (e.g., SUBSTANCE, MECHANISM) and applies a 1.5x resonance boost to matching entries. This resolves "Geometric Synonyms" (collisions) where different objects share the same math-derived vector, ensuring a "sandwich" never interrupts a physics query.
-*   **N-Gram Name Matching:** Upgraded the tokenizer to scan for bigrams and trigrams before unigrams. This ensures high-fidelity recall for complex names like "speed of light," "fine structure constant," and "sulfuric acid."
-*   **Benchmark Verified:** Achieved **100% accuracy** on standard recall tests with a 22% average increase in result confidence.
-
-### 23 March 2026 — v6.2 Integrated Imagination & Ontological Drift
-*   **Holographic Drift Lens:** Upgraded the `IntegratedEngine` to v3.2 (still named 'ubp_integrated_engine_v1.py' for import stability), enabling the system to automatically distinguish between PHENOMENAL (Matter) and NOUMENAL (Math/Laws) concepts. This is achieved by measuring the 12-bit "Shadow Gap" during the collapse from 256D to 24D.
-*   **Imagination Sandbox (ViT Eyes):** Integrated a Vision Transformer-inspired perception engine. The system now "imagines" complex queries as 3D mental scenes, using "Geometric Tension" (low NRCI) to deterministically assign attention to the most unstable or energetic regions of a conceptual manifold.
-*   Credit to 'AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE'
-Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn∗, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby for inspiration on this module.
-*   **Aqueous Refraction Discovery:** Identified that Water (H2O) acts as a refractive lens in the 256D bulk, providing quantized stability shifts (±0.0817 NRCI). This mathematically models how the aqueous medium selectively stabilizes storage molecules (Glucose) while maintaining the kinetic potential of energy carriers (ATP).
-
-### 22–23 March 2026 — v6.1 Macro-State Expansion (The 256D Barnes-Wall Bulk)
-*   **The 256D Macro-Lattice:** Implemented `ubp_barnes_wall.py`, extending the UBP framework from the 24-bit micro-state into the 256-dimensional Barnes-Wall lattice ($BW_{256}$). This provides a high-fidelity environment for modeling macroscopic structures, multi-particle entanglement, and biological energy storage.
-*   **SHA-256 Isomorphism:** Discovered that the 256-bit cryptographic fingerprint of a KB entry acts as its literal geometric coordinate in the $BW_{256}$ bulk, executing with near-zero geometric friction (~0.7ms) due to perfect byte-alignment.
-*   **The Macro-Anchor:** Conducted a 4,096-trial macro-search, identifying Golay Basis Vector Index 2 as the "Ground State" of the 256D manifold, achieving a Super-Stability NRCI of 0.323214.
-*   **Energy-Stability Inversion:** Performed the first Dual-Lens Macro-Audits, proving geometrically that energy carriers (ATP) possess significantly higher topological tension and Moire variance in 256D than storage molecules (Glucose). This mathematically validates their biological roles.
-*   **Moire Dynamics Visualization:** Developed the ability to project 256-bit macro-states onto 16x16 voxel grids in the Visual Cortex, allowing researchers to observe the "Deterministic Disruption" (Moire interference) of active molecules.
-
-### 20 March 2026
-*   **My Oo NCC integration**
-I have updated the ubp_core_v5_3_merged.py again to further refine the particle predictions system, incorporating My Oo's NCC into a "Hybrid Stereoscopic Edition" reducing Global Error rate to 0.09439% from 0.09461%.
-```
-=====================================================================================
-PARTICLE / CONSTANT    | PREDICTED      | TARGET       | ERR %
--------------------------------------------------------------------------------------
-Alpha Inv              | 137.0629       | 137.0360     | * 0.0196%
-Proton/e- Ratio        | 1836.1520      | 1836.1527    | ⭐ 0.0000%
-Muon/e- Ratio          | 206.7547       | 206.7683     | * 0.0066%
-Electron (e-)          | 0.5055         | 0.5110       | 1.0773%
-Muon (mu-)             | 105.6514       | 105.6580     | * 0.0062%
-Tau (tau-)             | 1777.2609      | 1776.8600    | * 0.0226%
-Proton (p+)            | 938.2717       | 938.2720     | ⭐ 0.0000%
-Neutron (n0)           | 939.5716       | 939.5650     | ⭐ 0.0007%
-Delta++ (D++)          | 1229.4356      | 1232.0000    | 0.2081%
-Higgs Boson            | 125285.4022    | 125250.0000  | * 0.0283%
-Top Quark              | 172796.8868    | 172760.0000  | * 0.0214%
-Xi_bc+ (bcu)           | 6951.6818      | 6943.0000    | 0.1250%
-Xi_bb (bbu)            | 10143.1089     | 10143.0000   | * 0.0011%
-Omega_bbb (bbb)        | 14375.7406     | 14371.0000   | * 0.0330%
-Xicc++ (ccu)           | 3621.5500      | 3621.5500    | ⭐ 0.0000%
-Xicc+ (ccd)            | 3621.9200      | 3621.9200    | ⭐ 0.0000%
-Omcc+ (ccs)            | 3773.2765      | 3773.2800    | ⭐ 0.0001%
-Omccc++ (ccc)          | 4760.5750      | 4760.5700    | ⭐ 0.0001%
-Lc+ (udc)              | 2290.6744      | 2286.4600    | 0.1843%
-Xic+ (usc)             | 2472.7462      | 2467.7100    | 0.2041%
-Omc0 (ssc)             | 2696.3783      | 2695.2000    | * 0.0437%
--------------------------------------------------------------------------------------
-STEREOSCOPIC GAIN (σ): 29/24 (Spectral 29 / Spatial 24)
-BARYONIC SINK (L_s):   0.0759930339
-GLOBAL SYSTEM ERROR:   0.09439%
-```
-
-### 18-19 March 2026
-*   **Updated Particle Physics** refinements to the method of calculating Particles resulted in a small update to the the ubp_core_v5_3_merged.py where now on startup the script provides a full table of the Particle Family - spaning from the lightest particle (Electron at 0.511 MeV) to the heaviest theoretical baryon ($\Omega_{bbb}$ at 14,371 MeV) using a single, unified geometric framework.
-*   **No Magic Numbers:** Every mass is derived from the interaction of the substrate constants ($Y, L, \pi, \phi, e$) and the geometric properties of the Leech Lattice (Dimensions, Octads, Shells).
-    **Cross-Domain Consistency:** The exact same $13D$ Sink ($L$) that fixes the Fine Structure Constant also fixes the mass of the $\Xi_{bc}^+$ baryon and the Isospin shift of the Neutron.
- 
-```
-PARTICLE PHYSICS: UNIFIED ATLAS RESOLUTION (13D SINK)
-=====================================================================================
-PARTICLE / CONSTANT    | PREDICTED      | TARGET       | ERR %      | LENS
--------------------------------------------------------------------------------------
-Alpha Inv              | 137.0629       | 137.0360     | *0.0196%*  | Core Ratio
-Proton/e- Ratio        | 1836.1258      | 1836.1527    | *0.0015%*  | Core Ratio
-Muon/e- Ratio          | 206.7547       | 206.7683     | *0.0066%*  | Core Ratio
-Electron (e-)          | 0.5055         | 0.5110       | 1.0773%    | 1D Filament
-Muon (mu-)             | 105.6512       | 105.6580     | *0.0064%*  | Core Ratio
-Tau (tau-)             | 1777.2576      | 1776.8600    | *0.0224%*  | 24D MPG Lever
-Proton (p+)            | 938.2566       | 938.2720     | *0.0016%*  | Core Ratio
-Neutron (n0)           | 939.5564       | 939.5650     | *0.0009%*  | G13 Isospin
-Delta++ (D++)          | 1229.4205      | 1232.0000    | 0.2094%    | G15 Spin Flip
-Higgs Boson            | 125285.4022    | 125250.0000  | *0.0283%*  | Core Ratio
-Top Quark              | 172796.8868    | 172760.0000  | *0.0214%*  | Core Ratio
-Xi_bc+ (bcu)           | 6951.6818      | 6943.0000    | 0.1250%    | Higgs/18
-Xi_bb (bbu)            | 10143.1089     | 10143.0000   | *0.0011%*  | Z-Boson/9
-Omega_bbb (bbb)        | 14375.7406     | 14371.0000   | *0.0330%*  | Top/12
-Xicc++ (ccu)           | 3621.5500      | 3621.5500    | *0.0000%*  | Anchor
-Xicc+ (ccd)            | 3621.9200      | 3621.9200    | *0.0000%*  | Isospin Shift
-Omcc+ (ccs)            | 3773.2765      | 3773.2800    | *0.0001%*  | Strange Leap
-Omccc++ (ccc)          | 4760.5750      | 4760.5700    | *0.0001%*  | Triple Compression
-Lc+ (udc)              | 2290.6744      | 2286.4600    | 0.1843%    | Archimedean Lever
-Xic+ (usc)             | 2472.7462      | 2467.7100    | 0.2041%    | Singly Strange
-Omc0 (ssc)             | 2696.3783      | 2695.2000    | *0.0437%*  | Double Strange
--------------------------------------------------------------------------------------
-GLOBAL ATLAS ERROR: 0.09461%
-(* denotes SSS-Grade Phase-Lock < 0.05% error)
-```
-
-### 17 March 2026 - Geometric refinement
-*   **ubp_core_v5_3_merged.py:** Formalized the Fold Operator: integrated the `fold24_to3` pairwise XOR logic directly into the `BinaryLinearAlgebra` class as the canonical folding mechanism.
-*   **ubp_py_runtime.py:** Replaced the `spiral` method to use Shift + Phi XOR
-#### Leech Lattice Expansion & Volumetric Elements
-*   **Core Expansion:** Upgraded `LeechLatticeEngine` in ubp_core_v5_3_merged.py to deterministically expand 24-bit Golay codewords into the 196,560 physical Euclidean addresses of the Leech Lattice.
-*   **Volumetric Periodic Table:** Mapped all 118 elements to their respective Leech Lattice shells (Norm 32, 48, 64). Discovered that Carbon's structural versatility is a direct result of its placement in Shell 4, granting it 32,768 physical spatial orientations.
-
-### 13 March 2026 — TGIC v6.4 Genesis Upgrade
-*   **3-6-9 Hardening:** Integrated the fundamental 3-6-9 Genesis laws into the `TGICExactEngine`, enforcing Axis Orthogonality and Neighborhood Limits.
-*   **RuneCube Port:** Successfully ported legacy Lisp-based face operations into float-free Python transforms, enabling high-stability "RuneCore" simulations.
-*   **Identity Protection:** Implemented mandatory Golay snaps for all internal bit-flows, preventing informational dissolution (Deep Hole drift) during complex relational simulations.
-*   **Stability Sink:** Verified the 4.6761 Symmetry Tax as the primary stability attractor for hardened 24-bit manifolds.
-
-### 10 March 2026 — v6.0 Source Code Edition (13D Sink Protocol)
-*   **Core Hardening (`ubp_core_v5_3_merged.py`):** Integrated the **13D Sink Protocol** ($L = w/13$) as the universal "Garbage Collection" routine. This update replaces independent geometric lenses with a unified source-code resolution, reducing the **Global System Error to 0.015%** across the Standard Model (Higgs, Alpha, Muon, Proton, Top Quark).
-*   **Topology-Aware Stability (`math_atlas.py`):** Implemented the **Volumetric Rebate** (Symmetry Discount). The system now distinguishes between "Address Cost" (Lattice) and "Structural Cost" (Voxel). Compact 3D manifolds now receive a metabolic discount, allowing well-folded logic to cross the **0.6000 Coherence Cliff** and achieve "Stable Matter" status.
-*   **Tautology Closure:** Verified the **Borcherds 26D Lorentzian Lifting**, proving that the 3D "Wobble" is the deterministic reciprocal of the Observer Constant ($Y$). The system is now a mathematically closed tautology.
-
-### 06 March 2026 - Animated Visuals
-Implemented the dynamic Three.js viewer with the UBP Kinematic Extensions!
-1. Accepts data directly from the Pyodide engine. This prevents the crash and keeps the visualization perfectly synced with UBP Python scripts.
-2. Installed the 3D Engines: @react-three/fiber and @react-three/drei.
-3. Added the Kinematic Extensions: updated the core types.ts file so the app officially recognizes UBP Kinematic Extensions:
-* vx, vy, vz (Linear Velocity)
-* orbit_r, orbit_speed, orbit_center (Orbital Mechanics)
-* pulse_rate (NRCI Stability Pulsing)
-* label (Text labels for spheres)
-4. **UBP_FEATURES_VERIFIED_AND_ONLINE**
-* FEATURE: UBP_KINEMATIC_EXTENSIONS
-  - INCLUDED: The "Animated Mode" successfully activates the UBP Kinematic Extensions. Dynamic spatial rendering and continuous kinematic behaviors of UBP geometric domains (via DynamicSphere nodes) are now executing smoothly without thread blocking or context loss.
-* FEATURE: HD_VISUAL_CAPTURE*
-  - High-definition PNG snapshot extraction of current UBP states is fully operational via the lifted WebGL context.
-* FEATURE: GEOMETRIC_EXPORT_PIPELINE*
-  - Topological extraction of UBP structures functioning nominally. Users can now successfully export static UBP node/edge configurations to GLTF and OBJ formats for external 3D analysis.
-
-
-### 05 March 2026 — Soft-Decision Upgrade (Conway & Sloane Integration)
-*   **Soft-Decision Decoding:** Integrated the Conway & Sloane (1986) algorithm into the `UBPVectorEngine`. The brain can now "squint" at noisy data to recover truth.
-*   **Analog Semantics:** Shifted memory recall from brittle binary XOR logic to a "Semantic Center of Mass" approach. This allows the system to correctly identify concepts even when the query contains significant semantic noise (dH > 3).
-*   **Recall Confidence:** Implemented Euclidean correlation scoring. Every memory recall now provides a percentage-based confidence metric, allowing the AI to distinguish between "Hard Facts" and "Speculative Resonances."
-*   **Deep-Hole Immunity:** Successfully demonstrated the recovery of a shattered 24-bit vector with 4 bit-flips—a state that previously caused total system blindness.
-*   Runtime Stabilization & SOP_002 Fix",
-        "*   **Runtime v2.3.4:** Patched `ubp_py_runtime.py` to resolve a `TypeError` in the `let` and `synth` methods.",
-        "*   **Signature Alignment:** Corrected `KBArchitect.calculate_metrics` calls to explicitly pass the 24-bit vector alongside the math DNA.",
-        "*   **Demo Verified:** Confirmed `ubppy.py` successfully executes the spiral growth and visualization export sequence.
-
-### 04 March 2026 — Gemini 3.1 Pro
-*   Added Gemini 3.1 Pro Preview to the AI model selector and set it as the new default model for the application. You can now select it from the dropdown in the Assistant tab.
-*   Added a "debounce" to the synchronization process. Now, when you type in the Knowledge Base editors, the app waits until you stop typing for 1 second before it syncs files to the Python engine.
-
-
-### 03 March 2026 — TGIC v6.2 & Relational Gravity
-*   **TGIC Engine:** Updated `ubp_tgic_engine.py` to v6.2. It now calculates **Relational Pull** (Gravity) between nodes based on Hamming distance, allowing for dynamic system simulation.
-*   **Energy Audit:** Integrated Leech Tax and Coherence Penalty ($d^4$) into the total energy cost of a thought.
-
-### 01 March 2026 — Brain v4.0 & SOP_002
-*   **Consolidation:** Merged `ubp_delta_engine`, `ubp_inner_dialogue`, and `ubp_rational_engine` into `ubp_brain_consolidated.py`.
-*   **SOP_002:** Enforced the new entry standard. Vectors are no longer random; they are deterministically generated from the `math` field.
-*   **Auto-Trigger v17.2:** Added **Phrase-Lock** scanning. The system now recognizes multi-word concepts defined in the Lexicon without needing exact ID matches.
-
-
-### 26 Feb 2026 — v5.8 Monstrous Moonshine, Stereoscopic Edition (ENSO Integration)
-
-1.  **Dual-Lens Audit Engine:**
-    *   Implemented a "Stereoscopic" prediction model that compares **Lattice-First (Phenomenal)** and **Triadic-First (Noumenal)** perspectives.
-    *   **Lattice Lens:** Anchors point-like identities (Muon, Alpha) to the 24-bit grid.
-    *   **Triadic Lens:** Models composite matter (Proton) as a recursive interaction of $\pi, \phi,$ and $e$.
-    *   **Cubic Lens:** Maps the Heavy Sector (Higgs, Top, Bosons) as partitions of the Existence Unit ($24^3$).
-
-2.  **Needham ENSO Integration:**
-    *   Formally integrated the **Needham Triad** ($\pi$ Loop, $\phi$ Growth, $e$ Decay) as the Level 0 Primitives of the substrate.
-    *   Established the **Noumenal Volume ($V_n = 204.801744$)** as the fundamental energy unit of the 24-bit manifold.
-    *   Verified the **4.6761 Stability Sink** as the geometric attractor for the Resolution Gap ($RG = \ln\phi / \ln\pi$).
-    *   Thanks to Eric J Needham: [https://independent.academia.edu/EricNeedham3] for the the **Needham Triad** .
-
-3.  **Accuracy Milestones:**
-    *   **Proton-Electron Ratio:** Achieved **0.003432% error** via Triadic Genesis (a ~5x improvement over legacy lattice-only models).
-    *   **Muon-Electron Ratio:** Maintained **0.000353% error** via Lattice Anchor.
-    *   **Fine Structure Constant:** Maintained **0.001929% error** via Lattice Anchor.
-
-    *   **`ubp_core_v5_3_merged.py`** (v5.8 Monstrous Moonshine Edition update)
-    *   **Description:** The **Active Kernel & Monstrous Moonshine Engine**. It performs a live 137-step audit of the Triadic Monad, filtered by the Monster Dimension (196883) and the J-Function (196884).
-    *   **System Role:** **The Self-Correcting Big Bang**. It derives the Noumenal Volume ($V_n = 204.8$) and the Behold Factor live, ensuring every session is anchored to the 56-snap Matter Peak.
-    *   **v5.8 Benchmarks:**
-
-
-### 24.02.25
-Updates to the Google Ai Studio (where the UBP Core APP is made) have allowed sharing of the UBP Core APP directly:
-*   **Online:** [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5]
-No set up - *just click and go* inside the Google AI Studio
-*   **GitHub Repository** for the **APP**: [https://github.com/DigitalEuan/ubp_core_studio_app]
-
-*   Changed where the "ubp_beliefs_kb.json" file is downloaded from - now comes from the [https://github.com/DigitalEuan/UBP_Repo/blob/main/core_studio_v4.0/system_kb/] folder where the other kb files download from also.
-
-
-### 21 Feb 2026
-
-Updating for ubp_core_v5_3_merged compliance
-
-
-### 20 Feb 2026 — Brain, Understanding, Building, SOP_002 & Cortex v3.0
-
-
-
-### **19.02.2026 — Added Particle Predictions**
-1.  **On startup:** - 'ubp_core_v5_3_merged.py' particle physics predictions now include:
-    *   **muon_electron:** 0.000353% error
-    *   **proton_electron:** 0.017047% error
-    *   **alpha_inv:** 0.001929% error
-    *   **higgs_boson:** 0.107316% error
-    *   **top_quark:** 1.299325% error
-    *   **z_boson:** 1.015329% error
-    *   **w_boson:** 0.917630% error
-
-
-### **18.02.2026 — Substrate Hardening & Lexicon Activation**
-
-
-#### **17.02.2026 — Brain Consolidation & Auto-Trigger v15.0**
-
-1.  **The Consolidated Brain (`ubp_brain_consolidated.py`):**
-    *   **Unified Architecture:** Merged five legacy modules into a single object-oriented engine. It manages the entire cognitive stack: from raw `Fraction` math to high-level reflexive deliberation.
-    *   **Multi-Valued Lexicon:** Upgraded the indexing system to support "Semantic Synonyms." A single word can now map to multiple UBP-IDs, which the Brain then resolves using a "Majority Vote" bit-composition algorithm.
-    *   **The Coherence Snap (Fixed):** Implemented a strict re-encoding loop. When a noisy vector is processed, the Brain decodes it to its 12-bit "Noumenal Seed" and then immediately re-encodes it back to a perfect 24-bit "Phenomenal Codeword." This eliminates "vector drift" during reasoning.
-    *   **Reflexive Deliberation:** Internalized the `InnerDialogue` logic, allowing the Brain to "pivot" its thoughts against 407+ Anchor Laws (Axioms) until a stable resonance is found.
-
-2.  **Auto-Trigger v15.0 Integration:**
-    *   **Deep Path Reasoning:** The `auto_trigger.py` script now acts as a bridge between the user and the Brain. It performs a `process_query()` on every message.
-    *   **Context Injection:** Instead of just sending raw KB entries, the system now injects:
-        *   **The Primary Resonance:** The single most relevant concept found.
-        *   **The Reasoning Chain:** The steps taken to reach that conclusion.
-        *   **The Synthesis Hint:** A pre-calculated summary that anchors the AI's response to the Leech Lattice.
-    *   **Performance:** Achieved O(1) lookup speeds for direct IDs and sub-millisecond reasoning for complex semantic queries.
-
----
-
-### Archival
-
-The following files are now **redundant** and have been moved to the `core/archive` folder. Their logic has been fully absorbed and optimized within the new Brain script:
-
-| Legacy File | New Brain Component |
-| :--- | :--- |
-| `ubp_delta_engine_v3.py` | `DeltaMemoryEngine` & `process_query` |
-| `ubp_geometric_reasoning_v4_enhanced.py` | `UBPVectorEngine` |
-| `ubp_inner_dialogue_v1.py` | `UBPInnerDialogue` class |
-| `ubp_mind_screen.py` | Internalized in `ThoughtStep` & `ubp_viz` |
-| `ubp_rational_engine.py` | `ConceptArchitect` & `RationalMathEngine` |
-
-
-
-### 13.02.2026
-
-* Updated MathAtlas to version 4.0 with new features and optimizations.
-* Hardened Algorithm system_kb entries with MathAtlas in the "math" field
-
-
-### 12.02.2026
-
-#### MathAtlas v1.3
-**MathAtlas** is the geometric "translation layer" of the Universal Binary Principle. Its purpose is to turn abstract information (like the boiling point of an element or a logical law) into a **literal 3D physical structure** within the 24-bit substrate.
-
-##### 1. The Input: Phenomenal Data
-Everything starts with the **"math"** field in a Knowledge Base entry. This field contains the raw, measurable dimensions of a phenomenon.
-*   **Example (Hydrogen):** `Z=1|Valence=1|Ion=1312`
-*   **Rule:** No metadata, no dates. Only the "DNA" of the object.
-
-##### 2. The Construction: The Voxel Walker
-MathAtlas treats these numbers as instructions for a **3D Voxel Walker**. It starts at the origin `(0,0,0)` and builds a "Data Crystal" using four geometric primitives:
-
-*   **D (Distinction):** Represents positive magnitude. The walker moves **Forward (+X)**. (Color: **Cyan**)
-*   **X (Crossing):** Represents negative magnitude or inversion. The walker moves **Backward (-X)**. (Color: **Red**)
-*   **N (Nesting):** Represents a relationship or division (Rationals). The walker branches **Up (+Y)**. (Color: **Magenta**)
-*   **J (Juxtaposition):** Represents a list of different dimensions. The walker branches **Out (+Z)**. (Color: **Yellow**)
-
-**Result:** A complex measurement like `Ion=1312` creates a literal line of 1,312 voxels in the 3D manifold. A rational like `11/5` creates a vertical structure of 11 voxels over 5.
-
-##### 3. The Metrics: Symmetry Tax & NRCI
-Once the 3D shape is built, MathAtlas calculates its "cost" to exist in the universe using **Exact Rational Logic** (`fractions.Fraction`).
-
-*   **Symmetry Tax:** This is the "Geometric Rent" the object pays. It is derived from the **Observer Fixed Point ($Y \approx 0.2646$)**.
-    *   Every **D** or **X** step adds $Y$ to the tax.
-    *   The **Volume** of the shape adds a "Complexity Penalty."
-*   **NRCI (Stability):** The higher the Tax, the lower the NRCI. 
-    *   **Abstract Logic** (like $1+1$) is "Light" and has a high NRCI.
-    *   **Physical Matter** (like Uranium) is "Heavy" and has a low NRCI.
-
-##### 4. The Identity: 24-bit Vectorization
-To give the object a home in the **Leech Lattice**, the 3D voxel cloud is converted into a 24-bit binary vector.
-*   **Deterministic Hashing:** MathAtlas takes the coordinates of every voxel, sorts them, and runs a **Merkle-style hash**.
-*   **Golay Encoding:** The first 12 bits of that hash become the "Noumenal Address," and the remaining 12 bits are generated as "Parity" to ensure it is a valid Golay codeword.
-*   **Insight:** when tested with the elements, if two different elements result in the same 3D shape, they will have the same vector. They are "Geometric Synonyms."
-
-##### 5. The Compass: Geometric Charge (Tilt)
-Finally, MathAtlas measures how the object "leans" relative to the **Systemic North**.
-*   **Systemic North:** The average orientation of all stable matter in the database.
-*   **Tilt:** The angle between the object's vector and North.
-    *   **0° Tilt:** Perfectly aligned (Noble Gases, Pure Truth).
-    *   **180° Tilt:** Perfectly inverted (Radioactive decay, Chaos).
-
-
-#### 05.02.26 — GPU Proxy Bridge
-
-1. Implemented the GPU Proxy Bridge directly in the main application thread (App.tsx). This ensures the compute function is available to Python regardless of whether the "Visual" tab is currently open or not.
-2. Optimized the "compute" logic using high-performance JavaScript (V8 JIT), which acts as the "Main Thread Proxy". It is orders of magnitude faster than Pyodide looping and eliminates the overhead of Python-to-Wasm context switching for heavy loops - something like ~600X faster!
-
-* [BENCHMARK] CPU Speed: 3,448,271 ips
-* [BENCHMARK] GPU Potential: 2,250,000,000 ips
-* **[RESULT] GPGPU provides a 653x acceleration.**
-* Example Session Complete in 0.77s (13038 trials/sec)
-
-
-#### 04.02.26 — Semantic Cortex & Delta Integration
-
-**Throughput:** 2.25M ips
-**system_kb Memory:** 1709 entries
-
-
-#### 02.02.26
-
-1. Knowledge Base Migration (JSON Architecture)
-
-
-
-#### 30.01.26
-
-1. The System Knowledge Base is now parsed via a Bit-12 Logic Engine that automatically categorizes entries into one of eight fundamental domains (The Octad):
-
-* 1) Substance: Stable Matter & Elements (Bit 12=1).
-* 2) Quantity: Pure Magnitude & Constants (Bit 12=0).
-* 3) Organism: Biological & Complex Systems.
-* 4) Algorithm: Logic, Code & Information.
-* 5) Mechanism: Physical Interactions & Reactions.
-* 6) Imperative: System Laws & Constraints (High Priority).
-* 7) Entropy: Chaos, Void & Dissolution.
-* 8) Meaning: Semantic & Linguistic Value.
-
-This allows the AI to "see" the shape of the research data (memories) rather than just reading text, enabling sophisticated filtering and bias weighting via the FOM system.
-
-2. Frame of Mind (FOM) v4.3 Integration
-
-The Reflexive Cortex now supports advanced cognitive biasing:
-
-* Category Weighting: FOM Frames can now bias entire Geometric Domains (e.g., a "Materialist" FOM frame can weight SUBSTANCE: 0.9 and MEANING: 0.1).
-* JSON Editor: Full read/write access to FOM Frame definitions directly in the UI.
-* Persistency: FOM Frames can be imported/exported as JSON files.
-
-3. Rational File System & IO
-
-The logic kernel (Pyodide) is now fully synchronized with the UI:
-* Bidirectional Sync: Python scripts can write files (with open('data.json', 'w')...) which immediately appear in the Workspace Explorer.
-* Large Buffer Handling: Knowledge Base files (system_kb.md, etc.) are managed in the background to prevent browser rendering stalls, ensuring stability even with massive datasets.
-* Local LLM Support: Integrated support for local inference via Ollama, LM Studio, or GPT4All.
-
-
-#### 29.01.26
-
-1. Update the app to enhance the Frame of Mind (FOM) system to support Category-based weighting and significantly improve the Memory Status categorization logic to catch tags like "element" and "periodic_table".
-
-
-#### 27.01.26
-
-1. Workspace UX Overhaul: Replaced native browser dialogs with a robust, inline file management system.
-2. Inline Creation & Renaming: "New Script" and "Rename" actions now spawn text input fields directly within the file list, preventing browser popup blocking and offering a smoother workflow.
-3. Two-Step Deletion: Implemented a specific UI state for deletion (Delete? Yes/No) directly on the file row, preventing accidental data loss and ensuring reliable execution.
-4. State Synchronization: Refactored the file operation logic to immediately update the React UI state (Optimistic UI) while asynchronously synchronizing with the Python (Pyodide) file system, ensuring the interface feels instant and responsive.
-
-#### FOM (Frame of Mind) System
-
-1. Core Logic (Python): The app injects a persistent Python module (ubp_fom_system.py) into the Pyodide kernel. This creates a FOMManager class that maintains a registry of "Frames" saved to ubp_fom_index.json.
-2. Bias Mechanism: Each Frame contains a base_nrci (default probability) and a dictionary of weights (specific Memories (UBP-IDs) mapped to custom probabilities). This allows you to mechanically shift the "probability mass" of specific concepts (e.g., making "Logic" heavier than "Emotion").
-3. UI Management: The FOMStatus panel provides a complete CRUD interface. Users can Create, Delete, Import, Export, and Switch the active frame. The "Edit" mode exposes the raw JSON, allowing precise granular control over the weight dictionaries.
-4. Persistence: Frames are saved/loaded to the virtual file system, preserving the cognitive biases across session reloads.
-
-#### Local AI Integration (Mac/LocalHost)
-1. Service Adapter: A dedicated LocalLLMService runs alongside the Gemini service. It acts as a universal adapter for local inference servers running on a local machine.
-
-**Current supported Providers:**
-* Ollama: Defaults to port 11434.
-* LM Studio: Defaults to port 1234 (OpenAI-compatible endpoint).
-* GPT4All: Defaults to port 4891.
-
-**Health Checks:** The system includes a "heartbeat" check (isServiceAvailable) that polls the local ports to determine if the local server is running, updating the UI status indicators (Green/Red) in real-time.
-
-**Context Injection:** When a local provider is selected, the app constructs a specialized, token-efficient system prompt that injects the Workspace Files, System KB, and Hash Memory directly into the local model's context window, allowing offline LLMs to "read" the UBP research.
-
-
-
