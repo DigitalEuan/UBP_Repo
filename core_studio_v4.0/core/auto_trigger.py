@@ -14,7 +14,7 @@ import os
 from ubp_kb_architect import MOG_CATEGORIES
 
 # 1. CONFIGURATION
-KB_FILE = 'ubp_system_kb_v9_ultra.json'
+KB_FILE = 'ubp_system_kb.json'
 if not os.path.exists(KB_FILE):
     KB_FILE = 'ubp_system_kb.json'
 
