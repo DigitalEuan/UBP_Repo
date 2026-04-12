@@ -5,9 +5,9 @@
 **Date:** 03 April 2026  
 **Documentation:** See `ubp_files_and_usage.md` for operational protocols.
 
-Online: [https://ai.studio/apps/8eef816d-e338-4bcb-9ae0-b9d2d0c476a5] No set up - just click and go inside the Google AI Studio
+Online: Google AI Studio - The entire environment runs within your web browser: [https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a]
 
-GitHub Repository for the APP: [https://github.com/DigitalEuan/ubp_core_studio_app]
+GitHub Repository for the **APP**: [https://github.com/DigitalEuan/ubp_core_studio_app]
 
 ---
 
