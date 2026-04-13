@@ -1,5 +1,5 @@
 """
-UBP INTEGRATED ENGINE v3.2 (Composite Scene Edition)
+UBP INTEGRATED ENGINE v3.3 (Composite Scene Edition)
 ====================================================
 The high-level executive layer of the UBP Studio. 
 Bridges the Semantic Brain, the 24D Micro-Core, and the 256D Macro-Bulk.
@@ -8,9 +8,10 @@ REFINEMENT:
 Added 'Composite Query Detection'. If multiple entities are detected in the 
 prompt, the engine bypasses the single-vector confidence threshold and 
 automatically constructs a multi-object scene for the ViT Eyes.
+Added a `thermo_audit` section to the `analyze_query` output.
 
-Author: UBP Research Cortex v4.2.7
-Date: 24 March 2026
+Author: E R A Craig and the UBP Research Cortex v4.2.7
+Date: 13 April 2026
 """
 
 import json
@@ -152,6 +153,17 @@ class UBPIntegratedEngine:
         if scene_objects:
             vision_report = self.eyes.observe_scene(scene_objects)
             response_data["imagination_sandbox"] = vision_report
+
+        
+        # 6. Thermodynamic Lens (Pantograph Projection)
+        if true_v24:
+            from core import LEECH_ENGINE
+            t_adj, n_macro = LEECH_ENGINE.calculate_pantograph_tax(true_v24)
+            response_data["thermo_audit"] = {
+                "macroscopic_nrci": float(n_macro),
+                "adjusted_tax": float(t_adj),
+                "status": "STABLE" if n_macro >= 0.7 else "UNSTABLE"
+            }
 
         return response_data
 

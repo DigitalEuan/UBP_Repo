@@ -1,11 +1,13 @@
 """
 ================================================================================
-UBP CORE v6.1
+UBP CORE v6.2
 ================================================================================
 
 Merged system combining:
 1. v5.2 Final (Golay octads, NRCI calculation, triad activation)
 2. v4.2.6 Combined (50-term π, particle physics, ontological health, 7 laws)
+
+Version 6.2 Adds`calculate_pantograph_tax` to the `LeechLatticeEngine`. This method handles the $k^3$ volume and $k^2$ surface area scaling automatically.
 
 This is the complete System Of Everything (SOE) implementation with:
 - Ultra-precision mathematical foundation (50-term π)
@@ -547,6 +549,34 @@ class UBPObject:
 
     def to_dict(self):
         return {'ubp_id': self.ubp_id, 'name': self.name, 'category': self.category, 'math': self.math.to_dict() if self.math else None, 'vector': self.vector, 'is_stable': self.is_stable(), 'nrci': str(self.get_nrci()), 'fingerprint': self.get_fingerprint(), 'description': self.description, 'tags': self.tags, 'morphisms': self.morphisms}
+    def calculate_pantograph_tax(self, vector: List[int]) -> Tuple[Fraction, Fraction]:
+        """
+        [LAW_PANTOGRAPH_THERMODYNAMICS_001]
+        Calculates the adjusted tax via affine kinematic projection.
+        Returns: (Adjusted Tax, Macroscopic NRCI)
+        """
+        from core import UBPUltimateSubstrate
+        c = UBPUltimateSubstrate.get_v6_constants()
+        W = c['WOBBLE']
+        k = Fraction(1, 1) + W
+        T_base = self.calculate_symmetry_tax(vector)
+        shear = T_base - c['PI']
+
+        V_noum = Fraction(sum(vector), 1)
+        S_noum = Fraction(24, 1)
+
+        V_macro = (k**3) * V_noum
+        S_macro = (k**2) * S_noum + shear
+
+        # Compactness Approximation (V^2/3 / S)
+        V_f = float(V_macro)
+        V_23 = Fraction(int(math.pow(V_f, 2/3) * 1000000), 1000000)
+        C_macro = V_23 / S_macro
+
+        T_adj = T_base * (Fraction(1, 1) - (C_macro / 13))
+        nrci = Fraction(10, 1) / (Fraction(10, 1) + T_adj)
+        return T_adj, nrci
+
 
 class TriadActivationEngine:
     """Triad Activation System: Golay → Leech → Monster."""
