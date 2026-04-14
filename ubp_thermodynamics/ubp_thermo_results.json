@@ -1,0 +1,438 @@
+{
+  "system": "UBP Core v7.2 / Core Studio v4.0",
+  "constants": {
+    "W_wobble": 0.8175802271764946,
+    "L_sink": 0.06289078670588419,
+    "k_scale": 1.8175802271764945,
+    "RG_resolution_gap": 0.420371505083667,
+    "PI": 3.141592653589793
+  },
+  "four_laws_hydrogen": {
+    "element": "Hydrogen (H)",
+    "vector_hamming_weight": 8,
+    "T_base_symmetry_tax": 3.1174034432362157,
+    "zeroth_law": {
+      "temperature_shear_rads": -0.024189210353577698,
+      "equilibrium_state": "PHASE-LOCKED",
+      "wobble_W": 0.8175802271764946,
+      "interpretation": "Temperature is Kinematic Shear (tan \u03b8). Thermal equilibrium is Phase-Lock: identical Wobble synchronisation."
+    },
+    "first_law": {
+      "internal_energy_toggles": 8,
+      "work_scaling_k": 1.8175802271764945,
+      "heat_shear_tan_theta": -0.024189210353577698,
+      "V_macro": 48.03643351416471,
+      "conservation_note": "Toggles cannot be created or destroyed; they repartition across the 4 MOG layers (Reality, Info, Activation, Potential)."
+    },
+    "second_law": {
+      "entropy_symmetry_tax": 3.0774245369926807,
+      "nrci_max_efficiency_pct": 76.4676559341831,
+      "triadic_wobble_W": 0.8175802271764946,
+      "resolution_gap_RG": 0.420371505083667,
+      "arrow_of_time": "The Triadic Monad (\u03c0, \u03c6, e) creates non-zero Wobble residue W \u2248 0.8176. This acts as Topological Torque ratcheting the system toward the 13D Sink."
+    },
+    "third_law": {
+      "absolute_zero_nrci": 1.0,
+      "sink_leakage_L": 0.06289078670588419,
+      "nernst_specific_heat_floor": 0.19605595502475778,
+      "current_nrci": 0.764676559341831,
+      "unattainability": "The 13D Sink (L \u2248 0.06289) always exerts minimum leakage. Zero-tax existence is geometrically impossible in the phenomenal realm."
+    },
+    "pantograph_projection": {
+      "T_base": 3.1174034432362157,
+      "shear": -0.024189210353577698,
+      "V_noum": 8,
+      "V_macro": 48.03643351416471,
+      "S_macro": 79.2621599629974,
+      "C_macro": 0.16671752329445705,
+      "T_adj": 3.0774245369926807,
+      "nrci": 0.764676559341831,
+      "k": 1.8175802271764945,
+      "W": 0.8175802271764946
+    }
+  },
+  "four_laws_gold": {
+    "element": "Gold (Au)",
+    "vector_hamming_weight": 16,
+    "T_base_symmetry_tax": 6.234806886472431,
+    "zeroth_law": {
+      "temperature_shear_rads": 3.0932142328826377,
+      "equilibrium_state": "SHEARING",
+      "wobble_W": 0.8175802271764946,
+      "interpretation": "Temperature is Kinematic Shear (tan \u03b8). Thermal equilibrium is Phase-Lock: identical Wobble synchronisation."
+    },
+    "first_law": {
+      "internal_energy_toggles": 16,
+      "work_scaling_k": 1.8175802271764945,
+      "heat_shear_tan_theta": 3.0932142328826377,
+      "V_macro": 96.07286702832943,
+      "conservation_note": "Toggles cannot be created or destroyed; they repartition across the 4 MOG layers (Reality, Info, Activation, Potential)."
+    },
+    "second_law": {
+      "entropy_symmetry_tax": 6.112684860082663,
+      "nrci_max_efficiency_pct": 62.062903152620194,
+      "triadic_wobble_W": 0.8175802271764946,
+      "resolution_gap_RG": 0.420371505083667,
+      "arrow_of_time": "The Triadic Monad (\u03c0, \u03c6, e) creates non-zero Wobble residue W \u2248 0.8176. This acts as Topological Torque ratcheting the system toward the 13D Sink."
+    },
+    "third_law": {
+      "absolute_zero_nrci": 1.0,
+      "sink_leakage_L": 0.06289078670588419,
+      "nernst_specific_heat_floor": 0.39211191004951557,
+      "current_nrci": 0.620629031526202,
+      "unattainability": "The 13D Sink (L \u2248 0.06289) always exerts minimum leakage. Zero-tax existence is geometrically impossible in the phenomenal realm."
+    },
+    "pantograph_projection": {
+      "T_base": 6.234806886472431,
+      "shear": 3.0932142328826377,
+      "V_noum": 16,
+      "V_macro": 96.07286702832943,
+      "S_macro": 82.37956340623361,
+      "C_macro": 0.25463280129999716,
+      "T_adj": 6.112684860082663,
+      "nrci": 0.620629031526202,
+      "k": 1.8175802271764945,
+      "W": 0.8175802271764946
+    }
+  },
+  "phase_change_gold": {
+    "element": "Gold (Au)",
+    "elastic_limit_bits": 3,
+    "snap_shear_rads": 0.032703,
+    "snap_at_step": 4,
+    "latent_entropy_bits": 0.0,
+    "heating_steps": [
+      {
+        "step": 1,
+        "shear_rads": 0.008176,
+        "hamming_dist": 1,
+        "stressed_tax": 5.845131,
+        "phase": "SOLID/LIQUID (Elastic)",
+        "correctable": true
+      },
+      {
+        "step": 2,
+        "shear_rads": 0.016352,
+        "hamming_dist": 2,
+        "stressed_tax": 6.234807,
+        "phase": "SOLID/LIQUID (Elastic)",
+        "correctable": true
+      },
+      {
+        "step": 3,
+        "shear_rads": 0.024527,
+        "hamming_dist": 3,
+        "stressed_tax": 5.845131,
+        "phase": "SOLID/LIQUID (Elastic)",
+        "correctable": true
+      },
+      {
+        "step": 4,
+        "shear_rads": 0.032703,
+        "hamming_dist": 4,
+        "stressed_tax": 5.455456,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      },
+      {
+        "step": 5,
+        "shear_rads": 0.040879,
+        "hamming_dist": 5,
+        "stressed_tax": 5.065781,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      },
+      {
+        "step": 6,
+        "shear_rads": 0.049055,
+        "hamming_dist": 6,
+        "stressed_tax": 4.676105,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      },
+      {
+        "step": 7,
+        "shear_rads": 0.057231,
+        "hamming_dist": 7,
+        "stressed_tax": 4.28643,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      }
+    ],
+    "interpretation": "The Lattice Snap occurs when thermal shear exceeds the 3-bit Golay error-correction radius. Latent heat = Symmetry Tax differential between the old and new Golay anchor codewords."
+  },
+  "phase_change_iron": {
+    "element": "Iron (Fe)",
+    "elastic_limit_bits": 3,
+    "snap_shear_rads": 0.032703,
+    "snap_at_step": 4,
+    "latent_entropy_bits": 0.0,
+    "heating_steps": [
+      {
+        "step": 1,
+        "shear_rads": 0.008176,
+        "hamming_dist": 1,
+        "stressed_tax": 4.28643,
+        "phase": "SOLID/LIQUID (Elastic)",
+        "correctable": true
+      },
+      {
+        "step": 2,
+        "shear_rads": 0.016352,
+        "hamming_dist": 2,
+        "stressed_tax": 3.896754,
+        "phase": "SOLID/LIQUID (Elastic)",
+        "correctable": true
+      },
+      {
+        "step": 3,
+        "shear_rads": 0.024527,
+        "hamming_dist": 3,
+        "stressed_tax": 3.507079,
+        "phase": "SOLID/LIQUID (Elastic)",
+        "correctable": true
+      },
+      {
+        "step": 4,
+        "shear_rads": 0.032703,
+        "hamming_dist": 4,
+        "stressed_tax": 3.117403,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      },
+      {
+        "step": 5,
+        "shear_rads": 0.040879,
+        "hamming_dist": 5,
+        "stressed_tax": 3.507079,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      },
+      {
+        "step": 6,
+        "shear_rads": 0.049055,
+        "hamming_dist": 6,
+        "stressed_tax": 3.896754,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      },
+      {
+        "step": 7,
+        "shear_rads": 0.057231,
+        "hamming_dist": 7,
+        "stressed_tax": 3.507079,
+        "phase": "GAS (Lattice Snap)",
+        "correctable": false
+      }
+    ],
+    "interpretation": "The Lattice Snap occurs when thermal shear exceeds the 3-bit Golay error-correction radius. Latent heat = Symmetry Tax differential between the old and new Golay anchor codewords."
+  },
+  "nernst_audit_iron": {
+    "element": "Iron (Fe)",
+    "ubp_id": "ELEM_Fe_026",
+    "vector_hamming_weight": 12,
+    "T_base_symmetry_tax": 4.676105164854324,
+    "S_min_entropy_plateau": 0.294084,
+    "Cv_min_specific_heat_floor": 0.534521,
+    "brownian_jitter": 0.608463850113,
+    "nrci": 0.6849765519092998,
+    "falsifiability": "The UBP Pantograph model predicts that the specific heat capacity of pure Iron will never drop below 0.534521 J/K-equiv, regardless of proximity to 0 Kelvin. Any experimental measurement of Cv < 0.534521 at T < 1 nano-Kelvin falsifies this model."
+  },
+  "universal_coupling_constant": {
+    "eta_H_hydrogen_nrci": 0.764677,
+    "R_pe_proton_electron_ratio": 1836.152,
+    "C_u_coupling_constant": 1404.0624,
+    "hydrogen_verification": {
+      "substrate_nrci": 0.764677,
+      "particle_resonance": 1836.152,
+      "error_pct": 5.8e-05,
+      "status": "SSS-PHASE-LOCK"
+    },
+    "gold_verification": {
+      "substrate_nrci": 0.620629,
+      "particle_resonance": 1139.5692,
+      "error_pct": 5e-06,
+      "status": "PHASE-LOCK"
+    }
+  },
+  "multi_element_survey": [
+    {
+      "element": "Hydrogen (H)",
+      "ubp_id": "ELEM_H_001",
+      "hamming_weight": 8,
+      "T_base": 3.117403,
+      "shear_tan_theta": -0.024189,
+      "V_macro": 48.0364,
+      "S_macro": 79.2622,
+      "T_adj_entropy": 3.077425,
+      "nrci": 0.764677,
+      "nernst_floor_Cv": 0.356347,
+      "phase_state": "SOLID"
+    },
+    {
+      "element": "Helium (He)",
+      "ubp_id": "ELEM_He_002",
+      "hamming_weight": 12,
+      "T_base": 4.676105,
+      "shear_tan_theta": 1.534513,
+      "V_macro": 72.0547,
+      "S_macro": 80.8209,
+      "T_adj_entropy": 4.59904,
+      "nrci": 0.684977,
+      "nernst_floor_Cv": 0.534521,
+      "phase_state": "LIQUID"
+    },
+    {
+      "element": "Carbon (C)",
+      "ubp_id": "ELEM_C_006",
+      "hamming_weight": 16,
+      "T_base": 6.234807,
+      "shear_tan_theta": 3.093214,
+      "V_macro": 96.0729,
+      "S_macro": 82.3796,
+      "T_adj_entropy": 6.112685,
+      "nrci": 0.620629,
+      "nernst_floor_Cv": 0.712695,
+      "phase_state": "GAS"
+    },
+    {
+      "element": "Nitrogen (N)",
+      "ubp_id": "ELEM_N_007",
+      "hamming_weight": 12,
+      "T_base": 4.676105,
+      "shear_tan_theta": 1.534513,
+      "V_macro": 72.0547,
+      "S_macro": 80.8209,
+      "T_adj_entropy": 4.59904,
+      "nrci": 0.684977,
+      "nernst_floor_Cv": 0.534521,
+      "phase_state": "LIQUID"
+    },
+    {
+      "element": "Oxygen (O)",
+      "ubp_id": "ELEM_O_008",
+      "hamming_weight": 12,
+      "T_base": 4.676105,
+      "shear_tan_theta": 1.534513,
+      "V_macro": 72.0547,
+      "S_macro": 80.8209,
+      "T_adj_entropy": 4.59904,
+      "nrci": 0.684977,
+      "nernst_floor_Cv": 0.534521,
+      "phase_state": "LIQUID"
+    },
+    {
+      "element": "Iron (Fe)",
+      "ubp_id": "ELEM_Fe_026",
+      "hamming_weight": 12,
+      "T_base": 4.676105,
+      "shear_tan_theta": 1.534513,
+      "V_macro": 72.0547,
+      "S_macro": 80.8209,
+      "T_adj_entropy": 4.59904,
+      "nrci": 0.684977,
+      "nernst_floor_Cv": 0.534521,
+      "phase_state": "LIQUID"
+    },
+    {
+      "element": "Copper (Cu)",
+      "ubp_id": "ELEM_Cu_029",
+      "hamming_weight": 16,
+      "T_base": 6.234807,
+      "shear_tan_theta": 3.093214,
+      "V_macro": 96.0729,
+      "S_macro": 82.3796,
+      "T_adj_entropy": 6.112685,
+      "nrci": 0.620629,
+      "nernst_floor_Cv": 0.712695,
+      "phase_state": "GAS"
+    },
+    {
+      "element": "Gold (Au)",
+      "ubp_id": "ELEM_Au_079",
+      "hamming_weight": 16,
+      "T_base": 6.234807,
+      "shear_tan_theta": 3.093214,
+      "V_macro": 96.0729,
+      "S_macro": 82.3796,
+      "T_adj_entropy": 6.112685,
+      "nrci": 0.620629,
+      "nernst_floor_Cv": 0.712695,
+      "phase_state": "GAS"
+    },
+    {
+      "element": "Lead (Pb)",
+      "ubp_id": "ELEM_Pb_082",
+      "hamming_weight": 12,
+      "T_base": 4.676105,
+      "shear_tan_theta": 1.534513,
+      "V_macro": 72.0547,
+      "S_macro": 80.8209,
+      "T_adj_entropy": 4.59904,
+      "nrci": 0.684977,
+      "nernst_floor_Cv": 0.534521,
+      "phase_state": "LIQUID"
+    },
+    {
+      "element": "Uranium (U)",
+      "ubp_id": "ELEM_U_092",
+      "hamming_weight": 12,
+      "T_base": 4.676105,
+      "shear_tan_theta": 1.534513,
+      "V_macro": 72.0547,
+      "S_macro": 80.8209,
+      "T_adj_entropy": 4.59904,
+      "nrci": 0.684977,
+      "nernst_floor_Cv": 0.534521,
+      "phase_state": "LIQUID"
+    }
+  ],
+  "equation_of_state": {
+    "element": "Hydrogen (H)",
+    "T_adj": 3.077425,
+    "k_cubed": 6.004554,
+    "RG_resolution_gap": 0.420372,
+    "V_eos_equation_of_state": 43.957695,
+    "V_panto_direct": 48.036434,
+    "ratio_eos_to_panto": 0.915091,
+    "interpretation": "The EoS and direct Pantograph give consistent volumetric scales. The Resolution Gap (RG = ln(\u03c6)/ln(\u03c0) \u2248 0.7533) acts as the \"friction coefficient\" between the 24D substrate and 3D space."
+  },
+  "carnot_efficiency": {
+    "hot_reservoir": "Gold (Au) \u2014 High-Z, High Shear",
+    "cold_reservoir": "Hydrogen (H) \u2014 Low-Z, Low Shear",
+    "shear_hot_rads": 3.093214,
+    "shear_cold_rads": 0.024189,
+    "eta_ubp_shear_based": 0.99218,
+    "eta_nrci_based": -0.232099,
+    "resolution_gap_ceiling": 0.420372,
+    "interpretation": "In UBP, Carnot efficiency is the ratio of shear angles between hot and cold reservoirs. The Resolution Gap (RG) sets the absolute ceiling: 100% efficiency is impossible because projecting 24D into 3D always incurs geometric friction."
+  },
+  "brownian_aliasing": {
+    "W_wobble": 0.8175802271764946,
+    "W_irrational_residue": 0.81758023,
+    "mechanism": "Because W = (\u03c0\u00b7\u03c6\u00b7e)^(1/3) - floor(...) is irrational, the Pantograph linkage never revisits the same 3D coordinate during temporal rotation. What classical physics calls \"random thermal fluctuations\" is the high-frequency jitter of the linkage rounding its irrational scaling factor into the finite 24-bit substrate. \"Brownian motion is the sound of the universe rounding its decimals.\"",
+    "element_jitter": [
+      {
+        "element": "Hydrogen",
+        "T_base": 3.117403,
+        "W_irrational_residue": 0.81758023,
+        "brownian_jitter_amplitude": 0.405642566742,
+        "interpretation": "Brownian motion for Hydrogen is the aliasing noise of the Pantograph attempting to resolve W=0.81758023 (irrational) into a finite 24-bit substrate."
+      },
+      {
+        "element": "Iron",
+        "T_base": 4.676105,
+        "W_irrational_residue": 0.81758023,
+        "brownian_jitter_amplitude": 0.608463850113,
+        "interpretation": "Brownian motion for Iron is the aliasing noise of the Pantograph attempting to resolve W=0.81758023 (irrational) into a finite 24-bit substrate."
+      },
+      {
+        "element": "Gold",
+        "T_base": 6.234807,
+        "W_irrational_residue": 0.81758023,
+        "brownian_jitter_amplitude": 0.811285133485,
+        "interpretation": "Brownian motion for Gold is the aliasing noise of the Pantograph attempting to resolve W=0.81758023 (irrational) into a finite 24-bit substrate."
+      }
+    ]
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "system": "UBP Core v7.2 / Core Studio v4.0",
+  "study": "Study 1: SI Dimensional Calibration",
+  "physical_constants": {
+    "k_B_J_K": 1.380649e-23,
+    "h_planck_J_s": 6.62607015e-34,
+    "N_A_mol": 6.02214076e+23,
+    "R_gas_J_mol_K": 8.314462618,
+    "R_pe_proton_electron": 1836.1526734400013,
+    "alpha_fine_structure": 0.0072973525692838015
+  },
+  "ubp_constants": {
+    "W_wobble": 0.8175802271764946,
+    "L_sink": 0.06289078670588419,
+    "k_scale": 1.8175802271764945,
+    "RG_resolution_gap": 0.420371505083667,
+    "C_u_coupling": 1442.6397795339835,
+    "eta_H_nrci": 0.7856861798050933,
+    "T_base_H_bits": 2.7277280128316885
+  },
+  "calibration_units": {
+    "UTU_methodA_Debye_K_per_bit": 3.713452463844375e-21,
+    "UTU_methodB_Rydberg_K_per_bit": 40.12257662864174,
+    "UTU_methodC_Proton_K_per_bit": 4110448.539855935,
+    "UTU_methodD_Compton_K_per_bit": 1232022.194003134,
+    "UTU_adopted_K_per_bit": 3.713452463844375e-21,
+    "UEU_J_per_bit": 5.126974430754272e-44,
+    "USHU_J_mol_K_per_bit": 3.048127444850578,
+    "entropy_unit_J_K_per_bit": 9.569929616929079e-24,
+    "snap_temperature_base_K": 1.9309829354343303e-21
+  },
+  "nernst_floors_si": [
+    {
+      "symbol": "H",
+      "ubp_id": "ELEM_H_001",
+      "atomic_number": 1,
+      "molar_mass_g_mol": 1.008,
+      "T_base_ubp_bits": 3.117403,
+      "Cv_min_ubp": 0.35634737660729293,
+      "Cv_min_si_J_mol_K": 1.0861922185371946,
+      "Cv_debye_at_1mK_J_mol_K": 8.563581050983886e-18,
+      "ratio_ubp_to_debye_at_1mK": 1.2683855177763512e+17,
+      "crossover_temperature_K": 502.43948087957125,
+      "Debye_temperature_K": 6100,
+      "Cv_RT_experimental_J_mol_K": 28.82,
+      "falsifiability_SI": "Cv < 1.086192 J/(mol\u00b7K) at T < 502.4395 K falsifies UBP"
+    },
+    {
+      "symbol": "He",
+      "ubp_id": "ELEM_He_002",
+      "atomic_number": 2,
+      "molar_mass_g_mol": 4.003,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 1.1059229577454331e-10,
+      "ratio_ubp_to_debye_at_1mK": 14732387013.120548,
+      "crossover_temperature_K": 2.4514575257987246,
+      "Debye_temperature_K": 26,
+      "Cv_RT_experimental_J_mol_K": 20.78,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 2.4515 K falsifies UBP"
+    },
+    {
+      "symbol": "Li",
+      "ubp_id": "ELEM_Li_003",
+      "atomic_number": 3,
+      "molar_mass_g_mol": 6.941,
+      "T_base_ubp_bits": 3.117403,
+      "Cv_min_ubp": 0.35634737660729293,
+      "Cv_min_si_J_mol_K": 1.0861922185371946,
+      "Cv_debye_at_1mK_J_mol_K": 4.774958372703655e-14,
+      "ratio_ubp_to_debye_at_1mK": 22747679325258.2,
+      "crossover_temperature_K": 28.334292036487298,
+      "Debye_temperature_K": 344,
+      "Cv_RT_experimental_J_mol_K": 24.86,
+      "falsifiability_SI": "Cv < 1.086192 J/(mol\u00b7K) at T < 28.3343 K falsifies UBP"
+    },
+    {
+      "symbol": "Be",
+      "ubp_id": "ELEM_Be_004",
+      "atomic_number": 4,
+      "molar_mass_g_mol": 9.012,
+      "T_base_ubp_bits": 3.117403,
+      "Cv_min_ubp": 0.35634737660729293,
+      "Cv_min_si_J_mol_K": 1.0861922185371946,
+      "Cv_debye_at_1mK_J_mol_K": 6.509647039412713e-16,
+      "ratio_ubp_to_debye_at_1mK": 1668588499439116.5,
+      "crossover_temperature_K": 118.60866433878402,
+      "Debye_temperature_K": 1440,
+      "Cv_RT_experimental_J_mol_K": 16.44,
+      "falsifiability_SI": "Cv < 1.086192 J/(mol\u00b7K) at T < 118.6087 K falsifies UBP"
+    },
+    {
+      "symbol": "C",
+      "ubp_id": "ELEM_C_006",
+      "atomic_number": 6,
+      "molar_mass_g_mol": 12.011,
+      "T_base_ubp_bits": 6.234807,
+      "Cv_min_ubp": 0.7126948675236362,
+      "Cv_min_si_J_mol_K": 2.1723847855029423,
+      "Cv_debye_at_1mK_J_mol_K": 1.7527917821618942e-16,
+      "ratio_ubp_to_debye_at_1mK": 1.2393855377525344e+16,
+      "crossover_temperature_K": 231.42066721124783,
+      "Debye_temperature_K": 2230,
+      "Cv_RT_experimental_J_mol_K": 8.517,
+      "falsifiability_SI": "Cv < 2.172385 J/(mol\u00b7K) at T < 231.4207 K falsifies UBP"
+    },
+    {
+      "symbol": "Al",
+      "ubp_id": "ELEM_Al_013",
+      "atomic_number": 13,
+      "molar_mass_g_mol": 26.982,
+      "T_base_ubp_bits": 3.117403,
+      "Cv_min_ubp": 0.35634737660729293,
+      "Cv_min_si_J_mol_K": 1.0861922185371946,
+      "Cv_debye_at_1mK_J_mol_K": 2.4792116870251864e-14,
+      "ratio_ubp_to_debye_at_1mK": 43811999766769.41,
+      "crossover_temperature_K": 35.25313078958303,
+      "Debye_temperature_K": 428,
+      "Cv_RT_experimental_J_mol_K": 24.35,
+      "falsifiability_SI": "Cv < 1.086192 J/(mol\u00b7K) at T < 35.2531 K falsifies UBP"
+    },
+    {
+      "symbol": "Si",
+      "ubp_id": "ELEM_Si_014",
+      "atomic_number": 14,
+      "molar_mass_g_mol": 28.086,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 7.414894830831044e-15,
+      "ratio_ubp_to_debye_at_1mK": 219731842351358.3,
+      "crossover_temperature_K": 60.34356986581476,
+      "Debye_temperature_K": 640,
+      "Cv_RT_experimental_J_mol_K": 20.0,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 60.3436 K falsifies UBP"
+    },
+    {
+      "symbol": "Fe",
+      "ubp_id": "ELEM_Fe_026",
+      "atomic_number": 26,
+      "molar_mass_g_mol": 55.845,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 1.8721961323920265e-14,
+      "ratio_ubp_to_debye_at_1mK": 87025524400501.5,
+      "crossover_temperature_K": 44.31480912020771,
+      "Debye_temperature_K": 470,
+      "Cv_RT_experimental_J_mol_K": 25.1,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 44.3148 K falsifies UBP"
+    },
+    {
+      "symbol": "Ni",
+      "ubp_id": "ELEM_Ni_028",
+      "atomic_number": 28,
+      "molar_mass_g_mol": 58.693,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 2.1330811418747574e-14,
+      "ratio_ubp_to_debye_at_1mK": 76381928002424.36,
+      "crossover_temperature_K": 42.429072561901,
+      "Debye_temperature_K": 450,
+      "Cv_RT_experimental_J_mol_K": 26.07,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 42.4291 K falsifies UBP"
+    },
+    {
+      "symbol": "Cu",
+      "ubp_id": "ELEM_Cu_029",
+      "atomic_number": 29,
+      "molar_mass_g_mol": 63.546,
+      "T_base_ubp_bits": 6.234807,
+      "Cv_min_ubp": 0.7126948675236362,
+      "Cv_min_si_J_mol_K": 2.1723847855029423,
+      "Cv_debye_at_1mK_J_mol_K": 4.8168437347704084e-14,
+      "ratio_ubp_to_debye_at_1mK": 45099756295218.234,
+      "crossover_temperature_K": 35.59519679527265,
+      "Debye_temperature_K": 343,
+      "Cv_RT_experimental_J_mol_K": 24.44,
+      "falsifiability_SI": "Cv < 2.172385 J/(mol\u00b7K) at T < 35.5952 K falsifies UBP"
+    },
+    {
+      "symbol": "Ag",
+      "ubp_id": "ELEM_Ag_047",
+      "atomic_number": 47,
+      "molar_mass_g_mol": 107.868,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 1.706464913499806e-13,
+      "ratio_ubp_to_debye_at_1mK": 9547741000303.045,
+      "crossover_temperature_K": 21.2145362809505,
+      "Debye_temperature_K": 225,
+      "Cv_RT_experimental_J_mol_K": 25.35,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 21.2145 K falsifies UBP"
+    },
+    {
+      "symbol": "Sn",
+      "ubp_id": "ELEM_Sn_050",
+      "atomic_number": 50,
+      "molar_mass_g_mol": 118.71,
+      "T_base_ubp_bits": 3.117403,
+      "Cv_min_ubp": 0.35634737660729293,
+      "Cv_min_si_J_mol_K": 1.0861922185371946,
+      "Cv_debye_at_1mK_J_mol_K": 2.429712738166717e-13,
+      "ratio_ubp_to_debye_at_1mK": 4470455298994.546,
+      "crossover_temperature_K": 16.47342560260889,
+      "Debye_temperature_K": 200,
+      "Cv_RT_experimental_J_mol_K": 27.11,
+      "falsifiability_SI": "Cv < 1.086192 J/(mol\u00b7K) at T < 16.4734 K falsifies UBP"
+    },
+    {
+      "symbol": "Pb",
+      "ubp_id": "ELEM_Pb_082",
+      "atomic_number": 82,
+      "molar_mass_g_mol": 207.2,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 1.679101773487419e-12,
+      "ratio_ubp_to_debye_at_1mK": 970333381660.4275,
+      "crossover_temperature_K": 9.900116931110233,
+      "Debye_temperature_K": 105,
+      "Cv_RT_experimental_J_mol_K": 26.65,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 9.9001 K falsifies UBP"
+    },
+    {
+      "symbol": "Au",
+      "ubp_id": "ELEM_Au_079",
+      "atomic_number": 79,
+      "molar_mass_g_mol": 196.967,
+      "T_base_ubp_bits": 6.234807,
+      "Cv_min_ubp": 0.7126948675236362,
+      "Cv_min_si_J_mol_K": 2.1723847855029423,
+      "Cv_debye_at_1mK_J_mol_K": 3.9563814177353413e-13,
+      "ratio_ubp_to_debye_at_1mK": 5490837601664.881,
+      "crossover_temperature_K": 17.641934271709477,
+      "Debye_temperature_K": 170,
+      "Cv_RT_experimental_J_mol_K": 25.42,
+      "falsifiability_SI": "Cv < 2.172385 J/(mol\u00b7K) at T < 17.6419 K falsifies UBP"
+    },
+    {
+      "symbol": "U",
+      "ubp_id": "ELEM_U_092",
+      "atomic_number": 92,
+      "molar_mass_g_mol": 238.029,
+      "T_base_ubp_bits": 4.676105,
+      "Cv_min_ubp": 0.5345211220654645,
+      "Cv_min_si_J_mol_K": 1.6292885020200685,
+      "Cv_debye_at_1mK_J_mol_K": 2.1914616810581466e-13,
+      "ratio_ubp_to_debye_at_1mK": 7434711344043.977,
+      "crossover_temperature_K": 19.51737337847446,
+      "Debye_temperature_K": 207,
+      "Cv_RT_experimental_J_mol_K": 27.66,
+      "falsifiability_SI": "Cv < 1.629289 J/(mol\u00b7K) at T < 19.5174 K falsifies UBP"
+    }
+  ],
+  "snap_temperatures": [
+    {
+      "symbol": "H",
+      "T_snap_K": 2.2068373267255162e-21,
+      "T_boil_exp_K": 20.28
+    },
+    {
+      "symbol": "He",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 4.22
+    },
+    {
+      "symbol": "Li",
+      "T_snap_K": 2.2068373267255162e-21,
+      "T_boil_exp_K": 1615
+    },
+    {
+      "symbol": "Be",
+      "T_snap_K": 2.2068373267255162e-21,
+      "T_boil_exp_K": 2742
+    },
+    {
+      "symbol": "C",
+      "T_snap_K": 4.4136753613599314e-21,
+      "T_boil_exp_K": 5100
+    },
+    {
+      "symbol": "Al",
+      "T_snap_K": 2.2068373267255162e-21,
+      "T_boil_exp_K": 2792
+    },
+    {
+      "symbol": "Si",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 3538
+    },
+    {
+      "symbol": "Fe",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 3134
+    },
+    {
+      "symbol": "Ni",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 3186
+    },
+    {
+      "symbol": "Cu",
+      "T_snap_K": 4.4136753613599314e-21,
+      "T_boil_exp_K": 2835
+    },
+    {
+      "symbol": "Ag",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 2435
+    },
+    {
+      "symbol": "Sn",
+      "T_snap_K": 2.2068373267255162e-21,
+      "T_boil_exp_K": 2875
+    },
+    {
+      "symbol": "Pb",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 2022
+    },
+    {
+      "symbol": "Au",
+      "T_snap_K": 4.4136753613599314e-21,
+      "T_boil_exp_K": 3129
+    },
+    {
+      "symbol": "U",
+      "T_snap_K": 3.3102563440427237e-21,
+      "T_boil_exp_K": 4404
+    }
+  ],
+  "key_findings": [
+    "UTU (UBP Temperature Unit) = 3.7135e-21 K/bit \u2014 the SI equivalent of one UBP substrate bit of Symmetry Tax",
+    "USHU (UBP Specific Heat Unit) = 3.0481 J/(mol\u00b7K)/bit \u2014 converts UBP Nernst floors to experimentally testable SI values",
+    "Iron Nernst floor: 1.629289 J/(mol\u00b7K) \u2014 exceeds Debye prediction by 8.70e+13\u00d7 at 1 mK",
+    "Crossover temperature for Iron: 44.314809 K \u2014 below this T, UBP and Debye predictions diverge measurably",
+    "Entropy unit = k_B \u00d7 ln(2) = 9.5699e-24 J/K \u2014 the Landauer limit per bit, confirming UBP entropy is informational entropy"
+  ]
+}
