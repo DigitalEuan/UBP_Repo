@@ -1,12 +1,17 @@
-
+"""
 # =============================================================================
 # UBP Universal Continuous ALU v9.1 (Grand Unified Sovereign Edition - Restored)
 # =============================================================================
-# ZERO DEPENDENCIES: No math, no cmath, no numpy.
-# All transcendental functions implemented via Taylor/Newton/Lanczos series.
-# Supports complex numbers and automatic differentiation via Dual.
-# Core projection: eml(x, y) = exp(x) - ln(y)
-
+* ZERO DEPENDENCIES: No math, no cmath, no numpy.
+* All transcendental functions implemented via Taylor/Newton/Lanczos series.
+* Supports complex numbers and automatic differentiation via Dual.
+* Core projection: eml(x, y) = exp(x) - ln(y)
+* Inspired by: All elementary functions from a single operator
+Andrzej Odrzywolek
+Institute of Theoretical Physics, Jagiellonian University, 30-348 Krakow, Poland
+E-mail: andrzej.odrzywolek@uj.edu.pl
+April 7, 2026
+"""
 _PI = 3.14159265358979323846264338327950288419716939937510 + 0j
 _E_CONST = 2.71828182845904523536028747135266249775724709369995 + 0j
 _SQRT2PI = 2.5066282746310005024157652848110452530069867406099 + 0j
