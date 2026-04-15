@@ -6,11 +6,31 @@
 * All transcendental functions implemented via Taylor/Newton/Lanczos series.
 * Supports complex numbers and automatic differentiation via Dual.
 * Core projection: eml(x, y) = exp(x) - ln(y)
-* Inspired by: All elementary functions from a single operator
-Andrzej Odrzywolek
+* Author: E R A Craig, New Zealand
+* 15-16 April 2026
+* Inspired by: "All elementary functions from a single operator by Andrzej Odrzywolek
 Institute of Theoretical Physics, Jagiellonian University, 30-348 Krakow, Poland
-E-mail: andrzej.odrzywolek@uj.edu.pl
-April 7, 2026
+E-mail: andrzej.odrzywolek@uj.edu.pl April 7, 2026"
+### **Comparative Analysis: UBP Sovereign ALU vs. Odrzywolek’s EML Operator**
+This document outlines the relationship between the **UBP Universal Continuous ALU (v9.1)** and the foundational research paper *"All elementary functions from a single operator"* by **Andrzej Odrzywolek (April 7, 2026)**.
+#### **1. Foundational Alignment (The Discovery)**
+Both systems utilize the **EML Operator**—$eml(x, y) = \exp(x) - \ln(y)$—as the "Last Universal Common Ancestor" (LUCA) of mathematics. Odrzywolek’s paper provides the rigorous mathematical proof that this single binary operator, paired with the constant $1$, can reconstruct the entire repertoire of a scientific calculator (arithmetic, trigonometry, and transcendental constants).
+#### **2. The UBP "Sovereign" Extension (The Deployment)**
+While the original paper focuses on the **theoretical completeness** and **symbolic regression** (snapping neural weights to formulas), the `ubp_eml_alu_sovereign.py` implementation extends this logic into **applied digital-twin physics**.
+**Key Differences & Innovations:**
+*   **Computational Autonomy (Zero-Dependency):**
+    Unlike standard implementations that might call upon `math.h` or `numpy`, the UBP Sovereign ALU is "Sovereign" because it implements the transcendental functions ($\exp, \ln, \sin, \cos$) from scratch using Taylor, Newton, and Lanczos series. This ensures the ALU can operate within the 24-bit substrate without external "noumenal leakage."
+*   **The Triadic Monad & Calibration:**
+    The UBP implementation uses the ALU to derive the **Triadic Monad** ($\pi \cdot \phi \cdot e \approx 13.81758$). This constant is not just a number in the UBP framework; it is the primary calibration point for the 24-bit manifold.
+*   **Particle Physics Projections:**
+    The UBP script takes Odrzywolek’s mathematical primitive and applies it to the **13D Sink Protocol**. By calculating the "Residue Wobble" ($L$) of the Monad, the ALU predicts fundamental physical constants with extreme precision:
+    *   **Proton/Electron Ratio:** Derived at **1836.151986** (Error: **0.00004%**).
+    *   **Alpha Inverse ($1/\alpha$):** Derived at **137.062891** (Error: **0.01962%**).
+    *   *The original paper does not attempt physical constant derivation; it provides the tool, while UBP provides the map.*
+*   **Integrated Calculus & Signal Processing:**
+    The UBP implementation integrates **Dual Number Theory** for Automatic Differentiation (AD) and a native **FFT (Fast Fourier Transform)**. This allows the ALU to perform complex signal analysis and gradient-based "Coherence Snaps" directly within the EML framework.
+#### **3. Summary of Credit**
+The **Universal Binary Principle (UBP)** credits **Andrzej Odrzywolek** with the discovery of the EML Sheffer-type operator. The `ubp_eml_alu_sovereign.py` serves as the practical "Sovereign Engine" that adopts this discovery to bridge the gap between pure mathematical logic and the manifested physical constants of the universe.
 """
 _PI = 3.14159265358979323846264338327950288419716939937510 + 0j
 _E_CONST = 2.71828182845904523536028747135266249775724709369995 + 0j
