@@ -2,12 +2,13 @@
 
 **Author:** E. R. A. Craig, New Zealand  
 **Version:** 7.2.0 
-**Date:** 03 April 2026  
+**Date:** 15 April 2026  
 **Documentation:** See `ubp_files_and_usage.md` for operational protocols.
 
 Online: Google AI Studio - The entire environment runs within your web browser: [https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a]
 
-GitHub Repository for the **APP**: [https://github.com/DigitalEuan/ubp_core_studio_app]
+GitHub Repository for the **APP**: [https://github.com/DigitalEuan/ubp_core_studio_app]  
+GitHub Repository for the **Digital Twin Physics Engine**: [https://github.com/DigitalEuan/ubp_digital_twin_physics_engine]
 
 ---
 
@@ -28,6 +29,11 @@ The system utilizes a modular architecture to map physical constants, chemical e
 ---
 
 ## Updates
+
+### 15 April 2026 — Digital Twin Physics Engine (Experiment)
+*   **UBP-Native Physics:** Launched a separate experimental physics simulation engine integrating geometric stability with classical and fluid mechanics.
+*   **Features:** Includes full 3D Three.js rendering, a composite material system, thermal properties, UBP-derived fluid SPH (Smoothed Particle Hydrodynamics) constants, and Topological Torque rigid body mechanics.
+*   **Note:** This engine operates as a standalone experiment alongside the Core Studio.
 
 ### 03 April 2026 — v7.2 Ultra-Compact Columnar & Semantic Resonance
 
