@@ -154,7 +154,7 @@ try:
     CORE_AVAILABLE = True
 except ImportError:
     CORE_AVAILABLE = False
-UNIVERSAL_NORTH = np.array([-0.30656966974248284, -0.9197090092274486, 0.2452557357939863])
+UNIVERSAL_NORTH = [-0.30656966974248284, -0.9197090092274486, 0.2452557357939863]
 decimal.getcontext().prec = 300
 
 class MathAtlasConstants:
@@ -258,14 +258,20 @@ class MathObjectV4:
         return GOLAY_ENGINE.encode([msg_int >> i & 1 for i in range(11, -1, -1)])
 
     def get_charge(self) -> float:
-        vec = self.get_vector()
-        o = np.array([float(sum(vec[0:8]) - 4), float(sum(vec[8:16]) - 4), float(sum(vec[16:24]) - 4)])
-        mag = np.linalg.norm(o)
-        if mag == 0:
-            return 0.0
-        unit_north = UNIVERSAL_NORTH / np.linalg.norm(UNIVERSAL_NORTH)
-        cos_theta = np.dot(o, unit_north) / mag
-        return math.degrees(math.acos(max(-1, min(1, cos_theta))))
+        v = [
+            float(sum(vector[0:8]) - 4),
+            float(sum(vector[8:16]) - 4),
+            float(sum(vector[16:24]) - 4)
+        ]
+        mag = math.sqrt(sum(x*x for x in v))
+        if mag == 0: return 0.0
+    
+        mag_n = math.sqrt(sum(x*x for x in UNIVERSAL_NORTH))
+        unit_v = [x / mag for x in v]
+        unit_north = [x / mag_n for x in UNIVERSAL_NORTH]
+    
+        dot = sum(a * b for a, b in zip(unit_v, unit_north))
+        return round(float(math.degrees(math.acos(max(-1, min(1, dot))))), 4)
 
     def get_recursive_math(self) -> str:
         """Builds the full embedded math string."""

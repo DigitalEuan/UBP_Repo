@@ -158,7 +158,8 @@ class UBPIntegratedEngine:
         # 6. Thermodynamic Lens (Pantograph Projection)
         if true_v24:
             from core import LEECH_ENGINE
-            t_adj, n_macro = LEECH_ENGINE.calculate_pantograph_tax(true_v24)
+            t_adj = LEECH_ENGINE.calculate_symmetry_tax(true_v24)
+            n_macro = Fraction(10, 1) / (Fraction(10, 1) + t_adj)
             response_data["thermo_audit"] = {
                 "macroscopic_nrci": float(n_macro),
                 "adjusted_tax": float(t_adj),
