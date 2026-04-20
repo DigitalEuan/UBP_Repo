@@ -1,0 +1,90 @@
+[
+  {
+    "name": "exp01_thermodynamics_v1_baseline",
+    "directive": "Thermodynamics of Hexadecad elements",
+    "num_sections": 2,
+    "paragraphs_per_section": 2,
+    "min_nrci": 0.65,
+    "min_resonance": 0.0,
+    "max_retries": 3,
+    "words_per_paragraph": 15,
+    "description": "Baseline: replicates v1 conditions (no resonance gate, small scale)"
+  },
+  {
+    "name": "exp02_thermodynamics_v2_dual_gate",
+    "directive": "Thermodynamics of Hexadecad elements",
+    "num_sections": 3,
+    "paragraphs_per_section": 3,
+    "min_nrci": 0.65,
+    "min_resonance": 0.3,
+    "max_retries": 4,
+    "words_per_paragraph": 20,
+    "description": "V2: dual scoring (NRCI + resonance), medium scale"
+  },
+  {
+    "name": "exp03_thermodynamics_v3_large",
+    "directive": "Thermodynamics of Hexadecad elements",
+    "num_sections": 4,
+    "paragraphs_per_section": 4,
+    "min_nrci": 0.65,
+    "min_resonance": 0.3,
+    "max_retries": 5,
+    "words_per_paragraph": 25,
+    "description": "V3: large scale, 4 sections x 4 paragraphs, ~29 agents"
+  },
+  {
+    "name": "exp04_quantum_coherence",
+    "directive": "Quantum coherence and geometric stability in binary substrates",
+    "num_sections": 4,
+    "paragraphs_per_section": 3,
+    "min_nrci": 0.65,
+    "min_resonance": 0.3,
+    "max_retries": 5,
+    "words_per_paragraph": 22,
+    "description": "Different topic: quantum coherence"
+  },
+  {
+    "name": "exp05_chemical_bonding",
+    "directive": "Chemical bonding and molecular stability through information geometry",
+    "num_sections": 4,
+    "paragraphs_per_section": 3,
+    "min_nrci": 0.65,
+    "min_resonance": 0.3,
+    "max_retries": 5,
+    "words_per_paragraph": 22,
+    "description": "Different topic: chemical bonding"
+  },
+  {
+    "name": "exp06_particle_physics",
+    "directive": "Particle physics and lepton mass ratios from binary geometry",
+    "num_sections": 4,
+    "paragraphs_per_section": 3,
+    "min_nrci": 0.65,
+    "min_resonance": 0.3,
+    "max_retries": 5,
+    "words_per_paragraph": 22,
+    "description": "Different topic: particle physics"
+  },
+  {
+    "name": "exp07_large_swarm_30agents",
+    "directive": "Universal Binary Principle as a system of everything",
+    "num_sections": 5,
+    "paragraphs_per_section": 4,
+    "min_nrci": 0.65,
+    "min_resonance": 0.25,
+    "max_retries": 5,
+    "words_per_paragraph": 28,
+    "description": "Large swarm: 5 sections x 4 paragraphs = ~37 agents, relaxed resonance"
+  },
+  {
+    "name": "exp08_information_geometry",
+    "directive": "Information geometry and Golay code error correction in physical reality",
+    "num_sections": 4,
+    "paragraphs_per_section": 4,
+    "min_nrci": 0.65,
+    "min_resonance": 0.3,
+    "max_retries": 5,
+    "words_per_paragraph": 25,
+    "description": "Different topic: information geometry"
+  }
+]
