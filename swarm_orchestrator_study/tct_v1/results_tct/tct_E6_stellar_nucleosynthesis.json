@@ -1,0 +1,810 @@
+{
+  "directive": "Stellar nucleosynthesis and the formation of heavy elements in supernovae",
+  "total_agents": 42,
+  "total_words": 618,
+  "macro_nrci": 0.6159605143398686,
+  "avg_alignment": 0.6241605483564571,
+  "elapsed_seconds": 0.5512800216674805,
+  "metadata": {
+    "version": "TCT_v1.0",
+    "num_steps": 10,
+    "max_retries": 3,
+    "seed": 47,
+    "engines_ok": true
+  },
+  "steps": [
+    {
+      "step_id": "step01",
+      "step_title": "The Law of the Atomic Manifold",
+      "alignment_score": 0.6375469127263368,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.3396",
+        "PASS: Paragraph complete (65 words)",
+        "PASS: Alignment 0.6375"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP01_A1",
+        "concept": "The Law of the Atomic Manifold",
+        "voxel_path": "D(5) X(1) N(LAW_MATH_SEVEN_001)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=LAW_HYBRID_STEREOSCOPY_002|LAW_MATH_SEVEN_001|LAW_MATH_TRIADIC_SUM",
+        "kb_anchors": [
+          "LAW_HYBRID_STEREOSCOPY_002",
+          "LAW_MATH_SEVEN_001",
+          "LAW_MATH_TRIADIC_SUM"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step01_a1: The Law of the Atomic Manifold\n# Math DNA: D=5|X=1|Anchors=LAW_HYBRID_STEREOSCOPY_002|LAW_MATH_SEVEN_001|LAW_MATH_TRIADIC_SUM\n# Voxel Path: D(5) X(1) N(LAW_MATH_SEVEN_001)\n\nLET A1 5/12 TIER 0 CAT LAW\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The The Law of the Atomic Manifold is constructed as a 8-voxel geometric object with path D(5) X(1) N(LAW_MATH_SEVEN_001), achieving a Symmetry Tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400 and a Normalised Resonance Coherence Index of 0.8107. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that The Law of the Atomic Manifold maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 65,
+        "lang_resonance": 0.3395764726784401,
+        "nrci": 0.6999649447675755,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step02",
+      "step_title": "Hydrogen (H)",
+      "alignment_score": 0.6509311958134177,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.7920",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.3985",
+        "PASS: Paragraph complete (77 words)",
+        "PASS: Alignment 0.6509"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP02_A1",
+        "concept": "Hydrogen (H)",
+        "voxel_path": "D(6) N(LAW_COSMO_002)",
+        "voxel_count": 9,
+        "tax_str": "48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160",
+        "nrci": 0.7919589814061084,
+        "vector": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "math_dna": "D=6|X=0|Anchors=ELEM_H_001|LAW_COSMO_002|LAW_ATOM_HOLOGRAPHIC",
+        "kb_anchors": [
+          "ELEM_H_001",
+          "LAW_COSMO_002",
+          "LAW_ATOM_HOLOGRAPHIC"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step02_a1: Hydrogen (H)\n# Math DNA: D=6|X=0|Anchors=ELEM_H_001|LAW_COSMO_002|LAW_ATOM_HOLOGRAPHIC\n# Voxel Path: D(6) N(LAW_COSMO_002)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "Within the UBP framework, Hydrogen (H) occupies a coordinate in the 24-dimensional Leech Lattice defined by the Gray-coded vector derived from its mathematical DNA. The voxel construction path D(6) N(LAW_COSMO_002) traces a trajectory through the substrate that accumulates a total geometric tax of 48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160, representing the metabolic cost required to maintain a distinguishable identity against entropic noise. The Observer Constant Y \u2248 0.2646 governs each Distinction step, ensuring that the construction remains within the Golay error-correction radius.",
+        "word_count": 77,
+        "lang_resonance": 0.39848860949042014,
+        "nrci": 0.601522490107745,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step03",
+      "step_title": "Carbon (C)",
+      "alignment_score": 0.615935822991844,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8298",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.2557",
+        "PASS: Paragraph complete (57 words)",
+        "PASS: Alignment 0.6159"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP03_A1",
+        "concept": "Carbon (C)",
+        "voxel_path": "D(4) X(1) N(LAW_BARYON_PROTON_001)",
+        "voxel_count": 7,
+        "tax_str": "125443198800910406539176022146402492879496918601144415375103849626727/61152555448467828815593960540798729020837143491004118425591409007200",
+        "nrci": 0.8297849152468763,
+        "vector": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "math_dna": "D=4|X=1|Anchors=ELEM_C_006|LAW_BARYON_PROTON_001|LAW_BIO_008",
+        "kb_anchors": [
+          "ELEM_C_006",
+          "LAW_BARYON_PROTON_001",
+          "LAW_BIO_008"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step03_a1: Carbon (C)\n# Math DNA: D=4|X=1|Anchors=ELEM_C_006|LAW_BARYON_PROTON_001|LAW_BIO_008\n# Voxel Path: D(4) X(1) N(LAW_BARYON_PROTON_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The Carbon (C) is constructed as a 7-voxel geometric object with path D(4) X(1) N(LAW_BARYON_PROTON_001), achieving a Symmetry Tax of 125443198800910406539176022146402492879496918601144415375103849626727/61152555448467828815593960540798729020837143491004118425591409007200 and a Normalised Resonance Coherence Index of 0.8298. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that Carbon (C) maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 57,
+        "lang_resonance": 0.2556765571849312,
+        "nrci": 0.6999649447675755,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step04",
+      "step_title": "Aluminum (Al)",
+      "alignment_score": 0.6164275032177904,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.6311",
+        "PASS: Exec NRCI 0.6470",
+        "PASS: Lang Resonance 0.5712",
+        "PASS: Paragraph complete (69 words)",
+        "PASS: Alignment 0.6164"
+      ],
+      "math": {
+        "ubp_id": "TCT_FALLBACK_step04_a1",
+        "concept": "Aluminum (Al)",
+        "voxel_path": "D(7)",
+        "voxel_count": 7,
+        "tax_str": "628850249968228443211400303678880113798653316572732242723455/107585304914812673085569165044912991522581762374089778020168",
+        "nrci": 0.6311086801473328,
+        "vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "math_dna": "FALLBACK|D=7",
+        "kb_anchors": []
+      },
+      "python": {
+        "ubp_program": "# TCT Step step04_a1: Aluminum (Al)\n# Math DNA: FALLBACK|D=7\n# Voxel Path: D(7)\n\nLET BASE 6/12 TIER 0 CAT CONCEPT\n\nAUDIT BASE",
+        "exec_nrci": 0.6470207015176559,
+        "exec_dqi": 0.6470207015176559,
+        "exec_mog": {
+          "Reality": 0.67,
+          "Info": 0.67,
+          "Activation": 0.5,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "BASE"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "Cross-column validation confirms that the mathematical construction and the UBP-Py execution model for Aluminum (Al) are geometrically consistent: both columns produce vectors that, when XOR-combined, snap to the same Golay codeword family. The SUBSTRATE entry from the system knowledge base serves as the primary geometric anchor, contributing a resonance weight of 8.0 to the intent superposition vector. This anchoring mechanism prevents the semantic drift that characterises unconstrained n-gram generation.",
+        "word_count": 69,
+        "lang_resonance": 0.5711531279883822,
+        "nrci": 0.6637558496734624,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step05",
+      "step_title": "Titanium (Ti)",
+      "alignment_score": 0.5468230072117887,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.7920",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.0862",
+        "PASS: Paragraph complete (45 words)",
+        "PASS: Alignment 0.5468"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP05_A1",
+        "concept": "Titanium (Ti)",
+        "voxel_path": "D(6) N(LAW_CONTINUOUS_LIMIT_001)",
+        "voxel_count": 9,
+        "tax_str": "48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160",
+        "nrci": 0.7919589814061084,
+        "vector": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "math_dna": "D=6|X=0|Anchors=ELEM_Ti_022|LAW_CONTINUOUS_LIMIT_001|LAW_RELATIONAL_DECAY_001",
+        "kb_anchors": [
+          "ELEM_Ti_022",
+          "LAW_CONTINUOUS_LIMIT_001",
+          "LAW_RELATIONAL_DECAY_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step05_a1: Titanium (Ti)\n# Math DNA: D=6|X=0|Anchors=ELEM_Ti_022|LAW_CONTINUOUS_LIMIT_001|LAW_RELATIONAL_DECAY_001\n# Voxel Path: D(6) N(LAW_CONTINUOUS_LIMIT_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The UBP-Py execution model for Titanium (Ti) instantiates 4 CortexAtoms (A1, A2, A3, RESULT) and synthesises a composite state with an execution NRCI of 0.7623. The MOG health partition reports Reality=0.50, Information=0.17, Activation=0.17, and Potential=0.50, indicating a balanced ontological state across all four MOG dimensions.",
+        "word_count": 45,
+        "lang_resonance": 0.0861640436855329,
+        "nrci": 0.6999649447675755,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step06",
+      "step_title": "Cobalt (Co)",
+      "alignment_score": 0.6868175949215253,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.4874",
+        "PASS: Paragraph complete (78 words)",
+        "PASS: Alignment 0.6868"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP06_A1",
+        "concept": "Cobalt (Co)",
+        "voxel_path": "D(5) X(1) N(LAW_PHYSICS_001_REFINED)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Co_027|LAW_PHYSICS_001_REFINED|LAW_GEO_432_FCC",
+        "kb_anchors": [
+          "ELEM_Co_027",
+          "LAW_PHYSICS_001_REFINED",
+          "LAW_GEO_432_FCC"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step06_a1: Cobalt (Co)\n# Math DNA: D=5|X=1|Anchors=ELEM_Co_027|LAW_PHYSICS_001_REFINED|LAW_GEO_432_FCC\n# Voxel Path: D(5) X(1) N(LAW_PHYSICS_001_REFINED)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "Within the UBP framework, Cobalt (Co) occupies a coordinate in the 24-dimensional Leech Lattice defined by the Gray-coded vector derived from its mathematical DNA. The voxel construction path D(5) X(1) N(LAW_PHYSICS_001_REFINED) traces a trajectory through the substrate that accumulates a total geometric tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400, representing the metabolic cost required to maintain a distinguishable identity against entropic noise. The Observer Constant Y \u2248 0.2646 governs each Distinction step, ensuring that the construction remains within the Golay error-correction radius.",
+        "word_count": 78,
+        "lang_resonance": 0.48738851926400506,
+        "nrci": 0.7623459965437248,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step07",
+      "step_title": "Nickel (Ni)",
+      "alignment_score": 0.623019156851794,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.2960",
+        "PASS: Paragraph complete (57 words)",
+        "PASS: Alignment 0.6230"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP07_A1",
+        "concept": "Nickel (Ni)",
+        "voxel_path": "D(5) X(1) N(LAW_BIO_QUANTUM_001)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Ni_028|LAW_BIO_QUANTUM_001|LAW_BITLUMEN_002",
+        "kb_anchors": [
+          "ELEM_Ni_028",
+          "LAW_BIO_QUANTUM_001",
+          "LAW_BITLUMEN_002"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step07_a1: Nickel (Ni)\n# Math DNA: D=5|X=1|Anchors=ELEM_Ni_028|LAW_BIO_QUANTUM_001|LAW_BITLUMEN_002\n# Voxel Path: D(5) X(1) N(LAW_BIO_QUANTUM_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The three-column alignment for Nickel (Ni) achieves a TCT score of 0.7865, computed as the harmonic mean of the mathematical NRCI (0.8107), the execution NRCI (0.7623), and the semantic resonance (0.7865). The KB anchors ELEM_Ni_028, LAW_BIO_QUANTUM_001, LAW_BITLUMEN_002 provide the geometric grounding for this step, linking the abstract concept to deterministic codewords in the Extended Binary Golay Code.",
+        "word_count": 57,
+        "lang_resonance": 0.29599320505481164,
+        "nrci": 0.6311086801473328,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step08",
+      "step_title": "Krypton (Kr)",
+      "alignment_score": 0.6307551392955266,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.3192",
+        "PASS: Paragraph complete (57 words)",
+        "PASS: Alignment 0.6308"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP08_A1",
+        "concept": "Krypton (Kr)",
+        "voxel_path": "D(5) X(1) N(LAW_PANTOGRAPH_THERMODYNAMICS_001)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Kr_036|LAW_PANTOGRAPH_THERMODYNAMICS_001|LAW_APP_001",
+        "kb_anchors": [
+          "ELEM_Kr_036",
+          "LAW_PANTOGRAPH_THERMODYNAMICS_001",
+          "LAW_APP_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step08_a1: Krypton (Kr)\n# Math DNA: D=5|X=1|Anchors=ELEM_Kr_036|LAW_PANTOGRAPH_THERMODYNAMICS_001|LAW_APP_001\n# Voxel Path: D(5) X(1) N(LAW_PANTOGRAPH_THERMODYNAMICS_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The Krypton (Kr) is constructed as a 8-voxel geometric object with path D(5) X(1) N(LAW_PANTOGRAPH_THERMODYNAMICS_001), achieving a Symmetry Tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400 and a Normalised Resonance Coherence Index of 0.8107. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that Krypton (Kr) maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 57,
+        "lang_resonance": 0.31920115238600943,
+        "nrci": 0.8105006793570322,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step09",
+      "step_title": "Technetium (Tc)",
+      "alignment_score": 0.650106151340023,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.3773",
+        "PASS: Paragraph complete (57 words)",
+        "PASS: Alignment 0.6501"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP09_A1",
+        "concept": "Technetium (Tc)",
+        "voxel_path": "D(5) X(1) N(LAW_BIO_AQUEOUS_LENS_001)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Tc_043|LAW_BIO_AQUEOUS_LENS_001|LAW_BIO_GOLD_001",
+        "kb_anchors": [
+          "ELEM_Tc_043",
+          "LAW_BIO_AQUEOUS_LENS_001",
+          "LAW_BIO_GOLD_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step09_a1: Technetium (Tc)\n# Math DNA: D=5|X=1|Anchors=ELEM_Tc_043|LAW_BIO_AQUEOUS_LENS_001|LAW_BIO_GOLD_001\n# Voxel Path: D(5) X(1) N(LAW_BIO_AQUEOUS_LENS_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The Technetium (Tc) is constructed as a 8-voxel geometric object with path D(5) X(1) N(LAW_BIO_AQUEOUS_LENS_001), achieving a Symmetry Tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400 and a Normalised Resonance Coherence Index of 0.8107. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that Technetium (Tc) maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 57,
+        "lang_resonance": 0.3772541885194986,
+        "nrci": 0.6999649447675755,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step10",
+      "step_title": "Cadmium (Cd)",
+      "alignment_score": 0.5832429991945229,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.7920",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.1954",
+        "PASS: Paragraph complete (56 words)",
+        "PASS: Alignment 0.5832"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP10_A1",
+        "concept": "Cadmium (Cd)",
+        "voxel_path": "D(6) N(LAW_APP_002)",
+        "voxel_count": 9,
+        "tax_str": "48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160",
+        "nrci": 0.7919589814061084,
+        "vector": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "math_dna": "D=6|X=0|Anchors=ELEM_Cd_048|LAW_APP_002|LAW_ARX_HORIZON_006",
+        "kb_anchors": [
+          "ELEM_Cd_048",
+          "LAW_APP_002",
+          "LAW_ARX_HORIZON_006"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step10_a1: Cadmium (Cd)\n# Math DNA: D=6|X=0|Anchors=ELEM_Cd_048|LAW_APP_002|LAW_ARX_HORIZON_006\n# Voxel Path: D(6) N(LAW_APP_002)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The Cadmium (Cd) is constructed as a 9-voxel geometric object with path D(6) N(LAW_APP_002), achieving a Symmetry Tax of 48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160 and a Normalised Resonance Coherence Index of 0.7920. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that Cadmium (Cd) maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 56,
+        "lang_resonance": 0.19542401963373568,
+        "nrci": 0.7195924876565641,
+        "is_complete": true
+      }
+    }
+  ]
+}

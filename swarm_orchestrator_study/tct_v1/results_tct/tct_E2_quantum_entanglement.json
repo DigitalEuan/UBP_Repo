@@ -1,0 +1,653 @@
+{
+  "directive": "Quantum entanglement and non-local correlations in particle physics",
+  "total_agents": 38,
+  "total_words": 485,
+  "macro_nrci": 0.7623459965437248,
+  "avg_alignment": 0.5786886868095809,
+  "elapsed_seconds": 0.5847334861755371,
+  "metadata": {
+    "version": "TCT_v1.0",
+    "num_steps": 8,
+    "max_retries": 3,
+    "seed": 43,
+    "engines_ok": true
+  },
+  "steps": [
+    {
+      "step_id": "step01",
+      "step_title": "Nonlocal Code Surgery",
+      "alignment_score": 0.559298671918839,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.1048",
+        "PASS: Paragraph complete (58 words)",
+        "PASS: Alignment 0.5593"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP01_A1",
+        "concept": "Nonlocal Code Surgery",
+        "voxel_path": "D(6) N(LAW_RELATIONAL_DECAY_001)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "math_dna": "D=6|X=0|Anchors=LAW_NONLOCAL_SURGERY_001|LAW_RELATIONAL_DECAY_001|ELEM_O_008",
+        "kb_anchors": [
+          "LAW_NONLOCAL_SURGERY_001",
+          "LAW_RELATIONAL_DECAY_001",
+          "ELEM_O_008"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step01_a1: Nonlocal Code Surgery\n# Math DNA: D=6|X=0|Anchors=LAW_NONLOCAL_SURGERY_001|LAW_RELATIONAL_DECAY_001|ELEM_O_008\n# Voxel Path: D(6) N(LAW_RELATIONAL_DECAY_001)\n\nLET A1 5/12 TIER 0 CAT LAW\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 10/12 TIER 2 CAT ELEMENT\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The Nonlocal Code Surgery is constructed as a 8-voxel geometric object with path D(6) N(LAW_RELATIONAL_DECAY_001), achieving a Symmetry Tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400 and a Normalised Resonance Coherence Index of 0.8107. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that Nonlocal Code Surgery maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 58,
+        "lang_resonance": 0.10483175025594638,
+        "nrci": 0.6637558496734624,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step02",
+      "step_title": "Nitrous Oxide",
+      "alignment_score": 0.5183923845611721,
+      "accepted": true,
+      "attempts": 2,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.6160",
+        "PASS: Lang Resonance 0.1285",
+        "PASS: Paragraph complete (56 words)",
+        "PASS: Alignment 0.5184"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP02_A2",
+        "concept": "Nitrous Oxide",
+        "voxel_path": "D(5) X(1) N(ELEM_Mn_025)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_V_023|ELEM_Mn_025",
+        "kb_anchors": [
+          "ELEM_V_023",
+          "ELEM_Mn_025"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step02_a2: Nitrous Oxide\n# Math DNA: D=5|X=1|Anchors=ELEM_V_023|ELEM_Mn_025\n# Voxel Path: D(5) X(1) N(ELEM_Mn_025)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 10/12 TIER 1 CAT ELEMENT\n\nSYNTH RESULT FROM \"1xA1 + 1xA2\"\nAUDIT RESULT",
+        "exec_nrci": 0.6159605143398686,
+        "exec_dqi": 0.616,
+        "exec_mog": {
+          "Reality": 0.67,
+          "Info": 0.67,
+          "Activation": 0.5,
+          "Potential": 0.83
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The three-column alignment for Nitrous Oxide achieves a TCT score of 0.7133, computed as the harmonic mean of the mathematical NRCI (0.8107), the execution NRCI (0.6160), and the semantic resonance (0.7133). The KB anchors ELEM_V_023, ELEM_Mn_025 provide the geometric grounding for this step, linking the abstract concept to deterministic codewords in the Extended Binary Golay Code.",
+        "word_count": 56,
+        "lang_resonance": 0.128498370386802,
+        "nrci": 0.6311086801473328,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step03",
+      "step_title": "Arsenic (As)",
+      "alignment_score": 0.5817774171594164,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.1723",
+        "PASS: Paragraph complete (57 words)",
+        "PASS: Alignment 0.5818"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP03_A1",
+        "concept": "Arsenic (As)",
+        "voxel_path": "D(5) X(1) N(LAW_ATOM_HOLOGRAPHIC)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_As_033|LAW_ATOM_HOLOGRAPHIC|LAW_BIO_004",
+        "kb_anchors": [
+          "ELEM_As_033",
+          "LAW_ATOM_HOLOGRAPHIC",
+          "LAW_BIO_004"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step03_a1: Arsenic (As)\n# Math DNA: D=5|X=1|Anchors=ELEM_As_033|LAW_ATOM_HOLOGRAPHIC|LAW_BIO_004\n# Voxel Path: D(5) X(1) N(LAW_ATOM_HOLOGRAPHIC)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The Arsenic (As) is constructed as a 8-voxel geometric object with path D(5) X(1) N(LAW_ATOM_HOLOGRAPHIC), achieving a Symmetry Tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400 and a Normalised Resonance Coherence Index of 0.8107. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that Arsenic (As) maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 57,
+        "lang_resonance": 0.17226798597767887,
+        "nrci": 0.7403525287406993,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step04",
+      "step_title": "Platinum (Pt)",
+      "alignment_score": 0.5787865827544794,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.7920",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.1821",
+        "PASS: Paragraph complete (69 words)",
+        "PASS: Alignment 0.5788"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP04_A1",
+        "concept": "Platinum (Pt)",
+        "voxel_path": "D(5) X(1) N(LAW_BARYON_001)",
+        "voxel_count": 9,
+        "tax_str": "48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160",
+        "nrci": 0.7919589814061084,
+        "vector": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Pt_078|LAW_BARYON_001|LAW_BIO_GOLD_001",
+        "kb_anchors": [
+          "ELEM_Pt_078",
+          "LAW_BARYON_001",
+          "LAW_BIO_GOLD_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step04_a1: Platinum (Pt)\n# Math DNA: D=5|X=1|Anchors=ELEM_Pt_078|LAW_BARYON_001|LAW_BIO_GOLD_001\n# Voxel Path: D(5) X(1) N(LAW_BARYON_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "Cross-column validation confirms that the mathematical construction and the UBP-Py execution model for Platinum (Pt) are geometrically consistent: both columns produce vectors that, when XOR-combined, snap to the same Golay codeword family. The ELEM_Pt_078 entry from the system knowledge base serves as the primary geometric anchor, contributing a resonance weight of 8.0 to the intent superposition vector. This anchoring mechanism prevents the semantic drift that characterises unconstrained n-gram generation.",
+        "word_count": 69,
+        "lang_resonance": 0.18205477031360479,
+        "nrci": 0.6637558496734624,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step05",
+      "step_title": "Californium (Cf)",
+      "alignment_score": 0.6313135300101075,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.7920",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.3396",
+        "PASS: Paragraph complete (45 words)",
+        "PASS: Alignment 0.6313"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP05_A1",
+        "concept": "Californium (Cf)",
+        "voxel_path": "D(6) N(LAW_RESONANT_PINCH_001)",
+        "voxel_count": 9,
+        "tax_str": "48192798707316566116980606627270296395562507573870238158038909190393/18345766634540348644678188162239618706251143047301235527677422702160",
+        "nrci": 0.7919589814061084,
+        "vector": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "math_dna": "D=6|X=0|Anchors=ELEM_Cf_098|LAW_RESONANT_PINCH_001|LAW_APP_001",
+        "kb_anchors": [
+          "ELEM_Cf_098",
+          "LAW_RESONANT_PINCH_001",
+          "LAW_APP_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step05_a1: Californium (Cf)\n# Math DNA: D=6|X=0|Anchors=ELEM_Cf_098|LAW_RESONANT_PINCH_001|LAW_APP_001\n# Voxel Path: D(6) N(LAW_RESONANT_PINCH_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The UBP-Py execution model for Californium (Cf) instantiates 4 CortexAtoms (A1, A2, A3, RESULT) and synthesises a composite state with an execution NRCI of 0.7623. The MOG health partition reports Reality=0.50, Information=0.17, Activation=0.17, and Potential=0.50, indicating a balanced ontological state across all four MOG dimensions.",
+        "word_count": 45,
+        "lang_resonance": 0.3396356120804893,
+        "nrci": 0.6637558496734624,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step06",
+      "step_title": "Bohrium (Bh)",
+      "alignment_score": 0.5457305524025166,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.0641",
+        "PASS: Paragraph complete (78 words)",
+        "PASS: Alignment 0.5457"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP06_A1",
+        "concept": "Bohrium (Bh)",
+        "voxel_path": "D(5) X(1) N(LAW_PLATONIC_002)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Bh_107|LAW_PLATONIC_002|LAW_BIO_ENDO_001",
+        "kb_anchors": [
+          "ELEM_Bh_107",
+          "LAW_PLATONIC_002",
+          "LAW_BIO_ENDO_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step06_a1: Bohrium (Bh)\n# Math DNA: D=5|X=1|Anchors=ELEM_Bh_107|LAW_PLATONIC_002|LAW_BIO_ENDO_001\n# Voxel Path: D(5) X(1) N(LAW_PLATONIC_002)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 5/12 TIER 1 CAT LAW\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "Within the UBP framework, Bohrium (Bh) occupies a coordinate in the 24-dimensional Leech Lattice defined by the Gray-coded vector derived from its mathematical DNA. The voxel construction path D(5) X(1) N(LAW_PLATONIC_002) traces a trajectory through the substrate that accumulates a total geometric tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400, representing the metabolic cost required to maintain a distinguishable identity against entropic noise. The Observer Constant Y \u2248 0.2646 governs each Distinction step, ensuring that the construction remains within the Golay error-correction radius.",
+        "word_count": 78,
+        "lang_resonance": 0.06412739170697927,
+        "nrci": 0.6470207015176559,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step07",
+      "step_title": "Flerovium (Fl)",
+      "alignment_score": 0.6010126252966469,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.6814",
+        "PASS: Lang Resonance 0.3109",
+        "PASS: Paragraph complete (57 words)",
+        "PASS: Alignment 0.6010"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP07_A1",
+        "concept": "Flerovium (Fl)",
+        "voxel_path": "D(5) X(1) N(MATH_CONST_E_001)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=ELEM_Fl_114|MATH_CONST_E_001|LAW_BIO_ANCHOR_001",
+        "kb_anchors": [
+          "ELEM_Fl_114",
+          "MATH_CONST_E_001",
+          "LAW_BIO_ANCHOR_001"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step07_a1: Flerovium (Fl)\n# Math DNA: D=5|X=1|Anchors=ELEM_Fl_114|MATH_CONST_E_001|LAW_BIO_ANCHOR_001\n# Voxel Path: D(5) X(1) N(MATH_CONST_E_001)\n\nLET A1 10/12 TIER 0 CAT ELEMENT\nLET A2 6/12 TIER 1 CAT CONCEPT\nLET A3 5/12 TIER 2 CAT LAW\n\nSYNTH RESULT FROM \"1xA1 + 1xA2 + 1xA3\"\nAUDIT RESULT",
+        "exec_nrci": 0.6813796908424689,
+        "exec_dqi": 0.6814,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.5,
+          "Activation": 0.5,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "A3",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The three-column alignment for Flerovium (Fl) achieves a TCT score of 0.7460, computed as the harmonic mean of the mathematical NRCI (0.8107), the execution NRCI (0.6814), and the semantic resonance (0.7460). The KB anchors ELEM_Fl_114, MATH_CONST_E_001, LAW_BIO_ANCHOR_001 provide the geometric grounding for this step, linking the abstract concept to deterministic codewords in the Extended Binary Golay Code.",
+        "word_count": 57,
+        "lang_resonance": 0.31093991609062605,
+        "nrci": 0.7195924876565641,
+        "is_complete": true
+      }
+    },
+    {
+      "step_id": "step08",
+      "step_title": "The Law of the Holographic Atom",
+      "alignment_score": 0.6131977303734684,
+      "accepted": true,
+      "attempts": 1,
+      "audit_notes": [
+        "PASS: Math NRCI 0.8107",
+        "PASS: Exec NRCI 0.7623",
+        "PASS: Lang Resonance 0.2665",
+        "PASS: Paragraph complete (65 words)",
+        "PASS: Alignment 0.6132"
+      ],
+      "math": {
+        "ubp_id": "TCT_MATH_STEP08_A1",
+        "concept": "The Law of the Holographic Atom",
+        "voxel_path": "D(5) X(1) N(ELEM_In_049)",
+        "voxel_count": 8,
+        "tax_str": "107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400",
+        "nrci": 0.8107182689568456,
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "math_dna": "D=5|X=1|Anchors=LAW_HYBRID_STEREOSCOPY_002|ELEM_In_049",
+        "kb_anchors": [
+          "LAW_HYBRID_STEREOSCOPY_002",
+          "ELEM_In_049"
+        ]
+      },
+      "python": {
+        "ubp_program": "# TCT Step step08_a1: The Law of the Holographic Atom\n# Math DNA: D=5|X=1|Anchors=LAW_HYBRID_STEREOSCOPY_002|ELEM_In_049\n# Voxel Path: D(5) X(1) N(ELEM_In_049)\n\nLET A1 5/12 TIER 0 CAT LAW\nLET A2 10/12 TIER 1 CAT ELEMENT\n\nSYNTH RESULT FROM \"1xA1 + 1xA2\"\nAUDIT RESULT",
+        "exec_nrci": 0.7623459965437248,
+        "exec_dqi": 0.7623,
+        "exec_mog": {
+          "Reality": 0.5,
+          "Info": 0.17,
+          "Activation": 0.17,
+          "Potential": 0.5
+        },
+        "exec_success": true,
+        "atoms_created": [
+          "A1",
+          "A2",
+          "RESULT"
+        ],
+        "error_msg": ""
+      },
+      "language": {
+        "paragraph": "The The Law of the Holographic Atom is constructed as a 8-voxel geometric object with path D(5) X(1) N(ELEM_In_049), achieving a Symmetry Tax of 107081541111921825035115598905964309494664857065687096199628608287209/45864416586350871611695470405599046765627857618253088819193556755400 and a Normalised Resonance Coherence Index of 0.8107. This stability score places the object within the Stable Phenomenal zone of the Leech Lattice, confirming that The Law of the Holographic Atom maintains a valid phenomenal identity within the 24-bit substrate.",
+        "word_count": 65,
+        "lang_resonance": 0.2665289256198347,
+        "nrci": 0.6999649447675755,
+        "is_complete": true
+      }
+    }
+  ]
+}
