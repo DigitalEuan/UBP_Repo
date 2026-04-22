@@ -1,0 +1,3551 @@
+{
+  "metadata": {
+    "system": "UBP Swarm TCT MathNet v2.0",
+    "ubp_version": "core_studio_v4.0",
+    "benchmark": "MathNet MIT (mathnet.mit.edu)",
+    "date": "2026-04-21",
+    "total_problems": 20,
+    "openai_model": "gpt-4.1-mini",
+    "engines_active": [
+      "GOLAY_ENGINE",
+      "LEECH_ENGINE",
+      "EML_ALU",
+      "ObserverDynamics",
+      "TGIC_3-6-9",
+      "RuneCube",
+      "BarnesWall256",
+      "UBPBrain_v7.2",
+      "PythonCodeGen",
+      "AnalogTestSuite",
+      "SemanticEngine",
+      "LLM_SelfCorrection"
+    ]
+  },
+  "results": [
+    {
+      "problem_id": "MN_NT_001",
+      "domain": "Number Theory",
+      "subdomain": "Divisibility / Factorization",
+      "problem_text": "Find all positive integers $n$ for which $2^n - 1$ is divisible by 7.",
+      "reference_answer": "n divisible by 3",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6620462994319628,
+        "nrci_values": [
+          0.6840403469656499,
+          0.6834226544391425,
+          0.6186758968910958
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.3066854249804896,
+        "mean_tgic_stability": 0.6354115980518785,
+        "tgic_stability_scores": [
+          0.5913860008442765,
+          0.6644446608506174,
+          0.6504041324607415
+        ],
+        "bw256_macro_nrci": 0.3232142749901492,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          },
+          "7": {
+            "7": 1
+          },
+          "3": {
+            "3": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 2.0,
+            "b": 7.0,
+            "add_analog": 9.0,
+            "add_expected": 9.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 14.0,
+            "mul_expected": 14.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 7.0,
+            "b": 3.0,
+            "add_analog": 10.0,
+            "add_expected": 10.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 21.0,
+            "mul_expected": 21.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          },
+          {
+            "n": 7,
+            "nrci": 0.6834226544391425,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650735986.2440562,
+            "is_prime": true,
+            "tgic_stability": 0.6644446608506174
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 238,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 630382776.5478735,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.437966628904304,
+        "coherence_score": 0.7236636551754085,
+        "tgic_total_stability": 0.6161674685984352,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 3.1174034432362157,
+        "rune_yz_tax": 6.234806886472431,
+        "stability_rank": 0,
+        "offbit_phase": 238,
+        "eml_tree": "eml(eml(leaf(0.6620),leaf(11.0814)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_NUMBER_ONE_001",
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "MATH_NUMBER_ONE_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2, 7, 3]\nPrimes among them: [2, 7, 3]\n  2 mod 7 = 2\n  2 mod 3 = 2\n  7 mod 2 = 1\n  7 mod 3 = 1\n  3 mod 2 = 1\n  3 mod 7 = 3",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 2.0,
+            "b": 7.0,
+            "analog_result": 9.0,
+            "expected": 9.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 2.0,
+            "analog_result": 1.4142,
+            "expected": 1.4142,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1011,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "We want to find all positive integers \\( n \\) such that \\( 2^n - 1 \\) is divisible by 7. In other words, we want:\n\n\\[\n7 \\mid (2^n - 1) \\implies 2^n \\equiv 1 \\pmod{7}.\n\\]\n\n---\n\n### Step 1: Understand the problem\n\nWe want to find all positive integers \\( n \\) such that \\( 2^n \\equiv 1 \\pmod{7} \\).\n\nThis is a problem about the order of 2 modulo 7.\n\n---\n\n### Step 2: Find the order of 2 modulo 7\n\nThe order of an integer \\( a \\) modulo \\( m \\) is the smallest positive integer \\( k \\) such that:\n\n\\[\na^k \\equiv 1 \\pmod{m}.\n\\]\n\nHere, \\( a = 2 \\), \\( m = 7 \\).\n\nSince 7 is prime, by Fermat's Little Theorem:\n\n\\[\n2^{6} \\equiv 1 \\pmod{7}.\n\\]\n\nSo the order divides 6.\n\nLet's check powers of 2 modulo 7:\n\n- \\( 2^1 = 2 \\pmod{7} \\neq 1 \\)\n- \\( 2^2 = 4 \\pmod{7} \\neq 1 \\)\n- \\( 2^3 = 8 \\equiv 1 \\pmod{7} \\)\n\nWe found that \\( 2^3 \\equiv 1 \\pmod{7} \\).\n\nThus, the order of 2 modulo 7 is 3.\n\n---\n\n### Step 3: Characterize all \\( n \\) such that \\( 2^n \\equiv 1 \\pmod{7} \\)\n\nSince the order is 3, the powers of 2 modulo 7 cycle every 3 steps:\n\n\\[\n2^1 \\equiv 2, \\quad 2^2 \\equiv 4, \\quad 2^3 \\equiv 1, \\quad 2^4 \\equiv 2, \\quad \\ldots\n\\]\n\nTherefore,\n\n\\[\n2^n \\equiv 1 \\pmod{7} \\iff 3 \\mid n.\n\\]\n\n---\n\n### Step 4: Final answer\n\nAll positive integers \\( n \\) such that \\( 2^n - 1 \\) is divisible by 7 are exactly those positive integers divisible by 3.\n\n---\n\n**Final answer:**\n\n\\[\n\\boxed{\\text{All positive integers } n \\text{ such that } n \\equiv 0 \\pmod{3}.}\n\\]\n\nOr equivalently,\n\n\\[\n\\boxed{n = 3k \\text{ for some positive integer } k.}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_NUMBER_ONE_001",
+            "resonance": 0.95,
+            "summary": "[ One (1) ], [ Mathematical primitive: MATH_NUMBER_ONE_001 ]"
+          },
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5042640914059157,
+        "alignment_score": 0.8197119020308711,
+        "tct_convergence": 0.9127923959898564
+      },
+      "processing_time_s": 11.060120582580566,
+      "timestamp": "2026-04-21T18:35:25.833299"
+    },
+    {
+      "problem_id": "MN_NT_002",
+      "domain": "Number Theory",
+      "subdomain": "Modular Arithmetic",
+      "problem_text": "Solve the inequality $\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)$ given that $x = a + 1$ is a solution.",
+      "reference_answer": "x in (5/2, 3), a in (1, 2)",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6889730134168716,
+        "nrci_values": [
+          0.6840403469656499,
+          0.6186758968910958,
+          0.7642027963938691
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.5951340475591376,
+        "mean_tgic_stability": 0.634084456632764,
+        "tgic_stability_scores": [
+          0.5913860008442765,
+          0.6504041324607415,
+          0.6604632365932739
+        ],
+        "bw256_macro_nrci": 0.3232142749901492,
+        "golay_weight_distribution": {
+          "12": 1,
+          "16": 1,
+          "8": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          },
+          "3": {
+            "3": 1
+          },
+          "5": {
+            "5": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 2.0,
+            "b": 3.0,
+            "add_analog": 5.0,
+            "add_expected": 5.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 6.0,
+            "mul_expected": 6.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 3.0,
+            "b": 5.0,
+            "add_analog": 8.0,
+            "add_expected": 8.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 15.0,
+            "mul_expected": 15.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          },
+          {
+            "n": 5,
+            "nrci": 0.7642027963938691,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485101038.107765,
+            "is_prime": true,
+            "tgic_stability": 0.6604632365932739
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 907,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "soc_energy": 656019628.3474897,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.42828184280123,
+        "coherence_score": 0.7505882462402649,
+        "tgic_total_stability": 0.6161674685984352,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 121,
+        "eml_tree": "eml(eml(leaf(0.6890),leaf(4.9612)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_NUMBER_ONE_001",
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "MATH_NUMBER_ONE_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2, 3, 5]\nPrimes among them: [2, 3, 5]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 2.0,
+            "b": 3.0,
+            "analog_result": 5.0,
+            "expected": 5.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 2.0,
+            "analog_result": 1.4142,
+            "expected": 1.4142,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1276,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the inequality:\n\\[\n\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)\n\\]\nand the condition that \\(x = a + 1\\) is a solution.\n\n---\n\n### Step 1: Understand the domain of the logarithms\n\nFor the logarithms to be defined, their arguments must be positive:\n\n1. \\(x^2 - x - 2 > 0\\)\n2. \\(3 + 2x - x^2 > 0\\)\n\n---\n\n### Step 2: Factor the expressions inside the logarithms\n\n1. \\(x^2 - x - 2 = (x - 2)(x + 1)\\)\n2. \\(3 + 2x - x^2 = -(x^2 - 2x - 3) = -(x - 3)(x + 1)\\)\n\nSo the inequality becomes:\n\\[\n\\log_a((x - 2)(x + 1)) > \\log_a(-(x - 3)(x + 1))\n\\]\n\n---\n\n### Step 3: Determine the domain from positivity conditions\n\n- For \\((x - 2)(x + 1) > 0\\):\n  - The product is positive if both factors are positive or both are negative.\n  - \\(x - 2 > 0\\) and \\(x + 1 > 0 \\implies x > 2\\)\n  - or \\(x - 2 < 0\\) and \\(x + 1 < 0 \\implies x < -1\\)\n  \n  So domain from first argument:\n  \\[\n  x < -1 \\quad \\text{or} \\quad x > 2\n  \\]\n\n- For \\(-(x - 3)(x + 1) > 0\\):\n  \\[\n  -(x - 3)(x + 1) > 0 \\implies (x - 3)(x + 1) < 0\n  \\]\n  \n  The product \\((x - 3)(x + 1)\\) is negative between the roots:\n  \\[\n  -1 < x < 3\n  \\]\n\n---\n\n### Step 4: Combine domain conditions\n\nThe domain for the inequality is the intersection of the two domains:\n\n\\[\n(x < -1 \\text{ or } x > 2) \\quad \\cap \\quad (-1 < x < 3)\n\\]\n\n- For \\(x < -1\\) and \\(-1 < x < 3\\), no overlap.\n- For \\(x > 2\\) and \\(-1 < x < 3\\), the overlap is:\n\\[\n2 < x < 3\n\\]\n\nSo the domain of the inequality is:\n\\[\n2 < x < 3\n\\]\n\n---\n\n### Step 5: Analyze the inequality depending on the base \\(a\\)\n\nRecall the inequality:\n\\[\n\\log_a(f(x)) > \\log_a(g(x))\n\\]\nwhere \\(f(x) = x^2 - x - 2\\), \\(g(x) = 3 + 2x - x^2\\).\n\n- If \\(a > 1\\), \\(\\log_a\\) is increasing, so:\n\\[\nf(x) > g(x)\n\\]\n- If \\(0 < a < 1\\), \\(\\log_a\\) is decreasing, so:\n\\[\nf(x) < g(x)\n\\]\n\n---\n\n### Step 6: Use the condition \\(x = a + 1\\) is a solution\n\nSince \\(x = a + 1\\) is a solution, it must satisfy the inequality strictly (since it is a solution to the inequality, not just the domain).\n\nAlso, \\(x = a + 1\\) must be in the domain:\n\\[\n2 < a + 1 < 3 \\implies 1 < a < 2\n\\]\n\nSo \\(a > 1\\).\n\nTherefore, the inequality reduces to:\n\\[\nf(x) > g(x)\n\\]\n\n---\n\n### Step 7: Solve \\(f(x) > g(x)\\) on the domain \\(2 < x < 3\\)\n\nRecall:\n\\[\nf(x) = x^2 - x - 2",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_NUMBER_ONE_001",
+            "resonance": 0.95,
+            "summary": "[ One (1) ], [ Mathematical primitive: MATH_NUMBER_ONE_001 ]"
+          },
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5221260503278965,
+        "alignment_score": 0.8196466064199415,
+        "tct_convergence": 0.9224090795558952
+      },
+      "processing_time_s": 17.133904933929443,
+      "timestamp": "2026-04-21T18:35:42.967489"
+    },
+    {
+      "problem_id": "MN_NT_003",
+      "domain": "Number Theory",
+      "subdomain": "Diophantine Equations",
+      "problem_text": "Prove that the fraction $\\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.",
+      "reference_answer": "gcd(21n+4, 14n+3) = 1 for all n",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6865987095576587,
+        "nrci_values": [
+          0.6828608631910631,
+          0.6830561196037641,
+          0.6837248218637105,
+          0.6186758968910958,
+          0.7646758462386598
+        ],
+        "prime_density": 0.2,
+        "geometric_complexity": 0.46355859224826923,
+        "mean_tgic_stability": 0.6726511176189038,
+        "tgic_stability_scores": [
+          0.6003570976282409,
+          0.6084016048207777,
+          0.6722105246282749,
+          0.6504041324607415,
+          0.8318822285564846
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 3,
+          "16": 1,
+          "8": 1
+        },
+        "factorisation_map": {
+          "21": {
+            "3": 1,
+            "7": 1
+          },
+          "14": {
+            "2": 1,
+            "7": 1
+          },
+          "4": {
+            "2": 2
+          },
+          "3": {
+            "3": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 21.0,
+            "b": 14.0,
+            "add_analog": 35.0,
+            "add_expected": 35.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 294.0,
+            "mul_expected": 294.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 14.0,
+            "b": 4.0,
+            "add_analog": 18.0,
+            "add_expected": 18.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 56.0,
+            "mul_expected": 56.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "ln(21)",
+            "result": 3.044522437723423
+          },
+          {
+            "op": "sin(21\u00b0)",
+            "result": 0.35836794954530027
+          },
+          {
+            "op": "factorial(14)",
+            "result": -566438450806.6425
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 21,
+            "nrci": 0.6828608631910631,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650201378.35967,
+            "is_prime": false,
+            "tgic_stability": 0.6003570976282409
+          },
+          {
+            "n": 14,
+            "nrci": 0.6830561196037641,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650385523.407455,
+            "is_prime": false,
+            "tgic_stability": 0.6084016048207777
+          },
+          {
+            "n": 4,
+            "nrci": 0.6837248218637105,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651024714.4228245,
+            "is_prime": false,
+            "tgic_stability": 0.6722105246282749
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "tgic_stability": 0.8318822285564846
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 3024,
+        "snapped_vector": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "soc_energy": 653759588.9099208,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.4291356137208595,
+        "coherence_score": 0.7538189906071574,
+        "tgic_total_stability": 0.6722105246282749,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 73,
+        "eml_tree": "eml(eml(leaf(0.6866),leaf(8.3670)),leaf(0.2000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_NUMBER_ONE_001",
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "MATH_NUMBER_ONE_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [21, 14, 4, 3, 1]\nPrimes among them: [3]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 21.0,
+            "b": 14.0,
+            "analog_result": 35.0,
+            "expected": 35.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 21.0,
+            "analog_result": 4.5826,
+            "expected": 4.5826,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 992,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "We want to prove that the fraction \n\\[\n\\frac{21n + 4}{14n + 3}\n\\]\nis irreducible for every natural number \\( n \\). \n\n---\n\n### Step 1: Understand the problem\n\nA fraction \\(\\frac{a}{b}\\) is irreducible if and only if \\(\\gcd(a,b) = 1\\).\n\nHere, \n\\[\na = 21n + 4, \\quad b = 14n + 3.\n\\]\n\nWe want to show:\n\\[\n\\gcd(21n + 4, 14n + 3) = 1 \\quad \\forall n \\in \\mathbb{N}.\n\\]\n\n---\n\n### Step 2: Use the Euclidean Algorithm\n\nApply the Euclidean algorithm to find \\(\\gcd(21n + 4, 14n + 3)\\):\n\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, (21n + 4) - (14n + 3)).\n\\]\n\nCalculate the difference:\n\\[\n(21n + 4) - (14n + 3) = 7n + 1.\n\\]\n\nSo,\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, 7n + 1).\n\\]\n\n---\n\n### Step 3: Repeat the Euclidean Algorithm\n\nNow,\n\\[\n\\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, (14n + 3) - 2(7n + 1)).\n\\]\n\nCalculate the difference:\n\\[\n(14n + 3) - 2(7n + 1) = 14n + 3 - 14n - 2 = 1.\n\\]\n\nThus,\n\\[\n\\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, 1).\n\\]\n\n---\n\n### Step 4: Final step\n\nSince \\(\\gcd(x, 1) = 1\\) for any integer \\(x\\), we have:\n\\[\n\\gcd(7n + 1, 1) = 1.\n\\]\n\nTherefore,\n\\[\n\\gcd(21n + 4, 14n + 3) = 1.\n\\]\n\n---\n\n### Conclusion:\n\nFor every natural number \\( n \\), the fraction \\(\\frac{21n + 4}{14n + 3}\\) is irreducible.\n\n---\n\n### Final answer:\n\n\\[\n\\boxed{\n\\text{The fraction } \\frac{21n + 4}{14n + 3} \\text{ is irreducible for all } n \\in \\mathbb{N}.\n}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_NUMBER_ONE_001",
+            "resonance": 0.95,
+            "summary": "[ One (1) ], [ Mathematical primitive: MATH_NUMBER_ONE_001 ]"
+          },
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.5249826412295323,
+        "alignment_score": 0.7562724153561957,
+        "tct_convergence": 0.9262313685610439
+      },
+      "processing_time_s": 11.742953300476074,
+      "timestamp": "2026-04-21T18:35:54.710615"
+    },
+    {
+      "problem_id": "MN_NT_004",
+      "domain": "Number Theory",
+      "subdomain": "Residues and Primitive Roots",
+      "problem_text": "Find all pairs of positive integers $(m, n)$ such that $m^2 - n^2 = 2026$.",
+      "reference_answer": "No solution (2026 = 2 \u00d7 1013, 1013 prime; m-n and m+n same parity needed)",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6825151692895042,
+        "nrci_values": [
+          0.6817097158647951,
+          0.6840403469656499,
+          0.6817954450380675
+        ],
+        "prime_density": 0.6666666666666666,
+        "geometric_complexity": 0.010790312261923823,
+        "mean_tgic_stability": 0.6239993767644431,
+        "tgic_stability_scores": [
+          0.6161674685984352,
+          0.5913860008442765,
+          0.6644446608506174
+        ],
+        "bw256_macro_nrci": 0.2764413800373276,
+        "golay_weight_distribution": {
+          "12": 3
+        },
+        "factorisation_map": {
+          "2026": {
+            "2": 1,
+            "1013": 1
+          },
+          "2": {
+            "2": 1
+          },
+          "1013": {
+            "1013": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 2026.0,
+            "b": 2.0,
+            "add_analog": 2028.0,
+            "add_expected": 2028.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 4052.0,
+            "mul_expected": 4052.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 2.0,
+            "b": 1013.0,
+            "add_analog": 1015.0,
+            "add_expected": 1015.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 2026.0,
+            "mul_expected": 2026.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "ln(2026)",
+            "result": 7.613818684808629
+          },
+          {
+            "op": "sin(2026\u00b0)",
+            "result": -0.7182059769756074
+          },
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2026,
+            "nrci": 0.6817097158647951,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 649105632.7941939,
+            "is_prime": false,
+            "tgic_stability": 0.6161674685984352
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          },
+          {
+            "n": 1013,
+            "nrci": 0.6817954450380675,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 649208436.9805723,
+            "is_prime": true,
+            "tgic_stability": 0.6644446608506174
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1956,
+        "snapped_vector": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 649872249.2883235,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430604126822212,
+        "coherence_score": 0.7441320842831564,
+        "tgic_total_stability": 0.6161674685984352,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 237,
+        "eml_tree": "eml(eml(leaf(0.6825),leaf(12.5843)),leaf(0.6667))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_NUMBER_ONE_001",
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "MATH_NUMBER_ONE_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2026, 2, 1013]\nPrimes among them: [2, 1013]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 2026.0,
+            "b": 2.0,
+            "analog_result": 2028.0,
+            "expected": 2028.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 2026.0,
+            "analog_result": 45.0111,
+            "expected": 45.0111,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1269,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the problem:\n\nFind all pairs of positive integers \\((m, n)\\) such that\n\\[\nm^2 - n^2 = 2026.\n\\]\n\n---\n\n### Step 1: Rewrite the equation\n\nRecall the difference of squares factorization:\n\\[\nm^2 - n^2 = (m-n)(m+n).\n\\]\n\nSo,\n\\[\n(m-n)(m+n) = 2026.\n\\]\n\n---\n\n### Step 2: Factorize 2026\n\nGiven:\n\\[\n2026 = 2 \\times 1013,\n\\]\nwhere 1013 is a prime number.\n\n---\n\n### Step 3: Set variables for factors\n\nLet:\n\\[\na = m - n, \\quad b = m + n,\n\\]\nwith \\(a < b\\) (since \\(m > n > 0\\)).\n\nThen,\n\\[\nab = 2026,\n\\]\nand since \\(m\\) and \\(n\\) are positive integers,\n- \\(a\\) and \\(b\\) are positive integers,\n- \\(a < b\\),\n- \\(m = \\frac{a+b}{2}\\),\n- \\(n = \\frac{b - a}{2}\\).\n\nFor \\(m\\) and \\(n\\) to be integers, \\(\\frac{a+b}{2}\\) and \\(\\frac{b-a}{2}\\) must be integers.\n\n---\n\n### Step 4: Parity conditions\n\nSince \\(m\\) and \\(n\\) are integers, \\(a\\) and \\(b\\) must be both even or both odd.\n\n- If \\(a\\) and \\(b\\) are both odd, then \\(a+b\\) and \\(b-a\\) are even.\n- If \\(a\\) and \\(b\\) are both even, then \\(a+b\\) and \\(b-a\\) are even.\n\nBut \\(2026 = 2 \\times 1013\\) is even, so one factor is even and the other is odd (since 1013 is odd).\n\nThus, the factors \\(a\\) and \\(b\\) cannot both be odd or both be even because their product is even but not divisible by 4 (since 1013 is odd).\n\n- If both were even, product divisible by 4.\n- If both odd, product odd.\n\nTherefore, one factor is even, the other is odd.\n\n---\n\n### Step 5: List factor pairs of 2026\n\nThe positive factor pairs \\((a,b)\\) with \\(a < b\\) are:\n\n1. \\((1, 2026)\\)\n2. \\((2, 1013)\\)\n\nNo other factor pairs because 1013 is prime.\n\n---\n\n### Step 6: Check each factor pair for integer \\(m,n\\)\n\nRecall:\n\\[\nm = \\frac{a+b}{2}, \\quad n = \\frac{b - a}{2}.\n\\]\n\n- For \\((a,b) = (1, 2026)\\):\n\\[\nm = \\frac{1 + 2026}{2} = \\frac{2027}{2} = 1013.5 \\quad \\text{(not integer)},\n\\]\n\\[\nn = \\frac{2026 - 1}{2} = \\frac{2025}{2} = 1012.5 \\quad \\text{(not integer)}.\n\\]\n\nNo solution here.\n\n- For \\((a,b) = (2, 1013)\\):\n\\[\nm = \\frac{2 + 1013}{2} = \\frac{1015}{2} = 507.5 \\quad \\text{(not integer)},\n\\]\n\\[\nn = \\frac{1013 - 2}{2} = \\frac{1011}{2} = 505.5 \\quad \\text{(not integer)}.\n\\]\n\nNo solution here either.\n\n---\n\n### Step 7: Consider the reversed order of factors\n\nSince \\(a = m-n\\) and \\(b = m+n\\), \\(a < b\\) by definition (because \\(m > n > 0\\)).\n\nBut what if we consider the other order?\n\nTry \\((a,b) = (1013, 2)\\):\n\n- \\(a = 1013\\), \\(b",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_NUMBER_ONE_001",
+            "resonance": 0.95,
+            "summary": "[ One (1) ], [ Mathematical primitive: MATH_NUMBER_ONE_001 ]"
+          },
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5171490429751832,
+        "alignment_score": 0.8191415113413961,
+        "tct_convergence": 0.920102706653264
+      },
+      "processing_time_s": 16.994731903076172,
+      "timestamp": "2026-04-21T18:36:11.705526"
+    },
+    {
+      "problem_id": "MN_NT_005",
+      "domain": "Number Theory",
+      "subdomain": "Divisibility / Factorization",
+      "problem_text": "Find the largest integer $n$ such that $n$ is divisible by all positive integers less than $\\sqrt[3]{n}$.",
+      "reference_answer": "420",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6606007888662444,
+        "nrci_values": [
+          0.681936978710832,
+          0.6164427334487587,
+          0.6834226544391425
+        ],
+        "prime_density": 0.3333333333333333,
+        "geometric_complexity": 0.3123035064145912,
+        "mean_tgic_stability": 0.6177222712374736,
+        "tgic_stability_scores": [
+          0.6161674685984352,
+          0.5725546842633683,
+          0.6644446608506174
+        ],
+        "bw256_macro_nrci": 0.2764413800373276,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1
+        },
+        "factorisation_map": {
+          "420": {
+            "2": 2,
+            "3": 1,
+            "5": 1,
+            "7": 1
+          },
+          "840": {
+            "2": 3,
+            "3": 1,
+            "5": 1,
+            "7": 1
+          },
+          "7": {
+            "7": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 420.0,
+            "b": 840.0,
+            "add_analog": 1260.0,
+            "add_expected": 1260.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 352800.0,
+            "mul_expected": 352800.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 840.0,
+            "b": 7.0,
+            "add_analog": 847.0,
+            "add_expected": 847.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 5880.0,
+            "mul_expected": 5880.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "ln(420)",
+            "result": 6.040254711277414
+          },
+          {
+            "op": "sin(420\u00b0)",
+            "result": 0.8660254037844191
+          },
+          {
+            "op": "ln(840)",
+            "result": 6.73340189183736
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 420,
+            "nrci": 0.681936978710832,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 649321736.8823142,
+            "is_prime": false,
+            "tgic_stability": 0.6161674685984352
+          },
+          {
+            "n": 840,
+            "nrci": 0.6164427334487587,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 782607430.88069,
+            "is_prime": false,
+            "tgic_stability": 0.5725546842633683
+          },
+          {
+            "n": 7,
+            "nrci": 0.6834226544391425,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650735986.2440562,
+            "is_prime": true,
+            "tgic_stability": 0.6644446608506174
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 3829,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "soc_energy": 838672883.5188473,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 16.0,
+        "symmetry_tax": 5.9179829819300585,
+        "coherence_score": 0.7248633986027837,
+        "tgic_total_stability": 0.6426382686830839,
+        "rune_xy_tax": 6.234806886472431,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 1,
+        "offbit_phase": 226,
+        "eml_tree": "eml(eml(leaf(0.6606),leaf(9.0418)),leaf(0.3333))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_NUMBER_ONE_001",
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "MATH_NUMBER_ONE_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [420, 840, 7]\nPrimes among them: [7]\n  420 mod 840 = 420\n  420 mod 7 = 0\n  840 mod 420 = 0\n  840 mod 7 = 0\n  7 mod 420 = 7\n  7 mod 840 = 7",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 420.0,
+            "b": 840.0,
+            "analog_result": 1260.0,
+            "expected": 1260.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 420.0,
+            "analog_result": 20.4939,
+            "expected": 20.4939,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1338,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "**Problem restatement:**\n\nFind the largest integer \\( n \\) such that \\( n \\) is divisible by all positive integers less than \\(\\sqrt[3]{n}\\).\n\n---\n\n### Step 1: Understand the problem\n\nWe want the largest integer \\( n \\) such that:\n\n\\[\n\\forall k \\in \\mathbb{Z}^+, \\quad k < \\sqrt[3]{n} \\implies k \\mid n.\n\\]\n\nIn other words, \\( n \\) is divisible by every positive integer less than the cube root of \\( n \\).\n\n---\n\n### Step 2: Define variables and rewrite condition\n\nLet:\n\n\\[\nm = \\lfloor \\sqrt[3]{n} \\rfloor.\n\\]\n\nThen the condition is:\n\n\\[\n\\text{For all } k = 1, 2, \\ldots, m-1, \\quad k \\mid n.\n\\]\n\nSince \\( n \\) must be divisible by all positive integers less than \\( m \\), \\( n \\) must be divisible by the least common multiple (LCM) of all integers from 1 to \\( m-1 \\):\n\n\\[\nn \\text{ is divisible by } \\mathrm{LCM}(1, 2, \\ldots, m-1).\n\\]\n\n---\n\n### Step 3: Express \\( n \\) in terms of \\( m \\)\n\nSince \\( m = \\lfloor \\sqrt[3]{n} \\rfloor \\), we have:\n\n\\[\nm \\leq \\sqrt[3]{n} < m+1,\n\\]\n\nwhich implies:\n\n\\[\nm^3 \\leq n < (m+1)^3.\n\\]\n\nWe want the largest \\( n \\) such that \\( n \\) is divisible by \\(\\mathrm{LCM}(1, 2, \\ldots, m-1)\\) and \\( n < (m+1)^3 \\).\n\n---\n\n### Step 4: Strategy to find \\( n \\)\n\nFor each integer \\( m \\), define:\n\n\\[\nL(m-1) = \\mathrm{LCM}(1, 2, \\ldots, m-1).\n\\]\n\nWe want to find the largest multiple of \\( L(m-1) \\) less than \\((m+1)^3\\):\n\n\\[\nn = L(m-1) \\times k,\n\\]\n\nwhere \\( k \\) is the largest integer such that:\n\n\\[\nL(m-1) \\times k < (m+1)^3.\n\\]\n\nAlso, \\( n \\geq m^3 \\) (since \\( n \\geq m^3 \\) to have cube root at least \\( m \\)).\n\n---\n\n### Step 5: Try values of \\( m \\)\n\nWe want to find the largest \\( n \\), so we try increasing \\( m \\) and check if such \\( n \\) exists.\n\n---\n\n### Step 6: Calculate \\( L(m-1) \\) for small \\( m \\)\n\n- \\( m=2 \\): \\( L(1) = \\mathrm{LCM}(1) = 1 \\)\n- \\( m=3 \\): \\( L(2) = \\mathrm{LCM}(1,2) = 2 \\)\n- \\( m=4 \\): \\( L(3) = \\mathrm{LCM}(1,2,3) = 6 \\)\n- \\( m=5 \\): \\( L(4) = \\mathrm{LCM}(1,2,3,4) = 12 \\)\n- \\( m=6 \\): \\( L(5) = \\mathrm{LCM}(1,2,3,4,5) = 60 \\)\n- \\( m=7 \\): \\( L(6) = \\mathrm{LCM}(1,2,3,4,5,6) = 60 \\) (since 6 divides 60)\n- \\( m=8 \\): \\( L(7) = \\mathrm{LCM}(1,2,3,4,5,6,7) = 420 \\)\n- \\( m=9 \\): \\( L(8) = \\mathrm{LCM}(1,2,3,4,5,6,7,8) = 840 \\)\n- \\( m=10",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_NUMBER_ONE_001",
+            "resonance": 0.95,
+            "summary": "[ One (1) ], [ Mathematical primitive: MATH_NUMBER_ONE_001 ]"
+          },
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.5030028805721742,
+        "alignment_score": 0.7883381420269373,
+        "tct_convergence": 0.9144820422234395
+      },
+      "processing_time_s": 13.73825478553772,
+      "timestamp": "2026-04-21T18:36:25.443958"
+    },
+    {
+      "problem_id": "MN_ALG_001",
+      "domain": "Algebra",
+      "subdomain": "Equations and Inequalities",
+      "problem_text": "Solve the system: $x + y + z = a$, $x^2 + y^2 + z^2 = b^2$, $xy = z^2$ where $a$ and $b$ are given constants. What conditions must $a$ and $b$ satisfy?",
+      "reference_answer": "z = (a^2 - b^2)/(2a), x+y = a - z, xy = z^2; condition: a != 0 and discriminant >= 0",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1148,
+        "snapped_vector": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7464894250721051,
+        "tgic_total_stability": 0.6245033712422242,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 3.1174034432362157,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 94,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(5.7225)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_CONST_I_001"
+        ],
+        "domain_alignment": "GEOMETRIC",
+        "brain_result_uid": "MATH_CONST_I_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1135,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the system:\n\\[\n\\begin{cases}\nx + y + z = a \\\\\nx^2 + y^2 + z^2 = b^2 \\\\\nxy = z^2\n\\end{cases}\n\\]\nwhere \\(a\\) and \\(b\\) are constants.\n\n---\n\n### Step 1: Express variables and use the given relations\n\nWe have three equations and three unknowns \\(x, y, z\\).\n\nFrom the third equation:\n\\[\nxy = z^2.\n\\]\n\nOur goal is to find \\(x, y, z\\) in terms of \\(a, b\\), and then find conditions on \\(a, b\\) for solutions to exist.\n\n---\n\n### Step 2: Use the first two equations to relate sums and squares\n\nRecall the identity:\n\\[\n(x + y + z)^2 = x^2 + y^2 + z^2 + 2(xy + yz + zx).\n\\]\n\nGiven:\n\\[\nx + y + z = a,\n\\]\n\\[\nx^2 + y^2 + z^2 = b^2.\n\\]\n\nSubstitute:\n\\[\na^2 = b^2 + 2(xy + yz + zx).\n\\]\n\nRearranged:\n\\[\nxy + yz + zx = \\frac{a^2 - b^2}{2}.\n\\]\n\n---\n\n### Step 3: Use the third equation \\(xy = z^2\\)\n\nSubstitute \\(xy = z^2\\) into the above:\n\\[\nz^2 + yz + zx = \\frac{a^2 - b^2}{2}.\n\\]\n\nFactor \\(z\\) from the last two terms:\n\\[\nz^2 + z(y + x) = \\frac{a^2 - b^2}{2}.\n\\]\n\nRecall from the first equation:\n\\[\nx + y + z = a \\implies x + y = a - z.\n\\]\n\nSubstitute:\n\\[\nz^2 + z(a - z) = \\frac{a^2 - b^2}{2}.\n\\]\n\nSimplify:\n\\[\nz^2 + a z - z^2 = \\frac{a^2 - b^2}{2} \\implies a z = \\frac{a^2 - b^2}{2}.\n\\]\n\n---\n\n### Step 4: Solve for \\(z\\)\n\nIf \\(a \\neq 0\\),\n\\[\nz = \\frac{a^2 - b^2}{2a}.\n\\]\n\nIf \\(a = 0\\), then the equation becomes:\n\\[\n0 = \\frac{0 - b^2}{2} = -\\frac{b^2}{2} \\implies b^2 = 0 \\implies b = 0.\n\\]\n\nWe will consider \\(a = 0\\) case separately later.\n\n---\n\n### Step 5: Express \\(x + y\\) and \\(xy\\) in terms of \\(a, b\\)\n\nRecall:\n\\[\nx + y = a - z = a - \\frac{a^2 - b^2}{2a} = \\frac{2a^2 - (a^2 - b^2)}{2a} = \\frac{a^2 + b^2}{2a}.\n\\]\n\nAlso,\n\\[\nxy = z^2 = \\left(\\frac{a^2 - b^2}{2a}\\right)^2 = \\frac{(a^2 - b^2)^2}{4a^2}.\n\\]\n\n---\n\n### Step 6: Solve for \\(x, y\\) as roots of quadratic\n\n\\(x\\) and \\(y\\) satisfy:\n\\[\nt^2 - (x + y) t + xy = 0,\n\\]\nor\n\\[\nt^2 - \\frac{a^2 + b^2}{2a} t + \\frac{(a^2 - b^2)^2}{4a^2} = 0.\n\\]\n\n---\n\n### Step 7: Discriminant of quadratic for \\(x, y\\)\n\nThe discriminant \\(\\Delta\\) is:\n\\[\n\\Delta = \\left(\\frac{a^2 + b^2}{2a}\\right)^2 - 4",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_CONST_I_001",
+            "resonance": 0.95,
+            "summary": "[ Imaginary Unit (i) ], [ Mathematical primitive: MATH_CONST_I_001 ]"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5162689907355368,
+        "alignment_score": 0.8170947609889861,
+        "tct_convergence": 0.9213420715198222
+      },
+      "processing_time_s": 14.424724578857422,
+      "timestamp": "2026-04-21T18:36:39.868878"
+    },
+    {
+      "problem_id": "MN_ALG_002",
+      "domain": "Algebra",
+      "subdomain": "Algebraic Expressions",
+      "problem_text": "Let $a, b, c$ be positive reals with $a + b + c = 1$. Prove that $a^2 + b^2 + c^2 \\geq \\frac{1}{3}$.",
+      "reference_answer": "Proof via Cauchy-Schwarz or AM-QM inequality",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6916758715648779,
+        "nrci_values": [
+          0.6186758968910958,
+          0.7646758462386598
+        ],
+        "prime_density": 0.5,
+        "geometric_complexity": 0.72999974673782,
+        "mean_tgic_stability": 0.741143180508613,
+        "tgic_stability_scores": [
+          0.6504041324607415,
+          0.8318822285564846
+        ],
+        "bw256_macro_nrci": 0.3374897920916603,
+        "golay_weight_distribution": {
+          "16": 1,
+          "8": 1
+        },
+        "factorisation_map": {
+          "3": {
+            "3": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 3.0,
+            "b": 1.0,
+            "add_analog": 4.0,
+            "add_expected": 4.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 3.0,
+            "mul_expected": 3.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(3)",
+            "result": 5.999999957305127
+          },
+          {
+            "op": "ln(3)",
+            "result": 1.0986122886681098
+          },
+          {
+            "op": "sin(3\u00b0)",
+            "result": 0.05233595624294384
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "tgic_stability": 0.8318822285564846
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2785,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "soc_energy": 658595194.3734139,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.42730887598571,
+        "coherence_score": 0.7492048595501377,
+        "tgic_total_stability": 0.5752842344228299,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 6.234806886472431,
+        "stability_rank": 0,
+        "offbit_phase": 63,
+        "eml_tree": "eml(eml(leaf(0.6917),leaf(10.7239)),leaf(0.5000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_CONST_I_001"
+        ],
+        "domain_alignment": "GEOMETRIC",
+        "brain_result_uid": "MATH_CONST_I_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [3, 1]\nPrimes among them: [3]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 3.0,
+            "b": 1.0,
+            "analog_result": 4.0,
+            "expected": 4.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 3.0,
+            "analog_result": 1.7321,
+            "expected": 1.7321,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 653,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given: \\(a, b, c > 0\\) and \\(a + b + c = 1\\).\n\nWe want to prove:\n\\[\na^2 + b^2 + c^2 \\geq \\frac{1}{3}.\n\\]\n\n---\n\n### Step 1: Use the Cauchy-Schwarz inequality\n\nRecall the Cauchy-Schwarz inequality in \\(\\mathbb{R}^3\\):\n\\[\n(a^2 + b^2 + c^2)(1^2 + 1^2 + 1^2) \\geq (a + b + c)^2.\n\\]\n\nSince \\(1^2 + 1^2 + 1^2 = 3\\), this becomes:\n\\[\n3(a^2 + b^2 + c^2) \\geq (a + b + c)^2.\n\\]\n\n---\n\n### Step 2: Substitute \\(a + b + c = 1\\)\n\n\\[\n3(a^2 + b^2 + c^2) \\geq 1^2 = 1.\n\\]\n\nDivide both sides by 3:\n\\[\na^2 + b^2 + c^2 \\geq \\frac{1}{3}.\n\\]\n\n---\n\n### Step 3: Check equality condition\n\nEquality holds if and only if \\((a, b, c)\\) is proportional to \\((1, 1, 1)\\), i.e., when \\(a = b = c\\).\n\nSince \\(a + b + c = 1\\), equality holds when:\n\\[\na = b = c = \\frac{1}{3}.\n\\]\n\n---\n\n### Final answer:\n\n\\[\n\\boxed{a^2 + b^2 + c^2 \\geq \\frac{1}{3}}.\n\\]\n\nEquality holds if and only if \\(a = b = c = \\frac{1}{3}\\).",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_CONST_I_001",
+            "resonance": 0.95,
+            "summary": "[ Imaginary Unit (i) ], [ Mathematical primitive: MATH_CONST_I_001 ]"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.5297031224055794,
+        "alignment_score": 0.8270426650328007,
+        "tct_convergence": 0.9199674498560255
+      },
+      "processing_time_s": 7.96772575378418,
+      "timestamp": "2026-04-21T18:36:47.836854"
+    },
+    {
+      "problem_id": "MN_ALG_003",
+      "domain": "Algebra",
+      "subdomain": "Intermediate Algebra",
+      "problem_text": "Let $f$ be a real-valued function defined for all real $x$ such that for some positive constant $a$: $f(x+a) = \\frac{1}{2} + \\sqrt{f(x) - [f(x)]^2}$. Prove $f$ is periodic.",
+      "reference_answer": "f has period 2a",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.29800369420996137,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 669,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7423440977679314,
+        "tgic_total_stability": 0.5830500982004875,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 220,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(4.8095)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_CONST_I_001"
+        ],
+        "domain_alignment": "GEOMETRIC",
+        "brain_result_uid": "MATH_CONST_I_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]\n  sqrt(2) = 1.414214",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1149,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the functional equation for a real-valued function \\( f \\) defined on all real \\( x \\) and a positive constant \\( a \\):\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x) - [f(x)]^2}.\n\\]\n\n**Goal:** Prove that \\( f \\) is periodic.\n\n---\n\n### Step 1: Analyze the functional equation\n\nRewrite the equation:\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x)(1 - f(x))}.\n\\]\n\nSince \\( f(x) \\) is real-valued, the expression under the square root must be nonnegative:\n\\[\nf(x)(1 - f(x)) \\geq 0.\n\\]\n\nThis implies:\n\\[\nf(x) \\in [0,1].\n\\]\n\n---\n\n### Step 2: Define an auxiliary function\n\nSet\n\\[\nf(x) = \\sin^2 \\theta(x).\n\\]\n\nSince \\( \\sin^2 \\theta \\in [0,1] \\), this substitution is natural.\n\nThen,\n\\[\nf(x) = \\sin^2 \\theta(x) \\implies f(x)(1 - f(x)) = \\sin^2 \\theta(x) \\cos^2 \\theta(x).\n\\]\n\nTherefore,\n\\[\n\\sqrt{f(x)(1 - f(x))} = \\sqrt{\\sin^2 \\theta(x) \\cos^2 \\theta(x)} = |\\sin \\theta(x) \\cos \\theta(x)|.\n\\]\n\n---\n\n### Step 3: Express \\( f(x+a) \\) in terms of \\(\\theta(x)\\)\n\nThe functional equation becomes:\n\\[\nf(x+a) = \\frac{1}{2} + |\\sin \\theta(x) \\cos \\theta(x)|.\n\\]\n\nRecall the double-angle identity:\n\\[\n\\sin 2\\theta = 2 \\sin \\theta \\cos \\theta.\n\\]\n\nHence,\n\\[\n|\\sin \\theta(x) \\cos \\theta(x)| = \\frac{1}{2} |\\sin 2\\theta(x)|.\n\\]\n\nSo,\n\\[\nf(x+a) = \\frac{1}{2} + \\frac{1}{2} |\\sin 2\\theta(x)| = \\frac{1 + |\\sin 2\\theta(x)|}{2}.\n\\]\n\n---\n\n### Step 4: Express \\( f(x+a) \\) as \\(\\sin^2\\) of some angle\n\nWe want to write \\( f(x+a) \\) in the form \\(\\sin^2 \\phi\\) for some \\(\\phi\\).\n\nNote that\n\\[\n\\sin^2 \\alpha = \\frac{1 - \\cos 2\\alpha}{2}.\n\\]\n\nWe have\n\\[\nf(x+a) = \\frac{1 + |\\sin 2\\theta(x)|}{2}.\n\\]\n\nCompare this with the identity:\n\\[\n\\sin^2 \\alpha = \\frac{1 - \\cos 2\\alpha}{2}.\n\\]\n\nTo match the form, write\n\\[\nf(x+a) = \\frac{1 + |\\sin 2\\theta(x)|}{2} = 1 - \\frac{1 - |\\sin 2\\theta(x)|}{2}.\n\\]\n\nAlternatively, consider the function\n\\[\ng(x) := \\arcsin(\\sqrt{f(x)}).\n\\]\n\nSince \\( f(x) = \\sin^2 \\theta(x) \\), we can take \\(\\theta(x) = g(x)\\) (mod \\(\\pi\\)).\n\n---\n\n### Step 5: Express the functional equation in terms of \\( g(x) \\)\n\nRecall:\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x)(1 - f(x))} = \\frac{1}{2} + \\sqrt{\\sin^2 g(x) \\cos^2 g(x)} = \\frac{1}{2} + |\\sin g(x) \\cos g(x)|.\n\\]\n\nUsing the double-angle identity:\n\\[\n|\\sin g(x) \\cos g(x)| = \\frac{1}{2} |\\sin 2g(x)|.\n\\]\n\nSo,\n\\[\nf(x+a) = \\frac{1}{2}",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_CONST_I_001",
+            "resonance": 0.95,
+            "summary": "[ Imaginary Unit (i) ], [ Mathematical primitive: MATH_CONST_I_001 ]"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5148872149674788,
+        "alignment_score": 0.8191674246410731,
+        "tct_convergence": 0.9178876320996775
+      },
+      "processing_time_s": 14.203207731246948,
+      "timestamp": "2026-04-21T18:37:02.040255"
+    },
+    {
+      "problem_id": "MN_ALG_004",
+      "domain": "Algebra",
+      "subdomain": "Prealgebra / Basic Algebra",
+      "problem_text": "Find all real solutions to $x^4 - 3x^3 + 4x^2 - 3x + 1 = 0$.",
+      "reference_answer": "x = (3 \u00b1 sqrt(5))/2 divided by 2, i.e. x = (3\u00b1sqrt(5))/4... actually x=(1+sqrt(5))/2 and x=(1-sqrt(5))/2 after dividing by x^2",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.687779227989779,
+        "nrci_values": [
+          0.6837248218637105,
+          0.6186758968910958,
+          0.6840403469656499,
+          0.7646758462386598
+        ],
+        "prime_density": 0.5,
+        "geometric_complexity": 0.5176576500786025,
+        "mean_tgic_stability": 0.6864707216224444,
+        "tgic_stability_scores": [
+          0.6722105246282749,
+          0.6504041324607415,
+          0.5913860008442765,
+          0.8318822285564846
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1,
+          "8": 1
+        },
+        "factorisation_map": {
+          "4": {
+            "2": 2
+          },
+          "3": {
+            "3": 1
+          },
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 4.0,
+            "b": 3.0,
+            "add_analog": 7.0,
+            "add_expected": 7.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 12.0,
+            "mul_expected": 12.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 3.0,
+            "b": 2.0,
+            "add_analog": 5.0,
+            "add_expected": 5.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 6.0,
+            "mul_expected": 6.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(4)",
+            "result": 23.999999041290106
+          },
+          {
+            "op": "ln(4)",
+            "result": 1.3862943611198908
+          },
+          {
+            "op": "sin(4\u00b0)",
+            "result": 0.06975647374412532
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 4,
+            "nrci": 0.6837248218637105,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651024714.4228245,
+            "is_prime": false,
+            "tgic_stability": 0.6722105246282749
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "tgic_stability": 0.8318822285564846
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2229,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "soc_energy": 654882999.6149212,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.428711224935962,
+        "coherence_score": 0.7486179382598556,
+        "tgic_total_stability": 0.6084016048207777,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 6.234806886472431,
+        "stability_rank": 0,
+        "offbit_phase": 145,
+        "eml_tree": "eml(eml(leaf(0.6878),leaf(1.4800)),leaf(0.5000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_CONST_I_001"
+        ],
+        "domain_alignment": "GEOMETRIC",
+        "brain_result_uid": "MATH_CONST_I_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [4, 3, 2, 1]\nPrimes among them: [3, 2]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 4.0,
+            "b": 3.0,
+            "analog_result": 7.0,
+            "expected": 7.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 4.0,
+            "analog_result": 2.0,
+            "expected": 2.0,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1084,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the polynomial equation:\n\\[\nx^4 - 3x^3 + 4x^2 - 3x + 1 = 0\n\\]\n\n**Step 1: Check for possible factorization**\n\nTry to factor the quartic polynomial into the product of two quadratics:\n\\[\n(x^2 + ax + b)(x^2 + cx + d) = x^4 - 3x^3 + 4x^2 - 3x + 1\n\\]\n\nExpanding the left side:\n\\[\nx^4 + (a + c)x^3 + (ac + b + d)x^2 + (ad + bc)x + bd = x^4 - 3x^3 + 4x^2 - 3x + 1\n\\]\n\nEquate coefficients:\n\\[\n\\begin{cases}\na + c = -3 \\\\\nac + b + d = 4 \\\\\nad + bc = -3 \\\\\nbd = 1\n\\end{cases}\n\\]\n\n**Step 2: Solve for \\(b\\) and \\(d\\)**\n\nSince \\(bd = 1\\), possible pairs \\((b,d)\\) are:\n- \\(b = 1, d = 1\\)\n- \\(b = -1, d = -1\\)\n\nTry \\(b = 1, d = 1\\):\n\nThen:\n\\[\nac + 1 + 1 = 4 \\implies ac + 2 = 4 \\implies ac = 2\n\\]\n\nAlso:\n\\[\nad + bc = a \\cdot 1 + b \\cdot c = a + c = -3\n\\]\n\nBut from the first equation, \\(a + c = -3\\).\n\nSo:\n\\[\nad + bc = a + c = -3\n\\]\n\nThis matches the coefficient of \\(x\\).\n\nSo the system reduces to:\n\\[\n\\begin{cases}\na + c = -3 \\\\\nac = 2\n\\end{cases}\n\\]\n\n**Step 3: Solve for \\(a\\) and \\(c\\)**\n\nThe system:\n\\[\na + c = -3, \\quad ac = 2\n\\]\n\nThese are the sum and product of roots of the quadratic:\n\\[\nt^2 - (a + c)t + ac = 0 \\implies t^2 + 3t + 2 = 0\n\\]\n\nSolve:\n\\[\nt^2 + 3t + 2 = 0 \\implies (t + 1)(t + 2) = 0\n\\]\n\nSo:\n\\[\nt = -1 \\quad \\text{or} \\quad t = -2\n\\]\n\nTherefore, \\((a, c) = (-1, -2)\\) or \\((-2, -1)\\).\n\n**Step 4: Write the factorization**\n\nUsing \\(a = -1, c = -2, b = 1, d = 1\\):\n\\[\n(x^2 - x + 1)(x^2 - 2x + 1) = 0\n\\]\n\nCheck the second quadratic:\n\\[\nx^2 - 2x + 1 = (x - 1)^2\n\\]\n\n**Step 5: Solve each quadratic**\n\n1. \\(x^2 - x + 1 = 0\\)\n\nDiscriminant:\n\\[\n\\Delta = (-1)^2 - 4 \\cdot 1 \\cdot 1 = 1 - 4 = -3 < 0\n\\]\n\nNo real roots.\n\n2. \\((x - 1)^2 = 0\\)\n\nRoot:\n\\[\nx = 1\n\\]\n\nwith multiplicity 2.\n\n**Step 6: Final answer**\n\nThe only real solution to the equation is:\n\\[\n\\boxed{x = 1}\n\\]\n\nwith multiplicity 2.",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_CONST_I_001",
+            "resonance": 0.95,
+            "summary": "[ Imaginary Unit (i) ], [ Mathematical primitive: MATH_CONST_I_001 ]"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.5245637701913745,
+        "alignment_score": 0.8226541809460839,
+        "tct_convergence": 0.921335572302843
+      },
+      "processing_time_s": 15.772184371948242,
+      "timestamp": "2026-04-21T18:37:17.812656"
+    },
+    {
+      "problem_id": "MN_ALG_005",
+      "domain": "Algebra",
+      "subdomain": "Equations and Inequalities",
+      "problem_text": "Find all functions $f: \\mathbb{R} \\to \\mathbb{R}$ satisfying $f(x^2 + y + f(y)) = 2y + f(x)^2$ for all $x, y \\in \\mathbb{R}$.",
+      "reference_answer": "f(x) = x",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 111,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7423440977679314,
+        "tgic_total_stability": 0.5830500982004875,
+        "rune_xy_tax": 3.1174034432362157,
+        "rune_xz_tax": 6.234806886472431,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 1,
+        "offbit_phase": 0,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(10.1816)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "MATH_CONST_I_001"
+        ],
+        "domain_alignment": "GEOMETRIC",
+        "brain_result_uid": "MATH_CONST_I_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1131,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the functional equation:\n\\[\nf(x^2 + y + f(y)) = 2y + f(x)^2 \\quad \\forall x,y \\in \\mathbb{R}.\n\\]\n\n**Step 1: Analyze the equation and try to find properties of \\( f \\).**\n\nRewrite the equation:\n\\[\nf\\big(x^2 + y + f(y)\\big) = 2y + \\big(f(x)\\big)^2.\n\\]\n\nWe want to find all functions \\( f: \\mathbb{R} \\to \\mathbb{R} \\) satisfying this.\n\n---\n\n**Step 2: Try to isolate \\( y \\) or \\( f(y) \\) terms.**\n\nLet\u2019s denote:\n\\[\nA(y) := y + f(y).\n\\]\n\nThen the equation becomes:\n\\[\nf(x^2 + A(y)) = 2y + (f(x))^2.\n\\]\n\n---\n\n**Step 3: Fix \\( x \\) and consider the function in terms of \\( y \\).**\n\nFor fixed \\( x \\), the left side is \\( f \\) evaluated at \\( x^2 + A(y) \\), and the right side is \\( 2y + (f(x))^2 \\).\n\nSince \\( y \\) is arbitrary, the function \\( y \\mapsto f(x^2 + A(y)) \\) is affine in \\( y \\) (because the right side is linear in \\( y \\)).\n\n---\n\n**Step 4: Consider the function \\( g(t) := f(t) \\).**\n\nWe have:\n\\[\nf(x^2 + A(y)) = 2y + (f(x))^2.\n\\]\n\nFor fixed \\( x \\), define \\( t = x^2 + A(y) \\). Then:\n\\[\nf(t) = 2y + (f(x))^2.\n\\]\n\nBut \\( t = x^2 + A(y) \\implies A(y) = t - x^2 \\).\n\nSo:\n\\[\nf(t) = 2y + (f(x))^2.\n\\]\n\nRewrite:\n\\[\n2y = f(t) - (f(x))^2.\n\\]\n\nSince \\( y \\) appears linearly on the right, and \\( t = x^2 + A(y) \\), this suggests \\( A(y) \\) is invertible in terms of \\( y \\).\n\n---\n\n**Step 5: Express \\( y \\) in terms of \\( A(y) \\).**\n\nRecall \\( A(y) = y + f(y) \\).\n\nIf \\( A \\) is invertible, then:\n\\[\ny = A^{-1}(t - x^2).\n\\]\n\nFrom the previous step:\n\\[\n2y = f(t) - (f(x))^2.\n\\]\n\nSubstitute \\( y = A^{-1}(t - x^2) \\):\n\\[\n2 A^{-1}(t - x^2) = f(t) - (f(x))^2.\n\\]\n\n---\n\n**Step 6: Consider the function \\( h(t) := f(t) \\).**\n\nRewrite:\n\\[\nf(t) = 2 A^{-1}(t - x^2) + (f(x))^2.\n\\]\n\nBut the right side depends on \\( x \\) and \\( t \\), while the left side depends only on \\( t \\).\n\nFor this to hold for all \\( x, t \\), the dependence on \\( x \\) must be separated.\n\n---\n\n**Step 7: Fix \\( t \\) and vary \\( x \\).**\n\nFor fixed \\( t \\), the right side is:\n\\[\n2 A^{-1}(t - x^2) + (f(x))^2.\n\\]\n\nFor this to be independent of \\( x \\), the function:\n\\[\nx \\mapsto 2 A^{-1}(t - x^2) + (f(x))^2\n\\]\nmust be constant in \\( x \\).\n\n---\n\n**Step 8: Consider the function \\( x \\mapsto 2 A^{-1}(t - x^2) + (f(x))^2 \\).**\n\nSince \\( t \\) is fixed, define:\n\\[\ns = t - x^2.\n\\]\n\nThen:\n\\[\n2 A^{-1}(s) +",
+        "semantic_hits": [
+          {
+            "ubp_id": "MATH_CONST_I_001",
+            "resonance": 0.95,
+            "summary": "[ Imaginary Unit (i) ], [ Mathematical primitive: MATH_CONST_I_001 ]"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5148872149674788,
+        "alignment_score": 0.8191674246410731,
+        "tct_convergence": 0.9178876320996775
+      },
+      "processing_time_s": 13.421109676361084,
+      "timestamp": "2026-04-21T18:37:31.233946"
+    },
+    {
+      "problem_id": "MN_GEO_001",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "An arbitrary point $M$ is selected in the interior of segment $AB$. The squares $AMCD$ and $MBEF$ are constructed on the same side of $AB$. The circles circumscribed about these squares have centers $P$ and $Q$ respectively. Prove that $AP$, $BQ$, and $MF$ are concurrent.",
+      "reference_answer": "The three lines meet at a single point",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1447,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7512601404107102,
+        "tgic_total_stability": 0.6722105246282749,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 167,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(9.2213)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_SYMMETRY",
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "OP_SYMMETRY",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]\n  sqrt(2) = 1.414214",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1251,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "**Problem restatement:**\n\nGiven a segment \\( AB \\) and a point \\( M \\) inside it, two squares \\( AMCD \\) and \\( MBEF \\) are constructed on the same side of \\( AB \\). Let \\( P \\) and \\( Q \\) be the centers of the circumscribed circles of these squares. Prove that the lines \\( AP \\), \\( BQ \\), and \\( MF \\) are concurrent.\n\n---\n\n### Step 1: Understand the configuration and notation\n\n- \\( A, B \\) are points on a line segment.\n- \\( M \\) is a point on segment \\( AB \\), so \\( A, M, B \\) are collinear with \\( M \\) between \\( A \\) and \\( B \\).\n- Squares \\( AMCD \\) and \\( MBEF \\) are constructed on the same side of \\( AB \\).\n- \\( P \\) is the center of the circumscribed circle of square \\( AMCD \\).\n- \\( Q \\) is the center of the circumscribed circle of square \\( MBEF \\).\n- Need to prove that lines \\( AP \\), \\( BQ \\), and \\( MF \\) are concurrent.\n\n---\n\n### Step 2: Set up a coordinate system\n\nTo analyze the problem rigorously, place the points on the coordinate plane.\n\n- Place \\( A \\) at the origin: \\( A = (0,0) \\).\n- Place \\( B \\) on the x-axis: \\( B = (1,0) \\).\n- Since \\( M \\) lies between \\( A \\) and \\( B \\), let \\( M = (t,0) \\) where \\( 0 < t < 1 \\).\n\n---\n\n### Step 3: Coordinates of the square vertices\n\nThe squares are constructed on the same side of \\( AB \\), say above the x-axis.\n\n- Square \\( AMCD \\) with base \\( AM \\):\n  - \\( A = (0,0) \\)\n  - \\( M = (t,0) \\)\n  - Since \\( AMCD \\) is a square, points \\( C \\) and \\( D \\) are obtained by rotating \\( AM \\) by 90\u00b0 counterclockwise about \\( A \\) and \\( M \\) respectively.\n  \nVector \\( \\overrightarrow{AM} = (t,0) \\).\n\nRotate \\( \\overrightarrow{AM} \\) by 90\u00b0 CCW: \\( (0,t) \\).\n\nSo:\n- \\( D = M + (0,t) = (t, t) \\)\n- \\( C = A + (0,t) = (0, t) \\)\n\nThus, square \\( AMCD \\) has vertices:\n\\[\nA = (0,0), \\quad M = (t,0), \\quad C = (0,t), \\quad D = (t,t).\n\\]\n\n---\n\n- Square \\( MBEF \\) with base \\( MB \\):\n  - \\( M = (t,0) \\)\n  - \\( B = (1,0) \\)\n  \nVector \\( \\overrightarrow{MB} = (1 - t, 0) \\).\n\nRotate \\( \\overrightarrow{MB} \\) by 90\u00b0 CCW: \\( (0, 1 - t) \\).\n\nSo:\n- \\( E = B + (0, 1 - t) = (1, 1 - t) \\)\n- \\( F = M + (0, 1 - t) = (t, 1 - t) \\)\n\nSquare \\( MBEF \\) has vertices:\n\\[\nM = (t,0), \\quad B = (1,0), \\quad E = (1, 1 - t), \\quad F = (t, 1 - t).\n\\]\n\n---\n\n### Step 4: Find centers \\( P \\) and \\( Q \\) of the circumscribed circles\n\nThe circumscribed circle of a square is centered at the midpoint of its diagonal.\n\n- For square \\( AMCD \\), diagonal \\( AC \\) or \\( MD \\) can be used.\n\nDiagonal \\( AC \\):\n\\[\nA = (0,0), \\quad C = (0,t).\n\\]\nMidpoint \\( P = \\left( \\frac{0+0}{2}, \\frac",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_SYMMETRY",
+            "resonance": 0.95,
+            "summary": "[Operator: Symmetry], Invariance under a group of transformations."
+          },
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5178592291817384,
+        "alignment_score": 0.8147094033196837,
+        "tct_convergence": 0.9253176676353264
+      },
+      "processing_time_s": 15.540683507919312,
+      "timestamp": "2026-04-21T18:37:46.774880"
+    },
+    {
+      "problem_id": "MN_GEO_002",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "In triangle $ABC$, the median from $A$ has length $m_a$. Prove that $m_a \\leq \\frac{b+c}{2}$.",
+      "reference_answer": "Equality iff b=c (isoceles)",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 3597,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7464894250721051,
+        "tgic_total_stability": 0.6245033712422242,
+        "rune_xy_tax": 3.1174034432362157,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 1,
+        "offbit_phase": 180,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(10.3392)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_SYMMETRY",
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "OP_SYMMETRY",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1191,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "**Problem:**  \nIn triangle \\( ABC \\), the median from vertex \\( A \\) has length \\( m_a \\). Prove that  \n\\[\nm_a \\leq \\frac{b+c}{2},\n\\]\nwhere \\( b = AC \\) and \\( c = AB \\).\n\n---\n\n### Step 1: Setup and notation\n\nLet the sides of triangle \\( ABC \\) be:\n- \\( BC = a \\),\n- \\( AC = b \\),\n- \\( AB = c \\).\n\nThe median from \\( A \\) is the segment from \\( A \\) to the midpoint \\( M \\) of side \\( BC \\).\n\nBy definition, \\( M \\) is the midpoint of \\( BC \\), so\n\\[\nM = \\frac{B + C}{2} \\quad \\text{(vector notation)}.\n\\]\n\nThe length of the median \\( m_a = AM \\).\n\n---\n\n### Step 2: Express \\( m_a \\) in terms of \\( a, b, c \\)\n\nUsing Apollonius' theorem or the median length formula, we have:\n\\[\nm_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4}.\n\\]\n\nThis is a well-known formula for the length of the median from vertex \\( A \\).\n\n---\n\n### Step 3: Goal restated\n\nWe want to prove:\n\\[\nm_a \\leq \\frac{b + c}{2}.\n\\]\n\nSquare both sides (both sides are positive since they are lengths):\n\\[\nm_a^2 \\leq \\left(\\frac{b + c}{2}\\right)^2 = \\frac{(b + c)^2}{4} = \\frac{b^2 + 2bc + c^2}{4}.\n\\]\n\n---\n\n### Step 4: Substitute \\( m_a^2 \\) and simplify\n\nRecall:\n\\[\nm_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4}.\n\\]\n\nInequality becomes:\n\\[\n\\frac{2b^2 + 2c^2 - a^2}{4} \\leq \\frac{b^2 + 2bc + c^2}{4}.\n\\]\n\nMultiply both sides by 4:\n\\[\n2b^2 + 2c^2 - a^2 \\leq b^2 + 2bc + c^2.\n\\]\n\nBring all terms to one side:\n\\[\n2b^2 + 2c^2 - a^2 - b^2 - 2bc - c^2 \\leq 0,\n\\]\nwhich simplifies to\n\\[\nb^2 + c^2 - 2bc - a^2 \\leq 0.\n\\]\n\nRewrite:\n\\[\nb^2 + c^2 - 2bc \\leq a^2.\n\\]\n\n---\n\n### Step 5: Recognize the left side as a perfect square\n\nNote that\n\\[\nb^2 + c^2 - 2bc = (b - c)^2.\n\\]\n\nSo the inequality is:\n\\[\n(b - c)^2 \\leq a^2.\n\\]\n\n---\n\n### Step 6: Interpret the inequality geometrically\n\nSince \\( a = BC \\), \\( b = AC \\), and \\( c = AB \\), the triangle inequality states:\n\\[\n|b - c| < a < b + c.\n\\]\n\nIn particular,\n\\[\n|b - c| \\leq a,\n\\]\nwith equality only in degenerate cases.\n\nTherefore,\n\\[\n(b - c)^2 \\leq a^2,\n\\]\nwhich is exactly the inequality we needed.\n\n---\n\n### Step 7: Conclusion\n\nSince the triangle inequality guarantees\n\\[\n(b - c)^2 \\leq a^2,\n\\]\nwe have shown that\n\\[\nm_a^2 \\leq \\left(\\frac{b + c}{2}\\right)^2,\n\\]\nand hence\n\\[\nm_a \\leq \\frac{b + c}{2}.\n\\]\n\n---\n\n### **Final answer:**\n\n\\[\n\\boxed{\nm_a \\leq \\frac{b + c}{2}.\n}\n\\]\n\nThis completes the proof.",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_SYMMETRY",
+            "resonance": 0.95,
+            "summary": "[Operator: Symmetry], Invariance under a group of transformations."
+          },
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5162689907355368,
+        "alignment_score": 0.8170947609889861,
+        "tct_convergence": 0.9213420715198222
+      },
+      "processing_time_s": 20.760185480117798,
+      "timestamp": "2026-04-21T18:38:07.535232"
+    },
+    {
+      "problem_id": "MN_GEO_003",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "Two circles $G_1$ and $G_2$ intersect at two points $M$ and $N$. Let $AB$ be the line tangent to these circles at $A$ and $B$, respectively, so that $M$ lies closer to $AB$ than $N$ does. Let $CD$ be the line parallel to $AB$ and intersecting the two circles at $C$ and $D$ with $C$ on $G_1$ and $D$ on $G_2$, such that $M$ and $N$ are on the same side of $CD$. Prove that $MN$ bisects $CD$.",
+      "reference_answer": "The midpoint of CD lies on MN",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2913,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7520937306750891,
+        "tgic_total_stability": 0.6805464272720639,
+        "rune_xy_tax": 3.1174034432362157,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 21,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(8.5296)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_SYMMETRY",
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "OP_SYMMETRY",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1305,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "**Problem restatement:**\n\nTwo circles \\( G_1 \\) and \\( G_2 \\) intersect at points \\( M \\) and \\( N \\). A line \\( AB \\) is tangent to \\( G_1 \\) at \\( A \\) and to \\( G_2 \\) at \\( B \\), with \\( M \\) closer to \\( AB \\) than \\( N \\). Another line \\( CD \\), parallel to \\( AB \\), intersects \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\), such that \\( M \\) and \\( N \\) lie on the same side of \\( CD \\). Prove that the segment \\( MN \\) bisects \\( CD \\).\n\n---\n\n### Step 1: Understand the configuration\n\n- Two circles \\( G_1 \\) and \\( G_2 \\) intersect at points \\( M \\) and \\( N \\).\n- \\( AB \\) is a common tangent line to both circles, tangent at \\( A \\in G_1 \\) and \\( B \\in G_2 \\).\n- \\( CD \\) is a line parallel to \\( AB \\), intersecting \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\).\n- \\( M \\) and \\( N \\) lie on the same side of \\( CD \\).\n- \\( M \\) is closer to \\( AB \\) than \\( N \\).\n\nWe want to prove that the segment \\( MN \\) bisects \\( CD \\), i.e., the midpoint of \\( CD \\) lies on \\( MN \\).\n\n---\n\n### Step 2: Key observations and notation\n\n- Since \\( AB \\) is tangent to both circles, and \\( CD \\) is parallel to \\( AB \\), the chords \\( AC \\) in \\( G_1 \\) and \\( BD \\) in \\( G_2 \\) are parallel.\n- The points \\( M \\) and \\( N \\) are the intersection points of the two circles.\n- The line \\( MN \\) is the radical line of the two circles.\n- The radical axis \\( MN \\) is the locus of points having equal power with respect to both circles.\n\n---\n\n### Step 3: Use the power of a point and radical axis properties\n\n- The radical axis \\( MN \\) is the line where the powers of any point \\( P \\) with respect to \\( G_1 \\) and \\( G_2 \\) are equal:\n  \\[\n  \\text{Pow}_{G_1}(P) = \\text{Pow}_{G_2}(P).\n  \\]\n\n- For any chord \\( CD \\) with \\( C \\in G_1 \\) and \\( D \\in G_2 \\), the midpoint \\( O \\) of \\( CD \\) satisfies:\n  \\[\n  \\text{Pow}_{G_1}(O) = OC^2 - r_1^2, \\quad \\text{Pow}_{G_2}(O) = OD^2 - r_2^2,\n  \\]\n  where \\( r_1, r_2 \\) are the radii of \\( G_1, G_2 \\).\n\n- Since \\( C \\) lies on \\( G_1 \\), \\( OC \\) is a radius vector from \\( O \\) to the circle, similarly for \\( D \\) and \\( G_2 \\).\n\n---\n\n### Step 4: Coordinate setup for clarity\n\nTo make the argument rigorous, place the configuration in a coordinate system.\n\n- Let \\( AB \\) be horizontal, say along the \\( x \\)-axis.\n- Since \\( CD \\) is parallel to \\( AB \\), \\( CD \\) is also horizontal.\n- Let the line \\( AB \\) be at \\( y = 0 \\).\n- Let \\( CD \\) be at \\( y = h \\), for some \\( h \\neq 0 \\).\n- The points \\( A, B \\) lie on \\( y=0 \\), \\( C, D \\) lie on \\( y=h \\).\n- The points \\( M, N \\) lie somewhere in the plane, with \\( M \\) closer to \\( y=0 \\) than \\( N \\).\n\n---\n\n### Step 5: Use the radical axis property\n\n- The radical axis \\( MN \\) is the",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_SYMMETRY",
+            "resonance": 0.95,
+            "summary": "[Operator: Symmetry], Invariance under a group of transformations."
+          },
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5181370926031981,
+        "alignment_score": 0.8142926081874942,
+        "tct_convergence": 0.9260123261889754
+      },
+      "processing_time_s": 17.16798424720764,
+      "timestamp": "2026-04-21T18:38:24.703406"
+    },
+    {
+      "problem_id": "MN_GEO_004",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "In a right triangle with legs $a$ and $b$ and hypotenuse $c$, prove that $a + b \\leq c\\sqrt{2}$.",
+      "reference_answer": "Equality iff a=b (isoceles right triangle)",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1761,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7415675113901657,
+        "tgic_total_stability": 0.5752842344228299,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 6.234806886472431,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 246,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(2.6345)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_SYMMETRY",
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "OP_SYMMETRY",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]\n  sqrt(2) = 1.414214",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 757,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given a right triangle with legs \\(a\\) and \\(b\\), and hypotenuse \\(c\\), we want to prove the inequality:\n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\n---\n\n### Step 1: Recall the Pythagorean theorem\nSince the triangle is right-angled, by the Pythagorean theorem:\n\\[\na^2 + b^2 = c^2.\n\\]\n\n---\n\n### Step 2: Use the Cauchy-Schwarz inequality\nThe Cauchy-Schwarz inequality states that for any vectors \\(\\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n\\),\n\\[\n|\\mathbf{u} \\cdot \\mathbf{v}| \\leq \\|\\mathbf{u}\\| \\|\\mathbf{v}\\|.\n\\]\n\nConsider the vectors \\(\\mathbf{u} = (a, b)\\) and \\(\\mathbf{v} = (1, 1)\\). Then:\n\\[\na + b = \\mathbf{u} \\cdot \\mathbf{v} \\leq \\|\\mathbf{u}\\| \\|\\mathbf{v}\\|.\n\\]\n\nCalculate the norms:\n\\[\n\\|\\mathbf{u}\\| = \\sqrt{a^2 + b^2} = c,\n\\]\n\\[\n\\|\\mathbf{v}\\| = \\sqrt{1^2 + 1^2} = \\sqrt{2}.\n\\]\n\nTherefore,\n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\n---\n\n### Step 3: Equality condition\nEquality holds if and only if \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are linearly dependent, i.e., when\n\\[\n(a, b) = \\lambda (1, 1)\n\\]\nfor some \\(\\lambda > 0\\). This means \\(a = b\\).\n\n---\n\n### Final answer:\n\\[\n\\boxed{a + b \\leq c \\sqrt{2}, \\quad \\text{with equality if and only if } a = b.}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_SYMMETRY",
+            "resonance": 0.95,
+            "summary": "[Operator: Symmetry], Invariance under a group of transformations."
+          },
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.514628352841557,
+        "alignment_score": 0.8195557178299558,
+        "tct_convergence": 0.9172404767848726
+      },
+      "processing_time_s": 8.014523983001709,
+      "timestamp": "2026-04-21T18:38:32.718107"
+    },
+    {
+      "problem_id": "MN_GEO_005",
+      "domain": "Geometry",
+      "subdomain": "Solid Geometry",
+      "problem_text": "A regular tetrahedron has edge length $a$. Find the radius of the inscribed sphere.",
+      "reference_answer": "r = a/(2*sqrt(6))",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6620742748174363,
+        "nrci_values": [
+          0.6835065805955632,
+          0.6840403469656499,
+          0.6186758968910958
+        ],
+        "prime_density": 0.6666666666666666,
+        "geometric_complexity": 0.30688060996773836,
+        "mean_tgic_stability": 0.6354115980518785,
+        "tgic_stability_scores": [
+          0.6644446608506174,
+          0.5913860008442765,
+          0.6504041324607415
+        ],
+        "bw256_macro_nrci": 0.29800369420996137,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1
+        },
+        "factorisation_map": {
+          "6": {
+            "2": 1,
+            "3": 1
+          },
+          "2": {
+            "2": 1
+          },
+          "3": {
+            "3": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 6.0,
+            "b": 2.0,
+            "add_analog": 8.0,
+            "add_expected": 8.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 12.0,
+            "mul_expected": 12.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 2.0,
+            "b": 3.0,
+            "add_analog": 5.0,
+            "add_expected": 5.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 6.0,
+            "mul_expected": 6.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(6)",
+            "result": 720.0037632169184
+          },
+          {
+            "op": "ln(6)",
+            "result": 1.791759469228055
+          },
+          {
+            "op": "sin(6\u00b0)",
+            "result": 0.1045284632676535
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 6,
+            "nrci": 0.6835065805955632,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650816184.4718567,
+            "is_prime": false,
+            "tgic_stability": 0.6644446608506174
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2139,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 630410735.0623496,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.437956067067985,
+        "coherence_score": 0.7236930180462842,
+        "tgic_total_stability": 0.6161674685984352,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 81,
+        "eml_tree": "eml(eml(leaf(0.6621),leaf(11.4742)),leaf(0.6667))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_SYMMETRY",
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "OP_SYMMETRY",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [6, 2, 3]\nPrimes among them: [2, 3]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 6.0,
+            "b": 2.0,
+            "analog_result": 8.0,
+            "expected": 8.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 6.0,
+            "analog_result": 2.4495,
+            "expected": 2.4495,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 970,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given: A regular tetrahedron with edge length \\( a \\).\n\nGoal: Find the radius \\( r \\) of the inscribed sphere (inradius).\n\n---\n\n### Step 1: Understand the problem\n\nA regular tetrahedron is a polyhedron with four equilateral triangular faces, all edges equal length \\( a \\).\n\nThe inscribed sphere (incircle in 3D) is the sphere tangent to all four faces from inside. Its radius \\( r \\) is the distance from the center of the tetrahedron to any face.\n\n---\n\n### Step 2: Known formulas and properties\n\n- Volume of a regular tetrahedron with edge length \\( a \\):\n\n\\[\nV = \\frac{a^3}{6\\sqrt{2}}\n\\]\n\n- Area of one face (equilateral triangle with side \\( a \\)):\n\n\\[\nA_{\\text{face}} = \\frac{\\sqrt{3}}{4} a^2\n\\]\n\n- Total surface area:\n\n\\[\nS = 4 \\times A_{\\text{face}} = 4 \\times \\frac{\\sqrt{3}}{4} a^2 = \\sqrt{3} a^2\n\\]\n\n- The inradius \\( r \\) of a polyhedron can be found by the formula:\n\n\\[\nr = \\frac{3V}{S}\n\\]\n\nThis formula comes from the fact that the volume can be expressed as:\n\n\\[\nV = \\frac{1}{3} r S\n\\]\n\nwhere \\( r \\) is the inradius and \\( S \\) is the total surface area.\n\n---\n\n### Step 3: Calculate the inradius\n\nUsing the formula:\n\n\\[\nr = \\frac{3V}{S}\n\\]\n\nSubstitute \\( V \\) and \\( S \\):\n\n\\[\nr = \\frac{3 \\times \\frac{a^3}{6\\sqrt{2}}}{\\sqrt{3} a^2} = \\frac{\\frac{3a^3}{6\\sqrt{2}}}{\\sqrt{3} a^2} = \\frac{3a^3}{6\\sqrt{2} \\sqrt{3} a^2}\n\\]\n\nSimplify numerator and denominator:\n\n\\[\nr = \\frac{3a^3}{6 a^2 \\sqrt{6}} = \\frac{3a}{6 \\sqrt{6}} = \\frac{a}{2 \\sqrt{6}}\n\\]\n\n---\n\n### Step 4: Rationalize denominator (optional)\n\n\\[\nr = \\frac{a}{2 \\sqrt{6}} = \\frac{a \\sqrt{6}}{2 \\times 6} = \\frac{a \\sqrt{6}}{12}\n\\]\n\n---\n\n### Final answer:\n\n\\[\n\\boxed{\nr = \\frac{a \\sqrt{6}}{12}\n}\n\\]\n\n---\n\n### Summary:\n\n- The radius of the inscribed sphere in a regular tetrahedron of edge length \\( a \\) is:\n\n\\[\nr = \\frac{a \\sqrt{6}}{12}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_SYMMETRY",
+            "resonance": 0.95,
+            "summary": "[Operator: Symmetry], Invariance under a group of transformations."
+          },
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.504283204158032,
+        "alignment_score": 0.81971120828817,
+        "tct_convergence": 0.912802387198954
+      },
+      "processing_time_s": 11.549049377441406,
+      "timestamp": "2026-04-21T18:38:44.267375"
+    },
+    {
+      "problem_id": "MN_COMB_001",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "Prove that from a set of ten distinct two-digit numbers, it is possible to select two disjoint subsets whose elements have the same sum.",
+      "reference_answer": "Pigeonhole principle proof",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.7368737363094436,
+        "nrci_values": [
+          0.7638890976128012,
+          0.7626917643498796,
+          0.6840403469656499
+        ],
+        "prime_density": 0.3333333333333333,
+        "geometric_complexity": 0.37362045571232627,
+        "mean_tgic_stability": 0.6234080022829708,
+        "tgic_stability_scores": [
+          0.6273458661953262,
+          0.6514921398093095,
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.3530846023107349,
+        "golay_weight_distribution": {
+          "8": 2,
+          "12": 1
+        },
+        "factorisation_map": {
+          "10": {
+            "2": 1,
+            "5": 1
+          },
+          "1023": {
+            "3": 1,
+            "11": 1,
+            "31": 1
+          },
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 10.0,
+            "b": 1023.0,
+            "add_analog": 1033.0,
+            "add_expected": 1033.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 10230.0,
+            "mul_expected": 10230.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 1023.0,
+            "b": 2.0,
+            "add_analog": 1025.0,
+            "add_expected": 1025.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 2046.0,
+            "mul_expected": 2046.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(10)",
+            "result": 3645658.7169224317
+          },
+          {
+            "op": "ln(10)",
+            "result": 2.3025850929940455
+          },
+          {
+            "op": "sin(10\u00b0)",
+            "result": 0.17364817766693036
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 10,
+            "nrci": 0.7638890976128012,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 484902597.991662,
+            "is_prime": false,
+            "tgic_stability": 0.6273458661953262
+          },
+          {
+            "n": 1023,
+            "nrci": 0.7626917643498796,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 484142742.0368828,
+            "is_prime": false,
+            "tgic_stability": 0.6514921398093095
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 791,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 701651215.2904278,
+        "manifestation": "MANIFESTED",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.411043682572336,
+        "coherence_score": 0.9993454984145451,
+        "tgic_total_stability": 0.6245033712422242,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 3.1174034432362157,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 104,
+        "eml_tree": "eml(eml(leaf(0.7369),leaf(11.8756)),leaf(0.3333))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "LAW_BARYON_001",
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "LAW_BARYON_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [10, 1023, 2]\nPrimes among them: [2]\nSum: 1035\nProduct: 20460",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 10.0,
+            "b": 1023.0,
+            "analog_result": 1033.0,
+            "expected": 1033.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 10.0,
+            "analog_result": 3.1623,
+            "expected": 3.1623,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1300,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "**Problem restatement:**\n\nGiven a set of 10 distinct two-digit numbers, prove that there exist two disjoint subsets of these numbers whose sums are equal.\n\n---\n\n### Step 1: Understand the problem\n\nWe have a set \\( S \\) of 10 distinct two-digit numbers, i.e., each element \\( s_i \\in S \\) satisfies \\( 10 \\leq s_i \\leq 99 \\).\n\nWe want to prove that there exist two disjoint subsets \\( A, B \\subseteq S \\), \\( A \\cap B = \\emptyset \\), such that\n\n\\[\n\\sum_{a \\in A} a = \\sum_{b \\in B} b.\n\\]\n\n---\n\n### Step 2: Key observations and approach\n\n- The problem is a variant of the **subset sum problem** and the **Pigeonhole Principle**.\n- The total number of subsets of a 10-element set is \\( 2^{10} = 1024 \\).\n- We want two *disjoint* subsets with the same sum.\n- Note that the empty subset sums to 0, but we want non-empty subsets (usually implied).\n- The subsets must be disjoint, so they cannot share elements.\n\n---\n\n### Step 3: Consider all non-empty subsets\n\n- Number of non-empty subsets: \\( 2^{10} - 1 = 1023 \\).\n- Each subset sum is an integer between at least 10 (smallest element) and at most the sum of all 10 numbers.\n- The maximum sum is at most \\( 99 + 98 + \\cdots + 90 \\) (if the numbers are the largest two-digit numbers), but since the numbers are distinct, the sum is bounded.\n\n---\n\n### Step 4: Use the Pigeonhole Principle on subset sums\n\n- Let \\( S = \\{s_1, s_2, \\ldots, s_{10}\\} \\).\n- Consider all non-empty subsets of \\( S \\).\n- There are 1023 such subsets.\n- Each subset has a sum between at least 10 and at most \\( M = \\sum_{i=1}^{10} s_i \\).\n- The number of possible sums is at most \\( M - 9 \\) (since minimum sum is at least 10).\n- Since \\( M \\leq 99 + 98 + \\cdots + 90 = 945 \\) (sum of 90 to 99), the number of possible sums is at most 945 - 9 = 936.\n- But there are 1023 subsets, so by the Pigeonhole Principle, there must be at least two distinct subsets with the same sum.\n\n---\n\n### Step 5: The problem: subsets may overlap\n\n- The two subsets with the same sum may not be disjoint.\n- We want to find two *disjoint* subsets with the same sum.\n\n---\n\n### Step 6: Use the idea of symmetric difference\n\n- Suppose \\( A \\) and \\( B \\) are two distinct subsets with the same sum.\n- Consider the symmetric difference \\( A \\triangle B = (A \\setminus B) \\cup (B \\setminus A) \\).\n- Since \\( A \\neq B \\), \\( A \\triangle B \\neq \\emptyset \\).\n- The sum of elements in \\( A \\triangle B \\) is\n\n\\[\n\\sum_{x \\in A \\triangle B} x = \\sum_{x \\in A \\setminus B} x + \\sum_{x \\in B \\setminus A} x.\n\\]\n\n- But since \\( \\sum_{x \\in A} x = \\sum_{x \\in B} x \\), we have\n\n\\[\n\\sum_{x \\in A} x - \\sum_{x \\in A \\cap B} x = \\sum_{x \\in B} x - \\sum_{x \\in A \\cap B} x,\n\\]\n\nwhich implies\n\n\\[\n\\sum_{x \\in A \\setminus B} x = \\sum_{x \\in B \\setminus A} x.\n\\]\n\n- Note that \\( A \\setminus B \\) and \\( B \\setminus A \\) are disjoint subsets (by definition).\n- Therefore, the symmetric difference splits into two disjoint subsets with equal",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_BARYON_001",
+            "resonance": 0.95,
+            "summary": "[The Law of Baryon Symmetry (Refined)], [The Proton is a composite geometric structure defined by the combinatorial expa"
+          },
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6203002783935276,
+        "alignment_score": 0.7395178523949311,
+        "tct_convergence": 0.9270419476035187
+      },
+      "processing_time_s": 16.181237936019897,
+      "timestamp": "2026-04-21T18:39:00.448798"
+    },
+    {
+      "problem_id": "MN_COMB_002",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "In how many ways can $n$ identical balls be distributed into $k$ distinct boxes such that each box contains at least one ball?",
+      "reference_answer": "C(n-1, k-1)",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.7646758462386598,
+        "nrci_values": [
+          0.7646758462386598
+        ],
+        "prime_density": 0.0,
+        "geometric_complexity": 0.7646758462386598,
+        "mean_tgic_stability": 0.8318822285564846,
+        "tgic_stability_scores": [
+          0.8318822285564846
+        ],
+        "bw256_macro_nrci": 0.3232142749901492,
+        "golay_weight_distribution": {
+          "8": 1
+        },
+        "factorisation_map": {},
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(1)",
+            "result": 0.9999999997463747
+          },
+          {
+            "op": "ln(1)",
+            "result": 0.0
+          },
+          {
+            "op": "sin(1\u00b0)",
+            "result": 0.01745240643728352
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "tgic_stability": 0.8318822285564846
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 669,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 728075239.6952494,
+        "manifestation": "MANIFESTED",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.401061527729636,
+        "coherence_score": 1.0,
+        "tgic_total_stability": 0.5830500982004875,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 5,
+        "eml_tree": "eml(eml(leaf(0.7647),leaf(8.5344)),leaf(0.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_HOW_MANY",
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "brain_result_uid": "OP_HOW_MANY",
+        "brain_method": "Identity Lock (2-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [1]\nPrimes among them: []",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 869,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "We want to find the number of ways to distribute \\( n \\) identical balls into \\( k \\) distinct boxes such that each box contains **at least one ball**.\n\n---\n\n### Step 1: Understand the problem\n\n- We have \\( n \\) identical balls.\n- We have \\( k \\) distinct boxes.\n- Each box must have **at least one ball**.\n- We want to count the number of possible distributions.\n\n---\n\n### Step 2: Translate the problem into a combinatorial model\n\nSince the balls are identical, the only thing that matters is how many balls each box contains.\n\nLet \\( x_i \\) be the number of balls in the \\( i \\)-th box.\n\nWe want to find the number of integer solutions to:\n\n\\[\nx_1 + x_2 + \\cdots + x_k = n\n\\]\n\nwith the constraint:\n\n\\[\nx_i \\geq 1 \\quad \\text{for all } i = 1, 2, \\ldots, k.\n\\]\n\n---\n\n### Step 3: Use stars and bars theorem\n\nThe classical stars and bars theorem states:\n\n- The number of nonnegative integer solutions to \\( x_1 + x_2 + \\cdots + x_k = n \\) is:\n\n\\[\n\\binom{n + k - 1}{k - 1}.\n\\]\n\n- The number of positive integer solutions (i.e., \\( x_i \\geq 1 \\)) to the same equation is:\n\n\\[\n\\binom{n - 1}{k - 1}.\n\\]\n\nThis is because if each \\( x_i \\geq 1 \\), we can set \\( y_i = x_i - 1 \\geq 0 \\), then:\n\n\\[\ny_1 + y_2 + \\cdots + y_k = n - k,\n\\]\n\nand the number of nonnegative integer solutions to this is:\n\n\\[\n\\binom{(n-k) + k - 1}{k - 1} = \\binom{n - 1}{k - 1}.\n\\]\n\n---\n\n### Step 4: Final answer\n\nThe number of ways to distribute \\( n \\) identical balls into \\( k \\) distinct boxes such that each box contains at least one ball is:\n\n\\[\n\\boxed{\\binom{n - 1}{k - 1}}.\n\\]\n\n---\n\n### Summary:\n\n- Problem: Number of positive integer solutions to \\( x_1 + \\cdots + x_k = n \\).\n- Solution: \\(\\binom{n-1}{k-1}\\).\n\n---\n\n**Final answer:**\n\n\\[\n\\boxed{\\binom{n - 1}{k - 1}}.\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_HOW_MANY",
+            "resonance": 0.95,
+            "summary": "[Operator: How Many], The query of Cardinality and Count."
+          },
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6436840973166522,
+        "alignment_score": 0.6801820345471541,
+        "tct_convergence": 0.923587508183374
+      },
+      "processing_time_s": 10.760178804397583,
+      "timestamp": "2026-04-21T18:39:11.209164"
+    },
+    {
+      "problem_id": "MN_COMB_003",
+      "domain": "Combinatorics",
+      "subdomain": "Graph Theory",
+      "problem_text": "In a mathematical competition, some competitors are friends. Each person has at most $d$ friends. Prove that the competitors can be divided into groups such that each person has at most $\\lceil d/2 \\rceil$ friends in their own group.",
+      "reference_answer": "Greedy/probabilistic argument",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "mean_tgic_stability": 0.5913860008442765,
+        "tgic_stability_scores": [
+          0.5913860008442765
+        ],
+        "bw256_macro_nrci": 0.3374897920916603,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          }
+        },
+        "analog_verifications": [],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 4094,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.7456558348077262,
+        "tgic_total_stability": 0.6161674685984352,
+        "rune_xy_tax": 4.676105164854324,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 0,
+        "offbit_phase": 3,
+        "eml_tree": "eml(eml(leaf(0.6840),leaf(3.7695)),leaf(1.0000))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "LAW_BARYON_001",
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "LAW_BARYON_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2]\nPrimes among them: [2]",
+        "analog_arithmetic_check": {},
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1255,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "**Problem restatement:**\n\nWe have a set of competitors, each with at most \\( d \\) friends. We want to partition the competitors into groups so that in each group, every person has at most \\(\\lceil d/2 \\rceil\\) friends within that same group.\n\n---\n\n### Step 1: Model the problem as a graph problem\n\nRepresent the competitors as vertices of a graph \\( G = (V, E) \\), where an edge between two vertices means those two competitors are friends.\n\n- Each vertex has degree at most \\( d \\).\n- We want to partition \\( V \\) into groups (subsets) \\( V_1, V_2, \\ldots, V_k \\) such that for each vertex \\( v \\in V_i \\), the number of neighbors of \\( v \\) in \\( V_i \\) is at most \\(\\lceil d/2 \\rceil\\).\n\n---\n\n### Step 2: Understand the goal\n\nWe want to color or partition the vertices so that the induced subgraph on each part has maximum degree at most \\(\\lceil d/2 \\rceil\\).\n\n---\n\n### Step 3: Consider the simplest case: two groups\n\nTry to partition the vertices into **two groups** \\( V_1 \\) and \\( V_2 \\) such that each vertex has at most \\(\\lceil d/2 \\rceil\\) neighbors in its own group.\n\n---\n\n### Step 4: Use a probabilistic or combinatorial argument\n\nWe want to show that such a partition exists.\n\n---\n\n### Step 5: Use the method of **max-cut** or **balancing edges**\n\nIf we put vertices into two groups, the edges are either inside a group or between groups.\n\n- For each vertex \\( v \\), degree \\( \\deg(v) \\leq d \\).\n- The number of neighbors of \\( v \\) in the same group is what we want to bound by \\(\\lceil d/2 \\rceil\\).\n\n---\n\n### Step 6: Construct a partition minimizing the maximum number of friends in the same group\n\nDefine a partition \\( V = V_1 \\cup V_2 \\).\n\nFor each vertex \\( v \\), let \\( f(v) \\) be the number of neighbors of \\( v \\) in the same group as \\( v \\).\n\nWe want to find a partition minimizing \\(\\max_{v} f(v)\\).\n\n---\n\n### Step 7: Use a **greedy or iterative improvement argument**\n\nStart with any partition of \\( V \\) into two groups.\n\nIf there exists a vertex \\( v \\) with more than \\(\\lceil d/2 \\rceil\\) neighbors in its own group, move \\( v \\) to the other group.\n\n---\n\n### Step 8: Show that this process terminates with the desired property\n\n- When we move \\( v \\) to the other group, the number of neighbors of \\( v \\) in its new group is the number of neighbors it had in the other group before moving.\n- Since total degree is at most \\( d \\), if \\( v \\) had more than \\(\\lceil d/2 \\rceil\\) neighbors in its old group, it must have fewer than or equal to \\(\\lfloor d/2 \\rfloor\\) neighbors in the other group.\n- After moving, \\( f(v) \\leq \\lfloor d/2 \\rfloor \\leq \\lceil d/2 \\rceil \\).\n\n---\n\n### Step 9: Check the effect on neighbors\n\nMoving \\( v \\) changes the number of neighbors in the same group for neighbors of \\( v \\).\n\n- For a neighbor \\( u \\) of \\( v \\), if \\( u \\) was in the same group as \\( v \\) before, now \\( u \\) loses one friend in its group.\n- If \\( u \\) was in the other group, now \\( u \\) gains one friend in its group.\n\n---\n\n### Step 10: Define a potential function to show termination\n\nDefine the potential function:\n\n\\[\n\\Phi = \\sum_{v \\in V} f(v)^2\n\\]\n\nEach move of a vertex \\( v \\) from one group to the other decreases \\(\\Phi\\):\n\n- \\( f(v) \\) decreases from more than \\(\\lceil d/2",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_BARYON_001",
+            "resonance": 0.95,
+            "summary": "[The Law of Baryon Symmetry (Refined)], [The Proton is a composite geometric structure defined by the combinatorial expa"
+          },
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5159911273140771,
+        "alignment_score": 0.8175115561211755,
+        "tct_convergence": 0.9206474129661731
+      },
+      "processing_time_s": 18.502567768096924,
+      "timestamp": "2026-04-21T18:39:29.711925"
+    },
+    {
+      "problem_id": "MN_COMB_004",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "How many subsets of $\\{1, 2, 3, \\ldots, 10\\}$ have the property that the sum of the elements is divisible by 3?",
+      "reference_answer": "The number is (2^10 + 2)/3 = 342",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6663914960161414,
+        "nrci_values": [
+          0.7638890976128012,
+          0.6186758968910958,
+          0.6166094935445274
+        ],
+        "prime_density": 0.3333333333333333,
+        "geometric_complexity": 0.68946376474878,
+        "mean_tgic_stability": 0.6377119678807381,
+        "tgic_stability_scores": [
+          0.6273458661953262,
+          0.6504041324607415,
+          0.6353859049861467
+        ],
+        "bw256_macro_nrci": 0.31009743035115556,
+        "golay_weight_distribution": {
+          "8": 1,
+          "16": 2
+        },
+        "factorisation_map": {
+          "10": {
+            "2": 1,
+            "5": 1
+          },
+          "3": {
+            "3": 1
+          },
+          "344": {
+            "2": 3,
+            "43": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 10.0,
+            "b": 3.0,
+            "add_analog": 13.0,
+            "add_expected": 13.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 30.0,
+            "mul_expected": 30.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 3.0,
+            "b": 344.0,
+            "add_analog": 347.0,
+            "add_expected": 347.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 1032.0,
+            "mul_expected": 1032.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(10)",
+            "result": 3645658.7169224317
+          },
+          {
+            "op": "ln(10)",
+            "result": 2.3025850929940455
+          },
+          {
+            "op": "sin(10\u00b0)",
+            "result": 0.17364817766693036
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 10,
+            "nrci": 0.7638890976128012,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 484902597.991662,
+            "is_prime": false,
+            "tgic_stability": 0.6273458661953262
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          },
+          {
+            "n": 344,
+            "nrci": 0.6166094935445274,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 782825069.1499275,
+            "is_prime": false,
+            "tgic_stability": 0.6353859049861467
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2845,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 634463555.9803457,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.4364250404032575,
+        "coherence_score": 0.7343873080578678,
+        "tgic_total_stability": 0.6805464272720639,
+        "rune_xy_tax": 3.1174034432362157,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 4.676105164854324,
+        "stability_rank": 1,
+        "offbit_phase": 32,
+        "eml_tree": "eml(eml(leaf(0.6664),leaf(0.3261)),leaf(0.3333))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "OP_HOW_MANY",
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "brain_result_uid": "OP_HOW_MANY",
+        "brain_method": "Identity Lock (2-gram)",
+        "ontology_class": "NOUMENAL (Abstract Concept)",
+        "code_verified": true,
+        "code_output": "Key numbers: [10, 3, 344]\nPrimes among them: [3]\n  10 mod 3 = 1\n  10 mod 344 = 10\n  3 mod 10 = 3\n  3 mod 344 = 3\n  344 mod 10 = 4\n  344 mod 3 = 2",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 10.0,
+            "b": 3.0,
+            "analog_result": 13.0,
+            "expected": 13.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 10.0,
+            "analog_result": 3.1623,
+            "expected": 3.1623,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1335,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "We want to find the number of subsets of the set \\(\\{1, 2, 3, \\ldots, 10\\}\\) such that the sum of the elements in the subset is divisible by 3.\n\n---\n\n### Step 1: Understand the problem\n\n- The set is \\(S = \\{1, 2, 3, \\ldots, 10\\}\\).\n- We consider all subsets of \\(S\\).\n- For each subset \\(A \\subseteq S\\), compute \\(\\sum_{a \\in A} a\\).\n- We want the count of subsets where \\(\\sum_{a \\in A} a \\equiv 0 \\pmod{3}\\).\n\n---\n\n### Step 2: Total number of subsets\n\nThe total number of subsets of a set with 10 elements is:\n\\[\n2^{10} = 1024.\n\\]\n\n---\n\n### Step 3: Use generating functions modulo 3\n\nDefine the generating function:\n\\[\nG(x) = \\prod_{k=1}^{10} (1 + x^{k}).\n\\]\n\nThe coefficient of \\(x^m\\) in \\(G(x)\\) counts the number of subsets whose elements sum to \\(m\\).\n\nWe want the sum of coefficients of terms where the exponent \\(m\\) satisfies \\(m \\equiv 0 \\pmod{3}\\).\n\n---\n\n### Step 4: Use roots of unity filter\n\nLet \\(\\omega\\) be a primitive 3rd root of unity, i.e., \\(\\omega^3 = 1\\), \\(\\omega \\neq 1\\).\n\nThe number of subsets with sum divisible by 3 is:\n\\[\nN_0 = \\frac{G(1) + G(\\omega) + G(\\omega^2)}{3}.\n\\]\n\n---\n\n### Step 5: Compute \\(G(1)\\)\n\n\\[\nG(1) = \\prod_{k=1}^{10} (1 + 1) = 2^{10} = 1024.\n\\]\n\n---\n\n### Step 6: Compute \\(G(\\omega)\\) and \\(G(\\omega^2)\\)\n\nWe need to compute:\n\\[\nG(\\omega) = \\prod_{k=1}^{10} (1 + \\omega^{k}), \\quad G(\\omega^2) = \\prod_{k=1}^{10} (1 + \\omega^{2k}).\n\\]\n\nSince \\(\\omega^3 = 1\\), the powers cycle modulo 3.\n\n---\n\n### Step 7: Classify elements by residue mod 3\n\nFor \\(k = 1, \\ldots, 10\\), find \\(k \\mod 3\\):\n\n- \\(k \\equiv 1 \\pmod{3}\\) for \\(k = 1, 4, 7, 10\\) (4 elements)\n- \\(k \\equiv 2 \\pmod{3}\\) for \\(k = 2, 5, 8\\) (3 elements)\n- \\(k \\equiv 0 \\pmod{3}\\) for \\(k = 3, 6, 9\\) (3 elements)\n\n---\n\n### Step 8: Simplify \\(G(\\omega)\\)\n\n\\[\nG(\\omega) = \\prod_{k=1}^{10} (1 + \\omega^{k}) = (1 + \\omega)^4 \\cdot (1 + \\omega^2)^3 \\cdot (1 + \\omega^0)^3,\n\\]\nsince \\(\\omega^0 = 1\\).\n\nNote:\n- For \\(k \\equiv 1 \\pmod{3}\\), \\(\\omega^k = \\omega\\).\n- For \\(k \\equiv 2 \\pmod{3}\\), \\(\\omega^k = \\omega^2\\).\n- For \\(k \\equiv 0 \\pmod{3}\\), \\(\\omega^k = 1\\).\n\nTherefore:\n\\[\nG(\\omega) = (1 + \\omega)^4 \\cdot (1 + \\omega^2)^3 \\cdot (1 + 1)^3 = (1 + \\omega)^4 (1 + \\omega^2)^3 \\cdot 2^3.\n\\]\n\n---\n\n###",
+        "semantic_hits": [
+          {
+            "ubp_id": "OP_HOW_MANY",
+            "resonance": 0.95,
+            "summary": "[Operator: How Many], The query of Cardinality and Count."
+          },
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.509440399216719,
+        "alignment_score": 0.7874710257065071,
+        "tct_convergence": 0.9197091651355798
+      },
+      "processing_time_s": 17.025020599365234,
+      "timestamp": "2026-04-21T18:39:46.737106"
+    },
+    {
+      "problem_id": "MN_COMB_005",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "Find all functions $f: \\mathbb{N} \\to \\mathbb{N}$ satisfying $f(f(n)) + f(n) = 2n + 3$ and $f(0) = 1$.",
+      "reference_answer": "f(n) = 2n+1 for even n, f(n) = n+1 for odd n... actually f(n)=n+1 for all n",
+      "version": "v2.0",
+      "math_column": {
+        "mean_nrci": 0.6891306966984686,
+        "nrci_values": [
+          0.6840403469656499,
+          0.6186758968910958,
+          0.7646758462386598
+        ],
+        "prime_density": 0.6666666666666666,
+        "geometric_complexity": 0.5971281296156695,
+        "mean_tgic_stability": 0.6912241206205009,
+        "tgic_stability_scores": [
+          0.5913860008442765,
+          0.6504041324607415,
+          0.8318822285564846
+        ],
+        "bw256_macro_nrci": 0.2764413800373276,
+        "golay_weight_distribution": {
+          "12": 1,
+          "16": 1,
+          "8": 1
+        },
+        "factorisation_map": {
+          "2": {
+            "2": 1
+          },
+          "3": {
+            "3": 1
+          }
+        },
+        "analog_verifications": [
+          {
+            "a": 2.0,
+            "b": 3.0,
+            "add_analog": 5.0,
+            "add_expected": 5.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 6.0,
+            "mul_expected": 6.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          },
+          {
+            "a": 3.0,
+            "b": 1.0,
+            "add_analog": 4.0,
+            "add_expected": 4.0,
+            "add_sym_tax": 1.0,
+            "mul_analog": 3.0,
+            "mul_expected": 3.0,
+            "mul_sym_tax": 1.0,
+            "orthogonality_drift": 0.0
+          }
+        ],
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "tgic_stability": 0.5913860008442765
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "tgic_stability": 0.6504041324607415
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "tgic_stability": 0.8318822285564846
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 4095,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "soc_energy": 1312341924.4934819,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 24.0,
+        "symmetry_tax": 8.856449347347837,
+        "coherence_score": 0.7330703386928186,
+        "tgic_total_stability": 0.43939903910209865,
+        "rune_xy_tax": 9.352210329708647,
+        "rune_xz_tax": 4.676105164854324,
+        "rune_yz_tax": 9.352210329708647,
+        "stability_rank": 0,
+        "offbit_phase": 31,
+        "eml_tree": "eml(eml(leaf(0.6891),leaf(4.7114)),leaf(0.6667))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.95,
+        "ubp_laws_invoked": [
+          "LAW_BARYON_001",
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "brain_result_uid": "LAW_BARYON_001",
+        "brain_method": "Identity Lock (1-gram)",
+        "ontology_class": "TRANSITIONAL (Anomalous State)",
+        "code_verified": true,
+        "code_output": "Key numbers: [2, 3, 1]\nPrimes among them: [2, 3]",
+        "analog_arithmetic_check": {
+          "add": {
+            "a": 2.0,
+            "b": 3.0,
+            "analog_result": 5.0,
+            "expected": 5.0,
+            "symmetry_tax": 1.0
+          },
+          "sqrt": {
+            "a": 2.0,
+            "analog_result": 1.4142,
+            "expected": 1.4142,
+            "symmetry_tax": 0.0
+          }
+        },
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1291,
+        "attempts": 1,
+        "self_correction_applied": false,
+        "llm_solution": "Given the problem:\n\nFind all functions \\( f: \\mathbb{N} \\to \\mathbb{N} \\) such that\n\\[\nf(f(n)) + f(n) = 2n + 3\n\\]\nand\n\\[\nf(0) = 1.\n\\]\n\n---\n\n### Step 1: Understand the problem\n\nWe want a function \\( f \\) from the natural numbers (including 0) to natural numbers satisfying a functional equation involving composition and addition.\n\nThe equation is:\n\\[\nf(f(n)) + f(n) = 2n + 3.\n\\]\n\nWe also have the initial condition:\n\\[\nf(0) = 1.\n\\]\n\n---\n\n### Step 2: Try to find a pattern or guess the form of \\( f \\)\n\nThe equation involves \\( f(f(n)) \\), which suggests \\( f \\) might be linear or at least have a simple form.\n\nTry a linear form:\n\\[\nf(n) = a n + b,\n\\]\nwhere \\( a, b \\in \\mathbb{N} \\).\n\n---\n\n### Step 3: Substitute the linear form into the equation\n\nCalculate \\( f(f(n)) \\):\n\\[\nf(f(n)) = f(a n + b) = a (a n + b) + b = a^2 n + a b + b.\n\\]\n\nNow substitute into the functional equation:\n\\[\nf(f(n)) + f(n) = (a^2 n + a b + b) + (a n + b) = 2n + 3.\n\\]\n\nGroup terms:\n\\[\na^2 n + a b + b + a n + b = 2n + 3,\n\\]\n\\[\n(a^2 + a) n + (a b + 2b) = 2n + 3.\n\\]\n\nEquate coefficients of \\( n \\) and the constant terms:\n\\[\na^2 + a = 2,\n\\]\n\\[\na b + 2 b = 3.\n\\]\n\n---\n\n### Step 4: Solve for \\( a \\)\n\nThe quadratic equation for \\( a \\) is:\n\\[\na^2 + a - 2 = 0.\n\\]\n\nSolve:\n\\[\na = \\frac{-1 \\pm \\sqrt{1 + 8}}{2} = \\frac{-1 \\pm 3}{2}.\n\\]\n\nTwo solutions:\n- \\( a = \\frac{-1 + 3}{2} = 1 \\),\n- \\( a = \\frac{-1 - 3}{2} = -2 \\).\n\nSince \\( f: \\mathbb{N} \\to \\mathbb{N} \\), and \\( a \\) is the coefficient of \\( n \\), negative \\( a \\) would likely not keep \\( f(n) \\) in \\(\\mathbb{N}\\) for all \\( n \\geq 0 \\). So discard \\( a = -2 \\).\n\nTake \\( a = 1 \\).\n\n---\n\n### Step 5: Solve for \\( b \\)\n\nWith \\( a = 1 \\), the constant term equation is:\n\\[\na b + 2 b = b + 2 b = 3 b = 3,\n\\]\nso\n\\[\nb = 1.\n\\]\n\n---\n\n### Step 6: Check the initial condition \\( f(0) = 1 \\)\n\nWith \\( f(n) = n + 1 \\), we have:\n\\[\nf(0) = 0 + 1 = 1,\n\\]\nwhich matches the initial condition.\n\n---\n\n### Step 7: Verify the functional equation with \\( f(n) = n + 1 \\)\n\nCalculate:\n\\[\nf(f(n)) + f(n) = f(n + 1) + (n + 1) = (n + 1) + 1 + n + 1 = (n + 2) + (n + 1) = 2n + 3,\n\\]\nwhich matches perfectly.\n\n---\n\n### Step 8: Check if other solutions exist\n\n- Could there be non-linear solutions?\n\nTry to check if any other function \\( f \\) satisfies the equation.\n\n- The equation is a functional equation involving composition and addition.\n- The linear solution fits perfectly.\n- The problem is typical of functional equations",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_BARYON_001",
+            "resonance": 0.95,
+            "summary": "[The Law of Baryon Symmetry (Refined)], [The Proton is a composite geometric structure defined by the combinatorial expa"
+          },
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.5201486198384624,
+        "alignment_score": 0.83134138503385,
+        "tct_convergence": 0.9077346925555804
+      },
+      "processing_time_s": 17.426960229873657,
+      "timestamp": "2026-04-21T18:40:04.164251"
+    }
+  ]
+}
