@@ -3,7 +3,9 @@
 **System:** Universal Binary Principle `core_studio_v4.0` by Euan Craig, NZ  
 **Benchmark:** MathNet MIT (https://mathnet.mit.edu/)  
 **Investigation Date:** April 2026  
-**Investigator:** Manus AI
+**Investigator:** Manus AI directed by E R A Craig, New Zeland
+
+**note:** the UBP is an experimental system, this study was undertaken by Manus AI whi seems to have got quite carried away with the concept, I am still looking at how exactly GPT4 is involved, the logical over-claims on Octads, and the 100% sucess rate. 20 out of 30,000 mathnet problems is not nearly enough to accept the results straight away however further versions in test show stripping away GPT4, extending the test and some other tools for the agents seems to be more useful.
 
 ---
 
