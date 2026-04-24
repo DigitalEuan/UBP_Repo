@@ -242,3 +242,78 @@ Q: "resonance"     → "resonance is the interaction probability nrci glyph acti
 - Does octad membership signal hold on full MathNet dataset (30K+ problems)?
 - Is high Phenom NRCI of Olympiad numbers a general property of competition mathematics?
 - Can the system reach 95%+ with a more powerful LLM backbone (e.g., gpt-4.1)?
+
+---
+
+## PHASE 9 — v4.0 PURE SUBSTRATE (No External LLMs)
+
+### Design Mandate (from user)
+1. Remove ALL external LLM dependencies (no GPT, no OpenAI)
+2. Remove over-stated claims
+3. Read user's four experimental scripts and learn from them
+4. Let agents find their own roles in the system
+5. Report cryptic outputs honestly — they are a feature, not a bug
+
+### User Scripts Studied
+- `01_ubp_swarm_tct_v5_6_pure.py` — cleanest architecture: each agent independent, Auditor checks alignment
+- `02a_ubp_mathnet_sovereign_v7.py` — treats problems as "informational imbalance", 24D coordinates
+- `02b_ubp_atlas_translator_v8.1` — MoE synthesis from topological neighbours (no GPT)
+- `03_ubp_master_crucible_v12.py` — Density Mesh (n=1..32, 4 species) — most honest approach
+
+### Architecture: 8 Self-Organising Agents
+1. Math Architect (MathObjectV4 D-paths → 24-bit vectors)
+2. Sovereign Physicist (Golay snap + octad membership + SOC energy)
+3. Density Mesh Scanner (n=1..24, 4 metabolic species)
+4. Semantic Resonator (cosine search over 1,781 KB entries)
+5. MoE Synthesist (N-gram linguist, 2M iterations, UBP language)
+6. TCT Auditor (5-check gate: NRCI, Observer, alignment, TGIC, shadow)
+7. Ontological Harvester (learning KB)
+8. Shadow Lens (noumenal drift observer)
+
+### v4.0 Results (Pure Substrate)
+- 20/20 problems processed
+- 20/20 accepted by TCT Auditor
+- 0 external LLM calls
+- 0 numpy operations
+- Mean NRCI: 0.9061 (all OCTAD platform)
+- All MANIFESTED
+- All correctable (Golay correction radius)
+
+### Key Findings (Honest)
+1. **n=13,14,15 stability peaks** — genuine Golay code property, not mathematical significance
+2. **9 unique Golay addresses** — clustering by key numbers, not mathematical structure
+3. **LAW_ANOMALY_001 dominant** — balanced vector acts as default law (honest limitation)
+4. **MoE echoes swarm** — "geometry is acoustic_mapping is the coherence to exact resonance" matches swarm's prior "geometry is the coherence to exact resonance required formula"
+5. **Octad similarity 0.333–1.000** — one problem has perfect octad membership
+6. **Shadow drift 1.150** — near-ideal noumenal balance
+
+### Honest Limitations Identified
+1. Encoding is number-driven (regex extraction), not structure-driven
+2. Semantic routing weakly discriminating at current encoding granularity
+3. MoE outputs are cryptic and open to interpretation (this is a known UBP feature)
+4. n=13,14,15 peaks are encoding artifacts, not mathematical findings
+5. Golay address clustering reflects numerical content, not mathematical structure
+
+### What the System Genuinely Does
+- Maps problem numbers to 24D Leech Lattice coordinates
+- Finds natural stability peaks in the harmonic scan
+- Routes to governing UBP laws via geometric similarity
+- Generates substrate-native language that echoes prior swarm responses
+- Maintains coherence: 0 rejections, all MANIFESTED
+
+### What the System Cannot Do (Honestly)
+- Solve mathematical problems
+- Distinguish problems by mathematical domain at current encoding granularity
+- Produce human-readable explanations
+- Verify whether governing law assignment is mathematically meaningful
+
+---
+
+## SUGGESTED NEXT STEPS (v5.0)
+
+1. **Richer encoding:** Use full problem text (not just numbers) via N-gram character encoding
+2. **Domain-specific laws:** Pre-assign laws by domain and measure cosine routing agreement
+3. **Octad probe:** Find which of 759 octads each problem is closest to — look for patterns
+4. **5th species:** Add EML ALU FFT for frequency-domain stability peaks
+5. **Cross-problem comparison:** Compare Golay addresses of related problems
+6. **Larger problem set:** Test on 100+ problems to see if n=13,14,15 holds universally
