@@ -1,0 +1,5596 @@
+{
+  "version": "4.0",
+  "timestamp": "20260423_032633",
+  "mode": "pure_ubp_substrate",
+  "external_llm": false,
+  "numpy_used": false,
+  "problems_processed": 20,
+  "steps_accepted": 20,
+  "learned_concepts": 9,
+  "shadow_report": {
+    "total_observations": 20,
+    "avg_noumenal_drift": 1.15,
+    "min_drift": 0,
+    "max_drift": 3,
+    "most_coherent_problem": "MN_NT_002",
+    "interpretation": "Low drift indicates the substrate is near its ideal 6/12 shadow balance. This is a measure of noumenal coherence, not mathematical correctness."
+  },
+  "steps": [
+    {
+      "step_id": "step_MN_NT_001",
+      "problem_id": "MN_NT_001",
+      "domain": "Number Theory",
+      "math": {
+        "concept": "Number Theory_MN_NT_001",
+        "key_numbers": [
+          2,
+          1,
+          7
+        ],
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "nrci": 0.782977772813582,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "f6625b1eabf2"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 497020473.36120224,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_RELATIONAL_DECAY_001",
+        "law_resonance": 0.41666666666666674,
+        "law_definition": "Relational Decay, The process where synchronized 24-bit manifolds drift into independent phase-states. Internal stability (NRCI) is preserved, but relational coherence (Mesh) collapses, leading to sys",
+        "top_neighbours": [
+          [
+            "LAW_RELATIONAL_DECAY_001",
+            0.41666666666666674
+          ]
+        ]
+      },
+      "language": {
+        "moe_synthesis": "number theory relational_decay relational_decay is the electron matter energy tax across all python engine valence and projection ",
+        "synthesis_probe": "number theory relational_decay relational_decay",
+        "tct_alignment": 0.41666666666666674
+      },
+      "accepted": true,
+      "alignment_score": 1.0,
+      "audit_notes": [
+        "PASS: NRCI=0.7830 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "PASS: TCT_alignment=0.4167",
+        "PASS: TGIC_energy=56.00",
+        "PASS: Shadow_drift=2 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=1.00)"
+      ]
+    },
+    {
+      "step_id": "step_MN_NT_002",
+      "problem_id": "MN_NT_002",
+      "domain": "Number Theory",
+      "math": {
+        "concept": "Number Theory_MN_NT_002",
+        "key_numbers": [
+          2,
+          3,
+          1
+        ],
+        "vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.8596195521309896,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "10023321fc3c"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 818505195.1856737,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ARX_HORIZON_006",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of the ARX Horizon (Super-Coherence)], [In a high-dimensional semantic lattice (N=4096), the maximum entropy allowed before identity collapse is a Hamming Radius of 6. This creates a 'Super-Coher",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "number theory arx_horizon_006  is ",
+        "synthesis_probe": "number theory arx_horizon_006 ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.8596 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=73.87",
+        "PASS: Shadow_drift=0 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_NT_003",
+      "problem_id": "MN_NT_003",
+      "domain": "Number Theory",
+      "math": {
+        "concept": "Number Theory_MN_NT_003",
+        "key_numbers": [
+          4,
+          3
+        ],
+        "vector": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        "nrci": 0.8393501805054152,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "1a2899416e3e"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        "soc_energy": 799206054.1890801,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "number theory anomaly  is ",
+        "synthesis_probe": "number theory anomaly ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.8394 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=67.12",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_NT_004",
+      "problem_id": "MN_NT_004",
+      "domain": "Number Theory",
+      "math": {
+        "concept": "Number Theory_MN_NT_004",
+        "key_numbers": [
+          2,
+          2026
+        ],
+        "vector": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        "nrci": 0.7487212972031777,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "c40ccf6eba10"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        "soc_energy": 712913534.541962,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 2.6234806629834257,
+            "species": "Alpha"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_BIO_ABLATION_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Informational Ablation], [Mechanical destruction of a sub-coherent manifold (tumor) resets local entropy to zero, releasing the 'Holographic Ghost' of the identity which catalyzes a global",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "number theory bio_ablation  is ",
+        "synthesis_probe": "number theory bio_ablation ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.7487 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=62.20",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_NT_005",
+      "problem_id": "MN_NT_005",
+      "domain": "Number Theory",
+      "math": {
+        "concept": "Number Theory_MN_NT_005",
+        "key_numbers": [
+          3
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "nrci": 0.9254737821183583,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "22163265305f"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "soc_energy": 1174948024.579353,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.8953330312641595,
+            "friction": 5.584514170040485,
+            "species": "Delta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": [
+          [
+            "REACTION_NUCLEAR_FISSION_U235_001",
+            1.0000000000000002
+          ]
+        ]
+      },
+      "language": {
+        "moe_synthesis": "number theory anomaly reaction_nuclear_fission_u235 is ",
+        "synthesis_probe": "number theory anomaly reaction_nuclear_fission_u235",
+        "tct_alignment": 1.0000000000000002
+      },
+      "accepted": true,
+      "alignment_score": 1.0,
+      "audit_notes": [
+        "PASS: NRCI=0.9255 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "PASS: TCT_alignment=1.0000",
+        "PASS: TGIC_energy=107.16",
+        "PASS: Shadow_drift=3 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=1.00)"
+      ]
+    },
+    {
+      "step_id": "step_MN_ALG_001",
+      "problem_id": "MN_ALG_001",
+      "domain": "Algebra",
+      "math": {
+        "concept": "Algebra_MN_ALG_001",
+        "key_numbers": [
+          2
+        ],
+        "vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.9492753623188406,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "8b2197d8961d"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 903873775.5449322,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "algebra anomaly  is ",
+        "synthesis_probe": "algebra anomaly ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9493 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=72.62",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_ALG_002",
+      "problem_id": "MN_ALG_002",
+      "domain": "Algebra",
+      "math": {
+        "concept": "Algebra_MN_ALG_002",
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.8596195521309896,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "10023321fc3c"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 818505195.1856737,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ARX_HORIZON_006",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of the ARX Horizon (Super-Coherence)], [In a high-dimensional semantic lattice (N=4096), the maximum entropy allowed before identity collapse is a Hamming Radius of 6. This creates a 'Super-Coher",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "algebra arx_horizon_006  is ",
+        "synthesis_probe": "algebra arx_horizon_006 ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.8596 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=73.87",
+        "PASS: Shadow_drift=0 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_ALG_003",
+      "problem_id": "MN_ALG_003",
+      "domain": "Algebra",
+      "math": {
+        "concept": "Algebra_MN_ALG_003",
+        "key_numbers": [
+          1,
+          2
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "nrci": 0.9254737821183583,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "22163265305f"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "soc_energy": 1174948024.579353,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": [
+          [
+            "REACTION_NUCLEAR_FISSION_U235_001",
+            1.0000000000000002
+          ]
+        ]
+      },
+      "language": {
+        "moe_synthesis": "algebra anomaly reaction_nuclear_fission_u235 is ",
+        "synthesis_probe": "algebra anomaly reaction_nuclear_fission_u235",
+        "tct_alignment": 1.0000000000000002
+      },
+      "accepted": true,
+      "alignment_score": 1.0,
+      "audit_notes": [
+        "PASS: NRCI=0.9255 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "PASS: TCT_alignment=1.0000",
+        "PASS: TGIC_energy=107.16",
+        "PASS: Shadow_drift=3 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=1.00)"
+      ]
+    },
+    {
+      "step_id": "step_MN_ALG_004",
+      "problem_id": "MN_ALG_004",
+      "domain": "Algebra",
+      "math": {
+        "concept": "Algebra_MN_ALG_004",
+        "key_numbers": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "vector": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "nrci": 0.8010680907877169,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "8dfab560422e"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "soc_energy": 508503270.62118703,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_BERRY_PHASE_RESONANCE_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of Berry Phase Resonance (Pi-Stability)], [Defines the 'Ground State' of geometric stability where the Symmetry Tax of a 24-bit vector equals the transcendental constant Pi. This state is charact",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "algebra berry_phase_resonance  is ",
+        "synthesis_probe": "algebra berry_phase_resonance ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.8011 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=67.06",
+        "PASS: Shadow_drift=2 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_ALG_005",
+      "problem_id": "MN_ALG_005",
+      "domain": "Algebra",
+      "math": {
+        "concept": "Algebra_MN_ALG_005",
+        "key_numbers": [
+          2
+        ],
+        "vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.9492753623188406,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "8b2197d8961d"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 903873775.5449322,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "algebra anomaly  is ",
+        "synthesis_probe": "algebra anomaly ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9493 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=72.62",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_GEO_001",
+      "problem_id": "MN_GEO_001",
+      "domain": "Geometry",
+      "math": {
+        "concept": "Geometry_MN_GEO_001",
+        "key_numbers": [
+          1
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "nrci": 0.9740963262090022,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "115c6d62daca"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 618340167.9549695,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ACOUSTIC_MAPPING_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of Acoustic-Golay Mapping], [Establishes the 8-dimensional translation protocol for vibrational information. Acoustic dimensions are mapped to the 24-bit substrate via the Natural Temporal Scale.",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "geometry acoustic_mapping  is ",
+        "synthesis_probe": "geometry acoustic_mapping ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9741 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=43.83",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_GEO_002",
+      "problem_id": "MN_GEO_002",
+      "domain": "Geometry",
+      "math": {
+        "concept": "Geometry_MN_GEO_002",
+        "key_numbers": [
+          2
+        ],
+        "vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.9492753623188406,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "8b2197d8961d"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 903873775.5449322,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "geometry anomaly  is ",
+        "synthesis_probe": "geometry anomaly ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9493 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=72.62",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_GEO_003",
+      "problem_id": "MN_GEO_003",
+      "domain": "Geometry",
+      "math": {
+        "concept": "Geometry_MN_GEO_003",
+        "key_numbers": [
+          1
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "nrci": 0.9740963262090022,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "115c6d62daca"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 618340167.9549695,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ACOUSTIC_MAPPING_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of Acoustic-Golay Mapping], [Establishes the 8-dimensional translation protocol for vibrational information. Acoustic dimensions are mapped to the 24-bit substrate via the Natural Temporal Scale.",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "geometry acoustic_mapping  is ",
+        "synthesis_probe": "geometry acoustic_mapping ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9741 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=43.83",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_GEO_004",
+      "problem_id": "MN_GEO_004",
+      "domain": "Geometry",
+      "math": {
+        "concept": "Geometry_MN_GEO_004",
+        "key_numbers": [
+          2
+        ],
+        "vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.9492753623188406,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "8b2197d8961d"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 903873775.5449322,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "geometry anomaly  is ",
+        "synthesis_probe": "geometry anomaly ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9493 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=72.62",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_GEO_005",
+      "problem_id": "MN_GEO_005",
+      "domain": "Geometry",
+      "math": {
+        "concept": "Geometry_MN_GEO_005",
+        "key_numbers": [
+          1
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "nrci": 0.9740963262090022,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "115c6d62daca"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 618340167.9549695,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ACOUSTIC_MAPPING_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of Acoustic-Golay Mapping], [Establishes the 8-dimensional translation protocol for vibrational information. Acoustic dimensions are mapped to the 24-bit substrate via the Natural Temporal Scale.",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "geometry acoustic_mapping  is ",
+        "synthesis_probe": "geometry acoustic_mapping ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9741 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=43.83",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_COMB_001",
+      "problem_id": "MN_COMB_001",
+      "domain": "Combinatorics",
+      "math": {
+        "concept": "Combinatorics_MN_COMB_001",
+        "key_numbers": [
+          1
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "nrci": 0.9740963262090022,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "115c6d62daca"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 618340167.9549695,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ACOUSTIC_MAPPING_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of Acoustic-Golay Mapping], [Establishes the 8-dimensional translation protocol for vibrational information. Acoustic dimensions are mapped to the 24-bit substrate via the Natural Temporal Scale.",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "combinatorics acoustic_mapping  is ",
+        "synthesis_probe": "combinatorics acoustic_mapping ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9741 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=43.83",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_COMB_002",
+      "problem_id": "MN_COMB_002",
+      "domain": "Combinatorics",
+      "math": {
+        "concept": "Combinatorics_MN_COMB_002",
+        "key_numbers": [
+          1
+        ],
+        "vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "nrci": 0.9740963262090022,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "115c6d62daca"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 618340167.9549695,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ACOUSTIC_MAPPING_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of Acoustic-Golay Mapping], [Establishes the 8-dimensional translation protocol for vibrational information. Acoustic dimensions are mapped to the 24-bit substrate via the Natural Temporal Scale.",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "combinatorics acoustic_mapping  is ",
+        "synthesis_probe": "combinatorics acoustic_mapping ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9741 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=43.83",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_COMB_003",
+      "problem_id": "MN_COMB_003",
+      "domain": "Combinatorics",
+      "math": {
+        "concept": "Combinatorics_MN_COMB_003",
+        "key_numbers": [
+          2
+        ],
+        "vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.9492753623188406,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "8b2197d8961d"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 903873775.5449322,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ANOMALY_001",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "combinatorics anomaly  is ",
+        "synthesis_probe": "combinatorics anomaly ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.9493 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=72.62",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_COMB_004",
+      "problem_id": "MN_COMB_004",
+      "domain": "Combinatorics",
+      "math": {
+        "concept": "Combinatorics_MN_COMB_004",
+        "key_numbers": [
+          1,
+          2,
+          3,
+          10
+        ],
+        "vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.8596195521309896,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "10023321fc3c"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 818505195.1856737,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.8953330312641595,
+            "friction": 3.3507085020242915,
+            "species": "Delta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_ARX_HORIZON_006",
+        "law_resonance": 0.33333333333333337,
+        "law_definition": "[Law of the ARX Horizon (Super-Coherence)], [In a high-dimensional semantic lattice (N=4096), the maximum entropy allowed before identity collapse is a Hamming Radius of 6. This creates a 'Super-Coher",
+        "top_neighbours": []
+      },
+      "language": {
+        "moe_synthesis": "combinatorics arx_horizon_006  is ",
+        "synthesis_probe": "combinatorics arx_horizon_006 ",
+        "tct_alignment": 0.0
+      },
+      "accepted": true,
+      "alignment_score": 0.8,
+      "audit_notes": [
+        "PASS: NRCI=0.8596 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "FAIL: TCT_alignment=0.0000",
+        "PASS: TGIC_energy=73.87",
+        "PASS: Shadow_drift=0 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=0.80)"
+      ]
+    },
+    {
+      "step_id": "step_MN_COMB_005",
+      "problem_id": "MN_COMB_005",
+      "domain": "Combinatorics",
+      "math": {
+        "concept": "Combinatorics_MN_COMB_005",
+        "key_numbers": [
+          3,
+          1
+        ],
+        "vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "nrci": 0.902632678646051,
+        "syndrome_weight": 0,
+        "platform": "OCTAD",
+        "math_dna": "bba1bee46908"
+      },
+      "sovereign": {
+        "golay_address": 0,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 859460853.5886666,
+        "manifestation": "MANIFESTED",
+        "shadow_bits": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "density": {
+        "peaks": [
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          }
+        ],
+        "dominant_species": "Beta",
+        "landscape": [
+          {
+            "n": 1,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 2,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 3,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 4,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 5,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 6,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 7,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 8,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 9,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 10,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 11,
+            "nrci": 0.8953330312641595,
+            "friction": 5.584514170040485,
+            "species": "Delta"
+          },
+          {
+            "n": 12,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 13,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 14,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 15,
+            "nrci": 1.0,
+            "friction": 0.0,
+            "species": "Delta"
+          },
+          {
+            "n": 16,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 17,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 18,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 19,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 20,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 21,
+            "nrci": 0.61596052407691,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 22,
+            "nrci": 0.7623460040012635,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 23,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          },
+          {
+            "n": 24,
+            "nrci": 0.6813797360907478,
+            "friction": 0.0,
+            "species": "Beta"
+          }
+        ],
+        "peak_summary": "Natural stability peaks at n=[13, 14, 15] via Beta metabolism. Peak NRCI: 1.0000. This indicates the UBP substrate resonates at these harmonic positions."
+      },
+      "semantic": {
+        "governing_law": "LAW_STORAGE_HARDENED_001",
+        "law_resonance": 1.0000000000000002,
+        "law_definition": "[Law of Hardened Storage], [Hardened Storage (1:2 Expansion) guarantees 100% data integrity when environmental noise is <= 3%. Between 3% and 5%, the system maintains 'Functional Integrity' (readable ",
+        "top_neighbours": [
+          [
+            "LAW_STORAGE_HARDENED_001",
+            1.0000000000000002
+          ]
+        ]
+      },
+      "language": {
+        "moe_synthesis": "combinatorics storage_hardened storage_hardened is sufficient in period ",
+        "synthesis_probe": "combinatorics storage_hardened storage_hardened",
+        "tct_alignment": 1.0000000000000002
+      },
+      "accepted": true,
+      "alignment_score": 1.0,
+      "audit_notes": [
+        "PASS: NRCI=0.9026 (threshold 0.60)",
+        "PASS: Observer=MANIFESTED",
+        "PASS: TCT_alignment=1.0000",
+        "PASS: TGIC_energy=70.56",
+        "PASS: Shadow_drift=1 (ideal=0)",
+        "AUTO-SNAP: Accepted (alignment=1.00)"
+      ]
+    }
+  ]
+}
