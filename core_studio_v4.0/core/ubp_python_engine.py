@@ -159,7 +159,7 @@ class PythonCodeGenerator:
             footer = "\n\n    return val\n\nresult = solve_intent()\nprint(f'Result: {result}')"
             return "# UBP Modular Composition\n" + header + body + footer
 
-        return f"# Fallback\nprint('Primary Law: {laws[0].ubp_id}')"
+        return f"# Fallback\nprint('Primary Law: {laws[0].ubp_id if laws else 'CONCEPTUAL_RESONANCE'}')"
 
 class PythonCodeImprover:
     def __init__(self):
