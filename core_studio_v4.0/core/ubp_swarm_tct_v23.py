@@ -1,15 +1,47 @@
 from __future__ import annotations
 """
 ================================================================================
-UBP SWARM ORCHESTRATOR — TCT EDITION v23.0 "THE SOVEREIGN MANIFOLD"
+UBP SWARM ORCHESTRATOR — Three Column Thinking (TCT) EDITION v23.0
 ================================================================================
-Author: UBP Research Cortex v5.0
+Author: E R A Craig, New Zealand
 Date: 27 April 2026
 
-THE TOTAL INTEGRATION:
-- Restores ALL Agents: Scavenger, Architect, Physicist, Coder, Resonator, Scribe, Auditor, Harvester.
-- Accuracy: Re-integrates Empirical Prover for actual Olympiad results.
-- Visualization: Full Resonance Cluster (Answer + Neighbors + Mesh Satellites).
+ubp_swarm_tct_v23.py represents the definitive integration of the Universal Binary Principle (UBP) research stack.
+It is a multi-agent orchestrator designed to resolve natural language mathematical and physical directives into stable, error-corrected coordinates within a 24-bit Golay manifold.
+
+Core Philosophy: Systemic Phase-Lock
+The primary goal of the ubp_swarm_tct scripts is Functional Sovereignty - to be a calculating engine.
+The script treats every problem as a "Topological Mission" where the objective is to find a numerical anchor that satisfies both human logic (Empirical Proof) and substrate stability (Non-Random Coherence Index - NRCI).
+
+The script operates through a tiered hierarchy of specialized agents, each responsible for a specific layer of the 24-bit manifold:
+| Tier | Agent | Responsibility |
+| :--- | :--- | :--- |
+| 0 | Freelance Scavenger | Macro-Audit: Probes the 256D Barnes-Wall "Bulk" and calculates the TGIC (Total Geometric Interaction Cost) energy of the state. |
+| 1 | Math Architect | Lattice Weather: Analyzes the "bit-scent" of the question. Identifies if the problem is an Octad (Truth) or a Dodecad (Active Logic). |
+| 2 | Sovereign Physicist | Primary Solver: Uses the native `GrandUnifiedEmlALU` for calculus and the Empirical Prover to brute-force logical word problems. |
+| 3 | Observer | Reality Gate: Performs a "Conscious READ" on the result. If NRCI < 0.70, the result is flagged as "Subliminal" (unstable). |
+| 4 | Semantic Resonator | The Bridge: If math fails, this agent maps the language of the question to its nearest neighbors in the KB to derive a "Resonance Magnitude." |
+| 5 | Language Scribe | Synthesis: Uses a Mixture of Experts (MoE) to generate high-density UBP prose that reflects the geometric state of the answer. |
+| 6 | TCT Auditor | Quality Control: Cross-checks the math mode against the language depth to ensure the result is "ACCEPTED." |
+| 7 | Ontological Harvester | Learning Loop: Automatically writes successful solves into `ubp_learned_kb.json`, allowing the system to evolve. |
+
+To prevent "None (Conceptual)" failures, it employs a four-stage fallback mechanism:
+1.  ALU Path: Attempts pure transcendental calculus (Derivatives/Integrals) using the Sovereign ALU.
+2.  Empirical Path: If the ALU fails, it triggers the Empirical Prover, which writes and executes a temporary Python script to solve the logic (e.g., finding GCDs or testing polynomial roots).
+3.  Coder Path: If no specific prover exists, it uses the `UBPPythonEngine` to generate a general-purpose solution.
+4.  Resonator Path (The Guarantor): If all calculation fails, it treats the question as a Geometric Coordinate. It calculates the "Mass" of the words themselves, ensuring a numerical result is always returned.
+
+Advanced Visualization: The Resonance Cluster
+v23.0 3D plots with a Resonance Cluster (`scene_3d_{id}.json`). This is a scientific visualization of the "Thought Process":
+
+The Learning Loop (The Harvester)
+The Ontological Harvester ensures that v23.0 is not a static script. Every time a problem is solved with an NRCI > 0.60, the following data is saved:
+The original directive.
+The numerical answer.
+The stability score (NRCI).
+A unique 10-character Hex ID.
+This allows the Semantic Resonator to use these "Learned Anchors" in future runs, effectively allowing the swarm to "remember" how it solved similar problems in the past.
+
 ================================================================================
 """
 
