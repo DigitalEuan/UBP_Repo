@@ -1,0 +1,2376 @@
+{
+  "metadata": {
+    "system": "UBP Swarm TCT MathNet v1.0",
+    "ubp_version": "core_studio_v4.0",
+    "benchmark": "MathNet MIT (mathnet.mit.edu)",
+    "date": "2026-04-21",
+    "total_problems": 20,
+    "openai_model": "gpt-4.1-mini"
+  },
+  "results": [
+    {
+      "problem_id": "MN_NT_001",
+      "domain": "Number Theory",
+      "subdomain": "Divisibility / Factorization",
+      "problem_text": "Find all positive integers $n$ for which $2^n - 1$ is divisible by 7.",
+      "reference_answer": "n divisible by 3",
+      "math_column": {
+        "mean_nrci": 0.6620462994319628,
+        "nrci_values": [
+          0.6840403469656499,
+          0.6834226544391425,
+          0.6186758968910958
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.3066854249804896,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 7,
+            "nrci": 0.6834226544391425,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650735986.2440562,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 238,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 630382776.5478735,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.437966628904304,
+        "coherence_score": 0.662046908315565,
+        "eml_tree": "eml(eml(leaf(0.6620+0.0000j),leaf(11.0814+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 955,
+        "llm_solution": "We want to find all positive integers \\( n \\) such that \\( 2^n - 1 \\) is divisible by 7. In other words, we want all \\( n \\in \\mathbb{Z}^+ \\) such that:\n\n\\[\n7 \\mid (2^n - 1).\n\\]\n\nThis is equivalent to:\n\n\\[\n2^n \\equiv 1 \\pmod{7}.\n\\]\n\n---\n\n### Step 1: Understand the problem\n\nWe want to find all positive integers \\( n \\) such that \\( 2^n \\equiv 1 \\pmod{7} \\).\n\nSince 7 is prime, the multiplicative group modulo 7 is cyclic of order 6 (because \\(\\varphi(7) = 6\\), where \\(\\varphi\\) is Euler's totient function).\n\nBy Fermat's Little Theorem:\n\n\\[\n2^6 \\equiv 1 \\pmod{7}.\n\\]\n\nSo the order of 2 modulo 7 divides 6.\n\n---\n\n### Step 2: Find the order of 2 modulo 7\n\nThe order of 2 modulo 7 is the smallest positive integer \\( d \\) such that:\n\n\\[\n2^d \\equiv 1 \\pmod{7}.\n\\]\n\nCheck powers of 2 modulo 7:\n\n- \\(2^1 = 2 \\pmod{7}\\) (not 1)\n- \\(2^2 = 4 \\pmod{7}\\) (not 1)\n- \\(2^3 = 8 \\equiv 1 \\pmod{7}\\)\n\nSince \\(2^3 \\equiv 1 \\pmod{7}\\), the order of 2 modulo 7 is 3.\n\n---\n\n### Step 3: Characterize all \\( n \\) such that \\( 2^n \\equiv 1 \\pmod{7} \\)\n\nSince the order of 2 modulo 7 is 3, the powers of 2 modulo 7 cycle every 3 steps:\n\n\\[\n2^1 \\equiv 2, \\quad 2^2 \\equiv 4, \\quad 2^3 \\equiv 1, \\quad 2^4 \\equiv 2, \\quad 2^5 \\equiv 4, \\quad 2^6 \\equiv 1, \\ldots\n\\]\n\nTherefore,\n\n\\[\n2^n \\equiv 1 \\pmod{7} \\iff 3 \\mid n.\n\\]\n\n---\n\n### Step 4: Final answer\n\nAll positive integers \\( n \\) such that \\( 2^n - 1 \\) is divisible by 7 are exactly those positive integers divisible by 3.\n\n\\[\n\\boxed{\n\\{ n \\in \\mathbb{Z}^+ : 3 \\mid n \\}.\n}\n\\]\n\n---\n\n### Summary:\n\n- The order of 2 modulo 7 is 3.\n- \\(2^n \\equiv 1 \\pmod{7}\\) if and only if \\(n\\) is a multiple of 3.\n- Hence, \\(2^n - 1\\) is divisible by 7 if and only if \\(n\\) is divisible by 3.\n\n---\n\n**Explicitly:**\n\n\\[\n\\boxed{\n\\text{All positive integers } n \\text{ such that } 7 \\mid (2^n - 1) \\text{ are } n = 3k, \\quad k \\in \\mathbb{Z}^+.\n}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6620466038737639,
+        "alignment_score": 0.8499995940775985
+      },
+      "processing_time_s": 13.694044589996338,
+      "timestamp": "2026-04-21T18:22:20.471433"
+    },
+    {
+      "problem_id": "MN_NT_002",
+      "domain": "Number Theory",
+      "subdomain": "Modular Arithmetic",
+      "problem_text": "Solve the inequality $\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)$ given that $x = a + 1$ is a solution.",
+      "reference_answer": "x in (5/2, 3), a in (1, 2)",
+      "math_column": {
+        "mean_nrci": 0.6889730134168716,
+        "nrci_values": [
+          0.6840403469656499,
+          0.6186758968910958,
+          0.7642027963938691
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.5951340475591376,
+        "golay_weight_distribution": {
+          "12": 1,
+          "16": 1,
+          "8": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          },
+          {
+            "n": 5,
+            "nrci": 0.7642027963938691,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485101038.107765,
+            "is_prime": true,
+            "golay_nearest": 8
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 907,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "soc_energy": 656019628.3474897,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.42828184280123,
+        "coherence_score": 0.6889714993804213,
+        "eml_tree": "eml(eml(leaf(0.6890+0.0000j),leaf(4.9612+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1023,
+        "llm_solution": "Given the inequality:\n\\[\n\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)\n\\]\nand the condition that \\(x = a + 1\\) is a solution.\n\n---\n\n### Step 1: Understand the domain of the logarithms\n\nFor the logarithms to be defined, their arguments must be positive:\n\n1. \\(x^2 - x - 2 > 0\\)\n2. \\(3 + 2x - x^2 > 0\\)\n\n---\n\n### Step 2: Solve the domain inequalities\n\n1. \\(x^2 - x - 2 > 0\\)\n\nFactor:\n\\[\nx^2 - x - 2 = (x - 2)(x + 1)\n\\]\n\nThe quadratic opens upwards, so the inequality \\(> 0\\) holds when:\n\\[\nx < -1 \\quad \\text{or} \\quad x > 2\n\\]\n\n2. \\(3 + 2x - x^2 > 0\\)\n\nRewrite as:\n\\[\n-(x^2 - 2x - 3) > 0 \\implies x^2 - 2x - 3 < 0\n\\]\n\nFactor:\n\\[\nx^2 - 2x - 3 = (x - 3)(x + 1)\n\\]\n\nSince the quadratic opens upwards, \\(x^2 - 2x - 3 < 0\\) for:\n\\[\n-1 < x < 3\n\\]\n\n---\n\n### Step 3: Find the intersection of the domains\n\nThe arguments of the logarithms are both positive when:\n\\[\n(x < -1 \\text{ or } x > 2) \\quad \\text{and} \\quad (-1 < x < 3)\n\\]\n\nCheck intervals:\n\n- For \\(x < -1\\), the second condition requires \\(-1 < x\\), which is false.\n- For \\(x > 2\\), the second condition requires \\(x < 3\\).\n\nTherefore, the domain is:\n\\[\n2 < x < 3\n\\]\n\n---\n\n### Step 4: Analyze the inequality \\(\\log_a(f(x)) > \\log_a(g(x))\\)\n\nGiven:\n\\[\n\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)\n\\]\n\nSince the logarithm base \\(a\\) is positive and not equal to 1, the inequality direction depends on \\(a\\):\n\n- If \\(a > 1\\), \\(\\log_a\\) is increasing, so:\n\\[\nx^2 - x - 2 > 3 + 2x - x^2\n\\]\n\n- If \\(0 < a < 1\\), \\(\\log_a\\) is decreasing, so:\n\\[\nx^2 - x - 2 < 3 + 2x - x^2\n\\]\n\n---\n\n### Step 5: Simplify the inequality inside the domain \\(2 < x < 3\\)\n\nRewrite the inequality for \\(a > 1\\):\n\\[\nx^2 - x - 2 > 3 + 2x - x^2\n\\]\n\nBring all terms to one side:\n\\[\nx^2 - x - 2 - 3 - 2x + x^2 > 0\n\\]\n\\[\n2x^2 - 3x - 5 > 0\n\\]\n\n---\n\n### Step 6: Solve \\(2x^2 - 3x - 5 > 0\\)\n\nFind roots of \\(2x^2 - 3x - 5 = 0\\):\n\\[\nx = \\frac{3 \\pm \\sqrt{9 + 40}}{4} = \\",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6889722563986465,
+        "alignment_score": 0.8499989906423666
+      },
+      "processing_time_s": 12.985014915466309,
+      "timestamp": "2026-04-21T18:22:33.456637"
+    },
+    {
+      "problem_id": "MN_NT_003",
+      "domain": "Number Theory",
+      "subdomain": "Diophantine Equations",
+      "problem_text": "Prove that the fraction $\\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.",
+      "reference_answer": "gcd(21n+4, 14n+3) = 1 for all n",
+      "math_column": {
+        "mean_nrci": 0.6865987095576587,
+        "nrci_values": [
+          0.6828608631910631,
+          0.6830561196037641,
+          0.6837248218637105,
+          0.6186758968910958,
+          0.7646758462386598
+        ],
+        "prime_density": 0.2,
+        "geometric_complexity": 0.46355859224826923,
+        "golay_weight_distribution": {
+          "12": 3,
+          "16": 1,
+          "8": 1
+        },
+        "alu_operations": [
+          {
+            "op": "ln(21)",
+            "result": 3.044522437723423
+          },
+          {
+            "op": "sin(21\u00b0)",
+            "result": 0.35836794954530027
+          },
+          {
+            "op": "factorial(14)",
+            "result": -566438450806.6425
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 21,
+            "nrci": 0.6828608631910631,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650201378.35967,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 14,
+            "nrci": 0.6830561196037641,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650385523.407455,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 4,
+            "nrci": 0.6837248218637105,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651024714.4228245,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "golay_nearest": 8
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 3024,
+        "snapped_vector": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "soc_energy": 653759588.9099208,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.4291356137208595,
+        "coherence_score": 0.6865979381443299,
+        "eml_tree": "eml(eml(leaf(0.6866+0.0000j),leaf(8.3670+0.0000j)),leaf(0.2000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 893,
+        "llm_solution": "**Problem:**  \nProve that the fraction \\(\\frac{21n + 4}{14n + 3}\\) is irreducible for every natural number \\(n\\).\n\n---\n\n### Step 1: Understand the problem\n\nTo say that the fraction \\(\\frac{21n + 4}{14n + 3}\\) is irreducible means that the numerator and denominator share no common divisors other than 1. Formally, we want to prove:\n\n\\[\n\\gcd(21n + 4, 14n + 3) = 1 \\quad \\text{for all } n \\in \\mathbb{N}.\n\\]\n\n---\n\n### Step 2: Use the Euclidean Algorithm\n\nThe Euclidean algorithm is the standard tool to find the greatest common divisor (gcd) of two integers.\n\nLet:\n\n\\[\na = 21n + 4, \\quad b = 14n + 3.\n\\]\n\nWe want to find \\(\\gcd(a, b)\\).\n\n---\n\n### Step 3: Apply the Euclidean Algorithm\n\nCalculate:\n\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, (21n + 4) - (14n + 3)).\n\\]\n\nCompute the difference:\n\n\\[\n(21n + 4) - (14n + 3) = 7n + 1.\n\\]\n\nSo,\n\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, 7n + 1).\n\\]\n\n---\n\n### Step 4: Repeat the Euclidean Algorithm\n\nNow find:\n\n\\[\n\\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, (14n + 3) - 2(7n + 1)).\n\\]\n\nCalculate:\n\n\\[\n(14n + 3) - 2(7n + 1) = 14n + 3 - 14n - 2 = 1.\n\\]\n\nTherefore,\n\n\\[\n\\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, 1).\n\\]\n\n---\n\n### Step 5: Final step\n\nSince \\(\\gcd(x, 1) = 1\\) for any integer \\(x\\), we have:\n\n\\[\n\\gcd(7n + 1, 1) = 1.\n\\]\n\nThus,\n\n\\[\n\\gcd(21n + 4, 14n + 3) = 1.\n\\]\n\n---\n\n### **Conclusion:**\n\nFor every natural number \\(n\\), the numerator and denominator of the fraction \\(\\frac{21n + 4}{14n + 3}\\) are coprime. Hence, the fraction is irreducible for all \\(n \\in \\mathbb{N}\\).\n\n---\n\n### **Final answer:**\n\n\\[\n\\boxed{\n\\text{The fraction } \\frac{21n + 4}{14n + 3} \\text{ is irreducible for every natural number } n.\n}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6865983238509943,
+        "alignment_score": 0.7499994857244475
+      },
+      "processing_time_s": 10.818190574645996,
+      "timestamp": "2026-04-21T18:22:44.274997"
+    },
+    {
+      "problem_id": "MN_NT_004",
+      "domain": "Number Theory",
+      "subdomain": "Residues and Primitive Roots",
+      "problem_text": "Find all pairs of positive integers $(m, n)$ such that $m^2 - n^2 = 2026$.",
+      "reference_answer": "No solution (2026 = 2 \u00d7 1013, 1013 prime; m-n and m+n same parity needed)",
+      "math_column": {
+        "mean_nrci": 0.6825151692895042,
+        "nrci_values": [
+          0.6817097158647951,
+          0.6840403469656499,
+          0.6817954450380675
+        ],
+        "prime_density": 0.6666666666666666,
+        "geometric_complexity": 0.010790312261923823,
+        "golay_weight_distribution": {
+          "12": 3
+        },
+        "alu_operations": [
+          {
+            "op": "ln(2026)",
+            "result": 7.613818684808629
+          },
+          {
+            "op": "sin(2026\u00b0)",
+            "result": -0.7182059769756074
+          },
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2026,
+            "nrci": 0.6817097158647951,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 649105632.7941939,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 1013,
+            "nrci": 0.6817954450380675,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 649208436.9805723,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1956,
+        "snapped_vector": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 649872249.2883235,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430604126822212,
+        "coherence_score": 0.6825153374233128,
+        "eml_tree": "eml(eml(leaf(0.6825+0.0000j),leaf(12.5843+0.0000j)),leaf(0.6667+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1006,
+        "llm_solution": "Given the problem:\n\n**Find all pairs of positive integers \\((m, n)\\) such that**\n\\[\nm^2 - n^2 = 2026.\n\\]\n\n---\n\n### Step 1: Rewrite the equation\n\nRecall the difference of squares factorization:\n\\[\nm^2 - n^2 = (m - n)(m + n).\n\\]\n\nSo,\n\\[\n(m - n)(m + n) = 2026.\n\\]\n\n---\n\n### Step 2: Analyze the factors\n\nSince \\(m\\) and \\(n\\) are positive integers, and \\(m > n\\) (because \\(m^2 - n^2 > 0\\)), both \\(m-n\\) and \\(m+n\\) are positive integers.\n\nLet:\n\\[\na = m - n, \\quad b = m + n,\n\\]\nwith \\(a < b\\) (since \\(m-n < m+n\\)).\n\nThen:\n\\[\nab = 2026,\n\\]\nwith \\(a, b \\in \\mathbb{Z}^+\\), \\(a < b\\).\n\nAlso, since \\(m = \\frac{a+b}{2}\\) and \\(n = \\frac{b - a}{2}\\), both \\(\\frac{a+b}{2}\\) and \\(\\frac{b - a}{2}\\) must be integers.\n\n---\n\n### Step 3: Parity conditions\n\nFor \\(m\\) and \\(n\\) to be integers, \\(\\frac{a+b}{2}\\) and \\(\\frac{b - a}{2}\\) must be integers.\n\nThis implies:\n- \\(a + b\\) is even,\n- \\(b - a\\) is even.\n\nAdding and subtracting these:\n- \\(a + b\\) even,\n- \\(b - a\\) even.\n\nSum and difference of \\(a\\) and \\(b\\) are even \\(\\implies\\) \\(a\\) and \\(b\\) are both even or both odd.\n\n---\n\n### Step 4: Factorize 2026\n\nLet's factor 2026.\n\nCheck divisibility:\n\n- \\(2026 \\div 2 = 1013\\), so \\(2026 = 2 \\times 1013\\).\n- Check if 1013 is prime:\n\nTest primes up to \\(\\sqrt{1013} \\approx 31.8\\):\n\n- 2: no (already factored out)\n- 3: \\(1013 \\mod 3 = 1\\)\n- 5: last digit not 0 or 5\n- 7: \\(1013 \\mod 7 = 1013 - 7 \\times 144 = 1013 - 1008 = 5\\)\n- 11: sum of digits \\(1+0+1+3=5\\), not divisible by 11\n- 13: \\(1013 \\mod 13 = ?\\) \\(13 \\times 77 = 1001\\), remainder 12\n- 17: \\(17 \\times 59 = 1003\\), remainder 10\n- 19: \\(19 \\times 53 = 1007\\), remainder 6\n- 23: \\(23 \\times 44 = 1012\\), remainder 1\n- 29: \\(29 \\times 34 = 986\\), remainder 27\n- 31: \\(31 \\times 32 = 992\\), remainder 21\n\nNo divisor found, so 1013 is prime.\n\nThus,\n\\[\n2026 = 2 \\times 1013,\n\\]\nwith prime factors 2 and 1013.\n\n---\n\n### Step 5: List factor pairs of 2026\n\nThe positive factor pairs \\((a,b)\\) with \\(a < b\\) are:\n\n1. \\",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6825152533564085,
+        "alignment_score": 0.8499998879107942
+      },
+      "processing_time_s": 13.994514465332031,
+      "timestamp": "2026-04-21T18:22:58.269690"
+    },
+    {
+      "problem_id": "MN_NT_005",
+      "domain": "Number Theory",
+      "subdomain": "Divisibility / Factorization",
+      "problem_text": "Find the largest integer $n$ such that $n$ is divisible by all positive integers less than $\\sqrt[3]{n}$.",
+      "reference_answer": "420",
+      "math_column": {
+        "mean_nrci": 0.6606007888662444,
+        "nrci_values": [
+          0.681936978710832,
+          0.6164427334487587,
+          0.6834226544391425
+        ],
+        "prime_density": 0.3333333333333333,
+        "geometric_complexity": 0.3123035064145912,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1
+        },
+        "alu_operations": [
+          {
+            "op": "ln(420)",
+            "result": 6.040254711277414
+          },
+          {
+            "op": "sin(420\u00b0)",
+            "result": 0.8660254037844191
+          },
+          {
+            "op": "ln(840)",
+            "result": 6.73340189183736
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 420,
+            "nrci": 0.681936978710832,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 649321736.8823142,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 840,
+            "nrci": 0.6164427334487587,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 782607430.88069,
+            "is_prime": false,
+            "golay_nearest": 16
+          },
+          {
+            "n": 7,
+            "nrci": 0.6834226544391425,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650735986.2440562,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 3829,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "soc_energy": 838672883.5188473,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 16.0,
+        "symmetry_tax": 5.9179829819300585,
+        "coherence_score": 0.6605995717344754,
+        "eml_tree": "eml(eml(leaf(0.6606+0.0000j),leaf(9.0418+0.0000j)),leaf(0.3333+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+          "ELEM_B_005"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1007,
+        "llm_solution": "**Problem restatement:**\n\nFind the largest integer \\( n \\) such that \\( n \\) is divisible by all positive integers less than \\(\\sqrt[3]{n}\\).\n\n---\n\n### Step 1: Understand the problem\n\nWe want the largest integer \\( n \\) such that for every positive integer \\( k < \\sqrt[3]{n} \\), \\( k \\mid n \\).\n\nLet:\n\\[\nm = \\sqrt[3]{n} \\implies n = m^3.\n\\]\n\nThe condition is:\n\\[\n\\forall k \\in \\mathbb{Z}^+, k < m \\implies k \\mid n.\n\\]\n\nSince \\( n = m^3 \\), the divisibility condition becomes:\n\\[\nk \\mid m^3 \\quad \\text{for all } k < m.\n\\]\n\n---\n\n### Step 2: Reformulate the problem in terms of \\( m \\)\n\nWe want to find the largest integer \\( n = m^3 \\) such that every positive integer less than \\( m \\) divides \\( m^3 \\).\n\nEquivalently:\n\\[\n\\text{For all } k < m, \\quad k \\mid m^3.\n\\]\n\n---\n\n### Step 3: Analyze the divisibility condition\n\nFor each \\( k < m \\), \\( k \\mid m^3 \\).\n\nSince \\( k < m \\), \\( k \\) is a positive integer less than \\( m \\).\n\nWe want \\( m^3 \\) to be divisible by all integers less than \\( m \\).\n\n---\n\n### Step 4: Consider the prime factorization\n\nLet:\n\\[\nm = \\prod_{i=1}^r p_i^{a_i},\n\\]\nwhere \\( p_i \\) are primes and \\( a_i \\geq 1 \\).\n\nThen:\n\\[\nm^3 = \\prod_{i=1}^r p_i^{3a_i}.\n\\]\n\nFor \\( m^3 \\) to be divisible by all integers less than \\( m \\), it must be divisible by their least common multiple (LCM).\n\n---\n\n### Step 5: Key insight: \\( m^3 \\) must be divisible by \\(\\mathrm{LCM}(1, 2, \\ldots, m-1)\\)\n\nLet:\n\\[\nL = \\mathrm{LCM}(1, 2, \\ldots, m-1).\n\\]\n\nThe condition is:\n\\[\nL \\mid m^3.\n\\]\n\nWe want to find the largest \\( m \\) such that:\n\\[\nL \\mid m^3.\n\\]\n\n---\n\n### Step 6: Express \\( L \\) in terms of prime powers\n\nFor each prime \\( p \\leq m-1 \\), the highest power of \\( p \\) dividing \\( L \\) is:\n\\[\np^{b_p} \\leq m-1,\n\\]\nwhere \\( b_p = \\max \\{ k \\in \\mathbb{N} : p^k \\leq m-1 \\} = \\lfloor \\log_p (m-1) \\rfloor.\\)\n\nThus:\n\\[\nL = \\prod_{p \\leq m-1} p^{b_p}.\n\\]\n\n---\n\n### Step 7: Condition \\( L \\mid m^3 \\) in terms of exponents\n\nSince:\n\\[\nm = \\prod_{i=1}^r p_i^{a_i},\n\\]\nwe have:\n\\[\nm^3 = \\prod_{i=1}^r p_i^{3a_i}.\n\\]\n\nFor \\( L \\mid m^3 \\), for every prime \\( p \\leq m-1 \\):\n\\[\nb_p \\leq 3a_p,\n\\]\nwhere \\( a_p \\) is the exponent of \\( p \\) in \\( m \\) (",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_CHROMO_GEOMETRIC_DUALISM_001",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] LAW_CHROMO_GEOMETRIC_DUALISM_001 (NRCI: 0.6814)\n    Lexicon: [Law: Chromo-Geometric Dualism], The pr"
+          },
+          {
+            "ubp_id": "ELEM_B_005",
+            "resonance": 0.33333333333333337,
+            "summary": "[Resonance: 0.3333] ELEM_B_005 (NRCI: 0.6160)\n    Lexicon: [Element: Boron (B)], [Boron (Z=5). A Solid (Phase 3) with Ot"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6606001803003598,
+        "alignment_score": 0.7944436330232651
+      },
+      "processing_time_s": 12.954525470733643,
+      "timestamp": "2026-04-21T18:23:11.224397"
+    },
+    {
+      "problem_id": "MN_ALG_001",
+      "domain": "Algebra",
+      "subdomain": "Equations and Inequalities",
+      "problem_text": "Solve the system: $x + y + z = a$, $x^2 + y^2 + z^2 = b^2$, $xy = z^2$ where $a$ and $b$ are given constants. What conditions must $a$ and $b$ satisfy?",
+      "reference_answer": "z = (a^2 - b^2)/(2a), x+y = a - z, xy = z^2; condition: a != 0 and discriminant >= 0",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1148,
+        "snapped_vector": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(5.7225+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.0,
+        "ubp_laws_invoked": [],
+        "domain_alignment": "GEOMETRIC",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 921,
+        "llm_solution": "Given the system:\n\\[\n\\begin{cases}\nx + y + z = a, \\\\\nx^2 + y^2 + z^2 = b^2, \\\\\nxy = z^2,\n\\end{cases}\n\\]\nwhere \\(a, b\\) are constants, we want to solve for \\(x, y, z\\) and find the conditions on \\(a, b\\) for solutions to exist.\n\n---\n\n### Step 1: Express \\(x, y\\) in terms of \\(z\\)\n\nFrom the third equation:\n\\[\nxy = z^2.\n\\]\n\nFrom the first equation:\n\\[\nx + y = a - z.\n\\]\n\nWe have a system for \\(x, y\\):\n\\[\n\\begin{cases}\nx + y = a - z, \\\\\nxy = z^2.\n\\end{cases}\n\\]\n\nThis is a quadratic system in \\(x, y\\) with sum and product known.\n\n---\n\n### Step 2: Use the quadratic equation for \\(x, y\\)\n\nLet \\(x, y\\) be roots of:\n\\[\nt^2 - (a - z) t + z^2 = 0.\n\\]\n\nThe discriminant must be nonnegative for real \\(x, y\\):\n\\[\n\\Delta = (a - z)^2 - 4 z^2 = (a - z)^2 - 4 z^2 = a^2 - 2 a z + z^2 - 4 z^2 = a^2 - 2 a z - 3 z^2 \\geq 0.\n\\]\n\n---\n\n### Step 3: Use the second equation \\(x^2 + y^2 + z^2 = b^2\\)\n\nRecall:\n\\[\nx^2 + y^2 = (x + y)^2 - 2xy = (a - z)^2 - 2 z^2.\n\\]\n\nTherefore:\n\\[\nx^2 + y^2 + z^2 = (a - z)^2 - 2 z^2 + z^2 = (a - z)^2 - z^2 = b^2.\n\\]\n\nExpand:\n\\[\n(a - z)^2 - z^2 = b^2,\n\\]\n\\[\na^2 - 2 a z + z^2 - z^2 = b^2,\n\\]\n\\[\na^2 - 2 a z = b^2.\n\\]\n\nRearranged:\n\\[\n-2 a z = b^2 - a^2,\n\\]\n\\[\nz = \\frac{a^2 - b^2}{2 a}, \\quad \\text{provided } a \\neq 0.\n\\]\n\n---\n\n### Step 4: Substitute \\(z\\) back into the discriminant condition\n\nRecall:\n\\[\n\\Delta = a^2 - 2 a z - 3 z^2 \\geq 0.\n\\]\n\nSubstitute \\(z = \\frac{a^2 - b^2}{2 a}\\):\n\\[\n\\Delta = a^2 - 2 a \\cdot \\frac{a^2 - b^2}{2 a} - 3 \\left(\\frac{a^2 - b^2}{2 a}\\right)^2 = a^2 - (a^2 - b^2) - 3 \\frac{(a^2 - b^2)^2}{4 a^2}.\n\\]\n\nSimplify:\n\\[\n\\Delta = a^2 - a^2 + b^2 - \\frac{3 (a^2 - b^2)^2}{4 a^2} = b^2 - \\frac{3 (a^2 - b^2)^2}{4 a^2} \\geq 0.\n\\]\n\n",
+        "semantic_hits": []
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.7666658273214887
+      },
+      "processing_time_s": 12.925320625305176,
+      "timestamp": "2026-04-21T18:23:24.149898"
+    },
+    {
+      "problem_id": "MN_ALG_002",
+      "domain": "Algebra",
+      "subdomain": "Algebraic Expressions",
+      "problem_text": "Let $a, b, c$ be positive reals with $a + b + c = 1$. Prove that $a^2 + b^2 + c^2 \\geq \\frac{1}{3}$.",
+      "reference_answer": "Proof via Cauchy-Schwarz or AM-QM inequality",
+      "math_column": {
+        "mean_nrci": 0.6916758715648779,
+        "nrci_values": [
+          0.6186758968910958,
+          0.7646758462386598
+        ],
+        "prime_density": 0.5,
+        "geometric_complexity": 0.72999974673782,
+        "golay_weight_distribution": {
+          "16": 1,
+          "8": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(3)",
+            "result": 5.999999957305127
+          },
+          {
+            "op": "ln(3)",
+            "result": 1.0986122886681098
+          },
+          {
+            "op": "sin(3\u00b0)",
+            "result": 0.05233595624294384
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "golay_nearest": 8
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2785,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "soc_energy": 658595194.3734139,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.42730887598571,
+        "coherence_score": 0.6916764361078547,
+        "eml_tree": "eml(eml(leaf(0.6917+0.0000j),leaf(10.7239+0.0000j)),leaf(0.5000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.0,
+        "ubp_laws_invoked": [],
+        "domain_alignment": "GEOMETRIC",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 673,
+        "llm_solution": "**Problem:**  \nLet \\(a, b, c\\) be positive real numbers such that \\(a + b + c = 1\\). Prove that  \n\\[\na^2 + b^2 + c^2 \\geq \\frac{1}{3}.\n\\]\n\n---\n\n### Solution:\n\n**Step 1: Understand the problem**\n\nWe want to prove a lower bound on the sum of squares \\(a^2 + b^2 + c^2\\) given a fixed sum \\(a + b + c = 1\\) with \\(a, b, c > 0\\).\n\n---\n\n**Step 2: Use the Cauchy\u2013Schwarz inequality**\n\nRecall the Cauchy\u2013Schwarz inequality in \\(\\mathbb{R}^3\\):\n\\[\n(a^2 + b^2 + c^2)(1^2 + 1^2 + 1^2) \\geq (a + b + c)^2.\n\\]\n\nSince \\(1^2 + 1^2 + 1^2 = 3\\), this becomes:\n\\[\n3(a^2 + b^2 + c^2) \\geq (a + b + c)^2.\n\\]\n\n---\n\n**Step 3: Substitute the given sum**\n\nGiven \\(a + b + c = 1\\), substitute into the inequality:\n\\[\n3(a^2 + b^2 + c^2) \\geq 1^2 = 1.\n\\]\n\nDivide both sides by 3:\n\\[\na^2 + b^2 + c^2 \\geq \\frac{1}{3}.\n\\]\n\n---\n\n**Step 4: Check equality condition**\n\nEquality in the Cauchy\u2013Schwarz inequality holds if and only if the vectors \\((a, b, c)\\) and \\((1, 1, 1)\\) are linearly dependent, i.e., when\n\\[\na = b = c.\n\\]\n\nSince \\(a + b + c = 1\\), this means\n\\[\n3a = 1 \\implies a = b = c = \\frac{1}{3}.\n\\]\n\n---\n\n### Final answer:\n\n\\[\n\\boxed{\na^2 + b^2 + c^2 \\geq \\frac{1}{3},\n}\n\\]\nwith equality if and only if \\(a = b = c = \\frac{1}{3}\\).\n\n---\n\n**Summary:**  \nUsing the Cauchy\u2013Schwarz inequality, we have rigorously shown that for positive real numbers \\(a, b, c\\) summing to 1, the sum of their squares is at least \\(\\frac{1}{3}\\).",
+        "semantic_hits": []
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6916761538363663,
+        "alignment_score": 0.766666290304682
+      },
+      "processing_time_s": 9.424602031707764,
+      "timestamp": "2026-04-21T18:23:33.574828"
+    },
+    {
+      "problem_id": "MN_ALG_003",
+      "domain": "Algebra",
+      "subdomain": "Intermediate Algebra",
+      "problem_text": "Let $f$ be a real-valued function defined for all real $x$ such that for some positive constant $a$: $f(x+a) = \\frac{1}{2} + \\sqrt{f(x) - [f(x)]^2}$. Prove $f$ is periodic.",
+      "reference_answer": "f has period 2a",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 669,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(4.8095+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.0,
+        "ubp_laws_invoked": [],
+        "domain_alignment": "GEOMETRIC",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 923,
+        "llm_solution": "**Problem restatement:**\n\nLet \\( f:\\mathbb{R} \\to \\mathbb{R} \\) satisfy, for some positive constant \\( a \\),\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x) - [f(x)]^2} \\quad \\forall x \\in \\mathbb{R}.\n\\]\nProve that \\( f \\) is periodic.\n\n---\n\n### Step 1: Analyze the functional equation\n\nGiven:\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x) - f(x)^2}.\n\\]\n\nNote that the expression under the square root is:\n\\[\nf(x) - f(x)^2 = f(x)(1 - f(x)).\n\\]\n\nSince the square root is real-valued, we must have:\n\\[\nf(x)(1 - f(x)) \\geq 0.\n\\]\n\nThis implies:\n\\[\n0 \\leq f(x) \\leq 1 \\quad \\forall x.\n\\]\n\n---\n\n### Step 2: Define \\( g(x) = f(x) - \\frac{1}{2} \\)\n\nRewrite the equation in terms of \\( g \\):\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x)(1 - f(x))}.\n\\]\n\nSince \\( f(x) = \\frac{1}{2} + g(x) \\), then\n\\[\nf(x)(1 - f(x)) = \\left(\\frac{1}{2} + g(x)\\right)\\left(1 - \\frac{1}{2} - g(x)\\right) = \\left(\\frac{1}{2} + g(x)\\right)\\left(\\frac{1}{2} - g(x)\\right).\n\\]\n\nMultiply:\n\\[\n= \\frac{1}{4} - g(x)^2.\n\\]\n\nTherefore,\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{\\frac{1}{4} - g(x)^2}.\n\\]\n\nRewrite:\n\\[\ng(x+a) = f(x+a) - \\frac{1}{2} = \\sqrt{\\frac{1}{4} - g(x)^2}.\n\\]\n\n---\n\n### Step 3: Consider the range of \\( g \\)\n\nSince \\( f(x) \\in [0,1] \\), then\n\\[\ng(x) = f(x) - \\frac{1}{2} \\in \\left[-\\frac{1}{2}, \\frac{1}{2}\\right].\n\\]\n\nThe equation is:\n\\[\ng(x+a) = \\sqrt{\\frac{1}{4} - g(x)^2}.\n\\]\n\nNote that the right side is nonnegative, so\n\\[\ng(x+a) \\geq 0.\n\\]\n\n---\n\n### Step 4: Define the sequence \\( g_n(x) = g(x + n a) \\)\n\nFrom the functional equation,\n\\[\ng_{n+1}(x) = \\sqrt{\\frac{1}{4} - g_n(x)^2}.\n\\]\n\nSince \\( g_n(x) \\in [-\\frac{1}{2}, \\frac{1}{2}] \\), and \\( g_{n+1}(x) \\geq 0 \\), the sequence \\( g_n(x) \\) satisfies:\n\\[\ng_{n+1}(x) = \\sqrt{\\frac{1}{4} - g_n(x)^2}, \\quad g_n(x) \\geq 0 \\text{ for } n \\geq 1.\n\\]\n\n---\n\n### Step 5: Iterate the functional equation twice\n\nApply the functional equation twice:\n\\[\ng(x + 2a) = g_2(x) = \\sqrt{\\frac{1}{4} -",
+        "semantic_hits": []
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.7666658273214887
+      },
+      "processing_time_s": 12.877809762954712,
+      "timestamp": "2026-04-21T18:23:46.452853"
+    },
+    {
+      "problem_id": "MN_ALG_004",
+      "domain": "Algebra",
+      "subdomain": "Prealgebra / Basic Algebra",
+      "problem_text": "Find all real solutions to $x^4 - 3x^3 + 4x^2 - 3x + 1 = 0$.",
+      "reference_answer": "x = (3 \u00b1 sqrt(5))/2 divided by 2, i.e. x = (3\u00b1sqrt(5))/4... actually x=(1+sqrt(5))/2 and x=(1-sqrt(5))/2 after dividing by x^2",
+      "math_column": {
+        "mean_nrci": 0.687779227989779,
+        "nrci_values": [
+          0.6837248218637105,
+          0.6186758968910958,
+          0.6840403469656499,
+          0.7646758462386598
+        ],
+        "prime_density": 0.5,
+        "geometric_complexity": 0.5176576500786025,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1,
+          "8": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(4)",
+            "result": 23.999999041290106
+          },
+          {
+            "op": "ln(4)",
+            "result": 1.3862943611198908
+          },
+          {
+            "op": "sin(4\u00b0)",
+            "result": 0.06975647374412532
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 4,
+            "nrci": 0.6837248218637105,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651024714.4228245,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "golay_nearest": 8
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2229,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "soc_energy": 654882999.6149212,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.428711224935962,
+        "coherence_score": 0.6877777777777778,
+        "eml_tree": "eml(eml(leaf(0.6878+0.0000j),leaf(1.4800+0.0000j)),leaf(0.5000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.0,
+        "ubp_laws_invoked": [],
+        "domain_alignment": "GEOMETRIC",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 893,
+        "llm_solution": "Given the polynomial equation:\n\\[\nx^4 - 3x^3 + 4x^2 - 3x + 1 = 0,\n\\]\nwe want to find all real solutions \\( x \\).\n\n---\n\n### Step 1: Check for obvious roots\n\nTry simple rational roots using the Rational Root Theorem. Possible roots are factors of the constant term \\( \\pm 1 \\).\n\n- \\( x = 1 \\):\n\\[\n1 - 3 + 4 - 3 + 1 = 0,\n\\]\nso \\( x = 1 \\) is a root.\n\n- \\( x = -1 \\):\n\\[\n1 + 3 + 4 + 3 + 1 = 12 \\neq 0,\n\\]\nso \\( x = -1 \\) is not a root.\n\n---\n\n### Step 2: Polynomial division by \\( x - 1 \\)\n\nDivide the polynomial by \\( x - 1 \\) to factor out the root \\( x=1 \\).\n\nUsing synthetic division:\n\n\\[\n\\begin{array}{c|ccccc}\n1 & 1 & -3 & 4 & -3 & 1 \\\\\n  &   & 1  & -2 & 2 & -1 \\\\\n\\hline\n  & 1 & -2 & 2 & -1 & 0 \\\\\n\\end{array}\n\\]\n\nThe quotient polynomial is:\n\\[\nx^3 - 2x^2 + 2x - 1.\n\\]\n\nSo,\n\\[\nx^4 - 3x^3 + 4x^2 - 3x + 1 = (x - 1)(x^3 - 2x^2 + 2x - 1).\n\\]\n\n---\n\n### Step 3: Factor the cubic \\( x^3 - 2x^2 + 2x - 1 \\)\n\nTry to find rational roots of the cubic using the Rational Root Theorem again. Possible roots: \\( \\pm 1 \\).\n\n- \\( x = 1 \\):\n\\[\n1 - 2 + 2 - 1 = 0,\n\\]\nso \\( x = 1 \\) is also a root of the cubic.\n\n---\n\n### Step 4: Divide the cubic by \\( x - 1 \\)\n\nUsing synthetic division again:\n\n\\[\n\\begin{array}{c|cccc}\n1 & 1 & -2 & 2 & -1 \\\\\n  &   & 1  & -1 & 1 \\\\\n\\hline\n  & 1 & -1 & 1 & 0 \\\\\n\\end{array}\n\\]\n\nThe quotient polynomial is:\n\\[\nx^2 - x + 1.\n\\]\n\nThus,\n\\[\nx^3 - 2x^2 + 2x - 1 = (x - 1)(x^2 - x + 1).\n\\]\n\n---\n\n### Step 5: Factorization of the original polynomial\n\nPutting it all together:\n\\[\nx^4 - 3x^3 + 4x^2 - 3x + 1 = (x - 1)^2 (x^2 - x + 1).\n\\]\n\n---\n\n### Step 6: Solve \\( x^2 - x + 1 = 0 \\)\n\nThe quadratic equation:\n\\[\nx^2 - x + 1 = 0.\n\\]\n\nCalculate the discriminant:\n\\[\n\\Delta = (-1)^2 - 4 \\cdot 1 \\cdot 1 = 1 - 4 = -3 < 0.\n\\]\n\nSince the discriminant is negative, there are no real roots from this quadratic.\n\n---\n\n### **Final answer:**\n\nThe only real solution to the equation\n\\[\nx^4 - 3x^3 + 4x^",
+        "semantic_hits": []
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6877785028837784,
+        "alignment_score": 0.7666656998586658
+      },
+      "processing_time_s": 12.425779342651367,
+      "timestamp": "2026-04-21T18:23:58.878800"
+    },
+    {
+      "problem_id": "MN_ALG_005",
+      "domain": "Algebra",
+      "subdomain": "Equations and Inequalities",
+      "problem_text": "Find all functions $f: \\mathbb{R} \\to \\mathbb{R}$ satisfying $f(x^2 + y + f(y)) = 2y + f(x)^2$ for all $x, y \\in \\mathbb{R}$.",
+      "reference_answer": "f(x) = x",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 111,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(10.1816+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.0,
+        "ubp_laws_invoked": [],
+        "domain_alignment": "GEOMETRIC",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 917,
+        "llm_solution": "Given the functional equation:\n\\[\nf(x^2 + y + f(y)) = 2y + f(x)^2 \\quad \\forall x,y \\in \\mathbb{R}.\n\\]\n\n**Goal:** Find all functions \\( f: \\mathbb{R} \\to \\mathbb{R} \\) satisfying this.\n\n---\n\n### Step 1: Analyze the equation and try substitutions\n\nThe equation is:\n\\[\nf(x^2 + y + f(y)) = 2y + f(x)^2.\n\\]\n\nNote the structure:\n- The left side depends on \\(x^2 + y + f(y)\\).\n- The right side is \\(2y + f(x)^2\\).\n\nThe right side separates variables \\(x\\) and \\(y\\) additively, suggesting the argument of \\(f\\) on the left side might be decomposed similarly.\n\n---\n\n### Step 2: Define an auxiliary function\n\nDefine\n\\[\ng(y) := y + f(y).\n\\]\nThen the equation becomes:\n\\[\nf(x^2 + g(y)) = 2y + f(x)^2.\n\\]\n\n---\n\n### Step 3: Fix \\(x\\) and vary \\(y\\)\n\nFor fixed \\(x\\), the function\n\\[\ny \\mapsto f(x^2 + g(y)) = 2y + f(x)^2.\n\\]\n\nThe right side is linear in \\(y\\), so the left side must be linear in \\(y\\) as well when viewed as a function of \\(g(y)\\).\n\nSince \\(g(y) = y + f(y)\\), if \\(g\\) is invertible, then\n\\[\nf(x^2 + t) = 2 g^{-1}(t) + f(x)^2.\n\\]\n\nThis suggests \\(f\\) is affine in its argument, but let's proceed more carefully.\n\n---\n\n### Step 4: Try to express \\(f\\) in terms of \\(g\\)\n\nRewrite the original equation as:\n\\[\nf(x^2 + g(y)) = 2y + f(x)^2.\n\\]\n\nFix \\(x\\), then for all \\(t = g(y)\\),\n\\[\nf(x^2 + t) = 2 g^{-1}(t) + f(x)^2.\n\\]\n\nDefine\n\\[\nh(t) := f(x^2 + t) - f(x)^2.\n\\]\nThen\n\\[\nh(t) = 2 g^{-1}(t).\n\\]\n\nSince the right side depends only on \\(t\\), \\(h\\) does not depend on \\(x\\) except through the shift \\(x^2\\).\n\nThis suggests \\(f\\) is of the form\n\\[\nf(z) = A(z) + B,\n\\]\nwhere \\(A\\) is a function such that\n\\[\nf(x^2 + t) - f(x)^2 = 2 g^{-1}(t).\n\\]\n\n---\n\n### Step 5: Try to find \\(f\\) explicitly by guessing polynomial form\n\nBecause the equation involves \\(x^2\\) and squares of \\(f(x)\\), try a polynomial solution.\n\nAssume \\(f\\) is a polynomial of degree \\(n\\).\n\n- The right side has \\(f(x)^2\\), which is degree \\(2n\\).\n- The left side has \\(f(x^2 + y + f(y))\\).\n\nIf \\(f\\) is polynomial, then \\(f(y)\\) is polynomial, so \\(y + f(y)\\) is polynomial.\n\nThe argument of \\(f\\) on the left is \\(x^2 + y + f(y)\\).\n\nIf \\(f\\) is degree \\(n\\), then the argument is degree \\(\\max(2, n)\\) in \\(y\\).\n\nThe left side is \\(f\\) evaluated at a",
+        "semantic_hits": []
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.7666658273214887
+      },
+      "processing_time_s": 11.68006181716919,
+      "timestamp": "2026-04-21T18:24:10.559040"
+    },
+    {
+      "problem_id": "MN_GEO_001",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "An arbitrary point $M$ is selected in the interior of segment $AB$. The squares $AMCD$ and $MBEF$ are constructed on the same side of $AB$. The circles circumscribed about these squares have centers $P$ and $Q$ respectively. Prove that $AP$, $BQ$, and $MF$ are concurrent.",
+      "reference_answer": "The three lines meet at a single point",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1447,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(9.2213+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5833333333333334,
+        "ubp_laws_invoked": [
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1038,
+        "llm_solution": "**Problem restatement:**\n\nGiven a segment \\( AB \\) and a point \\( M \\) in its interior, two squares \\( AMCD \\) and \\( MBEF \\) are constructed on the same side of \\( AB \\). Let \\( P \\) and \\( Q \\) be the centers of the circumscribed circles of these squares. Prove that the lines \\( AP \\), \\( BQ \\), and \\( MF \\) are concurrent.\n\n---\n\n### Step 1: Understand the configuration and notation\n\n- \\( A, B \\) are points on a line segment.\n- \\( M \\) lies between \\( A \\) and \\( B \\).\n- Two squares are constructed on the same side of \\( AB \\):\n  - Square \\( AMCD \\) with vertices \\( A, M, C, D \\) in order.\n  - Square \\( MBEF \\) with vertices \\( M, B, E, F \\) in order.\n- \\( P \\) is the center of the circumscribed circle of square \\( AMCD \\).\n- \\( Q \\) is the center of the circumscribed circle of square \\( MBEF \\).\n- We want to prove that lines \\( AP \\), \\( BQ \\), and \\( MF \\) are concurrent.\n\n---\n\n### Step 2: Set up a coordinate system\n\nTo analyze the problem rigorously, place the points on the coordinate plane.\n\n- Place \\( A \\) at the origin: \\( A = (0,0) \\).\n- Place \\( B \\) on the positive x-axis: \\( B = (1,0) \\).\n- Since \\( M \\) lies between \\( A \\) and \\( B \\), let \\( M = (m,0) \\) with \\( 0 < m < 1 \\).\n\n---\n\n### Step 3: Coordinates of the square vertices\n\nSince the squares are constructed on the same side of \\( AB \\), assume the squares are constructed **above** the segment \\( AB \\).\n\n- Vector \\( \\overrightarrow{AB} = (1,0) \\).\n- The side length of square \\( AMCD \\) is \\( AM = m \\).\n- The side length of square \\( MBEF \\) is \\( MB = 1 - m \\).\n\n---\n\n#### Square \\( AMCD \\):\n\nVertices in order: \\( A, M, C, D \\).\n\n- \\( A = (0,0) \\)\n- \\( M = (m,0) \\)\n- To find \\( C \\) and \\( D \\), rotate vector \\( \\overrightarrow{AM} = (m,0) \\) by \\( +90^\\circ \\) (counterclockwise) to get the vertical side.\n\nRotation by \\( +90^\\circ \\) of vector \\( (x,y) \\) is \\( (-y, x) \\).\n\n- \\( \\overrightarrow{AM} = (m,0) \\)\n- \\( \\overrightarrow{MC} = (0,m) \\)\n- So,\n  - \\( C = M + (0,m) = (m, m) \\)\n  - \\( D = A + (0,m) = (0, m) \\)\n\n---\n\n#### Square \\( MBEF \\):\n\nVertices in order: \\( M, B, E, F \\).\n\n- \\( M = (m,0) \\)\n- \\( B = (1,0) \\)\n- Side length \\( MB = 1 - m \\)\n- Vector \\( \\overrightarrow{MB} = (1 - m, 0) \\)\n- Rotate \\( \\overrightarrow{MB} \\) by \\( +90^\\circ \\) to get \\( \\overrightarrow{BE} = (0, 1 - m) \\).\n\nSo,\n\n- \\( E = B + (0, 1 - m) = (1, 1 - m",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.8638880495437108
+      },
+      "processing_time_s": 12.528528451919556,
+      "timestamp": "2026-04-21T18:24:23.087892"
+    },
+    {
+      "problem_id": "MN_GEO_002",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "In triangle $ABC$, the median from $A$ has length $m_a$. Prove that $m_a \\leq \\frac{b+c}{2}$.",
+      "reference_answer": "Equality iff b=c (isoceles)",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 3597,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(10.3392+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5833333333333334,
+        "ubp_laws_invoked": [
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1001,
+        "llm_solution": "**Problem:**  \nIn triangle \\( ABC \\), the median from vertex \\( A \\) to side \\( BC \\) has length \\( m_a \\). Prove that  \n\\[\nm_a \\leq \\frac{b + c}{2},\n\\]\nwhere \\( b = AC \\) and \\( c = AB \\).\n\n---\n\n### Step 1: Setup and notation\n\nLet the triangle \\( ABC \\) have sides:\n- \\( BC = a \\),\n- \\( AC = b \\),\n- \\( AB = c \\).\n\nThe median from \\( A \\) is the segment from \\( A \\) to the midpoint \\( M \\) of \\( BC \\). By definition, \\( M \\) is the midpoint of \\( BC \\), so\n\\[\nBM = MC = \\frac{a}{2}.\n\\]\n\nThe length of the median \\( m_a = AM \\).\n\n---\n\n### Step 2: Express \\( m_a \\) in terms of \\( a, b, c \\)\n\nBy Apollonius' theorem (or the median length formula), the length of the median from vertex \\( A \\) is given by:\n\\[\nm_a^2 = \\frac{2b^2 + 2c^2 - a^2}{4}.\n\\]\n\n---\n\n### Step 3: Goal restated\n\nWe want to prove:\n\\[\nm_a \\leq \\frac{b + c}{2}.\n\\]\n\nSquaring both sides (both sides are positive since lengths are positive):\n\\[\nm_a^2 \\leq \\left(\\frac{b + c}{2}\\right)^2 = \\frac{(b + c)^2}{4} = \\frac{b^2 + 2bc + c^2}{4}.\n\\]\n\n---\n\n### Step 4: Substitute \\( m_a^2 \\) and simplify inequality\n\nUsing the formula for \\( m_a^2 \\):\n\\[\n\\frac{2b^2 + 2c^2 - a^2}{4} \\leq \\frac{b^2 + 2bc + c^2}{4}.\n\\]\n\nMultiply both sides by 4:\n\\[\n2b^2 + 2c^2 - a^2 \\leq b^2 + 2bc + c^2.\n\\]\n\nBring all terms to one side:\n\\[\n2b^2 + 2c^2 - a^2 - b^2 - 2bc - c^2 \\leq 0,\n\\]\nwhich simplifies to\n\\[\nb^2 + c^2 - 2bc - a^2 \\leq 0.\n\\]\n\nRewrite:\n\\[\nb^2 - 2bc + c^2 \\leq a^2.\n\\]\n\nNote that\n\\[\nb^2 - 2bc + c^2 = (b - c)^2.\n\\]\n\nSo the inequality becomes:\n\\[\n(b - c)^2 \\leq a^2.\n\\]\n\n---\n\n### Step 5: Interpret the inequality\n\nSince \\( a = BC \\) is a side length, it is positive. Taking square roots (both sides nonnegative):\n\\[\n|b - c| \\leq a.\n\\]\n\n---\n\n### Step 6: Verify the triangle inequality\n\nRecall the triangle inequalities for triangle \\( ABC \\):\n\\[\na < b + c, \\quad b < a + c, \\quad c < a + b.\n\\]\n\nIn particular, the triangle inequality \\( a \\geq |b - c| \\) always holds because the length of one side is at least the difference of the other two sides.\n\nThus,\n\\[\n|b - c| \\leq a,\n\\]\nis always true for any triangle.\n\n---\n\n### Step 7: Conclusion\n\nSince \\( |b - c| \\leq a \\) always holds, the",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.8638880495437108
+      },
+      "processing_time_s": 12.70085883140564,
+      "timestamp": "2026-04-21T18:24:35.788914"
+    },
+    {
+      "problem_id": "MN_GEO_003",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "Two circles $G_1$ and $G_2$ intersect at two points $M$ and $N$. Let $AB$ be the line tangent to these circles at $A$ and $B$, respectively, so that $M$ lies closer to $AB$ than $N$ does. Let $CD$ be the line parallel to $AB$ and intersecting the two circles at $C$ and $D$ with $C$ on $G_1$ and $D$ on $G_2$, such that $M$ and $N$ are on the same side of $CD$. Prove that $MN$ bisects $CD$.",
+      "reference_answer": "The midpoint of CD lies on MN",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2913,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(8.5296+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5833333333333334,
+        "ubp_laws_invoked": [
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1104,
+        "llm_solution": "**Problem restatement:**\n\nTwo circles \\( G_1 \\) and \\( G_2 \\) intersect at two points \\( M \\) and \\( N \\). A line \\( AB \\) is tangent to \\( G_1 \\) at \\( A \\) and to \\( G_2 \\) at \\( B \\), with \\( M \\) closer to \\( AB \\) than \\( N \\). Another line \\( CD \\), parallel to \\( AB \\), intersects \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\), such that \\( M \\) and \\( N \\) lie on the same side of \\( CD \\). Prove that the segment \\( MN \\) bisects \\( CD \\).\n\n---\n\n### Step 1: Understand the configuration\n\n- Two circles \\( G_1 \\) and \\( G_2 \\) intersect at points \\( M \\) and \\( N \\).\n- \\( AB \\) is a common tangent line to both circles, tangent at \\( A \\in G_1 \\) and \\( B \\in G_2 \\).\n- \\( CD \\) is a line parallel to \\( AB \\), intersecting \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\).\n- \\( M \\) and \\( N \\) lie on the same side of \\( CD \\).\n- \\( M \\) is closer to \\( AB \\) than \\( N \\).\n\nWe want to prove that \\( MN \\) bisects \\( CD \\), i.e., the midpoint of \\( CD \\) lies on the line \\( MN \\).\n\n---\n\n### Step 2: Key observations and notation\n\n- Since \\( AB \\) is tangent to both circles, the points \\( A \\) and \\( B \\) lie on \\( AB \\).\n- \\( CD \\) is parallel to \\( AB \\).\n- \\( M \\) and \\( N \\) are the intersection points of the two circles.\n- The line \\( MN \\) is the radical line of the two circles.\n- The radical axis is the locus of points having equal power with respect to both circles.\n\n---\n\n### Step 3: Use the radical axis property\n\nThe line \\( MN \\) is the radical axis of \\( G_1 \\) and \\( G_2 \\).\n\n- For any point \\( P \\) on \\( MN \\), the power of \\( P \\) with respect to \\( G_1 \\) equals the power of \\( P \\) with respect to \\( G_2 \\):\n  \\[\n  \\text{Pow}_{G_1}(P) = \\text{Pow}_{G_2}(P).\n  \\]\n\n---\n\n### Step 4: Power of a point with respect to a circle\n\nRecall the power of a point \\( P \\) with respect to a circle with center \\( O \\) and radius \\( r \\) is:\n\\[\n\\text{Pow}(P) = PO^2 - r^2.\n\\]\n\nAlternatively, if a line through \\( P \\) intersects the circle at points \\( X \\) and \\( Y \\), then:\n\\[\n\\text{Pow}(P) = PX \\cdot PY.\n\\]\n\n---\n\n### Step 5: Apply the power of a point to points on \\( MN \\)\n\nLet \\( P \\) be any point on \\( MN \\).\n\n- The line \\( CD \\) intersects \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\).\n- Since \\( CD \\) is parallel to \\( AB \\), and \\( AB \\) is tangent to both circles, the chords \\( AC \\) and \\( BD \\) are related by parallelism.\n\n---\n\n### Step 6: Consider the powers of \\( P \\) with respect to \\( G_1 \\) and \\( G_2 \\) along \\( CD",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 1.0,
+        "correctness_label": "CORRECT",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.8638880495437108
+      },
+      "processing_time_s": 13.573918342590332,
+      "timestamp": "2026-04-21T18:24:49.362995"
+    },
+    {
+      "problem_id": "MN_GEO_004",
+      "domain": "Geometry",
+      "subdomain": "Plane Geometry",
+      "problem_text": "In a right triangle with legs $a$ and $b$ and hypotenuse $c$, prove that $a + b \\leq c\\sqrt{2}$.",
+      "reference_answer": "Equality iff a=b (isoceles right triangle)",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 1761,
+        "snapped_vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(2.6345+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5833333333333334,
+        "ubp_laws_invoked": [
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 847,
+        "llm_solution": "**Problem:**  \nIn a right triangle with legs \\(a\\) and \\(b\\) and hypotenuse \\(c\\), prove that  \n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\n---\n\n### Step 1: Understand the problem\n\nWe have a right triangle with legs \\(a\\), \\(b\\) and hypotenuse \\(c\\). By the Pythagorean theorem,  \n\\[\na^2 + b^2 = c^2.\n\\]\n\nWe want to prove the inequality  \n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\n---\n\n### Step 2: Express the inequality in terms of \\(a\\) and \\(b\\)\n\nSince \\(c = \\sqrt{a^2 + b^2}\\), the inequality becomes  \n\\[\na + b \\leq \\sqrt{2} \\sqrt{a^2 + b^2}.\n\\]\n\n---\n\n### Step 3: Square both sides to avoid dealing with the square root (both sides are non-negative)\n\nSince \\(a, b, c > 0\\) (legs and hypotenuse of a triangle are positive), squaring preserves the inequality direction:  \n\\[\n(a + b)^2 \\leq 2(a^2 + b^2).\n\\]\n\n---\n\n### Step 4: Expand and simplify\n\nExpand the left side:  \n\\[\n(a + b)^2 = a^2 + 2ab + b^2.\n\\]\n\nSo the inequality is  \n\\[\na^2 + 2ab + b^2 \\leq 2a^2 + 2b^2.\n\\]\n\nBring all terms to one side:  \n\\[\na^2 + 2ab + b^2 - 2a^2 - 2b^2 \\leq 0,\n\\]\nwhich simplifies to  \n\\[\n- a^2 + 2ab - b^2 \\leq 0.\n\\]\n\nRewrite:  \n\\[\n2ab \\leq a^2 + b^2.\n\\]\n\n---\n\n### Step 5: Analyze the inequality \\(2ab \\leq a^2 + b^2\\)\n\nThis is a well-known inequality. Rearranged:  \n\\[\na^2 - 2ab + b^2 \\geq 0,\n\\]\nwhich is  \n\\[\n(a - b)^2 \\geq 0.\n\\]\n\nSince squares are always non-negative, this inequality is always true.\n\n---\n\n### Step 6: Conclusion\n\nBecause \\((a - b)^2 \\geq 0\\) for all real \\(a, b\\), the inequality  \n\\[\na + b \\leq c \\sqrt{2}\n\\]\nholds for all right triangles with legs \\(a, b\\) and hypotenuse \\(c\\).\n\n---\n\n### **Final answer:**\n\n\\[\n\\boxed{\na + b \\leq c \\sqrt{2}\n}\n\\]\nwith equality if and only if \\(a = b\\), i.e., the triangle is an isosceles right triangle.",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.8638880495437108
+      },
+      "processing_time_s": 10.608987808227539,
+      "timestamp": "2026-04-21T18:24:59.972150"
+    },
+    {
+      "problem_id": "MN_GEO_005",
+      "domain": "Geometry",
+      "subdomain": "Solid Geometry",
+      "problem_text": "A regular tetrahedron has edge length $a$. Find the radius of the inscribed sphere.",
+      "reference_answer": "r = a/(2*sqrt(6))",
+      "math_column": {
+        "mean_nrci": 0.6620742748174363,
+        "nrci_values": [
+          0.6835065805955632,
+          0.6840403469656499,
+          0.6186758968910958
+        ],
+        "prime_density": 0.6666666666666666,
+        "geometric_complexity": 0.30688060996773836,
+        "golay_weight_distribution": {
+          "12": 2,
+          "16": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(6)",
+            "result": 720.0037632169184
+          },
+          {
+            "op": "ln(6)",
+            "result": 1.791759469228055
+          },
+          {
+            "op": "sin(6\u00b0)",
+            "result": 0.1045284632676535
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 6,
+            "nrci": 0.6835065805955632,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 650816184.4718567,
+            "is_prime": false,
+            "golay_nearest": 12
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2139,
+        "snapped_vector": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "soc_energy": 630410735.0623496,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.437956067067985,
+        "coherence_score": 0.6620762711864406,
+        "eml_tree": "eml(eml(leaf(0.6621+0.0000j),leaf(11.4742+0.0000j)),leaf(0.6667+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5833333333333334,
+        "ubp_laws_invoked": [
+          "LAW_PROTO_001",
+          "MOLECULE_SILICON_DIOXIDE_001"
+        ],
+        "domain_alignment": "PHYSICAL_LAW",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 894,
+        "llm_solution": "**Problem:**  \nA regular tetrahedron has edge length \\( a \\). Find the radius \\( r \\) of the inscribed sphere (the inradius).\n\n---\n\n### Step 1: Understand the problem\n\nA **regular tetrahedron** is a tetrahedron where all edges are equal in length \\( a \\). The inscribed sphere (incircle in 3D) is the sphere tangent to all four faces from inside. The radius of this sphere is called the **inradius**.\n\n---\n\n### Step 2: Known formulas and properties\n\n- The **volume** \\( V \\) of a regular tetrahedron with edge length \\( a \\) is:\n\\[\nV = \\frac{a^3}{6\\sqrt{2}}\n\\]\n\n- The **surface area** \\( S \\) of a regular tetrahedron with edge length \\( a \\) is:\n\\[\nS = 4 \\times \\text{area of one equilateral triangle} = 4 \\times \\frac{\\sqrt{3}}{4} a^2 = \\sqrt{3} a^2\n\\]\n\n- The **inradius** \\( r \\) of a tetrahedron can be found by the formula:\n\\[\nr = \\frac{3V}{S}\n\\]\nThis formula comes from the fact that the inradius is the distance from the incenter to each face, and the volume can be expressed as:\n\\[\nV = \\frac{1}{3} r S\n\\]\nwhere \\( S \\) is the total surface area.\n\n---\n\n### Step 3: Calculate the inradius\n\nUsing the formula:\n\\[\nr = \\frac{3V}{S}\n\\]\n\nSubstitute \\( V \\) and \\( S \\):\n\\[\nr = \\frac{3 \\times \\frac{a^3}{6\\sqrt{2}}}{\\sqrt{3} a^2} = \\frac{\\frac{3a^3}{6\\sqrt{2}}}{\\sqrt{3} a^2} = \\frac{3a^3}{6\\sqrt{2} \\sqrt{3} a^2}\n\\]\n\nSimplify numerator and denominator:\n\\[\nr = \\frac{3a^3}{6 a^2 \\sqrt{6}} = \\frac{3a}{6 \\sqrt{6}} = \\frac{a}{2 \\sqrt{6}}\n\\]\n\n---\n\n### Step 4: Final answer\n\n\\[\n\\boxed{\nr = \\frac{a}{2 \\sqrt{6}}\n}\n\\]\n\n---\n\n### Optional: Rationalize the denominator\n\n\\[\nr = \\frac{a}{2 \\sqrt{6}} = \\frac{a \\sqrt{6}}{2 \\times 6} = \\frac{a \\sqrt{6}}{12}\n\\]\n\nEither form is acceptable, but the first is more common.\n\n---\n\n### Summary:\n\n- Volume of regular tetrahedron: \\( V = \\frac{a^3}{6\\sqrt{2}} \\)\n- Surface area: \\( S = \\sqrt{3} a^2 \\)\n- Inradius: \\( r = \\frac{3V}{S} = \\frac{a}{2 \\sqrt{6}} \\)\n\n---\n\n**Final answer:**\n\n\\[\n\\boxed{\n\\text{The radius of the inscribed sphere is } r = \\frac{a}{2 \\sqrt{6}}.\n}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "LAW_PROTO_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] LAW_PROTO_001 (NRCI: 0.6814)\n    Lexicon: [The Singularity Check (Hybrid Navigation)], [A navigation"
+          },
+          {
+            "ubp_id": "MOLECULE_SILICON_DIOXIDE_001",
+            "resonance": 0.5833333333333334,
+            "summary": "[Resonance: 0.5833] MOLECULE_SILICON_DIOXIDE_001 (NRCI: 0.6814)\n    Lexicon: [Molecule: Silicon Dioxide], [Silicon dioxi"
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6620752730019385,
+        "alignment_score": 0.8638875579762194
+      },
+      "processing_time_s": 11.77889370918274,
+      "timestamp": "2026-04-21T18:25:11.751220"
+    },
+    {
+      "problem_id": "MN_COMB_001",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "Prove that from a set of ten distinct two-digit numbers, it is possible to select two disjoint subsets whose elements have the same sum.",
+      "reference_answer": "Pigeonhole principle proof",
+      "math_column": {
+        "mean_nrci": 0.7368737363094436,
+        "nrci_values": [
+          0.7638890976128012,
+          0.7626917643498796,
+          0.6840403469656499
+        ],
+        "prime_density": 0.3333333333333333,
+        "geometric_complexity": 0.37362045571232627,
+        "golay_weight_distribution": {
+          "8": 2,
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(10)",
+            "result": 3645658.7169224317
+          },
+          {
+            "op": "ln(10)",
+            "result": 2.3025850929940455
+          },
+          {
+            "op": "sin(10\u00b0)",
+            "result": 0.17364817766693036
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 10,
+            "nrci": 0.7638890976128012,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 484902597.991662,
+            "is_prime": false,
+            "golay_nearest": 8
+          },
+          {
+            "n": 1023,
+            "nrci": 0.7626917643498796,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 484142742.0368828,
+            "is_prime": false,
+            "golay_nearest": 8
+          },
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 791,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 701651215.2904278,
+        "manifestation": "MANIFESTED",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.411043682572336,
+        "coherence_score": 0.9368951612903227,
+        "eml_tree": "eml(eml(leaf(0.7369+0.0000j),leaf(11.8756+0.0000j)),leaf(0.3333+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1015,
+        "llm_solution": "**Problem restatement:**\n\nGiven a set of 10 distinct two-digit numbers, prove that there exist two disjoint subsets of these numbers whose sums are equal.\n\n---\n\n### Step 1: Understand the problem\n\nWe have a set \\( S = \\{a_1, a_2, \\ldots, a_{10}\\} \\) where each \\( a_i \\) is a distinct two-digit number (i.e., \\(10 \\leq a_i \\leq 99\\)).\n\nWe want to prove that there exist two subsets \\( A, B \\subseteq S \\) such that:\n\n- \\( A \\cap B = \\emptyset \\) (disjoint subsets),\n- \\( \\sum_{x \\in A} x = \\sum_{y \\in B} y \\),\n- \\( A \\neq \\emptyset \\), \\( B \\neq \\emptyset \\).\n\n---\n\n### Step 2: Key observations and approach\n\n- The problem is a variant of the **subset sum problem** and the **Pigeonhole Principle**.\n- The total number of subsets of a 10-element set is \\( 2^{10} = 1024 \\).\n- We are interested in pairs of disjoint subsets with equal sums.\n- The subsets \\( A \\) and \\( B \\) must be disjoint, so they cannot share elements.\n- The empty subset sums to zero, but since we want non-empty subsets, we exclude the empty subset.\n\n---\n\n### Step 3: Counting subsets and sums\n\n- Number of non-empty subsets: \\( 2^{10} - 1 = 1023 \\).\n- Each subset sum is an integer between:\n  - Minimum sum: \\( \\min(a_i) \\geq 10 \\),\n  - Maximum sum: \\( \\sum_{i=1}^{10} a_i \\leq 99 \\times 10 = 990 \\).\n\nSo all subset sums lie in the range \\([0, 990]\\).\n\n---\n\n### Step 4: Using the Pigeonhole Principle on subset sums\n\n- There are 1023 non-empty subsets but only at most 991 possible sums (from 0 to 990).\n- By the Pigeonhole Principle, there must be at least two distinct subsets \\( A \\neq B \\) such that:\n\n\\[\n\\sum_{x \\in A} x = \\sum_{y \\in B} y.\n\\]\n\n---\n\n### Step 5: Ensuring the subsets are disjoint\n\nThe problem requires the two subsets to be disjoint, but the two subsets \\( A \\) and \\( B \\) found above might overlap.\n\nWe need to show that from these two subsets with equal sums, we can find two disjoint subsets with the same sum.\n\n---\n\n### Step 6: Constructing disjoint subsets from overlapping subsets with equal sums\n\nSuppose \\( A \\) and \\( B \\) are two distinct subsets with:\n\n\\[\n\\sum_{x \\in A} x = \\sum_{y \\in B} y,\n\\]\n\nbut \\( A \\cap B \\neq \\emptyset \\).\n\nDefine:\n\n- \\( C = A \\setminus B \\),\n- \\( D = B \\setminus A \\),\n- \\( E = A \\cap B \\).\n\nSince \\( A \\neq B \\), at least one of \\( C \\) or \\( D \\) is non-empty.\n\nNow,\n\n\\[\n\\sum_{x \\in A} x = \\sum_{x \\in C} x + \\sum_{x \\in E} x,\n\\]\n\\[\n\\sum_{y \\in B} y = \\sum_{y \\in D} y + \\sum_{y \\in E} y.\n\\]\n\nGiven sums are equal:\n\n\\[\n\\sum_{x \\in C} x + \\sum_{x \\in E} x = \\sum_{y \\",
+        "semantic_hits": [
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.8368844487998832,
+        "alignment_score": 0.6944301611238585
+      },
+      "processing_time_s": 12.385506629943848,
+      "timestamp": "2026-04-21T18:25:24.136912"
+    },
+    {
+      "problem_id": "MN_COMB_002",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "In how many ways can $n$ identical balls be distributed into $k$ distinct boxes such that each box contains at least one ball?",
+      "reference_answer": "C(n-1, k-1)",
+      "math_column": {
+        "mean_nrci": 0.7646758462386598,
+        "nrci_values": [
+          0.7646758462386598
+        ],
+        "prime_density": 0.0,
+        "geometric_complexity": 0.7646758462386598,
+        "golay_weight_distribution": {
+          "8": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(1)",
+            "result": 0.9999999997463747
+          },
+          {
+            "op": "ln(1)",
+            "result": 0.0
+          },
+          {
+            "op": "sin(1\u00b0)",
+            "result": 0.01745240643728352
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "golay_nearest": 8
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 669,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 728075239.6952494,
+        "manifestation": "MANIFESTED",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.401061527729636,
+        "coherence_score": 0.9646464646464648,
+        "eml_tree": "eml(eml(leaf(0.7647+0.0000j),leaf(8.5344+0.0000j)),leaf(0.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 759,
+        "llm_solution": "**Problem:**\nIn how many ways can \\( n \\) identical balls be distributed into \\( k \\) distinct boxes such that each box contains at least one ball?\n\n---\n\n### Step 1: Understand the problem\n\n- We have \\( n \\) identical balls.\n- We have \\( k \\) distinct boxes.\n- Each box must contain **at least one** ball.\n- We want to find the number of ways to distribute the balls under these conditions.\n\n---\n\n### Step 2: Reformulate the problem\n\nSince the balls are identical, the only thing that matters is how many balls each box contains.\n\nLet \\( x_i \\) be the number of balls in the \\( i \\)-th box.\n\nWe want to find the number of integer solutions to the equation:\n\n\\[\nx_1 + x_2 + \\cdots + x_k = n\n\\]\n\nsubject to the constraints:\n\n\\[\nx_i \\geq 1 \\quad \\text{for all } i = 1, 2, \\ldots, k.\n\\]\n\n---\n\n### Step 3: Use stars and bars theorem\n\nThe classical stars and bars theorem states:\n\n- The number of nonnegative integer solutions to\n\n\\[\nx_1 + x_2 + \\cdots + x_k = n\n\\]\n\nis\n\n\\[\n\\binom{n + k - 1}{k - 1}.\n\\]\n\n- If each \\( x_i \\geq 1 \\), then set \\( y_i = x_i - 1 \\geq 0 \\). Then\n\n\\[\ny_1 + y_2 + \\cdots + y_k = n - k.\n\\]\n\nThe number of nonnegative integer solutions to this is\n\n\\[\n\\binom{(n - k) + k - 1}{k - 1} = \\binom{n - 1}{k - 1}.\n\\]\n\n---\n\n### Step 4: Final answer\n\nThe number of ways to distribute \\( n \\) identical balls into \\( k \\) distinct boxes with each box having at least one ball is:\n\n\\[\n\\boxed{\n\\binom{n - 1}{k - 1}.\n}\n\\]\n\n---\n\n### Summary:\n\n- Problem reduces to counting positive integer solutions to \\( x_1 + \\cdots + x_k = n \\).\n- Using stars and bars with positive constraints, the count is \\(\\binom{n-1}{k-1}\\).\n\n---\n\n**Final answer:**\n\n\\[\n\\boxed{\n\\text{Number of ways} = \\binom{n - 1}{k - 1}.\n}\n\\]",
+        "semantic_hits": [
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.8646611554425623,
+        "alignment_score": 0.5833529210614633
+      },
+      "processing_time_s": 10.863742351531982,
+      "timestamp": "2026-04-21T18:25:35.000849"
+    },
+    {
+      "problem_id": "MN_COMB_003",
+      "domain": "Combinatorics",
+      "subdomain": "Graph Theory",
+      "problem_text": "In a mathematical competition, some competitors are friends. Each person has at most $d$ friends. Prove that the competitors can be divided into groups such that each person has at most $\\lceil d/2 \\rceil$ friends in their own group.",
+      "reference_answer": "Greedy/probabilistic argument",
+      "math_column": {
+        "mean_nrci": 0.6840403469656499,
+        "nrci_values": [
+          0.6840403469656499
+        ],
+        "prime_density": 1.0,
+        "geometric_complexity": 0.6840403469656499,
+        "golay_weight_distribution": {
+          "12": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 4094,
+        "snapped_vector": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "soc_energy": 651323122.4430498,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.430056033153144,
+        "coherence_score": 0.6840390879478827,
+        "eml_tree": "eml(eml(leaf(0.6840+0.0000j),leaf(3.7695+0.0000j)),leaf(1.0000+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1039,
+        "llm_solution": "**Problem restatement:**\n\nWe have a set of competitors, each with at most \\( d \\) friends among the competitors. We want to partition the competitors into groups so that in each group, every competitor has at most \\(\\lceil d/2 \\rceil\\) friends within that same group.\n\n---\n\n### Step 1: Model the problem as a graph problem\n\nRepresent the competitors as vertices of a graph \\( G = (V,E) \\), where an edge between two vertices indicates friendship.\n\n- Each vertex has degree at most \\( d \\).\n- We want to partition \\( V \\) into groups (subsets) such that for each vertex \\( v \\), the number of neighbors of \\( v \\) in the same group is at most \\(\\lceil d/2 \\rceil\\).\n\n---\n\n### Step 2: Understanding the goal\n\nWe want a partition \\( V = V_1 \\cup V_2 \\cup \\cdots \\cup V_k \\) such that for every vertex \\( v \\in V_i \\), the number of neighbors of \\( v \\) in \\( V_i \\) is at most \\(\\lceil d/2 \\rceil\\).\n\nThe problem does not specify the number of groups \\( k \\), so we are free to choose \\( k \\).\n\n---\n\n### Step 3: Key insight \u2014 partition into two groups\n\nTry to partition the vertices into **two groups** \\( V_1 \\) and \\( V_2 \\) such that for each vertex, the number of friends in its own group is at most \\(\\lceil d/2 \\rceil\\).\n\nIf this is possible, the problem is solved with \\( k=2 \\).\n\n---\n\n### Step 4: Reformulate the problem as a 2-coloring problem minimizing internal edges\n\nWe want to 2-color the vertices (color classes correspond to groups) so that for each vertex, the number of neighbors with the same color is at most \\(\\lceil d/2 \\rceil\\).\n\n---\n\n### Step 5: Use a probabilistic method (random coloring)\n\nColor each vertex independently and uniformly at random with color 1 or 2.\n\n- For a vertex \\( v \\) with degree \\( \\deg(v) \\leq d \\), the number of neighbors with the same color as \\( v \\) is a binomial random variable \\( X_v \\sim \\text{Binomial}(\\deg(v), 1/2) \\).\n\n- The expected number of neighbors with the same color is \\( \\mathbb{E}[X_v] = \\deg(v)/2 \\leq d/2 \\).\n\n---\n\n### Step 6: Use the probabilistic method to show existence\n\nWe want to show there exists a coloring such that for every vertex \\( v \\), \\( X_v \\leq \\lceil d/2 \\rceil \\).\n\n- Since \\( \\lceil d/2 \\rceil \\geq d/2 \\), the expected number of same-color neighbors is at most \\( d/2 \\), and the threshold is \\(\\lceil d/2 \\rceil\\).\n\n- For integer \\( d \\), \\(\\lceil d/2 \\rceil\\) is either \\( d/2 \\) (if \\( d \\) even) or \\( (d+1)/2 \\) (if \\( d \\) odd).\n\n- The probability that \\( X_v > \\lceil d/2 \\rceil \\) is small.\n\n---\n\n### Step 7: Use the Lov\u00e1sz Local Lemma (LLL)\n\nDefine bad events:\n\n- For each vertex \\( v \\), let \\( A_v \\) be the event that \\( v \\) has more than \\(\\lceil d/2 \\rceil\\) neighbors with the same color.\n\nWe want to show that with positive probability, none of the \\( A_v \\)",
+        "semantic_hits": [
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6840397174567663,
+        "alignment_score": 0.849999160654822
+      },
+      "processing_time_s": 12.40525484085083,
+      "timestamp": "2026-04-21T18:25:47.406284"
+    },
+    {
+      "problem_id": "MN_COMB_004",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "How many subsets of $\\{1, 2, 3, \\ldots, 10\\}$ have the property that the sum of the elements is divisible by 3?",
+      "reference_answer": "The number is (2^10 + 2)/3 = 342",
+      "math_column": {
+        "mean_nrci": 0.6663914960161414,
+        "nrci_values": [
+          0.7638890976128012,
+          0.6186758968910958,
+          0.6166094935445274
+        ],
+        "prime_density": 0.3333333333333333,
+        "geometric_complexity": 0.68946376474878,
+        "golay_weight_distribution": {
+          "8": 1,
+          "16": 2
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(10)",
+            "result": 3645658.7169224317
+          },
+          {
+            "op": "ln(10)",
+            "result": 2.3025850929940455
+          },
+          {
+            "op": "sin(10\u00b0)",
+            "result": 0.17364817766693036
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 10,
+            "nrci": 0.7638890976128012,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 484902597.991662,
+            "is_prime": false,
+            "golay_nearest": 8
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          },
+          {
+            "n": 344,
+            "nrci": 0.6166094935445274,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 782825069.1499275,
+            "is_prime": false,
+            "golay_nearest": 16
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 2845,
+        "snapped_vector": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "soc_energy": 634463555.9803457,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 12.0,
+        "symmetry_tax": 4.4364250404032575,
+        "coherence_score": 0.6663326653306614,
+        "eml_tree": "eml(eml(leaf(0.6664+0.0000j),leaf(0.3261+0.0000j)),leaf(0.3333+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1023,
+        "llm_solution": "**Problem:**  \nFind the number of subsets of the set \\(\\{1, 2, 3, \\ldots, 10\\}\\) such that the sum of the elements in the subset is divisible by 3.\n\n---\n\n### Step 1: Understanding the problem\n\nWe want to count subsets \\(S \\subseteq \\{1,2,\\ldots,10\\}\\) such that:\n\\[\n\\sum_{x \\in S} x \\equiv 0 \\pmod{3}.\n\\]\n\nThe total number of subsets of a 10-element set is \\(2^{10} = 1024\\).\n\nWe want to partition these subsets into three classes based on the sum modulo 3:\n- Subsets with sum \\(\\equiv 0 \\pmod{3}\\),\n- Subsets with sum \\(\\equiv 1 \\pmod{3}\\),\n- Subsets with sum \\(\\equiv 2 \\pmod{3}\\).\n\nOur goal is to find the size of the first class.\n\n---\n\n### Step 2: Classify elements by their residue modulo 3\n\nCalculate the residue of each element modulo 3:\n\n- Elements congruent to 0 mod 3: \\( \\{3, 6, 9\\} \\) (3 elements)\n- Elements congruent to 1 mod 3: \\( \\{1, 4, 7, 10\\} \\) (4 elements)\n- Elements congruent to 2 mod 3: \\( \\{2, 5, 8\\} \\) (3 elements)\n\n---\n\n### Step 3: Use generating functions\n\nDefine the generating function for each residue class, where the exponent tracks the sum modulo 3.\n\nFor each element \\(x\\), the contribution to the generating function is:\n\\[\n1 + z^{r_x}\n\\]\nwhere \\(r_x\\) is the residue of \\(x\\) modulo 3, and \\(z\\) is a formal variable with \\(z^3 = 1\\).\n\n- For the 3 elements with residue 0:\n\\[\n(1 + z^0)^3 = (1 + 1)^3 = 2^3 = 8.\n\\]\nSince \\(z^0 = 1\\), this factor is just \\(8\\).\n\n- For the 4 elements with residue 1:\n\\[\n(1 + z)^4.\n\\]\n\n- For the 3 elements with residue 2:\n\\[\n(1 + z^2)^3.\n\\]\n\nThe total generating function is:\n\\[\nG(z) = 8 \\cdot (1 + z)^4 \\cdot (1 + z^2)^3.\n\\]\n\n---\n\n### Step 4: Extract the coefficient of \\(z^0\\) (sum divisible by 3)\n\nWe want the sum of coefficients of terms where the exponent is divisible by 3.\n\nSince \\(z^3 = 1\\), the polynomial is considered modulo \\(z^3 - 1\\).\n\nThe number of subsets with sum divisible by 3 is:\n\\[\nN_0 = \\frac{G(1) + G(\\omega) + G(\\omega^2)}{3},\n\\]\nwhere \\(\\omega = e^{2\\pi i / 3}\\) is a primitive cube root of unity, satisfying:\n\\[\n\\omega^3 = 1, \\quad 1 + \\omega + \\omega^2 = 0.\n\\]\n\n---\n\n### Step 5: Evaluate \\(G(1), G(\\omega), G(\\omega^2)\\)\n\n- \\(G(1)\\):\n\\[\nG(1) = 8 \\cdot (1 + 1)^4 \\cdot (1 + 1)^3 = 8 \\cdot 2^4 \\cdot 2^3 =",
+        "semantic_hits": [
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6663620806734014,
+        "alignment_score": 0.7610718906541244
+      },
+      "processing_time_s": 13.81686782836914,
+      "timestamp": "2026-04-21T18:26:01.223311"
+    },
+    {
+      "problem_id": "MN_COMB_005",
+      "domain": "Combinatorics",
+      "subdomain": "Combinatorics",
+      "problem_text": "Find all functions $f: \\mathbb{N} \\to \\mathbb{N}$ satisfying $f(f(n)) + f(n) = 2n + 3$ and $f(0) = 1$.",
+      "reference_answer": "f(n) = 2n+1 for even n, f(n) = n+1 for odd n... actually f(n)=n+1 for all n",
+      "math_column": {
+        "mean_nrci": 0.6891306966984686,
+        "nrci_values": [
+          0.6840403469656499,
+          0.6186758968910958,
+          0.7646758462386598
+        ],
+        "prime_density": 0.6666666666666666,
+        "geometric_complexity": 0.5971281296156695,
+        "golay_weight_distribution": {
+          "12": 1,
+          "16": 1,
+          "8": 1
+        },
+        "alu_operations": [
+          {
+            "op": "factorial(2)",
+            "result": 1.9999999954141028
+          },
+          {
+            "op": "ln(2)",
+            "result": 0.6931471805599456
+          },
+          {
+            "op": "sin(2\u00b0)",
+            "result": 0.034899496702500976
+          }
+        ],
+        "numeric_objects": [
+          {
+            "n": 2,
+            "nrci": 0.6840403469656499,
+            "hamming_weight": 12,
+            "status": "SUBLIMINAL",
+            "soc_energy": 651323122.4430498,
+            "is_prime": true,
+            "golay_nearest": 12
+          },
+          {
+            "n": 3,
+            "nrci": 0.6186758968910958,
+            "hamming_weight": 16,
+            "status": "SUBLIMINAL",
+            "soc_energy": 785449584.9746795,
+            "is_prime": true,
+            "golay_nearest": 16
+          },
+          {
+            "n": 1,
+            "nrci": 0.7646758462386598,
+            "hamming_weight": 8,
+            "status": "MANIFESTED",
+            "soc_energy": 485383493.13016623,
+            "is_prime": false,
+            "golay_nearest": 8
+          }
+        ]
+      },
+      "sovereign_column": {
+        "golay_address": 4095,
+        "snapped_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "soc_energy": 1312341924.4934819,
+        "manifestation": "SUBLIMINAL",
+        "leech_norm": 24.0,
+        "symmetry_tax": 8.856449347347837,
+        "coherence_score": 0.6891304347826087,
+        "eml_tree": "eml(eml(leaf(0.6891+0.0000j),leaf(4.7114+0.0000j)),leaf(0.6667+0.0000j))"
+      },
+      "language_column": {
+        "semantic_resonance": 0.5000000000000001,
+        "ubp_laws_invoked": [
+          "ELEM_N_007",
+          "ELEM_Rh_045"
+        ],
+        "domain_alignment": "ELEMENTAL",
+        "llm_model": "gpt-4.1-mini",
+        "solution_tokens": 1035,
+        "llm_solution": "Given the problem:\n\nFind all functions \\( f: \\mathbb{N} \\to \\mathbb{N} \\) such that\n\\[\nf(f(n)) + f(n) = 2n + 3\n\\]\nfor all \\( n \\in \\mathbb{N} \\), and\n\\[\nf(0) = 1.\n\\]\n\n---\n\n### Step 1: Understand the problem and notation\n\n- The domain and codomain are the natural numbers \\(\\mathbb{N}\\). We assume \\(\\mathbb{N} = \\{0, 1, 2, \\ldots\\}\\) since \\(f(0)\\) is given.\n- The functional equation relates \\(f(f(n))\\), \\(f(n)\\), and \\(n\\).\n- We want to find all functions \\(f\\) satisfying this.\n\n---\n\n### Step 2: Analyze the functional equation\n\nRewrite the equation:\n\\[\nf(f(n)) + f(n) = 2n + 3.\n\\]\n\nDefine \\(a_n = f(n)\\). Then the equation becomes:\n\\[\na_{a_n} + a_n = 2n + 3.\n\\]\n\nWe want to find all sequences \\((a_n)_{n \\geq 0}\\) of natural numbers satisfying this, with \\(a_0 = f(0) = 1\\).\n\n---\n\n### Step 3: Try to find a pattern or guess the form of \\(f\\)\n\nThe equation involves \\(a_{a_n}\\), which is a composition of \\(a_n\\) with itself.\n\nTry to guess if \\(f\\) is linear, i.e., \\(f(n) = An + B\\) for some constants \\(A, B \\in \\mathbb{N}\\).\n\n---\n\n### Step 4: Assume \\(f(n) = An + B\\)\n\nSubstitute into the equation:\n\n\\[\nf(f(n)) + f(n) = 2n + 3.\n\\]\n\nCalculate \\(f(f(n))\\):\n\\[\nf(f(n)) = f(An + B) = A(An + B) + B = A^2 n + AB + B.\n\\]\n\nThen,\n\\[\nf(f(n)) + f(n) = (A^2 n + AB + B) + (An + B) = (A^2 + A) n + (AB + 2B).\n\\]\n\nSet this equal to the right side:\n\\[\n(A^2 + A) n + (AB + 2B) = 2n + 3.\n\\]\n\nEquate coefficients:\n\n- Coefficient of \\(n\\):\n\\[\nA^2 + A = 2.\n\\]\n\n- Constant term:\n\\[\nAB + 2B = 3.\n\\]\n\nAlso, from the initial condition:\n\\[\nf(0) = B = 1.\n\\]\n\n---\n\n### Step 5: Solve for \\(A\\) and \\(B\\)\n\nSince \\(B = 1\\), the constant term equation becomes:\n\\[\nA \\cdot 1 + 2 \\cdot 1 = A + 2 = 3 \\implies A = 1.\n\\]\n\nNow check the coefficient of \\(n\\):\n\\[\nA^2 + A = 1^2 + 1 = 1 + 1 = 2,\n\\]\nwhich matches the right side coefficient.\n\nSo the linear function candidate is:\n\\[\nf(n) = n + 1.\n\\]\n\n---\n\n### Step 6: Verify the candidate function\n\nCheck if \\(f(n) = n + 1\\) satisfies the original equation:\n\n\\[\nf(f(n)) + f(n) = f(n + 1) + (n + 1) = (n + 1) + 1 + n + 1 =",
+        "semantic_hits": [
+          {
+            "ubp_id": "ELEM_N_007",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_N_007 (NRCI: 0.6814)\n    Lexicon: [Element: Nitrogen (N)], [Nitrogen (Z=7). A Gas (Phase 1) wit"
+          },
+          {
+            "ubp_id": "ELEM_Rh_045",
+            "resonance": 0.5000000000000001,
+            "summary": "[Resonance: 0.5000] ELEM_Rh_045 (NRCI: 0.6814)\n    Lexicon: [Element: Rhodium (Rh)], [Rhodium (Z=45). A Solid (Phase 3) "
+          }
+        ]
+      },
+      "grading": {
+        "correctness_score": 0.5,
+        "correctness_label": "PARTIAL",
+        "ubp_confidence": 0.6891305657405387,
+        "alignment_score": 0.8499998253894269
+      },
+      "processing_time_s": 12.115509271621704,
+      "timestamp": "2026-04-21T18:26:13.339001"
+    }
+  ]
+}

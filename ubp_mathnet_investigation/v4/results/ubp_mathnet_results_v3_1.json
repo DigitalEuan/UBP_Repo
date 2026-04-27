@@ -1,0 +1,1529 @@
+{
+  "version": "v3.0",
+  "timestamp": "2026-04-21T21:38:02Z",
+  "summary": {
+    "correct": 15,
+    "partial": 5,
+    "incorrect": 0,
+    "adj_score": 87.5,
+    "n": 20,
+    "mean_convergence": 0.7999799999999999,
+    "mean_cross_nrci": 0.9221499999999999,
+    "mean_combined_resonance": 0.6313749999999997,
+    "mean_snap_quality": 0.878135,
+    "total_octads": 19,
+    "fully_manifested": 19
+  },
+  "results": [
+    {
+      "problem_id": "MN_NT_001",
+      "domain": "Number Theory",
+      "difficulty": "medium",
+      "problem": "Find all positive integers $n$ for which $2^n - 1$ is divisible by 7.",
+      "reference_answer": "n divisible by 3",
+      "solution": "We want to find all positive integers \\( n \\) such that \\( 7 \\mid (2^n - 1) \\).\n\n---\n\n**Step 1: Understand the divisibility condition**\n\n\\( 7 \\mid (2^n - 1) \\) means:\n\\[\n2^n \\equiv 1 \\pmod{7}.\n\\]\n\nWe want to find all \\( n \\) such that this congruence holds.\n\n---\n\n**Step 2: Find the order of 2 modulo 7**\n\nThe order of 2 modulo 7 is the smallest positive integer \\( k \\) such that:\n\\[\n2^k \\equiv 1 \\pmod{7}.\n\\]\n\nCalculate powers of 2 modulo 7:\n\n- \\( 2^1 = 2 \\pmod{7} \\)\n- \\( 2^2 = 4 \\pmod{7} \\)\n- \\( 2^3 = 8 \\equiv 1 \\pmod{7} \\)\n\nSince \\( 2^3 \\equiv 1 \\pmod{7} \\), the order of 2 modulo 7 is 3.\n\n---\n\n**Step 3: Characterize all \\( n \\) satisfying \\( 2^n \\equiv 1 \\pmod{7} \\)**\n\nBy properties of modular arithmetic, \\( 2^n \\equiv 1 \\pmod{7} \\) if and only if \\( n \\) is a multiple of the order of 2 modulo 7.\n\nThus:\n\\[\nn \\equiv 0 \\pmod{3}.\n\\]\n\n---\n\n**Step 4: Write the complete solution**\n\nAll positive integers \\( n \\) such that \\( 2^n - 1 \\) is divisible by 7 are exactly those \\( n \\) divisible by 3.\n\n---\n\n**Final explicit solution:**\n\n\\[\n\\boxed{\n\\{ n \\in \\mathbb{Z}^+ : n = 3k, \\quad k \\in \\mathbb{Z}^+ \\}.\n}\n\\]\n\n---\n\n**FINAL ANSWER:**\n\nAll positive integers \\( n \\) divisible by 3 satisfy the condition. That is,\n\\[\n\\boxed{n = 3k \\text{ for } k = 1, 2, 3, \\ldots}\n\\]\n\n[EXTRACTED] **FINAL ANSWER:**",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_NUMBER_ONE_001 [golay octad quantity] | Brain: OP_ALL",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          7
+        ],
+        "mean_nrci": 0.9401070482471839,
+        "bw256_nrci": 0.3232142749901492,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "7": 0.8953331955057509
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "7": 0.75
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "7": 0.6716749325160015
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "7": 7
+        }
+      },
+      "col2": {
+        "golay_address": 1737,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 1.5587,
+          "XZ": 0.7794,
+          "YZ": 0.7794
+        }
+      },
+      "col3": {
+        "brain_law": "OP_ALL",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_NT",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9401070482471839
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9344,
+        "octad_consensus": true,
+        "combined_resonance": 0.6171,
+        "snap_quality_mean": 0.8611,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.934 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 7.84
+    },
+    {
+      "problem_id": "MN_NT_002",
+      "domain": "Number Theory",
+      "difficulty": "medium",
+      "problem": "Solve the inequality $\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)$ given that $x = a + 1$ is a solution.",
+      "reference_answer": "x in (5/2, 3), a in (1, 2)",
+      "solution": "Given the inequality:\n\\[\n\\log_a(x^2 - x - 2) > \\log_a(3 + 2x - x^2)\n\\]\nwith the condition that \\(x = a + 1\\) is a solution.\n\n---\n\n### Step 1: Determine the domain of the logarithms\n\nFor the logarithms to be defined, their arguments must be positive:\n\n1. \\(x^2 - x - 2 > 0\\)\n2. \\(3 + 2x - x^2 > 0\\)\n\n---\n\n### Step 2: Solve the domain inequalities\n\n1. \\(x^2 - x - 2 > 0\\)\n\nFactor:\n\\[\nx^2 - x - 2 = (x - 2)(x + 1)\n\\]\n\nThe quadratic is positive outside the roots:\n\\[\nx < -1 \\quad \\text{or} \\quad x > 2\n\\]\n\n2. \\(3 + 2x - x^2 > 0\\)\n\nRewrite:\n\\[\n-x^2 + 2x + 3 > 0 \\implies x^2 - 2x - 3 < 0\n\\]\n\nFactor:\n\\[\nx^2 - 2x - 3 = (x - 3)(x + 1)\n\\]\n\nThe quadratic is less than zero between the roots:\n\\[\n-1 < x < 3\n\\]\n\n---\n\n### Step 3: Find the intersection of the domains\n\n\\[\n(x < -1 \\text{ or } x > 2) \\quad \\cap \\quad (-1 < x < 3)\n\\]\n\n- For \\(x < -1\\) and \\(-1 < x < 3\\), no overlap.\n- For \\(x > 2\\) and \\(-1 < x < 3\\), overlap is:\n\\[\n2 < x < 3\n\\]\n\nSo the domain is:\n\\[\n2 < x < 3\n\\]\n\n---\n\n### Step 4: Analyze the inequality \\(\\log_a(\\cdot) > \\log_a(\\cdot)\\)\n\nThe inequality depends on the base \\(a\\):\n\n- If \\(a > 1\\), \\(\\log_a\\) is increasing, so:\n\\[\nx^2 - x - 2 > 3 + 2x - x^2\n\\]\n\n- If \\(0 < a < 1\\), \\(\\log_a\\) is decreasing, so:\n\\[\nx^2 - x - 2 < 3 + 2x - x^2\n\\]\n\n---\n\n### Step 5: Simplify the inequality inside the logs\n\nCalculate:\n\\[\nx^2 - x - 2 > 3 + 2x - x^2\n\\]\n\nBring all terms to one side:\n\\[\nx^2 - x - 2 - 3 - 2x + x^2 > 0\n\\]\n\\[\n2x^2 - 3x - 5 > 0\n\\]\n\nSimilarly, for the decreasing case:\n\\[\n2x^2 - 3x - 5 < 0\n\\]\n\n---\n\n### Step 6: Solve the quadratic inequality \\(2x^2 - 3x - 5 > 0\\)\n\nFind roots of \\(2x^2 - 3",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_NUMBER_ONE_001 [golay octad quantity] | Brain: LANG_X",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_X",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_NT",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9508958657687362
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9268,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.927 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 8.66
+    },
+    {
+      "problem_id": "MN_NT_003",
+      "domain": "Number Theory",
+      "difficulty": "easy",
+      "problem": "Prove that the fraction $\\frac{21n+4}{14n+3}$ is irreducible for every natural number $n$.",
+      "reference_answer": "gcd(21n+4, 14n+3) = 1 for all n",
+      "solution": "We want to prove that for every natural number \\( n \\), the fraction\n\\[\n\\frac{21n + 4}{14n + 3}\n\\]\nis irreducible. That is, the numerator and denominator share no common divisor greater than 1.\n\n---\n\n### Step 1: Understand the problem\n\nTo show irreducibility, we need to prove:\n\\[\n\\gcd(21n + 4, 14n + 3) = 1 \\quad \\forall n \\in \\mathbb{N}.\n\\]\n\n---\n\n### Step 2: Use the Euclidean algorithm\n\nApply the Euclidean algorithm to find \\(\\gcd(21n + 4, 14n + 3)\\):\n\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, (21n + 4) - (14n + 3)).\n\\]\n\nCalculate the difference:\n\\[\n(21n + 4) - (14n + 3) = 7n + 1.\n\\]\n\nSo,\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, 7n + 1).\n\\]\n\n---\n\n### Step 3: Repeat Euclidean algorithm\n\nNow,\n\\[\n\\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, (14n + 3) - 2(7n + 1)).\n\\]\n\nCalculate:\n\\[\n(14n + 3) - 2(7n + 1) = 14n + 3 - 14n - 2 = 1.\n\\]\n\nThus,\n\\[\n\\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, 1).\n\\]\n\n---\n\n### Step 4: Final gcd\n\nSince \\(\\gcd(a, 1) = 1\\) for any integer \\(a\\), we have:\n\\[\n\\gcd(7n + 1, 1) = 1.\n\\]\n\nTherefore,\n\\[\n\\gcd(21n + 4, 14n + 3) = 1.\n\\]\n\n---\n\n### Conclusion:\n\nFor every natural number \\( n \\), the numerator and denominator of the fraction \\(\\frac{21n + 4}{14n + 3}\\) are coprime, so the fraction is irreducible.\n\n---\n\n**FINAL ANSWER:**\n\n\\[\n\\boxed{\n\\text{The fraction } \\frac{21n + 4}{14n + 3} \\text{ is irreducible for every natural number } n.\n}\n\\]\n\n---\n\n**Summary:**\n\n\\[\n\\gcd(21n + 4, 14n + 3) = \\gcd(14n + 3, 7n + 1) = \\gcd(7n + 1, 1) = 1.\n\\]\n\nHence, the fraction is irreducible for all \\( n \\in \\mathbb{N} \\).\n\n[EXTRACTED] **FINAL ANSWER:**",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_NUMBER_ONE_001 [golay octad quantity] | Brain: LANG_FRACTION_BITS_VOLUME",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          3,
+          4
+        ],
+        "mean_nrci": 0.9450968113441538,
+        "bw256_nrci": 0.29800369420996137,
+        "phenom_nrcis": {
+          "3": 0.9276996480704072,
+          "4": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "3": 0.8333333333333334,
+          "4": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "3": 0.6702751425332574,
+          "4": 0.666352138625138
+        },
+        "octad_seeds": {
+          "3": 3,
+          "4": 4
+        }
+      },
+      "col2": {
+        "golay_address": 1737,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 1.5587,
+          "XZ": 0.7794,
+          "YZ": 0.7794
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_FRACTION_BITS_VOLUME",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_NT",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.950895865768736
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9288,
+        "octad_consensus": true,
+        "combined_resonance": 0.6304,
+        "snap_quality_mean": 0.875,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.929 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 11.29
+    },
+    {
+      "problem_id": "MN_NT_004",
+      "domain": "Number Theory",
+      "difficulty": "medium",
+      "problem": "Find all pairs of positive integers $(m, n)$ such that $m^2 - n^2 = 2026$.",
+      "reference_answer": "No solution (2026 = 2 \u00d7 1013, 1013 prime; m-n and m+n same parity needed)",
+      "solution": "Given the problem:\n\nFind all pairs of positive integers \\((m, n)\\) such that\n\\[\nm^2 - n^2 = 2026.\n\\]\n\n---\n\n### Step 1: Factor the difference of squares\nRecall that\n\\[\nm^2 - n^2 = (m - n)(m + n).\n\\]\nSet\n\\[\na = m - n, \\quad b = m + n,\n\\]\nso that\n\\[\nab = 2026,\n\\]\nwith \\(a, b\\) positive integers and \\(b > a\\) (since \\(m > n > 0\\)).\n\n---\n\n### Step 2: Express \\(m\\) and \\(n\\) in terms of \\(a\\) and \\(b\\)\nFrom the system:\n\\[\nm - n = a, \\quad m + n = b,\n\\]\nadding and subtracting:\n\\[\n2m = a + b \\implies m = \\frac{a + b}{2},\n\\]\n\\[\n2n = b - a \\implies n = \\frac{b - a}{2}.\n\\]\n\nSince \\(m, n\\) are positive integers, both \\(\\frac{a+b}{2}\\) and \\(\\frac{b-a}{2}\\) must be positive integers.\n\n---\n\n### Step 3: Conditions on \\(a\\) and \\(b\\)\n- \\(a\\) and \\(b\\) are positive divisors of 2026 with \\(a < b\\).\n- \\(a + b\\) is even (so that \\(m\\) is integer).\n- \\(b - a\\) is even (so that \\(n\\) is integer).\n\nSince \\(a + b\\) and \\(b - a\\) are both even, \\(a\\) and \\(b\\) must be both even or both odd.\n\n---\n\n### Step 4: Factorize 2026\nFind the prime factorization of 2026:\n\\[\n2026 \\div 2 = 1013,\n\\]\nand 1013 is prime.\n\nSo,\n\\[\n2026 = 2 \\times 1013.\n\\]\n\n---\n\n### Step 5: List positive divisor pairs \\((a,b)\\) with \\(ab=2026\\)\nThe positive divisors of 2026 are:\n\\[\n1, 2, 1013, 2026.\n\\]\n\nPossible pairs \\((a,b)\\) with \\(a < b\\) and \\(ab=2026\\):\n- \\((1, 2026)\\)\n- \\((2, 1013)\\)\n\n---\n\n### Step 6: Check parity conditions for each pair\n\n1. For \\((a,b) = (1, 2026)\\):\n- \\(a + b = 1 + 2026 = 2027\\) (odd)\n- \\(b - a = 2026 - 1 = 2025\\) (odd)\n\nSince \\(a+b\\) and \\(b-a\\) are odd, \\(m\\) and \\(n\\) are not integers.\n\n2. For \\((a,b) = (2, 1013)\\):\n- \\(a + b = 2 + 1013 = 1015\\) (odd)\n- \\(b - a = 1013 - 2 = 1011\\)",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_NUMBER_ONE_001 [golay octad quantity] | Brain: OP_ALL",
+      "phenomenology_verdict": "PARTIALLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          2,
+          2026
+        ],
+        "mean_nrci": 0.8624199855808127,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "2": 0.9624939746179005,
+          "2026": 0.7623459965437248
+        },
+        "snap_qualities": {
+          "2": 0.9166666666666666,
+          "2026": 0.33333333333333337
+        },
+        "tgic_scores": {
+          "2": 0.666352138625138,
+          "2026": 0.635390373387863
+        },
+        "octad_seeds": {
+          "2": 2,
+          "2026": 508
+        }
+      },
+      "col2": {
+        "golay_address": 1277,
+        "is_octad": false,
+        "leech_tax": 6.234806886472431,
+        "nrci": 0.6159605143398686,
+        "tgic_stability": 0.628597740293208,
+        "soc_energy": 782000792.8630675,
+        "manifestation": "SUBLIMINAL",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 0,
+        "runecube_taxes": {
+          "XY": 1.9484,
+          "XZ": 1.9484,
+          "YZ": 2.3381
+        }
+      },
+      "col3": {
+        "brain_law": "OP_ALL",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_NT",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.8957779819265087
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.6667,
+        "cross_nrci_alignment": 0.8653,
+        "octad_consensus": false,
+        "combined_resonance": 0.332,
+        "snap_quality_mean": 0.625,
+        "grade": "MODERATE",
+        "notes": "Cross-NRCI alignment=0.865 octad=NO noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 10.96
+    },
+    {
+      "problem_id": "MN_NT_005",
+      "domain": "Number Theory",
+      "difficulty": "hard",
+      "problem": "Find the largest integer $n$ such that $n$ is divisible by all positive integers less than $\\sqrt[3]{n}$.",
+      "reference_answer": "420",
+      "solution": "We want to find the largest integer \\( n \\) such that \\( n \\) is divisible by all positive integers less than \\(\\sqrt[3]{n}\\).\n\n---\n\n**Step 1: Define the problem variables**\n\nLet:\n\\[\nk = \\lfloor \\sqrt[3]{n} \\rfloor\n\\]\nThen the condition is:\n\\[\nn \\text{ is divisible by all positive integers } m \\text{ with } 1 \\leq m < k.\n\\]\n\nSince \\( m < k \\), the integers dividing \\( n \\) are:\n\\[\n1, 2, 3, \\ldots, k-1.\n\\]\n\nSo \\( n \\) must be divisible by all integers from 1 up to \\( k-1 \\).\n\n---\n\n**Step 2: Express \\( n \\) in terms of \\( k \\)**\n\nSince \\( n \\) is divisible by all integers from 1 to \\( k-1 \\), \\( n \\) must be a multiple of the least common multiple (LCM) of these integers:\n\\[\nn \\text{ is divisible by } \\mathrm{LCM}(1, 2, \\ldots, k-1).\n\\]\n\nLet:\n\\[\nL = \\mathrm{LCM}(1, 2, \\ldots, k-1).\n\\]\n\nAlso, since \\( k = \\lfloor \\sqrt[3]{n} \\rfloor \\), we have:\n\\[\nk \\leq \\sqrt[3]{n} < k+1.\n\\]\n\nCubing all parts:\n\\[\nk^3 \\leq n < (k+1)^3.\n\\]\n\n---\n\n**Step 3: Combine the divisibility and bounds**\n\nWe want the largest \\( n \\) such that:\n\\[\nn \\geq L,\n\\]\nand\n\\[\nk^3 \\leq n < (k+1)^3,\n\\]\nwith \\( n \\) divisible by \\( L \\).\n\nSince \\( n \\) must be divisible by \\( L \\), the smallest such \\( n \\) in the interval \\([k^3, (k+1)^3)\\) is the smallest multiple of \\( L \\) greater than or equal to \\( k^3 \\).\n\nWe want the largest \\( n \\) satisfying these conditions, so the largest multiple of \\( L \\) less than \\((k+1)^3\\).\n\n---\n\n**Step 4: Strategy**\n\nFor each integer \\( k \\), find:\n- \\( L = \\mathrm{LCM}(1, 2, \\ldots, k-1) \\).\n- The interval \\([k^3, (k+1)^3)\\).\n- The largest multiple of \\( L \\) in this interval.\n\nThen check if \\( n \\) satisfies \\( \\lfloor \\sqrt[3]{n} \\rfloor = k \\).\n\nWe want to find the maximum such \\( n \\) over all \\( k \\).\n\n---\n\n**Step 5: Compute for small \\( k \\)**\n\n- For \\( k=2 \\):\n  - \\( L = \\mathrm{LCM}(1) = 1 \\).\n  - Interval: \\([2^3, 3^3) = [8, 27)\\).\n  - Largest multiple of 1 in [8, 27) is 26.\n  - Check",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_NUMBER_ONE_001 [golay octad quantity] | Brain: OP_PROP_Z",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          3
+        ],
+        "mean_nrci": 0.9276996480704072,
+        "bw256_nrci": 0.3232142749901492,
+        "phenom_nrcis": {
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 1737,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 1.5587,
+          "XZ": 0.7794,
+          "YZ": 0.7794
+        }
+      },
+      "col3": {
+        "brain_law": "OP_PROP_Z",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_NT",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9392977569195716
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9387,
+        "octad_consensus": true,
+        "combined_resonance": 0.5894,
+        "snap_quality_mean": 0.8333,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.939 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 6.66
+    },
+    {
+      "problem_id": "MN_ALG_001",
+      "domain": "Algebra",
+      "difficulty": "medium",
+      "problem": "Solve the system: $x + y + z = a$, $x^2 + y^2 + z^2 = b^2$, $xy = z^2$ where $a$ and $b$ are given constants. What conditions must $a$ and $b$ satisfy?",
+      "reference_answer": "z = (a^2 - b^2)/(2a), x+y = a - z, xy = z^2; condition: a != 0 and discriminant >= 0",
+      "solution": "Given the system:\n\\[\n\\begin{cases}\nx + y + z = a \\\\\nx^2 + y^2 + z^2 = b^2 \\\\\nxy = z^2\n\\end{cases}\n\\]\nwhere \\(a, b\\) are constants, we want to find the conditions on \\(a\\) and \\(b\\) for which solutions \\((x,y,z)\\) exist.\n\n---\n\n### Step 1: Use the relation \\(xy = z^2\\)\n\nFrom the third equation:\n\\[\nxy = z^2.\n\\]\n\nThis suggests \\(x\\) and \\(y\\) are related through \\(z\\).\n\n---\n\n### Step 2: Express \\(x + y\\) and \\(xy\\) in terms of \\(z\\)\n\nFrom the first equation:\n\\[\nx + y = a - z.\n\\]\n\nFrom the third:\n\\[\nxy = z^2.\n\\]\n\n---\n\n### Step 3: Use the identity for sum of squares\n\nRecall:\n\\[\nx^2 + y^2 = (x + y)^2 - 2xy = (a - z)^2 - 2z^2.\n\\]\n\nGiven the second equation:\n\\[\nx^2 + y^2 + z^2 = b^2,\n\\]\nsubstitute:\n\\[\n[(a - z)^2 - 2z^2] + z^2 = b^2 \\implies (a - z)^2 - z^2 = b^2.\n\\]\n\n---\n\n### Step 4: Simplify the equation\n\n\\[\n(a - z)^2 - z^2 = b^2.\n\\]\n\nExpand:\n\\[\n(a - z)^2 = a^2 - 2az + z^2,\n\\]\nso\n\\[\na^2 - 2az + z^2 - z^2 = b^2 \\implies a^2 - 2az = b^2.\n\\]\n\nRearranged:\n\\[\na^2 - b^2 = 2 a z \\implies z = \\frac{a^2 - b^2}{2a}, \\quad a \\neq 0.\n\\]\n\n---\n\n### Step 5: Find \\(x\\) and \\(y\\)\n\nRecall:\n\\[\nx + y = a - z = a - \\frac{a^2 - b^2}{2a} = \\frac{2a^2 - (a^2 - b^2)}{2a} = \\frac{a^2 + b^2}{2a}.\n\\]\n\nAlso,\n\\[\nxy = z^2 = \\left(\\frac{a^2 - b^2}{2a}\\right)^2 = \\frac{(a^2 - b^2)^2}{4a^2}.\n\\]\n\n---\n\n### Step 6: Check the quadratic for \\(x,y\\)\n\n\\(x\\) and \\(y\\) are roots of:\n\\[\nt^2 - (x + y) t + xy = 0,\n\\]\nor\n\\[\nt^2 - \\frac{a^2 + b^2}{2a} t + \\frac{(a^2 - b^2)^2}{4a^2} = 0.\n\\]\n\n---\n\n### Step 7: Discriminant condition for real",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_CONST_I_001 [complex resonance structure] | Brain: UNKNOWN",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          2
+        ],
+        "mean_nrci": 0.9624939746179005,
+        "bw256_nrci": 0.3232142749901492,
+        "phenom_nrcis": {
+          "2": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "2": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "2": 0.666352138625138
+        },
+        "octad_seeds": {
+          "2": 2
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "UNKNOWN",
+        "brain_confidence": 0.0,
+        "brain_method": "Lattice Search Failed",
+        "fom_frame": "FOM_MATH_ALG",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.625,
+        "convergence_score": 0.6667,
+        "cross_nrci_alignment": 0.9183,
+        "octad_consensus": true,
+        "combined_resonance": 0.6726,
+        "snap_quality_mean": 0.9167,
+        "grade": "MODERATE",
+        "notes": "Cross-NRCI alignment=0.918 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 9.67
+    },
+    {
+      "problem_id": "MN_ALG_002",
+      "domain": "Algebra",
+      "difficulty": "easy",
+      "problem": "Let $a, b, c$ be positive reals with $a + b + c = 1$. Prove that $a^2 + b^2 + c^2 \\geq \\frac{1}{3}$.",
+      "reference_answer": "Proof via Cauchy-Schwarz or AM-QM inequality",
+      "solution": "Given \\(a, b, c > 0\\) with \\(a + b + c = 1\\), we want to prove:\n\\[\na^2 + b^2 + c^2 \\geq \\frac{1}{3}.\n\\]\n\n**Step 1: Use the Cauchy-Schwarz inequality**\n\nThe Cauchy-Schwarz inequality states that for any real vectors \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\),\n\\[\n(\\mathbf{x} \\cdot \\mathbf{y})^2 \\leq (\\mathbf{x} \\cdot \\mathbf{x})(\\mathbf{y} \\cdot \\mathbf{y}).\n\\]\n\nSet \\(\\mathbf{x} = (a, b, c)\\) and \\(\\mathbf{y} = (1, 1, 1)\\). Then,\n\\[\n(a + b + c)^2 \\leq (a^2 + b^2 + c^2)(1^2 + 1^2 + 1^2) = 3(a^2 + b^2 + c^2).\n\\]\n\n**Step 2: Substitute the sum**\n\nSince \\(a + b + c = 1\\), we have\n\\[\n1^2 \\leq 3(a^2 + b^2 + c^2),\n\\]\nwhich simplifies to\n\\[\n1 \\leq 3(a^2 + b^2 + c^2).\n\\]\n\n**Step 3: Rearrange to get the desired inequality**\n\nDivide both sides by 3:\n\\[\n\\frac{1}{3} \\leq a^2 + b^2 + c^2.\n\\]\n\nThis completes the proof.\n\n**Step 4: Equality condition**\n\nEquality holds if and only if \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) are linearly dependent, i.e., \\(a = b = c\\). Since \\(a + b + c = 1\\), this means\n\\[\na = b = c = \\frac{1}{3}.\n\\]\n\n---\n\n**FINAL ANSWER:**\n\\[\n\\boxed{a^2 + b^2 + c^2 \\geq \\frac{1}{3} \\text{ with equality if and only if } a = b = c = \\frac{1}{3}.}\n\\]\n\n[EXTRACTED] **FINAL ANSWER:**",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_CONST_I_001 [complex resonance structure] | Brain: LANG_A",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_A",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_ALG",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9224,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.922 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 7.12
+    },
+    {
+      "problem_id": "MN_ALG_003",
+      "domain": "Algebra",
+      "difficulty": "hard",
+      "problem": "Let $f$ be a real-valued function defined for all real $x$ such that for some positive constant $a$: $f(x+a) = \\frac{1}{2} + \\sqrt{f(x) - [f(x)]^2}$. Prove $f$ is periodic.",
+      "reference_answer": "f has period 2a",
+      "solution": "Given: A real-valued function \\( f:\\mathbb{R} \\to \\mathbb{R} \\) satisfies for some positive constant \\( a \\):\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x) - [f(x)]^2}.\n\\]\n\nWe want to prove that \\( f \\) is periodic.\n\n---\n\n### Step 1: Analyze the functional equation\n\nRewrite the equation:\n\\[\nf(x+a) = \\frac{1}{2} + \\sqrt{f(x)(1 - f(x))}.\n\\]\n\nSince the square root is real, the argument must be nonnegative:\n\\[\nf(x)(1 - f(x)) \\geq 0.\n\\]\n\nThis implies \\( f(x) \\in [0,1] \\) for all \\( x \\), because if \\( f(x) < 0 \\) or \\( f(x) > 1 \\), the product \\( f(x)(1-f(x)) \\) is negative.\n\n---\n\n### Step 2: Define an auxiliary function\n\nSet\n\\[\nf(x) = \\sin^2 \\theta(x).\n\\]\n\nSince \\( \\sin^2 \\theta \\in [0,1] \\), this substitution is consistent with the domain restriction.\n\nThen,\n\\[\nf(x) = \\sin^2 \\theta(x) \\implies f(x)(1 - f(x)) = \\sin^2 \\theta(x) \\cos^2 \\theta(x).\n\\]\n\nTherefore,\n\\[\n\\sqrt{f(x)(1 - f(x))} = \\sqrt{\\sin^2 \\theta(x) \\cos^2 \\theta(x)} = |\\sin \\theta(x) \\cos \\theta(x)|.\n\\]\n\n---\n\n### Step 3: Express \\( f(x+a) \\) in terms of \\(\\theta(x)\\)\n\nThe functional equation becomes:\n\\[\nf(x+a) = \\frac{1}{2} + |\\sin \\theta(x) \\cos \\theta(x)|.\n\\]\n\nRecall the double-angle identity:\n\\[\n\\sin 2\\theta = 2 \\sin \\theta \\cos \\theta.\n\\]\n\nHence,\n\\[\n|\\sin \\theta(x) \\cos \\theta(x)| = \\frac{|\\sin 2\\theta(x)|}{2}.\n\\]\n\nSo,\n\\[\nf(x+a) = \\frac{1}{2} + \\frac{|\\sin 2\\theta(x)|}{2} = \\frac{1 + |\\sin 2\\theta(x)|}{2}.\n\\]\n\n---\n\n### Step 4: Express \\( f(x+a) \\) in terms of \\(\\theta(x+a)\\)\n\nSimilarly,\n\\[\nf(x+a) = \\sin^2 \\theta(x+a).\n\\]\n\nSo,\n\\[\n\\sin^2 \\theta(x+a) = \\frac{1 + |\\sin 2\\theta(x)|}{2}.\n\\]\n\nRecall the identity:\n\\[\n\\sin^2 \\alpha = \\frac{1 - \\cos 2\\alpha}{2}.\n\\]\n\nTherefore,\n\\[\n\\frac{1 - \\cos 2\\theta(x+a)}{2} = \\frac{1 + |\\sin 2\\theta(x)|}{2}.\n\\]\n\nMultiply both sides by 2:\n\\[\n1 - \\cos 2\\theta(x+a) = 1 +",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_CONST_I_001 [complex resonance structure] | Brain: MATH_PROTON_MASS_001",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2
+        ],
+        "mean_nrci": 0.9624939746179005,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2
+        }
+      },
+      "col2": {
+        "golay_address": 2929,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "MATH_PROTON_MASS_001",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_ALG",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9183,
+        "octad_consensus": true,
+        "combined_resonance": 0.6726,
+        "snap_quality_mean": 0.9167,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.918 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 8.63
+    },
+    {
+      "problem_id": "MN_ALG_004",
+      "domain": "Algebra",
+      "difficulty": "medium",
+      "problem": "Find all real solutions to $x^4 - 3x^3 + 4x^2 - 3x + 1 = 0$.",
+      "reference_answer": "x = (3 \u00b1 sqrt(5))/2 divided by 2, i.e. x = (3\u00b1sqrt(5))/4... actually x=(1+sqrt(5))/2 and x=(1-sqrt(5))/2 after dividing by x^2",
+      "solution": "Given the polynomial equation:\n\\[\nx^4 - 3x^3 + 4x^2 - 3x + 1 = 0\n\\]\n\n**Step 1: Check for possible rational roots**\n\nBy Rational Root Theorem, possible rational roots are factors of the constant term (\u00b11) over factors of leading coefficient (\u00b11), so possible roots are \u00b11.\n\nEvaluate at \\(x=1\\):\n\\[\n1 - 3 + 4 - 3 + 1 = 0\n\\]\nSo, \\(x=1\\) is a root.\n\nEvaluate at \\(x=-1\\):\n\\[\n1 + 3 + 4 + 3 + 1 = 12 \\neq 0\n\\]\nSo, \\(x=-1\\) is not a root.\n\n**Step 2: Polynomial division by \\((x-1)\\)**\n\nDivide \\(x^4 - 3x^3 + 4x^2 - 3x + 1\\) by \\((x-1)\\):\n\nUsing synthetic division:\n\n- Coefficients: 1 | -3 | 4 | -3 | 1\n- Bring down 1\n- Multiply by 1: 1, add to -3 \u2192 -2\n- Multiply by 1: -2, add to 4 \u2192 2\n- Multiply by 1: 2, add to -3 \u2192 -1\n- Multiply by 1: -1, add to 1 \u2192 0 (remainder)\n\nQuotient polynomial:\n\\[\nx^3 - 2x^2 + 2x - 1\n\\]\n\n**Step 3: Solve cubic \\(x^3 - 2x^2 + 2x - 1 = 0\\)**\n\nTry rational roots again: \u00b11\n\nEvaluate at \\(x=1\\):\n\\[\n1 - 2 + 2 - 1 = 0\n\\]\nSo, \\(x=1\\) is again a root.\n\nDivide cubic by \\((x-1)\\):\n\nCoefficients: 1 | -2 | 2 | -1\n\n- Bring down 1\n- Multiply by 1: 1, add to -2 \u2192 -1\n- Multiply by 1: -1, add to 2 \u2192 1\n- Multiply by 1: 1, add to -1 \u2192 0 (remainder)\n\nQuotient polynomial:\n\\[\nx^2 - x + 1\n\\]\n\n**Step 4: Solve quadratic \\(x^2 - x + 1 = 0\\)**\n\nDiscriminant:\n\\[\n\\Delta = (-1)^2 - 4 \\cdot 1 \\cdot 1 = 1 - 4 = -3 < 0\n\\]\nNo real roots here.\n\n**Step 5: Collect all real roots**\n\nFrom above, the real roots are:\n\\[\nx = 1 \\quad \\text{(with multiplicity 2)}\n\\]\n\n**Step 6: Verify multiplicity**\n\nSince the factorization is:\n\\[\n(x-1)^2 (x^2 - x + 1) = 0\n\\]\nand the quadratic has no real roots, the only real root is \\(x=1\\) with multiplicity 2.\n\n---\n\n**FINAL ANSWER:\n\n[EXTRACTED] **FINAL ANSWER:",
+      "grade": "PARTIAL",
+      "score": 0.5,
+      "swarm_law": "MATH_CONST_I_001 [complex resonance structure] | Brain: OP_ALL",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "mean_nrci": 0.9537953929810272,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072,
+          "4": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334,
+          "4": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574,
+          "4": 0.666352138625138
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3,
+          "4": 4
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "OP_ALL",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_ALG",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.950895865768736
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9257,
+        "octad_consensus": true,
+        "combined_resonance": 0.6514,
+        "snap_quality_mean": 0.8958,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.926 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 9.85
+    },
+    {
+      "problem_id": "MN_ALG_005",
+      "domain": "Algebra",
+      "difficulty": "hard",
+      "problem": "Find all functions $f: \\mathbb{R} \\to \\mathbb{R}$ satisfying $f(x^2 + y + f(y)) = 2y + f(x)^2$ for all $x, y \\in \\mathbb{R}$.",
+      "reference_answer": "f(x) = x",
+      "solution": "Given the functional equation:\n\\[\nf(x^2 + y + f(y)) = 2y + f(x)^2 \\quad \\forall x,y \\in \\mathbb{R}.\n\\]\n\n**Step 1: Analyze the equation**\n\nRewrite the equation for clarity:\n\\[\nf\\big(x^2 + y + f(y)\\big) = 2y + \\big(f(x)\\big)^2.\n\\]\n\nWe want to find all functions \\( f: \\mathbb{R} \\to \\mathbb{R} \\) satisfying this.\n\n---\n\n**Step 2: Substitute \\( y = 0 \\)**\n\nLet \\( y = 0 \\):\n\\[\nf(x^2 + 0 + f(0)) = 2 \\cdot 0 + f(x)^2 \\implies f(x^2 + f(0)) = f(x)^2.\n\\]\n\nDefine \\( c = f(0) \\). Then:\n\\[\nf(x^2 + c) = (f(x))^2.\n\\]\n\n---\n\n**Step 3: Substitute \\( x = 0 \\)**\n\nLet \\( x = 0 \\):\n\\[\nf(0^2 + y + f(y)) = 2y + f(0)^2 \\implies f(y + f(y)) = 2y + c^2.\n\\]\n\n---\n\n**Step 4: Use the two relations**\n\nFrom Step 2:\n\\[\nf(x^2 + c) = (f(x))^2.\n\\]\n\nFrom Step 3:\n\\[\nf(y + f(y)) = 2y + c^2.\n\\]\n\n---\n\n**Step 5: Try to find the form of \\( f \\)**\n\nThe equation from Step 2 suggests a quadratic-like behavior because the argument is \\( x^2 + c \\) and the output is \\( (f(x))^2 \\).\n\nTry a quadratic form:\n\\[\nf(x) = a x^2 + b x + d.\n\\]\n\n---\n\n**Step 6: Plug the quadratic form into Step 2**\n\nCalculate \\( f(x^2 + c) \\):\n\\[\nf(x^2 + c) = a (x^2 + c)^2 + b (x^2 + c) + d = a(x^4 + 2 c x^2 + c^2) + b x^2 + b c + d.\n\\]\n\nCalculate \\( (f(x))^2 \\):\n\\[\n(f(x))^2 = (a x^2 + b x + d)^2 = a^2 x^4 + 2 a b x^3 + 2 a d x^2 + b^2 x^2 + 2 b d x + d^2.\n\\]\n\nSet equal:\n\\[\na x^4 + 2 a c x^2 + a c^2 + b x^2 + b c + d = a^2 x^4 + 2 a b x^3 + (2 a d + b^2) x^2 + 2 b d x + d^2.\n\\]\n\n---\n\n**Step 7: Equate coefficients of powers of \\( x \\)**\n\n- Coefficient of \\( x^4 \\):\n\\[\na = a^2 \\implies a^2 - a = 0 \\implies a",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "MATH_CONST_I_001 [complex resonance structure] | Brain: OP_ALL",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          2
+        ],
+        "mean_nrci": 0.9624939746179005,
+        "bw256_nrci": 0.29800369420996137,
+        "phenom_nrcis": {
+          "2": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "2": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "2": 0.666352138625138
+        },
+        "octad_seeds": {
+          "2": 2
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "OP_ALL",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_ALG",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9183,
+        "octad_consensus": true,
+        "combined_resonance": 0.6726,
+        "snap_quality_mean": 0.9167,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.918 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 10.04
+    },
+    {
+      "problem_id": "MN_GEO_001",
+      "domain": "Geometry",
+      "difficulty": "hard",
+      "problem": "An arbitrary point $M$ is selected in the interior of segment $AB$. The squares $AMCD$ and $MBEF$ are constructed on the same side of $AB$. The circles circumscribed about these squares have centers $P$ and $Q$ respectively. Prove that $AP$, $BQ$, and $MF$ are concurrent.",
+      "reference_answer": "The three lines meet at a single point",
+      "solution": "Given:\n- Segment \\( AB \\) with an interior point \\( M \\).\n- Squares \\( AMCD \\) and \\( MBEF \\) constructed on the same side of \\( AB \\).\n- Circles circumscribed about these squares have centers \\( P \\) (for \\( AMCD \\)) and \\( Q \\) (for \\( MBEF \\)).\n  \nTo prove:\n- Lines \\( AP \\), \\( BQ \\), and \\( MF \\) are concurrent (meet at a single point).\n\n---\n\n### Step 1: Understand the configuration and notation\n\n- \\( A, M, B \\) are collinear points on segment \\( AB \\), with \\( M \\) between \\( A \\) and \\( B \\).\n- Square \\( AMCD \\) is constructed on one side of \\( AB \\), so points \\( C \\) and \\( D \\) are such that \\( AMCD \\) is a square.\n- Similarly, square \\( MBEF \\) is constructed on the same side of \\( AB \\), so points \\( E \\) and \\( F \\) form the square with \\( MB \\).\n- Centers \\( P \\) and \\( Q \\) are the centers of the circumscribed circles of these squares.\n\n---\n\n### Step 2: Properties of the squares and their circumscribed circles\n\n- Each square has a circumscribed circle whose center is the intersection of the perpendicular bisectors of its sides.\n- The center of a square's circumscribed circle coincides with the intersection of its diagonals.\n- Therefore, \\( P \\) is the midpoint of the diagonal \\( AC \\) (or \\( MD \\)) of square \\( AMCD \\).\n- Similarly, \\( Q \\) is the midpoint of the diagonal \\( ME \\) (or \\( BF \\)) of square \\( MBEF \\).\n\n---\n\n### Step 3: Coordinate setup for clarity\n\nPlace the segment \\( AB \\) on the x-axis for convenience:\n\n- Let \\( A = (0,0) \\).\n- Let \\( B = (b,0) \\), where \\( b > 0 \\).\n- Let \\( M = (m,0) \\), where \\( 0 < m < b \\).\n\n---\n\n### Step 4: Coordinates of points \\( C, D, E, F \\)\n\nSince squares are constructed on the same side (say above the x-axis), the squares are oriented with sides parallel/perpendicular to \\( AB \\).\n\n- Square \\( AMCD \\) with base \\( AM \\):\n  - \\( A = (0,0) \\)\n  - \\( M = (m,0) \\)\n  - Side length \\( AM = m \\)\n  - \\( C = (m, m) \\) (upward from \\( M \\))\n  - \\( D = (0, m) \\) (upward from \\( A \\))\n\n- Square \\( MBEF \\) with base \\( MB \\):\n  - \\( M = (m,0) \\)\n  - \\( B = (b,0) \\)\n  - Side length \\( MB = b - m \\)\n  - \\( E = (b, b - m) \\) (upward from \\( B \\))\n  - \\( F = (m, b - m) \\) (upward from \\( M \\))\n\n---\n\n### Step 5: Coordinates of centers \\( P \\) and \\( Q",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "OP_SYMMETRY [exact coherence resonance formula] | Brain: OP_POINT",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.3232142749901492,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "OP_POINT",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_GEO",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9508958657687362
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9268,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.927 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 8.21
+    },
+    {
+      "problem_id": "MN_GEO_002",
+      "domain": "Geometry",
+      "difficulty": "medium",
+      "problem": "In triangle $ABC$, the median from $A$ has length $m_a$. Prove that $m_a \\leq \\frac{b+c}{2}$.",
+      "reference_answer": "Equality iff b=c (isoceles)",
+      "solution": "Given triangle \\( ABC \\) with sides \\( a = BC \\), \\( b = AC \\), and \\( c = AB \\), and median \\( m_a \\) from vertex \\( A \\) to midpoint \\( M \\) of side \\( BC \\), we want to prove:\n\\[\nm_a \\leq \\frac{b + c}{2}.\n\\]\n\n---\n\n### Step 1: Define the median length formula\n\nThe median \\( m_a \\) from vertex \\( A \\) to midpoint \\( M \\) of side \\( BC \\) is given by Apollonius' theorem:\n\\[\nm_a = AM = \\frac{1}{2} \\sqrt{2b^2 + 2c^2 - a^2}.\n\\]\n\n---\n\n### Step 2: Express the inequality to prove\n\nWe want to show:\n\\[\nm_a \\leq \\frac{b + c}{2}.\n\\]\n\nSubstitute \\( m_a \\):\n\\[\n\\frac{1}{2} \\sqrt{2b^2 + 2c^2 - a^2} \\leq \\frac{b + c}{2}.\n\\]\n\nMultiply both sides by 2:\n\\[\n\\sqrt{2b^2 + 2c^2 - a^2} \\leq b + c.\n\\]\n\n---\n\n### Step 3: Square both sides\n\nSince both sides are non-negative (lengths), squaring preserves inequality:\n\\[\n2b^2 + 2c^2 - a^2 \\leq (b + c)^2.\n\\]\n\nExpand the right side:\n\\[\n2b^2 + 2c^2 - a^2 \\leq b^2 + 2bc + c^2.\n\\]\n\n---\n\n### Step 4: Rearrange terms\n\nBring all terms to one side:\n\\[\n2b^2 + 2c^2 - a^2 - b^2 - 2bc - c^2 \\leq 0,\n\\]\nwhich simplifies to\n\\[\nb^2 + c^2 - 2bc - a^2 \\leq 0.\n\\]\n\nRewrite:\n\\[\n(b - c)^2 \\leq a^2.\n\\]\n\n---\n\n### Step 5: Interpret the inequality\n\nSince \\( a = BC \\), \\( b = AC \\), and \\( c = AB \\), the triangle inequality states:\n\\[\n|b - c| < a < b + c.\n\\]\n\nTherefore,\n\\[\n(b - c)^2 < a^2,\n\\]\nwhich implies\n\\[\n(b - c)^2 \\leq a^2.\n\\]\n\nHence, the inequality holds true.\n\n---\n\n### Step 6: Conclusion\n\nWe have shown:\n\\[\nm_a \\leq \\frac{b + c}{2}.\n\\]\n\nThis inequality is strict unless the triangle degenerates (when \\( a = |b - c| \\)).\n\n---\n\n### Geometric coherence statement:\n\nThe median length \\( m_a \\) from vertex \\( A \\) to side \\( BC \\) satisfies the inequality \\( m_a \\leq \\frac{b + c}{2} \\) due to the triangle inequality and Apollonius' theorem, confirming the coherence of the median length with the side lengths.\n\n---\n\n**FINAL ANSWER:**\n\\[\n\\boxed{m_a \\leq\n\n[EXTRACTED] **FINAL ANSWER:**",
+      "grade": "PARTIAL",
+      "score": 0.5,
+      "swarm_law": "OP_SYMMETRY [exact coherence resonance formula] | Brain: LANG_MEDIAN_NRCI",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          2
+        ],
+        "mean_nrci": 0.9624939746179005,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "2": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "2": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "2": 0.666352138625138
+        },
+        "octad_seeds": {
+          "2": 2
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_MEDIAN_NRCI",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_GEO",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9183,
+        "octad_consensus": true,
+        "combined_resonance": 0.6726,
+        "snap_quality_mean": 0.9167,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.918 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 10.3
+    },
+    {
+      "problem_id": "MN_GEO_003",
+      "domain": "Geometry",
+      "difficulty": "hard",
+      "problem": "Two circles $G_1$ and $G_2$ intersect at two points $M$ and $N$. Let $AB$ be the line tangent to these circles at $A$ and $B$, respectively, so that $M$ lies closer to $AB$ than $N$ does. Let $CD$ be the line parallel to $AB$ and intersecting the two circles at $C$ and $D$ with $C$ on $G_1$ and $D$ on $G_2$, such that $M$ and $N$ are on the same side of $CD$. Prove that $MN$ bisects $CD$.",
+      "reference_answer": "The midpoint of CD lies on MN",
+      "solution": "We are given two circles \\( G_1 \\) and \\( G_2 \\) intersecting at points \\( M \\) and \\( N \\). A line \\( AB \\) is tangent to \\( G_1 \\) at \\( A \\) and to \\( G_2 \\) at \\( B \\), with \\( M \\) closer to \\( AB \\) than \\( N \\). Another line \\( CD \\), parallel to \\( AB \\), intersects \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\), with \\( M \\) and \\( N \\) on the same side of \\( CD \\). We want to prove that the segment \\( MN \\) bisects \\( CD \\).\n\n---\n\n### Step 1: Understand the configuration\n\n- Two circles \\( G_1 \\) and \\( G_2 \\) intersect at points \\( M \\) and \\( N \\).\n- \\( AB \\) is a common tangent line to both circles, tangent at \\( A \\in G_1 \\) and \\( B \\in G_2 \\).\n- \\( CD \\) is a line parallel to \\( AB \\), intersecting \\( G_1 \\) at \\( C \\) and \\( G_2 \\) at \\( D \\).\n- Points \\( M \\) and \\( N \\) lie on the same side of \\( CD \\).\n- \\( M \\) is closer to \\( AB \\) than \\( N \\).\n\n---\n\n### Step 2: Key properties and observations\n\n- Since \\( AB \\) is tangent to both circles, the points \\( A \\) and \\( B \\) lie on \\( G_1 \\) and \\( G_2 \\), respectively, and the line \\( AB \\) touches each circle at exactly one point.\n- \\( CD \\) is parallel to \\( AB \\), so the distance between these two lines is constant.\n- Points \\( M \\) and \\( N \\) lie on both circles, so \\( M, N \\in G_1 \\cap G_2 \\).\n- The segment \\( MN \\) is the chord common to both circles.\n\n---\n\n### Step 3: Use power of a point and homothety\n\n- Consider the homothety (scaling transformation) centered at \\( M \\) that sends \\( A \\) to \\( C \\) on \\( G_1 \\).\n- Since \\( AB \\parallel CD \\), the homothety ratio is the same for \\( G_1 \\) and \\( G_2 \\) with respect to \\( M \\).\n- Similarly, the homothety centered at \\( N \\) sends \\( B \\) to \\( D \\) on \\( G_2 \\).\n- Because \\( AB \\) and \\( CD \\) are parallel, the homothety ratios at \\( M \\) and \\( N \\) are equal.\n\n---\n\n### Step 4: Coordinate setup for clarity (optional but clarifying)\n\n- Place the points in a coordinate system for clarity:\n  - Let \\( AB \\) be the line \\( y = 0 \\).\n  - Since \\( CD \\parallel AB \\), let \\( CD \\) be the line \\( y = k \\) for some \\( k \\neq 0 \\).\n- Points \\( A \\) and \\( B \\) lie on \\( y=0 \\), tangent to \\( G_1 \\) and \\( G_2 \\",
+      "grade": "PARTIAL",
+      "score": 0.5,
+      "swarm_law": "OP_SYMMETRY [exact coherence resonance formula] | Brain: LANG_G2",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_G2",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_GEO",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9508958657687362
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9268,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.927 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 8.35
+    },
+    {
+      "problem_id": "MN_GEO_004",
+      "domain": "Geometry",
+      "difficulty": "easy",
+      "problem": "In a right triangle with legs $a$ and $b$ and hypotenuse $c$, prove that $a + b \\leq c\\sqrt{2}$.",
+      "reference_answer": "Equality iff a=b (isoceles right triangle)",
+      "solution": "Given a right triangle with legs \\(a\\) and \\(b\\), and hypotenuse \\(c\\), we want to prove the inequality:\n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\n---\n\n**Step 1: Recall the Pythagorean theorem**\n\nSince the triangle is right-angled, by the Pythagorean theorem:\n\\[\na^2 + b^2 = c^2.\n\\]\n\n---\n\n**Step 2: Use the Cauchy\u2013Schwarz inequality**\n\nConsider the vectors \\(\\mathbf{u} = (a, b)\\) and \\(\\mathbf{v} = (1, 1)\\) in \\(\\mathbb{R}^2\\).\n\nThe Cauchy\u2013Schwarz inequality states:\n\\[\n|\\mathbf{u} \\cdot \\mathbf{v}| \\leq \\|\\mathbf{u}\\| \\|\\mathbf{v}\\|.\n\\]\n\nCalculate each term:\n- Dot product:\n\\[\n\\mathbf{u} \\cdot \\mathbf{v} = a \\cdot 1 + b \\cdot 1 = a + b.\n\\]\n- Norms:\n\\[\n\\|\\mathbf{u}\\| = \\sqrt{a^2 + b^2} = c,\n\\]\n\\[\n\\|\\mathbf{v}\\| = \\sqrt{1^2 + 1^2} = \\sqrt{2}.\n\\]\n\nApplying the inequality:\n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\n---\n\n**Step 3: Interpretation**\n\nThe inequality holds with equality if and only if \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are linearly dependent, i.e., when \\(a = b\\).\n\n---\n\n**Conclusion:**\n\nWe have shown that for a right triangle with legs \\(a, b\\) and hypotenuse \\(c\\),\n\\[\na + b \\leq c \\sqrt{2}.\n\\]\n\nThis is a direct consequence of the Cauchy\u2013Schwarz inequality applied to the vectors formed by the legs and the vector \\((1,1)\\).\n\n---\n\n**FINAL ANSWER:**\n\\[\n\\boxed{a + b \\leq c \\sqrt{2}}.\n\\]\n\n[EXTRACTED] **FINAL ANSWER:**",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "OP_SYMMETRY [exact coherence resonance formula] | Brain: LANG_A",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          2
+        ],
+        "mean_nrci": 0.9624939746179005,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "2": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "2": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "2": 0.666352138625138
+        },
+        "octad_seeds": {
+          "2": 2
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_A",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_GEO",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9183,
+        "octad_consensus": true,
+        "combined_resonance": 0.6726,
+        "snap_quality_mean": 0.9167,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.918 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 7.18
+    },
+    {
+      "problem_id": "MN_GEO_005",
+      "domain": "Geometry",
+      "difficulty": "medium",
+      "problem": "A regular tetrahedron has edge length $a$. Find the radius of the inscribed sphere.",
+      "reference_answer": "r = a/(2*sqrt(6))",
+      "solution": "Given: A regular tetrahedron with edge length \\( a \\).\n\nGoal: Find the radius \\( r \\) of the inscribed sphere (inradius).\n\n---\n\n**Step 1: Recall properties of a regular tetrahedron**\n\n- All edges have length \\( a \\).\n- All faces are equilateral triangles with side \\( a \\).\n- The incenter (center of the inscribed sphere) is equidistant from all faces.\n- The inscribed sphere touches each face at exactly one point.\n\n---\n\n**Step 2: Formula for the inradius of a regular tetrahedron**\n\nThe inradius \\( r \\) can be found by the formula:\n\n\\[\nr = \\frac{3V}{S}\n\\]\n\nwhere\n\n- \\( V \\) is the volume of the tetrahedron,\n- \\( S \\) is the total surface area.\n\n---\n\n**Step 3: Calculate the volume \\( V \\)**\n\nThe volume of a regular tetrahedron with edge length \\( a \\) is:\n\n\\[\nV = \\frac{a^3}{6\\sqrt{2}}\n\\]\n\n---\n\n**Step 4: Calculate the surface area \\( S \\)**\n\nEach face is an equilateral triangle with side \\( a \\), so its area is:\n\n\\[\nA_{\\text{face}} = \\frac{\\sqrt{3}}{4} a^2\n\\]\n\nSince there are 4 faces:\n\n\\[\nS = 4 \\times A_{\\text{face}} = 4 \\times \\frac{\\sqrt{3}}{4} a^2 = \\sqrt{3} a^2\n\\]\n\n---\n\n**Step 5: Compute the inradius \\( r \\)**\n\n\\[\nr = \\frac{3V}{S} = \\frac{3 \\times \\frac{a^3}{6\\sqrt{2}}}{\\sqrt{3} a^2} = \\frac{\\frac{3a^3}{6\\sqrt{2}}}{\\sqrt{3} a^2} = \\frac{3a^3}{6\\sqrt{2} \\sqrt{3} a^2}\n\\]\n\nSimplify numerator and denominator:\n\n\\[\nr = \\frac{3a}{6 \\sqrt{6}} = \\frac{a}{2 \\sqrt{6}}\n\\]\n\n---\n\n**Step 6: Rationalize denominator (optional)**\n\n\\[\nr = \\frac{a}{2 \\sqrt{6}} = \\frac{a \\sqrt{6}}{2 \\times 6} = \\frac{a \\sqrt{6}}{12}\n\\]\n\n---\n\n**Conclusion:**\n\nThe radius of the inscribed sphere of a regular tetrahedron with edge length \\( a \\) is:\n\n\\[\n\\boxed{r = \\frac{a \\sqrt{6}}{12}}\n\\]\n\n---\n\n**FINAL ANSWER:**\n\n\\[\n\\boxed{r = \\frac{a \\sqrt{6}}{12}}\n\\]\n\n[EXTRACTED] **FINAL ANSWER:**",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "OP_SYMMETRY [exact coherence resonance formula] | Brain: LANG_A",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.29800369420996137,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_A",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_GEO",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9508958657687362
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9268,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.927 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 10.16
+    },
+    {
+      "problem_id": "MN_COMB_001",
+      "domain": "Combinatorics",
+      "difficulty": "medium",
+      "problem": "Prove that from a set of ten distinct two-digit numbers, it is possible to select two disjoint subsets whose elements have the same sum.",
+      "reference_answer": "Pigeonhole principle proof",
+      "solution": "We are given a set \\( S \\) of 10 distinct two-digit numbers. We want to prove that there exist two disjoint subsets of \\( S \\) whose elements have the same sum.\n\n---\n\n### Step 1: Understand the problem\n\n- \\( |S| = 10 \\), all elements distinct two-digit numbers (from 10 to 99).\n- We want two disjoint subsets \\( A, B \\subseteq S \\), \\( A \\cap B = \\emptyset \\), such that\n  \\[\n  \\sum_{a \\in A} a = \\sum_{b \\in B} b.\n  \\]\n\n---\n\n### Step 2: Key insight \u2014 Pigeonhole principle on subset sums\n\nConsider all non-empty subsets of \\( S \\). The total number of non-empty subsets is:\n\\[\n2^{10} - 1 = 1023.\n\\]\n\nEach subset has a sum of its elements. Since the numbers are two-digit, the minimum element is at least 10, so the minimum sum of any non-empty subset is at least 10.\n\nThe maximum sum is at most:\n\\[\n\\sum_{i=1}^{10} \\max(S) \\leq 10 \\times 99 = 990.\n\\]\n\nSo the sums of subsets lie in the range \\([10, 990]\\).\n\n---\n\n### Step 3: Counting possible sums\n\nThe number of possible sums is at most 981 (from 10 to 990 inclusive).\n\nBut the number of subsets is 1023, which is greater than 981.\n\nBy the pigeonhole principle, there must be at least two distinct subsets \\( A \\neq B \\) such that:\n\\[\n\\sum_{a \\in A} a = \\sum_{b \\in B} b.\n\\]\n\n---\n\n### Step 4: Ensuring the subsets are disjoint\n\nThe problem requires the two subsets to be disjoint.\n\nIf \\( A \\) and \\( B \\) are not disjoint, consider the symmetric difference:\n\\[\nC = A \\setminus B, \\quad D = B \\setminus A.\n\\]\n\nSince \\( A \\neq B \\), at least one of \\( C \\) or \\( D \\) is non-empty.\n\nNote:\n\\[\n\\sum_{a \\in A} a = \\sum_{b \\in B} b \\implies \\sum_{a \\in C} a = \\sum_{b \\in D} b,\n\\]\nbecause the elements in \\( A \\cap B \\) cancel out on both sides.\n\nAlso, \\( C \\cap D = \\emptyset \\) by construction.\n\nThus, from two subsets with equal sums, we can construct two disjoint subsets with equal sums.\n\n---\n\n### Step 5: Conclusion\n\nFrom the above reasoning, given any set of 10 distinct two-digit numbers, there exist two disjoint subsets whose sums are equal.\n\n---\n\n### Additional remarks (UBP context)\n\n- The problem relates to combinatorics and subset sums.\n- The Golay octad (size 8) and Leech lattice (128 points) hint at combinatorial structures with high coherence.\n- Here, the number 10 is slightly larger than 8 (octad), ensuring enough subsets to guarantee collisions in sums.\n- The NRCI coherence and lattice resonance imply the combinatorial pigeonhole principle applies strongly here.\n\n---\n\n**FINAL ANSWER:\n\n[EXTRACTED] **FINAL ANSWER:",
+      "grade": "PARTIAL",
+      "score": 0.5,
+      "swarm_law": "LAW_BARYON_001 [proton mass material resonance spin] | Brain: UNKNOWN",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.48852900259492044,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "UNKNOWN",
+        "brain_confidence": 0.0,
+        "brain_method": "Lattice Search Failed",
+        "fom_frame": "FOM_MATH_COMB",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9392977569195716
+      },
+      "audit": {
+        "alignment_score": 0.625,
+        "convergence_score": 0.6667,
+        "cross_nrci_alignment": 0.9307,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "MODERATE",
+        "notes": "Cross-NRCI alignment=0.931 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 10.75
+    },
+    {
+      "problem_id": "MN_COMB_002",
+      "domain": "Combinatorics",
+      "difficulty": "easy",
+      "problem": "In how many ways can $n$ identical balls be distributed into $k$ distinct boxes such that each box contains at least one ball?",
+      "reference_answer": "C(n-1, k-1)",
+      "solution": "We are asked: In how many ways can \\( n \\) identical balls be distributed into \\( k \\) distinct boxes such that each box contains at least one ball?\n\n---\n\n### Step 1: Understand the problem\n\n- Balls are identical.\n- Boxes are distinct.\n- Each box must have **at least one** ball.\n- We want the number of ways to distribute the balls under these constraints.\n\n---\n\n### Step 2: Translate to a combinatorial model\n\nDistributing \\( n \\) identical balls into \\( k \\) distinct boxes with each box having at least one ball is equivalent to finding the number of positive integer solutions to:\n\n\\[\nx_1 + x_2 + \\cdots + x_k = n\n\\]\n\nwhere \\( x_i \\geq 1 \\) for all \\( i = 1, 2, \\ldots, k \\).\n\n---\n\n### Step 3: Use stars and bars theorem\n\nThe classical stars and bars theorem states:\n\n- The number of positive integer solutions to \\( x_1 + x_2 + \\cdots + x_k = n \\) is:\n\n\\[\n\\binom{n-1}{k-1}\n\\]\n\nThis is because placing \\( k-1 \\) bars among \\( n-1 \\) stars partitions the stars into \\( k \\) positive parts.\n\n---\n\n### Step 4: Final formula\n\n\\[\n\\boxed{\n\\text{Number of ways} = \\binom{n-1}{k-1}\n}\n\\]\n\n---\n\n### Step 5: Check coherence with UBP geometric context\n\n- The problem aligns with the combinatorial identity.\n- The Golay octad (8) and Leech lattice (24 dimensions) hint at combinatorial structures but do not alter the classical formula here.\n- NRCI coherence confirms the standard combinatorial formula applies exactly.\n\n---\n\n### FINAL ANSWER:\n\n\\[\n\\boxed{\n\\text{Number of ways} = \\binom{n-1}{k-1}\n}\n\\]\n\n[EXTRACTED] ### FINAL ANSWER:",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "LAW_BARYON_001 [proton mass material resonance spin] | Brain: OP_HOW_MANY",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9508958657687362,
+        "bw256_nrci": 0.3530846023107349,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "OP_HOW_MANY",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (2-gram)",
+        "fom_frame": "FOM_MATH_COMB",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9224,
+        "octad_consensus": true,
+        "combined_resonance": 0.6444,
+        "snap_quality_mean": 0.8889,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.922 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 6.71
+    },
+    {
+      "problem_id": "MN_COMB_003",
+      "domain": "Combinatorics",
+      "difficulty": "hard",
+      "problem": "In a mathematical competition, some competitors are friends. Each person has at most $d$ friends. Prove that the competitors can be divided into groups such that each person has at most $\\lceil d/2 \\rceil$ friends in their own group.",
+      "reference_answer": "Greedy/probabilistic argument",
+      "solution": "We are given a set of competitors, each having at most \\( d \\) friends. We want to partition the competitors into groups so that in each group, every person has at most \\(\\lceil d/2 \\rceil\\) friends within that group.\n\n---\n\n### Step 1: Restate the problem in graph theory terms\n\nRepresent competitors as vertices of a graph \\( G = (V,E) \\), where an edge between two vertices means those two competitors are friends.\n\n- Each vertex \\( v \\) has degree \\( \\deg(v) \\leq d \\).\n- We want to partition \\( V \\) into groups \\( V_1, V_2, \\ldots, V_k \\) such that for each vertex \\( v \\in V_i \\), the number of neighbors of \\( v \\) in \\( V_i \\) is at most \\(\\lceil d/2 \\rceil\\).\n\n---\n\n### Step 2: Consider the simplest case: two groups\n\nTry to partition \\( V \\) into two groups \\( V_1 \\) and \\( V_2 \\) such that each vertex has at most \\(\\lceil d/2 \\rceil\\) neighbors in its own group.\n\n---\n\n### Step 3: Use a coloring argument (2-coloring)\n\nAssign each vertex a color: red or blue (representing the two groups).\n\nDefine a function \\( f \\) counting the number of edges inside the groups (edges with both endpoints in the same color class).\n\nOur goal is to find a coloring minimizing \\( f \\).\n\n---\n\n### Step 4: Existence of such a coloring\n\n- Start with any 2-coloring.\n- If there exists a vertex \\( v \\) with more than \\(\\lceil d/2 \\rceil\\) neighbors in its own color class, switch \\( v \\)'s color.\n- Switching \\( v \\)'s color reduces the number of edges inside groups by at least 1 because \\( v \\) had more than half of its neighbors in its own group, so switching reduces the number of internal edges incident to \\( v \\).\n- Repeat this process until no vertex has more than \\(\\lceil d/2 \\rceil\\) neighbors in its own group.\n\nSince the number of internal edges is finite and decreases with each switch, this process terminates.\n\n---\n\n### Step 5: Conclusion\n\nThus, the competitors can be divided into **two groups** such that each person has at most \\(\\lceil d/2 \\rceil\\) friends in their own group.\n\n---\n\n### Additional remarks:\n\n- The key insight is that the maximum number of friends \\( d \\) bounds the degree.\n- The switching argument is a standard technique in graph theory for balancing edges in bipartitions.\n- No more than two groups are needed.\n\n---\n\n### FINAL ANSWER:\n\nThe competitors can be divided into **two groups** so that each person has at most \\(\\lceil d/2 \\rceil\\) friends in their own group.\n\n[EXTRACTED] ### FINAL ANSWER:",
+      "grade": "PARTIAL",
+      "score": 0.5,
+      "swarm_law": "LAW_BARYON_001 [proton mass material resonance spin] | Brain: LANG_A",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          2
+        ],
+        "mean_nrci": 0.9624939746179005,
+        "bw256_nrci": 0.3232142749901492,
+        "phenom_nrcis": {
+          "2": 0.9624939746179005
+        },
+        "snap_qualities": {
+          "2": 0.9166666666666666
+        },
+        "tgic_scores": {
+          "2": 0.666352138625138
+        },
+        "octad_seeds": {
+          "2": 2
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "LANG_A",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_COMB",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9624939746179005
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9183,
+        "octad_consensus": true,
+        "combined_resonance": 0.6726,
+        "snap_quality_mean": 0.9167,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.918 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 7.52
+    },
+    {
+      "problem_id": "MN_COMB_004",
+      "domain": "Combinatorics",
+      "difficulty": "hard",
+      "problem": "How many subsets of $\\{1, 2, 3, \\ldots, 10\\}$ have the property that the sum of the elements is divisible by 3?",
+      "reference_answer": "The number is (2^10 + 2)/3 = 342",
+      "solution": "We want to find the number of subsets of the set \\(\\{1, 2, 3, \\ldots, 10\\}\\) whose sum of elements is divisible by 3.\n\n---\n\n### Step 1: Understand the problem\n\n- The set has 10 elements.\n- Each subset corresponds to a choice of including or excluding each element.\n- We want to count subsets \\(S\\) such that \\(\\sum_{x \\in S} x \\equiv 0 \\pmod{3}\\).\n\n---\n\n### Step 2: Use generating functions modulo 3\n\nDefine the generating function:\n\\[\nG(x) = \\prod_{k=1}^{10} (1 + x^{k})\n\\]\nThe coefficient of \\(x^m\\) in \\(G(x)\\) counts the number of subsets whose sum is \\(m\\).\n\nWe want the sum of coefficients of terms where the exponent \\(m \\equiv 0 \\pmod{3}\\).\n\n---\n\n### Step 3: Use roots of unity filter\n\nLet \\(\\omega\\) be a primitive 3rd root of unity, \\(\\omega^3 = 1\\), \\(\\omega \\neq 1\\).\n\nThe number of subsets with sum divisible by 3 is:\n\\[\nN_0 = \\frac{1}{3} \\left[ G(1) + G(\\omega) + G(\\omega^2) \\right]\n\\]\n\n---\n\n### Step 4: Compute \\(G(1)\\)\n\n\\[\nG(1) = \\prod_{k=1}^{10} (1 + 1) = 2^{10} = 1024\n\\]\n\n---\n\n### Step 5: Compute \\(G(\\omega)\\) and \\(G(\\omega^2)\\)\n\nWe need to evaluate:\n\\[\nG(\\omega) = \\prod_{k=1}^{10} (1 + \\omega^k), \\quad G(\\omega^2) = \\prod_{k=1}^{10} (1 + (\\omega^2)^k)\n\\]\n\n---\n\n### Step 6: Simplify using modulo 3 residue classes\n\nSince \\(\\omega^3 = 1\\), powers repeat modulo 3:\n\n- For \\(k \\equiv 0 \\pmod{3}\\), \\(\\omega^k = \\omega^0 = 1\\)\n- For \\(k \\equiv 1 \\pmod{3}\\), \\(\\omega^k = \\omega\\)\n- For \\(k \\equiv 2 \\pmod{3}\\), \\(\\omega^k = \\omega^2\\)\n\nCount how many \\(k\\) fall into each residue class modulo 3 for \\(k=1\\) to 10:\n\n- \\(k \\equiv 0 \\pmod{3}\\): \\(3, 6, 9\\) \u2192 3 elements\n- \\(k \\equiv 1 \\pmod{3}\\): \\(1, 4, 7, 10\\) \u2192 4 elements\n- \\(k \\equiv 2 \\pmod{3}\\): \\(2, 5, 8\\) \u2192 3 elements\n\n---\n\n### Step 7: Write \\(G(\\omega)\\) in terms of these counts\n\n\\[\nG(\\omega) = (1 + \\omega^0)^3 \\cdot",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "LAW_BARYON_001 [proton mass material resonance spin] | Brain: UNKNOWN",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          10,
+          1,
+          2,
+          3
+        ],
+        "mean_nrci": 0.9450968113441538,
+        "bw256_nrci": 0.3232142749901492,
+        "phenom_nrcis": {
+          "10": 0.9276996480704072,
+          "1": 0.9624939746179005,
+          "2": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "10": 0.8333333333333334,
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "10": 0.6605933733939254,
+          "1": 0.666352138625138,
+          "2": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "10": 10,
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 2780,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.7261880617624454,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 1.9484,
+          "XZ": 0.7794,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "UNKNOWN",
+        "brain_confidence": 0.0,
+        "brain_method": "Lattice Search Failed",
+        "fom_frame": "FOM_MATH_COMB",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.9508958657687362
+      },
+      "audit": {
+        "alignment_score": 0.625,
+        "convergence_score": 0.6667,
+        "cross_nrci_alignment": 0.9288,
+        "octad_consensus": true,
+        "combined_resonance": 0.6304,
+        "snap_quality_mean": 0.875,
+        "grade": "MODERATE",
+        "notes": "Cross-NRCI alignment=0.929 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 10.6
+    },
+    {
+      "problem_id": "MN_COMB_005",
+      "domain": "Combinatorics",
+      "difficulty": "medium",
+      "problem": "Find all functions $f: \\mathbb{N} \\to \\mathbb{N}$ satisfying $f(f(n)) + f(n) = 2n + 3$ and $f(0) = 1$.",
+      "reference_answer": "f(n) = 2n+1 for even n, f(n) = n+1 for odd n... actually f(n)=n+1 for all n",
+      "solution": "Given the problem:\n\nFind all functions \\( f: \\mathbb{N} \\to \\mathbb{N} \\) such that\n\\[\nf(f(n)) + f(n) = 2n + 3\n\\]\nand\n\\[\nf(0) = 1.\n\\]\n\n---\n\n### Step 1: Understand the domain and codomain\n\n- The domain and codomain are \\(\\mathbb{N}\\), which we take as the set of nonnegative integers \\(\\{0,1,2,\\ldots\\}\\).\n- The function \\(f\\) maps natural numbers to natural numbers.\n\n---\n\n### Step 2: Use the initial condition\n\nGiven \\(f(0) = 1\\).\n\n---\n\n### Step 3: Plug in \\(n=0\\) into the functional equation\n\n\\[\nf(f(0)) + f(0) = 2 \\cdot 0 + 3 \\implies f(1) + 1 = 3 \\implies f(1) = 2.\n\\]\n\n---\n\n### Step 4: Plug in \\(n=1\\)\n\n\\[\nf(f(1)) + f(1) = 2 \\cdot 1 + 3 \\implies f(2) + 2 = 5 \\implies f(2) = 3.\n\\]\n\n---\n\n### Step 5: Plug in \\(n=2\\)\n\n\\[\nf(f(2)) + f(2) = 2 \\cdot 2 + 3 \\implies f(3) + 3 = 7 \\implies f(3) = 4.\n\\]\n\n---\n\n### Step 6: Plug in \\(n=3\\)\n\n\\[\nf(f(3)) + f(3) = 2 \\cdot 3 + 3 \\implies f(4) + 4 = 9 \\implies f(4) = 5.\n\\]\n\n---\n\n### Step 7: Observe the pattern\n\nSo far,\n\\[\nf(0) = 1, \\quad f(1) = 2, \\quad f(2) = 3, \\quad f(3) = 4, \\quad f(4) = 5.\n\\]\n\nThis suggests \\(f(n) = n + 1\\).\n\n---\n\n### Step 8: Verify the candidate function \\(f(n) = n + 1\\)\n\nCheck the original equation:\n\\[\nf(f(n)) + f(n) = f(n+1) + (n+1) = (n+1) + 1 + (n+1) = (n+2) + (n+1) = 2n + 3.\n\\]\n\nThis matches perfectly.\n\n---\n\n### Step 9: Check if other solutions are possible\n\nSuppose there is another function \\(g\\) satisfying the equation. The equation is quite restrictive and the initial values force the function to be \\(n+1\\) for the first few values. The functional equation is recursive and linear in form, strongly suggesting uniqueness.\n\n---\n\n### Step 10: Conclusion\n\nThe only function \\(f: \\mathbb{N} \\to \\mathbb{N}\\) satisfying the given functional equation and initial condition is\n\\[\n\\boxed{f(n) = n + 1}.\n\\]\n\n---\n\n### FINAL",
+      "grade": "CORRECT",
+      "score": 1.0,
+      "swarm_law": "LAW_BARYON_001 [proton mass material resonance spin] | Brain: OP_ALL",
+      "phenomenology_verdict": "FULLY_MANIFESTED",
+      "col1": {
+        "key_numbers": [
+          1,
+          3
+        ],
+        "mean_nrci": 0.9450968113441538,
+        "bw256_nrci": 0.29800369420996137,
+        "phenom_nrcis": {
+          "1": 0.9624939746179005,
+          "3": 0.9276996480704072
+        },
+        "snap_qualities": {
+          "1": 0.9166666666666666,
+          "3": 0.8333333333333334
+        },
+        "tgic_scores": {
+          "1": 0.666352138625138,
+          "3": 0.6702751425332574
+        },
+        "octad_seeds": {
+          "1": 1,
+          "3": 3
+        }
+      },
+      "col2": {
+        "golay_address": 3512,
+        "is_octad": true,
+        "leech_tax": 3.1174034432362157,
+        "nrci": 0.7623459965437248,
+        "tgic_stability": 0.6604632365932739,
+        "soc_energy": 483923203.08057773,
+        "manifestation": "MANIFESTED",
+        "noumenal_status": "MANIFESTED",
+        "observer_charge": 0.5,
+        "physical_points": 128,
+        "runecube_taxes": {
+          "XY": 2.3381,
+          "XZ": 0.3897,
+          "YZ": 0.3897
+        }
+      },
+      "col3": {
+        "brain_law": "OP_ALL",
+        "brain_confidence": 1.0,
+        "brain_method": "Identity Lock (1-gram)",
+        "fom_frame": "FOM_MATH_COMB",
+        "fom_weight": 0.5,
+        "code_output": "code_gen_error: object of type 'CodeResult' has no len()",
+        "attempts": 1,
+        "phenom_answer_nrci": 0.950895865768736
+      },
+      "audit": {
+        "alignment_score": 0.75,
+        "convergence_score": 0.8333,
+        "cross_nrci_alignment": 0.9288,
+        "octad_consensus": true,
+        "combined_resonance": 0.6304,
+        "snap_quality_mean": 0.875,
+        "grade": "STRONG",
+        "notes": "Cross-NRCI alignment=0.929 octad=YES noumenal=MANIFESTED charge=0.500"
+      },
+      "elapsed_s": 9.78
+    }
+  ]
+}

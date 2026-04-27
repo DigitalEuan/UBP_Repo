@@ -1,0 +1,72 @@
+{
+  "system": "UBP Swarm TCT MathNet v1.0",
+  "benchmark": "MathNet MIT (mathnet.mit.edu)",
+  "date": "2026-04-21",
+  "total_problems": 20,
+  "correctness": {
+    "correct": 3,
+    "partial": 17,
+    "incorrect": 0,
+    "correct_pct": 15.0,
+    "partial_pct": 85.0,
+    "incorrect_pct": 0.0,
+    "adjusted_score_pct": 57.5
+  },
+  "ubp_metrics": {
+    "mean_nrci": 0.6876,
+    "std_nrci": 0.0235,
+    "mean_soc_mcu": 697.99,
+    "mean_coherence": 0.7076,
+    "mean_alignment": 0.7993,
+    "mean_semantic_resonance": 0.3958,
+    "mean_ubp_confidence": 0.6976,
+    "mean_prime_density": 0.71,
+    "mean_geometric_complexity": 0.557,
+    "manifestation_distribution": {
+      "SUBLIMINAL": 18,
+      "MANIFESTED": 2
+    }
+  },
+  "per_domain": {
+    "Algebra": {
+      "n": 5,
+      "mean_nrci": 0.6863,
+      "mean_soc_mcu": 653.49,
+      "mean_coherence": 0.6863,
+      "correct": 2,
+      "partial": 3,
+      "incorrect": 0,
+      "adjusted_score_pct": 70.0
+    },
+    "Combinatorics": {
+      "n": 5,
+      "mean_nrci": 0.7082,
+      "mean_soc_mcu": 805.57,
+      "mean_coherence": 0.7882,
+      "correct": 0,
+      "partial": 5,
+      "incorrect": 0,
+      "adjusted_score_pct": 50.0
+    },
+    "Geometry": {
+      "n": 5,
+      "mean_nrci": 0.6796,
+      "mean_soc_mcu": 647.14,
+      "mean_coherence": 0.6796,
+      "correct": 1,
+      "partial": 4,
+      "incorrect": 0,
+      "adjusted_score_pct": 60.0
+    },
+    "Number Theory": {
+      "n": 5,
+      "mean_nrci": 0.6761,
+      "mean_soc_mcu": 685.74,
+      "mean_coherence": 0.6761,
+      "correct": 0,
+      "partial": 5,
+      "incorrect": 0,
+      "adjusted_score_pct": 50.0
+    }
+  }
+}
