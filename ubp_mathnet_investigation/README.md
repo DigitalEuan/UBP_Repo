@@ -36,6 +36,14 @@ No GPT / External LLM, no NumPy, `GrandUnifiedEmlALU` for complex/dual-number op
 
 **Key finding:** Zero INCORRECT results in both versions. The UBP's geometric grounding prevents the system from producing completely wrong answers.
 
+## Iterations
+
+Further develoments have been recorded as versions.Version 12.1 is a solid script but still lacks finesse.
+
+## Version 23
+
+Current developed version 23 [https://github.com/DigitalEuan/UBP_Repo/blob/main/ubp_mathnet_investigation/v19-23/ubp_swarm_tct_v23.py]
+
 ---
 
 ## Package Structure
@@ -64,6 +72,8 @@ ubp_mathnet_investigation/
 │   ├── ubp_integrated_engine_v1.py    ← Integrated Engine (Penta-Audit)
 │   ├── ubp_system_kb.json             ← UBP System Knowledge Base
 │   └── ubp_lang_kb_combined_v4.json   ← UBP Language Knowledge Base
+│
+├── v_number/                          ← Iterative development
 │
 ├── data/
 │   └── ubp_mathnet_problem_set.json   ← 20 curated MathNet problems
