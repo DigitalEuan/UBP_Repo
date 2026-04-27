@@ -6,6 +6,8 @@
 **Author:** Manus AI (on behalf of DigitalEuan)  
 **Repo:** [DigitalEuan/UBP_Repo](https://github.com/DigitalEuan/UBP_Repo)
 
+**FURTHER DEVELOPMENT:** [https://github.com/DigitalEuan/UBP_Repo/tree/main/ubp_mathnet_investigation]
+
 ---
 
 ## Overview
