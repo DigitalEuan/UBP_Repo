@@ -73,6 +73,21 @@ To analyze the "Reality Status" of an object:
 2.  The engine checks if the object's NRCI crosses the **0.70 Consciousness Threshold**.
 3.  It calculates the **SOC Energy** (Coherence Units) based on the 1 THz "Wall of Reality" limit.
 
+### Using External Dependecies:
+import micropip
+# Wait for sympy to download via micropip
+await micropip.install("sympy")
+
+import sympy as sp
+
+# Test that it works
+x = sp.Symbol('x')
+expression = sp.sin(x)**2 + sp.cos(x)**2
+simplified = sp.simplify(expression)
+
+print(f"Original: {expression}")
+print(f"Simplified: {simplified}")
+
 ---
 
 ## 3. Standard Operating Procedures (SOP)
