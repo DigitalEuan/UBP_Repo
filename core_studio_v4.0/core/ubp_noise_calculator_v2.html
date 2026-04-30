@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBP Substrate Calculator — Exact Fraction Engine (+ Test Suite)</title>
+    <style>
+        :root {
+            --bg: #0a0c10; --surface: #13161e; --surface2: #1a1e28; --border: #252a36;
+            --text: #c9d1d9; --text-dim: #6e7681; --accent: #00e5ff; --accent2: #1f6feb;
+            --octad: #00bcd4; --dodecad: #ffd740; --hexadecad: #b388ff;
+            --identity: #e0e0e0; --universe: #ffffff; --offlattice: #ff5252;
+            --success: #4caf50; --danger: #ff5252;
+            --key-bg: #1c2129; --key-hover: #262d38; --key-active: #303848;
+            --op-key: #1a3a5c; --op-hover: #1f4d7a; --eq-key: #0d7377;
+            --eq-hover: #0e8c91;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'SF Mono', 'Cascadia Code', 'Consolas', 'Monaco', 'Menlo', monospace;
+            background: var(--bg); color: var(--text);
+            min-height: 100vh; padding: 16px;
+            background-image:
+                radial-gradient(ellipse at 50% 0%, rgba(0,229,255,0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(179,136,255,0.03) 0%, transparent 60%);
+        }
+        .container { width:100%; max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+        header { text-align:center; padding:12px 0 4px; }
+        header h1 { font-size:1.4rem; font-weight:600; letter-spacing:0.04em; color:var(--accent); margin-bottom:2px; }
+        header .subtitle { font-size:0.68rem; color:var(--text-dim); letter-spacing:0.06em; text-transform:uppercase; }
+
+        .about-panel {
+            background: var(--surface); border:1px solid var(--border); border-radius:12px;
+            padding:20px 22px; box-shadow:0 8px 32px rgba(0,0,0,0.4); line-height:1.55; font-size:0.82rem;
+        }
+        .about-panel h2 { font-size:0.9rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+        .about-panel p { margin-bottom:8px; color:var(--text-dim); }
+        .about-panel .highlight { color:var(--text); }
+        .tag-row { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+        .tag { font-size:0.6rem; padding:3px 10px; border-radius:10px; letter-spacing:0.05em; font-weight:600; }
+        .tag-golay { background:rgba(0,188,212,0.15); color:var(--octad); }
+        .tag-leech { background:rgba(179,136,255,0.15); color:var(--hexadecad); }
+        .tag-nrci { background:rgba(255,215,64,0.15); color:var(--dodecad); }
+        .tag-pi { background:rgba(76,175,80,0.12); color:var(--success); }
+        .tag-frac { background:rgba(255,255,255,0.08); color:#ccc; }
+
+        .calc-card {
+            background:var(--surface); border:1px solid var(--border); border-radius:12px;
+            padding:20px; display:flex; flex-direction:column; gap:16px; box-shadow:0 8px 32px rgba(0,0,0,0.4);
+        }
+        .mode-line { display:flex; align-items:center; justify-content:space-between; font-size:0.68rem; }
+        .mode-badge { display:inline-block; padding:4px 12px; border-radius:12px; background:rgba(0,229,255,0.1); color:var(--accent); font-weight:600; letter-spacing:0.06em; }
+        .display-area {
+            background:var(--surface2); border:1px solid var(--border); border-radius:8px;
+            padding:16px; min-height:64px; display:flex; flex-direction:column; justify-content:flex-end; gap:4px;
+        }
+        .expression { font-size:0.85rem; color:var(--text-dim); min-height:1.2em; word-break:break-all; }
+        .result { font-size:1.8rem; font-weight:600; color:var(--text); word-break:break-all; letter-spacing:0.02em; }
+        .result .lattice-tag {
+            display:inline-block; font-size:0.6rem; padding:2px 8px; border-radius:10px;
+            margin-left:10px; vertical-align:middle; font-weight:500; letter-spacing:0.04em;
+        }
+        .tag-octad { background:rgba(0,188,212,0.2); color:var(--octad); }
+        .tag-dodecad { background:rgba(255,215,64,0.2); color:var(--dodecad); }
+        .tag-identity { background:rgba(224,224,224,0.2); color:var(--identity); }
+        .tag-hexadecad { background:rgba(179,136,255,0.2); color:var(--hexadecad); }
+        .tag-universe { background:rgba(255,255,255,0.15); color:var(--universe); }
+        .tag-offlattice { background:rgba(255,82,82,0.2); color:var(--offlattice); }
+
+        .keypad { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+        .keypad button {
+            font-family:inherit; font-size:1rem; padding:14px 6px; border:1px solid var(--border);
+            border-radius:8px; cursor:pointer; background:var(--key-bg); color:var(--text);
+            transition:all 0.12s ease; letter-spacing:0.03em; user-select:none; -webkit-tap-highlight-color:transparent;
+        }
+        .keypad button:hover { background:var(--key-hover); border-color:#3a4050; transform:translateY(-1px); }
+        .keypad button:active { background:var(--key-active); transform:scale(0.96); }
+        .keypad button.key-op { background:var(--op-key); color:#7cc4ff; font-weight:600; }
+        .keypad button.key-op:hover { background:var(--op-hover); }
+        .keypad button.key-eq { background:var(--eq-key); color:#fff; font-weight:700; font-size:1.2rem; }
+        .keypad button.key-eq:hover { background:var(--eq-hover); }
+        .keypad button.key-fn { background:#1a1a2e; color:#b388ff; font-size:0.78rem; }
+        .keypad button.key-fn:hover { background:#252540; color:#ceb0ff; }
+        .keypad button.key-clr { background:#2a1015; color:#ff6b6b; }
+        .keypad button.key-clr:hover { background:#3a1820; }
+        .keypad button.key-test { background:#1a3a1a; color:#4caf50; font-size:0.75rem; }
+        .keypad button.key-test:hover { background:#234023; color:#66d066; }
+
+        .ubp-panel {
+            background:var(--surface); border:1px solid var(--border); border-radius:12px;
+            padding:16px; box-shadow:0 8px 32px rgba(0,0,0,0.4);
+        }
+        .ubp-panel h3 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+        .ubp-panel h3 .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+        .bit-row { display:flex; gap:3px; flex-wrap:wrap; justify-content:center; margin-bottom:10px; }
+        .bit-group { display:flex; gap:2px; }
+        .bit-group+.bit-group { margin-left:8px; }
+        .bit-dot { width:14px; height:14px; border-radius:50%; transition:all 0.25s ease; }
+        .bit-dot.bit-on { box-shadow:0 0 6px currentColor; }
+        .bit-dot.bit-off { background:#1a1d28; border:1px solid #252a36; }
+        .bit-dot.bit-on-octad { background:var(--octad); color:var(--octad); }
+        .bit-dot.bit-on-dodecad { background:var(--dodecad); color:var(--dodecad); }
+        .bit-dot.bit-on-identity { background:var(--identity); color:var(--identity); }
+        .bit-dot.bit-on-hexadecad { background:var(--hexadecad); color:var(--hexadecad); }
+        .bit-dot.bit-on-universe { background:var(--universe); color:var(--universe); }
+        .bit-dot.bit-on-offlattice { background:var(--offlattice); color:var(--offlattice); }
+        .bit-dot.flip-highlight { animation:flipPulse 0.5s ease; }
+        @keyframes flipPulse { 0%,100%{box-shadow:0 0 2px currentColor} 50%{box-shadow:0 0 16px currentColor,0 0 24px currentColor} }
+        .bit-labels { display:flex; justify-content:space-between; font-size:0.6rem; color:var(--text-dim); padding:0 2px; margin-bottom:6px; }
+        .metrics-row { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; text-align:center; }
+        .metric { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:10px 6px; }
+        .metric .label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim); margin-bottom:4px; }
+        .metric .value { font-size:1rem; font-weight:600; color:var(--text); }
+        .metric .value.nrci-val { color:var(--accent); font-size:1.2rem; }
+        .metric .value.frac { font-size:0.6rem; color:var(--text-dim); margin-top:2px; word-break:break-all; }
+        .trace-section {
+            margin-top:8px; font-size:0.7rem; color:var(--text-dim);
+            background:var(--surface2); border-radius:6px; padding:10px;
+            line-height:1.5; max-height:200px; overflow-y:auto;
+        }
+        .trace-section .trace-line { padding:2px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+        .trace-section .trace-line.highlight { color:var(--accent); }
+        .trace-section .trace-line.success { color:#4caf50; }
+        .trace-section .trace-line.fail { color:#ff5252; }
+        .compatibility-warning { background:#2a1015; color:var(--danger); padding:10px; border-radius:8px; margin-bottom:8px; display:none; }
+        .compatibility-warning.show { display:block; }
+        @media (max-width:500px) {
+            .keypad { grid-template-columns:repeat(4,1fr); gap:5px; }
+            .keypad button { padding:12px 4px; font-size:0.85rem; }
+            .bit-dot { width:10px; height:10px; }
+            .bit-row { gap:1px; }
+            .bit-group+.bit-group { margin-left:3px; }
+            .metrics-row { grid-template-columns:repeat(2,1fr); gap:4px; }
+            .result { font-size:1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>⚛ UBP Substrate Calculator</h1>
+        <div class="subtitle">Exact Fraction Engine · Golay [24,12,8] · Leech Λ₂₄ · NRCI · Self‑Contained</div>
+    </header>
+
+    <div class="about-panel">
+        <h2>▴ Exact Fraction Arithmetic · Full UBP System in Your Browser</h2>
+        <p>
+            <span class="highlight">Every constant and metric is an exact rational number</span> — built from the 50‑term continued‑fraction π, using <code>Fraction</code> objects with <strong>BigInt</strong>. Leech symmetry tax, NRCI, and all calculations remain precise until display.
+        </p>
+        <div class="tag-row">
+            <span class="tag tag-golay">Golay [24,12,8]</span>
+            <span class="tag tag-leech">Leech Λ₂₄</span>
+            <span class="tag tag-nrci">NRCI (exact fraction)</span>
+            <span class="tag tag-pi">50‑term π (CF expansion)</span>
+            <span class="tag tag-frac">BigInt Fraction class</span>
+        </div>
+        <p>Press <strong>⚙ Test</strong> to run a full validation: encoding/decoding, error correction (100/1000/10000 random trials), octad count, NRCI consistency.</p>
+    </div>
+
+    <div class="compatibility-warning" id="compatWarning">
+        ⚠ Your browser does not support BigInt. Please use a modern browser (Chrome 67+, Firefox 68+, Edge 79+, Safari 14+).
+    </div>
+
+    <div class="calc-card">
+        <div class="mode-line">
+            <span>🔬 <span class="mode-badge">Exact Fraction Engine · Native JS</span></span>
+            <span style="color:var(--text-dim)" id="engineInfo">50‑term π (BigInt)</span>
+        </div>
+        <div class="display-area">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="resultDisplay"><span style="color:var(--text-dim)">0</span></div>
+        </div>
+        <div class="keypad" id="keypad">
+            <button class="key-fn" data-action="gcd">gcd</button>
+            <button class="key-fn" data-action="lcm">lcm</button>
+            <button class="key-fn" data-action="mod">mod</button>
+            <button class="key-fn" data-action="pow">xʸ</button>
+            <button class="key-fn" data-action="isprime">prime?</button>
+            <button class="key-clr" data-action="clear">C</button>
+            <button data-action="(">(</button>
+            <button data-action=")">)</button>
+            <button class="key-op" data-action="÷">÷</button>
+            <button class="key-fn" data-action="fact">n!</button>
+            <button data-action="7">7</button>
+            <button data-action="8">8</button>
+            <button data-action="9">9</button>
+            <button class="key-op" data-action="×">×</button>
+            <button class="key-fn" data-action="comb">C(n,k)</button>
+            <button data-action="4">4</button>
+            <button data-action="5">5</button>
+            <button data-action="6">6</button>
+            <button class="key-op" data-action="-">−</button>
+            <button class="key-fn" data-action="fib">Fib</button>
+            <button data-action="1">1</button>
+            <button data-action="2">2</button>
+            <button data-action="3">3</button>
+            <button class="key-op" data-action="+">+</button>
+            <button class="key-fn" data-action="sqrt">√</button>
+            <button data-action="0">0</button>
+            <button data-action=".">.</button>
+            <button data-action="back">⌫</button>
+            <button class="key-eq" data-action="=">=</button>
+            <button class="key-clr" data-action="ac">AC</button>
+            <button class="key-test" data-action="test">⚙ Test</button>
+        </div>
+    </div>
+
+    <div class="ubp-panel" id="ubpPanel">
+        <h3><span class="dot"></span> UBP Substrate — Golay Codeword (24‑bit)</h3>
+        <div class="mode-badge" style="display:inline-block;margin-bottom:8px;" id="modeIndicator">Ready</div>
+        <div style="margin-top:8px;">
+            <div class="bit-labels">
+                <span>msg[0..11]</span><span style="margin-left:auto;">parity[12..23]</span>
+            </div>
+            <div class="bit-row" id="bitRow"></div>
+        </div>
+        <div class="metrics-row">
+            <div class="metric">
+                <div class="label">Hamming Wt</div>
+                <div class="value" id="metricSW">—</div>
+            </div>
+            <div class="metric">
+                <div class="label">NRCI (exact)</div>
+                <div class="value nrci-val" id="metricNRCI">—</div>
+                <div class="value frac" id="metricNRCIFrac"></div>
+            </div>
+            <div class="metric">
+                <div class="label">Lattice</div>
+                <div class="value" id="metricLattice">—</div>
+            </div>
+            <div class="metric">
+                <div class="label">Syndrome Wt</div>
+                <div class="value" id="metricSynWt">—</div>
+            </div>
+        </div>
+        <div class="trace-section" id="traceSection">
+            <div class="trace-line">Ready. Press a number or "Test" to start.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // ----- BigInt compatibility check -----
+    if (typeof BigInt === 'undefined') {
+        document.getElementById('compatWarning').classList.add('show');
+        document.getElementById('engineInfo').textContent = 'BigInt not supported';
+        throw new Error('BigInt required');
+    }
+
+    // ========== 1. Fraction class (BigInt based) ==========
+    function gcdBigInt(a, b) {
+        a = a < BigInt(0) ? -a : a;
+        b = b < BigInt(0) ? -b : b;
+        while (b !== BigInt(0)) { [a, b] = [b, a % b]; }
+        return a;
+    }
+
+    class Fraction {
+        constructor(num, den = BigInt(1)) {
+            if (typeof num === 'number') num = BigInt(Math.floor(num));
+            if (typeof den === 'number') den = BigInt(Math.floor(den));
+            if (den < BigInt(0)) { num = -num; den = -den; }
+            const g = gcdBigInt(num < BigInt(0) ? -num : num, den);
+            this.num = num / g;
+            this.den = den / g;
+        }
+        static fromInt(n) { return new Fraction(BigInt(n), BigInt(1)); }
+        add(other) {
+            return new Fraction(this.num * other.den + other.num * this.den, this.den * other.den);
+        }
+        sub(other) {
+            return new Fraction(this.num * other.den - other.num * this.den, this.den * other.den);
+        }
+        mul(other) {
+            return new Fraction(this.num * other.num, this.den * other.den);
+        }
+        div(other) {
+            return new Fraction(this.num * other.den, this.den * other.num);
+        }
+        reciprocal() {
+            return new Fraction(this.den, this.num);
+        }
+        toString() {
+            if (this.den === BigInt(1)) return this.num.toString();
+            return this.num.toString() + '/' + this.den.toString();
+        }
+        toDecimal(precision = 15) {
+            const sign = this.num < BigInt(0) ? -1 : 1;
+            let num = this.num < BigInt(0) ? -this.num : this.num;
+            const intPart = num / this.den;
+            let rem = num % this.den;
+            let decimal = '';
+            for (let i = 0; i < precision; i++) {
+                rem *= BigInt(10);
+                const digit = rem / this.den;
+                decimal += digit.toString();
+                rem = rem % this.den;
+            }
+            let result = (sign < 0 ? '-' : '') + intPart.toString();
+            if (decimal.length > 0) result += '.' + decimal;
+            return result;
+        }
+        toNumber() {
+            return Number(this.num) / Number(this.den);
+        }
+    }
+
+    // ========== 2. UBP Constants (50‑term π as Fraction) ==========
+    const PI_CF = [3, 7, 15, 1, 292, 1, 1, 1, 2, 1, 3, 1, 14, 2, 1, 1, 2, 2, 2, 2, 1, 84, 2, 1, 1, 15, 3, 13, 1, 4, 2, 6, 6, 99, 1, 2, 2, 6, 3, 5, 1, 1, 6, 8, 1, 7, 1, 6, 1, 99, 7, 4, 1, 3, 3, 1, 4, 1];
+    function getPiFraction(terms = 50) {
+        const coeffs = PI_CF.slice(0, Math.min(terms, PI_CF.length));
+        if (coeffs.length === 0) return Fraction.fromInt(3);
+        let x = Fraction.fromInt(coeffs[coeffs.length - 1]);
+        for (let i = coeffs.length - 2; i >= 0; i--) {
+            x = Fraction.fromInt(coeffs[i]).add(x.reciprocal());
+        }
+        return x;
+    }
+    const PI = getPiFraction(50);
+    const TWO = Fraction.fromInt(2);
+    const Y_INV = PI.add(TWO.div(PI));
+    const Y = Fraction.fromInt(1).div(Y_INV);
+    const Y_CONST = Fraction.fromInt(1).div(Y_INV.add(TWO.div(Y_INV)));
+    const ONE_EIGHTH = new Fraction(BigInt(1), BigInt(8));
+
+    // ========== 3. Golay [24,12,8] Engine ==========
+    const B = [
+        [0,1,1,1,1,1,1,1,1,1,1,1],[1,1,1,0,1,1,1,0,0,0,1,0],
+        [1,1,0,1,1,1,0,0,0,1,0,1],[1,0,1,1,1,0,0,0,1,0,1,1],
+        [1,1,1,1,0,0,0,1,0,1,1,0],[1,1,1,0,0,0,1,0,1,1,0,1],
+        [1,1,0,0,0,1,0,1,1,0,1,1],[1,0,0,0,1,0,1,1,0,1,1,1],
+        [1,0,0,1,0,1,1,0,1,1,1,0],[1,0,1,0,1,1,0,1,1,1,0,0],
+        [1,1,0,1,1,0,1,1,1,0,0,0],[1,0,1,1,0,1,1,1,0,0,0,1]
+    ];
+    class GolayCodeEngine {
+        constructor() {
+            this.G = [];
+            for (let i = 0; i < 12; i++) {
+                let row = [];
+                for (let j = 0; j < 12; j++) row.push(i===j ? 1 : 0);
+                for (let j = 0; j < 12; j++) row.push(B[i][j]);
+                this.G.push(row);
+            }
+            this.H = [];
+            for (let i = 0; i < 12; i++) {
+                let row = [];
+                for (let j = 0; j < 12; j++) row.push(B[j][i]);
+                for (let j = 0; j < 12; j++) row.push(i===j ? 1 : 0);
+                this.H.push(row);
+            }
+            this.allCodewords = [];
+            for (let m = 0; m < 4096; m++) {
+                let msg = [];
+                for (let j = 0; j < 12; j++) msg.push((m >> (11-j)) & 1);
+                let cw = [];
+                for (let j = 0; j < 24; j++) {
+                    let val = 0;
+                    for (let i = 0; i < 12; i++) val ^= (msg[i] & this.G[i][j]);
+                    cw.push(val);
+                }
+                this.allCodewords.push(cw);
+            }
+        }
+        matrixVecMulGF2(matrix, vec) {
+            return matrix.map(row => row.reduce((sum, val, idx) => sum ^ (val & vec[idx]), 0));
+        }
+        encode(msg12) {
+            let cw = [];
+            for (let j = 0; j < 24; j++) {
+                let val = 0;
+                for (let i = 0; i < 12; i++) val ^= (msg12[i] & this.G[i][j]);
+                cw.push(val);
+            }
+            return cw;
+        }
+        decode(recv24) {
+            const syndrome = this.matrixVecMulGF2(this.H, recv24);
+            let bestDist = 25, bestCW = null;
+            for (let cw of this.allCodewords) {
+                let dist = 0;
+                for (let i = 0; i < 24; i++) { if (cw[i] !== recv24[i]) dist++; if (dist >= bestDist) break; }
+                if (dist < bestDist) { bestDist = dist; bestCW = cw; if (dist === 0) break; }
+            }
+            const corrected = bestCW || recv24.slice();
+            const message = corrected.slice(0,12);
+            const correctable = bestDist <= 3;
+            return { message, corrected, errorsCorrected: bestDist, correctable, syndromeWeight: syndrome.reduce((a,b)=>a+b,0) };
+        }
+        snapToCodeword(noisy24) { return this.decode(noisy24); }
+        hammingWeight(vec) { return vec.reduce((a,b)=>a+b,0); }
+        getOctads() { return this.allCodewords.filter(cw => this.hammingWeight(cw) === 8); }
+    }
+    const golay = new GolayCodeEngine();
+
+    // ========== 4. UBP Fingerprint (exact fractions) ==========
+    const CODEWORD_WEIGHTS = new Set([0,8,12,16,24]);
+    function toGrayCode24(n) {
+        const val = BigInt(Math.abs(Math.floor(n))) & BigInt(0xFFFFFF);
+        const gray = val ^ (val >> BigInt(1));
+        let bits = [];
+        for (let i = 23; i >= 0; i--) bits.push(Number((gray >> BigInt(i)) & BigInt(1)));
+        return bits;
+    }
+    function classifyLattice(sw) {
+        if (sw===0) return {type:'Identity',cssClass:'tag-identity',bitClass:'bit-on-identity',color:'#e0e0e0'};
+        if (sw===8) return {type:'Octad',cssClass:'tag-octad',bitClass:'bit-on-octad',color:'#00bcd4'};
+        if (sw===12) return {type:'Dodecad',cssClass:'tag-dodecad',bitClass:'bit-on-dodecad',color:'#ffd740'};
+        if (sw===16) return {type:'Hexadecad',cssClass:'tag-hexadecad',bitClass:'bit-on-hexadecad',color:'#b388ff'};
+        if (sw===24) return {type:'Universe',cssClass:'tag-universe',bitClass:'bit-on-universe',color:'#ffffff'};
+        return {type:'Off‑lattice',cssClass:'tag-offlattice',bitClass:'bit-on-offlattice',color:'#ff5252'};
+    }
+    function computeExactNRCI(codeword24) {
+        const hw = golay.hammingWeight(codeword24);
+        const tax = Fraction.fromInt(hw).mul(Y_CONST.add(ONE_EIGHTH));
+        const nrci = Fraction.fromInt(10).div(Fraction.fromInt(10).add(tax));
+        return { nrciFraction: nrci, taxFraction: tax, hw };
+    }
+    function fingerprintValue(n) {
+        const grayBits = toGrayCode24(n);
+        const snap = golay.snapToCodeword(grayBits);
+        const { corrected, distance, correctable, syndromeWeight } = snap;
+        const { nrciFraction, hw } = computeExactNRCI(corrected);
+        const lattice = classifyLattice(hw);
+        const onLattice = CODEWORD_WEIGHTS.has(hw);
+        return {
+            value: n, grayBits, snapped: corrected,
+            hammingWeight: hw, nrciFraction, nrciDecimal: nrciFraction.toDecimal(8),
+            lattice, onLattice, syndromeWeight, snapDistance: distance, correctable,
+            engine: 'Exact Fraction Engine (BigInt)'
+        };
+    }
+
+    // ========== 5. Calculator State & DOM ==========
+    const state = {
+        expression: '',
+        currentInput: '0',
+        lastResult: null,
+        lastFingerprint: null,
+        justEvaluated: false,
+        awaitingSecondOperand: false,
+        pendingOp: null,
+        firstOperand: null,
+        traceLines: []
+    };
+    const exprEl = document.getElementById('expression');
+    const resultEl = document.getElementById('resultDisplay');
+    const bitRowEl = document.getElementById('bitRow');
+    const metricSWEl = document.getElementById('metricSW');
+    const metricNRCIEl = document.getElementById('metricNRCI');
+    const metricNRCIFracEl = document.getElementById('metricNRCIFrac');
+    const metricLatticeEl = document.getElementById('metricLattice');
+    const metricSynWtEl = document.getElementById('metricSynWt');
+    const traceSecEl = document.getElementById('traceSection');
+    const modeIndEl = document.getElementById('modeIndicator');
+
+    function renderBitRow(snapped, grayBits) {
+        bitRowEl.innerHTML = '';
+        const lattice = classifyLattice(golay.hammingWeight(snapped));
+        for (let g = 0; g < 2; g++) {
+            const grp = document.createElement('div');
+            grp.className = 'bit-group';
+            const start = g * 12;
+            for (let i = start; i < start+12; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'bit-dot';
+                if (snapped[i] === 1) {
+                    dot.classList.add('bit-on', lattice.bitClass);
+                } else {
+                    dot.classList.add('bit-off');
+                }
+                if (grayBits && grayBits[i] !== snapped[i]) dot.classList.add('flip-highlight');
+                dot.title = `bit ${i}: snapped=${snapped[i]}` + (grayBits ? ` gray=${grayBits[i]}` : '') + (grayBits && grayBits[i]!==snapped[i] ? ' (CORRECTED)' : '');
+                grp.appendChild(dot);
+            }
+            bitRowEl.appendChild(grp);
+            if (g === 0) {
+                const sep = document.createElement('span');
+                sep.style.cssText = 'width:6px;display:inline-block;';
+                bitRowEl.appendChild(sep);
+            }
+        }
+    }
+    function renderFingerprint(fp) {
+        renderBitRow(fp.snapped, fp.grayBits);
+        metricSWEl.textContent = fp.hammingWeight;
+        metricNRCIEl.textContent = fp.nrciDecimal;
+        metricNRCIFracEl.textContent = fp.nrciFraction.toString();
+        metricLatticeEl.textContent = fp.lattice.type;
+        metricLatticeEl.style.color = fp.lattice.color;
+        metricSynWtEl.textContent = fp.syndromeWeight;
+        if (fp.onLattice) {
+            modeIndEl.textContent = 'On‑Lattice · ' + fp.lattice.type;
+            modeIndEl.style.background = 'rgba(76,175,80,0.15)';
+            modeIndEl.style.color = '#4caf50';
+        } else {
+            modeIndEl.textContent = 'Off‑Lattice (corrected)';
+            modeIndEl.style.background = 'rgba(255,82,82,0.12)';
+            modeIndEl.style.color = '#ff5252';
+        }
+    }
+    function updateTrace(fp) {
+        let html = '';
+        for (let line of state.traceLines.slice(-20)) {
+            let cls = 'trace-line';
+            if (line.includes('→') || line.includes('Fingerprint')) cls += ' highlight';
+            if (line.startsWith('✓')) cls += ' success';
+            if (line.startsWith('✗')) cls += ' fail';
+            html += `<div class="${cls}">${line}</div>`;
+        }
+        if (fp) {
+            html += `<div class="trace-line highlight">└─ Fingerprint: NRCI=${fp.nrciDecimal} (${fp.nrciFraction.toString()}) | SW=${fp.hammingWeight} | ${fp.lattice.type} | snap‑dist=${fp.snapDistance}</div>`;
+        }
+        traceSecEl.innerHTML = html || '<div class="trace-line">Ready.</div>';
+        traceSecEl.scrollTop = traceSecEl.scrollHeight;
+    }
+    function updateDisplay() {
+        exprEl.textContent = state.expression || '';
+        if (state.lastResult !== null && state.justEvaluated) {
+            const fp = state.lastFingerprint;
+            let html = String(state.lastResult);
+            if (fp && fp.onLattice) {
+                html += ` <span class="lattice-tag ${fp.lattice.cssClass}">${fp.lattice.type} · NRCI ${fp.nrciDecimal}</span>`;
+            }
+            resultEl.innerHTML = html;
+        } else if (state.currentInput !== null) {
+            resultEl.textContent = state.currentInput;
+        } else {
+            resultEl.innerHTML = '<span style="color:var(--text-dim)">0</span>';
+        }
+    }
+    function fullUpdate(fp) {
+        updateDisplay();
+        if (fp) { renderFingerprint(fp); updateTrace(fp); }
+    }
+
+    // ========== 6. Arithmetic Helpers ==========
+    function gcdInt(a,b) { while(b){[a,b]=[b,a%b];} return a; }
+    function lcmInt(a,b) { return (a===0||b===0)?0:Math.abs(a*b)/gcdInt(a,b); }
+    function factInt(n) { if(n<0||!Number.isInteger(n)) return NaN; if(n>170) return Infinity; let r=1; for(let i=2;i<=n;i++)r*=i; return r; }
+    function combInt(n,k) { if(k<0||k>n) return 0; if(k>n-k)k=n-k; let r=1; for(let i=0;i<k;i++)r=r*(n-i)/(i+1); return Math.round(r); }
+    function isPrime(n) { if(n<2||!Number.isInteger(n)) return false; if(n===2||n===3) return true; if(n%2===0||n%3===0) return false; for(let i=5;i*i<=n;i+=6) if(n%i===0||n%(i+2)===0) return false; return true; }
+    function fibInt(n) { if(n<0||!Number.isInteger(n)) return NaN; if(n>1476) return Infinity; let a=0,b=1; for(let i=0;i<n;i++)[a,b]=[b,a+b]; return a; }
+    function formatResult(r) {
+        if(isNaN(r)) return 'NaN';
+        if(!isFinite(r)) return r>0?'∞':'−∞';
+        if(Number.isInteger(r) && Math.abs(r)<1e15) return String(r);
+        return String(parseFloat(r.toPrecision(12)));
+    }
+    function performBinaryOp(a,b,op) {
+        switch(op) {
+            case '+': return a+b; case '-': return a-b; case '×': return a*b;
+            case '÷': return b===0?NaN:a/b; case 'mod': return b===0?NaN:((a%b)+b)%b;
+            case 'pow': return Math.pow(a,b);
+            case 'gcd': return gcdInt(Math.abs(Math.floor(a)),Math.abs(Math.floor(b)));
+            case 'lcm': return lcmInt(Math.abs(Math.floor(a)),Math.abs(Math.floor(b)));
+            case 'comb': return combInt(Math.abs(Math.floor(a)),Math.abs(Math.floor(b)));
+            default: return NaN;
+        }
+    }
+
+    // ========== 7. Evaluate & Handle Actions ==========
+    function evaluate() {
+        if (state.pendingOp && state.firstOperand !== null) {
+            const a = state.firstOperand;
+            const b = parseFloat(state.currentInput);
+            if (isNaN(b)) { state.traceLines.push('⚠ Invalid second operand'); fullUpdate(state.lastFingerprint); return; }
+            const result = performBinaryOp(a,b,state.pendingOp);
+            state.expression = `${a} ${state.pendingOp} ${b} =`;
+            state.lastResult = result;
+            state.justEvaluated = true;
+            state.currentInput = formatResult(result);
+            state.traceLines.push(`${state.pendingOp} ${a} ${state.pendingOp} ${b} → ${formatResult(result)}`);
+            const fp = fingerprintValue(result);
+            state.lastFingerprint = fp;
+            state.pendingOp = null; state.firstOperand = null; state.awaitingSecondOperand = false;
+            fullUpdate(fp);
+        } else if (state.pendingOp === null && state.firstOperand === null) {
+            const val = parseFloat(state.currentInput);
+            if (!isNaN(val)) {
+                state.expression = `${state.currentInput} =`;
+                state.lastResult = val;
+                state.justEvaluated = true;
+                state.traceLines.push(`Eval ${state.currentInput} → ${formatResult(val)}`);
+                const fp = fingerprintValue(val);
+                state.lastFingerprint = fp;
+                fullUpdate(fp);
+            }
+        }
+    }
+
+    function handleAction(action) {
+        if (state.justEvaluated && !['+','-','×','÷','mod','pow','gcd','lcm','comb','=','clear','ac','back','test'].includes(action)) {
+            state.currentInput = '0'; state.expression = ''; state.lastResult = null;
+            state.lastFingerprint = null; state.justEvaluated = false;
+            state.pendingOp = null; state.firstOperand = null; state.awaitingSecondOperand = false;
+        }
+        if (action === 'test') { runDiagnostics(); return; }
+        switch(action) {
+            case 'clear': case 'ac':
+                state.expression=''; state.currentInput='0'; state.lastResult=null; state.lastFingerprint=null;
+                state.justEvaluated=false; state.pendingOp=null; state.firstOperand=null; state.awaitingSecondOperand=false;
+                state.traceLines=['Cleared.'];
+                updateDisplay(); bitRowEl.innerHTML='';
+                metricSWEl.textContent='—'; metricNRCIEl.textContent='—'; metricNRCIFracEl.textContent='';
+                metricLatticeEl.textContent='—'; metricSynWtEl.textContent='—';
+                modeIndEl.textContent='Ready'; modeIndEl.style.background='rgba(0,229,255,0.1)'; modeIndEl.style.color='var(--accent)';
+                updateTrace(null);
+                break;
+            case 'back':
+                if(state.justEvaluated){state.currentInput='0';state.lastResult=null;state.justEvaluated=false;}
+                else if(state.currentInput.length>1)state.currentInput=state.currentInput.slice(0,-1);
+                else state.currentInput='0';
+                state.expression=''; fullUpdate(state.lastFingerprint);
+                break;
+            case '+': case '-': case '×': case '÷': case 'mod': case 'pow':
+            case 'gcd': case 'lcm': case 'comb':
+                if(state.pendingOp && state.awaitingSecondOperand && !state.justEvaluated){
+                    state.pendingOp=action; state.expression=`${state.firstOperand} ${action} ...`; updateDisplay(); return;
+                }
+                if(state.lastResult!==null && state.justEvaluated){
+                    state.firstOperand=state.lastResult; state.pendingOp=action;
+                    state.expression=`${formatResult(state.lastResult)} ${action} ...`;
+                    state.currentInput='0'; state.justEvaluated=false; state.awaitingSecondOperand=true;
+                    state.traceLines.push(`Chain: ${formatResult(state.lastResult)} ${action} ...`);
+                    updateDisplay(); updateTrace(state.lastFingerprint); return;
+                }
+                const val=parseFloat(state.currentInput);
+                if(!isNaN(val)){
+                    state.firstOperand=val; state.pendingOp=action;
+                    state.expression=`${state.currentInput} ${action} ...`;
+                    state.currentInput='0'; state.awaitingSecondOperand=true; state.justEvaluated=false;
+                    state.traceLines.push(`Load ${val} ${action} ...`);
+                    const fp=fingerprintValue(val); state.lastFingerprint=fp; fullUpdate(fp);
+                }
+                break;
+            case '=': evaluate(); break;
+            case 'fact':
+                const fv=parseFloat(state.currentInput);
+                if(!isNaN(fv) && Number.isInteger(fv) && fv>=0){
+                    const r=factInt(Math.floor(fv));
+                    state.expression=`${fv}! =`; state.lastResult=r; state.justEvaluated=true; state.currentInput=formatResult(r);
+                    state.traceLines.push(`${fv}! → ${formatResult(r)}`);
+                    const fp=fingerprintValue(r); state.lastFingerprint=fp; state.pendingOp=null; state.firstOperand=null; state.awaitingSecondOperand=false;
+                    fullUpdate(fp);
+                }
+                break;
+            case 'isprime':
+                const pv=parseFloat(state.currentInput);
+                if(!isNaN(pv) && Number.isInteger(pv)){
+                    const prime=isPrime(Math.floor(Math.abs(pv)));
+                    const r=prime?'Yes (prime)':'No (composite)';
+                    state.expression=`Is ${Math.floor(Math.abs(pv))} prime?`;
+                    state.lastResult=r; state.justEvaluated=true; state.currentInput=r;
+                    state.traceLines.push(`Primality(${Math.floor(Math.abs(pv))}) → ${r}`);
+                    const fp=fingerprintValue(Math.floor(Math.abs(pv))); state.lastFingerprint=fp;
+                    state.pendingOp=null; state.firstOperand=null; state.awaitingSecondOperand=false;
+                    fullUpdate(fp);
+                }
+                break;
+            case 'fib':
+                const fibv=parseFloat(state.currentInput);
+                if(!isNaN(fibv) && Number.isInteger(fibv) && fibv>=0){
+                    const r=fibInt(Math.floor(fibv));
+                    state.expression=`Fib(${Math.floor(fibv)}) =`;
+                    state.lastResult=r; state.justEvaluated=true; state.currentInput=formatResult(r);
+                    state.traceLines.push(`Fibonacci(${Math.floor(fibv)}) → ${formatResult(r)}`);
+                    const fp=fingerprintValue(r); state.lastFingerprint=fp; state.pendingOp=null; state.firstOperand=null; state.awaitingSecondOperand=false;
+                    fullUpdate(fp);
+                }
+                break;
+            case 'sqrt':
+                const sv=parseFloat(state.currentInput);
+                if(!isNaN(sv) && sv>=0){
+                    const r=Math.sqrt(sv);
+                    state.expression=`√${state.currentInput} =`;
+                    state.lastResult=r; state.justEvaluated=true; state.currentInput=formatResult(r);
+                    state.traceLines.push(`√${sv} → ${formatResult(r)}`);
+                    const fp=fingerprintValue(r); state.lastFingerprint=fp; state.pendingOp=null; state.firstOperand=null; state.awaitingSecondOperand=false;
+                    fullUpdate(fp);
+                }
+                break;
+            case '.':
+                if(state.justEvaluated){state.currentInput='0.';state.lastResult=null;state.justEvaluated=false;state.expression='';}
+                else if(!state.currentInput.includes('.'))state.currentInput+='.';
+                fullUpdate(state.lastFingerprint); break;
+            case '(': case ')': break;
+            default:
+                if(/^\d$/.test(action)){
+                    if(state.justEvaluated){state.currentInput=action;state.lastResult=null;state.justEvaluated=false;state.expression='';}
+                    else if(state.currentInput==='0'||state.currentInput==='NaN'||state.currentInput==='∞'||state.currentInput==='−∞')state.currentInput=action;
+                    else if(state.currentInput.length<18)state.currentInput+=action;
+                    if(state.awaitingSecondOperand && state.pendingOp) state.expression=`${state.firstOperand} ${state.pendingOp} ${state.currentInput}`;
+                    fullUpdate(state.lastFingerprint);
+                }
+                break;
+        }
+    }
+
+    // ========== 8. Diagnostic Test Suite ==========
+    function runDiagnostics() {
+        const trace = state.traceLines;
+        trace.length = 0;
+        trace.push('══════════════════════════════════════');
+        trace.push('UBP ENGINE DIAGNOSTICS START');
+        trace.push('══════════════════════════════════════');
+        let passed = 0, failed = 0;
+
+        function test(desc, fn) {
+            try {
+                const ok = fn();
+                if (ok) { passed++; trace.push(`✓ ${desc}`); }
+                else { failed++; trace.push(`✗ FAIL: ${desc}`); }
+            } catch(e) {
+                failed++;
+                trace.push(`✗ ERROR: ${desc} — ${e.message}`);
+            }
+        }
+
+        trace.push(`π (50‑term CF) = ${PI.toDecimal(20)}`);
+        trace.push(`Y = ${Y.toDecimal(20)}`);
+        trace.push(`Y_CONST = ${Y_CONST.toDecimal(20)}`);
+        test('All 4096 codewords generated', () => golay.allCodewords.length === 4096);
+        test('Codeword weights ∈ {0,8,12,16,24}', () => golay.allCodewords.every(cw => [0,8,12,16,24].includes(golay.hammingWeight(cw))));
+        test('Octad count = 759', () => golay.getOctads().length === 759);
+        test('Encode/decode identity (all 4096 messages)', () => {
+            for (let m = 0; m < 4096; m++) {
+                let msg = [];
+                for (let j = 0; j < 12; j++) msg.push((m >> (11-j)) & 1);
+                const cw = golay.encode(msg);
+                const dec = golay.decode(cw);
+                if (dec.errorsCorrected !== 0) return false;
+                if (!dec.message.every((v,i) => v === msg[i])) return false;
+            }
+            return true;
+        });
+        test('Error correction (100 random trials, 1‑3 errors)', () => {
+            for (let t = 0; t < 100; t++) {
+                let msg = []; for (let j=0;j<12;j++) msg.push(Math.random()<0.5?1:0);
+                const cw = golay.encode(msg);
+                const numErrors = 1 + Math.floor(Math.random()*3);
+                let corrupted = [...cw];
+                for (let e=0;e<numErrors;e++) { const pos=Math.floor(Math.random()*24); corrupted[pos]^=1; }
+                const dec = golay.decode(corrupted);
+                if (!dec.correctable || !dec.message.every((v,i)=>v===msg[i])) return false;
+            }
+            return true;
+        });
+        test('Error correction (1000 random trials)', () => {
+            for (let t = 0; t < 1000; t++) {
+                let msg = []; for (let j=0;j<12;j++) msg.push(Math.random()<0.5?1:0);
+                const cw = golay.encode(msg);
+                const numErrors = 1 + Math.floor(Math.random()*3);
+                let corrupted = [...cw];
+                for (let e=0;e<numErrors;e++) { const pos=Math.floor(Math.random()*24); corrupted[pos]^=1; }
+                const dec = golay.decode(corrupted);
+                if (!dec.correctable || !dec.message.every((v,i)=>v===msg[i])) return false;
+            }
+            return true;
+        });
+        test('Error correction (10000 random trials)', () => {
+            const start = performance.now();
+            for (let t = 0; t < 10000; t++) {
+                let msg = []; for (let j=0;j<12;j++) msg.push(Math.random()<0.5?1:0);
+                const cw = golay.encode(msg);
+                const numErrors = 1 + Math.floor(Math.random()*3);
+                let corrupted = [...cw];
+                for (let e=0;e<numErrors;e++) { const pos=Math.floor(Math.random()*24); corrupted[pos]^=1; }
+                const dec = golay.decode(corrupted);
+                if (!dec.correctable || !dec.message.every((v,i)=>v===msg[i])) return false;
+            }
+            trace.push(`  (10000 trials in ${(performance.now()-start).toFixed(0)} ms)`);
+            return true;
+        });
+        test('NRCI identical for all weight‑8 codewords', () => {
+            const octads = golay.getOctads();
+            const nrci0 = computeExactNRCI(octads[0]).nrciFraction.toString();
+            return octads.every(cw => computeExactNRCI(cw).nrciFraction.toString() === nrci0);
+        });
+        test('NRCI identical for all weight‑12 codewords', () => {
+            const dodecads = golay.allCodewords.filter(cw => golay.hammingWeight(cw)===12);
+            const nrci0 = computeExactNRCI(dodecads[0]).nrciFraction.toString();
+            return dodecads.every(cw => computeExactNRCI(cw).nrciFraction.toString() === nrci0);
+        });
+        test('Fingerprint produces valid codeword (100 random numbers)', () => {
+            for (let i=0;i<100;i++) {
+                const n = Math.floor(Math.random()*1e6);
+                const fp = fingerprintValue(n);
+                const cw = golay.snapToCodeword(fp.grayBits).corrected;
+                if (fp.hammingWeight !== golay.hammingWeight(fp.snapped)) return false;
+                if (!CODEWORD_WEIGHTS.has(fp.hammingWeight)) return false;
+            }
+            return true;
+        });
+
+        trace.push('══════════════════════════════════════');
+        trace.push(`DIAGNOSTICS COMPLETE: ${passed} passed, ${failed} failed`);
+        trace.push('══════════════════════════════════════');
+        updateTrace(state.lastFingerprint);
+    }
+
+    // ========== 9. Event Listeners ==========
+    document.getElementById('keypad').addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const action = btn.dataset.action;
+        if (action) {
+            btn.style.transform = 'scale(0.93)';
+            setTimeout(() => { btn.style.transform = ''; }, 100);
+            handleAction(action);
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        const map = {
+            '0':'0','1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7','8':'8','9':'9',
+            '+':'+','-':'-','*':'×','/':'÷','%':'mod','^':'pow','.':'.',
+            'Enter':'=','=':'=','Escape':'ac','Backspace':'back','Delete':'ac',
+            'c':'clear','C':'clear'
+        };
+        const action = map[e.key];
+        if (action) { e.preventDefault(); handleAction(action); }
+    });
+
+    // ========== 10. Initialise ==========
+    state.traceLines = [
+        `UBP Exact Fraction Engine ready · Golay codewords: ${golay.allCodewords.length}`,
+        `π (50‑term CF) = ${PI.toDecimal(20)}`,
+        `Y = ${Y.toDecimal(20)}`,
+        `Y_CONST = ${Y_CONST.toDecimal(20)}`,
+        'Press "Test" to validate the engine.',
+        'Enter a number or calculation to see UBP fingerprint.'
+    ];
+    updateDisplay();
+    updateTrace(null);
+
+    const fp0 = fingerprintValue(0);
+    state.lastFingerprint = fp0;
+    fullUpdate(fp0);
+
+    console.log('%c⚛ UBP Exact Fraction Calculator %cSelf‑Contained',
+        'color:#00e5ff;font-size:1.1em;', 'color:#ccc;');
+    console.log(`   π = ${PI.toDecimal(20)}`);
+    console.log(`   Y_CONST = ${Y_CONST.toDecimal(20)}`);
+    console.log('   Press "Test" for engine diagnostics.');
+})();
+</script>
+</body>
+</html>
