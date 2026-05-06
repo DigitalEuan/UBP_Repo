@@ -6,6 +6,19 @@ The code here is available for study and may be **valuable** to others. I encour
 
 Many of these studies are **merely a beginning** and can be extended **significantly**. I often stopped a study once I found the specific **UBP system function** I needed, leaving the groundwork for others to continue.
 
+## Current Projects:
+* Main system research and development:
+[https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0]
+
+* noisecore: [https://github.com/DigitalEuan/noisecore]
+
+* Digital Twin Physics Engine: [https://github.com/DigitalEuan/ubp_digital_twin_physics_engine]
+
+* Geometric Language Machine (GLM): 
+ Have a go with my experimental Geometric Language Machine: [ubp-code-link.base44.app]
+It's way more wacky than a regular LLM.
+ It learns as you go and you can save the learning and come back to progress further each time, it does seem to improve.
+ Under development using Base44 APP-making system.
 ---
 
 # Key Takeaways from My UBP Research
