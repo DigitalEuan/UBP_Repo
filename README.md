@@ -15,8 +15,8 @@ Many of these studies are **merely a beginning** and can be extended **significa
 * Digital Twin Physics Engine: [https://github.com/DigitalEuan/ubp_digital_twin_physics_engine]
 
 * Geometric Language Machine (GLM): 
- Have a go with my experimental Geometric Language Machine: [ubp-code-link.base44.app]
-It's way more wacky than a regular LLM.
+ Have a go with my experimental Geometric Language Machine: [https://ubp-code-link.base44.app]
+ It's way more wacky than a regular LLM.
  It learns as you go and you can save the learning and come back to progress further each time, it does seem to improve.
  Under development using Base44 APP-making system.
 ---
