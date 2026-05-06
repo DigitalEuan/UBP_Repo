@@ -19,6 +19,9 @@
 * Geometric Language Machine (GLM): 
   Experimental Geometric Language Machine: [https://ubp-code-link.base44.app]
   * the UBP attempt at creating a full AI/LLM using only UBP systems and concept - geometry, mathematics and anything I can learn from the massive LLM systems.
+ 
+  * UBP Drive
+  Data-hardened storage powered by the Extended Binary Golay Code: [https://ubp-drive.lovable.app]
 
 ---
 
