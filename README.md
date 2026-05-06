@@ -7,8 +7,8 @@
 ## Current Projects:
 
 * Main system research and development:
-[core_studio_v4.0](https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0) · **Google AI Studio App:** [UBP Interactive](https://aistudio.google.com)
-
+[core_studio_v4.0](https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0) · **Google AI Studio App:** [https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a
+]
 * noisecore VM: [https://github.com/DigitalEuan/noisecore]
 * This thing is wild - a python script system + an HTML full implementation of a complete UBP Virtual Computational Substrate.
 * NoiseCore VM is a fully functional virtual CPU whose registers and memory are backed by the Golay [24,12,8] geometric substrate of the Universal Binary Principle (UBP) framework. It is not a simulation of a CPU: it is a real register machine with a 46-instruction ISA, a two-pass symbolic assembler, a disassembler, a trace recorder + more
