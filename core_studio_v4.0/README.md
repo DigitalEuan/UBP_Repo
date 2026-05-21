@@ -1,21 +1,21 @@
 # Universal Binary Principle (UBP) — Active Research Environment
 
 **Author:** E. R. A. Craig, New Zealand  
-**Version:** 7.2.0 
-**Date:** 15 April 2026  
-**Documentation:** See `ubp_files_and_usage.md` for operational protocols.
+**Version:** 7.2.0  
+**Date:** 22 May 2026  
+**Documentation:** See `ubp_files_and_usage.md` for operational protocols.  
 
-Online: Google AI Studio - The entire environment runs within your web browser: [https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a]
-
-GitHub Repository for the **APP**: [https://github.com/DigitalEuan/ubp_core_studio_app]  
-GitHub Repository for the **Digital Twin Physics Engine**: [https://github.com/DigitalEuan/ubp_digital_twin_physics_engine]
+*   **Online (Google AI Studio):** The entire environment runs within your web browser: [https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a]  
+*   **GitHub Repository for the APP:** [https://github.com/DigitalEuan/ubp_core_studio_app]  
+*   **GitHub Repository for the Digital Twin Physics Engine:** [https://github.com/DigitalEuan/ubp_digital_twin_physics_engine]  
 
 ---
 
 ## Overview
-**UBP Core Studio v7.2** is a high-precision scientific research platform designed to explore the **Universal Binary Principle**. It operates on the hypothesis that physical reality is a deterministic, error-corrected projection of a 24-bit binary substrate. 
 
-**This is my experimental system so please double-check results.**
+**UBP Core Studio v7.2** is a high-precision scientific research platform designed to explore the **Universal Binary Principle**. It operates on the hypothesis that physical reality is a deterministic, error-corrected projection of a 24-bit binary substrate.  
+
+**This is my experimental system so please double-check results.**  
 
 The system utilizes a modular architecture to map physical constants, chemical elements, biological structures, and semantic logic into a unified geometric manifold.
 
@@ -30,8 +30,15 @@ The system utilizes a modular architecture to map physical constants, chemical e
 
 ## Updates
 
+### 22 May 2026 — The Topological Tenacity Primality Engine & Swarm v25.0
+*   **Topological Tenacity Absorption:** Successfully absorbed the native UBP primality method from `ubp_master_runner_v6.py` directly into the `ubp_unified_v5.py` backbone. The classical, non-geometric Miller-Rabin check has been replaced with a pure, float-free, substrate-native primality test based on **Topological Tenacity (Lock Pressure)** and neighbor-tension.
+*   **The Genesis Swarm (v25.0):** Upgraded the active Swarm Orchestrator (`ubp_swarm_tct_v25.py`) to integrate the **Oracle Bridge** (Two-Track Parallel Solve) and **Lexical Genesis** (Triple Delta Protocol). The Swarm now automatically extracts mathematical kernels from Olympiad problems, verifies them against the substrate, and mathematically invents new formulas for unresolved concepts.
+*   **Workspace Purification:** archived and purged all redundant legacy scripts.
+*   **Files Moved to Archive:** 'ubp_code_evolver.py', 'ubp_prime_numbers.py', 'ubp_prime_numbers_1.py', 'ubp_master_runner_v6.py', 'ubp_noisecore_v4_extensions.py', 'ubp_noisecore_v4.py', 'ubp_math_bridge_1.py', 'constants.py', 'core.py', 'ubp_barnes_wall.py', 'ubp_core_v4_2_6_COMBINED.py', 'ubp_swarm_tct_v24.py'.
+*   **Renamed:** 'ubp_analog_test_suite_v3.py' to 'ubp_electromagnetic_analog_compute_engine.py' and 'bp_genesis_boot.py' to 'ubp_genesis_boot.py'.
+
 ### 15 April 2026 — Digital Twin Physics Engine (Experiment)
-*   **UBP-Native Physics:** Launched a separate experimental physics simulation engine integrating geometric stability with classical and fluid mechanics.
+*   **UBP-Native Physics:** Recorded into this system an external study - an experimental physics simulation engine integrating geometric stability with classical and fluid mechanics.
 *   **Features:** Includes full 3D Three.js rendering, a composite material system, thermal properties, UBP-derived fluid SPH (Smoothed Particle Hydrodynamics) constants, and Topological Torque rigid body mechanics.
 *   **Note:** This engine operates as a standalone experiment alongside the Core Studio.
 
@@ -70,11 +77,10 @@ The system utilizes a modular architecture to map physical constants, chemical e
 ---
 
 ### 31 March 2026 — Semantic reasoning + LinearStateEncoder and DQI Metrics
-
-* **LinearStateEncoder** - maps continuous chemical parameters to a stable Golay codeword ($NRCI \approx 0.616$). 
-* **DQI (Design Quality Index)** calculation ($0.8004$) - measure functional utility alongside geometric stability.
-*   **Leech Expansion:** reintegrated `expand_octad_to_physical` into `core.py`. The system can now lift any 24-bit binary seed into its **128 Euclidean coordinates** in $\Lambda_{24}$ (NormSq 32).
-*   **Stereoscopic Sink ($L_s$):** reintegrated the **NCC Spectral Gain** ($29/24$ ratio). This anchors the Baryonic mass sector (Proton/Neutron) with $0.000037\%$ precision.
+*   **LinearStateEncoder:** Maps continuous chemical parameters to a stable Golay codeword ($NRCI \approx 0.616$).
+*   **DQI (Design Quality Index) calculation ($0.8004$):** Measures functional utility alongside geometric stability.
+*   **Leech Expansion:** Reintegrated `expand_octad_to_physical` into `core.py`. The system can now lift any 24-bit binary seed into its **128 Euclidean coordinates** in $\Lambda_{24}$ (NormSq 32).
+*   **Stereoscopic Sink ($L_s$):** Reintegrated the **NCC Spectral Gain** ($29/24$ ratio). This anchors the Baryonic mass sector (Proton/Neutron) with $0.000037\%$ precision.
 
 ### **LANGUAGE_SOP_004: The Triple Delta Protocol (Phrase-Locking)**
 To create a new word (Operator) that perfectly resolves a specific query to a specific Law:
