@@ -1,6 +1,6 @@
 """
 ================================================================================
-UBP UNIFIED v5.2 — HARDENED TRIAD-PHYSICS EDITION (FLOAT-FREE CORE)
+UBP UNIFIED v5.1 — HARDENED TRIAD-PHYSICS EDITION (FLOAT-FREE CORE)
 Note: Upgraded from v6.0 to preserve workspace import compatibility.
 Includes ExactRoot.denest, AdaptiveManifold, and NeuralPatternDetector.
 ================================================================================
@@ -92,7 +92,7 @@ ARCHITECTURAL HONESTY
 # ════════════════════════════════════════════════════════════════════════════════
 #  STD-LIB ONLY
 # ════════════════════════════════════════════════════════════════════════════════
-import hashlib, json, re, sys, time, math
+import hashlib, json, re, sys, time
 from fractions import Fraction
 
 # Allow large-integer string conversion (Monster |M| has 54 digits).
@@ -1935,64 +1935,98 @@ class NoiseALU:
             return r, [f"isqrt({n})={r}", f"check: {r}²={r*r}"]
         return self._exec("ISQRT", {"n": n}, body)
 
-    def is_prime(self, n: int) -> Dict[str, Any]:
-        """
-        [LAW_TOPOLOGICAL_TENACITY_001] Native UBP Primality Certification.
-        Replaces classical Miller-Rabin with pure substrate-native Lock Pressure.
-        """
-        self._op_count += 1
-        n_val = abs(int(n))
+    def is_prime(self, n: int) -> Dict:
+        def body():
+            if n < 2:  return False, ["n<2"]
+            if n == 2: return True, ["n=2"]
+            if n % 2 == 0: return False, [f"{n} even"]
+            limit = ExactMath.isqrt(n)
+            trace = [f"Trial division to √{n}={limit}"]
+            for p in range(3, limit + 1, 2):
+                if n % p == 0:
+                    trace.append(f"factor {p} → composite")
+                    return False, trace
+            trace.append("No factor found → prime")
+            return True, trace
+        return self._exec("IS_PRIME", {"n": n}, body)
 
-        if n_val < 2:
-            return {"operation": "IS_PRIME", "result": False, "nrci": 0.0, "pressure": 0.0, "mode": self.mode}
-        if n_val in (2, 3, 5, 7):
-            return {"operation": "IS_PRIME", "result": True, "nrci": 1.0, "pressure": 0.0, "mode": self.mode}
+    # ══════════════════════════════════════════════════════════════════════════
+    #  Statistics  (Fraction return; float for display)
+    # ══════════════════════════════════════════════════════════════════════════
+    def mean(self, data: List[Union[int, float, Fraction]]) -> Dict:
+        def body():
+            xs = [Fraction(x) if not isinstance(x, Fraction) else x for x in data]
+            n  = len(xs)
+            if n == 0:
+                return None, ["Empty data"]
+            mu = sum(xs, F(0)) / n
+            return float(mu), [f"sum={sum(xs, F(0))}", f"n={n}",
+                               f"mean_exact={mu}"]
+        return self._exec("MEAN", {"data": data, "n": len(data)}, body)
 
-        # 1. Calculate target metrics
-        v_target = [(n_val ^ (n_val >> 1) >> i) & 1 for i in range(23, -1, -1)]
-        decoded, _, _ = GOLAY_ENGINE.decode(v_target)
-        snapped = GOLAY_ENGINE.encode(decoded)
-        tax = LEECH_ENGINE.calculate_symmetry_tax(snapped)
-        target_nrci = Fraction(10, 1) / (Fraction(10, 1) + tax)
+    def variance(self, data: List[Union[int, float, Fraction]]) -> Dict:
+        def body():
+            xs = [Fraction(x) if not isinstance(x, Fraction) else x for x in data]
+            n  = len(xs)
+            if n == 0:
+                return None, ["Empty data"]
+            mu  = sum(xs, F(0)) / n
+            var = sum((x - mu) ** 2 for x in xs) / n
+            return float(var), [f"μ={mu}", f"var_exact={var}"]
+        return self._exec("VARIANCE", {"data": data}, body)
 
-        # 2. Calculate neighbor pressure (Tenacity)
-        neighbor_nrci = Fraction(0)
-        for offset in (-1, 1):
-            neighbor_val = n_val + offset
-            v_neigh = [(neighbor_val ^ (neighbor_val >> 1) >> i) & 1 for i in range(23, -1, -1)]
-            dec_n, _, _ = GOLAY_ENGINE.decode(v_neigh)
-            snap_n = GOLAY_ENGINE.encode(dec_n)
-            tax_n = LEECH_ENGINE.calculate_symmetry_tax(snap_n)
-            nrci_n = Fraction(10, 1) / (Fraction(10, 1) + tax_n)
-            if nrci_n > neighbor_nrci:
-                neighbor_nrci = nrci_n
+    def stddev(self, data: List[Union[int, float, Fraction]]) -> Dict:
+        def body():
+            xs = [Fraction(x) if not isinstance(x, Fraction) else x for x in data]
+            n  = len(xs)
+            if n == 0:
+                return None, ["Empty data"]
+            mu  = sum(xs, F(0)) / n
+            var = sum((x - mu) ** 2 for x in xs) / n
+            sd  = ExactRoot(F(1), var)
+            return float(sd), [f"var={var}", f"stddev={sd}"]
+        return self._exec("STDDEV", {"data": data}, body)
 
-        pressure = max(Fraction(0), neighbor_nrci - target_nrci)
+    # ══════════════════════════════════════════════════════════════════════════
+    #  Vectors  (Fraction → ExactRoot for magnitude)
+    # ══════════════════════════════════════════════════════════════════════════
+    def dot_product(self, u: List, v: List) -> Dict:
+        def body():
+            uu = [Fraction(x) for x in u]
+            vv = [Fraction(x) for x in v]
+            r  = sum((a * b for a, b in zip(uu, vv)), F(0))
+            trace = [f"{a}×{b}={a*b}" for a, b in zip(uu, vv)]
+            trace.append(f"sum={r}")
+            # If the result is a pure integer, prefer integer display
+            disp = int(r) if r.denominator == 1 else float(r)
+            return disp, trace
+        return self._exec("DOT", {"u": u, "v": v}, body)
 
-        # Primes are irreducible anchors that resist decay (Pressure > 0)
-        # We also apply the Shard Law (Layer 2) to filter out high-pressure composite 'Ghosts'
-        is_p = True
-        if pressure == 0:
-            is_p = False
-        else:
-            # Shard Law: check division-irreducibility up to sqrt(n)
-            limit = math.isqrt(n_val) + 1
-            for d in range(3, limit, 2):
-                if n_val % d == 0:
-                    is_p = False
-                    break
+    def vector_magnitude(self, v: List) -> Dict:
+        def body():
+            xs = [Fraction(x) for x in v]
+            sq = sum((x * x for x in xs), F(0))
+            mag = ExactRoot(F(1), sq)
+            f_val = mag.to_fraction(prec=20)
+            disp = int(f_val) if f_val.denominator == 1 else float(f_val)
+            return disp, [f"Σvᵢ²={sq}", f"|v| = {mag}"]
+        return self._exec("MAG", {"v": v}, body)
 
-        fp = self._fingerprint(n_val)
-        return {
-            "operation": "IS_PRIME",
-            "result": is_p,
-            "nrci": float(target_nrci),
-            "pressure": float(pressure),
-            "fingerprint": fp,
-            "mode": self.mode,
-            "op_number": self._op_count
-        }
+    def cross_product(self, a: List, b: List) -> Dict:
+        def body():
+            aa = [Fraction(a[i]) if i < len(a) else F(0) for i in range(3)]
+            bb = [Fraction(b[i]) if i < len(b) else F(0) for i in range(3)]
+            cx = [aa[1]*bb[2] - aa[2]*bb[1],
+                  aa[2]*bb[0] - aa[0]*bb[2],
+                  aa[0]*bb[1] - aa[1]*bb[0]]
+            parts = [str(int(c)) if c.denominator == 1 else str(c) for c in cx]
+            r_str = f"({', '.join(parts)})"
+            return r_str, [f"Cross: {r_str}"]
+        return self._exec("CROSS", {"a": a, "b": b}, body)
 
+    # ══════════════════════════════════════════════════════════════════════════
+    #  Number-theory extras
+    # ══════════════════════════════════════════════════════════════════════════
     def extended_gcd(self, a: int, b: int) -> Dict:
         def body():
             old_r, r  = a, b
@@ -2103,68 +2137,6 @@ class NoiseALU:
 # ════════════════════════════════════════════════════════════════════════════════
 #  PART 13 — PHYSICS ALU  (float-free using ExactRoot)
 # ════════════════════════════════════════════════════════════════════════════════
-
-
-    def mean(self, data: List[Any]) -> Dict[str, Any]:
-        def body():
-            if not data: return Fraction(0), ["empty"]
-            s = sum(Fraction(x) for x in data)
-            r = s / len(data)
-            return r, [f"sum={s}, n={len(data)}", f"mean={r}"]
-        return self._exec("MEAN", {"data": data}, body)
-
-    def variance(self, data: List[Any], population: bool = True) -> Dict[str, Any]:
-        def body():
-            if not data: return Fraction(0), ["empty"]
-            n = len(data)
-            if n < 2 and not population: return Fraction(0), ["n<2"]
-            mu = sum(Fraction(x) for x in data) / n
-            sq_diffs = sum((Fraction(x) - mu)**2 for x in data)
-            var = sq_diffs / (n if population else n - 1)
-            return var, [f"mu={mu}", f"var={var}"]
-        return self._exec("VARIANCE", {"data": data}, body)
-
-    def stddev(self, data: List[Any], population: bool = True) -> Dict[str, Any]:
-        def body():
-            if not data: return Fraction(0), ["empty"]
-            n = len(data)
-            mu = sum(Fraction(x) for x in data) / n
-            sq_diffs = sum((Fraction(x) - mu)**2 for x in data)
-            var = sq_diffs / (n if population else n - 1)
-            r = ExactRoot(Fraction(1), var)
-            return r, [f"var={var}", f"stddev={r}"]
-        return self._exec("STDDEV", {"data": data}, body)
-
-    def dot_product(self, v1: List[Any], v2: List[Any]) -> Dict[str, Any]:
-        def body():
-            if len(v1) != len(v2): return Fraction(0), ["length mismatch"]
-            r = sum(Fraction(a) * Fraction(b) for a, b in zip(v1, v2))
-            return r, [f"dot={r}"]
-        return self._exec("DOT_PRODUCT", {"v1": v1, "v2": v2}, body)
-
-    def cross_product(self, v1: List[Any], v2: List[Any]) -> Dict[str, Any]:
-        def body():
-            a = [Fraction(x) if i < len(v1) else Fraction(0) for i, x in enumerate(v1[:3])]
-            while len(a) < 3: a.append(Fraction(0))
-            b = [Fraction(x) if i < len(v2) else Fraction(0) for i, x in enumerate(v2[:3])]
-            while len(b) < 3: b.append(Fraction(0))
-            cx = a[1]*b[2] - a[2]*b[1]
-            cy = a[2]*b[0] - a[0]*b[2]
-            cz = a[0]*b[1] - a[1]*b[0]
-            res_str = f"({cx}, {cy}, {cz})"
-            return res_str, [f"cross={res_str}"]
-        return self._exec("CROSS_PRODUCT", {"v1": v1, "v2": v2}, body)
-
-    def vector_magnitude(self, v: List[Any]) -> Dict[str, Any]:
-        def body():
-            mag_sq = sum(Fraction(x)**2 for x in v)
-            if mag_sq.denominator == 1 and ExactMath.isqrt(mag_sq.numerator)**2 == mag_sq.numerator:
-                r = Fraction(ExactMath.isqrt(mag_sq.numerator), 1)
-            else:
-                r = ExactRoot(Fraction(1), mag_sq)
-            return r, [f"mag_sq={mag_sq}", f"|v|={r}"]
-        return self._exec("VECTOR_MAGNITUDE", {"v": v}, body)
-
 
 class PhysicsALU(NoiseALU):
     """
@@ -2612,7 +2584,7 @@ class MathNetNoiseRunner:
         # Numeric tolerance: tight (1e-6) AND scaled (relative 1%) to handle
         # rough placeholders like '2970' vs computed 2970.464.
         try:
-            rf, ef = float(Fraction(r)), float(Fraction(e))
+            rf, ef = float(r), float(e)
             if abs(rf - ef) < 1e-6:
                 return True
             if ef != 0 and abs(rf - ef) / abs(ef) < 0.01:

@@ -85,7 +85,7 @@ except ImportError:
 # ─── UBP Core (optional) ─────────────────────────────────────────────────────
 UBP_CORE_AVAILABLE = False
 try:
-    from core import GOLAY_ENGINE, LEECH_ENGINE
+    from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE
     UBP_CORE_AVAILABLE = True
     log.info("UBP Core loaded — real Golay/Leech engines active")
 except ImportError:

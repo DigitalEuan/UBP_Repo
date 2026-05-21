@@ -37,7 +37,7 @@ from typing import List, Dict
 # TARGET CONFIGURATION: Add files here for batch processing
 # ---------------------------------------------------------
 DEFAULT_TARGETS = [
-    "ubp_analog_test_suite_v3.py"
+    "ubp_sovereign_evolver.py"
 ]
 
 class SovereignTransformer(ast.NodeTransformer):

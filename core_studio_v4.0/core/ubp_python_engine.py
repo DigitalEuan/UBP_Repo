@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from typing import List, Dict, Optional, Tuple, Any
 
 # UBP Core Imports
-from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
+from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, SUBSTRATE
 
 @dataclass
 class PyLawResult:
