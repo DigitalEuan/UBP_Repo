@@ -1,6 +1,0 @@
-# Centralized constants for UBP
-
-UBP_VERSION = '5.4_condensed'
-PLANCK_LENGTH = 1.616255e-35
-PLANCK_TIME = 5.391247e-44
-ALPHA = 0.0072973525693
