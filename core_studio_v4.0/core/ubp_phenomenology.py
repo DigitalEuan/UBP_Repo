@@ -14,7 +14,7 @@ import json
 # --- 1. MODULAR CORE LINK ---
 try:
     # Pointing to your new modular files
-    from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
+    from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra, UBPUltimateSubstrate
     from physics import UBPMetricsExact
     CORE_AVAILABLE = True
     print("[Phenomenology] Modular Core Linked Successfully.")

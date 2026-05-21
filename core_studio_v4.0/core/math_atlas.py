@@ -20,7 +20,7 @@ from typing import List, Tuple, Optional, Dict, Any, Union, Set
 
 # --- UBP CORE INTEGRATION ---
 try:
-    from core import GOLAY_ENGINE as GOLAY_DECODER
+    from ubp_unified_v5 import GOLAY_ENGINE as GOLAY_DECODER
     CORE_AVAILABLE = True
 except ImportError:
     CORE_AVAILABLE = False

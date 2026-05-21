@@ -1,7 +1,7 @@
 """UBP Condensed Module: geometry"""
 
-from core import BinaryLinearAlgebra, GOLAY_ENGINE
-from core import LEECH_ENGINE, GOLAY_ENGINE, BinaryLinearAlgebra, SUBSTRATE
+from ubp_unified_v5 import BinaryLinearAlgebra, GOLAY_ENGINE
+from ubp_unified_v5 import LEECH_ENGINE, GOLAY_ENGINE, BinaryLinearAlgebra, SUBSTRATE
 
 # --- Extracted from hex_dictionary_v4_exact.py ---
 """

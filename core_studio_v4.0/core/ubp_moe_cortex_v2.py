@@ -5,7 +5,7 @@ import re
 import os
 from fractions import Fraction
 from ubp_semantic_engine import UBPSemanticEngine
-from core import BinaryLinearAlgebra, GOLAY_ENGINE, LEECH_ENGINE
+from ubp_unified_v5 import BinaryLinearAlgebra, GOLAY_ENGINE, LEECH_ENGINE
 
 class UBPMoECortexV2:
     STOP_WORDS = {'is', 'the', 'a', 'an', 'of', 'to', 'and', 'in', 'with', 'for', 'on'}

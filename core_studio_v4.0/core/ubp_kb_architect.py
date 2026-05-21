@@ -12,7 +12,7 @@ from fractions import Fraction
 from typing import Tuple, List
 
 # Core imports
-from core import LEECH_ENGINE, UBPUltimateSubstrate
+from ubp_unified_v5 import LEECH_ENGINE, UBPUltimateSubstrate
 
 # Universal Constants
 CONST = UBPUltimateSubstrate.get_constants(50)

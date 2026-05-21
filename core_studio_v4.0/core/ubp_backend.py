@@ -23,20 +23,20 @@ from fractions import Fraction
 
 # ── Ensure we can find core.py ───────────────────────────────────────────────
 # Adjust this path if core.py lives elsewhere:
-CORE_PATH = Path(__file__).parent / "core.py"
+CORE_PATH = Path(__file__).parent / "ubp_unified_v5.py"
 if not CORE_PATH.exists():
     # Try the GitHub repo structure
-    CORE_PATH = Path(__file__).parent / "core_studio_v4.0" / "core" / "core.py"
+    CORE_PATH = Path(__file__).parent / "ubp_unified_v5.py"
 
 if CORE_PATH.exists():
     sys.path.insert(0, str(CORE_PATH.parent))
-    print(f"[UBP Backend] Loading core from: {CORE_PATH}")
+    print(f"[UBP Backend] Loading unified backbone from: {CORE_PATH}")
 else:
-    print("[UBP Backend] WARNING: core.py not found. Falling back to stub.")
+    print("[UBP Backend] WARNING: ubp_unified_v5.py not found. Falling back to stub.")
     # We'll handle the fallback below
 
 try:
-    from core import GOLAY_ENGINE, LEECH_ENGINE, UBPUltimateSubstrate, BinaryLinearAlgebra
+    from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE, UBPUltimateSubstrate, BinaryLinearAlgebra
     REAL_ENGINE = True
     print("[UBP Backend] ✓ Real Golay/Leech engines loaded.")
     print(f"            Golay codewords: {len(GOLAY_ENGINE.get_all_codewords())}")
@@ -46,7 +46,7 @@ try:
     print(f"            Y_CONST:          {float(constants['Y_CONST']):.15f}")
 except ImportError as e:
     REAL_ENGINE = False
-    print(f"[UBP Backend] Could not import core.py: {e}")
+    print(f"[UBP Backend] Could not import ubp_unified_v5: {e}")
     print("            Running in STUB mode (JS-level accuracy).")
 
 from flask import Flask, request, jsonify
@@ -108,7 +108,7 @@ def fingerprint_number(n) -> dict:
             "syndrome_weight": meta["syndrome_weight"],
             "snap_distance": meta["anchor_distance"],
             "correctable": meta["correctable"],
-            "engine": "REAL (50-term π, Golay [24,12,8])"
+            "engine": "REAL (50-term π, Golay [24,12,8] via ubp_unified_v5)"
         }
     else:
         hw = sum(gray)

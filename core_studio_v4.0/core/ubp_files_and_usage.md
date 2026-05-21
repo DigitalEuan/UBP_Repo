@@ -1,77 +1,96 @@
-# UBP System Usage Guide (v7.2.0 Precision Edition)
+# Universal Binary Principle (UBP) System Guide
+## Version 25.0 — Genesis Edition (May 2026)
 
-This document provides the functional manifest and operational protocols for the **Universal Binary Principle (UBP)** research environment.
+This document serves as the definitive operational manifest and architectural guide for the UBP Research Workspace. The system is designed around **Three Column Thinking (TCT)**, where **Math** (Substrate), **Language** (Semantics), and **Script** (Execution) must phase-lock at every step of computation.
 
 ---
 
-## 1. System File Manifest
+## 1. Architectural Stratification
 
-### A. The Foundation (Substrate & Geometry)
-*   **`core.py`**: The primary engine (v6.1). Contains the Golay [24,12,8] logic, Leech Lattice Λ₂₄ metrics, and the 13D Sink Protocol for particle physics.
-*   **`physics.py`**: Governs exact rational metrics, NRCI stability formulas, and holographic coherence regimes.
-*   **`geometry.py` & `math_atlas.py`**: Contains the MathAtlas (voxel construction) and HexDictionaryV4Exact (spatial-deterministic identity).
-*   **`constants.py`**: Centralized physical and mathematical constants.
-*   **`ubp_tgic_engine.py`**: The Relational Master Edition of the TGIC engine. Enforces the 3-6-9 UBP laws, internal bit-flows, and cross-node relational gravity.
-*   **`ubp_eml_alu_sovereign.py`**: The Universal Continuous ALU (v9.1). Derives the Triadic Monad and exact particle masses purely from `eml(x,y) = exp(x) - ln(y)`.
+The workspace is organized into four distinct layers, moving from the raw mathematical substrate up to the high-level cognitive orchestrators:
+┌────────────────────────────────────────────────────────────────────────┐
+│ 4. COGNITIVE ORCHESTRATION LAYER                                       │
+│    ubp_swarm_tct_v25.py  |  ubp_v28_oracle.py                          │
+│    Orchestrates multi-agent consensus, solves, and invents formulas.   │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 3. TRANSLATION & EXECUTION LAYER                                       │
+│    ubp_python_engine.py  |  ubp_sovereign_evolver.py                   │
+│    ubp_py_runtime.py     |  ubp_py_lang.py  |  ubppy.py                │
+│    Translates human script to geometry; enforces sovereign math.       │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 2. SEMANTIC & PHENOMENOLOGICAL SENSES                                  │
+│    ubp_semantic_engine.py  |  ubp_semantic_sovereign.py                │
+│    ubp_phenomenology.py    |  ubp_observer_dynamics.py                 │
+│    Maps language to vectors; audits physical reality & coherence.      │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ 1. MATHEMATICAL SUBSTRATE (THE BACKBONE)                               │
+│    ubp_unified_v5.py  |  ubp_eml_alu_sovereign.py                      │
+│    Float-free continued-fraction Pi, Golay/Leech lattices, exact math. │
+└────────────────────────────────────────────────────────────────────────┘
+```
 
-### B. The Cognitive Stack (Recall & Reasoning)
-*   **`ubp_brain_consolidated.py` (v7.2)**: The primary recall engine. Uses N-Gram matching and domain gating to retrieve KB entries with 100% identity lock.
-*   **`ubp_semantic_engine.py` (v8.0)**: The "Thinking" layer. Uses weighted Cosine Resonance to map natural language into the 24-bit substrate.
-*   **`ubp_integrated_engine_v1.py`**: The high-level executive layer bridging the Semantic Brain, Micro-Core, and Macro-Bulk (includes composite scene detection).
-*   **`ubp_moe_cortex_v2.py`**: Mixture of Experts Cortex. Combines a Linguist (N-Gram manifold) and a Physicist (Geometric Auditor) to research and construct sentences.
-*   **`ubp_internal_dialogue_semantic_description.py`**: Deep internal dialogue engine for reflecting on queries, finding physical roots, and identifying lexical gaps.
-*   **`auto_trigger.py` (v19.1)**: The reflexive cortex. Automatically hydrates columnar data and injects relevant context into the AI session.
-*   **`ubp_fom_manager_v2.py`**: Manages "Frames of Mind" (cognitive biases) to weight different geometric domains (e.g., Scientific vs. Semantic).
+---
 
-### C. Runtime & Dynamics (Simulation)
-*   **`ubppy.py`**, **`ubp_py_runtime.py`**, **`ubp_py_lang.py`**: The UBP-Py Virtual Machine, parser, and execution entry point for `.ubp` geometric programs.
-*   **`ubp_observer_dynamics.py` (v7.1)**: Calculates SOC Energy and performs "Conscious READ" audits on vectors against the 1 THz "Wall of Reality".
-*   **`ubp_barnes_wall.py`**: The 256D Macro-Bulk engine used for high-dimensional audits and relative coherence testing.
-*   **`ubp_phenomenology.py`**: Scans external data (like RGB colors) and projects them into the UBP manifold to calculate symmetry tax and stability.
-*   **`ubp_genesis_boot.py`**: The Genesis Boot Engine. Boots the 24-bit universe from scratch using Gray Code Topological Identity.
+## 2. Workspace File Manifest
 
-### D. Visualization & Data Management
-*   **`ubp_viz.py`**, **`viz_loader.py`**, **`viz_spatial_simplification.py`**: Tools for generating, loading, and simplifying 3D manifold visualizations.
-*   **`ubp_rgdl.py`**: Resonance Geometry Definition Language for generating 3D primitives (Spheres, Cubes) colored by Coherence Pressure.
-*   **`ubp_kb_architect.py`**, **`ubp_mog_mapper.py`**, **`ubp_ingest.py`**: Tools for creating, compressing (v9.9 Ultra-Compact Columnar), and safely ingesting Knowledge Base entries.
-*   **`ubp_system_kb.json`**, **`ubp_lang_kb_combined_v4.json`**, **`ubp_python_kb.json`**: The primary memory and lexicon files.
+### Layer 1: The Mathematical Substrate (The Backbone)
+*   **`ubp_unified_v5.py`**: The core engine of the universe. Contains the float-free continued-fraction $\pi$ (50-term), the systematic Golay $[24,12,8]$ code, the Leech Lattice $\Lambda_{24}$ metrics, and the multi-dimensional Barnes-Wall engine (256D/512D/1024D). It also houses the **Topological Tenacity Primality Engine**, which verifies primes natively via neighbor-tension and lock pressure.
+*   **`ubp_eml_alu_sovereign.py`**: The Universal Continuous ALU. Derives the Triadic Monad and exact particle masses purely from the transcendental projection $eml(x,y) = e^x - \ln(y)$ without relying on external floating-point libraries.
 
-### E. Code Evolution & Authoring
-*   **`ubp_python_engine.py`**: The UBP Python Code Engine (UPCE). Generates and self-heals Python code based on semantic intent and geometric stability.
-*   **`ubp_code_evolver.py`**: Automates the evolution and refactoring of workspace files to increase their NRCI.
+### Layer 2: Semantic & Phenomenological Senses
+*   **`ubp_semantic_engine.py`**: The system's memory and dictionary. Uses weighted Cosine Resonance to map natural language queries to 24-bit vectors, retrieving matching concepts from the system and language KBs.
+*   **`ubp_semantic_sovereign.py`**: The cognitive bridge. Contains the `SovereignSemanticAuditor` for performing Lattice-Snaps to verify if a concept is "Phase-Locked" ($\text{NRCI} \ge 0.70$) in reality, and the `TripleDeltaProjector` for generating deterministic formulas from physical signatures.
+*   **`ubp_phenomenology.py`**: The external data bridge. Takes continuous real-world data (like RGB colors) and projects them into the discrete 24-bit UBP manifold to calculate their symmetry tax.
+*   **`ubp_observer_dynamics.py`**: Calculates SOC Energy (Coherence Units) against the 1 THz "Wall of Reality" and performs the "Conscious READ" gate.
 
-### F. Digital Twin Physics Engine (Experiment)
+### Layer 3: Translation & Execution (The Compilers)
+*   **`ubp_python_engine.py`**: The UBP Python Code Engine (UPCE). Maps standard Python keywords to 24-bit physical laws (e.g., `LAW_PY_DEF`) to synthesize code based on geometric stability.
+*   **`ubp_sovereign_evolver.py`**: The "Noumenal Leakage" firewall. Parses the Abstract Syntax Tree (AST) of standard Python scripts, strips out floating-point dependencies (like `math.sin`), and rewires them to the native `GrandUnifiedEmlALU`.
+*   **`ubp_py_runtime.py` & `ubp_py_lang.py`**: The parser and runtime for the UBP-Py Virtual Machine. Executes geometric programs (`.ubp`) as 24-bit vector additions, calculating the Symmetry Tax and NRCI for every variable (`CortexAtom`).
+*   **`ubppy.py`**: The command-line execution wrapper for the UBP-Py VM.
+
+### Layer 4: Cognitive Orchestration (The Brain)
+*   **`ubp_swarm_tct_v25.py`**: The active Swarm Orchestrator (Genesis Edition). Runs a multi-agent loop that extracts mathematical kernels, solves them via the Oracle Bridge, audits their physical reality, and utilizes **Lexical Genesis** to mathematically invent new formulas for unresolved concepts.
+*   **`ubp_v28_oracle.py`**: The logical calculator. Implements the **Two-Track Parallel Solve** (UBP Native vs. SymPy Oracle) and contains the `MathNetKernelExtractor` to strip away English fluff from Olympiad problems.
+
+### External Layer 1: Digital Twin Physics Engine (Experiment)
 Files available in the GitHub repository: https://github.com/DigitalEuan/ubp_digital_twin_physics_engine
 15 April 2026 - A UBP-native physics simulation engine integrating geometric stability with classical and fluid mechanics.
-*   **`ubp_space_v3.py`**: The core 3D simulation space. Handles entity management, dissolution culling, and applies UBP mechanics (TGIC pressure, NRCI damage) to physical bodies.
-*   **`ubp_browser_engine.py`**: The browser-native execution bridge for the physics engine.
-*   **`ubp_physics_v3.py` / `ubp_rigid_body_v3.py`**: Implements Topological Torque rigid body mechanics and exact-fraction collision resolution.
-*   **`ubp_fluid_v3.py`**: Fluid dynamics engine utilizing UBP-derived SPH (Smoothed Particle Hydrodynamics) constants.
-*   **`ubp_materials.py`**: Composite material system defining thermal properties, phase states, and structural density.
+*   **`ubp_space_v3.py`: The core 3D simulation space. Handles entity management, dissolution culling, and applies UBP mechanics (TGIC pressure, NRCI damage) to physical bodies.
+*   **`ubp_browser_engine.py`: The browser-native execution bridge for the physics engine.
+*   **`ubp_physics_v3.py`: `ubp_rigid_body_v3.py`**: Implements Topological Torque rigid body mechanics and exact-fraction collision resolution.
+*   **`ubp_fluid_v3.py`: Fluid dynamics engine utilizing UBP-derived SPH (Smoothed Particle Hydrodynamics) constants.
+*   **`ubp_materials.py`: Composite material system defining thermal properties, phase states, and structural density.
+
+### External Layer 2: 'ubp_backend.py'
+`ubp_backend.py` is a **Flask REST API** designed to act as a high-precision bridge. 
+JavaScript running in a standard web browser has performance and precision limits. It cannot natively run the 50-term continued-fraction $\pi$ with infinite-precision `Fraction` arithmetic, nor can it run the full, heavy Python-based Golay $[24,12,8]$ and Leech $\Lambda_{24}$ lattice search algorithms at scale.
+`ubp_backend.py` is the **Local Research Bridge**. It is used when developing and testing new UBP algorithms locally in the Python environment. 
+1.  **Infinite Precision:** While JavaScript `BigInt` is excellent, Python's `fractions.Fraction` combined with the hardened `ubp_unified_v5.py` backbone allows for infinite-precision symbolic and transcendental calculations that would lag a web browser.
+2.  **The Testing Pipeline:** When writing new Python-based UBP scripts you can run `ubp_backend.py` locally. It allows the user to point the local HTML file to `http://localhost:5099` to instantly verify that a new Python code matches the frontend visualizations 
 
 ---
 
-## 2. Core Workflows
+## 3. Core Workflows & SOPs
 
-### I. Semantic Resolution (Querying the Brain)
-To find the geometric root of a concept:
-1.  Input your query (e.g., "Why is Gold stable?").
-2.  The `ubp_semantic_engine.py` creates a **Query Chord** (weighted superposition of tokens).
-3.  The system performs a **Cosine Resonance** search against the KB.
-4.  The result returns the `ubp_id`, its `NRCI` stability, and a `Semantic Reflection` (the closest human word).
+### SOP_001: The Two-Track Solve (Oracle Bridge)
+To solve and verify any mathematical or physical claim:
+1.  The `MathNetKernelExtractor` isolates the numeric/algebraic kernel from the query.
+2.  **Track A (UBP Native)** computes the result using float-free arithmetic and Gray-codes it to the lattice.
+3.  **Track B (Oracle)** solves the symbolic notation using SymPy.
+4.  The system compares both tracks. If they match, it outputs `BOTH_AGREE` and snaps the result to the Leech Lattice to calculate its true NRCI.
 
-### II. Running Simulations (UBP-Py)
-To simulate the synthesis of matter or recursive growth:
-1.  Create a `.ubp` file (e.g., `synthesis.ubp`).
-2.  Use commands like `IMPORT`, `SYNTH`, and `VISUALIZE`.
-3.  Run via terminal: `python ubppy.py --program synthesis.ubp`.
-4.  Switch to the **Visual** tab to see the 3D manifold.
-
-### III. Observer Audits (The Penta-Audit)
-To analyze the "Reality Status" of an object:
-1.  Run `ubp_observer_dynamics.py`.
-2.  The engine checks if the object's NRCI crosses the **0.70 Consciousness Threshold**.
-3.  It calculates the **SOC Energy** (Coherence Units) based on the 1 THz "Wall of Reality" limit.
+### SOP_002: Lexical Genesis (Triple Delta)
+When the Swarm solves a problem but finds a "Lexical Gap" (no human word exists for that 24-bit state):
+1.  The `TripleDeltaProjector` partitions the 24-bit vector into blocks.
+2.  It generates a deterministic symbolic formula (e.g., `3 * α + 2 * β**2`) based on the active bits of each block.
+3.  This formula is assigned to the vector and saved to `ubp_learned_kb.json`, expanding the system's native language.
 
 ### Using External Dependecies:
 import micropip
@@ -80,35 +99,13 @@ await micropip.install("sympy")
 
 import sympy as sp
 
-# Test that it works
-x = sp.Symbol('x')
-expression = sp.sin(x)**2 + sp.cos(x)**2
-simplified = sp.simplify(expression)
-
-print(f"Original: {expression}")
-print(f"Simplified: {simplified}")
-
 ---
 
-## 3. Standard Operating Procedures (SOP)
+## 4. Visualization & RGDL
+*   **`ubp_rgdl.py`**: The Resonance Geometry Definition Language. Maps 3D voxel coordinates $(x,y,z)$ to 24-bit vectors, snaps them to the Leech Lattice, and colors them by true NRCI stability (Cyan for stable, Magenta/Blue for unstable).
+*   **`viz_spatial_simplification.py`**: Simplifies complex 3D manifolds into stable geometric faces to prevent visual clutter.
 
-### SOP_002: Adding to the Knowledge Base
-To ensure geometric integrity, all new entries must follow this protocol:
-1.  **Math DNA:** Define the object using quantitative, pipe-separated properties.
-2.  **Noumenal Seed:** Generate a 12-bit seed using the `[Domain:3][Magnitude:5][State:4]` Gray Code schema.
-3.  **Golay Encoding:** Pass the seed to `GOLAY_ENGINE.encode()` to get the 24-bit Phenomenal Vector.
-4.  **Metrics:** Calculate NRCI and Symmetry Tax using `LEECH_ENGINE`.
-5.  **Memory:** Generate a 'ubp_system_kb.json' proposal law/entry using 'ubp_kb_architect.py'
-6.  **Migration:** Use `ubp_ingest.py` to safely put the proposed law/entry into the 'ubp_system_kb.json'. `ubp_mog_mapper.py` can be used to compress the entry into the Columnar format.
-
-### SOP_004: The Triple Delta Protocol (Word Creation)
-To create a new semantic operator (Word) that perfectly resolves to a Law:
-1.  **Formula:** $V_{word} = V_{target\_law} \oplus V_{subject\_entity} \oplus V_{interrogative\_frame}$
-2.  This ensures that when the three vectors interact, they collapse into a $d=0$ deterministic match.
-
----
-
-## 4. UBP-Py Language Reference
+## 5. UBP-Py Language Reference
 
 The UBP-Py language translates text commands into VM operations. Programs are written as `.ubp` text files and executed via `python ubppy.py --program myprogram.ubp`.
 
@@ -136,7 +133,7 @@ The UBP-Py language translates text commands into VM operations. Programs are wr
 
 ---
 
-## 5. Stability Thresholds (NRCI)
+## 6. Stability Thresholds (NRCI)
 
 *   **1.0000 (OnBit):** Pure Mathematical/Noumenal Truth.
 *   **0.7000 - 0.9800 (Stable):** Manifested Physical Matter (The "Conscious" Zone).
@@ -145,7 +142,7 @@ The UBP-Py language translates text commands into VM operations. Programs are wr
 
 ---
 
-## 6. Visual Analysis
+## 7. Visual Analysis
 
 1. **Export:** The UBP-Py environment is exported to `scene_3d.json` via `ubp_viz.py` (which is built into the APP).
 Python Script

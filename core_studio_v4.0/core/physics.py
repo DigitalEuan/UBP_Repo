@@ -27,7 +27,7 @@ from dataclasses import dataclass
 from enum import Enum
 from fractions import Fraction
 from typing import Dict, Optional
-from core import BinaryLinearAlgebra, GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE, UBPUltimateSubstrate
+from ubp_unified_v5 import BinaryLinearAlgebra, GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE, UBPUltimateSubstrate
 
 class CoherenceRegime(Enum):
     ONBIT = 'OnBit'
@@ -129,7 +129,7 @@ class UBPMetricsExact:
         # v6.4.0 Ultra-Fine Audit
         if is_quantum:
             # Local import to bypass environment cache issues
-            from core import UBPUltimateSubstrate
+            from ubp_unified_v5 import UBPUltimateSubstrate
             c = UBPUltimateSubstrate.get_v6_constants()
             # Treat variance as Tax for this calculation
             nrci = self.coherence.calculate_holographic_nrci(variance, c)

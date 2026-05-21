@@ -17,7 +17,7 @@ Date: 01 April 2026
 import json
 from fractions import Fraction
 from datetime import datetime
-from core import GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE
+from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE
 
 def to_gray(n: int, bits: int) -> list:
     """Standard Binary to Gray Code conversion."""

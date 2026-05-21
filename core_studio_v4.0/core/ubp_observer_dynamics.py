@@ -7,7 +7,7 @@ Fixed AttributeError by implementing Columnar Hydration for v9.9 KB.
 import json
 import math
 from fractions import Fraction
-from core import GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE
+from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE, SUBSTRATE
 
 class ObserverDynamicsEngine:
     def __init__(self):

@@ -1,5 +1,5 @@
 """
-UBP INTEGRATED ENGINE v3.3 (Composite Scene Edition)
+UBP INTEGRATED ENGINE v3.4 (Composite Scene Edition)
 ====================================================
 The high-level executive layer of the UBP Studio. 
 Bridges the Semantic Brain, the 24D Micro-Core, and the 256D Macro-Bulk.
@@ -19,8 +19,8 @@ import hashlib
 from fractions import Fraction
 from typing import Dict, List, Any
 from ubp_brain_consolidated import UBPBrain, extract_vector, extract_name, extract_nrci
-from core import BinaryLinearAlgebra, GOLAY_ENGINE
-from ubp_barnes_wall import BarnesWallEngine
+from ubp_unified_v5 import BinaryLinearAlgebra, GOLAY_ENGINE
+from ubp_unified_v5 import BarnesWallEngine, GOLAY_ENGINE
 
 def hex_to_bw256(hex_str: str) -> list:
     """Converts a 256-bit SHA-256 hash directly into a 256D lattice coordinate."""
@@ -33,7 +33,7 @@ def hex_to_bw256(hex_str: str) -> list:
 class VitEyesEngine:
     """The Visual Cortex of the UBP."""
     def __init__(self):
-        self.bw = BarnesWallEngine(dimension=256)
+        self.bw = BarnesWallEngine(GOLAY_ENGINE, dimension=256)
         self.golay = GOLAY_ENGINE
 
     def _visual_hash(self, vec_24d: List[int]) -> str:
@@ -70,7 +70,7 @@ class UBPIntegratedEngine:
     def __init__(self):
         self.brain = UBPBrain()
         self.brain.initialize(['ubp_system_kb.json'])
-        self.bw_engine = BarnesWallEngine(dimension=256)
+        self.bw_engine = BarnesWallEngine(GOLAY_ENGINE, dimension=256)
         self.eyes = VitEyesEngine()
         self.COMPLEXITY_THRESHOLD = 0.80 
         print(f"[IntegratedEngine v3.2] Online. Composite Scene Detection Active.")
@@ -157,7 +157,7 @@ class UBPIntegratedEngine:
         
         # 6. Thermodynamic Lens (Pantograph Projection)
         if true_v24:
-            from core import LEECH_ENGINE
+            from ubp_unified_v5 import LEECH_ENGINE
             t_adj = LEECH_ENGINE.calculate_symmetry_tax(true_v24)
             n_macro = Fraction(10, 1) / (Fraction(10, 1) + t_adj)
             response_data["thermo_audit"] = {
