@@ -1,0 +1,149 @@
+/**
+ * NL-TO-MATH EXTRACTOR
+ * JS port of workflow/05_chat_simulation.py nl_to_math() (Study Report §3.6.2)
+ *
+ * Converts natural language queries into UBP math DNA strings for property-based recall.
+ * Returns: { mathStr, mathDict, hasNumeric, queryType }
+ *
+ * queryType: 'property' | 'symbolic' | 'mixed'
+ *   - property → use Gray-code channel (α=0.0)
+ *   - symbolic → use Golay channel (α=1.0)
+ *   - mixed    → blend both (α=0.25)
+ */
+
+// ── Property keyword patterns ─────────────────────────────────────────────────
+const PROPERTY_PATTERNS = [
+  // Mass / molecular weight
+  { key: 'M',        re: /(?:mass|molecular\s+weight|mol(?:ar)?\s+mass|mw|m\s*=)\s*(?:of\s+)?(?:about\s+|around\s+|~\s*|≈\s*)?([+-]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*(?:g\/mol|amu|da|u)?/i },
+  // Boiling point
+  { key: 'BP',       re: /(?:boiling\s+point|bp|boils\s+at)\s*(?:of\s+)?(?:about\s+|around\s+|~\s*|≈\s*)?([+-]?\d+(?:\.\d+)?)\s*(?:k|kelvin)?/i, unitFn: celsiusToKelvin },
+  // Melting point
+  { key: 'MP',       re: /(?:melting\s+point|mp|melts\s+at|freezing\s+point|fp)\s*(?:of\s+)?(?:about\s+|around\s+|~\s*|≈\s*)?([+-]?\d+(?:\.\d+)?)\s*(?:k|kelvin)?/i, unitFn: celsiusToKelvin },
+  // Atomic number
+  { key: 'Z',        re: /atomic\s+number\s*(?:of\s+)?(?:about\s+)?([+-]?\d+)/i },
+  // Electronegativity
+  { key: 'EN',       re: /electronegativity\s*(?:of\s+)?(?:about\s+|~\s*)?([+-]?\d+(?:\.\d+)?)/i },
+  // Density
+  { key: 'Rho',      re: /density\s*(?:of\s+)?(?:about\s+|~\s*|≈\s*)?([+-]?\d+(?:\.\d+)?)\s*(?:g\/cm|g\/ml|kg\/m)/i },
+  { key: 'Density',  re: /density\s*(?:of\s+)?(?:about\s+|~\s*|≈\s*)?([+-]?\d+(?:\.\d+)?)\s*(?:g\/cm|g\/ml|kg\/m)/i },
+  // Dipole moment
+  { key: 'Dipole',   re: /dipole\s*(?:moment)?\s*(?:of\s+)?(?:about\s+|~\s*)?([+-]?\d+(?:\.\d+)?)\s*(?:d|debye)?/i },
+  // pKa
+  { key: 'pKa1',     re: /pka\s*(?:of\s+)?(?:about\s+|~\s*)?([+-]?\d+(?:\.\d+)?)/i },
+  // Ionisation energy
+  { key: 'Ion',      re: /ion(?:i[sz]ation)?\s+energy\s*(?:of\s+)?(?:about\s+|~\s*|≈\s*)?([+-]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*(?:kj\/mol|ev)?/i },
+  // Atomic radius
+  { key: 'Rad',      re: /(?:atomic\s+)?radius\s*(?:of\s+)?(?:about\s+|~\s*)?([+-]?\d+(?:\.\d+)?)\s*(?:pm|picometer)?/i },
+  // Valence electrons
+  { key: 'Valence_e',re: /valence\s+electrons?\s*(?:of\s+|=\s*)?([+-]?\d+)/i },
+  // Atomic number (also handle Z=N shorthand)
+  { key: 'Z',        re: /\bZ\s*=\s*(\d+)/i },
+  // Oxidation state
+  { key: 'Oxidation',re: /oxidation\s+state\s*(?:of\s+|=\s*)?([+-]?\d+)/i },
+];
+
+// Phase patterns → Phase_STP and Phase values (1=gas, 2=liquid, 3=solid)
+const PHASE_KEYWORDS = [
+  { re: /\bgas\b|\bgaseous\b/i,    value: 1 },
+  { re: /\bliquid\b|\bfluid\b/i,    value: 2 },
+  { re: /\bsolid\b|\bcrystal/i,     value: 3 },
+];
+
+// Qualitative property inference
+const QUALITATIVE_RULES = [
+  { re: /\bpolar\b/i,               key: 'Dipole', value: 2.0 },
+  { re: /\bnonpolar\b|\bnon-polar\b/i, key: 'Dipole', value: 0.2 },
+  { re: /\bacid(?:ic)?\b/i,         key: 'pKa1',   value: 5.0 },
+  { re: /\bbase\b|\bbasic\b|\balkali/i, key: 'pKa1', value: 12.0 },
+  { re: /\bheavy\b/i,               key: 'M',      value: 150.0 },
+  { re: /\blight\b|\bhydrogen/i,    key: 'M',      value: 2.0 },
+  { re: /\bhigh\s+boiling\b/i,      key: 'BP',     value: 450 },
+  { re: /\blow\s+boiling\b/i,       key: 'BP',     value: 200 },
+];
+
+// Temperature: if value looks like Celsius (< 200 and context says °C or "degrees")
+function celsiusToKelvin(val, rawText) {
+  if (/°c|celsius|degree\s*c/i.test(rawText)) return val + 273.15;
+  // Heuristic: if value < 200 and no K/kelvin mentioned, might be Celsius
+  if (val < 200 && !/\bk\b|\bkelvin\b/i.test(rawText)) return val + 273.15;
+  return val;
+}
+
+// Qualitative crystal structure
+const CRYSTAL_KEYWORDS = [
+  { re: /\bcubic\b|\bfcc\b|\bbcc\b/i, value: 1 },
+  { re: /\bhexagonal\b|\bhcp\b/i,     value: 2 },
+  { re: /\btetragonal\b/i,            value: 3 },
+  { re: /\borthorhombic\b/i,          value: 4 },
+  { re: /\bmonoclinic\b/i,            value: 5 },
+  { re: /\btrigonal\b|\brhombohedral\b/i, value: 6 },
+  { re: /\btriclinic\b/i,             value: 7 },
+  { re: /\bamorphous\b/i,             value: 8 },
+];
+
+// Symbolic query indicators — these suggest the Golay channel
+const SYMBOLIC_PATTERNS = [
+  /\bwhy\b|\bhow\s+does\b|\bexplain\b|\bwhat\s+is\b|\bdefine\b/i,
+  /\bbond\b|\bstructure\b|\borbital\b|\bquantum\b|\bgolay\b|\bleech\b|\bnrci\b/i,
+  /\bhistory\b|\bdiscovery\b|\bnamed\s+after\b|\bwho\b|\bpurpose\b/i,
+  /\bprinciple\b|\blaw\b|\btheory\b|\baxiom\b|\bconjecture\b/i,
+];
+
+/**
+ * Extract math properties from a natural language query.
+ * Returns:
+ *   mathDict: { M: 18.015, BP: 373.15, ... }  (only present properties)
+ *   mathStr: "M=18.015|BP=373.15"
+ *   hasNumeric: boolean
+ *   queryType: 'property' | 'symbolic' | 'mixed'
+ */
+export function extractMathFromNL(query) {
+  const mathDict = {};
+  const queryLower = query.toLowerCase();
+
+  // 1. Numeric property extraction
+  for (const { key, re, unitFn } of PROPERTY_PATTERNS) {
+    const m = query.match(re);
+    if (m && !isNaN(parseFloat(m[1]))) {
+      let val = parseFloat(m[1]);
+      if (unitFn) val = unitFn(val, query);
+      if (!mathDict[key]) mathDict[key] = val; // first match wins
+    }
+  }
+
+  // 2. Phase extraction
+  for (const { re, value } of PHASE_KEYWORDS) {
+    if (re.test(query)) {
+      if (!mathDict['Phase_STP']) mathDict['Phase_STP'] = value;
+      if (!mathDict['Phase']) mathDict['Phase'] = value;
+    }
+  }
+
+  // 2b. Crystal structure extraction
+  for (const { re, value } of CRYSTAL_KEYWORDS) {
+    if (re.test(query) && mathDict['Crystal'] === undefined) {
+      mathDict['Crystal'] = value;
+    }
+  }
+
+  // 3. Qualitative rule inference (only if no numeric value for that key yet)
+  for (const { re, key, value } of QUALITATIVE_RULES) {
+    if (re.test(query) && mathDict[key] === undefined) {
+      mathDict[key] = value;
+    }
+  }
+
+  // 4. Build math string
+  const parts = Object.entries(mathDict).map(([k, v]) => `${k}=${v.toFixed(4)}`);
+  const mathStr = parts.join('|');
+  const hasNumeric = Object.keys(mathDict).length > 0;
+
+  // 5. Determine query type
+  const isSymbolic = SYMBOLIC_PATTERNS.some(re => re.test(query));
+  let queryType;
+  if (hasNumeric && isSymbolic) queryType = 'mixed';
+  else if (hasNumeric) queryType = 'property';
+  else queryType = 'symbolic';
+
+  return { mathDict, mathStr, hasNumeric, queryType };
+}

@@ -1,0 +1,287 @@
+/**
+ * UBP TGIC ENGINE v6.2 — JS Port
+ * 
+ * Ports three key systems from core.txt + ubp_tgic_engine.txt:
+ *
+ *  1. TGIC 3-6-9 Audit (TGICConstraintSystem)
+ *     • [THE 3] 3-axis orthogonality: split 24-bit vec into X[0-7]/Y[8-15]/Z[16-23]
+ *              Ideal Hamming distance between each pair = 4. Score = 1/(1+deviation×Y)
+ *     • [THE 6] 6-face coherence: RuneCube AND/XOR/OR rune ops on each axis pair
+ *              → Leech tax on resulting vectors → coherence score
+ *     • [THE 9] 9-neighbor limit: penalise if more than 9 vectors within Hamming=8
+ *     Combined: total_stability = (ortho + face + base_nrci) / 3 − pressure
+ *
+ *  2. Shadow Processor (ShadowProcessor)
+ *     • Splits 24-bit Golay into 12-bit Noumenal (hidden, bits 0-11)
+ *       and 12-bit Phenomenal (observable, bits 12-23)
+ *     • Noumenal = structural/causal capacity; Phenomenal = observable properties
+ *     • Used to weight scoring: symbolic queries emphasise noumenal,
+ *       property queries emphasise phenomenal
+ *
+ *  3. Relational Pull (TGICRelationalGravity)
+ *     • Hamming-weighted attraction between a query's top result and all candidates
+ *     • pull(target, candidate) = Σ 1/(hamming+1) × Y_LEECH
+ *     • Used to surface the "correct but lower-ranked" memory — fixes the
+ *       problem where the right answer is in the related pool but missed
+ *     • Returns all candidates sorted by relational pull, not just top-10
+ *
+ * Author: E R A Craig — JS port v6.2, May 2026
+ */
+
+import { Y_OBSERVER, Y_LEECH } from './BarnesWallEngine';
+
+// ── TGIC Y constant (same as Y_LEECH — Y in the Python source) ───────────────
+const Y_TGIC = Y_LEECH; // ≈ 0.2647
+
+// ── Hamming distance between two 24-bit arrays ────────────────────────────────
+function hammingDist(a, b) {
+  let d = 0;
+  for (let i = 0; i < Math.min(a.length, b.length); i++) if (a[i] !== b[i]) d++;
+  return d;
+}
+
+// ── RuneCube face operations (from TGICInteractionEngine) ─────────────────────
+// These operate on 24-bit vectors split into 3×8-bit axes X/Y/Z
+function runeResonanceXY(v) {
+  // AND logic: X and Y axes converge
+  const x = v.slice(0, 8), y = v.slice(8, 16), z = v.slice(16, 24);
+  const newX = x.map((a, i) => a & y[i]);
+  return [...newX, ...newX, ...z];
+}
+
+function runeEntangleXZ(v) {
+  // XOR logic: X and Z axes differentiate
+  const x = v.slice(0, 8), y = v.slice(8, 16), z = v.slice(16, 24);
+  const newZ = x.map((a, i) => a ^ z[i]);
+  return [...x, ...y, ...newZ];
+}
+
+function runeExpandYZ(v) {
+  // OR logic: Y and Z axes unify
+  const x = v.slice(0, 8), y = v.slice(8, 16), z = v.slice(16, 24);
+  const newY = y.map((a, i) => a | z[i]);
+  return [...x, ...newY, ...z];
+}
+
+// ── Simple Leech symmetry tax for 24-bit binary vectors ──────────────────────
+// (same formula as LeechSelf.symmetryTax but on binary 0/1 vectors)
+function binarySymmetryTax(v24) {
+  const hw = v24.reduce((s, b) => s + b, 0);
+  const normSq = hw; // for binary {0,1} vectors, ‖v‖² = hw
+  return hw * Y_TGIC + normSq / 8;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  TGIC CONSTRAINT SYSTEM — The Genesis Logic
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export class TGICConstraintSystem {
+  /**
+   * [THE 3] — 3-axis orthogonality score
+   * Splits the 24-bit vector into 3×8-bit blocks (X, Y, Z).
+   * Ideal Hamming distance between each pair = 4 (balanced separation).
+   * Score = 1 / (1 + total_deviation × Y_TGIC)
+   */
+  static check3AxisOrthogonality(v24) {
+    if (!v24 || v24.length !== 24) return 0.5;
+    const x = v24.slice(0, 8), y = v24.slice(8, 16), z = v24.slice(16, 24);
+    const dXY = Math.abs(4 - hammingDist(x, y));
+    const dXZ = Math.abs(4 - hammingDist(x, z));
+    const dYZ = Math.abs(4 - hammingDist(y, z));
+    const totalDev = dXY + dXZ + dYZ;
+    return 1 / (1 + totalDev * Y_TGIC);
+  }
+
+  /**
+   * [THE 6] — 6-face coherence score
+   * Applies the 3 RuneCube face operations (AND, XOR, OR) and measures
+   * the Leech symmetry tax of each resulting vector.
+   * Score = 10 / (10 + mean_tax)
+   */
+  static check6FaceCoherence(v24) {
+    if (!v24 || v24.length !== 24) return 0.5;
+    const vXY = runeResonanceXY(v24);
+    const vXZ = runeEntangleXZ(v24);
+    const vYZ = runeExpandYZ(v24);
+    const taxSum = binarySymmetryTax(vXY) + binarySymmetryTax(vXZ) + binarySymmetryTax(vYZ);
+    return 10 / (10 + taxSum / 3);
+  }
+
+  /**
+   * [THE 9] — 9-neighbor pressure
+   * Counts how many candidate vectors are within Hamming distance 8.
+   * Returns a positive penalty if neighbors > 9.
+   * pressure = max(0, neighbors - 9) × Y_TGIC
+   */
+  static check9NeighborPressure(target, manifoldVectors) {
+    if (!manifoldVectors || manifoldVectors.length === 0) return 0;
+    const neighbors = manifoldVectors.filter(v => hammingDist(target, v) <= 8).length;
+    return Math.max(0, neighbors - 9) * Y_TGIC;
+  }
+
+  /**
+   * Master 3-6-9 stability audit for a single 24-bit vector.
+   * Returns a combined score in [0, 1] (higher = more stable).
+   * 
+   * total_stability = (ortho + face + base_nrci) / 3 − pressure
+   */
+  static auditStability(v24, manifoldVectors = [], baseNrci = 0.5) {
+    const ortho    = this.check3AxisOrthogonality(v24);
+    const face     = this.check6FaceCoherence(v24);
+    const pressure = this.check9NeighborPressure(v24, manifoldVectors);
+    return Math.max(0, Math.min(1, (ortho + face + baseNrci) / 3 - pressure));
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  SHADOW PROCESSOR — Noumenal / Phenomenal split
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export class ShadowProcessor {
+  /**
+   * Splits a 24-bit Golay codeword into:
+   *   Noumenal (bits 0-11)  — hidden/structural capacity (message bits)
+   *   Phenomenal (bits 12-23) — observable/property side (parity bits)
+   * 
+   * Returns shadow metrics matching core.txt::GolayCodeEngine.get_shadow_metrics()
+   */
+  static split(v24) {
+    if (!v24 || v24.length !== 24) return { noumenal: [], phenomenal: [], balance: 0.5 };
+    const noumenal   = v24.slice(0, 12);
+    const phenomenal = v24.slice(12, 24);
+    const nHW = noumenal.reduce((s, b) => s + b, 0);
+    const pHW = phenomenal.reduce((s, b) => s + b, 0);
+    const total = nHW + pHW;
+    return {
+      noumenal,
+      phenomenal,
+      noumenal_hw:   nHW,
+      phenomenal_hw: pHW,
+      // balance: 0.5 = perfectly split, <0.5 = noumenal dominant, >0.5 = phenomenal dominant
+      balance: total > 0 ? pHW / total : 0.5,
+      // shadow_ratio = noumenal : phenomenal capacity (always 1:1 for Golay)
+      shadow_ratio: '1:1 (12-bit Noumenal + 12-bit Phenomenal)',
+    };
+  }
+
+  /**
+   * Shadow-weighted cosine similarity.
+   * For symbolic queries (α→1.0): weight noumenal bits more (structural meaning).
+   * For property queries (α→0.0): weight phenomenal bits more (observable properties).
+   * 
+   * Returns a cosine-like similarity in [-1, 1] mapped to [0, 1].
+   */
+  static shadowCosineSim(a24, b24, alpha = 0.5) {
+    if (!a24 || !b24 || a24.length !== 24) return 0;
+    // FIXED v7.2: sigmoid-sharpened alpha to prevent "Noumenal Leakage"
+    // Makes symbolic channel much more aggressive at alpha→1 (e.g. "Why?" queries)
+    const sharpAlpha = 1 / (1 + Math.exp(-10 * (alpha - 0.5)));
+    const wN = 0.5 + 0.5 * sharpAlpha;  // sigmoid-boosted noumenal weight
+    const wP = 1.0 - wN;
+
+    let dot = 0, magA = 0, magB = 0;
+    for (let i = 0; i < 24; i++) {
+      const w  = i < 12 ? wN : wP;
+      const ba = (2 * a24[i] - 1) * w;
+      const bb = (2 * b24[i] - 1) * w;
+      dot  += ba * bb;
+      magA += ba * ba;
+      magB += bb * bb;
+    }
+    if (magA === 0 || magB === 0) return 0;
+    const cosine = dot / (Math.sqrt(magA) * Math.sqrt(magB));
+    return (cosine + 1) / 2; // map [-1,1] → [0,1]
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  TGIC RELATIONAL GRAVITY — Cross-entry Hamming attraction
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export class TGICRelationalGravity {
+  /**
+   * Computes the relational pull of a candidate vector toward a target vector.
+   * Formula: pull = 1/(hamming+1) × Y_LEECH
+   * 
+   * Higher pull = closer in Hamming space = more geometrically related.
+   * This is the key fix for problem 2: surfaces candidates that scored lower
+   * but are geometrically adjacent to the top result.
+   */
+  static pull(targetVec, candidateVec) {
+    if (!targetVec || !candidateVec) return 0;
+    const dist = hammingDist(targetVec, candidateVec);
+    return Y_LEECH / (dist + 1);
+  }
+
+  /**
+   * Ranks all result entries by their relational pull to the top result's vector.
+   * Returns entries sorted by pull descending, with pull scores attached.
+   * 
+   * This replaces the naive `results.slice(1, 10)` — instead we:
+   *   1. Compute pull of EVERY candidate to the top-1 vector
+   *   2. Sort by pull descending
+   *   3. Return up to maxResults with pull score attached
+   * 
+   * Entries with identical pull (same Hamming distance) are stable-sorted
+   * by their original score to break ties deterministically.
+   */
+  static rankByPull(topVec, candidates, extractVecFn, maxResults = 20) {
+    if (!topVec || !candidates || candidates.length === 0) return [];
+
+    const scored = candidates.map(entry => {
+      const vec = extractVecFn(entry);
+      const dist = vec ? hammingDist(topVec, vec) : 99;
+      const pull = Y_LEECH / (dist + 1);
+      // FIXED v7.2: include NRCI as tie-breaker to prevent "Lattice Ghosting"
+      // when two entries sit at identical Hamming distance, prefer the more stable one
+      const nrci = entry.nrci_val || (entry.atlas?.nrci_score) || 0.5;
+      return { entry, pull, dist, nrci };
+    });
+
+    // Sort: pull (primary) → NRCI (secondary) for tie-breaking at equal Hamming distance
+    scored.sort((a, b) => {
+      if (Math.abs(b.pull - a.pull) > 1e-9) return b.pull - a.pull;
+      return b.nrci - a.nrci; // FIXED: NRCI tie-breaker
+    });
+
+    return scored.slice(0, maxResults);
+  }
+
+  /**
+   * Computes total relational energy of a manifold (sum of all pairwise pulls).
+   * Used for reporting manifold coherence in Collected Thoughts.
+   */
+  static manifoldCoherence(vectors) {
+    if (!vectors || vectors.length < 2) return 0;
+    let total = 0;
+    let pairs = 0;
+    for (let i = 0; i < vectors.length; i++) {
+      for (let j = i + 1; j < vectors.length; j++) {
+        total += this.pull(vectors[i], vectors[j]);
+        pairs++;
+      }
+    }
+    return pairs > 0 ? total / pairs : 0;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  DQI — Design Quality Index (from UBPQualityMetrics in core.txt)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export class DQIMetrics {
+  /**
+   * Weighted harmonic mean of:
+   *   nrci     — geometric stability (weight 0.40)
+   *   utility  — semantic match quality (weight 0.40)
+   *   gap      — lexical gap coverage (weight 0.20)
+   * 
+   * Returns a single quality score in [0, 1].
+   */
+  static calculateDQI(nrci, utility, gap) {
+    const e = 1e-6;
+    const wN = 0.40, wU = 0.40, wT = 0.20;
+    const dqi = (wN + wU + wT) / (wN / Math.max(e, nrci) + wU / Math.max(e, utility) + wT / Math.max(e, gap));
+    return Math.min(1, parseFloat(dqi.toFixed(4)));
+  }
+}

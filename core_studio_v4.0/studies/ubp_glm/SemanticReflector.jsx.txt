@@ -1,0 +1,125 @@
+/**
+ * UBP SEMANTIC REFLECTOR — JS port of ubp_semantic_engine.py
+ *
+ * After a physical/numeric entity is retrieved, this module "reflects" its
+ * Golay vector back through the Language KB to find the closest semantic
+ * operator (OP_*) — bridging the physical world to geometric meaning.
+ *
+ * Also implements the MOG (Moiré Ontological Geometry) active-category
+ * synthesis from auto_trigger.py, enriching context with active tensor fields.
+ *
+ * Author: E R A Craig — ported to JS by UBP GLM v7.0
+ * Date: May 2026
+ */
+
+// MOG tensor category labels (24 positions — from ubp_kb_architect.py)
+export const MOG_CATEGORIES = [
+  'SUBSTANCE','MECHANISM','ORGANISM','ALGORITHM','QUANTITY','IMPERATIVE',
+  'ENTROPY','MEANING','BINDING','CAUSALITY','SYMMETRY','EMERGENCE',
+  'INFORMATION','TOPOLOGY','COHERENCE','RESONANCE','FIELD','PARTICLE',
+  'WAVE','OBSERVER','MEMORY','LANGUAGE','MATHEMATICS','CONSCIOUSNESS'
+];
+
+// ── Cosine similarity (bipolar) ───────────────────────────────────────────────
+function cosineSim(v1, v2) {
+  if (!v1 || !v2 || v1.length !== v2.length) return 0;
+  let dot = 0, m1 = 0, m2 = 0;
+  for (let i = 0; i < v1.length; i++) {
+    dot += v1[i] * v2[i];
+    m1  += v1[i] * v1[i];
+    m2  += v2[i] * v2[i];
+  }
+  return (m1 === 0 || m2 === 0) ? 0 : dot / (Math.sqrt(m1) * Math.sqrt(m2));
+}
+
+/**
+ * Reflect: given a 24-bit Golay vector (from a physical/numeric match),
+ * find the best matching OP_* language operator.
+ *
+ * Returns { word: string, score: float, uid: string }
+ */
+export function reflectMeaning(vec24, langVectors) {
+  if (!vec24 || !langVectors) return null;
+  // Convert to bipolar
+  const bpVec = vec24.map(b => 2 * b - 1);
+  let bestWord = 'Unknown', bestScore = -1, bestUid = null;
+
+  for (const [uid, v] of Object.entries(langVectors)) {
+    if (!uid.startsWith('OP_')) continue;
+    const sim = cosineSim(bpVec, v);
+    if (sim > bestScore) {
+      bestScore = sim;
+      bestUid   = uid;
+      bestWord  = uid.replace('OP_', '').replace(/_/g, ' ').toLowerCase()
+                     .replace(/\b\w/g, c => c.toUpperCase());
+    }
+  }
+  // FIXED v7.2: Lexical Gap Threshold — below 0.45 = "Undefined Geometric State"
+  const GAP_THRESHOLD = 0.45;
+  const isLexicalGap = bestScore < GAP_THRESHOLD;
+  return {
+    word: isLexicalGap ? 'Undefined Geometric State' : bestWord,
+    score: bestScore,
+    uid: bestUid,
+    isLexicalGap,
+  };
+}
+
+/**
+ * MOG active categories: given a mog_tensor (24-element array from the KB entry),
+ * return the labels of active (non-zero) positions.
+ * From auto_trigger.py → synth_context → active_cats logic.
+ */
+/**
+ * FIXED v7.2: Handles nested MOG tensors from v9.9 Columnar KB.
+ * A tensor slot may be a number, string, or nested array.
+ */
+export function getActiveMogCategories(mogTensor) {
+  if (!Array.isArray(mogTensor)) return [];
+  return mogTensor
+    .map((val, i) => {
+      const isActive = Array.isArray(val)
+        ? val.some(v => v !== 0 && v !== '' && v !== null)
+        : (val !== 0 && val !== null && val !== '');
+      return (isActive && i < MOG_CATEGORIES.length) ? MOG_CATEGORIES[i] : null;
+    })
+    .filter(Boolean);
+}
+
+/**
+ * Full semantic reflection report for a list of result entries.
+ * Returns array of { uid, reflection, mogCats } for enriching the response.
+ */
+export function buildReflections(results, langVectors, kbData) {
+  return results.slice(0, 3).map(r => {
+    const entry  = r.entry;
+    const vec24  = entry?.vector || entry?.atlas?.vector;
+    const mog    = entry?.mog_tensor;
+
+    const reflection = vec24 ? reflectMeaning(vec24, langVectors) : null;
+    const mogCats    = mog    ? getActiveMogCategories(mog) : [];
+
+    return {
+      uid:        r.uid,
+      reflection: reflection ? `Resonates with geometric operator: **${reflection.word}** (${(reflection.score * 100).toFixed(1)}% bridge)` : null,
+      mogCats,
+    };
+  });
+}
+
+/**
+ * Build bipolar lang vectors map from KB data (OP_* entries only).
+ * Call once after KB load, cache the result.
+ */
+export function buildLangVectors(kbData) {
+  const langVectors = {};
+  for (const entry of Object.values(kbData)) {
+    const uid = entry.ubp_id || '';
+    if (!uid.startsWith('OP_')) continue;
+    const v = entry.vector || entry?.atlas?.vector;
+    if (Array.isArray(v) && v.length === 24) {
+      langVectors[uid] = v.map(b => 2 * b - 1); // bipolar
+    }
+  }
+  return langVectors;
+}

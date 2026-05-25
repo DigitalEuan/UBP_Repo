@@ -1,0 +1,97 @@
+/**
+ * UBP REASONING ENGINE — Compatibility Shim v3.0
+ *
+ * RATIONALE
+ * ─────────
+ * The previous DeltaReasoningEngine had a hard-coded 20-entry `_seedKnowledgeBase`
+ * that was a placeholder seed. That stub is no longer compatible with the
+ * v7.2+ architecture, where the real reasoning engine is UBPEngineV3:
+ *   • Loads 800+ entries from system_kb + beliefs_kb + lang_kb_combined_v4
+ *   • Performs Identity Lock (Trigram → Bigram → Unigram cascade)
+ *   • Runs the tri-channel score (Golay + Gray-code + Barnes-Wall)
+ *   • Reflects through the OP_ language manifold (SemanticReflector)
+ *   • Routes math queries through NoiseCore ALU + Swarm Router
+ *
+ * This module is a thin compatibility layer that re-exports the V3 engine
+ * under the legacy class name `DeltaReasoningEngine`, so any existing code
+ * that imports from here continues to compile unchanged.
+ *
+ * For new code: import directly from './UBPEngineV3'.
+ */
+
+import {
+  UBPEngineV3,
+  getEngine as _getEngineV3,
+  initializeEngine as _initEngineV3,
+  extractName,
+} from './UBPEngineV3';
+
+import {
+  hammingDistance,
+  hashWordSync,
+  vectorToBits,
+  vectorToHex,
+  getDomain,
+  DOMAINS,
+  DOMAIN_CHARS,
+  createLexicon,
+} from './UBPLexicon';
+
+/**
+ * Legacy class name kept for backward compatibility.
+ * Wraps UBPEngineV3 and exposes the v6-era public API.
+ */
+export class DeltaReasoningEngine extends UBPEngineV3 {
+  constructor() {
+    super();
+    this.lexicon = createLexicon();
+  }
+
+  /**
+   * Legacy alias for initialize().
+   * Optional `lexiconData` is accepted for backward compat but KB loading
+   * is always handled by UBPEngineV3 → UBPSystemKB.
+   */
+  async initialize(lexiconData = null) {
+    if (lexiconData) this.lexicon.loadSync(lexiconData);
+    return super.initialize();
+  }
+
+  /** Legacy word lookup — uses canonical Gray-code topological identity. */
+  lookupWord(word) {
+    return this.lexicon.lookupSync(word);
+  }
+
+  /** Legacy alias for conversation history access. */
+  getConversationHistory() {
+    return (this.context && Array.isArray(this.context.turns))
+      ? this.context.turns
+      : [];
+  }
+}
+
+// ── Singleton helpers (preserved API) ────────────────────────────────────────
+let _engineInstance = null;
+
+export function getEngine() {
+  if (!_engineInstance) _engineInstance = new DeltaReasoningEngine();
+  return _engineInstance;
+}
+
+export async function initializeEngine(lexiconData) {
+  const eng = getEngine();
+  if (!eng.initialized) await eng.initialize(lexiconData);
+  return eng;
+}
+
+// ── Re-export helpers (so legacy `import { hammingDistance } from './UBPReasoningEngine'` works) ──
+export {
+  hammingDistance,
+  hashWordSync,
+  vectorToBits,
+  vectorToHex,
+  getDomain,
+  DOMAINS,
+  DOMAIN_CHARS,
+  extractName,
+};

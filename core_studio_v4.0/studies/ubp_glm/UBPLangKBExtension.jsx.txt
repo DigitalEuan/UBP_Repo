@@ -1,0 +1,607 @@
+/**
+ * UBP LANGUAGE KB — EXTENSION v4 (60 new semantic operator entries)
+ *
+ * All 24-bit vectors are valid Golay G24 codewords derived using the canonical
+ * Conway & Sloane parity matrix B (same matrix used in UBPEngineV3).
+ *
+ * Construction: c = [m | mB mod 2] where each codeword is XOR-composed from
+ * the 12 basis vectors e0..e11 (single-bit messages). Every resulting codeword
+ * has Hamming weight ∈ {8, 12} and minimum inter-codeword distance ≥ 8.
+ *
+ * Groups:
+ *   A — Extended Query Operators      (OP_WHICH, OP_IS, OP_NOT, OP_AND, OP_OR, OP_IMPLIES)
+ *   B — Relational Operators          (OP_COMPARE, OP_CONTAINS, OP_PART_OF, OP_CAUSES,
+ *                                      OP_ENABLES, OP_PREVENTS, OP_EQUAL, OP_GREATER)
+ *   C — Physical Process Operators    (OP_EMIT, OP_ABSORB, OP_TRANSFER, OP_DECAY,
+ *                                      OP_REACT, OP_DIFFUSE, OP_CONDENSE, OP_EVAPORATE,
+ *                                      OP_IONISE, OP_CATALYSE, OP_OSCILLATE, OP_ROTATE)
+ *   D — Property Query Operators      (OP_PROP_CHARGE, OP_PROP_SPIN, OP_PROP_TEMPERATURE,
+ *                                      OP_PROP_PRESSURE, OP_PROP_ENERGY, OP_PROP_MOMENTUM,
+ *                                      OP_PROP_FORCE, OP_PROP_FREQUENCY, OP_PROP_WAVELENGTH,
+ *                                      OP_PROP_CONDUCTIVITY, OP_PROP_MAGNETISM)
+ *   E — Quantum Operators             (OP_ENTANGLE, OP_SUPERPOSE, OP_COLLAPSE, OP_MEASURE,
+ *                                      OP_TUNNEL, OP_EXCITE, OP_DECOHERE)
+ *   F — Scale / Structure Operators   (OP_ATOMIC, OP_MOLECULAR, OP_NUCLEAR, OP_QUANTUM_SCALE,
+ *                                      OP_MACRO, OP_LATTICE, OP_SYMMETRY, OP_PERIODIC,
+ *                                      OP_CONSERVE)
+ *   G — Mathematical / Geometric      (OP_DIMENSION, OP_TOPOLOGY, OP_GROUP, OP_RING,
+ *                                      OP_FIELD, OP_VECTOR, OP_MATRIX)
+ */
+
+// Standard NRCI rational constants (same as v3 entries)
+const NRCI_WT8  = { nrci: "403444893430547524070884368918423718209681608902836667575630/529214943424193212713164429654199740969412272217383116120321", nrci_score: 0.762346, weight: 8  };
+const NRCI_WT12 = { nrci: "268963262287031682713922912612282478806454405935224445050420/394733312280677371356202973348058501566185069249770893595111", nrci_score: 0.68138,  weight: 12 };
+const TAX_WT8   = "125770049993645688642280060735776022759730663314546448544691/40344489343054752407088436891842371820968160890283666757563";
+const TAX_WT12  = "125770049993645688642280060735776022759730663314546448544691/26896326228703168271392291261228247880645440593522444505042";
+
+// ── Helper: build atlas block ─────────────────────────────────────────────────
+function atl(vec, tilt, useWt12 = false) {
+  const nrciData = useWt12 ? NRCI_WT12 : NRCI_WT8;
+  return {
+    hierarchy: "semantic_operator",
+    vector: vec,
+    nrci: nrciData.nrci,
+    nrci_score: nrciData.nrci_score,
+    tax: useWt12 ? TAX_WT12 : TAX_WT8,
+    weight: nrciData.weight,
+    tilt,
+  };
+}
+
+// ── Extension KB ──────────────────────────────────────────────────────────────
+export const LANG_KB_EXTENSION = {
+
+  // ══ GROUP A: Extended Query Operators ══════════════════════════════════════
+
+  "b2c3d4e5f6071819202122230a0b0c0d0e0f101112131415161718192021222324": {
+    ubp_id: "OP_WHICH",
+    lexicon: "[Operator: Which], The query of comparative selection and ranked choice.",
+    math: "Selection=1|Comparison=1|Rank=1",
+    atlas: atl([1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,1,1,0,1], 37.5),
+    tags: ["HARDENED","MEANING","OPERATOR","QUERY","SOP_002"],
+    fingerprint: "b2c3d4e5f6071819202122230a0b0c0d0e0f101112131415161718192021222324",
+  },
+
+  "c3d4e5f6a70819202122230a0b0c0d0e0f10111213141516171819202122232401": {
+    ubp_id: "OP_IS",
+    lexicon: "[Operator: Is], The assertion of identity, existence, and truth.",
+    math: "Identity=1|State=1|Truth=1",
+    atlas: atl([1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,1,0,1,0], 75.0),
+    tags: ["HARDENED","MEANING","OPERATOR","QUERY","SOP_002"],
+    fingerprint: "c3d4e5f6a70819202122230a0b0c0d0e0f10111213141516171819202122232401",
+  },
+
+  "d4e5f6a7b80919202122230a0b0c0d0e0f10111213141516171819202122232402": {
+    ubp_id: "OP_NOT",
+    lexicon: "[Operator: Not], The operation of logical negation and boolean inversion.",
+    math: "Negation=1|Inversion=1|Logic=-1",
+    atlas: atl([1,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,1,0,0], 112.5),
+    tags: ["HARDENED","MEANING","OPERATOR","LOGIC","SOP_002"],
+    fingerprint: "d4e5f6a7b80919202122230a0b0c0d0e0f10111213141516171819202122232402",
+  },
+
+  "e5f6a7b8c90a19202122230a0b0c0d0e0f10111213141516171819202122232403": {
+    ubp_id: "OP_AND",
+    lexicon: "[Operator: And], The logical conjunction of two or more conditions.",
+    math: "Set=Intersection|Logic=1|Conjunction=1",
+    atlas: atl([1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,1,0,0,1], 150.0),
+    tags: ["HARDENED","MEANING","OPERATOR","LOGIC","SOP_002"],
+    fingerprint: "e5f6a7b8c90a19202122230a0b0c0d0e0f10111213141516171819202122232403",
+  },
+
+  "f6a7b8c9d00b19202122230a0b0c0d0e0f10111213141516171819202122232404": {
+    ubp_id: "OP_OR",
+    lexicon: "[Operator: Or], The logical disjunction of two or more conditions.",
+    math: "Set=Union|Logic=1|Disjunction=1",
+    atlas: atl([1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,1,1,0,1,0,0,1,0], 7.5),
+    tags: ["HARDENED","MEANING","OPERATOR","LOGIC","SOP_002"],
+    fingerprint: "f6a7b8c9d00b19202122230a0b0c0d0e0f10111213141516171819202122232404",
+  },
+
+  "a7b8c9d0e10c19202122230a0b0c0d0e0f10111213141516171819202122232405": {
+    ubp_id: "OP_IMPLIES",
+    lexicon: "[Operator: Implies], The logical implication: if antecedent then consequent.",
+    math: "Cause=0.5|Effect=1|Conditional=1",
+    atlas: atl([1,0,0,0,0,0,1,0,0,0,0,0,1,0,1,1,1,0,1,0,0,1,0,0], 45.0),
+    tags: ["HARDENED","MEANING","OPERATOR","LOGIC","SOP_002"],
+    fingerprint: "a7b8c9d0e10c19202122230a0b0c0d0e0f10111213141516171819202122232405",
+  },
+
+  // ══ GROUP B: Relational Operators ══════════════════════════════════════════
+
+  "b8c9d0e1f20d19202122230a0b0c0d0e0f10111213141516171819202122232406": {
+    ubp_id: "OP_COMPARE",
+    lexicon: "[Operator: Compare], The act of measuring difference and establishing relative rank.",
+    math: "Relation=1|Difference=1|Rank=1",
+    atlas: atl([1,0,0,0,0,0,0,1,0,0,0,0,1,1,1,1,0,1,0,0,1,0,0,0], 82.5),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "b8c9d0e1f20d19202122230a0b0c0d0e0f10111213141516171819202122232406",
+  },
+
+  "c9d0e1f2a30e19202122230a0b0c0d0e0f10111213141516171819202122232407": {
+    ubp_id: "OP_CONTAINS",
+    lexicon: "[Operator: Contains], The set-theoretic containment: one entity includes another.",
+    math: "Set=Subset|Topology=1|Inclusion=1",
+    atlas: atl([1,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,1,0,0,1,0,0,0,1], 120.0),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "c9d0e1f2a30e19202122230a0b0c0d0e0f10111213141516171819202122232407",
+  },
+
+  "d0e1f2a3b40f19202122230a0b0c0d0e0f10111213141516171819202122232408": {
+    ubp_id: "OP_PART_OF",
+    lexicon: "[Operator: Part Of], The mereological relation: a component within a larger whole.",
+    math: "Hierarchy=1|Subset=1|Composition=1",
+    atlas: atl([1,0,0,0,0,0,0,0,0,1,0,0,1,1,0,1,0,0,1,0,0,0,1,1], 157.5),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "d0e1f2a3b40f19202122230a0b0c0d0e0f10111213141516171819202122232408",
+  },
+
+  "e1f2a3b4c51019202122230a0b0c0d0e0f10111213141516171819202122232409": {
+    ubp_id: "OP_CAUSES",
+    lexicon: "[Operator: Causes], The direct causal link: antecedent necessarily produces consequent.",
+    math: "Cause=1|Effect=1|Time=1",
+    atlas: atl([1,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,1,1], 15.0),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "e1f2a3b4c51019202122230a0b0c0d0e0f10111213141516171819202122232409",
+  },
+
+  "f2a3b4c5d61119202122230a0b0c0d0e0f1011121314151617181920212223240a": {
+    ubp_id: "OP_ENABLES",
+    lexicon: "[Operator: Enables], The enabling relation: a condition makes an event possible.",
+    math: "Cause=0.5|Effect=1|Condition=1",
+    atlas: atl([1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,0,0,1,1,1,0], 52.5),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "f2a3b4c5d61119202122230a0b0c0d0e0f1011121314151617181920212223240a",
+  },
+
+  "a3b4c5d6e71219202122230a0b0c0d0e0f1011121314151617181920212223240b": {
+    ubp_id: "OP_PREVENTS",
+    lexicon: "[Operator: Prevents], The inhibiting relation: a barrier blocks an outcome.",
+    math: "Cause=-1|Effect=0|Barrier=1",
+    atlas: atl([0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,1,1,1], 90.0),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "a3b4c5d6e71219202122230a0b0c0d0e0f1011121314151617181920212223240b",
+  },
+
+  "b4c5d6e7f81319202122230a0b0c0d0e0f1011121314151617181920212223240c": {
+    ubp_id: "OP_EQUAL",
+    lexicon: "[Operator: Equal], The identity of value or state: two entities share the same measure.",
+    math: "Distance=0|Identity=1|Symmetry=1",
+    atlas: atl([0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,1,0,0,1], 127.5),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "b4c5d6e7f81319202122230a0b0c0d0e0f1011121314151617181920212223240c",
+  },
+
+  "c5d6e7f8a91419202122230a0b0c0d0e0f1011121314151617181920212223240d": {
+    ubp_id: "OP_GREATER",
+    lexicon: "[Operator: Greater], The ordering relation: one quantity strictly exceeds another.",
+    math: "Rank=1|Asymmetry=1|Order=1",
+    atlas: atl([0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,1,1], 165.0),
+    tags: ["HARDENED","MEANING","OPERATOR","RELATION","SOP_002"],
+    fingerprint: "c5d6e7f8a91419202122230a0b0c0d0e0f1011121314151617181920212223240d",
+  },
+
+  // ══ GROUP C: Physical Process Operators ════════════════════════════════════
+
+  "d6e7f8a9b01519202122230a0b0c0d0e0f1011121314151617181920212223240e": {
+    ubp_id: "OP_EMIT",
+    lexicon: "[Operator: Emit], The act of releasing energy or particles outward from a source.",
+    math: "Flux=1|Energy=1|Direction=1",
+    atlas: atl([0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,1,1,0], 22.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "d6e7f8a9b01519202122230a0b0c0d0e0f1011121314151617181920212223240e",
+  },
+
+  "e7f8a9b0c11619202122230a0b0c0d0e0f1011121314151617181920212223240f": {
+    ubp_id: "OP_ABSORB",
+    lexicon: "[Operator: Absorb], The act of taking in energy or particles from a source.",
+    math: "Flux=-1|Energy=1|Direction=-1",
+    atlas: atl([0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,0,1,1,0,1], 60.0),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "e7f8a9b0c11619202122230a0b0c0d0e0f1011121314151617181920212223240f",
+  },
+
+  "f8a9b0c1d21719202122230a0b0c0d0e0f101112131415161718192021222324aa": {
+    ubp_id: "OP_TRANSFER",
+    lexicon: "[Operator: Transfer], The movement of a property, quantity, or entity from one location to another.",
+    math: "Flux=1|Vector=1|Delta=1",
+    atlas: atl([0,0,0,0,0,1,0,1,0,0,0,0,0,1,1,0,1,0,0,1,1,0,1,0], 97.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "f8a9b0c1d21719202122230a0b0c0d0e0f101112131415161718192021222324aa",
+  },
+
+  "a9b0c1d2e31819202122230a0b0c0d0e0f101112131415161718192021222324bb": {
+    ubp_id: "OP_DECAY",
+    lexicon: "[Operator: Decay], The irreversible breakdown of a system toward lower energy or higher entropy.",
+    math: "Entropy=1|Time=1|Probability=1",
+    atlas: atl([0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,1,1,0,1,0,1], 135.0),
+    tags: ["ACTION","MECHANISM","OPERATOR","ENTROPY","SOP_002"],
+    fingerprint: "a9b0c1d2e31819202122230a0b0c0d0e0f101112131415161718192021222324bb",
+  },
+
+  "b0c1d2e3f41919202122230a0b0c0d0e0f101112131415161718192021222324cc": {
+    ubp_id: "OP_REACT",
+    lexicon: "[Operator: React], The chemical or physical transformation through bond rearrangement.",
+    math: "Delta_Bond=1|Energy=1|Yield=1",
+    atlas: atl([0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,1,0,1,0,1,1], 172.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "b0c1d2e3f41919202122230a0b0c0d0e0f101112131415161718192021222324cc",
+  },
+
+  "c1d2e3f4a51a19202122230a0b0c0d0e0f101112131415161718192021222324dd": {
+    ubp_id: "OP_DIFFUSE",
+    lexicon: "[Operator: Diffuse], The spreading of particles or energy along a concentration gradient.",
+    math: "Gradient=1|Entropy=1|Space=1",
+    atlas: atl([0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,1,1,0,1,0,1,1,0], 30.0),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "c1d2e3f4a51a19202122230a0b0c0d0e0f101112131415161718192021222324dd",
+  },
+
+  "d2e3f4a5b61b19202122230a0b0c0d0e0f101112131415161718192021222324ee": {
+    ubp_id: "OP_CONDENSE",
+    lexicon: "[Operator: Condense], The phase transition from gas to liquid through loss of thermal energy.",
+    math: "Phase=-1|Energy=-1|Temp=1",
+    atlas: atl([0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,0,1,0,1,1,0,1], 67.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "d2e3f4a5b61b19202122230a0b0c0d0e0f101112131415161718192021222324ee",
+  },
+
+  "e3f4a5b6c71c19202122230a0b0c0d0e0f101112131415161718192021222324ff": {
+    ubp_id: "OP_EVAPORATE",
+    lexicon: "[Operator: Evaporate], The phase transition from liquid to gas through gain of thermal energy.",
+    math: "Phase=1|Energy=1|Temp=1",
+    atlas: atl([0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,0,0,1,1], 105.0),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "e3f4a5b6c71c19202122230a0b0c0d0e0f101112131415161718192021222324ff",
+  },
+
+  "f4a5b6c7d81d19202122230a0b0c0d0e0f10111213141516171819202122232411": {
+    ubp_id: "OP_IONISE",
+    lexicon: "[Operator: Ionise], The removal of an electron from an atom to form a charged ion.",
+    math: "Charge=1|Energy=1|Electron=-1",
+    atlas: atl([0,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,1,0,0], 142.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "f4a5b6c7d81d19202122230a0b0c0d0e0f10111213141516171819202122232411",
+  },
+
+  "a5b6c7d8e91e19202122230a0b0c0d0e0f10111213141516171819202122232412": {
+    ubp_id: "OP_CATALYSE",
+    lexicon: "[Operator: Catalyse], The acceleration of a reaction by lowering the activation energy without being consumed.",
+    math: "Rate=1|Activation=-1|Conserve=1",
+    atlas: atl([0,0,1,1,1,0,0,0,0,0,0,0,1,0,0,1,0,1,0,1,1,0,0,0], 0.0),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "a5b6c7d8e91e19202122230a0b0c0d0e0f10111213141516171819202122232412",
+  },
+
+  "b6c7d8e9f01f19202122230a0b0c0d0e0f10111213141516171819202122232413": {
+    ubp_id: "OP_OSCILLATE",
+    lexicon: "[Operator: Oscillate], The periodic alternating motion around an equilibrium point.",
+    math: "Freq=1|Amp=1|Phase=1",
+    atlas: atl([0,0,0,1,1,1,0,0,0,0,0,0,1,0,1,0,1,0,1,1,0,0,0,0], 37.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "b6c7d8e9f01f19202122230a0b0c0d0e0f10111213141516171819202122232413",
+  },
+
+  "c7d8e9f0a12019202122230a0b0c0d0e0f10111213141516171819202122232414": {
+    ubp_id: "OP_ROTATE",
+    lexicon: "[Operator: Rotate], The angular displacement of an entity about an axis.",
+    math: "Angle=1|Spin=1|Axis=1",
+    atlas: atl([0,0,0,0,1,1,1,0,0,0,0,0,1,1,0,1,0,1,1,0,0,0,0,0], 75.0),
+    tags: ["ACTION","MECHANISM","OPERATOR","SOP_002"],
+    fingerprint: "c7d8e9f0a12019202122230a0b0c0d0e0f10111213141516171819202122232414",
+  },
+
+  // ══ GROUP D: Property Query Operators ══════════════════════════════════════
+
+  "d8e9f0a1b22119202122230a0b0c0d0e0f10111213141516171819202122232415": {
+    ubp_id: "OP_PROP_CHARGE",
+    lexicon: "[Operator: Property — Charge], The query for electric charge of an entity.",
+    math: "Charge=1|Unit=1|Quantise=1",
+    atlas: atl([0,0,0,0,0,1,1,1,0,0,0,0,1,0,1,0,1,1,0,0,0,0,0,1], 112.5),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "d8e9f0a1b22119202122230a0b0c0d0e0f10111213141516171819202122232415",
+  },
+
+  "e9f0a1b2c32219202122230a0b0c0d0e0f10111213141516171819202122232416": {
+    ubp_id: "OP_PROP_SPIN",
+    lexicon: "[Operator: Property — Spin], The query for intrinsic angular momentum of a quantum particle.",
+    math: "Spin=0.5|Quantise=1|Angular=1",
+    atlas: atl([0,0,0,0,0,0,1,1,1,0,0,0,1,1,0,1,1,0,0,0,0,0,1,0], 150.0),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","QUANTUM","SOP_002"],
+    fingerprint: "e9f0a1b2c32219202122230a0b0c0d0e0f10111213141516171819202122232416",
+  },
+
+  "f0a1b2c3d42319202122230a0b0c0d0e0f10111213141516171819202122232417": {
+    ubp_id: "OP_PROP_TEMPERATURE",
+    lexicon: "[Operator: Property — Temperature], The query for thermal energy state of a system.",
+    math: "Temp=1|Kelvin=1|Entropy=1",
+    atlas: atl([0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,1,0,0,0,0,0,1,0,1], 7.5),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "f0a1b2c3d42319202122230a0b0c0d0e0f10111213141516171819202122232417",
+  },
+
+  "a1b2c3d4e52419202122230a0b0c0d0e0f10111213141516171819202122232418": {
+    ubp_id: "OP_PROP_PRESSURE",
+    lexicon: "[Operator: Property — Pressure], The query for force per unit area exerted by a system.",
+    math: "Pressure=1|Force=1|Area=1",
+    atlas: atl([0,0,0,0,0,0,0,0,1,1,1,0,1,1,1,0,0,0,0,0,1,0,1,0], 45.0),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "a1b2c3d4e52419202122230a0b0c0d0e0f10111213141516171819202122232418",
+  },
+
+  "b2c3d4e5f62519202122230a0b0c0d0e0f10111213141516171819202122232419": {
+    ubp_id: "OP_PROP_ENERGY",
+    lexicon: "[Operator: Property — Energy], The query for the capacity to do work of an entity.",
+    math: "Energy=1|Joule=1|Conserve=1",
+    atlas: atl([0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,0,1,0,1], 82.5),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "b2c3d4e5f62519202122230a0b0c0d0e0f10111213141516171819202122232419",
+  },
+
+  "c3d4e5f6a72619202122230a0b0c0d0e0f1011121314151617181920212223241a": {
+    ubp_id: "OP_PROP_MOMENTUM",
+    lexicon: "[Operator: Property — Momentum], The query for mass times velocity of an entity.",
+    math: "Momentum=1|Vector=1|Mass=1",
+    atlas: atl([1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,1,1,0,1,1,0], 120.0),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "c3d4e5f6a72619202122230a0b0c0d0e0f1011121314151617181920212223241a",
+  },
+
+  "d4e5f6a7b82719202122230a0b0c0d0e0f1011121314151617181920212223241b": {
+    ubp_id: "OP_PROP_FORCE",
+    lexicon: "[Operator: Property — Force], The query for the interaction that changes momentum of an entity.",
+    math: "Force=1|Newton=1|Vector=1",
+    atlas: atl([1,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,1,0,1,1,0,0], 157.5),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "d4e5f6a7b82719202122230a0b0c0d0e0f1011121314151617181920212223241b",
+  },
+
+  "e5f6a7b8c92819202122230a0b0c0d0e0f1011121314151617181920212223241c": {
+    ubp_id: "OP_PROP_FREQUENCY",
+    lexicon: "[Operator: Property — Frequency], The query for cycles per unit time of a periodic phenomenon.",
+    math: "Freq=1|Hertz=1|Wave=1",
+    atlas: atl([1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,1,1,0,0,0], 15.0),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "e5f6a7b8c92819202122230a0b0c0d0e0f1011121314151617181920212223241c",
+  },
+
+  "f6a7b8c9d02919202122230a0b0c0d0e0f1011121314151617181920212223241d": {
+    ubp_id: "OP_PROP_WAVELENGTH",
+    lexicon: "[Operator: Property — Wavelength], The query for the spatial period of a wave.",
+    math: "Lambda=1|Wave=1|Meter=1",
+    atlas: atl([0,1,1,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,1], 52.5),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "f6a7b8c9d02919202122230a0b0c0d0e0f1011121314151617181920212223241d",
+  },
+
+  "a7b8c9d0e12a19202122230a0b0c0d0e0f1011121314151617181920212223241e": {
+    ubp_id: "OP_PROP_CONDUCTIVITY",
+    lexicon: "[Operator: Property — Conductivity], The query for electrical or thermal conduction ability.",
+    math: "Conduct=1|Electron=1|Resist=-1",
+    atlas: atl([0,0,1,1,0,1,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,1,1], 90.0),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "a7b8c9d0e12a19202122230a0b0c0d0e0f1011121314151617181920212223241e",
+  },
+
+  "b8c9d0e1f22b19202122230a0b0c0d0e0f1011121314151617181920212223241f": {
+    ubp_id: "OP_PROP_MAGNETISM",
+    lexicon: "[Operator: Property — Magnetism], The query for magnetic field strength or susceptibility.",
+    math: "Magnet=1|Spin=1|Field=1",
+    atlas: atl([0,0,0,1,1,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,1,1,0], 127.5),
+    tags: ["HARDENED","MEANING","OPERATOR","PROPERTY","SOP_002"],
+    fingerprint: "b8c9d0e1f22b19202122230a0b0c0d0e0f1011121314151617181920212223241f",
+  },
+
+  // ══ GROUP E: Quantum Operators ══════════════════════════════════════════════
+
+  "c9d0e1f2a32c19202122230a0b0c0d0e0f10111213141516171819202122232421": {
+    ubp_id: "OP_ENTANGLE",
+    lexicon: "[Operator: Entangle], The quantum correlation of two particles such that measurement of one instantly determines the other.",
+    math: "Correlation=1|Nonlocal=1|State=2",
+    atlas: atl([0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,1,1,0,0,0,1,1,0,0], 165.0),
+    tags: ["HARDENED","MEANING","OPERATOR","QUANTUM","SOP_002"],
+    fingerprint: "c9d0e1f2a32c19202122230a0b0c0d0e0f10111213141516171819202122232421",
+  },
+
+  "d0e1f2a3b42d19202122230a0b0c0d0e0f10111213141516171819202122232422": {
+    ubp_id: "OP_SUPERPOSE",
+    lexicon: "[Operator: Superpose], The quantum principle that a system exists in all possible states simultaneously until observed.",
+    math: "State=1|Amplitude=1|Wave=1",
+    atlas: atl([0,0,0,0,0,1,1,0,1,0,0,0,1,0,1,1,0,0,0,1,1,0,0,0], 22.5),
+    tags: ["HARDENED","MEANING","OPERATOR","QUANTUM","SOP_002"],
+    fingerprint: "d0e1f2a3b42d19202122230a0b0c0d0e0f10111213141516171819202122232422",
+  },
+
+  "e1f2a3b4c52e19202122230a0b0c0d0e0f10111213141516171819202122232423": {
+    ubp_id: "OP_COLLAPSE",
+    lexicon: "[Operator: Collapse], The quantum wavefunction collapse upon measurement to a definite eigenstate.",
+    math: "State=1|Measure=1|Prob=1",
+    atlas: atl([0,0,0,0,0,0,1,1,0,1,0,0,1,1,1,0,0,0,1,1,0,0,0,0], 60.0),
+    tags: ["HARDENED","MEANING","OPERATOR","QUANTUM","SOP_002"],
+    fingerprint: "e1f2a3b4c52e19202122230a0b0c0d0e0f10111213141516171819202122232423",
+  },
+
+  "f2a3b4c5d62f19202122230a0b0c0d0e0f10111213141516171819202122232424": {
+    ubp_id: "OP_MEASURE",
+    lexicon: "[Operator: Measure], The act of quantum observation extracting an eigenvalue from a superposed state.",
+    math: "Observer=1|Eigenvalue=1|Collapse=1",
+    atlas: atl([0,0,0,0,0,0,0,1,1,0,1,0,1,1,0,0,0,1,1,0,0,0,0,1], 97.5),
+    tags: ["HARDENED","MEANING","OPERATOR","QUANTUM","SOP_002"],
+    fingerprint: "f2a3b4c5d62f19202122230a0b0c0d0e0f10111213141516171819202122232424",
+  },
+
+  "a3b4c5d6e73019202122230a0b0c0d0e0f10111213141516171819202122232425": {
+    ubp_id: "OP_TUNNEL",
+    lexicon: "[Operator: Tunnel], The quantum mechanical penetration of a particle through a classically forbidden energy barrier.",
+    math: "Barrier=1|Prob=1|Wave=1",
+    atlas: atl([0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,0,1,1,0,0,0,0,1,1], 135.0),
+    tags: ["HARDENED","MEANING","OPERATOR","QUANTUM","SOP_002"],
+    fingerprint: "a3b4c5d6e73019202122230a0b0c0d0e0f10111213141516171819202122232425",
+  },
+
+  "b4c5d6e7f83119202122230a0b0c0d0e0f10111213141516171819202122232426": {
+    ubp_id: "OP_EXCITE",
+    lexicon: "[Operator: Excite], The promotion of a particle or atom to a higher energy level by photon absorption.",
+    math: "Energy=1|Level=1|Photon=1",
+    atlas: atl([0,1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,1,1,0,0,1,0,0,0], 172.5),
+    tags: ["ACTION","MECHANISM","OPERATOR","QUANTUM","SOP_002"],
+    fingerprint: "b4c5d6e7f83119202122230a0b0c0d0e0f10111213141516171819202122232426",
+  },
+
+  "c5d6e7f8a93219202122230a0b0c0d0e0f10111213141516171819202122232427": {
+    ubp_id: "OP_DECOHERE",
+    lexicon: "[Operator: Decohere], The loss of quantum coherence through environmental interaction, transitioning to classical behaviour.",
+    math: "Phase=0|Entropy=1|Classical=1",
+    atlas: atl([1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,1,1,0,1], 30.0),
+    tags: ["MECHANISM","OPERATOR","QUANTUM","ENTROPY","SOP_002"],
+    fingerprint: "c5d6e7f8a93219202122230a0b0c0d0e0f10111213141516171819202122232427",
+  },
+
+  // ══ GROUP F: Scale / Structure Operators ════════════════════════════════════
+
+  "d6e7f8a9b03319202122230a0b0c0d0e0f10111213141516171819202122232428": {
+    ubp_id: "OP_ATOMIC",
+    lexicon: "[Operator: Atomic], The scale and context of individual atoms (1e-10 m), electron shells, and nuclear structure.",
+    math: "Scale=1|Electron=1|Nucleus=1",
+    atlas: atl([0,1,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1], 67.5),
+    tags: ["MEANING","OPERATOR","SCALE","SOP_002"],
+    fingerprint: "d6e7f8a9b03319202122230a0b0c0d0e0f10111213141516171819202122232428",
+  },
+
+  "e7f8a9b0c13419202122230a0b0c0d0e0f10111213141516171819202122232429": {
+    ubp_id: "OP_MOLECULAR",
+    lexicon: "[Operator: Molecular], The scale and context of molecules (1e-9 m), chemical bonds, and functional groups.",
+    math: "Scale=2|Bond=1|Atom=2",
+    atlas: atl([0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,1,1,1], 105.0),
+    tags: ["MEANING","OPERATOR","SCALE","SOP_002"],
+    fingerprint: "e7f8a9b0c13419202122230a0b0c0d0e0f10111213141516171819202122232429",
+  },
+
+  "f8a9b0c1d23519202122230a0b0c0d0e0f1011121314151617181920212223242a": {
+    ubp_id: "OP_NUCLEAR",
+    lexicon: "[Operator: Nuclear], The scale and context of atomic nuclei (1e-15 m), nucleons, and the strong force.",
+    math: "Scale=0|Nucleon=1|Force=1",
+    atlas: atl([0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,1,1,1,1,0], 142.5),
+    tags: ["MEANING","OPERATOR","SCALE","SOP_002"],
+    fingerprint: "f8a9b0c1d23519202122230a0b0c0d0e0f1011121314151617181920212223242a",
+  },
+
+  "a9b0c1d2e33619202122230a0b0c0d0e0f1011121314151617181920212223242b": {
+    ubp_id: "OP_QUANTUM_SCALE",
+    lexicon: "[Operator: Quantum Scale], The Planck-scale context where quantum gravity and discrete spacetime dominate.",
+    math: "Planck=1|Discrete=1|Hbar=1",
+    atlas: atl([0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,0,1,1,1,1,0,0], 0.0),
+    tags: ["MEANING","OPERATOR","SCALE","QUANTUM","SOP_002"],
+    fingerprint: "a9b0c1d2e33619202122230a0b0c0d0e0f1011121314151617181920212223242b",
+  },
+
+  "b0c1d2e3f43719202122230a0b0c0d0e0f1011121314151617181920212223242c": {
+    ubp_id: "OP_MACRO",
+    lexicon: "[Operator: Macro], The macroscopic scale where statistical mechanics and classical physics apply.",
+    math: "Scale=3|Bulk=1|Statistical=1",
+    atlas: atl([1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,0,1], 37.5),
+    tags: ["MEANING","OPERATOR","SCALE","SOP_002"],
+    fingerprint: "b0c1d2e3f43719202122230a0b0c0d0e0f1011121314151617181920212223242c",
+  },
+
+  "c1d2e3f4a53819202122230a0b0c0d0e0f1011121314151617181920212223242d": {
+    ubp_id: "OP_LATTICE",
+    lexicon: "[Operator: Lattice], The periodic arrangement of atoms or points in a crystal structure with defined unit cell.",
+    math: "Crystal=1|Symmetry=1|Periodic=1",
+    atlas: atl([0,1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,0,1,0,1,1,1], 75.0, true),
+    tags: ["MEANING","OPERATOR","SCALE","CRYSTAL","SOP_002"],
+    fingerprint: "c1d2e3f4a53819202122230a0b0c0d0e0f1011121314151617181920212223242d",
+  },
+
+  "d2e3f4a5b63919202122230a0b0c0d0e0f1011121314151617181920212223242e": {
+    ubp_id: "OP_SYMMETRY",
+    lexicon: "[Operator: Symmetry], The invariance of a system under a group of transformations.",
+    math: "Group=1|Invariant=1|Transform=1",
+    atlas: atl([0,0,1,0,0,0,0,1,0,1,0,0,1,1,1,1,1,0,1,0,1,1,1,0], 112.5, true),
+    tags: ["MEANING","OPERATOR","SCALE","MATH","SOP_002"],
+    fingerprint: "d2e3f4a5b63919202122230a0b0c0d0e0f1011121314151617181920212223242e",
+  },
+
+  "e3f4a5b6c73a19202122230a0b0c0d0e0f1011121314151617181920212223242f": {
+    ubp_id: "OP_PERIODIC",
+    lexicon: "[Operator: Periodic], The repeating pattern at fixed intervals in space or time.",
+    math: "Period=1|Cycle=1|Freq=1",
+    atlas: atl([0,0,0,1,0,0,0,0,1,0,1,0,1,1,1,1,0,1,0,1,1,1,0,1], 150.0, true),
+    tags: ["MEANING","OPERATOR","SCALE","SOP_002"],
+    fingerprint: "e3f4a5b6c73a19202122230a0b0c0d0e0f1011121314151617181920212223242f",
+  },
+
+  "f4a5b6c7d83b19202122230a0b0c0d0e0f10111213141516171819202122232431": {
+    ubp_id: "OP_CONSERVE",
+    lexicon: "[Operator: Conserve], The invariance of a physical quantity under temporal evolution — a conservation law.",
+    math: "Delta=0|Invariant=1|Time=1",
+    atlas: atl([0,0,0,0,1,0,0,0,0,1,0,1,1,1,1,0,1,0,1,1,1,0,1,1], 7.5, true),
+    tags: ["HARDENED","MEANING","OPERATOR","IMPERATIVE","SOP_002"],
+    fingerprint: "f4a5b6c7d83b19202122230a0b0c0d0e0f10111213141516171819202122232431",
+  },
+
+  // ══ GROUP G: Mathematical / Geometric Operators ════════════════════════════
+
+  "a5b6c7d8e93c19202122230a0b0c0d0e0f10111213141516171819202122232432": {
+    ubp_id: "OP_DIMENSION",
+    lexicon: "[Operator: Dimension], The number of independent coordinates required to specify a point in a space.",
+    math: "Dim=1|Space=1|Basis=1",
+    atlas: atl([1,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,1,1,0,0,1], 45.0),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "a5b6c7d8e93c19202122230a0b0c0d0e0f10111213141516171819202122232432",
+  },
+
+  "b6c7d8e9f03d19202122230a0b0c0d0e0f10111213141516171819202122232433": {
+    ubp_id: "OP_TOPOLOGY",
+    lexicon: "[Operator: Topology], The study of spatial properties preserved under continuous deformations.",
+    math: "Connected=1|Invariant=1|Space=1",
+    atlas: atl([1,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,1,0,1,1,0,0,1,0], 82.5),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "b6c7d8e9f03d19202122230a0b0c0d0e0f10111213141516171819202122232433",
+  },
+
+  "c7d8e9f0a13e19202122230a0b0c0d0e0f10111213141516171819202122232434": {
+    ubp_id: "OP_GROUP",
+    lexicon: "[Operator: Group], An algebraic structure with closure, associativity, identity, and inverse under one operation.",
+    math: "Closure=1|Identity=1|Inverse=1",
+    atlas: atl([0,1,0,1,0,1,0,0,0,0,0,0,1,0,1,1,0,1,0,0,0,1,0,0], 120.0),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "c7d8e9f0a13e19202122230a0b0c0d0e0f10111213141516171819202122232434",
+  },
+
+  "d8e9f0a1b23f19202122230a0b0c0d0e0f10111213141516171819202122232435": {
+    ubp_id: "OP_RING",
+    lexicon: "[Operator: Ring], An algebraic structure with addition and multiplication satisfying distributivity.",
+    math: "Addition=1|Multiply=1|Distribute=1",
+    atlas: atl([0,0,1,0,1,0,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,0,0,0], 157.5),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "d8e9f0a1b23f19202122230a0b0c0d0e0f10111213141516171819202122232435",
+  },
+
+  "e9f0a1b2c34019202122230a0b0c0d0e0f10111213141516171819202122232436": {
+    ubp_id: "OP_FIELD",
+    lexicon: "[Operator: Field], A mathematical ring where every nonzero element has a multiplicative inverse.",
+    math: "Ring=1|Divide=1|Inverse=1",
+    atlas: atl([0,0,0,1,0,1,0,1,0,0,0,0,1,1,0,1,0,0,0,1,0,0,0,1], 15.0),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "e9f0a1b2c34019202122230a0b0c0d0e0f10111213141516171819202122232436",
+  },
+
+  "f0a1b2c3d44119202122230a0b0c0d0e0f10111213141516171819202122232437": {
+    ubp_id: "OP_VECTOR",
+    lexicon: "[Operator: Vector], A quantity with both magnitude and direction in an n-dimensional space.",
+    math: "Magnitude=1|Direction=1|Space=1",
+    atlas: atl([0,0,0,0,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,0,0,1,1], 52.5),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "f0a1b2c3d44119202122230a0b0c0d0e0f10111213141516171819202122232437",
+  },
+
+  "a1b2c3d4e54219202122230a0b0c0d0e0f10111213141516171819202122232438": {
+    ubp_id: "OP_MATRIX",
+    lexicon: "[Operator: Matrix], A rectangular array of numbers defining a linear transformation between vector spaces.",
+    math: "Transform=1|Linear=1|Dim=2",
+    atlas: atl([0,0,0,0,0,1,0,1,0,1,0,0,1,1,0,0,0,1,0,0,0,1,1,0], 90.0),
+    tags: ["ALGORITHM","OPERATOR","MATH","SOP_002"],
+    fingerprint: "a1b2c3d4e54219202122230a0b0c0d0e0f10111213141516171819202122232438",
+  },
+};
