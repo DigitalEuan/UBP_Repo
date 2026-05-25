@@ -1,0 +1,40 @@
+/**
+ * UBP LEECH ENGINE — JS port of LeechPointScaled & geometry utilities
+ * from core_studio_v4.0/core/core.py & geometry.py
+ */
+
+export function fold24to3(vec) {
+  if (!vec || vec.length !== 24) return [0, 0, 0];
+  let v = [...vec];
+  for (const n of [12, 6, 3]) {
+    const next = [];
+    for (let i = 0; i < n; i++) next.push(v[2 * i] ^ v[2 * i + 1]);
+    v = next;
+  }
+  return v;
+}
+
+export function getOntologicalHealth(vector24) {
+  if (!vector24 || vector24.length !== 24) {
+    return { Reality: 0, Info: 0, Activation: 0, Potential: 0, GlobalNRCI: 0 };
+  }
+  const Reality    = vector24.slice(0,  6).reduce((s, b) => s + b, 0) / 12;
+  const Info       = vector24.slice(6,  12).reduce((s, b) => s + b, 0) / 12;
+  const Activation = vector24.slice(12, 18).reduce((s, b) => s + b, 0) / 12;
+  const Potential  = vector24.slice(18, 24).reduce((s, b) => s + b, 0) / 12;
+  const GlobalNRCI = (Reality + Info + Activation + Potential) / 4;
+  return { Reality, Info, Activation, Potential, GlobalNRCI };
+}
+
+export function getObserverConstants() {
+  const PI = Math.PI;
+  const Y_INV = PI + 2 / PI;
+  const Y = 1 / Y_INV;
+  return { PI, Y_INV, Y };
+}
+
+export function holographicNRCI(tax) {
+  const { Y } = getObserverConstants();
+  const S_HOLO = Math.log2(196560);
+  return 10 / (10 + tax + S_HOLO * Y);
+}

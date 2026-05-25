@@ -1,0 +1,412 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  MessageSquare, BookOpen, BarChart3, ThumbsUp, ThumbsDown,
+  Trash2, Loader2, Sparkles, GraduationCap, Brain, Terminal
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ChatMessage } from '@/components/ubp/ChatMessage';
+import { ChatInput } from '@/components/ubp/ChatInput';
+import { ExplanationPanel } from '@/components/ubp/ExplanationPanel';
+import { StatsPanel } from '@/components/ubp/StatsPanel';
+import GeometricVisualizer from '@/components/ubp/GeometricVisualizer';
+import { VocabLearner } from '@/components/ubp/VocabLearner';
+import { LinguistPanel } from '@/components/ubp/LinguistPanel';
+import NoiseCorePanel from '@/components/ubp/NoiseCorePanel';
+import { initializeEngine } from '@/components/ubp/UBPEngineV3';
+
+const WELCOME_MSG = [
+  '**UBP Geometric Language Machine v8.0** — Swarm + Phase-Lock Edition',
+  '',
+  'Five complementary query modes:',
+  '• **Property queries** → Gray-code numeric channel (α=0.0)',
+  '  *"Tell me about a liquid with mass 18g/mol and boiling point 373K"*',
+  '• **Symbolic queries** → Golay + Identity Lock + BW-256 (α=1.0)',
+  '  *"What is the Higgs boson?" · "Explain NRCI" · "How does hydrogen bond?"*',
+  '• **NoiseCore ALU v4.0** → Golay + Leech Λ₂₄ + BW-256 substrate arithmetic',
+  '  *"factorial 12" · "gcd(48, 18)" · "2^10 mod 1000" · "is 97 prime?" · "fibonacci 20"*',
+  '  *"lcm(12,18)" · "extended gcd 35 15" · "C(10,3)" · "perm 6 4" · "triad"*',
+  '• **Swarm Router v1.0** → NativeMath engine (v28 Oracle port) with Phase-Lock',
+  '  *Number theory: "euler phi 12" · "factorise 360" · "divisors of 420" · "catalan 5"*',
+  '  *CRT: "x≡2(mod 3), x≡3(mod 5)" · "mod inverse 3 7" · "CRT chinese remainder"*',
+  '  *Stats: "median 3 1 4 1 5 9 2 6" · "stddev 2 4 4 4 5 5 7 9" · "mean 4 8 6 5"*',
+  '  *Vectors: "cross product <1,0,0> <0,1,0>" · "quadratic 1x^2-3x+2=0"*',
+  '  *Analysis: "lattice attraction" — reports the 38.2x Lattice Attraction Hypothesis*',
+  '• **Scripting/Python** → ALGO_ domain routing with Identity Lock',
+  '  *"How does a Python list work?" · "Explain recursion" · "What is a lambda?"*',
+  '',
+  'New in v8.0: Swarm Router · Phase-Lock Triadic Verification (paper §4.1)',
+  'MoE Researcher XOR-bridge ranking · Lattice Attraction Analyzer (38.2x tracker)',
+  'NativeMathEngine: Miller-Rabin, Euler φ, CRT, Pollard rho, Catalan, stddev, cross product',
+].join('\n');
+
+function domainFromUid(uid) {
+  if (!uid) return 'MEANING';
+  if (/^ELEM_|^MOLECULE_|^CRYSTAL_/.test(uid)) return 'SUBSTANCE';
+  if (/^PARTICLE_|^REACTION_/.test(uid)) return 'MECHANISM';
+  if (/^MATH_|^ALGO_/.test(uid)) return 'ALGORITHM';
+  if (/^LAW_|^BELIEF_|^AXIOM_|^IMPERATIVE_/.test(uid)) return 'IMPERATIVE';
+  if (/^OP_/.test(uid)) return 'MEANING';
+  return 'MEANING';
+}
+
+function nrciFromEntry(e) {
+  // v9.9: nrci_val is a direct float field
+  if (typeof e.nrci_val === 'number') return Math.min(1, Math.max(0, e.nrci_val));
+  // legacy fallback
+  const a = e.atlas || {};
+  if (typeof a.nrci_score === 'number') return a.nrci_score;
+  if (typeof a.nrci === 'string' && a.nrci.includes('/')) {
+    const [n, d] = a.nrci.split('/').map(Number);
+    return d > 0 ? Math.min(1, n / d) : 0.5;
+  }
+  return 0.5;
+}
+
+// Icon-only tab button for mobile
+function MobileTabBtn({ id, icon: Icon, activeTab, setActiveTab }) {
+  const isActive = activeTab === id;
+  return (
+    <button
+      onClick={() => setActiveTab(id)}
+      className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${
+        isActive ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+      }`}
+    >
+      <Icon className="w-4 h-4" />
+    </button>
+  );
+}
+
+// Desktop tab button with label
+function DesktopTabBtn({ id, icon: Icon, label, activeTab, setActiveTab }) {
+  const isActive = activeTab === id;
+  return (
+    <button
+      onClick={() => setActiveTab(id)}
+      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+        isActive ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+      }`}
+    >
+      <Icon className="w-3.5 h-3.5" />
+      {label}
+    </button>
+  );
+}
+
+export default function Home() {
+  const [engine, setEngine] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isThinking, setIsThinking] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [stats, setStats] = useState(null);
+  const [lexiconStats, setLexiconStats] = useState(null);
+  const [activeTab, setActiveTab] = useState('chat');
+  const [vizEntries, setVizEntries] = useState([]);
+  const [activatedUids, setActivatedUids] = useState([]);
+  const [vocabWords, setVocabWords] = useState([]);
+  const [error, setError] = useState(null);
+  const [lastVMQuery, setLastVMQuery] = useState(null);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    async function init() {
+      try {
+        setIsLoading(true);
+        const eng = await initializeEngine();
+        setEngine(eng);
+        setStats(eng.stats());
+        setLexiconStats(eng.lexiconStats());
+
+        const allEntries = Object.values(eng.kbData);
+        const step = allEntries.length > 600 ? Math.ceil(allEntries.length / 600) : 1;
+        const nodes = allEntries
+          .filter((_, i) => i % step === 0)
+          .map(e => ({
+            uid: e.ubp_id,
+            vector: Array.isArray(e.vector) ? e.vector : (e.atlas?.vector || null),
+            domain: domainFromUid(e.ubp_id),
+            nrci: nrciFromEntry(e),
+          }))
+          .filter(n => n.vector && n.vector.length === 24);
+        setVizEntries(nodes);
+
+        setMessages([{ id: Date.now(), role: 'assistant', content: WELCOME_MSG, timestamp: Date.now(), ubpData: null }]);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setIsLoading(false);
+      }
+    }
+    init();
+  }, []);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const handleSend = (content) => {
+    if (!engine) return;
+    setMessages(prev => [...prev, { id: Date.now(), role: 'user', content, timestamp: Date.now() }]);
+    setIsThinking(true);
+    setTimeout(() => {
+      try {
+        const result = engine.reason(content);
+        // Track last query for the VM panel (math/noisecore results)
+        if (result.queryType === 'noisecore' || result.queryType === 'property' || Object.keys(result.mathDict || {}).length > 0) {
+          setLastVMQuery(content);
+        } else {
+          setLastVMQuery(content); // always update so compiler can try
+        }
+        setMessages(prev => [...prev, {
+          id: Date.now() + 1, role: 'assistant', content: result.response, timestamp: Date.now(),
+          ubpData: { domain: result.domain, queryType: result.queryType, alpha: result.alpha, mathDict: result.mathDict, steps: result.steps, tokens: result.tokens, queryVector: result.queryVector, stats: result.stats },
+        }]);
+        setActivatedUids((result.steps || []).map(s => s.uid).filter(Boolean));
+        const hashTokens = (result.tokens || []).filter(t => t.type === 'geometric-hash');
+        if (hashTokens.length) {
+          setVocabWords(prev => {
+            const existing = new Set(prev.map(w => w.word));
+            const newWords = hashTokens.filter(t => !existing.has(t.word)).map(t => ({ word: t.word, domain: t.domain }));
+            return newWords.length ? [...prev, ...newWords] : prev;
+          });
+        }
+        setStats(engine.stats());
+      } catch (err) {
+        setMessages(prev => [...prev, { id: Date.now() + 1, role: 'assistant', content: 'An error occurred during geometric reasoning. Please try again.', timestamp: Date.now() }]);
+      }
+      setIsThinking(false);
+    }, 300);
+  };
+
+  const handleFeedback = (pos) => { if (engine) { engine.feedback(pos); setStats(engine.stats()); } };
+  const handleClear = () => { if (engine) { engine.clearConversation(); setMessages([messages[0]]); setStats(engine.stats()); } };
+
+  if (isLoading) return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
+      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-4">
+        <div className="w-24 h-24 mx-auto">
+          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698272fc0f19de392e8a496c/498b23433_ubp_39.png" alt="UBP Logo" className="w-full h-full object-contain animate-pulse" />
+        </div>
+        <h1 className="text-2xl font-semibold text-white">UBP Geometric Language Model</h1>
+        <p className="text-slate-400">Loading 24-dimensional substrate...</p>
+        <Loader2 className="w-6 h-6 animate-spin text-cyan-500 mx-auto" />
+      </motion.div>
+    </div>
+  );
+
+  if (error) return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
+      <div className="text-center space-y-4 max-w-md">
+        <h1 className="text-2xl font-semibold text-white">Initialization Error</h1>
+        <p className="text-slate-400 text-sm">{error}</p>
+        <Button onClick={() => window.location.reload()} className="bg-cyan-600 hover:bg-cyan-500">Retry</Button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      {/* Header */}
+      <header className="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/70 border-b border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 flex-shrink-0">
+              <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698272fc0f19de392e8a496c/498b23433_ubp_39.png" alt="UBP Logo" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <h1 className="text-lg font-semibold text-white">UBP GLM</h1>
+              <p className="text-xs text-slate-500 hidden sm:block">Geometric Language Machine v7.0 · Identity Lock · BW-256</p>
+            </div>
+          </div>
+
+          {/* Mobile: icon-only tabs */}
+          <div className="flex md:hidden items-center gap-1">
+            <MobileTabBtn id="chat" icon={MessageSquare} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <MobileTabBtn id="viz" icon={Sparkles} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <MobileTabBtn id="explain" icon={BookOpen} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <MobileTabBtn id="stats" icon={BarChart3} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <MobileTabBtn id="vocab" icon={GraduationCap} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <MobileTabBtn id="linguist" icon={Brain} activeTab={activeTab} setActiveTab={setActiveTab} />
+            <MobileTabBtn id="vm" icon={Terminal} activeTab={activeTab} setActiveTab={setActiveTab} />
+          </div>
+
+          {/* Desktop: labelled tabs for info panels only (viz always shown in sidebar) */}
+          <div className="hidden md:flex items-center gap-1 bg-slate-800/50 rounded-xl p-1">
+            <DesktopTabBtn id="chat" icon={MessageSquare} label="Chat" activeTab={activeTab} setActiveTab={setActiveTab} />
+            <DesktopTabBtn id="explain" icon={BookOpen} label="Explain" activeTab={activeTab} setActiveTab={setActiveTab} />
+            <DesktopTabBtn id="stats" icon={BarChart3} label="Stats" activeTab={activeTab} setActiveTab={setActiveTab} />
+            <DesktopTabBtn id="vocab" icon={GraduationCap} label="Vocab" activeTab={activeTab} setActiveTab={setActiveTab} />
+            <DesktopTabBtn id="linguist" icon={Sparkles} label="Linguist" activeTab={activeTab} setActiveTab={setActiveTab} />
+            <DesktopTabBtn id="vm" icon={Terminal} label="VM" activeTab={activeTab} setActiveTab={setActiveTab} />
+          </div>
+        </div>
+      </header>
+
+      {/* Body */}
+      <div className="max-w-7xl mx-auto px-4 py-4 pb-8">
+
+        {/* ── DESKTOP / TABLET layout ── */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4" style={{ minHeight: 'calc(100vh - 120px)' }}>
+
+          {/* Left: chat (always) */}
+          <div className="md:col-span-2 flex flex-col bg-slate-900/50 rounded-2xl border border-slate-800/50 overflow-hidden" style={{ height: 'calc(100vh - 120px)' }}>
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              <AnimatePresence mode="popLayout">
+                {messages.map((msg, i) => (
+                  <ChatMessage key={msg.id} message={msg} isLast={i === messages.length - 1} />
+                ))}
+              </AnimatePresence>
+              {isThinking && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-slate-400 text-sm">
+                  <Sparkles className="w-4 h-4 text-cyan-500 animate-pulse" />
+                  Traversing geometric substrate...
+                </motion.div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+            {messages.length > 1 && (
+              <div className="px-4 py-2 border-t border-slate-800/50 flex items-center gap-2">
+                <span className="text-xs text-slate-500 mr-2">Rate:</span>
+                <Button size="sm" variant="ghost" onClick={() => handleFeedback(true)} className="h-7 px-2 text-green-500 hover:text-green-400 hover:bg-green-500/10">
+                  <ThumbsUp className="w-3 h-3 mr-1" /><span className="text-xs">Good</span>
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => handleFeedback(false)} className="h-7 px-2 text-red-500 hover:text-red-400 hover:bg-red-500/10">
+                  <ThumbsDown className="w-3 h-3 mr-1" /><span className="text-xs">Bad</span>
+                </Button>
+                <div className="flex-1" />
+                <Button size="sm" variant="ghost" onClick={handleClear} className="h-7 px-2 text-slate-500 hover:text-slate-400">
+                  <Trash2 className="w-3 h-3 mr-1" /><span className="text-xs">Clear</span>
+                </Button>
+              </div>
+            )}
+            <div className="p-4 border-t border-slate-800/50">
+              <ChatInput onSend={handleSend} isLoading={isThinking} />
+            </div>
+          </div>
+
+          {/* Right sidebar */}
+          <div className="flex flex-col gap-4" style={{ height: 'calc(100vh - 120px)', overflowY: 'auto' }}>
+            {/* Info panel (switches between Explain / Stats) */}
+            {activeTab !== 'chat' && (
+              <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-4 overflow-y-auto flex-shrink-0" style={{ maxHeight: '45%' }}>
+                {activeTab === 'explain' && <ExplanationPanel />}
+                {activeTab === 'stats' && <StatsPanel stats={stats} lexiconStats={lexiconStats} />}
+                {activeTab === 'vocab' && <VocabLearner vocabWords={vocabWords} />}
+                {activeTab === 'linguist' && <LinguistPanel engine={engine} />}
+                {activeTab === 'vm' && <NoiseCorePanel lastQuery={lastVMQuery} />}
+              </div>
+            )}
+
+            {/* Geometric Visualizer — always at bottom, grows to fill space */}
+            <div className="flex-1 bg-slate-900/50 rounded-2xl border border-slate-800/50 p-3 flex flex-col min-h-0">
+              <p className="text-xs text-slate-500 mb-1 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-cyan-500" />
+                Golay Space · {vizEntries.length} nodes
+              </p>
+              <div className="flex-1 min-h-0">
+                <GeometricVisualizer entries={vizEntries} activatedUids={activatedUids} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── MOBILE layout ── */}
+        <div className="md:hidden">
+
+          {/* Chat tab */}
+          {activeTab === 'chat' && (
+            <div className="flex flex-col bg-slate-900/50 rounded-2xl border border-slate-800/50 overflow-hidden" style={{ height: 'calc(100vh - 110px)' }}>
+              <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                <AnimatePresence mode="popLayout">
+                  {messages.map((msg, i) => (
+                    <ChatMessage key={msg.id} message={msg} isLast={i === messages.length - 1} />
+                  ))}
+                </AnimatePresence>
+                {isThinking && (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-slate-400 text-sm">
+                    <Sparkles className="w-4 h-4 text-cyan-500 animate-pulse" />
+                    Traversing geometric substrate...
+                  </motion.div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+              {messages.length > 1 && (
+                <div className="px-4 py-2 border-t border-slate-800/50 flex items-center gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => handleFeedback(true)} className="h-7 px-2 text-green-500 hover:text-green-400 hover:bg-green-500/10">
+                    <ThumbsUp className="w-3 h-3" />
+                  </Button>
+                  <Button size="sm" variant="ghost" onClick={() => handleFeedback(false)} className="h-7 px-2 text-red-500 hover:text-red-400 hover:bg-red-500/10">
+                    <ThumbsDown className="w-3 h-3" />
+                  </Button>
+                  <div className="flex-1" />
+                  <Button size="sm" variant="ghost" onClick={handleClear} className="h-7 px-2 text-slate-500 hover:text-slate-400">
+                    <Trash2 className="w-3 h-3" />
+                  </Button>
+                </div>
+              )}
+              {/* Mobile: mini viz replaces suggestions above input */}
+              <div className="border-t border-slate-800/50">
+                <div style={{ height: 140 }} className="px-3 pt-2">
+                  <GeometricVisualizer entries={vizEntries} activatedUids={activatedUids} compact />
+                </div>
+                <div className="p-3">
+                  <ChatInput onSend={handleSend} isLoading={isThinking} hideSuggestions />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Viz tab (full screen) */}
+          {activeTab === 'viz' && (
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-4" style={{ height: 'calc(100vh - 110px)' }}>
+              <p className="text-xs text-slate-500 mb-2 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-cyan-500" />
+                Golay Space · {vizEntries.length} nodes · {activatedUids.length > 0 ? `${activatedUids.length} activated` : 'send a query to activate nodes'}
+              </p>
+              <div style={{ height: 'calc(100% - 28px)' }}>
+                <GeometricVisualizer entries={vizEntries} activatedUids={activatedUids} />
+              </div>
+            </div>
+          )}
+
+          {/* Explain tab */}
+          {activeTab === 'explain' && (
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 110px)' }}>
+              <ExplanationPanel />
+            </div>
+          )}
+
+          {/* Stats tab */}
+          {activeTab === 'stats' && (
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 110px)' }}>
+              <StatsPanel stats={stats} lexiconStats={lexiconStats} />
+            </div>
+          )}
+
+          {/* Vocab tab */}
+          {activeTab === 'vocab' && (
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 110px)' }}>
+              <VocabLearner vocabWords={vocabWords} />
+            </div>
+          )}
+
+          {/* Linguist tab */}
+          {activeTab === 'linguist' && (
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 110px)' }}>
+              <LinguistPanel engine={engine} />
+            </div>
+          )}
+
+          {/* VM tab */}
+          {activeTab === 'vm' && (
+            <div className="bg-slate-900/50 rounded-2xl border border-slate-800/50 p-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 110px)' }}>
+              <NoiseCorePanel lastQuery={lastVMQuery} />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

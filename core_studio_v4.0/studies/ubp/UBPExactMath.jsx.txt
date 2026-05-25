@@ -1,0 +1,364 @@
+/**
+ * UBP EXACT MATH v5.3 — Float-Free Integer/Rational Core
+ *
+ * Direct JS port of `class ExactMath` from ubp_unified_v5.py
+ * (E R A Craig, May 2026).
+ *
+ * PHILOSOPHY (verbatim from source):
+ *   "No math.sqrt, no math.log inside the computational core."
+ *
+ * Every public operation works on Numbers, BigInts or {num,den} pairs.
+ * Floats are produced only at the display boundary.
+ *
+ * NEW in v5.3 vs v5.2:
+ *   isqrtBig          — BigInt Newton-Raphson (used by Miller-Rabin)
+ *   iceil_div          — ceiling integer division
+ *   igcdBig            — public BigInt GCD (replaces private _gcdBig)
+ *   ifact              — factorial returning BigInt for n > 20
+ *   icomb / iperm      — exact with BigInt overflow safety
+ *   imodpow / imodInv  — BigInt modular exponentiation / inverse
+ *   sqrtFrac           — rational sqrt via integer scaling
+ *   millerRabinBig     — deterministic Miller-Rabin (witnesses 2..37, n < 2^64)
+ *   isPrimeUBP updated — uses Miller-Rabin for n > 1,000,000
+ */
+
+// ── Newton-Raphson Integer Square Root (no Math.sqrt) ────────────────────────
+export function isqrt(n) {
+  n = Math.abs(Math.trunc(n));
+  if (n < 2) return n;
+  let x = n;
+  let y = (x + 1) >> 1;
+  while (y < x) {
+    x = y;
+    y = Math.trunc((x + Math.trunc(n / x)) / 2);
+  }
+  return x;
+}
+
+/** BigInt isqrt (Newton-Raphson). Used by Miller–Rabin and sqrtFrac. */
+export function isqrtBig(n) {
+  if (typeof n !== 'bigint') n = BigInt(n);
+  if (n < 0n) throw new Error('isqrtBig: domain n >= 0');
+  if (n < 2n) return n;
+  let x = n;
+  let y = (x + 1n) >> 1n;
+  while (y < x) {
+    x = y;
+    y = (x + n / x) >> 1n;
+  }
+  return x;
+}
+
+// ── Integer Logarithm (no Math.log) ──────────────────────────────────────────
+export function ilog(n, base = 2) {
+  n = Math.abs(Math.trunc(n));
+  if (n < 1 || base < 2) return 0;
+  let k = 0, p = 1;
+  while (p * base <= n) { p *= base; k++; }
+  return k;
+}
+
+// ── Integer Ceiling Division ──────────────────────────────────────────────────
+export function iceil_div(a, b) {
+  if (b === 0) throw new Error('iceil_div: b=0');
+  return -Math.trunc(-a / b);
+}
+
+// ── Integer GCD (Number + BigInt variants) ────────────────────────────────────
+export function igcd(a, b) {
+  a = Math.abs(Math.trunc(a));
+  b = Math.abs(Math.trunc(b));
+  while (b) { [a, b] = [b, a % b]; }
+  return a;
+}
+
+export function igcdBig(a, b) {
+  if (typeof a !== 'bigint') a = BigInt(a);
+  if (typeof b !== 'bigint') b = BigInt(b);
+  if (a < 0n) a = -a;
+  if (b < 0n) b = -b;
+  while (b) { [a, b] = [b, a % b]; }
+  return a === 0n ? 1n : a;
+}
+
+// ── Integer Factorial ─────────────────────────────────────────────────────────
+/**
+ * Returns Number for n ≤ 20 (fits in 2^53) and BigInt for n > 20.
+ * Port of ExactMath.ifact from ubp_unified_v5.py.
+ */
+export function ifact(n) {
+  if (n < 0) throw new Error('ifact: domain n >= 0');
+  if (n <= 20) {
+    let r = 1;
+    for (let k = 2; k <= n; k++) r *= k;
+    return r;
+  }
+  let r = 1n;
+  for (let k = 2n; k <= BigInt(n); k++) r *= k;
+  return r;
+}
+
+// ── Integer Binomial Coefficient ──────────────────────────────────────────────
+/**
+ * Exact integer C(n,k). Promotes to BigInt when intermediate products overflow.
+ * Port of ExactMath.icomb from ubp_unified_v5.py.
+ */
+export function icomb(n, k) {
+  if (k < 0 || k > n) return 0;
+  if (k === 0 || k === n) return 1;
+  k = Math.min(k, n - k);
+  let num = 1, den = 1;
+  let overflowed = false;
+  for (let i = 0; i < k; i++) {
+    num *= (n - i);
+    den *= (i + 1);
+    if (!Number.isSafeInteger(num) || !Number.isSafeInteger(den)) { overflowed = true; break; }
+  }
+  if (!overflowed) return Math.round(num / den);
+  // BigInt fallback (exact)
+  let nb = 1n, db = 1n;
+  for (let i = 0; i < k; i++) {
+    nb *= BigInt(n - i);
+    db *= BigInt(i + 1);
+  }
+  return nb / db;
+}
+
+// ── Integer Permutations P(n,k) ───────────────────────────────────────────────
+export function iperm(n, k) {
+  if (k < 0 || k > n) return 0;
+  let r = 1, ok = true;
+  for (let i = 0; i < k; i++) {
+    r *= (n - i);
+    if (!Number.isSafeInteger(r)) { ok = false; break; }
+  }
+  if (ok) return r;
+  let rb = 1n;
+  for (let i = 0; i < k; i++) rb *= BigInt(n - i);
+  return rb;
+}
+
+// ── BigInt Modular Exponentiation ─────────────────────────────────────────────
+export function imodpow(base, exp, mod) {
+  let b = BigInt(base), e = BigInt(exp), m = BigInt(mod);
+  if (m === 1n) return 0n;
+  if (m < 0n) m = -m;
+  b = ((b % m) + m) % m;
+  if (e < 0n) {
+    const inv = imodInv(b, m);
+    if (inv === null) throw new Error('imodpow: inverse does not exist');
+    b = inv;
+    e = -e;
+  }
+  let result = 1n;
+  while (e > 0n) {
+    if (e & 1n) result = (result * b) % m;
+    e >>= 1n;
+    b = (b * b) % m;
+  }
+  return result;
+}
+
+/** Modular inverse via extended GCD (BigInt). Returns null if not coprime. */
+export function imodInv(a, m) {
+  a = ((BigInt(a) % BigInt(m)) + BigInt(m)) % BigInt(m);
+  let [old_r, r]   = [a, BigInt(m)];
+  let [old_s, s]   = [1n, 0n];
+  while (r !== 0n) {
+    const q = old_r / r;
+    [old_r, r] = [r, old_r - q * r];
+    [old_s, s] = [s, old_s - q * s];
+  }
+  if (old_r !== 1n) return null;
+  return ((old_s % BigInt(m)) + BigInt(m)) % BigInt(m);
+}
+
+// ── Rational Square Root (Python: ExactMath.sqrt_frac) ───────────────────────
+/**
+ * Float-free rational sqrt via integer scaling.
+ * scaled = num * scale² * den;  root_int = isqrt(scaled)
+ * result = { num: root_int, den: scale * den }
+ */
+export function sqrtFrac({ num, den }, prec = 30) {
+  if (typeof num !== 'bigint') num = BigInt(num);
+  if (typeof den !== 'bigint') den = BigInt(den);
+  if (num < 0n) throw new Error('sqrtFrac: domain f >= 0');
+  if (num === 0n) return { num: 0n, den: 1n, float: 0 };
+  const scale = 10n ** BigInt(prec);
+  const scaled = num * scale * scale * den;
+  const rootInt = isqrtBig(scaled);
+  const outNum = rootInt;
+  const outDen = scale * den;
+  const g = igcdBig(outNum, outDen);
+  const rNum = outNum / g;
+  const rDen = outDen / g;
+  return { num: rNum, den: rDen, float: Number(rNum) / Number(rDen) };
+}
+
+// ── Continued-Fraction π (50-term OEIS A001203) ───────────────────────────────
+export const PI_CF_COEFFS = [
+  3,7,15,1,292,1,1,1,2,1,3,1,14,2,1,1,2,2,2,2,1,84,2,1,1,15,3,13,1,4,2,6,6,
+  99,1,2,2,6,3,5,1,1,6,8,1,7,1,2,3,7,
+];
+
+/**
+ * Compute π as BigInt rational convergent via continued fractions.
+ * Returns { num: BigInt, den: BigInt }. 30 terms → ~15 decimal places.
+ */
+export function piCF(terms = 30) {
+  const coeffs = PI_CF_COEFFS.slice(0, Math.min(terms, PI_CF_COEFFS.length));
+  let h2 = 0n, h1 = 1n;
+  let k2 = 1n, k1 = 0n;
+  for (const a of coeffs) {
+    const an = BigInt(a);
+    const h = an * h1 + h2;
+    const k = an * k1 + k2;
+    h2 = h1; h1 = h;
+    k2 = k1; k1 = k;
+  }
+  return { num: h1, den: k1 };
+}
+
+// ── Exact Y Constants from CF-π ───────────────────────────────────────────────
+export function yLeechExact(piTerms = 30) {
+  const { num: p, den: q } = piCF(piTerms);
+  const yNum = p * q;
+  const yDen = p * p + 2n * q * q;
+  const g = igcdBig(yNum, yDen);
+  const rNum = yNum / g, rDen = yDen / g;
+  return { num: rNum, den: rDen, float: Number(rNum) / Number(rDen) };
+}
+
+export function yObserverExact(piTerms = 30) {
+  const { num: p, den: q } = piCF(piTerms);
+  const oNum = p * p + 2n * q * q;
+  const oDen = p * q;
+  const g = igcdBig(oNum, oDen);
+  return { num: oNum / g, den: oDen / g, float: Number(oNum / g) / Number(oDen / g) };
+}
+
+let _yLeech = null, _yObs = null;
+export function getYLeechExact()    { if (!_yLeech) _yLeech = yLeechExact(30);    return _yLeech; }
+export function getYObserverExact() { if (!_yObs)   _yObs   = yObserverExact(30); return _yObs;  }
+
+// ── Exact Rational NRCI ───────────────────────────────────────────────────────
+/**
+ * Formula: NRCI = 10 / (10 + sw * Y_LEECH + sw/8)
+ * Worked in BigInts:
+ *   tax_num   = sw * (8*yNum + yDen)
+ *   denom_num = 80*yDen + tax_num
+ *   NRCI      = 80*yDen / denom_num
+ */
+export function microNrciExact(sw) {
+  const { num: yNum, den: yDen } = getYLeechExact();
+  const swB = BigInt(sw);
+  const taxNum   = swB * (8n * yNum + yDen);
+  const denomNum = 80n * yDen + taxNum;
+  const nrciNum  = 80n * yDen;
+  const g = igcdBig(nrciNum, denomNum);
+  const fn = nrciNum / g;
+  const fd = denomNum / g;
+  return { nrci: Number(fn) / Number(fd), fraction: `${fn}/${fd}`, sw };
+}
+
+// ── Deterministic Miller-Rabin Primality (Python: ExactMath.millerRabin) ──────
+/**
+ * Deterministic Miller-Rabin for n < 3.3×10^24 (covers all n < 2^64).
+ * Fixed witness set {2,3,5,7,11,13,17,19,23,29,31,37} — no false positives
+ * for any 64-bit integer.
+ *
+ * Returns { prime: boolean, method: 'miller-rabin-big', witnesses: [...] }
+ */
+export function millerRabinBig(n) {
+  if (typeof n !== 'bigint') n = BigInt(Math.abs(Math.trunc(n)));
+  const WITNESSES = [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n];
+
+  if (n < 2n) return { prime: false, method: 'miller-rabin-big', witnesses: [] };
+  if (n === 2n || n === 3n) return { prime: true, method: 'miller-rabin-big', witnesses: [] };
+  if (n % 2n === 0n) return { prime: false, method: 'miller-rabin-big', witnesses: [] };
+
+  // Write n-1 = 2^r * d  (d odd)
+  let r = 0n, d = n - 1n;
+  while (d % 2n === 0n) { d /= 2n; r++; }
+
+  const witnessesUsed = [];
+  for (const a of WITNESSES) {
+    if (a >= n) continue;
+    witnessesUsed.push(Number(a));
+
+    let x = imodpow(a, d, n);
+    if (x === 1n || x === n - 1n) continue;
+
+    let composite = true;
+    for (let i = 0n; i < r - 1n; i++) {
+      x = imodpow(x, 2n, n);
+      if (x === n - 1n) { composite = false; break; }
+    }
+    if (composite) return { prime: false, method: 'miller-rabin-big', witnesses: witnessesUsed };
+  }
+  return { prime: true, method: 'miller-rabin-big', witnesses: witnessesUsed };
+}
+
+// ── UBP-Native Primality Test ─────────────────────────────────────────────────
+/**
+ * v5.3: Hybrid test —
+ *   n ≤ 1,000,000 : trial division with isqrt limit + Golay mod-24 gate
+ *   n >  1,000,000 : deterministic Miller-Rabin (no trial division needed)
+ *
+ * Returns { prime, method, substrate_note, golay_gate, isqrt_limit }
+ */
+export function isPrimeUBP(n) {
+  n = Math.abs(Math.trunc(n));
+
+  const fail = (note, gate = false) => ({
+    prime: false, method: 'UBP-native', substrate_note: note,
+    golay_gate: gate, isqrt_limit: 0
+  });
+  const pass = (note, limit, method = 'UBP-native-isqrt') => ({
+    prime: true, method, substrate_note: note,
+    golay_gate: true, isqrt_limit: limit
+  });
+
+  if (n < 2)  return fail('Below substrate threshold (n < 2)');
+  if (n === 2) return pass('Binary substrate anchor — smallest prime', 1);
+  if (n === 3) return pass('Ternary resonance prime', 1);
+  if (n % 2 === 0) return fail('Even composite — binary divisor');
+  if (n % 3 === 0) return fail('Ternary composite — 3-divisor');
+
+  // Golay resonance gate: all primes > 3 satisfy n ≡ {1,5,7,11,13,17,19,23} mod 24
+  const mod24 = n % 24;
+  const GOLAY_PRIME_RESIDUES = new Set([1,5,7,11,13,17,19,23]);
+  if (!GOLAY_PRIME_RESIDUES.has(mod24)) {
+    return fail(`Golay gate blocked — mod24=${mod24} admits no primes`);
+  }
+
+  const RESIDUE_NOTES = {
+    1:'mod24=1 — Identity resonance', 5:'mod24=5 — Pentagonal prime class',
+    7:'mod24=7 — Heptagonal prime class', 11:'mod24=11 — Undecimal prime class',
+    13:'mod24=13 — Tridecimal prime class', 17:'mod24=17 — Heptadecimal prime class',
+    19:'mod24=19 — Nonadecimal prime class', 23:'mod24=23 — max-residue prime class',
+  };
+  const note = RESIDUE_NOTES[mod24] || `mod24=${mod24}`;
+
+  // Large n → deterministic Miller-Rabin (much faster, still exact)
+  if (n > 1_000_000) {
+    const mr = millerRabinBig(n);
+    return {
+      prime: mr.prime, method: 'UBP-native-miller-rabin',
+      substrate_note: note + (mr.prime ? ' — Miller-Rabin ✓' : ' — composite (Miller-Rabin)'),
+      golay_gate: true, isqrt_limit: n,
+    };
+  }
+
+  // Small n → trial division with integer isqrt (no Math.sqrt)
+  const limit = isqrt(n);
+  for (let i = 5; i <= limit; i += 6) {
+    if (n % i === 0)     return fail(`Factor found: ${i} (limit=${limit})`);
+    if (n % (i+2) === 0) return fail(`Factor found: ${i+2} (limit=${limit})`);
+  }
+  return pass(note, limit);
+}
+
+// ── BigInt GCD (private alias kept for legacy callers in this module) ─────────
+// eslint-disable-next-line no-unused-vars
+const _gcdBig = igcdBig;

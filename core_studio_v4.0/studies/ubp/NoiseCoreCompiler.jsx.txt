@@ -1,0 +1,594 @@
+/**
+ * NoiseCore Compiler — GLM query → .nca assembly generator
+ * This is the GLM's "skill sheet": pre-written .nca programs for common
+ * mathematical operations, auto-selected based on the GLM query type.
+ *
+ * Returns { source: string, program: string, inputs: number[], description: string }
+ */
+
+// ── Pre-baked .nca programs ────────────────────────────────────────────────────
+
+const PROGRAMS = {
+
+  factorial: (n) => ({
+    description: `Compute ${n}! (factorial) using iterative multiplication`,
+    inputs: [],
+    source: `; NoiseCore .nca — Factorial of ${n}
+; R0 = counter (starts at ${n}, counts down to 1)
+; R1 = accumulator (result)
+; R2 = scratch
+
+    LOAD R0, #${n}     ; n = ${n}
+    LOAD R1, #1        ; accumulator = 1
+
+loop:
+    CMPI R0, 1
+    JLE  done
+    MUL  R1, R1, R0   ; acc = acc * counter
+    SUBI R0, R0, #1   ; counter--
+    JMP  loop
+
+done:
+    MOV  R0, R1        ; result in R0
+    SYSCALL 1          ; PRINT_INT
+    SYSCALL 6          ; PRINT_NL
+    HALT
+`,
+  }),
+
+  fibonacci: (n) => ({
+    description: `Compute Fibonacci(${n}) iteratively`,
+    inputs: [],
+    source: `; NoiseCore .nca — Fibonacci(${n})
+; F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)
+; R0 = counter
+; R1 = F(prev-1)  R2 = F(prev)  R3 = temp
+
+    LOAD R0, #${n}     ; iteration count
+    LOAD R1, #0        ; F(0)
+    LOAD R2, #1        ; F(1)
+    CMPI R0, 0
+    JZ   zero_case
+    CMPI R0, 1
+    JLE  one_case
+
+loop:
+    ADD  R3, R1, R2   ; R3 = F(n-1)+F(n-2)
+    MOV  R1, R2       ; shift
+    MOV  R2, R3       ; shift
+    SUBI R0, R0, #1
+    CMPI R0, 1
+    JG   loop
+    MOV  R0, R2
+    JMP  done
+
+zero_case:
+    LOAD R0, #0
+    JMP  done
+one_case:
+    LOAD R0, #1
+
+done:
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  gcd: (a, b) => ({
+    description: `Compute GCD(${a}, ${b}) using Euclidean algorithm`,
+    inputs: [],
+    source: `; NoiseCore .nca — GCD(${a}, ${b}) Euclidean algorithm
+; R0 = a   R1 = b   R2 = remainder
+
+    LOAD R0, #${a}
+    LOAD R1, #${b}
+
+gcd_loop:
+    CMPI R1, 0
+    JZ   gcd_done
+    MOD  R2, R0, R1   ; R2 = R0 mod R1
+    MOV  R0, R1       ; R0 = R1
+    MOV  R1, R2       ; R1 = remainder
+    JMP  gcd_loop
+
+gcd_done:
+    SYSCALL 1          ; print GCD in R0
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  prime: (n) => ({
+    description: `Test primality of ${n} (trial division)`,
+    inputs: [],
+    source: `; NoiseCore .nca — Primality test for ${n}
+; Result: R0=1 (prime) or R0=0 (composite)
+; R1 = n   R2 = divisor (starts at 2)   R3 = scratch
+
+    LOAD R1, #${n}
+    LOAD R0, #1        ; assume prime
+
+    CMPI R1, 2
+    JL   not_prime
+    CMPI R1, 2
+    JE   done
+
+    LOAD R2, #2        ; divisor = 2
+
+trial:
+    ; if divisor * divisor > n → prime
+    MUL  R3, R2, R2
+    CMP  R3, R1
+    JG   done          ; R3 > R1 → prime confirmed
+
+    MOD  R3, R1, R2   ; n mod divisor
+    CMPI R3, 0
+    JZ   not_prime     ; divisible → composite
+
+    ADDI R2, R2, #1   ; divisor++
+    JMP  trial
+
+not_prime:
+    LOAD R0, #0
+
+done:
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  power: (base, exp) => ({
+    description: `Compute ${base}^${exp} (integer power) iteratively`,
+    inputs: [],
+    source: `; NoiseCore .nca — Power: ${base}^${exp}
+; R0 = base  R1 = exponent  R2 = accumulator
+
+    LOAD R0, #${base}
+    LOAD R1, #${exp}
+    LOAD R2, #1        ; accumulator = 1
+
+pow_loop:
+    CMPI R1, 0
+    JLE  pow_done
+    MUL  R2, R2, R0   ; acc = acc * base
+    SUBI R1, R1, #1
+    JMP  pow_loop
+
+pow_done:
+    MOV  R0, R2
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  add: (a, b) => ({
+    description: `Compute ${a} + ${b} via SubstrateALU (base-12 carry propagation)`,
+    inputs: [],
+    source: `; NoiseCore .nca — Addition ${a} + ${b}
+; SubstrateALU (substrate mode): base-12 carry propagation
+
+    LOAD R0, #${a}
+    LOAD R1, #${b}
+    ADD  R0, R0, R1   ; R0 = ${a} + ${b}
+    SYSCALL 7          ; DUMP_REGS (show full state)
+    SYSCALL 1          ; PRINT_INT result
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  sub: (a, b) => ({
+    description: `Compute ${a} - ${b}`,
+    inputs: [],
+    source: `; NoiseCore .nca — Subtraction ${a} - ${b}
+
+    LOAD R0, #${a}
+    LOAD R1, #${b}
+    SUB  R0, R0, R1
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  mul: (a, b) => ({
+    description: `Compute ${a} × ${b} via SubstrateALU (base-12 long multiplication)`,
+    inputs: [],
+    source: `; NoiseCore .nca — Multiplication ${a} × ${b}
+; SubstrateALU (substrate mode): base-12 long multiplication
+
+    LOAD R0, #${a}
+    LOAD R1, #${b}
+    MUL  R0, R0, R1
+    SYSCALL 7          ; DUMP_REGS
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  divmod: (a, b) => ({
+    description: `Compute ${a} ÷ ${b} (quotient and remainder)`,
+    inputs: [],
+    source: `; NoiseCore .nca — Division ${a} ÷ ${b}
+
+    LOAD R0, #${a}
+    LOAD R1, #${b}
+    DIV  R2, R0, R1   ; quotient in R2
+    MOD  R3, R0, R1   ; remainder in R3
+    MOV  R0, R2
+    SYSCALL 1          ; print quotient
+    MOV  R0, R3
+    SYSCALL 1          ; print remainder
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  modpow: (base, exp, mod) => ({
+    description: `Compute ${base}^${exp} mod ${mod} (square-and-multiply)`,
+    inputs: [],
+    source: `; NoiseCore .nca — Modular exponentiation ${base}^${exp} mod ${mod}
+; R0=base R1=exp R2=mod R3=result R4=scratch
+
+    LOAD R0, #${base}
+    LOAD R1, #${exp}
+    LOAD R2, #${mod}
+    LOAD R3, #1        ; result = 1
+    MOD  R0, R0, R2   ; base = base mod m
+
+sq_loop:
+    CMPI R1, 0
+    JLE  sq_done
+    ; if exp is odd: result = result * base mod m
+    MOD  R4, R1, R2   ; temp = exp mod 2 (approx, use AND)
+    AND  R4, R1, #1
+    CMPI R4, 1
+    JNE  sq_skip
+    MUL  R3, R3, R0
+    MOD  R3, R3, R2
+
+sq_skip:
+    MUL  R0, R0, R0   ; base = base^2 mod m
+    MOD  R0, R0, R2
+    LSR  R1, R1, #1   ; exp >>= 1
+    JMP  sq_loop
+
+sq_done:
+    MOV  R0, R3
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  sum: (n) => ({
+    description: `Compute sum 1..${n} = n(n+1)/2`,
+    inputs: [],
+    source: `; NoiseCore .nca — Sum of integers 1 to ${n}
+; Direct formula: n*(n+1)/2
+; R0 = n   R1 = n+1  R2 = result
+
+    LOAD R0, #${n}
+    ADDI R1, R0, #1   ; R1 = n+1
+    MUL  R2, R0, R1   ; R2 = n*(n+1)
+    LOAD R3, #2
+    DIV  R0, R2, R3   ; R0 = n*(n+1)/2
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  lcm: (a, b) => ({
+    description: `Compute LCM(${a}, ${b}) = |a*b| / GCD(a,b)`,
+    inputs: [],
+    source: `; NoiseCore .nca — LCM(${a}, ${b})
+; LCM = |a*b| / GCD(a,b)
+; R0=a R1=b R2=gcd R3=product
+
+    LOAD R0, #${a}
+    LOAD R1, #${b}
+    MUL  R3, R0, R1   ; product = a * b
+
+    ; Euclid GCD
+gcd_loop:
+    CMPI R1, 0
+    JZ   gcd_done
+    MOD  R2, R0, R1
+    MOV  R0, R1
+    MOV  R1, R2
+    JMP  gcd_loop
+
+gcd_done:
+    ; LCM = product / gcd
+    DIV  R0, R3, R0
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  comb: (n, k) => ({
+    description: `Compute C(${n},${k}) = ${n}! / (${k}! * (${n-k})!) iteratively`,
+    inputs: [],
+    source: `; NoiseCore .nca — Binomial C(${n}, ${k})
+; Iterative: C(n,k) = prod(n-i, i=0..k-1) / k!
+; R0=n R1=k R2=numerator R3=denominator R4=i R5=scratch
+
+    LOAD R0, #${n}
+    LOAD R1, #${k}
+    LOAD R2, #1       ; numerator
+    LOAD R3, #1       ; denominator
+    LOAD R4, #0       ; i = 0
+
+comb_loop:
+    CMP  R4, R1
+    JGE  comb_done
+    SUB  R5, R0, R4   ; n - i
+    MUL  R2, R2, R5   ; num *= (n-i)
+    ADDI R4, R4, #1   ; i++
+    MUL  R3, R3, R4   ; den *= i
+    JMP  comb_loop
+
+comb_done:
+    DIV  R0, R2, R3   ; result = num / den
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+`,
+  }),
+
+  triad: () => ({
+    description: 'Activate the Golay→Leech→Monster Triad and print status',
+    inputs: [],
+    source: `; NoiseCore .nca — TRIAD activation demo
+; Exercises all three triad SYSCALLs
+
+    LOAD R0, #0
+    SYSCALL 12         ; TRIAD_STATUS
+    LOAD R0, #0
+    SYSCALL 8          ; LEECH_OCTAD (octad 0)
+    LOAD R0, #0
+    SYSCALL 13         ; MONSTER_INFO (M11)
+    SYSCALL 12         ; final triad level
+    HALT
+`,
+  }),
+
+};
+
+// ── Query → program selector ──────────────────────────────────────────────────
+
+export function compileQuery(query) {
+  const q = query.toLowerCase().trim();
+
+  // Triad
+  if (/\btriad\b/.test(q)) return PROGRAMS.triad();
+
+  // Factorial
+  const factM = q.match(/factorial\s+(?:of\s+)?(\d+)|(\d+)!/);
+  if (factM) {
+    const n = parseInt(factM[1] || factM[2]);
+    if (n >= 0 && n <= 20) return PROGRAMS.factorial(n);
+  }
+
+  // Fibonacci
+  const fibM = q.match(/fib(?:onacci)?\s*(?:of\s+)?(?:\()?\s*(\d+)/);
+  if (fibM) {
+    const n = parseInt(fibM[1]);
+    if (n >= 0 && n <= 30) return PROGRAMS.fibonacci(n);
+  }
+
+  // GCD
+  const gcdM = q.match(/gcd\s*[\(\s,of]*\s*(\d+)\s*[,\s)and]+\s*(\d+)/);
+  if (gcdM) return PROGRAMS.gcd(parseInt(gcdM[1]), parseInt(gcdM[2]));
+
+  // LCM
+  const lcmM = q.match(/lcm\s*[\(\s,of]*\s*(\d+)\s*[,\s)and]+\s*(\d+)/);
+  if (lcmM) return PROGRAMS.lcm(parseInt(lcmM[1]), parseInt(lcmM[2]));
+
+  // Modpow
+  const modpowM = q.match(/(\d+)\s*\^\s*(\d+)\s*mod\s*(\d+)/);
+  if (modpowM) return PROGRAMS.modpow(parseInt(modpowM[1]), parseInt(modpowM[2]), parseInt(modpowM[3]));
+
+  // Power (no mod)
+  const powM = q.match(/(\d+)\s*\^\s*(\d+)(?!\s*mod)/);
+  if (powM) return PROGRAMS.power(parseInt(powM[1]), parseInt(powM[2]));
+
+  // Prime test
+  const primeM = q.match(/(?:is\s+)?(\d+)\s*prime|prime\s*(?:test|check)?\s*(\d+)/);
+  if (primeM) {
+    const n = parseInt(primeM[1] || primeM[2]);
+    if (n < 10000) return PROGRAMS.prime(n);
+  }
+
+  // Sum 1..n
+  const sumM = q.match(/sum\s+(?:of\s+)?(?:\d+\s+to\s+)?(?:integers?\s+)?(?:1\s+to\s+)?(\d+)/);
+  if (sumM) return PROGRAMS.sum(parseInt(sumM[1]));
+
+  // Combination
+  const combM = q.match(/(?:c|choose|comb(?:ination)?)\s*\(?(\d+)[,\s]+(\d+)/);
+  if (combM) return PROGRAMS.comb(parseInt(combM[1]), parseInt(combM[2]));
+
+  // Arithmetic: +,-,*,/,%
+  const arithM = q.match(/(-?\d+)\s*([\+\-\*×\/÷%]|\bmod\b)\s*(-?\d+)/);
+  if (arithM) {
+    const [a, op, b] = [parseInt(arithM[1]), arithM[2], parseInt(arithM[3])];
+    if (op === '+') return PROGRAMS.add(a, b);
+    if (op === '-') return PROGRAMS.sub(a, b);
+    if (op === '*' || op === '×') return PROGRAMS.mul(a, b);
+    if (op === '/' || op === '÷') return PROGRAMS.divmod(a, b);
+    if (op === '%' || op === 'mod') return PROGRAMS.divmod(a, b);
+  }
+
+  return null; // no match
+}
+
+// Export individual programs for the panel's example picker
+export const EXAMPLE_PROGRAMS = {
+  'Hello World': {
+    description: 'Print "HI!" using character SYSCALLs',
+    source: `; NoiseCore .nca — Hello World
+.data greeting 'H' 'I' '!' 0
+
+    LOAD R0, greeting
+    SYSCALL 3          ; PRINT_STR
+    SYSCALL 6
+    HALT
+`,
+  },
+  'Bubble Sort': {
+    description: 'Sort an array [5,3,8,1,9,2,7,4] in memory',
+    source: `; NoiseCore .nca — Bubble Sort
+.equ N 8
+.data arr 5 3 8 1 9 2 7 4
+
+    LOAD R6, #N        ; outer: N-1 passes
+    SUBI R6, R6, #1
+
+outer:
+    CMPI R6, 0
+    JLE  sorted
+    LOAD R5, arr       ; inner: ptr to arr[0]
+    LOAD R4, #N
+    SUBI R4, R4, #1
+    MOV  R3, R6        ; inner count
+
+inner:
+    CMPI R3, 0
+    JLE  next_pass
+    LOADI R0, R5       ; *R5
+    ADDI  R5, R5, #1
+    LOADI R1, R5       ; *(R5+1)
+    CMP   R0, R1
+    JLE   no_swap
+    ; swap
+    SUBI  R5, R5, #1
+    STOREI R1, R5
+    ADDI  R5, R5, #1
+    STOREI R0, R5
+
+no_swap:
+    SUBI  R3, R3, #1
+    JMP   inner
+
+next_pass:
+    SUBI  R6, R6, #1
+    JMP   outer
+
+sorted:
+    ; print sorted array
+    LOAD R5, arr
+    LOAD R4, #N
+
+print_loop:
+    CMPI R4, 0
+    JLE  done
+    LOADI R0, R5
+    SYSCALL 1
+    ADDI  R5, R5, #1
+    SUBI  R4, R4, #1
+    JMP   print_loop
+
+done:
+    SYSCALL 6
+    HALT
+`,
+  },
+  'Prime Sieve': {
+    description: 'Sieve of Eratosthenes, primes up to 30',
+    source: `; NoiseCore .nca — Sieve of Eratosthenes (up to 30)
+.equ LIMIT 30
+; memory[0..30] = sieve (1=prime, 0=composite)
+
+    ; init all to 1
+    LOAD R5, #0
+    LOAD R6, #1
+init_loop:
+    CMPI R5, LIMIT
+    JG   init_done
+    STOREI R6, R5
+    ADDI R5, R5, #1
+    JMP  init_loop
+
+init_done:
+    LOAD R5, #0
+    STORE R5, 0       ; 0 is not prime
+    STORE R5, 1       ; 1 is not prime
+
+    LOAD R2, #2       ; p = 2
+
+sieve_outer:
+    MUL  R3, R2, R2
+    CMPI R3, LIMIT
+    JG   print_primes
+
+    ; mark multiples of p
+    LOAD R3, R2
+    ADD  R3, R3, R2   ; start = p*2
+
+sieve_inner:
+    CMPI R3, LIMIT
+    JG   next_p
+    LOAD R0, #0
+    STOREI R0, R3     ; mem[R3] = 0
+    ADD  R3, R3, R2   ; += p
+    JMP  sieve_inner
+
+next_p:
+    ADDI R2, R2, #1
+    JMP  sieve_outer
+
+print_primes:
+    LOAD R2, #2
+
+print_loop:
+    CMPI R2, LIMIT
+    JG   done
+    LOADI R0, R2
+    CMPI  R0, 1
+    JNE   skip
+    MOV   R0, R2
+    SYSCALL 1
+
+skip:
+    ADDI R2, R2, #1
+    JMP  print_loop
+
+done:
+    SYSCALL 6
+    HALT
+`,
+  },
+  'Factorial (recursive)': {
+    description: 'Recursive factorial using CALL/RET/PUSH/POP',
+    source: `; NoiseCore .nca — Recursive Factorial
+; fact(n) = n * fact(n-1),  fact(0) = 1
+
+    LOAD R0, #10
+    CALL fact
+    SYSCALL 1
+    SYSCALL 6
+    HALT
+
+fact:
+    CMPI R0, 1
+    JLE  fact_base
+    PUSH R0
+    SUBI R0, R0, #1
+    CALL fact
+    POP  R1
+    MUL  R0, R0, R1
+    RET
+
+fact_base:
+    LOAD R0, #1
+    RET
+`,
+  },
+  'TRIAD demo': PROGRAMS.triad(),
+};
