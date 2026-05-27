@@ -658,4 +658,14 @@ If a new contribution doesn't satisfy all three, it goes to `archive_core/` unti
 
 ---
 
-*Last updated: 22 May 2026 · Maintained by Euan R. A. Craig, New Zealand.*
+*Updates: 
+
+27 May 2026: *   **`ubp_unified_v5.py`** (Upgraded with `calculate_nrci` and Frontier Physics ALU expansion)
+*   **`glm_engine.py`** (Aligned with Gray Code vocabulary)
+*   **`glm_strict_lang_builder.py`** (Aligned with Gray Code vocabulary)
+*   **`ubp_critpt_sovereign_v3.py`** (Upgraded with `GLMRulesEngine` pre-processing and new routing tables)
+*   **`ubp_lang_kb_combined_v4.json`** (Merged with `ubp_glm_rules_kb.json` rules; Gray Code aligned)
+*   **`glm_strict_vocabulary.json`** (Rebuilt with 1,706 grounded words)
+*   **`critpt.json`** (70-row JSON representation of the CritPt benchmark)
+
+22 May 2026 · Maintained by Euan R. A. Craig, New Zealand.*

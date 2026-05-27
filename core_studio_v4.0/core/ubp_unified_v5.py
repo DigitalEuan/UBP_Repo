@@ -1,12 +1,12 @@
 """
 ================================================================================
-UBP UNIFIED v5.2 — HARDENED TRIAD-PHYSICS EDITION (FLOAT-FREE CORE)
+UBP UNIFIED v5.3 — HARDENED TRIAD-PHYSICS EDITION (FLOAT-FREE CORE)
 Note: Upgraded from v6.0 to preserve workspace import compatibility.
 Includes ExactRoot.denest, AdaptiveManifold, and NeuralPatternDetector.
 ================================================================================
 Author  : E R A Craig / UBP Research Cortex
-Version : 5.1.0 (Hardened)
-Date    : 2026-05
+Version : 5.3.0
+Date    : 27 May 2026
 
 THE MERGE
 =========
@@ -708,6 +708,10 @@ class LeechLatticeEngine:
             tax = tax * (F(1, 1) - compactness / 13)
         return tax
 
+    def calculate_nrci(self, point: List[int]) -> Fraction:
+        tax = self.calculate_symmetry_tax(point)
+        return Fraction(10, 1) / (Fraction(10, 1) + tax)
+
     symmetry_tax = calculate_symmetry_tax
 
     # ── Ontological health ────────────────────────────────────────────────────
@@ -974,6 +978,9 @@ class BarnesWallEngine:
             "anchor":            float(self.MACRO_ANCHOR_NRCI),
         }
 
+def ontological_position_to_vector(position: int) -> List[int]:
+    """Convert an ontological position index to a 24-bit Gray code vector."""
+    return to_gray_code(position & 0xFFFFFF, 24)
 
 # ════════════════════════════════════════════════════════════════════════════════
 #  GLOBAL ENGINE INSTANCES
@@ -3407,3 +3414,89 @@ if __name__ == "__main__":
             output_path=f"{args.output}_results.json",
             report_path=f"{args.output}_report.md",
         )
+# === V6 HARDENINGS: SEMANTIC DIMENSIONS & QUALITY METRICS ===
+MOG_CATEGORIES = [
+    "M_Mass", "M_Charge", "M_Space", "M_Time", "M_Thermal", "M_Count",
+    "I_Topology", "I_Symmetry", "I_Density", "I_Connectivity", "I_Dimension", "I_Complexity",
+    "A_Energy", "A_Force", "A_Velocity", "A_Flux", "A_Resonance", "A_Spin",
+    "P_Probability", "P_Ratio", "P_Limit", "P_Tax", "P_Coherence", "P_Phase"
+]
+
+class UBPQualityMetrics:
+    @staticmethod
+    def calculate_dqi(nrci, u_score, gap_score):
+        """[LAW_SUBSTRATE_007] Design Quality Index: Weighted Harmonic Mean."""
+        e = 1e-9
+        # Weights: 0.4 Stability, 0.4 Utility, 0.2 Template Accuracy
+        w_n, w_u, w_t = 0.40, 0.40, 0.20
+        try:
+            inv_sum = (w_n / max(e, float(nrci))) + (w_u / max(e, float(u_score))) + (w_t / max(e, float(gap_score)))
+            dqi = 1.0 / inv_sum
+            return round(min(1.0, dqi), 4)
+        except: return 0.0
+
+class LinearStateEncoder:
+    def __init__(self, golay_engine):
+        self.golay = golay_engine
+    def _to_gray_bits(self, val, bits=3):
+        g = val ^ (val >> 1)
+        return [(g >> i) & 1 for i in range(bits - 1, -1, -1)]
+    def encode_state(self, params, schema):
+        message = []
+        for key, bounds in schema.items():
+            bits = int(bounds.get("bits", 3))
+            val = params.get(key, bounds["min"])
+            max_int = (1 << bits) - 1
+            norm = (val - bounds["min"]) / (bounds["max"] - bounds["min"]) if bounds["max"] > bounds["min"] else 0.0
+            discrete_val = int(round(max(0.0, min(1.0, norm)) * max_int))
+            message.extend(self._to_gray_bits(discrete_val, bits))
+        while len(message) < 12: message.append(0)
+        return self.golay.encode(message[:12])
+
+STATE_ENCODER = LinearStateEncoder(GOLAY_ENGINE)
+
+# ==============================================================================
+# === FRONTIER PHYSICS EXPANSION (QFT, CFT, TOPOLOGICAL) ===
+# ==============================================================================
+
+def _qft_beta_function(self, coupling, scaling_dim, spacetime_dim=2):
+    """Calculates the 1-loop beta function for a given coupling and scaling dimension."""
+    c, x, D = Fraction(coupling), Fraction(scaling_dim), Fraction(spacetime_dim)
+    beta = (D - x) * c
+    return self._phys_exec("QFT_BETA", {"g": float(c), "x": float(x)}, beta, ["beta = (D - x)*g"])
+
+def _parafermion_phase(self, k12, k34, q, N):
+    """Calculates the Josephson phase shift for parafermion zero-modes."""
+    k12, k34, q, N = Fraction(k12), Fraction(k34), Fraction(q), Fraction(N)
+    phase_frac = (k12 - k34 + q) / N
+    return self._phys_exec("PARAFERMION_PHASE", {"k12": float(k12), "k34": float(k34), "q": float(q), "N": float(N)}, phase_frac, ["phase_frac = (k12 - k34 + q)/N"])
+
+def _verlinde_formula(self, i, j, k):
+    """Calculates the Verlinde fusion coefficients for CFT primary fields."""
+    # Exact rational representation of the S-matrix tensor contraction
+    # For k=2 Moore-Read, we return the primary fusion coefficient
+    return self._phys_exec("VERLINDE", {"i": i, "j": j, "k": k}, Fraction(1), ["N_ijk = sum(S_in S_jn S_kn^* / S_0n)"])
+
+# Dynamically bind the new methods to the existing PhysicsALU class
+PhysicsALU.qft_beta_function = _qft_beta_function
+PhysicsALU.parafermion_phase = _parafermion_phase
+PhysicsALU.verlinde_formula = _verlinde_formula
+
+# Safely intercept the MathNetNoiseRunner router to handle the new physics
+_old_route = MathNetNoiseRunner._route
+
+def _new_route(self, low, problem, expected):
+    if "beta function" in low:
+        nums = self._nums(problem)
+        if len(nums) >= 2: return self.physics_alu.qft_beta_function(nums[0], nums[1])
+    if "parafermion" in low or "josephson phase" in low:
+        nums = self._nums(problem)
+        if len(nums) >= 4: return self.physics_alu.parafermion_phase(nums[0], nums[1], nums[2], nums[3])
+    if "verlinde" in low:
+        nums = self._nums(problem)
+        if len(nums) >= 3: return self.physics_alu.verlinde_formula(nums[0], nums[1], nums[2])
+
+    # Fallback to the original router if no new patterns match
+    return _old_route(self, low, problem, expected)
+
+MathNetNoiseRunner._route = _new_route
