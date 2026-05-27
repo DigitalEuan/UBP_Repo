@@ -2,7 +2,7 @@
 
 **Author:** Euan R. A. Craig, New Zealand
 **Version:** 7.2.0 (Genesis Edition)
-**Date:** 22 May 2026
+**Date:** 27 May 2026
 **Scope:** This document is the per-script reference for everything inside `core_studio_v4.0/core/`.
 
 > For the high-level overview of what UBP **is**, see the parent [`README.md`](../README.md).
