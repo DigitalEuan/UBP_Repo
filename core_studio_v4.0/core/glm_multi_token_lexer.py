@@ -7,7 +7,7 @@ query at whitespace, destroying multi-word physics concepts such as
 'Weyl anomaly', 'Hatsugai-Kohmoto model', or 'spin squeezing parameter'.
 
 This module performs three jobs, in order:
-  1. LaTeX scrub          –  strips $...$ blocks and \command tokens, then
+  1. LaTeX scrub          –  strips $...$ blocks and LaTeX-command tokens, then
                               converts a small dictionary of Greek-letter
                               commands to their plain-text names so they
                               can still match the vocabulary.

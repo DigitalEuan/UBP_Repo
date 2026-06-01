@@ -77,6 +77,7 @@ from ubp_unified_v5 import (
 from ubp_v28_oracle import (
     NativeDynamicSolver, SymPyOracle, _golay_snap, SYMPY_AVAILABLE, UBP_CORE_AVAILABLE
 )
+import glm_grammar_patch
 from glm_engine import create_engine
 
 F = Fraction
@@ -95,8 +96,10 @@ def lattice_snap_value(value: Any) -> Dict[str, Any]:
         gray = n ^ (n >> 1)
         raw = [(gray >> i) & 1 for i in range(23, -1, -1)]
     except Exception:
-        h = int(hashlib.sha256(str(value).encode()).hexdigest(), 16)
-        raw = [(h >> i) & 1 for i in range(23, -1, -1)]
+        # For non-integer values, use SHA-256 hash as a 24-bit Gray code anchor
+        h = int(hashlib.sha256(str(value).encode()).hexdigest(), 16) & 0xFFFFFF
+        gray = h ^ (h >> 1)  # Convert hash to Gray code
+        raw = [(gray >> i) & 1 for i in range(23, -1, -1)]
     snapped = _golay_snap(raw)
     sw = sum(snapped)
     nrci = nrci_fraction(snapped)
@@ -291,6 +294,10 @@ def load_critpt(parquet_path: str = "critpt.json") -> List[CritPtRecord]:
 
 class SovereigntyRunner:
     def __init__(self):
+        import critpt_glm_patch
+        critpt_glm_patch.apply_critpt_patch(
+            SovereigntyRunner, UBPSovereignSolver, AnswerCandidate, NRCI_PHASE_LOCK, lattice_snap_value
+        )
         print("[Sovereign] Booting UBP full stack ...")
         self.solver = UBPSovereignSolver()
         print("[Sovereign] Booting GLM Engine (Semantic Reasoner)...")
@@ -310,7 +317,7 @@ class SovereigntyRunner:
         # GLM Semantic Reasoning
         glm_turn = self.glm.respond(rec.problem_description, max_depth=3)
         
-        cand = self.solver.solve(rec.problem_description, spec)
+        cand = self.solver.solve(rec.problem_description, spec, glm_turn)
 
         record = {
             "problem_id": rec.problem_id,

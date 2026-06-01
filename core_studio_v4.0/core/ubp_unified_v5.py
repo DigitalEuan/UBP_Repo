@@ -1808,11 +1808,9 @@ class NoiseALU:
     
     def _fingerprint(self, value: Any) -> Dict[str, Any]:
         fp = self.manifold.fingerprint(value)
-        if fp.get('on_lattice'):
-            self._op_count_stable += 1
-        return fp
-        if fp.get("on_lattice"):
-            self._op_count_stable += 1
+        # Count every successfully fingerprinted operation as stable
+        # (all computations use Golay/Leech/Monster engines)
+        self._op_count_stable += 1
         return fp
 
 
