@@ -24,11 +24,11 @@ The central claim is simple but radical: the universe is not merely *described* 
 UBP Core Studio is the active research workbench for that hypothesis. It is a suite of Python scripts plus a JSON knowledge bank that together let a researcher:
 
 - **Derive fundamental constants from geometry alone.** The fine-structure constant, the proton/electron mass ratio, the muon/electron ratio, the Higgs mass, the Top quark mass, and others all emerge from the interaction of the three transcendental primitives π, φ, e with the Leech Lattice — with errors typically under 0.05% and several constants under 0.001%.
-- **Assign every physical entity a deterministic 24-bit address** derived solely from its `math` (Phenomenal DNA) field via SHA-256 fingerprinting and Golay encoding.
+- **Assign every physical entity a deterministic 24-bit address** derived solely from its `math` (Phenomenal DNA) field via Grey-Code fingerprinting and Golay encoding.
 - **Model the stability, complexity, and metabolic cost** of any physical or conceptual object using **exact rational arithmetic** (Python's `fractions.Fraction`), eliminating floating-point drift.
 - **Simulate the synthesis of matter** from primitives (quarks → nucleons → atoms → molecules) and predict emergent properties such as binding energy, topological stability, and "Islands of Stability" in the super-heavy element regime.
 - **Run a domain-specific geometric programming language (UBP-Py)** that translates text commands into 24-dimensional vector additions inside the Leech Lattice.
-- **Talk to the system through a semantic engine** that maps natural-language queries onto 24-bit vectors via Cosine Resonance, and uses a swarm of agents to invent new mathematical operators when no human word exists for a given lattice state.
+- **Talk to the system through a semantic engine** that maps natural-language queries onto 24-bit vectors via Cosine Resonance, and uses a swarm of agents to invent new mathematical operators when no human word exists for a given lattice state - experimental.
 
 This is an **active research environment**, not a polished product. Things move, scripts get refactored, and benchmarks tighten as the work matures. Treat every number as a working hypothesis to be reproduced.
 
@@ -44,7 +44,7 @@ Five architectural pillars define what makes the current platform "UBP":
 | **Geometry** | The **Leech Lattice Λ₂₄** with 196,560 kissing points | The densest possible 24-D sphere packing. Provides every codeword with a unique geometric position and a calculable "Symmetry Tax." |
 | **Macro-Bulk** | 256-dimensional **Barnes-Wall Lattice (BW₂₅₆)** | For molecules and macroscopic structures that are too complex to compress into 24 bits without extreme topological tension. SHA-256 hashes map 1:1 onto BW₂₅₆ coordinates. |
 | **Logic** | 100% **Exact Rational Arithmetic** (`fractions.Fraction`) | "Float-free" core — eliminates the floating-point aliasing that makes physical-constant derivations look like coincidence. Every transcendental is a continued-fraction approximation. |
-| **Identity** | **Binary-Reflected Gray Code** Topological Identity (UMS) | Replaced SHA-256 vector generation (whose avalanche effect destroyed topological continuity) so that adjacent objects in physical reality sit at adjacent points in the lattice. |
+| **Identity** | **Binary-Reflected Gray Code** Topological Identity (UMS) | Replaced SHA-256 vector generation (whose avalanche effect destroyed topological continuity) so that adjacent objects in physical reality sit at adjacent points in the lattice. MOG encoding is also important in various situations.|
 
 These pillars are not abstract — they are loaded as singletons (`GOLAY_ENGINE`, `LEECH_ENGINE`, `PARTICLE_PHYSICS`, etc.) at the top of [`ubp_unified_v5.py`](core/ubp_unified_v5.py) and used by every other module in the system.
 
@@ -101,23 +101,26 @@ Water is literally walked into existence as `2× Hydrogen + 1× Oxygen`. The res
 
 ### 3.4 Reason in natural language without hallucinating
 
-The cognitive stack is split across three layers:
+The current cognitive stack:
 
-1. **Semantic Engine v8.0** (`ubp_semantic_engine.py`) — maps text to a 24-bit "Query Chord" using bipolar weighted vector superposition and finds matching concepts via **Cosine Resonance** rather than raw Hamming distance, allowing deep conceptual alignments even when bit-matches fail. Trigrams ("Fine Structure Constant") carry **9× the weight** of unigrams.
-2. **Brain Consolidated v7.2** (`ubp_brain_consolidated.py`) — the deterministic recall engine. Loads the columnar v9.9 KB and enforces **Domain Gating** (e.g., the operator `OP_LIGHT` cannot intercept a physics query about "Speed of Light"). Produces a `ReasoningResult` with primary resonance, reasoning chain, and synthesis hint.
-3. **Auto-Trigger v19.1** (`auto_trigger.py`) — the reflexive bridge that fires on every keystroke, injects the resonance/chain/hint into the LLM context, and forces the model to anchor its answer to the lattice rather than to its training prior.
-
-### 3.5 Invent new mathematical operators (Lexical Genesis)
-
-The **Genesis Swarm v25.0** (`ubp_swarm_tct_v25.py`) is a multi-agent loop that:
-
-1. Reads an Olympiad/research problem.
-2. Calls the `MathNetKernelExtractor` (inside `ubp_v28_oracle.py`) to strip away English fluff and isolate the mathematical kernel.
-3. Runs the **Two-Track Solve** (SOP_001): **Track A** computes natively on the substrate (Topological ALU + Gray code + Golay snap); **Track B** solves symbolically with SymPy.
-4. If both tracks agree (`BOTH_AGREE`), the result is snapped to Λ₂₄ and its true NRCI calculated.
-5. If a "Lexical Gap" is found — a 24-bit state with no existing word — it triggers **SOP_002 Lexical Genesis (Triple Delta)** which computes:
-   $$V_{word} = V_{target} \oplus V_{subject} \oplus V_{query}$$
-   ...partitions the result into blocks, generates a deterministic symbolic formula (e.g., `3α + 2β²`), assigns it as the vector for a new Operator, and saves it to `ubp_learned_kb.json`. The system literally grows its own vocabulary.
+```
+GLM CHAT / CRITPT STACK
+└── glm_runtime.py                    NEW — single entrypoint
+    ├── ubp_critpt_sovereign_v3.py    FIXED — runner + sovereign solver
+    │   ├── critpt_glm_patch.py       FIXED — seeded SymPy builders
+    │   ├── glm_grammar_patch.py      unchanged — v2.0 disambiguation
+    │   │   ├── glm_zoned_lattice_embedding.py     (loaded lazily)
+    │   │   └── ubp_grammatical_diffusion.py       (loaded lazily)
+    │   ├── glm_engine.py             unchanged — v3.0 base engine
+    │   │   └── glm_strict_lang_builder.py         vocabulary builder
+    │   └── glm_engine_v31.py         unchanged — v3.1 semantic engine
+    │       ├── glm_physics_vocab_pack.py          vocab augmentation
+    │       ├── glm_multi_token_lexer.py           multi-word lexer
+    │       ├── glm_semantic_frames.py             typed frame grammar
+    │       └── glm_concept_relation_graph.py      typed-edge graph
+    ├── ubp_unified_v5.py             unchanged — the backbone
+    └── ubp_v28_oracle.py             unchanged — two-track oracle
+```
 
 ### 3.6 Run substrate-native primality testing (May 2026)
 
@@ -137,7 +140,7 @@ The primary knowledge bank holds **746 deterministic entries** in a minified col
 ["ubp_id", "lexicon", "tags", "vector", "nrci_str", "nrci_val", "tax_str", "mog_tensor"]
 ```
 
-Every entry is keyed by its **SHA-256 fingerprint** of its `math` field (Phenomenal DNA). Any change to the math automatically yields a different fingerprint — there is no way to forge identity.
+Every entry is keyed by its **SHA-256 fingerprint** of its `math` field (Phenomenal DNA). Any change to the math automatically yields a different fingerprint — there is no way to forge identity, used in the UBP only to provide a unique key address for any given KB entry, never for encoding data in simulations/studies.
 
 Entry distribution:
 
@@ -177,15 +180,12 @@ Sister knowledge files in the same directory: `ubp_beliefs_kb.json` (manifolds &
 
 ---
 
-## 5. The Architecture in One Picture
+## 5. The Current Architecture in One Picture
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
 │ LAYER 4 — COGNITIVE ORCHESTRATION (The Brain)                              │
-│   ubp_swarm_tct_v25.py     Genesis Swarm — multi-agent kernel extraction   │
-│   ubp_v28_oracle.py        Two-Track Solve (Native + SymPy Oracle)         │
 │   ubp_brain_consolidated.py  Deterministic recall + Domain Gating          │
-│   ubp_moe_cortex_v2.py     Mixture-of-Experts router                       │
 │   ubp_integrated_engine_v1.py  Penta-Audit executive + ViT Eyes            │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ LAYER 3 — TRANSLATION & EXECUTION (The Compilers)                          │
@@ -196,12 +196,9 @@ Sister knowledge files in the same directory: `ubp_beliefs_kb.json` (manifolds &
 │   ubppy.py                 CLI entry point                                 │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ LAYER 2 — SEMANTIC & PHENOMENOLOGICAL SENSES (The Sensory Cortex)          │
-│   ubp_semantic_engine.py   Cosine-Resonance NL → 24-bit vector             │
-│   ubp_semantic_sovereign.py  Lattice-Snap + Triple Delta Projector         │
 │   ubp_phenomenology.py     RGB / sensor data → 24-bit manifold             │
 │   ubp_observer_dynamics.py  SOC Energy + 1 THz Wall of Reality + READ gate │
-│   ubp_internal_dialogue_semantic_description.py  Deep semantic mirror      │
-│   auto_trigger.py          Reflexive context injector (v19.1)              │
+│   auto_trigger.py          Reflexive context injector (v19.1) for the APP  │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ LAYER 1 — MATHEMATICAL SUBSTRATE (The Backbone)                            │
 │   ubp_unified_v5.py        50-term π, Golay [24,12,8], Λ₂₄, BW256/512/1024,│
@@ -244,7 +241,7 @@ A claim is only considered "phenomenally real" when all three columns agree. If 
 
 ---
 
-## 7. Standard Operating Procedures
+## 7. Standard GLM Operating Procedures
 
 Two SOPs dominate day-to-day use:
 
@@ -301,6 +298,10 @@ The **1 THz Wall of Reality** (`ubp_observer_dynamics.py`) is the temporal ceili
 ---
 
 ## 9. Recent Updates (2026 Timeline)
+
+### 22 May 2026 — GLM scripts and experiments
+- **Various Upadates/additions** scripts starting with 'glm_' have been updated and added.
+- **Archives** legacy scripts related to semantic research have been archived.
 
 ### 22 May 2026 — Topological Tenacity Primality Engine & Swarm v25.0
 - **Topological Tenacity** absorbed natively into `ubp_unified_v5.py`; Miller-Rabin retired.
