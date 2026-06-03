@@ -50,18 +50,19 @@ class GrammaticalDiffusionReasoner:
         start_fsm = GrammarFSM()
         z_start = dominant_zone(start_word.vector)
         if not start_fsm.peek(z_start):
-            # If start word isn't allowed at 'start' (e.g. not a noun), bail
             if start_word.role != "NOUN":
                 return ReasonerTrace([], False, Fraction(0), Fraction(0))
 
         start_fsm.step(start_lemma, z_start)
 
-        start_step = self._make_step(start_lemma, start_word, z_start)
+        # Initial tax is the starting word's NRCI penalty + displacement
+        start_tax = Fraction(1) - start_word.nrci + Fraction(start_word.syndrome_w, 10)
+        start_step = self._make_step(start_lemma, start_word, z_start, start_tax)
 
         # (f_score, g_score, current_lemma, fsm_state_name, path)
         open_set = []
-        start_g = start_word.syndrome_w + 1
-        start_h = BLA.hamming_distance(start_word.vector, target_word.vector)
+        start_g = float(start_tax)
+        start_h = BLA.hamming_distance(start_word.vector, target_word.vector) / 24.0
         heapq.heappush(open_set, (start_g + start_h, start_g, start_lemma, start_fsm.state, [start_step]))
 
         visited: Set[Tuple[str, str]] = set()
@@ -76,14 +77,13 @@ class GrammaticalDiffusionReasoner:
             if len(path) > max_depth:
                 continue
 
-            # Check if we reached target and are in an accepting state
             current_fsm = GrammarFSM()
             current_fsm.state = state_name
             if lemma == target_lemma and current_fsm.is_accepting():
                 return ReasonerTrace(
                     path, True,
                     path[-1].nrci,
-                    Fraction(sum(float(s.tax) for s in path))
+                    Fraction(sum(s.tax for s in path))
                 )
 
             # Explore neighbors
@@ -91,33 +91,35 @@ class GrammaticalDiffusionReasoner:
                 z_next = dominant_zone(next_word.vector)
 
                 if current_fsm.peek(z_next):
-                    # Potential next state
                     temp_fsm = GrammarFSM()
                     temp_fsm.state = state_name
                     temp_fsm.step(next_lemma, z_next)
 
-                    next_step = self._make_step(next_lemma, next_word, z_next)
+                    # Cost: step penalty + NRCI penalty + displacement penalty
+                    step_tax = Fraction(1) - next_word.nrci + Fraction(next_word.syndrome_w, 10)
+                    next_step = self._make_step(next_lemma, next_word, z_next, step_tax)
+
                     new_path = path + [next_step]
-                    new_g = g + next_word.syndrome_w + 1
-                    new_h = BLA.hamming_distance(next_word.vector, target_word.vector)
+                    new_g = g + float(step_tax) + 1.0 # 1.0 is the base step cost
+                    new_h = BLA.hamming_distance(next_word.vector, target_word.vector) / 24.0
 
                     if (next_lemma, temp_fsm.state) not in visited:
                         heapq.heappush(open_set, (new_g + new_h, new_g, next_lemma, temp_fsm.state, new_path))
 
-        # If we exhausted open_set without success, return best partial path if any
         return ReasonerTrace([], False, Fraction(0), Fraction(0))
 
     def build_sentence(self, n0: str, n1: str) -> ReasonerTrace:
         return self.reason(n0, n1)
 
-    def _make_step(self, lemma: str, word: Any, zone: str) -> ReasonerStep:
+    def _make_step(self, lemma: str, word: Any, zone: str, tax: Fraction) -> ReasonerStep:
         return ReasonerStep(
             word=lemma,
             role=word.role,
             nrci=word.nrci,
             zone=zone,
             displacement=word.syndrome_w,
-            confidence=["phase-locked", "substrate-adjacent", "meaningful", "boundary", "uncorrectable"][min(word.syndrome_w, 4)]
+            confidence=["phase-locked", "substrate-adjacent", "meaningful", "boundary", "uncorrectable"][min(word.syndrome_w, 4)],
+            tax=tax
         )
 
 if __name__ == "__main__":
@@ -129,10 +131,5 @@ if __name__ == "__main__":
     if trace.path:
         print(f"  Path: {' -> '.join(s.word for s in trace.path)}")
         for s in trace.path:
-            print(f"    {s.word:10s} zone={s.zone} disp={s.displacement} conf={s.confidence}")
-
-    print("\nTesting A* Grammatical Diffusion (golay -> leech):")
-    trace = gdr.reason("golay", "leech")
-    print(f"  Target reached: {trace.target_reached}")
-    if trace.path:
-        print(f"  Path: {' -> '.join(s.word for s in trace.path)}")
+            print(f"    {s.word:10s} zone={s.zone} disp={s.displacement} conf={s.confidence} tax={float(s.tax):.4f}")
+        print(f"  Total Tax: {float(trace.total_tax):.4f}")
