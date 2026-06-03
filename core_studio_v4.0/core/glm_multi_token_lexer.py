@@ -68,12 +68,26 @@ def scrub_latex(text: str) -> str:
     text = re.sub(r"\$\$.*?\$\$", " ", text, flags=re.DOTALL)
     text = re.sub(r"\$[^$]*\$", " ", text)
     text = re.sub(r"\\begin\{[^}]+\}.*?\\end\{[^}]+\}", " ", text, flags=re.DOTALL)
+
     # Expand Greek letters (longer names first to avoid partial overlap)
     for cmd in sorted(_GREEK_MAP, key=len, reverse=True):
         text = re.sub(cmd + r"(?![a-zA-Z])", " " + _GREEK_MAP[cmd] + " ", text)
     for cmd in sorted(_OP_MAP, key=len, reverse=True):
         text = re.sub(cmd + r"(?![a-zA-Z])", " " + _OP_MAP[cmd] + " ", text)
-    # Drop any remaining \command tokens
+
+    # Handle font-style commands and common formatting macros by stripping the
+    # command and preserving the braced content.
+    # e.g. \mathrm{H} -> H, \mathcal{A} -> A
+    style_commands = [
+        r"\\mathrm", r"\\mathcal", r"\\mathbf", r"\\text", r"\\bm", r"\\dot",
+        r"\\bar", r"\\tilde", r"\\hat", r"\\vec", r"\\acute", r"\\grave",
+        r"\\check", r"\\breve", r"\\underline"
+    ]
+    for cmd in style_commands:
+        # Match \cmd{content} and replace with content, handling one level of nesting
+        text = re.sub(cmd + r"\{([^}]*)\}", r" \1 ", text)
+
+    # Drop any remaining \command tokens (non-braced)
     text = re.sub(r"\\[a-zA-Z]+\*?", " ", text)
     # Drop subscript / superscript braces, leaving the content
     text = re.sub(r"[_^]\{([^{}]*)\}", r" \1 ", text)
