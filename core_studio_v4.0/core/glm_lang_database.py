@@ -1,15 +1,15 @@
 """
-GLM Language Database — Priority Vocabulary v2.2
+GLM Language Database — Priority Vocabulary v2.5
 ================================================
 Grounded entries related to mathematical and substrate concepts.
-Expanded with Tiers 10 and 11 (Structural and Physical Parameters).
+Expanded with Tiers 20-23 (CritPt Advanced Physics & Named Laws).
 """
 from glm_zoned_lattice_embedding import ZonedVocabulary
 
 def build_priority_vocabulary() -> ZonedVocabulary:
     vocab = ZonedVocabulary()
 
-    # Tier 1 — Boolean Primitives (math_equivalent defined)
+    # Tier 1 — Boolean Primitives
     vocab.add("zero",    "NOUN", "M_Count",      math_equivalent=0)
     vocab.add("one",     "NOUN", "M_Count",      math_equivalent=1)
     vocab.add("true",    "NOUN", "P_Coherence",  math_equivalent=1)
@@ -17,7 +17,7 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("yes",     "NOUN", "P_Coherence",  math_equivalent=1)
     vocab.add("no",      "NOUN", "P_Coherence",  math_equivalent=0)
 
-    # Tier 2 — Arithmetic Operators (math_equivalent = op code)
+    # Tier 2 — Arithmetic Operators
     vocab.add("equals",       "OPERATOR", "P_Coherence",     math_equivalent=0)
     vocab.add("plus",         "OPERATOR", "A_Energy",        math_equivalent=1)
     vocab.add("minus",        "OPERATOR", "A_Energy",        math_equivalent=2)
@@ -29,7 +29,7 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("and",          "OPERATOR", "I_Connectivity",  math_equivalent=8)
     vocab.add("or",           "OPERATOR", "I_Connectivity",  math_equivalent=9)
 
-    # Tier 3 — Substrate-Native Nouns (already grounded in UBP)
+    # Tier 3 — Substrate-Native Nouns
     vocab.add("golay",    "NOUN", "I_Symmetry")
     vocab.add("leech",    "NOUN", "I_Dimension")
     vocab.add("octad",    "NOUN", "M_Count")
@@ -41,7 +41,7 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("lattice",  "NOUN", "I_Dimension")
     vocab.add("triad",    "NOUN", "A_Resonance")
 
-    # Tier 4 — Substrate Verbs (FSM-critical connectives)
+    # Tier 4 — Substrate Verbs
     vocab.add("is",       "VERB", "P_Coherence")
     vocab.add("has",      "VERB", "I_Connectivity")
     vocab.add("equals_v", "VERB", "P_Coherence")
@@ -53,20 +53,24 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("subtraction",    "NOUN", "A_Energy")
     vocab.add("multiplication", "NOUN", "A_Force")
     vocab.add("division",       "NOUN", "P_Ratio")
+
     vocab.add("result",      "NOUN", "P_Phase")
     vocab.add("value",       "NOUN", "M_Count")
     vocab.add("stable",      "ADJECTIVE", "P_Coherence")
     vocab.add("coherent",    "ADJECTIVE", "P_Coherence")
     vocab.add("pure",        "ADJECTIVE", "I_Symmetry")
+
     vocab.add("measure",     "VERB", "P_Ratio")
     vocab.add("defines",     "VERB", "P_Coherence")
     vocab.add("produces",    "VERB", "A_Energy")
     vocab.add("links",       "VERB", "I_Connectivity")
     vocab.add("stabilizes",  "VERB", "P_Coherence")
+
     vocab.add("identity",    "NOUN", "I_Symmetry")
     vocab.add("symmetry",    "NOUN", "I_Symmetry")
     vocab.add("topology",    "NOUN", "I_Topology")
     vocab.add("dimension",   "NOUN", "I_Dimension")
+
     vocab.add("correct",     "ADJECTIVE", "P_Coherence")
     vocab.add("valid",       "ADJECTIVE", "P_Coherence")
     vocab.add("unstable",    "ADJECTIVE", "P_Tax")
@@ -98,7 +102,7 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("exists",      "VERB", "P_Phase")
     vocab.add("encodes",     "VERB", "I_Symmetry")
 
-    # Tier 7 — CritPt Core Objects
+    # Tier 7-9 — CritPt Core & Meta
     vocab.add("state",       "NOUN", "P_Phase")
     vocab.add("equation",    "NOUN", "I_Symmetry")
     vocab.add("hamiltonian", "NOUN", "A_Energy")
@@ -108,8 +112,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("spin",        "NOUN", "A_Spin")
     vocab.add("boundary",    "NOUN", "P_Limit")
     vocab.add("theory",      "NOUN", "I_Complexity")
-
-    # Tier 8 — CritPt Domain Primitives
     vocab.add("weyl",        "NOUN", "I_Symmetry")
     vocab.add("anomaly",     "NOUN", "P_Tax")
     vocab.add("metric",      "NOUN", "I_Topology")
@@ -119,15 +121,13 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("cavity",      "NOUN", "M_Space")
     vocab.add("tunneling",   "NOUN", "A_Flux")
     vocab.add("braiding",    "NOUN", "I_Topology")
-
-    # Tier 9 — CritPt Meta-Connectives
     vocab.add("consider",    "VERB", "P_Probability")
     vocab.add("assume",      "VERB", "P_Probability")
     vocab.add("describe",    "VERB", "I_Complexity")
     vocab.add("defines_v",   "VERB", "P_Coherence")
     vocab.add("calculates",  "VERB", "M_Count")
 
-    # Tier 10 — Physical Parameters (LaTeX common targets)
+    # Tier 10-12 — Structural & Parameters
     vocab.add("lambda",      "NOUN", "P_Ratio")
     vocab.add("sigma",       "NOUN", "M_Count")
     vocab.add("alpha",       "NOUN", "P_Coherence")
@@ -138,8 +138,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("epsilon",     "NOUN", "P_Tax")
     vocab.add("theta",       "NOUN", "P_Phase")
     vocab.add("vartheta",    "NOUN", "P_Phase")
-
-    # Tier 11 — Structural/Meta Context
     vocab.add("system",      "NOUN", "I_Complexity")
     vocab.add("interaction", "NOUN", "I_Connectivity")
     vocab.add("space",       "NOUN", "M_Space")
@@ -150,8 +148,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("follows",     "VERB", "P_Phase")
     vocab.add("determines",  "VERB", "I_Complexity")
     vocab.add("relates",     "VERB", "I_Connectivity")
-
-    # Tier 12 — Mathematical Operations
     vocab.add("integral",    "NOUN", "M_Space")
     vocab.add("derivative",  "NOUN", "A_Velocity")
     vocab.add("matrix",      "NOUN", "I_Dimension")
@@ -160,6 +156,145 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("logarithm",   "NOUN", "P_Ratio")
     vocab.add("transformation", "NOUN", "P_Phase")
 
+    # Tier 13-15 — Advanced Math & Action
+    vocab.add("nabla",       "OPERATOR", "I_Topology")
+    vocab.add("gradient",    "NOUN",     "A_Velocity")
+    vocab.add("laplacian",   "NOUN",     "A_Energy")
+    vocab.add("trace",       "NOUN",     "M_Count")
+    vocab.add("eigenvalue",  "NOUN",     "P_Phase")
+    vocab.add("eigenstate",  "NOUN",     "P_Phase")
+    vocab.add("commutator",  "NOUN",     "I_Symmetry")
+    vocab.add("divergent",   "ADJECTIVE", "P_Tax")
+    vocab.add("finite",      "ADJECTIVE", "P_Limit")
+    vocab.add("phase",       "NOUN", "P_Phase")
+    vocab.add("frequency",   "NOUN", "A_Resonance")
+    vocab.add("potential",   "NOUN", "P_Probability")
+    vocab.add("density",     "NOUN", "I_Density")
+    vocab.add("constant",    "NOUN", "I_Symmetry")
+    vocab.add("vacuum",      "NOUN", "M_Space")
+    vocab.add("conductive",  "ADJECTIVE", "I_Connectivity")
+    vocab.add("magnetic",    "ADJECTIVE", "M_Charge")
+    vocab.add("electric",    "ADJECTIVE", "M_Charge")
+    vocab.add("solve",       "VERB", "I_Complexity")
+    vocab.add("compute",     "VERB", "M_Count")
+    vocab.add("derive",      "VERB", "I_Complexity")
+    vocab.add("evaluate",    "VERB", "P_Ratio")
+    vocab.add("expand",      "VERB", "M_Space")
+    vocab.add("regulates",   "VERB", "P_Limit")
+    vocab.add("interacts_v", "VERB", "I_Connectivity")
+
+    # Tier 16-18 — Structural Rigor & Physical Objects
+    vocab.add("problem",     "NOUN", "I_Complexity")
+    vocab.add("conditions",  "NOUN", "P_Limit")
+    vocab.add("limit",       "NOUN", "P_Limit")
+    vocab.add("infinity",    "NOUN", "M_Space")
+    vocab.add("process",     "NOUN", "P_Phase")
+    vocab.add("operator",    "NOUN", "I_Complexity")
+    vocab.add("parameters",  "NOUN", "I_Complexity")
+    vocab.add("variables",   "NOUN", "I_Complexity")
+
+    vocab.add("infinite",    "ADJECTIVE", "M_Space")
+    vocab.add("uniform",     "ADJECTIVE", "I_Symmetry")
+    vocab.add("identical",   "ADJECTIVE", "I_Symmetry")
+    vocab.add("initial",     "ADJECTIVE", "P_Phase")
+    vocab.add("final",       "ADJECTIVE", "P_Phase")
+    vocab.add("external",    "ADJECTIVE", "M_Space")
+    vocab.add("internal",    "ADJECTIVE", "I_Complexity")
+
+    vocab.add("find",        "VERB", "P_Probability")
+    vocab.add("use",         "VERB", "I_Complexity")
+    vocab.add("given_v",     "VERB", "P_Probability")
+    vocab.add("defined",     "ADJECTIVE", "P_Coherence")
+    vocab.add("represented", "ADJECTIVE", "I_Symmetry")
+    vocab.add("maps_v",      "VERB", "P_Phase")
+    vocab.add("leads",       "VERB", "A_Energy")
+    vocab.add("acts",        "VERB", "A_Force")
+
+    # Tier 19 — Time and Flow
+    vocab.add("time",        "NOUN", "M_Time")
+    vocab.add("loop",        "NOUN", "I_Topology")
+    vocab.add("ground",      "NOUN", "P_Phase")
+    vocab.add("first",       "ADJECTIVE", "M_Count")
+    vocab.add("second",      "ADJECTIVE", "M_Count")
+    vocab.add("order",       "NOUN", "I_Complexity")
+    vocab.add("size",        "NOUN", "M_Space")
+
+    vocab.add("following",   "ADJECTIVE", "P_Phase")
+    vocab.add("between_v",   "VERB", "I_Connectivity")
+    vocab.add("using_v",     "VERB", "I_Complexity")
+
+    # Tier 20 — Mathematical Operations & Relations
+    vocab.add("calculate",   "VERB", "M_Count")
+    vocab.add("matching",    "ADJECTIVE", "I_Symmetry")
+    vocab.add("fraction",    "NOUN", "P_Ratio")
+    vocab.add("sum",         "NOUN", "M_Count")
+    vocab.add("product",     "NOUN", "M_Count")
+    vocab.add("ratio",       "NOUN", "P_Ratio")
+
+    # Tier 21 — Spatial & Structural Descriptors
+    vocab.add("axis",        "NOUN", "M_Space")
+    vocab.add("sites",       "NOUN", "I_Topology")
+    vocab.add("periodic",    "ADJECTIVE", "I_Symmetry")
+    vocab.add("along",       "ADJECTIVE", "M_Space")
+    vocab.add("between",     "ADJECTIVE", "I_Connectivity")
+    vocab.add("length",      "NOUN", "M_Space")
+    vocab.add("distance",    "NOUN", "M_Space")
+    vocab.add("parameter",   "NOUN", "I_Complexity")
+    vocab.add("scheme",      "NOUN", "I_Complexity")
+
+    # Tier 22 — Physics & Dynamic Phenomena
+    vocab.add("motion",      "NOUN", "A_Velocity")
+    vocab.add("growth",      "NOUN", "A_Energy")
+    vocab.add("power",       "NOUN", "A_Energy")
+    vocab.add("distribution", "NOUN", "P_Probability")
+    vocab.add("luminosity",  "NOUN", "A_Flux")
+    vocab.add("cyclotron",   "NOUN", "A_Velocity")
+    vocab.add("opa",         "NOUN", "A_Flux")
+    vocab.add("divergences", "NOUN", "P_Tax")
+    vocab.add("ir",          "ADJECTIVE", "P_Limit")
+    vocab.add("uv",          "ADJECTIVE", "P_Limit")
+
+    # Tier 23 — Named Laws & Specialized Concepts
+    vocab.add("hubbard",     "ADJECTIVE", "A_Force")
+    vocab.add("fermi",       "ADJECTIVE", "I_Topology")
+    vocab.add("schwarzschild", "ADJECTIVE", "M_Space")
+    vocab.add("majorana",    "ADJECTIVE", "I_Symmetry")
+    vocab.add("wannier",     "ADJECTIVE", "I_Topology")
+    vocab.add("lindblad",    "ADJECTIVE", "P_Tax")
+    vocab.add("weyl anomaly", "NOUN", "I_Symmetry")
+    vocab.add("beta function", "NOUN", "P_Ratio")
+    vocab.add("spin squeezing", "NOUN", "I_Symmetry")
+    vocab.add("hatsugai-kohmoto", "ADJECTIVE", "A_Force")
+    vocab.add("supercell",   "NOUN", "I_Topology")
+    vocab.add("eigenfunction", "NOUN", "I_Symmetry")
+
+    # Tier 24 — High-Frequency Structural & Contextual
+    vocab.add("two",         "ADJECTIVE", "M_Count", math_equivalent=2)
+    vocab.add("three",       "ADJECTIVE", "M_Count", math_equivalent=3)
+    vocab.add("quasi",       "ADJECTIVE", "I_Complexity")
+    vocab.add("shift",       "NOUN", "P_Phase")
+    vocab.add("operators",   "NOUN", "I_Complexity")
+    vocab.add("values",      "NOUN", "M_Count")
+    vocab.add("rate",        "NOUN", "P_Ratio")
+    vocab.add("vector",      "NOUN", "I_Dimension")
+    vocab.add("factor",      "NOUN", "P_Ratio")
+    vocab.add("number",      "NOUN", "M_Count")
+    vocab.add("direction",   "NOUN", "M_Space")
+    vocab.add("single",      "ADJECTIVE", "M_Count")
+
+    # Tier 25 — Domain-Specific Criticals (CritPt Deep)
+    vocab.add("torsion",     "NOUN", "I_Symmetry")
+    vocab.add("frame",       "NOUN", "I_Complexity")
+    vocab.add("noise",       "NOUN", "P_Tax")
+    vocab.add("creation",    "NOUN", "A_Energy")
+    vocab.add("nanoparticles", "NOUN", "M_Mass")
+    vocab.add("optical",     "ADJECTIVE", "A_Flux")
+    vocab.add("lamet",       "NOUN", "I_Topology")
+    vocab.add("pion",        "NOUN", "I_Topology")
+    vocab.add("kernel",      "NOUN", "I_Connectivity")
+    vocab.add("quark",       "NOUN", "I_Topology")
+    vocab.add("cascade",     "NOUN", "A_Energy")
+
     return vocab
 
 # Export singleton instance
@@ -167,7 +302,7 @@ LANG_DB = build_priority_vocabulary()
 
 if __name__ == "__main__":
     print(f"Grounded {len(LANG_DB.words)} priority entries.")
-    for lemma in ["lambda", "system", "integral", "matrix"]:
+    for lemma in ["time", "loop", "ground", "first"]:
         w = LANG_DB.get(lemma)
         if w:
             print(f"  {lemma:12s} role={w.role:10s} zone={w.home_zone} "
