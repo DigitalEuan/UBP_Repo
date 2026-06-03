@@ -1,8 +1,8 @@
 """
-GLM Language Database — Priority Vocabulary v2.6
+GLM Language Database — Priority Vocabulary v2.7
 ================================================
 Grounded entries related to mathematical and substrate concepts.
-Expanded with Tiers 26-28 (Units, Models, and Extended Structural).
+Expanded with Tiers 31-32 (Math Op-Codes & Multi-Word Concepts).
 """
 from glm_zoned_lattice_embedding import ZonedVocabulary
 
@@ -317,6 +317,43 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("give",        "VERB", "P_Probability")
     vocab.add("take",        "VERB", "I_Complexity")
     vocab.add("want",        "VERB", "P_Probability")
+
+    # Tier 31 — Core Math Objects (Grounded via op-code math_equivalent)
+    vocab.add("determinant", "NOUN", "I_Symmetry",   math_equivalent=200)
+    vocab.add("trace",       "NOUN", "M_Count",      math_equivalent=201)
+    vocab.add("derivative",  "NOUN", "A_Velocity",   math_equivalent=202)
+    vocab.add("integral",    "NOUN", "A_Flux",       math_equivalent=203)
+    vocab.add("gradient",    "NOUN", "A_Velocity",   math_equivalent=204)
+    vocab.add("laplacian",   "NOUN", "A_Energy",     math_equivalent=205)
+    vocab.add("eigenvalue",  "NOUN", "P_Phase",      math_equivalent=206)
+    vocab.add("eigenvector", "NOUN", "I_Dimension",   math_equivalent=207)
+    vocab.add("commutator",  "NOUN", "I_Symmetry",   math_equivalent=208)
+    vocab.add("anticommutator", "NOUN", "I_Symmetry", math_equivalent=209)
+    vocab.add("matrix",      "NOUN", "I_Dimension",   math_equivalent=210)
+    vocab.add("tensor",      "NOUN", "I_Complexity",  math_equivalent=211)
+    vocab.add("vector",      "NOUN", "I_Dimension",   math_equivalent=212)
+
+    # Tier 32 — Multi-Word Physics Concepts (Atomic Grounding)
+    vocab.add("topological insulator", "NOUN", "I_Topology")
+    vocab.add("many body localization", "NOUN", "P_Phase")
+    vocab.add("conformal field theory", "NOUN", "I_Symmetry")
+    vocab.add("partition function", "NOUN", "M_Charge")
+    vocab.add("beta function", "NOUN", "P_Ratio")
+    vocab.add("weyl anomaly", "NOUN", "I_Symmetry")
+    vocab.add("spin squeezing", "NOUN", "I_Symmetry")
+    vocab.add("hatsugai kohmoto model", "NOUN", "A_Force")
+    vocab.add("coherent state", "NOUN", "P_Coherence")
+    vocab.add("ground state", "NOUN", "P_Phase")
+    vocab.add("excited state", "NOUN", "P_Phase")
+    vocab.add("density matrix", "NOUN", "P_Probability")
+    vocab.add("path integral", "NOUN", "A_Flux")
+    vocab.add("fermi surface", "NOUN", "I_Topology")
+    vocab.add("fermi liquid", "NOUN", "P_Phase")
+    vocab.add("chern number", "NOUN", "I_Topology")
+    vocab.add("quantum metric", "NOUN", "I_Dimension")
+    vocab.add("bond dimension", "NOUN", "I_Dimension")
+    vocab.add("wineland parameter", "NOUN", "P_Ratio")
+    vocab.add("matrix product", "NOUN", "I_Connectivity")
 
     return vocab
 
