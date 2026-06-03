@@ -40,6 +40,7 @@ from collections import defaultdict
 EDGE_LABELS: Set[str] = {
     "is_a", "has_property", "depends_on", "commutes_with",
     "scales_as", "is_dual_to", "generates", "measures",
+    "lattice_adjacent",
 }
 
 
@@ -51,7 +52,7 @@ class CRGEdge:
 
     def reverse(self) -> "CRGEdge":
         # symmetric labels
-        if self.label in ("commutes_with", "is_dual_to"):
+        if self.label in ("commutes_with", "is_dual_to", "lattice_adjacent"):
             return CRGEdge(self.dst, self.label, self.src)
         return self
 
@@ -271,6 +272,42 @@ def build_default_crg() -> ConceptRelationGraph:
     for src, lbl, dst in _RAW_EDGES:
         g.add_edge(src, lbl, dst)
     return g
+
+
+class LatticeConceptLinker:
+    """
+    Automatically links concepts in the CRG based on their geometric
+    relationships in the 24-bit zoned lattice.
+    """
+    def __init__(self, vocab, crg: ConceptRelationGraph):
+        self.vocab = vocab
+        self.crg   = crg
+
+    def auto_link(self, hamming_threshold: int = 4):
+        """
+        Scan all word pairs and add 'lattice_adjacent' edges if their
+        Hamming distance is below threshold and they share MOG quadrants.
+        """
+        from ubp_unified_v5 import BinaryLinearAlgebra as BLA
+        from glm_zoned_lattice_embedding import zone_signature
+
+        words = list(self.vocab.words.items())
+        links_added = 0
+
+        for i, (name1, w1) in enumerate(words):
+            for j in range(i + 1, len(words)):
+                name2, w2 = words[j]
+
+                # Check for geometric proximity
+                d = BLA.hamming_distance(w1.vector, w2.vector)
+                if d <= hamming_threshold:
+                    # If they share the same dominant zone
+                    if w1.home_zone == w2.home_zone:
+                        self.crg.add_edge(name1, "lattice_adjacent", name2)
+                        self.crg.add_edge(name2, "lattice_adjacent", name1)
+                        links_added += 1
+
+        return links_added
 
 
 if __name__ == "__main__":
