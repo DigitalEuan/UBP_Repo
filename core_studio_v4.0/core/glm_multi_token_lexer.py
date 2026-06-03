@@ -132,6 +132,25 @@ class MultiTokenLexer:
         # Sort multi-word phrases by length descending for greedy match
         self.multi_word.sort(key=len, reverse=True)
 
+    def _lemmatize(self, word: str) -> str:
+        """Lightweight lemmatizer: strip common suffixes if the base exists."""
+        if word in self.single_word:
+            return word
+        # Handle plurals
+        if word.endswith("s") and word[:-1] in self.single_word:
+            return word[:-1]
+        # Handle past tense
+        if word.endswith("ed") and word[:-2] in self.single_word:
+            return word[:-2]
+        if word.endswith("ed") and word[:-1] in self.single_word: # e.g. 'dated' -> 'date'
+            return word[:-1]
+        # Handle gerund
+        if word.endswith("ing") and word[:-3] in self.single_word:
+            return word[:-3]
+        if word.endswith("ing") and word[:-3] + "e" in self.single_word: # e.g. 'coding' -> 'code'
+            return word[:-3] + "e"
+        return word
+
     def tokenise(self, text: str) -> List[str]:
         """Return a deterministic list of meaning-bearing tokens / phrases."""
         text = scrub_latex(text)
@@ -157,12 +176,18 @@ class MultiTokenLexer:
                     break
             if matched:
                 continue
+
             w = raw[i]
             # also accept hyphenated single-tokens like 'rayleigh-benard'
             if w in self.single_word:
                 out.append(w)
             elif w not in self.stop_words and len(w) >= self.min_len:
-                out.append(w)
+                # Try lemmatization
+                lemma = self._lemmatize(w)
+                if lemma in self.single_word:
+                    out.append(lemma)
+                else:
+                    out.append(w)
             i += 1
         return out
 
