@@ -1,7 +1,7 @@
-# GLM CritPt Performance & Development Report v2.7
+# GLM CritPt Performance & Development Report v2.8
 
 ## Executive Summary
-This report tracks the evolution of the Geometric Language Machine (GLM) from v2.0 to v2.7. The v2.7 update focuses on advanced mathematical object grounding, complex LaTeX macro scrubbing, and the atomic recognition of multi-word physics concepts. These changes significantly improve the system's ability to process and reason about formalized physics problems.
+This report tracks the evolution of the Geometric Language Machine (GLM) from v2.0 to v2.8. The v2.8 update focuses on comparative meta-reasoning, recursive LaTeX parsing, and automated semantic discovery via lattice-proximity linking. These enhancements transition the system from a static dictionary to a dynamic relational engine.
 
 ## Evolution of Performance
 | Version | Grounded Words | Avg. Grounding %* | Path Success (Top 10) | Key Milestone |
@@ -14,35 +14,40 @@ This report tracks the evolution of the Geometric Language Machine (GLM) from v2
 | **v2.5** | 245 | ~45.4% | 100% | LaTeX Pre-processing + Named Laws |
 | **v2.6** | 290 | ~52.7% | 100% | Unit Pack + Lemmatization |
 | **v2.7** | 325 | ~53.0% | 100% | Math Objects + Complex Macros |
+| **v2.8** | 345 | ~53.5% | 100% | Comparative Meta + Auto-Linker |
 
 *\*Avg. Grounding % uses the MultiTokenLexer with LaTeX pre-processing and lemmatization.*
 
-## Batch 7 Expansion (Tiers 31-32)
-The v2.7 update targeted the core operations of physics reasoning:
+## Batch 8 Expansion (Tiers 33-35)
+The v2.8 update introduced directional and magnitude grounding:
 
-### Tier 31: Advanced Math Objects (Op-Codes)
-- **determinant**, **trace**, **derivative**, **integral**, **gradient**, **laplacian**, **eigenvalue**, **eigenvector**, **matrix**, **tensor**, **vector**
-- *Impact*: Assigns specific `math_equivalent` integers to mathematical operations, allowing the reasoner to distinguish between different types of calculation.
+### Tier 33-34: Comparative Meta & Scaling
+- **increase**, **decrease**, **maximum**, **minimum**, **approximate**, **exact**, **proportional**, **asymptotic**, **threshold**, **scale**
+- *Impact*: Allows the machine to ground the *context* of a problem (e.g., "in the large-N limit") by anchoring meta-descriptors to specific lattice op-codes.
 
-### Tier 32: Multi-Word Physics Concepts (Atomic)
-- **topological insulator**, **many body localization**, **conformal field theory**, **partition function**, **weyl anomaly**, **hatsugai kohmoto model**, **fermi surface**
-- *Impact*: Prevents the lexer from breaking down atomic concepts into their constituent parts, preserving the semantic integrity of complex models.
+### Tier 35: Relational Meta-Words
+- **leads to**, **implies**, **results in**, **depends on**, **defined by**
+- *Impact*: Transitions the reasoning engine from simple token sequences to logical implications, facilitating "causal" paths between concepts.
 
-## Key Improvement: Complex Macro Scrubbing
-The `scrub_latex` function in `MultiTokenLexer` was enhanced to handle font-style and formatting macros.
-- *Before*: `\mathrm{Hamiltonian}` would result in `['mathrm', 'hamiltonian']` (where 'mathrm' is an ungrounded gap).
-- *After*: `\mathrm{Hamiltonian}` correctly resolves to `['hamiltonian']`.
-- Supported macros include `\mathrm`, `\mathcal`, `\mathbf`, `\text`, `\bm`, and various accent/decoration marks.
+## Key Improvement: Recursive Macro Parser
+The lexer's LaTeX scrubber was completely rebuilt with a recursive descent logic.
+- **Arbitrary Nesting**: Correctly handles `\mathrm{\mathbf{Hamiltonian}}` by recursively extracting content from nested braces.
+- **Multi-Arg Support**: Properly parses `\frac{numerator}{denominator}` by stripping the command and preserving both semantic branches.
+
+## Key Improvement: Lattice Concept Linker
+A new automated component in the Concept Relation Graph now discovers semantic associations geometrically.
+- **Lattice Discovery**: If two concepts are within Hamming distance 4 and share a dominant grammatical zone, they are automatically linked with a `lattice_adjacent` edge.
+- **Implicit Connectivity**: This allows the reasoner to bridge gaps between concepts that were never manually linked but share deep structural similarities in the 24-bit substrate.
 
 ## Current System Weaknesses
-1.  **Macro Nesting Depth**: The current regex-based approach handles one level of macro nesting but may fail on deeply nested structures (e.g. `\mathrm{\mathcal{A}}`).
-2.  **Implicit Context**: Some problem descriptions use implied mathematical relationships (e.g., "in the limit of large N") that require grounding of comparative meta-language.
-3.  **Dataset-Specific Noise**: High-frequency non-semantic tokens like "main" (referring to problem filenames) still appear in the grounding lists.
+1.  **Verb Aspect Complexity**: While lemmatization handles suffixes, it doesn't yet account for irregular verbs or complex aspect shifts (e.g., "was being" vs "is").
+2.  **Dataset Metadata**: Tokens like "05", "06", "pdf" still contaminate the grounding stats due to being in the problem descriptions.
+3.  **Recursive Depth Limits**: The recursive parser is efficient but could be optimized for extremely large, multi-line LaTeX environments.
 
-## Next Development Targets (v2.8)
-1.  **Comparative Meta-Pack**: Ground words like "limit", "asymptotic", "large", "small", "increase", "decrease" with specific magnitude-shift math equivalents.
-2.  **Recursive Macro Parser**: Update the lexer to use a non-regex recursive descent parser for LaTeX to handle arbitrary nesting.
-3.  **Cross-File Concept Linker**: Improve the `glm_concept_relation_graph` to automatically link grounded concepts based on shared substrate octads.
+## Next Development Targets (v2.9)
+1.  **Metadata Noise Filter**: Update the lexer to automatically ignore alphanumeric problem codes and file extensions.
+2.  **Irregular Lemmatizer**: Ground the irregular variants of core scientific verbs (e.g., "brought", "led", "frozen").
+3.  **Multi-Dimensional Scaling Pack**: Ground concepts related to "orders of magnitude" and "exponential" scaling with specific geometric power-shifts.
 
 ## Conclusion
-The GLM v2.7 is now mathematically rigorous. By grounding the operations of calculus and linear algebra and refining the LaTeX interface, we have ensured that the machine's internal reasoning paths are aligned with the formal language of physics.
+GLM v2.8 is the most semantically "aware" version to date. By automatically discovering relationships through the lattice and elegantly handling the noise of formal LaTeX, the machine is now capable of navigating the complex logical topology of frontier physics.

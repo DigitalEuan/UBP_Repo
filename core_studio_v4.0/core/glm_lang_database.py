@@ -1,8 +1,8 @@
 """
-GLM Language Database — Priority Vocabulary v2.7
+GLM Language Database — Priority Vocabulary v2.8
 ================================================
 Grounded entries related to mathematical and substrate concepts.
-Expanded with Tiers 31-32 (Math Op-Codes & Multi-Word Concepts).
+Expanded with Tiers 33-35 (Comparative Meta & Physical Limits).
 """
 from glm_zoned_lattice_embedding import ZonedVocabulary
 
@@ -97,8 +97,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("low",         "ADJECTIVE", "M_Thermal")
     vocab.add("interacts",   "VERB", "I_Connectivity")
     vocab.add("affects",     "VERB", "A_Force")
-    vocab.add("increases",   "VERB", "A_Energy")
-    vocab.add("decreases",   "VERB", "M_Thermal")
     vocab.add("exists",      "VERB", "P_Phase")
     vocab.add("encodes",     "VERB", "I_Symmetry")
 
@@ -192,7 +190,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("parameters",  "NOUN", "I_Complexity")
     vocab.add("variables",   "NOUN", "I_Complexity")
 
-    vocab.add("infinite",    "ADJECTIVE", "M_Space")
     vocab.add("uniform",     "ADJECTIVE", "I_Symmetry")
     vocab.add("identical",   "ADJECTIVE", "I_Symmetry")
     vocab.add("initial",     "ADJECTIVE", "P_Phase")
@@ -354,6 +351,38 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("bond dimension", "NOUN", "I_Dimension")
     vocab.add("wineland parameter", "NOUN", "P_Ratio")
     vocab.add("matrix product", "NOUN", "I_Connectivity")
+
+    # Tier 33 — Comparative Meta-Pack (Directional & Magnitude)
+    vocab.add("increase",    "VERB", "A_Energy",     math_equivalent=300)
+    vocab.add("decrease",    "VERB", "M_Thermal",    math_equivalent=301)
+    vocab.add("maximum",     "NOUN", "P_Limit",      math_equivalent=302)
+    vocab.add("minimum",     "NOUN", "P_Limit",      math_equivalent=303)
+    vocab.add("maximize",    "VERB", "P_Limit",      math_equivalent=302)
+    vocab.add("minimize",    "VERB", "P_Limit",      math_equivalent=303)
+    vocab.add("approximate", "ADJECTIVE", "P_Probability", math_equivalent=304)
+    vocab.add("approximation", "NOUN", "P_Probability", math_equivalent=304)
+    vocab.add("exact",       "ADJECTIVE", "P_Coherence", math_equivalent=305)
+    vocab.add("proportional", "ADJECTIVE", "P_Ratio",    math_equivalent=306)
+    vocab.add("asymptotic",  "ADJECTIVE", "P_Limit",    math_equivalent=307)
+    vocab.add("asymptotically", "ADJECTIVE", "P_Limit", math_equivalent=307)
+
+    # Tier 34 — Physical Limits & Scaling
+    vocab.add("threshold",   "NOUN", "P_Limit")
+    vocab.add("scale",       "NOUN", "P_Ratio")
+    vocab.add("scaling",     "NOUN", "P_Ratio")
+    vocab.add("infinite",    "ADJECTIVE", "M_Space")
+    vocab.add("constant_v",  "VERB", "I_Symmetry")
+    vocab.add("remains",     "VERB", "P_Phase")
+    vocab.add("approaches",  "VERB", "P_Limit")
+    vocab.add("converges",   "VERB", "P_Limit")
+    vocab.add("diverges",    "VERB", "P_Limit")
+
+    # Tier 35 — Relational Meta-Words
+    vocab.add("leads to",    "OPERATOR", "I_Connectivity")
+    vocab.add("implies",     "OPERATOR", "I_Connectivity")
+    vocab.add("results in",  "OPERATOR", "I_Connectivity")
+    vocab.add("depends on",  "OPERATOR", "I_Connectivity")
+    vocab.add("defined by",  "OPERATOR", "P_Coherence")
 
     return vocab
 

@@ -60,39 +60,84 @@ _OP_MAP = {
 }
 
 
+def _extract_nested_content(text: str, start_idx: int) -> Tuple[str, int]:
+    """Helper to extract content between matching braces starting at start_idx."""
+    if start_idx >= len(text) or text[start_idx] != '{':
+        return "", start_idx
+
+    stack = 0
+    content = []
+    for i in range(start_idx, len(text)):
+        char = text[i]
+        if char == '{':
+            stack += 1
+            if stack > 1:
+                content.append(char)
+        elif char == '}':
+            stack -= 1
+            if stack == 0:
+                return "".join(content), i + 1
+            content.append(char)
+        else:
+            content.append(char)
+    return "".join(content), len(text)
+
 def scrub_latex(text: str) -> str:
     """Strip LaTeX dollar-math, expand Greek/operator commands, drop the rest.
-    Pure deterministic."""
-    # Replace inline and display math blocks with a single space (we keep the
-    # surrounding prose).
+    Uses recursive-style processing for nested macros. Pure deterministic."""
+    # 1. Replace block math and environments
     text = re.sub(r"\$\$.*?\$\$", " ", text, flags=re.DOTALL)
     text = re.sub(r"\$[^$]*\$", " ", text)
     text = re.sub(r"\\begin\{[^}]+\}.*?\\end\{[^}]+\}", " ", text, flags=re.DOTALL)
 
-    # Expand Greek letters (longer names first to avoid partial overlap)
+    # 2. Expand Greek letters and operators
     for cmd in sorted(_GREEK_MAP, key=len, reverse=True):
         text = re.sub(cmd + r"(?![a-zA-Z])", " " + _GREEK_MAP[cmd] + " ", text)
     for cmd in sorted(_OP_MAP, key=len, reverse=True):
         text = re.sub(cmd + r"(?![a-zA-Z])", " " + _OP_MAP[cmd] + " ", text)
 
-    # Handle font-style commands and common formatting macros by stripping the
-    # command and preserving the braced content.
-    # e.g. \mathrm{H} -> H, \mathcal{A} -> A
+    # 3. Handle nested font-style commands recursively
     style_commands = [
         r"\\mathrm", r"\\mathcal", r"\\mathbf", r"\\text", r"\\bm", r"\\dot",
         r"\\bar", r"\\tilde", r"\\hat", r"\\vec", r"\\acute", r"\\grave",
-        r"\\check", r"\\breve", r"\\underline"
+        r"\\check", r"\\breve", r"\\underline", r"\\frac", r"\\sqrt"
     ]
-    for cmd in style_commands:
-        # Match \cmd{content} and replace with content, handling one level of nesting
-        text = re.sub(cmd + r"\{([^}]*)\}", r" \1 ", text)
 
+    # Compile a single pattern for all style commands to find the leftmost one
+    cmd_pattern = "|".join(style_commands)
+
+    def process_recursive(s: str) -> str:
+        match = re.search(cmd_pattern, s)
+        if not match:
+            return s
+
+        start = match.start()
+        end_cmd = match.end()
+
+        # Special case for \frac which has two braced arguments
+        if s[start:end_cmd] == r"\frac":
+            content1, next_idx = _extract_nested_content(s, end_cmd)
+            content2, final_idx = _extract_nested_content(s, next_idx)
+            # Process contents recursively and join
+            return s[:start] + " " + process_recursive(content1) + " " + process_recursive(content2) + " " + process_recursive(s[final_idx:])
+
+        # Standard single-argument macro
+        content, final_idx = _extract_nested_content(s, end_cmd)
+        if content or final_idx > end_cmd:
+            return s[:start] + " " + process_recursive(content) + " " + process_recursive(s[final_idx:])
+        else:
+            # Command without braces, just skip it
+            return s[:start] + " " + process_recursive(s[end_cmd:])
+
+    text = process_recursive(text)
+
+    # 4. Clean up remaining LaTeX syntax
     # Drop any remaining \command tokens (non-braced)
     text = re.sub(r"\\[a-zA-Z]+\*?", " ", text)
-    # Drop subscript / superscript braces, leaving the content
+    # Drop subscript / superscript markers and braces
     text = re.sub(r"[_^]\{([^{}]*)\}", r" \1 ", text)
     text = re.sub(r"[_^]([a-zA-Z0-9])", r" \1 ", text)
-    # Drop stray braces and math symbols
+    # Final pass on stray braces and symbols
     text = re.sub(r"[{}]", " ", text)
     text = re.sub(r"[=+\-*/<>~|]", " ", text)
     return text
