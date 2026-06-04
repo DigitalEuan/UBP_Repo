@@ -463,15 +463,15 @@ def build_glm_response(physical_roots, bindings, query: str) -> str:
     try:
         reasoner = _get_reasoner()
         zv = _zoned_vocab_cache
+        from glm_multi_token_lexer import build_lexer_from_vocab
+        lexer = build_lexer_from_vocab(zv)
     except Exception as e:
         return _fallback_response(physical_roots, query, f"reasoner: {e}")
 
 
     qtype = _query_type(query)
-    query_concepts = list({
-        w for w in re.sub(r"[^a-z0-9 ]", "", query.lower()).split()
-        if len(w) >= 4
-    })
+    # Use the v3.0 MultiTokenLexer for concept extraction
+    query_concepts = lexer.tokenise(query)
     parts: List[str] = []
 
 

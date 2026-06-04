@@ -40,7 +40,8 @@ from collections import defaultdict
 EDGE_LABELS: Set[str] = {
     "is_a", "has_property", "depends_on", "commutes_with",
     "scales_as", "is_dual_to", "generates", "measures",
-    "lattice_adjacent",
+    "lattice_adjacent", "lattice_adjacent_1", "lattice_adjacent_2",
+    "lattice_adjacent_3", "lattice_adjacent_4", "lattice_adjacent_5",
 }
 
 
@@ -52,7 +53,8 @@ class CRGEdge:
 
     def reverse(self) -> "CRGEdge":
         # symmetric labels
-        if self.label in ("commutes_with", "is_dual_to", "lattice_adjacent"):
+        if self.label in ("commutes_with", "is_dual_to", "lattice_adjacent") or \
+           self.label.startswith("lattice_adjacent_"):
             return CRGEdge(self.dst, self.label, self.src)
         return self
 
@@ -191,7 +193,9 @@ class ConceptRelationGraph:
 
     def add_edge(self, src: str, label: str, dst: str) -> bool:
         if label not in EDGE_LABELS:
-            return False
+            # Check for dynamic weighted labels
+            if not label.startswith("lattice_adjacent_"):
+                return False
         src, dst = src.lower().strip(), dst.lower().strip()
         if not src or not dst:
             return False
@@ -287,9 +291,9 @@ class LatticeConceptLinker:
         """
         Scan all word pairs and add 'lattice_adjacent' edges if their
         Hamming distance is below threshold and they share MOG quadrants.
+        Weighted by Hamming distance (closer = higher semantic affinity).
         """
         from ubp_unified_v5 import BinaryLinearAlgebra as BLA
-        from glm_zoned_lattice_embedding import zone_signature
 
         words = list(self.vocab.words.items())
         links_added = 0
@@ -303,8 +307,11 @@ class LatticeConceptLinker:
                 if d <= hamming_threshold:
                     # If they share the same dominant zone
                     if w1.home_zone == w2.home_zone:
-                        self.crg.add_edge(name1, "lattice_adjacent", name2)
-                        self.crg.add_edge(name2, "lattice_adjacent", name1)
+                        # Weight: (threshold + 1 - distance)
+                        weight = hamming_threshold + 1 - d
+                        label = f"lattice_adjacent_{weight}"
+                        self.crg.add_edge(name1, label, name2)
+                        self.crg.add_edge(name2, label, name1)
                         links_added += 1
 
         return links_added

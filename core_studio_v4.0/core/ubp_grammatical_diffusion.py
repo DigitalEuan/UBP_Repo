@@ -87,6 +87,7 @@ class GrammaticalDiffusionReasoner:
                 )
 
             # Explore neighbors
+            # 1. Standard vocabulary neighbors
             for next_lemma, next_word in self.vocab.words.items():
                 z_next = dominant_zone(next_word.vector)
 
@@ -105,6 +106,39 @@ class GrammaticalDiffusionReasoner:
 
                     if (next_lemma, temp_fsm.state) not in visited:
                         heapq.heappush(open_set, (new_g + new_h, new_g, next_lemma, temp_fsm.state, new_path))
+
+            # 2. Compositional neighbors (Applying Operator to target or current)
+            # If current state allows an Operator
+            if current_fsm.peek("O") and len(path) < max_depth - 1:
+                for op_lemma, op_word in self.vocab.words.items():
+                    if op_word.role in ("OPERATOR", "VERB"):
+                        # Try shifting the target to see if we can reach it via a transient state
+                        # e.g., if target is 'energy', and we have 'increase',
+                        # can we reach 'increase(energy)'?
+                        shifted = self.vocab.apply_shift(target_lemma, op_lemma)
+                        if shifted:
+                            # Add the operator to the path
+                            z_op = dominant_zone(op_word.vector)
+                            temp_fsm = GrammarFSM()
+                            temp_fsm.state = state_name
+                            temp_fsm.step(op_lemma, z_op)
+
+                            op_tax = Fraction(1) - op_word.nrci + Fraction(op_word.syndrome_w, 10)
+                            op_step = self._make_step(op_lemma, op_word, z_op, op_tax)
+
+                            # Then add the shifted subject
+                            z_shifted = dominant_zone(shifted.vector)
+                            if temp_fsm.peek(z_shifted):
+                                temp_fsm.step(shifted.lemma, z_shifted)
+                                shifted_tax = Fraction(1) - shifted.nrci + Fraction(shifted.syndrome_w, 10)
+                                shifted_step = self._make_step(shifted.lemma, shifted, z_shifted, shifted_tax)
+
+                                new_path = path + [op_step, shifted_step]
+                                new_g = g + float(op_tax) + float(shifted_tax) + 2.0
+                                new_h = BLA.hamming_distance(shifted.vector, target_word.vector) / 24.0
+
+                                if (shifted.lemma, temp_fsm.state) not in visited:
+                                    heapq.heappush(open_set, (new_g + new_h, new_g, shifted.lemma, temp_fsm.state, new_path))
 
         return ReasonerTrace([], False, Fraction(0), Fraction(0))
 
