@@ -1,8 +1,8 @@
 """
-GLM Language Database — Priority Vocabulary v2.8
+GLM Language Database — Priority Vocabulary v2.9
 ================================================
 Grounded entries related to mathematical and substrate concepts.
-Expanded with Tiers 33-35 (Comparative Meta & Physical Limits).
+Expanded with Tier 36 (Multi-Dimensional Scaling).
 """
 from glm_zoned_lattice_embedding import ZonedVocabulary
 
@@ -183,7 +183,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     # Tier 16-18 — Structural Rigor & Physical Objects
     vocab.add("problem",     "NOUN", "I_Complexity")
     vocab.add("conditions",  "NOUN", "P_Limit")
-    vocab.add("limit",       "NOUN", "P_Limit")
     vocab.add("infinity",    "NOUN", "M_Space")
     vocab.add("process",     "NOUN", "P_Phase")
     vocab.add("operator",    "NOUN", "I_Complexity")
@@ -201,7 +200,7 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("use",         "VERB", "I_Complexity")
     vocab.add("given_v",     "VERB", "P_Probability")
     vocab.add("maps_v",      "VERB", "P_Phase")
-    vocab.add("leads",       "VERB", "A_Energy")
+    vocab.add("lead",        "VERB", "A_Energy")
     vocab.add("acts",        "VERB", "A_Force")
 
     # Tier 19 — Time and Flow
@@ -369,7 +368,6 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     # Tier 34 — Physical Limits & Scaling
     vocab.add("threshold",   "NOUN", "P_Limit")
     vocab.add("scale",       "NOUN", "P_Ratio")
-    vocab.add("scaling",     "NOUN", "P_Ratio")
     vocab.add("infinite",    "ADJECTIVE", "M_Space")
     vocab.add("constant_v",  "VERB", "I_Symmetry")
     vocab.add("remains",     "VERB", "P_Phase")
@@ -383,6 +381,18 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("results in",  "OPERATOR", "I_Connectivity")
     vocab.add("depends on",  "OPERATOR", "I_Connectivity")
     vocab.add("defined by",  "OPERATOR", "P_Coherence")
+
+    # Tier 36 — Multi-Dimensional Scaling & Functional Forms
+    vocab.add("magnitude",   "NOUN", "M_Space",      math_equivalent=400)
+    vocab.add("exponential", "ADJECTIVE", "P_Ratio", math_equivalent=401)
+    vocab.add("logarithmic", "ADJECTIVE", "P_Ratio", math_equivalent=402)
+    vocab.add("linear",      "ADJECTIVE", "I_Symmetry", math_equivalent=403)
+    vocab.add("quadratic",   "ADJECTIVE", "I_Symmetry", math_equivalent=404)
+    vocab.add("cubic",       "ADJECTIVE", "M_Space",    math_equivalent=405)
+    vocab.add("scaling",     "NOUN", "P_Ratio",      math_equivalent=406)
+    vocab.add("order of magnitude", "NOUN", "M_Count")
+    vocab.add("power law",   "NOUN", "P_Ratio")
+    vocab.add("limit",       "NOUN", "P_Limit",      math_equivalent=407)
 
     return vocab
 

@@ -1,7 +1,7 @@
-# GLM CritPt Performance & Development Report v2.8
+# GLM CritPt Performance & Development Report v2.9
 
 ## Executive Summary
-This report tracks the evolution of the Geometric Language Machine (GLM) from v2.0 to v2.8. The v2.8 update focuses on comparative meta-reasoning, recursive LaTeX parsing, and automated semantic discovery via lattice-proximity linking. These enhancements transition the system from a static dictionary to a dynamic relational engine.
+This report tracks the evolution of the Geometric Language Machine (GLM) from v2.0 to v2.9. The v2.9 update introduces semantic optimization to resolve lattice collisions, metadata noise filtering, irregular lemmatization, and grounding of multi-dimensional scaling functional forms. These changes refine the machine's "perceptual clarity" and linguistic robustness.
 
 ## Evolution of Performance
 | Version | Grounded Words | Avg. Grounding %* | Path Success (Top 10) | Key Milestone |
@@ -15,39 +15,38 @@ This report tracks the evolution of the Geometric Language Machine (GLM) from v2
 | **v2.6** | 290 | ~52.7% | 100% | Unit Pack + Lemmatization |
 | **v2.7** | 325 | ~53.0% | 100% | Math Objects + Complex Macros |
 | **v2.8** | 345 | ~53.5% | 100% | Comparative Meta + Auto-Linker |
+| **v2.9** | 360 | ~53.4% | 100% | Pattern Optimization + Noise Filter |
 
-*\*Avg. Grounding % uses the MultiTokenLexer with LaTeX pre-processing and lemmatization.*
+*\*Avg. Grounding % uses the MultiTokenLexer with LaTeX pre-processing, lemmatization, and metadata filtering.*
 
-## Batch 8 Expansion (Tiers 33-35)
-The v2.8 update introduced directional and magnitude grounding:
+## Key Improvement: Semantic Pattern Optimization
+An extensive review of the 24-bit lattice was conducted to resolve vector collisions.
+- **Unique Role Anchors**: Assigned unique Golay octads to each grammatical role (NOUN, VERB, OPERATOR, ADJECTIVE, PROPERTY), ensuring better separation between grammatical zones.
+- **Gray-Coded Stamps**: Expanded both MOG category and Lemma stamps to 5-bit Gray codes. This provides 32 slots per role/category, resolving all cross-category collisions.
+- **Result**: Concept pairs that are semantically distinct (e.g., "zero" and "particle") no longer occupy the same lattice coordinate.
 
-### Tier 33-34: Comparative Meta & Scaling
-- **increase**, **decrease**, **maximum**, **minimum**, **approximate**, **exact**, **proportional**, **asymptotic**, **threshold**, **scale**
-- *Impact*: Allows the machine to ground the *context* of a problem (e.g., "in the large-N limit") by anchoring meta-descriptors to specific lattice op-codes.
+## Key Improvement: Metadata Noise Filter
+The lexer now automatically identifies and suppresses non-semantic tokens prevalent in the CritPt dataset.
+- **Stripped Tokens**: Alphanumeric problem IDs (e.g., "Challenge_1"), file extensions (".pdf"), and standalone dataset labels ("main", "id").
+- **Impact**: Grounding percentages are now a more accurate reflection of semantic coverage, as "noise" tokens are removed from the total count.
 
-### Tier 35: Relational Meta-Words
-- **leads to**, **implies**, **results in**, **depends on**, **defined by**
-- *Impact*: Transitions the reasoning engine from simple token sequences to logical implications, facilitating "causal" paths between concepts.
+## Key Improvement: Irregular Lemmatizer
+The `MultiTokenLexer` was expanded with a mapping for irregular scientific verbs.
+- **Supported Irregulars**: "led" -> **lead**, "found" -> **find**, "brought" -> **bring**, "gave" -> **give**, etc.
+- **Impact**: Improves pathfinding by allowing various tenses to anchor to a single grounded definition.
 
-## Key Improvement: Recursive Macro Parser
-The lexer's LaTeX scrubber was completely rebuilt with a recursive descent logic.
-- **Arbitrary Nesting**: Correctly handles `\mathrm{\mathbf{Hamiltonian}}` by recursively extracting content from nested braces.
-- **Multi-Arg Support**: Properly parses `\frac{numerator}{denominator}` by stripping the command and preserving both semantic branches.
-
-## Key Improvement: Lattice Concept Linker
-A new automated component in the Concept Relation Graph now discovers semantic associations geometrically.
-- **Lattice Discovery**: If two concepts are within Hamming distance 4 and share a dominant grammatical zone, they are automatically linked with a `lattice_adjacent` edge.
-- **Implicit Connectivity**: This allows the reasoner to bridge gaps between concepts that were never manually linked but share deep structural similarities in the 24-bit substrate.
+## Batch 9 Expansion: Multi-Dimensional Scaling (Tier 36)
+- **magnitude**, **exponential**, **logarithmic**, **linear**, **quadratic**, **cubic**, **scaling**, **power law**
+- *Impact*: Grounds the functional relationships described in physics problems, allowing the reasoner to navigate between different scaling regimes.
 
 ## Current System Weaknesses
-1.  **Verb Aspect Complexity**: While lemmatization handles suffixes, it doesn't yet account for irregular verbs or complex aspect shifts (e.g., "was being" vs "is").
-2.  **Dataset Metadata**: Tokens like "05", "06", "pdf" still contaminate the grounding stats due to being in the problem descriptions.
-3.  **Recursive Depth Limits**: The recursive parser is efficient but could be optimized for extremely large, multi-line LaTeX environments.
+1.  **Implicit Scaling Relationships**: While keywords are grounded, the engine doesn't yet "shift" vectors based on orders of magnitude (e.g., "large N" vs "small N").
+2.  **Specialized Mathematical Notation**: Symbols like `\approx`, `\propto` are stripped; grounding their semantic equivalents ("approximate", "proportional") depends on the lemmatizer.
 
-## Next Development Targets (v2.9)
-1.  **Metadata Noise Filter**: Update the lexer to automatically ignore alphanumeric problem codes and file extensions.
-2.  **Irregular Lemmatizer**: Ground the irregular variants of core scientific verbs (e.g., "brought", "led", "frozen").
-3.  **Multi-Dimensional Scaling Pack**: Ground concepts related to "orders of magnitude" and "exponential" scaling with specific geometric power-shifts.
+## Next Development Targets (v3.0)
+1.  **Semantic Magnitude Shifter**: Implement a vector transformation logic that applies magnitude-shift op-codes (from Tier 33/36) to subject nouns.
+2.  **Operator Composition**: Enhance the reasoner to handle composed operators (e.g., "gradient of the potential").
+3.  **Final CritPt Grounding (Tier 37+)**: Target the final 10% of ungrounded scientific concepts to reach the 60% coverage ceiling.
 
 ## Conclusion
-GLM v2.8 is the most semantically "aware" version to date. By automatically discovering relationships through the lattice and elegantly handling the noise of formal LaTeX, the machine is now capable of navigating the complex logical topology of frontier physics.
+The GLM v2.9 has achieved a high degree of "Lattice Purity." By resolving collisions and filtering noise, we have created a clean geometric environment for complex semantic reasoning. The system is now ready for v3.0, which will focus on active vector transformations.

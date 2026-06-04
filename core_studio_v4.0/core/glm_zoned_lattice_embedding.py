@@ -107,16 +107,19 @@ def _best_octad_for_zone(zone: Tuple[int, ...]) -> List[int]:
 
 
 def build_role_basis() -> Dict[str, List[int]]:
-    """Return {role: 24-bit Golay octad biased toward role's home zone}."""
-    s_oct = _best_octad_for_zone(ZONE_S)
-    o_oct = _best_octad_for_zone(ZONE_O)
-    m_oct = _best_octad_for_zone(ZONE_M)
+    """Return {role: 24-bit Golay octad biased toward role's home zone}.
+    Uses unique anchors for each role to improve separation."""
+    octads = GOLAY_ENGINE.get_octads()
+    # Hand-selected unique octads for each role (highest zone weight)
+    # Zone S best indices: 110, 206
+    # Zone O best indices: 490, 639
+    # Zone M best indices: 27, 78
     return {
-        "NOUN":      s_oct,
-        "VERB":      o_oct,
-        "OPERATOR":  o_oct,
-        "ADJECTIVE": m_oct,
-        "PROPERTY":  m_oct,
+        "NOUN":      list(octads[110]),  # (6, 1, 1)
+        "VERB":      list(octads[490]),  # (0, 6, 2)
+        "OPERATOR":  list(octads[639]),  # (0, 6, 2)
+        "ADJECTIVE": list(octads[27]),   # (2, 0, 6)
+        "PROPERTY":  list(octads[78]),   # (2, 0, 6)
     }
 
 
@@ -150,20 +153,17 @@ def _low_weight_4(idx: int) -> Tuple[int, int, int, int]:
 
 
 def mog_stamp(cat: str, role: str) -> List[int]:
-    """A 24-bit vector with at most 3 active bits, all inside the role's
-    home zone. Encodes the MOG category deterministically:
-        zone-bit 0..3  =  quadrant flag  (M / I / A / P, one-hot)
-        zone-bit 4..7  =  4-bit sub-index pattern (weight ≤ 2)"""
+    """A 24-bit vector encoding the MOG category deterministically.
+    Uses a 5-bit Gray code in the first 5 bits of the home zone.
+    This provides 32 category slots with 0 overlap with the lemma stamp."""
     zone = ZONE_NAMES[ROLE_HOME_ZONE[role]]
-    quad = _QUADRANT_OF[cat]
-    quad_bit = {"M": 0, "I": 1, "A": 2, "P": 3}[quad]
-    sub_idx  = MOG_CATEGORIES.index(cat) % 6
-    sub_pattern = _low_weight_4(sub_idx)
+    idx = MOG_CATEGORIES.index(cat)
+    # 5-bit Gray code for 24 categories
+    gray = idx ^ (idx >> 1)
     v = [0] * 24
-    v[zone[quad_bit]] = 1
-    for i, b in enumerate(sub_pattern):
-        if b:
-            v[zone[4 + i]] = 1
+    for i in range(5):
+        if (gray >> i) & 1:
+            v[zone[i]] = 1
     return v
 
 
@@ -172,23 +172,33 @@ def mog_stamp(cat: str, role: str) -> List[int]:
 # ════════════════════════════════════════════════════════════════════════════════
 
 def lemma_stamp(lemma_id: int, role: str) -> List[int]:
-    """Extend to a 2-bit lemma stamp using positions 4-7 of the home zone.
-    This gives 16 sibling slots. Using Gray code: adjacent lemma_id values
-    differ by exactly 1 bit."""
-    zone = ZONE_NAMES[ROLE_HOME_ZONE[role]]
+    """Extend to a 5-bit lemma stamp (32 slots) to resolve collisions.
+    Uses bits 5-7 of the home zone and bits 0-1 of the cyclic next zone.
+    This preserves home-zone dominance for the majority of words."""
+    home_zone_name = ROLE_HOME_ZONE[role]
+    home_zone = ZONE_NAMES[home_zone_name]
+
+    # Cyclic next zone
+    next_zone_name = {"S": "O", "O": "M", "M": "S"}[home_zone_name]
+    next_zone = ZONE_NAMES[next_zone_name]
+
     v = [0] * 24
     if lemma_id <= 0:
         return v
-    # Use 2-bit Gray code in positions 4-7 of home zone
+
+    # 5-bit Gray code (32 states)
     gray = lemma_id ^ (lemma_id >> 1)
-    if gray & 1:
-        v[zone[4]] = 1
-    if gray & 2:
-        v[zone[5]] = 1
-    if gray & 4:
-        v[zone[6]] = 1
-    if gray & 8:
-        v[zone[7]] = 1
+
+    # Low 3 bits in Home zone (bits 5,6,7)
+    for i in range(3):
+        if (gray >> i) & 1:
+            v[home_zone[5 + i]] = 1
+
+    # High 2 bits in Next zone (bits 0,1)
+    for i in range(2):
+        if (gray >> (3 + i)) & 1:
+            v[next_zone[i]] = 1
+
     return v
 
 
@@ -230,12 +240,12 @@ class ZonedVocabulary:
                       math_equivalent: int = None) -> int:
         if math_equivalent is not None:
             # Ground truth: use the substrate value directly
-            return math_equivalent % 16   # 16 sibling slots per (role, cat)
+            return math_equivalent % 32   # 32 sibling slots per (role, cat)
         # For words without math equivalents: stable hash of lemma string
         h = 0
         for ch in lemma:
             h = (h * 31 + ord(ch)) & 0xFF
-        return h % 16
+        return h % 32
 
     def _repair_zone_purity(self, vector: List[int], role: str) -> List[int]:
         """If vector is not zone-pure, flip the minimum bits to make it so.
