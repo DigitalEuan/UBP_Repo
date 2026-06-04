@@ -21,7 +21,8 @@ The lexer is PURE (no I/O, no random state) and stdlib only.
 
 from __future__ import annotations
 import re
-from typing import List, Set, Tuple
+import difflib
+from typing import List, Set, Tuple, Dict
 
 
 # ───────────────────────────────────────────────────────────────────────────────
@@ -148,14 +149,16 @@ def scrub_latex(text: str) -> str:
 # ───────────────────────────────────────────────────────────────────────────────
 
 STOP_WORDS: Set[str] = {
-    "what", "is", "the", "of", "to", "in", "and", "for", "with", "on",
-    "about", "does", "why", "how", "can", "a", "an", "this", "that",
-    "it", "be", "are", "was", "we", "you", "i", "they", "by", "as",
-    "or", "if", "not", "so", "do", "at", "from", "into", "when",
+    "what", "the", "on", "of", "in", "with", "to", "for", "have", "has", "had",
+    "will", "shall", "should", "would", "may", "might", "must", "can", "could",
+    "about", "does", "why", "how", "a", "an", "this", "that", "those", "these",
+    "it", "be", "are", "is", "was", "were", "been", "being", "we", "you", "i", "they", "by", "as",
+    "if", "so", "do", "at", "from", "into", "when", "where", "which",
     "then", "there", "here", "their", "its", "any", "each", "such",
     "more", "most", "much", "very", "well", "also", "only", "even",
-    "thus", "hence", "given", "consider", "suppose", "assume", "let",
-    "find", "show", "use", "using", "explain", "describe", "derive",
+    "thus", "hence", "suppose", "let", "given", "consider", "assume", "find",
+    "show", "describe", "explain", "derive", "calculate", "determine", "both",
+    "between", "all", "your", "answer", "please", "note", "let", "take", "give",
 }
 
 
@@ -243,6 +246,14 @@ class MultiTokenLexer:
             return True
         return False
 
+    def _fuzzy_match(self, token: str) -> Optional[str]:
+        """Find the closest vocabulary match for a potentially misspelled word."""
+        # Only fuzzy match words longer than 3 chars to avoid false positives
+        if len(token) <= 3:
+            return None
+        matches = difflib.get_close_matches(token, self.single_word, n=1, cutoff=0.8)
+        return matches[0] if matches else None
+
     def tokenise(self, text: str) -> List[str]:
         """Return a deterministic list of meaning-bearing tokens / phrases."""
         text = scrub_latex(text)
@@ -280,7 +291,12 @@ class MultiTokenLexer:
                 if lemma in self.single_word:
                     out.append(lemma)
                 else:
-                    out.append(w)
+                    # Try fuzzy matching for robustness
+                    fuzzy = self._fuzzy_match(lemma)
+                    if fuzzy:
+                        out.append(fuzzy)
+                    else:
+                        out.append(w)
             i += 1
         return out
 

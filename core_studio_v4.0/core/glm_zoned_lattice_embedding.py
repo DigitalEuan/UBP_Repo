@@ -303,6 +303,50 @@ class ZonedVocabulary:
         self.words[lemma] = zw
         return zw
 
+    def apply_shift(self, subject_lemma: str, op_lemma: str) -> Optional[ZonedWord]:
+        """
+        Applies a semantic magnitude shift to a subject noun using an operator.
+        Uses XOR logic between the subject's vector and the operator's
+        math-equivalent signature.
+        """
+        subject = self.get(subject_lemma)
+        operator = self.get(op_lemma)
+        if not subject or not operator or operator.role not in ("OPERATOR", "VERB"):
+            return None
+
+        # Get the math equivalent of the operator (magnitude shift code)
+        # We'll use this to create a deterministic perturbation
+        shift_code = operator.lemma_id # already derived from math_equivalent if present
+
+        # Apply shift: XOR the subject vector with a Gray-coded version of the shift
+        # We apply this to the 'Next' zone to avoid destroying the subject's zone purity
+        home_zone = subject.home_zone
+        next_zone_name = {"S": "O", "O": "M", "M": "S"}[home_zone]
+        next_zone_bits = ZONE_NAMES[next_zone_name]
+
+        shifted_vector = list(subject.vector)
+        gray_shift = shift_code ^ (shift_code >> 1)
+        for i in range(5):
+            if (gray_shift >> i) & 1:
+                idx = next_zone_bits[i]
+                shifted_vector[idx] = 1 - shifted_vector[idx]
+
+        # Snap result to codeword
+        snapped, meta = GOLAY_ENGINE.snap_to_codeword(shifted_vector)
+
+        # Create a transient ZonedWord for the shifted state
+        return ZonedWord(
+            lemma=f"{op_lemma}({subject_lemma})",
+            role=subject.role,
+            mog_category=subject.mog_category,
+            lemma_id=subject.lemma_id, # Inherit base identity
+            vector=snapped,
+            anchor=subject.anchor,
+            syndrome_w=meta["syndrome_weight"],
+            zone_sig=zone_signature(snapped),
+            nrci=LEECH_ENGINE.calculate_nrci(snapped)
+        )
+
     def get(self, lemma: str) -> Optional[ZonedWord]:
         return self.words.get(lemma)
 
