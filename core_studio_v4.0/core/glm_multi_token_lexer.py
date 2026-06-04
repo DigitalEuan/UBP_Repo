@@ -163,6 +163,22 @@ STOP_WORDS: Set[str] = {
 # LEXER
 # ───────────────────────────────────────────────────────────────────────────────
 
+_IRREGULAR_LEMMAS: Dict[str, str] = {
+    "led": "lead", "leads": "lead", "leading": "lead",
+    "brought": "bring", "bringing": "bring",
+    "frozen": "freeze", "freezing": "freeze",
+    "shown": "show", "showed": "show", "showing": "show",
+    "gave": "give", "given": "give", "giving": "give",
+    "took": "take", "taken": "take", "taking": "take",
+    "found": "find", "finding": "find",
+    "thought": "think", "thinking": "think",
+    "known": "know", "knew": "know", "knowing": "know",
+    "spent": "spend", "spending": "spend",
+    "built": "build", "building": "build",
+    "seen": "see", "saw": "see", "seeing": "see",
+    "kept": "keep", "keeping": "keep",
+}
+
 class MultiTokenLexer:
     """Multi-word-aware tokenizer for physics queries."""
 
@@ -193,6 +209,8 @@ class MultiTokenLexer:
 
     def _lemmatize(self, word: str) -> str:
         """Lightweight lemmatizer: strip common suffixes if the base exists."""
+        if word in _IRREGULAR_LEMMAS:
+            return _IRREGULAR_LEMMAS[word]
         if word in self.single_word:
             return word
         # Handle plurals
@@ -210,14 +228,30 @@ class MultiTokenLexer:
             return word[:-3] + "e"
         return word
 
+    def _is_metadata(self, token: str) -> bool:
+        """Identify if a token is non-semantic metadata (e.g. challenge IDs, file extensions)."""
+        # Challenge IDs: Challenge_1, challenge1, 05, 06, etc.
+        if re.match(r"^challenge_?\d+$", token) or token == "challenge":
+            return True
+        if re.match(r"^\d+[a-z]?$", token): # standalone numbers like '05', '06'
+            return True
+        # File extensions
+        if token in ("pdf", "json", "py", "txt"):
+            return True
+        # Common non-semantic fillers in this dataset
+        if token in ("main", "problem", "id", "description"):
+            return True
+        return False
+
     def tokenise(self, text: str) -> List[str]:
         """Return a deterministic list of meaning-bearing tokens / phrases."""
         text = scrub_latex(text)
         text = text.lower()
-        # keep alphanumerics, spaces, hyphens
+        # keep alphanumerics, spaces, hyphens. Replace underscores with spaces for metadata check
+        text = text.replace("_", " ")
         text = re.sub(r"[^a-z0-9\-\s]", " ", text)
         # split into raw word list
-        raw = [w for w in re.split(r"\s+", text) if w]
+        raw = [w for w in re.split(r"\s+", text) if w if not self._is_metadata(w)]
 
         out: List[str] = []
         i = 0
