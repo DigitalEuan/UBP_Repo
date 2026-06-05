@@ -1,8 +1,8 @@
 """
-GLM Language Database — Priority Vocabulary v3.0
+GLM Language Database — Priority Vocabulary v3.1
 ================================================
 Grounded entries related to mathematical and substrate concepts.
-Expanded with Tiers 37-40 (Final CritPt Grounding & Composition).
+Expanded with Tiers 37-44 (Gravity, Geometry, and Scientific Meta).
 """
 from glm_zoned_lattice_embedding import ZonedVocabulary
 
