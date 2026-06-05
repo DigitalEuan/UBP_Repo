@@ -42,10 +42,6 @@ from glm_strict_lang_builder import (
     LexicalGap, MAX_HAMMING_GAP, ADJACENCY_RADIUS, SENTENCE_MAX_TAX,
     build_vocabulary,
 )
-from glm_engine import (
-    GLMDialogueEngine, DialogueContext, DialogueTurn,
-    PhysicalRoot, LexicalBinding,
-)
 from glm_physics_vocab_pack import (
     PHYSICS_LEXICON, build_pack, PackEntry, derive_term_vector,
     get_pack_summary,
@@ -58,8 +54,57 @@ from glm_semantic_frames import (
 from glm_concept_relation_graph import (
     ConceptRelationGraph, CRGEdge, build_default_crg,
 )
+from glm_lang_database import LANG_DB
+from glm_zoned_lattice_embedding import ZonedVocabulary
+from ubp_grammatical_diffusion import GrammaticalDiffusionReasoner
 
 BLA = BinaryLinearAlgebra
+
+@dataclass
+class PhysicalRoot:
+    ubp_id: str
+    vector: List[int]
+    lexicon: str
+    resonance: float
+    nrci: float
+
+@dataclass
+class LexicalBinding:
+    word: str
+    is_grounded: bool
+    role: str
+
+@dataclass
+class DialogueTurn:
+    query: str
+    response: str
+    physical_roots: List[PhysicalRoot]
+    lexical_bindings: List[LexicalBinding]
+
+@dataclass
+class DialogueContext:
+    turns: List[DialogueTurn]
+
+class GLMDialogueEngine:
+    def __init__(self, vocab: LeechLatticeVocabulary):
+        self.vocab = vocab
+        self.turn_history: List[DialogueTurn] = []
+
+    def _ground_physically(self, concepts: List[str], max_depth: int) -> Tuple[List[PhysicalRoot], List[str]]:
+        # Base implementation for patching
+        return [], []
+
+    def _compute_centroid(self, vectors: List[List[int]]) -> List[int]:
+        if not vectors: return [0]*24
+        res = [0]*24
+        for v in vectors:
+            for i in range(24):
+                res[i] += v[i]
+        return [1 if x > len(vectors)//2 else 0 for x in res]
+
+    def respond(self, query: str, max_depth: int = 3) -> DialogueTurn:
+        # Base implementation for patching
+        return DialogueTurn(query, "", [], [])
 
 
 # ───────────────────────────────────────────────────────────────────────────────
@@ -197,6 +242,21 @@ class GLMSemanticEngine(GLMDialogueEngine):
         else:
             topic_vec = [0] * 24
 
+        # GDR Reasoning & Pathfinding
+        from glm_grammar_patch import synthesize_path, _query_type
+        qtype = _query_type(query)
+        reasoner = GrammaticalDiffusionReasoner(self.vocab, self.crg)
+        gdr_sentences = []
+        if len(known) >= 2:
+            for i in range(len(known) - 1):
+                try:
+                    trace = reasoner.reason(known[i], known[i+1])
+                    if trace.target_reached:
+                        sent = synthesize_path(trace.path, qtype)
+                        gdr_sentences.append(sent)
+                except Exception:
+                    continue
+
         # Pick frames informed by the surface form of the query
         chosen_frames = select_frames_for_query(tokens, self.frames)
 
@@ -250,7 +310,8 @@ class GLMSemanticEngine(GLMDialogueEngine):
             parts.append("[GAP] No verified vector for: "
                          + ", ".join(unknown[:6]) + ".")
 
-        response = " ".join(parts)
+        # Prepend GDR sentences to response parts
+        response = " ".join(gdr_sentences + parts)
 
         grounded = sum(ff.grounded_count for ff in filled)
         total = sum(ff.total_slots for ff in filled)
@@ -351,11 +412,57 @@ class GLMSemanticEngine(GLMDialogueEngine):
 # FACTORY
 # ───────────────────────────────────────────────────────────────────────────────
 
+def merge_zoned_vocab(vocab: LeechLatticeVocabulary, zoned_db: ZonedVocabulary) -> Dict[str, Any]:
+    """Merge priority zoned vocabulary into the main engine vocabulary."""
+    added, updated = 0, 0
+    for lemma, zw in zoned_db.words.items():
+        # Convert ZonedWord to WordEntry
+        snapped, snap_info = GOLAY_ENGINE.snap_to_codeword(zw.vector)
+        fold3 = BLA.fold24_to3(zw.vector)
+
+        entry = WordEntry(
+            word=lemma,
+            vector=zw.vector,
+            role=zw.role,
+            ubp_id=f"GDB_{lemma}",
+            hamming_to_system=0, # Priority words are ground truth
+            nrci=float(zw.nrci),
+            golay_codeword=snapped,
+            golay_distance=zw.syndrome_w,
+            fold3=fold3,
+            mog_category=zw.mog_category,
+        )
+
+        if lemma in vocab.words:
+            # Update existing entry with priority zoned version
+            old_role = vocab.words[lemma].role
+            if old_role in vocab.by_role and lemma in vocab.by_role[old_role]:
+                vocab.by_role[old_role].remove(lemma)
+            updated += 1
+        else:
+            added += 1
+
+        vocab.words[lemma] = entry
+        vocab.by_role.setdefault(zw.role, []).append(lemma)
+
+    return {"zoned_added": added, "zoned_updated": updated}
+
 def create_semantic_engine(system_kb_path: str,
                            lang_kb_path: str) -> Tuple[GLMSemanticEngine, Dict[str, Any]]:
     """Build a vocabulary, merge the physics pack, attach CRG + frames + lexer,
     return the live engine plus a build report."""
     vocab = build_vocabulary(system_kb_path, lang_kb_path)
+
+    # Priority 1: Main Zoned Database (Determined Meanings)
+    zoned_report = merge_zoned_vocab(vocab, LANG_DB)
+
+    # Priority 2: Physics Pack
     merge_report = merge_pack_into_vocab(vocab, vocab.system_vectors)
+
     engine = GLMSemanticEngine(vocab)
-    return engine, merge_report
+
+    # Combine reports
+    full_report = merge_report.copy()
+    full_report.update(zoned_report)
+
+    return engine, full_report

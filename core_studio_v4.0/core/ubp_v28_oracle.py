@@ -980,7 +980,10 @@ class SymPyOracle:
         except Exception as e:
             return None, f"Oracle Error: {e}"
 
-    _SYMS = {n: Symbol(n) for n in "x y z t u v w a b c n m k r s p q".split()}
+    if SYMPY_AVAILABLE:
+        _SYMS = {n: Symbol(n) for n in "x y z t u v w a b c n m k r s p q".split()}
+    else:
+        _SYMS = {}
     _PARSE_LOCALS = None
 
     def _get_locals(self):

@@ -65,14 +65,19 @@ from ubp_v28_oracle import (
 # importing glm_grammar_patch triggers the v2.0 disambiguation patch on
 # GLMDialogueEngine; v3.1 inherits from that class so the patch composes.
 import glm_grammar_patch  # noqa: F401  (side-effect: monkey-patches GLMDialogueEngine)
-from glm_engine import create_engine as _create_v30_engine
 try:
-    from glm_engine_v31 import create_semantic_engine
+    from glm_engine_v31 import create_semantic_engine, GLMDialogueEngine
     _HAS_V31 = True
 except Exception as _e:  # pragma: no cover  (v3.1 not yet installed)
     create_semantic_engine = None
+    GLMDialogueEngine = None
     _HAS_V31 = False
     print(f"[Sovereign] v3.1 engine unavailable ({_e}); falling back to v3.0")
+
+def _create_v30_engine(system_kb, lang_kb):
+    from glm_strict_lang_builder import build_vocabulary
+    from glm_engine_v31 import GLMDialogueEngine
+    return GLMDialogueEngine(build_vocabulary(system_kb, lang_kb))
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 1.  GLM RULES ENGINE  (text normalisation)

@@ -241,6 +241,52 @@ def _pick_verb(zv) -> Optional[str]:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
+def synthesize_path(path: List, qtype: str) -> str:
+    """
+    Synthesizes a human-readable sentence from a reasoner path.
+    Example: [energy, increase, result] -> 'The energy increase results in a new state.'
+    """
+    if not path:
+        return ""
+
+    words = [s.word for s in path]
+    roles = [s.role for s in path]
+
+    # Template: NOUN (OP) NOUN
+    if len(path) == 3 and roles[0] == "NOUN" and roles[1] in ("OPERATOR", "VERB") and roles[2] == "NOUN":
+        n0, op, n1 = words
+        if qtype == "relation":
+            return f"The {n0} {op} the {n1} through shared lattice connectivity."
+        return f"The {n0} {op} the {n1}."
+
+    # Template: NOUN (OP)
+    if len(path) == 2 and roles[0] == "NOUN" and roles[1] in ("OPERATOR", "VERB"):
+        n0, op = words
+        return f"The {n0} {op} toward a determined endpoint."
+
+    # Template: NOUN NOUN
+    if len(path) == 2 and roles[0] == "NOUN" and roles[1] == "NOUN":
+        n0, n1 = words
+        if "(" in n1:
+             m = re.match(r"([^(]+)\(([^)]+)\)", n1)
+             if m:
+                 op, sub = m.groups()
+                 return f"The {n0} undergoes {op} resulting in {sub}."
+        return f"The {n0} relates to {n1} within the lattice."
+
+    # Compositional handles
+    for i, w in enumerate(words):
+        if "(" in w:
+            # increase(energy) -> the increase of energy
+            m = re.match(r"([^(]+)\(([^)]+)\)", w)
+            if m:
+                op, sub = m.groups()
+                words[i] = f"the {op} of {sub}"
+
+    # Fallback: join and capitalize
+    raw = " ".join(words).replace("_", " ")
+    return raw[0].upper() + raw[1:] + "."
+
 def _query_type(query: str) -> str:
     q = query.lower()
     if re.search(r'\bwhat\s+is\b|\bdefine\b|\bmeaning\b', q):
@@ -546,7 +592,7 @@ def _fallback_response(physical_roots, query: str, reason: str) -> str:
 
 
 def _apply_patch():
-    from glm_engine import GLMDialogueEngine, PhysicalRoot
+    from glm_engine_v31 import GLMDialogueEngine, PhysicalRoot
     from dataclasses import replace as dc_replace
 
 
