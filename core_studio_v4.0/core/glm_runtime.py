@@ -53,15 +53,19 @@ import glm_grammar_patch  # noqa: F401  (side-effect import)
 
 # ── 2. engines & solver ────────────────────────────────────────────────────
 try:
-    from glm_engine_v31 import create_semantic_engine, GLMSemanticEngine  # noqa: F401
+    from glm_engine_v31 import create_semantic_engine, GLMSemanticEngine, GLMDialogueEngine
     _HAS_V31 = True
 except Exception as _e:                                                      # pragma: no cover
     create_semantic_engine = None
     GLMSemanticEngine = None
+    GLMDialogueEngine = None
     _HAS_V31 = False
     print(f"[GLMRuntime] v3.1 engine unavailable ({_e}); using v3.0")
 
-from glm_engine import create_engine as _create_v30_engine, GLMDialogueEngine  # noqa: F401
+def _create_v30_engine(system_kb, lang_kb):
+    from glm_strict_lang_builder import build_vocabulary
+    vocab = build_vocabulary(system_kb, lang_kb)
+    return GLMDialogueEngine(vocab)
 
 from ubp_critpt_sovereign_v3 import (
     SovereigntyRunner, UBPSovereignSolver, GLMRulesEngine,
