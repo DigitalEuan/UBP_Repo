@@ -1,8 +1,8 @@
 """
-Grammatical Diffusion Reasoner (GDR) — v2.1 (A* Edition)
-========================================================
+Grammatical Diffusion Reasoner (GDR) — v3.2 (Stateful A* Edition)
+===============================================================
 Implements a search through the zoned lattice, guided by the Grammar FSM,
-using A* search to find valid grammatical paths between concepts.
+using A* search with stateful attraction potentials.
 """
 from __future__ import annotations
 import heapq
@@ -34,136 +34,74 @@ class GrammaticalDiffusionReasoner:
     def __init__(self, vocab, crg=None):
         self.vocab = vocab
         self.crg = crg
-        # We'll create FSM instances as needed to avoid state pollution
+        self.attraction_potential: Optional[List[int]] = None
+
+    def _get_word(self, lemma: str):
+        if hasattr(self.vocab, "get"): return self.vocab.get(lemma)
+        return self.vocab.words.get(lemma)
+
+    def _get_lemma(self, word: Any) -> str:
+        if hasattr(word, "lemma"): return word.lemma
+        if hasattr(word, "word"): return word.word
+        return "?"
+
+    def _get_dist(self, word: Any) -> int:
+        if hasattr(word, "syndrome_w"): return word.syndrome_w
+        if hasattr(word, "golay_distance"): return word.golay_distance
+        return 0
 
     def reason(self, start_lemma: str, target_lemma: str, max_depth: int = 7) -> ReasonerTrace:
-        start_word = self.vocab.get(start_lemma)
-        target_word = self.vocab.get(target_lemma)
-
-        if not start_word or not target_word:
-            return ReasonerTrace([], False, Fraction(0), Fraction(0))
-
-        # A* Search
-        # State: (lemma, fsm_state)
-        # Priority Queue: (f_score, g_score, lemma, fsm_state, path_indices)
-
+        start_word, target_word = self._get_word(start_lemma), self._get_word(target_lemma)
+        if not start_word or not target_word: return ReasonerTrace([], False, Fraction(0), Fraction(0))
         start_fsm = GrammarFSM()
         z_start = dominant_zone(start_word.vector)
-        if not start_fsm.peek(z_start):
-            if start_word.role != "NOUN":
-                return ReasonerTrace([], False, Fraction(0), Fraction(0))
-
-        start_fsm.step(start_lemma, z_start)
-
-        # Initial tax is the starting word's NRCI penalty + displacement
-        start_tax = Fraction(1) - start_word.nrci + Fraction(start_word.syndrome_w, 10)
-        start_step = self._make_step(start_lemma, start_word, z_start, start_tax)
-
-        # (f_score, g_score, current_lemma, fsm_state_name, path)
+        if not start_fsm.peek(z_start) and start_word.role != "NOUN": return ReasonerTrace([], False, Fraction(0), Fraction(0))
+        start_fsm.step(self._get_lemma(start_word), z_start)
+        start_tax = Fraction(1) - start_word.nrci + Fraction(self._get_dist(start_word), 10)
+        start_step = self._make_step(self._get_lemma(start_word), start_word, z_start, start_tax)
         open_set = []
-        start_g = float(start_tax)
-        start_h = BLA.hamming_distance(start_word.vector, target_word.vector) / 24.0
-        heapq.heappush(open_set, (start_g + start_h, start_g, start_lemma, start_fsm.state, [start_step]))
-
+        dist_to_target = BLA.hamming_distance(start_word.vector, target_word.vector) / 24.0
+        attraction = BLA.hamming_distance(start_word.vector, self.attraction_potential) / 48.0 if self.attraction_potential and any(self.attraction_potential) else 0.0
+        heapq.heappush(open_set, (float(start_tax) + dist_to_target + attraction, float(start_tax), start_lemma, start_fsm.state, [start_step]))
         visited: Set[Tuple[str, str]] = set()
-
         while open_set:
             f, g, lemma, state_name, path = heapq.heappop(open_set)
-
-            if (lemma, state_name) in visited:
-                continue
+            if (lemma, state_name) in visited: continue
             visited.add((lemma, state_name))
-
-            if len(path) > max_depth:
-                continue
-
-            current_fsm = GrammarFSM()
-            current_fsm.state = state_name
-            if lemma == target_lemma and current_fsm.is_accepting():
-                return ReasonerTrace(
-                    path, True,
-                    path[-1].nrci,
-                    Fraction(sum(s.tax for s in path))
-                )
-
-            # Explore neighbors
-            # 1. Standard vocabulary neighbors
-            for next_lemma, next_word in self.vocab.words.items():
+            if len(path) > max_depth: continue
+            current_fsm = GrammarFSM(); current_fsm.state = state_name
+            if lemma == target_lemma and current_fsm.is_accepting(): return ReasonerTrace(path, True, path[-1].nrci, Fraction(sum(s.tax for s in path)))
+            if hasattr(self.vocab, "adjacency") and lemma in self.vocab.adjacency:
+                neighbors = [(n, self._get_word(n)) for n in self.vocab.adjacency[lemma]]
+            else:
+                vocab_items = list(self.vocab.words.items() if hasattr(self.vocab, "words") else self.vocab.words)
+                neighbors = vocab_items[:200]
+            for next_lemma, next_word in neighbors:
                 z_next = dominant_zone(next_word.vector)
-
                 if current_fsm.peek(z_next):
-                    temp_fsm = GrammarFSM()
-                    temp_fsm.state = state_name
-                    temp_fsm.step(next_lemma, z_next)
-
-                    # Cost: step penalty + NRCI penalty + displacement penalty
-                    step_tax = Fraction(1) - next_word.nrci + Fraction(next_word.syndrome_w, 10)
-                    next_step = self._make_step(next_lemma, next_word, z_next, step_tax)
-
-                    new_path = path + [next_step]
-                    new_g = g + float(step_tax) + 1.0 # 1.0 is the base step cost
-                    new_h = BLA.hamming_distance(next_word.vector, target_word.vector) / 24.0
-
-                    if (next_lemma, temp_fsm.state) not in visited:
-                        heapq.heappush(open_set, (new_g + new_h, new_g, next_lemma, temp_fsm.state, new_path))
-
-            # 2. Compositional neighbors (Applying Operator to target or current)
-            # If current state allows an Operator
-            if current_fsm.peek("O") and len(path) < max_depth - 1:
-                for op_lemma, op_word in self.vocab.words.items():
+                    temp_fsm = GrammarFSM(); temp_fsm.state = state_name; temp_fsm.step(self._get_lemma(next_word), z_next)
+                    step_tax = Fraction(1) - next_word.nrci + Fraction(self._get_dist(next_word), 10)
+                    new_g = g + float(step_tax) + 1.0
+                    h = (BLA.hamming_distance(next_word.vector, target_word.vector) / 24.0) + (BLA.hamming_distance(next_word.vector, self.attraction_potential) / 48.0 if self.attraction_potential and any(self.attraction_potential) else 0.0)
+                    if (next_lemma, temp_fsm.state) not in visited: heapq.heappush(open_set, (new_g + h, new_g, next_lemma, temp_fsm.state, path + [self._make_step(self._get_lemma(next_word), next_word, z_next, step_tax)]))
+            if current_fsm.peek("O") and len(path) < max_depth - 1 and hasattr(self.vocab, "apply_shift"):
+                vocab_items = list(self.vocab.words.items() if hasattr(self.vocab, "words") else self.vocab.words)
+                for op_lemma, op_word in vocab_items[:100]:
                     if op_word.role in ("OPERATOR", "VERB"):
-                        # Try shifting the target to see if we can reach it via a transient state
-                        # e.g., if target is 'energy', and we have 'increase',
-                        # can we reach 'increase(energy)'?
-                        shifted = self.vocab.apply_shift(target_lemma, op_lemma)
-                        if shifted:
-                            # Add the operator to the path
-                            z_op = dominant_zone(op_word.vector)
-                            temp_fsm = GrammarFSM()
-                            temp_fsm.state = state_name
-                            temp_fsm.step(op_lemma, z_op)
-
-                            op_tax = Fraction(1) - op_word.nrci + Fraction(op_word.syndrome_w, 10)
-                            op_step = self._make_step(op_lemma, op_word, z_op, op_tax)
-
-                            # Then add the shifted subject
-                            z_shifted = dominant_zone(shifted.vector)
-                            if temp_fsm.peek(z_shifted):
-                                temp_fsm.step(shifted.lemma, z_shifted)
-                                shifted_tax = Fraction(1) - shifted.nrci + Fraction(shifted.syndrome_w, 10)
-                                shifted_step = self._make_step(shifted.lemma, shifted, z_shifted, shifted_tax)
-
-                                new_path = path + [op_step, shifted_step]
-                                new_g = g + float(op_tax) + float(shifted_tax) + 2.0
-                                new_h = BLA.hamming_distance(shifted.vector, target_word.vector) / 24.0
-
-                                if (shifted.lemma, temp_fsm.state) not in visited:
-                                    heapq.heappush(open_set, (new_g + new_h, new_g, shifted.lemma, temp_fsm.state, new_path))
-
+                        for subjects in [[path[0].word, target_lemma], target_lemma]:
+                            shifted = self.vocab.apply_shift(subjects, op_lemma)
+                            if shifted:
+                                z_op, z_sh = dominant_zone(op_word.vector), dominant_zone(shifted.vector)
+                                temp_fsm = GrammarFSM(); temp_fsm.state = state_name; temp_fsm.step(self._get_lemma(op_word), z_op)
+                                if temp_fsm.peek(z_sh):
+                                    temp_fsm.step(self._get_lemma(shifted), z_sh)
+                                    op_tax, sh_tax = Fraction(1)-op_word.nrci+Fraction(self._get_dist(op_word),10), Fraction(1)-shifted.nrci+Fraction(self._get_dist(shifted),10)
+                                    new_g = g + float(op_tax) + float(sh_tax) + 2.0
+                                    h = (BLA.hamming_distance(shifted.vector, target_word.vector)/24.0) + (BLA.hamming_distance(shifted.vector, self.attraction_potential)/48.0 if self.attraction_potential and any(self.attraction_potential) else 0.0)
+                                    if (self._get_lemma(shifted), temp_fsm.state) not in visited: heapq.heappush(open_set, (new_g+h, new_g, self._get_lemma(shifted), temp_fsm.state, path + [self._make_step(self._get_lemma(op_word), op_word, z_op, op_tax), self._make_step(self._get_lemma(shifted), shifted, z_sh, sh_tax)]))
         return ReasonerTrace([], False, Fraction(0), Fraction(0))
 
-    def build_sentence(self, n0: str, n1: str) -> ReasonerTrace:
-        return self.reason(n0, n1)
-
+    def build_sentence(self, n0: str, n1: str) -> ReasonerTrace: return self.reason(n0, n1)
     def _make_step(self, lemma: str, word: Any, zone: str, tax: Fraction) -> ReasonerStep:
-        return ReasonerStep(
-            word=lemma,
-            role=word.role,
-            nrci=word.nrci,
-            zone=zone,
-            displacement=word.syndrome_w,
-            confidence=["phase-locked", "substrate-adjacent", "meaningful", "boundary", "uncorrectable"][min(word.syndrome_w, 4)],
-            tax=tax
-        )
-
-if __name__ == "__main__":
-    from glm_lang_database import LANG_DB
-    gdr = GrammaticalDiffusionReasoner(LANG_DB)
-    print("Testing A* Grammatical Diffusion (zero -> one):")
-    trace = gdr.reason("zero", "one")
-    print(f"  Target reached: {trace.target_reached}")
-    if trace.path:
-        print(f"  Path: {' -> '.join(s.word for s in trace.path)}")
-        for s in trace.path:
-            print(f"    {s.word:10s} zone={s.zone} disp={s.displacement} conf={s.confidence} tax={float(s.tax):.4f}")
-        print(f"  Total Tax: {float(trace.total_tax):.4f}")
+        dist = self._get_dist(word)
+        return ReasonerStep(lemma, word.role, word.nrci, zone, dist, ["phase-locked", "substrate-adjacent", "meaningful", "boundary", "uncorrectable"][min(dist, 4)], tax)
