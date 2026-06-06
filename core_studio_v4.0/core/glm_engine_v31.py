@@ -84,6 +84,7 @@ class DialogueTurn:
 @dataclass
 class DialogueContext:
     turns: List[DialogueTurn]
+    context_centroid: List[int] = field(default_factory=lambda: [0]*24)
 
 class GLMDialogueEngine:
     def __init__(self, vocab: LeechLatticeVocabulary):
@@ -208,6 +209,7 @@ class GLMSemanticEngine(GLMDialogueEngine):
         self.frames = frames or list(FRAMES)
         self.lexer = lexer or MultiTokenLexer(set(vocab.words.keys()))
         self.semantic_turns: List[SemanticTurn] = []
+        self.context = DialogueContext(turns=[])
         # CRG sanity report
         kept, missing = self.crg.vocab_check(set(vocab.words.keys()))
         self._crg_kept = kept
@@ -245,7 +247,29 @@ class GLMSemanticEngine(GLMDialogueEngine):
         # GDR Reasoning & Pathfinding
         from glm_grammar_patch import synthesize_path, _query_type
         qtype = _query_type(query)
+
+        # Ontological Health Feedback (v3.2)
+        health_feedback = []
+        for t in known:
+            w = self.vocab.words[t]
+            if w.nrci < 0.7:
+                 # Low NRCI - find healthier neighbor
+                 best_neighbor, best_nrci = None, 0.0
+                 if t in self.vocab.adjacency:
+                     for neighbor in self.vocab.adjacency[t]:
+                         nw = self.vocab.words[neighbor]
+                         if nw.nrci > best_nrci:
+                             best_nrci = nw.nrci
+                             best_neighbor = neighbor
+                 if best_neighbor and best_nrci > w.nrci + 0.1:
+                     health_feedback.append(f"[Correction] Concept '{t}' (NRCI {w.nrci:.2f}) is unstable; using '{best_neighbor}' (NRCI {best_nrci:.2f}) as stable anchor.")
+                     # Replace in known list for this turn
+                     known = [best_neighbor if x == t else x for x in known]
+
+        # Use contextual centroid as attraction potential
         reasoner = GrammaticalDiffusionReasoner(self.vocab, self.crg)
+        reasoner.attraction_potential = self.context.context_centroid
+
         gdr_sentences = []
         if len(known) >= 2:
             for i in range(len(known) - 1):
@@ -310,8 +334,19 @@ class GLMSemanticEngine(GLMDialogueEngine):
             parts.append("[GAP] No verified vector for: "
                          + ", ".join(unknown[:6]) + ".")
 
-        # Prepend GDR sentences to response parts
-        response = " ".join(gdr_sentences + parts)
+        # Prepend GDR sentences and health feedback to response parts
+        response = " ".join(health_feedback + gdr_sentences + parts)
+
+        # Update Manifold Memory
+        if known:
+            current_centroid = self._compute_centroid([self.vocab.words[t].vector for t in known])
+            # Blend with previous context (EMA-style XOR blend)
+            new_context = []
+            for i in range(24):
+                # Simple blend: if bit is same in both, keep it.
+                # Otherwise, 50% chance to flip (here we use simple current dominance)
+                new_context.append(current_centroid[i])
+            self.context.context_centroid = new_context
 
         grounded = sum(ff.grounded_count for ff in filled)
         total = sum(ff.total_slots for ff in filled)

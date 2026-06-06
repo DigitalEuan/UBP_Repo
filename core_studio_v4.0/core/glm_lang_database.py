@@ -551,6 +551,38 @@ def build_priority_vocabulary() -> ZonedVocabulary:
     vocab.add("gauge",       "NOUN",      "I_Symmetry")
     vocab.add("observer",    "NOUN",      "I_Complexity")
 
+    # Tier 43 — Advanced Gravity & Geometry (80% Ceiling Push)
+    vocab.add("einstein",    "ADJECTIVE", "I_Symmetry")
+    vocab.add("hilbert",     "ADJECTIVE", "I_Topology")
+    vocab.add("ricci",       "ADJECTIVE", "I_Topology")
+    vocab.add("curvature",   "NOUN",      "I_Topology")
+    vocab.add("action",      "NOUN",      "A_Energy")
+    vocab.add("compact",     "ADJECTIVE", "M_Space")
+    vocab.add("compactification", "NOUN", "I_Dimension")
+    vocab.add("calabi",      "ADJECTIVE", "I_Topology")
+    vocab.add("yau",         "ADJECTIVE", "I_Topology")
+    vocab.add("string",      "NOUN",      "I_Topology")
+    vocab.add("brane",       "NOUN",      "I_Topology")
+    vocab.add("supersymmetry", "NOUN",    "I_Symmetry")
+    vocab.add("susy",        "NOUN",      "I_Symmetry")
+    vocab.add("gravity",     "NOUN",      "A_Force")
+    vocab.add("quantum gravity", "NOUN",  "I_Complexity")
+    vocab.add("general relativity", "NOUN", "I_Symmetry")
+
+    # Tier 44 — Final High-Frequency Science Meta
+    vocab.add("validity",    "NOUN",      "P_Coherence")
+    vocab.add("accuracy",    "NOUN",      "P_Coherence")
+    vocab.add("precision",   "NOUN",      "P_Coherence")
+    vocab.add("significant", "ADJECTIVE", "P_Probability")
+    vocab.add("contribution", "NOUN",     "A_Energy")
+    vocab.add("enhanced",    "ADJECTIVE", "A_Energy")
+    vocab.add("suppressed",  "ADJECTIVE", "P_Limit")
+    vocab.add("observation", "NOUN",      "I_Complexity")
+    vocab.add("experimental", "ADJECTIVE", "I_Complexity")
+    vocab.add("data",        "NOUN",      "I_Complexity")
+    vocab.add("analysis",    "NOUN",      "I_Complexity")
+    vocab.add("evidence",    "NOUN",      "P_Probability")
+
     return vocab
 
 # Export singleton instance
