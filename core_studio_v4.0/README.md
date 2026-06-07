@@ -101,7 +101,7 @@ Water is literally walked into existence as `2× Hydrogen + 1× Oxygen`. The res
 
 ### 3.4 Reason in natural language without hallucinating
 
-The current cognitive stack:
+There can currently be a few different cognitive stacks - the experimental GLM system or the semantic experimental script available in the UBP core system, (check archived script if anybare missing from the /core folder), an example:
 
 ```
 GLM CHAT / CRITPT STACK
