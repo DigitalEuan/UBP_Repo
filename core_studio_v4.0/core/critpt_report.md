@@ -1,43 +1,48 @@
-# GLM CritPt Performance & Development Report v3.2
+# GLM CritPt Performance & Development Report v3.1
 
 ## Executive Summary
-This report tracks the evolution of the Geometric Language Machine (GLM) to v3.2. This version introduces "Autonomous Manifold Stewardship"—the ability of the machine to maintain internal context, distinguish between transformation types, and self-correct unstable query concepts based on ontological health metrics. Grounding coverage remains stable at **~75%** with a **100% pathfinding success rate** on core challenges.
+This report tracks the evolution of the Geometric Language Machine (GLM) from v3.0 to v3.1. The v3.1 "Semantic Edition" focuses on active concept manipulation through tensor-based vector shifts and high-fidelity natural language synthesis. With grounding coverage reaching **~75%** and a **100% pathfinding success rate** on core challenges, the GLM has transitioned from a reasoning engine to a generative semantic platform.
 
 ## Evolution of Performance
 | Version | Grounded Words | Avg. Grounding %* | Path Success (Top 10) | Key Milestone |
 | :--- | :--- | :--- | :--- | :--- |
 | **v2.0** | 31 | ~1.5% | ~10% | Deterministic Embedding |
 | **v2.1** | 77 | ~5.2% | ~40% | A* Reasoner + Gray Code |
-| **v2.2** | 127 | ~20.3% | 100% | CritPt Core Targets |
-| **v3.0** | 420 | ~71.4% | 100% | Compositional Reasoning |
+| **v2.2** | 127 | ~20.3% | 100% | CritPt Core Targets (Batch 2) |
+| **v2.3** | 152 | ~22.1% | 100% | Advanced Math & Action (Batch 3) |
+| **v2.4** | 185 | ~29.8% | 100% | Structural Rigor & Time (Batch 4) |
+| **v2.5** | 245 | ~45.4% | 100% | LaTeX Pre-processing + Named Laws |
+| **v2.6** | 290 | ~52.7% | 100% | Unit Pack + Lemmatization |
+| **v2.7** | 325 | ~53.0% | 100% | Math Objects + Complex Macros |
+| **v2.8** | 345 | ~53.5% | 100% | Comparative Meta + Auto-Linker |
+| **v2.9** | 360 | ~54.2% | 100% | Pattern Optimization + Noise Filter |
+| **v3.0** | 420 | ~71.4% | 100% | Compositional Reasoning & Spelling Robustness |
 | **v3.1** | 489 | ~75.2% | 100% | Tensor Composition & Prose Synthesis |
-| **v3.2** | 489 | ~75.2% | 100% | Stateful Memory & Health Feedback |
 
-*\*Avg. Grounding % uses the MultiTokenLexer with all v3.2 features.*
+*\*Avg. Grounding % uses the MultiTokenLexer with all v3.1 features (recursive parsing, lemmatization, noise filtering, and priority Zoned Database matching).*
 
-## Key Improvement: Stateful Manifold Memory
-The engine now maintains a geometric "short-term memory" across dialogue turns.
-- **Contextual Centroid**: The system tracks a running centroid of the concepts discussed in the current session.
-- **Attraction Potential**: This centroid acts as a biasing potential in the A* reasoning heuristic, ensuring that new reasoning paths are logically and geometrically aligned with the ongoing conversation.
+## Key Improvement: Tensor Composition Engine
+The reasoning engine now supports multi-variable vector transformations.
+- **Multi-Subject Shift**: Implemented `apply_shift` logic allowing operators to perturb an XOR-summed "field" of subject nouns (e.g., `plus(energy, force)`).
+- **Transient Grounding**: These composed states are grounded as single lattice points with valid NRCIs, allowing the machine to represent complex mathematical relationships in a single operation.
 
-## Key Improvement: Calculus of Transformations
-The semantic composition engine now distinguishes between different mathematical operations at the bit-level.
-- **Gray Code Type-Signatures**: Operators are classified into types (Linear, Exponential, Logarithmic, Quadratic).
-- **Encoded Shifts**: When an operator acts on a subject, its type-signature is encoded into the transient vector's sub-structure, allowing the machine to represent the *functional form* of a relationship geometrically.
+## Key Improvement: Natural Language Synthesizer
+The GLM now produces human-readable scientific prose.
+- **Role-Based Templates**: Integrated a decorator that transforms raw A* paths into coherent sentences based on grammatical roles (e.g., "The energy produces the result").
+- **Compositional Synthesis**: The synthesizer correctly handles transient concepts, verbalizing transformations like "the increase of energy" or "undergoes increase resulting in energy".
 
-## Key Improvement: Ontological Health Feedback
-The machine now actively monitors the stability of query interpretations.
-- **Pre-Reasoning Audit**: Every known query token is audited for its NRCI (Non-Recursive Compositional Index).
-- **Self-Correction**: If a concept is found to be unstable (NRCI < 0.7), the engine searches its adjacency graph for the nearest "healthy" neighbor and automatically substitutes it as a stable anchor for reasoning.
+## Key Improvement: Advanced Vocabulary Grounding (Tier 43-44)
+- **Gravity & Geometry**: Grounded advanced concepts including Einstein-Hilbert action, Ricci curvature, compactification, Calabi-Yau manifolds, and Branes.
+- **Scientific Meta-Language**: Added high-frequency terms for validity, precision, observation, and experimental evidence to improve the coherence of research-oriented queries.
 
 ## Current System Weaknesses
-1.  **Memory Decay**: The current manifold memory uses a simple update rule; it does not yet support "forgetting" or multi-modal context switching.
-2.  **Synthesis Nuance**: While prose synthesis is coherent, it still relies on role-based templates which can feel repetitive in very long reasoning paths.
+1.  **Search Space Pruning**: To maintain deterministic responsiveness, the A* search is currently limited to high-resonance neighbors. This can occasionally miss extremely distant semantic leaps.
+2.  **Contextual Persistence**: The engine processes query concepts effectively but does not yet maintain a "stateful" multi-turn geometric context beyond the immediate path.
 
-## Next Development Targets (v3.3)
-1.  **Recursive Sub-Manifolds**: Implement "Nested Contexts" where a reasoning path can branch into a higher-dimensional sub-lattice to resolve fine-grained details.
-2.  **Adaptive Lexer Weighting**: Allow the lexer to prioritize concepts based on the current attraction potential of the manifold memory.
-3.  **Prose Stylization**: Enhance the synthesizer with more varied templates and transition phrases to improve narrative flow.
+## Next Development Targets (v3.2)
+1.  **Stateful Manifold Memory**: Implement a geometric "short-term memory" where previous query centroids act as attractive potentials for the next reasoning path.
+2.  **Calculus of Transformations**: Formalize the difference between linear, quadratic, and exponential shifts at the lattice level using specific Gray code sub-signatures.
+3.  **Ontological Health Feedback**: Use the Leech health metrics to automatically "correct" low-nrci query interpretations before pathfinding begins.
 
 ## Conclusion
-GLM v3.2 is a self-aware semantic system. By integrating stateful memory and ontological health feedback, we have moved beyond mere reasoning into "Semantic Stewardship," where the machine actively maintains the integrity and coherence of its own conceptual lattice.
+GLM v3.1 is a sophisticated, mathematically grounded semantic machine. By integrating active tensor composition and natural prose synthesis, we have achieved a phase-locked reasoning state where the machine can not only understand physics descriptions but also articulate its own geometric derivations with human-like clarity.
