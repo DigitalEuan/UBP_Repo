@@ -241,47 +241,30 @@ def _pick_verb(zv) -> Optional[str]:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
-def synthesize_path(path: List, qtype: str, crg: Optional[ConceptRelationGraph] = None) -> str:
+def synthesize_path(path: List, qtype: str) -> str:
     """
-    Synthesizes a human-readable sentence from a reasoner path (v3.3 Stylized).
+    Synthesizes a human-readable sentence from a reasoner path.
     Example: [energy, increase, result] -> 'The energy increase results in a new state.'
     """
-    if not path: return ""
+    if not path:
+        return ""
+
     words = [s.word for s in path]
     roles = [s.role for s in path]
 
-    # 1. Multi-Step Stylization
-    if len(path) > 2:
-        parts = []
-        for i in range(len(path) - 1):
-            w1, w2 = words[i], words[i+1]
-            # Check CRG for stylized link
-            labels = crg.relate(w1, w2) if crg else []
-            if labels:
-                rel = labels[0].replace("_", " ")
-                parts.append(f"{w1} {rel} {w2}")
-            elif roles[i] == "NOUN" and roles[i+1] == "NOUN":
-                parts.append(f"{w1} relates to {w2}")
-            elif roles[i+1] in ("VERB", "OPERATOR"):
-                parts.append(f"{w1} {w2}")
-            else:
-                parts.append(f"{w1} bridges to {w2}")
-
-        raw = ", which ".join(parts).replace("_", " ")
-        return raw[0].upper() + raw[1:] + "."
-
-    # 2. Template: NOUN (OP) NOUN
+    # Template: NOUN (OP) NOUN
     if len(path) == 3 and roles[0] == "NOUN" and roles[1] in ("OPERATOR", "VERB") and roles[2] == "NOUN":
         n0, op, n1 = words
-        if qtype == "relation": return f"The {n0} {op} the {n1} through shared lattice connectivity."
+        if qtype == "relation":
+            return f"The {n0} {op} the {n1} through shared lattice connectivity."
         return f"The {n0} {op} the {n1}."
 
-    # 3. Template: NOUN (OP)
+    # Template: NOUN (OP)
     if len(path) == 2 and roles[0] == "NOUN" and roles[1] in ("OPERATOR", "VERB"):
         n0, op = words
         return f"The {n0} {op} toward a determined endpoint."
 
-    # 4. Template: NOUN NOUN
+    # Template: NOUN NOUN
     if len(path) == 2 and roles[0] == "NOUN" and roles[1] == "NOUN":
         n0, n1 = words
         if "(" in n1:
@@ -289,19 +272,18 @@ def synthesize_path(path: List, qtype: str, crg: Optional[ConceptRelationGraph] 
              if m:
                  op, sub = m.groups()
                  return f"The {n0} undergoes {op} resulting in {sub}."
-        # Check CRG
-        labels = crg.relate(n0, n1) if crg else []
-        if labels: return f"The {n0} {labels[0].replace('_',' ')} the {n1}."
         return f"The {n0} relates to {n1} within the lattice."
 
-    # 5. Compositional handles
+    # Compositional handles
     for i, w in enumerate(words):
         if "(" in w:
+            # increase(energy) -> the increase of energy
             m = re.match(r"([^(]+)\(([^)]+)\)", w)
             if m:
                 op, sub = m.groups()
                 words[i] = f"the {op} of {sub}"
 
+    # Fallback: join and capitalize
     raw = " ".join(words).replace("_", " ")
     return raw[0].upper() + raw[1:] + "."
 
