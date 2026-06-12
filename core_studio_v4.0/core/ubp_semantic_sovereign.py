@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Tuple, Optional
 import sympy as sp
 
 # Import ubp_unified_v5 UBP engines
-from core import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra
+from ubp_unified_v5 import GOLAY_ENGINE, LEECH_ENGINE, BinaryLinearAlgebra
 
 class SovereignSemanticAuditor:
     """
