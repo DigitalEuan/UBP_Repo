@@ -127,8 +127,9 @@ _CONCEPT_ALIASES: Dict[str, str] = {
     "encode":         "LAW_GOLAY_UNIQUENESS_001",
     "encodes":        "LAW_GOLAY_UNIQUENESS_001",
     "mass":           "LAW_LEECH_TENSION_001",
-    "relationship":   "LAW_META_002",
-    "connection":     "LAW_META_002",
+    "relationship":   "LAW_RELATIONSHIP_001",
+    "relationships":  "LAW_RELATIONSHIP_001",
+    "connection":     "LAW_RELATIONSHIP_001",
     "water":          "MOLECULE_H2O_001",
 }
 
@@ -289,12 +290,12 @@ def synthesize_path(path: List, qtype: str) -> str:
 
 def _query_type(query: str) -> str:
     q = query.lower()
+    if re.search(r'\brelationship\b|\bconnection\b|\blink\b|\bbetween\b', q):
+        return "relation"
     if re.search(r'\bwhat\s+is\b|\bdefine\b|\bmeaning\b', q):
         return "definition"
     if re.search(r'\bexplain\b|\bdescribe\b|\bhow does\b', q):
         return "explanation"
-    if re.search(r'\brelationship\b|\bconnection\b|\blink\b|\bbetween\b', q):
-        return "relation"
     if re.search(r'\bnrci\b|\bstability\b|\btax\b|\bcoherence\b', q):
         return "metric"
     if re.search(r'\bhappens\b|\beffect\b|\bwhen\b|\bisolated\b', q):

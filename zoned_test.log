@@ -1,0 +1,28 @@
+──────────────────────────────────────────────────────────────────────────────
+ GLM ZONED LATTICE EMBEDDING — Self-Test v2.0
+──────────────────────────────────────────────────────────────────────────────
+ Role anchors (Golay octads biased toward home zone):
+   NOUN      hw=8 sig(S,O,M)=(6, 1, 1) home=S dom=True
+   VERB      hw=8 sig(S,O,M)=(0, 6, 2) home=O dom=True
+   OPERATOR  hw=8 sig(S,O,M)=(1, 6, 1) home=O dom=True
+   ADJECTIVE hw=8 sig(S,O,M)=(2, 0, 6) home=M dom=True
+   PROPERTY  hw=8 sig(S,O,M)=(1, 1, 6) home=M dom=True
+
+ Testing Gap 1: Determinism
+   Duplicate add 'electron' identical vector: True
+
+ Testing Gap 2: 16 slots via Gray code
+   16 sibling words unique vectors: True
+
+ Sample zoned words:
+   lemma          role       mog              sig          pure  snap  nrci
+   electron       NOUN       M_Mass           (6, 1, 1)    True      6 0.7623
+   photon         NOUN       A_Energy         (5, 2, 1)    True      8 0.7623
+   hamiltonian    NOUN       A_Energy         (3, 2, 1)    True      6 0.8105
+   symmetry       NOUN       I_Symmetry       (6, 2, 1)    True      5 0.7404
+   commutes       VERB       I_Symmetry       (0, 5, 3)    True      6 0.7623
+   scales         VERB       P_Ratio          (0, 5, 3)    True      6 0.7623
+   between        OPERATOR   I_Connectivity   (1, 6, 0)    True      7 0.7857
+   massless       ADJECTIVE  M_Mass           (3, 0, 4)    True      9 0.7857
+   topological    ADJECTIVE  I_Topology       (3, 0, 6)    True      9 0.7404
+   strong         PROPERTY   A_Force          (3, 1, 4)    True      6 0.7623
