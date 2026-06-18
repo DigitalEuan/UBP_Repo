@@ -1,0 +1,140 @@
+{
+  "y18_boundary_state": {
+    "seed_24_bit": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "hamming_weight": 12,
+    "leech_symmetry_tax": 4.676105164854324,
+    "leech_nrci": 0.6813796908424689,
+    "in_capture_zone": false
+  },
+  "soc_energy_per_weight_interpretation": {
+    "Y-power (18)": {
+      "weight": 18,
+      "E_SOC_J": 973186376.9807186,
+      "E_SOC_eV": 6.074151603066748e+27
+    },
+    "Hamming weight of seed (24-bit)": {
+      "weight": 12,
+      "E_SOC_J": 648790917.9871458,
+      "E_SOC_eV": 4.049434402044499e+27
+    },
+    "Leech rank (24)": {
+      "weight": 24,
+      "E_SOC_J": 1297581835.9742916,
+      "E_SOC_eV": 8.098868804088998e+27
+    },
+    "D-Sink dimension (13)": {
+      "weight": 13,
+      "E_SOC_J": 702856827.8194079,
+      "E_SOC_eV": 4.3868872688815407e+27
+    },
+    "Existence Unit cube root (24)": {
+      "weight": 24,
+      "E_SOC_J": 1297581835.9742916,
+      "E_SOC_eV": 8.098868804088998e+27
+    },
+    "Bits 12-17 (Activation layer, 6 bits)": {
+      "weight": 6,
+      "E_SOC_J": 324395458.9935729,
+      "E_SOC_eV": 2.0247172010222494e+27
+    },
+    "Total bits 0-17 (Reality+Info+Activation, 18 bits)": {
+      "weight": 18,
+      "E_SOC_J": 973186376.9807186,
+      "E_SOC_eV": 6.074151603066748e+27
+    }
+  },
+  "1_THz_wall": {
+    "frequency_Hz": 1000000000000.0,
+    "photon_energy_J": 6.6260701499999995e-22,
+    "photon_energy_eV": 0.004135667696923859
+  },
+  "gravity_unification_frequency": {
+    "Y-power (18)": {
+      "E_SOC_J": 973186376.9807186,
+      "f_unification_Hz": 1.4687233231008258e+42,
+      "ratio_to_1THz_wall": 1.468723323100826e+30
+    },
+    "Hamming weight of seed (24-bit)": {
+      "E_SOC_J": 648790917.9871458,
+      "f_unification_Hz": 9.791488820672171e+41,
+      "ratio_to_1THz_wall": 9.791488820672172e+29
+    },
+    "Leech rank (24)": {
+      "E_SOC_J": 1297581835.9742916,
+      "f_unification_Hz": 1.9582977641344343e+42,
+      "ratio_to_1THz_wall": 1.9582977641344344e+30
+    },
+    "D-Sink dimension (13)": {
+      "E_SOC_J": 702856827.8194079,
+      "f_unification_Hz": 1.0607446222394852e+42,
+      "ratio_to_1THz_wall": 1.0607446222394852e+30
+    },
+    "Existence Unit cube root (24)": {
+      "E_SOC_J": 1297581835.9742916,
+      "f_unification_Hz": 1.9582977641344343e+42,
+      "ratio_to_1THz_wall": 1.9582977641344344e+30
+    },
+    "Bits 12-17 (Activation layer, 6 bits)": {
+      "E_SOC_J": 324395458.9935729,
+      "f_unification_Hz": 4.895744410336086e+41,
+      "ratio_to_1THz_wall": 4.895744410336086e+29
+    },
+    "Total bits 0-17 (Reality+Info+Activation, 18 bits)": {
+      "E_SOC_J": 973186376.9807186,
+      "f_unification_Hz": 1.4687233231008258e+42,
+      "ratio_to_1THz_wall": 1.468723323100826e+30
+    }
+  },
+  "planck_scale_comparison": {
+    "f_planck_Hz": 1.8548586297938625e+43,
+    "E_planck_J": 12290423399.347013,
+    "f_planck_over_1THz": 1.8548586297938625e+31,
+    "interpretation": "1 THz wall is NOT gravitational unification; it's a much lower (atomic clock) threshold"
+  },
+  "y18_soc_vs_planck": {
+    "E_SOC_weight18_J": 973186376.9807186,
+    "f_SOC_weight18_Hz": 1.4687233231008258e+42,
+    "ratio_to_1THz": 1.468723323100826e+30,
+    "interpretation": "Y^18 boundary state's SOC energy is ~10^9 \u00d7 the 1 THz wall, in the penalty regime"
+  },
+  "predicted_unification_scales": {
+    "electroweak": {
+      "energy_GeV": 246,
+      "weight_needed": 7.289906952214314e-16
+    },
+    "GUT_minimal": {
+      "energy_GeV": 1000000000000000.0,
+      "weight_needed": 0.002963376809843217
+    },
+    "planck_gravity": {
+      "energy_GeV": 1.22e+19,
+      "weight_needed": 36.153197080087246
+    }
+  },
+  "conclusion": "The Y^18 boundary state has SOC energy ~10^9 \u00d7 the 1 THz wall, placing it deep in the penalty regime. This is consistent with gravity being weak at quantum scales. However, the SOC energy (with weight 18) is ~10^15 \u00d7 below the Planck energy, so the Y^18 state alone does NOT predict gravitational unification at the Planck scale. To reach Planck energy via the SOC formula, a weight of ~10^23 would be needed \u2014 far beyond any UBP-canonical integer. The SOC framework is therefore not predictive of gravitational unification without additional structure."
+}

@@ -1,0 +1,99 @@
+{
+  "targets": {
+    "H0_midpoint": 70.2,
+    "mW/mZ": 0.08814685330022942,
+    "lambda_QCD_over_me": 391.3894324853229,
+    "alpha_drift_bound": 1e-17,
+    "mn-mp_over_me": 2.5303326810176126,
+    "g-2_anomaly_mu": 2.51e-09
+  },
+  "baseline_real_substrate": {
+    "H0_midpoint": {
+      "best_err_pct": 0.1591139991832033,
+      "n_le_0.13pct": 0
+    },
+    "mW/mZ": {
+      "best_err_pct": 0.034633241398193564,
+      "n_le_0.13pct": 5
+    },
+    "lambda_QCD_over_me": {
+      "best_err_pct": 0.07435315596491475,
+      "n_le_0.13pct": 1
+    },
+    "alpha_drift_bound": {
+      "best_err_pct": 0.006130198693964367,
+      "n_le_0.13pct": 3
+    },
+    "mn-mp_over_me": {
+      "best_err_pct": 0.13077501075130107,
+      "n_le_0.13pct": 0
+    },
+    "g-2_anomaly_mu": {
+      "best_err_pct": 0.0070064563150743255,
+      "n_le_0.13pct": 2
+    }
+  },
+  "structural_null_summary": {
+    "H0_midpoint": {
+      "n_trials": 30,
+      "hits_013": 7,
+      "hit_rate_pct": 23.333333333333332,
+      "min_pct": 0.015048361068169367,
+      "mean_pct": 0.43151595631031775,
+      "p10_pct": 0.03852529993687583,
+      "p50_pct": 0.41164801646081073,
+      "p90_pct": 0.7727051143094448
+    },
+    "mW/mZ": {
+      "n_trials": 30,
+      "hits_013": 9,
+      "hit_rate_pct": 30.0,
+      "min_pct": 0.00017660628780550157,
+      "mean_pct": 0.3856005667082788,
+      "p10_pct": 0.04744863188010655,
+      "p50_pct": 0.2509843847883112,
+      "p90_pct": 1.1137812279307489
+    },
+    "lambda_QCD_over_me": {
+      "n_trials": 30,
+      "hits_013": 10,
+      "hit_rate_pct": 33.33333333333333,
+      "min_pct": 0.009446355593029959,
+      "mean_pct": 0.31808005743268364,
+      "p10_pct": 0.06508982832025897,
+      "p50_pct": 0.2985239978100157,
+      "p90_pct": 0.8108945877224846
+    },
+    "alpha_drift_bound": {
+      "n_trials": 30,
+      "hits_013": 4,
+      "hit_rate_pct": 13.333333333333334,
+      "min_pct": 0.022477467878919712,
+      "mean_pct": 1.0015889233826543,
+      "p10_pct": 0.096517614704474,
+      "p50_pct": 0.48349399575673496,
+      "p90_pct": 2.367120838729586
+    },
+    "mn-mp_over_me": {
+      "n_trials": 30,
+      "hits_013": 11,
+      "hit_rate_pct": 36.666666666666664,
+      "min_pct": 0.002852916388978526,
+      "mean_pct": 0.3447411021396329,
+      "p10_pct": 0.03677633704118196,
+      "p50_pct": 0.29802118551627416,
+      "p90_pct": 0.8237664650168998
+    },
+    "g-2_anomaly_mu": {
+      "n_trials": 30,
+      "hits_013": 14,
+      "hit_rate_pct": 46.666666666666664,
+      "min_pct": 0.009441555577283791,
+      "mean_pct": 0.25025237324657523,
+      "p10_pct": 0.033852409088757904,
+      "p50_pct": 0.15723612907210266,
+      "p90_pct": 0.5484460511734688
+    }
+  },
+  "note_on_g2_anomaly_bug": "Push #2's nq3_out_of_sample.py used F(251, 10**9) = 2.51e-7 for the muon g-2 anomaly, but the correct value is 2.51e-9 (Fermilab 2021). This null-model re-test uses the correct value F(251, 10**11)."
+}

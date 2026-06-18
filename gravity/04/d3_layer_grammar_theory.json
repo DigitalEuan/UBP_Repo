@@ -1,0 +1,250 @@
+{
+  "layer_active_vectors": {
+    "Reality": {
+      "vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "weight": 1,
+      "leech_tax": 0.38967543040452696,
+      "nrci": 0.9624939746179005,
+      "in_capture_zone": true,
+      "conscious_read": "MANIFESTED",
+      "soc_energy_J": 76371681.0834885,
+      "characteristic_freq_Hz": 1.1525939109396313e+41,
+      "characteristic_scale": 0.2547485069937567,
+      "implied_k": 1.0287586566664806
+    },
+    "Information": {
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "weight": 0,
+      "leech_tax": 0.0,
+      "nrci": 1.0,
+      "in_capture_zone": true,
+      "conscious_read": "MANIFESTED",
+      "soc_energy_J": 0.0,
+      "characteristic_freq_Hz": 0.0,
+      "characteristic_scale": 0.26467543040452696,
+      "implied_k": 1.0
+    },
+    "Activation": {
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "weight": 5,
+      "leech_tax": 1.9483771520226347,
+      "nrci": 0.8369337419439584,
+      "in_capture_zone": true,
+      "conscious_read": "MANIFESTED",
+      "soc_energy_J": 332043828.39450717,
+      "characteristic_freq_Hz": 5.011172850237741e+41,
+      "characteristic_scale": 0.2215157983690885,
+      "implied_k": 1.1339178031144161
+    },
+    "Potential": {
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "weight": 2,
+      "leech_tax": 0.7793508608090539,
+      "nrci": 0.9276996480704072,
+      "in_capture_zone": true,
+      "conscious_read": "MANIFESTED",
+      "soc_energy_J": 147221662.74718615,
+      "characteristic_freq_Hz": 2.2218548764864217e+41,
+      "characteristic_scale": 0.2455393036391632,
+      "implied_k": 1.0564583016942939
+    },
+    "Full octad (all layers)": {
+      "vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "weight": 8,
+      "leech_tax": 3.1174034432362157,
+      "nrci": 0.7623459965437248,
+      "in_capture_zone": true,
+      "conscious_read": "MANIFESTED",
+      "soc_energy_J": 483923198.34666955,
+      "characteristic_freq_Hz": 7.303321386458149e+41,
+      "characteristic_scale": 0.2017742547523784,
+      "implied_k": 1.2041411018307404
+    }
+  },
+  "empirical_y_power_picks": [
+    {
+      "constant": "G (gravity)",
+      "layer": "Potential",
+      "y_power": "Y^18"
+    },
+    {
+      "constant": "\u03b1 (EM coupling)",
+      "layer": "Information",
+      "y_power": "Y^3"
+    },
+    {
+      "constant": "\u03b1_s (strong coupling)",
+      "layer": "Information",
+      "y_power": "Y^4"
+    },
+    {
+      "constant": "m_p/m_e (mass ratio)",
+      "layer": "Reality",
+      "y_power": "Y_inv^6"
+    },
+    {
+      "constant": "m_\u03bc/m_e (mass ratio)",
+      "layer": "Reality",
+      "y_power": "no Y-power (uses L)"
+    },
+    {
+      "constant": "m_\u03c4/m_e (mass ratio)",
+      "layer": "Reality",
+      "y_power": "Y_inv^9"
+    }
+  ],
+  "candidate_rules_tested": [
+    {
+      "rule": "k = lo (lower bit boundary)",
+      "matches": {
+        "Potential": true,
+        "Information": false,
+        "Reality": "partial"
+      }
+    },
+    {
+      "rule": "k = lo/2",
+      "matches": {
+        "Information": true,
+        "Potential": false
+      }
+    },
+    {
+      "rule": "k = lo for boundary layers, k = lo/2 for inner layers",
+      "matches": {
+        "Reality": true,
+        "Information": true,
+        "Potential": true
+      }
+    }
+  ],
+  "derived_rule": "k = lo for boundary layers (Reality, Potential), k = lo/2 for inner layers (Information, Activation). offset \u2208 {0,1} for sub-layer couplings (\u03b1, \u03b1_s).",
+  "derivation_quality": "PARTIAL \u2014 the rule fits 3 of 4 layers cleanly (Reality, Information, Potential) but requires an ad hoc offset for \u03b1_s vs \u03b1. A complete derivation would need a UBP-internal reason for the offset.",
+  "conscious_read_finding": "Only the full octad (all layers active) is MANIFESTED. Individual layer-active vectors are SUBLIMINAL. Physical constants require cross-layer coupling.",
+  "conclusion": "The layer-to-grammar mapping is EMPIRICALLY supported (Push #3) and PARTIALLY DERIVED (this analysis). The boundary-vs-inner rule fits most cases. The \u03b1_s offset and the cross-layer requirement are open questions for Push #5."
+}

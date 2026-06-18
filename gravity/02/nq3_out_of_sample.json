@@ -1,0 +1,491 @@
+{
+  "targets": {
+    "H0_CMB_planck": {
+      "value": 67.36,
+      "unit": "km/s/Mpc",
+      "source": "Planck 2018 CMB"
+    },
+    "H0_SH0ES_SNe": {
+      "value": 73.04,
+      "unit": "km/s/Mpc",
+      "source": "SH0ES 2022 SNe"
+    },
+    "H0_midpoint": {
+      "value": 70.2,
+      "unit": "km/s/Mpc",
+      "source": "CMB-SNe midpoint"
+    },
+    "mW/mZ": {
+      "value": 0.08814685330022942,
+      "unit": "dimensionless",
+      "source": "PDG 2024 (m_W=80.379 GeV / m_Z=91.1876 GeV)"
+    },
+    "alpha_drift_bound": {
+      "value": 1e-17,
+      "unit": "per year",
+      "source": "Oklo + atomic clocks bound"
+    },
+    "lambda_QCD_over_me": {
+      "value": 391.3894324853229,
+      "unit": "dimensionless",
+      "source": "\u03bb_QCD \u2248 200 MeV / m_e \u2248 0.511 MeV"
+    },
+    "mn-mp_over_me": {
+      "value": 2.5303326810176126,
+      "unit": "dimensionless",
+      "source": "(m_n - m_p) \u2248 1.293 MeV / m_e \u2248 0.511 MeV"
+    },
+    "g-2_anomaly_mu": {
+      "value": 2.51e-07,
+      "unit": "dimensionless",
+      "source": "Fermilab 2021 muon g-2 anomaly \u2248 2.51e-9"
+    }
+  },
+  "search_results": {
+    "H0_CMB_planck": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 0,
+        "le_0.13pct": 0,
+        "le_0.50pct": 1,
+        "le_1.00pct": 10,
+        "le_5.00pct": 46
+      },
+      "best_err_pct": 0.22407222422407874,
+      "best_ypower": "Y_inv^2",
+      "target_value": 67.36,
+      "unit": "km/s/Mpc",
+      "source": "Planck 2018 CMB",
+      "top_5": [
+        {
+          "formula": "sqrt3*e*Y_inv^2",
+          "value": 67.20906494976266,
+          "err_pct": 0.22407222422407874,
+          "ypower": "Y_inv^2"
+        },
+        {
+          "formula": "29/phi*Y_inv^1",
+          "value": 67.71684718280673,
+          "err_pct": 0.5297612571358813,
+          "ypower": "Y_inv^1"
+        },
+        {
+          "formula": "1/39*L*Y_inv^8",
+          "value": 66.95968416072307,
+          "err_pct": 0.5942931105655037,
+          "ypower": "Y_inv^8"
+        },
+        {
+          "formula": "1*U_e*Y^4",
+          "value": 67.84037455880994,
+          "err_pct": 0.713145128874619,
+          "ypower": "Y^4"
+        },
+        {
+          "formula": "1/4/NRCI*Y_inv^4",
+          "value": 66.82817126962713,
+          "err_pct": 0.7895319631426123,
+          "ypower": "Y_inv^4"
+        }
+      ]
+    },
+    "H0_SH0ES_SNe": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 0,
+        "le_0.13pct": 0,
+        "le_0.50pct": 3,
+        "le_1.00pct": 7,
+        "le_5.00pct": 50
+      },
+      "best_err_pct": 0.360504954393839,
+      "best_ypower": "Y_inv^3",
+      "target_value": 73.04,
+      "unit": "km/s/Mpc",
+      "source": "SH0ES 2022 SNe",
+      "top_5": [
+        {
+          "formula": "1/2*e*Y_inv^3",
+          "value": 73.30331281868926,
+          "err_pct": 0.360504954393839,
+          "ypower": "Y_inv^3"
+        },
+        {
+          "formula": "12*phi*Y_inv^1",
+          "value": 73.35931346299473,
+          "err_pct": 0.4371761541548979,
+          "ypower": "Y_inv^1"
+        },
+        {
+          "formula": "1/8*NRCI*Y_inv^5",
+          "value": 73.36143077913941,
+          "err_pct": 0.4400749988217537,
+          "ypower": "Y_inv^5"
+        },
+        {
+          "formula": "1/169/L*Y_inv^5",
+          "value": 72.43661179156932,
+          "err_pct": 0.8261065285195426,
+          "ypower": "Y_inv^5"
+        },
+        {
+          "formula": "1/13/w*Y_inv^5",
+          "value": 72.43661179156932,
+          "err_pct": 0.8261065285195426,
+          "ypower": "Y_inv^5"
+        }
+      ]
+    },
+    "H0_midpoint": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 0,
+        "le_0.13pct": 0,
+        "le_0.50pct": 3,
+        "le_1.00pct": 8,
+        "le_5.00pct": 49
+      },
+      "best_err_pct": 0.1591139991832033,
+      "best_ypower": "Y_inv^1",
+      "target_value": 70.2,
+      "unit": "km/s/Mpc",
+      "source": "CMB-SNe midpoint",
+      "top_5": [
+        {
+          "formula": "sqrt2/L_s*Y_inv^1",
+          "value": 70.31169802742662,
+          "err_pct": 0.1591139991832033,
+          "ypower": "Y_inv^1"
+        },
+        {
+          "formula": "6*w*Y_inv^2",
+          "value": 70.02520261470673,
+          "err_pct": 0.2489991243493875,
+          "ypower": "Y_inv^2"
+        },
+        {
+          "formula": "1/169*L_s*Y_inv^9",
+          "value": 70.54470587781277,
+          "err_pct": 0.49103401397831226,
+          "ypower": "Y_inv^9"
+        },
+        {
+          "formula": "4/w*Y_inv^2",
+          "value": 69.8396984719501,
+          "err_pct": 0.5132500399571268,
+          "ypower": "Y_inv^2"
+        },
+        {
+          "formula": "8/phi*Y_inv^2",
+          "value": 70.57893337178952,
+          "err_pct": 0.5397911279053033,
+          "ypower": "Y_inv^2"
+        }
+      ]
+    },
+    "mW/mZ": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 1,
+        "le_0.13pct": 5,
+        "le_0.50pct": 8,
+        "le_1.00pct": 11,
+        "le_5.00pct": 43
+      },
+      "best_err_pct": 0.034633241398193564,
+      "best_ypower": "Y^9",
+      "target_value": 0.08814685330022942,
+      "unit": "dimensionless",
+      "source": "PDG 2024 (m_W=80.379 GeV / m_Z=91.1876 GeV)",
+      "top_5": [
+        {
+          "formula": "1*U_e*Y^9",
+          "value": 0.08811632518774104,
+          "err_pct": 0.034633241398193564,
+          "ypower": "Y^9"
+        },
+        {
+          "formula": "1/3/Y*Y^2",
+          "value": 0.08822514346817564,
+          "err_pct": 0.08881788176779601,
+          "ypower": "Y^2"
+        },
+        {
+          "formula": "1/3*Y*1",
+          "value": 0.08822514346817564,
+          "err_pct": 0.08881788176779601,
+          "ypower": ""
+        },
+        {
+          "formula": "1/3*Y_inv*Y^2",
+          "value": 0.08822514346817564,
+          "err_pct": 0.08881788176779601,
+          "ypower": "Y^2"
+        },
+        {
+          "formula": "1/3/Y_inv*1",
+          "value": 0.08822514346817564,
+          "err_pct": 0.08881788176779601,
+          "ypower": ""
+        }
+      ]
+    },
+    "alpha_drift_bound": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 1,
+        "le_0.05pct": 3,
+        "le_0.13pct": 3,
+        "le_0.50pct": 3,
+        "le_1.00pct": 7,
+        "le_5.00pct": 51
+      },
+      "best_err_pct": 0.006130198693964367,
+      "best_ypower": "Y^32",
+      "target_value": 1e-17,
+      "unit": "per year",
+      "source": "Oklo + atomic clocks bound",
+      "top_5": [
+        {
+          "formula": "39*NRCI*Y^32",
+          "value": 1.0000613019869396e-17,
+          "err_pct": 0.006130198693964367,
+          "ypower": "Y^32"
+        },
+        {
+          "formula": "sqrt3/pi*Y^29",
+          "value": 1.0002440259953857e-17,
+          "err_pct": 0.02440259953856655,
+          "ypower": "Y^29"
+        },
+        {
+          "formula": "6/NRCI*Y^31",
+          "value": 1.000340375688579e-17,
+          "err_pct": 0.0340375688578868,
+          "ypower": "Y^31"
+        },
+        {
+          "formula": "1/29/L*Y^29",
+          "value": 9.947413842074553e-18,
+          "err_pct": 0.525861579254476,
+          "ypower": "Y^29"
+        },
+        {
+          "formula": "1/24/L_s*Y^29",
+          "value": 9.947413842074553e-18,
+          "err_pct": 0.525861579254476,
+          "ypower": "Y^29"
+        }
+      ]
+    },
+    "lambda_QCD_over_me": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 0,
+        "le_0.13pct": 1,
+        "le_0.50pct": 3,
+        "le_1.00pct": 6,
+        "le_5.00pct": 45
+      },
+      "best_err_pct": 0.07435315596491475,
+      "best_ypower": "Y_inv^8",
+      "target_value": 391.3894324853229,
+      "unit": "dimensionless",
+      "source": "\u03bb_QCD \u2248 200 MeV / m_e \u2248 0.511 MeV",
+      "top_5": [
+        {
+          "formula": "1/39/e*Y_inv^8",
+          "value": 391.6804428804889,
+          "err_pct": 0.07435315596491475,
+          "ypower": "Y_inv^8"
+        },
+        {
+          "formula": "1/12*phi*Y_inv^6",
+          "value": 392.215385938802,
+          "err_pct": 0.21103110736391825,
+          "ypower": "Y_inv^6"
+        },
+        {
+          "formula": "sqrt3/L*Y_inv^2",
+          "value": 393.13919495080114,
+          "err_pct": 0.44706430992969776,
+          "ypower": "Y_inv^2"
+        },
+        {
+          "formula": "6/pi*Y_inv^4",
+          "value": 389.17673098548227,
+          "err_pct": 0.5653452332092774,
+          "ypower": "Y_inv^4"
+        },
+        {
+          "formula": "1/8*L_s*Y_inv^8",
+          "value": 394.43438950925935,
+          "err_pct": 0.7779865196157699,
+          "ypower": "Y_inv^8"
+        }
+      ]
+    },
+    "mn-mp_over_me": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 0,
+        "le_0.13pct": 0,
+        "le_0.50pct": 3,
+        "le_1.00pct": 6,
+        "le_5.00pct": 46
+      },
+      "best_err_pct": 0.13077501075130107,
+      "best_ypower": "",
+      "target_value": 2.5303326810176126,
+      "unit": "dimensionless",
+      "source": "(m_n - m_p) \u2248 1.293 MeV / m_e \u2248 0.511 MeV",
+      "top_5": [
+        {
+          "formula": "2197/L*1/U_e",
+          "value": 2.527023638181968,
+          "err_pct": 0.13077501075130107,
+          "ypower": ""
+        },
+        {
+          "formula": "12/U_e*Y_inv^6",
+          "value": 2.525025410633721,
+          "err_pct": 0.20974595252657144,
+          "ypower": "Y_inv^6"
+        },
+        {
+          "formula": "39/L_s*Y^4",
+          "value": 2.5185196020389014,
+          "err_pct": 0.4668587283929923,
+          "ypower": "Y^4"
+        },
+        {
+          "formula": "2*U_e*Y^7",
+          "value": 2.5157015461933088,
+          "err_pct": 0.57822969027217,
+          "ypower": "Y^7"
+        },
+        {
+          "formula": "8/pi*1",
+          "value": 2.5464790894703255,
+          "err_pct": 0.6381140540863314,
+          "ypower": ""
+        }
+      ]
+    },
+    "g-2_anomaly_mu": {
+      "n_candidates": 34100,
+      "band_counts": {
+        "le_0.01pct": 0,
+        "le_0.05pct": 0,
+        "le_0.13pct": 1,
+        "le_0.50pct": 8,
+        "le_1.00pct": 14,
+        "le_5.00pct": 55
+      },
+      "best_err_pct": 0.12883297098683916,
+      "best_ypower": "Y^13",
+      "target_value": 2.51e-07,
+      "unit": "dimensionless",
+      "source": "Fermilab 2021 muon g-2 anomaly \u2248 2.51e-9",
+      "top_5": [
+        {
+          "formula": "13/phi*Y^13",
+          "value": 2.51323370757177e-07,
+          "err_pct": 0.12883297098683916,
+          "ypower": "Y^13"
+        },
+        {
+          "formula": "24*pi*1/c",
+          "value": 2.5150140263420184e-07,
+          "err_pct": 0.1997620056580946,
+          "ypower": ""
+        },
+        {
+          "formula": "sqrt3/w*Y^12",
+          "value": 2.503766264417149e-07,
+          "err_pct": 0.24835599931676502,
+          "ypower": "Y^12"
+        },
+        {
+          "formula": "8*Y*Y^12",
+          "value": 2.502460037244946e-07,
+          "err_pct": 0.30039692251210165,
+          "ypower": "Y^12"
+        },
+        {
+          "formula": "8/Y*Y^14",
+          "value": 2.502460037244946e-07,
+          "err_pct": 0.30039692251210165,
+          "ypower": "Y^14"
+        }
+      ]
+    }
+  },
+  "h0_tension_predictions": {
+    "n_formulas_in_tension_interval": 42,
+    "top_10_closest_to_midpoint": [
+      {
+        "formula": "sqrt2/L_s*Y_inv^1",
+        "value": 70.31169802742662,
+        "err_from_midpoint_pct": 0.1591139991832033
+      },
+      {
+        "formula": "6*w*Y_inv^2",
+        "value": 70.02520261470673,
+        "err_from_midpoint_pct": 0.2489991243493875
+      },
+      {
+        "formula": "1/169*L_s*Y_inv^9",
+        "value": 70.54470587781277,
+        "err_from_midpoint_pct": 0.49103401397831226
+      },
+      {
+        "formula": "4/w*Y_inv^2",
+        "value": 69.8396984719501,
+        "err_from_midpoint_pct": 0.5132500399571268
+      },
+      {
+        "formula": "8/phi*Y_inv^2",
+        "value": 70.57893337178952,
+        "err_from_midpoint_pct": 0.5397911279053033
+      },
+      {
+        "formula": "1/NRCI*Y_inv^3",
+        "value": 70.75109997574401,
+        "err_from_midpoint_pct": 0.7850427004900516
+      },
+      {
+        "formula": "1/12*L_s*Y_inv^7",
+        "value": 69.59806120647336,
+        "err_from_midpoint_pct": 0.8574626688413568
+      },
+      {
+        "formula": "1/4/e*Y_inv^5",
+        "value": 70.80719443412634,
+        "err_from_midpoint_pct": 0.8649493363623154
+      },
+      {
+        "formula": "3*phi*Y_inv^2",
+        "value": 69.29176742139721,
+        "err_from_midpoint_pct": 1.2937786019982775
+      },
+      {
+        "formula": "1/8*e*Y_inv^4",
+        "value": 69.23887183885307,
+        "err_from_midpoint_pct": 1.3691284346822425
+      }
+    ]
+  },
+  "alpha_drift_analysis": {
+    "substrate_prediction": "d\u03b1/dt = 0 (since \u03b1 is substrate-determined and substrate is mathematical)",
+    "observational_bound": "|d\u03b1/dt|/\u03b1 < 1e-17 /yr",
+    "consistency": "consistent (substrate predicts 0, observational bound is upper limit)",
+    "falsifiable": "if d\u03b1/dt > 1e-17 /yr detected, substrate view for \u03b1 is falsified"
+  }
+}

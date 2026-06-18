@@ -1,0 +1,119 @@
+{
+  "alpha_s_target": 0.118,
+  "prediction_24_Y4": 0.11777842805348948,
+  "real_err_pct": 0.18777283602586015,
+  "focused_null_model": {
+    "n_trials": 5000,
+    "scrambling": "Y' = Y \u00d7 uniform(0.1, 10)",
+    "integers_held_fixed": [
+      24,
+      4
+    ],
+    "null_min_pct": 0.34342126849691124,
+    "null_p10_pct": 99.90176742577542,
+    "null_p25_pct": 4356.805828632108,
+    "null_p50_pct": 70277.38932927772,
+    "null_p75_pct": 308015.242739671,
+    "null_p90_pct": 652549.9384165482,
+    "null_p99_pct": 955647.2752778307,
+    "null_max_pct": 997299.2530497658,
+    "null_mean_pct": 200518.28373535408,
+    "hits_at_real": 0,
+    "false_positive_rate_pct": 0.0,
+    "real_percentile": 100.0,
+    "verdict": "SURPRISING (< 5% null hit rate) \u2014 \u03b1_s = 24\u00b7Y\u2074 is the 2nd statistically surprising formula"
+  },
+  "comparison_to_13L_for_m_mu": {
+    "13_L_real_err_pct": 0.029375858014728237,
+    "13_L_null_min_pct": 0.13695394350093817,
+    "13_L_fp_rate_pct": 0.0,
+    "13_L_verdict": "SURPRISING"
+  },
+  "other_information_layer_candidates": [
+    {
+      "formula": "24\u00b7Y\u2074",
+      "value": 0.11777842805348948,
+      "err_pct": 0.18777283602585815
+    },
+    {
+      "formula": "24\u00b7Y\u00b3",
+      "value": 0.4449919203814206,
+      "err_pct": 277.11179693340733
+    },
+    {
+      "formula": "24\u00b7Y\u2075",
+      "value": 0.03117305613742594,
+      "err_pct": 73.58215581574073
+    },
+    {
+      "formula": "8\u00b7\u03c0\u00b7Y\u00b3",
+      "value": 0.46599444932569506,
+      "err_pct": 294.91055027601277
+    },
+    {
+      "formula": "12\u00b7\u03c0\u00b7Y\u00b3",
+      "value": 0.6989916739885426,
+      "err_pct": 492.3658254140191
+    },
+    {
+      "formula": "(1/8)\u00b7\u03c0\u00b7Y\u00b3",
+      "value": 0.007281163270713985,
+      "err_pct": 93.8295226519373
+    },
+    {
+      "formula": "24\u00b7Y\u2074\u00b7\u03c0",
+      "value": 0.3700118443241966,
+      "err_pct": 213.5693595967768
+    },
+    {
+      "formula": "24\u00b7Y\u2074/\u03c0",
+      "value": 0.03749003802861202,
+      "err_pct": 68.22878133168473
+    },
+    {
+      "formula": "Y\u2074\u00b7\u03c0",
+      "value": 0.015417160180174857,
+      "err_pct": 86.93461001680096
+    },
+    {
+      "formula": "24\u00b7Y_inv\u207b\u2074",
+      "value": 0.11777842805348948,
+      "err_pct": 0.18777283602585815
+    },
+    {
+      "formula": "Y_inv\u207b\u2074",
+      "value": 0.004907434502228729,
+      "err_pct": 95.84115720150108
+    }
+  ],
+  "engine_comparison": {
+    "canonical_observer_dynamics": {
+      "Y": 0.26467543040452696,
+      "C_celeritas": "299792458",
+      "F_MAX_1THz_wall": 1000000000000,
+      "conscious_threshold": "7/10",
+      "Y18_seed_weight": 12,
+      "Y18_leech_tax": 4.676105164854324,
+      "Y18_leech_nrci": 0.6813796908424689,
+      "Y18_in_capture_zone": false,
+      "Y18_status": "ZOMBIE STATE (sub-threshold)",
+      "canonical_SOC_energy_J": 648790917.9871458,
+      "canonical_weight_definition": "weight = sum(vector) = bit-count of 24-element vector"
+    },
+    "push3_inline": {
+      "weight_used": 18,
+      "weight_definition": "weight = Y-power (interpretation choice, not canonical)",
+      "E_SOC_J": 973186376.9807186,
+      "ratio_to_canonical": 1.5,
+      "reported_nrci": 0.762,
+      "corrected_nrci": 0.6813796908424689,
+      "correction_note": "Push #3 reported NRCI=0.762 (Capture Zone); canonical engine gives NRCI=0.681 (Zombie State). Push #3 had a vector-construction bug."
+    },
+    "planck_scale_weight_prediction": {
+      "E_planck_J": 12290000000.0,
+      "weight_needed": 227.31514253860436,
+      "closest_ubp_canonical_integer": 36,
+      "match_quality": "not close"
+    }
+  }
+}

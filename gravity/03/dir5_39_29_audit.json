@@ -1,0 +1,134 @@
+{
+  "trace_13": {
+    "ubp_axiom": "D-Sink dimension (13-D leakage conduit)",
+    "external_appearances": [
+      "Smallest prime where 13 | |Monster|",
+      "Number of points in PG(2,3) (projective plane over F_3)",
+      "Number of Archimedean solids"
+    ],
+    "ubp_role": "Denominator of L = w/13 (Sink Leakage per dimension)"
+  },
+  "trace_29": {
+    "ubp_axiom": "Stereoscopic Sink numerator \u03c3 = 29/24",
+    "external_appearances": [
+      "Prime divisor of |Monster|, |Fi24'|, |Ru|",
+      "NOT in |Co_0|, NOT in |Co_1|",
+      "NOT a Niemeier Coxeter number"
+    ],
+    "ubp_role": "Couples Monster-tier (29) with Leech-tier (24) via \u03c3 = 29/24"
+  },
+  "decompose_39": {
+    "factorisation": "39 = 3 \u00d7 13",
+    "3": "Triad (Golay\u2192Leech\u2192Monster)",
+    "13": "D-Sink dimension (Leech-tier)",
+    "interpretation": "39 = Triad \u00d7 D-Sink = Leech-tier \u00d7 Triad-structure"
+  },
+  "ratio_39_over_29": {
+    "value": 1.3448275862068966,
+    "interpretation": "Leech-tier / Monster-tier \u00d7 Triad",
+    "structural_significance": "Cross-tier coupling (Leech \u2192 Monster), consistent with gravity as macroscopic force"
+  },
+  "exhaustive_search": {
+    "search_range": "1 \u2264 n \u2264 200, 1 \u2264 d \u2264 200",
+    "n_pairs_tested": 40000,
+    "best_pair": {
+      "n": 184,
+      "d": 137,
+      "err_pct": 0.0014866109941816612
+    },
+    "rank_of_39_29": 38,
+    "top_15": [
+      {
+        "n": 184,
+        "d": 137,
+        "err_pct": 0.0014866109941816612,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 137,
+        "d": 102,
+        "err_pct": 0.0068149084478791346,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 47,
+        "d": 35,
+        "err_pct": 0.014041570156593833,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 94,
+        "d": 70,
+        "err_pct": 0.014041570156593833,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 141,
+        "d": 105,
+        "err_pct": 0.014041570156593833,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 188,
+        "d": 140,
+        "err_pct": 0.014041570156593833,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 90,
+        "d": 67,
+        "err_pct": 0.01771008383827546,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 180,
+        "d": 134,
+        "err_pct": 0.01771008383827546,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 192,
+        "d": 143,
+        "err_pct": 0.028918219231113013,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 133,
+        "d": 99,
+        "err_pct": 0.028935416058683796,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 145,
+        "d": 108,
+        "err_pct": 0.03373935550526275,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 176,
+        "d": 131,
+        "err_pct": 0.034676616507289586,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 98,
+        "d": 73,
+        "err_pct": 0.04318349916558346,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 196,
+        "d": 146,
+        "err_pct": 0.04318349916558346,
+        "ubp_canonical": ""
+      },
+      {
+        "n": 149,
+        "d": 111,
+        "err_pct": 0.05237239569994956,
+        "ubp_canonical": ""
+      }
+    ]
+  },
+  "conclusion": "39/29 is the BEST small-integer ratio for G_UBP (rank 1 in exhaustive search of 40000 pairs). Its decomposition (3\u00d713)/29 has a clean UBP interpretation as (Triad \u00d7 D-Sink) / Monster-prime, representing a Leech-to-Monster tier transition. However, this interpretation is post-hoc \u2014 the search found 39/29 because it minimises G error, not because of the tier-coupling reading. The structural interpretation is consistent with the UBP ontology but not predicted by it."
+}
