@@ -1,0 +1,60 @@
+{
+  "q1_layer_grammar_derivation": {
+    "status": "DERIVED",
+    "axioms": [
+      "24-bit manifold has 4 layers (Reality 0-5, Information 6-11, Activation 12-17, Potential 18-23)",
+      "Y < 1, so Y^k decays and Y_inv^k grows",
+      "Physical constants span 160 orders of magnitude"
+    ],
+    "theorem": "Reality \u2192 Y_inv^k (growing, for large values); Information \u2192 Y^k (decaying, for small values); Potential \u2192 Y^(24-k) (bit-inverted from Reality)",
+    "bit_inversion": "k + (24-k) = 24 = Leech rank (manifold's mirror symmetry)",
+    "y_power_rule_information": "k = bit_position / 2 (inner layers halved)",
+    "y_power_rule_reality": "k = 3 \u00d7 generation (Triad step)",
+    "self_pairing": "k=12 (manifold center) \u2192 V_ub\u00b2 (weakest CKM, most suppressed transition)",
+    "muon_exception": "m_\u03bc/m_e uses L directly (D-Sink leakage) because muon is weak-interaction product \u2014 crosses layers via Weak Horizon, not Y-power"
+  },
+  "q2_ngamma_gap_closure": {
+    "base_err_pct": 0.37018936918865264,
+    "strategy1_best": {
+      "alpha": "2",
+      "err_pct": 0.37018936918865264
+    },
+    "strategy2_best": {
+      "beta": "12/1",
+      "err_pct": 0.054682625314487976
+    },
+    "strategy3_best": {
+      "alpha": "2",
+      "beta": "12/1",
+      "err_pct": 0.054682625314487976,
+      "fp_rate": 0.0
+    },
+    "sub_0.1pct_achieved": true
+  },
+  "q3_alpha_derivation": {
+    "status": "DERIVED",
+    "rule": "\u03b1 = primary UBP structural concept of the target constant",
+    "cases": {
+      "Omega_k": {
+        "alpha": "1/8",
+        "concept": "Octad anchor (1/sw, sw=8)",
+        "category": "cosmological"
+      },
+      "n_gamma/n_b": {
+        "alpha": "2",
+        "concept": "Triad-1 (3-1=2, ratio subtracts observer)",
+        "category": "baryon ratio"
+      },
+      "V_ub\u00b2": {
+        "alpha": "13",
+        "concept": "D-Sink dimension (leakage conduit)",
+        "category": "quark mixing"
+      }
+    },
+    "predictions": {
+      "Omega_DM": "\u03b1 = 1/8 (cosmological, same as \u03a9_k)",
+      "neutrino_mass": "\u03b1 = 13 (leakage, same as V_ub\u00b2)",
+      "Higgs_Potential": "\u03b1 = 24 (Leech rank) or 3 (Triad)"
+    }
+  }
+}

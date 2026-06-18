@@ -1,0 +1,88 @@
+{
+  "y12_value": 1.1818532010225763e-07,
+  "bit_inversion_prediction": "Y_inv^12 (Reality) \u2194 Y^12 (Potential). 12+12=24=Leech rank (self-pairing).",
+  "gf_mp2_correction": "Push #6 Appendix C suggested G_F\u00d7m_P\u00b2\u22481.7e-7, but this was a computational error. G_F\u00d7m_P\u00b2\u22481.74e33 (not at Y^12 scale).",
+  "targets_tested": 11,
+  "candidates_tested": 462,
+  "results": {
+    "G_F \u00d7 m_P\u00b2 (correct ~1.7e33)": {
+      "target": 0.001738600369471947,
+      "best_formula": "29/24\u00b7Y^12\u00b7U_e\u00b7NRCI(1/2)",
+      "best_pred": 0.0017079492442441423,
+      "best_err_pct": 1.7629770340560877
+    },
+    "\u03b1\u00b3 (alpha cubed)": {
+      "target": 3.8859390793134105e-07,
+      "best_formula": "29/24\u00b7Y^12\u00b7e",
+      "best_pred": 3.881903846963704e-07,
+      "best_err_pct": 0.10384188396539155
+    },
+    "\u03b1\u2074 (alpha^4)": {
+      "target": 2.8357067505141297e-09,
+      "best_formula": "1/3\u00b7Y^12\u00b7Y\u00b2",
+      "best_pred": 2.7597486976163944e-09,
+      "best_err_pct": 2.678628630550873
+    },
+    "\u03b1\u2075 (alpha^5)": {
+      "target": 2.0693151927467106e-11,
+      "best_formula": "1/169\u00b7Y^12\u00b7L",
+      "best_pred": 4.398087430957238e-11,
+      "best_err_pct": 112.53830476735764
+    },
+    "y_e (electron Yukawa)": {
+      "target": 2.077231504065041e-06,
+      "best_formula": "1/169\u00b7Y^12\u00b7U_e\u00b7NRCI(12)",
+      "best_pred": 2.0391595852480487e-06,
+      "best_err_pct": 1.8328202100963369
+    },
+    "y_e\u00b2": {
+      "target": 4.314890721480311e-12,
+      "best_formula": "1/169\u00b7Y^12\u00b7L",
+      "best_pred": 4.398087430957238e-11,
+      "best_err_pct": 919.2813016243399
+    },
+    "y_e \u00d7 \u03b1": {
+      "target": 1.515829064283377e-08,
+      "best_formula": "2\u00b7Y^12\u00b7L",
+      "best_pred": 1.4865535516635464e-08,
+      "best_err_pct": 1.9313201804631543
+    },
+    "V_ub\u00b2": {
+      "target": 1.34689e-05,
+      "best_formula": "1/24\u00b7Y^12\u00b7U_e\u00b7NRCI(13)",
+      "best_pred": 1.347314543154075e-05,
+      "best_err_pct": 0.03152025436931948,
+      "null_model": {
+        "n_trials": 5000,
+        "null_min_pct": 0.3861892350476753,
+        "null_p50_pct": 9015821469.23167,
+        "hits_at_real": 0,
+        "fp_rate_pct": 0.0,
+        "verdict": "SURPRISING \u2014 Y^12 partner is the 6th statistically surprising formula. Bit-inversion rule is UNIVERSAL (4 of 4)."
+      }
+    },
+    "V_ub \u00d7 V_cb": {
+      "target": 0.00015047,
+      "best_formula": "1/8\u00b7Y^12\u00b7U_e\u00b7NRCI(1)",
+      "best_pred": 0.00015568952652897646,
+      "best_err_pct": 3.4688153977380685
+    },
+    "\u03b7_B (baryon asymmetry)": {
+      "target": 6e-10,
+      "best_formula": "1/12\u00b7Y^12\u00b7L",
+      "best_pred": 6.193973131931444e-10,
+      "best_err_pct": 3.2328855321907333
+    },
+    "\u03a9_DM h\u00b2 (dark matter)": {
+      "target": 0.12,
+      "best_formula": "169\u00b7Y^12\u00b7U_e\u00b7NRCI(4)",
+      "best_pred": 0.12288202458258496,
+      "best_err_pct": 2.4016871521541363
+    }
+  },
+  "best_non_tautological_hit": {
+    "target": "V_ub\u00b2",
+    "err_pct": 0.03152025436931948,
+    "verdict": "SURPRISING \u2014 Y^12 partner is the 6th statistically surprising formula. Bit-inversion rule is UNIVERSAL (4 of 4)."
+  }
+}

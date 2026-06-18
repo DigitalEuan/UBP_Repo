@@ -1,0 +1,28 @@
+{
+  "target_mW_GeV": 80.379,
+  "prediction": 76.48423923697726,
+  "formula": "(13/L)\u00b7(24\u00b7Y\u2074)\u00b7\u03c0",
+  "real_err_pct": 4.84549541922983,
+  "focused_null_scramble_both": {
+    "n_trials": 5000,
+    "scrambling": "Y' = Y \u00d7 uniform(0.1, 10), w' = w \u00d7 uniform(0.1, 10)",
+    "null_min_pct": 0.031016456835608358,
+    "null_p50_pct": 14853.405295066534,
+    "null_max_pct": 8784286.405030496,
+    "hits_at_real": 10,
+    "fp_rate_pct": 0.2,
+    "verdict": "SURPRISING \u2014 combined 13/L \u00b7 24\u00b7Y\u2074 \u00b7 \u03c0 for m_W is statistically surprising"
+  },
+  "focused_null_scramble_Y_only": {
+    "n_trials": 5000,
+    "fp_rate_pct": 0.26,
+    "null_min_pct": 0.12280218229753712,
+    "verdict": "SURPRISING"
+  },
+  "focused_null_scramble_w_only": {
+    "n_trials": 5000,
+    "fp_rate_pct": 1.0,
+    "null_min_pct": 0.11928187800810562,
+    "verdict": "SURPRISING"
+  }
+}

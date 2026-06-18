@@ -1,0 +1,218 @@
+{
+  "d1_ngamma_compound": {
+    "base_err_pct": 0.37018936918865264,
+    "best_compound": {
+      "alpha": "1/12",
+      "pred": 1.6411104385615234e-09,
+      "err_pct": 2.892873457898016
+    },
+    "verdict": "Best is 2.8929% (not sub-0.1%)",
+    "all_compound_results": [
+      {
+        "alpha": "1/8",
+        "pred": 1.6205932619736845e-09,
+        "err_pct": 4.106907575521622
+      },
+      {
+        "alpha": "1/4",
+        "pred": 1.5620085303859725e-09,
+        "err_pct": 7.573459740475001
+      },
+      {
+        "alpha": "1/2",
+        "pred": 1.4566893758592499e-09,
+        "err_pct": 13.805362375192319
+      },
+      {
+        "alpha": "1",
+        "pred": 1.283595344876663e-09,
+        "err_pct": 24.047612729191535
+      },
+      {
+        "alpha": "2",
+        "pred": 1.0371196968555769e-09,
+        "err_pct": 38.63197060026173
+      },
+      {
+        "alpha": "3",
+        "pred": 8.700524492935589e-10,
+        "err_pct": 48.517606550676994
+      },
+      {
+        "alpha": "4",
+        "pred": 7.493425639955006e-10,
+        "err_pct": 55.660203313875705
+      },
+      {
+        "alpha": "8",
+        "pred": 4.819064180652696e-10,
+        "err_pct": 71.48482733341599
+      },
+      {
+        "alpha": "12",
+        "pred": 3.5515396555194737e-10,
+        "err_pct": 78.9849724525475
+      },
+      {
+        "alpha": "13",
+        "pred": 3.332414288038817e-10,
+        "err_pct": 80.28157226012534
+      },
+      {
+        "alpha": "24",
+        "pred": 1.9851329903146028e-10,
+        "err_pct": 88.253650944884
+      },
+      {
+        "alpha": "1/3",
+        "pred": 1.5252498305430347e-09,
+        "err_pct": 9.748530737098536
+      },
+      {
+        "alpha": "1/12",
+        "pred": 1.6411104385615234e-09,
+        "err_pct": 2.892873457898016
+      }
+    ]
+  },
+  "d2_alpha3_focused_null": {
+    "target": 3.8859390793134105e-07,
+    "prediction": 3.881903846963704e-07,
+    "formula": "29/24\u00b7Y^12\u00b7e",
+    "real_err_pct": 0.10384188396539518,
+    "n_trials": 5000,
+    "null_min_pct": 3.3684104881625454,
+    "null_p50_pct": 21630701048.665535,
+    "hits_at_real": 0,
+    "fp_rate_pct": 0.0,
+    "verdict": "SURPRISING \u2014 \u03b1\u00b3 = 29/24\u00b7Y^12\u00b7e is the 7th statistically surprising formula"
+  },
+  "d3_glm_exploration": {
+    "error": "GLMSemanticEngine.__init__() missing 1 required positional argument: 'vocab'"
+  },
+  "exploratory1_hex_coding": {
+    "canonical_octad_hex": "400EE2",
+    "canonical_octad_decimal": 4198114,
+    "canonical_octad_in_band": "COMPOSITE-OUT",
+    "n_octads_in_band": 759,
+    "in_band_octad_hexes": [
+      {
+        "hex": "400EE2",
+        "decimal": 4198114,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "C0091D",
+        "decimal": 12585245,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "200DC5",
+        "decimal": 2100677,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "A00A3A",
+        "decimal": 10488378,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "600327",
+        "decimal": 6292263,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "E004D8",
+        "decimal": 14681304,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "100B8B",
+        "decimal": 1051531,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "900C74",
+        "decimal": 9440372,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "500569",
+        "decimal": 5244265,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "D00296",
+        "decimal": 13632150,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "30064E",
+        "decimal": 3147342,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "B001B1",
+        "decimal": 11534769,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "7008AC",
+        "decimal": 7342252,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "080F16",
+        "decimal": 528150,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "8808E9",
+        "decimal": 8915177,
+        "verdict": "PRIME-IN-BAND"
+      },
+      {
+        "hex": "4801F4",
+        "decimal": 4719092,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "C8060B",
+        "decimal": 13108747,
+        "verdict": "PRIME-IN-BAND"
+      },
+      {
+        "hex": "2802D3",
+        "decimal": 2622163,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "A8052C",
+        "decimal": 11011372,
+        "verdict": "COMPOSITE-IN-BAND"
+      },
+      {
+        "hex": "680C31",
+        "decimal": 6818865,
+        "verdict": "COMPOSITE-IN-BAND"
+      }
+    ],
+    "substrate_constant_hexes": {
+      "Y": "43C1C4",
+      "w": "D14CF0",
+      "L": "10199C",
+      "L_s": "137447",
+      "pi (mod 1)": "243F6A",
+      "phi (mod 1)": "9E3779",
+      "e (mod 1)": "B7E151",
+      "Y^18": "000000",
+      "Y^12": "000001",
+      "Y^15": "000000",
+      "Y^21": "000000"
+    }
+  },
+  "exploratory2_w_based": {
+    "hypothesis": "m_\u03bc/m_e = 169/w uses w directly, bypassing Y-based bit-inversion. Testing whether a w-based pairing family exists parallel to the Y-based one.",
+    "note": "No clean w-based pairing found. The w-based formulas (169/w for m_\u03bc/m_e, (39/29)\u00b7Y^18/w for G) use w as a scale factor, not as a pairing index. The m_\u03bc/m_e exception may indicate that w-based formulas are a different structural class."
+  }
+}

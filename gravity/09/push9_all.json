@@ -1,0 +1,484 @@
+{
+  "d1_h0_focused_null": {
+    "target": 70.2,
+    "prediction": 69.85278630857212,
+    "formula": "\u2153\u00b7w\u00b7Y\u00b3\u00b7U_e",
+    "real_err_pct": 0.49460639804541995,
+    "n_trials": 5000,
+    "null_min_pct": 0.3754249457396276,
+    "null_p50_pct": 45283.3135177016,
+    "hits_at_real": 1,
+    "fp_rate_pct": 0.02,
+    "verdict": "SURPRISING \u2014 H\u2080 = \u2153\u00b7w\u00b7Y\u00b3\u00b7U_e is the 8th statistically surprising formula (first w-based)"
+  },
+  "d2_glm_engine": {
+    "error": "GLMDialogueEngine.__init__() missing 1 required positional argument: 'vocab'"
+  },
+  "d3_kb_law_extraction": {
+    "total_relevant_laws": 67,
+    "laws": [
+      {
+        "name": "The Law of Coherence-Based Anomaly Detection, Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.",
+        "definition": "[The Law of Coherence-Based Anomaly Detection], [Anomalies are detected when NRCI drops below 0.60; random noise exhibits a baseline NRCI of ~0.42, defining the substrate's noise floor.]",
+        "tags": [
+          "ANOMALY",
+          "COHERENCE",
+          "DIAGNOSTICS",
+          "HARDENED",
+          "IMPERATIVE",
+          "NRCI",
+          "SENSITIVITY",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Baryon Symmetry (Refined), The Proton is a composite geometric structure defined by the combinatorial expansion of 3 quarks and 3 colors (9x Shell 4), stabilized by the Observer's drag.",
+        "definition": "[The Law of Baryon Symmetry (Refined)], [The Proton is a composite geometric structure defined by the combinatorial expansion of 3 quarks and 3 colors (9x Shell 4), stabilized by the Observer's drag.]",
+        "tags": [
+          "BARYON",
+          "COMBINATORICS",
+          "GRAVITY",
+          "HARDENED",
+          "IMPERATIVE",
+          "PHYSICS",
+          "PROTON",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "Law of Baryonic Stability (Proton), The Proton is the stable triadic manifold of the 2nd Leech Shell. It represents the geometric resolution of three quark anchors into a single coherent identity vector.",
+        "definition": "[Law of Baryonic Stability (Proton)], [The Proton is the stable triadic manifold of the 2nd Leech Shell. It represents the geometric resolution of three quark anchors into a single coherent identity vector.]",
+        "tags": [
+          "BARYON",
+          "HARDENED",
+          "IMPERATIVE",
+          "PHYSICS",
+          "PROTON",
+          "SOP_002",
+          "STABILITY",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of the Hemic Shell, All human blood types occupy Leech Shell 1 (Norm 12), proving fundamental biological equality despite functional asymmetry.",
+        "definition": "[The Law of the Hemic Shell], [All human blood types occupy Leech Shell 1 (Norm 12), proving fundamental biological equality despite functional asymmetry.]",
+        "tags": [
+          "BIOLOGY",
+          "BLOOD",
+          "HARDENED",
+          "HEMA",
+          "IMPERATIVE",
+          "LEECH",
+          "SHELL",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Glycemic Parity, Metabolic health is the capacity of the cellular receptor to error-correct the hormonal signal; Diabetes is the phase transition where receptor noise exceeds the Golay radius (t=3), entering the Deep Hole.",
+        "definition": "[The Law of Glycemic Parity], [Metabolic health is the capacity of the cellular receptor to error-correct the hormonal signal; Diabetes is the phase transition where receptor noise exceeds the Golay radius (t=3), entering the Deep Hole.]",
+        "tags": [
+          "BIOLOGY",
+          "DEEP_HOLE",
+          "DIABETES",
+          "GOLAY",
+          "HARDENED",
+          "IMPERATIVE",
+          "INSULIN",
+          "METABOLISM",
+          "PARITY",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Photonic Encoding, Photons are 12-bit Golay messages encoding Frequency (3b), Intensity (4b), Polarization (2b), and Phase (2b).",
+        "definition": "[The Law of Photonic Encoding], [Photons are 12-bit Golay messages encoding Frequency (3b), Intensity (4b), Polarization (2b), and Phase (2b).]",
+        "tags": [
+          "BITLUMEN",
+          "ENCODING",
+          "GOLAY",
+          "HARDENED",
+          "IMPERATIVE",
+          "OPTICS",
+          "PHOTON",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "The Law of Alpha-Clustering (4-Bit Resonance), Nuclear stability peaks every 4 units of atomic mass/charge, corresponding to the tetrahedral vertex capacity of the 24-bit MOG layers.",
+        "definition": "[The Law of Alpha-Clustering (4-Bit Resonance)], [Nuclear stability peaks every 4 units of atomic mass/charge, corresponding to the tetrahedral vertex capacity of the 24-bit MOG layers.]",
+        "tags": [
+          "ALPHA",
+          "CHEMISTRY",
+          "CLUSTERING",
+          "HARDENED",
+          "IMPERATIVE",
+          "NUCLEAR",
+          "RESONANCE",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "The Law of Nutrient Coherence, Fertilizer efficiency is a function of the geometric mean of its structural, chemical, and temporal coherence; high-NRCI formulations minimize informational drag at the soil-root interface.",
+        "definition": "[The Law of Nutrient Coherence], [Fertilizer efficiency is a function of the geometric mean of its structural, chemical, and temporal coherence; high-NRCI formulations minimize informational drag at the soil-root interface.]",
+        "tags": [
+          "AGRICULTURE",
+          "CHEMISTRY",
+          "COHERENCE",
+          "FERTILIZER",
+          "HARDENED",
+          "IMPERATIVE",
+          "NRCI",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "Law of Generational CKM Shear, Quark mixing elements are geometric leakage factors between generational shells. V_cb represents the second-order saturation of the 40-fold manifold, while V_ub represents third-order leakage through the 5-node tetrahedral core.",
+        "definition": "[Law of Generational CKM Shear], [Quark mixing elements are geometric leakage factors between generational shells. V_cb represents the second-order saturation of the 40-fold manifold, while V_ub represents third-order leakage through the 5-node tetrahedral core.]",
+        "tags": [
+          "CKM",
+          "HARDENED",
+          "IMPERATIVE",
+          "MIXING",
+          "PHYSICS",
+          "QUARK",
+          "SHEAR",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Bidirectional Closure, The UBP substrate is a perfectly reversible manifold; information transformed into geometry space (Y) can be recovered with zero loss via the observer constant (Y_inv).",
+        "definition": "[The Law of Bidirectional Closure], [The UBP substrate is a perfectly reversible manifold; information transformed into geometry space (Y) can be recovered with zero loss via the observer constant (Y_inv).]",
+        "tags": [
+          "CLOSURE",
+          "HARDENED",
+          "IMPERATIVE",
+          "INVOLUTORY",
+          "REVERSIBILITY",
+          "SOP_002",
+          "SUBSTRATE",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "The Law of Computational Symmetry, Complexity is an emergent aliasing effect; in the Golay substrate, probabilistic search collapses into deterministic lookup.",
+        "definition": "[The Law of Computational Symmetry], [Complexity is an emergent aliasing effect; in the Golay substrate, probabilistic search collapses into deterministic lookup.]",
+        "tags": [
+          "COMPUTATIONAL",
+          "GOLAY",
+          "HARDENED",
+          "IMPERATIVE",
+          "P_NP",
+          "SOP_002",
+          "SYMMETRY",
+          "TOPOLOGICAL_V8",
+          "V4.3"
+        ]
+      },
+      {
+        "name": "The Law of Geometric Reflexivity, A system can self-repair logic errors by stripping the corrupted 24-bit shell to its 12-bit noumenal intent and re-projecting the perfect geometry, provided the corruption does not exceed the event horizon (t=3).",
+        "definition": "[The Law of Geometric Reflexivity], [A system can self-repair logic errors by stripping the corrupted 24-bit shell to its 12-bit noumenal intent and re-projecting the perfect geometry, provided the corruption does not exceed the event horizon (t=3).]",
+        "tags": [
+          "COMPUTATION",
+          "CORRECTION",
+          "GOLAY",
+          "HARDENED",
+          "IMPERATIVE",
+          "REFLEXIVITY",
+          "SELF_HEALING",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "Law of the Continuous Limit (Field Emergence), Classical physics and gauge fields emerge as the coarse-grained limit of the discrete substrate. The 'Force' of a field is the gradient of the Non-Random Coherence Index (NRCI) as the system attempts to restore geometric stability.",
+        "definition": "[Law of the Continuous Limit (Field Emergence)], [Classical physics and gauge fields emerge as the coarse-grained limit of the discrete substrate. The 'Force' of a field is the gradient of the Non-Random Coherence Index (NRCI) as the system attempts to restore geometric stability.]",
+        "tags": [
+          "COARSE-GRAINING",
+          "FIELD",
+          "GRAVITY",
+          "HARDENED",
+          "IMPERATIVE",
+          "PHYSICS",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Molecular Coherence, Successful pharmaceuticals are constrained to an ultra-narrow coherence corridor; therapeutic efficacy is achieved when a molecule utilizes Aromatic Anchors (Weight 8) to minimize substrate tension.",
+        "definition": "[The Law of Molecular Coherence], [Successful pharmaceuticals are constrained to an ultra-narrow coherence corridor; therapeutic efficacy is achieved when a molecule utilizes Aromatic Anchors (Weight 8) to minimize substrate tension.]",
+        "tags": [
+          "AROMATICITY",
+          "COHERENCE",
+          "DRUG_DISCOVERY",
+          "HARDENED",
+          "IMPERATIVE",
+          "OCTAD",
+          "PHARMACOLOGY",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "The Law of Simplified Observer Coherence (SOC), Energy is the phenomenal intensity of the coherence deficit; it scales with the number of active OffBits (M), the speed of light (C), and the Observer-Coherence Ratio (Y_em).",
+        "definition": "[The Law of Simplified Observer Coherence (SOC)], [Energy is the phenomenal intensity of the coherence deficit; it scales with the number of active OffBits (M), the speed of light (C), and the Observer-Coherence Ratio (Y_em).]",
+        "tags": [
+          "EMERGENCE",
+          "ENERGY",
+          "HARDENED",
+          "IMPERATIVE",
+          "MACRO_PHYSICS",
+          "MASS",
+          "SOC",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Simplified Observer Coherence (SOC), Energy is the phenomenal intensity of geometric decoherence; it scales with Mass (M) and the Coherence Deficit (d/4). Stable matter (d=0) has zero energy.",
+        "definition": "[The Law of Simplified Observer Coherence (SOC)], [Energy is the phenomenal intensity of geometric decoherence; it scales with Mass (M) and the Coherence Deficit (d/4). Stable matter (d=0) has zero energy.]",
+        "tags": [
+          "COHERENCE",
+          "ENERGY",
+          "HARDENED",
+          "IMPERATIVE",
+          "MASS",
+          "PHYSICS",
+          "SOC",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "The Law of the Triadic Octad Lock, A perfect electromagnetic loop is achieved through the triadic balance of three Golay Octads; the resulting zero-sum state creates a resonant vacuum channel allowing for zero-resistance information transfer.",
+        "definition": "[The Law of the Triadic Octad Lock], [A perfect electromagnetic loop is achieved through the triadic balance of three Golay Octads; the resulting zero-sum state creates a resonant vacuum channel allowing for zero-resistance information transfer.]",
+        "tags": [
+          "EM",
+          "ENGINEERING",
+          "HARDENED",
+          "IMPERATIVE",
+          "OCTAD",
+          "SOP_002",
+          "SUPERCONDUCTIVITY",
+          "TOPOLOGICAL_V8",
+          "TRIAD",
+          "VACUUM",
+          "ZERO-RESISTANCE"
+        ]
+      },
+      {
+        "name": "The Law of Adelic Field Expansion (CARFE), The CARFE equation governs the recursive expansion of 24-bit codewords into 6D field topologies via p-adic valuation.",
+        "definition": "[The Law of Adelic Field Expansion (CARFE)], [The CARFE equation governs the recursive expansion of 24-bit codewords into 6D field topologies via p-adic valuation.]",
+        "tags": [
+          "ADELIC",
+          "CARFE",
+          "COUPLING",
+          "FIELD",
+          "HARDENED",
+          "IMPERATIVE",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Informational Coupling, Physical forces are the observable manifestations of bit-patterns at Hamming Distance > 3.",
+        "definition": "[The Law of Informational Coupling], [Physical forces are the observable manifestations of bit-patterns at Hamming Distance > 3.]",
+        "tags": [
+          "ALPHA",
+          "COUPLING",
+          "FORCE",
+          "HAMMING",
+          "HARDENED",
+          "IMPERATIVE",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of the Strong Grip (Octad Slip), The Strong Force is the inverse inertia of the vacuum (1/C^2) corrected by the 'Octad Slip' (1/759), representing the geometric freedom of quarks to rearrange within the Leech Lattice.",
+        "definition": "[The Law of the Strong Grip (Octad Slip)], [The Strong Force is the inverse inertia of the vacuum (1/C^2) corrected by the 'Octad Slip' (1/759), representing the geometric freedom of quarks to rearrange within the Leech Lattice.]",
+        "tags": [
+          "ALPHA_S",
+          "HARDENED",
+          "IMPERATIVE",
+          "LEECH",
+          "OCTAD",
+          "PHYSICS",
+          "SOP_002",
+          "STRONG_FORCE",
+          "TOPOLOGICAL_V8",
+          "V4.2.6",
+          "VACUUM_DRAG"
+        ]
+      },
+      {
+        "name": "The Law of the Higgs Field (Saturated), The Higgs mass is the energy required to lock the 11-bit dimensional tax across the 3-bit Golay radius, stabilized by the 1/9th triadic parity of the 24th bit.",
+        "definition": "[The Law of the Higgs Field (Saturated)], [The Higgs mass is the energy required to lock the 11-bit dimensional tax across the 3-bit Golay radius, stabilized by the 1/9th triadic parity of the 24th bit.]",
+        "tags": [
+          "24TH_BIT",
+          "HARDENED",
+          "HIGGS",
+          "IMPERATIVE",
+          "MASS",
+          "PARITY",
+          "PHYSICS",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "Law of the Fourth Flip, The geometric event horizon where the Golay error-correction radius (t=3) is exceeded. At 4 bits of noise, a vector enters a 'Deep Hole', becoming equidistant to multiple truths. Resolution requires external Frame of Mind bias.",
+        "definition": "[Law of the Fourth Flip], [The geometric event horizon where the Golay error-correction radius (t=3) is exceeded. At 4 bits of noise, a vector enters a 'Deep Hole', becoming equidistant to multiple truths. Resolution requires external Frame of Mind bias.]",
+        "tags": [
+          "ENTROPY",
+          "ERROR_CORRECTION",
+          "GOLAY",
+          "HARDENED",
+          "HORIZON",
+          "IMPERATIVE",
+          "LAW",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Geometric Coherence, Coherence is a measure of geometric alignment with the Golay substrate; it ranges from 1.0 (Perfect Codeword) to 0.0 (Deep Hole/Covering Radius).",
+        "definition": "[The Law of Geometric Coherence], [Coherence is a measure of geometric alignment with the Golay substrate; it ranges from 1.0 (Perfect Codeword) to 0.0 (Deep Hole/Covering Radius).]",
+        "tags": [
+          "COHERENCE",
+          "GEOMETRY",
+          "HAMMING",
+          "HARDENED",
+          "IMPERATIVE",
+          "METRIC",
+          "NRCI",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "V4.2.6"
+        ]
+      },
+      {
+        "name": "Law of Geometric Manifestation, Euclidean geometry is a macro-scale projection of the Bitfield. While the substrate naturally achieves high coherence (0.999), absolute geometric perfection (NRCI 1.0) requires the Purpose Tensor (Observer Intent) to resolve the final syndrome noise.",
+        "definition": "[Law of Geometric Manifestation], [Euclidean geometry is a macro-scale projection of the Bitfield. While the substrate naturally achieves high coherence (0.999), absolute geometric perfection (NRCI 1.0) requires the Purpose Tensor (Observer Intent) to resolve the final syndrome noise.]",
+        "tags": [
+          "EUCLIDEAN",
+          "GEOMETRY",
+          "HARDENED",
+          "IMPERATIVE",
+          "INTENT",
+          "MANIFESTATION",
+          "NRCI",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "VERIFIED"
+        ]
+      },
+      {
+        "name": "The Law of Informational Gravity, Gravity is the cumulative cost of maintaining global coherence across the bitfield.",
+        "definition": "[The Law of Informational Gravity], [Gravity is the cumulative cost of maintaining global coherence across the bitfield.]",
+        "tags": [
+          "COHERENCE",
+          "FORCE",
+          "GRAVITY",
+          "HARDENED",
+          "IMPERATIVE",
+          "LEECH",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "Law of Higgs-Lattice Tension, The Higgs mass is the scalar tension of the Z-boson coordinate. The negative echo (Y/120) represents the triadic complexity feedback (3 * 40) required for vacuum stability.",
+        "definition": "[Law of Higgs-Lattice Tension], [The Higgs mass is the scalar tension of the Z-boson coordinate. The negative echo (Y/120) represents the triadic complexity feedback (3 * 40) required for vacuum stability.]",
+        "tags": [
+          "HARDENED",
+          "HIGGS",
+          "IMPERATIVE",
+          "MASS",
+          "PHYSICS",
+          "SOP_002",
+          "TENSION",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Informational Density, Information density is maximized when the substrate geometry matches the informational entropy of the observed phenomenon.",
+        "definition": "[The Law of Informational Density], [Information density is maximized when the substrate geometry matches the informational entropy of the observed phenomenon.]",
+        "tags": [
+          "DENSITY",
+          "ENTROPY",
+          "GEOMETRY",
+          "HARDENED",
+          "IMPERATIVE",
+          "INFORMATION",
+          "MATTER",
+          "SOP_002",
+          "SUBSTRATE",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "The Law of Integer Resonance, Integer resonance is determined by the Golay Octad mapping. Exactly 759 integers (including 12, 137, 432) map to high-stability Weight-8 vectors, forming the 'Magic Number' substrate. Ref: Sebastian Schepis.",
+        "definition": "[The Law of Integer Resonance], [Integer resonance is determined by the Golay Octad mapping. Exactly 759 integers (including 12, 137, 432) map to high-stability Weight-8 vectors, forming the 'Magic Number' substrate. Ref: Sebastian Schepis.]",
+        "tags": [
+          "137",
+          "432",
+          "HARDENED",
+          "IMPERATIVE",
+          "INTEGER",
+          "OCTAD",
+          "RESONANCE",
+          "SCHEPIS",
+          "SOP_002",
+          "TOPOLOGICAL_V8",
+          "VERIFIED"
+        ]
+      },
+      {
+        "name": "Law of Dimensional Integrity, To maintain ontological validity, all 12-bit noumenal seeds must be projected (encoded) into 24-bit phenomenal codewords before being processed by the Physics or MOG engines.",
+        "definition": "[Law of Dimensional Integrity], [To maintain ontological validity, all 12-bit noumenal seeds must be projected (encoded) into 24-bit phenomenal codewords before being processed by the Physics or MOG engines.]",
+        "tags": [
+          "DIMENSION",
+          "ENCODING",
+          "GOLAY",
+          "HARDENED",
+          "IMPERATIVE",
+          "INTEGRITY",
+          "KERNEL",
+          "SOP_002",
+          "TOPOLOGICAL_V8"
+        ]
+      },
+      {
+        "name": "Law of Discrete Thresholds, Reasoning thresholds must align with the discrete Hamming weights of the Golay Code. Convergence is defined as Distance <= 8 (Neighbor). Orthogonality is Distance 12. Divergence is Distance >= 16.",
+        "definition": "[Law of Discrete Thresholds], [Reasoning thresholds must align with the discrete Hamming weights of the Golay Code. Convergence is defined as Distance <= 8 (Neighbor). Orthogonality is Distance 12. Divergence is Distance >= 16.]",
+        "tags": [
+          "GEOMETRY",
+          "GOLAY",
+          "HARDENED",
+          "IMPERATIVE",
+          "KERNEL",
+          "SOP_002",
+          "THRESHOLDS",
+          "TOPOLOGICAL_V8",
+          "TUNING"
+        ]
+      }
+    ]
+  }
+}

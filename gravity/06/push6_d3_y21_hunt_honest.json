@@ -1,0 +1,21 @@
+{
+  "y21_value": 7.533316043509694e-13,
+  "y22_value": 1.9938836661892563e-13,
+  "val_24_Y21_Ue": 2.499373463651472e-07,
+  "val_24_Y21_Ue_nrci": 2.4056435758282633e-07,
+  "m_nu_over_m_P_correct": 6e-30,
+  "m_nu_over_m_P_pred_3Y22": 5.981650998567769e-13,
+  "m_nu_over_m_P_err_with_correct_target": 3.518566881737994e+18,
+  "n_gamma_over_n_b_focused_null": {
+    "target": 1.69e-09,
+    "pred": 1.603741545298109e-09,
+    "err_pct": 5.1040505740763935,
+    "n_trials": 5000,
+    "null_min_pct": 2.7308201453934697,
+    "null_p50_pct": 2.3823687235545268e+16,
+    "hits_at_real": 4,
+    "fp_rate_pct": 0.08,
+    "verdict": "SURPRISING \u2014 n_\u03b3/n_b is the 5th surprising formula"
+  },
+  "honest_assessment": "The Y^21 hunt did NOT find a clean partner for \u03b1\u207b\u00b9's Y_inv\u00b3. The '24\u00b7Y^21\u00b7U_e' hit was tautological (predicting itself). The 'm_\u03bd/m_P' hit used a wrong target value (6e-13 instead of 6e-30). The strongest non-tautological candidate is n_\u03b3/n_b (photon-to-baryon ratio) at 5.1% error. The focused null on this candidate is reported above. The bit-inversion pairing rule therefore achieves 2 of 4 confirmations (Y_inv\u2076\u2194Y^18, Y_inv\u2079\u2194Y^15), NOT 3. The Y^21 partner remains unconfirmed."
+}

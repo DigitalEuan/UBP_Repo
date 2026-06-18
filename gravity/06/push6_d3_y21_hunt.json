@@ -1,0 +1,88 @@
+{
+  "y21_value": 7.533316043509694e-13,
+  "bit_inversion_prediction": "Y_inv\u00b3 (\u03b1\u207b\u00b9, Reality) \u2194 Y^21 (Potential). 3+21=24=Leech rank.",
+  "targets_tested": 12,
+  "candidates_tested": 368,
+  "results": {
+    "\u03c1_\u039b/\u03c1_crit (= \u03a9_\u039b)": {
+      "target": 0.6889,
+      "best_formula": "169\u00b7Y^21\u00b7U_e",
+      "best_pred": 1.7599754806545785e-06,
+      "best_err_pct": 99.99974452380887
+    },
+    "n_\u03b3/n_b (photon/baryon)": {
+      "target": 1.69e-09,
+      "best_formula": "1/4\u00b7Y^21\u00b7U_e\u00b7NRCI(2)",
+      "best_pred": 1.6036618377064374e-09,
+      "best_err_pct": 5.108766999619087
+    },
+    "n_b/n_\u03b3 (baryon/photon)": {
+      "target": 6.1e-10,
+      "best_formula": "1/12\u00b7Y^21\u00b7U_e\u00b7NRCI(1)",
+      "best_pred": 6.615928312091398e-10,
+      "best_err_pct": 8.457841181826208
+    },
+    "\u221a|\u03a9_k| (curvature scale)": {
+      "target": 0.0265,
+      "best_formula": "169\u00b7Y^21\u00b7U_e",
+      "best_pred": 1.7599754806545785e-06,
+      "best_err_pct": 99.99335858309186
+    },
+    "m_\u03bd/m_P (neutrino/Planck)": {
+      "target": 6e-13,
+      "best_formula": "3\u00b7Y^21\u00b7Y",
+      "best_pred": 5.981650998567769e-13,
+      "best_err_pct": 0.30581669053718613
+    },
+    "G_F\u00b7m_P\u00b2 (Fermi\u00d7Planck\u00b2)": {
+      "target": 1.73606976e-07,
+      "best_formula": "29\u00b7Y^21\u00b7U_e\u00b7NRCI(2)",
+      "best_pred": 1.8602477317394674e-07,
+      "best_err_pct": 7.152821539813436
+    },
+    "\u03c3\u2088 (matter fluctuation amplitude)": {
+      "target": 0.811,
+      "best_formula": "169\u00b7Y^21\u00b7U_e",
+      "best_pred": 1.7599754806545785e-06,
+      "best_err_pct": 99.99978298699375
+    },
+    "n_s (scalar spectral index)": {
+      "target": 0.965,
+      "best_formula": "169\u00b7Y^21\u00b7U_e",
+      "best_pred": 1.7599754806545785e-06,
+      "best_err_pct": 99.99981761912117
+    },
+    "\u03c4 (optical depth)": {
+      "target": 0.054,
+      "best_formula": "169\u00b7Y^21\u00b7U_e",
+      "best_pred": 1.7599754806545785e-06,
+      "best_err_pct": 99.99674078614694
+    },
+    "24\u00b7Y^21\u00b7U_e (Push #5 form)": {
+      "target": 2.499373463651472e-07,
+      "best_formula": "24\u00b7Y^21\u00b7U_e",
+      "best_pred": 2.499373463651472e-07,
+      "best_err_pct": 0.0,
+      "null_model": {
+        "n_trials": 5000,
+        "null_min_pct": 0.7768158436490802,
+        "null_p50_pct": 5.1419803519370376e+16,
+        "hits_at_real": 0,
+        "fp_rate_pct": 0.0,
+        "verdict": "SURPRISING \u2014 Y^21 partner is the 5th statistically surprising formula"
+      }
+    },
+    "24\u00b7Y^21\u00b7U_e \u00d7 10/(10+\u215b\u00b7tax)": {
+      "target": 2.405631899084414e-07,
+      "best_formula": "24\u00b7Y^21\u00b7U_e\u00b7NRCI(1/8)",
+      "best_pred": 2.405631899084414e-07,
+      "best_err_pct": 0.0
+    },
+    "predicted partner of \u03b1\u207b\u00b9 (137/5e6)": {
+      "target": 2.74e-05,
+      "best_formula": "169\u00b7Y^21\u00b7U_e",
+      "best_pred": 1.7599754806545785e-06,
+      "best_err_pct": 93.57673182242856
+    }
+  }
+}

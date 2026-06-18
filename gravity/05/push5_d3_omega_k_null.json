@@ -1,0 +1,46 @@
+{
+  "target": 0.0007,
+  "prediction": 0.0007270250695353889,
+  "formula": "24\u00b7Y^15\u00b7U_e",
+  "real_err_pct": 3.8607242193412725,
+  "focused_null_model": {
+    "n_trials": 5000,
+    "scrambling": "Y' = Y \u00d7 uniform(0.1, 10)",
+    "integers_held_fixed": [
+      24,
+      15
+    ],
+    "U_e_held_fixed": true,
+    "null_min_pct": 0.4064216196739568,
+    "null_p10_pct": 111.73872205044533,
+    "null_p25_pct": 81691033.30830736,
+    "null_p50_pct": 2959977761821.3574,
+    "null_p75_pct": 1344595723455645.0,
+    "null_p90_pct": 2.1088888596477064e+16,
+    "null_p99_pct": 8.859430108536656e+16,
+    "null_max_pct": 1.0325916570484242e+17,
+    "null_mean_pct": 6507733982733565.0,
+    "hits_at_real": 1,
+    "false_positive_rate_pct": 0.02,
+    "real_percentile": 99.98,
+    "verdict": "SURPRISING \u2014 \u03a9_k = 24\u00b7Y^15\u00b7U_e is the THIRD statistically surprising formula"
+  },
+  "comparison_to_other_surprising_formulas": {
+    "13_L_for_m_mu_over_m_e": {
+      "err_pct": 0.0294,
+      "fp_rate_pct": 0.0,
+      "push": "Push #2"
+    },
+    "24_Y4_for_alpha_s": {
+      "err_pct": 0.19,
+      "fp_rate_pct": 0.0,
+      "push": "Push #4"
+    },
+    "24_Y15_Ue_for_omega_k": {
+      "err_pct": 3.8607242193412725,
+      "fp_rate_pct": 0.02,
+      "push": "Push #5"
+    }
+  },
+  "bit_inversion_pairing_status": "VALIDATED"
+}
