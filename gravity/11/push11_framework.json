@@ -1,0 +1,106 @@
+{
+  "framework_name": "UBP Substrate as Self-Referential Computational Manifold",
+  "key_components": {
+    "input": "w (Entropic Wobble) = (\u03c0\u00b7\u03c6\u00b7e) mod 1",
+    "clock": "Y^k, k = 0, 3, 6, 9, 12, 15, 18, 21, 24 (step = 3 = Triad)",
+    "cycle": "pre-manifest \u2192 couplings \u2192 masses \u2192 peak \u2192 curvature \u2192 gravity \u2192 asymmetry \u2192 next cycle",
+    "mirror": "k \u2194 (24\u2212k), bit-inversion (time-reversal)",
+    "arms": "deterministic (Y-based) + stochastic (w-based)",
+    "friction": "Topological Shear = 1 + 3\u00b7(L\u00b7Y) + 12\u00b7(L\u00b7Y)\u00b2",
+    "cooling": "NRCI(\u03b1) = 10/(10 + \u03b1\u00b7tax), \u03b1 = target's UBP concept",
+    "self_validation": "All 759 octads IN-BAND in hex"
+  },
+  "manifestation_peak": {
+    "k": 12,
+    "description": "Transition from growing (Reality, Y_inv^k) to decaying (Potential, Y^(24-k))",
+    "formulas_at_peak": [
+      "V_ub\u00b2 (weakest CKM)",
+      "\u03b1\u00b3 (coupling cubed)"
+    ],
+    "principle": "Most symmetric Y-power \u2192 most suppressed physical transition"
+  },
+  "deterministic_vs_stochastic": {
+    "deterministic": "Y-based, produces couplings and mass ratios (the 'theory')",
+    "stochastic": "w-based, produces absolute masses and expansion rates (the 'experiment')",
+    "analogy": "Wavefunction (deterministic, \u03c8) vs Measurement (stochastic, |\u03c8|\u00b2)"
+  },
+  "generator_function": {
+    "template": "\u03a6(k, arm, layer, C, correction) = C \u00d7 Base(k, arm, layer) \u00d7 Correction(correction)",
+    "instantiations": [
+      {
+        "target": "m_\u03bc/m_e",
+        "k": 1,
+        "arm": "sto",
+        "layer": "w-source",
+        "C": "169",
+        "correction": "none"
+      },
+      {
+        "target": "\u03b1_s",
+        "k": 4,
+        "arm": "det",
+        "layer": "Info",
+        "C": "24",
+        "correction": "none"
+      },
+      {
+        "target": "m_W",
+        "k": 4,
+        "arm": "det",
+        "layer": "Cross",
+        "C": "13/L\u00b724\u00b7\u03c0",
+        "correction": "shear_1"
+      },
+      {
+        "target": "\u03a9_k",
+        "k": 15,
+        "arm": "det",
+        "layer": "Potential",
+        "C": "24",
+        "correction": "nrci(1/8)"
+      },
+      {
+        "target": "n_\u03b3/n_b",
+        "k": 21,
+        "arm": "det",
+        "layer": "Potential",
+        "C": "1/4",
+        "correction": "shear_2+nrci(2)"
+      },
+      {
+        "target": "V_ub\u00b2",
+        "k": 12,
+        "arm": "det",
+        "layer": "Potential",
+        "C": "1/24",
+        "correction": "nrci(13)"
+      },
+      {
+        "target": "\u03b1\u00b3",
+        "k": 12,
+        "arm": "det",
+        "layer": "Potential",
+        "C": "29/24",
+        "correction": "none (e replaces U_e)"
+      },
+      {
+        "target": "H\u2080",
+        "k": 3,
+        "arm": "sto",
+        "layer": "w-based",
+        "C": "1/3",
+        "correction": "none"
+      }
+    ]
+  },
+  "connection_to_physics": "Resembles a Discrete Renormalization Group flow: Y^k = RG scale, Shear = beta function, NRCI = fixed-point condition, bit-inversion = UV\u2194IR duality, hex IN-BAND = consistency condition",
+  "testable_predictions": [
+    "Every physical constant corresponds to a specific k-value",
+    "Constants at k and 24\u2212k are bit-inversion pairs",
+    "Cross-layer formulas incur Topological Shear",
+    "Potential-layer formulas need NRCI cooling",
+    "w-based formulas represent stochastic input",
+    "Manifestation peak at k=12 produces weakest transitions",
+    "Substrate is self-validating (hex IN-BAND)"
+  ]
+}
