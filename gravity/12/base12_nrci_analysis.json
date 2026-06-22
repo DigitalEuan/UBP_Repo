@@ -1,0 +1,28 @@
+{
+  "part1_canonical_octad_nrci": {
+    "norm_10": 0.7623459965437248,
+    "norm_12": 0.7937871106674079
+  },
+  "part2_formula_predictions": {
+    "result": "norm=12 makes ALL THREE NRCI-using formulas WORSE",
+    "conclusion": "The '10' in NRCI is calibrated, not a base-10 artifact"
+  },
+  "part3_hypotheses_for_10": {
+    "H1_2x5": "weak",
+    "H2_10_bases": "weak (post-hoc)",
+    "H3_24_minus_13_minus_1": "weak (ad-hoc)",
+    "H4_octad_plus_observer": "moderate (10 = 8 + 2)",
+    "H5_2x_layers_plus_1": "moderate (10 = 2 \u00d7 (4+1))",
+    "H6_calibration": "strong (null hypothesis)",
+    "H7_substrate_constants": "none match exactly"
+  },
+  "part4_divisor_8": "The '8' in Norm\u00b2/8 is the octad weight, structurally correct",
+  "part5_base12_hypothesis": "REJECTED \u2014 norm=12 degrades predictions, substrate has no single native base",
+  "part6_where_12_appears": [
+    "Golay [24,12,8] message dimension",
+    "Half-swap 12 transpositions",
+    "Shear coefficient 12 = Leech/2",
+    "Proposed 12-component extended cycle"
+  ],
+  "conclusion": "Base-12 in NRCI is empirically incorrect. The 12-component cycle is the promising connection."
+}
