@@ -64,7 +64,7 @@ The "Interface." Grounded in `ubp_semantic_engine.py`.
 ### Layer 3: Geometric Language Machine (GLM) [Experimental]
 The "Reasoner." An external system currently under active development.
 *   **Grammatical Diffusion:** Uses A* search and Finite State Machine (FSM) grammar rules to find valid paths between concepts within zoned lattice embeddings.
-
+*   **See:** [**`core/GLM_v3.3_IMPLEMENTATION_GUIDE.md`**](core/GLM_v3.3_IMPLEMENTATION_GUIDE.md).
 ---
 
 ## 🛠 Usage & Documentation
