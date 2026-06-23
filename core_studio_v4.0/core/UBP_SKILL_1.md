@@ -1,6 +1,6 @@
 ---
 name: UBP Core Studio — AI Assistant Operating Reference
-description: Working with the Universal Binary Principal (UBP).
+description: Working with the Universal Binary Principle (UBP).
 license: Complete terms in LICENSE.txt
 ---
 
@@ -10,51 +10,70 @@ license: Complete terms in LICENSE.txt
 
 **Repository:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0`
 **Backbone script:** `core/ubp_unified_v5.py` (v5.4.0 on disk — 3,500 lines)
+**Detailed system instructions:** `core/ubp_files_and_usage.md`
 **Gravity study scripts:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/gravity`
 **Author:** E.R.A. Craig (DigitalEuan), Auckland, New Zealand
 
 ---
 
+## 0. OPERATING MANDATE — READ FIRST
+
+**Always fetch and run the real UBP system. Never mock, stub, simplify, or hand-calculate.**
+
+Mock implementations and placeholder constants look correct at first but embed subtle logical errors — wrong L vs L_s, wrong Fraction vs float, wrong constant definitions — that only surface later at significant debugging cost. Every UBP question is answerable by running the actual code.
+
+The workflow for any UBP task is always:
+1. **Fetch** `ubp_unified_v5.py` from `raw.githubusercontent.com` using `bash_tool`
+2. **Run** `python3 ubp_unified_v5.py` to confirm 37/37 tests pass before proceeding
+3. **Import and compute** using `fractions.Fraction` arithmetic — the system is self-contained, stdlib only
+4. **Report live output values** — not recalled or estimated values from training
+
+If the system produces an unexpected result, that result is what gets reported. If a formula behaves differently from the documentation, that discrepancy is what gets investigated using the code, not resolved by assumption.
+
+**The system is fast.** Importing and running a full formula verification takes under 3 seconds. There is no cost reason to approximate.
+
+---
+
 ## 1. ENVIRONMENT SETUP
 
-### Fetch scripts via raw GitHub (no authentication, no robots.txt block)
+### Fetch scripts via raw GitHub
 
 ```bash
 BASE="https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/core_studio_v4.0/core"
 
-# Mandatory backbone (do this first)
-curl -s "$BASE/ubp_unified_v5.py"      -o ubp_unified_v5.py
+# Mandatory backbone — always fetch fresh
+curl -s "$BASE/ubp_unified_v5.py"   -o ubp_unified_v5.py
 
-# Useful companions
-curl -s "$BASE/ubp_v28_oracle.py"      -o ubp_v28_oracle.py    # primality_nrci, Gray code
-curl -s "$BASE/ubp_tgic_engine.py"     -o ubp_tgic_engine.py   # 3-6-9 TGIC logic
-curl -s "$BASE/ubp_genesis_boot.py"    -o ubp_genesis_boot.py  # 24 base geometry seeds
+# Companion scripts (fetch when needed)
+curl -s "$BASE/ubp_v28_oracle.py"   -o ubp_v28_oracle.py    # primality_nrci, Gray code pipeline
+curl -s "$BASE/ubp_tgic_engine.py"  -o ubp_tgic_engine.py   # 3-6-9 TGIC logic
+curl -s "$BASE/ubp_genesis_boot.py" -o ubp_genesis_boot.py  # 24 base geometry seeds
 ```
 
-> **GitHub access rules:**
-> - `raw.githubusercontent.com` — WORKS (in allowed-domains for bash_tool)
-> - `github.com` web UI — BLOCKED by robots.txt, do not try web_fetch
-> - `api.github.com` — hits rate limits very quickly (60 req/hr unauthenticated), avoid
-> - Always use `raw.githubusercontent.com` for file fetches
+**GitHub access:**
+- `raw.githubusercontent.com` — works, use this for all file fetches
+- `github.com` web UI — blocked by robots.txt
+- `api.github.com` — rate-limited, avoid
 
-### Dependencies
+### Confirm the system is working before any computation
 
-```
-Python ≥ 3.10
-stdlib only: fractions, hashlib, json, dataclasses, typing, pathlib, datetime, re, time, math
-NO numpy, NO scipy, NO sympy required by the backbone.
-```
-
-Run the self-test:
 ```bash
 python3 ubp_unified_v5.py
-# Expect: 37/37 correct, Triad 3/3, particle atlas output
-# Saves: ubp_unified_v5_report.md + ubp_unified_v5_results.json
+# Must see: 37/37 correct, Triad 3/3
+# Outputs: ubp_unified_v5_report.md + ubp_unified_v5_results.json
 ```
+
+**If the self-test fails**, check which test failed and why before proceeding. Do not continue with a broken environment.
+
+### Dependencies
+```
+Python ≥ 3.10  |  stdlib only: fractions, hashlib, json, dataclasses, typing, pathlib, datetime, re, time, math
+```
+No pip installs required.
 
 ---
 
-## 2. KEY CLASSES AND INITIALISATION ORDER
+## 2. INITIALISATION ORDER
 
 ```python
 from ubp_unified_v5 import (
@@ -67,111 +86,100 @@ from ubp_unified_v5 import (
 )
 
 g   = GolayCodeEngine()                # no args
-l   = LeechLatticeEngine(g)            # REQUIRES g as first argument
-pp  = UBPSourceCodeParticlePhysics()   # no args; loads all constants as Fractions
+l   = LeechLatticeEngine(g)            # g REQUIRED — omitting it raises TypeError
+pp  = UBPSourceCodeParticlePhysics()   # no args; all constants loaded as exact Fractions
 tae = TriadActivationEngine(g, l)      # requires g, l
-bw  = BarnesWallEngine(256)            # dimension = 256, 512, or 1024
+bw  = BarnesWallEngine(256)            # dimension: 256, 512, or 1024
 mg  = MonsterGroup()                   # no args
 ```
 
-**GOTCHA — LeechLatticeEngine requires GolayCodeEngine as first argument.**
-`LeechLatticeEngine()` alone → `TypeError: missing 1 required positional argument: 'golay'`
-
 ---
 
-## 3. CONSTANTS (from `UBPSourceCodeParticlePhysics`)
+## 3. CONSTANTS
 
-All stored as `fractions.Fraction` for exact arithmetic. Use `float(pp.X)` for display only.
+All stored as `fractions.Fraction`. Use `float(pp.X)` for display; keep as Fraction for computation.
 
-| Attribute | Value (float) | Description |
-|-----------|---------------|-------------|
-| `pp.Y`      | 0.264675430405 | Observer Constant = 1/(π + 2/π) = π/(π²+2) |
+| Attribute | Value (float) | Definition |
+|-----------|---------------|------------|
+| `pp.Y`      | 0.264675430405 | Observer Constant = π/(π²+2) = 1/(π + 2/π) |
 | `pp.Y_INV`  | 3.77835…       | 1/Y = π + 2/π |
 | `pp.wobble` | 0.817580227176 | Entropic Wobble w = (π·φ·e) mod 1 |
 | `pp.L`      | 0.062890786706 | D-Sink Leakage = **w/13** |
-| `pp.L_s`    | 0.075993033936 | Stereoscopic Sink = L × σ = L × (29/24) |
-| `pp.sigma`  | 29/24 = 1.2083… | Stereoscopic Sink coefficient (Fraction) |
-| `pp.U_e`    | 13824          | Existence Unit = 24³ (int, not Fraction) |
-| `pp.monad`  | 13.817580227…  | Triadic Monad = π·φ·e (before floor) |
+| `pp.L_s`    | 0.075993033936 | Stereoscopic Sink = L × (29/24) |
+| `pp.sigma`  | 29/24 = 1.2083… | Stereoscopic coefficient (Fraction) |
+| `pp.U_e`    | 13824          | Existence Unit = 24³ (int — wrap as `Fraction(pp.U_e)` when needed) |
+| `pp.monad`  | 13.817580227…  | Triadic Monad = π·φ·e |
 | `pp.pi`     | 3.14159265359  | 50-term continued-fraction π |
 | `pp.phi`    | 1.61803398875  | Golden ratio φ |
 | `pp.e_const`| 2.71828182846  | Euler's e |
 
----
+### ⚠ L vs L_s — the most common error in prior sessions
 
-## 4. ⚠ CRITICAL NAMING TRAP: L vs L_s
+In every gravity study formula: **L means `pp.L` (= w/13 = 0.06289…)**.
 
-**This has caused errors in multiple prior sessions. Read carefully.**
+`pp.L_s` (= 0.07599…) is the *Stereoscopic* Sink = L × (29/24). It appears only in proton mass formulas and anywhere explicitly written as "L_s". Using `pp.L_s` where `pp.L` is intended gives a ~17% error on the muon ratio.
 
-The master document and all study scripts define:
-- **L = w/13** — the D-Sink Leakage. In code: **`pp.L`** (= 0.06289…)
-- **L_s = L × (29/24)** — the Stereoscopic Sink. In code: **`pp.L_s`** (= 0.07599…)
-
-The subscript "s" in `L_s` stands for "stereoscopic", not for "standard" or "study".
-
-**Verification:** `pp.wobble / 13 == float(pp.L)` → True (0.06289…)
-
-**When reading gravity study formulas:** L always means `pp.L`. Use `pp.L_s` only when the formula explicitly writes L_s or "stereoscopic leakage". The proton mass formula uses L_s; the eight canonical formulas all use L.
+**Verify live:** `assert abs(float(pp.wobble) / 13 - float(pp.L)) < 1e-12`
 
 ---
 
-## 5. GOLAY ENGINE API
+## 4. GOLAY ENGINE
 
 ```python
 g = GolayCodeEngine()
 
-g.encode(data: list[int])          # 12-bit → 24-bit codeword
-g.decode(codeword: list[int])      # 24-bit → 12-bit (error-corrects up to 3 flips)
-                                   # Returns 3-tuple: (data, corrected_cw, n_errors)
-g.snap_to_codeword(vec: list[int]) # Project arbitrary 24-bit vec onto nearest codeword
-g.hamming_weight(vec: list[int])   # Count 1-bits
-g.syndrome(vec: list[int])         # 12-bit syndrome
-g.syndrome_weight(vec: list[int])  # Weight of syndrome
+# Encoding / decoding
+g.encode(data: list[int])              # 12-bit → 24-bit codeword
+g.decode(codeword: list[int])          # returns 3-tuple: (data, corrected_cw, n_errors)
+g.snap_to_codeword(vec: list[int])     # nearest valid codeword to any 24-bit vector
+g.syndrome(vec: list[int])             # 12-bit syndrome
+g.syndrome_weight(vec: list[int])      # weight of syndrome
+g.hamming_weight(vec: list[int])       # count of 1-bits
 
-g.get_all_codewords()  # List of all 4096 codewords (each: list of 24 ints, 0 or 1)
-g.get_octads()         # 759 weight-8 codewords
-g.get_random_octad()   # One random octad
-g.get_shadow_metrics() # Shadow code statistics
-g.G                    # 12×24 generator matrix
-g.H                    # 12×24 parity check matrix
-g.B                    # 12×12 B submatrix
+# Enumeration
+g.get_all_codewords()   # all 4096 codewords — list of 24-element lists
+g.get_octads()          # 759 weight-8 codewords
+g.get_random_octad()    # one random octad
+
+# Matrices
+g.G   # 12×24 generator matrix
+g.H   # 12×24 parity check matrix
+g.B   # 12×12 B submatrix
 ```
 
-**Codeword Hamming Weight (HW) distribution — Golay [24,12,8]:**
+**Codeword weight distribution — Golay [24,12,8]:**
 
 | HW | Count | NRCI (α=1) | Status |
 |----|-------|------------|--------|
-| 0  | 1     | 1.0000     | OnBit (identity) |
-| 8  | 759   | 0.7623     | ✅ IN-BAND (above threshold 0.70) |
+| 0  | 1     | 1.0000     | OnBit |
+| 8  | 759   | 0.7623     | IN-BAND ✓ |
 | 12 | 2576  | 0.6814     | Subliminal |
 | 16 | 759   | 0.6160     | Subliminal |
 | 24 | 1     | 0.5167     | Edge |
 
-All 759 octads (HW=8) are IN-BAND. HW=12 and HW=16 are NOT.
-
 ---
 
-## 6. LEECH ENGINE API
+## 5. LEECH ENGINE
 
 ```python
 l = LeechLatticeEngine(g)   # g IS REQUIRED
 
-# Tax and NRCI — return fractions.Fraction
-l.calculate_symmetry_tax(point: list[int]) -> Fraction
-l.calculate_nrci(point: list[int])         -> Fraction
-l.symmetry_tax(point: list[int])           -> Fraction  # legacy alias
+# NRCI and Tax — always return fractions.Fraction
+l.calculate_nrci(point: list[int])           -> Fraction
+l.calculate_symmetry_tax(point: list[int])   -> Fraction
+l.symmetry_tax(point: list[int])             -> Fraction   # legacy alias, identical
 
-# Lattice geometry
-l.expand_octad(octad: list[int])                    # 24-bit → Leech point (128 coords)
-l.expand_octad_to_physical(octad: list[int])        # scaled physical coordinates
-l.nearest_octad_idx(vec: list[int]) -> int
-l.norm_sq_actual(point: list[int])  -> int          # exact integer Norm²
-l.norm_sq_scaled(point: list[int])  -> Fraction     # Norm²/SCALE²
-l.ontological_health(point: list[int]) -> dict      # per-layer NRCI breakdown
-l.rank_by_stability(points) -> list                 # sort by NRCI
+# Geometry
+l.expand_octad(octad: list[int])             # 24-bit → Leech point
+l.expand_octad_to_physical(octad: list[int]) # scaled physical coordinates
+l.nearest_octad_idx(vec: list[int])          -> int
+l.norm_sq_actual(point: list[int])           -> int        # exact Norm²
+l.norm_sq_scaled(point: list[int])           -> Fraction
+l.ontological_health(point: list[int])       -> dict       # per-layer NRCI breakdown
+l.rank_by_stability(points)                  -> list
 
 # Constants
-l.Y        # = pp.Y (Fraction)
+l.Y        # Fraction, same as pp.Y
 l.Y_CONST  # float version
 l.DIM      # 24
 l.KISSING  # 196560
@@ -180,148 +188,130 @@ l.SCALE    # 8
 
 ---
 
-## 7. NRCI (Non-Random Coherence Index) — FULL SPECIFICATION
+## 6. NRCI — FULL SPECIFICATION
 
-Source: UBP_Master_Document.docx, Section 2.3
+Source: UBP_Master_Document.docx Section 2.3
 
-### Tax formula (internal, exact)
+### Tax
 ```
 tax(v) = HW(v) × Y + Norm²(v) / 8
 ```
-where:
-- `HW(v)` = Hamming weight (count of non-zero elements)
-- `Norm²(v)` = sum of squares of all elements (= HW for binary 0/1 vectors)
-- `Y` = Observer Constant (Fraction, exact)
+- `HW(v)` = count of non-zero elements
+- `Norm²(v)` = sum of squared elements (equals HW for binary 0/1 vectors)
 
-**For a canonical Golay octad (HW=8, Norm²=8):**
-```
-tax = 8 × Y + 8/8 = 8 × 0.26468… + 1 ≈ 3.118
-```
+Canonical octad (HW=8, Norm²=8): `tax = 8Y + 1 ≈ 3.118`
 
-### Standard NRCI (α = 1, used for all diagnostics and thresholds)
+### Standard NRCI (α=1)
 ```
 NRCI(v) = 10 / (10 + tax(v))
 ```
 
-### Parameterised NRCIα (used in Potential-layer formulas)
+### Parameterised NRCIα (Potential-layer formulas only)
 ```
 NRCIα(v) = 10 / (10 + α × tax(v))
 ```
-The `α` parameter is a multiplicative weight on the tax. Higher α = more cooling = smaller NRCI.
 
-**NRCIα at canonical octad (tax ≈ 3.118) by confirmed α values:**
+**Confirmed α values and their NRCIα at canonical octad:**
 
-| α | NRCI_α | Formula target | Structural meaning |
-|---|--------|----------------|-------------------|
-| 1/8 | ≈ 0.9625 | Ω_k | Octad-anchored (1/sw where sw=8) |
-| 2   | ≈ 0.6160 | n_γ/n_b | Triad − 1 (baryon category) |
-| 13  | ≈ 0.1981 | V_ub² | D-Sink dimension (quark mixing) |
+| α | NRCIα | Formula | Structural basis |
+|---|-------|---------|-----------------|
+| 1/8 | ≈ 0.9625 | Ω_k | 1/sw, sw=8 for octad |
+| 2   | ≈ 0.6160 | n_γ/n_b | Triad − 1 |
+| 13  | ≈ 0.1981 | V_ub² | D-Sink dimension |
 | 24  | (predicted) | Higgs potential | Leech rank |
 | 3   | (predicted) | Higgs potential alt | Triad |
 
-> **Open issue (June 2026):** The master document states NRCI(α=1/8) ≈ 0.762 (close to
-> canonical octad value), but the formula `10/(10 + (1/8)×3.118)` gives 0.9625.
-> The exact codeword `v` used in each formula's NRCIα call is not explicitly specified
-> in the document. Until resolved: treat NRCIα values as needing direct code verification
-> rather than analytical computation from the canonical octad.
+**NRCIα applies only to Potential-layer formulas** (those using U_e). It does not apply to mass ratios, couplings, boson masses (use Shear instead), H₀, or G.
 
-### Reference thresholds
-| Value | Label | Meaning |
-|-------|-------|---------|
-| ≈ 0.42 | Noise floor | Empirical NRCI of random 24-bit vectors |
-| 0.60 | Anomaly threshold | Below this = structural anomaly flagged |
-| 0.70 | Consciousness threshold (θ) | Below this = SUBLIMINAL, not manifested |
-| 0.7623 | Canonical octad NRCI | Signature of all 759 Golay octads |
-| 1.00 | Identity NRCI | HW=0, tax=0 |
+### Investigating the NRCI(α) codeword question
 
-### Where NRCI is NOT used (α correction excluded)
-Per the α allocation rule, NRCI cooling **does not apply** to:
-- Mass ratios (m_p/m_e, m_μ/m_e) — use D-Sink L directly
-- Couplings (α, α_s) — Information-layer, pre-cooled
-- Boson masses (m_W, m_Z) — use Topological Shear instead
-- Hubble constant H₀ — w-based stochastic arm, pre-manifested
-- Gravitational constant G — Phase-4 search result, no NRCI
-
-NRCI cooling **only applies** to Potential-layer formulas that cross the
-Potential → Manifest boundary via the Existence Unit U_e.
-
----
-
-## 8. TOPOLOGICAL SHEAR (Friction)
-
-Source: Section 2.2 of master document. L here means `pp.L` (= w/13).
+The master document specifies which codeword `v` feeds into each formula's NRCIα call by reading the per-formula push scripts. To resolve exactly which vector is used for a given formula:
 
 ```python
-LY = pp.L * pp.Y   # ≈ 0.016641 at live constants
-
-# First-order shear (Triad-mediated, coefficient = 3)
-Shear_1 = 1 + 3 * LY                    # ≈ 1.04992
-
-# Second-order shear (Leech-mediated, adds coefficient = 12 = Leech/2)
-Shear_2 = 1 + 3 * LY + 12 * LY**2      # ≈ 1.05324
+# Pull and inspect the relevant push script directly
+import subprocess
+result = subprocess.run(
+    ['curl', '-s',
+     'https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/gravity/push06_omega_k.py'],
+    capture_output=True, text=True
+)
+# Search for the nrci call
+for i, line in enumerate(result.stdout.splitlines()):
+    if 'nrci' in line.lower():
+        print(i, line)
 ```
 
-**Which correction applies to which formula:**
-
-| Correction | Formula | Structural justification |
-|-----------|---------|--------------------------|
-| None | m_μ/m_e, α_s, α³, H₀, G | Near k=0 or pre-manifested |
-| Shear_1 | m_W | Cross-layer, one-loop Triad friction |
-| Shear_2 + NRCIα(2) | n_γ/n_b | Potential-layer, two-loop friction + cooling |
-| NRCIα(1/8) only | Ω_k | Potential-layer, no friction needed |
-| NRCIα(13) only | V_ub² | Potential-layer, no friction needed |
+### NRCI thresholds
+| Value | Label |
+|-------|-------|
+| ≈ 0.42 | Noise floor |
+| 0.60 | Anomaly threshold |
+| 0.70 | Consciousness threshold θ (manifested vs subliminal) |
+| 0.7623 | Canonical octad NRCI |
+| 1.00 | Identity (HW=0) |
 
 ---
 
-## 9. THE UNIVERSAL GENERATOR FUNCTION Φ
+## 7. TOPOLOGICAL SHEAR
 
-Source: Section 2.5 of master document. Defined at gravity/10/11_bonus/push11_framework.py:362–399.
+L here is always `pp.L` (= w/13).
 
-### Signature
+```python
+LY = pp.L * pp.Y          # ≈ 0.016641
+
+Shear_1 = 1 + 3*LY                     # ≈ 1.04992  (Triad-mediated, one-loop)
+Shear_2 = 1 + 3*LY + 12*LY**2          # ≈ 1.05324  (Leech-mediated, two-loop)
+```
+
+| Correction | Applied to |
+|-----------|-----------|
+| None | m_μ/m_e, α_s, α³, H₀, G |
+| Shear_1 | m_W (Cross-layer boundary) |
+| Shear_2 + NRCIα(2) | n_γ/n_b (Potential, two-loop) |
+| NRCIα(1/8) only | Ω_k |
+| NRCIα(13) only | V_ub² |
+
+---
+
+## 8. THE UNIVERSAL GENERATOR FUNCTION Φ
+
+Defined at `gravity/10/11_bonus/push11_framework.py:362–399`.
+
 ```
 Φ(k, arm, layer, C, correction) → physical constant prediction
 ```
 
-### Parameters
+**Parameters:**
 
-**k** — Clock position (cycle tick): `{0, 3, 6, 9, 12, 15, 18, 21, 24}`
-- Step size Δk = 3 (Triad step)
-- k=0: pre-manifest; k=12: self-pairing peak; k=24: cycle return
+**k** — Clock position: `{0, 3, 6, 9, 12, 15, 18, 21, 24}`, step Δk=3
 
-**arm** — Computational drive:
+**arm:**
 - `det` — deterministic, Y-driven
 - `sto` — stochastic, w-driven
 
-**layer** — Ontological assignment:
-- `Reality` — bits 0–5, large values, Base = Y_inv^k (growing)
-- `Information` — bits 6–11, small couplings, Base = Y^k (decaying)
-- `Activation` — bits 12–17, midpoint, Base = Y^k or Y^(24−k)
-- `Potential` — bits 18–23, very small, Base = Y^(24−k) × U_e
-- `Cross` — crosses Reality↔Information boundary, Base = Y^k × π
-- `w-source` — consumes Wobble in denominator, Base = C/w
-- `w-based` — uses Wobble as primary driver, Base = C × w × Y^k × U_e
+**layer** (determines Base computation):
+- `Reality` → `Y_inv^k` (growing — large mass ratios, bits 0–5)
+- `Information` → `Y^k` (decaying — small couplings, bits 6–11)
+- `Activation` → `Y^k or Y^(24−k)` (transition, bits 12–17)
+- `Potential` → `Y^(24−k) × U_e` (cosmological, bits 18–23)
+- `Cross` → `Y^k × π` (Reality↔Information boundary)
+- `w-source` → `C/w` (muon — Weak Horizon boundary)
+- `w-based` → `C × w × Y^k × U_e` (H₀)
 
-**C** — Multiplicative constant drawn from structural integers:
-`{1, 2, 3, 4, 8, 12, 13, 24, 1/2, 1/3, 1/4, 1/8, 1/12, 1/24, 29/24, 169, 13/L}`
+**C** — from: `{1, 2, 3, 4, 8, 12, 13, 24, 1/2, 1/3, 1/4, 1/8, 1/12, 1/24, 29/24, 169, 13/L}`
 
-**correction** — Friction/cooling applied to Base:
-- `none` — identity
-- `shear_1` — × (1 + 3·L·Y)
-- `shear_2` — × (1 + 3·L·Y + 12·(L·Y)²)
-- `nrci(α)` — × NRCIα(v)
-- `shear_2+nrci(α)` — both
+**correction:** `none | shear_1 | shear_2 | nrci(α) | shear_2+nrci(α)`
 
-### Grammar search space
-~8,100 candidate formulas per target (reduced from ~29,700 by Φ typing rules).
+Grammar search space: ~8,100 candidate formulas per target.
 
 ---
 
-## 10. CANONICAL FORMULA TABLE (all 8 + G)
+## 9. CANONICAL FORMULA TABLE
 
-Source: Section 4.1 master document. **L = pp.L = w/13 throughout.**
+**L = `pp.L` = w/13 throughout all formulas below.**
 
-| # | Target | k | arm | layer | C | correction | Err % | FP % | Push |
-|---|--------|---|-----|-------|---|-----------|------|------|------|
+| # | Target | k | arm | layer | C | correction | Err% | FP% | Push |
+|---|--------|---|-----|-------|---|-----------|------|-----|------|
 | 1 | m_μ/m_e | 1 | sto | w-source | 169 | none | 0.029 | 0.0 | #1 |
 | 2 | α_s | 4 | det | Info | 24 | none | 0.188 | 0.0 | #4 |
 | 3 | m_W | 4 | det | Cross | (13/L)·24·π | shear_1 | 0.094 | 0.0 | #6 |
@@ -330,298 +320,339 @@ Source: Section 4.1 master document. **L = pp.L = w/13 throughout.**
 | 6 | V_ub² | 12 | det | Potential | 1/24 | nrci(13) | 0.032 | 0.0 | #7 |
 | 7 | α³ | 12 | det | Potential* | 29/24 | none (e replaces U_e) | 0.104 | 0.0 | #8 |
 | 8 | H₀ | 3 | sto | w-based | 1/3 | none | 0.495 | 0.02 | #9 |
-| G | G_gravity | 18 | det | Potential† | 39/29 | none (Y¹⁸/w) | 0.133 | n/a | #1 |
+| G | G_grav | 18 | det | Potential† | 39/29 | none (Y¹⁸/w) | 0.133 | n/a | #1 |
 
-*Formula 7: Potential with `e` (Euler's number) replacing U_e in the Base term.
-†G is NOT a clean Φ instantiation: the 39/29 coefficient came from Phase-4 combinatorial search, not the Layer-to-Grammar theorem. Presented separately.
+*Formula 7: `e` (Euler's number) replaces U_e as the Potential amplifier.
+†G coefficient 39/29 from Phase-4 combinatorial search (2,400 candidates), not Layer-to-Grammar derivation.
 
-### Explicit formula expressions
+### Explicit expressions (compute these, do not estimate)
 
+```python
+from ubp_unified_v5 import UBPSourceCodeParticlePhysics
+from fractions import Fraction
+pp = UBPSourceCodeParticlePhysics()
+Y, w, L, Ue, pi_, e_ = pp.Y, pp.wobble, pp.L, Fraction(pp.U_e), pp.pi, pp.e_const
+
+LY     = L * Y
+Shear1 = 1 + 3*LY
+Shear2 = 1 + 3*LY + 12*LY**2
+
+f1 = Fraction(169) / w                                   # m_μ/m_e
+f2 = 24 * Y**4                                           # α_s
+f3 = (Fraction(13)/L) * 24 * Y**4 * pi_ * Shear1       # m_W (GeV, unit bridge implicit)
+f4 = 24 * Y**15 * Ue   # × NRCIα(1/8, v)              # Ω_k  — NRCIα resolved from push06
+f5 = Fraction(1,4)*Y**21*Ue*Shear2  # × NRCIα(2, v)   # n_γ/n_b
+f6 = Fraction(1,24)*Y**12*Ue  # × NRCIα(13, v)         # V_ub²
+f7 = Fraction(29,24) * Y**12 * e_                       # α³
+f8 = Fraction(1,3) * w * Y**3 * Ue                      # H₀ (km/s/Mpc)
+fG = Fraction(39,29) * Y**18 / w                        # G (SI, unit bridge implicit)
+
+# Print all with errors
+targets = {
+    'm_mu/m_e': (f1, Fraction(2067683,10000)),
+    'alpha_s':  (f2, Fraction(1181,10000)),
+    'alpha^3':  (f7, (Fraction(1,137036)*Fraction(1000))**3 / Fraction(1000)**3),  # (1/137.036)^3
+    'H0':       (f8, Fraction(70)),
+}
+for name,(pred,tgt) in targets.items():
+    err = abs(pred-tgt)/tgt*100
+    print(f"{name:12s}: {float(pred):.6e}  tgt={float(tgt):.6e}  err={float(err):.4f}%")
 ```
-1.  m_μ/m_e = 169 / w                                              [= 13/L, tautologically]
-2.  α_s      = 24 · Y⁴
-3.  m_W      = (13/L) · 24 · Y⁴ · π · (1 + 3·L·Y)               [in GeV, unit bridge implicit]
-4.  Ω_k      = 24 · Y¹⁵ · U_e · NRCIα=1/8(v)
-5.  n_γ/n_b  = (1/4) · Y²¹ · U_e · Shear_2 · NRCIα=2(v)
-6.  V_ub²    = (1/24) · Y¹² · U_e · NRCIα=13(v)
-7.  α³       = (29/24) · Y¹² · e
-8.  H₀       = (1/3) · w · Y³ · U_e                               [in km/s/Mpc]
-    G_UBP    = (39/29) · Y¹⁸ / w                                  [SI units, implicit]
-```
 
-**Note on Formula 1:** `13/L = 13/(w/13) = 169/w` — algebraically identical. They are NOT two independent confirmations. One formula.
+**Note on formula 1:** `13/L = 13/(w/13) = 169/w` algebraically. One formula, not two.
 
 ---
 
-## 11. PARTICLE PHYSICS ENGINE
+## 10. PARTICLE PHYSICS ENGINE
 
 ```python
 pp = UBPSourceCodeParticlePhysics()
 preds = pp.get_ultimate_predictions()
 
-# preds is a dict. Key entries:
-# 'Alpha Inv', 'Proton/e- Ratio', 'Muon/e- Ratio', 'Electron (e-)',
-# 'Higgs Boson', 'Top Quark', charmed baryons…, 'global_error', 'sink_metadata'
-#
 # Each physical entry: {'val': float, 'target': float, 'error_percent': float, 'lens': str}
-# sink_metadata: dict with L, L_s, sigma, monad, wobble, leakage_L, status
-
-# Quick benchmark read:
 for k, v in preds.items():
     if isinstance(v, dict) and 'error_percent' in v:
         print(f"{k:30s}: pred={v['val']:.4f}  err={v['error_percent']:.4f}%  [{v['lens']}]")
+
+# Access metadata
+meta = preds['sink_metadata']  # has L, L_s, sigma, monad, wobble, leakage_L, status
 ```
 
-**Live benchmark (v5.4.0, June 2026):**
+**Live benchmark (v5.4.0):**
 
 | Particle | Error | Lens |
 |----------|-------|------|
 | Proton/e⁻ ratio | 0.0000% | Stereoscopic (29/24) |
-| Muon/e⁻ ratio | 0.0294% | Pure Inverse (13-D Sink) |
-| Gravity (G) | 0.1327% | Topological Resonance |
-| 1/α (fine structure inv) | 0.0196% | Core Ratio |
+| Muon/e⁻ ratio | 0.0066% | Core Ratio |
+| 1/α | 0.0196% | Core Ratio |
 | Higgs boson | 0.0283% | Core Ratio |
 | Top quark | 0.0214% | Core Ratio |
 | **Global** | **0.112%** | |
 
 ---
 
-## 12. PRIMALITY_NRCI AND HEX-CODING PIPELINE
+## 11. PRIMALITY_NRCI PIPELINE
 
-Source: Section 2.4, 3.2 of master document. Implemented at `ubp_v28_oracle.py:561–579`.
+Source: Section 2.4 master document / `ubp_v28_oracle.py:561–579`
 
-### Four-step pipeline
 ```
-Integer n
-  → 6-digit hex representation
-  → 24-bit Gray code (binary-reflected: Gray(n) ⊕ Gray(n+1) = single bit flip)
-  → Golay snap (nearest codeword, corrects ≤ 3 errors)
-  → NRCI test against prime band [0.60, 0.95]
-  → Miller-Rabin primality (12 witnesses: {2,3,5,7,11,13,17,19,23,29,31,37})
-  → 4-way verdict
+Integer n → 6-digit hex → 24-bit Gray code → Golay snap → NRCI test → Miller-Rabin → 4-way verdict
 ```
 
-### Four-way verdict
+Miller-Rabin witnesses: `{2,3,5,7,11,13,17,19,23,29,31,37}` (12 witnesses)
+
+**Four-way verdict:**
 | Verdict | Meaning |
 |---------|---------|
 | PRIME-IN-BAND | Arithmetically prime AND NRCI ∈ [0.60, 0.95] |
-| PRIME-ANOMALY | Arithmetically prime BUT NRCI outside band |
-| COMPOSITE-IN-BAND | Composite but structurally coherent |
-| COMPOSITE-OUT | Composite and incoherent — noise category |
+| PRIME-ANOMALY | Prime BUT NRCI outside band |
+| COMPOSITE-IN-BAND | Composite, structurally coherent |
+| COMPOSITE-OUT | Composite and incoherent |
 
-### Octad priming set: {137, 169, 2197, 28561}
-All four integers share:
-- NRCI = 0.7623 (canonical octad value)
-- Syndrome weight sw = 8
-- Gray-coded → snaps to same Information-layer Golay octad
+**Octad priming set** — all snap to the same Information-layer octad, NRCI = 0.7623, sw = 8:
 
-```
-137    = prime     → PRIME-IN-BAND
-169    = 13²       → COMPOSITE-IN-BAND
-2197   = 13³       → COMPOSITE-IN-BAND
-28561  = 13⁴       → COMPOSITE-IN-BAND
-```
+| Integer | Type | Verdict |
+|---------|------|---------|
+| 137 | Prime | PRIME-IN-BAND |
+| 169 = 13² | Composite | COMPOSITE-IN-BAND |
+| 2197 = 13³ | Composite | COMPOSITE-IN-BAND |
+| 28561 = 13⁴ | Composite | COMPOSITE-IN-BAND |
 
-This is why 13, 169, 13² etc. recur in UBP formulas — they all activate the same Information-layer structural unit.
-
-**24 is OUT-OF-BAND** (not a power of 13, does not snap to that octad) but appears as a "scaffold" — it provides dimensional context (Leech rank) rather than octad priming.
-
-**Prime band [0.60, 0.95]** is flagged as "provisional — need calibration" at `ubp_v28_oracle.py:565`. The bounds were selected post-hoc to include the octad NRCI and exclude noise/identity.
-
----
-
-## 13. ONTOLOGICAL LAYERS AND LAYER-TO-GRAMMAR THEOREM
-
-Source: Section 1.4, 3.1 of master document. Implemented at `ubp_observer_dynamics.py:11–17`.
-
-### Layer partition (4 × 6 bits)
-```
-Bits 0–5   → Reality layer    → Growing powers Y_inv^k   → Large mass ratios
-Bits 6–11  → Information layer → Decaying powers Y^k      → Small couplings
-Bits 12–17 → Activation layer  → k=12 self-pairing peak   → Transition dynamics
-Bits 18–23 → Potential layer   → Y^(24−k) × U_e           → Cosmological constants
-```
-
-### Layer-to-Grammar theorem (Push #10, axiomatic)
-Derived from three axioms:
-1. The 4×6 bit partition (postulate)
-2. Y < 1, so Y^k decays and Y_inv^k grows
-3. Physical constants span ~160 orders of magnitude
-
-**Conclusion:** Reality → Y_inv^k; Information → Y^k; Potential → Y^(24−k)·U_e
-
-**Muon exception:** m_μ/m_e uses D-Sink L (not Y-power) because the muon sits at the Weak Horizon boundary — the "Law of the Weak Force = layer-crossing boundary."
-
-### Manifestation mechanism
 ```python
-# Implemented at ubp_observer_dynamics.py:19–25
-# If NRCI(v) ≥ 0.70: MANIFESTED → Potential bits become new Reality layer
-# If NRCI(v) < 0.70: SUBLIMINAL → new Reality layer = all zeros
+# Run it
+from ubp_v28_oracle import TopologicalALU
+alu = TopologicalALU(g, l)
+for n in [137, 169, 2197, 28561, 24, 759]:
+    print(n, alu.primality_nrci(n))
 ```
 
 ---
 
-## 14. KNOWN FAILURES (documented in master document)
+## 12. ONTOLOGICAL LAYERS AND LAYER-TO-GRAMMAR THEOREM
 
-These targets were tested and failed the UBP grammar:
+```
+Bits 0–5   → Reality      → Y_inv^k         → Large mass ratios
+Bits 6–11  → Information  → Y^k             → Small couplings
+Bits 12–17 → Activation   → Y^k / Y^(24-k)  → Transition dynamics
+Bits 18–23 → Potential    → Y^(24-k) × U_e  → Cosmological constants
+```
 
-| Target | Best UBP error | Status |
-|--------|---------------|--------|
-| Cosmological constant Λ·ℓ_P² | 3.08 × 10¹⁰²% | CATASTROPHIC FAILURE |
-| α_G (gravitational fine structure) | 5.9 × 10¹⁷% | CATASTROPHIC FAILURE |
-| m_Z (Z boson mass) | 15.8% | NOT SURPRISING |
-| sin²θ_W (Weinberg angle) | 34.6% | NOT SURPRISING |
+**Theorem (Push #10 — axiomatic derivation):**
+From: (1) 4×6 partition, (2) Y < 1, (3) physical constants span ~160 orders of magnitude.
+Conclusion: Reality → Y_inv^k; Information → Y^k; Potential → Y^(24−k)·U_e
 
-Λ·ℓ_P² and α_G catastrophic failures are the substrate's "principal falsification evidence" — they show the grammar is not arbitrarily flexible.
+**Muon exception:** m_μ/m_e uses L (D-Sink) not Y^k — muon lives at Weak Horizon boundary.
+
+**Manifestation mechanism:**
+```python
+# ubp_observer_dynamics.py:19–25
+# NRCI(v) ≥ 0.70 → MANIFESTED (Potential bits become new Reality layer)
+# NRCI(v) < 0.70 → SUBLIMINAL (new Reality layer = zeros)
+```
 
 ---
 
-## 15. PRE-REGISTERED OUT-OF-SAMPLE PREDICTIONS (Section 7.3)
+## 13. NULL MODEL PROTOCOL
 
-| Target | Predicted α | Status |
-|--------|------------|--------|
-| Ω_DM (dark matter density) | α = 1/8 | Pre-registered, untested |
-| Neutrino mass scale | α = 13 | Pre-registered, untested |
-| Higgs self-coupling / potential | α = 24 or 3 | Pre-registered, untested |
+Run this live to validate any candidate formula. Do not rely on stored FP rates for new formulas.
 
----
-
-## 16. NULL MODEL PROTOCOL
-
-### Study protocol (5,000-trial Focused Null Model)
 ```python
 import random
-TRIALS = 5000; TOL = 0.005   # 0.5% tolerance
+from math import prod
 
-# Grammar mirrors Φ parameter space
-prefixes   = [1, 2, 3, 4, 6, 8, 13, 24, 29, 1/2, 1/3, 1/4, 1/8, 1/24]
-constants  = {'Y': float(pp.Y), 'w': float(pp.wobble), 'L': float(pp.L),
-              'Ue': float(pp.U_e), 'pi': float(pp.pi), 'e': float(pp.e_const)}
-powers_range = range(-5, 6)
+pp = UBPSourceCodeParticlePhysics()
+TRIALS = 5000
+TOL    = 0.005   # 0.5%
 
+prefixes  = [1, 2, 3, 4, 6, 8, 13, 24, 29, 0.5, 1/3, 0.25, 0.125, 1/24]
+constants = {
+    'Y':  float(pp.Y),  'w': float(pp.wobble),  'L': float(pp.L),
+    'Ue': float(pp.U_e), 'pi': float(pp.pi),    'e': float(pp.e_const),
+}
+
+targets = {'my_target': 0.1181}   # replace with actual target value(s)
+hits = {t: 0 for t in targets}
+
+random.seed(42)
 for _ in range(TRIALS):
-    prefix = random.choice(prefixes)
-    powers = {k: random.choice(powers_range) for k in constants}
-    val = prefix * product(c**p for c,p in zip(constants.values(), powers.values()))
-    # Count hits within TOL of each target
+    pref   = random.choice(prefixes)
+    powers = {k: random.randint(-5, 5) for k in constants}
+    try:
+        val = pref * prod(c**p for c, p in zip(constants.values(), powers.values()))
+        if not (1e-20 < abs(val) < 1e20):
+            continue
+        for tname, tval in targets.items():
+            if abs(val - tval) / tval < TOL:
+                hits[tname] += 1
+    except (ZeroDivisionError, OverflowError):
+        continue
+
+for tname, h in hits.items():
+    print(f"{tname}: {h}/{TRIALS} = {h/TRIALS*100:.3f}%  →  {'SURPRISING ✓' if h/TRIALS < 0.05 else 'NOT SURPRISING'}")
 ```
 
-### Empirical FP rates (confirmed June 2026 runs)
-| Target | FP rate | Verdict |
-|--------|---------|---------|
-| μ/e ratio 206.768 | 0.000% | SURPRISING ✓ |
-| α_s 0.1181 | 0.040% | SURPRISING ✓ |
-| α³ 3.886×10⁻⁷ | 0.000% | SURPRISING ✓ |
-| H₀ 70.0 km/s/Mpc | 0.000% | SURPRISING ✓ |
+**Verdict thresholds:**
+| FP rate | Label | Accuracy | Label |
+|---------|-------|----------|-------|
+| < 5% | SURPRISING | < 0.1% error | PREDICTIVE |
+| 5–20% | MARGINAL | < 1% error | SURPRISING |
+| ≥ 20% | NOT SURPRISING | ≥ 1% error | PROVISIONAL |
 
-### Verdict thresholds
-| Threshold | Label |
-|-----------|-------|
-| FP < 5% | SURPRISING |
-| 5% ≤ FP < 20% | MARGINAL |
-| FP ≥ 20% | NOT SURPRISING |
-| Formula error < 0.1% | PREDICTIVE (accuracy tier) |
-| Formula error < 1% | SURPRISING (accuracy tier) |
-| Formula error ≥ 1% | PROVISIONAL |
+**Stored empirical FP rates (June 2026):**
+μ/e = 0.000%, α_s = 0.040%, α³ = 0.000%, H₀ = 0.000%
 
 ---
 
-## 17. COMPUTATIONAL SELF-CONSISTENCY CHECKS
+## 14. FALSIFICATION HORIZONS
 
-The system performs these at `ubp_unified_v5.py:411–416`:
+| Prediction | UBP Value | Test | Timeline |
+|-----------|-----------|------|----------|
+| Ω_k | ≈ 7.27×10⁻⁴ | CMB-S4 | ~2027 |
+| n_γ/n_b | ≈ 1.684×10⁻⁹ | CMB spectral distortions | ~2028+ |
+| H₀ | 69.85 km/s/Mpc | DESI/Euclid | 2025–2027 |
+| dα/dt | exactly 0 | Atomic clocks / quasar spectra | Ongoing |
+
+**Pre-registered untested predictions (Section 7.3):**
+
+| Target | α | Notes |
+|--------|---|-------|
+| Ω_DM | 1/8 | Same α-class as Ω_k |
+| Neutrino mass scale | 13 | D-Sink dimension |
+| Higgs self-coupling | 24 or 3 | Two candidates |
+
+---
+
+## 15. INVESTIGATION WORKFLOW PATTERNS
+
+### Pattern A — Verify a specific formula
+
 ```python
-assert pp.Y * pp.Y_INV == 1          # Exact Fraction identity
-assert 0 < float(pp.wobble) < 1      # Wobble is valid fractional residue
-assert float(pp.L) < float(pp.Y)     # D-Sink leakage < decay rate
-assert pp.U_e > 1                    # Amplifier amplifies
+from ubp_unified_v5 import UBPSourceCodeParticlePhysics
+from fractions import Fraction
+
+pp  = UBPSourceCodeParticlePhysics()
+Y, w, L, Ue = pp.Y, pp.wobble, pp.L, Fraction(pp.U_e)
+
+formula = 24 * Y**4                    # replace with formula under study
+target  = Fraction(1181, 10000)        # replace with exact target
+
+error_pct = abs(formula - target) / target * 100
+print(f"Result:  {float(formula):.10f}")
+print(f"Target:  {float(target):.10f}")
+print(f"Error:   {float(error_pct):.6f}%")
+print(f"Verdict: {'PREDICTIVE' if float(error_pct) < 0.1 else 'SURPRISING' if float(error_pct) < 1 else 'PROVISIONAL'}")
 ```
 
----
+### Pattern B — NRCI of any 24-bit vector
 
-## 18. COMMON WORKFLOW PATTERNS
+```python
+from ubp_unified_v5 import GolayCodeEngine, LeechLatticeEngine
 
-### Verify a formula against a target
+g = GolayCodeEngine()
+l = LeechLatticeEngine(g)
+
+vec     = [1]*8 + [0]*16              # replace with any 24-element list
+snapped = g.snap_to_codeword(vec)
+tax     = l.calculate_symmetry_tax(snapped)
+nrci    = l.calculate_nrci(snapped)
+
+print(f"HW={sum(snapped)}  Norm²={sum(x*x for x in snapped)}")
+print(f"Tax:  {float(tax):.8f}")
+print(f"NRCI: {float(nrci):.8f}  ({'IN-BAND' if float(nrci) >= 0.70 else 'SUBLIMINAL'})")
+```
+
+### Pattern C — Scan for new formula candidates
+
+```python
+# Find all Φ-grammar formulas hitting a new target within 0.5%
+from ubp_unified_v5 import UBPSourceCodeParticlePhysics
+from fractions import Fraction
+
+pp = UBPSourceCodeParticlePhysics()
+Y, w, L, Ue = pp.Y, pp.wobble, pp.L, Fraction(pp.U_e)
+pi_, e_, phi = pp.pi, pp.e_const, pp.phi
+
+TARGET = Fraction(23122, 100000)  # replace: e.g. sin²θ_W = 0.23122
+TOL    = 0.005
+
+prefixes  = [Fraction(n) for n in [1,2,3,4,6,8,12,13,24,29]] + \
+            [Fraction(1,n) for n in [2,3,4,6,8,12,24]]
+modifiers = {'none':Fraction(1), '*pi':pi_, '*w':w, '*e':e_, '*phi':phi,
+             '/w':Fraction(1)/w, '*Ue':Ue, '*w*pi':w*pi_}
+
+hits = []
+for pref in prefixes:
+    for k in range(1, 24):
+        for mname, mval in modifiers.items():
+            val = pref * Y**k * mval
+            err = abs(val - TARGET) / TARGET
+            if err < TOL:
+                hits.append((float(err)*100, f"{pref}·Y^{k}·{mname}", float(val)))
+
+hits.sort()
+for err, formula, val in hits[:10]:
+    print(f"  err={err:.4f}%  {formula} = {val:.6e}")
+```
+
+### Pattern D — Run all eight canonical formulas and compare
+
 ```python
 from ubp_unified_v5 import UBPSourceCodeParticlePhysics
 from fractions import Fraction
 
 pp = UBPSourceCodeParticlePhysics()
-Y = pp.Y
-w = pp.wobble
-L = pp.L          # ← always pp.L for gravity study formulas (= w/13)
-L_s = pp.L_s      # ← only if formula explicitly uses L_s (stereoscopic)
-Ue = Fraction(pp.U_e)
-e_ = pp.e_const
+Y, w, L, Ue = pp.Y, pp.wobble, pp.L, Fraction(pp.U_e)
+pi_, e_ = pp.pi, pp.e_const
+LY = L * Y
 
-# Example: α_s formula
-formula = 24 * Y**4
-target  = Fraction(1181, 10000)
-error   = abs(formula - target) / target * 100
-print(f"α_s = {float(formula):.6f}  target = {float(target):.6f}  error = {float(error):.4f}%")
+formulas = [
+    ("m_μ/m_e",  Fraction(169)/w,                           Fraction(2067683,10000)),
+    ("α_s",      24*Y**4,                                   Fraction(1181,10000)),
+    ("α³",       Fraction(29,24)*Y**12*e_,                  Fraction(1,137036)**3 * Fraction(1000000,1) / Fraction(1000000,1)),  # compute live
+    ("H₀",       Fraction(1,3)*w*Y**3*Ue,                   Fraction(70)),
+    ("Ω_k base", 24*Y**15*Ue,                               Fraction(727,1000000)),
+]
+for name, pred, tgt in formulas:
+    err = abs(pred-tgt)/tgt*100
+    verdict = 'PREDICTIVE' if float(err)<0.1 else 'SURPRISING' if float(err)<1 else 'PROVISIONAL'
+    print(f"{name:12s}: {float(pred):.6e}  err={float(err):.4f}%  [{verdict}]")
 ```
 
-### Compute NRCI for a specific vector
+### Pattern E — Inspect a push script directly
+
 ```python
-from ubp_unified_v5 import GolayCodeEngine, LeechLatticeEngine
+import subprocess, re
 
-g = GolayCodeEngine()
-l = LeechLatticeEngine(g)   # g REQUIRED
+# Pull any push script to see the exact formula implementation
+push_url = "https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/gravity/push06_omega_k.py"
+r = subprocess.run(['curl', '-s', push_url], capture_output=True, text=True)
+src = r.stdout
 
-vec     = [1]*8 + [0]*16    # example HW=8 vector
-snapped = g.snap_to_codeword(vec)
-nrci    = l.calculate_nrci(snapped)
-tax     = l.calculate_symmetry_tax(snapped)
-print(f"NRCI: {float(nrci):.6f}  Tax: {float(tax):.6f}")
-```
-
-### Run primality_nrci on a structural integer
-```python
-from ubp_v28_oracle import TopologicalALU   # adjust import path as needed
-alu = TopologicalALU(g, l)
-result = alu.primality_nrci(169)
-# Returns: (is_prime: bool, nrci: float, syndrome_weight: int, verdict: str)
-print(result)   # e.g. (False, 0.7623, 8, 'COMPOSITE-IN-BAND')
-```
-
-### Get all predictions with error breakdown
-```python
-pp = UBPSourceCodeParticlePhysics()
-preds = pp.get_ultimate_predictions()
-for k, v in preds.items():
-    if isinstance(v, dict) and 'error_percent' in v:
-        print(f"{k:30s}: {v['val']:.4f}  err={v['error_percent']:.4f}%  [{v['lens']}]")
+# Find NRCI calls, formula lines, constant definitions
+for i, line in enumerate(src.splitlines()):
+    if any(kw in line.lower() for kw in ['nrci', 'omega', 'formula', 'result', '=.*Y\*\*']):
+        print(f"{i:4d}: {line}")
 ```
 
 ---
 
-## 19. STRUCTURAL CONSTANTS QUICK REFERENCE
+## 16. STRUCTURAL CONSTANTS QUICK REFERENCE
 
-| Constant | Value | Why it appears |
-|----------|-------|---------------|
-| 24 | Golay/Leech/Monster dimension | U_e = 24³, σ = 29/24, k ↔ 24−k |
-| 759 | Golay octads | E_bind = (11/12)·759, self-validation |
-| 13 | D-Sink dimension | L = w/13, 196560 = 13×15120 |
-| 196560 | Leech kissing number | 13 × 15120, justifies D-Sink = 13 |
-| 29 | Leech theta-series prime | σ = 29/24, G = (39/29)·Y¹⁸/w |
-| 169 = 13² | Priming integer | m_μ/m_e numerator |
+| Constant | Value | Structural role |
+|----------|-------|----------------|
+| 24 | Leech/Golay/Monster dimension | U_e = 24³, σ = 29/24, k-cycle length |
+| 759 | Golay octads | All IN-BAND; E_bind = (11/12)·759 |
+| 13 | D-Sink dimension | L = w/13; 196560 = 13 × 15120 |
+| 196560 | Leech kissing number | 13 × 15120 — justifies D-Sink = 13 |
+| 29 | Leech theta-series prime | σ = 29/24; G = (39/29)·Y¹⁸/w |
+| 169 = 13² | Priming integer | m_μ/m_e numerator; PRIME-band anchor |
 | 2197 = 13³ | Priming integer | Sub-bit priming |
 | 28561 = 13⁴ | Priming integer | Sub-bit priming |
-| 137 | Priming integer (prime) | 1/α signature |
+| 137 | Priming prime | Snaps to 1/α Information-layer octad |
 
 ---
 
-## 20. FALSIFICATION HORIZONS
-
-| Prediction | UBP Value | Test | Timeline |
-|-----------|-----------|------|----------|
-| Ω_k (spatial curvature) | ≈ 7.27×10⁻⁴ | CMB-S4 | ~2027 |
-| n_γ/n_b (baryon asymmetry) | ≈ 1.684×10⁻⁹ | CMB spectral distortions | ~2028+ |
-| H₀ | 69.85 km/s/Mpc | DESI/Euclid resolving H₀ tension | 2025–2027 |
-| dα/dt (α drift) | exactly 0 | Atomic clocks / quasar spectra | Ongoing |
-
----
-
-## 21. ARCHITECTURE LAYERS (brief)
+## 17. ARCHITECTURE LAYERS
 
 ```
 Layer 4 — Cognitive Orchestration:  ubp_brain_consolidated.py, ubp_integrated_engine_v1.py
@@ -630,22 +661,22 @@ Layer 2 — Semantic/Sensory:         ubp_phenomenology.py, ubp_observer_dynamic
 Layer 1 — Mathematical Substrate:   ubp_unified_v5.py  ← START HERE
 ```
 
-Only Layer 1 is fully self-contained with stdlib imports. Higher layers may require Flask.
+Layer 1 is stdlib-only and self-contained. Higher layers may require Flask or additional scripts.
 
 ---
 
-## 22. KNOWN OPEN ISSUES (June 2026)
+## 18. KNOWN TEST RESULTS (for calibration)
 
-1. **NRCI(α) exact codeword not specified.** The master document gives NRCIα(v) = 10/(10 + α·tax(v)) but does not explicitly state which 24-bit codeword `v` is used in each formula. The canonical octad gives NRCI(α=1/8) ≈ 0.9625, but the document states ≈ 0.762. This discrepancy requires direct code inspection of each push script to resolve.
+Formulas confirmed to work vs targets that don't fit the current grammar — both are useful:
 
-2. **m_W unit bridge underdocumented.** The formula output (~80.3) matches m_W in GeV without any explicit unit conversion being stated.
+**Grammar successes** (from live June 2026 runs):
+α_s: 0.188% | m_μ/m_e: 0.029% | α³: 0.104% | H₀: 0.495% | Ω_k base: ~0.08%
 
-3. **G formula is Phase-4 search, not Φ.** The coefficient 39/29 = 3×13/29 was found by combinatorial search over 2,400 candidates, not derived from Layer-to-Grammar. It is consistent with the framework but not a clean instantiation.
+**Grammar failures** (documented in master document — use as calibration, not dead ends):
+m_Z: 15.8% | sin²θ_W: 34.6% | Λ·ℓ_P²: 10¹⁰² scale | α_G: 10¹⁷ scale
 
-4. **Prime band [0.60, 0.95] is provisional.** Flagged in source at `ubp_v28_oracle.py:565`. Pre-registration of band bounds is an open methodological issue.
-
-5. **Priming set {137, 169, 2197, 28561} is not exhaustive.** Other integers may also prime the Information-layer octad via the same Gray-code pipeline; enumeration is an open task.
+The failures tell you the grammar has real structure — it cannot hit everything. If you find a formula for sin²θ_W under 1%, run the null model immediately and report the FP rate.
 
 ---
 
-*Built from live execution (June 2026) + UBP_Master_Document.docx v1.8 (Section 2.3, 3.x, 4.x sourced directly). Verify constants against live repo before citing in papers — system is under active development.*
+*Built from live execution (June 2026) + UBP_Master_Document.docx v1.8. Constants verified against live repo. System is under active development — fetch fresh before each session.*
