@@ -1,84 +1,33 @@
 """
 ================================================================================
-UBP UNIFIED v5.3 — HARDENED TRIAD-PHYSICS EDITION (FLOAT-FREE CORE)
-Note: Upgraded from v6.0 to preserve workspace import compatibility.
+UBP UNIFIED v5.4.0 — PURE GEOMETRIC PROJECTION EDITION (FLOAT-FREE CORE)
+Note: Upgraded from v5.3 to eradicate Noumenal Leakage in fundamental constants.
 Includes ExactRoot.denest, AdaptiveManifold, and NeuralPatternDetector.
 ================================================================================
 Author  : E R A Craig / UBP Research Cortex
-Version : 5.3.0
-Date    : 27 May 2026
+Version : 5.4.0
+Date    : 23 June 2026
 
 THE MERGE
 =========
 This single, self-contained module unifies three previously-separate scripts:
-
   1. core.py                        (UBP Core v6.1 — Triad / Particle Physics / Construction)
   2. ubp_noisecore_v4.py            (Noise-Core v4.0 — Triad ALU / Substrate / Tests)
   3. ubp_noisecore_v4_extensions.py (Physics ALU / Linear-Algebra ALU / V5 Router)
 
-into one coherent Python file with **only Python standard-library imports**:
-  fractions, hashlib, json, dataclasses, typing, pathlib, datetime, re, time,
-  argparse.   (No numpy, no sympy, no math.sqrt, no math.log inside the
-  computational core — see ExactMath below.)
-
-WHAT'S NEW IN v5
-================
-  ▸ ExactMath
-      • isqrt    — Newton-Raphson integer square root
-      • ilog     — integer logarithm (no math.log)
-      • iceil_div— integer ceiling division
-      • sqrt_frac— Fraction → Fraction sqrt to N decimal digits (exact rational)
-      • newton_sqrt— Newton iteration on Fractions (configurable iterations)
-
-  ▸ ExactRoot (new symbolic class)
-      • Represents  coef · √radicand  exactly
-      • Normalises by extracting perfect-square factors from num & denom
-      • Multiplies/divides without floats; only collapses to a Fraction on demand
-
-  ▸ Float-free PhysicsALU
-      • Lorentz factor γ via 1 / √(1 − β²)  using ExactRoot
-      • Schwarzschild radius — exact
-      • Escape velocity     — ExactRoot
-      • Kinematic displacement — exact
-
-  ▸ Float-free Statistics
-      • mean / variance / stddev return Fractions; stddev is ExactRoot
-
-  ▸ Float-free Vector ops
-      • dot / cross — Fractions throughout
-      • magnitude — ExactRoot
-
-  ▸ Cross-engine reconciliation
-      • Single GolayCodeEngine class (best of GolaySelf + core.GolayCodeEngine):
-        full 4096-codeword table + lazy syndrome-table for weight-≤3 patterns
-      • Single LeechLatticeEngine (best of LeechSelf + core.LeechLatticeEngine):
-        expand_octad + symmetry_tax (with rebate) + ontological_health +
-        nearest_octad_idx + rank_by_stability
-      • Single MonsterGroup with 26 sporadics, MIN_REP, MOONSHINE
-      • Single BarnesWallEngine — generalised to ANY power-of-two ≥ 32
-        (BW256, BW512, BW1024 …)
-
-  ▸ TriadActivationEngine (lifted from core.py)
-      • Construction primitives D / X / N / J
-      • Atlas auto-seeded with 24 oscillatory objects + 26 sporadic anchors
-      • Triad ladder: Golay → Leech → Monster
-
-  ▸ UBPSourceCodeParticlePhysics
-      • 50-term π via continued fraction
-      • Full predictions atlas (alpha-inv, leptons, baryons, charm, bottom)
-      • Now uses Fraction-only arithmetic; floats only on output for legibility
-
-  ▸ Comprehensive multi-perspective test suite
-      • Codes (encode/decode/snap/octad enumeration)
-      • Lattices (norm², symmetry tax, ontological health)
-      • Sporadics (count, ordering, MIN_REP)
-      • Barnes-Wall (idempotency, decoder gain, dimensional scaling)
-      • ExactMath (isqrt, sqrt_frac, ExactRoot algebra)
-      • Physics ALU (relativistic + classical)
-      • Linear-algebra ALU (det 2×2, det 3×3)
-      • End-to-end router on 33 problem-set entries
-      • Stress / large-integer / fingerprint stability
-      • Cross-engine consistency
+WHAT'S NEW IN v5.4.0 (The Geometric Purity Update)
+==================================================
+  ▸ Pure Muon Projection
+      • Abandoned the linear approximation (206 + 12L).
+      • Muon mass ratio is now derived as a pure inverse projection of the 13-D Sink: 169 / w (or 13 / L).
+  ▸ Topological Gravity Derivation
+      • Eradicated the hardcoded empirical float for G_N.
+      • Gravitational constant G is now derived purely from the substrate's Entropic Wobble and Y-constant: (39/29) * (Y^18 / w).
+      • Holographic NRCI confirms Gravity operates in the Subliminal Entropic state (0.6168).
+  ▸ ExactMath & Float-Free Physics
+      • All core relativistic and kinematic equations remain strictly rational.
+================================================================================
+"""
 
 ARCHITECTURAL HONESTY
 =====================
@@ -1513,7 +1462,7 @@ class UBPSourceCodeParticlePhysics:
             self.L, self.L_s, self.U_e, self.Y, self.Y_INV, self.pi
         )
         alpha_inv     = F(220, 1) - F(83, 1) + L
-        muon_ratio    = F(206, 1) + 12 * L
+        muon_ratio    = F(169, 1) / self.wobble
         proton_ratio  = F(1836, 1) + 2 * L_s
         m_e_target    = F(51099895, 100000000)   # 0.51099895 MeV
         m_p           = proton_ratio * m_e_target
@@ -2181,7 +2130,7 @@ class PhysicsALU(NoiseALU):
         h    = 6.62607015 × 10⁻³⁴               J·s   (exact, SI 2019)
     """
 
-    G_N      = F(66743, 10**15)
+    G_N      = F(39, 29) * (_Y**18 / _UBP_CONSTS["WOBBLE"])
     C        = F(299792458, 1)
     C_SQ     = C * C
     H_PLANCK = F(662607015, 10**42)
