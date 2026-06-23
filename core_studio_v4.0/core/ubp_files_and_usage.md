@@ -1,6 +1,6 @@
 # Universal Binary Principle (UBP) — System Guide & Operational Manifest
 
-**Version:** 26.0 — Genesis-Tenacity Edition (May 2026)
+**Version:** 26.0 — Gravity Update Edition (23 June 2026)
 **Active Studio:** UBP Core Studio v7.2.0
 **Knowledge Base Standard:** v9.9 Ultra-Compact Columnar
 **Author:** Euan R. A. Craig, New Zealand
@@ -979,7 +979,8 @@ The system includes a "heartbeat" check that polls local ports to determine if t
 | :--- | :--- | :--- | :--- | :--- |
 | **Proton/Electron** | 1836.1520 | 1836.1527 | **0.0000%** | Stereoscopic (29/24) |
 | **Proton Mass (p⁺)** | 938.2717 MeV | 938.2720 MeV | **0.0000%** | Stereoscopic (29/24) |
-| **Muon/Electron** | 206.7547 | 206.7683 | **0.0066%** | Core Ratio |
+| **Muon/Electron** | 206.7075 | 206.7683 | **0.0294%** | Pure Inverse (13-D Sink) |
+| **Gravity (G)** | 6.6831e-11 | 6.6743e-11 | **0.1327%** | Topological Resonance |
 | **Alpha Inverse (1/α)** | 137.0629 | 137.0360 | **0.0196%** | Core Ratio |
 | **Top Quark mass** | 172,796.8 | 172,760.0 | **0.0214%** | Core Ratio |
 | **Neutron (n⁰)** | 939.5716 | 939.5650 | **0.0007%** | G13 Hybrid |
@@ -1118,6 +1119,7 @@ This is deterministic, float-free, and substrate-native. Formalized as `LAW_PRIM
 | **Apr 2026** | v7.2 Ultra-Compact Columnar Migration; Semantic Engine v8.0; UBP-Py VM `to_scene_3d()` |
 | **Apr 2026** | Digital Twin Physics Engine (external experiment) — Three.js, SPH, Topological Torque |
 | **May 2026** | Topological Tenacity Primality Engine absorbed into `ubp_unified_v5.py`; Genesis Swarm v25.0; workspace purification — 12 legacy scripts archived |
+| **June 2026** | v5.4.0 Geometric Purity Update — Muon and Gravity derived purely from substrate topology (169/w and Y^18/w); empirical hardcodes eradicated. |
 
 ---
 
