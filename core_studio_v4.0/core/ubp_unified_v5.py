@@ -1,10 +1,10 @@
 """
 ================================================================================
-UBP UNIFIED v5.4.0 — PURE GEOMETRIC PROJECTION EDITION (FLOAT-FREE CORE)
+UBP UNIFIED v5.4.0 — GRAVITY EDITION
 Note: Upgraded from v5.3 to eradicate Noumenal Leakage in fundamental constants.
 Includes ExactRoot.denest, AdaptiveManifold, and NeuralPatternDetector.
 ================================================================================
-Author  : E R A Craig / UBP Research Cortex
+Author  : E R A Craig, New Zealand
 Version : 5.4.0
 Date    : 23 June 2026
 
