@@ -8,11 +8,11 @@ license: Complete terms in LICENSE.txt
 *Sourced from: live execution (23 June 2026) + UBP_Master_Document.docx v1.8*
 *Edition: Gravity Update Edition*
 
-**Repository:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0`
-**Backbone script:** `core/ubp_unified_v5.py` (v5.4.0 on disk — 3,500 lines)
-**Detailed system instructions:** `core/ubp_files_and_usage.md`
-**Gravity study scripts:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/gravity`
-**Author:** E.R.A. Craig (DigitalEuan), Auckland, New Zealand
+* **Repository:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0`
+* **Backbone script:** `core/ubp_unified_v5.py` (v5.4.0 on disk — 3,500 lines)
+* **Detailed system instructions:** `core/ubp_files_and_usage.md`
+* **Gravity study scripts:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/gravity`
+* **Author:** E.R.A. Craig (DigitalEuan), Auckland, New Zealand
 
 ---
 
