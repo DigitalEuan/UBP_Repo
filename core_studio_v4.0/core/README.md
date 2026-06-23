@@ -1,9 +1,9 @@
-# UBP Core Studio v7.2 — `/core/` Directory Reference
+# UBP Core Studio v7.2 — Directory Reference
 
 **Author:** Euan R. A. Craig, New Zealand
 **Version:** 7.2.0 (Genesis Edition)
 **Date:** 27 May 2026
-**Scope:** This document is the per-script reference for everything inside `core_studio_v4.0/core/`.
+**Scope:** This document is the per-script reference for everything inside `core_studio_v4.0/`.
 
 > For the high-level overview of what UBP **is**, see the parent [`README.md`](../README.md).
 > For day-to-day operational SOPs and the UBP-Py language reference, see [`ubp_files_and_usage.md`](ubp_files_and_usage.md).
@@ -13,7 +13,7 @@
 
 ## 0. How to Read This Document
 
-The `/core/` directory contains the live runtime of UBP Core Studio v7.2. Files are grouped into the four architectural layers introduced in the parent README, plus a support tier:
+The Workspace '/' directory contains the live runtime of UBP Core Studio v7.2. Files are grouped into the four architectural layers introduced in the parent README, plus a support tier:
 
 ```
 LAYER 4 — COGNITIVE ORCHESTRATION
