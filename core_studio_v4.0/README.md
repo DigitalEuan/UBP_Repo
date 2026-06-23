@@ -4,10 +4,10 @@
 [![Status](https://img.shields.io/badge/Status-Hardened-green.svg)]()
 [![Core](https://img.shields.io/badge/Core-Float--Free-blue.svg)]()
 
-**Author:** Euan R. A. Craig, New Zealand
-**Version:** 7.2.0 (Genesis Edition)
-**Date:** 27 May 2026
-**License / Status:** Experimental research platform — *please double-check results against your own work before drawing conclusions.*
+* **Author:** Euan R. A. Craig, New Zealand
+* **Version:** 7.2.0 (Gravity Edition) running ubp_unified_v5.4.0
+* **Date:** 23 June 2026
+* **License / Status:** Experimental research platform — *please double-check results against your own work before drawing conclusions.*
 
 | Resource | Link |
 | :--- | :--- |
