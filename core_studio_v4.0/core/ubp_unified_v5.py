@@ -27,8 +27,6 @@ WHAT'S NEW IN v5.4.0 (The Geometric Purity Update)
   ▸ ExactMath & Float-Free Physics
       • All core relativistic and kinematic equations remain strictly rational.
 ================================================================================
-"""
-
 ARCHITECTURAL HONESTY
 =====================
   • Two ALU modes (unchanged): SM (Substrate-Mediated)  /  SV (Substrate-Verified)
