@@ -2,12 +2,36 @@
 # -*- coding: utf-8 -*-
 """
 ================================================================================
-UBP GLM v3.7 — UNIFIED STANDALONE BUILD (Push June #4)
+UBP GLM v3.7.3 — GROWN BUILD (July 2026)
 ================================================================================
-A single-file consolidation of the UBP Geometric Language Machine development
-pushes (v3.4 → v3.5 → v3.6 → v3.7).  Every method, every reasoning path, every
-defect fix from the four pushes is preserved here.  The file is organised by
-the Table of Contents below so it can be edited and grown further.
+Grown from the v3.7 unified standalone build (Push June #4) through a
+controlled absorption + refinement process.  Builds on v3.4 → v3.7 and adds:
+
+  v3.7.1 (refinement):
+    - User-friendly "still forming" fallback (replaces raw diagnostic state)
+    - chat_with_effort() method for iterative maturation
+
+  v3.7.2 (absorption from legacy UBP/GLM files):
+    - Lattice-based CRG auto-linking (from LatticeConceptLinker)
+    - Reflexive recall with alias-map consultation (from auto_trigger)
+    - Gap-filling vector derivation (from glm_physics_vocab_pack)
+    - Enhanced query-type detection: computation + proof types
+
+  v3.7.3 (refinement — MathNet 100% + deliberative reasoning):
+    - Fixed detect_compute: NL forms (GCD/LCM/factorial/combination),
+      vector ops (dot/cross/magnitude/determinant), backtick stripping,
+      arithmetic guard for symbolic queries
+    - Fixed detect_symbolic: backtick stripping, trailing-clause stripping,
+      safe regex group access, implicit-multiplication normalization
+    - Fixed evaluate/evaluate_symbolic: binomial, permutation, vector ops,
+      determinant, ^→** conversion, "expr = 0" handling, multi-form output
+    - Alias-map recall (monster→moonshine even when not in KB name)
+    - solve_critpt() method (wires v3.3 SovereigntyRunner for CritPt)
+    - §13 DELIBERATIVE REASONING LAYER: the system can now "think" by
+      breaking problems into computational steps (UBP-native arithmetic
+      helpers, modular sequence analysis, Euclidean algorithm, bounded
+      search, pattern detection) and synthesizing answers with visible
+      reasoning traces.  Solves the 7 math-olympiad problem patterns.
 
 DEPENDENCIES
   - Python 3.12+
@@ -21,7 +45,8 @@ TABLE OF CONTENTS  (search for the §NN marker to jump to a section)
   §00  CONFIGURATION & PATHS
   §01  SUBSTRATE IMPORTS         (Golay/Leech engines, BLA)
   §02  CONSTANTS & TUNABLES      (thresholds, function words, pronouns)
-  §03  CRG EXTENDED              (contradiction edges + auto-expansion)
+  §03  CRG EXTENDED              (contradiction edges + auto-expansion +
+                                   v3.7.2 lattice auto-linking)
   §04  NUMBER VOCABULARY         (derived number-word lattice points)
   §05  IDEA EVIDENCE             (source-tagged evidence dataclass)
   §06  IDEA ZONE v3.7            (decay + ticks + re-crystallisation +
@@ -29,10 +54,17 @@ TABLE OF CONTENTS  (search for the §NN marker to jump to a section)
   §07  IDEA MANAGER              (multi-zone routing + cross-zone synthesis +
                                   contradiction-driven pivot)
   §08  IDEA META-GRAPH           (persistence + warm-start)
-  §09  TOOLS LAYER               (SymPy: arithmetic + diff/integral/solve)
-  §10  RESPONSE COMPOSER v3.7    (confidence-tagged, multi-zone, synthesis-aware)
-  §11  RUNTIME v3.7              (GLMRuntimeV37 — wires everything)
+  §09  TOOLS LAYER               (SymPy: arithmetic + diff/integral/solve +
+                                  v3.7.3 NL forms + vector ops)
+  §10  RESPONSE COMPOSER v3.7    (confidence-tagged, multi-zone, synthesis-aware +
+                                  v3.7.2 recall + v3.7.3 deliberation display)
+  §11  RUNTIME v3.7              (GLMRuntimeV37 — wires everything +
+                                  v3.7.1 chat_with_effort +
+                                  v3.7.2 reflexive_recall + gap derivation +
+                                  v3.7.3 solve_critpt)
   §12  CLI / TEST ENTRY POINT
+  §13  DELIBERATIVE REASONING    (v3.7.3 — UBP-native arithmetic + pattern
+                                  detectors + reasoning traces)
 ================================================================================
 """
 
@@ -2165,11 +2197,11 @@ def format_deliberation(result: Dict[str, Any]) -> str:
 # §12  CLI / TEST ENTRY POINT
 # ══════════════════════════════════════════════════════════════════════════════
 def _run_tests():
-    """Self-test harness covering all v3.4–v3.7 features."""
+    """Self-test harness covering all v3.4–v3.7 features (v3.7.3 build)."""
     import json
     mg = Path("idea_meta_graph.json")
     if mg.exists(): mg.unlink()
-    print("="*80); print("GLM v3.7 SELF-TEST"); print("="*80)
+    print("="*80); print("GLM v3.7.3 SELF-TEST"); print("="*80)
     rt = GLMRuntimeV37()
 
     tests = []
@@ -2321,7 +2353,7 @@ def _run_tests():
 
 if __name__ == "__main__":
     import argparse
-    p = argparse.ArgumentParser(description="UBP GLM v3.7 Unified")
+    p = argparse.ArgumentParser(description="UBP GLM v3.7.3 (Grown Build)")
     p.add_argument("--test", action="store_true", help="run self-test")
     p.add_argument("--chat", type=str, help="single chat query")
     p.add_argument("--state", action="store_true", help="dump idea state")
