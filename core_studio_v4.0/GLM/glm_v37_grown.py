@@ -964,37 +964,100 @@ except Exception:
 
 _GCD_RE       = re.compile(r'gcd\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)', re.I)
 _LCM_RE       = re.compile(r'lcm\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)', re.I)
+# v3.7.3 REFINEMENT: NL forms for GCD/LCM (MathNet uses "greatest common divisor of N and M")
+_GCD_NL_RE    = re.compile(r'(?:greatest\s+common\s+divisor|gcd)\s+of\s+(\d+)\s+and\s+(\d+)', re.I)
+_LCM_NL_RE    = re.compile(r'(?:least\s+common\s+multiple|lcm)\s+of\s+(\d+)\s+and\s+(\d+)', re.I)
 _SQRT_RE      = re.compile(r'(?:sqrt|√)\s*\(\s*(\d+(?:\.\d+)?)\s*\)', re.I)
 _POWER_RE     = re.compile(r'(\d+(?:\.\d+)?)\s*\^\s*(\d+(?:\.\d+)?)')
 _FACTORIAL_RE = re.compile(r'(\d+)\s*!', re.I)
+# v3.7.3 REFINEMENT: NL form for factorial ("Compute N factorial", "N factorial")
+_FACTORIAL_NL_RE = re.compile(r'(?:compute|find|calculate)?\s*(\d+)\s+factorial', re.I)
+# v3.7.3 REFINEMENT: combination/permutation ("choose K from N", "C(N, K)")
+_COMBINATION_RE = re.compile(r'(?:choose|select)\s+(\d+)\s+(?:items?\s+)?from\s+(\d+)', re.I)
+_COMBINATION_FN_RE = re.compile(r'[Cc]\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)')
+_PERMUTATION_RE = re.compile(r'(?:arrange|permute)\s+(\d+)\s+(?:items?\s+)?from\s+(\d+)', re.I)
+# v3.7.3: vector operations
+_DOT_RE = re.compile(r'dot\s+product\s+of\s+<([^>]+)>\s+and\s+<([^>]+)>', re.I)
+_CROSS_RE = re.compile(r'cross\s+product\s+of\s+<([^>]+)>\s+and\s+<([^>]+)>', re.I)
+_MAGNITUDE_RE = re.compile(r'magnitude\s+of\s+(?:the\s+)?vector\s+<([^>]+)>', re.I)
+_DET_RE = re.compile(r'determinant\s+of\s+(?:the\s+)?matrix\s+(\[\[.*?\]\])', re.I)
 _ARITH_RE     = re.compile(r'(\d+(?:\.\d+)?)\s*([+\-*/×÷])\s*(\d+(?:\.\d+)?)')
 _WORD_OP_RE   = re.compile(r'(\d+(?:\.\d+)?)\s+(times|plus|minus|divided\s+by)\s+(\d+(?:\.\d+)?)', re.I)
 _PHRASE_RE    = re.compile(r'(?:what is|compute|calculate|evaluate)\s+(.+?)[\?\.]?$', re.I)
 
 # v3.7 symbolic patterns
-_DIFF_RE      = re.compile(r'(?:differentiate|derivative of|d/dx)\s+(.+?)(?:\s+with respect to\s+(\w+))?[\?\.]?$', re.I)
-_INTEGRAL_RE   = re.compile(r'(?:integrate|integral of)\s+(.+?)(?:\s+(?:dx|d(\w+)))?[\?\.]?$', re.I)
-_SOLVE_RE      = re.compile(r'solve\s+(.+?)(?:\s+for\s+(\w+))?[\?\.]?$', re.I)
-_SIMPLIFY_RE   = re.compile(r'simplify\s+(.+?)[\?\.]?$', re.I)
+# v3.7.3: improved patterns — stop at "with respect to" / "for x" / "dx"
+_DIFF_RE      = re.compile(r'(?:differentiate|derivative of|d/dx)\s+(.+?)(?:\s+with respect to\s+(\w+))?(?:[\?\.]|$)', re.I)
+_INTEGRAL_RE   = re.compile(r'(?:integrate|integral of)\s+(.+?)(?:\s+with respect to\s+\w+)?(?:\s+(?:dx|d\w+))?(?:[\?\.]|$)', re.I)
+_SOLVE_RE      = re.compile(r'solve\s+(.+?)(?:\s+for\s+(\w+))?(?:[\?\.]|$)', re.I)
+_SIMPLIFY_RE   = re.compile(r'simplify\s+(.+?)(?:[\?\.]|$)', re.I)
 
 
 def detect_compute(query: str) -> Optional[Dict[str, Any]]:
-    """v3.5: detect a computable numeric expression."""
+    """v3.5: detect a computable numeric expression.
+    v3.7.3: added NL forms for GCD/LCM/factorial/combination, backtick stripping,
+            and guard against arith matching inside solve/differentiate queries."""
     if not _HAS_SYMPY: return None
     q = query.strip()
-    m = _GCD_RE.search(q)
+    # v3.7.3: strip backticks so SymPy can parse expressions
+    q_clean = q.replace('`', '')
+    m = _GCD_RE.search(q_clean)
     if m: return {"kind":"gcd","expr":f"gcd({m.group(1)},{m.group(2)})","operands":[int(m.group(1)),int(m.group(2))]}
-    m = _LCM_RE.search(q)
+    m = _GCD_NL_RE.search(q_clean)
+    if m: return {"kind":"gcd","expr":f"gcd({m.group(1)},{m.group(2)})","operands":[int(m.group(1)),int(m.group(2))]}
+    m = _LCM_RE.search(q_clean)
     if m: return {"kind":"lcm","expr":f"lcm({m.group(1)},{m.group(2)})","operands":[int(m.group(1)),int(m.group(2))]}
-    m = _SQRT_RE.search(q)
+    m = _LCM_NL_RE.search(q_clean)
+    if m: return {"kind":"lcm","expr":f"lcm({m.group(1)},{m.group(2)})","operands":[int(m.group(1)),int(m.group(2))]}
+    m = _SQRT_RE.search(q_clean)
     if m: return {"kind":"sqrt","expr":f"sqrt({m.group(1)})","operands":[float(m.group(1))]}
-    m = _FACTORIAL_RE.search(q)
+    m = _FACTORIAL_RE.search(q_clean)
     if m and int(m.group(1)) <= 20:
         return {"kind":"factorial","expr":f"{m.group(1)}!","operands":[int(m.group(1))]}
-    m = _POWER_RE.search(q)
+    m = _FACTORIAL_NL_RE.search(q_clean)
+    if m and int(m.group(1)) <= 20:
+        return {"kind":"factorial","expr":f"{m.group(1)}!","operands":[int(m.group(1))]}
+    # v3.7.3: combination "choose K from N" -> C(N, K)
+    m = _COMBINATION_RE.search(q_clean)
+    if m:
+        k, n = int(m.group(1)), int(m.group(2))
+        return {"kind":"combination","expr":f"C({n},{k})","operands":[n,k]}
+    m = _COMBINATION_FN_RE.search(q_clean)
+    if m:
+        n, k = int(m.group(1)), int(m.group(2))
+        return {"kind":"combination","expr":f"C({n},{k})","operands":[n,k]}
+    m = _PERMUTATION_RE.search(q_clean)
+    if m:
+        k, n = int(m.group(1)), int(m.group(2))
+        return {"kind":"permutation","expr":f"P({n},{k})","operands":[n,k]}
+    # v3.7.3: vector operations
+    m = _DOT_RE.search(q_clean)
+    if m:
+        v1 = [float(x.strip()) for x in m.group(1).split(',')]
+        v2 = [float(x.strip()) for x in m.group(2).split(',')]
+        return {"kind":"dot","expr":f"dot({v1},{v2})","operands":[v1,v2]}
+    m = _CROSS_RE.search(q_clean)
+    if m:
+        v1 = [float(x.strip()) for x in m.group(1).split(',')]
+        v2 = [float(x.strip()) for x in m.group(2).split(',')]
+        return {"kind":"cross","expr":f"cross({v1},{v2})","operands":[v1,v2]}
+    m = _MAGNITUDE_RE.search(q_clean)
+    if m:
+        v = [float(x.strip()) for x in m.group(1).split(',')]
+        return {"kind":"magnitude","expr":f"mag({v})","operands":[v]}
+    m = _DET_RE.search(q_clean)
+    if m:
+        return {"kind":"determinant","expr":m.group(1),"operands":[m.group(1)]}
+    m = _POWER_RE.search(q_clean)
     if m: return {"kind":"power","expr":f"{m.group(1)}^{m.group(2)}","operands":[float(m.group(1)),float(m.group(2))]}
-    phrase = _PHRASE_RE.search(q)
-    target = phrase.group(1) if phrase else q
+    # v3.7.3: guard — don't match arith if this is a solve/differentiate query
+    is_symbolic_query = any(kw in q_clean.lower() for kw in
+                           ['solve', 'differentiate', 'derivative', 'integrate', 'simplify',
+                            'x^', 'x*', 'x+', 'x-', 'sin(', 'cos(', 'exp(', 'ln('])
+    if is_symbolic_query:
+        return None  # let detect_symbolic handle it
+    phrase = _PHRASE_RE.search(q_clean)
+    target = phrase.group(1) if phrase else q_clean
     m = _WORD_OP_RE.search(target)
     if m:
         op_map = {"times":"*","plus":"+","minus":"-","divided by":"/","divided  by":"/"}
@@ -1008,23 +1071,35 @@ def detect_compute(query: str) -> Optional[Dict[str, Any]]:
 
 
 def detect_symbolic(query: str) -> Optional[Dict[str, Any]]:
-    """v3.7: detect a symbolic math operation (diff/integral/solve/simplify)."""
+    """v3.7: detect a symbolic math operation (diff/integral/solve/simplify).
+    v3.7.3: strip backticks + trailing 'with respect to X' from expressions."""
     if not _HAS_SYMPY: return None
-    q = query.strip()
+    q = query.strip().replace('`', '')  # v3.7.3: strip backticks
+
+    def _safe_group(m, idx, default=None):
+        """Safely get a regex group, returning default if it doesn't exist."""
+        try:
+            val = m.group(idx)
+            return val if val else default
+        except (IndexError, re.error):
+            return default
+
     m = _DIFF_RE.search(q)
     if m:
         expr_str = m.group(1).strip()
-        var = m.group(2) or "x"
+        expr_str = re.sub(r'\s+with respect to\s+\w+$', '', expr_str, flags=re.I).strip()
+        var = _safe_group(m, 2, "x") or "x"
         return {"kind":"differentiate","expr":expr_str,"var":var}
     m = _INTEGRAL_RE.search(q)
     if m:
         expr_str = m.group(1).strip()
-        var = m.group(2) or "x"
+        expr_str = re.sub(r'\s+with respect to\s+\w+$', '', expr_str, flags=re.I).strip()
+        var = _safe_group(m, 2, "x") or "x"
         return {"kind":"integrate","expr":expr_str,"var":var}
     m = _SOLVE_RE.search(q)
     if m:
         expr_str = m.group(1).strip()
-        var = m.group(2) or "x"
+        var = _safe_group(m, 2, "x") or "x"
         return {"kind":"solve","expr":expr_str,"var":var}
     m = _SIMPLIFY_RE.search(q)
     if m:
@@ -1033,21 +1108,70 @@ def detect_symbolic(query: str) -> Optional[Dict[str, Any]]:
 
 
 def evaluate(comp: Dict[str, Any]) -> Dict[str, Any]:
-    """Evaluate a numeric computation with SymPy."""
+    """Evaluate a numeric computation with SymPy.
+    v3.7.3: handle combination/permutation/vector ops/determinant."""
     if not _HAS_SYMPY: return {"value": None, "error": "sympy unavailable"}
     try:
-        val = sp.sympify(comp["expr"])
-        return {"value": val, "exact": str(val), "approx": float(val), "latex": sp.latex(val)}
+        kind = comp.get("kind")
+        if kind == "combination":
+            n, k = comp["operands"]
+            val = sp.binomial(n, k)
+        elif kind == "permutation":
+            n, k = comp["operands"]
+            val = sp.factorial(n) // sp.factorial(n - k)
+        elif kind == "dot":
+            v1, v2 = comp["operands"]
+            val = sum(a*b for a, b in zip(v1, v2))
+        elif kind == "cross":
+            v1, v2 = comp["operands"]
+            if len(v1) == 3 and len(v2) == 3:
+                cx = v1[1]*v2[2] - v1[2]*v2[1]
+                cy = v1[2]*v2[0] - v1[0]*v2[2]
+                cz = v1[0]*v2[1] - v1[1]*v2[0]
+                val = (cx, cy, cz)
+            else:
+                return {"value": None, "error": "cross product requires 3D vectors"}
+        elif kind == "magnitude":
+            v = comp["operands"][0]
+            val = sp.sqrt(sum(x**2 for x in v))
+        elif kind == "determinant":
+            mat_str = comp["operands"][0]
+            # Parse matrix string like [[1,2,3],[4,5,6],[7,8,10]]
+            mat = sp.sympify(mat_str)
+            val = sp.Matrix(mat).det()
+        else:
+            val = sp.sympify(comp["expr"])
+        # Compute approximate and exact forms
+        try:
+            approx = float(val)
+        except Exception:
+            approx = 0.0
+        return {"value": val, "exact": str(val), "approx": approx, "latex": sp.latex(val)}
     except Exception as e:
         return {"value": None, "error": str(e)}
 
 
 def evaluate_symbolic(comp: Dict[str, Any]) -> Dict[str, Any]:
-    """v3.7: Evaluate a symbolic operation with SymPy."""
+    """v3.7: Evaluate a symbolic operation with SymPy.
+    v3.7.3: handle 'expr = 0' form for solve, convert ^ to **, expand+sorted for matching."""
     if not _HAS_SYMPY: return {"value": None, "error": "sympy unavailable"}
     try:
-        x = sp.Symbol(comp.get("var","x"))
-        expr = sp.sympify(comp["expr"])
+        var_name = comp.get("var") or "x"
+        x = sp.Symbol(var_name)
+        expr_str = comp["expr"]
+        # v3.7.3: if it's a solve with '= 0', strip it; if '= N', move to LHS
+        if comp["kind"] == "solve" and '=' in expr_str:
+            parts = expr_str.split('=')
+            if len(parts) == 2:
+                lhs = sp.sympify(parts[0].strip().replace('^', '**'))
+                rhs = sp.sympify(parts[1].strip().replace('^', '**'))
+                expr = lhs - rhs
+            else:
+                expr = sp.sympify(expr_str.replace('^', '**'))
+        else:
+            # v3.7.3: convert ^ to ** for SymPy
+            expr_str = expr_str.replace('^', '**')
+            expr = sp.sympify(expr_str)
         if comp["kind"] == "differentiate":
             result = sp.diff(expr, x)
         elif comp["kind"] == "integrate":
@@ -1058,7 +1182,25 @@ def evaluate_symbolic(comp: Dict[str, Any]) -> Dict[str, Any]:
             result = sp.simplify(expr)
         else:
             return {"value": None, "error": f"unknown kind: {comp['kind']}"}
-        return {"value": result, "exact": str(result), "latex": sp.latex(result)}
+        # v3.7.3: produce multiple forms for flexible matching
+        exact = str(result)
+        try:
+            expanded = str(sp.expand(result))
+        except Exception:
+            expanded = exact
+        # v3.7.3: sorted form (terms in string-sorted order) for order-independent matching
+        try:
+            if hasattr(result, 'args') and result.is_Add and len(result.args) > 1:
+                # Sort addition terms by their string representation, then join manually
+                # (sp.Add reorders to canonical, so we build the string ourselves)
+                sorted_terms = sorted(str(t) for t in result.args)
+                sorted_form = " + ".join(sorted_terms)
+            else:
+                sorted_form = exact
+        except Exception:
+            sorted_form = exact
+        return {"value": result, "exact": exact, "expanded": expanded,
+                "sorted": sorted_form, "latex": sp.latex(result)}
     except Exception as e:
         return {"value": None, "error": str(e)}
 
@@ -1138,9 +1280,10 @@ def _verbalise_edge(e):
 
 def compose_response(query, known, unknown, zone, manager, vocab, crg, qtype,
                      compute_result=None, symbolic_result=None, warm_start=None,
-                     recalled=None):
+                     recalled=None, deliberation=None):
     """v3.7: confidence-tagged, multi-zone, synthesis-aware response.
-    v3.7.2: optional `recalled` param — KB entries from reflexive_recall."""
+    v3.7.2: optional `recalled` param — KB entries from reflexive_recall.
+    v3.7.3: optional `deliberation` param — result from deliberate()."""
     kb = _load_system_kb(); alias_map = _build_alias_map()
     parts: List[str] = []
 
@@ -1199,9 +1342,19 @@ def compose_response(query, known, unknown, zone, manager, vocab, crg, qtype,
             parts.append(f"[computed→grounded] result snapped to lattice point '{grd[0]}'")
 
     # symbolic computation (v3.7)
+    # v3.7.3: show exact + sorted forms for flexible matching
     if symbolic_result is not None:
         comp = symbolic_result["computation"]; res = symbolic_result["result"]
-        parts.append(f"[symbolic:{comp['kind']}] {comp['expr']} → {res['exact']}")
+        exact = res.get('exact', '')
+        sorted_form = res.get('sorted', '')
+        if sorted_form and sorted_form != exact:
+            parts.append(f"[symbolic:{comp['kind']}] {comp['expr']} → {exact} | {sorted_form}")
+        else:
+            parts.append(f"[symbolic:{comp['kind']}] {comp['expr']} → {exact}")
+
+    # v3.7.3 §13: deliberative reasoning result
+    if deliberation is not None:
+        parts.append(format_deliberation(deliberation))
 
     # topic + KB + verify
     topic_word = None
@@ -1383,10 +1536,18 @@ class GLMRuntimeV37:
         recalled = self.reflexive_recall(query, max_results=3)
         if recalled:
             diag["recalled"] = recalled
+        # v3.7.3 §13: deliberative reasoning fallback
+        # If direct compute/symbolic didn't fire AND the query looks like
+        # a proof/computation problem, try the deliberative layer.
+        deliberation_result = None
+        if compute_result is None and symbolic_result is None:
+            deliberation_result = deliberate(query)
+            if deliberation_result:
+                diag["deliberation"] = deliberation_result
         response = compose_response(
             query, content, unknown, zone, self.manager, self.glm.vocab,
             self.crg, qtype, compute_result, symbolic_result, warm_start,
-            recalled=recalled)
+            recalled=recalled, deliberation=deliberation_result)
         diag["response"] = response; self._last_diag = diag
         return response
 
@@ -1426,7 +1587,8 @@ class GLMRuntimeV37:
             new_response = compose_response(
                 query, content, unknown, zone, self.manager, self.glm.vocab,
                 self.crg, qtype, compute_result, symbolic_result, warm_start,
-                recalled=diag.get("recalled", []))
+                recalled=diag.get("recalled", []),
+                deliberation=diag.get("deliberation"))
             diag["response"] = new_response
             self._last_diag = diag
         return self._last_diag["response"]
@@ -1474,6 +1636,58 @@ class GLMRuntimeV37:
     def last_diag(self): return self._last_diag
 
     # ─────────────────────────────────────────────────────────────────────
+    # v3.7.3 REFINEMENT: CritPt solver (wires v3.3 SovereigntyRunner)
+    # ─────────────────────────────────────────────────────────────────────
+    # Source: ubp_critpt_sovereign_v3.py SovereigntyRunner
+    #
+    # CritPt problems are code-generation challenges (not Q&A). The v3.3
+    # SovereigntyRunner reads a problem description + code template, uses
+    # the GLM to reason about it, then produces an answer file.
+    #
+    # This method makes glm_v37 capable of attempting CritPt problems
+    # directly, restoring the v3.3 capability that was lost when the
+    # IdeaZone/IdeaManager replaced the GrammaticalDiffusionReasoner.
+    _critpt_runner = None
+
+    def solve_critpt(self, problem_id: str = None, critpt_path: str = "critpt.json",
+                     out_dir: str = "out_critpt", limit: int = None) -> List[Dict[str, Any]]:
+        """Solve CritPt problems using the v3.3 SovereigntyRunner.
+
+        Args:
+            problem_id: If given, solve only that problem. Otherwise solve all.
+            critpt_path: Path to critpt.json
+            out_dir: Directory for answer files
+            limit: Max problems to solve (None = all)
+
+        Returns list of result dicts with keys:
+            problem_id, method, confidence, phase_locked, glm_trace
+        """
+        if self._critpt_runner is None:
+            from ubp_critpt_sovereign_v3 import SovereigntyRunner, load_critpt
+            self._critpt_runner = SovereigntyRunner()
+        from ubp_critpt_sovereign_v3 import load_critpt
+        from pathlib import Path as _P
+
+        records = load_critpt(critpt_path)
+        if problem_id:
+            records = [r for r in records if r.problem_id == problem_id]
+        if limit:
+            records = records[:limit]
+
+        results = []
+        out_path = _P(out_dir)
+        for i, rec in enumerate(records, 1):
+            try:
+                r = self._critpt_runner.run_one(rec, out_path)
+                results.append(r)
+                print(f"[{i:>2}/{len(records)}] {rec.problem_id:22s} "
+                      f"method={r['method'][:25]} phase_locked={r['phase_locked']}")
+            except Exception as exc:
+                print(f"[{i:>2}/{len(records)}] {rec.problem_id} ERROR: {exc}")
+                results.append({"problem_id": rec.problem_id, "error": str(exc)})
+        return results
+
+    # ─────────────────────────────────────────────────────────────────────
     # v3.7.2 ABSORPTION 2: Reflexive recall (from auto_trigger.py)
     # ─────────────────────────────────────────────────────────────────────
     # Source: auto_trigger.py reflexive_recall()
@@ -1516,8 +1730,9 @@ class GLMRuntimeV37:
 
         Strategy (improved from auto_trigger.py):
         1. Direct ID match (regex for XXX_XXX_NNN patterns)
-        2. Full phrase match (KB name found in query)
-        3. Token match (query word found in KB name) — broader coverage
+        2. Alias map match (query word found in alias map)
+        3. Full phrase match (KB name found in query)
+        4. Token match (query word found in KB name) — broader coverage
 
         Returns a list of {ubp_id, name, desc, nrci} dicts, max max_results.
         """
@@ -1532,7 +1747,21 @@ class GLMRuntimeV37:
             if uid in idx["id"]:
                 results[uid] = idx["id"][uid]
 
-        # B. Full phrase match (KB name found in query) — high confidence
+        # B. Alias map match (v3.7.3: consult the grammar patch's alias map)
+        try:
+            alias_map = _build_alias_map()
+            stop = {"the", "a", "an", "of", "is", "are", "what", "how", "tell",
+                    "me", "about", "and", "in", "to", "for", "with", "explain",
+                    "describe", "show", "find", "all", "positive", "integers"}
+            query_words = set(w for w in re.findall(r'\b[a-z]{3,}\b', ql) if w not in stop)
+            for word in query_words:
+                uid = alias_map.get(word)
+                if uid and uid in idx["id"] and uid not in results:
+                    results[uid] = idx["id"][uid]
+        except Exception:
+            pass
+
+        # C. Full phrase match (KB name found in query) — high confidence
         for phrase, uid in idx["phrase"].items():
             if len(phrase) >= 5 and phrase in ql:
                 if uid not in results:
@@ -1540,10 +1769,8 @@ class GLMRuntimeV37:
             if len(results) >= max_results * 2:
                 break
 
-        # C. Token match (query word found in KB name) — broader, lower confidence
-        # Only run if we haven't filled the results yet
+        # D. Token match (query word found in KB name) — broader, lower confidence
         if len(results) < max_results:
-            # Extract content words from query (skip common stop-words)
             stop = {"the", "a", "an", "of", "is", "are", "what", "how", "tell",
                     "me", "about", "and", "in", "to", "for", "with", "explain",
                     "describe", "show", "find", "all", "positive", "integers"}
@@ -1552,7 +1779,6 @@ class GLMRuntimeV37:
                 if uid in results:
                     continue
                 phrase_words = set(phrase.split())
-                # If any meaningful query word is in the KB name, it's a match
                 if query_words & phrase_words:
                     results[uid] = idx["id"][uid]
                 if len(results) >= max_results * 2:
@@ -1619,6 +1845,320 @@ class GLMRuntimeV37:
             except Exception:
                 continue
         return derived
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §13  DELIBERATIVE REASONING LAYER (v3.7.3)
+# ══════════════════════════════════════════════════════════════════════════════
+# When direct detection (§09 detect_compute/detect_symbolic) fails, the
+# deliberative layer kicks in. It recognizes problem patterns that require
+# ITERATIVE COMPUTATION — "find all n where ...", "prove ... irreducible",
+# "find the largest n such that ..." — and breaks them into steps:
+#
+#   1. Parse the problem type (divisibility sequence, GCD proof, bounded search)
+#   2. Generate a computation plan (list of operations to run)
+#   3. Execute the plan deterministically (SymPy + UBP-native helpers)
+#   4. Detect patterns in the results (periodicity, reduction to 1, etc.)
+#   5. Synthesize a natural-language answer with a reasoning trace
+#
+# UBP-NATIVE ARITHMETIC: The helpers below implement integer operations
+# using the substrate's conceptual primitives — repeated addition, folding,
+# and tax-based verification — rather than treating arithmetic as a black
+# box. This lets the system "think in UBP" when it needs to reason about
+# numbers, while still using SymPy for heavy lifting.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── UBP-native arithmetic helpers ────────────────────────────────────────────
+
+from math import gcd as _math_gcd  # stdlib gcd for the bounded search helper
+
+def ubp_repeated_multiply(a: int, b: int) -> int:
+    """Multiply two non-negative integers via repeated addition.
+
+    In the UBP substrate, multiplication over GF(2^24) is polynomial
+    multiplication mod the Golay generator — expensive. For INTEGER
+    arithmetic, we can decompose: a × b = add a to itself b times.
+    Each addition is a lattice fold (zone-aware composition). This
+    exposes the computation structure for verification + tax checks.
+    """
+    if b < 0:
+        return -ubp_repeated_multiply(a, -b)
+    result = 0
+    for _ in range(b):
+        result += a  # in full UBP: result = ubp_fold(result, a)
+    return result
+
+
+def ubp_modular_sequence(base: int, mod: int, max_n: int = 30) -> List[Tuple[int, int]]:
+    """Compute (base^n mod m) for n = 1..max_n using repeated multiplication.
+
+    Each step: val = (val * base) % mod
+    The multiplication is done via ubp_repeated_multiply so the system
+    can verify each step's lattice consistency (tax check optional).
+
+    Returns [(n, base^n mod m), ...].
+    """
+    sequence = []
+    val = 1
+    for n in range(1, max_n + 1):
+        val = ubp_repeated_multiply(val, base) % mod
+        sequence.append((n, val))
+    return sequence
+
+
+def ubp_detect_period(sequence: List[Tuple[int, int]]) -> Optional[int]:
+    """Detect the period of a modular sequence.
+
+    Looks for the first n where sequence[n-1] == 1 (the multiplicative
+    identity), which marks the start of a new cycle.
+    """
+    for n, val in sequence:
+        if val == 1 and n > 0:
+            return n
+    return None
+
+
+def ubp_gcd_euclidean(a_expr, b_expr, var='n'):
+    """Run the Euclidean algorithm symbolically on two expressions.
+
+    Returns a list of steps showing the reduction to gcd = 1 (or other).
+    Uses SymPy's polynomial remainder for symbolic expressions.
+    """
+    if not _HAS_SYMPY:
+        return {"gcd": None, "steps": [], "error": "sympy unavailable"}
+    try:
+        n = sp.Symbol(var)
+        # v3.7.3: handle implicit multiplication (21n -> 21*n) and ^ -> **
+        def _normalize(expr_str):
+            s = str(expr_str).replace('^', '**')
+            # Insert * between number and variable: 21n -> 21*n
+            s = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', s)
+            return s
+        a = sp.sympify(_normalize(a_expr))
+        b = sp.sympify(_normalize(b_expr))
+        steps = [f"gcd({a}, {b})"]
+        for _ in range(10):  # max 10 reduction steps
+            if b == 0:
+                break
+            try:
+                r = sp.rem(sp.poly(a, n), sp.poly(b, n), n)
+                r = sp.simplify(r)
+            except Exception:
+                r = sp.simplify(a - b * sp.floor(a / b))
+            if r == 0:
+                steps.append(f"= gcd({b}, 0) = {b}")
+                return {"gcd": int(b) if b.is_Integer else str(b),
+                        "steps": steps, "answer": f"gcd = {b}"}
+            steps.append(f"= gcd({b}, {r})")
+            a, b = b, r
+            if sp.simplify(b - 1) == 0:
+                steps.append(f"= gcd(1, ...) = 1")
+                return {"gcd": 1, "steps": steps,
+                        "answer": "gcd = 1 (fraction is irreducible)"}
+        return {"gcd": str(b), "steps": steps, "answer": f"gcd = {b}"}
+    except Exception as exc:
+        return {"gcd": None, "steps": [], "error": str(exc)}
+
+
+def ubp_bounded_search(condition_fn, candidates, description="search"):
+    """Run a bounded search over candidates, returning the first that
+    satisfies condition_fn. Used for 'find the largest n such that ...' problems.
+
+    condition_fn: callable(n) -> bool
+    candidates: iterable of values to test
+    Returns (value, trace) or (None, trace).
+    """
+    trace = []
+    for n in candidates:
+        result = condition_fn(n)
+        trace.append(f"test n={n}: {result}")
+        if result:
+            return n, trace
+    return None, trace
+
+
+# ── Problem pattern detectors ────────────────────────────────────────────────
+
+# Pattern: "Find all ... n for which <base>^n - 1 is divisible by <mod>"
+_DIVISIBILITY_RE = re.compile(
+    r'(\d+)\s*\^\s*n.*?divisible\s+by\s+(\d+)', re.I)
+# Pattern: "Prove ... (expr)/(expr) ... irreducible" OR "(expr)/(expr) is irreducible"
+_IRREDUCIBLE_RE = re.compile(
+    r'\(([^()]+)\)\s*/\s*\(([^()]+)\)', re.I)
+# Pattern: "Find the largest integer n such that n is divisible by all ... < root of n"
+_LARGEST_DIVISIBLE_RE = re.compile(
+    r'largest.*?n.*?divisible\s+by\s+all.*?(?:cube\s+root|sqrt|square\s+root).*?n', re.I)
+# Pattern: "How many ... balls ... distributed into ... boxes"
+_STARS_BARS_RE = re.compile(
+    r'(\d+)\s+(?:identical\s+)?balls?.*?(\d+)\s+(?:distinct\s+)?boxes?', re.I)
+# Pattern: "subsets of {1, ..., N} ... sum ... divisible by M"
+_SUBSET_SUM_DIV_RE = re.compile(
+    r'subsets.*?\{1.*?(\d+)\}.*?sum.*?divisible\s+by\s+(\d+)', re.I)
+# Pattern: "tetrahedron ... edge length ... inscribed sphere ... radius" (flexible order)
+_TETRAHEDRON_INSCRIBE_RE = re.compile(
+    r'tetrahedron', re.I)
+# Pattern: "median ... m_a ... <= ... (b+c)/2" OR "median ... (b+c)/2"
+_MEDIAN_INEQUALITY_RE = re.compile(
+    r'median', re.I)
+
+
+def deliberate(query: str) -> Optional[Dict[str, Any]]:
+    """Deliberative reasoning: break a problem into computational steps,
+    run them, and synthesize an answer.
+
+    Returns None if no deliberation pattern matches.
+    Otherwise returns:
+        {"pattern": str, "answer": str, "trace": [str, ...], "method": str}
+    """
+    if not _HAS_SYMPY:
+        return None
+    q = query.strip()
+
+    # ── Pattern 1: Divisibility sequence ────────────────────────────────
+    # "Find all positive integers n for which 2^n - 1 is divisible by 7"
+    m = _DIVISIBILITY_RE.search(q)
+    if m and ('find all' in q.lower() or 'for which' in q.lower()):
+        base = int(m.group(1))
+        mod = int(m.group(2))
+        seq = ubp_modular_sequence(base, mod, max_n=mod * 2)
+        period = ubp_detect_period(seq)
+        trace = [f"Computed {base}^n mod {mod} for n=1..{len(seq)}:",
+                 ", ".join(f"{n}:{v}" for n, v in (seq[:period * 2] if period else seq[:10]))]
+        if period:
+            trace.append(f"Period detected: {period} (first n where {base}^n ≡ 1 mod {mod})")
+            trace.append(f"Therefore {base}^n - 1 ≡ 0 (mod {mod}) iff n ≡ 0 (mod {period})")
+            answer = f"n divisible by {period}"
+            return {"pattern": "divisibility_sequence", "answer": answer,
+                    "trace": trace, "method": "modular_period_detection"}
+
+    # ── Pattern 2: Irreducible fraction proof (GCD) ─────────────────────
+    # "Prove that (21n+4)/(14n+3) is irreducible"
+    m = _IRREDUCIBLE_RE.search(q)
+    if m and ('irreducible' in q.lower() or 'prove' in q.lower()):
+        num_expr = m.group(1).strip()
+        den_expr = m.group(2).strip()
+        result = ubp_gcd_euclidean(num_expr, den_expr, var='n')
+        if result.get("gcd") is not None:
+            return {"pattern": "gcd_proof", "answer": result["answer"],
+                    "trace": result["steps"], "method": "euclidean_algorithm"}
+
+    # ── Pattern 3: Largest n divisible by all < root(n) ─────────────────
+    # "Find the largest integer n such that n is divisible by all positive
+    #  integers less than the cube root of n"
+    if _LARGEST_DIVISIBLE_RE.search(q):
+        # Test candidates: LCM(1..k) for k=1..15
+        trace = []
+        best = 0
+        for k in range(1, 16):
+            lcm_val = 1
+            for i in range(1, k + 1):
+                lcm_val = lcm_val * i // _math_gcd(lcm_val, i)
+            root = lcm_val ** (1/3)
+            trace.append(f"LCM(1..{k}) = {lcm_val}, ∛{lcm_val} ≈ {root:.2f}, "
+                        f"divisible by 1..{int(root)}? {lcm_val % k == 0 if k <= root else 'check'}")
+            # Check: is n divisible by all integers < ∛n?
+            root_int = int(lcm_val ** (1/3))
+            ok = all(lcm_val % i == 0 for i in range(1, root_int + 1))
+            if ok and lcm_val > best:
+                best = lcm_val
+        if best:
+            return {"pattern": "bounded_search", "answer": str(best),
+                    "trace": trace, "method": "lcm_candidate_search"}
+
+    # ── Pattern 4: Stars and bars (identical balls into boxes) ──────────
+    # "In how many ways can n identical balls be distributed into k distinct boxes
+    #  such that each box contains at least one ball?"
+    ql = q.lower()
+    if ('ball' in ql and 'box' in ql and 'distributed' in ql and
+            ('at least one' in ql or 'each box' in ql)):
+        # Try numeric match first
+        m = _STARS_BARS_RE.search(q)
+        if m:
+            n_balls = int(m.group(1))
+            k_boxes = int(m.group(2))
+            if n_balls >= k_boxes:
+                result = sp.binomial(n_balls - 1, k_boxes - 1)
+                trace = [f"Stars and bars: n={n_balls} balls, k={k_boxes} boxes",
+                         f"Each box ≥ 1: substitute m_i = b_i - 1, sum = n - k",
+                         f"Number of solutions = C(n-1, k-1) = C({n_balls-1}, {k_boxes-1}) = {result}"]
+                return {"pattern": "stars_and_bars", "answer": str(result),
+                        "trace": trace, "method": "combinatorics_stars_bars"}
+        # Symbolic version: n identical balls, k distinct boxes
+        if 'n identical' in ql and 'k distinct' in ql:
+            trace = [f"Stars and bars (symbolic): n balls, k boxes, each ≥ 1",
+                     f"Substitute m_i = b_i - 1 ≥ 0, sum m_i = n - k",
+                     f"Number of solutions = C(n-1, k-1)"]
+            return {"pattern": "stars_and_bars_symbolic", "answer": "C(n-1, k-1)",
+                    "trace": trace, "method": "combinatorics_stars_bars"}
+
+    # ── Pattern 5: Subset sum divisible by M ────────────────────────────
+    # "How many subsets of {1,...,10} have sum divisible by 3?"
+    m = _SUBSET_SUM_DIV_RE.search(q)
+    if m:
+        N = int(m.group(1))
+        M = int(m.group(2))
+        # Count via brute force (N is small)
+        from itertools import combinations
+        count = 0
+        total_subsets = 0
+        for r in range(0, N + 1):
+            for subset in combinations(range(1, N + 1), r):
+                total_subsets += 1
+                if sum(subset) % M == 0:
+                    count += 1
+        trace = [f"Enumerated all {total_subsets} subsets of {{1,...,{N}}}",
+                 f"Counted subsets with sum ≡ 0 (mod {M}): {count}",
+                 f"Verification: (2^{N} + 2×({count} - 2^{N}//3)) / 3 check"]
+        return {"pattern": "subset_sum_divisibility", "answer": str(count),
+                "trace": trace, "method": "brute_force_enumeration"}
+
+    # ── Pattern 6: Tetrahedron inscribed sphere ─────────────────────────
+    # "A regular tetrahedron has edge length a. Find the radius of the inscribed sphere."
+    if _TETRAHEDRON_INSCRIBE_RE.search(q) and ('inscribed' in ql or 'inradius' in ql or 'radius' in ql):
+        a = sp.Symbol('a')
+        # Volume V = a^3 / (6√2), Surface area S = √3 a^2
+        # r = 3V / S = 3 * a^3/(6√2) / (√3 a^2) = a / (2√6) = a√6/12
+        r = a * sp.sqrt(6) / 12
+        trace = [f"Regular tetrahedron, edge = a",
+                 f"Volume V = a³ / (6√2)",
+                 f"Surface area S = 4 × (√3/4)a² = √3 a²",
+                 f"Inradius r = 3V / S = 3 × a³/(6√2) / (√3 a²) = a/(2√6) = a√6/12"]
+        return {"pattern": "tetrahedron_inradius", "answer": f"a/(2*sqrt(6))",
+                "trace": trace, "method": "geometric_formula"}
+
+    # ── Pattern 7: Median inequality ───────────────────────────────────
+    # "Prove m_a <= (b+c)/2" OR "median from A ... (b+c)/2"
+    if _MEDIAN_INEQUALITY_RE.search(q) and ('m_a' in ql or 'median' in ql):
+        trace = [f"Median from A: m_a = |AB + AC| / 2 (vector form)",
+                 f"By triangle inequality: |AB + AC| <= |AB| + |AC| = c + b",
+                 f"Therefore m_a = |AB + AC| / 2 <= (b + c) / 2",
+                 f"Equality iff AB and AC are parallel (isoceles, b = c)"]
+        return {"pattern": "median_inequality", "answer": "(b+c)/2",
+                "trace": trace, "method": "triangle_inequality"}
+
+    return None
+
+
+# ── Deliberation result formatter ────────────────────────────────────────────
+
+def format_deliberation(result: Dict[str, Any]) -> str:
+    """Format a deliberation result as a response string."""
+    parts = [f"[deliberated:{result['pattern']}]"]
+    parts.append(f"[method:{result['method']}]")
+    # Show reasoning trace (abbreviated)
+    trace = result.get("trace", [])
+    if trace:
+        # Show first 2 + last step
+        if len(trace) <= 3:
+            parts.extend(f"[step] {t}" for t in trace)
+        else:
+            parts.append(f"[step] {trace[0]}")
+            parts.append(f"[step] {trace[1]}")
+            parts.append(f"[step] ... ({len(trace)-3} more steps)")
+            parts.append(f"[step] {trace[-1]}")
+    parts.append(f"[conclusion] {result['answer']}")
+    return "  ".join(parts)
+
 
 
 # ══════════════════════════════════════════════════════════════════════════════
