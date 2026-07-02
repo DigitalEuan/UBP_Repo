@@ -1,34 +1,59 @@
 # ══════════════════════════════════════════════════════════════════════════════
-# §10  RESPONSE COMPOSER — THE VOICE (v3.7.6 Hardened)
+# §10  RESPONSE COMPOSER — THE VOICE (v3.7.7 Rebuild)
 # ══════════════════════════════════════════════════════════════════════════════
 from __future__ import annotations
 import re
 from typing import List, Dict, Optional, Tuple, Any
 
 # IMPORT SUBSTRATE & CONSTANTS
-from GLM01_substrate import LEECH_ENGINE, _load_kb_safe
+from GLM01_substrate import LEECH_ENGINE, _load_kb_safe, _load_system_kb, _build_alias_map
 from GLM02_constants import _OP_SYNTAX_RE, PRONOUNS
 from GLM00_config import KB_SYSTEM_PATH
 from GLM13_deliberative_reasoning import format_deliberation
 
 # ── 1. INTERNAL HELPERS ────────────────────────────────────────────────
 def _kb_description(word: str, vocab: Any, kb: Dict[str, Any]) -> Tuple[str, float, float]:
-    """Look up the KB description + metrics for a vocab word."""
+    """Look up the KB description + metrics for a vocab word.
+
+    v3.7.7: Uses alias map first (word → ubp_id → KB entry), then falls
+    back to vector comparison. This fixes the issue where 'what is time?'
+    returned the Water KB entry instead of Time.
+    """
     target_dict = vocab.words if hasattr(vocab, 'words') else vocab
     entry = target_dict.get(word)
     if not entry: return ("", 0.0, 0.0)
-    
+
     vec = entry.vector
     nrci = float(entry.nrci)
-    try: 
+    try:
         tax = float(LEECH_ENGINE.calculate_symmetry_tax(vec))
-    except: 
+    except:
         tax = 0.0
-        
+
     desc = ""
+
+    # v3.7.7: Try alias map FIRST (word → ubp_id → KB entry)
+    try:
+        alias_map = _build_alias_map()
+        uid = alias_map.get(word.lower())
+        if uid:
+            # Load the full system KB with name/desc
+            full_kb = _load_system_kb()
+            kbe = full_kb.get(uid)
+            if kbe:
+                name = kbe.get("name", uid)
+                d = kbe.get("desc", "")
+                m = re.match(r"([^.]{12,}\.)", d)
+                desc = f"{name}: {m.group(1).strip()}" if m else (f"{name}: {d[:90]}" if d else name)
+                return (desc, nrci, tax)
+    except Exception:
+        pass
+
+    # Fallback: vector comparison (for KB-derived words)
     vec_list = list(vec)
     for uid, kbe in kb.items():
-        if list(kbe.get("vector", [])) == vec_list:
+        kbe_vec = kbe.get("vector")
+        if kbe_vec and list(kbe_vec) == vec_list:
             name = kbe.get("name", uid)
             d = kbe.get("lexicon", "")
             m = re.match(r"([^.]{12,}\.)", d)

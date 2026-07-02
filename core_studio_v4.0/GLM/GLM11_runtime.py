@@ -6,7 +6,9 @@ import sys, os, json, time, re, hashlib
 from typing import List, Dict, Optional, Tuple, Any
 
 # IMPORT ALL MODULES
-from GLM01_substrate import BLA, LEECH_ENGINE, _build_vocabulary, build_default_crg, WordEntry, _load_kb_safe
+from GLM01_substrate import (BLA, LEECH_ENGINE, _build_vocabulary, build_default_crg,
+                             WordEntry, _load_kb_safe, _load_system_kb, _build_alias_map,
+                             _CONCEPT_ALIASES)
 from GLM02_constants import *
 from GLM03_crg import auto_expand_crg, lattice_auto_link, _enhanced_query_type, build_extended_crg
 from GLM04_number_vocab import inject_number_vocab
@@ -115,28 +117,49 @@ class GLMRuntimeV37:
         self._kb_cache = None # Lazy load for recall
 
     def _reflexive_recall(self, query: str) -> List[Dict[str, Any]]:
-        """Surgically recall relevant KB entries based on ID or phrase matching."""
+        """Recall relevant KB entries using alias map + ID match + phrase match.
+
+        v3.7.7: Added alias map consultation (word → ubp_id → KB entry).
+        This fixes the issue where 'what is time?' didn't surface the
+        Time KB entry because 'time' wasn't directly in any KB name.
+        """
         if self._kb_cache is None:
-            self._kb_cache = _load_kb_safe(KB_SYSTEM_PATH)
-        
+            self._kb_cache = _load_system_kb()
+
         recalled = []
         ql = query.lower()
-        
-        # 1. Direct ID Match (e.g., ELEM_H_001)
+
+        # A. Direct ID Match (e.g., ELEM_H_001)
         ids_found = re.findall(r'\b[A-Z]+_[A-Z0-9_]+_\d+\b', query)
         for uid in ids_found:
             if uid in self._kb_cache:
                 recalled.append(self._kb_cache[uid])
 
-        # 2. Phrase Match (KB names found in query)
+        # B. Alias map match (word → ubp_id → KB entry)
+        try:
+            alias_map = _build_alias_map()
+            stop = {"the", "a", "an", "of", "is", "are", "what", "how", "tell",
+                    "me", "about", "and", "in", "to", "for", "with", "explain",
+                    "describe", "show", "find", "all", "positive", "integers"}
+            query_words = set(w for w in re.findall(r'\b[a-z]{3,}\b', ql) if w not in stop)
+            for word in query_words:
+                uid = alias_map.get(word)
+                if uid and uid in self._kb_cache:
+                    entry = self._kb_cache[uid]
+                    if entry not in recalled:
+                        recalled.append(entry)
+        except Exception:
+            pass
+
+        # C. Phrase Match (KB names found in query)
         for uid, entry in self._kb_cache.items():
             name = entry.get("name", "").lower()
             if name and len(name) > 3 and name in ql:
                 if entry not in recalled:
                     recalled.append(entry)
             if len(recalled) >= 5: break
-            
-        return recalled
+
+        return recalled[:5]
 
     def last_diag(self) -> Dict[str, Any]:
         return {
