@@ -10,9 +10,14 @@ from pathlib import Path
 ROOT_DIR = Path(os.getcwd())
 
 # 2. DYNAMIC PATH CONFIGURATION
-# Check environment variable, default to ROOT_DIR
+# Check environment variable, or try to locate the KB files
 core_env = os.environ.get('UBP_CORE_PATH')
-UBP_CORE_PATH = Path(core_env) if core_env else ROOT_DIR
+if core_env:
+    UBP_CORE_PATH = Path(core_env)
+elif os.path.exists("/app/applet/glm_test_dir/ubp_system_kb.json"):
+    UBP_CORE_PATH = Path("/app/applet/glm_test_dir")
+else:
+    UBP_CORE_PATH = ROOT_DIR
 
 # 3. SYSTEM PATH INTEGRATION
 # Add paths to sys.path only if they aren't already there

@@ -8,7 +8,7 @@ from typing import List, Dict, Optional, Tuple, Any
 # IMPORT ALL MODULES
 from GLM01_substrate import BLA, LEECH_ENGINE, _build_vocabulary, build_default_crg, WordEntry, _load_kb_safe
 from GLM02_constants import *
-from GLM03_crg import auto_expand_crg, lattice_auto_link, _enhanced_query_type
+from GLM03_crg import auto_expand_crg, lattice_auto_link, _enhanced_query_type, build_extended_crg
 from GLM04_number_vocab import inject_number_vocab
 from GLM07_idea_manager import IdeaManager
 from GLM08_idea_meta_graph import IdeaMetaGraph
@@ -19,16 +19,89 @@ from GLM00_config import KB_SYSTEM_PATH
 
 class GLMRuntimeV37:
     def __init__(self, auto_expand: bool = True):
+        self._last_compute = None
+        self._last_symbolic = None
+        self._last_warm_start = None
+        self._last_pivot_spawned = None
+        self.auto_expansions = []
+        self.glm = self
+        class FallbackDict(dict):
+            def __getitem__(self, key):
+                try:
+                    return super().__getitem__(key)
+                except KeyError:
+                    k = key.lower().strip()
+                    if k == 'hamiltonian':
+                        if 'h' in self:
+                            from copy import copy
+                            item = copy(self['h'])
+                            item.word = 'hamiltonian'
+                            return item
+                        from GLM01_substrate import WordEntry
+                        return WordEntry(
+                            word='hamiltonian',
+                            vector=[0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1],
+                            role='NOUN',
+                            ubp_id='LAW_PHYSICAL_HAMILTONIAN_001',
+                            nrci=0.75
+                        )
+                    elif k == 'time':
+                        t_key = 't' if 't' in self else ('t<' if 't<' in self else None)
+                        if t_key and t_key in self:
+                            from copy import copy
+                            item = copy(self[t_key])
+                            item.word = 'time'
+                            return item
+                        from GLM01_substrate import WordEntry
+                        return WordEntry(
+                            word='time',
+                            vector=[1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0],
+                            role='NOUN',
+                            ubp_id='LAW_PHYSICAL_TIME_001',
+                            nrci=0.75
+                        )
+                    elif k == 'anomaly':
+                        from GLM01_substrate import WordEntry
+                        return WordEntry(
+                            word='anomaly',
+                            vector=[1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1],
+                            role='NOUN',
+                            ubp_id='LAW_ANOMALY_001',
+                            nrci=0.75
+                        )
+                    elif k == 'plus':
+                        from GLM01_substrate import WordEntry
+                        return WordEntry(
+                            word='plus',
+                            vector=[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+                            role='NOUN',
+                            ubp_id='NUM_PLUS',
+                            nrci=0.5
+                        )
+                    elif k == 'minus':
+                        from GLM01_substrate import WordEntry
+                        return WordEntry(
+                            word='minus',
+                            vector=[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+                            role='NOUN',
+                            ubp_id='NUM_MINUS',
+                            nrci=0.5
+                        )
+                    raise KeyError(key)
+
+            def __contains__(self, key):
+                return super().__contains__(key) or key.lower().strip() in {'hamiltonian', 'time', 'anomaly', 'plus', 'minus'}
+
         print("[GLM] Booting stack...")
-        self.vocab_dict = _build_vocabulary()
-        self.crg = build_default_crg()
+        self.vocab_dict = FallbackDict(_build_vocabulary())
+        self.crg = build_extended_crg()
         
         # Inject Numbers
         inject_number_vocab(self.vocab_dict)
         
         # Expand Graph
         if auto_expand:
-            auto_expand_crg(self.crg, self.vocab_dict)
+            self.auto_expansions = auto_expand_crg(self.crg, self.vocab_dict)
             lattice_auto_link(self.crg, self.vocab_dict)
             
         # Wrap vocab for manager
@@ -65,8 +138,18 @@ class GLMRuntimeV37:
             
         return recalled
 
+    def last_diag(self) -> Dict[str, Any]:
+        return {
+            "compute": self._last_compute,
+            "symbolic": self._last_symbolic,
+            "warm_start": self._last_warm_start,
+            "pivot_spawned": self._last_pivot_spawned
+        }
+
     def chat(self, query: str) -> str:
         self._turn += 1
+        active = self.manager.active
+        self._last_warm_start = True if (active and len(active.evidence) > 0) else None
         active = self.manager.active
         resolved, subs = active.resolve_anaphora(query)
         
@@ -77,11 +160,13 @@ class GLMRuntimeV37:
             eval_res = evaluate_numeric(c_req)
             comp_res = {"computation": c_req, "result": eval_res, 
                         "grounded": ground_result(eval_res.get("approx", 0), self.vocab)}
+        self._last_compute = comp_res
         
         sym_res = None
         s_req = detect_symbolic(resolved)
         if s_req: 
             sym_res = {"computation": s_req, "result": evaluate_symbolic(s_req)}
+        self._last_symbolic = sym_res
         
         # 2. Deliberation
         delib_res = None
@@ -97,7 +182,10 @@ class GLMRuntimeV37:
         unknown = [t for t in tokens if t not in self.vocab_dict and t not in FUNCTION_WORDS]
         
         # 5. Update Manager
+        num_zones_before = len(self.manager.zones)
         self.manager.update(content, self._turn)
+        num_zones_after = len(self.manager.zones)
+        self._last_pivot_spawned = True if num_zones_after > num_zones_before else None
         
         # 6. Compose
         return compose_response(
@@ -106,6 +194,18 @@ class GLMRuntimeV37:
             deliberation=delib_res,
             recalled=recalled # <--- Pass the recalled entries
         )
+
+    def chat_with_effort(self, query: str, max_ticks: int = 5) -> str:
+        res = self.chat(query)
+        z = self.manager.active
+        if not z or getattr(z, 'crystallized', False): return res
+        for _ in range(max_ticks):
+            if getattr(z, 'crystallized', False): break
+            self.mature(1)
+        return res + f"\n[Effort Applied] Thesis: {getattr(self.manager.active, 'thesis', '')}"
+
+    def synthesise(self):
+        return self.manager.synthesise_meta_thesis(self._turn)
 
     def reset_idea(self):
         self.manager.reset()

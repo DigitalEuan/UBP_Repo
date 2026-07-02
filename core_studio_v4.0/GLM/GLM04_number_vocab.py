@@ -45,11 +45,34 @@ def inject_number_vocab(vocab: Any) -> Dict[str, Any]:
     # Determine if vocab is a dict or an object with a .words attribute
     target_dict = vocab.words if hasattr(vocab, 'words') else vocab
     
+    # Ensure base number words exist in the vocabulary, pre-seeding them if missing
+    DEFAULT_BASE = {
+        "zero":  [0]*24,
+        "one":   [1] + [0]*23,
+        "two":   [1,1] + [0]*22,
+        "three": [1,1,1] + [0]*21,
+        "four":  [1,1,1,1] + [0]*20,
+    }
+    for w, vec in DEFAULT_BASE.items():
+        if w not in target_dict:
+            snapped, snap_info = GOLAY_ENGINE.snap_to_codeword(vec)
+            fold3 = BLA.fold24_to3(vec)
+            try: nrci = float(LEECH_ENGINE.calculate_nrci(vec))
+            except Exception: nrci = 0.5
+            target_dict[w] = WordEntry(
+                word=w, vector=vec, role="NOUN", ubp_id=f"NUM_{w.upper()}",
+                hamming_to_system=0, nrci=nrci, golay_codeword=snapped,
+                golay_distance=snap_info["anchor_distance"], fold3=fold3,
+                mog_category=_get_mog_category(vec)
+            )
+            if hasattr(vocab, 'by_role'):
+                vocab.by_role.setdefault("NOUN", []).append(w)
+            report["injected"] += 1
+            report["derived"].append(w)
+
     # Check if we have the base chain to start from
     base_vecs = {w: list(target_dict[w].vector) for w in _BASE_CHAIN if w in target_dict}
     if not base_vecs:
-        # If base chain is missing, we can't derive. 
-        # In a real run, GLM01/GLM11 ensures these exist.
         return report
 
     derived = {}

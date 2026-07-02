@@ -81,6 +81,21 @@ class IdeaManager:
         diag["zone_idx"] = idx
         diag["zone_fit"] = fit
         
+        # v3.7: contradiction-driven pivot
+        # If the updated zone now contains contradictions, spawn a new zone pre-seeded with the conflicting noun
+        if zone.contradictions and len(self.zones) < self.max_zones:
+            for cond_str, _ in zone.contradictions:
+                parts = cond_str.split("->")
+                if len(parts) == 2:
+                    conflicting_noun = parts[1].strip()
+                    # Only spawn if this conflicting noun is not already the seed of a newer zone
+                    if conflicting_noun and conflicting_noun not in [n for z in self.zones[1:] for n in z.topic_nouns]:
+                        self._spawn_zone(seed_noun=conflicting_noun)
+                        if self.crg:
+                            self.zones[-1].set_crg(self.crg)
+                        if self.vocab:
+                            self.zones[-1].set_vocab(self.vocab)
+        
         # Update active index to the most coherent zone
         cohs = [z.coherence() for z in self.zones]
         self.active_idx = cohs.index(max(cohs))
@@ -127,11 +142,11 @@ class IdeaManager:
         Returns the full diagnostic state of the manager.
         Surgically updated to provide deep zone data for the UI.
         """
-        return {
+        st = {
             "num_zones": len(self.zones),
             "active_idx": self.active_idx,
             # Deep export of every zone's internal state
-            "zones": [z.idea_state() if hasattr(z, 'idea_state') else str(z) for z in self.zones],
+            "zones": [{"crystallized": getattr(z, "crystallized", False), "thesis": getattr(z, "thesis", ""), "contradictions": getattr(z, "contradictions", []), "inferred_nouns": getattr(z, "inferred_nouns", [])} for z in self.zones],
             "meta_theses": [
                 {
                     "thesis": mt.thesis, 
@@ -140,10 +155,16 @@ class IdeaManager:
                 } for mt in self.meta_theses
             ]
         }
+        print(f"DEBUG: IdeaManager.state() returning: {st}")
+        return st
 
     def mature_all(self, n: int = 3):
         """Trigger autonomous thinking across all active zones."""
         for _ in range(n):
             for z in self.zones:
                 if z.evidence:
+                    # Added safety check: prevent infinite ticking
+                    if hasattr(z, 'ticks_taken') and z.ticks_taken > 50:
+                        continue
                     z.tick()
+                    z.ticks_taken = getattr(z, 'ticks_taken', 0) + 1

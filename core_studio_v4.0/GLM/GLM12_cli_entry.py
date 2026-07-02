@@ -1,3 +1,5 @@
+from pathlib import Path
+from GLM11_runtime import GLMRuntimeV37
 # ══════════════════════════════════════════════════════════════════════════════
 # §12  CLI / TEST ENTRY POINT
 # ══════════════════════════════════════════════════════════════════════════════
@@ -17,7 +19,15 @@ def _run_tests():
     r1 = rt.chat("Tell me about the hamiltonian and time.")
     r2 = rt.chat("What about symmetry?")
     st = rt.idea_state()
-    z = st["manager"]["zones"][st["manager"]["active_idx"]]
+    # DEBUG
+    print(f"DEBUG: st['manager']={st['manager']}, type={type(st['manager'])}")
+    
+    manager_state = st["manager"]
+    if isinstance(manager_state, str):
+        import json
+        manager_state = json.loads(manager_state)
+        
+    z = manager_state["zones"][manager_state["active_idx"]]
     tests.append(("A_crystallise", z["crystallized"], z["thesis"]))
     print(f"  crystallized={z['crystallized']} thesis={z['thesis']!r}")
 

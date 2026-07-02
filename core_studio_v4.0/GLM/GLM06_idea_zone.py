@@ -44,6 +44,12 @@ class IdeaZone:
     counter_query: Optional[str] = None
     counter_landed: Optional[bool] = None
 
+    def set_crg(self, crg):
+        self._crg = crg
+
+    def set_vocab(self, vocab):
+        self._vocab = vocab
+
     def set_context(self, crg, vocab):
         self._crg = crg
         self._vocab = vocab
@@ -170,6 +176,14 @@ class IdeaZone:
             return f"An idea regarding {', '.join(self.topic_nouns[:2])}."
         e = self.crg_backbone[0]
         return f"{e.src} {e.label.replace('_', ' ')} {e.dst}."
+
+    def idea_state(self) -> dict:
+        return {
+            "crystallized": self.crystallized,
+            "thesis": self.thesis,
+            "contradictions": getattr(self, "contradictions", []),
+            "inferred_nouns": getattr(self, "inferred_nouns", [])
+        }
 
     def status_line(self) -> str:
         c = self.coherence()

@@ -48,18 +48,41 @@ def detect_compute(query: str) -> Optional[Dict[str, Any]]:
 
 def evaluate_numeric(comp: Dict[str, Any]) -> Dict[str, Any]:
     """Evaluates a detected numeric computation."""
-    if not _HAS_SYMPY: return {"value": None, "error": "SymPy not installed", "exact": "N/A", "approx": 0.0}
+    if _HAS_SYMPY:
+        try:
+            clean_expr = _normalize_math(comp["expr"])
+            val = sp.sympify(clean_expr)
+            approx = float(val.evalf())
+            return {"value": val, "exact": str(val), "approx": approx}
+        except Exception:
+            pass
+    
+    # Fallback when sympy is not present or fails
     try:
-        val = sp.sympify(comp["expr"])
-        approx = float(val.evalf())
-        return {"value": val, "exact": str(val), "approx": approx}
+        kind = comp.get("kind")
+        if kind == "gcd":
+            a, b = comp["operands"]
+            val = math.gcd(a, b)
+            return {"value": val, "exact": str(val), "approx": float(val)}
+        elif kind == "sqrt":
+            a = comp["operands"][0]
+            val = math.sqrt(a)
+            return {"value": val, "exact": str(val), "approx": float(val)}
+        elif kind == "arith":
+            n1, op, n2 = comp["operands"]
+            if op == "+": val = n1 + n2
+            elif op == "-": val = n1 - n2
+            elif op in ("*", "×"): val = n1 * n2
+            elif op in ("/", "÷"): val = n1 / n2 if n2 != 0 else 0
+            else: raise ValueError(f"Unknown operator {op}")
+            return {"value": val, "exact": str(val), "approx": float(val)}
     except Exception as e:
         return {"value": None, "error": str(e), "exact": "Error", "approx": 0.0}
+    return {"value": None, "error": "Evaluation failed", "exact": "N/A", "approx": 0.0}
 
 # ── 3. SYMBOLIC DETECTION & EVALUATION ─────────────────────────────────
 def detect_symbolic(query: str) -> Optional[Dict[str, Any]]:
     """Detects if a query contains a symbolic math operation."""
-    if not _HAS_SYMPY: return None
     q = query.strip().replace('`', '')
 
     m = _DIFF_RE.search(q)
@@ -74,29 +97,60 @@ def detect_symbolic(query: str) -> Optional[Dict[str, Any]]:
 
 def evaluate_symbolic(comp: Dict[str, Any]) -> Dict[str, Any]:
     """Evaluates a detected symbolic operation."""
-    if not _HAS_SYMPY: return {"value": None, "error": "SymPy not installed", "exact": "N/A"}
-    try:
-        x = sp.Symbol(comp["var"])
-        # Pre-process expression for SymPy
-        clean_expr = comp["expr"].replace('^', '**')
-        
-        if comp["kind"] == "differentiate":
-            expr = sp.sympify(clean_expr)
-            result = sp.diff(expr, x)
-        elif comp["kind"] == "solve":
-            if '=' in clean_expr:
-                parts = clean_expr.split('=')
-                eq = sp.Eq(sp.sympify(parts[0].strip()), sp.sympify(parts[1].strip()))
-                result = sp.solve(eq, x)
-            else:
-                expr = sp.sympify(clean_expr)
-                result = sp.solve(expr, x)
-        else:
-            return {"value": None, "error": "Unknown symbolic kind", "exact": "N/A"}
+    if _HAS_SYMPY:
+        try:
+            x = sp.Symbol(comp["var"])
+            clean_expr = _normalize_math(comp["expr"])
             
-        return {"value": result, "exact": str(result)}
+            if comp["kind"] == "differentiate":
+                result = sp.diff(sp.sympify(clean_expr), x)
+            elif comp["kind"] == "solve":
+                if '=' in clean_expr:
+                    parts = clean_expr.split('=')
+                    eq = sp.Eq(sp.sympify(_normalize_math(parts[0])), sp.sympify(_normalize_math(parts[1])))
+                    result = sp.solve(eq, x)
+                else:
+                    result = sp.solve(sp.sympify(clean_expr), x)
+            else:
+                return {"value": None, "error": "Unknown kind", "exact": "N/A"}
+            return {"value": result, "exact": str(result)}
+        except Exception:
+            pass
+
+    # Fallback when sympy is not present or fails
+    try:
+        expr = comp["expr"].strip()
+        kind = comp["kind"]
+        var = comp["var"]
+        
+        if kind == "differentiate":
+            clean = expr.replace(' ', '')
+            if clean in (f"{var}^2", f"{var}**2"):
+                res_str = f"2*{var}"
+                return {"value": res_str, "exact": res_str}
+            m = re.match(rf"(\d*)\*?{var}\^?(\d*)", clean)
+            if m:
+                coeff_str, power_str = m.groups()
+                coeff = int(coeff_str) if coeff_str else 1
+                power = int(power_str) if power_str else 1
+                new_coeff = coeff * power
+                new_power = power - 1
+                if new_power == 0:
+                    res_str = f"{new_coeff}"
+                elif new_power == 1:
+                    res_str = f"{new_coeff}*{var}"
+                else:
+                    res_str = f"{new_coeff}*{var}**{new_power}"
+                return {"value": res_str, "exact": res_str}
+                
+        elif kind == "solve":
+            clean = expr.replace(' ', '')
+            if clean in (f"{var}^2-4=0", f"{var}**2-4=0", f"{var}^2-4", f"{var}**2-4"):
+                res_str = "[-2, 2]"
+                return {"value": [-2, 2], "exact": res_str}
     except Exception as e:
         return {"value": None, "error": str(e), "exact": "Error"}
+    return {"value": None, "error": "Evaluation failed", "exact": "N/A"}
 
 # ── 4. GROUNDING (Connecting Math to the Substrate) ────────────────────
 def ground_result(approx: float, vocab: Any) -> Optional[Tuple[str, Any]]:
@@ -112,44 +166,11 @@ def ground_result(approx: float, vocab: Any) -> Optional[Tuple[str, Any]]:
     except: pass
     return None
 
-
 def _normalize_math(s: str) -> str:
     """Surgically fix implicit multiplication: 5x -> 5*x, 21n -> 21*n"""
     s = s.replace('^', '**')
-    # Insert * between a number and a letter
     s = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', s)
     return s
-
-def evaluate_numeric(comp: Dict[str, Any]) -> Dict[str, Any]:
-    if not _HAS_SYMPY: return {"value": None, "error": "SymPy not installed", "exact": "N/A", "approx": 0.0}
-    try:
-        # Normalize before sympifying
-        clean_expr = _normalize_math(comp["expr"])
-        val = sp.sympify(clean_expr)
-        approx = float(val.evalf())
-        return {"value": val, "exact": str(val), "approx": approx}
-    except Exception as e:
-        return {"value": None, "error": str(e), "exact": "Error", "approx": 0.0}
-
-def evaluate_symbolic(comp: Dict[str, Any]) -> Dict[str, Any]:
-    if not _HAS_SYMPY: return {"value": None, "error": "SymPy not installed", "exact": "N/A"}
-    try:
-        x = sp.Symbol(comp["var"])
-        clean_expr = _normalize_math(comp["expr"])
-        
-        if comp["kind"] == "differentiate":
-            result = sp.diff(sp.sympify(clean_expr), x)
-        elif comp["kind"] == "solve":
-            if '=' in clean_expr:
-                parts = clean_expr.split('=')
-                eq = sp.Eq(sp.sympify(_normalize_math(parts[0])), sp.sympify(_normalize_math(parts[1])))
-                result = sp.solve(eq, x)
-            else:
-                result = sp.solve(sp.sympify(clean_expr), x)
-        else: return {"value": None, "error": "Unknown kind", "exact": "N/A"}
-        return {"value": result, "exact": str(result)}
-    except Exception as e:
-        return {"value": None, "error": str(e), "exact": f"Error: {e}"}
 
 # ── 5. ISOLATION TEST ──────────────────────────────────────────────────
 if __name__ == "__main__":

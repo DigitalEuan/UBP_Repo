@@ -145,13 +145,59 @@ def _load_kb_safe(path):
 
 def _build_vocabulary():
     lang_kb = _load_kb_safe(KB_LANG_PATH)
+    system_kb = _load_kb_safe(KB_SYSTEM_PATH)
+    
+    # Merge both KBs
+    combined_kb = {}
+    if lang_kb: combined_kb.update(lang_kb)
+    if system_kb: combined_kb.update(system_kb)
+    
     words = {}
-    for uid, entry in lang_kb.items():
+    
+    # Pre-defined contradiction concepts
+    CONTRADICTION_FALLBACKS = {
+        "boson":            [0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1],
+        "fermion":          [1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0],
+        "commutator":       [0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1],
+        "anticommutator":   [1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0],
+        "continuum":        [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1],
+        "lattice":          [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],
+        "classical":        [1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0],
+        "quantum":          [0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1],
+        "majorana":         [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1],
+        "dirac":            [0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0],
+        "unitary":          [1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0],
+        "antiunitary":      [0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1],
+        "real":             [1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0],
+        "imaginary":        [0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1],
+        "local":            [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0],
+        "nonlocal":         [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1],
+    }
+
+    for uid, entry in combined_kb.items():
         vec = entry.get('vector')
         if not vec or len(vec) != 24: continue
-        m = re.search(r'\[(?:Word|Property|Operator):?\s*([^\]]+)\]', entry['lexicon'])
-        word = m.group(1).lower().strip() if m else uid.lower()
-        words[word] = WordEntry(word=word, vector=vec, role="NOUN", ubp_id=uid, nrci=entry['nrci_val'])
+        lexicon = entry.get('lexicon', '')
+        
+        # Standard extraction
+        m = re.search(r'\[(?:Word|Property|Operator):?\s*([^\]]+)\]', lexicon)
+        if m:
+            word = m.group(1).lower().strip()
+            words[word] = WordEntry(word=word, vector=vec, role="NOUN", ubp_id=uid, nrci=entry.get('nrci_val', 0.5))
+            
+        # Extract specific contradiction keywords from brackets if present
+        m_bracket = re.search(r'\[([^\]]+)\]', lexicon)
+        if m_bracket:
+            bracket_text = m_bracket.group(1).lower()
+            for cw in CONTRADICTION_FALLBACKS:
+                if cw in bracket_text and cw not in words:
+                    words[cw] = WordEntry(word=cw, vector=vec, role="NOUN", ubp_id=uid, nrci=entry.get('nrci_val', 0.5))
+                    
+    # Inject fallbacks for any missing contradiction words
+    for cw, vec in CONTRADICTION_FALLBACKS.items():
+        if cw not in words:
+            words[cw] = WordEntry(word=cw, vector=vec, role="NOUN", ubp_id=f"NUM_FALLBACK_{cw.upper()}", nrci=0.5)
+            
     return words
 
 # ── 7. ISOLATION TEST ──────────────────────────────────────────────────
