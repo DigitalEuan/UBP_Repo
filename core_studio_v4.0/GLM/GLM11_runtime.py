@@ -63,7 +63,8 @@ class GLMRuntimeV37:
             delib_res = deliberate(resolved)
             
         # 3. Linguistic Processing
-        tokens = re.findall(r"\b\w+\b", resolved.lower())
+        # Extract only alphabetical words for concept matching (ignores numbers/math)
+        tokens = re.findall(r"\b[a-z_]+\b", resolved.lower())
         content = [(t, self.vocab_dict[t]) for t in tokens if t in self.vocab_dict]
         
         # SURGICAL FIX: Filter out function words from the Gap report

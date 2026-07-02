@@ -214,15 +214,17 @@ class IdeaZone:
         state = "crystallized" if self.crystallized else "forming"
         return f"[Zone: {state} | coherence={c:.2f} | nouns={len(self.topic_nouns)}]"
 
-    def resolve_anaphora(self, query: str) -> Tuple[str, List[str]]:
+def resolve_anaphora(self, query: str) -> Tuple[str, List[str]]:
         if not self.last_topic_noun: return query, []
         subs = []
-        tokens = re.findall(r"\b\w+\b", query)
-        out = []
-        for tok in tokens:
-            if tok.lower() in PRONOUNS:
-                out.append(self.last_topic_noun)
-                subs.append((tok, self.last_topic_noun))
-            else:
-                out.append(tok)
-        return " ".join(out), subs
+        
+        def repl(m):
+            w = m.group(0)
+            if w.lower() in PRONOUNS:
+                subs.append((w, self.last_topic_noun))
+                return self.last_topic_noun
+            return w
+            
+        # Replace only alphabetical words, preserving all math symbols and spacing
+        resolved = re.sub(r'\b[a-zA-Z]+\b', repl, query)
+        return resolved, subs
