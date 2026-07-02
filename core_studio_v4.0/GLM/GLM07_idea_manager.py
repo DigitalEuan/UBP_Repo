@@ -111,23 +111,52 @@ class IdeaManager:
         """Attempt to find a link between two different crystallized zones."""
         crystallised = [(i, z) for i, z in enumerate(self.zones) if z.crystallized]
         if len(crystallised) < 2: return None
-        
+
         shared_edges = []
-        # Look for direct CRG edges between zones
+        # (a) Look for direct CRG edges between zones
         for i, (zi, za) in enumerate(crystallised):
             for j, (zj, zb) in enumerate(crystallised[i+1:], i+1):
                 for a in za.topic_nouns:
                     for b in zb.topic_nouns:
                         for e in self.crg.out.get(a, []):
-                            if e.dst == b:
-                                shared_edges.append({"src":a,"label":e.label,"dst":b,"zone_a":zi,"zone_b":zj})
-        
+                            if e.dst == b and e.label not in ("contradicts","incompatible_with","auto_proposed"):
+                                shared_edges.append({"src":a,"label":e.label,"dst":b,"zone_a":zi,"zone_b":zj,"via":"direct"})
+
+        # (b) Transitive: shared CRG neighbour (e.g. both zones' nouns relate to 'symmetry')
+        if not shared_edges:
+            for i, (zi, za) in enumerate(crystallised):
+                for j, (zj, zb) in enumerate(crystallised[i+1:], i+1):
+                    za_neighbours = set()
+                    for a in za.topic_nouns:
+                        for e in self.crg.out.get(a, []):
+                            if e.label not in ("contradicts","incompatible_with"):
+                                za_neighbours.add(e.dst)
+                        for e in self.crg.into.get(a, []):
+                            if e.label not in ("contradicts","incompatible_with"):
+                                za_neighbours.add(e.src)
+                    for b in zb.topic_nouns:
+                        zb_neighbours = set()
+                        for e in self.crg.out.get(b, []):
+                            if e.label not in ("contradicts","incompatible_with"):
+                                zb_neighbours.add(e.dst)
+                        for e in self.crg.into.get(b, []):
+                            if e.label not in ("contradicts","incompatible_with"):
+                                zb_neighbours.add(e.src)
+                        shared = za_neighbours & zb_neighbours
+                        for s in shared:
+                            shared_edges.append({"src":b,"label":"shares_via","dst":s,
+                                                 "zone_a":zi,"zone_b":zj,
+                                                 "via":f"both zones relate to {s}"})
+
         if not shared_edges: return None
-        
+
         # Synthesise a high-level statement
         e = shared_edges[0]
-        thesis = f"Unifying {e['src']} (Zone {e['zone_a']}) and {e['dst']} (Zone {e['zone_b']})."
-        
+        if e.get("via") and e["via"] != "direct":
+            thesis = e["via"] + "."
+        else:
+            thesis = f"both zones relate to {e['src']} and {e['dst']}."
+
         mt = MetaThesis(thesis=thesis, zone_ids=[e['zone_a'], e['zone_b']],
                         shared_edges=shared_edges, confidence=0.8, created_at_turn=turn)
         self.meta_theses.append(mt)
@@ -149,14 +178,27 @@ class IdeaManager:
             "zones": [{"crystallized": getattr(z, "crystallized", False), "thesis": getattr(z, "thesis", ""), "contradictions": getattr(z, "contradictions", []), "inferred_nouns": getattr(z, "inferred_nouns", [])} for z in self.zones],
             "meta_theses": [
                 {
-                    "thesis": mt.thesis, 
-                    "zone_ids": mt.zone_ids, 
+                    "thesis": mt.thesis,
+                    "zone_ids": mt.zone_ids,
                     "confidence": mt.confidence
                 } for mt in self.meta_theses
             ]
         }
-        print(f"DEBUG: IdeaManager.state() returning: {st}")
         return st
+
+    def decay_all(self, age_turns=1.0):
+        """Decay all zones' evidence."""
+        for z in self.zones:
+            z.decay(age_turns)
+
+    def tick_all(self):
+        """Tick all zones with evidence."""
+        for z in self.zones:
+            if z.evidence:
+                if hasattr(z, 'ticks_taken') and z.ticks_taken > 50:
+                    continue
+                z.tick()
+                z.ticks_taken = getattr(z, 'ticks_taken', 0) + 1
 
     def mature_all(self, n: int = 3):
         """Trigger autonomous thinking across all active zones."""

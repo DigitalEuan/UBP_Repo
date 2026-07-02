@@ -148,8 +148,13 @@ class GLMRuntimeV37:
 
     def chat(self, query: str) -> str:
         self._turn += 1
+        # Between-turn maturation: decay + tick (adds inferred nouns, increases coherence)
+        if self.manager.zones:
+            self.manager.decay_all(age_turns=1.0)
+            self.manager.tick_all()
         active = self.manager.active
-        self._last_warm_start = True if (active and len(active.evidence) > 0) else None
+        # Warm-start: check if current content matches any prior crystallised idea
+        self._last_warm_start = None
         active = self.manager.active
         resolved, subs = active.resolve_anaphora(query)
         
@@ -178,16 +183,35 @@ class GLMRuntimeV37:
             
         # 4. Linguistic Processing
         tokens = re.findall(r"\b[a-z_]+\b", resolved.lower())
-        content = [(t, self.vocab_dict[t]) for t in tokens if t in self.vocab_dict]
+        # Filter out function words BEFORE passing to manager — they pollute topic_nouns
+        content = [(t, self.vocab_dict[t]) for t in tokens 
+                   if t in self.vocab_dict and t not in FUNCTION_WORDS]
         unknown = [t for t in tokens if t not in self.vocab_dict and t not in FUNCTION_WORDS]
         
-        # 5. Update Manager
+        # 5. Warm-start check (before update)
+        if content:
+            tvs = [entry.vector for _, entry in content if hasattr(entry, 'vector') and entry.vector]
+            nouns = [w for w, e in content if e.role in ("NOUN","PROPERTY")]
+            ws = self.meta_graph.match(tvs, nouns)
+            if ws:
+                self._last_warm_start = ws.idea_id
+
+        # 6. Update Manager
         num_zones_before = len(self.manager.zones)
         self.manager.update(content, self._turn)
         num_zones_after = len(self.manager.zones)
         self._last_pivot_spawned = True if num_zones_after > num_zones_before else None
-        
-        # 6. Compose
+
+        # 6b. Record crystallised ideas to meta-graph (for warm-start)
+        zone = self.manager.active
+        if zone.crystallized and zone.thesis:
+            try:
+                ci = self.meta_graph.record(zone)
+                if not self._last_warm_start:
+                    self._last_warm_start = None  # don't override existing
+            except: pass
+
+        # 7. Compose
         return compose_response(
             query, content, unknown, self.manager.active, self.manager, self.vocab,
             _enhanced_query_type(query), comp_res, sym_res, 

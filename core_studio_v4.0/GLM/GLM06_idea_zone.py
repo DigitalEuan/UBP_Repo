@@ -166,7 +166,10 @@ class IdeaZone:
 
     def _check_crystallization(self):
         c = self.coherence()
-        if not self.crystallized and c >= GET_IT_THRESHOLD and len(self.evidence) >= MIN_EVIDENCE:
+        if (not self.crystallized and c >= GET_IT_THRESHOLD
+                and len(self.evidence) >= MIN_EVIDENCE
+                and len(self.crg_backbone) >= MIN_BACKBONE
+                and len(self.topic_nouns) >= MIN_TOPIC_NOUNS):
             self.crystallized = True
             self.thesis = self._synthesise_thesis()
             self.peak_coherence = c

@@ -24,7 +24,7 @@ MAX_INFERRED       = 4      # Cap inferred evidence per tick cycle
 REFINE_DELTA       = 0.05   # Coherence gain needed to re-announce a refined thesis
 
 # ── 3. MULTI-ZONE & EXPANSION (v3.6+) ──────────────────────────────────
-ZONE_SPAWN_THRESHOLD = 4    # Golay min distance; tighter = more zones
+ZONE_SPAWN_THRESHOLD = 6    # Hamming distance threshold for spawning new zones
 MAX_ZONES            = 3
 AUTO_EXPAND_RADIUS   = 4    # Hamming distance for proposing new edges
 AUTO_EXPAND_CONF     = 0.40 # Confidence for auto-proposed edges

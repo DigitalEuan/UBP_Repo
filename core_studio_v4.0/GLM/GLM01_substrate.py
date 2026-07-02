@@ -157,21 +157,21 @@ def _build_vocabulary():
     # Pre-defined contradiction concepts
     CONTRADICTION_FALLBACKS = {
         "boson":            [0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1],
-        "fermion":          [1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0],
+        "fermion":          [0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,0],
         "commutator":       [0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1],
-        "anticommutator":   [1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0],
+        "anticommutator":   [0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,0],
         "continuum":        [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1],
-        "lattice":          [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],
+        "lattice":          [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0],
         "classical":        [1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0],
-        "quantum":          [0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1],
+        "quantum":          [1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,0,1,1,1,0,0,1],
         "majorana":         [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1],
-        "dirac":            [0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0],
+        "dirac":            [1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0],
         "unitary":          [1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0],
-        "antiunitary":      [0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1],
+        "antiunitary":      [1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,1],
         "real":             [1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0],
-        "imaginary":        [0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1],
+        "imaginary":        [1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1],
         "local":            [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0],
-        "nonlocal":         [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1],
+        "nonlocal":         [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1],
     }
 
     for uid, entry in combined_kb.items():
@@ -193,10 +193,10 @@ def _build_vocabulary():
                 if cw in bracket_text and cw not in words:
                     words[cw] = WordEntry(word=cw, vector=vec, role="NOUN", ubp_id=uid, nrci=entry.get('nrci_val', 0.5))
                     
-    # Inject fallbacks for any missing contradiction words
+    # Inject fallbacks for ALL contradiction words (overwrite KB vectors to ensure
+    # contradiction pairs have close Hamming distances for zone routing)
     for cw, vec in CONTRADICTION_FALLBACKS.items():
-        if cw not in words:
-            words[cw] = WordEntry(word=cw, vector=vec, role="NOUN", ubp_id=f"NUM_FALLBACK_{cw.upper()}", nrci=0.5)
+        words[cw] = WordEntry(word=cw, vector=list(vec), role="NOUN", ubp_id=f"NUM_FALLBACK_{cw.upper()}", nrci=0.5)
             
     return words
 
