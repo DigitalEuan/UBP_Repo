@@ -123,4 +123,27 @@ class IdeaManager:
         self._spawn_zone()
 
     def state(self) -> Dict[str, Any]:
-        return {"num_zones": len(self.zones), "active_idx": self.active_idx}
+        """
+        Returns the full diagnostic state of the manager.
+        Surgically updated to provide deep zone data for the UI.
+        """
+        return {
+            "num_zones": len(self.zones),
+            "active_idx": self.active_idx,
+            # Deep export of every zone's internal state
+            "zones": [z.idea_state() if hasattr(z, 'idea_state') else str(z) for z in self.zones],
+            "meta_theses": [
+                {
+                    "thesis": mt.thesis, 
+                    "zone_ids": mt.zone_ids, 
+                    "confidence": mt.confidence
+                } for mt in self.meta_theses
+            ]
+        }
+
+    def mature_all(self, n: int = 3):
+        """Trigger autonomous thinking across all active zones."""
+        for _ in range(n):
+            for z in self.zones:
+                if z.evidence:
+                    z.tick()

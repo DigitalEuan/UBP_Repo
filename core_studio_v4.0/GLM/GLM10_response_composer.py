@@ -9,6 +9,7 @@ from typing import List, Dict, Optional, Tuple, Any
 from GLM01_substrate import LEECH_ENGINE, _load_kb_safe
 from GLM02_constants import _OP_SYNTAX_RE, PRONOUNS
 from GLM00_config import KB_SYSTEM_PATH
+from GLM13_deliberative_reasoning import format_deliberation
 
 # ── 1. INTERNAL HELPERS ────────────────────────────────────────────────
 def _kb_description(word: str, vocab: Any, kb: Dict[str, Any]) -> Tuple[str, float, float]:
@@ -25,7 +26,6 @@ def _kb_description(word: str, vocab: Any, kb: Dict[str, Any]) -> Tuple[str, flo
         tax = 0.0
         
     desc = ""
-    # Hardening fix: ensure vector comparison is list-to-list
     vec_list = list(vec)
     for uid, kbe in kb.items():
         if list(kbe.get("vector", [])) == vec_list:
@@ -67,37 +67,55 @@ def compose_response(
     compute_result: Optional[Dict] = None, 
     symbolic_result: Optional[Dict] = None, 
     warm_start: Optional[Any] = None,
-    deliberation: Optional[Dict] = None # <--- ADDED
+    deliberation: Optional[Dict] = None,
+    recalled: Optional[List[Dict[str, Any]]] = None # <--- ADDED
 ) -> str:
     """Weaves internal state into a coherent multi-layered response."""
     
     kb = _load_kb_safe(KB_SYSTEM_PATH)
     parts: List[str] = []
 
+    # A. Multi-Zone Header
     if manager is not None and hasattr(manager, 'zones') and len(manager.zones) > 1:
         parts.append(f"[Zones: {len(manager.zones)} | Active: {manager.active_idx}]")
 
+    # B. Idea Status
     if zone is not None and hasattr(zone, 'evidence') and zone.evidence:
         parts.append(zone.status_line())
 
+    # C. Warm-Start Alert
     if warm_start is not None:
         parts.append(f"[Warm-Start] Resembles prior idea: '{warm_start.thesis}'")
 
+    # D. Crystallized Thesis
     if zone is not None and getattr(zone, 'crystallized', False) and zone.thesis:
         parts.append(f"[I get it] {zone.thesis}")
 
+    # E. Math Results
     if compute_result:
         res = compute_result["result"]
         parts.append(f"[Computed] {compute_result['computation']['expr']} = {res['exact']}")
+        if compute_result.get("grounded"):
+            parts.append(f"-> Snapped to lattice point '{compute_result['grounded'][0]}'")
 
     if symbolic_result:
         res = symbolic_result["result"]
         parts.append(f"[Symbolic] {symbolic_result['computation']['kind']}: {res['exact']}")
 
-    # NEW: Deliberation Block
+    # F. Deliberation Block
     if deliberation:
         parts.append(format_deliberation(deliberation))
 
+    # G. Reflexive Recall Block (NEW)
+    if recalled:
+        recall_parts = []
+        for entry in recalled[:3]: # Show top 3 matches
+            name = entry.get("name", entry.get("ubp_id", "Unknown"))
+            recall_parts.append(name)
+        if recall_parts:
+            parts.append(f"[Recall] {', '.join(recall_parts)}")
+
+    # H. Knowledge Base & Verification
     topic_word = getattr(zone, 'last_topic_noun', None) if zone else None
     if not topic_word and content:
         topic_word = content[0][0]
@@ -107,34 +125,18 @@ def compose_response(
         if desc: parts.append(f"[KB] {desc}")
         parts.append(f"[Verify] NRCI={nrci:.3f} | Tax={tax:.2f}")
 
+    # I. Structural Backbone
     if zone is not None and hasattr(zone, 'crg_backbone') and zone.crg_backbone:
         edges = [_verbalise_edge(e) for e in zone.crg_backbone[:2]]
         if edges: parts.append(f"[Backbone] {' | '.join(edges)}")
 
+    # J. Gaps
     real_gaps = [u for u in unknown if u.lower() not in {"hello", "hi", "help"}]
     if real_gaps:
         parts.append(f"[Gap] No verified vector for: {', '.join(real_gaps[:3])}")
 
+    # K. Fallback
     if not parts:
         parts.append("I am listening. Name a concept or provide a mathematical expression to begin.")
 
     return "  ".join(parts)
-
-# ── 3. ISOLATION TEST ──────────────────────────────────────────────────
-if __name__ == "__main__":
-    print("=== Testing Module 10: Response Composer ===")
-    # Mock data for testing
-    mock_vocab = {"entropy": type('obj', (), {'vector': [0]*24, 'nrci': 0.8})()}
-    
-    # Fix: lambda now accepts 'self' argument (_) to prevent TypeError
-    mock_zone = type('obj', (), {
-        'evidence': [True], 
-        'status_line': lambda _: "[Zone: Testing]", 
-        'crystallized': True, 
-        'thesis': 'Entropy is increasing.',
-        'last_topic_noun': 'entropy', 
-        'crg_backbone': []
-    })()
-    
-    resp = compose_response("test", [], [], mock_zone, None, mock_vocab, "general")
-    print(f"✅ Sample Response:\n   {resp}")
