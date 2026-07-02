@@ -180,9 +180,12 @@ def _build_vocabulary():
         lexicon = entry.get('lexicon', '')
         
         # Standard extraction
-        m = re.search(r'\[(?:Word|Property|Operator):?\s*([^\]]+)\]', lexicon)
+        m = re.search(r'\[(?:Word|Property|Operator|Element):?\s*([^\]]+)\]', lexicon)
         if m:
             word = m.group(1).lower().strip()
+            # Handle "Hydrogen (H)" -> "hydrogen"
+            if "(" in word:
+                word = word.split('(')[0].strip()
             words[word] = WordEntry(word=word, vector=vec, role="NOUN", ubp_id=uid, nrci=entry.get('nrci_val', 0.5))
             
         # Extract specific contradiction keywords from brackets if present
