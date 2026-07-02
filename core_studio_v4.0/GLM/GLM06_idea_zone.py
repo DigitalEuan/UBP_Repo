@@ -177,8 +177,25 @@ class IdeaZone:
     def _synthesise_thesis(self) -> str:
         if not self.crg_backbone:
             return f"An idea regarding {', '.join(self.topic_nouns[:2])}."
-        e = self.crg_backbone[0]
-        return f"{e.src} {e.label.replace('_', ' ')} {e.dst}."
+        # v3.7.7: Filter out ugly edge labels (lattice_adjacent, auto_proposed)
+        # and use only curated edges for thesis synthesis
+        _THESIS_LABELS = {"generates", "is_a", "commutes_with", "scales_as",
+                          "depends_on", "measures", "is_dual_to", "has_property"}
+        curated = [e for e in self.crg_backbone if e.label in _THESIS_LABELS]
+        if not curated:
+            return f"An idea regarding {', '.join(self.topic_nouns[:2])}."
+        # Pick the highest-priority edge
+        priority = {"generates":0, "is_dual_to":0, "commutes_with":1, "scales_as":1,
+                    "depends_on":2, "measures":2, "is_a":3, "has_property":3}
+        ranked = sorted(curated, key=lambda e: priority.get(e.label, 4))[:2]
+        parts = []
+        for e in ranked:
+            m = {"is_a":f"{e.src} is a {e.dst}", "is_dual_to":f"{e.src} is dual to {e.dst}",
+                 "commutes_with":f"{e.src} commutes with {e.dst}", "generates":f"{e.src} generates {e.dst}",
+                 "scales_as":f"{e.src} scales as {e.dst}", "depends_on":f"{e.src} depends on {e.dst}",
+                 "measures":f"{e.src} measures {e.dst}", "has_property":f"{e.src} has {e.dst}"}
+            parts.append(m.get(e.label, f"{e.src} {e.label.replace('_',' ')} {e.dst}"))
+        return (parts[0]+".") if len(parts)==1 else (parts[0]+" and "+parts[1]+".")
 
     def idea_state(self) -> dict:
         return {
