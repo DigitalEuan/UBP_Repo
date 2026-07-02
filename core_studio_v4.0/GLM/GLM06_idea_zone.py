@@ -48,41 +48,28 @@ class IdeaZone:
         self._crg = crg
         self._vocab = vocab
 
-    # ── 1. COHERENCE (The Stability Metric) ──────────────────────────────
     def coherence(self) -> float:
         if not self.evidence or not self.centroid: return 0.0
-        
-        # Calculate geometric tightness
         dists = [BLA.hamming_distance(e.vector, self.centroid) for e in self.evidence]
         avg_dist = (sum(dists) / len(dists)) if dists else 0.0
         tightness = max(0.0, 1.0 - avg_dist / 12.0)
-        
-        # Calculate structural support
         backbone_score = min(1.0, len(self.crg_backbone) / 3.0)
         mass_score = min(1.0, len(self.evidence) / 5.0)
-        
-        # Calculate substrate health (NRCI)
         try:
             nrci = float(LEECH_ENGINE.calculate_nrci(self.centroid))
-        except Exception:
+        except:
             nrci = 0.5
-            
         base = 0.34 * tightness + 0.34 * backbone_score + 0.16 * mass_score + 0.16 * nrci
-        
-        # Apply contradiction penalties
         pen = 0.0
         if self.crg_backbone and self._crg is not None:
             pen = contradiction_penalty(self.crg_backbone, self._crg)
             cons = detect_contradictions(self.crg_backbone, self._crg)
             self.contradictions = [(f"{e.src}--{e.label}->{e.dst}", ce.label) for e, ce in cons]
-            
         if self.provisional: pen += 0.10
         return round(max(0.0, base - pen), 4)
 
-    # ── 2. UPDATE (Adding New Information) ───────────────────────────────
     def update(self, known_tokens: List[Tuple[str, Any]], turn: int) -> Dict[str, Any]:
         diag = {"new_nouns": [], "post_coherence": 0.0}
-        
         first_seed = not self.evidence
         for word, entry in known_tokens:
             vec = entry.vector
@@ -92,54 +79,38 @@ class IdeaZone:
                 d = BLA.hamming_distance(vec, self.centroid)
                 fit = "reinforce" if d <= IDEA_RADIUS else "drift"
                 res = REINFORCE_RES if fit == "reinforce" else DRIFT_RES
-                
             ev = IdeaEvidence(word=word, vector=vec, role=entry.role,
                               nrci=float(entry.nrci), turn=turn, resonance=res,
                               fit=fit, source="user")
             self.evidence.append(ev)
-            
             if entry.role in ("NOUN", "PROPERTY") and word not in self.topic_nouns:
                 self.topic_nouns.append(word)
                 diag["new_nouns"].append(word)
                 self.last_topic_noun = word
             first_seed = False
-
-        # Maintain rolling window
         if len(self.evidence) > MAX_EVIDENCE:
             self.evidence = self.evidence[-MAX_EVIDENCE:]
-            
         self._recompute_centroid()
         self._extend_backbone()
         self.turns = turn
-        
-        # Check for crystallization
-        curr_coh = self.coherence()
-        diag["post_coherence"] = curr_coh
+        diag["post_coherence"] = self.coherence()
         self._check_crystallization()
-        
         return diag
 
-    # ── 3. TICK (Autonomous Thinking) ────────────────────────────────────
     def tick(self) -> Dict[str, Any]:
-        """Perform one cycle of autonomous inference."""
         if not self.centroid or not self._vocab or not self._crg:
             return {"discovered": []}
-            
         self.decay(age_turns=TICK_AGE)
         self.tick_count += 1
-        
         candidates = []
         for noun in list(self.topic_nouns):
-            # Search CRG for related concepts
             for e in self._crg.out.get(noun, []):
                 if e.dst in self._vocab.words and e.dst not in self.topic_nouns:
                     dv = self._vocab.words[e.dst].vector
                     d = BLA.hamming_distance(dv, self.centroid)
                     if d <= TICK_SEARCH_RADIUS:
                         candidates.append((e.dst, e, d))
-                        
         candidates.sort(key=lambda x: x[2])
-        
         new_nouns = []
         added = 0
         for word, edge, dist in candidates:
@@ -152,29 +123,20 @@ class IdeaZone:
             new_nouns.append(word)
             self.inferred_nouns.append(word)
             added += 1
-            
         self.topic_nouns.extend(new_nouns)
         self._recompute_centroid()
         self._extend_backbone()
         self._check_crystallization()
-        
         return {"discovered": new_nouns}
 
-    # ── 4. DECAY (Forgetting) ────────────────────────────────────────────
     def decay(self, age_turns: float = 1.0):
-        """Fade the resonance of evidence over time."""
         for e in self.evidence:
             e.resonance *= math.exp(-DECAY_LAMBDA * age_turns)
-            
-        # Prune weak evidence
         self.evidence = [e for e in self.evidence if e.resonance >= PRUNE_FLOOR]
-        
-        # Sync nouns
         surviving = {e.word for e in self.evidence}
         self.topic_nouns = [n for n in self.topic_nouns if n in surviving or n in self.inferred_nouns]
         self._recompute_centroid()
 
-    # ── INTERNAL HELPERS ─────────────────────────────────────────────────
     def _recompute_centroid(self):
         if not self.evidence: self.centroid = []; return
         cols = [0.0]*24
@@ -214,17 +176,14 @@ class IdeaZone:
         state = "crystallized" if self.crystallized else "forming"
         return f"[Zone: {state} | coherence={c:.2f} | nouns={len(self.topic_nouns)}]"
 
-def resolve_anaphora(self, query: str) -> Tuple[str, List[str]]:
+    def resolve_anaphora(self, query: str) -> Tuple[str, List[str]]:
         if not self.last_topic_noun: return query, []
         subs = []
-        
         def repl(m):
             w = m.group(0)
             if w.lower() in PRONOUNS:
                 subs.append((w, self.last_topic_noun))
                 return self.last_topic_noun
             return w
-            
-        # Replace only alphabetical words, preserving all math symbols and spacing
         resolved = re.sub(r'\b[a-zA-Z]+\b', repl, query)
         return resolved, subs
