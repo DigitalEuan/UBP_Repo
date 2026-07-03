@@ -1,8 +1,53 @@
-# GLM — Geometric Language Machine v3.7.7
+# GLM — Geometric Language Machine v3.9.0
 
 A modular, deterministic semantic reasoning engine grounded in the 24-bit Golay/Leech lattice substrate of the Universal Binary Principle (UBP). Runs live in the browser via Pyodide.
 
-**Current state**: 12/12 self-tests pass · Deployed live on [Google AI Studio](https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a)
+**Current state**: 24/24 self-tests pass · 41/41 golden cases pass (100%) · Deployed live on [Google AI Studio](https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a)
+
+---
+
+## What's New in v3.9.0
+
+v3.9.0 is the **natural-language + master-resource** upgrade.  It integrates the previously-unused 14.4 MB `glm_master_resource_v1.json` (4248 dictionary entries with full English definitions), adds frame-based natural-language generation, exposes the hex-colour signature of every concept, and adds detectors for linear algebra, multivariable calculus, ODEs, Taylor series, and limits.
+
+### New Modules
+| Module | Purpose |
+|--------|---------|
+| `GLM16_master_resource.py` | Loads the 14.4 MB master resource: 4248 dictionary entries (with vectors + NRCI + definitions), 70 element↔law relations, 55 spatial nodes with hex colours. Vocab grows from 1498 → **5395 words**. |
+| `GLM17_semantic_frames.py` | Frame-based natural-language generation. Verbalises CRG edges into fluent sentences: "Hamiltonian generates time. Hamiltonian commutes with symmetry." |
+| `GLM18_hex_colour.py` | Exposes the 24-bit vector AS a #RRGGBB hex colour. Provides `word_to_colour`, `blend_colours`, `idea_signature`, `rank_by_colour_proximity` for UI visualization. |
+
+### Upgraded Modules
+| Module | Key Changes |
+|--------|-------------|
+| `GLM01_substrate.py` | Injects master resource vocab (1498 → 5395 words). |
+| `GLM02_constants.py` | Extended FUNCTION_WORDS with 80+ common verbs (tell, about, discuss, etc.) that the master resource injects but should still be filtered. |
+| `GLM09_tools.py` | Added 7 new detectors: determinant, eigenvalues, trace (linear algebra), partial derivative, gradient (multivariable), ODE solver, Taylor series, limit. Fixed ODE-vs-solve ordering bug. |
+| `GLM10_response_composer.py` | Multi-source definition lookup: physics pack + alias KB + vector KB + master resource, picks the LONGEST (richest) definition. Added `[NL]` block with frame-generated explanation. |
+| `GLM11_runtime.py` | Injects master resource relations into CRG. New APIs: `explain()`, `idea_colour()`, `word_colour()`, `master_status()`. `idea_state()` now includes colour signature + master status. |
+
+### Capability Gains (golden_cases.json)
+| Suite | v3.8.0 | v3.9.0 |
+|-------|--------|--------|
+| mathnet (10) | 10 | **10** |
+| mathnet_expanded (10) | 10 | **10** |
+| critpt (1) | 1 | **1** |
+| language (4) | 4 | **4** |
+| failure (3) | 3 | **3** |
+| v39_linear_algebra (3) | — | **3** (NEW) |
+| v39_multivariable (2) | — | **2** (NEW) |
+| v39_differential_equations (2) | — | **2** (NEW) |
+| v39_series (2) | — | **2** (NEW) |
+| v39_natural_language (2) | — | **2** (NEW) |
+| v39_definitions (2) | — | **2** (NEW) |
+| **TOTAL** | **28 (100%)** | **41 (100%)** |
+
+### Self-Tests
+| v3.8.0 | v3.9.0 |
+|--------|--------|
+| 18/18 (A–R) | **24/24 (A–X)** |
+
+New tests: S (determinant), T (partial derivative), U (ODE), V (master resource definition), W (NL explanation), X (hex colour signature).
 
 ---
 
@@ -11,13 +56,13 @@ A modular, deterministic semantic reasoning engine grounded in the 24-bit Golay/
 ### Prerequisites
 - Python 3.10+ (requires `int.bit_count()`)
 - SymPy (`pip install sympy`)
-- `ubp_system_kb.json` and `ubp_lang_kb_combined_v4.json` in the workspace root
+- `ubp_system_kb.json`, `ubp_lang_kb_combined_v4.json`, `glm_master_resource_v1.json` in the workspace root
 
 ### Run Self-Tests
 ```bash
 python GLM12_cli_entry.py --test
 ```
-Expected: `12/12 tests passed`
+Expected: `24/24 tests passed`
 
 ### Chat Query
 ```bash
@@ -39,24 +84,29 @@ print(rt.chat("is 97 prime?"))          # Primality detection
 
 ## Modular Architecture
 
-The system is split into 14 self-contained Python modules. Each can be tested independently.
+The system is split into 19 self-contained Python modules. Each can be tested independently.
 
 | Module | Purpose |
 |--------|---------|
 | `GLM00_config.py` | Configuration, path setup, KB file verification |
-| `GLM01_substrate.py` | BLA, MOG categories, CRG, lexer, KB loading, vocabulary builder, alias map |
-| `GLM02_constants.py` | Thresholds, function words, pronouns, tunables |
+| `GLM01_substrate.py` | BLA, MOG categories, CRG, lexer, KB loading, vocabulary builder, alias map. v3.8.0: 141 CRG edges + physics pack. v3.9.0: + master resource injection (5395 words). |
+| `GLM02_constants.py` | Thresholds, function words, pronouns, tunables. v3.9.0: extended FUNCTION_WORDS. |
 | `GLM03_crg.py` | Extended CRG (contradictions, auto-expand, lattice linking, query-type) |
 | `GLM04_number_vocab.py` | Derived number-word lattice points (55 numbers) |
 | `GLM05_idea_evidence.py` | Source-tagged evidence dataclass |
 | `GLM06_idea_zone.py` | IdeaZone: decay, ticks, crystallisation, adversarial testing |
 | `GLM07_idea_manager.py` | Multi-zone routing, cross-zone synthesis, contradiction pivot |
 | `GLM08_idea_meta_graph.py` | Persistence, warm-start, deterministic IDs |
-| `GLM09_tools.py` | SymPy: arithmetic, GCD, LCM, factorial, primality, symbolic ops |
-| `GLM10_response_composer.py` | Confidence-tagged, multi-zone, synthesis-aware response |
-| `GLM11_runtime.py` | GLMRuntimeV37: wires everything, reflexive recall, gap derivation |
-| `GLM12_cli_entry.py` | Self-test suite (12 tests A–L), CLI interface |
-| `GLM13_deliberative_reasoning.py` | UBP-native arithmetic, 7 problem pattern detectors |
+| `GLM09_tools.py` | SymPy: arithmetic, GCD, LCM, factorial, primality, symbolic ops. v3.8.0: + integrate, simplify, vector ops. v3.9.0: + determinant, eigenvalues, trace, partial diff, gradient, ODE, Taylor, limit. |
+| `GLM10_response_composer.py` | Confidence-tagged, multi-zone, synthesis-aware response. v3.8.0: physics-pack definitions. v3.9.0: multi-source definition lookup + `[NL]` block. |
+| `GLM11_runtime.py` | GLMRuntimeV37: wires everything, reflexive recall, gap derivation. v3.8.0: MultiTokenLexer. v3.9.0: + `explain()`, `idea_colour()`, `word_colour()`, `master_status()` APIs. |
+| `GLM12_cli_entry.py` | Self-test suite (24 tests A–X), CLI interface |
+| `GLM13_deliberative_reasoning.py` | UBP-native arithmetic, 13 problem pattern detectors. v3.8.0: GCD fix + 6 new patterns. |
+| `GLM14_lexer.py` | **v3.8.0 NEW**: Multi-token lexer with LaTeX scrubbing, lemmatisation, fuzzy matching. |
+| `GLM15_physics_pack.py` | **v3.8.0 NEW**: 197-term physics vocabulary pack with deterministic vectors + definitions. |
+| `GLM16_master_resource.py` | **v3.9.0 NEW**: Loads the 14.4 MB master resource (4248 dictionary entries, 70 relations, 55 spatial nodes). |
+| `GLM17_semantic_frames.py` | **v3.9.0 NEW**: Frame-based natural-language generation from CRG edges. |
+| `GLM18_hex_colour.py` | **v3.9.0 NEW**: Hex colour signatures — every concept IS a #RRGGBB colour. |
 
 ### Test Files
 | File | Purpose |
@@ -131,7 +181,7 @@ When direct detection fails, 7 problem patterns fire:
 
 ---
 
-## Self-Tests (A–L)
+## Self-Tests (A–R)
 
 | Test | Capability | Result |
 |------|-----------|--------|
@@ -141,12 +191,18 @@ When direct detection fails, 7 problem patterns fire:
 | D | Symbolic solve (x²−4 → [−2, 2]) | PASS |
 | E | Multi-zone routing (2 zones spawned) | PASS |
 | F | Contradiction detection (boson ↔ fermion) | PASS |
-| G | Autonomous maturation (20 inferred nouns) | PASS |
+| G | Autonomous maturation (17+ inferred nouns) | PASS |
 | H | Warm-start (meta-graph matching) | PASS |
 | I | Determinism (byte-identical across runs) | PASS |
 | J | CRG auto-expansion (2 auto-proposed edges) | PASS |
 | K | Contradiction-driven pivot (zone spawn) | PASS |
 | L | Cross-zone synthesis ("both zones relate to symmetry") | PASS |
+| M | **v3.8.0** Multi-word term preservation ('weyl anomaly' as atomic token) | PASS |
+| N | **v3.8.0** LaTeX scrubbing ($\alpha + \beta$ → alpha, beta) | PASS |
+| O | **v3.8.0** Vector operations (dot product = −11, magnitude = 13) | PASS |
+| P | **v3.8.0** Integrate detector (∫x²eˣ dx → (x²−2x+2)eˣ) | PASS |
+| Q | **v3.8.0** Simplify detector ((x²−1)/(x−1) → x+1) | PASS |
+| R | **v3.8.0** Stars and bars (symbolic n, k → C(n−1, k−1)) | PASS |
 
 ---
 
@@ -223,6 +279,8 @@ No external `.py` substrate files required — all substrate code is absorbed in
 
 | Version | Key Change |
 |---------|-----------|
+| v3.9.0 | Master resource integration (GLM16: 5395 words, +3900 dictionary defs), semantic frames for NL generation (GLM17), hex colour signatures (GLM18), 8 new math detectors (linear algebra, multivariable, ODE, Taylor, limit), multi-source definition lookup, new APIs (`explain`, `idea_colour`, `word_colour`, `master_status`). 6 new self-tests (S–X), 13 new golden cases. |
+| v3.8.0 | Multi-token lexer + LaTeX scrub (GLM14), 197-term physics vocab pack (GLM15), 141 CRG edges, integrate/simplify/vector ops detectors, GCD proof bugfix, 6 new deliberation patterns, 6 new self-tests (M–R). Golden cases 46.4% → 100%. |
 | v3.7.7 | Modular architecture (14 files), alias map KB lookup, priority vocab, full CRG, NRCI fix, thesis filter |
 | v3.7.6 | Initial modular split from monolith, Pyodide deployment |
 | v3.7.5 | Self-contained substrate (no external .py deps) |
