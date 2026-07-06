@@ -161,13 +161,27 @@ def _sympy_validate_int(expected: int, expr: str) -> Optional[Dict[str, Any]]:
             ev = sv.evalf()
             if ev.is_integer:
                 sv = int(ev)
-        if isinstance(sv, int) or (hasattr(sv, 'is_integer') and sv.is_integer):
+        # Try direct integer conversion for Integer/Rational types
+        if isinstance(sv, int):
+            return {"value": sv, "matches": (sv == expected), "source_expr": expr}
+        if hasattr(sv, 'is_integer') and sv.is_integer:
             sv_int = int(sv)
-            return {
-                "value": sv_int,
-                "matches": (sv_int == expected),
-                "source_expr": expr,
-            }
+            return {"value": sv_int, "matches": (sv_int == expected), "source_expr": expr}
+        # v3.19.0: Handle Float results that are actually integers
+        # (e.g. Matrix([[1.0,2.0],...]).det() returns -3.00000000000000)
+        if hasattr(sv, 'is_Float') and sv.is_Float:
+            if sv == int(sv):
+                sv_int = int(sv)
+                return {"value": sv_int, "matches": (sv_int == expected), "source_expr": expr}
+        # Try evalf and check if it's an integer-valued float
+        if hasattr(sv, 'evalf'):
+            ev = sv.evalf()
+            try:
+                ev_float = float(ev)
+                if ev_float == int(ev_float) and abs(ev_float - expected) < 1e-9:
+                    return {"value": int(ev_float), "matches": True, "source_expr": expr}
+            except Exception:
+                pass
         return {"value": None, "matches": False,
                 "error": f"SymPy did not return an integer: {sv!r}"}
     except Exception as e:

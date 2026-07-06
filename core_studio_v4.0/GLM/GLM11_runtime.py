@@ -150,7 +150,9 @@ class GLMRuntimeV37:
         except Exception:
             self.learner = None
 
-    def _reflexive_recall(self, query: str) -> List[Dict[str, Any]]:
+    def _reflexive_recall(self, query: str, qtype: str = "",
+                          comp_res: Any = None, sym_res: Any = None,
+                          delib_res: Any = None) -> List[Dict[str, Any]]:
         """Recall relevant KB entries using alias map + ID match + phrase match.
 
         v3.7.7: Added alias map consultation (word → ubp_id → KB entry).
@@ -161,9 +163,25 @@ class GLMRuntimeV37:
         physics terms like 'weyl anomaly' contribute to recall.  And adds
         direct vocab-definition recall for terms that have a physics-pack
         definition but no KB entry.
+
+        v3.19.0: Added domain-aware filtering (GLM30). Pure-math queries
+        skip KB recall entirely — no more chemistry/physics bleed into
+        math problems. Other domains filter recalled entries by ubp_id
+        prefix.
         """
         if self._kb_cache is None:
             self._kb_cache = _load_system_kb()
+
+        # v3.19.0: Domain-aware filtering
+        try:
+            from GLM30_domain_filter import (classify_domain,
+                                              should_suppress_recall,
+                                              filter_recalled_by_domain)
+            domain = classify_domain(query, qtype, comp_res, sym_res, delib_res)
+            if should_suppress_recall(domain):
+                return []  # pure_math — skip KB recall entirely
+        except Exception:
+            domain = "general"  # fallback: no filtering
 
         recalled = []
         ql = query.lower()
@@ -235,6 +253,20 @@ class GLMRuntimeV37:
         except Exception:
             pass
 
+        # v3.19.0: Apply domain filter to the recalled entries
+        try:
+            from GLM30_domain_filter import filter_recalled_by_domain
+            # Extract query words for the "always keep direct matches" rule
+            query_words = []
+            try:
+                for tok in self.lexer.tokenise(ql):
+                    query_words.append(tok)
+            except Exception:
+                query_words = re.findall(r'\b[a-z]{3,}\b', ql)
+            recalled = filter_recalled_by_domain(recalled, domain, query_words)
+        except Exception:
+            pass
+
         return recalled[:5]
 
     def last_diag(self) -> Dict[str, Any]:
@@ -283,7 +315,10 @@ class GLMRuntimeV37:
             delib_res = deliberate(resolved)
 
         # 3. Reflexive Recall
-        recalled = self._reflexive_recall(resolved)
+        # v3.19.0: pass comp_res/sym_res/delib_res so the domain filter
+        # can use them to classify the query and skip recall for pure_math.
+        qtype = _enhanced_query_type(query)
+        recalled = self._reflexive_recall(resolved, qtype, comp_res, sym_res, delib_res)
 
         # 4. Linguistic Processing
         try:
@@ -380,6 +415,25 @@ class GLMRuntimeV37:
             except Exception:
                 pass
 
+        # v3.19.0: Extract the clean answer and verification statement
+        answer_block = None
+        verified = None
+        try:
+            from GLM29_answer_extractor import extract_answer
+            answer_block = extract_answer(comp_res, sym_res, delib_res)
+        except Exception:
+            pass
+        try:
+            from GLM31_verification import verify_result
+            pipeline_state = {
+                "query": query, "qtype": qtype,
+                "compute": comp_res, "symbolic": sym_res,
+                "deliberation": delib_res,
+            }
+            verified = verify_result(pipeline_state)
+        except Exception:
+            pass
+
         return {
             "query": query,
             "resolved": resolved,
@@ -387,24 +441,34 @@ class GLMRuntimeV37:
             "unknown": unknown,
             "zone": self.manager.active,
             "manager": self.manager,
-            "qtype": _enhanced_query_type(query),
+            "qtype": qtype,
             "compute": comp_res,
             "symbolic": sym_res,
             "deliberation": delib_res,
             "recalled": recalled,
             "warm_start": self._last_warm_start,
             "turn": self._turn,
+            # v3.19.0: new fields
+            "answer_block": answer_block,
+            "verified": verified,
         }
 
     def chat(self, query: str) -> str:
-        """Original terse bracket-tag response (unchanged, passes all tests)."""
+        """Original terse bracket-tag response.
+
+        v3.19.0: now passes answer_block and verified to the composer so
+        [Answer] and [Verified] blocks are appended.
+        """
         state = self._run_pipeline(query)
         return compose_response(
             state["query"], state["content"], state["unknown"],
             state["zone"], state["manager"], self.vocab,
             state["qtype"], state["compute"], state["symbolic"],
             deliberation=state["deliberation"],
-            recalled=state["recalled"]
+            recalled=state["recalled"],
+            # v3.19.0: new kwargs
+            answer_block=state.get("answer_block"),
+            verified=state.get("verified"),
         )
 
     def chat_prose(self, query: str, fresh: bool = False) -> str:
@@ -421,6 +485,9 @@ class GLMRuntimeV37:
         behaviour is preserved — useful for genuine multi-turn conversations
         about the same topic. Use `fresh=True` for any unrelated follow-up
         or for one-shot queries where bleed would be inappropriate.
+
+        v3.19.0: now passes answer_block and verified to the composer so
+        the answer sentence and verification sentence are appended.
         """
         if fresh:
             self.manager.reset()
@@ -437,6 +504,9 @@ class GLMRuntimeV37:
             deliberation=state["deliberation"],
             recalled=state["recalled"],
             turn=state["turn"],
+            # v3.19.0: new kwargs
+            answer_block=state.get("answer_block"),
+            verified=state.get("verified"),
         )
 
     def crg_alu(self):
