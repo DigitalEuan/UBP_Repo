@@ -1,7 +1,8 @@
----
-name: UBP Core Studio — AI Assistant Operating Reference
-description: Working with the Universal Binary Principle (UBP).
-license: Complete terms in LICENSE.txt
+# UBP Core Studio — AI Assistant Operating Reference
+
+* description: Working with the Universal Binary Principle (UBP).
+* CONTENTS: 2 SKILLS: 1) UBP Core Studio — AI Assistant Operating Reference (UBP_SKILL_1), 2) SKILL 2: UBP Substrate Data Design and Temporal Cascade Protocol (UBP_SKILL_2)
+* Important Note: This system to always under development - **we can try anything** it just has to be clearly recorded as an experiment and documented well.
 ---
 
 # UBP Core Studio — AI Assistant Operating Reference
@@ -12,7 +13,7 @@ license: Complete terms in LICENSE.txt
 * **Backbone script:** `core/ubp_unified_v5.py` (v5.4.0 on disk — 3,500 lines)
 * **Detailed system instructions:** `core/ubp_files_and_usage.md`
 * **Gravity study scripts:** `https://github.com/DigitalEuan/UBP_Repo/tree/main/gravity`
-* **Author:** E.R.A. Craig (DigitalEuan), Auckland, New Zealand
+* **Author:** E.R.A. Craig (DigitalEuan.com), Auckland, New Zealand
 
 ---
 
@@ -20,17 +21,17 @@ license: Complete terms in LICENSE.txt
 
 **Always fetch and run the real UBP system. Never mock, stub, simplify, or hand-calculate.**
 
-Mock implementations and placeholder constants look correct at first but embed subtle logical errors — wrong L vs L_s, wrong Fraction vs float, wrong constant definitions — that only surface later at significant debugging cost. Every UBP question is answerable by running the actual code.
+Mock implementations and placeholder constants look correct at first but embed subtle logical errors — wrong L vs L_s, wrong Fraction vs float, wrong constant definitions — that only surface later at significant debugging cost. Every UBP question is answerable by running the actual code. Running simplified or placeholder scripts simply results in re-computing again in another round to fix the errors caused so it is essential to make full and correct scripts from the very beginning.
 
 The workflow for any UBP task is always:
 1. **Fetch** `ubp_unified_v5.py` from `raw.githubusercontent.com` using `bash_tool`
 2. **Run** `python3 ubp_unified_v5.py` to confirm 37/37 tests pass before proceeding
-3. **Import and compute** using `fractions.Fraction` arithmetic — the system is self-contained, stdlib only
-4. **Report live output values** — not recalled or estimated values from training
+3. **Import and compute** using `fractions.Fraction` arithmetic — the system is self-contained, stdlib only Don't use floats unless extreemly necessary and flag use clearly.
+4. **Report live output values** — not recalled or estimated values from training - use UBP scripts in place of guessing always, if unsure ask the user and devleop a script together.
 
-If the system produces an unexpected result, that result is what gets reported. If a formula behaves differently from the documentation, that discrepancy is what gets investigated using the code, not resolved by assumption.
+If the system produces an unexpected result, that result is what gets reported. If a formula behaves differently from the documentation, that discrepancy is what gets investigated using the code, not resolved by assumption. Science and experiments are fun when taken seriously - lets have serious fun and do this correct from the beginning.
 
-**The system is fast.** Importing and running a full formula verification takes under 3 seconds. There is no cost reason to approximate.
+**The system is fast.** Importing and running a full formula verification takes under 3 seconds. There is no cost reason to approximate. Many experiments are like this - super fast, it takes longer to create a script than run it with he UBP in general.
 
 ---
 
@@ -43,12 +44,9 @@ BASE="https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/core_studio_v4
 
 # Mandatory backbone — always fetch fresh
 curl -s "$BASE/ubp_unified_v5.py"   -o ubp_unified_v5.py
-
-# Companion scripts (fetch when needed)
-curl -s "$BASE/ubp_v28_oracle.py"   -o ubp_v28_oracle.py    # primality_nrci, Gray code pipeline
-curl -s "$BASE/ubp_tgic_engine.py"  -o ubp_tgic_engine.py   # 3-6-9 TGIC logic
-curl -s "$BASE/ubp_genesis_boot.py" -o ubp_genesis_boot.py  # 24 base geometry seeds
 ```
+* **Companion scripts** (fetch when needed) are located in this '/core' folder also and change often as the UBP system develops.
+* **Knowledgebank Files (KBs)** (fetch when needed) are located in the '/system_kb' folder and change often as the UBP system develops.
 
 **GitHub access:**
 - `raw.githubusercontent.com` — works, use this for all file fetches
@@ -69,7 +67,8 @@ python3 ubp_unified_v5.py
 ```
 Python ≥ 3.10  |  stdlib only: fractions, hashlib, json, dataclasses, typing, pathlib, datetime, re, time, math
 ```
-No pip installs required.
+No pip installs required. 
+SymPy shouldn't ever beused for computation - only verification unless absolutely required - flag use clearly.
 
 ---
 
@@ -97,7 +96,7 @@ mg  = MonsterGroup()                   # no args
 
 ## 3. CONSTANTS
 
-All stored as `fractions.Fraction`. Use `float(pp.X)` for display; keep as Fraction for computation.
+All stored as `fractions.Fraction`. Use `float(pp.X)` for display only; keep as Fraction for computation.
 
 | Attribute | Value (float) | Definition |
 |-----------|---------------|------------|
@@ -113,11 +112,11 @@ All stored as `fractions.Fraction`. Use `float(pp.X)` for display; keep as Fract
 | `pp.phi`    | 1.61803398875  | Golden ratio φ |
 | `pp.e_const`| 2.71828182846  | Euler's e |
 
-### ⚠ L vs L_s — the most common error in prior sessions
+### ⚠ L vs L_s — is a common error:
 
 In every gravity study formula: **L means `pp.L` (= w/13 = 0.06289…)**.
 
-`pp.L_s` (= 0.07599…) is the *Stereoscopic* Sink = L × (29/24). It appears only in proton mass formulas and anywhere explicitly written as "L_s". Using `pp.L_s` where `pp.L` is intended gives a ~17% error on the muon ratio.
+`pp.L_s` (= 0.07599…) is the *Stereoscopic* Sink = L × (29/24). It appears only in proton mass formulas and anywhere explicitly written as "L_s". Using `pp.L_s` where `pp.L` is intended gives a ~17% error on the muon ratio. These tests are for verification/alignment with real-world data and are constantly under review.
 
 **Verify live:** `assert abs(float(pp.wobble) / 13 - float(pp.L)) < 1e-12`
 
@@ -188,9 +187,7 @@ l.SCALE    # 8
 
 ---
 
-## 6. NRCI — FULL SPECIFICATION
-
-Source: UBP_Master_Document.docx Section 2.3
+## 6. NRCI (Non-Random Coherence Index) — FULL SPECIFICATION
 
 ### Tax
 ```
@@ -211,7 +208,7 @@ NRCI(v) = 10 / (10 + tax(v))
 NRCIα(v) = 10 / (10 + α × tax(v))
 ```
 
-**Confirmed α values and their NRCIα at canonical octad:**
+**Confirmed (but always under review) α values and their NRCIα at canonical octad:**
 
 | α | NRCIα | Formula | Structural basis |
 |---|-------|---------|-----------------|
@@ -222,24 +219,6 @@ NRCIα(v) = 10 / (10 + α × tax(v))
 | 3   | (predicted) | Higgs potential alt | Triad |
 
 **NRCIα applies only to Potential-layer formulas** (those using U_e). It does not apply to mass ratios, couplings, boson masses (use Shear instead), H₀, or G.
-
-### Investigating the NRCI(α) codeword question
-
-The master document specifies which codeword `v` feeds into each formula's NRCIα call by reading the per-formula push scripts. To resolve exactly which vector is used for a given formula:
-
-```python
-# Pull and inspect the relevant push script directly
-import subprocess
-result = subprocess.run(
-    ['curl', '-s',
-     'https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/gravity/push06_omega_k.py'],
-    capture_output=True, text=True
-)
-# Search for the nrci call
-for i, line in enumerate(result.stdout.splitlines()):
-    if 'nrci' in line.lower():
-        print(i, line)
-```
 
 ### NRCI thresholds
 | Value | Label |
@@ -274,8 +253,6 @@ Shear_2 = 1 + 3*LY + 12*LY**2          # ≈ 1.05324  (Leech-mediated, two-loop)
 ---
 
 ## 8. THE UNIVERSAL GENERATOR FUNCTION Φ
-
-Defined at `gravity/10/11_bonus/push11_framework.py:362–399`.
 
 ```
 Φ(k, arm, layer, C, correction) → physical constant prediction
@@ -393,10 +370,8 @@ meta = preds['sink_metadata']  # has L, L_s, sigma, monad, wobble, leakage_L, st
 
 ## 11. PRIMALITY_NRCI PIPELINE
 
-Source: Section 2.4 master document / `ubp_v28_oracle.py:561–579`
-
 ```
-Integer n → 6-digit hex → 24-bit Gray code → Golay snap → NRCI test → Miller-Rabin → 4-way verdict
+Integer n → 6-digit hex → 24-bit Gray code → Golay snap → NRCI test → Miller-Rabin (actually this should be the native UBP Prime Numbers method wherever possible, not Miller-Rabin) → 4-way verdict
 ```
 
 Miller-Rabin witnesses: `{2,3,5,7,11,13,17,19,23,29,31,37}` (12 witnesses)
@@ -618,22 +593,6 @@ for name, pred, tgt in formulas:
     print(f"{name:12s}: {float(pred):.6e}  err={float(err):.4f}%  [{verdict}]")
 ```
 
-### Pattern E — Inspect a push script directly
-
-```python
-import subprocess, re
-
-# Pull any push script to see the exact formula implementation
-push_url = "https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/gravity/push06_omega_k.py"
-r = subprocess.run(['curl', '-s', push_url], capture_output=True, text=True)
-src = r.stdout
-
-# Find NRCI calls, formula lines, constant definitions
-for i, line in enumerate(src.splitlines()):
-    if any(kw in line.lower() for kw in ['nrci', 'omega', 'formula', 'result', '=.*Y\*\*']):
-        print(f"{i:4d}: {line}")
-```
-
 ---
 
 ## 16. STRUCTURAL CONSTANTS QUICK REFERENCE
@@ -652,7 +611,7 @@ for i, line in enumerate(src.splitlines()):
 
 ---
 
-## 17. ARCHITECTURE LAYERS
+## 17. UBP Core Studio App ARCHITECTURE LAYERS (not the GLM system - under development in line with GLM development)
 
 ```
 Layer 4 — Cognitive Orchestration:  ubp_brain_consolidated.py, ubp_integrated_engine_v1.py
@@ -665,18 +624,81 @@ Layer 1 is stdlib-only and self-contained. Higher layers may require Flask or ad
 
 ---
 
-## 18. KNOWN TEST RESULTS (for calibration)
 
-Formulas confirmed to work vs targets that don't fit the current grammar — both are useful:
-
-**Grammar successes** (from live June 2026 runs):
-α_s: 0.188% | m_μ/m_e: 0.029% | α³: 0.104% | H₀: 0.495% | Ω_k base: ~0.08%
-
-**Grammar failures** (documented in master document — use as calibration, not dead ends):
-m_Z: 15.8% | sin²θ_W: 34.6% | Λ·ℓ_P²: 10¹⁰² scale | α_G: 10¹⁷ scale
-
-The failures tell you the grammar has real structure — it cannot hit everything. If you find a formula for sin²θ_W under 1%, run the null model immediately and report the FP rate.
+*Built from live execution (June 2026) + UBP_Master_Document.docx v1.8. Constants verified against live repo. System is under active development — fetch fresh before each session.*
 
 ---
 
-*Built from live execution (June 2026) + UBP_Master_Document.docx v1.8. Constants verified against live repo. System is under active development — fetch fresh before each session.*
+# SKILL 2:UBP Substrate Data Design and Temporal Cascade Protocol (UBP_SKILL_2)
+description: Methodological framework for encoding real-world datasets into the UBP substrate, managing Hamming Weight boundaries, and tracking multi-state temporal/cascade trajectories.
+version: 2.0.0
+
+---
+
+# UBP DATA DESIGN & TEMPORAL CASCADE PROTOCOL
+This operational reference outlines the data-engineering principles required to successfully interface real-world empirical data with the modern Universal Binary Principle (UBP) substrate. It translates findings from cross-species biological fluid studies into a predictable, reproducible encoding manual for both humans and AI models.
+
+---
+
+## 1. THE PIPELINE MECHANICS
+To ingest any continuous or discrete real-world phenomenon into the substrate, data must pass through the canonical four-step fingerprint pipeline:
+1. **Integer Mapping ($n$):** Map the qualitative and quantitative properties of the phenomenon into a structured 24-bit integer.
+2. **Gray Code Transformation:** Convert the integer into a 24-bit binary-reflected Gray code array via $gray = n \oplus (n \gg 1)$ to preserve bit-position isotropy and optimize topological fold-lines.
+3. **Golay Snapping:** Pass the 24-bit vector into the extended binary Golay code engine ($Golay[24,12,8]$ based on the icosahedron adjacency complement matrix $G=[I_{12} \mid B]$) to perform syndrome decoding and snap the vector to its nearest valid codeword.
+4. **NRCI & Lattice Verdict:** Calculate the Non-Random Coherence Index (NRCI) using the symmetry tax formula $NRCI(v) = 10 / (10 + tax(v))$ to assign the final structural lattice class.
+5. SHA-256 hasing should not be used in the UBP system - only use it for quick reference fingerprints at the top of UBP KB entries - hashed from the 'math' field not the ID or any random information.
+---
+
+## 2. CODESPACE SPECIFICATION & HAMMING WEIGHT ZONES
+The error-correction geometry of the Golay code acts as a non-linear lens, grouping real-world data into discrete manifestation bands based on the Hamming Weight (HW) of the Gray-coded perturbation vector. Inputs must be deliberately calibrated to sit within target HW zones depending on the desired behavior:
+
+| HW (Gray) | Substrate Behavior | Canonical NRCI | Assigned Lattice Class | Targeted Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| **0 – 3** | 100% Absorbed | 1.0000 | **Identity** | Establishing a system at rest or a subliminal baseline state. |
+| **4** | Boundary Zone (85% Octad, 10.4% Dodecad, 4.7% Identity) | 0.7623 / 0.6814 | **Mixed / Transitional** | Probing phase-change thresholds and sensitive evolutionary boundaries. |
+| **5** | 100% Manifested | 0.7623 | **Octad** | Ensuring clean out-of-sample prediction and structural clarity. |
+| **8 – 12** | Maximum Discrimination Variance | 0.7623 to 0.6160 | **Octad / Dodecad Split** | Maximizing species or state discrimination within a complex population. |
+
+### The Layer-to-Grammar Thresholds
+* **Subliminal Level ($\text{HW} \le 3$):** Information is completely absorbed by the code's error correction, leaving the substrate unperturbed (NRCI remains 1.0).
+* **Manifestation Level ($\text{HW} \ge 4$):** Information forces a state change, breaking out of Identity and creating a permanent structural footprint in the lattice basins.
+
+---
+
+## 3. DATASTREAM RESTRUCTURING & LAYER DEPTH RULES
+A primary failure mode in data design is the "deeper is better" fallacy. Empirical testing proves that populating all four ontological layers (Reality, Information, Activation, Potential) simultaneously can anti-correlate with real-world biology ($r = -0.03$) by collapsing distinct phenomena into uniform, lossy Dodecad basins. 
+### The Functional Isolation Discipline
+* **Rule of Targeted Granularity:** High-fidelity real-world patterns map best when isolating specific functional roles into structured buckets (e.g., Datastream 3 style), which yields the highest biological correlation ($r = 0.48$).
+* **Bit-Packed Allocation Rule:** Utilize a bit-packed 24-bit layout where the lowest 6 bits capture qualitative regime differences (such as topological structure or metabolic vectors), while the upper 18 bits encode the quantitative scale or cardinality bucket via a binary-reflected Gray sequence. This ensures that quantitative variance scales harmoniously with qualitative flips across the XOR-fold.
+* **Information-Layer Partitioning:** If collision occurs between distinct entities at coarse resolutions, do not overcomplicate the baseline. Instead, selectively activate the Information layer (bits 6–11) to encode underlying carrier agents or biochemical pathways.
+
+---
+
+## 4. TEMPORAL PROFILE & CASCADE TRAJECTORY DESIGN
+The substrate does not register time as a continuous variable; instead, it tracks temporal progression via a **Lattice Class Sequence** across sequential ticks of the $k$-clock cycle. 
+```
+[ k=0 Baseline ] ---> [ k=12 Manifestation ] ---> [ k=15+ Post-Manifestation ]
+HW <= 3 (Rest)         HW >= 4 Trigger Event       Lattice Trajectory Split
+(Identity Basin)       (Octad / Dodecad Basin)     (Mechanism Discrimination)
+```
+To model multi-state cascades, biochemical pathways, or time-series changes effectively, apply the following structural criteria:
+### A. The Subliminal Baseline Requirement
+* The baseline state ($k=0$) **must** be designed with a low Hamming Weight ($\text{HW} \le 3$ in Gray space). 
+* *Why:* If the system's baseline is encoded with too high a starting weight ($\text{HW} \ge 4$), the manifestation event triggers prematurely at $k=0$, erasing the temporal signal and blinding the substrate to the step-wise evolution of the cascade.
+### B. Trajectory-Based Mechanism Discrimination
+* Distinct real-world mechanisms are not differentiated by their starting point or their peak value, but by their *lattice trajectory signature* across the post-manifestation phase ($k=12 \rightarrow k=24$).
+* For example, an unassisted primary sequence may snap to an Identity or Octad pattern, while a complex sequence enhanced by cofactors or secondary events will drift dynamically into high-complexity Hexadecad or Dodecad basins at later clock positions (e.g., $k=15$).
+### C. Structural Rigidity vs. Plasticity
+* **Rigid Systems:** Entities whose snapped lattice class remains unchanged regardless of the perturbation depth or clock tick are structurally fundamental and robust.
+* **Plastic Systems:** Entities whose lattice class varies dynamically across different datastreams or clock positions are highly adaptive, signaling that their functional state depends heavily on environmental or temporal contexts.
+
+---
+
+## 5. SUBSTRATE VALIDATION PROTOCOL (NULL MODEL RULES)
+Every dataset submitted under this skill must be subjected to the **Focused Null Model Protocol** to verify that findings are native substrate realities rather than small-sample selection artifacts:
+1.  **Generate Random Controls:** Run a 5,000-trial simulation using randomized 24-bit vectors to map the baseline mathematical occupancy of each lattice basin.
+2.  **Calculate False Positive (FP) Rates:** Determine the empirical frequency of a random vector hitting the target lattice class.
+3.  **Apply Quality Verdicts:**
+    * **$\text{FP} < 5\%$:** *Surprising* (Valid, highly structured substrate response).
+    * **$5\% \le \text{FP} < 20\%$:** *Marginal* (Weak signal, requires data re-encoding).
+    * **$\text{FP} \ge 20\%$:** *Not Surprising* (Statistical noise; structural artifact).
