@@ -31,12 +31,37 @@ import hashlib
 from typing import List
 from fractions import Fraction
 
-REPO = "/home/z/my-project/repo/core_studio_v4.0"
-sys.path.insert(0, os.path.join(REPO, "core"))
+# MIGRATION v4.0 fix: the original hardcoded REPO path
+# `/home/z/my-project/repo/core_studio_v4.0` does not exist on this machine.
+# Locate the v2.2 base `ubp_kb_architect.py` in `archive_core/` and load it
+# via importlib (WITHOUT polluting sys.path — adding archive_core to sys.path
+# would shadow the live `auto_trigger.py` with the archived one).
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ARCHIVE_CORE = os.path.join(_HERE, "archive_core")
 
-import ubp_kb_architect  # noqa: E402
-from ubp_kb_architect import KBArchitect, MOG_CATEGORIES, to_gray_code  # noqa: E402
-from ubp_unified_v5 import LEECH_ENGINE  # noqa: E402
+import importlib.util as _ilu
+_v22_path = os.path.join(_ARCHIVE_CORE, "ubp_kb_architect.py")
+if os.path.exists(_v22_path):
+    _spec = _ilu.spec_from_file_location("ubp_kb_architect_v22_base", _v22_path)
+    _v22 = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_v22)
+    KBArchitect = _v22.KBArchitect
+    MOG_CATEGORIES = _v22.MOG_CATEGORIES
+    to_gray_code = _v22.to_gray_code
+else:
+    # Last resort: fall back to legacy_adapter's MOG_CATEGORIES.
+    _SYSKB = os.path.join(os.path.dirname(_HERE), "system_kb")
+    if _SYSKB not in sys.path:
+        sys.path.insert(0, _SYSKB)
+    from legacy_adapter import MOG_CATEGORIES  # noqa: E402
+    KBArchitect = None  # type: ignore
+    def to_gray_code(*a, **kw):  # type: ignore
+        raise RuntimeError("ubp_kb_architect v2.2 base not found; cannot gray-code")
+
+try:
+    from ubp_unified_v5 import LEECH_ENGINE  # noqa: E402
+except Exception:
+    LEECH_ENGINE = None
 
 
 # ─────────────────────────────────────────────────────────────────────────────

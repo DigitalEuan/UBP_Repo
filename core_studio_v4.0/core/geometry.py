@@ -105,18 +105,61 @@ class HexDictionaryV4Exact:
         return message + [0] * 12
 
     def load_memory(self, filepath: str='ubp_system_kb.json'):
-        if not os.path.exists(filepath):
-            return
+        # MIGRATION v4.0: locate the merged v9.9 KB if the legacy filename
+        # doesn't exist. Prefer the in-memory adapter when possible.
+        import sys as _sys
+        if not filepath or not os.path.exists(filepath):
+            # Try the adapter's merged v9.9 file
+            here = os.path.dirname(os.path.abspath(__file__))
+            candidates = [
+                os.path.join(here, '..', 'system_kb', 'ubp_system_kb_v4_merged.json'),
+                os.path.join('system_kb', 'ubp_system_kb_v4_merged.json'),
+                'ubp_system_kb_v4_merged.json',
+            ]
+            found = next((c for c in candidates if c and os.path.exists(c)), None)
+            if found:
+                filepath = found
+            else:
+                # Try to materialise via the adapter
+                try:
+                    _sys.path.insert(0, os.path.join(here, '..', 'system_kb'))
+                    from legacy_adapter import ensure_legacy_kb_on_disk as _ensure
+                    filepath = str(_ensure())
+                except Exception:
+                    if not filepath or not os.path.exists(filepath):
+                        return
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-            entries = data.get('objects', data)
-            for fp, entry in entries.items():
+            entries = data.get('objects', data.get('entries', data))
+            # `entries` may be:
+            #   (a) dict[fingerprint, positional_list]  — legacy v9.9 columnar
+            #   (b) dict[fingerprint, entry_dict]       — legacy dict-of-dicts
+            #   (c) list[entry_dict]                    — new-schema list
+            if isinstance(entries, list):
+                iter_items = [(e.get('fingerprint', str(i)), e) for i, e in enumerate(entries)]
+            elif isinstance(entries, dict):
+                iter_items = entries.items()
+            else:
+                iter_items = []
+            for fp, entry in iter_items:
+                # Hydrate positional v9.9 list into a dict shape.
+                if isinstance(entry, list):
+                    fields = data.get('_fields', ['ubp_id', 'lexicon', 'tags', 'vector', 'nrci_str', 'nrci_val', 'tax_str', 'mog_tensor'])
+                    f_idx = {name: i for i, name in enumerate(fields)}
+                    entry = {
+                        'ubp_id': entry[f_idx['ubp_id']] if 'ubp_id' in f_idx and len(entry) > f_idx['ubp_id'] else None,
+                        'lexicon': entry[f_idx['lexicon']] if 'lexicon' in f_idx and len(entry) > f_idx['lexicon'] else '',
+                        'tags': entry[f_idx['tags']] if 'tags' in f_idx and len(entry) > f_idx['tags'] else [],
+                        'atlas': {'vector': entry[f_idx['vector']] if 'vector' in f_idx and len(entry) > f_idx['vector'] else []},
+                    }
+                if not isinstance(entry, dict):
+                    continue
                 uid = entry.get('ubp_id')
                 if uid:
                     self.registry[fp] = entry
                     self.id_map[uid] = fp
-                    vec = entry.get('atlas', {}).get('vector')
+                    vec = entry.get('atlas', {}).get('vector') or entry.get('vector')
                     if vec:
                         self.vector_cache[uid] = vec
             print(f'[HEX_DB] Loaded {len(self.id_map)} spatial-deterministic entries.')

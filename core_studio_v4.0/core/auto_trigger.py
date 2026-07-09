@@ -1,25 +1,57 @@
 """
-UBP Auto-Trigger v19.1 (Ultra-Compact Compatible)
-=================================================
-Fixed IndexError in synth_context by separating Metadata Fields 
+UBP Auto-Trigger v19.2 (Ultra-Compact Compatible + KB v4.0 migration)
+=====================================================================
+Fixed IndexError in synth_context by separating Metadata Fields
 from MOG Tensor Categories.
 
+MIGRATION 2026-07-09 (v4.0):
+- The legacy `ubp_system_kb.json` has been replaced by the four new
+  system_kb files (elements/language_words/math/physics_law.json).
+- `system_kb/legacy_adapter.py` provides a drop-in v9.9 view of those four
+  files. We use it to materialise a v9.9-shaped `ubp_system_kb_v4_merged.json`
+  on disk and load that — keeps the existing positional-list code path intact.
+
 Author: UBP Research Cortex v4.2.7
-Date: 03 April 2026
+Date: 03 April 2026 (original)  |  2026-07-09 (v4.0 migration)
 """
 
 import json
 import re
 import os
+import sys
 from ubp_kb_architect import MOG_CATEGORIES
 
 # 1. CONFIGURATION
-KB_FILE = 'ubp_system_kb.json'
-if not os.path.exists(KB_FILE):
-    KB_FILE = 'ubp_system_kb.json'
+# MIGRATION v4.0: locate the merged v9.9 KB produced by the legacy_adapter.
+# Resolution order:
+#   (a) $UBP_SYSTEM_KB_DIR/ubp_system_kb_v4_merged.json
+#   (b) ./system_kb/ubp_system_kb_v4_merged.json  (CWD fallback)
+#   (c) <this file's parent>/../system_kb/ubp_system_kb_v4_merged.json
+#   (d) ./ubp_system_kb.json  (last-resort legacy filename for old deployments)
+def _resolve_kb_file():
+    env_dir = os.environ.get('UBP_SYSTEM_KB_DIR')
+    candidates = []
+    if env_dir:
+        candidates.append(os.path.join(env_dir, 'ubp_system_kb_v4_merged.json'))
+    candidates.append(os.path.join('system_kb', 'ubp_system_kb_v4_merged.json'))
+    here = os.path.dirname(os.path.abspath(__file__))
+    candidates.append(os.path.join(here, '..', 'system_kb', 'ubp_system_kb_v4_merged.json'))
+    candidates.append('ubp_system_kb.json')  # legacy filename fallback
+    for c in candidates:
+        if c and os.path.exists(c):
+            return c
+    # If none exist, try to materialise via the adapter
+    try:
+        sys.path.insert(0, os.path.join(here, '..', 'system_kb'))
+        from legacy_adapter import ensure_legacy_kb_on_disk as _ensure
+        return str(_ensure())
+    except Exception:
+        return candidates[0]  # will report missing
+
+KB_FILE = _resolve_kb_file()
 
 def load_compact_kb(path):
-    if not os.path.exists(path):
+    if not path or not os.path.exists(path):
         return None, None, {}
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)

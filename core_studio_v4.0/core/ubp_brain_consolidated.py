@@ -16,10 +16,22 @@ FIXES:
 import json
 import os
 import re
+import sys
 from fractions import Fraction
 from dataclasses import dataclass, field
 from typing import List, Tuple, Dict, Optional, Any, Set
 from collections import defaultdict
+
+# MIGRATION v4.0: pull in the legacy_adapter so we can read the four new
+# system_kb files transparently.
+try:
+    _ADAPTER_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "system_kb")
+    if _ADAPTER_DIR not in sys.path:
+        sys.path.insert(0, _ADAPTER_DIR)
+    from legacy_adapter import load_any as _load_any_kb
+    _ADAPTER_OK = True
+except Exception:
+    _ADAPTER_OK = False
 
 # ==============================================================================
 # SECTION 1: HELPERS
@@ -54,20 +66,53 @@ class KBManager:
 
     def load(self, paths: List[str]) -> int:
         for path in paths:
-            if not os.path.exists(path): continue
-            with open(path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                if isinstance(data, dict) and "_fields" in data:
-                    fields = data["_fields"]
-                    for fp, entry_list in data["entries"].items():
-                        entry_dict = {fields[i]: entry_list[i] for i in range(len(fields))}
+            if not path or not os.path.exists(path):
+                continue
+            # MIGRATION v4.0: prefer the adapter (handles new & legacy schema).
+            try:
+                if _ADAPTER_OK:
+                    data = _load_any_kb(path)
+                else:
+                    with open(path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+            except Exception:
+                with open(path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+
+            if isinstance(data, dict) and "_fields" in data:
+                fields = data["_fields"]
+                entries = data.get("entries", {})
+                iter_items = entries.items() if isinstance(entries, dict) else enumerate(entries)
+                for fp, entry_list in iter_items:
+                    try:
+                        if isinstance(entry_list, dict):
+                            # New-schema entry (dict) — hydrate directly.
+                            uid = entry_list.get("ubp_id")
+                            if not uid: continue
+                            atlas = entry_list.get("atlas", {}) or {}
+                            entry_dict = {
+                                "ubp_id": uid,
+                                "lexicon": entry_list.get("lexicon", ""),
+                                "tags": entry_list.get("tags", []),
+                                "vector": atlas.get("vector", []),
+                                "nrci_str": atlas.get("nrci", "0/1"),
+                                "nrci_val": atlas.get("nrci_score", 0.0),
+                                "tax_str": atlas.get("tax", "0/1"),
+                                "fingerprint": entry_list.get("fingerprint", ""),
+                            }
+                        else:
+                            # Legacy v9.9 positional list.
+                            entry_dict = {fields[i]: entry_list[i] for i in range(len(fields))}
                         self.kb[entry_dict["ubp_id"]] = entry_dict
                         self._index_entry(entry_dict["ubp_id"], entry_dict)
-                else:
-                    for uid, entry in data.items():
-                        if isinstance(entry, dict) and 'ubp_id' in entry:
-                            self.kb[entry['ubp_id']] = entry
-                            self._index_entry(entry['ubp_id'], entry)
+                    except (IndexError, KeyError, TypeError):
+                        continue
+            elif isinstance(data, dict):
+                # Plain dict-of-entries (legacy non-columnar)
+                for uid, entry in data.items():
+                    if isinstance(entry, dict) and 'ubp_id' in entry:
+                        self.kb[entry['ubp_id']] = entry
+                        self._index_entry(entry['ubp_id'], entry)
         return len(self.kb)
 
     def _index_entry(self, uid: str, entry: Dict):

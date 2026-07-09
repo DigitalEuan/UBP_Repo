@@ -42,12 +42,38 @@ class ObserverDynamicsEngine:
 
 def run_observer_audit():
     print("="*75)
-    print("UBP OBSERVER DYNAMICS ENGINE v7.1 (COLUMNAR)")
+    print("UBP OBSERVER DYNAMICS ENGINE v7.1 (COLUMNAR) + KB v4.0 migration")
     print("="*75)
-    
+
     engine = ObserverDynamicsEngine()
-    
-    with open('ubp_system_kb.json', 'r') as f:
+
+    # MIGRATION v4.0: locate the merged v9.9 KB (produced by legacy_adapter).
+    # Falls back to the legacy `ubp_system_kb.json` filename for old deployments.
+    import os, sys
+    kb_path = None
+    candidates = []
+    env_dir = os.environ.get('UBP_SYSTEM_KB_DIR')
+    if env_dir:
+        candidates.append(os.path.join(env_dir, 'ubp_system_kb_v4_merged.json'))
+    candidates.append('ubp_system_kb_v4_merged.json')
+    candidates.append(os.path.join('system_kb', 'ubp_system_kb_v4_merged.json'))
+    here = os.path.dirname(os.path.abspath(__file__))
+    candidates.append(os.path.join(here, '..', 'system_kb', 'ubp_system_kb_v4_merged.json'))
+    candidates.append('ubp_system_kb.json')  # legacy filename fallback
+    for c in candidates:
+        if c and os.path.exists(c):
+            kb_path = c
+            break
+    if kb_path is None:
+        # Try to materialise via the adapter
+        try:
+            sys.path.insert(0, os.path.join(here, '..', 'system_kb'))
+            from legacy_adapter import ensure_legacy_kb_on_disk as _ensure
+            kb_path = str(_ensure())
+        except Exception:
+            kb_path = 'ubp_system_kb.json'  # will fail with FileNotFoundError below
+
+    with open(kb_path, 'r') as f:
         kb_data = json.load(f)
 
     # Hydrate Columnar Mapping
@@ -60,11 +86,11 @@ def run_observer_audit():
     for target_id in test_ids:
         # Find entry in the flat list
         entry_data = next((v for v in entries.values() if v[idx["ubp_id"]] == target_id), None)
-        
+
         if not entry_data:
             print(f"⚠️ Warning: {target_id} not found.")
             continue
-            
+
         uid = entry_data[idx["ubp_id"]]
         vector = entry_data[idx["vector"]]
         nrci_val = entry_data[idx["nrci_val"]]
@@ -72,17 +98,17 @@ def run_observer_audit():
 
         print(f"\n--- Subject: {uid} ---")
         print(f"NRCI: {float(nrci):.6f}")
-        
+
         read = engine.conscious_read(vector, nrci)
         print(f"  [OBSERVER] Status: {read['status']}")
-            
+
         soc = engine.calculate_soc_energy(vector, nrci)
         print(f"  [ENERGY]   SOC:    {soc:,.2f} CU")
 
     print("\n" + "="*75)
     print("WALL OF REALITY TEST (1 THz Limit)")
     print("="*75)
-    
+
     top_quark = next((v for v in entries.values() if v[idx["ubp_id"]] == "PARTICLE_QUARK_TOP_001"), None)
     if top_quark:
         vec = top_quark[idx["vector"]]
