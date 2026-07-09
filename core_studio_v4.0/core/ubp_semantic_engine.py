@@ -2,24 +2,9 @@
 import json
 import re
 import os
-import sys
 import math
 from typing import List, Dict, Tuple, Optional, Any
 from dataclasses import dataclass
-
-# MIGRATION v4.0: pull in the legacy_adapter so we can read the four new
-# system_kb files (elements/language_words/math/physics_law.json) transparently.
-# The adapter returns a v9.9-shaped dict for any of those files, so this
-# loader's downstream code path (which expects `_fields` + `entries: dict`)
-# is unchanged.
-try:
-    _ADAPTER_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "system_kb")
-    if _ADAPTER_DIR not in sys.path:
-        sys.path.insert(0, _ADAPTER_DIR)
-    from legacy_adapter import load_any as _load_any_kb, is_new_schema as _is_new_schema
-    _ADAPTER_OK = True
-except Exception:
-    _ADAPTER_OK = False
 
 @dataclass
 class SemanticResult:
@@ -27,7 +12,7 @@ class SemanticResult:
     lexicon: str
     resonance_score: float
     nrci: float
-    reflection: str = ""
+    reflection: str = "" 
 
     def summary(self) -> str:
         res = f"[Resonance: {self.resonance_score:.4f}] {self.ubp_id} (NRCI: {self.nrci:.4f})\n"
@@ -50,52 +35,24 @@ class UBPSemanticEngine:
 
     def load(self, system_path: str, lang_path: str):
         for path, target_dict in [(system_path, self.system_kb), (lang_path, self.lang_kb)]:
-            if not path or not os.path.exists(path):
-                continue
-            # MIGRATION v4.0: prefer the adapter (handles both new & legacy schema).
-            try:
-                if _ADAPTER_OK:
-                    data = _load_any_kb(path)
-                else:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-            except Exception:
-                with open(path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
+            if not os.path.exists(path): continue
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
 
             if isinstance(data, dict) and "_fields" in data:
                 fields = data["_fields"]
                 f_idx = {name: i for i, name in enumerate(fields)}
-                entries = data.get("entries", {})
-                iter_items = entries.items() if isinstance(entries, dict) else enumerate(entries)
-                for fp, entry_list in iter_items:
-                    try:
-                        if isinstance(entry_list, dict):
-                            # New-schema entry (dict) — hydrate directly.
-                            uid = entry_list.get("ubp_id")
-                            if not uid: continue
-                            atlas = entry_list.get("atlas", {}) or {}
-                            entry_dict = {
-                                "ubp_id": uid,
-                                "lexicon": entry_list.get("lexicon", ""),
-                                "tags": entry_list.get("tags", []),
-                                "vector": atlas.get("vector", []),
-                                "nrci_val": atlas.get("nrci_score", 0.5),
-                            }
-                        else:
-                            # Legacy v9.9 positional list.
-                            uid = entry_list[f_idx["ubp_id"]]
-                            entry_dict = {
-                                "ubp_id": uid,
-                                "lexicon": entry_list[f_idx["lexicon"]],
-                                "tags": entry_list[f_idx["tags"]],
-                                "vector": entry_list[f_idx["vector"]],
-                                "nrci_val": entry_list[f_idx["nrci_val"]],
-                            }
-                        target_dict[uid] = entry_dict
-                        self.all_kb[uid] = entry_dict
-                    except (IndexError, KeyError, TypeError):
-                        continue
+                for fp, entry_list in data["entries"].items():
+                    uid = entry_list[f_idx["ubp_id"]]
+                    entry_dict = {
+                        "ubp_id": uid,
+                        "lexicon": entry_list[f_idx["lexicon"]],
+                        "tags": entry_list[f_idx["tags"]],
+                        "vector": entry_list[f_idx["vector"]],
+                        "nrci_val": entry_list[f_idx["nrci_val"]]
+                    }
+                    target_dict[uid] = entry_dict
+                    self.all_kb[uid] = entry_dict
 
         for uid, entry in self.system_kb.items():
             v = entry.get('vector')
