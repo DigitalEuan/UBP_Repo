@@ -14,7 +14,6 @@
 # use the exact UBP Y constant.
 from __future__ import annotations
 import sys, os, re, json, math, hashlib
-from pathlib import Path
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Tuple, Any, Set
 from collections import defaultdict, deque
@@ -414,36 +413,12 @@ _CONCEPT_ALIASES = {
 _system_kb_cache = {}
 _alias_map_cache = {}
 
-# ── 7b. KB MIGRATION SHIM (v4.0) ──────────────────────────────────────
-# The system KB has migrated from a single `ubp_system_kb.json` (v9.9 columnar)
-# to four new-schema files (elements/language_words/math/physics_law.json).
-# `legacy_adapter.load_any(path)` returns a v9.9-shaped dict regardless of
-# whether the underlying file uses the new or legacy schema.
-try:
-    from legacy_adapter import load_any as _load_any_kb, is_new_schema as _is_new_schema
-    _ADAPTER_OK = True
-except Exception:
-    _ADAPTER_OK = False
-
-def _read_kb_v99(path) -> dict:
-    """Read a KB file and return a v9.9-shaped dict (with `_fields` and
-    `entries: dict[fingerprint, list]`). Handles BOTH the legacy v9.9 schema
-    and the new `{_meta, entries: list}` schema transparently."""
-    if _ADAPTER_OK:
-        try:
-            return _load_any_kb(str(path) if path else None)
-        except Exception:
-            pass
-    # Fallback: read raw and hope it's already v9.9
-    with open(path, 'r') as f:
-        return json.load(f)
-
 def _load_system_kb(path=None):
     global _system_kb_cache
     if _system_kb_cache: return _system_kb_cache
     p = path or str(KB_SYSTEM_PATH)
     try:
-        kb = _read_kb_v99(p)
+        with open(p) as f: kb = json.load(f)
         entries = kb["entries"]; fields = kb["_fields"]
         for h, v in entries.items():
             if not isinstance(v, list) or len(v) < 6: continue
@@ -471,43 +446,20 @@ def _build_alias_map():
 
 # ── 8. KB LOADING ──────────────────────────────────────────────────────
 def _load_kb_safe(path):
-    # MIGRATION v4.0: accept str or Path; tolerate missing file by returning {}
-    if path is None:
-        return {}
-    p = Path(path) if not isinstance(path, Path) else path
-    if not p.exists(): return {}
-    try:
-        data = _read_kb_v99(p)
-    except Exception:
-        return {}
+    if not path.exists(): return {}
+    with open(path, 'r') as f: data = json.load(f)
     result = {}
     fields = data.get("_fields", [])
     f_idx = {name: i for i, name in enumerate(fields)}
-    entries = data.get("entries", {})
-    # `entries` may be a dict (v9.9) or a list (new schema) — handle both.
-    iterable = entries.values() if isinstance(entries, dict) else entries
-    for entry_list in iterable:
+    for entry_list in data.get("entries", {}).values():
         try:
-            # If entry_list is a dict (new-schema entry), hydrate directly.
-            if isinstance(entry_list, dict):
-                uid = entry_list.get("ubp_id")
-                if not uid: continue
-                atlas = entry_list.get("atlas", {}) or {}
-                result[uid] = {
-                    "ubp_id": uid,
-                    "lexicon": entry_list.get("lexicon", ""),
-                    "vector": atlas.get("vector", []),
-                    "nrci_val": atlas.get("nrci_score", 0.5),
-                }
-                continue
-            # Positional v9.9 list path
             uid = entry_list[f_idx["ubp_id"]]
             result[uid] = {
                 "ubp_id": uid, "lexicon": entry_list[f_idx["lexicon"]],
                 "vector": entry_list[f_idx["vector"]] if "vector" in f_idx else [],
                 "nrci_val": entry_list[f_idx["nrci_val"]] if "nrci_val" in f_idx else 0.5
             }
-        except (IndexError, KeyError, TypeError): continue
+        except (IndexError, KeyError): continue
     return result
 
 # ── 9. PRIORITY VOCABULARY (v3.7.7: 90+ essential concepts) ───────────
