@@ -83,14 +83,32 @@ def gather_corpus() -> Tuple[List[str], Dict[str, str], Dict[str, str]]:
             word_defs[word.lower()] = defn
 
     # Source 2: System KB descriptions
+    # MIGRATION v4.0: ubp_system_kb.json has been replaced by the four new
+    # system_kb files. Use the legacy_adapter's v9.9 view (cached on disk).
     path = UBP_CORE_PATH / "ubp_system_kb.json"
-    if path.exists():
+    if not path.exists():
+        try:
+            from legacy_adapter import ensure_legacy_kb_on_disk as _ensure
+            path = _ensure()
+        except Exception:
+            path = None
+    if path and path.exists():
         with open(path) as f:
             skb = json.load(f)
-        for uid, entry in skb.get("entries", {}).items():
-            if not isinstance(entry, list) or len(entry) < 2:
+        # `entries` is a dict (v9.9) — iterate as (uid, entry_list)
+        entries = skb.get("entries", {})
+        if isinstance(entries, dict):
+            iter_items = entries.items()
+        else:
+            # New-schema list — fallback (shouldn't happen via adapter)
+            iter_items = [("<list>", e) for e in entries]
+        for uid, entry in iter_items:
+            if isinstance(entry, dict):
+                lex = str(entry.get("lexicon", "")) if entry.get("lexicon") else ""
+            elif isinstance(entry, list) and len(entry) >= 2:
+                lex = str(entry[1]) if entry[1] else ""
+            else:
                 continue
-            lex = str(entry[1]) if entry[1] else ""
             # Extract the defined word from "[Word: X]" or "[Element: X]" etc.
             m = re.search(r'\[(?:Word|Property|Operator|Element|Law|Molecule|Particle):?\s*([^\]]+)\]', lex)
             if m:
@@ -104,6 +122,9 @@ def gather_corpus() -> Tuple[List[str], Dict[str, str], Dict[str, str]]:
             tokens.extend(toks)
 
     # Source 3: Lang KB lexicons
+    # MIGRATION v4.0: language_words.json is now one of the four new system_kb
+    # files, and its content is already merged into the v9.9 view above.
+    # Skip the legacy lang KB file entirely.
     path = UBP_CORE_PATH / "ubp_lang_kb_combined_v4.json"
     if path.exists():
         with open(path) as f:

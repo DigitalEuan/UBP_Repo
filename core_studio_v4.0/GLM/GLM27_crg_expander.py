@@ -396,16 +396,35 @@ def expand_crg(crg: ConceptRelationGraph,
 
     # ── Source 2: KB description mining ──────────────────────────────────
     if "kb_descriptions" in sources:
+        # MIGRATION v4.0: ubp_system_kb.json has been replaced by the four new
+        # system_kb files. Use the legacy_adapter's v9.9 view (cached on disk).
         kb_path = UBP_CORE_PATH / "ubp_system_kb.json"
+        if not kb_path.exists():
+            try:
+                from legacy_adapter import ensure_legacy_kb_on_disk as _ensure
+                kb_path = _ensure()
+            except Exception:
+                kb_path = None
         n_added = 0
-        if kb_path.exists():
+        if kb_path and kb_path.exists():
             try:
                 kb = json.loads(kb_path.read_text())
                 entries = kb.get("entries", {})
-                for hash_key, entry in entries.items():
-                    if not isinstance(entry, list) or len(entry) < 2:
+                # `entries` may be a dict (v9.9) or a list (new schema).
+                if isinstance(entries, dict):
+                    iter_items = entries.items()
+                else:
+                    iter_items = [("<list>", e) for e in entries]
+                for hash_key, entry in iter_items:
+                    # Extract description from either positional list or dict shape.
+                    if isinstance(entry, dict):
+                        desc = entry.get("lexicon", "")
+                        if not isinstance(desc, str):
+                            desc = ""
+                    elif isinstance(entry, list) and len(entry) >= 2:
+                        desc = entry[1] if isinstance(entry[1], str) else ""
+                    else:
                         continue
-                    desc = entry[1] if isinstance(entry[1], str) else ""
                     if not desc or len(desc) < 20:
                         continue
                     # Strip leading "[Type: Name]," markers
