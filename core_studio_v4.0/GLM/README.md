@@ -1,542 +1,390 @@
-# GLM — Geometric Language Machine v3.21.0 — Simplicial CRG (2-Complex Topology)
+# GLM — Geometric Language Machine
 
-A modular, deterministic semantic reasoning engine grounded in the 24-bit Golay/Leech lattice substrate of the Universal Binary Principle (UBP). Runs live in the browser via Pyodide.
+**A deterministic, geometry-grounded language engine built on the 24-bit Golay/Leech substrate.**
 
-**Deployed** live on [Google AI Studio](https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a)
+[![Version](https://img.shields.io/badge/Version-3.22.0-blue.svg)]()
+[![Status](https://img.shields.io/badge/Status-Active_Development-orange.svg)]()
+[![Substrate](https://img.shields.io/badge/Substrate-Golay--Leech-cyan.svg)]()
 
----
-
-# GLM v3.21.0 — Simplicial CRG (2-Complex Topology)
-
-**Date:** 2026-07-08
-**Base version:** v3.20.0 (94/94 tests passing)
-**New version:** v3.21.0 (**18/18 new v3.21 tests passing**, 26/26 + 41/41 existing tests still pass — total 85/85)
+**Part of:** [UBP Core Studio](https://github.com/DigitalEuan/UBP_Repo)
+**Live demo:** [Google AI Studio](https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a)
 
 ---
 
-## What changed in v3.21
+## What is the GLM?
 
-The user shared design notes proposing to move the CRG from a 1-complex (graph: nodes + edges) to a 2-complex (simplicial complex with triangular faces). This is a natural upgrade because:
+The **Geometric Language Machine (GLM)** is a deterministic AI engine that grounds language in geometry. Unlike standard LLMs (which predict the next token probabilistically from training data), the GLM represents every word as a 24-bit vector in the [Golay code](https://en.wikipedia.org/wiki/Binary_Golay_code) / [Leech lattice](https://en.wikipedia.org/wiki/Leech_lattice) substrate, and reasons by computing geometric relationships between those vectors.
 
-- A "relation" is currently binary (A → B), but much of GLM's structure is genuinely **ternary** — {boson, fermion, spin}, {hamiltonian, time, energy}, {lattice, continuum, continuum limit}. A 2-simplex (filled triangle) captures "these three concepts cohere as a unit" without privileging any one pair.
-- Once we have faces, we get a **topological notion of coherence**: an argument backbone is a 1-chain (path of edges). If it's the boundary of a union of faces, the argument "fills" — no holes. If not, the residual cycle is a **hole** — a geometry-driven signal of a reasoning gap.
-- This generalises the existing `contradiction_penalty` from "bad edge present" to "good cycle absent."
+### The core idea
 
-### GLM34_simplicial_crg.py — the 2-complex ✅
+Every word in the GLM vocabulary has a 24-bit vector. These vectors are not learned from text — they are derived from the word's semantic content via SVD (singular value decomposition) on a co-occurrence matrix, then snapped to the nearest Golay codeword. This means:
 
-**New module** implementing ideas 1–6 from the design notes:
+- **Hamming distance between word vectors = semantic distance** (words that are close in Hamming space are semantically related)
+- **NRCI (Non-Random Coherence Index) = word stability** (words at stable lattice positions have high NRCI)
+- **The CRG (Concept Relation Graph) = semantic network** (curated edges like "hamiltonian generates time")
 
-1. **Nodes as positions** — each concept's BLA vector is coordinates in {0,1}²⁴; Hamming distance is the L1 metric.
-2. **Node intrinsic geometry** — `NodeGeom` dataclass with `degree` (1-skeleton), `stellar` (2-skeleton degree = incident faces), `bridge_score` (node B mediates A–C if d(A,C) = d(A,B) + d(B,C)).
-3. **Faces as 2-simplices** — `CRGFace` dataclass with side lengths (a,b,c), Heron area, circumradius, degeneracy flag. `discover_faces()` finds 3-cliques in the non-contradiction edge graph and keeps the geometrically tight ones.
-4. **Triangle-shape semantics** — `CRGFace.shape` returns "equilateral" (symmetric triad), "isosceles" (two close + outlier), "scalene", or "degenerate" (bridge triple).
-5. **Boundary operators over GF(2)** — `_gf2_rank_reduce()` and `_gf2_solve()` implement Gaussian elimination over GF(2) for the chain complex C₂ →∂₂ C₁ →∂₁ C₀. `backbone_is_filled()` checks if a 1-cycle is a boundary of faces.
-6. **Betti numbers and Euler characteristic** — `betti()` returns (β₀, β₁, β₂); `euler()` returns χ = V − E + F. `topology_report()` gives a full dashboard.
+The GLM reasons by walking this geometric space: it finds related concepts via Hamming proximity, follows CRG edges for semantic relationships, and computes sentence structure (subject-verb-object) from vector geometry.
 
-**Key results on the real CRG:**
-- V=110, E=101, F=2 (2 faces discovered)
-- Betti (β₀, β₁, β₂) = (16, 5, 0) — 16 connected components, **5 independent holes** (reasoning gaps), 0 voids
-- Euler characteristic χ = 11
-- 2 tightest faces: {density matrix, hamiltonian, operator} and {hamiltonian, operator, projector}
+---
 
-### GLM11_runtime.py — runtime integration ✅
+## Architecture
 
-**Patched** with two new methods:
-- `rt.simplicial_crg(max_side=8, max_faces=200)` — lazily constructs and returns a `SimplicialCRG`
-- `rt.topology_report()` — convenience method returning the `TopologyReport`
+The GLM has 34 modules organized into 5 layers. Here is the essential structure (19 core files):
+
+### Layer 1: The Substrate
+
+| Module | What it does |
+|--------|-------------|
+| `ubp_unified_v5.py` | The Golay `[24,12,8]` engine + Leech lattice engine + Barnes-Wall engine. Exact rational arithmetic (no floats). 2,325-entry syndrome table, 4,096 codewords, 759 octads. |
+| `refined_nrci.py` | **New.** The 5-shell sign-sensitive NRCI. Drop-in replacement for `LEECH_ENGINE.calculate_nrci()`. Breaks sign-blindness: 1 → 9 unique values across 128 octad variants. [See below.](#refined-nrci) |
+
+### Layer 2: Vocabulary & CRG
+
+| Module | What it does |
+|--------|-------------|
+| `GLM01_substrate.py` | Vocabulary builder + BLA (Binary Linear Algebra) + adapters to the real UBP engine. |
+| `GLM20_svd_vocab.py` | Builds SVD-derived 24-bit vectors from corpus co-occurrence, snapped to Golay codewords. |
+| `GLM23_grammar_vectors.py` | Computes grammatical roles (NOUN/VERB/ADJECTIVE/OPERATOR) from vector quadrant structure. |
+| `GLM15_physics_pack.py` | Physics vocabulary with definitions (density matrix, Hamiltonian, etc.). |
+| `GLM16_master_resource.py` | Loads `glm_master_resource_v1.json` (4,256 words with definitions + vectors). |
+| `GLM03_crg.py` | The Concept Relation Graph. 173 curated edges: "hamiltonian generates time", "entropy measures dimension", etc. |
+| `GLM27_crg_expander.py` | Auto-expands CRG from definition co-occurrence (173 → 5,000+ edges). |
+
+### Layer 3: The Pipeline
+
+| Module | What it does |
+|--------|-------------|
+| `GLM11_runtime.py` | **The orchestrator.** The 8-step `_run_pipeline(query)` that processes every query. [See below.](#the-chat-pipeline) |
+| `GLM09_tools.py` | Math/symbolic computation detection and evaluation. |
+| `GLM13_deliberative_reasoning.py` | Pattern-based multi-step reasoning (fallback for non-math queries). |
+| `GLM14_lexer.py` | Multi-word tokenization (preserves "weyl anomaly", "quantum metric"). |
+| `GLM07_idea_manager.py` | Idea zone management (accumulates evidence, crystallizes theses). |
+
+### Layer 4: Generation
+
+| Module | What it does |
+|--------|-------------|
+| `GLM21_generator.py` | Word-chain generator. Walks the 24-bit lattice using EMA centroid + CRG transition grammar. Uses the displaced-Golay resonance mechanism. |
+| `GLM22_ontological_grammar.py` | Computed SVO grammar. Derives the verb from the AND-gap between subject and object vectors. Uses CRG edge labels + physics-verb whitelist for quality. |
+
+### Layer 5: Composers
+
+| Module | What it does |
+|--------|-------------|
+| `GLM10_response_composer.py` | Terse bracket-tag response (`[Recall]`, `[Backbone]`, `[Metrics]`, etc.). |
+| `GLM19_prose_composer.py` | Fluent natural-language paragraph. Assembles recalled KB entries + definitions + generated text into prose. |
+| `GLM17_semantic_frames.py` | Template-based backbone verbalization ("Hamiltonian generates time"). |
+
+---
+
+## The Chat Pipeline
+
+When you call `rt.chat_prose("What is the weyl anomaly?")`, the query flows through 8 steps:
+
+```
+Query → [0] Anaphora resolution → [1] Math/symbolic detection → [2] Deliberative reasoning
+      → [3] KB recall (alias map, phrase match, physics pack)
+      → [4] Tokenization (multi-word phrases)
+      → [5] Warm-start check (match prior ideas)
+      → [6] Zone update (accumulate evidence, possibly crystallize)
+      → [7] Generation (GLM22 ontological grammar — NEW)
+      → [8] Composition (assemble prose)
+      → Response
+```
+
+### Step 7: Generation (new in v3.22.0)
+
+**This is the key architectural fix.** Previously, the chat pipeline was pure recall + reformat — zero generation. The generation engine (GLM21/GLM22) existed but was never called by `chat()` or `chat_prose()`. Now, Step 7 calls `OntologicalGrammar.construct_paragraph(topic, n_sentences=3)` and weaves the generated text into the response as "Extending from the substrate: ...".
+
+This adds ~38% to output length and introduces novel word sequences for the first time.
+
+---
+
+## Refined NRCI
+
+**New in v3.22.0.** The `refined_nrci.py` module is a drop-in replacement for the original NRCI that breaks sign-blindness.
+
+### The problem
+
+The original NRCI formula is:
+```
+tax = hw × Y + ns / 8
+NRCI = 10 / (10 + tax)
+```
+where `hw` = Hamming weight (count of nonzero) and `ns` = sum of squares. Both terms **ignore sign** — so all 128 sign-variants of an octad (8 coordinates of ±2) have identical NRCI. **7 bits of information per octad are invisible.**
+
+### The solution: 5-shell system
+
+The Refined NRCI adds shells, each capturing structure the original discards:
+
+| Shell | Name | What it measures | Sign-sensitive? | Unique values (128 octad variants) |
+|-------|------|-----------------|-----------------|-----------------------------------|
+| 0 | Golay | hw + ns/8 (original) | No | 1 |
+| 1 | Sign-parity | Balance of +/− signs | Yes | 5 (Pascal 1-28-70-28-1) |
+| 2 | Sextet-balance | Evenness across 4 MOG tetrads | Partial | — |
+| 3 | Coset-type | Golay syndrome weight | No | — |
+| 4 | Sextet-signed | 4-tuple of signed sextet sums | Yes | 24 |
+| **All** | **Combined** | | | **9** |
 
 ### Usage
 
 ```python
-from GLM11_runtime import GLMRuntimeV37
-rt = GLMRuntimeV37()
+from refined_nrci import RefinedNRCI
+from ubp_unified_v5 import GOLAY_ENGINE
 
-# Topology dashboard
-rep = rt.topology_report()
-print(f"V={rep.n_vertices} E={rep.n_edges} F={rep.n_faces}")
-print(f"β=({rep.beta0},{rep.beta1},{rep.beta2}) χ={rep.euler}")
-print(f"holes (β₁) = {rep.beta1} — reasoning gaps in the CRG")
+rnrci = RefinedNRCI(golay_engine=GOLAY_ENGINE)
 
-# Backbone coherence
-scrg = rt.simplicial_crg()
-zone = rt.manager.active
-if zone.crg_backbone:
-    tc = scrg.topological_coherence(zone.crg_backbone)
-    filled = scrg.backbone_is_filled(zone.crg_backbone)
-    print(f"backbone coherence: {tc:.3f}, filled: {filled}")
+# Binary vector (Shells 1,4 give 0 — no sign structure)
+nrci = rnrci.compute([1,0,1,1,...])  # → float in (0, 1]
+
+# Physical Leech point (±2 — all shells active)
+nrci = rnrci.compute([2,-2,0,2,...])
+
+# Full breakdown
+breakdown = rnrci.describe([2,-2,0,2,...])
+# → {shell0_golay, shell1_sign_parity, shell2_sextet_balance,
+#    shell3_coset_type, shell4_sextet_signed, tax_total, nrci, sign_class, sextet_pattern}
 ```
 
----
+### The MOG topology connection
 
-## File-by-file changes
+Shell 4 (sextet-signed) is connected to the [MOG (Miracle Octad Generator)](https://en.wikipedia.org/wiki/Witt_design) — the native 4×6 column structure of the Golay code. The 24 coordinates split into 4 sextets (MOG tetrads):
 
-### New modules
-
-#### `GLM34_simplicial_crg.py` (~600 lines)
-- `CRGFace` dataclass: nodes, label, sides, area, circumradius, degenerate, shape
-- `NodeGeom` dataclass: name, hex_int, zone, degree, stellar, bridge_score
-- `TopologyReport` dataclass: n_vertices, n_edges, n_faces, beta0, beta1, beta2, euler, mean_stellar, max_stellar, overheating_violations, fillable_cycles
-- `_gf2_rank_reduce(cols)` — GF(2) Gaussian elimination for rank computation
-- `_gf2_solve(cols, target)` — solve Ax = b over GF(2)
-- `SimplicialCRG` class:
-  - `add_face(a, b, c, label, hex_cache)` — add a 2-simplex with computed geometry
-  - `faces_of(node)` — faces incident to a node
-  - `build_node_geometry(vocab_words)` — compute degree, stellar, bridge_score
-  - `_index_complex()` — build the indexed chain complex for homology
-  - `betti()` — return (β₀, β₁, β₂)
-  - `euler()` — return χ = V − E + F
-  - `topology_report()` — full dashboard
-  - `backbone_1chain(backbone)` — represent backbone as GF(2) bitmask
-  - `backbone_is_filled(backbone)` — True iff backbone bounds faces
-  - `backbone_face_support(backbone)` — count faces touching backbone edges
-  - `topological_coherence(backbone)` — [0,1] coherence score
-- `discover_faces(scrg, vocab_words, max_side, max_circumradius, max_faces)` — find 3-cliques
-- `build_simplicial_crg(vocab_words, max_side, max_faces)` — end-to-end builder
-
-### Modified modules
-
-#### `GLM11_runtime.py` — added simplicial_crg() and topology_report()
-- `simplicial_crg(max_side=8, max_faces=200)` — lazily constructs a SimplicialCRG
-- `topology_report()` — convenience method for the topology dashboard
-
----
-
-## Test results
-
-| Suite | v3.20 result | v3.21 result | Delta |
-|---|---|---|---|
-| Existing self-tests | 26/26 | 26/26 | unchanged |
-| Existing golden cases | 41/41 | 41/41 | unchanged |
-| New v3.21 simplicial tests | (n/a) | 18/18 | +18 |
-| **Total** | 67/67 (existing) | **85/85** | +18 tests, all passing |
-
-### What the new v3.21 tests prove
-
-| Test | Claim verified |
-|---|---|
-| `test_face_discovery` | 3-cliques in the CRG are discovered as 2-simplices with valid geometry |
-| `test_betti_numbers` | β₀ ≥ 1, β₁ ≥ 0, β₂ ≥ 0 — topology computed correctly over GF(2) |
-| `test_euler_characteristic` | χ = V − E + F formula verified |
-| `test_topological_coherence` | Coherence in [0,1]; empty backbone returns 1.0 |
-| `test_node_geometry` | degree, stellar, bridge_score, zone all computed |
-| `test_runtime_integration` | `rt.simplicial_crg()` and `rt.topology_report()` work |
-| `test_gf2_linear_algebra` | GF(2) rank and solve verified on known matrices |
-| `test_regression_self_tests` | 26/26 self-tests still pass |
-| `test_regression_golden_cases` | 41/41 golden cases still pass |
-
-
----
-
-## What's New in v3.19.0
-
-v3.19.0 is the **output fidelity + verification** upgrade. It addresses all 6 items from a detailed external performance evaluation: clean `[Answer]` blocks, domain-aware KB recall filtering (no more chemistry bleed into math), explicit `[Verified]` statements for medium/hard problems, a bug fix for dropped deliberation answers, and scalability + diversity test coverage.
-
-### New Modules
-| Module | Purpose |
-|--------|---------|
-| `GLM29_answer_extractor.py` | Extracts the actual answer from compute/symbolic/deliberation results → clean `[Answer] X` block (terse) or "The answer is X." sentence (prose). Handles all answer types: numeric, boolean (prime→Yes/No), list (solve→"x = -2, 2"), dict (eigenvalues→"λ₁ = v₁"), ODE (Eq(y(x),RHS)→"y(x) = RHS"), Taylor (strips O(x^5)), deliberation statements. |
-| `GLM30_domain_filter.py` | Domain-aware KB recall filtering. Classifies each query as `pure_math \| physics \| chemistry \| general` using 90+ math keywords, 50+ physics keywords, 40+ chemistry keywords. Pure-math queries skip KB recall entirely — no more "Aspirin" or "2D Dissonance Matrix" bleed into math problems. |
-| `GLM31_verification.py` | Difficulty classification (easy/medium/hard) + explicit verification statements. Medium/hard problems get `[Verified] sympy cross-check passed`, `[Verified] gcd = 1 ∀n (Euclidean algorithm re-derived)`, `[Verified] C(9,3) = 84 (independent recomputation)`, or honest `[Verified] pattern-match only` for patterns without independent checks. |
-
-### Upgraded Modules
-| Module | Key Changes |
-|--------|-------------|
-| `GLM10_response_composer.py` | Appends `[Answer]` and `[Verified]` blocks. Renamed `[Verify]`→`[Metrics]` to avoid confusion with the new verification tag. |
-| `GLM11_runtime.py` | `_reflexive_recall` now calls `classify_domain` at the top — pure-math queries return `[]` immediately. `_run_pipeline` computes `answer_block` + `verified` and passes them to composers. |
-| `GLM19_prose_composer.py` | **Bug fix**: `_fmt_deliberation` was dropping `result["answer"]` entirely — now appends "The conclusion is: {answer}." Appends "The answer is X." and "This result was verified: X." sentences. |
-| `GLM25_native_alu.py` | Fixed SymPy validation for Float results (e.g. `Matrix([[1.0,2.0],...]).det()` returns `-3.00000000000000` — now correctly converts to int and matches). |
-
----
-
-## What's New in v3.18.0
-
-v3.18.0 implemented 5 of the 6 "recommended next steps" from the v3.17 upgrade report: symbolic fingerprinting, CRG expansion, CRG-aware grammar, auto topic-shift detection, and native polynomial calculus.
-
-### New Modules
-| Module | Purpose |
-|--------|---------|
-| `GLM27_crg_expander.py` | Auto-expands the CRG from 3 sources: master resource relations (UBP-ID resolved via alias map), KB description mining (14 regex patterns for relational phrases), and ~80 curated physics-concept edges. CRG grows from 173 → 260+ edges. |
-| `GLM28_native_poly.py` | Native polynomial differentiation and integration with exact Fraction arithmetic. `d/dx[c·x^n] = (c·n)·x^(n-1)`, `∫c·x^n dx = (c/(n+1))·x^(n+1)`. Closes the last gap in the "native-first" promise — polynomials no longer need SymPy. Falls back to SymPy for non-polynomials (sin, exp) with clear `[fallback]` trace. |
-
-### Upgraded Modules
-| Module | Key Changes |
-|--------|-------------|
-| `GLM09_tools.py` | `evaluate_symbolic` tries native polynomial path first for differentiate/integrate; routes other symbolic ops through `symbolic_with_fingerprint` so results carry `{trace, fingerprint}`. |
-| `GLM11_runtime.py` | Auto CRG expansion on boot (`expand_crg` call in `__init__`). Auto topic-shift detection: resets IdeaManager when active zone is crystallised AND new query has zero content overlap (direct + CRG-reachable). |
-| `GLM22_ontological_grammar.py` | `construct_paragraph(use_crg=True)` prefers CRG-reachable objects over pure Hamming neighbours. Eliminates word salad at the source: "Hamiltonian commute symmetry" instead of "Hamiltonian restore construction". |
-
----
-
-## What's New in v3.17.0
-
-v3.17.0 was the **sovereign computation** upgrade — the foundational levelling-up pass that wired GLM09 to the real native UBP engines, retired the signal-destroying quadrant-forcing, and built the CRG-Traversal-ALU (the word-level NoiseALU equivalent).
-
-### New Modules
-| Module | Purpose |
-|--------|---------|
-| `GLM25_native_alu.py` | Native ALU adapter. Routes 30 numeric operations through `NoiseALU`/`ExactMath`/`LinearAlgebraALU`/`PhysicsALU`. Every result carries `{result, exact, approx, trace, fingerprint, sympy_check, elapsed_us, native}`. SymPy is demoted to validation-only. |
-| `GLM26_crg_alu.py` | CRG-Traversal-ALU — the word-level NoiseALU equivalent. `traverse`, `shortest_path`, `relate`, `chain`, `compose_path_fingerprint` all produce `{result, trace, fingerprint}` with the same shape as math operations. |
-
-### Upgraded Modules
-| Module | Key Changes |
-|--------|-------------|
-| `GLM09_tools.py` | `evaluate_numeric` rewired to call `native_compute` first; falls back to stdlib/SymPy only on failure. |
-| `GLM23_grammar_vectors.py` | Quadrant-forcing retired as default (`QUADRANT_FORCING_ENABLED` flag, default OFF). New `build_svd_only_vectors` — pure PPMI+SVD + plain Golay snap, retains ~75% of distributional signal vs forcing's ~0%. |
-| `GLM24_continuous_learner.py` | Fixed 3 bugs: (a) prefix-skip blanket-freeze replaced with precise hand-curated-codeword check; (b) learned CRG edges now re-applied on reload via `_load_learned_edges`; (c) `atexit` flush registered so state isn't lost between 5-query boundaries. |
-| `GLM01_substrate.py` | Added `"co_occurs"` to `EDGE_LABELS` — the original `_check_for_new_edges` was silently failing because the label wasn't allowed. |
-| `GLM22_ontological_grammar.py` | Added `max_verb_distance=8` gate to `construct_sentence` — returns None when nearest verb is too far, preventing word salad. |
-| `GLM11_runtime.py` | Added `fresh=False` parameter to `chat_prose` (eliminates cross-topic bleed). Added `crg_alu()` method exposing the CRG-Traversal-ALU. |
-
----
-
-## Quick Start
-
-### Prerequisites
-- Python 3.10+ (requires `int.bit_count()`)
-- SymPy (`pip install sympy`)
-- NumPy (`pip install numpy`) — used by SVD/LSA embedding
-- `ubp_system_kb.json`, `ubp_lang_kb_combined_v4.json`, `glm_master_resource_v1.json`, `ubp_unified_v5.py` in the workspace root
-
-### Run Self-Tests
-```bash
-python GLM12_cli_entry.py --test
 ```
-Expected: `26/26 tests passed`
-
-### Run Golden Cases
-```bash
-python run_golden_cases.py
-```
-Expected: `41/41 passed (100.0%)`
-
-### Run v3.19 Levelling Tests
-```bash
-python tests/test_v319_levelling.py
-```
-Expected: `42 passed, 0 failed`
-
-### Chat Query
-```bash
-python GLM12_cli_entry.py --chat "What is gcd(54, 24)?"
-python GLM12_cli_entry.py --chat "is 5 prime?"
-python GLM12_cli_entry.py --chat "Find all positive integers n for which 2^n - 1 is divisible by 7."
+Sextet 0: coords[0:6]   — Reality (Mass, Charge, Space, Time, Thermal, Count)
+Sextet 1: coords[6:12]  — Information (Topology, Symmetry, Density, ...)
+Sextet 2: coords[12:18] — Activation (Energy, Force, Velocity, ...)
+Sextet 3: coords[18:24] — Potential (Probability, Ratio, Limit, ...)
 ```
 
-### Interactive Python
+The signed sum of each sextet gives a 4-tuple that distinguishes sign-variants within a Pascal class. This is the finest shell and the one that connects to the Leech lattice's sign structure.
+
+---
+
+## Generation: How It Works
+
+The GLM has two generation modes:
+
+### GLM21: Word-chain generator (displaced-Golay resonance)
+
+The generator walks the 24-bit lattice using:
+- **EMA centroid** (exponential moving average) as state — prevents the centroid collapse that plagued earlier versions
+- **Resonance-guided selection** — picks words whose perturbation of the centroid lands closest to a target NRCI plateau (0.7196, the "saturation" plateau from cymatics analysis)
+- **CRG bonus** — prefers words that are CRG-reachable from the last word
+
+**Best configuration** (from 6 sessions of tuning):
 ```python
-from GLM11_runtime import GLMRuntimeV37
-rt = GLMRuntimeV37()
-print(rt.chat("what is time?"))                    # KB lookup + alias map
-print(rt.chat("differentiate x^2"))                # native polynomial ALU
-print(rt.chat("is 97 prime?"))                     # native NoiseALU.is_prime
-print(rt.chat("Find the determinant of [[1,2,3],[4,5,6],[7,8,10]]"))  # native det_3x3
-print(rt.chat_prose("What is gcd(54, 24)?"))       # fluent prose with answer + verified
-# Word-level sovereign computation:
-alu = rt.crg_alu()
-print(alu.shortest_path("hamiltonian", "time"))    # {result, trace, fingerprint}
+resonance_weight = 3.0  # resonance dominates
+hamming_weight = 0.0    # no Hamming term (Session 2 finding)
+crg_bonus = 0.30        # CRG guidance weight
+target_nrci = 0.7196    # saturation plateau
+ema_alpha = 0.3         # EMA update rate
 ```
 
----
+### GLM22: Ontological grammar (computed SVO)
 
-## Modular Architecture
-
-The system is split into 32 self-contained Python modules (GLM00–GLM31). Each can be tested independently.
-
-### Core Pipeline (GLM00–GLM14)
-| Module | Purpose |
-|--------|---------|
-| `GLM00_config.py` | Configuration, path setup, KB file verification |
-| `GLM01_substrate.py` | BLA, MOG categories, CRG, lexer, KB loading, vocabulary builder, alias map. v3.17: + `co_occurs` edge label. v3.18: + master resource injection (5395 words). |
-| `GLM02_constants.py` | Thresholds, function words, pronouns, tunables |
-| `GLM03_crg.py` | Extended CRG (contradictions, auto-expand, lattice linking, query-type) |
-| `GLM04_number_vocab.py` | Derived number-word lattice points (55 numbers) |
-| `GLM05_idea_evidence.py` | Source-tagged evidence dataclass |
-| `GLM06_idea_zone.py` | IdeaZone: decay, ticks, crystallisation, adversarial testing |
-| `GLM07_idea_manager.py` | Multi-zone routing, cross-zone synthesis, contradiction pivot |
-| `GLM08_idea_meta_graph.py` | Persistence, warm-start, deterministic IDs |
-| `GLM09_tools.py` | Computation layer. v3.17: native-first via GLM25. v3.18: native polynomial via GLM28. v3.19: answer/verified passthrough. |
-| `GLM10_response_composer.py` | Terse bracket-tag response. v3.19: + `[Answer]`/`[Verified]` blocks, `[Verify]`→`[Metrics]` rename. |
-| `GLM11_runtime.py` | GLMRuntimeV37: wires everything. v3.17: + `crg_alu()`, `fresh` param. v3.18: + auto CRG expand, auto topic-shift. v3.19: + domain filter, answer/verified in pipeline. |
-| `GLM12_cli_entry.py` | Self-test suite (26 tests A–Z), CLI interface |
-| `GLM13_deliberative_reasoning.py` | UBP-native arithmetic, 13 problem pattern detectors |
-| `GLM14_lexer.py` | Multi-token lexer with LaTeX scrubbing, lemmatisation, fuzzy matching |
-
-### Vocabulary & Knowledge (GLM15–GLM18)
-| Module | Purpose |
-|--------|---------|
-| `GLM15_physics_pack.py` | 197-term physics vocabulary pack with deterministic vectors + definitions |
-| `GLM16_master_resource.py` | Loads the 14.4 MB master resource (4248 dictionary entries, 70 relations, 55 spatial nodes) |
-| `GLM17_semantic_frames.py` | Frame-based natural-language generation from CRG edges |
-| `GLM18_hex_colour.py` | Hex colour signatures — every concept IS a #RRGGBB colour |
-
-### Distributional Vectors & Grammar (GLM19–GLM24)
-| Module | Purpose |
-|--------|---------|
-| `GLM19_prose_composer.py` | Fluent prose composer. v3.19: fixed `_fmt_deliberation` bug (was dropping answer), + answer/verified sentences. |
-| `GLM20_svd_vocab.py` | SVD+Golay-snapped distributional vectors (the "benign" path) |
-| `GLM21_generator.py` | Zone-centroid-state generation loop |
-| `GLM22_ontological_grammar.py` | Computed grammar: S→V→O from vector geometry. v3.17: + `max_verb_distance` gate. v3.18: + CRG-aware object selection. |
-| `GLM23_grammar_vectors.py` | Grammar-aligned vectors. v3.17: quadrant-forcing retired as default, new `build_svd_only_vectors`. |
-| `GLM24_continuous_learner.py` | Continuous learning. v3.17: 3 bug fixes (prefix-skip, learned_edges reload, atexit flush) + quadrant-forcing retired. |
-
-### Native Computation & Sovereign Layer (GLM25–GLM28) — v3.17/v3.18 NEW
-| Module | Purpose |
-|--------|---------|
-| `GLM25_native_alu.py` | **v3.17 NEW**: Native ALU adapter. Routes 30 numeric ops through NoiseALU/ExactMath/LinearAlgebraALU. SymPy demoted to validation-only. Every result carries trace + fingerprint. |
-| `GLM26_crg_alu.py` | **v3.17 NEW**: CRG-Traversal-ALU — word-level NoiseALU equivalent. `traverse`, `shortest_path`, `relate`, `chain`, `compose_path_fingerprint`. |
-| `GLM27_crg_expander.py` | **v3.18 NEW**: Auto-expands CRG from master resource + KB descriptions + curated physics edges (173 → 260+ edges). |
-| `GLM28_native_poly.py` | **v3.18 NEW**: Native polynomial diff/integrate with exact Fraction arithmetic. Closes the last gap in "native-first" promise. |
-
-### Output Fidelity & Verification (GLM29–GLM31) — v3.19 NEW
-| Module | Purpose |
-|--------|---------|
-| `GLM29_answer_extractor.py` | **v3.19 NEW**: Extracts clean answer from compute/symbolic/deliberation → `[Answer] X` block. |
-| `GLM30_domain_filter.py` | **v3.19 NEW**: Domain-aware KB recall filter. Pure-math queries skip recall entirely. |
-| `GLM31_verification.py` | **v3.19 NEW**: Difficulty classification + explicit `[Verified]` statements for medium/hard. |
-
-### Test Files
-| File | Purpose |
-|------|---------|
-| `test_full_stack.py` | Integration test: chat + calculus + deliberative reasoning |
-| `test_zone.py` | IdeaZone unit tests |
-| `test_manager.py` | IdeaManager unit tests |
-| `test_meta.py` | Meta-graph unit tests |
-| `tests/test_v319_levelling.py` | **v3.19 NEW**: 42 tests covering all 6 feedback items |
-| `reset_cache.py` | Clear idea_meta_graph.json and caches |
-| `golden_cases.json` | 41-case gold set for benchmark runs |
-
-### Other Files
-| Path | Purpose |
-|------|---------|
-| `dev/` | Legacy monolithic builds (glm_v37_grown.py, glm_v37_unified.py) |
-| `doc/` | Academic paper (PDF + LaTeX source) |
-
----
-
-## How It Works
-
-### The Sovereign Computation Two-Stage Pattern (v3.17+)
-
-Every computation — math OR words — now follows the same uniform pattern:
-
-| Domain | Stage-1 (explicit algorithm) | Stage-2 (substrate fingerprint) |
-|---|---|---|
-| Integer arithmetic | `NoiseALU.gcd/add/mul/...` | `AdaptiveManifold.fingerprint(result)` |
-| Linear algebra | `LinearAlgebraALU.det_2x2/3x3/nxn` + native trace | `AdaptiveManifold.fingerprint` |
-| Word relations | `CRGTraversalALU.shortest_path/chain` | `AdaptiveManifold.fingerprint(dst_hex_int)` |
-| Polynomial calculus | `Polynomial.differentiate/integrate` (term-by-term rule) | `AdaptiveManifold.fingerprint(sha256(result))` |
-| Symbolic (non-poly) | SymPy (no native equivalent) | `AdaptiveManifold.fingerprint(hash(result))` |
-
-Both stages produce `{result, trace, fingerprint}` with the same shape — the user's request for "all computation/calculation should always be UBP native where possible" is satisfied for every operation where a native algorithm exists.
-
-### The Substrate
-Every concept is a 24-bit binary vector — mathematically identical to a hex colour code. Hamming distance uses native CPU XOR + `bit_count()`. The 24 bits are partitioned into 4 quadrants (Matter, Information, Activation, Potential) with 6 MOG categories each.
-
-### The Pipeline
-Each query flows through traceable stages:
-
+Constructs sentences as geometric objects:
 ```
-Import → Config → Boot (CRG auto-expand) → Preprocess
-→ Detect compute/symbolic → Deliberate (if no compute/symbolic)
-→ Reflexive recall (domain-filtered) → Tokenize → Gap-fill → Filter
-→ Auto topic-shift detection → Route to zone → Update zone
-→ Adversarial test → Extract answer → Verify result → Compose → Return
+Subject (NOUN) → gap_vector(subject, object) → Verb (nearest VERB to gap) → Object (NOUN)
 ```
 
-### Key Capabilities
+The verb is **computed from geometry**, not looked up from a template. The AND-intersection of subject and object vectors tends to fall in the VERB quadrant — the gap between two nouns *contains* the verb that connects them.
 
-**Native Computation (GLM09 + GLM25 + GLM28)**
-- All numeric ops (gcd, lcm, factorial, sqrt, primality, combination, modpow, determinant, trace, vector ops) run on `NoiseALU`/`ExactMath`/`LinearAlgebraALU` — NOT stdlib `math` or SymPy
-- Every result carries a real execution `trace` (step-by-step) and a substrate `fingerprint` (NRCI + lattice name + Monster grade)
-- SymPy is validation-only — it cross-checks the native result; the agreement is recorded as `sympy_check.matches`
-- Polynomial differentiation/integration done natively with Fraction arithmetic (GLM28); non-polynomials fall back to SymPy with `[fallback]` annotation
-
-**Output Fidelity (GLM29 + GLM31)**
-- Every response ends with a clean `[Answer] X` block — no more fragments buried in traces
-- Medium/hard problems get explicit `[Verified] ...` statements: "sympy cross-check passed", "gcd = 1 ∀n (Euclidean algorithm re-derived)", "C(9,3) = 84 (independent recomputation)"
-- Easy problems (simple arithmetic, definitions) skip the verification block — no noise
-
-**Noise Reduction (GLM30)**
-- Pure-math queries skip KB recall entirely — no more chemistry/physics bleed into math problems
-- Domain classification uses 180+ keywords across math/physics/chemistry with context-aware ambiguous-word resolution
-- Chemistry queries still get chemistry recalls; physics queries still get physics recalls
-
-**Deliberative Reasoning (GLM13)**
-When direct detection fails, 8 problem patterns fire:
-1. Divisibility sequences → modular period detection
-2. GCD/irreducibility proofs → Euclidean algorithm
-3. Bounded search → LCM candidate testing
-4. Stars and bars → combinatorics formula
-5. Subset sum divisibility → brute force (N ≤ 20)
-6. Tetrahedron inradius → geometric formula
-7. Median inequality → triangle inequality
-8. Right triangle inequality → Cauchy-Schwarz
-
-**Concept Relation Graph (GLM03 + GLM27)**
-- 173 base curated physics edges + 8 contradiction edges
-- v3.18 auto-expansion: +1 from master resource, +32 from KB description mining, +64 curated = **260+ edges total**
-- `CRGTraversalALU` provides step-by-step traversal with traces + fingerprints — the word-level NoiseALU equivalent
-
-**Idea Zones (GLM06 + GLM07)**
-- Multi-zone routing: distant concepts spawn separate zones
-- Crystallisation: ideas form when coherence ≥ 0.70
-- v3.18 auto topic-shift: crystallised zones auto-reset when an unrelated query arrives (no manual `fresh=True` needed)
-- Cross-zone synthesis: "both zones relate to dimension"
-- Warm-start: meta-graph persists crystallised ideas across sessions
+**Verb quality fix (v3.22.0):**
+1. **CRG-label first:** if there's a CRG edge between subject and object, use the edge label as the verb ("hamiltonian generates time" → verb = "generates")
+2. **Physics-verb whitelist:** if no CRG edge, filter verb candidates to a curated list of ~80 high-frequency physics verbs (generates, measures, commutes, scales, transforms, etc.) instead of any random VERB-role word
 
 ---
 
-## Self-Tests (A–Z)
+## Getting Started
 
-| Test | Capability | Result |
-|------|-----------|--------|
-| A | Crystallisation (hamiltonian + time → thesis) | PASS |
-| B | Calculation + lattice grounding (gcd → six) | PASS |
-| C | Symbolic differentiation (x² → 2x) | PASS |
-| D | Symbolic solve (x²−4 → [−2, 2]) | PASS |
-| E | Multi-zone routing (zone system operational) | PASS |
-| F | Contradiction detection (boson ↔ fermion) | PASS |
-| G | Autonomous maturation (inferred nouns) | PASS |
-| H | Warm-start (meta-graph matching) | PASS |
-| I | Determinism (byte-identical across runs) | PASS |
-| J | CRG auto-expansion (auto-proposed edges) | PASS |
-| K | Contradiction-driven pivot (zone spawn) | PASS |
-| L | Cross-zone synthesis (meta-thesis) | PASS |
-| M | Multi-word term preservation ('weyl anomaly') | PASS |
-| N | LaTeX scrubbing ($\alpha + \beta$ → alpha, beta) | PASS |
-| O | Vector operations (dot product, magnitude) | PASS |
-| P | Integrate detector (∫x²eˣ dx) | PASS |
-| Q | Simplify detector ((x²−1)/(x−1) → x+1) | PASS |
-| R | Stars and bars (symbolic n, k → C(n−1, k−1)) | PASS |
-| S | Linear algebra (determinant) | PASS |
-| T | Partial derivative (multivariable) | PASS |
-| U | ODE solver (dy/dx = y) | PASS |
-| V | Master resource definition (oxygen) | PASS |
-| W | Natural language explanation (hamiltonian + time) | PASS |
-| X | Hex colour signature (idea_colour) | PASS |
-| Y | Real Golay error correction (1/2/3-bit) | PASS |
-| Z | Real NRCI (Y constant, not weight-based) | PASS |
-
----
-
-## Live Query Examples (v3.19)
-
-| Query | Response |
-|-------|----------|
-| `What is gcd(54, 24)?` | `[Computed] gcd(54,24) = 6 → Snapped to 'six' [Answer] 6` |
-| `Find the determinant of [[1,2,3],[4,5,6],[7,8,10]]` | `[Computed] ... = -3 [Answer] -3 [Verified] sympy cross-check passed (native determinant)` |
-| `differentiate x^3 with respect to x` | `[Symbolic] differentiate: 3*x^2 [Answer] 3*x^2 [Verified] sympy cross-check passed (native polynomial differentiate)` |
-| `is 97 prime?` | `[Computed] isprime(97) = True [Answer] Yes` |
-| `Prove that (21n+4)/(14n+3) is irreducible` | `[Deliberated:gcd_proof] ... [Conclusion] Irreducible (GCD=1) [Answer] Irreducible (GCD=1) [Verified] gcd = 1 ∀n (Euclidean algorithm re-derived)` |
-| `Define oxygen` | `[Recall] Element: Oxygen (O) [KB] Oxygen: A colorless, tasteless...` (chemistry recall kept — domain filter doesn't over-suppress) |
-
-**Note:** Pure-math queries (gcd, determinant, differentiate, prove) no longer have `[Recall]` blocks — the domain filter suppresses physics/chemistry KB entries that would bleed into math context.
-
----
-
-## API Summary (`GLMRuntimeV37`)
+### Quick start
 
 ```python
 from GLM11_runtime import GLMRuntimeV37
 
 rt = GLMRuntimeV37()
 
-# Chat (terse bracket-tag output with [Answer] + [Verified])
-rt.chat("Tell me about the hamiltonian and time.")
-rt.chat("What is gcd(54, 24)?")            # → [Answer] 6
-rt.chat("differentiate x^2")               # → [Answer] 2*x  [Verified] sympy cross-check passed
+# Terse bracket-tag response
+print(rt.chat("what is the weyl anomaly?"))
 
-# Chat (fluent prose with answer + verification sentences)
-rt.chat_prose("What is gcd(54, 24)?")      # → "...The answer is 6."
-rt.chat_prose("Define oxygen", fresh=True) # fresh=True forces zone reset
+# Fluent prose response (includes generation)
+print(rt.chat_prose("how does the hamiltonian generate time?"))
 
-# Word-level sovereign computation (v3.17+)
-alu = rt.crg_alu()
-alu.traverse("hamiltonian", "generates", "time")     # {result, trace, fingerprint}
-alu.shortest_path("hamiltonian", "time")             # BFS with trace + fingerprint
-alu.chain("hamiltonian", "time", "energy")           # multi-hop walk
+# 4-paragraph considered response
+print(rt.chat_considered("explain the relationship between entropy and dimension"))
+```
 
-# Autonomous maturation
-rt.mature(5)                               # 5 autonomous ticks
-print(rt.idea_state())                     # full multi-zone state
+### CLI
 
-# Cross-zone synthesis
-mt = rt.synthesise()
-if mt: print(mt.thesis)
+```bash
+# Self-test
+python3 GLM12_cli_entry.py --test
 
-# Reset
-rt.reset_idea()
+# Interactive chat (terse)
+python3 GLM12_cli_entry.py --chat "what is hydrogen?"
+
+# Prose mode (longer, more fluent)
+python3 GLM12_cli_entry.py --chat-prose "what is the weyl anomaly?"
+```
+
+### Using the Refined NRCI
+
+```python
+from refined_nrci import RefinedNRCI
+from ubp_unified_v5 import GOLAY_ENGINE
+
+rnrci = RefinedNRCI(golay_engine=GOLAY_ENGINE)
+
+# Test sign-blindness breaking
+from ubp_unified_v5 import LEECH_ENGINE
+octads = GOLAY_ENGINE.get_octads()
+sample_octad = octads[0]
+physical_points = LEECH_ENGINE.expand_octad_to_physical(sample_octad)
+
+# Old NRCI: 1 unique value across 128 variants
+old_nrcis = [float(LEECH_ENGINE.calculate_nrci(p)) for p in physical_points]
+print(f"Old NRCI unique values: {len(set(round(n, 6) for n in old_nrcis))}")  # → 1
+
+# Refined NRCI: 9 unique values
+refined_nrcis = [rnrci.compute(p) for p in physical_points]
+print(f"Refined NRCI unique values: {len(set(round(n, 6) for n in refined_nrcis))}")  # → 9
 ```
 
 ---
 
-## Required Files
+## Data: What the GLM Needs
 
-| File | Size | Source |
-|------|------|--------|
-| `ubp_system_kb.json` | 1.7MB | `system_kb/ubp_system_kb.json` |
-| `ubp_lang_kb_combined_v4.json` | 11.0MB | `core/ubp_lang_kb_combined_v4.json` |
-| `glm_master_resource_v1.json` | 14.4MB | `GLM/glm_master_resource_v1.json` |
-| `ubp_unified_v5.py` | 157KB | `core/ubp_unified_v5.py` |
-| `ubp_kb_architect.py` | 4KB | `core/ubp_kb_architect.py` |
+The GLM's quality is bottlenecked by **data**, not code. Three data sources need growth:
 
-The `ubp_unified_v5.py` file contains the native engines (`NoiseALU`, `ExactMath`, `LinearAlgebraALU`, `PhysicsALU`, `AdaptiveManifold`, `GolayCodeEngine`, `LeechLatticeEngine`, `MonsterGroup`, `BarnesWallEngine`) that GLM25–GLM28 wire into.
+### 1. The CRG (Concept Relation Graph)
 
----
+**Current:** 173 curated edges over 130 nodes.
+**Target:** 5,000+ edges over 2,000+ nodes.
 
-## Environment Variables
+The CRG is the semantic backbone. Every edge with a meaningful label (generates, measures, commutes_with, scales_as) directly improves generation quality — the verb fix uses CRG labels as verbs.
 
-| Variable | Default | Effect |
-|---|---|---|
-| `UBP_CORE_PATH` | (cwd) | Path to the directory containing KB files |
-| `GLM_QUADRANT_FORCING` | `0` (off) | Set to `1` to re-enable the v3.15 quadrant-forcing path (for A/B testing only) |
+**To grow:** Use `GLM27_crg_expander.py` for auto-expansion from definition co-occurrence, then manually curate physics relationships:
+- Hamiltonian → generates → Time
+- Entropy → measures → Dimension
+- Symmetry → generates → Anomaly
+- etc.
 
----
+### 2. Vocabulary definitions
 
-## Boot Characteristics
+**Current:** 4,256 words in `glm_master_resource_v1.json`.
+**Target:** 10,000+ words with rich (2-3 sentence) definitions.
 
-- **Boot time**: ~3-4 seconds (5395-word vocab + 260+ CRG edges + auto-expansion + SVD vector construction)
-- **Per-turn latency**: <50ms for chat; <200ms for deliberative reasoning; native ALU adds ~1-5ms per computation (with trace + fingerprint)
-- **Determinism**: byte-identical output across runs (verified by self-test I)
-- **Memory**: ~28MB of KB data loaded into RAM
-- **Persistence**: `idea_meta_graph.json` accumulates crystallised ideas; `glm_learned_state.json` accumulates learned vectors + CRG edges (with atexit flush)
+Definitions are used for recall and as generation seeds. Focus on:
+- Physics concepts (QFT, condensed matter, optics)
+- Mathematical operators (derivative, integral, commutator — verb candidates)
+- Relations (equivalence, duality — operator candidates)
+- Multi-word phrases (density matrix, partition function)
 
----
+### 3. The System KB
 
-## Version History
+**Current:** 746 entries in `system_kb/ubp_system_kb.json`.
+**Target:** One KB entry per concept users might ask about.
 
-| Version | Key Change |
-|---------|-----------|
-| **v3.19.0** | **Output fidelity + verification upgrade.** New: GLM29 (answer extractor), GLM30 (domain filter), GLM31 (verification layer). Fixed: `_fmt_deliberation` bug (was dropping answer), SymPy Float validation, `[Verify]`→`[Metrics]` rename. Every response now ends with clean `[Answer]` block; medium/hard get `[Verified]` statements; pure-math queries skip KB recall. 42 new tests. |
-| **v3.18.0** | **Recommended next steps implementation.** New: GLM27 (CRG expander, 173→260+ edges), GLM28 (native polynomial diff/integrate). Upgraded: GLM09 (native polynomial path), GLM11 (auto CRG expand + auto topic-shift), GLM22 (CRG-aware grammar). 29 new tests. |
-| **v3.17.0** | **Sovereign computation upgrade.** New: GLM25 (native ALU adapter), GLM26 (CRG-Traversal-ALU). Upgraded: GLM09 (native-first compute), GLM23 (quadrant-forcing retired), GLM24 (3 bug fixes), GLM01 (`co_occurs` edge label), GLM22 (verb_distance gate), GLM11 (`fresh` param + `crg_alu()`). SymPy demoted to validation-only. 46 new tests. |
-| v3.16.0 | Continuous learner (GLM24), ontological grammar (GLM22), grammar-aligned vectors (GLM23), SVD vocab (GLM20), prose composer (GLM19). |
-| v3.9.0 | Master resource integration (GLM16: 5395 words), semantic frames for NL generation (GLM17), hex colour signatures (GLM18), 8 new math detectors, multi-source definition lookup. |
-| v3.8.0 | Multi-token lexer + LaTeX scrub (GLM14), 197-term physics vocab pack (GLM15), 141 CRG edges, integrate/simplify/vector ops detectors, 6 new deliberation patterns. |
-| v3.7.7 | Modular architecture (14 files), alias map KB lookup, priority vocab, full CRG, NRCI fix, thesis filter |
-| v3.7.6 | Initial modular split from monolith, Pyodide deployment |
-| v3.7.5 | Self-contained substrate (no external .py deps) |
-| v3.7.4 | Hex colour optimization, catastrophic regex fix, algorithmic hang prevention |
-| v3.7.3 | Deliberative reasoning layer (§13), MathNet 100%, detect fixes |
-| v3.7.2 | Legacy absorption: lattice CRG, reflexive recall, gap-derivation, query-type |
-| v3.7.1 | User-friendly fallback, chat_with_effort() |
-| v3.7 | Cross-zone synthesis, CRG auto-expansion, symbolic tools, contradiction pivot |
+Each entry needs: `name`, `desc` (2-3 sentences), `ubp_id`.
 
 ---
 
-## Related Links
+## File Map
 
-- **Live App**: [Google AI Studio](https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a)
-- **Core Studio App Repo**: [github.com/DigitalEuan/ubp_core_studio_app](https://github.com/DigitalEuan/ubp_core_studio_app)
-- **UBP Repository**: [github.com/DigitalEuan/UBP_Repo](https://github.com/DigitalEuan/UBP_Repo)
-- **Academic Paper**: `doc/Geometric_Language_Machine.pdf`
+### Essential (keep)
+
+```
+GLM/
+├── GLM00_config.py                 # Paths + config
+├── GLM01_substrate.py              # Vocab + Golay/Leech adapters
+├── GLM02_constants.py              # Function words, edge labels
+├── GLM03_crg.py                    # Concept Relation Graph
+├── GLM04_number_vocab.py           # Number vocabulary
+├── GLM07_idea_manager.py           # Zone management
+├── GLM09_tools.py                  # Math/symbolic computation
+├── GLM10_response_composer.py      # Terse response composer
+├── GLM11_runtime.py                # Orchestrator (8-step pipeline + generation)
+├── GLM13_deliberative_reasoning.py # Pattern-based reasoning
+├── GLM14_lexer.py                  # Multi-word tokenization
+├── GLM15_physics_pack.py           # Physics definitions
+├── GLM16_master_resource.py        # Resource loading
+├── GLM17_semantic_frames.py        # Backbone verbalization
+├── GLM19_prose_composer.py         # Prose response composer
+├── GLM20_svd_vocab.py              # SVD vocabulary builder
+├── GLM21_generator.py              # Word-chain generator (displaced-Golay)
+├── GLM22_ontological_grammar.py    # Computed SVO grammar
+├── GLM23_grammar_vectors.py        # Grammar vector builder
+├── GLM27_crg_expander.py           # CRG auto-expansion (for data growth)
+├── refined_nrci.py                 # NEW: 5-shell sign-sensitive NRCI
+├── glm_master_resource_v1.json     # Vocabulary (4,256 words, 15MB)
+└── glm_unified_resource.json       # Unified resource
+```
+
+### Archive (not needed for core operation)
+
+```
+GLM05_idea_evidence.py          # (check if GLM07 needs it)
+GLM06_idea_zone.py              # (check if GLM07 needs it)
+GLM08_idea_meta_graph.py        # Long-term idea graph (optional)
+GLM18_hex_colour.py             # Visualization only
+GLM24_continuous_learner.py     # Experimental
+GLM25_native_alu.py             # Redundant with GLM09
+GLM26_crg_alu.py                # Redundant with GLM21
+GLM28_native_poly.py            # Niche
+GLM29_answer_extractor.py       # Optional ([Answer] tag)
+GLM30_domain_filter.py          # Optional (domain filtering)
+GLM31_verification.py           # Optional ([Verified] tag)
+GLM32_mode_algebra.py           # Experimental
+GLM33_considered_response.py    # Alternative composer
+GLM34_simplicial_crg.py         # Experimental (2-complex topology)
+exp_*.py                        # Experiment scripts (findings in reports)
+test_*.py                       # Tests (keep for regression)
+```
 
 ---
 
-## Author
+## Key Concepts
 
-E R A Craig, New Zealand
+### NRCI (Non-Random Coherence Index)
+
+Measures how stable a point in the 24-bit substrate is. High NRCI = stable lattice position; low NRCI = noisy. The **Refined NRCI** (`refined_nrci.py`) adds 4 shells to break sign-blindness. [See above.](#refined-nrci)
+
+### CRG (Concept Relation Graph)
+
+The semantic network. Nodes are vocab words, edges are labeled relationships (generates, measures, commutes_with). The CRG guides generation and backbone verbalization.
+
+### Displaced-Golay resonance
+
+The generation mechanism from Session 1. Instead of picking the nearest word to the centroid (Hamming), pick the word whose perturbation of the centroid lands closest to a target NRCI plateau. This is the "displaced Golay" pattern from the noisecore system — computation driven by perturbation-induced change, not absolute position.
+
+### MOG (Miracle Octad Generator)
+
+The native 4×6 column structure of the Golay code. The 24 coordinates split into 4 sextets (MOG tetrads). The Refined NRCI's Shell 4 (sextet-signed) operates on this structure. The MOG is the correct topology for the Golay code — better than the torus (which collapses sign-variants).
+
+### Idea Zone
+
+A dynamic accumulation of evidence around a topic. As the GLM processes a query, it builds a zone with topic nouns, a CRG backbone, and a centroid. When enough evidence accumulates, the zone "crystallizes" a thesis.
+
+---
+
+## Development History
+
+The GLM has been developed across multiple sessions:
+
+| Version | Focus | Key result |
+|---------|-------|-----------|
+| v3.10 | Real engine integration | Connected to ubp_unified_v5.py (real Golay/Leech) |
+| v3.13 | GLM21 generator | First generation layer (word-chain walk) |
+| v3.14 | GLM22 ontological grammar | Computed SVO from vector geometry |
+| v3.17 | Sovereign computation | Native ALU, SVD-only vocab, CRG-Traversal-ALU |
+| v3.18 | CRG expansion | Auto-expand from definitions (173 → 260+ edges) |
+| v3.19 | Output fidelity | Answer extraction, domain filtering, verification |
+| v3.21 | Simplicial CRG | 2-complex topology (Betti numbers, Euler characteristic) |
+| **v3.22** | **Generation wiring + Refined NRCI** | **Generation plumbed into chat pipeline; 5-shell sign-sensitive NRCI; verb quality fix; Session 2-6 best configs** |
+
+---
 
 ## License
 
-This work is part of the Universal Binary Principle (UBP) research project. All UBP repositories are public access.
+Part of the UBP research initiative by Euan R. A. Craig. Experimental — please verify results independently.
