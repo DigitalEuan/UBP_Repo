@@ -14,7 +14,6 @@
 | **Live Environment (Google AI Studio)** | <https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a> |
 | **Core Studio App Repository** | <https://github.com/DigitalEuan/ubp_core_studio_app> |
 | **Digital Twin Physics Engine Repository** | <https://github.com/DigitalEuan/ubp_digital_twin_physics_engine> |
-| **Operational Manifest** | [`core/ubp_files_and_usage.md`](core/ubp_files_and_usage.md) |
 | **Primary Knowledge Bank** | [`system_kb/ubp_system_kb.json`](system_kb/ubp_system_kb.json) (746 entries, 420 Laws) |
 
 ---
