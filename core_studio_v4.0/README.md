@@ -1,4 +1,4 @@
-# The Universal Binary Principle (UBP) Core Studio
+# The Universal Binary Principle (UBP)
 
 [![Version](https://img.shields.io/badge/Version-5.4.0-cyan.svg)](https://github.com/DigitalEuan/UBP_Repo)
 [![Status](https://img.shields.io/badge/Status-Hardened-green.svg)]()
@@ -6,7 +6,7 @@
 
 * **Author:** Euan R. A. Craig, New Zealand
 * **Version:** 7.2.0 (GLM Tab Edition) running ubp_unified_v5.py (v5.4.0)
-* **Date:** 2 July 2026
+* **Updated:** 17 July 2026
 * **License / Status:** Experimental research platform — *please double-check results against your own work before drawing conclusions.*
 
 | Resource | Link |
@@ -26,37 +26,52 @@ The **Universal Binary Principle (UBP)** is a unified computational framework th
 ## 🌌 Core Philosophy: Geometric Purity
 The UBP operates on the axiom that fundamental physical constants are not arbitrary "fine-tuned" values, but are topological artifacts of the substrate's geometry. 
 
-As of **v5.4.0 (June 2026)** - eradicated empirical hardcodes from the system, fundamental constants are now derived purely from substrate primitives:
+As of **v5.4.0 (June 2026)** - no hardcodes, fundamental constants are derived purely from substrate primitives:
 *   **The Triadic Monad:** $\pi \cdot \phi \cdot e$
 *   **The Entropic Wobble ($w$):** The fractional residue of the Monad.
 *   **The Observer Constant ($Y$):** $1 / (\pi + 2/\pi)$.
 
 ---
 
-## 🚀 Key Milestones & Benchmarks
-
-### v5.4.0 — June 2026
-| Constant | UBP Derivation | Value | Error % | Lens |
-| :--- | :--- | :--- | :--- | :--- |
-| **Muon/Electron** | $169 / w$ | $206.7075$ | **0.0294%** | Pure Inverse (13-D Sink) |
-| **Gravity (G)** | $(39/29) \cdot (Y^{18} / w)$ | $6.6831 \times 10^{-11}$ | **0.1327%** | Topological Resonance |
-| **Proton/Electron** | $1836 + 2L_s$ | $1836.1527$ | **0.0000%** | Stereoscopic (29/24) |
-| **Fine Structure ($1/\alpha$)** | $220 - 83 + L$ | $137.0360$ | **0.0196%** | Core Ratio |
-
-> **Note:** The **Non-Random Coherence Index (NRCI)** has been restored to its rightful role as a diagnostic tool.
-
----
-
 ## 📂 System Architecture
 
-### Layer 1: Mathematical Substrate (`ubp_unified_v5.py`)
+### Mathematical Substrate (`ubp_unified_v5.py`)
 The "Backbone." A float-free, exact rational engine using Python's `fractions.Fraction`.
 *   **Golay Engine:** Systematic encoding and error correction (up to 3 bits) (the engine)
 *   **Leech Engine:** Symmetry tax calculation and stability diagnostics (the substrate)
 *   **Barnes-Wall Engine:** Recursive projection into 256D, 512D, and 1024D macro-bulk (the detail)
 
-### Layer 3: Geometric Language Machine (GLM) [Experimental]
-See below
+### 1. The Immutable Core (Substrate & Physics)
+*These files form the float-free mathematical and physical backbone of the UBP.*
+*   **`ubp_unified_v5.py`**: The master substrate engine (v5.4.0). Contains Golay, Leech, Barnes-Wall, and exact math logic.
+*   **`ubp_eml_alu_sovereign.py`**: The native transcendental ALU (v9.2).
+*   **`physics.py`**: Exact metrics and coherence calculations.
+*   **`math_atlas.py`**: The mathematical voxel construction engine.
+*   **`refined_nrci.py`**: The multi-shell, sign-sensitive NRCI calculator.
+*   **`ubp_tgic_engine.py`**: The 3-6-9 relational gravity and interaction engine.
+*   **`ubp_observer_dynamics.py`**: Handles the 1 THz Wall of Reality and SOC energy.
+*   **`ubp_phenomenology.py`**: The modular scanner and noumenal projector.
+
+### 2. The Active Cognitive Engine (GLM Stack)
+*This is the reasoning, semantic, and language generation architecture. All files are prefixed with `GLM`.*
+*   **`GLM00_config.py` to `GLM34_simplicial_crg.py`**: The complete GLM pipeline. It handles everything from SVD distributional vectors and ontological grammar to simplicial 2-complex topology and deliberative reasoning.
+*   **`test_v321_levelling.py` & `run_golden_cases.py`**: Active test harnesses for the GLM stack.
+
+### 3. The UBP-Py Virtual Machine
+*The domain-specific geometric programming language environment.*
+*   **`ubppy.py`**: The CLI entry point.
+*   **`ubp_py_lang.py`**: The language parser (LET, SYNTH, PULSE, etc.).
+*   **`ubp_py_runtime.py`**: The VM state and lattice environment.
+
+### 4. Active Tooling, Orchestration & Visualization
+*Utilities for managing the KB, generating code, and rendering 3D manifolds.*
+*   **Orchestration:** `ubp_v28_oracle.py` (The Two-Track Solve bridge) and `ubp_swarm_tct_v25.py` (Genesis Swarm).
+*   **Visualization:** `ubp_viz.py` (React bridge), `ubp_rgdl.py` (Resonance Geometry), `viz_loader.py`, `viz_spatial_simplification.py`.
+*   **KB Management:** `ubp_kb_architect.py` (Gray Code vector generation), `ubp_ingest.py`, `hash_all_1.py`, `ubp_mog_mapper.py`.
+*   **Code Generation:** `ubp_python_engine.py` (UPCE v2.2) and `ubp_sovereign_evolver.py` (AST compiler).
+*   **`import_sympy.py`**: A simple Sympy import script for Pyodide with micropip test.
+*   **`ubp_genesis_boot.py`**: The Phase 1/2 boot engine. Useful for hard resets, but not needed for daily operations.
+
 
 ---
 
