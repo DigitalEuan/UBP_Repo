@@ -6,7 +6,7 @@
 
 * **Author:** Euan R. A. Craig, New Zealand
 * **Version:** 7.2.0 (GLM Tab Edition) running ubp_unified_v5.py (v5.4.0)
-* **Updated:** 17 July 2026
+* **Updated:** 19 July 2026
 * **License / Status:** Experimental research platform — *please double-check results against your own work before drawing conclusions.*
 
 | Resource | Link |
@@ -64,7 +64,7 @@ The "Backbone." A float-free, exact rational engine using Python's `fractions.Fr
 
 ### 4. Active Tooling, Orchestration & Visualization
 *Utilities for managing the KB, generating code, and rendering 3D manifolds.*
-*   **Orchestration:** `ubp_v28_oracle.py` (The Two-Track Solve bridge) and `ubp_swarm_tct_v25.py` (Genesis Swarm).
+*   **Orchestration:** 'ubp_intent.py' replaces 'ubp_v28_oracle.py` (The Two-Track Solve bridge) and `ubp_swarm_tct_v25.py` (Genesis Swarm).
 *   **Visualization:** `ubp_viz.py` (React bridge), `ubp_rgdl.py` (Resonance Geometry), `viz_loader.py`, `viz_spatial_simplification.py`.
 *   **KB Management:** `ubp_kb_architect.py` (Gray Code vector generation), `ubp_ingest.py`, `hash_all_1.py`, `ubp_mog_mapper.py`.
 *   **Code Generation:** `ubp_python_engine.py` (UPCE v2.2) and `ubp_sovereign_evolver.py` (AST compiler).
@@ -96,15 +96,9 @@ The Studio provides a visual workspace for research.
 
 GLM is the UBP experimental AI/LLM. It moves beyond token probability by grounding concepts in a 24-dimensional geometric substrate based on the Leech Lattice and Golay code.
 
-### Engine Features
-*   **Geometric Substrate:** Precise, high-dimensional vector representations for robust semantic routing.
-*   **Idea Management:** Orchestrates dynamic "Idea Zones" to model and synthesize competing reasoning paths.
-*   **Symbolic-Geometric Reasoning:** Handles contradictions, performs symbolic math, and derives meta-theses through iterative "tick-based" maturation.
-*   **Hardened Knowledge Integration:** Deeply coupled with UBP Knowledge Bases for physical and scientific accuracy.
-
 ---
 
-## 3. Project Structure
+## Project Structure
 
 | Component | Current Path | Description |
 | :--- | :--- | :--- |
