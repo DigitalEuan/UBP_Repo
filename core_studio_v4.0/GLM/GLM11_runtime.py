@@ -392,6 +392,69 @@ class GLMRuntimeV37:
         if not comp_res and not sym_res:
             delib_res = deliberate(resolved)
 
+        # 2b. Rate problem solver (before reasoning engine — specific before general)
+        rate_res = None
+        if not comp_res and not sym_res:
+            try:
+                from GLM38_speculative_engine import solve_rate_problem
+                rate_res = solve_rate_problem(resolved)
+            except Exception:
+                pass
+
+        # 2c. Reasoning Engine (GLM36) — syllogistic, sequence, antonym, definition
+        reason_res = None
+        if not comp_res and not sym_res and not rate_res:
+            try:
+                from GLM36_reasoning_engine import ReasoningEngine
+                if not hasattr(self, '_reasoner'):
+                    from GLM01_substrate import _load_system_kb
+                    kb = _load_system_kb()
+                    self._reasoner = ReasoningEngine(self.crg, self.vocab_dict, kb)
+                reason_res = self._reasoner.reason(resolved)
+            except Exception:
+                pass
+
+        # 2d. Research Agent (GLM37) — gap detection, task decomposition, learning
+        agent_res = None
+        try:
+            from GLM37_research_agent import ResearchAgent
+            if not hasattr(self, '_agent'):
+                from GLM01_substrate import _load_system_kb
+                kb = _load_system_kb()
+                self._agent = ResearchAgent(self.crg, self.vocab_dict, kb)
+        except Exception:
+            pass
+
+        # 2e. Speculative reasoning (GLM38) — reason from known to unknown
+        spec_res = None
+        if not comp_res and not sym_res and not reason_res and not rate_res:
+            try:
+                from GLM38_speculative_engine import SpeculativeEngine
+                if not hasattr(self, '_speculator'):
+                    from GLM01_substrate import _load_system_kb
+                    kb = _load_system_kb()
+                    self._speculator = SpeculativeEngine(self.crg, self.vocab_dict, kb)
+                spec_res = self._speculator.speculate(resolved)
+            except Exception:
+                pass
+
+        # 2f. Agent Loop (GLM39) — plan → execute → observe → iterate
+        agent_loop_res = None
+        # Only use agent loop for complex queries that need tool orchestration
+        if any(w in resolved.lower() for w in ['analyze', 'analyse', 'compare', 'compute',
+                'calculate', 'evaluate', 'investigate', 'examine', 'study', 'run code',
+                'execute', 'write code', 'create script', 'topology', 'topological',
+                'distance between', 'value geometry']):
+            try:
+                from GLM39_agent_loop import AgentLoop
+                if not hasattr(self, '_agent_loop'):
+                    from GLM01_substrate import _load_system_kb
+                    kb = _load_system_kb()
+                    self._agent_loop = AgentLoop(self.vocab_dict, self.crg, kb)
+                agent_loop_res = self._agent_loop.execute_query(resolved)
+            except Exception:
+                pass
+
         # 3. Reflexive Recall
         # v3.19.0: pass comp_res/sym_res/delib_res so the domain filter
         # can use them to classify the query and skip recall for pure_math.
@@ -620,6 +683,10 @@ class GLMRuntimeV37:
             "answer_block": answer_block,
             "verified": verified,
             "generated": generated,
+            "reasoning": reason_res,
+            "rate": rate_res,
+            "speculative": spec_res,
+            "agent_loop": agent_loop_res,
         }
 
     def chat(self, query: str) -> str:
@@ -629,7 +696,7 @@ class GLMRuntimeV37:
         [Answer] and [Verified] blocks are appended.
         """
         state = self._run_pipeline(query)
-        return compose_response(
+        response = compose_response(
             state["query"], state["content"], state["unknown"],
             state["zone"], state["manager"], self.vocab,
             state["qtype"], state["compute"], state["symbolic"],
@@ -639,7 +706,27 @@ class GLMRuntimeV37:
             answer_block=state.get("answer_block"),
             verified=state.get("verified"),
             generated=state.get("generated"),
+            reasoning=state.get("reasoning"),
+            rate=state.get("rate"),
+            speculative=state.get("speculative"),
+            agent_loop=state.get("agent_loop"),
         )
+        
+        # Process through research agent (GLM37)
+        try:
+            from GLM37_research_agent import ResearchAgent
+            if not hasattr(self, '_agent'):
+                from GLM01_substrate import _load_system_kb
+                kb = _load_system_kb()
+                self._agent = ResearchAgent(self.crg, self.vocab_dict, kb)
+            agent_result = self._agent.process_message(query, response)
+            agent_output = self._agent.format_agent_output(agent_result)
+            if agent_output:
+                response = response + "\n" + agent_output
+        except Exception:
+            pass
+        
+        return response
 
     def chat_prose(self, query: str, fresh: bool = False) -> str:
         """Fluent natural-language response (v3.11.0).

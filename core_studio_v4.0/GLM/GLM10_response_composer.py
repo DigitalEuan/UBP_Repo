@@ -76,6 +76,21 @@ def _kb_description(word: str, vocab: Any, kb: Dict[str, Any]) -> Tuple[str, flo
     except Exception:
         pass
 
+    # Source 2b: Direct name match in KB (highest priority for exact matches)
+    try:
+        full_kb = _load_system_kb()
+        word_lower = word.lower()
+        for uid, kbe in full_kb.items():
+            kbe_name = kbe.get("name", "").lower()
+            # Check if the word matches the KB entry name exactly or as a significant part
+            if word_lower == kbe_name or (len(word_lower) >= 4 and word_lower in kbe_name):
+                d = kbe.get("desc", kbe.get("lexicon", ""))
+                if d:
+                    candidates.append((kbe.get("name", uid), d, 4))  # Highest priority
+                    break
+    except Exception:
+        pass
+
     # Source 3: vector comparison (KB-derived words with matching vector)
     vec_list = list(vec)
     for uid, kbe in kb.items():
@@ -129,6 +144,89 @@ def _verbalise_edge(e: Any) -> str:
     }
     return m.get(label, f"{src} {label_text} {dst}")
 
+# ── 1b. QUERY-BASED KB LOOKUP ────────────────────────────────────────────
+def _query_kb_match(query: str, kb: Dict[str, Any]) -> Optional[Tuple[str, str, str]]:
+    """Search KB for entries that match the query terms.
+    Returns (uid, name, description) or None."""
+    ql = query.lower()
+    stop = {"the", "a", "an", "of", "is", "are", "what", "how", "tell",
+            "me", "about", "and", "in", "to", "for", "with", "explain",
+            "describe", "show", "find", "all", "positive", "integers",
+            "does", "do", "can", "could", "would", "should", "will",
+            "shall", "may", "might", "must", "need", "it", "this", "that"}
+    words = [w for w in re.findall(r'\b[a-z]{3,}\b', ql) if w not in stop]
+    
+    if not words:
+        return None
+    
+    # Search KB for entries where name contains query words
+    best_match = None
+    best_score = 0
+    
+    for uid, entry in kb.items():
+        # Handle both raw format (lexicon) and processed format (name/desc)
+        raw_lex = entry.get("lexicon", "")
+        name = entry.get("name", "")
+        desc = entry.get("desc", "")
+        
+        # If no name, extract from lexicon
+        if not name and raw_lex:
+            m = re.match(r'\[?(?:Law|Element|Molecule|Particle|Math|Reaction|Tool|Algo|Crystal)?:?\s*(.+?)\]?', raw_lex)
+            if m:
+                name = m.group(1).strip()
+                name = re.sub(r'^\[', '', name).strip()
+                name = re.sub(r'\]$', '', name).strip()
+            # Fallback: use ubp_id
+            if not name:
+                name = uid
+        if not desc and raw_lex:
+            # Extract description: everything after the first ], or after the name
+            # Try pattern: [Name], [Description]
+            m2 = re.search(r'\]\s*,?\s*\[?(.{20,})', raw_lex)
+            if m2:
+                desc = m2.group(1).strip()
+                desc = re.sub(r'^\[', '', desc)
+                desc = re.sub(r'\]+$', '', desc)
+            else:
+                # Try: everything after the name
+                m3 = re.search(r'\]\s*(.{20,})', raw_lex)
+                if m3:
+                    desc = m3.group(1).strip()
+                    desc = re.sub(r'^\[', '', desc)
+                    desc = re.sub(r'\]+$', '', desc)
+        
+        if not name:
+            continue
+        
+        name_lower = name.lower()
+        desc_lower = desc.lower() if desc else ""
+        
+        # Score based on how many query words appear in the name
+        score = 0
+        for word in words:
+            if word in name_lower:
+                score += 2
+            elif any(word in part for part in name_lower.split()):
+                score += 1
+            if word in desc_lower:
+                score += 1
+        
+        # Bonus for exact phrase match
+        phrase = " ".join(words[:3])
+        if phrase in name_lower:
+            score += 5
+        if phrase in desc_lower:
+            score += 3
+        
+        if score > best_score:
+            best_score = score
+            best_match = (uid, name, desc)
+    
+    if best_match and best_score >= 3:
+        return best_match
+    return None
+
+
 # ── 2. MASTER COMPOSER ─────────────────────────────────────────────────
 def compose_response(
     query: str, 
@@ -146,6 +244,11 @@ def compose_response(
     # v3.19.0: new kwargs for answer extraction + verification
     answer_block: Optional[Any] = None,
     verified: Optional[str] = None,
+    generated: Optional[str] = None,
+    reasoning: Optional[Dict[str, Any]] = None,
+    rate: Optional[Dict[str, Any]] = None,
+    speculative: Optional[Dict[str, Any]] = None,
+    agent_loop: Optional[Dict[str, Any]] = None,
 ) -> str:
     """Weaves internal state into a coherent multi-layered response."""
     
@@ -183,24 +286,93 @@ def compose_response(
     if deliberation:
         parts.append(format_deliberation(deliberation))
 
-    # G. Reflexive Recall Block (NEW)
+    # F-bis. Reasoning Engine (GLM36) — syllogistic, sequence, antonym, definition
+    if reasoning:
+        answer = reasoning.get("answer", "")
+        rtype = reasoning.get("type", "unknown")
+        if answer:
+            parts.append(f"[Reasoned] {answer}")
+    
+    # F-ter. Rate problem solver
+    if rate:
+        answer = rate.get("answer", "")
+        reasoning_text = rate.get("reasoning", "")
+        if answer:
+            parts.append(f"[Solved] {answer}")
+            if reasoning_text:
+                parts.append(f"[Method] {reasoning_text}")
+    
+    # F-quat. Speculative reasoning (GLM38) — reason from known to unknown
+    if speculative:
+        answer = speculative.get("answer", "")
+        confidence = speculative.get("confidence", 0)
+        is_spec = speculative.get("speculative", False)
+        if answer:
+            if is_spec:
+                conf_pct = int(confidence * 100)
+                parts.append(f"[Speculative ({conf_pct}%)] {answer}")
+            else:
+                parts.append(f"[Inferred] {answer}")
+    
+    # F-quin. Agent Loop (GLM39) — plan → execute → observe → iterate
+    if agent_loop:
+        from GLM39_agent_loop import format_agent_result
+        agent_output = format_agent_result(agent_loop)
+        if agent_output:
+            parts.append(agent_output)
+
+    # G. Reflexive Recall Block — use recalled entries for rich KB info
+    best_recalled_desc = None
     if recalled:
         recall_parts = []
-        for entry in recalled[:3]: # Show top 3 matches
+        for entry in recalled[:3]:
             name = entry.get("name", entry.get("ubp_id", "Unknown"))
             recall_parts.append(name)
+            # Use the first recalled entry with a description for KB block
+            desc_text = entry.get("desc", entry.get("lexicon", ""))
+            if desc_text and not best_recalled_desc:
+                best_recalled_desc = (name, desc_text)
         if recall_parts:
             parts.append(f"[Recall] {', '.join(recall_parts)}")
-
+        # Use the best recalled description for the KB block
     # H. Knowledge Base & Verification
-    # v3.9.0: Prefer multi-word topic nouns (physics-pack terms) over single
-    # words — they have richer definitions and are more likely to be the
-    # actual subject of the query.  Falls back to last_topic_noun, then to
-    # the first content token.
+    # Always try query-based KB lookup first (most accurate for specific queries)
+    query_match = _query_kb_match(query, kb)
+    
+    # Find the best KB description using all available sources
+    kb_desc_shown = False
+    if query_match:
+        uid, name, desc_text = query_match
+        if desc_text:
+            desc_text = desc_text.strip()
+            desc_text = re.sub(r'^\[+', '', desc_text)
+            desc_text = re.sub(r'\]+$', '', desc_text)
+            m = re.match(r'([^.]{20,}\.)', desc_text)
+            if m:
+                desc_text = m.group(1).strip()
+            else:
+                desc_text = desc_text[:200]
+            parts.append(f"[KB] {name}: {desc_text}")
+            kb_desc_shown = True
+    
+    # Fallback to recalled entry description
+    if not kb_desc_shown and best_recalled_desc:
+        name, desc_text = best_recalled_desc
+        desc_text = desc_text.strip()
+        desc_text = re.sub(r'^\[+', '', desc_text)
+        desc_text = re.sub(r'\]+$', '', desc_text)
+        m = re.match(r'([^.]{20,}\.)', desc_text)
+        if m:
+            desc_text = m.group(1).strip()
+        else:
+            desc_text = desc_text[:200]
+        parts.append(f"[KB] {name}: {desc_text}")
+        kb_desc_shown = True
+    
+    # Metrics from topic word
     topic_word = None
     if zone is not None:
         topic_nouns = getattr(zone, 'topic_nouns', [])
-        # Pick the first multi-word noun (contains a space or hyphen)
         multi = [n for n in topic_nouns if ' ' in n or '-' in n]
         if multi:
             topic_word = multi[0]
@@ -208,12 +380,11 @@ def compose_response(
             topic_word = getattr(zone, 'last_topic_noun', None)
     if not topic_word and content:
         topic_word = content[0][0]
-
+    
     if topic_word:
         desc, nrci, tax = _kb_description(topic_word, vocab, kb)
-        if desc: parts.append(f"[KB] {desc}")
-        # v3.19.0: renamed [Verify] to [Metrics] to avoid confusion with
-        # the new [Verified] answer-verification tag below.
+        if desc and not kb_desc_shown:
+            parts.append(f"[KB] {desc}")
         parts.append(f"[Metrics] NRCI={nrci:.3f} | Tax={tax:.2f}")
 
     # I. Structural Backbone
@@ -259,7 +430,11 @@ def compose_response(
         except Exception:
             pass
 
-    # K. Fallback
+    # K. Generated paragraph (from GLM35 ParagraphComposer)
+    if generated and isinstance(generated, str) and len(generated) > 20:
+        parts.append(f"[Generated] {generated}")
+
+    # L. Fallback
     if not parts:
         parts.append("I am listening. Name a concept or provide a mathematical expression to begin.")
 
