@@ -1,4 +1,4 @@
-# Reproducible package: Element Chromatics with the full UBP system
+# Second UBP Core Studio Study: Element Chromatics
 
 This package reruns and extends the uploaded Element Chromatics study using the **full** UBP repository.
 
