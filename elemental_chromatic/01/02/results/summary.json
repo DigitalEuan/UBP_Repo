@@ -1,0 +1,145 @@
+{
+  "repo_url": "https://github.com/DigitalEuan/UBP_Repo/tree/main/core_studio_v4.0",
+  "repo_commit": "a024e223d6133fdac400a985c5ab6e8356dd3729",
+  "readme_url": "https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/core_studio_v4.0/README.md",
+  "core_usage_url": "https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/core_studio_v4.0/core/ubp_files_and_usage.md",
+  "kb_usage_url": "https://raw.githubusercontent.com/DigitalEuan/UBP_Repo/main/core_studio_v4.0/system_kb/ubp_files_and_usage.md",
+  "rng_seed": 20260415,
+  "element_count": 118,
+  "script_count": 19,
+  "successful_scripts": 19,
+  "extension_statistics": {
+    "noble_cluster_test": {
+      "observed_mean_pairwise_rgb": 191.86366861527418,
+      "observed_mean_pairwise_hamming": 11.428571428571429,
+      "observed_mean_saturation": 109.13680827589326,
+      "random_rgb_spread_mean": 166.25632859217427,
+      "random_hamming_spread_mean": 11.976895238095238,
+      "random_saturation_mean": 96.78983472608213,
+      "p_lower_rgb_spread": 0.917,
+      "p_lower_hamming_spread": 0.1915,
+      "p_higher_saturation": 0.1951
+    },
+    "periodic_smoothness_test": {
+      "observed_mean_adjacent_hamming": 11.931623931623932,
+      "observed_mean_adjacent_rgb": 163.79254781595836,
+      "random_mean_adjacent_hamming": 11.973586324786325,
+      "random_mean_adjacent_rgb": 166.2137273969994,
+      "p_lower_hamming": 0.4523,
+      "p_lower_rgb": 0.3101
+    },
+    "group_coherence": {
+      "within_group_mean_hamming": 11.929618768328446,
+      "between_group_mean_hamming": 11.98263944703424,
+      "within_group_mean_rgb": 161.77538796291623,
+      "between_group_mean_rgb": 166.7278418742653
+    },
+    "network": {
+      "nodes": 118,
+      "edges": 1259,
+      "density": 0.18238447052006374,
+      "connected_components": 1,
+      "largest_component_size": 118,
+      "diameter": 3,
+      "average_shortest_path": 1.9171374764595104,
+      "top_hubs": [
+        {
+          "ubp_id": "ELEM_Cf_098",
+          "degree": 32,
+          "z": 98,
+          "symbol": "Cf"
+        },
+        {
+          "ubp_id": "ELEM_Kr_036",
+          "degree": 31,
+          "z": 36,
+          "symbol": "Kr"
+        },
+        {
+          "ubp_id": "ELEM_Sn_050",
+          "degree": 31,
+          "z": 50,
+          "symbol": "Sn"
+        },
+        {
+          "ubp_id": "ELEM_Dy_066",
+          "degree": 29,
+          "z": 66,
+          "symbol": "Dy"
+        },
+        {
+          "ubp_id": "ELEM_Y_039",
+          "degree": 28,
+          "z": 39,
+          "symbol": "Y"
+        },
+        {
+          "ubp_id": "ELEM_Lu_071",
+          "degree": 28,
+          "z": 71,
+          "symbol": "Lu"
+        },
+        {
+          "ubp_id": "ELEM_Fl_114",
+          "degree": 28,
+          "z": 114,
+          "symbol": "Fl"
+        },
+        {
+          "ubp_id": "ELEM_Ni_028",
+          "degree": 27,
+          "z": 28,
+          "symbol": "Ni"
+        },
+        {
+          "ubp_id": "ELEM_Br_035",
+          "degree": 27,
+          "z": 35,
+          "symbol": "Br"
+        },
+        {
+          "ubp_id": "ELEM_Yb_070",
+          "degree": 27,
+          "z": 70,
+          "symbol": "Yb"
+        }
+      ],
+      "shortest_path_H_to_Cf": [
+        "ELEM_H_001",
+        "ELEM_Ti_022",
+        "ELEM_Cf_098"
+      ],
+      "shortest_path_H_to_Og": [
+        "ELEM_H_001",
+        "ELEM_Li_003",
+        "ELEM_Ce_058",
+        "ELEM_Og_118"
+      ]
+    },
+    "correlations": {
+      "pearson_saturation_nrci": -0.01738460348530326,
+      "pearson_saturation_tax": 0.023875568560930503,
+      "pearson_saturation_hamming_weight": 0.02387556856093052,
+      "pearson_saturation_degree": -0.025660414032518994
+    },
+    "discretization": {
+      "unique_nrci_values": [
+        0.615961,
+        0.68138,
+        0.762346
+      ],
+      "unique_tax_values": [
+        3.117403,
+        4.676105,
+        6.234807
+      ],
+      "nrci_counts": {
+        "0.615961": 21,
+        "0.68138": 77,
+        "0.762346": 20
+      }
+    },
+    "permutation_invariance_note": "The Euclidean path-length and pairwise-spread metrics used in 4_calculate_dist.py are symmetric under axis permutation; all 6 RGB permutations must therefore tie unless axis-specific priors are introduced.",
+    "tautology_note": "Because elemental RGB values are a direct 24-bit visualization of the same UBP vectors stored in the KB, any RGB->bit roundtrip manifold audit is structurally phase-locked by construction."
+  }
+}
