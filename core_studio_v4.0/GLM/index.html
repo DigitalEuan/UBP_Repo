@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLM — Geometric Language Machine</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a28;
+  --border: #2a2a3a;
+  --text: #e0e0e8;
+  --text2: #8888a0;
+  --accent: #6366f1;
+  --accent2: #818cf8;
+  --green: #34d399;
+  --orange: #fb923c;
+  --red: #f87171;
+  --cyan: #22d3ee;
+  --yellow: #fbbf24;
+  --pink: #f472b6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
+/* ── Layout ─────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 56px 1fr;
+  height: 100vh;
+}
+.topbar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+  z-index: 10;
+}
+.topbar h1 {
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.topbar .subtitle {
+  font-size: 12px;
+  color: var(--text2);
+  margin-left: 4px;
+}
+.topbar .status {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text2);
+}
+.topbar .status .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+.dot.ok { background: var(--green); }
+.dot.loading { background: var(--yellow); animation: pulse 1s infinite; }
+.dot.error { background: var(--red); }
+@keyframes pulse { 50% { opacity: 0.4; } }
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  overflow: hidden;
+}
+
+/* ── Chat Panel ─────────────────────────────────────── */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+.chat-tabs {
+  display: flex;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.chat-tabs button {
+  background: none;
+  border: none;
+  color: var(--text2);
+  padding: 10px 20px;
+  font-size: 13px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.chat-tabs button:hover { color: var(--text); }
+.chat-tabs button.active {
+  color: var(--accent2);
+  border-bottom-color: var(--accent);
+}
+
+.tab-content {
+  flex: 1;
+  overflow: hidden;
+  display: none;
+}
+.tab-content.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat messages */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.msg {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } }
+
+.msg.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.msg.assistant {
+  align-self: flex-start;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+.msg.system {
+  align-self: center;
+  background: var(--bg2);
+  color: var(--text2);
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+.msg .meta {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 6px;
+  display: flex;
+  gap: 12px;
+}
+.msg .meta span { opacity: 0.7; }
+
+/* Three-column display */
+.three-col {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 12px;
+}
+.three-col .col-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.three-col .col-header span {
+  padding: 6px 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+}
+.three-col .col-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.three-col .col-row:last-child { border-bottom: none; }
+.three-col .col-row > div {
+  padding: 8px 10px;
+  border-right: 1px solid var(--border);
+}
+.three-col .col-row > div:last-child { border-right: none; }
+
+/* Input area */
+.input-area {
+  padding: 16px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.input-area textarea {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-area textarea:focus {
+  border-color: var(--accent);
+}
+.input-area textarea::placeholder { color: var(--text2); }
+
+.input-area .btn-row {
+  display: flex;
+  gap: 6px;
+}
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn.secondary {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+}
+.btn.secondary:hover { background: var(--border); }
+.btn.small {
+  padding: 6px 12px;
+  font-size: 11px;
+  border-radius: 8px;
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Upload area */
+.upload-area {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text2);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.upload-area:hover, .upload-area.dragover {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.05);
+}
+.upload-area .icon { font-size: 48px; margin-bottom: 12px; }
+.upload-area p { font-size: 14px; }
+.upload-area .hint { font-size: 12px; margin-top: 8px; opacity: 0.6; }
+
+.upload-result {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--bg3);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* Learn tab */
+.learn-input {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.learn-input textarea {
+  flex: 1;
+  min-height: 200px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+}
+.learn-input textarea:focus { border-color: var(--accent); }
+
+/* Teach tab */
+.teach-form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.teach-form label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.teach-form input, .teach-form textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+.teach-form input:focus, .teach-form textarea:focus {
+  border-color: var(--accent);
+}
+.relation-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.relation-row select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  color: var(--text);
+  font-size: 13px;
+}
+.relation-row input {
+  flex: 1;
+}
+
+/* ── Side Panel ─────────────────────────────────────── */
+.side-panel {
+  background: var(--bg2);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.side-tabs {
+  display: flex;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.side-tabs button {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text2);
+  padding: 10px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.side-tabs button:hover { color: var(--text); }
+.side-tabs button.active {
+  color: var(--accent2);
+  border-bottom-color: var(--accent);
+}
+.side-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+.side-content .section {
+  margin-bottom: 16px;
+}
+.side-content .section h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text2);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Stats */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.stat-card {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+.stat-card .value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent2);
+}
+.stat-card .label {
+  font-size: 10px;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Zone cards */
+.zone-card {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-left: 3px solid var(--border);
+}
+.zone-card.crystallized {
+  border-left-color: var(--green);
+}
+.zone-card.active {
+  border-left-color: var(--accent);
+}
+.zone-card h4 {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.zone-card p {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.4;
+}
+.zone-card .coherence-bar {
+  height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.zone-card .coherence-bar .fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s;
+}
+
+/* Graph canvas */
+#graphCanvas {
+  width: 100%;
+  height: 300px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Vocab list */
+.vocab-item {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.vocab-item .word { font-weight: 600; color: var(--accent2); }
+.vocab-item .nrci { color: var(--green); font-family: monospace; }
+
+/* History list */
+.history-item {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.history-item:hover { background: var(--bg3); }
+.history-item .role { font-weight: 600; color: var(--accent2); }
+.history-item .preview {
+  color: var(--text2);
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.history-item .time { font-size: 10px; color: var(--text2); margin-top: 2px; }
+
+/* Growth log */
+.growth-item {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+}
+.growth-item .type {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 6px;
+}
+.growth-item .type.vocab { background: rgba(99,102,241,0.2); color: var(--accent2); }
+.growth-item .type.edge { background: rgba(34,211,238,0.2); color: var(--cyan); }
+.growth-item .type.insight { background: rgba(251,191,36,0.2); color: var(--yellow); }
+.growth-item .type.coherence { background: rgba(52,211,153,0.2); color: var(--green); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .side-panel {
+    display: none;
+  }
+  .topbar .subtitle { display: none; }
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.5s;
+}
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-overlay .spinner {
+  width: 48px; height: 48px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-overlay p {
+  margin-top: 16px;
+  color: var(--text2);
+  font-size: 14px;
+}
+.loading-overlay .title {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text2); }
+</style>
+</head>
+<body>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="title">GLM</div>
+  <div class="spinner"></div>
+  <p id="loadingText">Initializing Geometric Language Machine...</p>
+</div>
+
+<div class="app">
+  <!-- Top Bar -->
+  <div class="topbar">
+    <h1>◆ GLM</h1>
+    <span class="subtitle">Geometric Language Machine v4.0</span>
+    <div class="status">
+      <span><span class="dot" id="statusDot"></span><span id="statusText">Loading...</span></span>
+      <span id="vocabCount">—</span>
+      <span id="edgeCount">—</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Chat Panel -->
+    <div class="chat-panel">
+      <div class="chat-tabs">
+        <button class="active" data-tab="chat">💬 Chat</button>
+        <button data-tab="learn">📚 Learn</button>
+        <button data-tab="upload">📎 Upload</button>
+        <button data-tab="teach">🎓 Teach</button>
+      </div>
+
+      <!-- Chat Tab -->
+      <div class="tab-content active" id="tab-chat">
+        <div class="messages" id="messages">
+          <div class="msg system">Welcome to the <strong>Geometric Language Machine</strong> — a deterministic geometric reasoning engine built on the 24-bit Golay/Leech substrate.<br><br><strong>Try these:</strong><br>• <em>"What is gcd(54, 24)?"</em> — exact computation<br>• <em>"What comes next: 2, 4, 8, 16, ...?"</em> — sequence detection<br>• <em>"What is the Observer Constant?"</em> — UBP domain knowledge<br>• <em>"My name is Alice"</em> — learns personal facts<br>• <em>"What is quantum entanglement?"</em> — research suggestions<br>• <em>"Help me create a study plan"</em> — task decomposition<br>• <em>"What does ubiquitous mean?"</em> — definitions<br>• <em>"What is the opposite of hot?"</em> — antonyms<br><br><span style="color:var(--text2);font-size:11px">Responses are color-coded: <span style="color:#34d399">[Reasoned]</span> = definite, <span style="color:#fbbf24">[Speculative]</span> = inferred, <span style="color:#22d3ee">[Solved]</span> = computed</span></div>
+        </div>
+        <div class="input-area">
+          <textarea id="chatInput" placeholder="Ask the GLM anything..." rows="1"></textarea>
+          <div class="btn-row">
+            <button class="btn" id="sendBtn" onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learn Tab -->
+      <div class="tab-content" id="tab-learn">
+        <div class="learn-input">
+          <p style="font-size:13px;color:var(--text2)">Paste text below and the GLM will extract vocabulary, definitions, and relationships from it.</p>
+          <textarea id="learnText" placeholder="Paste text for the GLM to learn from..."></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn" onclick="learnFromText()">Learn from Text</button>
+            <span id="learnStatus" style="font-size:12px;color:var(--text2);align-self:center"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Tab -->
+      <div class="tab-content" id="tab-upload">
+        <div style="padding:16px">
+          <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+            <div class="icon">📁</div>
+            <p>Drop a file here or click to browse</p>
+            <p class="hint">Supports: .txt, .md, .csv, .json, .py, .html, .xml, .log</p>
+          </div>
+          <input type="file" id="fileInput" style="display:none" accept=".txt,.md,.csv,.json,.py,.html,.xml,.log">
+          <div id="uploadResult"></div>
+        </div>
+      </div>
+
+      <!-- Teach Tab -->
+      <div class="tab-content" id="tab-teach">
+        <div class="teach-form">
+          <p style="font-size:13px;color:var(--text2)">Directly teach the GLM a concept with its definition and relationships.</p>
+          <div>
+            <label>Word / Concept</label>
+            <input type="text" id="teachWord" placeholder="e.g. gravity">
+          </div>
+          <div>
+            <label>Definition</label>
+            <textarea id="teachDef" rows="3" placeholder="The natural phenomenon..."></textarea>
+          </div>
+          <div>
+            <label>Relationships</label>
+            <div id="teachRelations">
+              <div class="relation-row">
+                <select>
+                  <option value="is_a">is a</option>
+                  <option value="has_property">has property</option>
+                  <option value="depends_on">depends on</option>
+                  <option value="generates">generates</option>
+                  <option value="measures">measures</option>
+                  <option value="commutes_with">commutes with</option>
+                  <option value="contains">contains</option>
+                  <option value="transforms">transforms</option>
+                </select>
+                <input type="text" placeholder="target concept">
+                <button class="btn small secondary" onclick="this.parentElement.remove()">✕</button>
+              </div>
+            </div>
+            <button class="btn small secondary" style="margin-top:8px" onclick="addRelationRow()">+ Add Relation</button>
+          </div>
+          <button class="btn" onclick="teachConcept()">Teach GLM</button>
+          <span id="teachStatus" style="font-size:12px;color:var(--text2)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="side-panel">
+      <div class="side-tabs">
+        <button class="active" data-sidetab="status">Status</button>
+        <button data-sidetab="zones">Zones</button>
+        <button data-sidetab="graph">Graph</button>
+        <button data-sidetab="vocab">Vocab</button>
+        <button data-sidetab="growth">Growth</button>
+      </div>
+      <div class="side-content">
+        <!-- Status -->
+        <div class="side-tab-content active" id="sidetab-status">
+          <div class="section">
+            <h3>System</h3>
+            <div class="stat-grid" id="systemStats">
+              <div class="stat-card"><div class="value" id="statVocab">—</div><div class="label">Vocab</div></div>
+              <div class="stat-card"><div class="value" id="statEdges">—</div><div class="label">CRG Edges</div></div>
+              <div class="stat-card"><div class="value" id="statSessions">—</div><div class="label">Sessions</div></div>
+              <div class="stat-card"><div class="value" id="statLearned">—</div><div class="label">Learned</div></div>
+            </div>
+          </div>
+          <div class="section">
+            <h3>Capabilities</h3>
+            <div style="font-size:11px;line-height:1.8">
+              <div>✅ <strong>Computation</strong> — exact SymPy math</div>
+              <div>✅ <strong>Reasoning</strong> — syllogisms, sequences, rate problems</div>
+              <div>✅ <strong>Conversation</strong> — remembers personal facts</div>
+              <div>✅ <strong>UBP Knowledge</strong> — 751 domain entries</div>
+              <div>✅ <strong>Learning</strong> — from chat, files, teaching</div>
+              <div>✅ <strong>Research</strong> — suggests topics to explore</div>
+              <div>✅ <strong>Tasks</strong> — decomposes complex requests</div>
+              <div>✅ <strong>Speculation</strong> — infers from known facts</div>
+            </div>
+            <button class="btn small" style="margin-top:8px;width:100%" onclick="runTest()">Run Quick Test</button>
+            <div id="testResults" style="margin-top:8px;font-size:11px"></div>
+          </div>
+          <div class="section">
+            <h3>Current Idea</h3>
+            <div id="currentIdea" style="font-size:12px;color:var(--text2)">No active idea</div>
+          </div>
+          <div class="section">
+            <h3>Last Diagnostics</h3>
+            <div id="lastDiag" style="font-size:11px;font-family:monospace;color:var(--text2)">—</div>
+          </div>
+        </div>
+
+        <!-- Zones -->
+        <div class="side-tab-content" id="sidetab-zones">
+          <div class="section">
+            <h3>Idea Zones</h3>
+            <div id="zonesList">No zones yet</div>
+          </div>
+          <div class="section">
+            <h3>Meta Theses</h3>
+            <div id="metaTheses" style="font-size:12px;color:var(--text2)">None</div>
+          </div>
+        </div>
+
+        <!-- Graph -->
+        <div class="side-tab-content" id="sidetab-graph">
+          <div class="section">
+            <h3>Concept Relation Graph</h3>
+            <canvas id="graphCanvas"></canvas>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="btn small" onclick="refreshGraph()">Refresh</button>
+              <span id="graphInfo" style="font-size:11px;color:var(--text2);align-self:center"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vocab -->
+        <div class="side-tab-content" id="sidetab-vocab">
+          <div class="section">
+            <h3>Vocabulary</h3>
+            <input type="text" id="vocabSearch" placeholder="Search vocabulary..." style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px;color:var(--text);font-size:12px;margin-bottom:8px;outline:none">
+            <div id="vocabList" style="max-height:400px;overflow-y:auto"></div>
+          </div>
+        </div>
+
+        <!-- Growth -->
+        <div class="side-tab-content" id="sidetab-growth">
+          <div class="section">
+            <h3>Growth Log</h3>
+            <div id="growthList">No growth events yet</div>
+          </div>
+          <div class="section">
+            <h3>Insights</h3>
+            <div id="insightsList" style="font-size:12px;color:var(--text2)">None</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────
+let glmReady = false;
+let currentTab = 'chat';
+
+// ── Tab Switching ──────────────────────────────────────
+document.querySelectorAll('.chat-tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.chat-tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    currentTab = btn.dataset.tab;
+  });
+});
+document.querySelectorAll('.side-tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.side-tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.side-tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('sidetab-' + btn.dataset.sidetab).classList.add('active');
+    if (btn.dataset.sidetab === 'graph') refreshGraph();
+    if (btn.dataset.sidetab === 'vocab') refreshVocab();
+    if (btn.dataset.sidetab === 'growth') refreshGrowth();
+  });
+});
+
+// ── Chat Input ─────────────────────────────────────────
+const chatInput = document.getElementById('chatInput');
+chatInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+chatInput.addEventListener('input', () => {
+  chatInput.style.height = 'auto';
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+});
+
+// ── API Helpers ────────────────────────────────────────
+async function api(url, opts = {}) {
+  try {
+    const resp = await fetch(url, {
+      headers: { 'Content-Type': 'application/json' },
+      ...opts,
+    });
+    return await resp.json();
+  } catch (e) {
+    console.error('API error:', e);
+    return { error: e.message };
+  }
+}
+
+// ── Send Message ───────────────────────────────────────
+async function sendMessage() {
+  const msg = chatInput.value.trim();
+  if (!msg) return;
+  
+  chatInput.value = '';
+  chatInput.style.height = 'auto';
+  
+  addMessage('user', msg);
+  const thinkingEl = addMessage('system', '⏳ Thinking...');
+  
+  document.getElementById('sendBtn').disabled = true;
+  
+  const data = await api('/api/chat', {
+    method: 'POST',
+    body: JSON.stringify({ message: msg }),
+  });
+  
+  thinkingEl.remove();
+  document.getElementById('sendBtn').disabled = false;
+  
+  if (data.error) {
+    addMessage('system', '❌ ' + data.error);
+  } else {
+    addAssistantMessage(data.response, data.elapsed_ms, data.diag, data.state);
+    updateStatusPanel(data.state, data.diag);
+  }
+  
+  chatInput.focus();
+}
+
+function addMessage(role, content) {
+  const el = document.createElement('div');
+  el.className = 'msg ' + role;
+  el.textContent = content;
+  document.getElementById('messages').appendChild(el);
+  el.scrollIntoView({ behavior: 'smooth' });
+  return el;
+}
+
+function addAssistantMessage(content, elapsed, diag, state) {
+  const el = document.createElement('div');
+  el.className = 'msg assistant';
+  
+  // Main response text — render tags with color coding
+  const textEl = document.createElement('div');
+  
+  // Color-code the tagged blocks
+  let html = content
+    // Escape HTML first
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    // Color-code tags
+    .replace(/\[Reasoned\]/g, '<span style="color:#34d399;font-weight:600">[Reasoned]</span>')
+    .replace(/\[Speculative \((\d+)%\)\]/g, '<span style="color:#fbbf24;font-weight:600">[Speculative ($1%)]</span>')
+    .replace(/\[Solved\]/g, '<span style="color:#22d3ee;font-weight:600">[Solved]</span>')
+    .replace(/\[Method\]/g, '<span style="color:#8888a0;font-size:11px">[Method]</span>')
+    .replace(/\[Recall\]/g, '<span style="color:#818cf8;font-weight:600">[Recall]</span>')
+    .replace(/\[KB\]/g, '<span style="color:#6366f1">[KB]</span>')
+    .replace(/\[Metrics\]/g, '<span style="color:#8888a0;font-size:11px">[Metrics]</span>')
+    .replace(/\[Backbone\]/g, '<span style="color:#f472b6">[Backbone]</span>')
+    .replace(/\[NL\]/g, '<span style="color:#34d399">[NL]</span>')
+    .replace(/\[Computed\]/g, '<span style="color:#22d3ee;font-weight:600">[Computed]</span>')
+    .replace(/\[Symbolic\]/g, '<span style="color:#22d3ee;font-weight:600">[Symbolic]</span>')
+    .replace(/\[Research\]/g, '<span style="color:#fbbf24;font-weight:600">[Research]</span>')
+    .replace(/\[Task\]/g, '<span style="color:#fb923c;font-weight:600">[Task]</span>')
+    .replace(/\[Plan\]/g, '<span style="color:#fb923c">[Plan]</span>')
+    .replace(/\[Remembered\]/g, '<span style="color:#34d399;font-weight:600">[Remembered]</span>')
+    .replace(/\[Learned\]/g, '<span style="color:#34d399;font-weight:600">[Learned]</span>')
+    .replace(/\[Tip\]/g, '<span style="color:#8888a0;font-size:11px">[Tip]</span>')
+    .replace(/\[I get it\]/g, '<span style="color:#34d399;font-weight:600">[I get it]</span>')
+    .replace(/\[Zones:/g, '<span style="color:#8888a0;font-size:11px">[Zones:')
+    .replace(/\[Zone:/g, '<span style="color:#8888a0;font-size:11px">[Zone:')
+    .replace(/\[Gap\]/g, '<span style="color:#f87171">[Gap]</span>')
+    .replace(/\[Warm-Start\]/g, '<span style="color:#fbbf24">[Warm-Start]</span>')
+    // Newlines to <br>
+    .replace(/\n/g, '<br>');
+  
+  textEl.innerHTML = html;
+  el.appendChild(textEl);
+  
+  // Meta info
+  if (elapsed) {
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = `<span>⏱ ${elapsed}ms</span>`;
+    if (diag?.compute) meta.innerHTML += `<span>🔧 compute</span>`;
+    if (diag?.symbolic) meta.innerHTML += `<span>📐 symbolic</span>`;
+    el.appendChild(meta);
+  }
+  
+  document.getElementById('messages').appendChild(el);
+  el.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Learn from Text ────────────────────────────────────
+async function learnFromText() {
+  const text = document.getElementById('learnText').value.trim();
+  if (!text) return;
+  
+  const status = document.getElementById('learnStatus');
+  status.textContent = '⏳ Learning...';
+  
+  const data = await api('/api/learn', {
+    method: 'POST',
+    body: JSON.stringify({ text }),
+  });
+  
+  if (data.error) {
+    status.textContent = '❌ ' + data.error;
+  } else {
+    const s = data.stats;
+    status.textContent = `✅ Learned: ${s.words} words, ${s.definitions} definitions, ${s.edges} edges, ${s.cooccurrence} co-occurrences`;
+    refreshState();
+  }
+}
+
+// ── File Upload ────────────────────────────────────────
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+
+['dragenter', 'dragover'].forEach(e => {
+  uploadArea.addEventListener(e, ev => { ev.preventDefault(); uploadArea.classList.add('dragover'); });
+});
+['dragleave', 'drop'].forEach(e => {
+  uploadArea.addEventListener(e, ev => { ev.preventDefault(); uploadArea.classList.remove('dragover'); });
+});
+uploadArea.addEventListener('drop', ev => {
+  const files = ev.dataTransfer.files;
+  if (files.length) uploadFile(files[0]);
+});
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length) uploadFile(fileInput.files[0]);
+});
+
+async function uploadFile(file) {
+  const result = document.getElementById('uploadResult');
+  result.innerHTML = '<div class="upload-result">⏳ Uploading and learning from ' + file.name + '...</div>';
+  
+  const formData = new FormData();
+  formData.append('file', file);
+  
+  try {
+    const resp = await fetch('/api/upload', { method: 'POST', body: formData });
+    const data = await resp.json();
+    
+    if (data.error) {
+      result.innerHTML = '<div class="upload-result">❌ ' + data.error + '</div>';
+    } else {
+      result.innerHTML = `<div class="upload-result">
+        ✅ <strong>${data.filename}</strong> processed (${(data.size_bytes/1024).toFixed(1)} KB)<br>
+        Stats: ${data.stats.words} words, ${data.stats.definitions} definitions, ${data.stats.edges} edges<br>
+        Learned words: ${data.learned_words.join(', ') || 'none new'}
+      </div>`;
+      refreshState();
+    }
+  } catch (e) {
+    result.innerHTML = '<div class="upload-result">❌ Upload failed: ' + e.message + '</div>';
+  }
+}
+
+// ── Teach Concept ──────────────────────────────────────
+function addRelationRow() {
+  const container = document.getElementById('teachRelations');
+  const row = document.createElement('div');
+  row.className = 'relation-row';
+  row.innerHTML = `
+    <select>
+      <option value="is_a">is a</option>
+      <option value="has_property">has property</option>
+      <option value="depends_on">depends on</option>
+      <option value="generates">generates</option>
+      <option value="measures">measures</option>
+      <option value="commutes_with">commutes with</option>
+      <option value="contains">contains</option>
+      <option value="transforms">transforms</option>
+    </select>
+    <input type="text" placeholder="target concept">
+    <button class="btn small secondary" onclick="this.parentElement.remove()">✕</button>
+  `;
+  container.appendChild(row);
+}
+
+async function teachConcept() {
+  const word = document.getElementById('teachWord').value.trim();
+  const definition = document.getElementById('teachDef').value.trim();
+  const status = document.getElementById('teachStatus');
+  
+  if (!word) { status.textContent = '❌ Enter a word'; return; }
+  
+  const relations = [];
+  document.querySelectorAll('#teachRelations .relation-row').forEach(row => {
+    const label = row.querySelector('select').value;
+    const target = row.querySelector('input').value.trim();
+    if (target) relations.push({ label, target });
+  });
+  
+  status.textContent = '⏳ Teaching...';
+  
+  const data = await api('/api/teach', {
+    method: 'POST',
+    body: JSON.stringify({ word, definition, relations }),
+  });
+  
+  if (data.error) {
+    status.textContent = '❌ ' + data.error;
+  } else {
+    status.textContent = `✅ Taught: "${word}" with ${data.edges_added.length} relationships`;
+    document.getElementById('teachWord').value = '';
+    document.getElementById('teachDef').value = '';
+    refreshState();
+  }
+}
+
+// ── Status Panel ───────────────────────────────────────
+function updateStatusPanel(state, diag) {
+  if (state?.manager) {
+    const m = state.manager;
+    const zones = m.zones || [];
+    const active = zones[m.active_idx];
+    
+    let ideaText = 'No active idea';
+    if (active?.thesis) {
+      ideaText = active.thesis;
+    } else if (active?.topic_nouns?.length) {
+      ideaText = 'Forming: ' + active.topic_nouns.join(', ');
+    }
+    document.getElementById('currentIdea').textContent = ideaText;
+  }
+  
+  if (diag) {
+    const parts = [];
+    if (diag.compute) parts.push('Compute: ' + JSON.stringify(diag.compute.result?.exact || diag.compute));
+    if (diag.symbolic) parts.push('Symbolic: ' + JSON.stringify(diag.symbolic.result?.exact || diag.symbolic));
+    if (diag.warm_start) parts.push('Warm-start: ' + diag.warm_start);
+    document.getElementById('lastDiag').textContent = parts.join('\n') || '—';
+  }
+}
+
+// ── Refresh State ──────────────────────────────────────
+async function refreshState() {
+  const data = await api('/api/state');
+  if (data.error) return;
+  
+  document.getElementById('statVocab').textContent = data.vocab_size?.toLocaleString() || '—';
+  document.getElementById('statEdges').textContent = data.crg_edges?.toLocaleString() || '—';
+  document.getElementById('statSessions').textContent = data.persistence?.sessions || '—';
+  document.getElementById('statLearned').textContent = data.persistence?.learned_vocab || '—';
+  
+  document.getElementById('vocabCount').textContent = 'Vocab: ' + (data.vocab_size?.toLocaleString() || '—');
+  document.getElementById('edgeCount').textContent = 'Edges: ' + (data.crg_edges?.toLocaleString() || '—');
+  
+  updateStatusPanel(data.state, data.diag);
+  updateZonesPanel(data.state);
+}
+
+// ── Zones Panel ────────────────────────────────────────
+function updateZonesPanel(state) {
+  if (!state?.manager) return;
+  const m = state.manager;
+  const container = document.getElementById('zonesList');
+  
+  if (!m.zones?.length) {
+    container.innerHTML = '<p style="font-size:12px;color:var(--text2)">No zones yet</p>';
+    return;
+  }
+  
+  container.innerHTML = m.zones.map((z, i) => {
+    const isActive = i === m.active_idx;
+    const coh = z.coherence || 0;
+    const color = z.crystallized ? 'var(--green)' : coh > 0.5 ? 'var(--yellow)' : 'var(--border)';
+    return `<div class="zone-card ${z.crystallized ? 'crystallized' : ''} ${isActive ? 'active' : ''}">
+      <h4>Zone ${i} ${isActive ? '✦' : ''} ${z.crystallized ? '💎' : '◇'}</h4>
+      <p>${z.thesis || z.topic_nouns?.join(', ') || 'Forming...'}</p>
+      <p style="margin-top:4px;font-size:10px">Evidence: ${z.evidence_count || 0} | Topics: ${z.topic_nouns?.length || 0}</p>
+      <div class="coherence-bar"><div class="fill" style="width:${coh*100}%;background:${color}"></div></div>
+    </div>`;
+  }).join('');
+  
+  // Meta theses
+  const mtContainer = document.getElementById('metaTheses');
+  if (m.meta_theses?.length) {
+    mtContainer.innerHTML = m.meta_theses.map(mt =>
+      `<div style="padding:6px 0;border-bottom:1px solid var(--border)">${mt.thesis} <span style="color:var(--green)">(conf: ${mt.confidence})</span></div>`
+    ).join('');
+  }
+}
+
+// ── Graph Visualization ────────────────────────────────
+let graphData = null;
+async function refreshGraph() {
+  const data = await api('/api/graph');
+  if (data.error) return;
+  graphData = data;
+  document.getElementById('graphInfo').textContent = `${data.total_nodes} nodes, ${data.total_links} edges`;
+  drawGraph();
+}
+
+function drawGraph() {
+  const canvas = document.getElementById('graphCanvas');
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * window.devicePixelRatio;
+  canvas.height = rect.height * window.devicePixelRatio;
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  
+  const W = rect.width;
+  const H = rect.height;
+  
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+  ctx.fillRect(0, 0, W, H);
+  
+  if (!graphData?.nodes?.length) {
+    ctx.fillStyle = '#555';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('No graph data yet. Chat with the GLM to build the graph.', W/2, H/2);
+    return;
+  }
+  
+  // Force-directed layout (simple)
+  const nodes = graphData.nodes.slice(0, 150);
+  const links = graphData.links.filter(l =>
+    nodes.find(n => n.id === l.source) && nodes.find(n => n.id === l.target)
+  );
+  
+  // Initialize positions if needed
+  nodes.forEach(n => {
+    if (n.x === undefined) {
+      n.x = W/2 + (Math.random() - 0.5) * W * 0.6;
+      n.y = H/2 + (Math.random() - 0.5) * H * 0.6;
+    }
+    n.vx = n.vx || 0;
+    n.vy = n.vy || 0;
+  });
+  
+  // Simple force simulation steps
+  for (let step = 0; step < 30; step++) {
+    // Repulsion
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i+1; j < nodes.length; j++) {
+        let dx = nodes[j].x - nodes[i].x;
+        let dy = nodes[j].y - nodes[i].y;
+        let d = Math.sqrt(dx*dx + dy*dy) || 1;
+        let f = 500 / (d * d);
+        nodes[i].vx -= dx/d * f;
+        nodes[i].vy -= dy/d * f;
+        nodes[j].vx += dx/d * f;
+        nodes[j].vy += dy/d * f;
+      }
+    }
+    // Attraction
+    links.forEach(l => {
+      const s = nodes.find(n => n.id === l.source);
+      const t = nodes.find(n => n.id === l.target);
+      if (!s || !t) return;
+      let dx = t.x - s.x;
+      let dy = t.y - s.y;
+      let d = Math.sqrt(dx*dx + dy*dy) || 1;
+      let f = (d - 60) * 0.01;
+      s.vx += dx/d * f;
+      s.vy += dy/d * f;
+      t.vx -= dx/d * f;
+      t.vy -= dy/d * f;
+    });
+    // Center gravity
+    nodes.forEach(n => {
+      n.vx += (W/2 - n.x) * 0.001;
+      n.vy += (H/2 - n.y) * 0.001;
+      n.vx *= 0.8;
+      n.vy *= 0.8;
+      n.x += n.vx;
+      n.y += n.vy;
+      n.x = Math.max(20, Math.min(W-20, n.x));
+      n.y = Math.max(20, Math.min(H-20, n.y));
+    });
+  }
+  
+  // Draw edges
+  ctx.strokeStyle = 'rgba(99, 102, 241, 0.15)';
+  ctx.lineWidth = 0.5;
+  links.forEach(l => {
+    const s = nodes.find(n => n.id === l.source);
+    const t = nodes.find(n => n.id === l.target);
+    if (!s || !t) return;
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(t.x, t.y);
+    ctx.stroke();
+  });
+  
+  // Draw nodes
+  const mogColors = {
+    'M_': '#6366f1', 'I_': '#22d3ee', 'A_': '#fb923c', 'P_': '#f472b6',
+  };
+  nodes.forEach(n => {
+    const r = Math.max(3, Math.min(8, 3 + (n.connections || 0) * 0.5));
+    let color = '#555';
+    for (const [prefix, c] of Object.entries(mogColors)) {
+      if (n.mog?.startsWith(prefix)) { color = c; break; }
+    }
+    
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    
+    // Label for connected nodes
+    if (n.connections > 2) {
+      ctx.fillStyle = '#888';
+      ctx.font = '9px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.id, n.x, n.y - r - 3);
+    }
+  });
+}
+
+// ── Vocab Panel ────────────────────────────────────────
+let vocabData = [];
+async function refreshVocab(query = '') {
+  const data = await api('/api/vocab?q=' + encodeURIComponent(query) + '&limit=100');
+  if (data.error) return;
+  vocabData = data.results;
+  
+  const container = document.getElementById('vocabList');
+  container.innerHTML = data.results.map(v =>
+    `<div class="vocab-item">
+      <span><span class="word">${v.word}</span> <span style="color:var(--text2);font-size:10px">${v.mog || ''}</span></span>
+      <span class="nrci">${v.nrci.toFixed(3)}</span>
+    </div>`
+  ).join('') || '<p style="font-size:12px;color:var(--text2)">No matches</p>';
+}
+
+document.getElementById('vocabSearch').addEventListener('input', e => {
+  refreshVocab(e.target.value);
+});
+
+// ── Growth Panel ───────────────────────────────────────
+async function refreshGrowth() {
+  const data = await api('/api/growth');
+  if (data.error) return;
+  
+  const container = document.getElementById('growthList');
+  if (data.recent_growth?.length) {
+    container.innerHTML = data.recent_growth.reverse().map(g =>
+      `<div class="growth-item">
+        <span class="type ${g.type}">${g.type}</span>
+        ${g.description}
+      </div>`
+    ).join('');
+  }
+  
+  const insContainer = document.getElementById('insightsList');
+  if (data.recent_insights?.length) {
+    insContainer.innerHTML = data.recent_insights.reverse().map(i =>
+      `<div style="padding:6px 0;border-bottom:1px solid var(--border)">${i.text}</div>`
+    ).join('');
+  }
+}
+
+// ── Quick Test ─────────────────────────────────────────
+async function runTest() {
+  const container = document.getElementById('testResults');
+  container.innerHTML = '<span style="color:var(--yellow)">⏳ Running tests...</span>';
+  
+  const data = await api('/api/test', { method: 'POST' });
+  
+  if (data.error) {
+    container.innerHTML = `<span style="color:var(--red)">❌ ${data.error}</span>`;
+    return;
+  }
+  
+  let html = `<div style="margin-bottom:4px"><strong>${data.score}</strong></div>`;
+  for (const r of data.results) {
+    const icon = r.passed ? '✅' : '❌';
+    const color = r.passed ? 'var(--green)' : 'var(--red)';
+    html += `<div style="color:${color};padding:2px 0">${icon} ${r.name} <span style="color:var(--text2)">(${r.elapsed_ms || '?'}ms)</span></div>`;
+  }
+  container.innerHTML = html;
+}
+
+// ── Initialization ─────────────────────────────────────
+async function initGLM() {
+  const overlay = document.getElementById('loadingOverlay');
+  const loadingText = document.getElementById('loadingText');
+  
+  // Poll health until ready
+  let attempts = 0;
+  while (attempts < 120) {
+    try {
+      const health = await api('/api/health');
+      if (health.status === 'ok' && health.glm_loaded) {
+        glmReady = true;
+        break;
+      }
+      if (health.glm_error) {
+        loadingText.textContent = 'Error: ' + health.glm_error.substring(0, 100);
+        document.getElementById('statusDot').className = 'dot error';
+        document.getElementById('statusText').textContent = 'Error';
+        return;
+      }
+      if (health.glm_loading) {
+        loadingText.textContent = 'GLM engine loading... (this may take a moment)';
+      }
+    } catch (e) {
+      loadingText.textContent = 'Connecting to server...';
+    }
+    
+    // Trigger a chat to force initialization on first load
+    if (attempts === 2) {
+      loadingText.textContent = 'Initializing GLM engine (first boot)...';
+      api('/api/health');
+    }
+    
+    await new Promise(r => setTimeout(r, 2000));
+    attempts++;
+  }
+  
+  if (glmReady) {
+    overlay.classList.add('hidden');
+    document.getElementById('statusDot').className = 'dot ok';
+    document.getElementById('statusText').textContent = 'Ready';
+    refreshState();
+  } else {
+    loadingText.textContent = 'GLM initialization timed out. Try refreshing.';
+    document.getElementById('statusDot').className = 'dot error';
+    document.getElementById('statusText').textContent = 'Timeout';
+  }
+}
+
+// Start
+initGLM();
+</script>
+</body>
+</html>
