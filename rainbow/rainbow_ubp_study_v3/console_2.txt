@@ -1,0 +1,222 @@
+$ timeout 900 python3 /home/z/my-project/scripts/phase_qrs_extended.py 2>&1 | tail -120
+
+  BEST UBP-primary candidate: Φ(k=3, det, Reality, C=29/24, shear_2+nrci(2))
+    Predicted: 42.280012°
+    Direct hit error: 0.0257%
+    Closed-loop error vs UBP-n: 0.0257%
+
+==============================================================================
+PHASE R — Search for UBP-n formulas for OTHER MEDIA
+==============================================================================
+
+Searching Φ-grammar for n-formulas for each of 12 media (tolerance 0.1%)...
+
+  water_H2O_20C              n = 1.3330  →  35 hits within 0.1%  best: Φ(k=1, sto, Information, C=10, nrci(2)) = 1.332898 (err 0.0077%)
+  water_H2O_25C              n = 1.3325  →  34 hits within 0.1%  best: Φ(k=1, sto, Information, C=10, nrci(2)) = 1.332898 (err 0.0299%)
+  heavy_water_D2O            n = 1.3280  →  2 hits within 0.1%  best: Φ(k=7, sto, w-based, C=3/2, shear_2) = 1.328365 (err 0.0275%)
+  ice_Ih                     n = 1.3090  →  12 hits within 0.1%  best: Φ(k=6, det, w-based, C=1/3, shear_1+nrci(1/8)) = 1.308838 (err 0.0124%)
+  ethanol                    n = 1.3610  →  9 hits within 0.1%  best: Φ(k=8, det, w-based, C=5, none) = 1.360953 (err 0.0035%)
+  methanol                   n = 1.3290  →  3 hits within 0.1%  best: Φ(k=3, sto, Cross, C=29, nrci(1/8)) = 1.329282 (err 0.0212%)
+  acetone                    n = 1.3590  →  6 hits within 0.1%  best: Φ(k=0, det, Cross, C=2/3, shear_2+nrci(2)) = 1.358776 (err 0.0165%)
+  glycerol                   n = 1.4730  →  27 hits within 0.1%  best: Φ(k=3, det, Cross, C=24, shear_2) = 1.472443 (err 0.0378%)
+  fused_silica               n = 1.4580  →  5 hits within 0.1%  best: Φ(k=1, sto, Information, C=7, nrci(1/8)) = 1.457941 (err 0.0040%)
+  crown_glass_BK7            n = 1.5170  →  34 hits within 0.1%  best: Φ(k=2, sto, Cross, C=13, shear_2+nrci(2)) = 1.517540 (err 0.0356%)
+  sapphire                   n = 1.7700  →  5 hits within 0.1%  best: Φ(k=2, det, Information, C=24, shear_2) = 1.770822 (err 0.0464%)
+  diamond                    n = 2.4170  →  1 hits within 0.1%  best: Φ(k=0, det, Cross, C=5/4, nrci(2)) = 2.418871 (err 0.0774%)
+
+── Media with UBP-n candidates (within 0.1%) ──
+  water_H2O_20C              n_actual=1.3330  UBP-n=1.332898  err=0.0077%
+    formula: Φ(k=1, sto, Information, C=10, nrci(2))
+  water_H2O_25C              n_actual=1.3325  UBP-n=1.332898  err=0.0299%
+    formula: Φ(k=1, sto, Information, C=10, nrci(2))
+  heavy_water_D2O            n_actual=1.3280  UBP-n=1.328365  err=0.0275%
+    formula: Φ(k=7, sto, w-based, C=3/2, shear_2)
+  ice_Ih                     n_actual=1.3090  UBP-n=1.308838  err=0.0124%
+    formula: Φ(k=6, det, w-based, C=1/3, shear_1+nrci(1/8))
+  ethanol                    n_actual=1.3610  UBP-n=1.360953  err=0.0035%
+    formula: Φ(k=8, det, w-based, C=5, none)
+  methanol                   n_actual=1.3290  UBP-n=1.329282  err=0.0212%
+    formula: Φ(k=3, sto, Cross, C=29, nrci(1/8))
+  acetone                    n_actual=1.3590  UBP-n=1.358776  err=0.0165%
+    formula: Φ(k=0, det, Cross, C=2/3, shear_2+nrci(2))
+  glycerol                   n_actual=1.4730  UBP-n=1.472443  err=0.0378%
+    formula: Φ(k=3, det, Cross, C=24, shear_2)
+  fused_silica               n_actual=1.4580  UBP-n=1.457941  err=0.0040%
+    formula: Φ(k=1, sto, Information, C=7, nrci(1/8))
+  crown_glass_BK7            n_actual=1.5170  UBP-n=1.517540  err=0.0356%
+    formula: Φ(k=2, sto, Cross, C=13, shear_2+nrci(2))
+  sapphire                   n_actual=1.7700  UBP-n=1.770822  err=0.0464%
+    formula: Φ(k=2, det, Information, C=24, shear_2)
+  diamond                    n_actual=2.4170  UBP-n=2.418871  err=0.0774%
+    formula: Φ(k=0, det, Cross, C=5/4, nrci(2))
+
+── Coherent theory test for each medium with UBP-n ──
+  water_H2O_20C              n_UBP=1.332898 (err 0.0077%)  primary loop err=0.0074%
+  water_H2O_25C              n_UBP=1.332898 (err 0.0299%)  primary loop err=0.0074%
+  heavy_water_D2O            n_UBP=1.328365 (err 0.0275%)  primary loop err=0.0349%
+  ice_Ih                     n_UBP=1.308838 (err 0.0124%)  primary loop err=0.0331%
+  ethanol                    n_UBP=1.360953 (err 0.0035%)  primary loop err=0.0011%
+  methanol                   n_UBP=1.329282 (err 0.0212%)  primary loop err=0.0538%
+  acetone                    n_UBP=1.358776 (err 0.0165%)  primary loop err=0.0105%
+  glycerol                   n_UBP=1.472443 (err 0.0378%)  primary loop err=0.0053%
+  fused_silica               n_UBP=1.457941 (err 0.0040%)  primary loop err=0.0607%
+  crown_glass_BK7            n_UBP=1.517540 (err 0.0356%)  primary loop err=0.0341%
+  sapphire                   n_UBP=1.770822 (err 0.0464%)  primary loop err=0.0101%
+
+── COHERENT MEDIA SUMMARY ──
+  Of 12 media tested, 11 have a coherent UBP theory
+  (UBP-n + UBP-primary closing the loop within 0.5%)
+  ethanol                    n_UBP=1.360953  loop_err=0.0011%
+  glycerol                   n_UBP=1.472443  loop_err=0.0053%
+  water_H2O_20C              n_UBP=1.332898  loop_err=0.0074%
+  water_H2O_25C              n_UBP=1.332898  loop_err=0.0074%
+  sapphire                   n_UBP=1.770822  loop_err=0.0101%
+  acetone                    n_UBP=1.358776  loop_err=0.0105%
+  ice_Ih                     n_UBP=1.308838  loop_err=0.0331%
+  crown_glass_BK7            n_UBP=1.517540  loop_err=0.0341%
+  heavy_water_D2O            n_UBP=1.328365  loop_err=0.0349%
+  methanol                   n_UBP=1.329282  loop_err=0.0538%
+  fused_silica               n_UBP=1.457941  loop_err=0.0607%
+
+==============================================================================
+PHASE S — Pure-geometry closed loops (Platonic solid dihedrals)
+==============================================================================
+
+Platonic solid dihedral angles:
+  tetrahedron      70.5288°
+  cube             90.0000°
+  octahedron       109.4712°
+  dodecahedron     116.5651°
+  icosahedron      138.1897°
+
+Searching Φ-grammar for hits on each Platonic dihedral (tolerance 0.5%)...
+  tetrahedron      70.5288°  →  17 hits  best: Φ(k=3, sto, Reality, C=8/5, none) = 70.5520° (err 0.0330%)
+  cube             90.0000°  →  23 hits  best: Φ(k=21, det, Potential, C=1/3, shear_2) = 89.9891° (err 0.0122%)
+  octahedron       109.4712°  →  51 hits  best: Φ(k=1, det, Reality, C=29, none) = 109.5682° (err 0.0886%)
+  dodecahedron     116.5651°  →  13 hits  best: Φ(k=4, sto, Reality, C=2/3, shear_1) = 116.6132° (err 0.0413%)
+  icosahedron      138.1897°  →  19 hits  best: Φ(k=0, sto, Reality, C=169, none) = 138.1711° (err 0.0135%)
+
+── Cube dihedral closed-loop investigation ──
+  Top 5 cube-dihedral hits:
+    Φ(k=21, det, Potential, C=1/3, shear_2) = 89.9891° (err 0.0122%)
+    Φ(k=3, sto, w-based, C=1/2, shear_1) = 89.9433° (err 0.0631%)
+    Φ(k=2, det, Reality, C=6, shear_1) = 89.9264° (err 0.0818%)
+    Φ(k=5, sto, Reality, C=1/7, none) = 89.9216° (err 0.0871%)
+    Φ(k=3, det, Reality, C=5/3, none) = 89.8893° (err 0.1230%)
+
+  Cube (90°) ↔ Octahedron (109.47°) — dual Platonic solids:
+    If UBP predicts 90° via C=24, nrci(1/8) = 89.7543°
+    Does UBP predict 109.47° via a related formula?
+    Octahedron hits with C=24: 1
+      Φ(k=18, det, Potential, C=24, nrci(1/8)) = 109.7804° (err 0.2824%)
+
+  Testing C=24 family across all 5 Platonic solids:
+  solid                angle  top C=24 hit
+  tetrahedron        70.5288°  Φ(k=18, det, Potential, C=24, nrci(2)) = 70.2554° (err 0.3876%)
+  cube               90.0000°  Φ(k=6, det, w-based, C=24, nrci(1/8)) = 89.7543° (err 0.2730%)
+  octahedron        109.4712°  Φ(k=18, det, Potential, C=24, nrci(1/8)) = 109.7804° (err 0.2824%)
+  dodecahedron      116.5651°  Φ(k=18, det, Potential, C=24, shear_1+nrci(1/8)) = 115.2625° (err 1.1175%)
+  icosahedron       138.1897°  Φ(k=18, det, Potential, C=24, shear_2) = 120.1332° (err 13.0664%)
+
+── Results saved to /home/z/my-project/rainbow_v6_extended/data/phase_qrs_extended.json ──
+$ timeout 600 python3 /home/z/my-project/scripts/phase_t_leech_hbond.py 2>&1 | tail -100
+    Φ(k=0, sto, Reality, C=394112931463617295463683327767160000000000000000000000000000/1906620946977623970846867000764056138893798884386213792111, shear_2+nrci(2)) = 109.6417° (err 0.1558%)
+
+── T4: DIRECT TEST OF 4! = 24 HYPOTHESIS ──
+
+  If 24 = 4! (permutations of 4 H-bonds), then the UBP-n formula
+  4·Y⁸·Uₑ = 4·Y⁸·24³ should have a combinatorial interpretation.
+
+  Decomposition:
+    4 = number of H-bonds per water molecule (tetrahedral)
+    8 = ?  (Y⁸ — what does the exponent 8 mean combinatorially?)
+    24³ = U_e = (4!)³ = permutations of 4 H-bonds, cubed
+
+  Hypothesis: Y⁸ might relate to 8 = 2³ (binary structure of H-bond: donor/acceptor)
+    2 (donor/acceptor) ^ 3 (spatial dimensions) = 8
+    So Y⁸ could represent the 'geometric discount' on 3D H-bond permutations
+
+  Numerical decomposition:
+    Y = 0.2646754304
+    Y⁸ = 2.4082913394e-05
+    4·Y⁸ = 9.6331653575e-05
+    4·Y⁸·24³ = 4·Y⁸·13824 = 1.3316887790
+    Water n = 1.333000
+    Match: 0.0984%
+
+── T5: TEST WATER RADIAL DISTRIBUTION FUNCTION (RDF) PEAKS ──
+
+  Water's O-O radial distribution function has peaks at:
+    1st shell: 2.75 Å (4 neighbors, tetrahedral)
+    2nd shell: 4.5 Å  (12 neighbors)
+    3rd shell: 6.5 Å  (~24 neighbors)
+
+  Note: 3rd shell has ~24 neighbors — matches Leech dimension!
+  Test: does UBP predict these distances?
+
+  1st_shell_2.75A (target=2.75 Å): 67 hits within 1%
+    Φ(k=8, det, w-based, C=10, shear_1+nrci(1/8)) = 2.7506 Å (err 0.0234%)
+    Φ(k=16, sto, Potential, C=10, shear_1+nrci(1/8)) = 2.7506 Å (err 0.0234%)
+    Φ(k=1, sto, Cross, C=4, shear_1+nrci(1/8)) = 2.7480 Å (err 0.0731%)
+  2nd_shell_4.5A (target=4.5 Å): 89 hits within 1%
+    Φ(k=4, det, w-based, C=1/8, shear_2+nrci(2)) = 4.4980 Å (err 0.0448%)
+    Φ(k=20, sto, Potential, C=1/8, shear_2+nrci(2)) = 4.4980 Å (err 0.0448%)
+    Φ(k=4, sto, Reality, C=1/24, shear_2+nrci(2)) = 4.5035 Å (err 0.0786%)
+  3rd_shell_6.5A (target=6.5 Å): 94 hits within 1%
+    Φ(k=7, det, w-based, C=6, shear_2) = 6.4990 Å (err 0.0153%)
+    Φ(k=17, sto, Potential, C=6, shear_2) = 6.4990 Å (err 0.0153%)
+    Φ(k=1, sto, Reality, C=2, shear_2) = 6.5070 Å (err 0.1082%)
+
+── T6: ICE Ih 12-NEAREST-NEIGHBOR TEST ──
+
+  Ice Ih has 12 nearest-neighbor O atoms (in the 1st+2nd shells).
+  12 = Golay code information dimension [24,12,8] ← MATCH!
+  24 = 12 × 2 (donor + acceptor H-bonds) ← MATCH!
+
+  Test: is there a UBP formula for ice's 12 nearest neighbors?
+  (Search Φ-grammar for the value 12)
+
+  Hits on 12 (ice Ih nearest neighbors): 33 within 0.1%
+    Φ(k=0, det, Reality, C=12, none) = 12.000000 (err 0.0000%)
+    Φ(k=0, det, Information, C=12, none) = 12.000000 (err 0.0000%)
+    Φ(k=0, det, Activation, C=12, none) = 12.000000 (err 0.0000%)
+    Φ(k=0, sto, w-source, C=12, none) = 12.000000 (err 0.0000%)
+    Φ(k=1, sto, w-source, C=12, none) = 12.000000 (err 0.0000%)
+
+── T7: 4 H-BONDS PER WATER MOLECULE TEST ──
+
+  Hits on 4 (H-bonds per water molecule): 36 within 0.1%
+    Φ(k=0, det, Reality, C=4, none) = 4.000000 (err 0.0000%)
+    Φ(k=0, det, Information, C=4, none) = 4.000000 (err 0.0000%)
+    Φ(k=0, det, Activation, C=4, none) = 4.000000 (err 0.0000%)
+    Φ(k=0, sto, w-source, C=4, none) = 4.000000 (err 0.0000%)
+    Φ(k=1, sto, w-source, C=4, none) = 4.000000 (err 0.0000%)
+
+── T8: STRUCTURAL ENCODING SUMMARY ──
+
+  UBP structural numbers vs water structure:
+    UBP 24  ↔  4! = 24 (H-bond permutations)            ← MATCH
+    UBP 24  ↔  12 × 2 (ice Ih neighbors × D/A)          ← MATCH
+    UBP 24  ↔  4 × 6 (H-bonds × tetrahedron edges)     ← MATCH
+    UBP 12  ↔  ice Ih 12 nearest neighbors              ← MATCH (Golay info dim)
+    UBP 8   ↔  min distance of Golay code [24,12,8]    ← structural
+    UBP 8   ↔  (H₂O)₈ cluster atoms × 3? or 2³ binary? ← partial
+    UBP 4   ↔  H-bonds per water molecule               ← structural
+    UBP 13  ↔  Leech kissing 196560 = 13 × 15120        ← structural
+    UBP 196560 ↔ ? (no obvious water mapping)
+
+  CONCLUSION: The UBP structural numbers (4, 8, 12, 13, 24) align
+  remarkably well with water's H-bond network structure. The mapping is:
+
+    UBP → Water H-bond network
+    4  → H-bonds per molecule (tetrahedral coordination)
+    8  → Golay min distance (error-correction radius)
+    12 → Ice Ih nearest neighbors (1st+2nd shell)
+    24 → H-bond permutation group (4!) = Leech dimension
+    13 → D-Sink dimension (1st+2nd shell sum 4+9=13?)
+
+  This is suggestive but not yet a mechanistic explanation.
+  The next step would be to derive water's dielectric constant from
+  the Leech lattice geometry — currently open.
+
+── Results saved to /home/z/my-project/rainbow_v6_extended/data/phase_t_leech_hbond.json ──
