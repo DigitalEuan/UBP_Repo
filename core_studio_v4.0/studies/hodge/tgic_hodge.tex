@@ -1,0 +1,452 @@
+\documentclass[11pt,a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=darkgray,
+    urlcolor=blue!70!black,
+    bookmarks=true,
+    bookmarksnumbered=true,
+    unicode=true
+}
+
+% ── Theorem environments ──────────────────────────────────
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+
+% ── Custom commands ───────────────────────────────────────
+\newcommand{\TGIC}{\mathrm{TGIC}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\calO}{\mathcal{O}}
+\DeclareMathOperator{\Hdg}{Hdg}
+\DeclareMathOperator{\im}{im}
+
+% ── Orphan/widow prevention ──────────────────────────────
+\widowpenalty=10000
+\clubpenalty=10000
+
+% ── PDF metadata ──────────────────────────────────────────
+\hypersetup{
+    pdftitle={TGIC Framework: A Geometric Computation Approach to the Hodge Conjecture},
+    pdfauthor={UBP Research},
+    pdfsubject={Algebraic Geometry, Hodge Theory, Geometric Computation},
+    pdfkeywords={TGIC, Hodge Conjecture, Geometric Computation, UBP, Time Ticks, Hidden Dimensions}
+}
+
+\begin{document}
+
+% ═══════════════════════════════════════════════════════════
+% NO TITLE PAGE IN .tex - Cover is generated separately
+% via HTML/Playwright and merged as page 0.
+% ═══════════════════════════════════════════════════════════
+
+\tableofcontents
+\newpage
+
+
+% ═══════════════════════════════════════════════════════════
+\section{Introduction}\label{sec:intro}
+% ═══════════════════════════════════════════════════════════
+
+The Hodge Conjecture stands as one of the seven Clay Millennium Prize Problems, asserting that on a smooth projective complex algebraic variety $X$, every Hodge class in $H^{2p}(X, \QQ) \cap H^{p,p}(X)$ is a rational linear combination of classes of algebraic cycles of codimension~$p$. Despite decades of effort by the algebraic geometry community, the conjecture remains open for codimension $p \geq 2$ on varieties of dimension $\geq 4$. The standard approach relies heavily on linear and algebraic methods---cohomological algebra, sheaf cohomology, and mixed Hodge theory---which, while powerful, have not yielded a complete solution.
+
+This document introduces the \textbf{Temporal-Geometric Information Channel (TGIC)} framework, a geometric computation paradigm developed within the UBP system. The TGIC framework represents a fundamental methodological departure from standard approaches: rather than treating cohomology classes as algebraic objects to be manipulated through linear operations, TGIC treats them as \emph{physical entities} that evolve through discrete \textbf{time ticks} within a geometric state space. This approach is motivated by the insight that geometry provides access to dimensional information that is ordinarily hidden from purely algebraic perspectives.
+
+The core philosophy underpinning TGIC can be stated concisely: \emph{mathematics serves as a language of description and validation, while geometry performs the actual computational work}. This inversion of the standard hierarchy---where algebra typically drives the computation and geometry provides visualisation---is deliberate. Geometry imposes physically tangible boundaries on what is computable, preventing the introduction of artefacts that arise from forcing algebraic structures onto geometrically incompatible situations. The cost is that finding the correct mathematical description for a given geometric phenomenon becomes more difficult; the benefit is that the results obtained are genuinely constrained by physical reality rather than by the assumptions embedded in our chosen formalism.
+
+A guiding intuition, supplied by the UBP research programme, is the \textbf{Rotation Principle}: when a two-dimensional square is physically rotated in three-dimensional space, the rotation simultaneously affects the square's relationship to all three dimensions, even though an observer confined to two dimensions can only perceive the projected changes. The information in the third dimension is genuinely altered---it is not merely a mathematical convenience. This principle, when extended to algebraic cycles embedded in projective varieties, suggests that geometric operations on cycles propagate information across all cohomological dimensions simultaneously, including those that are ``hidden'' from the perspective of any single Hodge type. TGIC provides the formal machinery to track this multi-dimensional information propagation through discrete temporal evolution.
+
+This document accomplishes four objectives. First, it formalises the TGIC framework as a mathematical structure in its own right (\S\ref{sec:framework}). Second, it develops the philosophical foundations, particularly the Rotation Principle and the concept of hidden dimensional information (\S\ref{sec:philosophy}). Third, it applies TGIC to the Hodge Conjecture through concrete geometric probes (\S\ref{sec:application}). Fourth, and critically, it identifies every point where TGIC fails or encounters obstacles, recording these failures not as defeats but as \textbf{specific development leads} for the UBP system (\S\ref{sec:shortcomings}).
+
+% ═══════════════════════════════════════════════════════════
+\section{Philosophical Foundation: Geometry as Window to Hidden Dimensions}\label{sec:philosophy}
+% ═══════════════════════════════════════════════════════════
+
+\subsection{The Inversion Principle}
+
+Standard mathematical practice treats geometry as a source of intuition and algebra as the engine of rigorous computation. One proves geometric theorems by translating them into algebraic statements, manipulating the algebra, and translating back. The Hodge Conjecture itself is typically attacked through this lens: one studies the algebraic structure of Hodge structures, the linear algebra of period domains, and the category-theoretic framework of motives.
+
+The TGIC framework inverts this hierarchy. Under TGIC, geometry is the \emph{primary computational substrate}, and algebraic mathematics serves only to \emph{describe} and \emph{validate} the results that geometry produces. This is not merely a philosophical preference---it is a methodological necessity arising from the observation that standard algebraic methods have not resolved the Hodge Conjecture despite extensive effort. If the path to a solution exists through a fundamentally different computational paradigm, then persisting with algebra-first methods may constitute a form of confirmation bias.
+
+The practical consequence of this inversion is significant. When geometry drives the computation, the results are constrained by the physical properties of geometric objects: their dimensionality, their embedding structure, their curvature, and their topological invariants. These constraints are \emph{real} in the sense that they cannot be bypassed by clever algebraic manipulations. A geometric object of dimension $d$ embedded in a space of dimension $D$ simply cannot carry more independent degrees of freedom than the embedding allows. This sets what we call a \textbf{physically tangible boundary} on the computation.
+
+\subsection{The Rotation Principle}
+
+\begin{definition}[Dimensional Information Propagation]\label{def:dip}
+Let $M$ be a smooth manifold of dimension $d$ smoothly embedded in an ambient manifold $N$ of dimension $D \geq d$. Let $\tau_\theta$ be a one-parameter family of diffeomorphisms of $N$ (a ``rotation''). When $\tau_\theta$ acts on $M$, it alters the embedding $\iota_\theta: M \hookrightarrow N$ and thereby changes the relationship between $M$ and all $D$ dimensions of $N$ simultaneously. We define the \textbf{hidden dimensional information} at parameter $\theta$ to be:
+\begin{equation}\label{eq:hidden-info}
+I_{\mathrm{hidden}}(\theta) \;=\; I_{\mathrm{total}}(\theta) \;-\; I_{\mathrm{observable}}(\theta)
+\end{equation}
+where $I_{\mathrm{total}}$ is the full information content of the embedding and $I_{\mathrm{observable}}$ is the information accessible from within the $d$-dimensional perspective of $M$.
+\end{definition}
+
+The Rotation Principle asserts three properties of $I_{\mathrm{hidden}}(\theta)$:
+
+\begin{enumerate}[label=\textbf{RP\arabic*:}]
+\item \textbf{Reality}: $I_{\mathrm{hidden}}(\theta)$ is a real, physically meaningful quantity---it is not an artefact of coordinate choices or mathematical convenience. The embedding of $M$ in $N$ carries genuine information about the $D - d$ normal directions, and this information changes under the action of $\tau_\theta$.
+
+\item \textbf{Detectability}: Although $I_{\mathrm{hidden}}(\theta)$ is not directly observable from within $M$, it can be detected through appropriate geometric probes. For instance, the curvature of the normal connection, the second fundamental form, and the Gauss map all encode information about the hidden dimensions.
+
+\item \textbf{Geometric Constraint}: The evolution of $I_{\mathrm{hidden}}(\theta)$ is constrained by the geometry of $N$ and the nature of $\tau_\theta$. Not all hidden dimensional information states are reachable from a given starting configuration. The set of reachable states forms a geometrically determined subset of the full information space.
+\end{enumerate}
+
+\subsection{Application to Algebraic Cycles}
+
+The Rotation Principle connects directly to the Hodge Conjecture through the following correspondence. An algebraic cycle $Z \subset X$ of codimension $p$ on a smooth projective variety $X$ of complex dimension $n$ is a geometric object of real dimension $2(n-p)$ embedded in an ambient space of real dimension $2n$. The ``hidden dimensions'' are the $2p$ normal directions to $Z$ within $X$.
+
+When we subject $Z$ to a geometric transformation---a deformation, a rotation in some embedding space, or more generally any path through the space of subvarieties---the cohomology class $[Z] \in H^{2p}(X, \QQ)$ captures only the ``observable'' information (the homological equivalence class). The additional information about \emph{how} $Z$ sits inside $X$---its specific embedding, singularities, normal bundle structure---constitutes the hidden dimensional information. Under the TGIC framework, we propose that the Hodge class condition $[Z] \in H^{p,p}(X)$ is equivalent to a specific \textbf{stability condition} on this hidden dimensional information under temporal geometric evolution.
+
+\subsection{Math as Description, Not Generator}
+
+A critical methodological consequence of the above is that within TGIC, we do not \emph{construct} cohomology classes algebraically and then ask whether they are algebraic. Instead, we \emph{evolve} geometric objects through time ticks, \emph{observe} what cohomology classes emerge, and then \emph{describe} the emergent structure using standard Hodge-theoretic language. The mathematics validates and organises what geometry has produced; it does not generate the results.
+
+This approach has a natural self-correcting property. If a geometric evolution produces a cohomology class that cannot be described within standard Hodge theory, this is not a failure of the geometry---it is an indication that the standard mathematical framework is incomplete, and that the UBP system has discovered a phenomenon lying outside the current algebraic description. Such ``breaking points'' are precisely the most valuable outcomes, as they point to genuinely new mathematical territory.
+
+
+% ═══════════════════════════════════════════════════════════
+\section{The TGIC Framework: Formal Definition}\label{sec:framework}
+% ═══════════════════════════════════════════════════════════
+
+\subsection{Geometric State Space}
+
+\begin{definition}[TGIC Geometric State]\label{def:geo-state}
+Let $X$ be a compact K\"ahler manifold of complex dimension $n$. Fix an integer $p$ with $1 \leq p \leq n$. A \textbf{TGIC geometric state of type $(X, p)$ at time $t$} is a pair
+\begin{equation}\label{eq:state}
+S_t = (Z_t,\, \varphi_t)
+\end{equation}
+where:
+\begin{itemize}[nosep]
+\item $Z_t$ is a (possibly singular) closed subvariety or subanalytic subset of $X$ of real dimension $\geq 2(n - p)$;
+\item $\varphi_t: Z_t \to \RR_{\geq 0}$ is a locally integrable ``geometric density function'' encoding multiplicity, curvature-weighted density, or other geometric attributes.
+\end{itemize}
+\end{definition}
+
+The geometric density $\varphi_t$ is the mechanism by which TGIC extends beyond pure topology. Two geometric states with the same underlying set $Z_t$ but different density functions $\varphi_t$ carry different information and, under TGIC evolution, may converge to different cohomological limits. This is the formal expression of the principle that ``how a geometric object sits inside its ambient space matters, not just where it is.''
+
+The state space $\mathcal{S}$ at any fixed time $t$ is the set of all admissible geometric states:
+\begin{equation}\label{eq:state-space}
+\mathcal{S}_{X,p} = \bigl\{(Z, \varphi) : Z \subset X \text{ closed},\; \dim_{\RR} Z \geq 2(n-p),\; \varphi \in L^1_{\mathrm{loc}}(Z)\bigr\}.
+\end{equation}
+
+\subsection{The Temporal Evolution Operator}
+
+\begin{definition}[TGIC Evolution Operator]\label{def:evo}
+A \textbf{TGIC temporal evolution operator} of type $(X, p)$ is a map
+\begin{equation}\label{eq:evo}
+T : \mathcal{S}_{X,p} \to \mathcal{S}_{X,p}
+\end{equation}
+satisfying the following axioms:
+\begin{enumerate}[label=(E\arabic*)]
+\item \textbf{Geometricity}: $T$ acts on the geometric representation $(Z, \varphi)$ directly, not on the cohomology class. The cohomology class is a \emph{derived quantity}, extracted after the evolution step.
+\item \textbf{Discrete temporality}: Each application of $T$ corresponds to one ``time tick.'' The state at time $t$ is $S_t = T^t(S_0)$.
+\item \textbf{Physical realism}: $T$ must be realisable as (or approximable by) a geometric operation on subvarieties of $X$. Examples include: small deformations along holomorphic or smooth vector fields, normal-thickening operations, and degeneration-resolution sequences.
+\item \textbf{Dimensional information propagation}: $T$ must alter the hidden dimensional information $I_{\mathrm{hidden}}$ (Definition~\ref{def:dip}). An evolution operator that preserves only the cohomology class without affecting the embedding information does not qualify as a TGIC operator.
+\end{enumerate}
+\end{definition}
+
+\subsection{Cohomology Extraction}
+
+From a geometric state $S = (Z, \varphi)$, we extract a cohomology class via the following procedure. Represent $S$ as a current $[S]$ acting on smooth $(2n - 2p)$-forms $\omega$ on $X$:
+\begin{equation}\label{eq:current}
+\langle [S],\, \omega \rangle \;=\; \int_{Z} \varphi \cdot \omega|_{Z}.
+\end{equation}
+The cohomology class of the current $[S]$ is an element of $H^{2p}(X, \RR)$. When $\varphi$ is integer-valued and $Z$ is an algebraic cycle, this recovers the standard cycle class map.
+
+The key innovation of TGIC is that the \emph{same} underlying cohomology class can arise from geometrically distinct states, and the temporal evolution of these states through different paths may reveal different aspects of the hidden dimensional structure.
+
+\subsection{TGIC Steady States and the Geometric Hodge Criterion}
+
+\begin{definition}[TGIC Steady State]\label{def:steady}
+A geometric state $S^* = (Z^*, \varphi^*)$ is a \textbf{TGIC steady state} (for a given evolution operator $T$) if $T(S^*) = S^*$.
+\end{definition}
+
+\begin{definition}[TGIC Hodge Criterion]\label{def:hodge-criterion}
+A cohomology class $\eta \in H^{2p}(X, \QQ)$ satisfies the \textbf{TGIC Hodge Criterion} if there exists a TGIC evolution operator $T$ such that:
+\begin{enumerate}[nosep]
+\item $\eta$ is the cohomology class of a TGIC steady state $S^*$ for $T$;
+\item $S^*$ lies in the ``algebraic component'' of the state space, meaning that $S^*$ can be reached from an algebraic cycle through a finite sequence of TGIC evolution steps.
+\end{enumerate}
+\end{definition}
+
+The TGIC Hodge Criterion provides a \emph{geometric} characterisation of Hodge classes, in contrast to the standard \emph{algebraic} characterisation via the Hodge decomposition. We conjecture that these two characterisations are equivalent for smooth projective varieties.
+
+\begin{conjecture}[TGIC Characterisation of Hodge Classes]\label{conj:tgc}
+Let $X$ be a smooth projective complex algebraic variety of dimension $n$, and let $\eta \in H^{2p}(X, \QQ)$. Then $\eta$ is a Hodge class (i.e., $\eta \in H^{p,p}(X)$) if and only if $\eta$ satisfies the TGIC Hodge Criterion (Definition~\ref{def:hodge-criterion}).
+\end{conjecture}
+
+\subsection{TGIC with Degeneration: TGIC-D}
+
+A critical limitation of smooth TGIC evolution is that continuous deformation within a connected family of subvarieties preserves the homology class. To change homology classes, we need to allow the geometric state to pass through \textbf{degeneration events}---time ticks at which the subvariety becomes singular, potentially breaks into components, and resolves to a different topological type.
+
+\begin{definition}[TGIC-D Evolution]\label{def:tgic-d}
+The \textbf{TGIC-D} (TGIC with Degeneration) framework extends the basic TGIC framework by allowing the evolution operator $T$ to map a smooth state to a singular state, and subsequently to resolve the singular state to a (potentially topologically distinct) smooth state. Formally, we decompose $T$ into three phases:
+\begin{enumerate}[nosep]
+\item \textbf{Smooth phase}: $T_{\mathrm{smooth}}$ deforms the state within its smooth family (preserves homology).
+\item \textbf{Degeneration phase}: $T_{\mathrm{deg}}$ maps the state to a singular configuration.
+\item \textbf{Resolution phase}: $T_{\mathrm{res}}$ resolves the singular configuration to a new smooth state (potentially changing homology).
+\end{enumerate}
+The full time tick is $T = T_{\mathrm{res}} \circ T_{\mathrm{deg}} \circ T_{\mathrm{smooth}}$.
+\end{definition}
+
+TGIC-D is essential for the Hodge Conjecture application because algebraic cycles representing different cohomology classes cannot, in general, be connected by smooth deformations alone. The degeneration mechanism provides the ``jumps'' between homology classes that smooth evolution cannot achieve.
+
+
+% ═══════════════════════════════════════════════════════════
+\section{Application to the Hodge Conjecture}\label{sec:application}
+% ═══════════════════════════════════════════════════════════
+
+\subsection{Setup and Strategy}
+
+Let $X$ be a smooth projective complex algebraic variety of dimension $n$. The Hodge decomposition of $H^{k}(X, \CC)$ is:
+\begin{equation}\label{eq:hodge-decomp}
+H^{k}(X, \CC) \;=\; \bigoplus_{p+q=k} H^{p,q}(X).
+\end{equation}
+A \textbf{Hodge class} of codimension $p$ is an element of $H^{2p}(X, \QQ) \cap H^{p,p}(X)$. The Hodge Conjecture asserts that every such class is a $\QQ$-linear combination of classes of algebraic cycles of codimension $p$.
+
+The TGIC strategy is to \emph{reframe} the conjecture. Instead of asking ``Can this cohomology class be written as a rational linear combination of algebraic cycle classes?'' (an algebraic question), TGIC asks: ``Can this cohomology class be \emph{reached} through geometrically controlled temporal evolution starting from a known algebraic cycle?'' (a geometric question). The advantage of this reframing is that it replaces the problem of finding the \emph{right} algebraic decomposition with the problem of finding the \emph{right} geometric path---a problem for which the Rotation Principle provides concrete intuition.
+
+\subsection{Probe 1: Curves and the Lefschetz (1,1) Theorem}
+
+Let $X = C$ be a smooth projective curve of genus $g$. The Hodge decomposition of $H^1(C, \CC)$ is:
+\begin{equation}\label{eq:curve-hodge}
+H^1(C, \CC) = H^{1,0}(C) \oplus H^{0,1}(C)
+\end{equation}
+where $H^{1,0}(C)$ is the $g$-dimensional space of holomorphic $1$-forms and $H^{0,1}(C) = \overline{H^{1,0}(C)}$. The relevant Hodge classes live in $H^2(C, \QQ) \cap H^{1,1}(C) = H^2(C, \QQ) \cong \QQ$.
+
+Under the TGIC framework, a codimension-1 cycle on $C$ is a finite formal sum of points. A TGIC geometric state is a pair $(D, \varphi)$ where $D$ is a divisor (a finite set of points with integer multiplicities) and $\varphi: D \to \RR_{\geq 0}$ is a density function. The TGIC evolution moves points along $C$ and adjusts their densities. The steady states of this evolution correspond to divisors whose associated current is harmonic---which, on a curve, simply means that the total weighted sum of points is constant. This recovers the fact that every class in $H^2(C, \QQ)$ is algebraic (generated by the fundamental class of a point).
+
+This probe is straightforward and confirms that TGIC reproduces the known result in this case. The value lies in establishing that the framework is \emph{compatible} with classical Hodge theory in a setting where the conjecture is already known to hold.
+
+\subsection{Probe 2: Abelian Surfaces and the Diagonal Rotation}
+
+\begin{proposition}[TGIC Rotation on $E \times E$]\label{prop:abelian-rotation}
+Let $E$ be an elliptic curve with period lattice $\Lambda \subset \CC$. The product $X = E \times E$ is an abelian surface. The universal cover of $X$ is $\CC \times \CC$, and the diagonal $\Delta = \{(z, z) : z \in E\}$ lifts to the line $\{(w_1, w_2) \in \CC^2 : w_1 = w_2\}$.
+
+Consider the one-parameter family of ``rotations'' $R_\theta$ acting on $\CC^2$ by:
+\begin{equation}\label{eq:rotation}
+R_\theta(w_1, w_2) = (w_1 \cos\theta + w_2 \sin\theta,\; -w_1 \sin\theta + w_2 \cos\theta).
+\end{equation}
+For each $\theta$, the image $R_\theta(\Delta)$ descends to a subtorus $L_\theta \subset X$ of real dimension $2$. The subtorus $L_\theta$ is algebraic (i.e., is an algebraic cycle) if and only if $\theta$ is a rational multiple of $\pi$ (modulo the lattice action).
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+The subtorus $L_\theta$ is the image of $\Delta$ under the rotation $R_\theta$. In the universal cover $\CC^2$, $R_\theta(\Delta)$ is a real $2$-dimensional subspace defined by $w_2 = \frac{\cos\theta - 1}{\sin\theta}\, w_1$ (when $\sin\theta \neq 0$). This descends to an algebraic subtorus if and only if the subspace is defined over $\QQ$ in an appropriate sense relative to the lattice $\Lambda \times \Lambda$, which occurs precisely when $\theta$ is rational.
+\end{proof}
+
+This proposition is the TGIC realisation of the Rotation Principle. As $\theta$ varies continuously from $0$, the geometric state $L_\theta$ sweeps through all $2$-dimensional subtori of $X$. At rational angles, the state is algebraic; at irrational angles, it is a \emph{genuine geometric object} that exists physically within $X$ but is not cut out by any polynomial equation. The cohomology class $[L_\theta] \in H^2(X, \QQ)$ is the same for all rational $\theta$ in a given connected component of the space of algebraic subtori, but the \emph{hidden dimensional information}---the specific embedding data of $L_\theta$ within $X$---varies continuously with $\theta$.
+
+\begin{remark}\label{rmk:rational-approx}
+The space of rational angles is dense in $[0, 2\pi)$. Therefore, any non-algebraic subtorus $L_\theta$ (with $\theta$ irrational) can be approximated arbitrarily closely by algebraic subtori $L_{\theta_n}$ with $\theta_n \to \theta$ rational. This suggests an approximation strategy for the Hodge Conjecture: every Hodge class might be a limit (in a suitable topology) of algebraic cycle classes, where the limit is taken over a TGIC-controlled geometric evolution path.
+\end{remark}
+
+\subsection{Probe 3: The Geometric Diffusion Model}
+
+We now develop a more concrete TGIC evolution mechanism based on geometric diffusion.
+
+\begin{definition}[Normal Thickening Operator]\label{def:thicken}
+Let $Z \subset X$ be a smooth subvariety of codimension $p$, and let $N(Z/X)$ be its normal bundle (a complex vector bundle of rank $p$). Fix a K\"ahler metric $g$ on $X$. Let $K_t$ be the heat kernel on the total space of $N(Z/X)$ associated to the induced metric. The \textbf{normal thickening operator} at time $t > 0$ is defined by:
+\begin{equation}\label{eq:thicken}
+(\mathcal{N}_t \varphi)(x, v) = \int_{N_x(Z/X)} K_t\bigl((x,v),\, (x,w)\bigr)\, \varphi(x,w)\, d\mu(w)
+\end{equation}
+where $(x,v) \in N(Z/X)$, $\varphi$ is the initial density on the zero section, and $d\mu$ is the natural volume form on the fibres.
+\end{definition}
+
+The TGIC evolution via normal thickening works as follows. At time $t = 0$, the geometric state is concentrated on the zero section of $N(Z/X)$ (i.e., on $Z$ itself). At each time tick, the state diffuses outward into the normal directions, ``thickening'' the cycle. The cohomology class extracted from the thickened state at time $t$ is obtained by pushing forward the evolved current to $X$.
+
+\begin{proposition}[Thickening Preserves the $(p,p)$ Component]\label{prop:thicken-pp}
+Let $Z$ be a smooth algebraic cycle of codimension $p$ on a compact K\"ahler manifold $X$. The normal thickening evolution $\mathcal{N}_t$ applied to the current of integration on $Z$ produces, at each time $t > 0$, a current whose cohomology class lies entirely in $H^{p,p}(X)$.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+The current of integration on a smooth algebraic cycle of codimension $p$ is a $(p,p)$-type current. The normal thickening operator involves the heat kernel on the normal bundle, which preserves the $(p,p)$ type because the K\"ahler metric and the complex structure of the normal bundle are compatible. Concretely, in local holomorphic coordinates $(z_1, \ldots, z_n)$ where $Z$ is cut out by $z_1 = \cdots = z_p = 0$, the heat kernel on the normal directions depends only on the holomorphic coordinates $(z_1, \ldots, z_p)$ and their conjugates, hence the evolved current remains of type $(p,p)$.
+\end{proof}
+
+This proposition is encouraging: it shows that TGIC evolution of an algebraic cycle stays within the Hodge $(p,p)$ component. However, it does \emph{not} show that every Hodge class can be reached, which is the substance of the conjecture. The thickening operator preserves the $(p,p)$ type but also preserves the cohomology class (by the homotopy invariance of the heat equation). To change the cohomology class, we must combine thickening with the TGIC-D degeneration mechanism.
+
+\subsection{Probe 4: Fourfolds and the Codimension-2 Problem}\label{sec:probe4}
+
+The Hodge Conjecture is unknown for $p = 2$ on smooth projective fourfolds $X$ (i.e., $\dim_{\CC} X = 4$). Here, the Hodge decomposition of $H^4(X, \CC)$ is:
+\begin{equation}\label{eq:fourfold-hodge}
+H^4(X, \CC) = H^{4,0} \oplus H^{3,1} \oplus H^{2,2} \oplus H^{1,3} \oplus H^{0,4}.
+\end{equation}
+A Hodge class of codimension $2$ is an element of $H^4(X, \QQ) \cap H^{2,2}(X)$. The TGIC approach to this case proceeds as follows.
+
+\textbf{Step 1 (Initialisation):} Choose a known algebraic cycle $Z_0$ of codimension $2$ on $X$. This could be the intersection of two ample divisors, the diagonal, or any other geometrically accessible cycle.
+
+\textbf{Step 2 (TGIC-D Evolution):} Evolve $Z_0$ through a sequence of time ticks, each consisting of a smooth deformation phase, a potential degeneration, and a resolution. At each time tick, record the geometric state $(Z_t, \varphi_t)$ and the associated cohomology class $[Z_t]$.
+
+\textbf{Step 3 (Hidden Dimension Monitoring):} At each time tick, compute the hidden dimensional information $I_{\mathrm{hidden}}(t)$ by comparing the full geometric state with the cohomology class. This requires a choice of ``information metric'' on the state space, which is discussed in \S\ref{sec:shortcomings}.
+
+\textbf{Step 4 (Steady State Detection):} Monitor the evolution for convergence to a TGIC steady state. If a steady state is reached, extract its cohomology class and verify whether it is a new Hodge class.
+
+The critical question is whether the TGIC-D evolution, starting from any algebraic cycle, can reach a steady state whose cohomology class is an \emph{arbitrary} Hodge class. This is the central open problem of the TGIC approach.
+
+
+% ═══════════════════════════════════════════════════════════
+\section{Critical Shortcomings: UBP Development Leads}\label{sec:shortcomings}
+% ═══════════════════════════════════════════════════════════
+
+Every point of failure identified below represents a specific development opportunity for the UBP system. These are not abstract objections but concrete technical gaps that, if addressed, would advance the TGIC framework toward practical applicability.
+
+\subsection{Shortcoming 1: Homology Preservation Under Smooth Evolution}\label{sec:sc1}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!40!black, title={\textbf{Shortcoming 1: The Homology Lock}}]
+\textbf{Problem}: Continuous smooth deformation of a subvariety within its connected family preserves the homology class. The TGIC evolution operator $T_{\mathrm{smooth}}$ (Definition~\ref{def:tgic-d}) cannot change the cohomology class of the geometric state. This means that pure smooth TGIC evolution is useless for exploring different Hodge classes---it merely deforms a cycle within its homology class without producing new cohomological information.
+
+\medskip
+\textbf{UBP Development Lead}: The UBP system needs a formally defined mechanism for jumping between homology classes that is:
+\begin{enumerate}[nosep]
+\item \textbf{Geometrically meaningful}: the jump must correspond to a real geometric operation, not an arbitrary algebraic recombination;
+\item \textbf{Composable}: multiple jumps must be chainable to explore the full homology lattice;
+\item \textbf{Controllable}: there must be a way to determine \emph{which} homology class a given jump will produce, rather than relying on random exploration.
+\end{enumerate}
+The TGIC-D degeneration mechanism (Definition~\ref{def:tgic-d}) is a first attempt at this, but it currently lacks the formal development needed to guarantee controllability.
+\end{tcolorbox}
+
+This shortcoming is the most fundamental obstacle. In the abelian surface example (\S\ref{sec:application}), the rotation $R_\theta$ continuously varies the geometric state while the cohomology class of the resulting subtorus changes \emph{only} when $\theta$ crosses a value that changes the rationality class. Between such transitions, the cohomology class is constant. The TGIC framework needs a precise description of these transition points and their relationship to the lattice structure of $H^{2p}(X, \ZZ)$.
+
+\subsection{Shortcoming 2: The Information Metric Is Undefined}\label{sec:sc2}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!40!black, title={\textbf{Shortcoming 2: No Information Metric}}]
+\textbf{Problem}: The concept of ``hidden dimensional information'' $I_{\mathrm{hidden}}$ (Definition~\ref{def:dip}) is conceptually clear but mathematically undefined. We have no metric, no distance function, and no measure on the space of geometric states that would allow us to:
+\begin{enumerate}[nosep]
+\item Quantify how much hidden information a state carries;
+\item Measure the rate of information change under TGIC evolution;
+\item Define what it means for a sequence of states to ``converge'' in terms of hidden information;
+\item Detect when a steady state has been reached.
+\end{enumerate}
+
+\medskip
+\textbf{UBP Development Lead}: Define a \textbf{geometric information functional} $\mathcal{I}: \mathcal{S}_{X,p} \to \RR_{\geq 0}$ that assigns a non-negative real number to each geometric state, measuring the total geometric information content. This functional should:
+\begin{enumerate}[nosep]
+\item Be sensitive to the embedding data of the state (not just the cohomology class);
+\item Decrease monotonically under TGIC evolution (providing a Lyapunov-like stability guarantee);
+\item Achieve its minimum precisely on TGIC steady states;
+\item Be computable (or at least approximable) from the geometric data of the state.
+\end{enumerate}
+
+A natural candidate is an ``energy functional'' combining the volume of the state with the curvature of its embedding, but this requires careful analysis to ensure it has the desired monotonicity properties.
+\end{tcolorbox}
+
+\subsection{Shortcoming 3: The Approximation Problem}\label{sec:sc3}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!40!black, title={\textbf{Shortcoming 3: Approximation Does Not Imply Equality}}]
+\textbf{Problem}: Even if every Hodge class $\eta$ can be \emph{approximated} by a sequence of algebraic cycle classes $\{[Z_n]\}$ obtained through TGIC-D evolution (as suggested by Remark~\ref{rmk:rational-approx}), approximation does not imply equality. The Hodge Conjecture requires $\eta$ to be a \emph{finite} rational linear combination of algebraic cycle classes, not merely a limit point. The passage from approximation to exact representation is the hardest analytical step in the entire TGIC approach.
+
+\medskip
+\textbf{UBP Development Lead}: The UBP system needs a \textbf{finiteness theorem} for TGIC evolution, asserting that if a Hodge class can be approximated to within $\epsilon$ by an algebraic cycle class obtained through TGIC-D evolution with at most $N(\epsilon)$ time ticks, then the Hodge class is exactly representable by a rational linear combination involving at most $M$ independent algebraic cycles, where $M$ is bounded by a function of the Hodge numbers of $X$. Such a theorem would convert the geometric approximation strategy into a genuine proof technique.
+
+\medskip
+\textbf{Connection to standard mathematics}: This problem is related to the Bloch--Beilinson conjectures and the ``algebraic approximation'' approach to the Hodge conjecture, which has been explored by various authors. The TGIC framework adds the constraint of \textbf{geometric controllability}---the approximating cycles must arise from a specific, geometrically defined evolution path---which may provide additional structure that standard approximation arguments lack.
+\end{tcolorbox}
+
+\subsection{Shortcoming 4: Higher Codimension Rotation}\label{sec:sc4}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!40!black, title={\textbf{Shortcoming 4: No Higher Codimension Rotation Mechanism}}]
+\textbf{Problem}: The rotation mechanism used in the abelian surface example (Proposition~\ref{prop:abelian-rotation}) exploits the group structure of $E \times E$. For a general smooth projective variety $X$ and codimension $p \geq 2$, there is no analogous rotation operation. The diagonal rotation generalises to ``higher-dimensional rotations'' (elements of $\mathrm{SO}(2n)$ acting on the universal cover), but the relationship between these rotations and algebraic cycles in higher codimension is completely unclear.
+
+\medskip
+\textbf{UBP Development Lead}: The UBP system needs a general theory of \textbf{geometric evolution operators} for arbitrary $(X, p)$ that:
+\begin{enumerate}[nosep]
+\item Reduces to the known rotation mechanism when $X$ is an abelian variety and $p = 1$;
+\item Generalises to non-abelian varieties and higher codimensions;
+\item Preserves enough structure (e.g., the $(p,p)$ type, or at least some Hodge-theoretic property) to ensure that the evolution stays ``close'' to the space of Hodge classes.
+\end{enumerate}
+
+A promising direction is to use the K\"ahler geometry of $X$ to define evolution operators based on the gradient flow of geometric functionals (e.g., volume, energy, or the norm of the second fundamental form). Such operators would be intrinsically geometric and would not depend on any group structure on $X$.
+\end{tcolorbox}
+
+\subsection{Shortcoming 5: Rational vs.\ Integral Distinguishability}\label{sec:sc5}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!40!black, title={\textbf{Shortcoming 5: No Rationality Filter}}]
+\textbf{Problem}: The Hodge Conjecture is specifically about \emph{rational} cohomology classes: $H^{2p}(X, \QQ) \cap H^{p,p}(X)$. The TGIC framework, as currently defined, works with real cohomology classes $H^{2p}(X, \RR)$ and has no mechanism to distinguish rational from irrational classes. The Rotation Principle produces a continuum of geometric states, and the associated cohomology classes form a real vector space. Identifying which of these classes are rational requires additional structure that TGIC does not currently provide.
+
+\medskip
+\textbf{UBP Development Lead}: Develop a \textbf{rationality detector} within the TGIC framework---a criterion, phrased in purely geometric terms, that determines whether a given geometric state's cohomology class is rational. One approach: a class is rational if and only if the TGIC steady state it defines is \emph{periodic} under some natural cyclic evolution operator (reflecting the fact that rational points on a circle are precisely the periodic ones under rotation).
+\end{tcolorbox}
+
+\subsection{Shortcoming 6: Universality Across Varieties}\label{sec:sc6}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!40!black, title={\textbf{Shortcoming 6: Variety-Dependent Evolution}}]
+\textbf{Problem}: The specific TGIC evolution rule may need to be tailored to the geometry of each individual variety $X$. A truly general framework would need to work uniformly across \emph{all} smooth projective varieties. Currently, the evolution operator $T$ is defined abstractly (Definition~\ref{def:evo}) with no universal construction.
+
+\medskip
+\textbf{UBP Development Lead}: The UBP system needs a \textbf{canonical} or at least \textbf{functorial} construction of TGIC evolution operators that depends only on the intrinsic geometry of $X$ (its K\"ahler class, its Chern classes, its Hodge structure) and the codimension $p$. This is analogous to how the Hodge star operator and the Laplacian are canonically defined for any K\"ahler manifold. A candidate: the evolution operator associated to the Ricci flow or the K\"ahler--Ricci flow restricted to the space of subvarieties.
+\end{tcolorbox}
+
+
+% ═══════════════════════════════════════════════════════════
+\section{Promising Directions}\label{sec:directions}
+% ═══════════════════════════════════════════════════════════
+
+Despite the shortcomings catalogued above, several directions show genuine promise and merit further investigation within the UBP system.
+
+\subsection{Direction 1: TGIC Energy Functional}
+
+The most pressing need (Shortcoming~\ref{sec:sc2}) is the definition of a geometric information functional. A natural candidate is:
+\begin{equation}\label{eq:energy}
+\mathcal{E}(S) = \int_{Z} \!\bigl(|\mathrm{I\!I}|^{2} + |\nabla^{\!\perp}\!\varphi|^{2} + \lambda\, \varphi^{2}\bigr)\, dV
+\end{equation}
+where $\mathrm{I\!I}$ is the second fundamental form of $Z$ in $X$, $\nabla^{\perp}$ is the normal connection, and $\lambda > 0$ is a coupling constant. The three terms measure, respectively: the curvature cost of the embedding, the non-uniformity of the density function, and a volume regularisation term. If $\mathcal{E}$ can be shown to decrease monotonically under a naturally defined TGIC evolution, then steady states correspond to energy minima, and the relationship between energy minimisers and Hodge classes could be studied analytically.
+
+\subsection{Direction 2: TGIC and the Normal Function}
+
+The theory of normal functions (Lefschetz, Griffiths) provides a refined tool for studying the failure of the Hodge Conjecture. A normal function $\nu$ associated to a family of algebraic cycles measures the ``horizontal displacement'' of the cycle class from the space of Hodge classes. Under the TGIC framework, a normal function could be reinterpreted as a measure of the hidden dimensional information $I_{\mathrm{hidden}}$. Concretely, if $Z_t$ is a family of codimension-$p$ cycles over a base curve $B$, the normal function $\nu(t)$ records the $(p-1,p+1) + (p+1,p-1)$ component of the variation of $[Z_t]$. Under TGIC, this component is precisely the ``information leak'' into the hidden dimensions.
+
+This connection suggests that the TGIC framework could provide a \emph{geometric interpretation} of normal functions, potentially leading to new criteria for when a normal function is zero (i.e., when the Hodge Conjecture holds for a given class).
+
+\subsection{Direction 3: TGIC and Derived Categories}
+
+The derived category of coherent sheaves $D^b(X)$ encodes the full algebraic information of $X$. Fourier--Mukai transforms provide automorphisms of $D^b(X)$ that can relate algebraic cycles that are not obviously connected by geometric deformations. Under TGIC, a Fourier--Mukai transform could be interpreted as a ``non-local'' evolution step---one that jumps between geometric states without passing through an intermediate continuous deformation.
+
+This would extend TGIC-D from local degeneration-resolutions to global categorical operations, significantly expanding the reachable state space. The challenge is to define the Fourier--Mukai transform \emph{geometrically} (in terms of the geometric state space) rather than algebraically (in terms of sheaves).
+
+\subsection{Direction 4: Numerical TGIC Experiments}
+
+While the Hodge Conjecture is a pure existence statement (``there exists a rational linear combination...''), the TGIC framework is inherently constructive. It should be possible to implement TGIC evolution numerically for specific varieties (e.g., abelian varieties, K3 surfaces, hypersurfaces in projective space) and observe the behaviour of the cohomology classes under evolution. Such experiments would:
+\begin{enumerate}[nosep]
+\item Test the feasibility of the TGIC approach on concrete examples;
+\item Provide intuition about which evolution operators produce interesting behaviour;
+\item Potentially discover counterexamples to intermediate conjectures, guiding the theoretical development;
+\item Generate visualisations of the hidden dimensional information, making the abstract concepts more tangible.
+\end{enumerate}
+
+The UBP system's emphasis on physical/geometric computation makes it naturally suited to such numerical experiments, which could serve as a bridge between the abstract TGIC framework and concrete mathematical results.
+
+
+% ═══════════════════════════════════════════════════════════
+\section{Summary of Findings}\label{sec:summary}
+% ═══════════════════════════════════════════════════════════
+
+This document has constructed the TGIC (Temporal-Geometric Information Channel) framework as a geometric computation paradigm within the UBP system and applied it to the Hodge Conjecture. The principal findings are as follows.
+
+\textbf{Conceptual contributions.} The TGIC framework provides a genuinely geometric approach to the Hodge Conjecture, inverting the standard algebra-first methodology. The Rotation Principle (\S\ref{sec:philosophy}) establishes that geometric operations on algebraic cycles propagate information across all cohomological dimensions, including hidden ones. The formal framework (\S\ref{sec:framework}) defines geometric states, temporal evolution operators, cohomology extraction, and steady states, providing a rigorous foundation for geometric computation.
+
+\textbf{Concrete results.} The abelian surface rotation (Proposition~\ref{prop:abelian-rotation}) demonstrates that TGIC evolution naturally produces both algebraic and non-algebraic geometric objects, with the algebraic ones corresponding to rational rotation angles. The normal thickening operator (Definition~\ref{def:thicken}) shows that a natural TGIC evolution preserves the $(p,p)$ Hodge type. The TGIC-D extension (Definition~\ref{def:tgic-d}) provides the mechanism for jumping between homology classes through degeneration--resolution sequences.
+
+\textbf{Identified obstacles.} Six critical shortcomings have been identified (\S\ref{sec:shortcomings}), each representing a specific UBP development lead: (1)~the Homology Lock under smooth evolution, (2)~the absence of a geometric information metric, (3)~the gap between approximation and equality, (4)~the lack of higher-codimension rotation mechanisms, (5)~the inability to detect rationality geometrically, and (6)~the variety-dependence of evolution operators.
+
+\textbf{The TGIC Conjecture} (Conjecture~\ref{conj:tgc}) proposes a geometric characterisation of Hodge classes via TGIC steady states. If true, this would reframe the Hodge Conjecture as a question about the dynamics of geometric evolution rather than about the existence of algebraic decompositions. The six shortcomings identify the precise technical developments needed to pursue this conjecture within the UBP system.
+
+The path forward is clear: the UBP system must develop a geometric information functional (Shortcoming~2), a controllable homology-jumping mechanism (Shortcoming~1), and a finiteness theorem for TGIC evolution (Shortcoming~3). These three developments, if achieved, would transform TGIC from a conceptual framework into a computational tool capable of making substantive progress on the Hodge Conjecture.
+
+\end{document}
