@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      --c-bg: #162032;
+      --c-accent: #8B7E5A;
+      --c-text: #FFFFFF;
+      --c-muted: #8898A8;
+      --c-footer: #607080;
+    }
+    html, body { margin: 0; padding: 0; width: 794px; height: 1123px; background: var(--c-bg); color: var(--c-text); font-family: 'Inter', sans-serif; }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: var(--c-bg); }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.3); }
+    }
+    .cover { width: 794px; height: 1123px; position: relative; box-sizing: border-box; }
+    .vline { position: absolute; left: 38px; top: 76px; bottom: 76px; width: 2.5px; background: var(--c-accent); }
+    .content { position: absolute; left: 83px; right: 76px; top: 0; bottom: 0; }
+    .label { position: absolute; top: 150px; font-size: 9pt; color: var(--c-accent); letter-spacing: 3px; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .title { position: absolute; top: 210px; font-size: 30pt; font-weight: 700; line-height: 1.25; font-family: 'Playfair Display', serif; color: var(--c-text); max-width: 580px; }
+    .title em { font-style: italic; color: var(--c-accent); }
+    .subtitle { position: absolute; top: 480px; font-size: 12pt; line-height: 1.6; color: var(--c-muted); max-width: 520px; }
+    .authors { position: absolute; top: 640px; font-size: 12pt; color: var(--c-text); font-weight: 500; }
+    .institution { position: absolute; top: 700px; font-size: 10pt; color: var(--c-muted); line-height: 1.5; }
+    .abstract-label { position: absolute; top: 770px; font-size: 9pt; color: var(--c-accent); letter-spacing: 2px; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .abstract { position: absolute; top: 795px; font-size: 10pt; line-height: 1.6; color: var(--c-muted); max-width: 520px; }
+    .footer { position: absolute; bottom: 76px; left: 0; right: 0; display: flex; justify-content: space-between; font-size: 9pt; color: var(--c-footer); }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="vline"></div>
+    <div class="content">
+      <div class="label">Computational Musicology &middot; Research Paper</div>
+      <div class="title">From Coding Theory to Harmony: How <em>Mersenne</em> and <em>Fermat</em> Primes Reveal the Number-Theoretic Structure of Musical Consonance</div>
+      <div class="subtitle">A ten-phase computational investigation within the Universal Binary Principle system, demonstrating that the consonance signal resides in prime number theory&mdash;not in coding theory&mdash;and that a Jaccard-based Prime-Layer Harmonic Module achieves r&nbsp;=&nbsp;+0.8244 for chord differentiation.</div>
+      <div class="authors">Computational Musicology Research Group</div>
+      <div class="institution">Universal Binary Principle (UBP) System<br>Golay [24,12,8] &middot; Leech Lattice &Lambda;<sub>24</sub> &middot; Barnes-Wall Family</div>
+      <div class="abstract-label">Abstract</div>
+      <div class="abstract">We investigate whether the extended binary Golay code, the Leech lattice, and Barnes-Wall lattices can naturally encode musical consonance. While the Circle-of-Fifths Gray encoding through Golay produces r&nbsp;=&nbsp;0.8674 for interval consonance, the code's three-distance constraint makes chord differentiation provably impossible. Dimensional expansion through Leech and Barnes-Wall lattices preserves but never enriches this signal. The consonance signal is found to reside in prime number theory: pure JI exponent vectors achieve r&nbsp;=&nbsp;0.9613 for intervals, and a Jaccard-based Prime-Layer Harmonic Module on Mersenne/Fermat mod-144 residue proximity sets achieves r&nbsp;=&nbsp;+0.8244 for chords&mdash;the first positive chord differentiation in the study. The mechanism is traced to the decomposition 12-TET&nbsp;=&nbsp;7&nbsp;+&nbsp;5&nbsp;=&nbsp;(2<sup>3</sup>&minus;1)&nbsp;+&nbsp;F<sub>0</sub>, showing that the octave naturally partitions into a Mersenne number and a Fermat prime.</div>
+      <div class="footer">
+        <span>10 Phases &middot; 8 Figures &middot; 15 Pages</span>
+        <span>July 2025</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

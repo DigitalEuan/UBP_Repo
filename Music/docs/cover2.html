@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      --c-bg: #0f1b2d;
+      --c-accent: #7b8fa3;
+      --c-accent-line: #4a6fa5;
+      --c-text: #e8edf3;
+      --c-muted: #8a98aa;
+      --c-footer: #5a6a7a;
+    }
+    html, body { margin: 0; padding: 0; width: 794px; height: 1123px; background: var(--c-bg); color: var(--c-text); font-family: 'Inter', 'Noto Sans SC', sans-serif; }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: var(--c-bg); }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.3); }
+    }
+    .cover { width: 794px; height: 1123px; position: relative; box-sizing: border-box; }
+    .vline { position: absolute; left: 50px; top: 76px; bottom: 76px; width: 2.5px; background: var(--c-accent-line); }
+    .content { position: absolute; left: 96px; right: 76px; top: 0; bottom: 0; }
+    .label { position: absolute; top: 132px; font-size: 9pt; color: var(--c-accent); letter-spacing: 3px; text-transform: uppercase; font-family: 'Inter', 'Noto Sans SC', sans-serif; }
+    .title { position: absolute; top: 210px; font-size: 30pt; font-weight: 700; line-height: 1.25; font-family: 'Playfair Display', 'Noto Serif SC', serif; color: var(--c-text); max-width: 600px; }
+    .subtitle { position: absolute; top: 500px; font-size: 11.5pt; line-height: 1.6; color: var(--c-muted); max-width: 540px; }
+    .authors { position: absolute; top: 650px; font-size: 12pt; color: var(--c-text); font-weight: 400; }
+    .institution { position: absolute; top: 710px; font-size: 10pt; color: var(--c-muted); line-height: 1.5; }
+    .keywords { position: absolute; top: 790px; font-size: 9pt; color: var(--c-muted); line-height: 1.6; max-width: 540px; }
+    .keywords span { color: var(--c-accent); font-weight: 500; }
+    .footer { position: absolute; bottom: 76px; left: 96px; right: 76px; display: flex; justify-content: space-between; font-size: 9pt; color: var(--c-footer); }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="vline"></div>
+    <div class="content">
+      <div class="label">Research Paper</div>
+      <div class="title">Topological Signatures of Prime Distribution on the Radial Layer Spiral: A UBP Projection Study</div>
+      <div class="subtitle">A fusion methodology projecting 24-dimensional Unified Binary Perception metrics onto the two-dimensional angular structure of the RLS reveals near-perfect alignment (r &gt; 0.99) between dynamic coding-theoretic metrics and prime density, with radial stability across all tested magnitude bands.</div>
+      <div class="authors">Computational Mathematics Research Group</div>
+      <div class="institution">Interdisciplinary Study in Number Theory, Coding Theory, and Geometric Topology</div>
+      <div class="keywords"><span>Keywords:</span> prime distribution, Golay code, Radial Layer Spiral, topological analysis, coding theory, Leech lattice, Gaussian integers</div>
+      <div class="footer">
+        <span>Phase XIII: UBP &times; RLS Fusion Study</span>
+        <span>July 2026</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

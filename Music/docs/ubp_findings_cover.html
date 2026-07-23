@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: 794px 1123px; margin: 0; }
+  html, body { width: 794px; height: 1123px; background: #f4f3f2; overflow: hidden; }
+
+  .cover-page {
+    position: relative;
+    width: 794px;
+    height: 1123px;
+    background: #f4f3f2;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Layer 0: base bg */
+  .bg-base { position: absolute; inset: 0; z-index: 0; background: #f4f3f2; }
+
+  /* Layer 1: grid pattern */
+  .bg-layer {
+    position: absolute; inset: 0; overflow: hidden; z-index: 1;
+  }
+  .bg-grid {
+    width: 100%; height: 100%;
+    background-image:
+      linear-gradient(rgba(78,72,52,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(78,72,52,0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Layer 2: anchor line */
+  .anchor-line {
+    position: absolute;
+    left: 95px;
+    top: 112px;
+    width: 6px;
+    height: 900px;
+    background: #4e4834;
+    z-index: 2;
+  }
+
+  /* Layer 3: text content */
+  .content-layer { position: absolute; inset: 0; z-index: 3; }
+
+  .kicker {
+    position: absolute;
+    left: 140px;
+    top: 168px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(78,72,52,0.55);
+    max-width: 550px;
+  }
+
+  .hero-title {
+    position: absolute;
+    left: 140px;
+    top: 280px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #242320;
+    max-width: 580px;
+  }
+
+  .summary-block {
+    position: absolute;
+    left: 140px;
+    top: 530px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(36,35,32,0.75);
+    max-width: 520px;
+  }
+
+  .meta-block {
+    position: absolute;
+    left: 140px;
+    top: 780px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(36,35,32,0.65);
+    line-height: 1.7;
+  }
+
+  .meta-label {
+    font-weight: 700;
+    color: #4e4834;
+  }
+
+  .footer-line {
+    position: absolute;
+    left: 140px;
+    bottom: 70px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(78,72,52,0.35);
+  }
+</style>
+</head>
+<body>
+<div class="cover-page">
+  <div class="bg-base"></div>
+  <div class="bg-layer"><div class="bg-grid"></div></div>
+  <div class="anchor-line"></div>
+  <div class="content-layer">
+    <div class="kicker">Comprehensive Findings Report &mdash; Phases I through XIV</div>
+    <div class="hero-title">UBP Harmonic<br>Study:<br>What We Found</div>
+    <div class="summary-block">
+      A synthesis of fourteen phases of investigation into the Unified Binary Physics
+      system and its relationship to musical harmony, prime number topology,
+      and the structural limits of coding-theoretic approaches to consonance.
+    </div>
+    <div class="meta-block">
+      <span class="meta-label">Scope</span> &nbsp; Music Theory / Coding Theory / Number Theory<br>
+      <span class="meta-label">Corpus</span> &nbsp; 14 Phases, 37 Core Tests, 2000+ Integers<br>
+      <span class="meta-label">Date</span> &nbsp; July 2026
+    </div>
+    <div class="footer-line">Prepared by Z.ai</div>
+  </div>
+</div>
+</body>
+</html>
