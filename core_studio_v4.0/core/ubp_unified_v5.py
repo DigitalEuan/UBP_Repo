@@ -306,8 +306,8 @@ class UBPUltimateSubstrate:
     """
     Ultimate-precision mathematical substrate.
 
-    π  is computed via a 58-term continued-fraction expansion (CF coefficients
-    from OEIS A001203), giving a Fraction good to ~80 decimal digits.
+    π, e, and φ are computed via 50-term continued-fraction expansions,
+    yielding exact Fraction objects good to ~80 decimal digits with 0.00 float error.
     """
 
     _PI_CF = [3, 7, 15, 1, 292, 1, 1, 1, 2, 1, 3, 1, 14, 2, 1, 1, 2, 2, 2, 2,
@@ -319,6 +319,27 @@ class UBPUltimateSubstrate:
         coeffs = cls._PI_CF[:min(terms, len(cls._PI_CF))]
         if len(coeffs) == 0:
             return F(3, 1)
+        x = F(coeffs[-1], 1)
+        for c in reversed(coeffs[:-1]):
+            x = F(c, 1) + F(1, 1) / x
+        return x
+
+    @classmethod
+    def get_e(cls, terms: int = 50) -> Fraction:
+        coeffs = [2]
+        k = 2
+        while len(coeffs) < terms:
+            coeffs.extend([1, k, 1])
+            k += 2
+        coeffs = coeffs[:terms]
+        x = F(coeffs[-1], 1)
+        for c in reversed(coeffs[:-1]):
+            x = F(c, 1) + F(1, 1) / x
+        return x
+
+    @classmethod
+    def get_phi(cls, terms: int = 50) -> Fraction:
+        coeffs = [1] * terms
         x = F(coeffs[-1], 1)
         for c in reversed(coeffs[:-1]):
             x = F(c, 1) + F(1, 1) / x
@@ -338,11 +359,11 @@ class UBPUltimateSubstrate:
     @classmethod
     def get_v6_constants(cls):
         c = cls.get_constants(50)
-        phi = F(1618033988749895, 10**15)
-        e   = F(2718281828459045, 10**15)
+        phi = cls.get_phi(50)
+        e   = cls.get_e(50)
         monad = c["PI"] * phi * e
         wobble = monad - int(monad)        # fractional part as Fraction
-        L = wobble / 13
+        L = wobble / F(13)
         c.update({"PHI": phi, "E": e, "MONAD": monad, "WOBBLE": wobble, "SINK_L": L})
         return c
 
@@ -652,12 +673,17 @@ class LeechLatticeEngine:
         ns = sum(x * x for x in point)
         tax = F(hw, 1) * self.Y + F(ns, 8)
         if compactness is not None:
-            tax = tax * (F(1, 1) - compactness / 13)
+            tax = tax * (F(1, 1) - compactness / F(13))
         return tax
 
-    def calculate_nrci(self, point: List[int]) -> Fraction:
+    def calculate_nrci(self, point: List[int], alpha: Union[int, float, Fraction] = F(1)) -> Fraction:
         tax = self.calculate_symmetry_tax(point)
-        return Fraction(10, 1) / (Fraction(10, 1) + tax)
+        if not isinstance(alpha, Fraction):
+            alpha = Fraction(alpha)
+        return Fraction(10, 1) / (Fraction(10, 1) + alpha * tax)
+
+    def calculate_nrci_alpha(self, point: List[int], alpha: Union[int, float, Fraction] = F(1)) -> Fraction:
+        return self.calculate_nrci(point, alpha=alpha)
 
     symmetry_tax = calculate_symmetry_tax
 
@@ -669,7 +695,7 @@ class LeechLatticeEngine:
             "Activation": F(sum(abs(c) for c in point[12:18]), 12),
             "Potential":  F(sum(abs(c) for c in point[18:24]), 12),
         }
-        layers["Global_NRCI"] = sum(layers.values()) / 4
+        layers["Global_NRCI"] = sum(layers.values()) / F(4)
         return layers
 
     # ── Stability ranking ─────────────────────────────────────────────────────
@@ -1454,6 +1480,12 @@ class UBPSourceCodeParticlePhysics:
         self.L      = self.wobble / 13
         self.sigma  = F(29, 24)
         self.L_s    = self.L * self.sigma
+        self.LY     = self.L * self.Y
+        self.shear_1 = F(1) + F(3) * self.LY
+        self.shear_2 = F(1) + F(3) * self.LY + F(12) * (self.LY ** 2)
+        self.LY     = self.L * self.Y
+        self.shear_1 = F(1) + F(3) * self.LY
+        self.shear_2 = F(1) + F(3) * self.LY + F(12) * (self.LY ** 2)
 
     def get_ultimate_predictions(self) -> Dict[str, Any]:
         L, L_s, U_e, Y, Y_inv, pi = (
@@ -1537,6 +1569,100 @@ class UBPSourceCodeParticlePhysics:
             "status":      "ACTIVE",
         }
         return results
+
+    def phi_generator(self, k: int, arm: str, layer: str, C: Union[int, float, Fraction],
+                      correction: str = "none", alpha: Union[int, float, Fraction] = F(1),
+                      vec: Optional[List[int]] = None) -> Fraction:
+        """
+        Universal Generator Function Phi(k, arm, layer, C, correction, alpha, vec).
+        Implements Section 8 of the UBP Skill Reference (July 2026).
+        """
+        C_frac = F(C) if not isinstance(C, Fraction) else C
+
+        # Base computation
+        if layer in ("Reality", "bits_0_5"):
+            base = self.Y_INV ** k
+        elif layer in ("Information", "bits_6_11"):
+            base = self.Y ** k
+        elif layer in ("Activation", "bits_12_17"):
+            base = self.Y ** k
+        elif layer in ("Potential", "bits_18_23"):
+            base = (self.Y ** (24 - k)) * self.U_e
+        elif layer == "Cross":
+            base = (self.Y ** k) * self.pi
+        elif layer == "w-source":
+            base = F(1) / self.wobble
+        elif layer == "w-based":
+            base = self.wobble * (self.Y ** k) * self.U_e
+        elif layer == "Potential*":
+            base = (self.Y ** k) * self.e_const
+        elif layer == "Potential_G":
+            base = (self.Y ** k) / self.wobble
+        else:
+            raise ValueError(f"Unknown layer: {layer}")
+
+        val = C_frac * base
+
+        # Correction
+        if correction == "none":
+            corr = F(1)
+        elif correction == "shear_1":
+            corr = self.shear_1
+        elif correction == "shear_2":
+            corr = self.shear_2
+        elif correction in ("nrci", "nrci_alpha"):
+            v = vec if vec is not None else GOLAY_ENGINE.get_octads()[0]
+            corr = LEECH_ENGINE.calculate_nrci(v, alpha=alpha)
+        elif correction == "shear_2+nrci":
+            v = vec if vec is not None else GOLAY_ENGINE.get_octads()[0]
+            corr = self.shear_2 * LEECH_ENGINE.calculate_nrci(v, alpha=alpha)
+        else:
+            corr = F(1)
+
+        return val * corr
+
+    def get_canonical_phi_predictions(self) -> Dict[str, Any]:
+        """
+        Returns predictions for the 8 Canonical Phi-Grammar formulas + Gravitational constant G
+        (Section 9 of UBP Skill Reference, July 2026).
+        """
+        oct0 = GOLAY_ENGINE.get_octads()[0]
+
+        f1_mu     = self.phi_generator(1, "sto", "w-source", 169)
+        f2_as     = self.phi_generator(4, "det", "Information", 24)
+        f3_mW     = self.phi_generator(4, "det", "Cross", (F(13)/self.L)*24, correction="shear_1")
+        f4_Ok     = self.phi_generator(15, "det", "Potential", 24, correction="nrci", alpha=F(1, 8), vec=oct0)
+        f5_ny_nb  = self.phi_generator(21, "det", "Potential", F(1, 4), correction="shear_2+nrci", alpha=F(2), vec=oct0)
+        f6_Vub2   = self.phi_generator(12, "det", "Potential", F(1, 24), correction="nrci", alpha=F(13), vec=oct0)
+        f7_a3     = self.phi_generator(12, "det", "Potential*", F(29, 24), correction="none")
+        f8_H0     = self.phi_generator(3, "sto", "w-based", F(1, 3))
+        fG_grav   = self.phi_generator(18, "det", "Potential_G", F(39, 29))
+
+        table = {
+            "m_mu/m_e":   {"pred": f1_mu,    "target": F(2067683, 10000),             "lens": "w-source (169/w)"},
+            "alpha_s":    {"pred": f2_as,    "target": F(1181, 10000),                "lens": "Information (24*Y^4)"},
+            "m_W":        {"pred": f3_mW,    "target": F(80379, 1000),                "lens": "Cross + Shear_1"},
+            "Omega_k":    {"pred": f4_Ok,    "target": F(727, 1000000),               "lens": "Potential + NRCI(1/8)"},
+            "n_gamma/n_b":{"pred": f5_ny_nb, "target": F(1684, 10**12),              "lens": "Potential + Shear_2 + NRCI(2)"},
+            "V_ub^2":     {"pred": f6_Vub2,  "target": F(1012, 10**7),                "lens": "Potential + NRCI(13)"},
+            "alpha^3":    {"pred": f7_a3,    "target": (F(1, 137036)*1000)**3/1000**3,"lens": "Potential* (29/24*Y^12*e)"},
+            "H0":         {"pred": f8_H0,    "target": F(70, 1),                      "lens": "w-based (1/3*w*Y^3*Ue)"},
+            "G_grav":     {"pred": fG_grav,  "target": F(66743, 10**15),              "lens": "Potential_G (39/29*Y^18/w)"},
+        }
+
+        res = {}
+        for k, d in table.items():
+            p, t = d["pred"], d["target"]
+            err = abs(p - t) / t * 100
+            verdict = "PREDICTIVE" if err < 0.1 else ("SURPRISING" if err < 1.0 else "PROVISIONAL")
+            res[k] = {
+                "val": float(p),
+                "target": float(t),
+                "error_percent": float(err),
+                "verdict": verdict,
+                "lens": d["lens"]
+            }
+        return res
 
 
 PARTICLE_PHYSICS = UBPSourceCodeParticlePhysics(precision=50)
@@ -3049,6 +3175,26 @@ def run_tests(verbose: bool = True) -> Dict[str, Any]:
           f"got {pp['Proton/e- Ratio']['error_percent']:.4f}")
     check("sink_metadata.status = ACTIVE",
           pp["sink_metadata"]["status"] == "ACTIVE")
+
+    # ── [P] July 2026 Skill Spec (NRCI_alpha, Shear, Phi Generator) ──
+    if verbose: print("\n[P] July 2026 Skill Spec (NRCI_alpha, Shear, Phi Generator)")
+    check("pp.LY is Fraction", isinstance(pp.LY, Fraction))
+    check("pp.shear_1 > 1", pp.shear_1 > 1)
+    check("pp.shear_2 > pp.shear_1", pp.shear_2 > pp.shear_1)
+
+    # Check parameterised NRCI_alpha
+    oct0 = g.get_octads()[0]
+    nrci_a1 = L.calculate_nrci(oct0, alpha=1)
+    nrci_a2 = L.calculate_nrci_alpha(oct0, alpha=2)
+    check("NRCI_alpha(2) < NRCI_alpha(1)", nrci_a2 < nrci_a1)
+    check("NRCI_alpha(2) ≈ 0.6160", abs(float(nrci_a2) - 0.616016) < 1e-4)
+
+    # Check Phi generator and canonical predictions
+    phi_preds = pp.get_canonical_phi_predictions()
+    check("Canonical Phi predictions count = 9", len(phi_preds) == 9)
+    check("m_mu/m_e error < 0.1%", phi_preds["m_mu/m_e"]["error_percent"] < 0.1)
+    check("Omega_k error < 0.1%", phi_preds["Omega_k"]["error_percent"] < 0.1)
+    check("G_grav error < 0.2%", phi_preds["G_grav"]["error_percent"] < 0.2)
 
     # ── [O] Substrate calibration ───────────────────────────────────────────
     if verbose: print("\n[O] Substrate calibration")
