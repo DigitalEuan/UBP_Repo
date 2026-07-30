@@ -1,4 +1,29 @@
-# UBP Research Cortex v5.4.1 — Master System Architecture & Reference
+# The Universal Binary Principle (UBP)
+
+[![Version](https://img.shields.io/badge/Version-5.4.0-cyan.svg)](https://github.com/DigitalEuan/UBP_Repo)
+[![Status](https://img.shields.io/badge/Status-Hardened-green.svg)]()
+[![Core](https://img.shields.io/badge/Core-Float--Free-blue.svg)]()
+
+* **Author:** Euan R. A. Craig, New Zealand
+* **Version:** 7.2.0 (GLM Tab Edition) running ubp_unified_v5.py (v5.4.1)
+* **Updated:** 30 July 2026
+* **License / Status:** Experimental research platform — *please double-check results against your own work before drawing conclusions.*
+
+| Resource | Link |
+| :--- | :--- |
+| **Live Environment (Google AI Studio)** | <https://ai.studio/apps/6d78d479-2a4e-4e34-89b3-4b87b85d5b9a> |
+| **Core Studio App Repository** | <https://github.com/DigitalEuan/ubp_core_studio_app> |
+| **Digital Twin Physics Engine Repository** | <https://github.com/DigitalEuan/ubp_digital_twin_physics_engine> |
+| **Primary Knowledge Bank** | [`system_kb/ubp_system_kb.json`](system_kb/ubp_system_kb.json) (746 entries, 420 Laws) |
+
+---
+
+The **Universal Binary Principle (UBP)** is a unified computational framework that posits reality, language, and logic are deterministic, error-corrected projections of a 24-bit substrate. This repository contains the official implementation of the UBP Core Stdio App made through Google AI Studio.
+
+---
+
+
+## UBP Research Cortex v5.4.1 — Master System Architecture & Reference
 
 **Version:** 5.4.1 — Unified Checkpoint  
 **Date:** 30 July 2026  
